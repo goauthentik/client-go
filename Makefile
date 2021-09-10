@@ -18,3 +18,4 @@ default:
 	find api/ -type f -exec \
 		sed -i 's/goauthentik\.io\/GIT_USER_ID\/GIT_REPO_ID/goauthentik\.io\/api/g' {} +
 	git checkout -- README.md
+	git checkout -- go.mod
