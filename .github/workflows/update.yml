@@ -21,7 +21,6 @@ jobs:
         run: |
           git config --global user.name 'authentik bot'
           git config --global user.email 'bot@goauthentik.io'
-          git checkout -- README.mds
           git add .
           git commit -m "Update API Client"
           git push
