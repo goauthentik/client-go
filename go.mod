@@ -1,4 +1,4 @@
-module goauthentik.io/api
+module goauthentik.io/GIT_USER_ID/GIT_REPO_ID
 
 go 1.13
 
