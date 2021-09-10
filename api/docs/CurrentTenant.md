@@ -1,0 +1,239 @@
+# CurrentTenant
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**MatchedDomain** | **string** |  | 
+**BrandingTitle** | **string** |  | 
+**BrandingLogo** | **string** |  | 
+**BrandingFavicon** | **string** |  | 
+**UiFooterLinks** | [**[]FooterLink**](FooterLink.md) |  | [readonly] [default to [{"href":"https://goauthentik.io/docs/","name":"Documentation"},{"href":"https://goauthentik.io/","name":"authentik Website"}]]
+**FlowAuthentication** | Pointer to **string** |  | [optional] 
+**FlowInvalidation** | Pointer to **string** |  | [optional] 
+**FlowRecovery** | Pointer to **string** |  | [optional] 
+**FlowUnenrollment** | Pointer to **string** |  | [optional] 
+
+## Methods
+
+### NewCurrentTenant
+
+`func NewCurrentTenant(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, uiFooterLinks []FooterLink, ) *CurrentTenant`
+
+NewCurrentTenant instantiates a new CurrentTenant object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewCurrentTenantWithDefaults
+
+`func NewCurrentTenantWithDefaults() *CurrentTenant`
+
+NewCurrentTenantWithDefaults instantiates a new CurrentTenant object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetMatchedDomain
+
+`func (o *CurrentTenant) GetMatchedDomain() string`
+
+GetMatchedDomain returns the MatchedDomain field if non-nil, zero value otherwise.
+
+### GetMatchedDomainOk
+
+`func (o *CurrentTenant) GetMatchedDomainOk() (*string, bool)`
+
+GetMatchedDomainOk returns a tuple with the MatchedDomain field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMatchedDomain
+
+`func (o *CurrentTenant) SetMatchedDomain(v string)`
+
+SetMatchedDomain sets MatchedDomain field to given value.
+
+
+### GetBrandingTitle
+
+`func (o *CurrentTenant) GetBrandingTitle() string`
+
+GetBrandingTitle returns the BrandingTitle field if non-nil, zero value otherwise.
+
+### GetBrandingTitleOk
+
+`func (o *CurrentTenant) GetBrandingTitleOk() (*string, bool)`
+
+GetBrandingTitleOk returns a tuple with the BrandingTitle field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBrandingTitle
+
+`func (o *CurrentTenant) SetBrandingTitle(v string)`
+
+SetBrandingTitle sets BrandingTitle field to given value.
+
+
+### GetBrandingLogo
+
+`func (o *CurrentTenant) GetBrandingLogo() string`
+
+GetBrandingLogo returns the BrandingLogo field if non-nil, zero value otherwise.
+
+### GetBrandingLogoOk
+
+`func (o *CurrentTenant) GetBrandingLogoOk() (*string, bool)`
+
+GetBrandingLogoOk returns a tuple with the BrandingLogo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBrandingLogo
+
+`func (o *CurrentTenant) SetBrandingLogo(v string)`
+
+SetBrandingLogo sets BrandingLogo field to given value.
+
+
+### GetBrandingFavicon
+
+`func (o *CurrentTenant) GetBrandingFavicon() string`
+
+GetBrandingFavicon returns the BrandingFavicon field if non-nil, zero value otherwise.
+
+### GetBrandingFaviconOk
+
+`func (o *CurrentTenant) GetBrandingFaviconOk() (*string, bool)`
+
+GetBrandingFaviconOk returns a tuple with the BrandingFavicon field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBrandingFavicon
+
+`func (o *CurrentTenant) SetBrandingFavicon(v string)`
+
+SetBrandingFavicon sets BrandingFavicon field to given value.
+
+
+### GetUiFooterLinks
+
+`func (o *CurrentTenant) GetUiFooterLinks() []FooterLink`
+
+GetUiFooterLinks returns the UiFooterLinks field if non-nil, zero value otherwise.
+
+### GetUiFooterLinksOk
+
+`func (o *CurrentTenant) GetUiFooterLinksOk() (*[]FooterLink, bool)`
+
+GetUiFooterLinksOk returns a tuple with the UiFooterLinks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUiFooterLinks
+
+`func (o *CurrentTenant) SetUiFooterLinks(v []FooterLink)`
+
+SetUiFooterLinks sets UiFooterLinks field to given value.
+
+
+### GetFlowAuthentication
+
+`func (o *CurrentTenant) GetFlowAuthentication() string`
+
+GetFlowAuthentication returns the FlowAuthentication field if non-nil, zero value otherwise.
+
+### GetFlowAuthenticationOk
+
+`func (o *CurrentTenant) GetFlowAuthenticationOk() (*string, bool)`
+
+GetFlowAuthenticationOk returns a tuple with the FlowAuthentication field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowAuthentication
+
+`func (o *CurrentTenant) SetFlowAuthentication(v string)`
+
+SetFlowAuthentication sets FlowAuthentication field to given value.
+
+### HasFlowAuthentication
+
+`func (o *CurrentTenant) HasFlowAuthentication() bool`
+
+HasFlowAuthentication returns a boolean if a field has been set.
+
+### GetFlowInvalidation
+
+`func (o *CurrentTenant) GetFlowInvalidation() string`
+
+GetFlowInvalidation returns the FlowInvalidation field if non-nil, zero value otherwise.
+
+### GetFlowInvalidationOk
+
+`func (o *CurrentTenant) GetFlowInvalidationOk() (*string, bool)`
+
+GetFlowInvalidationOk returns a tuple with the FlowInvalidation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowInvalidation
+
+`func (o *CurrentTenant) SetFlowInvalidation(v string)`
+
+SetFlowInvalidation sets FlowInvalidation field to given value.
+
+### HasFlowInvalidation
+
+`func (o *CurrentTenant) HasFlowInvalidation() bool`
+
+HasFlowInvalidation returns a boolean if a field has been set.
+
+### GetFlowRecovery
+
+`func (o *CurrentTenant) GetFlowRecovery() string`
+
+GetFlowRecovery returns the FlowRecovery field if non-nil, zero value otherwise.
+
+### GetFlowRecoveryOk
+
+`func (o *CurrentTenant) GetFlowRecoveryOk() (*string, bool)`
+
+GetFlowRecoveryOk returns a tuple with the FlowRecovery field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowRecovery
+
+`func (o *CurrentTenant) SetFlowRecovery(v string)`
+
+SetFlowRecovery sets FlowRecovery field to given value.
+
+### HasFlowRecovery
+
+`func (o *CurrentTenant) HasFlowRecovery() bool`
+
+HasFlowRecovery returns a boolean if a field has been set.
+
+### GetFlowUnenrollment
+
+`func (o *CurrentTenant) GetFlowUnenrollment() string`
+
+GetFlowUnenrollment returns the FlowUnenrollment field if non-nil, zero value otherwise.
+
+### GetFlowUnenrollmentOk
+
+`func (o *CurrentTenant) GetFlowUnenrollmentOk() (*string, bool)`
+
+GetFlowUnenrollmentOk returns a tuple with the FlowUnenrollment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowUnenrollment
+
+`func (o *CurrentTenant) SetFlowUnenrollment(v string)`
+
+SetFlowUnenrollment sets FlowUnenrollment field to given value.
+
+### HasFlowUnenrollment
+
+`func (o *CurrentTenant) HasFlowUnenrollment() bool`
+
+HasFlowUnenrollment returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

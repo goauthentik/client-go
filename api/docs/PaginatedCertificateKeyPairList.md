@@ -1,0 +1,72 @@
+# PaginatedCertificateKeyPairList
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Results** | [**[]CertificateKeyPair**](CertificateKeyPair.md) |  | 
+
+## Methods
+
+### NewPaginatedCertificateKeyPairList
+
+`func NewPaginatedCertificateKeyPairList(pagination PaginatedApplicationListPagination, results []CertificateKeyPair, ) *PaginatedCertificateKeyPairList`
+
+NewPaginatedCertificateKeyPairList instantiates a new PaginatedCertificateKeyPairList object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewPaginatedCertificateKeyPairListWithDefaults
+
+`func NewPaginatedCertificateKeyPairListWithDefaults() *PaginatedCertificateKeyPairList`
+
+NewPaginatedCertificateKeyPairListWithDefaults instantiates a new PaginatedCertificateKeyPairList object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetPagination
+
+`func (o *PaginatedCertificateKeyPairList) GetPagination() PaginatedApplicationListPagination`
+
+GetPagination returns the Pagination field if non-nil, zero value otherwise.
+
+### GetPaginationOk
+
+`func (o *PaginatedCertificateKeyPairList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+
+GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPagination
+
+`func (o *PaginatedCertificateKeyPairList) SetPagination(v PaginatedApplicationListPagination)`
+
+SetPagination sets Pagination field to given value.
+
+
+### GetResults
+
+`func (o *PaginatedCertificateKeyPairList) GetResults() []CertificateKeyPair`
+
+GetResults returns the Results field if non-nil, zero value otherwise.
+
+### GetResultsOk
+
+`func (o *PaginatedCertificateKeyPairList) GetResultsOk() (*[]CertificateKeyPair, bool)`
+
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResults
+
+`func (o *PaginatedCertificateKeyPairList) SetResults(v []CertificateKeyPair)`
+
+SetResults sets Results field to given value.
+
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

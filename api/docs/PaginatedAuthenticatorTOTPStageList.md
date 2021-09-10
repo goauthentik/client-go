@@ -1,0 +1,72 @@
+# PaginatedAuthenticatorTOTPStageList
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Results** | [**[]AuthenticatorTOTPStage**](AuthenticatorTOTPStage.md) |  | 
+
+## Methods
+
+### NewPaginatedAuthenticatorTOTPStageList
+
+`func NewPaginatedAuthenticatorTOTPStageList(pagination PaginatedApplicationListPagination, results []AuthenticatorTOTPStage, ) *PaginatedAuthenticatorTOTPStageList`
+
+NewPaginatedAuthenticatorTOTPStageList instantiates a new PaginatedAuthenticatorTOTPStageList object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewPaginatedAuthenticatorTOTPStageListWithDefaults
+
+`func NewPaginatedAuthenticatorTOTPStageListWithDefaults() *PaginatedAuthenticatorTOTPStageList`
+
+NewPaginatedAuthenticatorTOTPStageListWithDefaults instantiates a new PaginatedAuthenticatorTOTPStageList object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetPagination
+
+`func (o *PaginatedAuthenticatorTOTPStageList) GetPagination() PaginatedApplicationListPagination`
+
+GetPagination returns the Pagination field if non-nil, zero value otherwise.
+
+### GetPaginationOk
+
+`func (o *PaginatedAuthenticatorTOTPStageList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+
+GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPagination
+
+`func (o *PaginatedAuthenticatorTOTPStageList) SetPagination(v PaginatedApplicationListPagination)`
+
+SetPagination sets Pagination field to given value.
+
+
+### GetResults
+
+`func (o *PaginatedAuthenticatorTOTPStageList) GetResults() []AuthenticatorTOTPStage`
+
+GetResults returns the Results field if non-nil, zero value otherwise.
+
+### GetResultsOk
+
+`func (o *PaginatedAuthenticatorTOTPStageList) GetResultsOk() (*[]AuthenticatorTOTPStage, bool)`
+
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResults
+
+`func (o *PaginatedAuthenticatorTOTPStageList) SetResults(v []AuthenticatorTOTPStage)`
+
+SetResults sets Results field to given value.
+
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

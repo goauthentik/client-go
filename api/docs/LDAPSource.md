@@ -1,0 +1,722 @@
+# LDAPSource
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Pk** | **string** |  | [readonly] 
+**Name** | **string** | Source&#39;s display Name. | 
+**Slug** | **string** | Internal source name, used in URLs. | 
+**Enabled** | Pointer to **bool** |  | [optional] 
+**AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
+**EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
+**Component** | **string** |  | [readonly] 
+**VerboseName** | **string** |  | [readonly] 
+**VerboseNamePlural** | **string** |  | [readonly] 
+**PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
+**UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
+**ServerUri** | **string** |  | 
+**BindCn** | Pointer to **string** |  | [optional] 
+**StartTls** | Pointer to **bool** |  | [optional] 
+**BaseDn** | **string** |  | 
+**AdditionalUserDn** | Pointer to **string** | Prepended to Base DN for User-queries. | [optional] 
+**AdditionalGroupDn** | Pointer to **string** | Prepended to Base DN for Group-queries. | [optional] 
+**UserObjectFilter** | Pointer to **string** | Consider Objects matching this filter to be Users. | [optional] 
+**GroupObjectFilter** | Pointer to **string** | Consider Objects matching this filter to be Groups. | [optional] 
+**GroupMembershipField** | Pointer to **string** | Field which contains members of a group. | [optional] 
+**ObjectUniquenessField** | Pointer to **string** | Field which contains a unique Identifier. | [optional] 
+**SyncUsers** | Pointer to **bool** |  | [optional] 
+**SyncUsersPassword** | Pointer to **bool** | When a user changes their password, sync it back to LDAP. This can only be enabled on a single LDAP source. | [optional] 
+**SyncGroups** | Pointer to **bool** |  | [optional] 
+**SyncParentGroup** | Pointer to **NullableString** |  | [optional] 
+**PropertyMappings** | Pointer to **[]string** |  | [optional] 
+**PropertyMappingsGroup** | Pointer to **[]string** | Property mappings used for group creation/updating. | [optional] 
+
+## Methods
+
+### NewLDAPSource
+
+`func NewLDAPSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, serverUri string, baseDn string, ) *LDAPSource`
+
+NewLDAPSource instantiates a new LDAPSource object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewLDAPSourceWithDefaults
+
+`func NewLDAPSourceWithDefaults() *LDAPSource`
+
+NewLDAPSourceWithDefaults instantiates a new LDAPSource object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetPk
+
+`func (o *LDAPSource) GetPk() string`
+
+GetPk returns the Pk field if non-nil, zero value otherwise.
+
+### GetPkOk
+
+`func (o *LDAPSource) GetPkOk() (*string, bool)`
+
+GetPkOk returns a tuple with the Pk field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPk
+
+`func (o *LDAPSource) SetPk(v string)`
+
+SetPk sets Pk field to given value.
+
+
+### GetName
+
+`func (o *LDAPSource) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *LDAPSource) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *LDAPSource) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetSlug
+
+`func (o *LDAPSource) GetSlug() string`
+
+GetSlug returns the Slug field if non-nil, zero value otherwise.
+
+### GetSlugOk
+
+`func (o *LDAPSource) GetSlugOk() (*string, bool)`
+
+GetSlugOk returns a tuple with the Slug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSlug
+
+`func (o *LDAPSource) SetSlug(v string)`
+
+SetSlug sets Slug field to given value.
+
+
+### GetEnabled
+
+`func (o *LDAPSource) GetEnabled() bool`
+
+GetEnabled returns the Enabled field if non-nil, zero value otherwise.
+
+### GetEnabledOk
+
+`func (o *LDAPSource) GetEnabledOk() (*bool, bool)`
+
+GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnabled
+
+`func (o *LDAPSource) SetEnabled(v bool)`
+
+SetEnabled sets Enabled field to given value.
+
+### HasEnabled
+
+`func (o *LDAPSource) HasEnabled() bool`
+
+HasEnabled returns a boolean if a field has been set.
+
+### GetAuthenticationFlow
+
+`func (o *LDAPSource) GetAuthenticationFlow() string`
+
+GetAuthenticationFlow returns the AuthenticationFlow field if non-nil, zero value otherwise.
+
+### GetAuthenticationFlowOk
+
+`func (o *LDAPSource) GetAuthenticationFlowOk() (*string, bool)`
+
+GetAuthenticationFlowOk returns a tuple with the AuthenticationFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthenticationFlow
+
+`func (o *LDAPSource) SetAuthenticationFlow(v string)`
+
+SetAuthenticationFlow sets AuthenticationFlow field to given value.
+
+### HasAuthenticationFlow
+
+`func (o *LDAPSource) HasAuthenticationFlow() bool`
+
+HasAuthenticationFlow returns a boolean if a field has been set.
+
+### SetAuthenticationFlowNil
+
+`func (o *LDAPSource) SetAuthenticationFlowNil(b bool)`
+
+ SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
+
+### UnsetAuthenticationFlow
+`func (o *LDAPSource) UnsetAuthenticationFlow()`
+
+UnsetAuthenticationFlow ensures that no value is present for AuthenticationFlow, not even an explicit nil
+### GetEnrollmentFlow
+
+`func (o *LDAPSource) GetEnrollmentFlow() string`
+
+GetEnrollmentFlow returns the EnrollmentFlow field if non-nil, zero value otherwise.
+
+### GetEnrollmentFlowOk
+
+`func (o *LDAPSource) GetEnrollmentFlowOk() (*string, bool)`
+
+GetEnrollmentFlowOk returns a tuple with the EnrollmentFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnrollmentFlow
+
+`func (o *LDAPSource) SetEnrollmentFlow(v string)`
+
+SetEnrollmentFlow sets EnrollmentFlow field to given value.
+
+### HasEnrollmentFlow
+
+`func (o *LDAPSource) HasEnrollmentFlow() bool`
+
+HasEnrollmentFlow returns a boolean if a field has been set.
+
+### SetEnrollmentFlowNil
+
+`func (o *LDAPSource) SetEnrollmentFlowNil(b bool)`
+
+ SetEnrollmentFlowNil sets the value for EnrollmentFlow to be an explicit nil
+
+### UnsetEnrollmentFlow
+`func (o *LDAPSource) UnsetEnrollmentFlow()`
+
+UnsetEnrollmentFlow ensures that no value is present for EnrollmentFlow, not even an explicit nil
+### GetComponent
+
+`func (o *LDAPSource) GetComponent() string`
+
+GetComponent returns the Component field if non-nil, zero value otherwise.
+
+### GetComponentOk
+
+`func (o *LDAPSource) GetComponentOk() (*string, bool)`
+
+GetComponentOk returns a tuple with the Component field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetComponent
+
+`func (o *LDAPSource) SetComponent(v string)`
+
+SetComponent sets Component field to given value.
+
+
+### GetVerboseName
+
+`func (o *LDAPSource) GetVerboseName() string`
+
+GetVerboseName returns the VerboseName field if non-nil, zero value otherwise.
+
+### GetVerboseNameOk
+
+`func (o *LDAPSource) GetVerboseNameOk() (*string, bool)`
+
+GetVerboseNameOk returns a tuple with the VerboseName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerboseName
+
+`func (o *LDAPSource) SetVerboseName(v string)`
+
+SetVerboseName sets VerboseName field to given value.
+
+
+### GetVerboseNamePlural
+
+`func (o *LDAPSource) GetVerboseNamePlural() string`
+
+GetVerboseNamePlural returns the VerboseNamePlural field if non-nil, zero value otherwise.
+
+### GetVerboseNamePluralOk
+
+`func (o *LDAPSource) GetVerboseNamePluralOk() (*string, bool)`
+
+GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerboseNamePlural
+
+`func (o *LDAPSource) SetVerboseNamePlural(v string)`
+
+SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetPolicyEngineMode
+
+`func (o *LDAPSource) GetPolicyEngineMode() PolicyEngineMode`
+
+GetPolicyEngineMode returns the PolicyEngineMode field if non-nil, zero value otherwise.
+
+### GetPolicyEngineModeOk
+
+`func (o *LDAPSource) GetPolicyEngineModeOk() (*PolicyEngineMode, bool)`
+
+GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPolicyEngineMode
+
+`func (o *LDAPSource) SetPolicyEngineMode(v PolicyEngineMode)`
+
+SetPolicyEngineMode sets PolicyEngineMode field to given value.
+
+### HasPolicyEngineMode
+
+`func (o *LDAPSource) HasPolicyEngineMode() bool`
+
+HasPolicyEngineMode returns a boolean if a field has been set.
+
+### GetUserMatchingMode
+
+`func (o *LDAPSource) GetUserMatchingMode() UserMatchingModeEnum`
+
+GetUserMatchingMode returns the UserMatchingMode field if non-nil, zero value otherwise.
+
+### GetUserMatchingModeOk
+
+`func (o *LDAPSource) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool)`
+
+GetUserMatchingModeOk returns a tuple with the UserMatchingMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserMatchingMode
+
+`func (o *LDAPSource) SetUserMatchingMode(v UserMatchingModeEnum)`
+
+SetUserMatchingMode sets UserMatchingMode field to given value.
+
+### HasUserMatchingMode
+
+`func (o *LDAPSource) HasUserMatchingMode() bool`
+
+HasUserMatchingMode returns a boolean if a field has been set.
+
+### GetServerUri
+
+`func (o *LDAPSource) GetServerUri() string`
+
+GetServerUri returns the ServerUri field if non-nil, zero value otherwise.
+
+### GetServerUriOk
+
+`func (o *LDAPSource) GetServerUriOk() (*string, bool)`
+
+GetServerUriOk returns a tuple with the ServerUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServerUri
+
+`func (o *LDAPSource) SetServerUri(v string)`
+
+SetServerUri sets ServerUri field to given value.
+
+
+### GetBindCn
+
+`func (o *LDAPSource) GetBindCn() string`
+
+GetBindCn returns the BindCn field if non-nil, zero value otherwise.
+
+### GetBindCnOk
+
+`func (o *LDAPSource) GetBindCnOk() (*string, bool)`
+
+GetBindCnOk returns a tuple with the BindCn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBindCn
+
+`func (o *LDAPSource) SetBindCn(v string)`
+
+SetBindCn sets BindCn field to given value.
+
+### HasBindCn
+
+`func (o *LDAPSource) HasBindCn() bool`
+
+HasBindCn returns a boolean if a field has been set.
+
+### GetStartTls
+
+`func (o *LDAPSource) GetStartTls() bool`
+
+GetStartTls returns the StartTls field if non-nil, zero value otherwise.
+
+### GetStartTlsOk
+
+`func (o *LDAPSource) GetStartTlsOk() (*bool, bool)`
+
+GetStartTlsOk returns a tuple with the StartTls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartTls
+
+`func (o *LDAPSource) SetStartTls(v bool)`
+
+SetStartTls sets StartTls field to given value.
+
+### HasStartTls
+
+`func (o *LDAPSource) HasStartTls() bool`
+
+HasStartTls returns a boolean if a field has been set.
+
+### GetBaseDn
+
+`func (o *LDAPSource) GetBaseDn() string`
+
+GetBaseDn returns the BaseDn field if non-nil, zero value otherwise.
+
+### GetBaseDnOk
+
+`func (o *LDAPSource) GetBaseDnOk() (*string, bool)`
+
+GetBaseDnOk returns a tuple with the BaseDn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBaseDn
+
+`func (o *LDAPSource) SetBaseDn(v string)`
+
+SetBaseDn sets BaseDn field to given value.
+
+
+### GetAdditionalUserDn
+
+`func (o *LDAPSource) GetAdditionalUserDn() string`
+
+GetAdditionalUserDn returns the AdditionalUserDn field if non-nil, zero value otherwise.
+
+### GetAdditionalUserDnOk
+
+`func (o *LDAPSource) GetAdditionalUserDnOk() (*string, bool)`
+
+GetAdditionalUserDnOk returns a tuple with the AdditionalUserDn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalUserDn
+
+`func (o *LDAPSource) SetAdditionalUserDn(v string)`
+
+SetAdditionalUserDn sets AdditionalUserDn field to given value.
+
+### HasAdditionalUserDn
+
+`func (o *LDAPSource) HasAdditionalUserDn() bool`
+
+HasAdditionalUserDn returns a boolean if a field has been set.
+
+### GetAdditionalGroupDn
+
+`func (o *LDAPSource) GetAdditionalGroupDn() string`
+
+GetAdditionalGroupDn returns the AdditionalGroupDn field if non-nil, zero value otherwise.
+
+### GetAdditionalGroupDnOk
+
+`func (o *LDAPSource) GetAdditionalGroupDnOk() (*string, bool)`
+
+GetAdditionalGroupDnOk returns a tuple with the AdditionalGroupDn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalGroupDn
+
+`func (o *LDAPSource) SetAdditionalGroupDn(v string)`
+
+SetAdditionalGroupDn sets AdditionalGroupDn field to given value.
+
+### HasAdditionalGroupDn
+
+`func (o *LDAPSource) HasAdditionalGroupDn() bool`
+
+HasAdditionalGroupDn returns a boolean if a field has been set.
+
+### GetUserObjectFilter
+
+`func (o *LDAPSource) GetUserObjectFilter() string`
+
+GetUserObjectFilter returns the UserObjectFilter field if non-nil, zero value otherwise.
+
+### GetUserObjectFilterOk
+
+`func (o *LDAPSource) GetUserObjectFilterOk() (*string, bool)`
+
+GetUserObjectFilterOk returns a tuple with the UserObjectFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserObjectFilter
+
+`func (o *LDAPSource) SetUserObjectFilter(v string)`
+
+SetUserObjectFilter sets UserObjectFilter field to given value.
+
+### HasUserObjectFilter
+
+`func (o *LDAPSource) HasUserObjectFilter() bool`
+
+HasUserObjectFilter returns a boolean if a field has been set.
+
+### GetGroupObjectFilter
+
+`func (o *LDAPSource) GetGroupObjectFilter() string`
+
+GetGroupObjectFilter returns the GroupObjectFilter field if non-nil, zero value otherwise.
+
+### GetGroupObjectFilterOk
+
+`func (o *LDAPSource) GetGroupObjectFilterOk() (*string, bool)`
+
+GetGroupObjectFilterOk returns a tuple with the GroupObjectFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupObjectFilter
+
+`func (o *LDAPSource) SetGroupObjectFilter(v string)`
+
+SetGroupObjectFilter sets GroupObjectFilter field to given value.
+
+### HasGroupObjectFilter
+
+`func (o *LDAPSource) HasGroupObjectFilter() bool`
+
+HasGroupObjectFilter returns a boolean if a field has been set.
+
+### GetGroupMembershipField
+
+`func (o *LDAPSource) GetGroupMembershipField() string`
+
+GetGroupMembershipField returns the GroupMembershipField field if non-nil, zero value otherwise.
+
+### GetGroupMembershipFieldOk
+
+`func (o *LDAPSource) GetGroupMembershipFieldOk() (*string, bool)`
+
+GetGroupMembershipFieldOk returns a tuple with the GroupMembershipField field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupMembershipField
+
+`func (o *LDAPSource) SetGroupMembershipField(v string)`
+
+SetGroupMembershipField sets GroupMembershipField field to given value.
+
+### HasGroupMembershipField
+
+`func (o *LDAPSource) HasGroupMembershipField() bool`
+
+HasGroupMembershipField returns a boolean if a field has been set.
+
+### GetObjectUniquenessField
+
+`func (o *LDAPSource) GetObjectUniquenessField() string`
+
+GetObjectUniquenessField returns the ObjectUniquenessField field if non-nil, zero value otherwise.
+
+### GetObjectUniquenessFieldOk
+
+`func (o *LDAPSource) GetObjectUniquenessFieldOk() (*string, bool)`
+
+GetObjectUniquenessFieldOk returns a tuple with the ObjectUniquenessField field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectUniquenessField
+
+`func (o *LDAPSource) SetObjectUniquenessField(v string)`
+
+SetObjectUniquenessField sets ObjectUniquenessField field to given value.
+
+### HasObjectUniquenessField
+
+`func (o *LDAPSource) HasObjectUniquenessField() bool`
+
+HasObjectUniquenessField returns a boolean if a field has been set.
+
+### GetSyncUsers
+
+`func (o *LDAPSource) GetSyncUsers() bool`
+
+GetSyncUsers returns the SyncUsers field if non-nil, zero value otherwise.
+
+### GetSyncUsersOk
+
+`func (o *LDAPSource) GetSyncUsersOk() (*bool, bool)`
+
+GetSyncUsersOk returns a tuple with the SyncUsers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncUsers
+
+`func (o *LDAPSource) SetSyncUsers(v bool)`
+
+SetSyncUsers sets SyncUsers field to given value.
+
+### HasSyncUsers
+
+`func (o *LDAPSource) HasSyncUsers() bool`
+
+HasSyncUsers returns a boolean if a field has been set.
+
+### GetSyncUsersPassword
+
+`func (o *LDAPSource) GetSyncUsersPassword() bool`
+
+GetSyncUsersPassword returns the SyncUsersPassword field if non-nil, zero value otherwise.
+
+### GetSyncUsersPasswordOk
+
+`func (o *LDAPSource) GetSyncUsersPasswordOk() (*bool, bool)`
+
+GetSyncUsersPasswordOk returns a tuple with the SyncUsersPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncUsersPassword
+
+`func (o *LDAPSource) SetSyncUsersPassword(v bool)`
+
+SetSyncUsersPassword sets SyncUsersPassword field to given value.
+
+### HasSyncUsersPassword
+
+`func (o *LDAPSource) HasSyncUsersPassword() bool`
+
+HasSyncUsersPassword returns a boolean if a field has been set.
+
+### GetSyncGroups
+
+`func (o *LDAPSource) GetSyncGroups() bool`
+
+GetSyncGroups returns the SyncGroups field if non-nil, zero value otherwise.
+
+### GetSyncGroupsOk
+
+`func (o *LDAPSource) GetSyncGroupsOk() (*bool, bool)`
+
+GetSyncGroupsOk returns a tuple with the SyncGroups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncGroups
+
+`func (o *LDAPSource) SetSyncGroups(v bool)`
+
+SetSyncGroups sets SyncGroups field to given value.
+
+### HasSyncGroups
+
+`func (o *LDAPSource) HasSyncGroups() bool`
+
+HasSyncGroups returns a boolean if a field has been set.
+
+### GetSyncParentGroup
+
+`func (o *LDAPSource) GetSyncParentGroup() string`
+
+GetSyncParentGroup returns the SyncParentGroup field if non-nil, zero value otherwise.
+
+### GetSyncParentGroupOk
+
+`func (o *LDAPSource) GetSyncParentGroupOk() (*string, bool)`
+
+GetSyncParentGroupOk returns a tuple with the SyncParentGroup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncParentGroup
+
+`func (o *LDAPSource) SetSyncParentGroup(v string)`
+
+SetSyncParentGroup sets SyncParentGroup field to given value.
+
+### HasSyncParentGroup
+
+`func (o *LDAPSource) HasSyncParentGroup() bool`
+
+HasSyncParentGroup returns a boolean if a field has been set.
+
+### SetSyncParentGroupNil
+
+`func (o *LDAPSource) SetSyncParentGroupNil(b bool)`
+
+ SetSyncParentGroupNil sets the value for SyncParentGroup to be an explicit nil
+
+### UnsetSyncParentGroup
+`func (o *LDAPSource) UnsetSyncParentGroup()`
+
+UnsetSyncParentGroup ensures that no value is present for SyncParentGroup, not even an explicit nil
+### GetPropertyMappings
+
+`func (o *LDAPSource) GetPropertyMappings() []string`
+
+GetPropertyMappings returns the PropertyMappings field if non-nil, zero value otherwise.
+
+### GetPropertyMappingsOk
+
+`func (o *LDAPSource) GetPropertyMappingsOk() (*[]string, bool)`
+
+GetPropertyMappingsOk returns a tuple with the PropertyMappings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPropertyMappings
+
+`func (o *LDAPSource) SetPropertyMappings(v []string)`
+
+SetPropertyMappings sets PropertyMappings field to given value.
+
+### HasPropertyMappings
+
+`func (o *LDAPSource) HasPropertyMappings() bool`
+
+HasPropertyMappings returns a boolean if a field has been set.
+
+### GetPropertyMappingsGroup
+
+`func (o *LDAPSource) GetPropertyMappingsGroup() []string`
+
+GetPropertyMappingsGroup returns the PropertyMappingsGroup field if non-nil, zero value otherwise.
+
+### GetPropertyMappingsGroupOk
+
+`func (o *LDAPSource) GetPropertyMappingsGroupOk() (*[]string, bool)`
+
+GetPropertyMappingsGroupOk returns a tuple with the PropertyMappingsGroup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPropertyMappingsGroup
+
+`func (o *LDAPSource) SetPropertyMappingsGroup(v []string)`
+
+SetPropertyMappingsGroup sets PropertyMappingsGroup field to given value.
+
+### HasPropertyMappingsGroup
+
+`func (o *LDAPSource) HasPropertyMappingsGroup() bool`
+
+HasPropertyMappingsGroup returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

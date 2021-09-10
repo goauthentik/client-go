@@ -1,0 +1,72 @@
+# PaginatedUserList
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Results** | [**[]User**](User.md) |  | 
+
+## Methods
+
+### NewPaginatedUserList
+
+`func NewPaginatedUserList(pagination PaginatedApplicationListPagination, results []User, ) *PaginatedUserList`
+
+NewPaginatedUserList instantiates a new PaginatedUserList object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewPaginatedUserListWithDefaults
+
+`func NewPaginatedUserListWithDefaults() *PaginatedUserList`
+
+NewPaginatedUserListWithDefaults instantiates a new PaginatedUserList object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetPagination
+
+`func (o *PaginatedUserList) GetPagination() PaginatedApplicationListPagination`
+
+GetPagination returns the Pagination field if non-nil, zero value otherwise.
+
+### GetPaginationOk
+
+`func (o *PaginatedUserList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+
+GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPagination
+
+`func (o *PaginatedUserList) SetPagination(v PaginatedApplicationListPagination)`
+
+SetPagination sets Pagination field to given value.
+
+
+### GetResults
+
+`func (o *PaginatedUserList) GetResults() []User`
+
+GetResults returns the Results field if non-nil, zero value otherwise.
+
+### GetResultsOk
+
+`func (o *PaginatedUserList) GetResultsOk() (*[]User, bool)`
+
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResults
+
+`func (o *PaginatedUserList) SetResults(v []User)`
+
+SetResults sets Results field to given value.
+
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
