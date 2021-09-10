@@ -16,13 +16,12 @@ jobs:
         run: |
           wget -O schema.yml https://raw.githubusercontent.com/goauthentik/authentik/master/schema.yml
           make
-          find api/ -type f -exec \
-            sed -i 's/goauthentik\.io\/GIT_USER_ID\/GIT_REPO_ID/goauthentik\.io\/api/g' {} +
       - name: Push
         id: push
         run: |
           git config --global user.name 'authentik bot'
           git config --global user.email 'bot@goauthentik.io'
+          git checkout -- README.mds
           git add .
           git commit -m "Update API Client"
           git push
