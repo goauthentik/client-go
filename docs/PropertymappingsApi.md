@@ -607,7 +607,7 @@ import (
 
 func main() {
     expression := "expression_example" // string |  (optional)
-    managed := []*string{"Inner_example"} // []*string | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. (optional)
+    managed := []string{"Inner_example"} // []string |  (optional)
     name := "name_example" // string |  (optional)
     objectField := "objectField_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
@@ -640,7 +640,7 @@ Other parameters are passed through a pointer to a apiPropertymappingsLdapListRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **expression** | **string** |  | 
- **managed** | **[]string** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | 
+ **managed** | **[]string** |  | 
  **name** | **string** |  | 
  **objectField** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
@@ -1108,7 +1108,7 @@ import (
 func main() {
     expression := "expression_example" // string |  (optional)
     friendlyName := "friendlyName_example" // string |  (optional)
-    managed := []*string{"Inner_example"} // []*string | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. (optional)
+    managed := []string{"Inner_example"} // []string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -1142,7 +1142,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **expression** | **string** |  | 
  **friendlyName** | **string** |  | 
- **managed** | **[]string** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | 
+ **managed** | **[]string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -1608,7 +1608,7 @@ import (
 )
 
 func main() {
-    managed := []*string{"Inner_example"} // []*string | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. (optional)
+    managed := []string{"Inner_example"} // []string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -1639,7 +1639,7 @@ Other parameters are passed through a pointer to a apiPropertymappingsScopeListR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **managed** | **[]string** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | 
+ **managed** | **[]string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 

@@ -10208,18 +10208,12 @@ paths:
         schema:
           type: string
         style: form
-      - description: Objects which are managed by authentik. These objects are created
-          and updated automatically. This is flag only indicates that an object can
-          be overwritten by migrations. You can still modify the objects via the API,
-          but expect changes to be overwritten in a later update.
-        explode: true
+      - explode: true
         in: query
         name: managed
         required: false
         schema:
           items:
-            nullable: true
-            title: Managed by authentik
             type: string
           type: array
         style: form
@@ -10480,18 +10474,12 @@ paths:
         schema:
           type: string
         style: form
-      - description: Objects which are managed by authentik. These objects are created
-          and updated automatically. This is flag only indicates that an object can
-          be overwritten by migrations. You can still modify the objects via the API,
-          but expect changes to be overwritten in a later update.
-        explode: true
+      - explode: true
         in: query
         name: managed
         required: false
         schema:
           items:
-            nullable: true
-            title: Managed by authentik
             type: string
           type: array
         style: form
@@ -10738,18 +10726,12 @@ paths:
       description: ScopeMapping Viewset
       operationId: propertymappings_scope_list
       parameters:
-      - description: Objects which are managed by authentik. These objects are created
-          and updated automatically. This is flag only indicates that an object can
-          be overwritten by migrations. You can still modify the objects via the API,
-          but expect changes to be overwritten in a later update.
-        explode: true
+      - explode: true
         in: query
         name: managed
         required: false
         schema:
           items:
-            nullable: true
-            title: Managed by authentik
             type: string
           type: array
         style: form

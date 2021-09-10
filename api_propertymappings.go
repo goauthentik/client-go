@@ -1031,7 +1031,7 @@ type ApiPropertymappingsLdapListRequest struct {
 	ctx _context.Context
 	ApiService *PropertymappingsApiService
 	expression *string
-	managed *[]*string
+	managed *[]string
 	name *string
 	objectField *string
 	ordering *string
@@ -1045,8 +1045,7 @@ func (r ApiPropertymappingsLdapListRequest) Expression(expression string) ApiPro
 	r.expression = &expression
 	return r
 }
-// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-func (r ApiPropertymappingsLdapListRequest) Managed(managed []*string) ApiPropertymappingsLdapListRequest {
+func (r ApiPropertymappingsLdapListRequest) Managed(managed []string) ApiPropertymappingsLdapListRequest {
 	r.managed = &managed
 	return r
 }
@@ -1965,7 +1964,7 @@ type ApiPropertymappingsSamlListRequest struct {
 	ApiService *PropertymappingsApiService
 	expression *string
 	friendlyName *string
-	managed *[]*string
+	managed *[]string
 	name *string
 	ordering *string
 	page *int32
@@ -1983,8 +1982,7 @@ func (r ApiPropertymappingsSamlListRequest) FriendlyName(friendlyName string) Ap
 	r.friendlyName = &friendlyName
 	return r
 }
-// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-func (r ApiPropertymappingsSamlListRequest) Managed(managed []*string) ApiPropertymappingsSamlListRequest {
+func (r ApiPropertymappingsSamlListRequest) Managed(managed []string) ApiPropertymappingsSamlListRequest {
 	r.managed = &managed
 	return r
 }
@@ -2904,7 +2902,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeDestroyExecute(r ApiPr
 type ApiPropertymappingsScopeListRequest struct {
 	ctx _context.Context
 	ApiService *PropertymappingsApiService
-	managed *[]*string
+	managed *[]string
 	name *string
 	ordering *string
 	page *int32
@@ -2913,8 +2911,7 @@ type ApiPropertymappingsScopeListRequest struct {
 	search *string
 }
 
-// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-func (r ApiPropertymappingsScopeListRequest) Managed(managed []*string) ApiPropertymappingsScopeListRequest {
+func (r ApiPropertymappingsScopeListRequest) Managed(managed []string) ApiPropertymappingsScopeListRequest {
 	r.managed = &managed
 	return r
 }
