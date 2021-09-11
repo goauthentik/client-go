@@ -1724,6 +1724,898 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUsedByListExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiPropertymappingsNotificationCreateRequest struct {
+	ctx _context.Context
+	ApiService *PropertymappingsApiService
+	notificationWebhookMappingRequest *NotificationWebhookMappingRequest
+}
+
+func (r ApiPropertymappingsNotificationCreateRequest) NotificationWebhookMappingRequest(notificationWebhookMappingRequest NotificationWebhookMappingRequest) ApiPropertymappingsNotificationCreateRequest {
+	r.notificationWebhookMappingRequest = &notificationWebhookMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsNotificationCreateRequest) Execute() (NotificationWebhookMapping, *_nethttp.Response, error) {
+	return r.ApiService.PropertymappingsNotificationCreateExecute(r)
+}
+
+/*
+PropertymappingsNotificationCreate Method for PropertymappingsNotificationCreate
+
+NotificationWebhookMapping Viewset
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPropertymappingsNotificationCreateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsNotificationCreate(ctx _context.Context) ApiPropertymappingsNotificationCreateRequest {
+	return ApiPropertymappingsNotificationCreateRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return NotificationWebhookMapping
+func (a *PropertymappingsApiService) PropertymappingsNotificationCreateExecute(r ApiPropertymappingsNotificationCreateRequest) (NotificationWebhookMapping, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  NotificationWebhookMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsNotificationCreate")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/notification/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.notificationWebhookMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("notificationWebhookMappingRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.notificationWebhookMappingRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsNotificationDestroyRequest struct {
+	ctx _context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid string
+}
+
+
+func (r ApiPropertymappingsNotificationDestroyRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.PropertymappingsNotificationDestroyExecute(r)
+}
+
+/*
+PropertymappingsNotificationDestroy Method for PropertymappingsNotificationDestroy
+
+NotificationWebhookMapping Viewset
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Notification Webhook Mapping.
+ @return ApiPropertymappingsNotificationDestroyRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsNotificationDestroy(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationDestroyRequest {
+	return ApiPropertymappingsNotificationDestroyRequest{
+		ApiService: a,
+		ctx: ctx,
+		pmUuid: pmUuid,
+	}
+}
+
+// Execute executes the request
+func (a *PropertymappingsApiService) PropertymappingsNotificationDestroyExecute(r ApiPropertymappingsNotificationDestroyRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsNotificationDestroy")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsNotificationListRequest struct {
+	ctx _context.Context
+	ApiService *PropertymappingsApiService
+	name *string
+	ordering *string
+	page *int32
+	pageSize *int32
+	search *string
+}
+
+func (r ApiPropertymappingsNotificationListRequest) Name(name string) ApiPropertymappingsNotificationListRequest {
+	r.name = &name
+	return r
+}
+// Which field to use when ordering the results.
+func (r ApiPropertymappingsNotificationListRequest) Ordering(ordering string) ApiPropertymappingsNotificationListRequest {
+	r.ordering = &ordering
+	return r
+}
+// A page number within the paginated result set.
+func (r ApiPropertymappingsNotificationListRequest) Page(page int32) ApiPropertymappingsNotificationListRequest {
+	r.page = &page
+	return r
+}
+// Number of results to return per page.
+func (r ApiPropertymappingsNotificationListRequest) PageSize(pageSize int32) ApiPropertymappingsNotificationListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+// A search term.
+func (r ApiPropertymappingsNotificationListRequest) Search(search string) ApiPropertymappingsNotificationListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiPropertymappingsNotificationListRequest) Execute() (PaginatedNotificationWebhookMappingList, *_nethttp.Response, error) {
+	return r.ApiService.PropertymappingsNotificationListExecute(r)
+}
+
+/*
+PropertymappingsNotificationList Method for PropertymappingsNotificationList
+
+NotificationWebhookMapping Viewset
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPropertymappingsNotificationListRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsNotificationList(ctx _context.Context) ApiPropertymappingsNotificationListRequest {
+	return ApiPropertymappingsNotificationListRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return PaginatedNotificationWebhookMappingList
+func (a *PropertymappingsApiService) PropertymappingsNotificationListExecute(r ApiPropertymappingsNotificationListRequest) (PaginatedNotificationWebhookMappingList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  PaginatedNotificationWebhookMappingList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsNotificationList")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/notification/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsNotificationPartialUpdateRequest struct {
+	ctx _context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid string
+	patchedNotificationWebhookMappingRequest *PatchedNotificationWebhookMappingRequest
+}
+
+func (r ApiPropertymappingsNotificationPartialUpdateRequest) PatchedNotificationWebhookMappingRequest(patchedNotificationWebhookMappingRequest PatchedNotificationWebhookMappingRequest) ApiPropertymappingsNotificationPartialUpdateRequest {
+	r.patchedNotificationWebhookMappingRequest = &patchedNotificationWebhookMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsNotificationPartialUpdateRequest) Execute() (NotificationWebhookMapping, *_nethttp.Response, error) {
+	return r.ApiService.PropertymappingsNotificationPartialUpdateExecute(r)
+}
+
+/*
+PropertymappingsNotificationPartialUpdate Method for PropertymappingsNotificationPartialUpdate
+
+NotificationWebhookMapping Viewset
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Notification Webhook Mapping.
+ @return ApiPropertymappingsNotificationPartialUpdateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationPartialUpdateRequest {
+	return ApiPropertymappingsNotificationPartialUpdateRequest{
+		ApiService: a,
+		ctx: ctx,
+		pmUuid: pmUuid,
+	}
+}
+
+// Execute executes the request
+//  @return NotificationWebhookMapping
+func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdateExecute(r ApiPropertymappingsNotificationPartialUpdateRequest) (NotificationWebhookMapping, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPatch
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  NotificationWebhookMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsNotificationPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedNotificationWebhookMappingRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsNotificationRetrieveRequest struct {
+	ctx _context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid string
+}
+
+
+func (r ApiPropertymappingsNotificationRetrieveRequest) Execute() (NotificationWebhookMapping, *_nethttp.Response, error) {
+	return r.ApiService.PropertymappingsNotificationRetrieveExecute(r)
+}
+
+/*
+PropertymappingsNotificationRetrieve Method for PropertymappingsNotificationRetrieve
+
+NotificationWebhookMapping Viewset
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Notification Webhook Mapping.
+ @return ApiPropertymappingsNotificationRetrieveRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieve(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationRetrieveRequest {
+	return ApiPropertymappingsNotificationRetrieveRequest{
+		ApiService: a,
+		ctx: ctx,
+		pmUuid: pmUuid,
+	}
+}
+
+// Execute executes the request
+//  @return NotificationWebhookMapping
+func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieveExecute(r ApiPropertymappingsNotificationRetrieveRequest) (NotificationWebhookMapping, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  NotificationWebhookMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsNotificationRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsNotificationUpdateRequest struct {
+	ctx _context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid string
+	notificationWebhookMappingRequest *NotificationWebhookMappingRequest
+}
+
+func (r ApiPropertymappingsNotificationUpdateRequest) NotificationWebhookMappingRequest(notificationWebhookMappingRequest NotificationWebhookMappingRequest) ApiPropertymappingsNotificationUpdateRequest {
+	r.notificationWebhookMappingRequest = &notificationWebhookMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsNotificationUpdateRequest) Execute() (NotificationWebhookMapping, *_nethttp.Response, error) {
+	return r.ApiService.PropertymappingsNotificationUpdateExecute(r)
+}
+
+/*
+PropertymappingsNotificationUpdate Method for PropertymappingsNotificationUpdate
+
+NotificationWebhookMapping Viewset
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Notification Webhook Mapping.
+ @return ApiPropertymappingsNotificationUpdateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsNotificationUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationUpdateRequest {
+	return ApiPropertymappingsNotificationUpdateRequest{
+		ApiService: a,
+		ctx: ctx,
+		pmUuid: pmUuid,
+	}
+}
+
+// Execute executes the request
+//  @return NotificationWebhookMapping
+func (a *PropertymappingsApiService) PropertymappingsNotificationUpdateExecute(r ApiPropertymappingsNotificationUpdateRequest) (NotificationWebhookMapping, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  NotificationWebhookMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsNotificationUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.notificationWebhookMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("notificationWebhookMappingRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.notificationWebhookMappingRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsNotificationUsedByListRequest struct {
+	ctx _context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid string
+}
+
+
+func (r ApiPropertymappingsNotificationUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+	return r.ApiService.PropertymappingsNotificationUsedByListExecute(r)
+}
+
+/*
+PropertymappingsNotificationUsedByList Method for PropertymappingsNotificationUsedByList
+
+Get a list of all objects that use this object
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Notification Webhook Mapping.
+ @return ApiPropertymappingsNotificationUsedByListRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByList(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationUsedByListRequest {
+	return ApiPropertymappingsNotificationUsedByListRequest{
+		ApiService: a,
+		ctx: ctx,
+		pmUuid: pmUuid,
+	}
+}
+
+// Execute executes the request
+//  @return []UsedBy
+func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecute(r ApiPropertymappingsNotificationUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsNotificationUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiPropertymappingsSamlCreateRequest struct {
 	ctx _context.Context
 	ApiService *PropertymappingsApiService

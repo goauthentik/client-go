@@ -10455,6 +10455,234 @@ paths:
       - authentik: []
       tags:
       - propertymappings
+  /propertymappings/notification/:
+    get:
+      description: NotificationWebhookMapping Viewset
+      operationId: propertymappings_notification_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedNotificationWebhookMappingList'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    post:
+      description: NotificationWebhookMapping Viewset
+      operationId: propertymappings_notification_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationWebhookMappingRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationWebhookMapping'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/notification/{pm_uuid}/:
+    delete:
+      description: NotificationWebhookMapping Viewset
+      operationId: propertymappings_notification_destroy
+      parameters:
+      - description: A UUID string identifying this Notification Webhook Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    get:
+      description: NotificationWebhookMapping Viewset
+      operationId: propertymappings_notification_retrieve
+      parameters:
+      - description: A UUID string identifying this Notification Webhook Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationWebhookMapping'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    patch:
+      description: NotificationWebhookMapping Viewset
+      operationId: propertymappings_notification_partial_update
+      parameters:
+      - description: A UUID string identifying this Notification Webhook Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedNotificationWebhookMappingRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationWebhookMapping'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    put:
+      description: NotificationWebhookMapping Viewset
+      operationId: propertymappings_notification_update
+      parameters:
+      - description: A UUID string identifying this Notification Webhook Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationWebhookMappingRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationWebhookMapping'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/notification/{pm_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: propertymappings_notification_used_by_list
+      parameters:
+      - description: A UUID string identifying this Notification Webhook Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
   /propertymappings/saml/:
     get:
       description: SAMLPropertyMapping Viewset
@@ -24761,6 +24989,7 @@ components:
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mode_verbose: mode_verbose
+        webhook_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         send_once: true
       properties:
         pk:
@@ -24776,6 +25005,10 @@ components:
           readOnly: true
           type: string
         webhook_url:
+          type: string
+        webhook_mapping:
+          format: uuid
+          nullable: true
           type: string
         send_once:
           description: Only send notification once, for example when sending a webhook
@@ -24798,6 +25031,7 @@ components:
       example:
         webhook_url: webhook_url
         name: name
+        webhook_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         send_once: true
       properties:
         name:
@@ -24805,6 +25039,10 @@ components:
         mode:
           $ref: '#/components/schemas/NotificationTransportModeEnum'
         webhook_url:
+          type: string
+        webhook_mapping:
+          format: uuid
+          nullable: true
           type: string
         send_once:
           description: Only send notification once, for example when sending a webhook
@@ -24827,6 +25065,41 @@ components:
           type: array
       required:
       - messages
+      type: object
+    NotificationWebhookMapping:
+      description: NotificationWebhookMapping Serializer
+      example:
+        expression: expression
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Pm uuid
+          type: string
+        name:
+          type: string
+        expression:
+          type: string
+      required:
+      - expression
+      - name
+      - pk
+      type: object
+    NotificationWebhookMappingRequest:
+      description: NotificationWebhookMapping Serializer
+      example:
+        expression: expression
+        name: name
+      properties:
+        name:
+          type: string
+        expression:
+          type: string
+      required:
+      - expression
+      - name
       type: object
     OAuth2Provider:
       description: OAuth2Provider Serializer
@@ -28030,11 +28303,13 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           mode_verbose: mode_verbose
+          webhook_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           send_once: true
         - webhook_url: webhook_url
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           mode_verbose: mode_verbose
+          webhook_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           send_once: true
       properties:
         pagination:
@@ -28042,6 +28317,34 @@ components:
         results:
           items:
             $ref: '#/components/schemas/NotificationTransport'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedNotificationWebhookMappingList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - expression: expression
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - expression: expression
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/NotificationWebhookMapping'
           type: array
       required:
       - pagination
@@ -32440,6 +32743,7 @@ components:
       example:
         webhook_url: webhook_url
         name: name
+        webhook_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         send_once: true
       properties:
         name:
@@ -32448,10 +32752,25 @@ components:
           $ref: '#/components/schemas/NotificationTransportModeEnum'
         webhook_url:
           type: string
+        webhook_mapping:
+          format: uuid
+          nullable: true
+          type: string
         send_once:
           description: Only send notification once, for example when sending a webhook
             into a chat channel.
           type: boolean
+      type: object
+    PatchedNotificationWebhookMappingRequest:
+      description: NotificationWebhookMapping Serializer
+      example:
+        expression: expression
+        name: name
+      properties:
+        name:
+          type: string
+        expression:
+          type: string
       type: object
     PatchedOAuth2ProviderRequest:
       description: OAuth2Provider Serializer

@@ -164,6 +164,8 @@ docs/NotificationTransport.md
 docs/NotificationTransportModeEnum.md
 docs/NotificationTransportRequest.md
 docs/NotificationTransportTest.md
+docs/NotificationWebhookMapping.md
+docs/NotificationWebhookMappingRequest.md
 docs/OAuth2Provider.md
 docs/OAuth2ProviderRequest.md
 docs/OAuth2ProviderSetupURLs.md
@@ -214,6 +216,7 @@ docs/PaginatedLDAPSourceList.md
 docs/PaginatedNotificationList.md
 docs/PaginatedNotificationRuleList.md
 docs/PaginatedNotificationTransportList.md
+docs/PaginatedNotificationWebhookMappingList.md
 docs/PaginatedOAuth2ProviderList.md
 docs/PaginatedOAuthSourceList.md
 docs/PaginatedOutpostList.md
@@ -292,6 +295,7 @@ docs/PatchedLDAPSourceRequest.md
 docs/PatchedNotificationRequest.md
 docs/PatchedNotificationRuleRequest.md
 docs/PatchedNotificationTransportRequest.md
+docs/PatchedNotificationWebhookMappingRequest.md
 docs/PatchedOAuth2ProviderRequest.md
 docs/PatchedOAuthSourceRequest.md
 docs/PatchedOutpostRequest.md
@@ -571,6 +575,8 @@ model_notification_transport.go
 model_notification_transport_mode_enum.go
 model_notification_transport_request.go
 model_notification_transport_test_.go
+model_notification_webhook_mapping.go
+model_notification_webhook_mapping_request.go
 model_o_auth2_provider.go
 model_o_auth2_provider_request.go
 model_o_auth2_provider_setup_urls.go
@@ -619,6 +625,7 @@ model_paginated_ldap_source_list.go
 model_paginated_notification_list.go
 model_paginated_notification_rule_list.go
 model_paginated_notification_transport_list.go
+model_paginated_notification_webhook_mapping_list.go
 model_paginated_o_auth2_provider_list.go
 model_paginated_o_auth_source_list.go
 model_paginated_outpost_list.go
@@ -697,6 +704,7 @@ model_patched_ldap_source_request.go
 model_patched_notification_request.go
 model_patched_notification_rule_request.go
 model_patched_notification_transport_request.go
+model_patched_notification_webhook_mapping_request.go
 model_patched_o_auth2_provider_request.go
 model_patched_o_auth_source_request.go
 model_patched_outpost_request.go

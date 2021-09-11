@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Mode** | [**NotificationTransportModeEnum**](NotificationTransportModeEnum.md) |  | 
 **ModeVerbose** | **string** |  | [readonly] 
 **WebhookUrl** | Pointer to **string** |  | [optional] 
+**WebhookMapping** | Pointer to **NullableString** |  | [optional] 
 **SendOnce** | Pointer to **bool** | Only send notification once, for example when sending a webhook into a chat channel. | [optional] 
 
 ## Methods
@@ -135,6 +136,41 @@ SetWebhookUrl sets WebhookUrl field to given value.
 
 HasWebhookUrl returns a boolean if a field has been set.
 
+### GetWebhookMapping
+
+`func (o *NotificationTransport) GetWebhookMapping() string`
+
+GetWebhookMapping returns the WebhookMapping field if non-nil, zero value otherwise.
+
+### GetWebhookMappingOk
+
+`func (o *NotificationTransport) GetWebhookMappingOk() (*string, bool)`
+
+GetWebhookMappingOk returns a tuple with the WebhookMapping field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebhookMapping
+
+`func (o *NotificationTransport) SetWebhookMapping(v string)`
+
+SetWebhookMapping sets WebhookMapping field to given value.
+
+### HasWebhookMapping
+
+`func (o *NotificationTransport) HasWebhookMapping() bool`
+
+HasWebhookMapping returns a boolean if a field has been set.
+
+### SetWebhookMappingNil
+
+`func (o *NotificationTransport) SetWebhookMappingNil(b bool)`
+
+ SetWebhookMappingNil sets the value for WebhookMapping to be an explicit nil
+
+### UnsetWebhookMapping
+`func (o *NotificationTransport) UnsetWebhookMapping()`
+
+UnsetWebhookMapping ensures that no value is present for WebhookMapping, not even an explicit nil
 ### GetSendOnce
 
 `func (o *NotificationTransport) GetSendOnce() bool`

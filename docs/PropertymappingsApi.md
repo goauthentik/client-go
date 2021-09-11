@@ -17,6 +17,13 @@ Method | HTTP request | Description
 [**PropertymappingsLdapRetrieve**](PropertymappingsApi.md#PropertymappingsLdapRetrieve) | **Get** /propertymappings/ldap/{pm_uuid}/ | 
 [**PropertymappingsLdapUpdate**](PropertymappingsApi.md#PropertymappingsLdapUpdate) | **Put** /propertymappings/ldap/{pm_uuid}/ | 
 [**PropertymappingsLdapUsedByList**](PropertymappingsApi.md#PropertymappingsLdapUsedByList) | **Get** /propertymappings/ldap/{pm_uuid}/used_by/ | 
+[**PropertymappingsNotificationCreate**](PropertymappingsApi.md#PropertymappingsNotificationCreate) | **Post** /propertymappings/notification/ | 
+[**PropertymappingsNotificationDestroy**](PropertymappingsApi.md#PropertymappingsNotificationDestroy) | **Delete** /propertymappings/notification/{pm_uuid}/ | 
+[**PropertymappingsNotificationList**](PropertymappingsApi.md#PropertymappingsNotificationList) | **Get** /propertymappings/notification/ | 
+[**PropertymappingsNotificationPartialUpdate**](PropertymappingsApi.md#PropertymappingsNotificationPartialUpdate) | **Patch** /propertymappings/notification/{pm_uuid}/ | 
+[**PropertymappingsNotificationRetrieve**](PropertymappingsApi.md#PropertymappingsNotificationRetrieve) | **Get** /propertymappings/notification/{pm_uuid}/ | 
+[**PropertymappingsNotificationUpdate**](PropertymappingsApi.md#PropertymappingsNotificationUpdate) | **Put** /propertymappings/notification/{pm_uuid}/ | 
+[**PropertymappingsNotificationUsedByList**](PropertymappingsApi.md#PropertymappingsNotificationUsedByList) | **Get** /propertymappings/notification/{pm_uuid}/used_by/ | 
 [**PropertymappingsSamlCreate**](PropertymappingsApi.md#PropertymappingsSamlCreate) | **Post** /propertymappings/saml/ | 
 [**PropertymappingsSamlDestroy**](PropertymappingsApi.md#PropertymappingsSamlDestroy) | **Delete** /propertymappings/saml/{pm_uuid}/ | 
 [**PropertymappingsSamlList**](PropertymappingsApi.md#PropertymappingsSamlList) | **Get** /propertymappings/saml/ | 
@@ -927,6 +934,498 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPropertymappingsLdapUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsNotificationCreate
+
+> NotificationWebhookMapping PropertymappingsNotificationCreate(ctx).NotificationWebhookMappingRequest(notificationWebhookMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    notificationWebhookMappingRequest := *openapiclient.NewNotificationWebhookMappingRequest("Name_example", "Expression_example") // NotificationWebhookMappingRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PropertymappingsApi.PropertymappingsNotificationCreate(context.Background()).NotificationWebhookMappingRequest(notificationWebhookMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsNotificationCreate`: NotificationWebhookMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsNotificationCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsNotificationCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **notificationWebhookMappingRequest** | [**NotificationWebhookMappingRequest**](NotificationWebhookMappingRequest.md) |  | 
+
+### Return type
+
+[**NotificationWebhookMapping**](NotificationWebhookMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsNotificationDestroy
+
+> PropertymappingsNotificationDestroy(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := TODO // string | A UUID string identifying this Notification Webhook Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PropertymappingsApi.PropertymappingsNotificationDestroy(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | [**string**](.md) | A UUID string identifying this Notification Webhook Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsNotificationDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsNotificationList
+
+> PaginatedNotificationWebhookMappingList PropertymappingsNotificationList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PropertymappingsApi.PropertymappingsNotificationList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsNotificationList`: PaginatedNotificationWebhookMappingList
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsNotificationList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsNotificationListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedNotificationWebhookMappingList**](PaginatedNotificationWebhookMappingList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsNotificationPartialUpdate
+
+> NotificationWebhookMapping PropertymappingsNotificationPartialUpdate(ctx, pmUuid).PatchedNotificationWebhookMappingRequest(patchedNotificationWebhookMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := TODO // string | A UUID string identifying this Notification Webhook Mapping.
+    patchedNotificationWebhookMappingRequest := *openapiclient.NewPatchedNotificationWebhookMappingRequest() // PatchedNotificationWebhookMappingRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PropertymappingsApi.PropertymappingsNotificationPartialUpdate(context.Background(), pmUuid).PatchedNotificationWebhookMappingRequest(patchedNotificationWebhookMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsNotificationPartialUpdate`: NotificationWebhookMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsNotificationPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | [**string**](.md) | A UUID string identifying this Notification Webhook Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsNotificationPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedNotificationWebhookMappingRequest** | [**PatchedNotificationWebhookMappingRequest**](PatchedNotificationWebhookMappingRequest.md) |  | 
+
+### Return type
+
+[**NotificationWebhookMapping**](NotificationWebhookMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsNotificationRetrieve
+
+> NotificationWebhookMapping PropertymappingsNotificationRetrieve(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := TODO // string | A UUID string identifying this Notification Webhook Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PropertymappingsApi.PropertymappingsNotificationRetrieve(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsNotificationRetrieve`: NotificationWebhookMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsNotificationRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | [**string**](.md) | A UUID string identifying this Notification Webhook Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsNotificationRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**NotificationWebhookMapping**](NotificationWebhookMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsNotificationUpdate
+
+> NotificationWebhookMapping PropertymappingsNotificationUpdate(ctx, pmUuid).NotificationWebhookMappingRequest(notificationWebhookMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := TODO // string | A UUID string identifying this Notification Webhook Mapping.
+    notificationWebhookMappingRequest := *openapiclient.NewNotificationWebhookMappingRequest("Name_example", "Expression_example") // NotificationWebhookMappingRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PropertymappingsApi.PropertymappingsNotificationUpdate(context.Background(), pmUuid).NotificationWebhookMappingRequest(notificationWebhookMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsNotificationUpdate`: NotificationWebhookMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsNotificationUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | [**string**](.md) | A UUID string identifying this Notification Webhook Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsNotificationUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **notificationWebhookMappingRequest** | [**NotificationWebhookMappingRequest**](NotificationWebhookMappingRequest.md) |  | 
+
+### Return type
+
+[**NotificationWebhookMapping**](NotificationWebhookMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsNotificationUsedByList
+
+> []UsedBy PropertymappingsNotificationUsedByList(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := TODO // string | A UUID string identifying this Notification Webhook Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PropertymappingsApi.PropertymappingsNotificationUsedByList(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsNotificationUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsNotificationUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | [**string**](.md) | A UUID string identifying this Notification Webhook Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsNotificationUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
