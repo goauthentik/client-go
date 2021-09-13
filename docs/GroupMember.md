@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **Name** | **string** | User&#39;s display name. | 
 **IsActive** | Pointer to **bool** | Designates whether this user should be treated as active. Unselect this instead of deleting accounts. | [optional] 
 **LastLogin** | Pointer to **NullableTime** |  | [optional] 
-**IsSuperuser** | **bool** |  | [readonly] 
 **Email** | Pointer to **string** |  | [optional] 
 **Avatar** | **string** |  | [readonly] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -19,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewGroupMember
 
-`func NewGroupMember(pk int32, username string, name string, isSuperuser bool, avatar string, uid string, ) *GroupMember`
+`func NewGroupMember(pk int32, username string, name string, avatar string, uid string, ) *GroupMember`
 
 NewGroupMember instantiates a new GroupMember object
 This constructor will assign default values to properties that have it defined,
@@ -154,26 +153,6 @@ HasLastLogin returns a boolean if a field has been set.
 `func (o *GroupMember) UnsetLastLogin()`
 
 UnsetLastLogin ensures that no value is present for LastLogin, not even an explicit nil
-### GetIsSuperuser
-
-`func (o *GroupMember) GetIsSuperuser() bool`
-
-GetIsSuperuser returns the IsSuperuser field if non-nil, zero value otherwise.
-
-### GetIsSuperuserOk
-
-`func (o *GroupMember) GetIsSuperuserOk() (*bool, bool)`
-
-GetIsSuperuserOk returns a tuple with the IsSuperuser field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsSuperuser
-
-`func (o *GroupMember) SetIsSuperuser(v bool)`
-
-SetIsSuperuser sets IsSuperuser field to given value.
-
-
 ### GetEmail
 
 `func (o *GroupMember) GetEmail() string`

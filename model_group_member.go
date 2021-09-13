@@ -26,7 +26,6 @@ type GroupMember struct {
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
 	IsActive *bool `json:"is_active,omitempty"`
 	LastLogin NullableTime `json:"last_login,omitempty"`
-	IsSuperuser bool `json:"is_superuser"`
 	Email *string `json:"email,omitempty"`
 	Avatar string `json:"avatar"`
 	Attributes *map[string]interface{} `json:"attributes,omitempty"`
@@ -37,12 +36,11 @@ type GroupMember struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupMember(pk int32, username string, name string, isSuperuser bool, avatar string, uid string) *GroupMember {
+func NewGroupMember(pk int32, username string, name string, avatar string, uid string) *GroupMember {
 	this := GroupMember{}
 	this.Pk = pk
 	this.Username = username
 	this.Name = name
-	this.IsSuperuser = isSuperuser
 	this.Avatar = avatar
 	this.Uid = uid
 	return &this
@@ -202,30 +200,6 @@ func (o *GroupMember) UnsetLastLogin() {
 	o.LastLogin.Unset()
 }
 
-// GetIsSuperuser returns the IsSuperuser field value
-func (o *GroupMember) GetIsSuperuser() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.IsSuperuser
-}
-
-// GetIsSuperuserOk returns a tuple with the IsSuperuser field value
-// and a boolean to check if the value has been set.
-func (o *GroupMember) GetIsSuperuserOk() (*bool, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.IsSuperuser, true
-}
-
-// SetIsSuperuser sets field value
-func (o *GroupMember) SetIsSuperuser(v bool) {
-	o.IsSuperuser = v
-}
-
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *GroupMember) GetEmail() string {
 	if o == nil || o.Email == nil {
@@ -354,9 +328,6 @@ func (o GroupMember) MarshalJSON() ([]byte, error) {
 	}
 	if o.LastLogin.IsSet() {
 		toSerialize["last_login"] = o.LastLogin.Get()
-	}
-	if true {
-		toSerialize["is_superuser"] = o.IsSuperuser
 	}
 	if o.Email != nil {
 		toSerialize["email"] = o.Email

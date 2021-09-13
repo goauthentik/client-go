@@ -22956,7 +22956,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -22967,7 +22966,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -22988,7 +22986,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -22999,7 +22996,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -23437,7 +23433,6 @@ components:
         users_obj:
         - uid: uid
           is_active: true
-          is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
           name: name
           attributes:
@@ -23448,7 +23443,6 @@ components:
           username: username
         - uid: uid
           is_active: true
-          is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
           name: name
           attributes:
@@ -23500,7 +23494,6 @@ components:
       example:
         uid: uid
         is_active: true
-        is_superuser: true
         last_login: 2000-01-23T04:56:07.000+00:00
         name: name
         attributes:
@@ -23532,9 +23525,6 @@ components:
           format: date-time
           nullable: true
           type: string
-        is_superuser:
-          readOnly: true
-          type: boolean
         email:
           format: email
           maxLength: 254
@@ -23551,7 +23541,6 @@ components:
           type: string
       required:
       - avatar
-      - is_superuser
       - name
       - pk
       - uid
@@ -27219,7 +27208,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -27230,7 +27218,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -27251,7 +27238,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -27262,7 +27248,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -27328,7 +27313,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -27339,7 +27323,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -27360,7 +27343,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -27371,7 +27353,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -27548,7 +27529,6 @@ components:
           users_obj:
           - uid: uid
             is_active: true
-            is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
             name: name
             attributes:
@@ -27559,7 +27539,6 @@ components:
             username: username
           - uid: uid
             is_active: true
-            is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
             name: name
             attributes:
@@ -27580,7 +27559,6 @@ components:
           users_obj:
           - uid: uid
             is_active: true
-            is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
             name: name
             attributes:
@@ -27591,7 +27569,6 @@ components:
             username: username
           - uid: uid
             is_active: true
-            is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
             name: name
             attributes:
@@ -29495,7 +29472,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -29506,7 +29482,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -29527,7 +29502,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -29538,7 +29512,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -29606,7 +29579,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -29617,7 +29589,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -29638,7 +29609,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -29649,7 +29619,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30231,7 +30200,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30242,7 +30210,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30263,7 +30230,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30274,7 +30240,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30318,7 +30283,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30329,7 +30293,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30350,7 +30313,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30361,7 +30323,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30450,7 +30411,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30461,7 +30421,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30482,7 +30441,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30493,7 +30451,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30554,7 +30511,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30565,7 +30521,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30586,7 +30541,6 @@ components:
               users_obj:
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30597,7 +30551,6 @@ components:
                 username: username
               - uid: uid
                 is_active: true
-                is_superuser: true
                 last_login: 2000-01-23T04:56:07.000+00:00
                 name: name
                 attributes:
@@ -30753,7 +30706,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -30764,7 +30716,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -30785,7 +30736,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -30796,7 +30746,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -30832,7 +30781,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -30843,7 +30791,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -30864,7 +30811,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -30875,7 +30821,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -35238,7 +35183,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -35249,7 +35193,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -35270,7 +35213,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -35281,7 +35223,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -36125,7 +36066,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -36136,7 +36076,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -36157,7 +36096,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -36168,7 +36106,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -36199,7 +36136,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -36210,7 +36146,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -36231,7 +36166,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -36242,7 +36176,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -36847,7 +36780,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -36858,7 +36790,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -36879,7 +36810,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -36890,7 +36820,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -37084,7 +37013,6 @@ components:
           users_obj:
           - uid: uid
             is_active: true
-            is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
             name: name
             attributes:
@@ -37095,7 +37023,6 @@ components:
             username: username
           - uid: uid
             is_active: true
-            is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
             name: name
             attributes:
@@ -37116,7 +37043,6 @@ components:
           users_obj:
           - uid: uid
             is_active: true
-            is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
             name: name
             attributes:
@@ -37127,7 +37053,6 @@ components:
             username: username
           - uid: uid
             is_active: true
-            is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
             name: name
             attributes:
@@ -37251,7 +37176,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -37262,7 +37186,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -37283,7 +37206,6 @@ components:
             users_obj:
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -37294,7 +37216,6 @@ components:
               username: username
             - uid: uid
               is_active: true
-              is_superuser: true
               last_login: 2000-01-23T04:56:07.000+00:00
               name: name
               attributes:
@@ -37812,7 +37733,6 @@ components:
           users_obj:
           - uid: uid
             is_active: true
-            is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
             name: name
             attributes:
@@ -37823,7 +37743,6 @@ components:
             username: username
           - uid: uid
             is_active: true
-            is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
             name: name
             attributes:
@@ -37844,7 +37763,6 @@ components:
           users_obj:
           - uid: uid
             is_active: true
-            is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
             name: name
             attributes:
@@ -37855,7 +37773,6 @@ components:
             username: username
           - uid: uid
             is_active: true
-            is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
             name: name
             attributes:
