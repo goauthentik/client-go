@@ -20052,6 +20052,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: create_users_group
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: name
         required: false
         schema:
@@ -31118,6 +31126,7 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           name: name
+          create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
           - compatibility_mode: true
@@ -31157,6 +31166,7 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           name: name
+          create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
           - compatibility_mode: true
@@ -33819,6 +33829,7 @@ components:
       description: UserWriteStage Serializer
       example:
         name: name
+        create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
         - compatibility_mode: true
           name: name
@@ -33841,6 +33852,11 @@ components:
         create_users_as_inactive:
           description: When set, newly created users are inactive and cannot login.
           type: boolean
+        create_users_group:
+          description: Optionally add newly created users to this group.
+          format: uuid
+          nullable: true
+          type: string
       type: object
     PatchedWebAuthnDeviceRequest:
       description: Serializer for WebAuthn authenticator devices
@@ -37918,6 +37934,7 @@ components:
         verbose_name: verbose_name
         verbose_name_plural: verbose_name_plural
         name: name
+        create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
         - compatibility_mode: true
@@ -37977,6 +37994,11 @@ components:
         create_users_as_inactive:
           description: When set, newly created users are inactive and cannot login.
           type: boolean
+        create_users_group:
+          description: Optionally add newly created users to this group.
+          format: uuid
+          nullable: true
+          type: string
       required:
       - component
       - name
@@ -37988,6 +38010,7 @@ components:
       description: UserWriteStage Serializer
       example:
         name: name
+        create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
         - compatibility_mode: true
           name: name
@@ -38010,6 +38033,11 @@ components:
         create_users_as_inactive:
           description: When set, newly created users are inactive and cannot login.
           type: boolean
+        create_users_group:
+          description: Optionally add newly created users to this group.
+          format: uuid
+          nullable: true
+          type: string
       required:
       - name
       type: object

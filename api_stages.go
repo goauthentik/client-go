@@ -18728,6 +18728,7 @@ type ApiStagesUserWriteListRequest struct {
 	ctx _context.Context
 	ApiService *StagesApiService
 	createUsersAsInactive *bool
+	createUsersGroup *string
 	name *string
 	ordering *string
 	page *int32
@@ -18738,6 +18739,10 @@ type ApiStagesUserWriteListRequest struct {
 
 func (r ApiStagesUserWriteListRequest) CreateUsersAsInactive(createUsersAsInactive bool) ApiStagesUserWriteListRequest {
 	r.createUsersAsInactive = &createUsersAsInactive
+	return r
+}
+func (r ApiStagesUserWriteListRequest) CreateUsersGroup(createUsersGroup string) ApiStagesUserWriteListRequest {
+	r.createUsersGroup = &createUsersGroup
 	return r
 }
 func (r ApiStagesUserWriteListRequest) Name(name string) ApiStagesUserWriteListRequest {
@@ -18813,6 +18818,9 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 
 	if r.createUsersAsInactive != nil {
 		localVarQueryParams.Add("create_users_as_inactive", parameterToString(*r.createUsersAsInactive, ""))
+	}
+	if r.createUsersGroup != nil {
+		localVarQueryParams.Add("create_users_group", parameterToString(*r.createUsersGroup, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))

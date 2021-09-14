@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **FlowSet** | Pointer to [**[]FlowRequest**](FlowRequest.md) |  | [optional] 
 **CreateUsersAsInactive** | Pointer to **bool** | When set, newly created users are inactive and cannot login. | [optional] 
+**CreateUsersGroup** | Pointer to **NullableString** | Optionally add newly created users to this group. | [optional] 
 
 ## Methods
 
@@ -102,6 +103,41 @@ SetCreateUsersAsInactive sets CreateUsersAsInactive field to given value.
 
 HasCreateUsersAsInactive returns a boolean if a field has been set.
 
+### GetCreateUsersGroup
+
+`func (o *PatchedUserWriteStageRequest) GetCreateUsersGroup() string`
+
+GetCreateUsersGroup returns the CreateUsersGroup field if non-nil, zero value otherwise.
+
+### GetCreateUsersGroupOk
+
+`func (o *PatchedUserWriteStageRequest) GetCreateUsersGroupOk() (*string, bool)`
+
+GetCreateUsersGroupOk returns a tuple with the CreateUsersGroup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreateUsersGroup
+
+`func (o *PatchedUserWriteStageRequest) SetCreateUsersGroup(v string)`
+
+SetCreateUsersGroup sets CreateUsersGroup field to given value.
+
+### HasCreateUsersGroup
+
+`func (o *PatchedUserWriteStageRequest) HasCreateUsersGroup() bool`
+
+HasCreateUsersGroup returns a boolean if a field has been set.
+
+### SetCreateUsersGroupNil
+
+`func (o *PatchedUserWriteStageRequest) SetCreateUsersGroupNil(b bool)`
+
+ SetCreateUsersGroupNil sets the value for CreateUsersGroup to be an explicit nil
+
+### UnsetCreateUsersGroup
+`func (o *PatchedUserWriteStageRequest) UnsetCreateUsersGroup()`
+
+UnsetCreateUsersGroup ensures that no value is present for CreateUsersGroup, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

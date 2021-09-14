@@ -10348,7 +10348,7 @@ Name | Type | Description  | Notes
 
 ## StagesUserWriteList
 
-> PaginatedUserWriteStageList StagesUserWriteList(ctx).CreateUsersAsInactive(createUsersAsInactive).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+> PaginatedUserWriteStageList StagesUserWriteList(ctx).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
 
 
 
@@ -10368,6 +10368,7 @@ import (
 
 func main() {
     createUsersAsInactive := true // bool |  (optional)
+    createUsersGroup := TODO // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -10377,7 +10378,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.StagesApi.StagesUserWriteList(context.Background()).CreateUsersAsInactive(createUsersAsInactive).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+    resp, r, err := api_client.StagesApi.StagesUserWriteList(context.Background()).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserWriteList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10399,6 +10400,7 @@ Other parameters are passed through a pointer to a apiStagesUserWriteListRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createUsersAsInactive** | **bool** |  | 
+ **createUsersGroup** | [**string**](string.md) |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
