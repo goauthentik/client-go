@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2021.8.5
+API version: 2021.9.1-rc1
 Contact: hello@beryju.org
 */
 
@@ -42,7 +42,7 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the authentik API v2021.8.5
+// APIClient manages communication with the authentik API v2021.9.1-rc1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
