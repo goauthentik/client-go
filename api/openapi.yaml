@@ -7,7 +7,7 @@ info:
     name: GNU GPLv3
     url: https://github.com/goauthentik/authentik/blob/master/LICENSE
   title: authentik
-  version: 2021.9.1-rc1
+  version: 2021.9.1-rc2
 servers:
 - url: /api/v3/
 - url: /api/v2beta/
