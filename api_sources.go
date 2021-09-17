@@ -1588,28 +1588,28 @@ func (a *SourcesApiService) SourcesLdapRetrieveExecute(r ApiSourcesLdapRetrieveR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSourcesLdapSyncStatusRetrieveRequest struct {
+type ApiSourcesLdapSyncStatusListRequest struct {
 	ctx _context.Context
 	ApiService *SourcesApiService
 	slug string
 }
 
 
-func (r ApiSourcesLdapSyncStatusRetrieveRequest) Execute() (Task, *_nethttp.Response, error) {
-	return r.ApiService.SourcesLdapSyncStatusRetrieveExecute(r)
+func (r ApiSourcesLdapSyncStatusListRequest) Execute() ([]Task, *_nethttp.Response, error) {
+	return r.ApiService.SourcesLdapSyncStatusListExecute(r)
 }
 
 /*
-SourcesLdapSyncStatusRetrieve Method for SourcesLdapSyncStatusRetrieve
+SourcesLdapSyncStatusList Method for SourcesLdapSyncStatusList
 
 Get source's sync status
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug
- @return ApiSourcesLdapSyncStatusRetrieveRequest
+ @return ApiSourcesLdapSyncStatusListRequest
 */
-func (a *SourcesApiService) SourcesLdapSyncStatusRetrieve(ctx _context.Context, slug string) ApiSourcesLdapSyncStatusRetrieveRequest {
-	return ApiSourcesLdapSyncStatusRetrieveRequest{
+func (a *SourcesApiService) SourcesLdapSyncStatusList(ctx _context.Context, slug string) ApiSourcesLdapSyncStatusListRequest {
+	return ApiSourcesLdapSyncStatusListRequest{
 		ApiService: a,
 		ctx: ctx,
 		slug: slug,
@@ -1617,18 +1617,18 @@ func (a *SourcesApiService) SourcesLdapSyncStatusRetrieve(ctx _context.Context, 
 }
 
 // Execute executes the request
-//  @return Task
-func (a *SourcesApiService) SourcesLdapSyncStatusRetrieveExecute(r ApiSourcesLdapSyncStatusRetrieveRequest) (Task, *_nethttp.Response, error) {
+//  @return []Task
+func (a *SourcesApiService) SourcesLdapSyncStatusListExecute(r ApiSourcesLdapSyncStatusListRequest) ([]Task, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Task
+		localVarReturnValue  []Task
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesLdapSyncStatusRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesLdapSyncStatusList")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}

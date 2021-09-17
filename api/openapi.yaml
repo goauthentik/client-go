@@ -13462,7 +13462,7 @@ paths:
   /sources/ldap/{slug}/sync_status/:
     get:
       description: Get source's sync status
-      operationId: sources_ldap_sync_status_retrieve
+      operationId: sources_ldap_sync_status_list
       parameters:
       - explode: false
         in: path
@@ -13477,9 +13477,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Task'
-        "404":
-          description: Task not found
+                items:
+                  $ref: '#/components/schemas/Task'
+                type: array
         "400":
           $ref: '#/components/schemas/ValidationError'
         "403":
