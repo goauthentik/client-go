@@ -17,22 +17,22 @@ import (
 
 // OAuth2Provider OAuth2Provider Serializer
 type OAuth2Provider struct {
-	Pk int32 `json:"pk"`
+	Pk   int32  `json:"pk"`
 	Name string `json:"name"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string `json:"authorization_flow"`
-	PropertyMappings *[]string `json:"property_mappings,omitempty"`
-	Component string `json:"component"`
+	AuthorizationFlow string    `json:"authorization_flow"`
+	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
+	Component         string    `json:"component"`
 	// Internal application name, used in URLs.
 	AssignedApplicationSlug string `json:"assigned_application_slug"`
 	// Application's display Name.
 	AssignedApplicationName string `json:"assigned_application_name"`
-	VerboseName string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
+	VerboseName             string `json:"verbose_name"`
+	VerboseNamePlural       string `json:"verbose_name_plural"`
 	// Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable.
-	ClientType *ClientTypeEnum `json:"client_type,omitempty"`
-	ClientId *string `json:"client_id,omitempty"`
-	ClientSecret *string `json:"client_secret,omitempty"`
+	ClientType   *ClientTypeEnum `json:"client_type,omitempty"`
+	ClientId     *string         `json:"client_id,omitempty"`
+	ClientSecret *string         `json:"client_secret,omitempty"`
 	// Access codes not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	AccessCodeValidity *string `json:"access_code_validity,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
@@ -89,7 +89,7 @@ func (o *OAuth2Provider) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *OAuth2Provider) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -113,7 +113,7 @@ func (o *OAuth2Provider) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *OAuth2Provider) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -137,7 +137,7 @@ func (o *OAuth2Provider) GetAuthorizationFlow() string {
 // GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value
 // and a boolean to check if the value has been set.
 func (o *OAuth2Provider) GetAuthorizationFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AuthorizationFlow, true
@@ -193,7 +193,7 @@ func (o *OAuth2Provider) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *OAuth2Provider) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -217,7 +217,7 @@ func (o *OAuth2Provider) GetAssignedApplicationSlug() string {
 // GetAssignedApplicationSlugOk returns a tuple with the AssignedApplicationSlug field value
 // and a boolean to check if the value has been set.
 func (o *OAuth2Provider) GetAssignedApplicationSlugOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AssignedApplicationSlug, true
@@ -241,7 +241,7 @@ func (o *OAuth2Provider) GetAssignedApplicationName() string {
 // GetAssignedApplicationNameOk returns a tuple with the AssignedApplicationName field value
 // and a boolean to check if the value has been set.
 func (o *OAuth2Provider) GetAssignedApplicationNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AssignedApplicationName, true
@@ -265,7 +265,7 @@ func (o *OAuth2Provider) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *OAuth2Provider) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -289,7 +289,7 @@ func (o *OAuth2Provider) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *OAuth2Provider) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -537,7 +537,7 @@ func (o *OAuth2Provider) GetRsaKey() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OAuth2Provider) GetRsaKeyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.RsaKey.Get(), o.RsaKey.IsSet()
@@ -556,6 +556,7 @@ func (o *OAuth2Provider) HasRsaKey() bool {
 func (o *OAuth2Provider) SetRsaKey(v string) {
 	o.RsaKey.Set(&v)
 }
+
 // SetRsaKeyNil sets the value for RsaKey to be an explicit nil
 func (o *OAuth2Provider) SetRsaKeyNil() {
 	o.RsaKey.Set(nil)
@@ -762,5 +763,3 @@ func (v *NullableOAuth2Provider) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

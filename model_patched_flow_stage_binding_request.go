@@ -18,13 +18,13 @@ import (
 // PatchedFlowStageBindingRequest FlowStageBinding Serializer
 type PatchedFlowStageBindingRequest struct {
 	Target *string `json:"target,omitempty"`
-	Stage *string `json:"stage,omitempty"`
+	Stage  *string `json:"stage,omitempty"`
 	// Evaluate policies during the Flow planning process. Disable this for input-based policies.
 	EvaluateOnPlan *bool `json:"evaluate_on_plan,omitempty"`
 	// Evaluate policies when the Stage is present to the user.
-	ReEvaluatePolicies *bool `json:"re_evaluate_policies,omitempty"`
-	Order *int32 `json:"order,omitempty"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	ReEvaluatePolicies *bool             `json:"re_evaluate_policies,omitempty"`
+	Order              *int32            `json:"order,omitempty"`
+	PolicyEngineMode   *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.
 	InvalidResponseAction *InvalidResponseActionEnum `json:"invalid_response_action,omitempty"`
 }
@@ -331,5 +331,3 @@ func (v *NullablePatchedFlowStageBindingRequest) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

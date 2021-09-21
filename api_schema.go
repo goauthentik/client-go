@@ -28,10 +28,10 @@ var (
 type SchemaApiService service
 
 type ApiSchemaRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SchemaApiService
-	format *string
-	lang *string
+	format     *string
+	lang       *string
 }
 
 func (r ApiSchemaRetrieveRequest) Format(format string) ApiSchemaRetrieveRequest {
@@ -61,7 +61,7 @@ OpenApi3 schema for this API. Format can be selected via content negotiation.
 func (a *SchemaApiService) SchemaRetrieve(ctx _context.Context) ApiSchemaRetrieveRequest {
 	return ApiSchemaRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 

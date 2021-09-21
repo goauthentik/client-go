@@ -17,10 +17,10 @@ import (
 
 // PatchedPlexSourceConnectionRequest Plex Source connection Serializer
 type PatchedPlexSourceConnectionRequest struct {
-	User *int32 `json:"user,omitempty"`
-	Source *string `json:"source,omitempty"`
+	User       *int32  `json:"user,omitempty"`
+	Source     *string `json:"source,omitempty"`
 	Identifier *string `json:"identifier,omitempty"`
-	PlexToken *string `json:"plex_token,omitempty"`
+	PlexToken  *string `json:"plex_token,omitempty"`
 }
 
 // NewPatchedPlexSourceConnectionRequest instantiates a new PatchedPlexSourceConnectionRequest object
@@ -220,5 +220,3 @@ func (v *NullablePatchedPlexSourceConnectionRequest) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

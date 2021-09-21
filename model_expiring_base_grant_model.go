@@ -18,12 +18,12 @@ import (
 
 // ExpiringBaseGrantModel Serializer for BaseGrantModel and ExpiringBaseGrant
 type ExpiringBaseGrantModel struct {
-	Pk int32 `json:"pk"`
-	Provider OAuth2Provider `json:"provider"`
-	User User `json:"user"`
-	IsExpired bool `json:"is_expired"`
-	Expires *time.Time `json:"expires,omitempty"`
-	Scope []string `json:"scope"`
+	Pk        int32          `json:"pk"`
+	Provider  OAuth2Provider `json:"provider"`
+	User      User           `json:"user"`
+	IsExpired bool           `json:"is_expired"`
+	Expires   *time.Time     `json:"expires,omitempty"`
+	Scope     []string       `json:"scope"`
 }
 
 // NewExpiringBaseGrantModel instantiates a new ExpiringBaseGrantModel object
@@ -61,7 +61,7 @@ func (o *ExpiringBaseGrantModel) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *ExpiringBaseGrantModel) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -85,7 +85,7 @@ func (o *ExpiringBaseGrantModel) GetProvider() OAuth2Provider {
 // GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
 func (o *ExpiringBaseGrantModel) GetProviderOk() (*OAuth2Provider, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Provider, true
@@ -109,7 +109,7 @@ func (o *ExpiringBaseGrantModel) GetUser() User {
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
 func (o *ExpiringBaseGrantModel) GetUserOk() (*User, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.User, true
@@ -133,7 +133,7 @@ func (o *ExpiringBaseGrantModel) GetIsExpired() bool {
 // GetIsExpiredOk returns a tuple with the IsExpired field value
 // and a boolean to check if the value has been set.
 func (o *ExpiringBaseGrantModel) GetIsExpiredOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IsExpired, true
@@ -189,7 +189,7 @@ func (o *ExpiringBaseGrantModel) GetScope() []string {
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
 func (o *ExpiringBaseGrantModel) GetScopeOk() (*[]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Scope, true
@@ -258,5 +258,3 @@ func (v *NullableExpiringBaseGrantModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

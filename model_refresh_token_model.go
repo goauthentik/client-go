@@ -18,14 +18,14 @@ import (
 
 // RefreshTokenModel Serializer for BaseGrantModel and RefreshToken
 type RefreshTokenModel struct {
-	Pk int32 `json:"pk"`
-	Provider OAuth2Provider `json:"provider"`
-	User User `json:"user"`
-	IsExpired bool `json:"is_expired"`
-	Expires *time.Time `json:"expires,omitempty"`
-	Scope []string `json:"scope"`
-	IdToken string `json:"id_token"`
-	Revoked *bool `json:"revoked,omitempty"`
+	Pk        int32          `json:"pk"`
+	Provider  OAuth2Provider `json:"provider"`
+	User      User           `json:"user"`
+	IsExpired bool           `json:"is_expired"`
+	Expires   *time.Time     `json:"expires,omitempty"`
+	Scope     []string       `json:"scope"`
+	IdToken   string         `json:"id_token"`
+	Revoked   *bool          `json:"revoked,omitempty"`
 }
 
 // NewRefreshTokenModel instantiates a new RefreshTokenModel object
@@ -64,7 +64,7 @@ func (o *RefreshTokenModel) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *RefreshTokenModel) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -88,7 +88,7 @@ func (o *RefreshTokenModel) GetProvider() OAuth2Provider {
 // GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
 func (o *RefreshTokenModel) GetProviderOk() (*OAuth2Provider, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Provider, true
@@ -112,7 +112,7 @@ func (o *RefreshTokenModel) GetUser() User {
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
 func (o *RefreshTokenModel) GetUserOk() (*User, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.User, true
@@ -136,7 +136,7 @@ func (o *RefreshTokenModel) GetIsExpired() bool {
 // GetIsExpiredOk returns a tuple with the IsExpired field value
 // and a boolean to check if the value has been set.
 func (o *RefreshTokenModel) GetIsExpiredOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IsExpired, true
@@ -192,7 +192,7 @@ func (o *RefreshTokenModel) GetScope() []string {
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
 func (o *RefreshTokenModel) GetScopeOk() (*[]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Scope, true
@@ -216,7 +216,7 @@ func (o *RefreshTokenModel) GetIdToken() string {
 // GetIdTokenOk returns a tuple with the IdToken field value
 // and a boolean to check if the value has been set.
 func (o *RefreshTokenModel) GetIdTokenOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IdToken, true
@@ -323,5 +323,3 @@ func (v *NullableRefreshTokenModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

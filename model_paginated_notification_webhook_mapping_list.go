@@ -18,7 +18,7 @@ import (
 // PaginatedNotificationWebhookMappingList struct for PaginatedNotificationWebhookMappingList
 type PaginatedNotificationWebhookMappingList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []NotificationWebhookMapping `json:"results"`
+	Results    []NotificationWebhookMapping       `json:"results"`
 }
 
 // NewPaginatedNotificationWebhookMappingList instantiates a new PaginatedNotificationWebhookMappingList object
@@ -53,7 +53,7 @@ func (o *PaginatedNotificationWebhookMappingList) GetPagination() PaginatedAppli
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedNotificationWebhookMappingList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedNotificationWebhookMappingList) GetResults() []NotificationWeb
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedNotificationWebhookMappingList) GetResultsOk() (*[]NotificationWebhookMapping, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedNotificationWebhookMappingList) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

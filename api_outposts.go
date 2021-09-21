@@ -29,8 +29,8 @@ var (
 type OutpostsApiService service
 
 type ApiOutpostsInstancesCreateRequest struct {
-	ctx _context.Context
-	ApiService *OutpostsApiService
+	ctx            _context.Context
+	ApiService     *OutpostsApiService
 	outpostRequest *OutpostRequest
 }
 
@@ -54,7 +54,7 @@ Outpost Viewset
 func (a *OutpostsApiService) OutpostsInstancesCreate(ctx _context.Context) ApiOutpostsInstancesCreateRequest {
 	return ApiOutpostsInstancesCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -155,10 +155,9 @@ func (a *OutpostsApiService) OutpostsInstancesCreateExecute(r ApiOutpostsInstanc
 }
 
 type ApiOutpostsInstancesDefaultSettingsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
 }
-
 
 func (r ApiOutpostsInstancesDefaultSettingsRetrieveRequest) Execute() (OutpostDefaultConfig, *_nethttp.Response, error) {
 	return r.ApiService.OutpostsInstancesDefaultSettingsRetrieveExecute(r)
@@ -175,7 +174,7 @@ Global default outpost config
 func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieve(ctx _context.Context) ApiOutpostsInstancesDefaultSettingsRetrieveRequest {
 	return ApiOutpostsInstancesDefaultSettingsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -271,11 +270,10 @@ func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieveExecute(r A
 }
 
 type ApiOutpostsInstancesDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiOutpostsInstancesDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.OutpostsInstancesDestroyExecute(r)
@@ -293,8 +291,8 @@ Outpost Viewset
 func (a *OutpostsApiService) OutpostsInstancesDestroy(ctx _context.Context, uuid string) ApiOutpostsInstancesDestroyRequest {
 	return ApiOutpostsInstancesDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -380,16 +378,16 @@ func (a *OutpostsApiService) OutpostsInstancesDestroyExecute(r ApiOutpostsInstan
 }
 
 type ApiOutpostsInstancesHealthListRequest struct {
-	ctx _context.Context
-	ApiService *OutpostsApiService
-	uuid string
-	nameIcontains *string
-	nameIexact *string
-	ordering *string
-	providersIsnull *bool
-	search *string
+	ctx                            _context.Context
+	ApiService                     *OutpostsApiService
+	uuid                           string
+	nameIcontains                  *string
+	nameIexact                     *string
+	ordering                       *string
+	providersIsnull                *bool
+	search                         *string
 	serviceConnectionNameIcontains *string
-	serviceConnectionNameIexact *string
+	serviceConnectionNameIexact    *string
 }
 
 func (r ApiOutpostsInstancesHealthListRequest) NameIcontains(nameIcontains string) ApiOutpostsInstancesHealthListRequest {
@@ -400,6 +398,7 @@ func (r ApiOutpostsInstancesHealthListRequest) NameIexact(nameIexact string) Api
 	r.nameIexact = &nameIexact
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiOutpostsInstancesHealthListRequest) Ordering(ordering string) ApiOutpostsInstancesHealthListRequest {
 	r.ordering = &ordering
@@ -409,6 +408,7 @@ func (r ApiOutpostsInstancesHealthListRequest) ProvidersIsnull(providersIsnull b
 	r.providersIsnull = &providersIsnull
 	return r
 }
+
 // A search term.
 func (r ApiOutpostsInstancesHealthListRequest) Search(search string) ApiOutpostsInstancesHealthListRequest {
 	r.search = &search
@@ -439,8 +439,8 @@ Get outposts current health
 func (a *OutpostsApiService) OutpostsInstancesHealthList(ctx _context.Context, uuid string) ApiOutpostsInstancesHealthListRequest {
 	return ApiOutpostsInstancesHealthListRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -558,17 +558,17 @@ func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsIns
 }
 
 type ApiOutpostsInstancesListRequest struct {
-	ctx _context.Context
-	ApiService *OutpostsApiService
-	nameIcontains *string
-	nameIexact *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	providersIsnull *bool
-	search *string
+	ctx                            _context.Context
+	ApiService                     *OutpostsApiService
+	nameIcontains                  *string
+	nameIexact                     *string
+	ordering                       *string
+	page                           *int32
+	pageSize                       *int32
+	providersIsnull                *bool
+	search                         *string
 	serviceConnectionNameIcontains *string
-	serviceConnectionNameIexact *string
+	serviceConnectionNameIexact    *string
 }
 
 func (r ApiOutpostsInstancesListRequest) NameIcontains(nameIcontains string) ApiOutpostsInstancesListRequest {
@@ -579,16 +579,19 @@ func (r ApiOutpostsInstancesListRequest) NameIexact(nameIexact string) ApiOutpos
 	r.nameIexact = &nameIexact
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiOutpostsInstancesListRequest) Ordering(ordering string) ApiOutpostsInstancesListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiOutpostsInstancesListRequest) Page(page int32) ApiOutpostsInstancesListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiOutpostsInstancesListRequest) PageSize(pageSize int32) ApiOutpostsInstancesListRequest {
 	r.pageSize = &pageSize
@@ -598,6 +601,7 @@ func (r ApiOutpostsInstancesListRequest) ProvidersIsnull(providersIsnull bool) A
 	r.providersIsnull = &providersIsnull
 	return r
 }
+
 // A search term.
 func (r ApiOutpostsInstancesListRequest) Search(search string) ApiOutpostsInstancesListRequest {
 	r.search = &search
@@ -627,7 +631,7 @@ Outpost Viewset
 func (a *OutpostsApiService) OutpostsInstancesList(ctx _context.Context) ApiOutpostsInstancesListRequest {
 	return ApiOutpostsInstancesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -750,9 +754,9 @@ func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstances
 }
 
 type ApiOutpostsInstancesPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *OutpostsApiService
-	uuid string
+	ctx                   _context.Context
+	ApiService            *OutpostsApiService
+	uuid                  string
 	patchedOutpostRequest *PatchedOutpostRequest
 }
 
@@ -777,8 +781,8 @@ Outpost Viewset
 func (a *OutpostsApiService) OutpostsInstancesPartialUpdate(ctx _context.Context, uuid string) ApiOutpostsInstancesPartialUpdateRequest {
 	return ApiOutpostsInstancesPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -877,11 +881,10 @@ func (a *OutpostsApiService) OutpostsInstancesPartialUpdateExecute(r ApiOutposts
 }
 
 type ApiOutpostsInstancesRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiOutpostsInstancesRetrieveRequest) Execute() (Outpost, *_nethttp.Response, error) {
 	return r.ApiService.OutpostsInstancesRetrieveExecute(r)
@@ -899,8 +902,8 @@ Outpost Viewset
 func (a *OutpostsApiService) OutpostsInstancesRetrieve(ctx _context.Context, uuid string) ApiOutpostsInstancesRetrieveRequest {
 	return ApiOutpostsInstancesRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -997,9 +1000,9 @@ func (a *OutpostsApiService) OutpostsInstancesRetrieveExecute(r ApiOutpostsInsta
 }
 
 type ApiOutpostsInstancesUpdateRequest struct {
-	ctx _context.Context
-	ApiService *OutpostsApiService
-	uuid string
+	ctx            _context.Context
+	ApiService     *OutpostsApiService
+	uuid           string
 	outpostRequest *OutpostRequest
 }
 
@@ -1024,8 +1027,8 @@ Outpost Viewset
 func (a *OutpostsApiService) OutpostsInstancesUpdate(ctx _context.Context, uuid string) ApiOutpostsInstancesUpdateRequest {
 	return ApiOutpostsInstancesUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -1127,11 +1130,10 @@ func (a *OutpostsApiService) OutpostsInstancesUpdateExecute(r ApiOutpostsInstanc
 }
 
 type ApiOutpostsInstancesUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiOutpostsInstancesUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.OutpostsInstancesUsedByListExecute(r)
@@ -1149,8 +1151,8 @@ Get a list of all objects that use this object
 func (a *OutpostsApiService) OutpostsInstancesUsedByList(ctx _context.Context, uuid string) ApiOutpostsInstancesUsedByListRequest {
 	return ApiOutpostsInstancesUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -1247,12 +1249,12 @@ func (a *OutpostsApiService) OutpostsInstancesUsedByListExecute(r ApiOutpostsIns
 }
 
 type ApiOutpostsLdapListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 // Which field to use when ordering the results.
@@ -1260,16 +1262,19 @@ func (r ApiOutpostsLdapListRequest) Ordering(ordering string) ApiOutpostsLdapLis
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiOutpostsLdapListRequest) Page(page int32) ApiOutpostsLdapListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiOutpostsLdapListRequest) PageSize(pageSize int32) ApiOutpostsLdapListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiOutpostsLdapListRequest) Search(search string) ApiOutpostsLdapListRequest {
 	r.search = &search
@@ -1291,7 +1296,7 @@ LDAPProvider Viewset
 func (a *OutpostsApiService) OutpostsLdapList(ctx _context.Context) ApiOutpostsLdapListRequest {
 	return ApiOutpostsLdapListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1399,11 +1404,10 @@ func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListReques
 }
 
 type ApiOutpostsLdapRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiOutpostsLdapRetrieveRequest) Execute() (LDAPOutpostConfig, *_nethttp.Response, error) {
 	return r.ApiService.OutpostsLdapRetrieveExecute(r)
@@ -1421,8 +1425,8 @@ LDAPProvider Viewset
 func (a *OutpostsApiService) OutpostsLdapRetrieve(ctx _context.Context, id int32) ApiOutpostsLdapRetrieveRequest {
 	return ApiOutpostsLdapRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -1519,12 +1523,12 @@ func (a *OutpostsApiService) OutpostsLdapRetrieveExecute(r ApiOutpostsLdapRetrie
 }
 
 type ApiOutpostsProxyListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 // Which field to use when ordering the results.
@@ -1532,16 +1536,19 @@ func (r ApiOutpostsProxyListRequest) Ordering(ordering string) ApiOutpostsProxyL
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiOutpostsProxyListRequest) Page(page int32) ApiOutpostsProxyListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiOutpostsProxyListRequest) PageSize(pageSize int32) ApiOutpostsProxyListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiOutpostsProxyListRequest) Search(search string) ApiOutpostsProxyListRequest {
 	r.search = &search
@@ -1563,7 +1570,7 @@ ProxyProvider Viewset
 func (a *OutpostsApiService) OutpostsProxyList(ctx _context.Context) ApiOutpostsProxyListRequest {
 	return ApiOutpostsProxyListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1671,11 +1678,10 @@ func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequ
 }
 
 type ApiOutpostsProxyRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiOutpostsProxyRetrieveRequest) Execute() (ProxyOutpostConfig, *_nethttp.Response, error) {
 	return r.ApiService.OutpostsProxyRetrieveExecute(r)
@@ -1693,8 +1699,8 @@ ProxyProvider Viewset
 func (a *OutpostsApiService) OutpostsProxyRetrieve(ctx _context.Context, id int32) ApiOutpostsProxyRetrieveRequest {
 	return ApiOutpostsProxyRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -1791,11 +1797,10 @@ func (a *OutpostsApiService) OutpostsProxyRetrieveExecute(r ApiOutpostsProxyRetr
 }
 
 type ApiOutpostsServiceConnectionsAllDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiOutpostsServiceConnectionsAllDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.OutpostsServiceConnectionsAllDestroyExecute(r)
@@ -1813,8 +1818,8 @@ ServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllDestroy(ctx _context.Context, uuid string) ApiOutpostsServiceConnectionsAllDestroyRequest {
 	return ApiOutpostsServiceConnectionsAllDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -1900,34 +1905,38 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllDestroyExecute(r ApiOu
 }
 
 type ApiOutpostsServiceConnectionsAllListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 func (r ApiOutpostsServiceConnectionsAllListRequest) Name(name string) ApiOutpostsServiceConnectionsAllListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiOutpostsServiceConnectionsAllListRequest) Ordering(ordering string) ApiOutpostsServiceConnectionsAllListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiOutpostsServiceConnectionsAllListRequest) Page(page int32) ApiOutpostsServiceConnectionsAllListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiOutpostsServiceConnectionsAllListRequest) PageSize(pageSize int32) ApiOutpostsServiceConnectionsAllListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiOutpostsServiceConnectionsAllListRequest) Search(search string) ApiOutpostsServiceConnectionsAllListRequest {
 	r.search = &search
@@ -1949,7 +1958,7 @@ ServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllList(ctx _context.Context) ApiOutpostsServiceConnectionsAllListRequest {
 	return ApiOutpostsServiceConnectionsAllListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2060,11 +2069,10 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllListExecute(r ApiOutpo
 }
 
 type ApiOutpostsServiceConnectionsAllRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiOutpostsServiceConnectionsAllRetrieveRequest) Execute() (ServiceConnection, *_nethttp.Response, error) {
 	return r.ApiService.OutpostsServiceConnectionsAllRetrieveExecute(r)
@@ -2082,8 +2090,8 @@ ServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieve(ctx _context.Context, uuid string) ApiOutpostsServiceConnectionsAllRetrieveRequest {
 	return ApiOutpostsServiceConnectionsAllRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -2180,11 +2188,10 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieveExecute(r ApiO
 }
 
 type ApiOutpostsServiceConnectionsAllStateRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiOutpostsServiceConnectionsAllStateRetrieveRequest) Execute() (ServiceConnectionState, *_nethttp.Response, error) {
 	return r.ApiService.OutpostsServiceConnectionsAllStateRetrieveExecute(r)
@@ -2202,8 +2209,8 @@ Get the service connection's state
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieve(ctx _context.Context, uuid string) ApiOutpostsServiceConnectionsAllStateRetrieveRequest {
 	return ApiOutpostsServiceConnectionsAllStateRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -2300,10 +2307,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieveExecute(r
 }
 
 type ApiOutpostsServiceConnectionsAllTypesListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
 }
-
 
 func (r ApiOutpostsServiceConnectionsAllTypesListRequest) Execute() ([]TypeCreate, *_nethttp.Response, error) {
 	return r.ApiService.OutpostsServiceConnectionsAllTypesListExecute(r)
@@ -2320,7 +2326,7 @@ Get all creatable service connection types
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesList(ctx _context.Context) ApiOutpostsServiceConnectionsAllTypesListRequest {
 	return ApiOutpostsServiceConnectionsAllTypesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2416,11 +2422,10 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesListExecute(r Api
 }
 
 type ApiOutpostsServiceConnectionsAllUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiOutpostsServiceConnectionsAllUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.OutpostsServiceConnectionsAllUsedByListExecute(r)
@@ -2438,8 +2443,8 @@ Get a list of all objects that use this object
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByList(ctx _context.Context, uuid string) ApiOutpostsServiceConnectionsAllUsedByListRequest {
 	return ApiOutpostsServiceConnectionsAllUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -2536,8 +2541,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByListExecute(r Ap
 }
 
 type ApiOutpostsServiceConnectionsDockerCreateRequest struct {
-	ctx _context.Context
-	ApiService *OutpostsApiService
+	ctx                            _context.Context
+	ApiService                     *OutpostsApiService
 	dockerServiceConnectionRequest *DockerServiceConnectionRequest
 }
 
@@ -2561,7 +2566,7 @@ DockerServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreate(ctx _context.Context) ApiOutpostsServiceConnectionsDockerCreateRequest {
 	return ApiOutpostsServiceConnectionsDockerCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2662,11 +2667,10 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreateExecute(r Api
 }
 
 type ApiOutpostsServiceConnectionsDockerDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiOutpostsServiceConnectionsDockerDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.OutpostsServiceConnectionsDockerDestroyExecute(r)
@@ -2684,8 +2688,8 @@ DockerServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerDestroy(ctx _context.Context, uuid string) ApiOutpostsServiceConnectionsDockerDestroyRequest {
 	return ApiOutpostsServiceConnectionsDockerDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -2771,17 +2775,17 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerDestroyExecute(r Ap
 }
 
 type ApiOutpostsServiceConnectionsDockerListRequest struct {
-	ctx _context.Context
-	ApiService *OutpostsApiService
-	local *bool
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	ctx               _context.Context
+	ApiService        *OutpostsApiService
+	local             *bool
+	name              *string
+	ordering          *string
+	page              *int32
+	pageSize          *int32
+	search            *string
 	tlsAuthentication *string
-	tlsVerification *string
-	url *string
+	tlsVerification   *string
+	url               *string
 }
 
 func (r ApiOutpostsServiceConnectionsDockerListRequest) Local(local bool) ApiOutpostsServiceConnectionsDockerListRequest {
@@ -2792,21 +2796,25 @@ func (r ApiOutpostsServiceConnectionsDockerListRequest) Name(name string) ApiOut
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiOutpostsServiceConnectionsDockerListRequest) Ordering(ordering string) ApiOutpostsServiceConnectionsDockerListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiOutpostsServiceConnectionsDockerListRequest) Page(page int32) ApiOutpostsServiceConnectionsDockerListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiOutpostsServiceConnectionsDockerListRequest) PageSize(pageSize int32) ApiOutpostsServiceConnectionsDockerListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiOutpostsServiceConnectionsDockerListRequest) Search(search string) ApiOutpostsServiceConnectionsDockerListRequest {
 	r.search = &search
@@ -2840,7 +2848,7 @@ DockerServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerList(ctx _context.Context) ApiOutpostsServiceConnectionsDockerListRequest {
 	return ApiOutpostsServiceConnectionsDockerListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2963,9 +2971,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerListExecute(r ApiOu
 }
 
 type ApiOutpostsServiceConnectionsDockerPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *OutpostsApiService
-	uuid string
+	ctx                                   _context.Context
+	ApiService                            *OutpostsApiService
+	uuid                                  string
 	patchedDockerServiceConnectionRequest *PatchedDockerServiceConnectionRequest
 }
 
@@ -2990,8 +2998,8 @@ DockerServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdate(ctx _context.Context, uuid string) ApiOutpostsServiceConnectionsDockerPartialUpdateRequest {
 	return ApiOutpostsServiceConnectionsDockerPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -3090,11 +3098,10 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdateExecut
 }
 
 type ApiOutpostsServiceConnectionsDockerRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiOutpostsServiceConnectionsDockerRetrieveRequest) Execute() (DockerServiceConnection, *_nethttp.Response, error) {
 	return r.ApiService.OutpostsServiceConnectionsDockerRetrieveExecute(r)
@@ -3112,8 +3119,8 @@ DockerServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieve(ctx _context.Context, uuid string) ApiOutpostsServiceConnectionsDockerRetrieveRequest {
 	return ApiOutpostsServiceConnectionsDockerRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -3210,9 +3217,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieveExecute(r A
 }
 
 type ApiOutpostsServiceConnectionsDockerUpdateRequest struct {
-	ctx _context.Context
-	ApiService *OutpostsApiService
-	uuid string
+	ctx                            _context.Context
+	ApiService                     *OutpostsApiService
+	uuid                           string
 	dockerServiceConnectionRequest *DockerServiceConnectionRequest
 }
 
@@ -3237,8 +3244,8 @@ DockerServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdate(ctx _context.Context, uuid string) ApiOutpostsServiceConnectionsDockerUpdateRequest {
 	return ApiOutpostsServiceConnectionsDockerUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -3340,11 +3347,10 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdateExecute(r Api
 }
 
 type ApiOutpostsServiceConnectionsDockerUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiOutpostsServiceConnectionsDockerUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.OutpostsServiceConnectionsDockerUsedByListExecute(r)
@@ -3362,8 +3368,8 @@ Get a list of all objects that use this object
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByList(ctx _context.Context, uuid string) ApiOutpostsServiceConnectionsDockerUsedByListRequest {
 	return ApiOutpostsServiceConnectionsDockerUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -3460,8 +3466,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByListExecute(r
 }
 
 type ApiOutpostsServiceConnectionsKubernetesCreateRequest struct {
-	ctx _context.Context
-	ApiService *OutpostsApiService
+	ctx                                _context.Context
+	ApiService                         *OutpostsApiService
 	kubernetesServiceConnectionRequest *KubernetesServiceConnectionRequest
 }
 
@@ -3485,7 +3491,7 @@ KubernetesServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreate(ctx _context.Context) ApiOutpostsServiceConnectionsKubernetesCreateRequest {
 	return ApiOutpostsServiceConnectionsKubernetesCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3586,11 +3592,10 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreateExecute(r
 }
 
 type ApiOutpostsServiceConnectionsKubernetesDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiOutpostsServiceConnectionsKubernetesDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.OutpostsServiceConnectionsKubernetesDestroyExecute(r)
@@ -3608,8 +3613,8 @@ KubernetesServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesDestroy(ctx _context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesDestroyRequest {
 	return ApiOutpostsServiceConnectionsKubernetesDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -3695,14 +3700,14 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesDestroyExecute(
 }
 
 type ApiOutpostsServiceConnectionsKubernetesListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	local *bool
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	local      *bool
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 func (r ApiOutpostsServiceConnectionsKubernetesListRequest) Local(local bool) ApiOutpostsServiceConnectionsKubernetesListRequest {
@@ -3713,21 +3718,25 @@ func (r ApiOutpostsServiceConnectionsKubernetesListRequest) Name(name string) Ap
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiOutpostsServiceConnectionsKubernetesListRequest) Ordering(ordering string) ApiOutpostsServiceConnectionsKubernetesListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiOutpostsServiceConnectionsKubernetesListRequest) Page(page int32) ApiOutpostsServiceConnectionsKubernetesListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiOutpostsServiceConnectionsKubernetesListRequest) PageSize(pageSize int32) ApiOutpostsServiceConnectionsKubernetesListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiOutpostsServiceConnectionsKubernetesListRequest) Search(search string) ApiOutpostsServiceConnectionsKubernetesListRequest {
 	r.search = &search
@@ -3749,7 +3758,7 @@ KubernetesServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesList(ctx _context.Context) ApiOutpostsServiceConnectionsKubernetesListRequest {
 	return ApiOutpostsServiceConnectionsKubernetesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3863,9 +3872,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesListExecute(r A
 }
 
 type ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *OutpostsApiService
-	uuid string
+	ctx                                       _context.Context
+	ApiService                                *OutpostsApiService
+	uuid                                      string
 	patchedKubernetesServiceConnectionRequest *PatchedKubernetesServiceConnectionRequest
 }
 
@@ -3890,8 +3899,8 @@ KubernetesServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdate(ctx _context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest {
 	return ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -3990,11 +3999,10 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdateEx
 }
 
 type ApiOutpostsServiceConnectionsKubernetesRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiOutpostsServiceConnectionsKubernetesRetrieveRequest) Execute() (KubernetesServiceConnection, *_nethttp.Response, error) {
 	return r.ApiService.OutpostsServiceConnectionsKubernetesRetrieveExecute(r)
@@ -4012,8 +4020,8 @@ KubernetesServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieve(ctx _context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesRetrieveRequest {
 	return ApiOutpostsServiceConnectionsKubernetesRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -4110,9 +4118,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieveExecute
 }
 
 type ApiOutpostsServiceConnectionsKubernetesUpdateRequest struct {
-	ctx _context.Context
-	ApiService *OutpostsApiService
-	uuid string
+	ctx                                _context.Context
+	ApiService                         *OutpostsApiService
+	uuid                               string
 	kubernetesServiceConnectionRequest *KubernetesServiceConnectionRequest
 }
 
@@ -4137,8 +4145,8 @@ KubernetesServiceConnection Viewset
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdate(ctx _context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesUpdateRequest {
 	return ApiOutpostsServiceConnectionsKubernetesUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -4240,11 +4248,10 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdateExecute(r
 }
 
 type ApiOutpostsServiceConnectionsKubernetesUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OutpostsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiOutpostsServiceConnectionsKubernetesUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.OutpostsServiceConnectionsKubernetesUsedByListExecute(r)
@@ -4262,8 +4269,8 @@ Get a list of all objects that use this object
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByList(ctx _context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesUsedByListRequest {
 	return ApiOutpostsServiceConnectionsKubernetesUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 

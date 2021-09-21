@@ -19,13 +19,13 @@ import (
 type Prompt struct {
 	Pk string `json:"pk"`
 	// Name of the form field, also used to store the value
-	FieldKey string `json:"field_key"`
-	Label string `json:"label"`
-	Type PromptTypeEnum `json:"type"`
-	Required *bool `json:"required,omitempty"`
-	Placeholder *string `json:"placeholder,omitempty"`
-	Order *int32 `json:"order,omitempty"`
-	PromptstageSet *[]Stage `json:"promptstage_set,omitempty"`
+	FieldKey       string         `json:"field_key"`
+	Label          string         `json:"label"`
+	Type           PromptTypeEnum `json:"type"`
+	Required       *bool          `json:"required,omitempty"`
+	Placeholder    *string        `json:"placeholder,omitempty"`
+	Order          *int32         `json:"order,omitempty"`
+	PromptstageSet *[]Stage       `json:"promptstage_set,omitempty"`
 }
 
 // NewPrompt instantiates a new Prompt object
@@ -62,7 +62,7 @@ func (o *Prompt) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *Prompt) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -86,7 +86,7 @@ func (o *Prompt) GetFieldKey() string {
 // GetFieldKeyOk returns a tuple with the FieldKey field value
 // and a boolean to check if the value has been set.
 func (o *Prompt) GetFieldKeyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.FieldKey, true
@@ -110,7 +110,7 @@ func (o *Prompt) GetLabel() string {
 // GetLabelOk returns a tuple with the Label field value
 // and a boolean to check if the value has been set.
 func (o *Prompt) GetLabelOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Label, true
@@ -134,7 +134,7 @@ func (o *Prompt) GetType() PromptTypeEnum {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *Prompt) GetTypeOk() (*PromptTypeEnum, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -337,5 +337,3 @@ func (v *NullablePrompt) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

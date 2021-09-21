@@ -18,92 +18,91 @@ import (
 
 // FlowChallengeResponseRequest - struct for FlowChallengeResponseRequest
 type FlowChallengeResponseRequest struct {
-	AuthenticatorDuoChallengeResponseRequest *AuthenticatorDuoChallengeResponseRequest
-	AuthenticatorStaticChallengeResponseRequest *AuthenticatorStaticChallengeResponseRequest
-	AuthenticatorTOTPChallengeResponseRequest *AuthenticatorTOTPChallengeResponseRequest
+	AuthenticatorDuoChallengeResponseRequest        *AuthenticatorDuoChallengeResponseRequest
+	AuthenticatorStaticChallengeResponseRequest     *AuthenticatorStaticChallengeResponseRequest
+	AuthenticatorTOTPChallengeResponseRequest       *AuthenticatorTOTPChallengeResponseRequest
 	AuthenticatorValidationChallengeResponseRequest *AuthenticatorValidationChallengeResponseRequest
-	AuthenticatorWebAuthnChallengeResponseRequest *AuthenticatorWebAuthnChallengeResponseRequest
-	AutoSubmitChallengeResponseRequest *AutoSubmitChallengeResponseRequest
-	CaptchaChallengeResponseRequest *CaptchaChallengeResponseRequest
-	ConsentChallengeResponseRequest *ConsentChallengeResponseRequest
-	DummyChallengeResponseRequest *DummyChallengeResponseRequest
-	EmailChallengeResponseRequest *EmailChallengeResponseRequest
-	IdentificationChallengeResponseRequest *IdentificationChallengeResponseRequest
-	PasswordChallengeResponseRequest *PasswordChallengeResponseRequest
-	PlexAuthenticationChallengeResponseRequest *PlexAuthenticationChallengeResponseRequest
-	PromptChallengeResponseRequest *PromptChallengeResponseRequest
+	AuthenticatorWebAuthnChallengeResponseRequest   *AuthenticatorWebAuthnChallengeResponseRequest
+	AutoSubmitChallengeResponseRequest              *AutoSubmitChallengeResponseRequest
+	CaptchaChallengeResponseRequest                 *CaptchaChallengeResponseRequest
+	ConsentChallengeResponseRequest                 *ConsentChallengeResponseRequest
+	DummyChallengeResponseRequest                   *DummyChallengeResponseRequest
+	EmailChallengeResponseRequest                   *EmailChallengeResponseRequest
+	IdentificationChallengeResponseRequest          *IdentificationChallengeResponseRequest
+	PasswordChallengeResponseRequest                *PasswordChallengeResponseRequest
+	PlexAuthenticationChallengeResponseRequest      *PlexAuthenticationChallengeResponseRequest
+	PromptChallengeResponseRequest                  *PromptChallengeResponseRequest
 }
 
 // AuthenticatorDuoChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns AuthenticatorDuoChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func AuthenticatorDuoChallengeResponseRequestAsFlowChallengeResponseRequest(v *AuthenticatorDuoChallengeResponseRequest) FlowChallengeResponseRequest {
-	return FlowChallengeResponseRequest{ AuthenticatorDuoChallengeResponseRequest: v}
+	return FlowChallengeResponseRequest{AuthenticatorDuoChallengeResponseRequest: v}
 }
 
 // AuthenticatorStaticChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns AuthenticatorStaticChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func AuthenticatorStaticChallengeResponseRequestAsFlowChallengeResponseRequest(v *AuthenticatorStaticChallengeResponseRequest) FlowChallengeResponseRequest {
-	return FlowChallengeResponseRequest{ AuthenticatorStaticChallengeResponseRequest: v}
+	return FlowChallengeResponseRequest{AuthenticatorStaticChallengeResponseRequest: v}
 }
 
 // AuthenticatorTOTPChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns AuthenticatorTOTPChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func AuthenticatorTOTPChallengeResponseRequestAsFlowChallengeResponseRequest(v *AuthenticatorTOTPChallengeResponseRequest) FlowChallengeResponseRequest {
-	return FlowChallengeResponseRequest{ AuthenticatorTOTPChallengeResponseRequest: v}
+	return FlowChallengeResponseRequest{AuthenticatorTOTPChallengeResponseRequest: v}
 }
 
 // AuthenticatorValidationChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns AuthenticatorValidationChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func AuthenticatorValidationChallengeResponseRequestAsFlowChallengeResponseRequest(v *AuthenticatorValidationChallengeResponseRequest) FlowChallengeResponseRequest {
-	return FlowChallengeResponseRequest{ AuthenticatorValidationChallengeResponseRequest: v}
+	return FlowChallengeResponseRequest{AuthenticatorValidationChallengeResponseRequest: v}
 }
 
 // AuthenticatorWebAuthnChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns AuthenticatorWebAuthnChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func AuthenticatorWebAuthnChallengeResponseRequestAsFlowChallengeResponseRequest(v *AuthenticatorWebAuthnChallengeResponseRequest) FlowChallengeResponseRequest {
-	return FlowChallengeResponseRequest{ AuthenticatorWebAuthnChallengeResponseRequest: v}
+	return FlowChallengeResponseRequest{AuthenticatorWebAuthnChallengeResponseRequest: v}
 }
 
 // AutoSubmitChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns AutoSubmitChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func AutoSubmitChallengeResponseRequestAsFlowChallengeResponseRequest(v *AutoSubmitChallengeResponseRequest) FlowChallengeResponseRequest {
-	return FlowChallengeResponseRequest{ AutoSubmitChallengeResponseRequest: v}
+	return FlowChallengeResponseRequest{AutoSubmitChallengeResponseRequest: v}
 }
 
 // CaptchaChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns CaptchaChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func CaptchaChallengeResponseRequestAsFlowChallengeResponseRequest(v *CaptchaChallengeResponseRequest) FlowChallengeResponseRequest {
-	return FlowChallengeResponseRequest{ CaptchaChallengeResponseRequest: v}
+	return FlowChallengeResponseRequest{CaptchaChallengeResponseRequest: v}
 }
 
 // ConsentChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns ConsentChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func ConsentChallengeResponseRequestAsFlowChallengeResponseRequest(v *ConsentChallengeResponseRequest) FlowChallengeResponseRequest {
-	return FlowChallengeResponseRequest{ ConsentChallengeResponseRequest: v}
+	return FlowChallengeResponseRequest{ConsentChallengeResponseRequest: v}
 }
 
 // DummyChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns DummyChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func DummyChallengeResponseRequestAsFlowChallengeResponseRequest(v *DummyChallengeResponseRequest) FlowChallengeResponseRequest {
-	return FlowChallengeResponseRequest{ DummyChallengeResponseRequest: v}
+	return FlowChallengeResponseRequest{DummyChallengeResponseRequest: v}
 }
 
 // EmailChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns EmailChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func EmailChallengeResponseRequestAsFlowChallengeResponseRequest(v *EmailChallengeResponseRequest) FlowChallengeResponseRequest {
-	return FlowChallengeResponseRequest{ EmailChallengeResponseRequest: v}
+	return FlowChallengeResponseRequest{EmailChallengeResponseRequest: v}
 }
 
 // IdentificationChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns IdentificationChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func IdentificationChallengeResponseRequestAsFlowChallengeResponseRequest(v *IdentificationChallengeResponseRequest) FlowChallengeResponseRequest {
-	return FlowChallengeResponseRequest{ IdentificationChallengeResponseRequest: v}
+	return FlowChallengeResponseRequest{IdentificationChallengeResponseRequest: v}
 }
 
 // PasswordChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns PasswordChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func PasswordChallengeResponseRequestAsFlowChallengeResponseRequest(v *PasswordChallengeResponseRequest) FlowChallengeResponseRequest {
-	return FlowChallengeResponseRequest{ PasswordChallengeResponseRequest: v}
+	return FlowChallengeResponseRequest{PasswordChallengeResponseRequest: v}
 }
 
 // PlexAuthenticationChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns PlexAuthenticationChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func PlexAuthenticationChallengeResponseRequestAsFlowChallengeResponseRequest(v *PlexAuthenticationChallengeResponseRequest) FlowChallengeResponseRequest {
-	return FlowChallengeResponseRequest{ PlexAuthenticationChallengeResponseRequest: v}
+	return FlowChallengeResponseRequest{PlexAuthenticationChallengeResponseRequest: v}
 }
 
 // PromptChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns PromptChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func PromptChallengeResponseRequestAsFlowChallengeResponseRequest(v *PromptChallengeResponseRequest) FlowChallengeResponseRequest {
-	return FlowChallengeResponseRequest{ PromptChallengeResponseRequest: v}
+	return FlowChallengeResponseRequest{PromptChallengeResponseRequest: v}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
@@ -516,7 +515,7 @@ func (src FlowChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *FlowChallengeResponseRequest) GetActualInstance() (interface{}) {
+func (obj *FlowChallengeResponseRequest) GetActualInstance() interface{} {
 	if obj.AuthenticatorDuoChallengeResponseRequest != nil {
 		return obj.AuthenticatorDuoChallengeResponseRequest
 	}
@@ -612,5 +611,3 @@ func (v *NullableFlowChallengeResponseRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

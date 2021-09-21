@@ -17,17 +17,17 @@ import (
 
 // FlowStageBinding FlowStageBinding Serializer
 type FlowStageBinding struct {
-	Pk string `json:"pk"`
+	Pk                      string `json:"pk"`
 	PolicybindingmodelPtrId string `json:"policybindingmodel_ptr_id"`
-	Target string `json:"target"`
-	Stage string `json:"stage"`
-	StageObj Stage `json:"stage_obj"`
+	Target                  string `json:"target"`
+	Stage                   string `json:"stage"`
+	StageObj                Stage  `json:"stage_obj"`
 	// Evaluate policies during the Flow planning process. Disable this for input-based policies.
 	EvaluateOnPlan *bool `json:"evaluate_on_plan,omitempty"`
 	// Evaluate policies when the Stage is present to the user.
-	ReEvaluatePolicies *bool `json:"re_evaluate_policies,omitempty"`
-	Order int32 `json:"order"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	ReEvaluatePolicies *bool             `json:"re_evaluate_policies,omitempty"`
+	Order              int32             `json:"order"`
+	PolicyEngineMode   *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.
 	InvalidResponseAction *InvalidResponseActionEnum `json:"invalid_response_action,omitempty"`
 }
@@ -68,7 +68,7 @@ func (o *FlowStageBinding) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *FlowStageBinding) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -92,7 +92,7 @@ func (o *FlowStageBinding) GetPolicybindingmodelPtrId() string {
 // GetPolicybindingmodelPtrIdOk returns a tuple with the PolicybindingmodelPtrId field value
 // and a boolean to check if the value has been set.
 func (o *FlowStageBinding) GetPolicybindingmodelPtrIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PolicybindingmodelPtrId, true
@@ -116,7 +116,7 @@ func (o *FlowStageBinding) GetTarget() string {
 // GetTargetOk returns a tuple with the Target field value
 // and a boolean to check if the value has been set.
 func (o *FlowStageBinding) GetTargetOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Target, true
@@ -140,7 +140,7 @@ func (o *FlowStageBinding) GetStage() string {
 // GetStageOk returns a tuple with the Stage field value
 // and a boolean to check if the value has been set.
 func (o *FlowStageBinding) GetStageOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Stage, true
@@ -164,7 +164,7 @@ func (o *FlowStageBinding) GetStageObj() Stage {
 // GetStageObjOk returns a tuple with the StageObj field value
 // and a boolean to check if the value has been set.
 func (o *FlowStageBinding) GetStageObjOk() (*Stage, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.StageObj, true
@@ -252,7 +252,7 @@ func (o *FlowStageBinding) GetOrder() int32 {
 // GetOrderOk returns a tuple with the Order field value
 // and a boolean to check if the value has been set.
 func (o *FlowStageBinding) GetOrderOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Order, true
@@ -397,5 +397,3 @@ func (v *NullableFlowStageBinding) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,14 +17,14 @@ import (
 
 // Config Serialize authentik Config into DRF Object
 type Config struct {
-	ErrorReportingEnabled bool `json:"error_reporting_enabled"`
-	ErrorReportingEnvironment string `json:"error_reporting_environment"`
-	ErrorReportingSendPii bool `json:"error_reporting_send_pii"`
-	Capabilities []CapabilitiesEnum `json:"capabilities"`
-	CacheTimeout int32 `json:"cache_timeout"`
-	CacheTimeoutFlows int32 `json:"cache_timeout_flows"`
-	CacheTimeoutPolicies int32 `json:"cache_timeout_policies"`
-	CacheTimeoutReputation int32 `json:"cache_timeout_reputation"`
+	ErrorReportingEnabled     bool               `json:"error_reporting_enabled"`
+	ErrorReportingEnvironment string             `json:"error_reporting_environment"`
+	ErrorReportingSendPii     bool               `json:"error_reporting_send_pii"`
+	Capabilities              []CapabilitiesEnum `json:"capabilities"`
+	CacheTimeout              int32              `json:"cache_timeout"`
+	CacheTimeoutFlows         int32              `json:"cache_timeout_flows"`
+	CacheTimeoutPolicies      int32              `json:"cache_timeout_policies"`
+	CacheTimeoutReputation    int32              `json:"cache_timeout_reputation"`
 }
 
 // NewConfig instantiates a new Config object
@@ -65,7 +65,7 @@ func (o *Config) GetErrorReportingEnabled() bool {
 // GetErrorReportingEnabledOk returns a tuple with the ErrorReportingEnabled field value
 // and a boolean to check if the value has been set.
 func (o *Config) GetErrorReportingEnabledOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ErrorReportingEnabled, true
@@ -89,7 +89,7 @@ func (o *Config) GetErrorReportingEnvironment() string {
 // GetErrorReportingEnvironmentOk returns a tuple with the ErrorReportingEnvironment field value
 // and a boolean to check if the value has been set.
 func (o *Config) GetErrorReportingEnvironmentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ErrorReportingEnvironment, true
@@ -113,7 +113,7 @@ func (o *Config) GetErrorReportingSendPii() bool {
 // GetErrorReportingSendPiiOk returns a tuple with the ErrorReportingSendPii field value
 // and a boolean to check if the value has been set.
 func (o *Config) GetErrorReportingSendPiiOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ErrorReportingSendPii, true
@@ -137,7 +137,7 @@ func (o *Config) GetCapabilities() []CapabilitiesEnum {
 // GetCapabilitiesOk returns a tuple with the Capabilities field value
 // and a boolean to check if the value has been set.
 func (o *Config) GetCapabilitiesOk() (*[]CapabilitiesEnum, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Capabilities, true
@@ -161,7 +161,7 @@ func (o *Config) GetCacheTimeout() int32 {
 // GetCacheTimeoutOk returns a tuple with the CacheTimeout field value
 // and a boolean to check if the value has been set.
 func (o *Config) GetCacheTimeoutOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CacheTimeout, true
@@ -185,7 +185,7 @@ func (o *Config) GetCacheTimeoutFlows() int32 {
 // GetCacheTimeoutFlowsOk returns a tuple with the CacheTimeoutFlows field value
 // and a boolean to check if the value has been set.
 func (o *Config) GetCacheTimeoutFlowsOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CacheTimeoutFlows, true
@@ -209,7 +209,7 @@ func (o *Config) GetCacheTimeoutPolicies() int32 {
 // GetCacheTimeoutPoliciesOk returns a tuple with the CacheTimeoutPolicies field value
 // and a boolean to check if the value has been set.
 func (o *Config) GetCacheTimeoutPoliciesOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CacheTimeoutPolicies, true
@@ -233,7 +233,7 @@ func (o *Config) GetCacheTimeoutReputation() int32 {
 // GetCacheTimeoutReputationOk returns a tuple with the CacheTimeoutReputation field value
 // and a boolean to check if the value has been set.
 func (o *Config) GetCacheTimeoutReputationOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CacheTimeoutReputation, true
@@ -308,5 +308,3 @@ func (v *NullableConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

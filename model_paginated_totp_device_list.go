@@ -18,7 +18,7 @@ import (
 // PaginatedTOTPDeviceList struct for PaginatedTOTPDeviceList
 type PaginatedTOTPDeviceList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []TOTPDevice `json:"results"`
+	Results    []TOTPDevice                       `json:"results"`
 }
 
 // NewPaginatedTOTPDeviceList instantiates a new PaginatedTOTPDeviceList object
@@ -53,7 +53,7 @@ func (o *PaginatedTOTPDeviceList) GetPagination() PaginatedApplicationListPagina
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedTOTPDeviceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedTOTPDeviceList) GetResults() []TOTPDevice {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedTOTPDeviceList) GetResultsOk() (*[]TOTPDevice, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedTOTPDeviceList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

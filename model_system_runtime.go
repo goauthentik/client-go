@@ -17,12 +17,12 @@ import (
 
 // SystemRuntime struct for SystemRuntime
 type SystemRuntime struct {
-	PythonVersion *string `json:"python_version,omitempty"`
+	PythonVersion   *string `json:"python_version,omitempty"`
 	GunicornVersion *string `json:"gunicorn_version,omitempty"`
-	Environment *string `json:"environment,omitempty"`
-	Architecture *string `json:"architecture,omitempty"`
-	Platform *string `json:"platform,omitempty"`
-	Uname *string `json:"uname,omitempty"`
+	Environment     *string `json:"environment,omitempty"`
+	Architecture    *string `json:"architecture,omitempty"`
+	Platform        *string `json:"platform,omitempty"`
+	Uname           *string `json:"uname,omitempty"`
 }
 
 // NewSystemRuntime instantiates a new SystemRuntime object
@@ -292,5 +292,3 @@ func (v *NullableSystemRuntime) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

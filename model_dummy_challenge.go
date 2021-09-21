@@ -17,9 +17,9 @@ import (
 
 // DummyChallenge Dummy challenge
 type DummyChallenge struct {
-	Type ChallengeChoices `json:"type"`
-	FlowInfo *ContextualFlowInfo `json:"flow_info,omitempty"`
-	Component *string `json:"component,omitempty"`
+	Type           ChallengeChoices          `json:"type"`
+	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
 }
 
@@ -58,7 +58,7 @@ func (o *DummyChallenge) GetType() ChallengeChoices {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *DummyChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -217,5 +217,3 @@ func (v *NullableDummyChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

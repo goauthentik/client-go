@@ -18,7 +18,7 @@ import (
 // PaginatedEmailStageList struct for PaginatedEmailStageList
 type PaginatedEmailStageList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []EmailStage `json:"results"`
+	Results    []EmailStage                       `json:"results"`
 }
 
 // NewPaginatedEmailStageList instantiates a new PaginatedEmailStageList object
@@ -53,7 +53,7 @@ func (o *PaginatedEmailStageList) GetPagination() PaginatedApplicationListPagina
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedEmailStageList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedEmailStageList) GetResults() []EmailStage {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedEmailStageList) GetResultsOk() (*[]EmailStage, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedEmailStageList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

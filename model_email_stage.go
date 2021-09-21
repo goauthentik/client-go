@@ -17,25 +17,25 @@ import (
 
 // EmailStage EmailStage Serializer
 type EmailStage struct {
-	Pk string `json:"pk"`
-	Name string `json:"name"`
-	Component string `json:"component"`
-	VerboseName string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
-	FlowSet *[]Flow `json:"flow_set,omitempty"`
+	Pk                string  `json:"pk"`
+	Name              string  `json:"name"`
+	Component         string  `json:"component"`
+	VerboseName       string  `json:"verbose_name"`
+	VerboseNamePlural string  `json:"verbose_name_plural"`
+	FlowSet           *[]Flow `json:"flow_set,omitempty"`
 	// When enabled, global Email connection settings will be used and connection settings below will be ignored.
-	UseGlobalSettings *bool `json:"use_global_settings,omitempty"`
-	Host *string `json:"host,omitempty"`
-	Port *int32 `json:"port,omitempty"`
-	Username *string `json:"username,omitempty"`
-	UseTls *bool `json:"use_tls,omitempty"`
-	UseSsl *bool `json:"use_ssl,omitempty"`
-	Timeout *int32 `json:"timeout,omitempty"`
-	FromAddress *string `json:"from_address,omitempty"`
+	UseGlobalSettings *bool   `json:"use_global_settings,omitempty"`
+	Host              *string `json:"host,omitempty"`
+	Port              *int32  `json:"port,omitempty"`
+	Username          *string `json:"username,omitempty"`
+	UseTls            *bool   `json:"use_tls,omitempty"`
+	UseSsl            *bool   `json:"use_ssl,omitempty"`
+	Timeout           *int32  `json:"timeout,omitempty"`
+	FromAddress       *string `json:"from_address,omitempty"`
 	// Time in minutes the token sent is valid.
-	TokenExpiry *int32 `json:"token_expiry,omitempty"`
-	Subject *string `json:"subject,omitempty"`
-	Template *string `json:"template,omitempty"`
+	TokenExpiry *int32  `json:"token_expiry,omitempty"`
+	Subject     *string `json:"subject,omitempty"`
+	Template    *string `json:"template,omitempty"`
 }
 
 // NewEmailStage instantiates a new EmailStage object
@@ -73,7 +73,7 @@ func (o *EmailStage) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -97,7 +97,7 @@ func (o *EmailStage) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -121,7 +121,7 @@ func (o *EmailStage) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -145,7 +145,7 @@ func (o *EmailStage) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -169,7 +169,7 @@ func (o *EmailStage) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -655,5 +655,3 @@ func (v *NullableEmailStage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

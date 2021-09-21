@@ -17,7 +17,7 @@ import (
 
 // PatchedPasswordStageRequest PasswordStage Serializer
 type PatchedPasswordStageRequest struct {
-	Name *string `json:"name,omitempty"`
+	Name    *string        `json:"name,omitempty"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// Selection of backends to test the password against.
 	Backends *[]BackendsEnum `json:"backends,omitempty"`
@@ -153,7 +153,7 @@ func (o *PatchedPasswordStageRequest) GetConfigureFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedPasswordStageRequest) GetConfigureFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ConfigureFlow.Get(), o.ConfigureFlow.IsSet()
@@ -172,6 +172,7 @@ func (o *PatchedPasswordStageRequest) HasConfigureFlow() bool {
 func (o *PatchedPasswordStageRequest) SetConfigureFlow(v string) {
 	o.ConfigureFlow.Set(&v)
 }
+
 // SetConfigureFlowNil sets the value for ConfigureFlow to be an explicit nil
 func (o *PatchedPasswordStageRequest) SetConfigureFlowNil() {
 	o.ConfigureFlow.Set(nil)
@@ -269,5 +270,3 @@ func (v *NullablePatchedPasswordStageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,7 +17,7 @@ import (
 
 // PatchedCaptchaStageRequest CaptchaStage Serializer
 type PatchedCaptchaStageRequest struct {
-	Name *string `json:"name,omitempty"`
+	Name    *string        `json:"name,omitempty"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// Public key, acquired from https://www.google.com/recaptcha/intro/v3.html
 	PublicKey *string `json:"public_key,omitempty"`
@@ -222,5 +222,3 @@ func (v *NullablePatchedCaptchaStageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

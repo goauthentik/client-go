@@ -18,7 +18,7 @@ import (
 // PaginatedDuoDeviceList struct for PaginatedDuoDeviceList
 type PaginatedDuoDeviceList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []DuoDevice `json:"results"`
+	Results    []DuoDevice                        `json:"results"`
 }
 
 // NewPaginatedDuoDeviceList instantiates a new PaginatedDuoDeviceList object
@@ -53,7 +53,7 @@ func (o *PaginatedDuoDeviceList) GetPagination() PaginatedApplicationListPaginat
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedDuoDeviceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedDuoDeviceList) GetResults() []DuoDevice {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedDuoDeviceList) GetResultsOk() (*[]DuoDevice, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedDuoDeviceList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

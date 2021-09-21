@@ -17,7 +17,7 @@ import (
 
 // SessionUser Response for the /user/me endpoint, returns the currently active user (as `user` property) and, if this user is being impersonated, the original user in the `original` property.
 type SessionUser struct {
-	User UserSelf `json:"user"`
+	User     UserSelf  `json:"user"`
 	Original *UserSelf `json:"original,omitempty"`
 }
 
@@ -52,7 +52,7 @@ func (o *SessionUser) GetUser() UserSelf {
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
 func (o *SessionUser) GetUserOk() (*UserSelf, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.User, true
@@ -141,5 +141,3 @@ func (v *NullableSessionUser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

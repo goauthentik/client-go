@@ -17,12 +17,12 @@ import (
 
 // DenyStage DenyStage Serializer
 type DenyStage struct {
-	Pk string `json:"pk"`
-	Name string `json:"name"`
-	Component string `json:"component"`
-	VerboseName string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
-	FlowSet *[]Flow `json:"flow_set,omitempty"`
+	Pk                string  `json:"pk"`
+	Name              string  `json:"name"`
+	Component         string  `json:"component"`
+	VerboseName       string  `json:"verbose_name"`
+	VerboseNamePlural string  `json:"verbose_name_plural"`
+	FlowSet           *[]Flow `json:"flow_set,omitempty"`
 }
 
 // NewDenyStage instantiates a new DenyStage object
@@ -60,7 +60,7 @@ func (o *DenyStage) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *DenyStage) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -84,7 +84,7 @@ func (o *DenyStage) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *DenyStage) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -108,7 +108,7 @@ func (o *DenyStage) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *DenyStage) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -132,7 +132,7 @@ func (o *DenyStage) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *DenyStage) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -156,7 +156,7 @@ func (o *DenyStage) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *DenyStage) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -257,5 +257,3 @@ func (v *NullableDenyStage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

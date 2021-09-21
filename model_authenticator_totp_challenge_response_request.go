@@ -18,7 +18,7 @@ import (
 // AuthenticatorTOTPChallengeResponseRequest TOTP Challenge response, device is set by get_response_instance
 type AuthenticatorTOTPChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
-	Code int32 `json:"code"`
+	Code      int32   `json:"code"`
 }
 
 // NewAuthenticatorTOTPChallengeResponseRequest instantiates a new AuthenticatorTOTPChallengeResponseRequest object
@@ -88,7 +88,7 @@ func (o *AuthenticatorTOTPChallengeResponseRequest) GetCode() int32 {
 // GetCodeOk returns a tuple with the Code field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorTOTPChallengeResponseRequest) GetCodeOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Code, true
@@ -145,5 +145,3 @@ func (v *NullableAuthenticatorTOTPChallengeResponseRequest) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

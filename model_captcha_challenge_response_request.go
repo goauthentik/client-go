@@ -18,7 +18,7 @@ import (
 // CaptchaChallengeResponseRequest Validate captcha token
 type CaptchaChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
-	Token string `json:"token"`
+	Token     string  `json:"token"`
 }
 
 // NewCaptchaChallengeResponseRequest instantiates a new CaptchaChallengeResponseRequest object
@@ -88,7 +88,7 @@ func (o *CaptchaChallengeResponseRequest) GetToken() string {
 // GetTokenOk returns a tuple with the Token field value
 // and a boolean to check if the value has been set.
 func (o *CaptchaChallengeResponseRequest) GetTokenOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Token, true
@@ -145,5 +145,3 @@ func (v *NullableCaptchaChallengeResponseRequest) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

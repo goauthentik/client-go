@@ -17,11 +17,11 @@ import (
 
 // ShellChallenge challenge type to render HTML as-is
 type ShellChallenge struct {
-	Type ChallengeChoices `json:"type"`
-	FlowInfo *ContextualFlowInfo `json:"flow_info,omitempty"`
-	Component *string `json:"component,omitempty"`
+	Type           ChallengeChoices          `json:"type"`
+	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	Body string `json:"body"`
+	Body           string                    `json:"body"`
 }
 
 // NewShellChallenge instantiates a new ShellChallenge object
@@ -60,7 +60,7 @@ func (o *ShellChallenge) GetType() ChallengeChoices {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *ShellChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -180,7 +180,7 @@ func (o *ShellChallenge) GetBody() string {
 // GetBodyOk returns a tuple with the Body field value
 // and a boolean to check if the value has been set.
 func (o *ShellChallenge) GetBodyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Body, true
@@ -246,5 +246,3 @@ func (v *NullableShellChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

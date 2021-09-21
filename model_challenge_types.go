@@ -18,110 +18,109 @@ import (
 
 // ChallengeTypes - struct for ChallengeTypes
 type ChallengeTypes struct {
-	AccessDeniedChallenge *AccessDeniedChallenge
-	AuthenticatorDuoChallenge *AuthenticatorDuoChallenge
-	AuthenticatorStaticChallenge *AuthenticatorStaticChallenge
-	AuthenticatorTOTPChallenge *AuthenticatorTOTPChallenge
+	AccessDeniedChallenge            *AccessDeniedChallenge
+	AuthenticatorDuoChallenge        *AuthenticatorDuoChallenge
+	AuthenticatorStaticChallenge     *AuthenticatorStaticChallenge
+	AuthenticatorTOTPChallenge       *AuthenticatorTOTPChallenge
 	AuthenticatorValidationChallenge *AuthenticatorValidationChallenge
-	AuthenticatorWebAuthnChallenge *AuthenticatorWebAuthnChallenge
-	AutosubmitChallenge *AutosubmitChallenge
-	CaptchaChallenge *CaptchaChallenge
-	ConsentChallenge *ConsentChallenge
-	DummyChallenge *DummyChallenge
-	EmailChallenge *EmailChallenge
-	IdentificationChallenge *IdentificationChallenge
-	PasswordChallenge *PasswordChallenge
-	PlexAuthenticationChallenge *PlexAuthenticationChallenge
-	PromptChallenge *PromptChallenge
-	RedirectChallenge *RedirectChallenge
-	ShellChallenge *ShellChallenge
+	AuthenticatorWebAuthnChallenge   *AuthenticatorWebAuthnChallenge
+	AutosubmitChallenge              *AutosubmitChallenge
+	CaptchaChallenge                 *CaptchaChallenge
+	ConsentChallenge                 *ConsentChallenge
+	DummyChallenge                   *DummyChallenge
+	EmailChallenge                   *EmailChallenge
+	IdentificationChallenge          *IdentificationChallenge
+	PasswordChallenge                *PasswordChallenge
+	PlexAuthenticationChallenge      *PlexAuthenticationChallenge
+	PromptChallenge                  *PromptChallenge
+	RedirectChallenge                *RedirectChallenge
+	ShellChallenge                   *ShellChallenge
 }
 
 // AccessDeniedChallengeAsChallengeTypes is a convenience function that returns AccessDeniedChallenge wrapped in ChallengeTypes
 func AccessDeniedChallengeAsChallengeTypes(v *AccessDeniedChallenge) ChallengeTypes {
-	return ChallengeTypes{ AccessDeniedChallenge: v}
+	return ChallengeTypes{AccessDeniedChallenge: v}
 }
 
 // AuthenticatorDuoChallengeAsChallengeTypes is a convenience function that returns AuthenticatorDuoChallenge wrapped in ChallengeTypes
 func AuthenticatorDuoChallengeAsChallengeTypes(v *AuthenticatorDuoChallenge) ChallengeTypes {
-	return ChallengeTypes{ AuthenticatorDuoChallenge: v}
+	return ChallengeTypes{AuthenticatorDuoChallenge: v}
 }
 
 // AuthenticatorStaticChallengeAsChallengeTypes is a convenience function that returns AuthenticatorStaticChallenge wrapped in ChallengeTypes
 func AuthenticatorStaticChallengeAsChallengeTypes(v *AuthenticatorStaticChallenge) ChallengeTypes {
-	return ChallengeTypes{ AuthenticatorStaticChallenge: v}
+	return ChallengeTypes{AuthenticatorStaticChallenge: v}
 }
 
 // AuthenticatorTOTPChallengeAsChallengeTypes is a convenience function that returns AuthenticatorTOTPChallenge wrapped in ChallengeTypes
 func AuthenticatorTOTPChallengeAsChallengeTypes(v *AuthenticatorTOTPChallenge) ChallengeTypes {
-	return ChallengeTypes{ AuthenticatorTOTPChallenge: v}
+	return ChallengeTypes{AuthenticatorTOTPChallenge: v}
 }
 
 // AuthenticatorValidationChallengeAsChallengeTypes is a convenience function that returns AuthenticatorValidationChallenge wrapped in ChallengeTypes
 func AuthenticatorValidationChallengeAsChallengeTypes(v *AuthenticatorValidationChallenge) ChallengeTypes {
-	return ChallengeTypes{ AuthenticatorValidationChallenge: v}
+	return ChallengeTypes{AuthenticatorValidationChallenge: v}
 }
 
 // AuthenticatorWebAuthnChallengeAsChallengeTypes is a convenience function that returns AuthenticatorWebAuthnChallenge wrapped in ChallengeTypes
 func AuthenticatorWebAuthnChallengeAsChallengeTypes(v *AuthenticatorWebAuthnChallenge) ChallengeTypes {
-	return ChallengeTypes{ AuthenticatorWebAuthnChallenge: v}
+	return ChallengeTypes{AuthenticatorWebAuthnChallenge: v}
 }
 
 // AutosubmitChallengeAsChallengeTypes is a convenience function that returns AutosubmitChallenge wrapped in ChallengeTypes
 func AutosubmitChallengeAsChallengeTypes(v *AutosubmitChallenge) ChallengeTypes {
-	return ChallengeTypes{ AutosubmitChallenge: v}
+	return ChallengeTypes{AutosubmitChallenge: v}
 }
 
 // CaptchaChallengeAsChallengeTypes is a convenience function that returns CaptchaChallenge wrapped in ChallengeTypes
 func CaptchaChallengeAsChallengeTypes(v *CaptchaChallenge) ChallengeTypes {
-	return ChallengeTypes{ CaptchaChallenge: v}
+	return ChallengeTypes{CaptchaChallenge: v}
 }
 
 // ConsentChallengeAsChallengeTypes is a convenience function that returns ConsentChallenge wrapped in ChallengeTypes
 func ConsentChallengeAsChallengeTypes(v *ConsentChallenge) ChallengeTypes {
-	return ChallengeTypes{ ConsentChallenge: v}
+	return ChallengeTypes{ConsentChallenge: v}
 }
 
 // DummyChallengeAsChallengeTypes is a convenience function that returns DummyChallenge wrapped in ChallengeTypes
 func DummyChallengeAsChallengeTypes(v *DummyChallenge) ChallengeTypes {
-	return ChallengeTypes{ DummyChallenge: v}
+	return ChallengeTypes{DummyChallenge: v}
 }
 
 // EmailChallengeAsChallengeTypes is a convenience function that returns EmailChallenge wrapped in ChallengeTypes
 func EmailChallengeAsChallengeTypes(v *EmailChallenge) ChallengeTypes {
-	return ChallengeTypes{ EmailChallenge: v}
+	return ChallengeTypes{EmailChallenge: v}
 }
 
 // IdentificationChallengeAsChallengeTypes is a convenience function that returns IdentificationChallenge wrapped in ChallengeTypes
 func IdentificationChallengeAsChallengeTypes(v *IdentificationChallenge) ChallengeTypes {
-	return ChallengeTypes{ IdentificationChallenge: v}
+	return ChallengeTypes{IdentificationChallenge: v}
 }
 
 // PasswordChallengeAsChallengeTypes is a convenience function that returns PasswordChallenge wrapped in ChallengeTypes
 func PasswordChallengeAsChallengeTypes(v *PasswordChallenge) ChallengeTypes {
-	return ChallengeTypes{ PasswordChallenge: v}
+	return ChallengeTypes{PasswordChallenge: v}
 }
 
 // PlexAuthenticationChallengeAsChallengeTypes is a convenience function that returns PlexAuthenticationChallenge wrapped in ChallengeTypes
 func PlexAuthenticationChallengeAsChallengeTypes(v *PlexAuthenticationChallenge) ChallengeTypes {
-	return ChallengeTypes{ PlexAuthenticationChallenge: v}
+	return ChallengeTypes{PlexAuthenticationChallenge: v}
 }
 
 // PromptChallengeAsChallengeTypes is a convenience function that returns PromptChallenge wrapped in ChallengeTypes
 func PromptChallengeAsChallengeTypes(v *PromptChallenge) ChallengeTypes {
-	return ChallengeTypes{ PromptChallenge: v}
+	return ChallengeTypes{PromptChallenge: v}
 }
 
 // RedirectChallengeAsChallengeTypes is a convenience function that returns RedirectChallenge wrapped in ChallengeTypes
 func RedirectChallengeAsChallengeTypes(v *RedirectChallenge) ChallengeTypes {
-	return ChallengeTypes{ RedirectChallenge: v}
+	return ChallengeTypes{RedirectChallenge: v}
 }
 
 // ShellChallengeAsChallengeTypes is a convenience function that returns ShellChallenge wrapped in ChallengeTypes
 func ShellChallengeAsChallengeTypes(v *ShellChallenge) ChallengeTypes {
-	return ChallengeTypes{ ShellChallenge: v}
+	return ChallengeTypes{ShellChallenge: v}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
@@ -618,7 +617,7 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ChallengeTypes) GetActualInstance() (interface{}) {
+func (obj *ChallengeTypes) GetActualInstance() interface{} {
 	if obj.AccessDeniedChallenge != nil {
 		return obj.AccessDeniedChallenge
 	}
@@ -726,5 +725,3 @@ func (v *NullableChallengeTypes) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

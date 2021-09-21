@@ -29,8 +29,8 @@ var (
 type AuthenticatorsApiService service
 
 type ApiAuthenticatorsAdminDuoCreateRequest struct {
-	ctx _context.Context
-	ApiService *AuthenticatorsApiService
+	ctx              _context.Context
+	ApiService       *AuthenticatorsApiService
 	duoDeviceRequest *DuoDeviceRequest
 }
 
@@ -54,7 +54,7 @@ Viewset for Duo authenticator devices (for admins)
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreate(ctx _context.Context) ApiAuthenticatorsAdminDuoCreateRequest {
 	return ApiAuthenticatorsAdminDuoCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -155,11 +155,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreateExecute(r ApiAuth
 }
 
 type ApiAuthenticatorsAdminDuoDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsAdminDuoDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsAdminDuoDestroyExecute(r)
@@ -177,8 +176,8 @@ Viewset for Duo authenticator devices (for admins)
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroy(ctx _context.Context, id int32) ApiAuthenticatorsAdminDuoDestroyRequest {
 	return ApiAuthenticatorsAdminDuoDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -264,34 +263,38 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroyExecute(r ApiAut
 }
 
 type ApiAuthenticatorsAdminDuoListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 func (r ApiAuthenticatorsAdminDuoListRequest) Name(name string) ApiAuthenticatorsAdminDuoListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiAuthenticatorsAdminDuoListRequest) Ordering(ordering string) ApiAuthenticatorsAdminDuoListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiAuthenticatorsAdminDuoListRequest) Page(page int32) ApiAuthenticatorsAdminDuoListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiAuthenticatorsAdminDuoListRequest) PageSize(pageSize int32) ApiAuthenticatorsAdminDuoListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiAuthenticatorsAdminDuoListRequest) Search(search string) ApiAuthenticatorsAdminDuoListRequest {
 	r.search = &search
@@ -313,7 +316,7 @@ Viewset for Duo authenticator devices (for admins)
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoList(ctx _context.Context) ApiAuthenticatorsAdminDuoListRequest {
 	return ApiAuthenticatorsAdminDuoListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -424,9 +427,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthen
 }
 
 type ApiAuthenticatorsAdminDuoPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *AuthenticatorsApiService
-	id int32
+	ctx                     _context.Context
+	ApiService              *AuthenticatorsApiService
+	id                      int32
 	patchedDuoDeviceRequest *PatchedDuoDeviceRequest
 }
 
@@ -451,8 +454,8 @@ Viewset for Duo authenticator devices (for admins)
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdate(ctx _context.Context, id int32) ApiAuthenticatorsAdminDuoPartialUpdateRequest {
 	return ApiAuthenticatorsAdminDuoPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -551,11 +554,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdateExecute(r 
 }
 
 type ApiAuthenticatorsAdminDuoRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsAdminDuoRetrieveRequest) Execute() (DuoDevice, *_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsAdminDuoRetrieveExecute(r)
@@ -573,8 +575,8 @@ Viewset for Duo authenticator devices (for admins)
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsAdminDuoRetrieveRequest {
 	return ApiAuthenticatorsAdminDuoRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -671,9 +673,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAu
 }
 
 type ApiAuthenticatorsAdminDuoUpdateRequest struct {
-	ctx _context.Context
-	ApiService *AuthenticatorsApiService
-	id int32
+	ctx              _context.Context
+	ApiService       *AuthenticatorsApiService
+	id               int32
 	duoDeviceRequest *DuoDeviceRequest
 }
 
@@ -698,8 +700,8 @@ Viewset for Duo authenticator devices (for admins)
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdate(ctx _context.Context, id int32) ApiAuthenticatorsAdminDuoUpdateRequest {
 	return ApiAuthenticatorsAdminDuoUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -801,34 +803,38 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuth
 }
 
 type ApiAuthenticatorsAdminStaticListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 func (r ApiAuthenticatorsAdminStaticListRequest) Name(name string) ApiAuthenticatorsAdminStaticListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiAuthenticatorsAdminStaticListRequest) Ordering(ordering string) ApiAuthenticatorsAdminStaticListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiAuthenticatorsAdminStaticListRequest) Page(page int32) ApiAuthenticatorsAdminStaticListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiAuthenticatorsAdminStaticListRequest) PageSize(pageSize int32) ApiAuthenticatorsAdminStaticListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiAuthenticatorsAdminStaticListRequest) Search(search string) ApiAuthenticatorsAdminStaticListRequest {
 	r.search = &search
@@ -850,7 +856,7 @@ Viewset for static authenticator devices (for admins)
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticList(ctx _context.Context) ApiAuthenticatorsAdminStaticListRequest {
 	return ApiAuthenticatorsAdminStaticListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -961,11 +967,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAut
 }
 
 type ApiAuthenticatorsAdminStaticRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsAdminStaticRetrieveRequest) Execute() (StaticDevice, *_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsAdminStaticRetrieveExecute(r)
@@ -983,8 +988,8 @@ Viewset for static authenticator devices (for admins)
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsAdminStaticRetrieveRequest {
 	return ApiAuthenticatorsAdminStaticRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -1081,34 +1086,38 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieveExecute(r Ap
 }
 
 type ApiAuthenticatorsAdminTotpListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 func (r ApiAuthenticatorsAdminTotpListRequest) Name(name string) ApiAuthenticatorsAdminTotpListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiAuthenticatorsAdminTotpListRequest) Ordering(ordering string) ApiAuthenticatorsAdminTotpListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiAuthenticatorsAdminTotpListRequest) Page(page int32) ApiAuthenticatorsAdminTotpListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiAuthenticatorsAdminTotpListRequest) PageSize(pageSize int32) ApiAuthenticatorsAdminTotpListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiAuthenticatorsAdminTotpListRequest) Search(search string) ApiAuthenticatorsAdminTotpListRequest {
 	r.search = &search
@@ -1130,7 +1139,7 @@ Viewset for totp authenticator devices (for admins)
 func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpList(ctx _context.Context) ApiAuthenticatorsAdminTotpListRequest {
 	return ApiAuthenticatorsAdminTotpListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1241,11 +1250,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthe
 }
 
 type ApiAuthenticatorsAdminTotpRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsAdminTotpRetrieveRequest) Execute() (TOTPDevice, *_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsAdminTotpRetrieveExecute(r)
@@ -1263,8 +1271,8 @@ Viewset for totp authenticator devices (for admins)
 func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsAdminTotpRetrieveRequest {
 	return ApiAuthenticatorsAdminTotpRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -1361,34 +1369,38 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieveExecute(r ApiA
 }
 
 type ApiAuthenticatorsAdminWebauthnListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 func (r ApiAuthenticatorsAdminWebauthnListRequest) Name(name string) ApiAuthenticatorsAdminWebauthnListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiAuthenticatorsAdminWebauthnListRequest) Ordering(ordering string) ApiAuthenticatorsAdminWebauthnListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiAuthenticatorsAdminWebauthnListRequest) Page(page int32) ApiAuthenticatorsAdminWebauthnListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiAuthenticatorsAdminWebauthnListRequest) PageSize(pageSize int32) ApiAuthenticatorsAdminWebauthnListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiAuthenticatorsAdminWebauthnListRequest) Search(search string) ApiAuthenticatorsAdminWebauthnListRequest {
 	r.search = &search
@@ -1410,7 +1422,7 @@ Viewset for WebAuthn authenticator devices (for admins)
 func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnList(ctx _context.Context) ApiAuthenticatorsAdminWebauthnListRequest {
 	return ApiAuthenticatorsAdminWebauthnListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1521,11 +1533,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiA
 }
 
 type ApiAuthenticatorsAdminWebauthnRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsAdminWebauthnRetrieveRequest) Execute() (WebAuthnDevice, *_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsAdminWebauthnRetrieveExecute(r)
@@ -1543,8 +1554,8 @@ Viewset for WebAuthn authenticator devices (for admins)
 func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsAdminWebauthnRetrieveRequest {
 	return ApiAuthenticatorsAdminWebauthnRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -1641,11 +1652,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieveExecute(r 
 }
 
 type ApiAuthenticatorsDuoDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsDuoDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsDuoDestroyExecute(r)
@@ -1663,8 +1673,8 @@ Viewset for Duo authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroy(ctx _context.Context, id int32) ApiAuthenticatorsDuoDestroyRequest {
 	return ApiAuthenticatorsDuoDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -1750,34 +1760,38 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroyExecute(r ApiAuthenti
 }
 
 type ApiAuthenticatorsDuoListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 func (r ApiAuthenticatorsDuoListRequest) Name(name string) ApiAuthenticatorsDuoListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiAuthenticatorsDuoListRequest) Ordering(ordering string) ApiAuthenticatorsDuoListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiAuthenticatorsDuoListRequest) Page(page int32) ApiAuthenticatorsDuoListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiAuthenticatorsDuoListRequest) PageSize(pageSize int32) ApiAuthenticatorsDuoListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiAuthenticatorsDuoListRequest) Search(search string) ApiAuthenticatorsDuoListRequest {
 	r.search = &search
@@ -1799,7 +1813,7 @@ Viewset for Duo authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsDuoList(ctx _context.Context) ApiAuthenticatorsDuoListRequest {
 	return ApiAuthenticatorsDuoListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1910,9 +1924,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticat
 }
 
 type ApiAuthenticatorsDuoPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *AuthenticatorsApiService
-	id int32
+	ctx                     _context.Context
+	ApiService              *AuthenticatorsApiService
+	id                      int32
 	patchedDuoDeviceRequest *PatchedDuoDeviceRequest
 }
 
@@ -1937,8 +1951,8 @@ Viewset for Duo authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdate(ctx _context.Context, id int32) ApiAuthenticatorsDuoPartialUpdateRequest {
 	return ApiAuthenticatorsDuoPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -2037,11 +2051,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdateExecute(r ApiAu
 }
 
 type ApiAuthenticatorsDuoRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsDuoRetrieveRequest) Execute() (DuoDevice, *_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsDuoRetrieveExecute(r)
@@ -2059,8 +2072,8 @@ Viewset for Duo authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsDuoRetrieveRequest {
 	return ApiAuthenticatorsDuoRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -2157,9 +2170,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieveExecute(r ApiAuthent
 }
 
 type ApiAuthenticatorsDuoUpdateRequest struct {
-	ctx _context.Context
-	ApiService *AuthenticatorsApiService
-	id int32
+	ctx              _context.Context
+	ApiService       *AuthenticatorsApiService
+	id               int32
 	duoDeviceRequest *DuoDeviceRequest
 }
 
@@ -2184,8 +2197,8 @@ Viewset for Duo authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdate(ctx _context.Context, id int32) ApiAuthenticatorsDuoUpdateRequest {
 	return ApiAuthenticatorsDuoUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -2287,11 +2300,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdateExecute(r ApiAuthentic
 }
 
 type ApiAuthenticatorsDuoUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsDuoUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsDuoUsedByListExecute(r)
@@ -2309,8 +2321,8 @@ Get a list of all objects that use this object
 func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByList(ctx _context.Context, id int32) ApiAuthenticatorsDuoUsedByListRequest {
 	return ApiAuthenticatorsDuoUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -2407,11 +2419,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByListExecute(r ApiAuthe
 }
 
 type ApiAuthenticatorsStaticDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsStaticDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsStaticDestroyExecute(r)
@@ -2429,8 +2440,8 @@ Viewset for static authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroy(ctx _context.Context, id int32) ApiAuthenticatorsStaticDestroyRequest {
 	return ApiAuthenticatorsStaticDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -2516,34 +2527,38 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroyExecute(r ApiAuthe
 }
 
 type ApiAuthenticatorsStaticListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 func (r ApiAuthenticatorsStaticListRequest) Name(name string) ApiAuthenticatorsStaticListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiAuthenticatorsStaticListRequest) Ordering(ordering string) ApiAuthenticatorsStaticListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiAuthenticatorsStaticListRequest) Page(page int32) ApiAuthenticatorsStaticListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiAuthenticatorsStaticListRequest) PageSize(pageSize int32) ApiAuthenticatorsStaticListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiAuthenticatorsStaticListRequest) Search(search string) ApiAuthenticatorsStaticListRequest {
 	r.search = &search
@@ -2565,7 +2580,7 @@ Viewset for static authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsStaticList(ctx _context.Context) ApiAuthenticatorsStaticListRequest {
 	return ApiAuthenticatorsStaticListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2676,9 +2691,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenti
 }
 
 type ApiAuthenticatorsStaticPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *AuthenticatorsApiService
-	id int32
+	ctx                        _context.Context
+	ApiService                 *AuthenticatorsApiService
+	id                         int32
 	patchedStaticDeviceRequest *PatchedStaticDeviceRequest
 }
 
@@ -2703,8 +2718,8 @@ Viewset for static authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdate(ctx _context.Context, id int32) ApiAuthenticatorsStaticPartialUpdateRequest {
 	return ApiAuthenticatorsStaticPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -2803,11 +2818,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdateExecute(r Ap
 }
 
 type ApiAuthenticatorsStaticRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsStaticRetrieveRequest) Execute() (StaticDevice, *_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsStaticRetrieveExecute(r)
@@ -2825,8 +2839,8 @@ Viewset for static authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsStaticRetrieveRequest {
 	return ApiAuthenticatorsStaticRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -2923,9 +2937,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieveExecute(r ApiAuth
 }
 
 type ApiAuthenticatorsStaticUpdateRequest struct {
-	ctx _context.Context
-	ApiService *AuthenticatorsApiService
-	id int32
+	ctx                 _context.Context
+	ApiService          *AuthenticatorsApiService
+	id                  int32
 	staticDeviceRequest *StaticDeviceRequest
 }
 
@@ -2950,8 +2964,8 @@ Viewset for static authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdate(ctx _context.Context, id int32) ApiAuthenticatorsStaticUpdateRequest {
 	return ApiAuthenticatorsStaticUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -3053,11 +3067,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdateExecute(r ApiAuthen
 }
 
 type ApiAuthenticatorsStaticUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsStaticUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsStaticUsedByListExecute(r)
@@ -3075,8 +3088,8 @@ Get a list of all objects that use this object
 func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByList(ctx _context.Context, id int32) ApiAuthenticatorsStaticUsedByListRequest {
 	return ApiAuthenticatorsStaticUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -3173,11 +3186,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByListExecute(r ApiAu
 }
 
 type ApiAuthenticatorsTotpDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsTotpDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsTotpDestroyExecute(r)
@@ -3195,8 +3207,8 @@ Viewset for totp authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroy(ctx _context.Context, id int32) ApiAuthenticatorsTotpDestroyRequest {
 	return ApiAuthenticatorsTotpDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -3282,34 +3294,38 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroyExecute(r ApiAuthent
 }
 
 type ApiAuthenticatorsTotpListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 func (r ApiAuthenticatorsTotpListRequest) Name(name string) ApiAuthenticatorsTotpListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiAuthenticatorsTotpListRequest) Ordering(ordering string) ApiAuthenticatorsTotpListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiAuthenticatorsTotpListRequest) Page(page int32) ApiAuthenticatorsTotpListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiAuthenticatorsTotpListRequest) PageSize(pageSize int32) ApiAuthenticatorsTotpListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiAuthenticatorsTotpListRequest) Search(search string) ApiAuthenticatorsTotpListRequest {
 	r.search = &search
@@ -3331,7 +3347,7 @@ Viewset for totp authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsTotpList(ctx _context.Context) ApiAuthenticatorsTotpListRequest {
 	return ApiAuthenticatorsTotpListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3442,9 +3458,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthentica
 }
 
 type ApiAuthenticatorsTotpPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *AuthenticatorsApiService
-	id int32
+	ctx                      _context.Context
+	ApiService               *AuthenticatorsApiService
+	id                       int32
 	patchedTOTPDeviceRequest *PatchedTOTPDeviceRequest
 }
 
@@ -3469,8 +3485,8 @@ Viewset for totp authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdate(ctx _context.Context, id int32) ApiAuthenticatorsTotpPartialUpdateRequest {
 	return ApiAuthenticatorsTotpPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -3569,11 +3585,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdateExecute(r ApiA
 }
 
 type ApiAuthenticatorsTotpRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsTotpRetrieveRequest) Execute() (TOTPDevice, *_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsTotpRetrieveExecute(r)
@@ -3591,8 +3606,8 @@ Viewset for totp authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsTotpRetrieveRequest {
 	return ApiAuthenticatorsTotpRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -3689,9 +3704,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieveExecute(r ApiAuthen
 }
 
 type ApiAuthenticatorsTotpUpdateRequest struct {
-	ctx _context.Context
-	ApiService *AuthenticatorsApiService
-	id int32
+	ctx               _context.Context
+	ApiService        *AuthenticatorsApiService
+	id                int32
 	tOTPDeviceRequest *TOTPDeviceRequest
 }
 
@@ -3716,8 +3731,8 @@ Viewset for totp authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdate(ctx _context.Context, id int32) ApiAuthenticatorsTotpUpdateRequest {
 	return ApiAuthenticatorsTotpUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -3819,11 +3834,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdateExecute(r ApiAuthenti
 }
 
 type ApiAuthenticatorsTotpUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsTotpUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsTotpUsedByListExecute(r)
@@ -3841,8 +3855,8 @@ Get a list of all objects that use this object
 func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByList(ctx _context.Context, id int32) ApiAuthenticatorsTotpUsedByListRequest {
 	return ApiAuthenticatorsTotpUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -3939,11 +3953,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByListExecute(r ApiAuth
 }
 
 type ApiAuthenticatorsWebauthnDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsWebauthnDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsWebauthnDestroyExecute(r)
@@ -3961,8 +3974,8 @@ Viewset for WebAuthn authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroy(ctx _context.Context, id int32) ApiAuthenticatorsWebauthnDestroyRequest {
 	return ApiAuthenticatorsWebauthnDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -4048,34 +4061,38 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroyExecute(r ApiAut
 }
 
 type ApiAuthenticatorsWebauthnListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 func (r ApiAuthenticatorsWebauthnListRequest) Name(name string) ApiAuthenticatorsWebauthnListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiAuthenticatorsWebauthnListRequest) Ordering(ordering string) ApiAuthenticatorsWebauthnListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiAuthenticatorsWebauthnListRequest) Page(page int32) ApiAuthenticatorsWebauthnListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiAuthenticatorsWebauthnListRequest) PageSize(pageSize int32) ApiAuthenticatorsWebauthnListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiAuthenticatorsWebauthnListRequest) Search(search string) ApiAuthenticatorsWebauthnListRequest {
 	r.search = &search
@@ -4097,7 +4114,7 @@ Viewset for WebAuthn authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnList(ctx _context.Context) ApiAuthenticatorsWebauthnListRequest {
 	return ApiAuthenticatorsWebauthnListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -4208,9 +4225,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthen
 }
 
 type ApiAuthenticatorsWebauthnPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *AuthenticatorsApiService
-	id int32
+	ctx                          _context.Context
+	ApiService                   *AuthenticatorsApiService
+	id                           int32
 	patchedWebAuthnDeviceRequest *PatchedWebAuthnDeviceRequest
 }
 
@@ -4235,8 +4252,8 @@ Viewset for WebAuthn authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdate(ctx _context.Context, id int32) ApiAuthenticatorsWebauthnPartialUpdateRequest {
 	return ApiAuthenticatorsWebauthnPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -4335,11 +4352,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdateExecute(r 
 }
 
 type ApiAuthenticatorsWebauthnRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsWebauthnRetrieveRequest) Execute() (WebAuthnDevice, *_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsWebauthnRetrieveExecute(r)
@@ -4357,8 +4373,8 @@ Viewset for WebAuthn authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsWebauthnRetrieveRequest {
 	return ApiAuthenticatorsWebauthnRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -4455,9 +4471,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieveExecute(r ApiAu
 }
 
 type ApiAuthenticatorsWebauthnUpdateRequest struct {
-	ctx _context.Context
-	ApiService *AuthenticatorsApiService
-	id int32
+	ctx                   _context.Context
+	ApiService            *AuthenticatorsApiService
+	id                    int32
 	webAuthnDeviceRequest *WebAuthnDeviceRequest
 }
 
@@ -4482,8 +4498,8 @@ Viewset for WebAuthn authenticator devices
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdate(ctx _context.Context, id int32) ApiAuthenticatorsWebauthnUpdateRequest {
 	return ApiAuthenticatorsWebauthnUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -4585,11 +4601,10 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdateExecute(r ApiAuth
 }
 
 type ApiAuthenticatorsWebauthnUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AuthenticatorsApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiAuthenticatorsWebauthnUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.AuthenticatorsWebauthnUsedByListExecute(r)
@@ -4607,8 +4622,8 @@ Get a list of all objects that use this object
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByList(ctx _context.Context, id int32) ApiAuthenticatorsWebauthnUsedByListRequest {
 	return ApiAuthenticatorsWebauthnUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 

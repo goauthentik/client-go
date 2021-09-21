@@ -17,12 +17,12 @@ import (
 
 // OAuth2ProviderSetupURLs OAuth2 Provider Metadata serializer
 type OAuth2ProviderSetupURLs struct {
-	Issuer string `json:"issuer"`
-	Authorize string `json:"authorize"`
-	Token string `json:"token"`
-	UserInfo string `json:"user_info"`
+	Issuer       string `json:"issuer"`
+	Authorize    string `json:"authorize"`
+	Token        string `json:"token"`
+	UserInfo     string `json:"user_info"`
 	ProviderInfo string `json:"provider_info"`
-	Logout string `json:"logout"`
+	Logout       string `json:"logout"`
 }
 
 // NewOAuth2ProviderSetupURLs instantiates a new OAuth2ProviderSetupURLs object
@@ -61,7 +61,7 @@ func (o *OAuth2ProviderSetupURLs) GetIssuer() string {
 // GetIssuerOk returns a tuple with the Issuer field value
 // and a boolean to check if the value has been set.
 func (o *OAuth2ProviderSetupURLs) GetIssuerOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Issuer, true
@@ -85,7 +85,7 @@ func (o *OAuth2ProviderSetupURLs) GetAuthorize() string {
 // GetAuthorizeOk returns a tuple with the Authorize field value
 // and a boolean to check if the value has been set.
 func (o *OAuth2ProviderSetupURLs) GetAuthorizeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Authorize, true
@@ -109,7 +109,7 @@ func (o *OAuth2ProviderSetupURLs) GetToken() string {
 // GetTokenOk returns a tuple with the Token field value
 // and a boolean to check if the value has been set.
 func (o *OAuth2ProviderSetupURLs) GetTokenOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Token, true
@@ -133,7 +133,7 @@ func (o *OAuth2ProviderSetupURLs) GetUserInfo() string {
 // GetUserInfoOk returns a tuple with the UserInfo field value
 // and a boolean to check if the value has been set.
 func (o *OAuth2ProviderSetupURLs) GetUserInfoOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.UserInfo, true
@@ -157,7 +157,7 @@ func (o *OAuth2ProviderSetupURLs) GetProviderInfo() string {
 // GetProviderInfoOk returns a tuple with the ProviderInfo field value
 // and a boolean to check if the value has been set.
 func (o *OAuth2ProviderSetupURLs) GetProviderInfoOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ProviderInfo, true
@@ -181,7 +181,7 @@ func (o *OAuth2ProviderSetupURLs) GetLogout() string {
 // GetLogoutOk returns a tuple with the Logout field value
 // and a boolean to check if the value has been set.
 func (o *OAuth2ProviderSetupURLs) GetLogoutOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Logout, true
@@ -250,5 +250,3 @@ func (v *NullableOAuth2ProviderSetupURLs) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,12 +17,12 @@ import (
 
 // DockerServiceConnection DockerServiceConnection Serializer
 type DockerServiceConnection struct {
-	Pk string `json:"pk"`
+	Pk   string `json:"pk"`
 	Name string `json:"name"`
 	// If enabled, use the local connection. Required Docker socket/Kubernetes Integration
-	Local *bool `json:"local,omitempty"`
-	Component string `json:"component"`
-	VerboseName string `json:"verbose_name"`
+	Local             *bool  `json:"local,omitempty"`
+	Component         string `json:"component"`
+	VerboseName       string `json:"verbose_name"`
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Can be in the format of 'unix://<path>' when connecting to a local docker daemon, or 'https://<hostname>:2376' when connecting to a remote system.
 	Url string `json:"url"`
@@ -68,7 +68,7 @@ func (o *DockerServiceConnection) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *DockerServiceConnection) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -92,7 +92,7 @@ func (o *DockerServiceConnection) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *DockerServiceConnection) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -148,7 +148,7 @@ func (o *DockerServiceConnection) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *DockerServiceConnection) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -172,7 +172,7 @@ func (o *DockerServiceConnection) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *DockerServiceConnection) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -196,7 +196,7 @@ func (o *DockerServiceConnection) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *DockerServiceConnection) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -220,7 +220,7 @@ func (o *DockerServiceConnection) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
 func (o *DockerServiceConnection) GetUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Url, true
@@ -244,7 +244,7 @@ func (o *DockerServiceConnection) GetTlsVerification() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DockerServiceConnection) GetTlsVerificationOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TlsVerification.Get(), o.TlsVerification.IsSet()
@@ -263,6 +263,7 @@ func (o *DockerServiceConnection) HasTlsVerification() bool {
 func (o *DockerServiceConnection) SetTlsVerification(v string) {
 	o.TlsVerification.Set(&v)
 }
+
 // SetTlsVerificationNil sets the value for TlsVerification to be an explicit nil
 func (o *DockerServiceConnection) SetTlsVerificationNil() {
 	o.TlsVerification.Set(nil)
@@ -286,7 +287,7 @@ func (o *DockerServiceConnection) GetTlsAuthentication() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DockerServiceConnection) GetTlsAuthenticationOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TlsAuthentication.Get(), o.TlsAuthentication.IsSet()
@@ -305,6 +306,7 @@ func (o *DockerServiceConnection) HasTlsAuthentication() bool {
 func (o *DockerServiceConnection) SetTlsAuthentication(v string) {
 	o.TlsAuthentication.Set(&v)
 }
+
 // SetTlsAuthenticationNil sets the value for TlsAuthentication to be an explicit nil
 func (o *DockerServiceConnection) SetTlsAuthenticationNil() {
 	o.TlsAuthentication.Set(nil)
@@ -382,5 +384,3 @@ func (v *NullableDockerServiceConnection) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,16 +21,16 @@ type PlexSource struct {
 	// Source's display Name.
 	Name string `json:"name"`
 	// Internal source name, used in URLs.
-	Slug string `json:"slug"`
-	Enabled *bool `json:"enabled,omitempty"`
+	Slug    string `json:"slug"`
+	Enabled *bool  `json:"enabled,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
-	EnrollmentFlow NullableString `json:"enrollment_flow,omitempty"`
-	Component string `json:"component"`
-	VerboseName string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	EnrollmentFlow    NullableString    `json:"enrollment_flow,omitempty"`
+	Component         string            `json:"component"`
+	VerboseName       string            `json:"verbose_name"`
+	VerboseNamePlural string            `json:"verbose_name_plural"`
+	PolicyEngineMode  *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Client identifier used to talk to Plex.
@@ -80,7 +80,7 @@ func (o *PlexSource) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *PlexSource) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -104,7 +104,7 @@ func (o *PlexSource) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *PlexSource) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -128,7 +128,7 @@ func (o *PlexSource) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value
 // and a boolean to check if the value has been set.
 func (o *PlexSource) GetSlugOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Slug, true
@@ -184,7 +184,7 @@ func (o *PlexSource) GetAuthenticationFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PlexSource) GetAuthenticationFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AuthenticationFlow.Get(), o.AuthenticationFlow.IsSet()
@@ -203,6 +203,7 @@ func (o *PlexSource) HasAuthenticationFlow() bool {
 func (o *PlexSource) SetAuthenticationFlow(v string) {
 	o.AuthenticationFlow.Set(&v)
 }
+
 // SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
 func (o *PlexSource) SetAuthenticationFlowNil() {
 	o.AuthenticationFlow.Set(nil)
@@ -226,7 +227,7 @@ func (o *PlexSource) GetEnrollmentFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PlexSource) GetEnrollmentFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.EnrollmentFlow.Get(), o.EnrollmentFlow.IsSet()
@@ -245,6 +246,7 @@ func (o *PlexSource) HasEnrollmentFlow() bool {
 func (o *PlexSource) SetEnrollmentFlow(v string) {
 	o.EnrollmentFlow.Set(&v)
 }
+
 // SetEnrollmentFlowNil sets the value for EnrollmentFlow to be an explicit nil
 func (o *PlexSource) SetEnrollmentFlowNil() {
 	o.EnrollmentFlow.Set(nil)
@@ -268,7 +270,7 @@ func (o *PlexSource) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *PlexSource) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -292,7 +294,7 @@ func (o *PlexSource) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *PlexSource) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -316,7 +318,7 @@ func (o *PlexSource) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *PlexSource) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -500,7 +502,7 @@ func (o *PlexSource) GetPlexToken() string {
 // GetPlexTokenOk returns a tuple with the PlexToken field value
 // and a boolean to check if the value has been set.
 func (o *PlexSource) GetPlexTokenOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PlexToken, true
@@ -596,5 +598,3 @@ func (v *NullablePlexSource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -18,7 +18,7 @@ import (
 // PaginatedPlexSourceConnectionList struct for PaginatedPlexSourceConnectionList
 type PaginatedPlexSourceConnectionList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []PlexSourceConnection `json:"results"`
+	Results    []PlexSourceConnection             `json:"results"`
 }
 
 // NewPaginatedPlexSourceConnectionList instantiates a new PaginatedPlexSourceConnectionList object
@@ -53,7 +53,7 @@ func (o *PaginatedPlexSourceConnectionList) GetPagination() PaginatedApplication
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedPlexSourceConnectionList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedPlexSourceConnectionList) GetResults() []PlexSourceConnection 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedPlexSourceConnectionList) GetResultsOk() (*[]PlexSourceConnection, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedPlexSourceConnectionList) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

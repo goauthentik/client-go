@@ -17,9 +17,9 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"strings"
-	"reflect"
 	"os"
+	"reflect"
+	"strings"
 )
 
 // Linger please
@@ -31,8 +31,8 @@ var (
 type FlowsApiService service
 
 type ApiFlowsBindingsCreateRequest struct {
-	ctx _context.Context
-	ApiService *FlowsApiService
+	ctx                     _context.Context
+	ApiService              *FlowsApiService
 	flowStageBindingRequest *FlowStageBindingRequest
 }
 
@@ -56,7 +56,7 @@ FlowStageBinding Viewset
 func (a *FlowsApiService) FlowsBindingsCreate(ctx _context.Context) ApiFlowsBindingsCreateRequest {
 	return ApiFlowsBindingsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -157,11 +157,10 @@ func (a *FlowsApiService) FlowsBindingsCreateExecute(r ApiFlowsBindingsCreateReq
 }
 
 type ApiFlowsBindingsDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *FlowsApiService
-	fsbUuid string
+	fsbUuid    string
 }
-
 
 func (r ApiFlowsBindingsDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.FlowsBindingsDestroyExecute(r)
@@ -179,8 +178,8 @@ FlowStageBinding Viewset
 func (a *FlowsApiService) FlowsBindingsDestroy(ctx _context.Context, fsbUuid string) ApiFlowsBindingsDestroyRequest {
 	return ApiFlowsBindingsDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		fsbUuid: fsbUuid,
+		ctx:        ctx,
+		fsbUuid:    fsbUuid,
 	}
 }
 
@@ -266,22 +265,22 @@ func (a *FlowsApiService) FlowsBindingsDestroyExecute(r ApiFlowsBindingsDestroyR
 }
 
 type ApiFlowsBindingsListRequest struct {
-	ctx _context.Context
-	ApiService *FlowsApiService
-	evaluateOnPlan *bool
-	fsbUuid *string
+	ctx                   _context.Context
+	ApiService            *FlowsApiService
+	evaluateOnPlan        *bool
+	fsbUuid               *string
 	invalidResponseAction *string
-	order *int32
-	ordering *string
-	page *int32
-	pageSize *int32
-	pbmUuid *string
-	policies *[]string
-	policyEngineMode *string
-	reEvaluatePolicies *bool
-	search *string
-	stage *string
-	target *string
+	order                 *int32
+	ordering              *string
+	page                  *int32
+	pageSize              *int32
+	pbmUuid               *string
+	policies              *[]string
+	policyEngineMode      *string
+	reEvaluatePolicies    *bool
+	search                *string
+	stage                 *string
+	target                *string
 }
 
 func (r ApiFlowsBindingsListRequest) EvaluateOnPlan(evaluateOnPlan bool) ApiFlowsBindingsListRequest {
@@ -292,6 +291,7 @@ func (r ApiFlowsBindingsListRequest) FsbUuid(fsbUuid string) ApiFlowsBindingsLis
 	r.fsbUuid = &fsbUuid
 	return r
 }
+
 // Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.
 func (r ApiFlowsBindingsListRequest) InvalidResponseAction(invalidResponseAction string) ApiFlowsBindingsListRequest {
 	r.invalidResponseAction = &invalidResponseAction
@@ -301,16 +301,19 @@ func (r ApiFlowsBindingsListRequest) Order(order int32) ApiFlowsBindingsListRequ
 	r.order = &order
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiFlowsBindingsListRequest) Ordering(ordering string) ApiFlowsBindingsListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiFlowsBindingsListRequest) Page(page int32) ApiFlowsBindingsListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiFlowsBindingsListRequest) PageSize(pageSize int32) ApiFlowsBindingsListRequest {
 	r.pageSize = &pageSize
@@ -332,6 +335,7 @@ func (r ApiFlowsBindingsListRequest) ReEvaluatePolicies(reEvaluatePolicies bool)
 	r.reEvaluatePolicies = &reEvaluatePolicies
 	return r
 }
+
 // A search term.
 func (r ApiFlowsBindingsListRequest) Search(search string) ApiFlowsBindingsListRequest {
 	r.search = &search
@@ -361,7 +365,7 @@ FlowStageBinding Viewset
 func (a *FlowsApiService) FlowsBindingsList(ctx _context.Context) ApiFlowsBindingsListRequest {
 	return ApiFlowsBindingsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -507,9 +511,9 @@ func (a *FlowsApiService) FlowsBindingsListExecute(r ApiFlowsBindingsListRequest
 }
 
 type ApiFlowsBindingsPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *FlowsApiService
-	fsbUuid string
+	ctx                            _context.Context
+	ApiService                     *FlowsApiService
+	fsbUuid                        string
 	patchedFlowStageBindingRequest *PatchedFlowStageBindingRequest
 }
 
@@ -534,8 +538,8 @@ FlowStageBinding Viewset
 func (a *FlowsApiService) FlowsBindingsPartialUpdate(ctx _context.Context, fsbUuid string) ApiFlowsBindingsPartialUpdateRequest {
 	return ApiFlowsBindingsPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		fsbUuid: fsbUuid,
+		ctx:        ctx,
+		fsbUuid:    fsbUuid,
 	}
 }
 
@@ -634,11 +638,10 @@ func (a *FlowsApiService) FlowsBindingsPartialUpdateExecute(r ApiFlowsBindingsPa
 }
 
 type ApiFlowsBindingsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *FlowsApiService
-	fsbUuid string
+	fsbUuid    string
 }
-
 
 func (r ApiFlowsBindingsRetrieveRequest) Execute() (FlowStageBinding, *_nethttp.Response, error) {
 	return r.ApiService.FlowsBindingsRetrieveExecute(r)
@@ -656,8 +659,8 @@ FlowStageBinding Viewset
 func (a *FlowsApiService) FlowsBindingsRetrieve(ctx _context.Context, fsbUuid string) ApiFlowsBindingsRetrieveRequest {
 	return ApiFlowsBindingsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		fsbUuid: fsbUuid,
+		ctx:        ctx,
+		fsbUuid:    fsbUuid,
 	}
 }
 
@@ -754,9 +757,9 @@ func (a *FlowsApiService) FlowsBindingsRetrieveExecute(r ApiFlowsBindingsRetriev
 }
 
 type ApiFlowsBindingsUpdateRequest struct {
-	ctx _context.Context
-	ApiService *FlowsApiService
-	fsbUuid string
+	ctx                     _context.Context
+	ApiService              *FlowsApiService
+	fsbUuid                 string
 	flowStageBindingRequest *FlowStageBindingRequest
 }
 
@@ -781,8 +784,8 @@ FlowStageBinding Viewset
 func (a *FlowsApiService) FlowsBindingsUpdate(ctx _context.Context, fsbUuid string) ApiFlowsBindingsUpdateRequest {
 	return ApiFlowsBindingsUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		fsbUuid: fsbUuid,
+		ctx:        ctx,
+		fsbUuid:    fsbUuid,
 	}
 }
 
@@ -884,11 +887,10 @@ func (a *FlowsApiService) FlowsBindingsUpdateExecute(r ApiFlowsBindingsUpdateReq
 }
 
 type ApiFlowsBindingsUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *FlowsApiService
-	fsbUuid string
+	fsbUuid    string
 }
-
 
 func (r ApiFlowsBindingsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.FlowsBindingsUsedByListExecute(r)
@@ -906,8 +908,8 @@ Get a list of all objects that use this object
 func (a *FlowsApiService) FlowsBindingsUsedByList(ctx _context.Context, fsbUuid string) ApiFlowsBindingsUsedByListRequest {
 	return ApiFlowsBindingsUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		fsbUuid: fsbUuid,
+		ctx:        ctx,
+		fsbUuid:    fsbUuid,
 	}
 }
 
@@ -1004,10 +1006,10 @@ func (a *FlowsApiService) FlowsBindingsUsedByListExecute(r ApiFlowsBindingsUsedB
 }
 
 type ApiFlowsExecutorGetRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *FlowsApiService
-	flowSlug string
-	query *string
+	flowSlug   string
+	query      *string
 }
 
 // Querystring as received
@@ -1032,8 +1034,8 @@ Get the next pending challenge from the currently active flow.
 func (a *FlowsApiService) FlowsExecutorGet(ctx _context.Context, flowSlug string) ApiFlowsExecutorGetRequest {
 	return ApiFlowsExecutorGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		flowSlug: flowSlug,
+		ctx:        ctx,
+		flowSlug:   flowSlug,
 	}
 }
 
@@ -1134,10 +1136,10 @@ func (a *FlowsApiService) FlowsExecutorGetExecute(r ApiFlowsExecutorGetRequest) 
 }
 
 type ApiFlowsExecutorSolveRequest struct {
-	ctx _context.Context
-	ApiService *FlowsApiService
-	flowSlug string
-	query *string
+	ctx                          _context.Context
+	ApiService                   *FlowsApiService
+	flowSlug                     string
+	query                        *string
 	flowChallengeResponseRequest *FlowChallengeResponseRequest
 }
 
@@ -1167,8 +1169,8 @@ Solve the previously retrieved challenge and advanced to the next stage.
 func (a *FlowsApiService) FlowsExecutorSolve(ctx _context.Context, flowSlug string) ApiFlowsExecutorSolveRequest {
 	return ApiFlowsExecutorSolveRequest{
 		ApiService: a,
-		ctx: ctx,
-		flowSlug: flowSlug,
+		ctx:        ctx,
+		flowSlug:   flowSlug,
 	}
 }
 
@@ -1271,10 +1273,9 @@ func (a *FlowsApiService) FlowsExecutorSolveExecute(r ApiFlowsExecutorSolveReque
 }
 
 type ApiFlowsInstancesCacheClearCreateRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *FlowsApiService
 }
-
 
 func (r ApiFlowsInstancesCacheClearCreateRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.FlowsInstancesCacheClearCreateExecute(r)
@@ -1291,7 +1292,7 @@ Clear flow cache
 func (a *FlowsApiService) FlowsInstancesCacheClearCreate(ctx _context.Context) ApiFlowsInstancesCacheClearCreateRequest {
 	return ApiFlowsInstancesCacheClearCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1376,10 +1377,9 @@ func (a *FlowsApiService) FlowsInstancesCacheClearCreateExecute(r ApiFlowsInstan
 }
 
 type ApiFlowsInstancesCacheInfoRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *FlowsApiService
 }
-
 
 func (r ApiFlowsInstancesCacheInfoRetrieveRequest) Execute() (Cache, *_nethttp.Response, error) {
 	return r.ApiService.FlowsInstancesCacheInfoRetrieveExecute(r)
@@ -1396,7 +1396,7 @@ Info about cached flows
 func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieve(ctx _context.Context) ApiFlowsInstancesCacheInfoRetrieveRequest {
 	return ApiFlowsInstancesCacheInfoRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1492,8 +1492,8 @@ func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieveExecute(r ApiFlowsInsta
 }
 
 type ApiFlowsInstancesCreateRequest struct {
-	ctx _context.Context
-	ApiService *FlowsApiService
+	ctx         _context.Context
+	ApiService  *FlowsApiService
 	flowRequest *FlowRequest
 }
 
@@ -1517,7 +1517,7 @@ Flow Viewset
 func (a *FlowsApiService) FlowsInstancesCreate(ctx _context.Context) ApiFlowsInstancesCreateRequest {
 	return ApiFlowsInstancesCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1618,11 +1618,10 @@ func (a *FlowsApiService) FlowsInstancesCreateExecute(r ApiFlowsInstancesCreateR
 }
 
 type ApiFlowsInstancesDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *FlowsApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiFlowsInstancesDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.FlowsInstancesDestroyExecute(r)
@@ -1640,8 +1639,8 @@ Flow Viewset
 func (a *FlowsApiService) FlowsInstancesDestroy(ctx _context.Context, slug string) ApiFlowsInstancesDestroyRequest {
 	return ApiFlowsInstancesDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -1727,11 +1726,10 @@ func (a *FlowsApiService) FlowsInstancesDestroyExecute(r ApiFlowsInstancesDestro
 }
 
 type ApiFlowsInstancesDiagramRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *FlowsApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiFlowsInstancesDiagramRetrieveRequest) Execute() (FlowDiagram, *_nethttp.Response, error) {
 	return r.ApiService.FlowsInstancesDiagramRetrieveExecute(r)
@@ -1749,8 +1747,8 @@ Return diagram for flow with slug `slug`, in the format used by flowchart.js
 func (a *FlowsApiService) FlowsInstancesDiagramRetrieve(ctx _context.Context, slug string) ApiFlowsInstancesDiagramRetrieveRequest {
 	return ApiFlowsInstancesDiagramRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -1847,11 +1845,10 @@ func (a *FlowsApiService) FlowsInstancesDiagramRetrieveExecute(r ApiFlowsInstanc
 }
 
 type ApiFlowsInstancesExecuteRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *FlowsApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiFlowsInstancesExecuteRetrieveRequest) Execute() (Link, *_nethttp.Response, error) {
 	return r.ApiService.FlowsInstancesExecuteRetrieveExecute(r)
@@ -1869,8 +1866,8 @@ Execute flow for current user
 func (a *FlowsApiService) FlowsInstancesExecuteRetrieve(ctx _context.Context, slug string) ApiFlowsInstancesExecuteRetrieveRequest {
 	return ApiFlowsInstancesExecuteRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -1967,11 +1964,10 @@ func (a *FlowsApiService) FlowsInstancesExecuteRetrieveExecute(r ApiFlowsInstanc
 }
 
 type ApiFlowsInstancesExportRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *FlowsApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiFlowsInstancesExportRetrieveRequest) Execute() (*os.File, *_nethttp.Response, error) {
 	return r.ApiService.FlowsInstancesExportRetrieveExecute(r)
@@ -1989,8 +1985,8 @@ Export flow to .akflow file
 func (a *FlowsApiService) FlowsInstancesExportRetrieve(ctx _context.Context, slug string) ApiFlowsInstancesExportRetrieveRequest {
 	return ApiFlowsInstancesExportRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -2087,10 +2083,10 @@ func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstance
 }
 
 type ApiFlowsInstancesImportFlowCreateRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *FlowsApiService
-	file **os.File
-	clear *bool
+	file       **os.File
+	clear      *bool
 }
 
 func (r ApiFlowsInstancesImportFlowCreateRequest) File(file *os.File) ApiFlowsInstancesImportFlowCreateRequest {
@@ -2117,7 +2113,7 @@ Import flow from .akflow file
 func (a *FlowsApiService) FlowsInstancesImportFlowCreate(ctx _context.Context) ApiFlowsInstancesImportFlowCreateRequest {
 	return ApiFlowsInstancesImportFlowCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2216,16 +2212,16 @@ func (a *FlowsApiService) FlowsInstancesImportFlowCreateExecute(r ApiFlowsInstan
 }
 
 type ApiFlowsInstancesListRequest struct {
-	ctx _context.Context
-	ApiService *FlowsApiService
+	ctx         _context.Context
+	ApiService  *FlowsApiService
 	designation *string
-	flowUuid *string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	slug *string
+	flowUuid    *string
+	name        *string
+	ordering    *string
+	page        *int32
+	pageSize    *int32
+	search      *string
+	slug        *string
 }
 
 // Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
@@ -2241,21 +2237,25 @@ func (r ApiFlowsInstancesListRequest) Name(name string) ApiFlowsInstancesListReq
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiFlowsInstancesListRequest) Ordering(ordering string) ApiFlowsInstancesListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiFlowsInstancesListRequest) Page(page int32) ApiFlowsInstancesListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiFlowsInstancesListRequest) PageSize(pageSize int32) ApiFlowsInstancesListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiFlowsInstancesListRequest) Search(search string) ApiFlowsInstancesListRequest {
 	r.search = &search
@@ -2281,7 +2281,7 @@ Flow Viewset
 func (a *FlowsApiService) FlowsInstancesList(ctx _context.Context) ApiFlowsInstancesListRequest {
 	return ApiFlowsInstancesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2401,9 +2401,9 @@ func (a *FlowsApiService) FlowsInstancesListExecute(r ApiFlowsInstancesListReque
 }
 
 type ApiFlowsInstancesPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *FlowsApiService
-	slug string
+	ctx                _context.Context
+	ApiService         *FlowsApiService
+	slug               string
 	patchedFlowRequest *PatchedFlowRequest
 }
 
@@ -2428,8 +2428,8 @@ Flow Viewset
 func (a *FlowsApiService) FlowsInstancesPartialUpdate(ctx _context.Context, slug string) ApiFlowsInstancesPartialUpdateRequest {
 	return ApiFlowsInstancesPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -2528,11 +2528,10 @@ func (a *FlowsApiService) FlowsInstancesPartialUpdateExecute(r ApiFlowsInstances
 }
 
 type ApiFlowsInstancesRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *FlowsApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiFlowsInstancesRetrieveRequest) Execute() (Flow, *_nethttp.Response, error) {
 	return r.ApiService.FlowsInstancesRetrieveExecute(r)
@@ -2550,8 +2549,8 @@ Flow Viewset
 func (a *FlowsApiService) FlowsInstancesRetrieve(ctx _context.Context, slug string) ApiFlowsInstancesRetrieveRequest {
 	return ApiFlowsInstancesRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -2648,11 +2647,11 @@ func (a *FlowsApiService) FlowsInstancesRetrieveExecute(r ApiFlowsInstancesRetri
 }
 
 type ApiFlowsInstancesSetBackgroundCreateRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *FlowsApiService
-	slug string
-	file **os.File
-	clear *bool
+	slug       string
+	file       **os.File
+	clear      *bool
 }
 
 func (r ApiFlowsInstancesSetBackgroundCreateRequest) File(file *os.File) ApiFlowsInstancesSetBackgroundCreateRequest {
@@ -2680,8 +2679,8 @@ Set Flow background
 func (a *FlowsApiService) FlowsInstancesSetBackgroundCreate(ctx _context.Context, slug string) ApiFlowsInstancesSetBackgroundCreateRequest {
 	return ApiFlowsInstancesSetBackgroundCreateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -2781,9 +2780,9 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundCreateExecute(r ApiFlowsIns
 }
 
 type ApiFlowsInstancesSetBackgroundUrlCreateRequest struct {
-	ctx _context.Context
-	ApiService *FlowsApiService
-	slug string
+	ctx             _context.Context
+	ApiService      *FlowsApiService
+	slug            string
 	filePathRequest *FilePathRequest
 }
 
@@ -2808,8 +2807,8 @@ Set Flow background (as URL)
 func (a *FlowsApiService) FlowsInstancesSetBackgroundUrlCreate(ctx _context.Context, slug string) ApiFlowsInstancesSetBackgroundUrlCreateRequest {
 	return ApiFlowsInstancesSetBackgroundUrlCreateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -2900,9 +2899,9 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundUrlCreateExecute(r ApiFlows
 }
 
 type ApiFlowsInstancesUpdateRequest struct {
-	ctx _context.Context
-	ApiService *FlowsApiService
-	slug string
+	ctx         _context.Context
+	ApiService  *FlowsApiService
+	slug        string
 	flowRequest *FlowRequest
 }
 
@@ -2927,8 +2926,8 @@ Flow Viewset
 func (a *FlowsApiService) FlowsInstancesUpdate(ctx _context.Context, slug string) ApiFlowsInstancesUpdateRequest {
 	return ApiFlowsInstancesUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -3030,11 +3029,10 @@ func (a *FlowsApiService) FlowsInstancesUpdateExecute(r ApiFlowsInstancesUpdateR
 }
 
 type ApiFlowsInstancesUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *FlowsApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiFlowsInstancesUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.FlowsInstancesUsedByListExecute(r)
@@ -3052,8 +3050,8 @@ Get a list of all objects that use this object
 func (a *FlowsApiService) FlowsInstancesUsedByList(ctx _context.Context, slug string) ApiFlowsInstancesUsedByListRequest {
 	return ApiFlowsInstancesUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 

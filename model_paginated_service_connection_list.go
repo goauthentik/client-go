@@ -18,7 +18,7 @@ import (
 // PaginatedServiceConnectionList struct for PaginatedServiceConnectionList
 type PaginatedServiceConnectionList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []ServiceConnection `json:"results"`
+	Results    []ServiceConnection                `json:"results"`
 }
 
 // NewPaginatedServiceConnectionList instantiates a new PaginatedServiceConnectionList object
@@ -53,7 +53,7 @@ func (o *PaginatedServiceConnectionList) GetPagination() PaginatedApplicationLis
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedServiceConnectionList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedServiceConnectionList) GetResults() []ServiceConnection {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedServiceConnectionList) GetResultsOk() (*[]ServiceConnection, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedServiceConnectionList) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

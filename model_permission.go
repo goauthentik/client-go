@@ -18,7 +18,7 @@ import (
 // Permission Permission used for consent
 type Permission struct {
 	Name string `json:"name"`
-	Id string `json:"id"`
+	Id   string `json:"id"`
 }
 
 // NewPermission instantiates a new Permission object
@@ -53,7 +53,7 @@ func (o *Permission) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Permission) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -77,7 +77,7 @@ func (o *Permission) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *Permission) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -134,5 +134,3 @@ func (v *NullablePermission) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,14 +21,14 @@ type Application struct {
 	// Application's display Name.
 	Name string `json:"name"`
 	// Internal application name, used in URLs.
-	Slug string `json:"slug"`
-	Provider NullableInt32 `json:"provider,omitempty"`
-	ProviderObj *Provider `json:"provider_obj,omitempty"`
-	LaunchUrl NullableString `json:"launch_url"`
-	MetaLaunchUrl *string `json:"meta_launch_url,omitempty"`
-	MetaIcon NullableString `json:"meta_icon"`
-	MetaDescription *string `json:"meta_description,omitempty"`
-	MetaPublisher *string `json:"meta_publisher,omitempty"`
+	Slug             string            `json:"slug"`
+	Provider         NullableInt32     `json:"provider,omitempty"`
+	ProviderObj      *Provider         `json:"provider_obj,omitempty"`
+	LaunchUrl        NullableString    `json:"launch_url"`
+	MetaLaunchUrl    *string           `json:"meta_launch_url,omitempty"`
+	MetaIcon         NullableString    `json:"meta_icon"`
+	MetaDescription  *string           `json:"meta_description,omitempty"`
+	MetaPublisher    *string           `json:"meta_publisher,omitempty"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 }
 
@@ -67,7 +67,7 @@ func (o *Application) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *Application) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -91,7 +91,7 @@ func (o *Application) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Application) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -115,7 +115,7 @@ func (o *Application) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value
 // and a boolean to check if the value has been set.
 func (o *Application) GetSlugOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Slug, true
@@ -139,7 +139,7 @@ func (o *Application) GetProvider() int32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Application) GetProviderOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Provider.Get(), o.Provider.IsSet()
@@ -158,6 +158,7 @@ func (o *Application) HasProvider() bool {
 func (o *Application) SetProvider(v int32) {
 	o.Provider.Set(&v)
 }
+
 // SetProviderNil sets the value for Provider to be an explicit nil
 func (o *Application) SetProviderNil() {
 	o.Provider.Set(nil)
@@ -215,7 +216,7 @@ func (o *Application) GetLaunchUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Application) GetLaunchUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.LaunchUrl.Get(), o.LaunchUrl.IsSet()
@@ -273,7 +274,7 @@ func (o *Application) GetMetaIcon() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Application) GetMetaIconOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.MetaIcon.Get(), o.MetaIcon.IsSet()
@@ -453,5 +454,3 @@ func (v *NullableApplication) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

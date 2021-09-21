@@ -58,7 +58,7 @@ func (o *NotificationRuleRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *NotificationRuleRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -82,7 +82,7 @@ func (o *NotificationRuleRequest) GetTransports() []string {
 // GetTransportsOk returns a tuple with the Transports field value
 // and a boolean to check if the value has been set.
 func (o *NotificationRuleRequest) GetTransportsOk() (*[]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Transports, true
@@ -138,7 +138,7 @@ func (o *NotificationRuleRequest) GetGroup() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NotificationRuleRequest) GetGroupOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Group.Get(), o.Group.IsSet()
@@ -157,6 +157,7 @@ func (o *NotificationRuleRequest) HasGroup() bool {
 func (o *NotificationRuleRequest) SetGroup(v string) {
 	o.Group.Set(&v)
 }
+
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *NotificationRuleRequest) SetGroupNil() {
 	o.Group.Set(nil)
@@ -219,5 +220,3 @@ func (v *NullableNotificationRuleRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

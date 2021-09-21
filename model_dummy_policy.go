@@ -17,17 +17,17 @@ import (
 
 // DummyPolicy Dummy Policy Serializer
 type DummyPolicy struct {
-	Pk string `json:"pk"`
+	Pk   string         `json:"pk"`
 	Name NullableString `json:"name,omitempty"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool `json:"execution_logging,omitempty"`
-	Component string `json:"component"`
-	VerboseName string `json:"verbose_name"`
+	ExecutionLogging  *bool  `json:"execution_logging,omitempty"`
+	Component         string `json:"component"`
+	VerboseName       string `json:"verbose_name"`
 	VerboseNamePlural string `json:"verbose_name_plural"`
-	BoundTo int32 `json:"bound_to"`
-	Result *bool `json:"result,omitempty"`
-	WaitMin *int32 `json:"wait_min,omitempty"`
-	WaitMax *int32 `json:"wait_max,omitempty"`
+	BoundTo           int32  `json:"bound_to"`
+	Result            *bool  `json:"result,omitempty"`
+	WaitMin           *int32 `json:"wait_min,omitempty"`
+	WaitMax           *int32 `json:"wait_max,omitempty"`
 }
 
 // NewDummyPolicy instantiates a new DummyPolicy object
@@ -65,7 +65,7 @@ func (o *DummyPolicy) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *DummyPolicy) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -89,7 +89,7 @@ func (o *DummyPolicy) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DummyPolicy) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -108,6 +108,7 @@ func (o *DummyPolicy) HasName() bool {
 func (o *DummyPolicy) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DummyPolicy) SetNameNil() {
 	o.Name.Set(nil)
@@ -163,7 +164,7 @@ func (o *DummyPolicy) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *DummyPolicy) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -187,7 +188,7 @@ func (o *DummyPolicy) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *DummyPolicy) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -211,7 +212,7 @@ func (o *DummyPolicy) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *DummyPolicy) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -235,7 +236,7 @@ func (o *DummyPolicy) GetBoundTo() int32 {
 // GetBoundToOk returns a tuple with the BoundTo field value
 // and a boolean to check if the value has been set.
 func (o *DummyPolicy) GetBoundToOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BoundTo, true
@@ -412,5 +413,3 @@ func (v *NullableDummyPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

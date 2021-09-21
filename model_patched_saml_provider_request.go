@@ -19,9 +19,9 @@ import (
 type PatchedSAMLProviderRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string `json:"authorization_flow,omitempty"`
-	PropertyMappings *[]string `json:"property_mappings,omitempty"`
-	AcsUrl *string `json:"acs_url,omitempty"`
+	AuthorizationFlow *string   `json:"authorization_flow,omitempty"`
+	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
+	AcsUrl            *string   `json:"acs_url,omitempty"`
 	// Value of the audience restriction field of the asseration. When left empty, no audience restriction will be added.
 	Audience *string `json:"audience,omitempty"`
 	// Also known as EntityID
@@ -33,8 +33,8 @@ type PatchedSAMLProviderRequest struct {
 	// Session not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	SessionValidNotOnOrAfter *string `json:"session_valid_not_on_or_after,omitempty"`
 	// Configure how the NameID value will be created. When left empty, the NameIDPolicy of the incoming request will be considered
-	NameIdMapping NullableString `json:"name_id_mapping,omitempty"`
-	DigestAlgorithm *DigestAlgorithmEnum `json:"digest_algorithm,omitempty"`
+	NameIdMapping      NullableString          `json:"name_id_mapping,omitempty"`
+	DigestAlgorithm    *DigestAlgorithmEnum    `json:"digest_algorithm,omitempty"`
 	SignatureAlgorithm *SignatureAlgorithmEnum `json:"signature_algorithm,omitempty"`
 	// Keypair used to sign outgoing Responses going to the Service Provider.
 	SigningKp NullableString `json:"signing_kp,omitempty"`
@@ -362,7 +362,7 @@ func (o *PatchedSAMLProviderRequest) GetNameIdMapping() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedSAMLProviderRequest) GetNameIdMappingOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.NameIdMapping.Get(), o.NameIdMapping.IsSet()
@@ -381,6 +381,7 @@ func (o *PatchedSAMLProviderRequest) HasNameIdMapping() bool {
 func (o *PatchedSAMLProviderRequest) SetNameIdMapping(v string) {
 	o.NameIdMapping.Set(&v)
 }
+
 // SetNameIdMappingNil sets the value for NameIdMapping to be an explicit nil
 func (o *PatchedSAMLProviderRequest) SetNameIdMappingNil() {
 	o.NameIdMapping.Set(nil)
@@ -468,7 +469,7 @@ func (o *PatchedSAMLProviderRequest) GetSigningKp() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedSAMLProviderRequest) GetSigningKpOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SigningKp.Get(), o.SigningKp.IsSet()
@@ -487,6 +488,7 @@ func (o *PatchedSAMLProviderRequest) HasSigningKp() bool {
 func (o *PatchedSAMLProviderRequest) SetSigningKp(v string) {
 	o.SigningKp.Set(&v)
 }
+
 // SetSigningKpNil sets the value for SigningKp to be an explicit nil
 func (o *PatchedSAMLProviderRequest) SetSigningKpNil() {
 	o.SigningKp.Set(nil)
@@ -510,7 +512,7 @@ func (o *PatchedSAMLProviderRequest) GetVerificationKp() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedSAMLProviderRequest) GetVerificationKpOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.VerificationKp.Get(), o.VerificationKp.IsSet()
@@ -529,6 +531,7 @@ func (o *PatchedSAMLProviderRequest) HasVerificationKp() bool {
 func (o *PatchedSAMLProviderRequest) SetVerificationKp(v string) {
 	o.VerificationKp.Set(&v)
 }
+
 // SetVerificationKpNil sets the value for VerificationKp to be an explicit nil
 func (o *PatchedSAMLProviderRequest) SetVerificationKpNil() {
 	o.VerificationKp.Set(nil)
@@ -656,5 +659,3 @@ func (v *NullablePatchedSAMLProviderRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

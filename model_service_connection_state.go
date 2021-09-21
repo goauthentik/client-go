@@ -17,7 +17,7 @@ import (
 
 // ServiceConnectionState Serializer for Service connection state
 type ServiceConnectionState struct {
-	Healthy bool `json:"healthy"`
+	Healthy bool   `json:"healthy"`
 	Version string `json:"version"`
 }
 
@@ -53,7 +53,7 @@ func (o *ServiceConnectionState) GetHealthy() bool {
 // GetHealthyOk returns a tuple with the Healthy field value
 // and a boolean to check if the value has been set.
 func (o *ServiceConnectionState) GetHealthyOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Healthy, true
@@ -77,7 +77,7 @@ func (o *ServiceConnectionState) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value
 // and a boolean to check if the value has been set.
 func (o *ServiceConnectionState) GetVersionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Version, true
@@ -134,5 +134,3 @@ func (v *NullableServiceConnectionState) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

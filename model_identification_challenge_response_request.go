@@ -17,9 +17,9 @@ import (
 
 // IdentificationChallengeResponseRequest Identification challenge
 type IdentificationChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
-	UidField string `json:"uid_field"`
-	Password NullableString `json:"password,omitempty"`
+	Component *string        `json:"component,omitempty"`
+	UidField  string         `json:"uid_field"`
+	Password  NullableString `json:"password,omitempty"`
 }
 
 // NewIdentificationChallengeResponseRequest instantiates a new IdentificationChallengeResponseRequest object
@@ -89,7 +89,7 @@ func (o *IdentificationChallengeResponseRequest) GetUidField() string {
 // GetUidFieldOk returns a tuple with the UidField field value
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallengeResponseRequest) GetUidFieldOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.UidField, true
@@ -113,7 +113,7 @@ func (o *IdentificationChallengeResponseRequest) GetPassword() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentificationChallengeResponseRequest) GetPasswordOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Password.Get(), o.Password.IsSet()
@@ -132,6 +132,7 @@ func (o *IdentificationChallengeResponseRequest) HasPassword() bool {
 func (o *IdentificationChallengeResponseRequest) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *IdentificationChallengeResponseRequest) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -191,5 +192,3 @@ func (v *NullableIdentificationChallengeResponseRequest) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

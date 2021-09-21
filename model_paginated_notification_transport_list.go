@@ -18,7 +18,7 @@ import (
 // PaginatedNotificationTransportList struct for PaginatedNotificationTransportList
 type PaginatedNotificationTransportList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []NotificationTransport `json:"results"`
+	Results    []NotificationTransport            `json:"results"`
 }
 
 // NewPaginatedNotificationTransportList instantiates a new PaginatedNotificationTransportList object
@@ -53,7 +53,7 @@ func (o *PaginatedNotificationTransportList) GetPagination() PaginatedApplicatio
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedNotificationTransportList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedNotificationTransportList) GetResults() []NotificationTranspor
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedNotificationTransportList) GetResultsOk() (*[]NotificationTransport, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedNotificationTransportList) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

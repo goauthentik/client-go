@@ -17,9 +17,9 @@ import (
 
 // UserOAuthSourceConnection OAuth Source Serializer
 type UserOAuthSourceConnection struct {
-	Pk int32 `json:"pk"`
-	User int32 `json:"user"`
-	Source string `json:"source"`
+	Pk         int32  `json:"pk"`
+	User       int32  `json:"user"`
+	Source     string `json:"source"`
 	Identifier string `json:"identifier"`
 }
 
@@ -57,7 +57,7 @@ func (o *UserOAuthSourceConnection) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *UserOAuthSourceConnection) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -81,7 +81,7 @@ func (o *UserOAuthSourceConnection) GetUser() int32 {
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
 func (o *UserOAuthSourceConnection) GetUserOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.User, true
@@ -105,7 +105,7 @@ func (o *UserOAuthSourceConnection) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
 func (o *UserOAuthSourceConnection) GetSourceOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Source, true
@@ -129,7 +129,7 @@ func (o *UserOAuthSourceConnection) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value
 // and a boolean to check if the value has been set.
 func (o *UserOAuthSourceConnection) GetIdentifierOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Identifier, true
@@ -192,5 +192,3 @@ func (v *NullableUserOAuthSourceConnection) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

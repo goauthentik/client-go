@@ -18,9 +18,9 @@ import (
 
 // UserConsent UserConsent Serializer
 type UserConsent struct {
-	Pk int32 `json:"pk"`
-	Expires *time.Time `json:"expires,omitempty"`
-	User User `json:"user"`
+	Pk          int32       `json:"pk"`
+	Expires     *time.Time  `json:"expires,omitempty"`
+	User        User        `json:"user"`
 	Application Application `json:"application"`
 }
 
@@ -57,7 +57,7 @@ func (o *UserConsent) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *UserConsent) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -113,7 +113,7 @@ func (o *UserConsent) GetUser() User {
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
 func (o *UserConsent) GetUserOk() (*User, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.User, true
@@ -137,7 +137,7 @@ func (o *UserConsent) GetApplication() Application {
 // GetApplicationOk returns a tuple with the Application field value
 // and a boolean to check if the value has been set.
 func (o *UserConsent) GetApplicationOk() (*Application, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Application, true
@@ -200,5 +200,3 @@ func (v *NullableUserConsent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

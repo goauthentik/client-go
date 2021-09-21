@@ -18,7 +18,7 @@ import (
 // PaginatedSAMLSourceList struct for PaginatedSAMLSourceList
 type PaginatedSAMLSourceList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []SAMLSource `json:"results"`
+	Results    []SAMLSource                       `json:"results"`
 }
 
 // NewPaginatedSAMLSourceList instantiates a new PaginatedSAMLSourceList object
@@ -53,7 +53,7 @@ func (o *PaginatedSAMLSourceList) GetPagination() PaginatedApplicationListPagina
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedSAMLSourceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedSAMLSourceList) GetResults() []SAMLSource {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedSAMLSourceList) GetResultsOk() (*[]SAMLSource, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedSAMLSourceList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

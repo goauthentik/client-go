@@ -18,7 +18,7 @@ import (
 // PaginatedCertificateKeyPairList struct for PaginatedCertificateKeyPairList
 type PaginatedCertificateKeyPairList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []CertificateKeyPair `json:"results"`
+	Results    []CertificateKeyPair               `json:"results"`
 }
 
 // NewPaginatedCertificateKeyPairList instantiates a new PaginatedCertificateKeyPairList object
@@ -53,7 +53,7 @@ func (o *PaginatedCertificateKeyPairList) GetPagination() PaginatedApplicationLi
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedCertificateKeyPairList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedCertificateKeyPairList) GetResults() []CertificateKeyPair {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedCertificateKeyPairList) GetResultsOk() (*[]CertificateKeyPair, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedCertificateKeyPairList) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

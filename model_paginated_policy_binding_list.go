@@ -18,7 +18,7 @@ import (
 // PaginatedPolicyBindingList struct for PaginatedPolicyBindingList
 type PaginatedPolicyBindingList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []PolicyBinding `json:"results"`
+	Results    []PolicyBinding                    `json:"results"`
 }
 
 // NewPaginatedPolicyBindingList instantiates a new PaginatedPolicyBindingList object
@@ -53,7 +53,7 @@ func (o *PaginatedPolicyBindingList) GetPagination() PaginatedApplicationListPag
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedPolicyBindingList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedPolicyBindingList) GetResults() []PolicyBinding {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedPolicyBindingList) GetResultsOk() (*[]PolicyBinding, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedPolicyBindingList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

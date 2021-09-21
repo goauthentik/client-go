@@ -18,7 +18,7 @@ import (
 // PaginatedNotificationRuleList struct for PaginatedNotificationRuleList
 type PaginatedNotificationRuleList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []NotificationRule `json:"results"`
+	Results    []NotificationRule                 `json:"results"`
 }
 
 // NewPaginatedNotificationRuleList instantiates a new PaginatedNotificationRuleList object
@@ -53,7 +53,7 @@ func (o *PaginatedNotificationRuleList) GetPagination() PaginatedApplicationList
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedNotificationRuleList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedNotificationRuleList) GetResults() []NotificationRule {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedNotificationRuleList) GetResultsOk() (*[]NotificationRule, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedNotificationRuleList) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

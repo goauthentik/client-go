@@ -21,17 +21,17 @@ type PromptTypeEnum string
 
 // List of PromptTypeEnum
 const (
-	PROMPTTYPEENUM_TEXT PromptTypeEnum = "text"
-	PROMPTTYPEENUM_USERNAME PromptTypeEnum = "username"
-	PROMPTTYPEENUM_EMAIL PromptTypeEnum = "email"
-	PROMPTTYPEENUM_PASSWORD PromptTypeEnum = "password"
-	PROMPTTYPEENUM_NUMBER PromptTypeEnum = "number"
-	PROMPTTYPEENUM_CHECKBOX PromptTypeEnum = "checkbox"
-	PROMPTTYPEENUM_DATE PromptTypeEnum = "date"
+	PROMPTTYPEENUM_TEXT      PromptTypeEnum = "text"
+	PROMPTTYPEENUM_USERNAME  PromptTypeEnum = "username"
+	PROMPTTYPEENUM_EMAIL     PromptTypeEnum = "email"
+	PROMPTTYPEENUM_PASSWORD  PromptTypeEnum = "password"
+	PROMPTTYPEENUM_NUMBER    PromptTypeEnum = "number"
+	PROMPTTYPEENUM_CHECKBOX  PromptTypeEnum = "checkbox"
+	PROMPTTYPEENUM_DATE      PromptTypeEnum = "date"
 	PROMPTTYPEENUM_DATE_TIME PromptTypeEnum = "date-time"
 	PROMPTTYPEENUM_SEPARATOR PromptTypeEnum = "separator"
-	PROMPTTYPEENUM_HIDDEN PromptTypeEnum = "hidden"
-	PROMPTTYPEENUM_STATIC PromptTypeEnum = "static"
+	PROMPTTYPEENUM_HIDDEN    PromptTypeEnum = "hidden"
+	PROMPTTYPEENUM_STATIC    PromptTypeEnum = "static"
 )
 
 // All allowed values of PromptTypeEnum enum
@@ -127,4 +127,3 @@ func (v *NullablePromptTypeEnum) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

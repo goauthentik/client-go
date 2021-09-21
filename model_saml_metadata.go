@@ -17,7 +17,7 @@ import (
 
 // SAMLMetadata SAML Provider Metadata serializer
 type SAMLMetadata struct {
-	Metadata string `json:"metadata"`
+	Metadata    string `json:"metadata"`
 	DownloadUrl string `json:"download_url"`
 }
 
@@ -53,7 +53,7 @@ func (o *SAMLMetadata) GetMetadata() string {
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
 func (o *SAMLMetadata) GetMetadataOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Metadata, true
@@ -77,7 +77,7 @@ func (o *SAMLMetadata) GetDownloadUrl() string {
 // GetDownloadUrlOk returns a tuple with the DownloadUrl field value
 // and a boolean to check if the value has been set.
 func (o *SAMLMetadata) GetDownloadUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.DownloadUrl, true
@@ -134,5 +134,3 @@ func (v *NullableSAMLMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

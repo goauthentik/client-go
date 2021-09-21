@@ -17,8 +17,8 @@ import (
 
 // PatchedAuthenticatorValidateStageRequest AuthenticatorValidateStage Serializer
 type PatchedAuthenticatorValidateStageRequest struct {
-	Name *string `json:"name,omitempty"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
+	Name                *string                  `json:"name,omitempty"`
+	FlowSet             *[]FlowRequest           `json:"flow_set,omitempty"`
 	NotConfiguredAction *NotConfiguredActionEnum `json:"not_configured_action,omitempty"`
 	// Device classes which can be used to authenticate
 	DeviceClasses *[]DeviceClassesEnum `json:"device_classes,omitempty"`
@@ -184,7 +184,7 @@ func (o *PatchedAuthenticatorValidateStageRequest) GetConfigurationStage() strin
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedAuthenticatorValidateStageRequest) GetConfigurationStageOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ConfigurationStage.Get(), o.ConfigurationStage.IsSet()
@@ -203,6 +203,7 @@ func (o *PatchedAuthenticatorValidateStageRequest) HasConfigurationStage() bool 
 func (o *PatchedAuthenticatorValidateStageRequest) SetConfigurationStage(v string) {
 	o.ConfigurationStage.Set(&v)
 }
+
 // SetConfigurationStageNil sets the value for ConfigurationStage to be an explicit nil
 func (o *PatchedAuthenticatorValidateStageRequest) SetConfigurationStageNil() {
 	o.ConfigurationStage.Set(nil)
@@ -268,5 +269,3 @@ func (v *NullablePatchedAuthenticatorValidateStageRequest) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

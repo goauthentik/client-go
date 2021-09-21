@@ -17,8 +17,8 @@ import (
 
 // UserServiceAccountRequest struct for UserServiceAccountRequest
 type UserServiceAccountRequest struct {
-	Name string `json:"name"`
-	CreateGroup *bool `json:"create_group,omitempty"`
+	Name        string `json:"name"`
+	CreateGroup *bool  `json:"create_group,omitempty"`
 }
 
 // NewUserServiceAccountRequest instantiates a new UserServiceAccountRequest object
@@ -56,7 +56,7 @@ func (o *UserServiceAccountRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *UserServiceAccountRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -145,5 +145,3 @@ func (v *NullableUserServiceAccountRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

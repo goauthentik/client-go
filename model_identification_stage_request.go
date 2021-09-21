@@ -17,7 +17,7 @@ import (
 
 // IdentificationStageRequest IdentificationStage Serializer
 type IdentificationStageRequest struct {
-	Name string `json:"name"`
+	Name    string         `json:"name"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// Fields of the user object to match against. (Hold shift to select multiple options)
 	UserFields *[]UserFieldsEnum `json:"user_fields,omitempty"`
@@ -66,7 +66,7 @@ func (o *IdentificationStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *IdentificationStageRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -154,7 +154,7 @@ func (o *IdentificationStageRequest) GetPasswordStage() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentificationStageRequest) GetPasswordStageOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.PasswordStage.Get(), o.PasswordStage.IsSet()
@@ -173,6 +173,7 @@ func (o *IdentificationStageRequest) HasPasswordStage() bool {
 func (o *IdentificationStageRequest) SetPasswordStage(v string) {
 	o.PasswordStage.Set(&v)
 }
+
 // SetPasswordStageNil sets the value for PasswordStage to be an explicit nil
 func (o *IdentificationStageRequest) SetPasswordStageNil() {
 	o.PasswordStage.Set(nil)
@@ -260,7 +261,7 @@ func (o *IdentificationStageRequest) GetEnrollmentFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentificationStageRequest) GetEnrollmentFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.EnrollmentFlow.Get(), o.EnrollmentFlow.IsSet()
@@ -279,6 +280,7 @@ func (o *IdentificationStageRequest) HasEnrollmentFlow() bool {
 func (o *IdentificationStageRequest) SetEnrollmentFlow(v string) {
 	o.EnrollmentFlow.Set(&v)
 }
+
 // SetEnrollmentFlowNil sets the value for EnrollmentFlow to be an explicit nil
 func (o *IdentificationStageRequest) SetEnrollmentFlowNil() {
 	o.EnrollmentFlow.Set(nil)
@@ -302,7 +304,7 @@ func (o *IdentificationStageRequest) GetRecoveryFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentificationStageRequest) GetRecoveryFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.RecoveryFlow.Get(), o.RecoveryFlow.IsSet()
@@ -321,6 +323,7 @@ func (o *IdentificationStageRequest) HasRecoveryFlow() bool {
 func (o *IdentificationStageRequest) SetRecoveryFlow(v string) {
 	o.RecoveryFlow.Set(&v)
 }
+
 // SetRecoveryFlowNil sets the value for RecoveryFlow to be an explicit nil
 func (o *IdentificationStageRequest) SetRecoveryFlowNil() {
 	o.RecoveryFlow.Set(nil)
@@ -430,5 +433,3 @@ func (v *NullableIdentificationStageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

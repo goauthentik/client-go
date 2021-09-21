@@ -17,16 +17,16 @@ import (
 
 // AuthenticatorDuoStage AuthenticatorDuoStage Serializer
 type AuthenticatorDuoStage struct {
-	Pk string `json:"pk"`
-	Name string `json:"name"`
-	Component string `json:"component"`
-	VerboseName string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
-	FlowSet *[]Flow `json:"flow_set,omitempty"`
+	Pk                string  `json:"pk"`
+	Name              string  `json:"name"`
+	Component         string  `json:"component"`
+	VerboseName       string  `json:"verbose_name"`
+	VerboseNamePlural string  `json:"verbose_name_plural"`
+	FlowSet           *[]Flow `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	ClientId string `json:"client_id"`
-	ApiHostname string `json:"api_hostname"`
+	ClientId      string         `json:"client_id"`
+	ApiHostname   string         `json:"api_hostname"`
 }
 
 // NewAuthenticatorDuoStage instantiates a new AuthenticatorDuoStage object
@@ -66,7 +66,7 @@ func (o *AuthenticatorDuoStage) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStage) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -90,7 +90,7 @@ func (o *AuthenticatorDuoStage) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStage) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -114,7 +114,7 @@ func (o *AuthenticatorDuoStage) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStage) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -138,7 +138,7 @@ func (o *AuthenticatorDuoStage) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStage) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -162,7 +162,7 @@ func (o *AuthenticatorDuoStage) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStage) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -218,7 +218,7 @@ func (o *AuthenticatorDuoStage) GetConfigureFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatorDuoStage) GetConfigureFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ConfigureFlow.Get(), o.ConfigureFlow.IsSet()
@@ -237,6 +237,7 @@ func (o *AuthenticatorDuoStage) HasConfigureFlow() bool {
 func (o *AuthenticatorDuoStage) SetConfigureFlow(v string) {
 	o.ConfigureFlow.Set(&v)
 }
+
 // SetConfigureFlowNil sets the value for ConfigureFlow to be an explicit nil
 func (o *AuthenticatorDuoStage) SetConfigureFlowNil() {
 	o.ConfigureFlow.Set(nil)
@@ -260,7 +261,7 @@ func (o *AuthenticatorDuoStage) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStage) GetClientIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ClientId, true
@@ -284,7 +285,7 @@ func (o *AuthenticatorDuoStage) GetApiHostname() string {
 // GetApiHostnameOk returns a tuple with the ApiHostname field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStage) GetApiHostnameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ApiHostname, true
@@ -362,5 +363,3 @@ func (v *NullableAuthenticatorDuoStage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,24 +17,24 @@ import (
 
 // LDAPProvider LDAPProvider Serializer
 type LDAPProvider struct {
-	Pk int32 `json:"pk"`
+	Pk   int32  `json:"pk"`
 	Name string `json:"name"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string `json:"authorization_flow"`
-	PropertyMappings *[]string `json:"property_mappings,omitempty"`
-	Component string `json:"component"`
+	AuthorizationFlow string    `json:"authorization_flow"`
+	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
+	Component         string    `json:"component"`
 	// Internal application name, used in URLs.
 	AssignedApplicationSlug string `json:"assigned_application_slug"`
 	// Application's display Name.
 	AssignedApplicationName string `json:"assigned_application_name"`
-	VerboseName string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
+	VerboseName             string `json:"verbose_name"`
+	VerboseNamePlural       string `json:"verbose_name_plural"`
 	// DN under which objects are accessible.
 	BaseDn *string `json:"base_dn,omitempty"`
 	// Users in this group can do search queries. If not set, every user can execute search queries.
-	SearchGroup NullableString `json:"search_group,omitempty"`
-	Certificate NullableString `json:"certificate,omitempty"`
-	TlsServerName *string `json:"tls_server_name,omitempty"`
+	SearchGroup   NullableString `json:"search_group,omitempty"`
+	Certificate   NullableString `json:"certificate,omitempty"`
+	TlsServerName *string        `json:"tls_server_name,omitempty"`
 	// The start for uidNumbers, this number is added to the user.Pk to make sure that the numbers aren't too low for POSIX users. Default is 2000 to ensure that we don't collide with local users uidNumber
 	UidStartNumber *int32 `json:"uid_start_number,omitempty"`
 	// The start for gidNumbers, this number is added to a number generated from the group.Pk to make sure that the numbers aren't too low for POSIX groups. Default is 4000 to ensure that we don't collide with local groups or users primary groups gidNumber
@@ -79,7 +79,7 @@ func (o *LDAPProvider) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *LDAPProvider) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -103,7 +103,7 @@ func (o *LDAPProvider) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *LDAPProvider) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -127,7 +127,7 @@ func (o *LDAPProvider) GetAuthorizationFlow() string {
 // GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value
 // and a boolean to check if the value has been set.
 func (o *LDAPProvider) GetAuthorizationFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AuthorizationFlow, true
@@ -183,7 +183,7 @@ func (o *LDAPProvider) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *LDAPProvider) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -207,7 +207,7 @@ func (o *LDAPProvider) GetAssignedApplicationSlug() string {
 // GetAssignedApplicationSlugOk returns a tuple with the AssignedApplicationSlug field value
 // and a boolean to check if the value has been set.
 func (o *LDAPProvider) GetAssignedApplicationSlugOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AssignedApplicationSlug, true
@@ -231,7 +231,7 @@ func (o *LDAPProvider) GetAssignedApplicationName() string {
 // GetAssignedApplicationNameOk returns a tuple with the AssignedApplicationName field value
 // and a boolean to check if the value has been set.
 func (o *LDAPProvider) GetAssignedApplicationNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AssignedApplicationName, true
@@ -255,7 +255,7 @@ func (o *LDAPProvider) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *LDAPProvider) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -279,7 +279,7 @@ func (o *LDAPProvider) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *LDAPProvider) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -335,7 +335,7 @@ func (o *LDAPProvider) GetSearchGroup() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LDAPProvider) GetSearchGroupOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SearchGroup.Get(), o.SearchGroup.IsSet()
@@ -354,6 +354,7 @@ func (o *LDAPProvider) HasSearchGroup() bool {
 func (o *LDAPProvider) SetSearchGroup(v string) {
 	o.SearchGroup.Set(&v)
 }
+
 // SetSearchGroupNil sets the value for SearchGroup to be an explicit nil
 func (o *LDAPProvider) SetSearchGroupNil() {
 	o.SearchGroup.Set(nil)
@@ -377,7 +378,7 @@ func (o *LDAPProvider) GetCertificate() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LDAPProvider) GetCertificateOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Certificate.Get(), o.Certificate.IsSet()
@@ -396,6 +397,7 @@ func (o *LDAPProvider) HasCertificate() bool {
 func (o *LDAPProvider) SetCertificate(v string) {
 	o.Certificate.Set(&v)
 }
+
 // SetCertificateNil sets the value for Certificate to be an explicit nil
 func (o *LDAPProvider) SetCertificateNil() {
 	o.Certificate.Set(nil)
@@ -587,5 +589,3 @@ func (v *NullableLDAPProvider) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

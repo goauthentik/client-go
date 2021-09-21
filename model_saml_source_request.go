@@ -20,12 +20,12 @@ type SAMLSourceRequest struct {
 	// Source's display Name.
 	Name string `json:"name"`
 	// Internal source name, used in URLs.
-	Slug string `json:"slug"`
-	Enabled *bool `json:"enabled,omitempty"`
+	Slug    string `json:"slug"`
+	Enabled *bool  `json:"enabled,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
-	EnrollmentFlow NullableString `json:"enrollment_flow,omitempty"`
+	EnrollmentFlow   NullableString    `json:"enrollment_flow,omitempty"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
@@ -41,10 +41,10 @@ type SAMLSourceRequest struct {
 	AllowIdpInitiated *bool `json:"allow_idp_initiated,omitempty"`
 	// NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.
 	NameIdPolicy *NameIdPolicyEnum `json:"name_id_policy,omitempty"`
-	BindingType *BindingTypeEnum `json:"binding_type,omitempty"`
+	BindingType  *BindingTypeEnum  `json:"binding_type,omitempty"`
 	// Keypair which is used to sign outgoing requests. Leave empty to disable signing.
-	SigningKp NullableString `json:"signing_kp,omitempty"`
-	DigestAlgorithm *DigestAlgorithmEnum `json:"digest_algorithm,omitempty"`
+	SigningKp          NullableString          `json:"signing_kp,omitempty"`
+	DigestAlgorithm    *DigestAlgorithmEnum    `json:"digest_algorithm,omitempty"`
 	SignatureAlgorithm *SignatureAlgorithmEnum `json:"signature_algorithm,omitempty"`
 	// Time offset when temporary users should be deleted. This only applies if your IDP uses the NameID Format 'transient', and the user doesn't log out manually. (Format: hours=1;minutes=2;seconds=3).
 	TemporaryUserDeleteAfter *string `json:"temporary_user_delete_after,omitempty"`
@@ -84,7 +84,7 @@ func (o *SAMLSourceRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *SAMLSourceRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -108,7 +108,7 @@ func (o *SAMLSourceRequest) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value
 // and a boolean to check if the value has been set.
 func (o *SAMLSourceRequest) GetSlugOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Slug, true
@@ -164,7 +164,7 @@ func (o *SAMLSourceRequest) GetAuthenticationFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SAMLSourceRequest) GetAuthenticationFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AuthenticationFlow.Get(), o.AuthenticationFlow.IsSet()
@@ -183,6 +183,7 @@ func (o *SAMLSourceRequest) HasAuthenticationFlow() bool {
 func (o *SAMLSourceRequest) SetAuthenticationFlow(v string) {
 	o.AuthenticationFlow.Set(&v)
 }
+
 // SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
 func (o *SAMLSourceRequest) SetAuthenticationFlowNil() {
 	o.AuthenticationFlow.Set(nil)
@@ -206,7 +207,7 @@ func (o *SAMLSourceRequest) GetEnrollmentFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SAMLSourceRequest) GetEnrollmentFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.EnrollmentFlow.Get(), o.EnrollmentFlow.IsSet()
@@ -225,6 +226,7 @@ func (o *SAMLSourceRequest) HasEnrollmentFlow() bool {
 func (o *SAMLSourceRequest) SetEnrollmentFlow(v string) {
 	o.EnrollmentFlow.Set(&v)
 }
+
 // SetEnrollmentFlowNil sets the value for EnrollmentFlow to be an explicit nil
 func (o *SAMLSourceRequest) SetEnrollmentFlowNil() {
 	o.EnrollmentFlow.Set(nil)
@@ -312,7 +314,7 @@ func (o *SAMLSourceRequest) GetPreAuthenticationFlow() string {
 // GetPreAuthenticationFlowOk returns a tuple with the PreAuthenticationFlow field value
 // and a boolean to check if the value has been set.
 func (o *SAMLSourceRequest) GetPreAuthenticationFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PreAuthenticationFlow, true
@@ -368,7 +370,7 @@ func (o *SAMLSourceRequest) GetSsoUrl() string {
 // GetSsoUrlOk returns a tuple with the SsoUrl field value
 // and a boolean to check if the value has been set.
 func (o *SAMLSourceRequest) GetSsoUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.SsoUrl, true
@@ -392,7 +394,7 @@ func (o *SAMLSourceRequest) GetSloUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SAMLSourceRequest) GetSloUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SloUrl.Get(), o.SloUrl.IsSet()
@@ -411,6 +413,7 @@ func (o *SAMLSourceRequest) HasSloUrl() bool {
 func (o *SAMLSourceRequest) SetSloUrl(v string) {
 	o.SloUrl.Set(&v)
 }
+
 // SetSloUrlNil sets the value for SloUrl to be an explicit nil
 func (o *SAMLSourceRequest) SetSloUrlNil() {
 	o.SloUrl.Set(nil)
@@ -530,7 +533,7 @@ func (o *SAMLSourceRequest) GetSigningKp() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SAMLSourceRequest) GetSigningKpOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SigningKp.Get(), o.SigningKp.IsSet()
@@ -549,6 +552,7 @@ func (o *SAMLSourceRequest) HasSigningKp() bool {
 func (o *SAMLSourceRequest) SetSigningKp(v string) {
 	o.SigningKp.Set(&v)
 }
+
 // SetSigningKpNil sets the value for SigningKp to be an explicit nil
 func (o *SAMLSourceRequest) SetSigningKpNil() {
 	o.SigningKp.Set(nil)
@@ -749,5 +753,3 @@ func (v *NullableSAMLSourceRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,9 +17,9 @@ import (
 
 // CertificateGenerationRequest Certificate generation parameters
 type CertificateGenerationRequest struct {
-	CommonName string `json:"common_name"`
+	CommonName     string  `json:"common_name"`
 	SubjectAltName *string `json:"subject_alt_name,omitempty"`
-	ValidityDays int32 `json:"validity_days"`
+	ValidityDays   int32   `json:"validity_days"`
 }
 
 // NewCertificateGenerationRequest instantiates a new CertificateGenerationRequest object
@@ -54,7 +54,7 @@ func (o *CertificateGenerationRequest) GetCommonName() string {
 // GetCommonNameOk returns a tuple with the CommonName field value
 // and a boolean to check if the value has been set.
 func (o *CertificateGenerationRequest) GetCommonNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CommonName, true
@@ -110,7 +110,7 @@ func (o *CertificateGenerationRequest) GetValidityDays() int32 {
 // GetValidityDaysOk returns a tuple with the ValidityDays field value
 // and a boolean to check if the value has been set.
 func (o *CertificateGenerationRequest) GetValidityDaysOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ValidityDays, true
@@ -170,5 +170,3 @@ func (v *NullableCertificateGenerationRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,11 +17,11 @@ import (
 
 // AccessDeniedChallenge Challenge when a flow's active stage calls `stage_invalid()`.
 type AccessDeniedChallenge struct {
-	Type ChallengeChoices `json:"type"`
-	FlowInfo *ContextualFlowInfo `json:"flow_info,omitempty"`
-	Component *string `json:"component,omitempty"`
+	Type           ChallengeChoices          `json:"type"`
+	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	ErrorMessage *string `json:"error_message,omitempty"`
+	ErrorMessage   *string                   `json:"error_message,omitempty"`
 }
 
 // NewAccessDeniedChallenge instantiates a new AccessDeniedChallenge object
@@ -59,7 +59,7 @@ func (o *AccessDeniedChallenge) GetType() ChallengeChoices {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *AccessDeniedChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -253,5 +253,3 @@ func (v *NullableAccessDeniedChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

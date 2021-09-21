@@ -18,7 +18,7 @@ import (
 // PaginatedLDAPSourceList struct for PaginatedLDAPSourceList
 type PaginatedLDAPSourceList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []LDAPSource `json:"results"`
+	Results    []LDAPSource                       `json:"results"`
 }
 
 // NewPaginatedLDAPSourceList instantiates a new PaginatedLDAPSourceList object
@@ -53,7 +53,7 @@ func (o *PaginatedLDAPSourceList) GetPagination() PaginatedApplicationListPagina
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedLDAPSourceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedLDAPSourceList) GetResults() []LDAPSource {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedLDAPSourceList) GetResultsOk() (*[]LDAPSource, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedLDAPSourceList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

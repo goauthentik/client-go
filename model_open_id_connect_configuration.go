@@ -17,16 +17,16 @@ import (
 
 // OpenIDConnectConfiguration rest_framework Serializer for OIDC Configuration
 type OpenIDConnectConfiguration struct {
-	Issuer string `json:"issuer"`
-	AuthorizationEndpoint string `json:"authorization_endpoint"`
-	TokenEndpoint string `json:"token_endpoint"`
-	UserinfoEndpoint string `json:"userinfo_endpoint"`
-	EndSessionEndpoint string `json:"end_session_endpoint"`
-	IntrospectionEndpoint string `json:"introspection_endpoint"`
-	JwksUri string `json:"jwks_uri"`
-	ResponseTypesSupported []string `json:"response_types_supported"`
-	IdTokenSigningAlgValuesSupported []string `json:"id_token_signing_alg_values_supported"`
-	SubjectTypesSupported []string `json:"subject_types_supported"`
+	Issuer                            string   `json:"issuer"`
+	AuthorizationEndpoint             string   `json:"authorization_endpoint"`
+	TokenEndpoint                     string   `json:"token_endpoint"`
+	UserinfoEndpoint                  string   `json:"userinfo_endpoint"`
+	EndSessionEndpoint                string   `json:"end_session_endpoint"`
+	IntrospectionEndpoint             string   `json:"introspection_endpoint"`
+	JwksUri                           string   `json:"jwks_uri"`
+	ResponseTypesSupported            []string `json:"response_types_supported"`
+	IdTokenSigningAlgValuesSupported  []string `json:"id_token_signing_alg_values_supported"`
+	SubjectTypesSupported             []string `json:"subject_types_supported"`
 	TokenEndpointAuthMethodsSupported []string `json:"token_endpoint_auth_methods_supported"`
 }
 
@@ -71,7 +71,7 @@ func (o *OpenIDConnectConfiguration) GetIssuer() string {
 // GetIssuerOk returns a tuple with the Issuer field value
 // and a boolean to check if the value has been set.
 func (o *OpenIDConnectConfiguration) GetIssuerOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Issuer, true
@@ -95,7 +95,7 @@ func (o *OpenIDConnectConfiguration) GetAuthorizationEndpoint() string {
 // GetAuthorizationEndpointOk returns a tuple with the AuthorizationEndpoint field value
 // and a boolean to check if the value has been set.
 func (o *OpenIDConnectConfiguration) GetAuthorizationEndpointOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AuthorizationEndpoint, true
@@ -119,7 +119,7 @@ func (o *OpenIDConnectConfiguration) GetTokenEndpoint() string {
 // GetTokenEndpointOk returns a tuple with the TokenEndpoint field value
 // and a boolean to check if the value has been set.
 func (o *OpenIDConnectConfiguration) GetTokenEndpointOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TokenEndpoint, true
@@ -143,7 +143,7 @@ func (o *OpenIDConnectConfiguration) GetUserinfoEndpoint() string {
 // GetUserinfoEndpointOk returns a tuple with the UserinfoEndpoint field value
 // and a boolean to check if the value has been set.
 func (o *OpenIDConnectConfiguration) GetUserinfoEndpointOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.UserinfoEndpoint, true
@@ -167,7 +167,7 @@ func (o *OpenIDConnectConfiguration) GetEndSessionEndpoint() string {
 // GetEndSessionEndpointOk returns a tuple with the EndSessionEndpoint field value
 // and a boolean to check if the value has been set.
 func (o *OpenIDConnectConfiguration) GetEndSessionEndpointOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.EndSessionEndpoint, true
@@ -191,7 +191,7 @@ func (o *OpenIDConnectConfiguration) GetIntrospectionEndpoint() string {
 // GetIntrospectionEndpointOk returns a tuple with the IntrospectionEndpoint field value
 // and a boolean to check if the value has been set.
 func (o *OpenIDConnectConfiguration) GetIntrospectionEndpointOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IntrospectionEndpoint, true
@@ -215,7 +215,7 @@ func (o *OpenIDConnectConfiguration) GetJwksUri() string {
 // GetJwksUriOk returns a tuple with the JwksUri field value
 // and a boolean to check if the value has been set.
 func (o *OpenIDConnectConfiguration) GetJwksUriOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.JwksUri, true
@@ -239,7 +239,7 @@ func (o *OpenIDConnectConfiguration) GetResponseTypesSupported() []string {
 // GetResponseTypesSupportedOk returns a tuple with the ResponseTypesSupported field value
 // and a boolean to check if the value has been set.
 func (o *OpenIDConnectConfiguration) GetResponseTypesSupportedOk() (*[]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ResponseTypesSupported, true
@@ -263,7 +263,7 @@ func (o *OpenIDConnectConfiguration) GetIdTokenSigningAlgValuesSupported() []str
 // GetIdTokenSigningAlgValuesSupportedOk returns a tuple with the IdTokenSigningAlgValuesSupported field value
 // and a boolean to check if the value has been set.
 func (o *OpenIDConnectConfiguration) GetIdTokenSigningAlgValuesSupportedOk() (*[]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IdTokenSigningAlgValuesSupported, true
@@ -287,7 +287,7 @@ func (o *OpenIDConnectConfiguration) GetSubjectTypesSupported() []string {
 // GetSubjectTypesSupportedOk returns a tuple with the SubjectTypesSupported field value
 // and a boolean to check if the value has been set.
 func (o *OpenIDConnectConfiguration) GetSubjectTypesSupportedOk() (*[]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.SubjectTypesSupported, true
@@ -311,7 +311,7 @@ func (o *OpenIDConnectConfiguration) GetTokenEndpointAuthMethodsSupported() []st
 // GetTokenEndpointAuthMethodsSupportedOk returns a tuple with the TokenEndpointAuthMethodsSupported field value
 // and a boolean to check if the value has been set.
 func (o *OpenIDConnectConfiguration) GetTokenEndpointAuthMethodsSupportedOk() (*[]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TokenEndpointAuthMethodsSupported, true
@@ -395,5 +395,3 @@ func (v *NullableOpenIDConnectConfiguration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

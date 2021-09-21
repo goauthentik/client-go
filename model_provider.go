@@ -17,18 +17,18 @@ import (
 
 // Provider Provider Serializer
 type Provider struct {
-	Pk int32 `json:"pk"`
+	Pk   int32  `json:"pk"`
 	Name string `json:"name"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string `json:"authorization_flow"`
-	PropertyMappings *[]string `json:"property_mappings,omitempty"`
-	Component string `json:"component"`
+	AuthorizationFlow string    `json:"authorization_flow"`
+	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
+	Component         string    `json:"component"`
 	// Internal application name, used in URLs.
 	AssignedApplicationSlug string `json:"assigned_application_slug"`
 	// Application's display Name.
 	AssignedApplicationName string `json:"assigned_application_name"`
-	VerboseName string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
+	VerboseName             string `json:"verbose_name"`
+	VerboseNamePlural       string `json:"verbose_name_plural"`
 }
 
 // NewProvider instantiates a new Provider object
@@ -69,7 +69,7 @@ func (o *Provider) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *Provider) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -93,7 +93,7 @@ func (o *Provider) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Provider) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -117,7 +117,7 @@ func (o *Provider) GetAuthorizationFlow() string {
 // GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value
 // and a boolean to check if the value has been set.
 func (o *Provider) GetAuthorizationFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AuthorizationFlow, true
@@ -173,7 +173,7 @@ func (o *Provider) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *Provider) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -197,7 +197,7 @@ func (o *Provider) GetAssignedApplicationSlug() string {
 // GetAssignedApplicationSlugOk returns a tuple with the AssignedApplicationSlug field value
 // and a boolean to check if the value has been set.
 func (o *Provider) GetAssignedApplicationSlugOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AssignedApplicationSlug, true
@@ -221,7 +221,7 @@ func (o *Provider) GetAssignedApplicationName() string {
 // GetAssignedApplicationNameOk returns a tuple with the AssignedApplicationName field value
 // and a boolean to check if the value has been set.
 func (o *Provider) GetAssignedApplicationNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AssignedApplicationName, true
@@ -245,7 +245,7 @@ func (o *Provider) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *Provider) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -269,7 +269,7 @@ func (o *Provider) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *Provider) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -347,5 +347,3 @@ func (v *NullableProvider) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

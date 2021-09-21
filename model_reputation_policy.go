@@ -17,17 +17,17 @@ import (
 
 // ReputationPolicy Reputation Policy Serializer
 type ReputationPolicy struct {
-	Pk string `json:"pk"`
+	Pk   string         `json:"pk"`
 	Name NullableString `json:"name,omitempty"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool `json:"execution_logging,omitempty"`
-	Component string `json:"component"`
-	VerboseName string `json:"verbose_name"`
+	ExecutionLogging  *bool  `json:"execution_logging,omitempty"`
+	Component         string `json:"component"`
+	VerboseName       string `json:"verbose_name"`
 	VerboseNamePlural string `json:"verbose_name_plural"`
-	BoundTo int32 `json:"bound_to"`
-	CheckIp *bool `json:"check_ip,omitempty"`
-	CheckUsername *bool `json:"check_username,omitempty"`
-	Threshold *int32 `json:"threshold,omitempty"`
+	BoundTo           int32  `json:"bound_to"`
+	CheckIp           *bool  `json:"check_ip,omitempty"`
+	CheckUsername     *bool  `json:"check_username,omitempty"`
+	Threshold         *int32 `json:"threshold,omitempty"`
 }
 
 // NewReputationPolicy instantiates a new ReputationPolicy object
@@ -65,7 +65,7 @@ func (o *ReputationPolicy) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *ReputationPolicy) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -89,7 +89,7 @@ func (o *ReputationPolicy) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ReputationPolicy) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -108,6 +108,7 @@ func (o *ReputationPolicy) HasName() bool {
 func (o *ReputationPolicy) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ReputationPolicy) SetNameNil() {
 	o.Name.Set(nil)
@@ -163,7 +164,7 @@ func (o *ReputationPolicy) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *ReputationPolicy) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -187,7 +188,7 @@ func (o *ReputationPolicy) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *ReputationPolicy) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -211,7 +212,7 @@ func (o *ReputationPolicy) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *ReputationPolicy) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -235,7 +236,7 @@ func (o *ReputationPolicy) GetBoundTo() int32 {
 // GetBoundToOk returns a tuple with the BoundTo field value
 // and a boolean to check if the value has been set.
 func (o *ReputationPolicy) GetBoundToOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BoundTo, true
@@ -412,5 +413,3 @@ func (v *NullableReputationPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

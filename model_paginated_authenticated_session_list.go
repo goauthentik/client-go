@@ -18,7 +18,7 @@ import (
 // PaginatedAuthenticatedSessionList struct for PaginatedAuthenticatedSessionList
 type PaginatedAuthenticatedSessionList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []AuthenticatedSession `json:"results"`
+	Results    []AuthenticatedSession             `json:"results"`
 }
 
 // NewPaginatedAuthenticatedSessionList instantiates a new PaginatedAuthenticatedSessionList object
@@ -53,7 +53,7 @@ func (o *PaginatedAuthenticatedSessionList) GetPagination() PaginatedApplication
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedAuthenticatedSessionList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedAuthenticatedSessionList) GetResults() []AuthenticatedSession 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedAuthenticatedSessionList) GetResultsOk() (*[]AuthenticatedSession, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedAuthenticatedSessionList) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

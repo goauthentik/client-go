@@ -18,10 +18,10 @@ import (
 
 // Invitation Invitation Serializer
 type Invitation struct {
-	Pk string `json:"pk"`
-	Expires *time.Time `json:"expires,omitempty"`
+	Pk        string                  `json:"pk"`
+	Expires   *time.Time              `json:"expires,omitempty"`
 	FixedData *map[string]interface{} `json:"fixed_data,omitempty"`
-	CreatedBy User `json:"created_by"`
+	CreatedBy User                    `json:"created_by"`
 	// When enabled, the invitation will be deleted after usage.
 	SingleUse *bool `json:"single_use,omitempty"`
 }
@@ -58,7 +58,7 @@ func (o *Invitation) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *Invitation) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -146,7 +146,7 @@ func (o *Invitation) GetCreatedBy() User {
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
 func (o *Invitation) GetCreatedByOk() (*User, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedBy, true
@@ -244,5 +244,3 @@ func (v *NullableInvitation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

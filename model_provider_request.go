@@ -19,8 +19,8 @@ import (
 type ProviderRequest struct {
 	Name string `json:"name"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string `json:"authorization_flow"`
-	PropertyMappings *[]string `json:"property_mappings,omitempty"`
+	AuthorizationFlow string    `json:"authorization_flow"`
+	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
 }
 
 // NewProviderRequest instantiates a new ProviderRequest object
@@ -55,7 +55,7 @@ func (o *ProviderRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ProviderRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -79,7 +79,7 @@ func (o *ProviderRequest) GetAuthorizationFlow() string {
 // GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value
 // and a boolean to check if the value has been set.
 func (o *ProviderRequest) GetAuthorizationFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AuthorizationFlow, true
@@ -171,5 +171,3 @@ func (v *NullableProviderRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

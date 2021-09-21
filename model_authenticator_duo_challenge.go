@@ -17,15 +17,15 @@ import (
 
 // AuthenticatorDuoChallenge Duo Challenge
 type AuthenticatorDuoChallenge struct {
-	Type ChallengeChoices `json:"type"`
-	FlowInfo *ContextualFlowInfo `json:"flow_info,omitempty"`
-	Component *string `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser string `json:"pending_user"`
-	PendingUserAvatar string `json:"pending_user_avatar"`
-	ActivationBarcode string `json:"activation_barcode"`
-	ActivationCode string `json:"activation_code"`
-	StageUuid string `json:"stage_uuid"`
+	Type              ChallengeChoices          `json:"type"`
+	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component         *string                   `json:"component,omitempty"`
+	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser       string                    `json:"pending_user"`
+	PendingUserAvatar string                    `json:"pending_user_avatar"`
+	ActivationBarcode string                    `json:"activation_barcode"`
+	ActivationCode    string                    `json:"activation_code"`
+	StageUuid         string                    `json:"stage_uuid"`
 }
 
 // NewAuthenticatorDuoChallenge instantiates a new AuthenticatorDuoChallenge object
@@ -68,7 +68,7 @@ func (o *AuthenticatorDuoChallenge) GetType() ChallengeChoices {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -188,7 +188,7 @@ func (o *AuthenticatorDuoChallenge) GetPendingUser() string {
 // GetPendingUserOk returns a tuple with the PendingUser field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoChallenge) GetPendingUserOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PendingUser, true
@@ -212,7 +212,7 @@ func (o *AuthenticatorDuoChallenge) GetPendingUserAvatar() string {
 // GetPendingUserAvatarOk returns a tuple with the PendingUserAvatar field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoChallenge) GetPendingUserAvatarOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PendingUserAvatar, true
@@ -236,7 +236,7 @@ func (o *AuthenticatorDuoChallenge) GetActivationBarcode() string {
 // GetActivationBarcodeOk returns a tuple with the ActivationBarcode field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoChallenge) GetActivationBarcodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ActivationBarcode, true
@@ -260,7 +260,7 @@ func (o *AuthenticatorDuoChallenge) GetActivationCode() string {
 // GetActivationCodeOk returns a tuple with the ActivationCode field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoChallenge) GetActivationCodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ActivationCode, true
@@ -284,7 +284,7 @@ func (o *AuthenticatorDuoChallenge) GetStageUuid() string {
 // GetStageUuidOk returns a tuple with the StageUuid field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoChallenge) GetStageUuidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.StageUuid, true
@@ -362,5 +362,3 @@ func (v *NullableAuthenticatorDuoChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

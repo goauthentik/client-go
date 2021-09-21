@@ -19,10 +19,10 @@ import (
 type ReputationPolicyRequest struct {
 	Name NullableString `json:"name,omitempty"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool `json:"execution_logging,omitempty"`
-	CheckIp *bool `json:"check_ip,omitempty"`
-	CheckUsername *bool `json:"check_username,omitempty"`
-	Threshold *int32 `json:"threshold,omitempty"`
+	ExecutionLogging *bool  `json:"execution_logging,omitempty"`
+	CheckIp          *bool  `json:"check_ip,omitempty"`
+	CheckUsername    *bool  `json:"check_username,omitempty"`
+	Threshold        *int32 `json:"threshold,omitempty"`
 }
 
 // NewReputationPolicyRequest instantiates a new ReputationPolicyRequest object
@@ -55,7 +55,7 @@ func (o *ReputationPolicyRequest) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ReputationPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -74,6 +74,7 @@ func (o *ReputationPolicyRequest) HasName() bool {
 func (o *ReputationPolicyRequest) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ReputationPolicyRequest) SetNameNil() {
 	o.Name.Set(nil)
@@ -267,5 +268,3 @@ func (v *NullableReputationPolicyRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

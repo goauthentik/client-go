@@ -18,7 +18,7 @@ import (
 // PaginatedProxyProviderList struct for PaginatedProxyProviderList
 type PaginatedProxyProviderList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []ProxyProvider `json:"results"`
+	Results    []ProxyProvider                    `json:"results"`
 }
 
 // NewPaginatedProxyProviderList instantiates a new PaginatedProxyProviderList object
@@ -53,7 +53,7 @@ func (o *PaginatedProxyProviderList) GetPagination() PaginatedApplicationListPag
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedProxyProviderList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedProxyProviderList) GetResults() []ProxyProvider {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedProxyProviderList) GetResultsOk() (*[]ProxyProvider, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedProxyProviderList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,9 +17,9 @@ import (
 
 // EventTopPerUser Response object of Event's top_per_user
 type EventTopPerUser struct {
-	Application map[string]interface{} `json:"application"`
-	CountedEvents int32 `json:"counted_events"`
-	UniqueUsers int32 `json:"unique_users"`
+	Application   map[string]interface{} `json:"application"`
+	CountedEvents int32                  `json:"counted_events"`
+	UniqueUsers   int32                  `json:"unique_users"`
 }
 
 // NewEventTopPerUser instantiates a new EventTopPerUser object
@@ -55,7 +55,7 @@ func (o *EventTopPerUser) GetApplication() map[string]interface{} {
 // GetApplicationOk returns a tuple with the Application field value
 // and a boolean to check if the value has been set.
 func (o *EventTopPerUser) GetApplicationOk() (*map[string]interface{}, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Application, true
@@ -79,7 +79,7 @@ func (o *EventTopPerUser) GetCountedEvents() int32 {
 // GetCountedEventsOk returns a tuple with the CountedEvents field value
 // and a boolean to check if the value has been set.
 func (o *EventTopPerUser) GetCountedEventsOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CountedEvents, true
@@ -103,7 +103,7 @@ func (o *EventTopPerUser) GetUniqueUsers() int32 {
 // GetUniqueUsersOk returns a tuple with the UniqueUsers field value
 // and a boolean to check if the value has been set.
 func (o *EventTopPerUser) GetUniqueUsersOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.UniqueUsers, true
@@ -163,5 +163,3 @@ func (v *NullableEventTopPerUser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -18,7 +18,7 @@ import (
 // PaginatedPasswordExpiryPolicyList struct for PaginatedPasswordExpiryPolicyList
 type PaginatedPasswordExpiryPolicyList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []PasswordExpiryPolicy `json:"results"`
+	Results    []PasswordExpiryPolicy             `json:"results"`
 }
 
 // NewPaginatedPasswordExpiryPolicyList instantiates a new PaginatedPasswordExpiryPolicyList object
@@ -53,7 +53,7 @@ func (o *PaginatedPasswordExpiryPolicyList) GetPagination() PaginatedApplication
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedPasswordExpiryPolicyList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedPasswordExpiryPolicyList) GetResults() []PasswordExpiryPolicy 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedPasswordExpiryPolicyList) GetResultsOk() (*[]PasswordExpiryPolicy, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedPasswordExpiryPolicyList) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

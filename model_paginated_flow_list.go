@@ -18,7 +18,7 @@ import (
 // PaginatedFlowList struct for PaginatedFlowList
 type PaginatedFlowList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []Flow `json:"results"`
+	Results    []Flow                             `json:"results"`
 }
 
 // NewPaginatedFlowList instantiates a new PaginatedFlowList object
@@ -53,7 +53,7 @@ func (o *PaginatedFlowList) GetPagination() PaginatedApplicationListPagination {
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedFlowList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedFlowList) GetResults() []Flow {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedFlowList) GetResultsOk() (*[]Flow, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedFlowList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

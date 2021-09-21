@@ -53,7 +53,7 @@ func (o *FooterLink) GetHref() string {
 // GetHrefOk returns a tuple with the Href field value
 // and a boolean to check if the value has been set.
 func (o *FooterLink) GetHrefOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Href, true
@@ -77,7 +77,7 @@ func (o *FooterLink) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *FooterLink) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -134,5 +134,3 @@ func (v *NullableFooterLink) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

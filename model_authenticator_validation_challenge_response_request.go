@@ -17,10 +17,10 @@ import (
 
 // AuthenticatorValidationChallengeResponseRequest Challenge used for Code-based and WebAuthn authenticators
 type AuthenticatorValidationChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
-	Code *string `json:"code,omitempty"`
-	Webauthn *map[string]interface{} `json:"webauthn,omitempty"`
-	Duo *int32 `json:"duo,omitempty"`
+	Component *string                 `json:"component,omitempty"`
+	Code      *string                 `json:"code,omitempty"`
+	Webauthn  *map[string]interface{} `json:"webauthn,omitempty"`
+	Duo       *int32                  `json:"duo,omitempty"`
 }
 
 // NewAuthenticatorValidationChallengeResponseRequest instantiates a new AuthenticatorValidationChallengeResponseRequest object
@@ -224,5 +224,3 @@ func (v *NullableAuthenticatorValidationChallengeResponseRequest) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

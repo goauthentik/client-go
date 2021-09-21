@@ -21,19 +21,19 @@ type OAuthSource struct {
 	// Source's display Name.
 	Name string `json:"name"`
 	// Internal source name, used in URLs.
-	Slug string `json:"slug"`
-	Enabled *bool `json:"enabled,omitempty"`
+	Slug    string `json:"slug"`
+	Enabled *bool  `json:"enabled,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
-	EnrollmentFlow NullableString `json:"enrollment_flow,omitempty"`
-	Component string `json:"component"`
-	VerboseName string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	EnrollmentFlow    NullableString    `json:"enrollment_flow,omitempty"`
+	Component         string            `json:"component"`
+	VerboseName       string            `json:"verbose_name"`
+	VerboseNamePlural string            `json:"verbose_name_plural"`
+	PolicyEngineMode  *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
-	ProviderType string `json:"provider_type"`
+	ProviderType     string                `json:"provider_type"`
 	// URL used to request the initial token. This URL is only required for OAuth 1.
 	RequestTokenUrl NullableString `json:"request_token_url,omitempty"`
 	// URL the user is redirect to to conest the flow.
@@ -41,10 +41,10 @@ type OAuthSource struct {
 	// URL used by authentik to retrive tokens.
 	AccessTokenUrl NullableString `json:"access_token_url,omitempty"`
 	// URL used by authentik to get user information.
-	ProfileUrl NullableString `json:"profile_url,omitempty"`
-	ConsumerKey string `json:"consumer_key"`
-	CallbackUrl string `json:"callback_url"`
-	Type SourceType `json:"type"`
+	ProfileUrl  NullableString `json:"profile_url,omitempty"`
+	ConsumerKey string         `json:"consumer_key"`
+	CallbackUrl string         `json:"callback_url"`
+	Type        SourceType     `json:"type"`
 }
 
 // NewOAuthSource instantiates a new OAuthSource object
@@ -87,7 +87,7 @@ func (o *OAuthSource) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -111,7 +111,7 @@ func (o *OAuthSource) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -135,7 +135,7 @@ func (o *OAuthSource) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetSlugOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Slug, true
@@ -191,7 +191,7 @@ func (o *OAuthSource) GetAuthenticationFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OAuthSource) GetAuthenticationFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AuthenticationFlow.Get(), o.AuthenticationFlow.IsSet()
@@ -210,6 +210,7 @@ func (o *OAuthSource) HasAuthenticationFlow() bool {
 func (o *OAuthSource) SetAuthenticationFlow(v string) {
 	o.AuthenticationFlow.Set(&v)
 }
+
 // SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
 func (o *OAuthSource) SetAuthenticationFlowNil() {
 	o.AuthenticationFlow.Set(nil)
@@ -233,7 +234,7 @@ func (o *OAuthSource) GetEnrollmentFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OAuthSource) GetEnrollmentFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.EnrollmentFlow.Get(), o.EnrollmentFlow.IsSet()
@@ -252,6 +253,7 @@ func (o *OAuthSource) HasEnrollmentFlow() bool {
 func (o *OAuthSource) SetEnrollmentFlow(v string) {
 	o.EnrollmentFlow.Set(&v)
 }
+
 // SetEnrollmentFlowNil sets the value for EnrollmentFlow to be an explicit nil
 func (o *OAuthSource) SetEnrollmentFlowNil() {
 	o.EnrollmentFlow.Set(nil)
@@ -275,7 +277,7 @@ func (o *OAuthSource) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -299,7 +301,7 @@ func (o *OAuthSource) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -323,7 +325,7 @@ func (o *OAuthSource) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -411,7 +413,7 @@ func (o *OAuthSource) GetProviderType() string {
 // GetProviderTypeOk returns a tuple with the ProviderType field value
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetProviderTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ProviderType, true
@@ -435,7 +437,7 @@ func (o *OAuthSource) GetRequestTokenUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OAuthSource) GetRequestTokenUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.RequestTokenUrl.Get(), o.RequestTokenUrl.IsSet()
@@ -454,6 +456,7 @@ func (o *OAuthSource) HasRequestTokenUrl() bool {
 func (o *OAuthSource) SetRequestTokenUrl(v string) {
 	o.RequestTokenUrl.Set(&v)
 }
+
 // SetRequestTokenUrlNil sets the value for RequestTokenUrl to be an explicit nil
 func (o *OAuthSource) SetRequestTokenUrlNil() {
 	o.RequestTokenUrl.Set(nil)
@@ -477,7 +480,7 @@ func (o *OAuthSource) GetAuthorizationUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OAuthSource) GetAuthorizationUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AuthorizationUrl.Get(), o.AuthorizationUrl.IsSet()
@@ -496,6 +499,7 @@ func (o *OAuthSource) HasAuthorizationUrl() bool {
 func (o *OAuthSource) SetAuthorizationUrl(v string) {
 	o.AuthorizationUrl.Set(&v)
 }
+
 // SetAuthorizationUrlNil sets the value for AuthorizationUrl to be an explicit nil
 func (o *OAuthSource) SetAuthorizationUrlNil() {
 	o.AuthorizationUrl.Set(nil)
@@ -519,7 +523,7 @@ func (o *OAuthSource) GetAccessTokenUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OAuthSource) GetAccessTokenUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AccessTokenUrl.Get(), o.AccessTokenUrl.IsSet()
@@ -538,6 +542,7 @@ func (o *OAuthSource) HasAccessTokenUrl() bool {
 func (o *OAuthSource) SetAccessTokenUrl(v string) {
 	o.AccessTokenUrl.Set(&v)
 }
+
 // SetAccessTokenUrlNil sets the value for AccessTokenUrl to be an explicit nil
 func (o *OAuthSource) SetAccessTokenUrlNil() {
 	o.AccessTokenUrl.Set(nil)
@@ -561,7 +566,7 @@ func (o *OAuthSource) GetProfileUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OAuthSource) GetProfileUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ProfileUrl.Get(), o.ProfileUrl.IsSet()
@@ -580,6 +585,7 @@ func (o *OAuthSource) HasProfileUrl() bool {
 func (o *OAuthSource) SetProfileUrl(v string) {
 	o.ProfileUrl.Set(&v)
 }
+
 // SetProfileUrlNil sets the value for ProfileUrl to be an explicit nil
 func (o *OAuthSource) SetProfileUrlNil() {
 	o.ProfileUrl.Set(nil)
@@ -603,7 +609,7 @@ func (o *OAuthSource) GetConsumerKey() string {
 // GetConsumerKeyOk returns a tuple with the ConsumerKey field value
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetConsumerKeyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ConsumerKey, true
@@ -627,7 +633,7 @@ func (o *OAuthSource) GetCallbackUrl() string {
 // GetCallbackUrlOk returns a tuple with the CallbackUrl field value
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetCallbackUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CallbackUrl, true
@@ -651,7 +657,7 @@ func (o *OAuthSource) GetType() SourceType {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetTypeOk() (*SourceType, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -759,5 +765,3 @@ func (v *NullableOAuthSource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

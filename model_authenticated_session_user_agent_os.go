@@ -17,10 +17,10 @@ import (
 
 // AuthenticatedSessionUserAgentOs struct for AuthenticatedSessionUserAgentOs
 type AuthenticatedSessionUserAgentOs struct {
-	Family *string `json:"family,omitempty"`
-	Major *string `json:"major,omitempty"`
-	Minor *string `json:"minor,omitempty"`
-	Patch *string `json:"patch,omitempty"`
+	Family     *string `json:"family,omitempty"`
+	Major      *string `json:"major,omitempty"`
+	Minor      *string `json:"minor,omitempty"`
+	Patch      *string `json:"patch,omitempty"`
 	PatchMinor *string `json:"patch_minor,omitempty"`
 }
 
@@ -256,5 +256,3 @@ func (v *NullableAuthenticatedSessionUserAgentOs) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

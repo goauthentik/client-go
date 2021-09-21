@@ -60,7 +60,7 @@ func (o *DockerServiceConnectionRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *DockerServiceConnectionRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -116,7 +116,7 @@ func (o *DockerServiceConnectionRequest) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
 func (o *DockerServiceConnectionRequest) GetUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Url, true
@@ -140,7 +140,7 @@ func (o *DockerServiceConnectionRequest) GetTlsVerification() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DockerServiceConnectionRequest) GetTlsVerificationOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TlsVerification.Get(), o.TlsVerification.IsSet()
@@ -159,6 +159,7 @@ func (o *DockerServiceConnectionRequest) HasTlsVerification() bool {
 func (o *DockerServiceConnectionRequest) SetTlsVerification(v string) {
 	o.TlsVerification.Set(&v)
 }
+
 // SetTlsVerificationNil sets the value for TlsVerification to be an explicit nil
 func (o *DockerServiceConnectionRequest) SetTlsVerificationNil() {
 	o.TlsVerification.Set(nil)
@@ -182,7 +183,7 @@ func (o *DockerServiceConnectionRequest) GetTlsAuthentication() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DockerServiceConnectionRequest) GetTlsAuthenticationOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TlsAuthentication.Get(), o.TlsAuthentication.IsSet()
@@ -201,6 +202,7 @@ func (o *DockerServiceConnectionRequest) HasTlsAuthentication() bool {
 func (o *DockerServiceConnectionRequest) SetTlsAuthentication(v string) {
 	o.TlsAuthentication.Set(&v)
 }
+
 // SetTlsAuthenticationNil sets the value for TlsAuthentication to be an explicit nil
 func (o *DockerServiceConnectionRequest) SetTlsAuthenticationNil() {
 	o.TlsAuthentication.Set(nil)
@@ -266,5 +268,3 @@ func (v *NullableDockerServiceConnectionRequest) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

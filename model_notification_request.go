@@ -18,7 +18,7 @@ import (
 // NotificationRequest Notification Serializer
 type NotificationRequest struct {
 	Event *EventRequest `json:"event,omitempty"`
-	Seen *bool `json:"seen,omitempty"`
+	Seen  *bool         `json:"seen,omitempty"`
 }
 
 // NewNotificationRequest instantiates a new NotificationRequest object
@@ -148,5 +148,3 @@ func (v *NullableNotificationRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

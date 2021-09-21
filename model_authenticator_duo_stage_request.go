@@ -17,13 +17,13 @@ import (
 
 // AuthenticatorDuoStageRequest AuthenticatorDuoStage Serializer
 type AuthenticatorDuoStageRequest struct {
-	Name string `json:"name"`
+	Name    string         `json:"name"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	ClientId string `json:"client_id"`
-	ClientSecret string `json:"client_secret"`
-	ApiHostname string `json:"api_hostname"`
+	ClientId      string         `json:"client_id"`
+	ClientSecret  string         `json:"client_secret"`
+	ApiHostname   string         `json:"api_hostname"`
 }
 
 // NewAuthenticatorDuoStageRequest instantiates a new AuthenticatorDuoStageRequest object
@@ -60,7 +60,7 @@ func (o *AuthenticatorDuoStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStageRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -116,7 +116,7 @@ func (o *AuthenticatorDuoStageRequest) GetConfigureFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatorDuoStageRequest) GetConfigureFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ConfigureFlow.Get(), o.ConfigureFlow.IsSet()
@@ -135,6 +135,7 @@ func (o *AuthenticatorDuoStageRequest) HasConfigureFlow() bool {
 func (o *AuthenticatorDuoStageRequest) SetConfigureFlow(v string) {
 	o.ConfigureFlow.Set(&v)
 }
+
 // SetConfigureFlowNil sets the value for ConfigureFlow to be an explicit nil
 func (o *AuthenticatorDuoStageRequest) SetConfigureFlowNil() {
 	o.ConfigureFlow.Set(nil)
@@ -158,7 +159,7 @@ func (o *AuthenticatorDuoStageRequest) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStageRequest) GetClientIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ClientId, true
@@ -182,7 +183,7 @@ func (o *AuthenticatorDuoStageRequest) GetClientSecret() string {
 // GetClientSecretOk returns a tuple with the ClientSecret field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStageRequest) GetClientSecretOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ClientSecret, true
@@ -206,7 +207,7 @@ func (o *AuthenticatorDuoStageRequest) GetApiHostname() string {
 // GetApiHostnameOk returns a tuple with the ApiHostname field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStageRequest) GetApiHostnameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ApiHostname, true
@@ -275,5 +276,3 @@ func (v *NullableAuthenticatorDuoStageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

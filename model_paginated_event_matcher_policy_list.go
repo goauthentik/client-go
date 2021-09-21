@@ -18,7 +18,7 @@ import (
 // PaginatedEventMatcherPolicyList struct for PaginatedEventMatcherPolicyList
 type PaginatedEventMatcherPolicyList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []EventMatcherPolicy `json:"results"`
+	Results    []EventMatcherPolicy               `json:"results"`
 }
 
 // NewPaginatedEventMatcherPolicyList instantiates a new PaginatedEventMatcherPolicyList object
@@ -53,7 +53,7 @@ func (o *PaginatedEventMatcherPolicyList) GetPagination() PaginatedApplicationLi
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedEventMatcherPolicyList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedEventMatcherPolicyList) GetResults() []EventMatcherPolicy {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedEventMatcherPolicyList) GetResultsOk() (*[]EventMatcherPolicy, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedEventMatcherPolicyList) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

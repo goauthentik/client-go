@@ -17,22 +17,22 @@ import (
 
 // EmailStageRequest EmailStage Serializer
 type EmailStageRequest struct {
-	Name string `json:"name"`
+	Name    string         `json:"name"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// When enabled, global Email connection settings will be used and connection settings below will be ignored.
-	UseGlobalSettings *bool `json:"use_global_settings,omitempty"`
-	Host *string `json:"host,omitempty"`
-	Port *int32 `json:"port,omitempty"`
-	Username *string `json:"username,omitempty"`
-	Password *string `json:"password,omitempty"`
-	UseTls *bool `json:"use_tls,omitempty"`
-	UseSsl *bool `json:"use_ssl,omitempty"`
-	Timeout *int32 `json:"timeout,omitempty"`
-	FromAddress *string `json:"from_address,omitempty"`
+	UseGlobalSettings *bool   `json:"use_global_settings,omitempty"`
+	Host              *string `json:"host,omitempty"`
+	Port              *int32  `json:"port,omitempty"`
+	Username          *string `json:"username,omitempty"`
+	Password          *string `json:"password,omitempty"`
+	UseTls            *bool   `json:"use_tls,omitempty"`
+	UseSsl            *bool   `json:"use_ssl,omitempty"`
+	Timeout           *int32  `json:"timeout,omitempty"`
+	FromAddress       *string `json:"from_address,omitempty"`
 	// Time in minutes the token sent is valid.
-	TokenExpiry *int32 `json:"token_expiry,omitempty"`
-	Subject *string `json:"subject,omitempty"`
-	Template *string `json:"template,omitempty"`
+	TokenExpiry *int32  `json:"token_expiry,omitempty"`
+	Subject     *string `json:"subject,omitempty"`
+	Template    *string `json:"template,omitempty"`
 }
 
 // NewEmailStageRequest instantiates a new EmailStageRequest object
@@ -66,7 +66,7 @@ func (o *EmailStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *EmailStageRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -575,5 +575,3 @@ func (v *NullableEmailStageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

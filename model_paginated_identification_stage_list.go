@@ -18,7 +18,7 @@ import (
 // PaginatedIdentificationStageList struct for PaginatedIdentificationStageList
 type PaginatedIdentificationStageList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []IdentificationStage `json:"results"`
+	Results    []IdentificationStage              `json:"results"`
 }
 
 // NewPaginatedIdentificationStageList instantiates a new PaginatedIdentificationStageList object
@@ -53,7 +53,7 @@ func (o *PaginatedIdentificationStageList) GetPagination() PaginatedApplicationL
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedIdentificationStageList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedIdentificationStageList) GetResults() []IdentificationStage {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedIdentificationStageList) GetResultsOk() (*[]IdentificationStage, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedIdentificationStageList) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

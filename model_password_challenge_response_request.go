@@ -18,7 +18,7 @@ import (
 // PasswordChallengeResponseRequest Password challenge response
 type PasswordChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
-	Password string `json:"password"`
+	Password  string  `json:"password"`
 }
 
 // NewPasswordChallengeResponseRequest instantiates a new PasswordChallengeResponseRequest object
@@ -88,7 +88,7 @@ func (o *PasswordChallengeResponseRequest) GetPassword() string {
 // GetPasswordOk returns a tuple with the Password field value
 // and a boolean to check if the value has been set.
 func (o *PasswordChallengeResponseRequest) GetPasswordOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Password, true
@@ -145,5 +145,3 @@ func (v *NullablePasswordChallengeResponseRequest) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

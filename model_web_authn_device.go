@@ -18,8 +18,8 @@ import (
 
 // WebAuthnDevice Serializer for WebAuthn authenticator devices
 type WebAuthnDevice struct {
-	Pk int32 `json:"pk"`
-	Name string `json:"name"`
+	Pk        int32     `json:"pk"`
+	Name      string    `json:"name"`
 	CreatedOn time.Time `json:"created_on"`
 }
 
@@ -56,7 +56,7 @@ func (o *WebAuthnDevice) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *WebAuthnDevice) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -80,7 +80,7 @@ func (o *WebAuthnDevice) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *WebAuthnDevice) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -104,7 +104,7 @@ func (o *WebAuthnDevice) GetCreatedOn() time.Time {
 // GetCreatedOnOk returns a tuple with the CreatedOn field value
 // and a boolean to check if the value has been set.
 func (o *WebAuthnDevice) GetCreatedOnOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedOn, true
@@ -164,5 +164,3 @@ func (v *NullableWebAuthnDevice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

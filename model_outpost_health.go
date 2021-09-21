@@ -18,10 +18,10 @@ import (
 
 // OutpostHealth Outpost health status
 type OutpostHealth struct {
-	LastSeen time.Time `json:"last_seen"`
-	Version string `json:"version"`
-	VersionShould string `json:"version_should"`
-	VersionOutdated bool `json:"version_outdated"`
+	LastSeen        time.Time `json:"last_seen"`
+	Version         string    `json:"version"`
+	VersionShould   string    `json:"version_should"`
+	VersionOutdated bool      `json:"version_outdated"`
 }
 
 // NewOutpostHealth instantiates a new OutpostHealth object
@@ -58,7 +58,7 @@ func (o *OutpostHealth) GetLastSeen() time.Time {
 // GetLastSeenOk returns a tuple with the LastSeen field value
 // and a boolean to check if the value has been set.
 func (o *OutpostHealth) GetLastSeenOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.LastSeen, true
@@ -82,7 +82,7 @@ func (o *OutpostHealth) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value
 // and a boolean to check if the value has been set.
 func (o *OutpostHealth) GetVersionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Version, true
@@ -106,7 +106,7 @@ func (o *OutpostHealth) GetVersionShould() string {
 // GetVersionShouldOk returns a tuple with the VersionShould field value
 // and a boolean to check if the value has been set.
 func (o *OutpostHealth) GetVersionShouldOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VersionShould, true
@@ -130,7 +130,7 @@ func (o *OutpostHealth) GetVersionOutdated() bool {
 // GetVersionOutdatedOk returns a tuple with the VersionOutdated field value
 // and a boolean to check if the value has been set.
 func (o *OutpostHealth) GetVersionOutdatedOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VersionOutdated, true
@@ -193,5 +193,3 @@ func (v *NullableOutpostHealth) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

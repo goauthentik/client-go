@@ -17,14 +17,14 @@ import (
 
 // Group Group Serializer
 type Group struct {
-	Pk string `json:"pk"`
+	Pk   string `json:"pk"`
 	Name string `json:"name"`
 	// Users added to this group will be superusers.
-	IsSuperuser *bool `json:"is_superuser,omitempty"`
-	Parent NullableString `json:"parent"`
-	Users []int32 `json:"users"`
-	Attributes *map[string]interface{} `json:"attributes,omitempty"`
-	UsersObj []GroupMember `json:"users_obj"`
+	IsSuperuser *bool                   `json:"is_superuser,omitempty"`
+	Parent      NullableString          `json:"parent"`
+	Users       []int32                 `json:"users"`
+	Attributes  *map[string]interface{} `json:"attributes,omitempty"`
+	UsersObj    []GroupMember           `json:"users_obj"`
 }
 
 // NewGroup instantiates a new Group object
@@ -62,7 +62,7 @@ func (o *Group) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *Group) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -86,7 +86,7 @@ func (o *Group) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Group) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -144,7 +144,7 @@ func (o *Group) GetParent() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Group) GetParentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Parent.Get(), o.Parent.IsSet()
@@ -168,7 +168,7 @@ func (o *Group) GetUsers() []int32 {
 // GetUsersOk returns a tuple with the Users field value
 // and a boolean to check if the value has been set.
 func (o *Group) GetUsersOk() (*[]int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Users, true
@@ -224,7 +224,7 @@ func (o *Group) GetUsersObj() []GroupMember {
 // GetUsersObjOk returns a tuple with the UsersObj field value
 // and a boolean to check if the value has been set.
 func (o *Group) GetUsersObjOk() (*[]GroupMember, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.UsersObj, true
@@ -296,5 +296,3 @@ func (v *NullableGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

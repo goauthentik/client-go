@@ -17,11 +17,11 @@ import (
 
 // AuthenticatedSessionGeoIp struct for AuthenticatedSessionGeoIp
 type AuthenticatedSessionGeoIp struct {
-	Continent *string `json:"continent,omitempty"`
-	Country *string `json:"country,omitempty"`
-	Lat *float32 `json:"lat,omitempty"`
-	Long *float32 `json:"long,omitempty"`
-	City *string `json:"city,omitempty"`
+	Continent *string  `json:"continent,omitempty"`
+	Country   *string  `json:"country,omitempty"`
+	Lat       *float32 `json:"lat,omitempty"`
+	Long      *float32 `json:"long,omitempty"`
+	City      *string  `json:"city,omitempty"`
 }
 
 // NewAuthenticatedSessionGeoIp instantiates a new AuthenticatedSessionGeoIp object
@@ -256,5 +256,3 @@ func (v *NullableAuthenticatedSessionGeoIp) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

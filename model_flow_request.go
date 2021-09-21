@@ -23,8 +23,8 @@ type FlowRequest struct {
 	// Shown as the Title in Flow pages.
 	Title string `json:"title"`
 	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
-	Designation FlowDesignationEnum `json:"designation"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	Designation      FlowDesignationEnum `json:"designation"`
+	PolicyEngineMode *PolicyEngineMode   `json:"policy_engine_mode,omitempty"`
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
 	CompatibilityMode *bool `json:"compatibility_mode,omitempty"`
 }
@@ -63,7 +63,7 @@ func (o *FlowRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *FlowRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -87,7 +87,7 @@ func (o *FlowRequest) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value
 // and a boolean to check if the value has been set.
 func (o *FlowRequest) GetSlugOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Slug, true
@@ -111,7 +111,7 @@ func (o *FlowRequest) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value
 // and a boolean to check if the value has been set.
 func (o *FlowRequest) GetTitleOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Title, true
@@ -135,7 +135,7 @@ func (o *FlowRequest) GetDesignation() FlowDesignationEnum {
 // GetDesignationOk returns a tuple with the Designation field value
 // and a boolean to check if the value has been set.
 func (o *FlowRequest) GetDesignationOk() (*FlowDesignationEnum, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Designation, true
@@ -268,5 +268,3 @@ func (v *NullableFlowRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

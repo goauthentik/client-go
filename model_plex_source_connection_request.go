@@ -17,10 +17,10 @@ import (
 
 // PlexSourceConnectionRequest Plex Source connection Serializer
 type PlexSourceConnectionRequest struct {
-	User int32 `json:"user"`
-	Source string `json:"source"`
+	User       int32  `json:"user"`
+	Source     string `json:"source"`
 	Identifier string `json:"identifier"`
-	PlexToken string `json:"plex_token"`
+	PlexToken  string `json:"plex_token"`
 }
 
 // NewPlexSourceConnectionRequest instantiates a new PlexSourceConnectionRequest object
@@ -57,7 +57,7 @@ func (o *PlexSourceConnectionRequest) GetUser() int32 {
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
 func (o *PlexSourceConnectionRequest) GetUserOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.User, true
@@ -81,7 +81,7 @@ func (o *PlexSourceConnectionRequest) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
 func (o *PlexSourceConnectionRequest) GetSourceOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Source, true
@@ -105,7 +105,7 @@ func (o *PlexSourceConnectionRequest) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value
 // and a boolean to check if the value has been set.
 func (o *PlexSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Identifier, true
@@ -129,7 +129,7 @@ func (o *PlexSourceConnectionRequest) GetPlexToken() string {
 // GetPlexTokenOk returns a tuple with the PlexToken field value
 // and a boolean to check if the value has been set.
 func (o *PlexSourceConnectionRequest) GetPlexTokenOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PlexToken, true
@@ -192,5 +192,3 @@ func (v *NullablePlexSourceConnectionRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -28,10 +28,9 @@ var (
 type SentryApiService service
 
 type ApiSentryCreateRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SentryApiService
 }
-
 
 func (r ApiSentryCreateRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.SentryCreateExecute(r)
@@ -48,7 +47,7 @@ Sentry tunnel, to prevent ad blockers from blocking sentry
 func (a *SentryApiService) SentryCreate(ctx _context.Context) ApiSentryCreateRequest {
 	return ApiSentryCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 

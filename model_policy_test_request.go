@@ -17,7 +17,7 @@ import (
 
 // PolicyTestRequest Test policy execution for a user with context
 type PolicyTestRequest struct {
-	User int32 `json:"user"`
+	User    int32                   `json:"user"`
 	Context *map[string]interface{} `json:"context,omitempty"`
 }
 
@@ -52,7 +52,7 @@ func (o *PolicyTestRequest) GetUser() int32 {
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
 func (o *PolicyTestRequest) GetUserOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.User, true
@@ -141,5 +141,3 @@ func (v *NullablePolicyTestRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

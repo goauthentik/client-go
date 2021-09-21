@@ -21,13 +21,13 @@ type PatchedPasswordPolicyRequest struct {
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
 	ExecutionLogging *bool `json:"execution_logging,omitempty"`
 	// Field key to check, field keys defined in Prompt stages are available.
-	PasswordField *string `json:"password_field,omitempty"`
-	AmountUppercase *int32 `json:"amount_uppercase,omitempty"`
-	AmountLowercase *int32 `json:"amount_lowercase,omitempty"`
-	AmountSymbols *int32 `json:"amount_symbols,omitempty"`
-	LengthMin *int32 `json:"length_min,omitempty"`
-	SymbolCharset *string `json:"symbol_charset,omitempty"`
-	ErrorMessage *string `json:"error_message,omitempty"`
+	PasswordField   *string `json:"password_field,omitempty"`
+	AmountUppercase *int32  `json:"amount_uppercase,omitempty"`
+	AmountLowercase *int32  `json:"amount_lowercase,omitempty"`
+	AmountSymbols   *int32  `json:"amount_symbols,omitempty"`
+	LengthMin       *int32  `json:"length_min,omitempty"`
+	SymbolCharset   *string `json:"symbol_charset,omitempty"`
+	ErrorMessage    *string `json:"error_message,omitempty"`
 }
 
 // NewPatchedPasswordPolicyRequest instantiates a new PatchedPasswordPolicyRequest object
@@ -60,7 +60,7 @@ func (o *PatchedPasswordPolicyRequest) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedPasswordPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -79,6 +79,7 @@ func (o *PatchedPasswordPolicyRequest) HasName() bool {
 func (o *PatchedPasswordPolicyRequest) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PatchedPasswordPolicyRequest) SetNameNil() {
 	o.Name.Set(nil)
@@ -412,5 +413,3 @@ func (v *NullablePatchedPasswordPolicyRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

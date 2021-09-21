@@ -17,12 +17,12 @@ import (
 
 // NotificationTransport NotificationTransport Serializer
 type NotificationTransport struct {
-	Pk string `json:"pk"`
-	Name string `json:"name"`
-	Mode NotificationTransportModeEnum `json:"mode"`
-	ModeVerbose string `json:"mode_verbose"`
-	WebhookUrl *string `json:"webhook_url,omitempty"`
-	WebhookMapping NullableString `json:"webhook_mapping,omitempty"`
+	Pk             string                        `json:"pk"`
+	Name           string                        `json:"name"`
+	Mode           NotificationTransportModeEnum `json:"mode"`
+	ModeVerbose    string                        `json:"mode_verbose"`
+	WebhookUrl     *string                       `json:"webhook_url,omitempty"`
+	WebhookMapping NullableString                `json:"webhook_mapping,omitempty"`
 	// Only send notification once, for example when sending a webhook into a chat channel.
 	SendOnce *bool `json:"send_once,omitempty"`
 }
@@ -61,7 +61,7 @@ func (o *NotificationTransport) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *NotificationTransport) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -85,7 +85,7 @@ func (o *NotificationTransport) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *NotificationTransport) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -109,7 +109,7 @@ func (o *NotificationTransport) GetMode() NotificationTransportModeEnum {
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
 func (o *NotificationTransport) GetModeOk() (*NotificationTransportModeEnum, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Mode, true
@@ -133,7 +133,7 @@ func (o *NotificationTransport) GetModeVerbose() string {
 // GetModeVerboseOk returns a tuple with the ModeVerbose field value
 // and a boolean to check if the value has been set.
 func (o *NotificationTransport) GetModeVerboseOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ModeVerbose, true
@@ -189,7 +189,7 @@ func (o *NotificationTransport) GetWebhookMapping() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NotificationTransport) GetWebhookMappingOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.WebhookMapping.Get(), o.WebhookMapping.IsSet()
@@ -208,6 +208,7 @@ func (o *NotificationTransport) HasWebhookMapping() bool {
 func (o *NotificationTransport) SetWebhookMapping(v string) {
 	o.WebhookMapping.Set(&v)
 }
+
 // SetWebhookMappingNil sets the value for WebhookMapping to be an explicit nil
 func (o *NotificationTransport) SetWebhookMappingNil() {
 	o.WebhookMapping.Set(nil)
@@ -311,5 +312,3 @@ func (v *NullableNotificationTransport) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

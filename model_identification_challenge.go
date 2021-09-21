@@ -17,17 +17,17 @@ import (
 
 // IdentificationChallenge Identification challenges with all UI elements
 type IdentificationChallenge struct {
-	Type ChallengeChoices `json:"type"`
-	FlowInfo *ContextualFlowInfo `json:"flow_info,omitempty"`
-	Component *string `json:"component,omitempty"`
+	Type           ChallengeChoices          `json:"type"`
+	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	UserFields []string `json:"user_fields"`
-	PasswordFields bool `json:"password_fields"`
-	ApplicationPre *string `json:"application_pre,omitempty"`
-	EnrollUrl *string `json:"enroll_url,omitempty"`
-	RecoveryUrl *string `json:"recovery_url,omitempty"`
-	PrimaryAction string `json:"primary_action"`
-	Sources *[]LoginSource `json:"sources,omitempty"`
+	UserFields     []string                  `json:"user_fields"`
+	PasswordFields bool                      `json:"password_fields"`
+	ApplicationPre *string                   `json:"application_pre,omitempty"`
+	EnrollUrl      *string                   `json:"enroll_url,omitempty"`
+	RecoveryUrl    *string                   `json:"recovery_url,omitempty"`
+	PrimaryAction  string                    `json:"primary_action"`
+	Sources        *[]LoginSource            `json:"sources,omitempty"`
 }
 
 // NewIdentificationChallenge instantiates a new IdentificationChallenge object
@@ -68,7 +68,7 @@ func (o *IdentificationChallenge) GetType() ChallengeChoices {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -214,7 +214,7 @@ func (o *IdentificationChallenge) GetPasswordFields() bool {
 // GetPasswordFieldsOk returns a tuple with the PasswordFields field value
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallenge) GetPasswordFieldsOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PasswordFields, true
@@ -334,7 +334,7 @@ func (o *IdentificationChallenge) GetPrimaryAction() string {
 // GetPrimaryActionOk returns a tuple with the PrimaryAction field value
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallenge) GetPrimaryActionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PrimaryAction, true
@@ -450,5 +450,3 @@ func (v *NullableIdentificationChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

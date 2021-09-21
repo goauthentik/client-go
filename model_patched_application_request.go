@@ -20,12 +20,12 @@ type PatchedApplicationRequest struct {
 	// Application's display Name.
 	Name *string `json:"name,omitempty"`
 	// Internal application name, used in URLs.
-	Slug *string `json:"slug,omitempty"`
-	Provider NullableInt32 `json:"provider,omitempty"`
-	ProviderObj *ProviderRequest `json:"provider_obj,omitempty"`
-	MetaLaunchUrl *string `json:"meta_launch_url,omitempty"`
-	MetaDescription *string `json:"meta_description,omitempty"`
-	MetaPublisher *string `json:"meta_publisher,omitempty"`
+	Slug             *string           `json:"slug,omitempty"`
+	Provider         NullableInt32     `json:"provider,omitempty"`
+	ProviderObj      *ProviderRequest  `json:"provider_obj,omitempty"`
+	MetaLaunchUrl    *string           `json:"meta_launch_url,omitempty"`
+	MetaDescription  *string           `json:"meta_description,omitempty"`
+	MetaPublisher    *string           `json:"meta_publisher,omitempty"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 }
 
@@ -123,7 +123,7 @@ func (o *PatchedApplicationRequest) GetProvider() int32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedApplicationRequest) GetProviderOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Provider.Get(), o.Provider.IsSet()
@@ -142,6 +142,7 @@ func (o *PatchedApplicationRequest) HasProvider() bool {
 func (o *PatchedApplicationRequest) SetProvider(v int32) {
 	o.Provider.Set(&v)
 }
+
 // SetProviderNil sets the value for Provider to be an explicit nil
 func (o *PatchedApplicationRequest) SetProviderNil() {
 	o.Provider.Set(nil)
@@ -376,5 +377,3 @@ func (v *NullablePatchedApplicationRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

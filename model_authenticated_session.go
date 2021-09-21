@@ -18,15 +18,15 @@ import (
 
 // AuthenticatedSession AuthenticatedSession Serializer
 type AuthenticatedSession struct {
-	Uuid *string `json:"uuid,omitempty"`
-	Current bool `json:"current"`
-	UserAgent AuthenticatedSessionUserAgent `json:"user_agent"`
-	GeoIp NullableAuthenticatedSessionGeoIp `json:"geo_ip"`
-	User int32 `json:"user"`
-	LastIp string `json:"last_ip"`
-	LastUserAgent *string `json:"last_user_agent,omitempty"`
-	LastUsed time.Time `json:"last_used"`
-	Expires *time.Time `json:"expires,omitempty"`
+	Uuid          *string                           `json:"uuid,omitempty"`
+	Current       bool                              `json:"current"`
+	UserAgent     AuthenticatedSessionUserAgent     `json:"user_agent"`
+	GeoIp         NullableAuthenticatedSessionGeoIp `json:"geo_ip"`
+	User          int32                             `json:"user"`
+	LastIp        string                            `json:"last_ip"`
+	LastUserAgent *string                           `json:"last_user_agent,omitempty"`
+	LastUsed      time.Time                         `json:"last_used"`
+	Expires       *time.Time                        `json:"expires,omitempty"`
 }
 
 // NewAuthenticatedSession instantiates a new AuthenticatedSession object
@@ -97,7 +97,7 @@ func (o *AuthenticatedSession) GetCurrent() bool {
 // GetCurrentOk returns a tuple with the Current field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSession) GetCurrentOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Current, true
@@ -121,7 +121,7 @@ func (o *AuthenticatedSession) GetUserAgent() AuthenticatedSessionUserAgent {
 // GetUserAgentOk returns a tuple with the UserAgent field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSession) GetUserAgentOk() (*AuthenticatedSessionUserAgent, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.UserAgent, true
@@ -147,7 +147,7 @@ func (o *AuthenticatedSession) GetGeoIp() AuthenticatedSessionGeoIp {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatedSession) GetGeoIpOk() (*AuthenticatedSessionGeoIp, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.GeoIp.Get(), o.GeoIp.IsSet()
@@ -171,7 +171,7 @@ func (o *AuthenticatedSession) GetUser() int32 {
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSession) GetUserOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.User, true
@@ -195,7 +195,7 @@ func (o *AuthenticatedSession) GetLastIp() string {
 // GetLastIpOk returns a tuple with the LastIp field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSession) GetLastIpOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.LastIp, true
@@ -251,7 +251,7 @@ func (o *AuthenticatedSession) GetLastUsed() time.Time {
 // GetLastUsedOk returns a tuple with the LastUsed field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSession) GetLastUsedOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.LastUsed, true
@@ -361,5 +361,3 @@ func (v *NullableAuthenticatedSession) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

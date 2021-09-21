@@ -21,10 +21,10 @@ type DeviceClassesEnum string
 
 // List of DeviceClassesEnum
 const (
-	DEVICECLASSESENUM_STATIC DeviceClassesEnum = "static"
-	DEVICECLASSESENUM_TOTP DeviceClassesEnum = "totp"
+	DEVICECLASSESENUM_STATIC   DeviceClassesEnum = "static"
+	DEVICECLASSESENUM_TOTP     DeviceClassesEnum = "totp"
 	DEVICECLASSESENUM_WEBAUTHN DeviceClassesEnum = "webauthn"
-	DEVICECLASSESENUM_DUO DeviceClassesEnum = "duo"
+	DEVICECLASSESENUM_DUO      DeviceClassesEnum = "duo"
 )
 
 // All allowed values of DeviceClassesEnum enum
@@ -113,4 +113,3 @@ func (v *NullableDeviceClassesEnum) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

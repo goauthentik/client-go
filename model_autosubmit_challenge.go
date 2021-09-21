@@ -17,12 +17,12 @@ import (
 
 // AutosubmitChallenge Autosubmit challenge used to send and navigate a POST request
 type AutosubmitChallenge struct {
-	Type ChallengeChoices `json:"type"`
-	FlowInfo *ContextualFlowInfo `json:"flow_info,omitempty"`
-	Component *string `json:"component,omitempty"`
+	Type           ChallengeChoices          `json:"type"`
+	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	Url string `json:"url"`
-	Attrs map[string]string `json:"attrs"`
+	Url            string                    `json:"url"`
+	Attrs          map[string]string         `json:"attrs"`
 }
 
 // NewAutosubmitChallenge instantiates a new AutosubmitChallenge object
@@ -62,7 +62,7 @@ func (o *AutosubmitChallenge) GetType() ChallengeChoices {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *AutosubmitChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -182,7 +182,7 @@ func (o *AutosubmitChallenge) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
 func (o *AutosubmitChallenge) GetUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Url, true
@@ -206,7 +206,7 @@ func (o *AutosubmitChallenge) GetAttrs() map[string]string {
 // GetAttrsOk returns a tuple with the Attrs field value
 // and a boolean to check if the value has been set.
 func (o *AutosubmitChallenge) GetAttrsOk() (*map[string]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Attrs, true
@@ -275,5 +275,3 @@ func (v *NullableAutosubmitChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

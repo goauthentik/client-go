@@ -17,18 +17,18 @@ import (
 
 // PolicyBinding PolicyBinding Serializer
 type PolicyBinding struct {
-	Pk string `json:"pk"`
-	Policy NullableString `json:"policy,omitempty"`
-	Group NullableString `json:"group,omitempty"`
-	User NullableInt32 `json:"user,omitempty"`
-	PolicyObj Policy `json:"policy_obj"`
-	GroupObj Group `json:"group_obj"`
-	UserObj User `json:"user_obj"`
-	Target string `json:"target"`
+	Pk        string         `json:"pk"`
+	Policy    NullableString `json:"policy,omitempty"`
+	Group     NullableString `json:"group,omitempty"`
+	User      NullableInt32  `json:"user,omitempty"`
+	PolicyObj Policy         `json:"policy_obj"`
+	GroupObj  Group          `json:"group_obj"`
+	UserObj   User           `json:"user_obj"`
+	Target    string         `json:"target"`
 	// Negates the outcome of the policy. Messages are unaffected.
-	Negate *bool `json:"negate,omitempty"`
+	Negate  *bool `json:"negate,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
-	Order int32 `json:"order"`
+	Order   int32 `json:"order"`
 	// Timeout after which Policy execution is terminated.
 	Timeout *int32 `json:"timeout,omitempty"`
 }
@@ -69,7 +69,7 @@ func (o *PolicyBinding) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *PolicyBinding) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -93,7 +93,7 @@ func (o *PolicyBinding) GetPolicy() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PolicyBinding) GetPolicyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Policy.Get(), o.Policy.IsSet()
@@ -112,6 +112,7 @@ func (o *PolicyBinding) HasPolicy() bool {
 func (o *PolicyBinding) SetPolicy(v string) {
 	o.Policy.Set(&v)
 }
+
 // SetPolicyNil sets the value for Policy to be an explicit nil
 func (o *PolicyBinding) SetPolicyNil() {
 	o.Policy.Set(nil)
@@ -135,7 +136,7 @@ func (o *PolicyBinding) GetGroup() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PolicyBinding) GetGroupOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Group.Get(), o.Group.IsSet()
@@ -154,6 +155,7 @@ func (o *PolicyBinding) HasGroup() bool {
 func (o *PolicyBinding) SetGroup(v string) {
 	o.Group.Set(&v)
 }
+
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *PolicyBinding) SetGroupNil() {
 	o.Group.Set(nil)
@@ -177,7 +179,7 @@ func (o *PolicyBinding) GetUser() int32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PolicyBinding) GetUserOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.User.Get(), o.User.IsSet()
@@ -196,6 +198,7 @@ func (o *PolicyBinding) HasUser() bool {
 func (o *PolicyBinding) SetUser(v int32) {
 	o.User.Set(&v)
 }
+
 // SetUserNil sets the value for User to be an explicit nil
 func (o *PolicyBinding) SetUserNil() {
 	o.User.Set(nil)
@@ -219,7 +222,7 @@ func (o *PolicyBinding) GetPolicyObj() Policy {
 // GetPolicyObjOk returns a tuple with the PolicyObj field value
 // and a boolean to check if the value has been set.
 func (o *PolicyBinding) GetPolicyObjOk() (*Policy, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PolicyObj, true
@@ -243,7 +246,7 @@ func (o *PolicyBinding) GetGroupObj() Group {
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
 func (o *PolicyBinding) GetGroupObjOk() (*Group, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.GroupObj, true
@@ -267,7 +270,7 @@ func (o *PolicyBinding) GetUserObj() User {
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
 func (o *PolicyBinding) GetUserObjOk() (*User, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.UserObj, true
@@ -291,7 +294,7 @@ func (o *PolicyBinding) GetTarget() string {
 // GetTargetOk returns a tuple with the Target field value
 // and a boolean to check if the value has been set.
 func (o *PolicyBinding) GetTargetOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Target, true
@@ -379,7 +382,7 @@ func (o *PolicyBinding) GetOrder() int32 {
 // GetOrderOk returns a tuple with the Order field value
 // and a boolean to check if the value has been set.
 func (o *PolicyBinding) GetOrderOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Order, true
@@ -498,5 +501,3 @@ func (v *NullablePolicyBinding) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -18,12 +18,12 @@ import (
 
 // Notification Notification Serializer
 type Notification struct {
-	Pk string `json:"pk"`
+	Pk       string       `json:"pk"`
 	Severity SeverityEnum `json:"severity"`
-	Body string `json:"body"`
-	Created time.Time `json:"created"`
-	Event *Event `json:"event,omitempty"`
-	Seen *bool `json:"seen,omitempty"`
+	Body     string       `json:"body"`
+	Created  time.Time    `json:"created"`
+	Event    *Event       `json:"event,omitempty"`
+	Seen     *bool        `json:"seen,omitempty"`
 }
 
 // NewNotification instantiates a new Notification object
@@ -60,7 +60,7 @@ func (o *Notification) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *Notification) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -84,7 +84,7 @@ func (o *Notification) GetSeverity() SeverityEnum {
 // GetSeverityOk returns a tuple with the Severity field value
 // and a boolean to check if the value has been set.
 func (o *Notification) GetSeverityOk() (*SeverityEnum, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Severity, true
@@ -108,7 +108,7 @@ func (o *Notification) GetBody() string {
 // GetBodyOk returns a tuple with the Body field value
 // and a boolean to check if the value has been set.
 func (o *Notification) GetBodyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Body, true
@@ -132,7 +132,7 @@ func (o *Notification) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
 func (o *Notification) GetCreatedOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Created, true
@@ -265,5 +265,3 @@ func (v *NullableNotification) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

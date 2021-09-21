@@ -19,9 +19,9 @@ import (
 type SAMLProviderRequest struct {
 	Name string `json:"name"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string `json:"authorization_flow"`
-	PropertyMappings *[]string `json:"property_mappings,omitempty"`
-	AcsUrl string `json:"acs_url"`
+	AuthorizationFlow string    `json:"authorization_flow"`
+	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
+	AcsUrl            string    `json:"acs_url"`
 	// Value of the audience restriction field of the asseration. When left empty, no audience restriction will be added.
 	Audience *string `json:"audience,omitempty"`
 	// Also known as EntityID
@@ -33,8 +33,8 @@ type SAMLProviderRequest struct {
 	// Session not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	SessionValidNotOnOrAfter *string `json:"session_valid_not_on_or_after,omitempty"`
 	// Configure how the NameID value will be created. When left empty, the NameIDPolicy of the incoming request will be considered
-	NameIdMapping NullableString `json:"name_id_mapping,omitempty"`
-	DigestAlgorithm *DigestAlgorithmEnum `json:"digest_algorithm,omitempty"`
+	NameIdMapping      NullableString          `json:"name_id_mapping,omitempty"`
+	DigestAlgorithm    *DigestAlgorithmEnum    `json:"digest_algorithm,omitempty"`
 	SignatureAlgorithm *SignatureAlgorithmEnum `json:"signature_algorithm,omitempty"`
 	// Keypair used to sign outgoing Responses going to the Service Provider.
 	SigningKp NullableString `json:"signing_kp,omitempty"`
@@ -77,7 +77,7 @@ func (o *SAMLProviderRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *SAMLProviderRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -101,7 +101,7 @@ func (o *SAMLProviderRequest) GetAuthorizationFlow() string {
 // GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value
 // and a boolean to check if the value has been set.
 func (o *SAMLProviderRequest) GetAuthorizationFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AuthorizationFlow, true
@@ -157,7 +157,7 @@ func (o *SAMLProviderRequest) GetAcsUrl() string {
 // GetAcsUrlOk returns a tuple with the AcsUrl field value
 // and a boolean to check if the value has been set.
 func (o *SAMLProviderRequest) GetAcsUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AcsUrl, true
@@ -341,7 +341,7 @@ func (o *SAMLProviderRequest) GetNameIdMapping() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SAMLProviderRequest) GetNameIdMappingOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.NameIdMapping.Get(), o.NameIdMapping.IsSet()
@@ -360,6 +360,7 @@ func (o *SAMLProviderRequest) HasNameIdMapping() bool {
 func (o *SAMLProviderRequest) SetNameIdMapping(v string) {
 	o.NameIdMapping.Set(&v)
 }
+
 // SetNameIdMappingNil sets the value for NameIdMapping to be an explicit nil
 func (o *SAMLProviderRequest) SetNameIdMappingNil() {
 	o.NameIdMapping.Set(nil)
@@ -447,7 +448,7 @@ func (o *SAMLProviderRequest) GetSigningKp() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SAMLProviderRequest) GetSigningKpOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SigningKp.Get(), o.SigningKp.IsSet()
@@ -466,6 +467,7 @@ func (o *SAMLProviderRequest) HasSigningKp() bool {
 func (o *SAMLProviderRequest) SetSigningKp(v string) {
 	o.SigningKp.Set(&v)
 }
+
 // SetSigningKpNil sets the value for SigningKp to be an explicit nil
 func (o *SAMLProviderRequest) SetSigningKpNil() {
 	o.SigningKp.Set(nil)
@@ -489,7 +491,7 @@ func (o *SAMLProviderRequest) GetVerificationKp() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SAMLProviderRequest) GetVerificationKpOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.VerificationKp.Get(), o.VerificationKp.IsSet()
@@ -508,6 +510,7 @@ func (o *SAMLProviderRequest) HasVerificationKp() bool {
 func (o *SAMLProviderRequest) SetVerificationKp(v string) {
 	o.VerificationKp.Set(&v)
 }
+
 // SetVerificationKpNil sets the value for VerificationKp to be an explicit nil
 func (o *SAMLProviderRequest) SetVerificationKpNil() {
 	o.VerificationKp.Set(nil)
@@ -635,5 +638,3 @@ func (v *NullableSAMLProviderRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -58,7 +58,7 @@ func (o *PatchedEventMatcherPolicyRequest) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedEventMatcherPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -77,6 +77,7 @@ func (o *PatchedEventMatcherPolicyRequest) HasName() bool {
 func (o *PatchedEventMatcherPolicyRequest) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PatchedEventMatcherPolicyRequest) SetNameNil() {
 	o.Name.Set(nil)
@@ -270,5 +271,3 @@ func (v *NullablePatchedEventMatcherPolicyRequest) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

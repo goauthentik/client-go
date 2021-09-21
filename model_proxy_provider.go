@@ -17,23 +17,23 @@ import (
 
 // ProxyProvider ProxyProvider Serializer
 type ProxyProvider struct {
-	Pk int32 `json:"pk"`
+	Pk   int32  `json:"pk"`
 	Name string `json:"name"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string `json:"authorization_flow"`
-	PropertyMappings *[]string `json:"property_mappings,omitempty"`
-	Component string `json:"component"`
+	AuthorizationFlow string    `json:"authorization_flow"`
+	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
+	Component         string    `json:"component"`
 	// Internal application name, used in URLs.
 	AssignedApplicationSlug string `json:"assigned_application_slug"`
 	// Application's display Name.
-	AssignedApplicationName string `json:"assigned_application_name"`
-	VerboseName string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
-	InternalHost *string `json:"internal_host,omitempty"`
-	ExternalHost string `json:"external_host"`
+	AssignedApplicationName string  `json:"assigned_application_name"`
+	VerboseName             string  `json:"verbose_name"`
+	VerboseNamePlural       string  `json:"verbose_name_plural"`
+	InternalHost            *string `json:"internal_host,omitempty"`
+	ExternalHost            string  `json:"external_host"`
 	// Validate SSL Certificates of upstream servers
-	InternalHostSslValidation *bool `json:"internal_host_ssl_validation,omitempty"`
-	Certificate NullableString `json:"certificate,omitempty"`
+	InternalHostSslValidation *bool          `json:"internal_host_ssl_validation,omitempty"`
+	Certificate               NullableString `json:"certificate,omitempty"`
 	// Regular expressions for which authentication is not required. Each new line is interpreted as a new Regular Expression.
 	SkipPathRegex *string `json:"skip_path_regex,omitempty"`
 	// Set a custom HTTP-Basic Authentication header based on values from authentik.
@@ -43,9 +43,9 @@ type ProxyProvider struct {
 	// User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user's Email address is used.
 	BasicAuthUserAttribute *string `json:"basic_auth_user_attribute,omitempty"`
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
-	Mode *ProxyMode `json:"mode,omitempty"`
-	RedirectUris string `json:"redirect_uris"`
-	CookieDomain *string `json:"cookie_domain,omitempty"`
+	Mode         *ProxyMode `json:"mode,omitempty"`
+	RedirectUris string     `json:"redirect_uris"`
+	CookieDomain *string    `json:"cookie_domain,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	TokenValidity *string `json:"token_validity,omitempty"`
 }
@@ -90,7 +90,7 @@ func (o *ProxyProvider) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -114,7 +114,7 @@ func (o *ProxyProvider) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -138,7 +138,7 @@ func (o *ProxyProvider) GetAuthorizationFlow() string {
 // GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetAuthorizationFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AuthorizationFlow, true
@@ -194,7 +194,7 @@ func (o *ProxyProvider) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -218,7 +218,7 @@ func (o *ProxyProvider) GetAssignedApplicationSlug() string {
 // GetAssignedApplicationSlugOk returns a tuple with the AssignedApplicationSlug field value
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetAssignedApplicationSlugOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AssignedApplicationSlug, true
@@ -242,7 +242,7 @@ func (o *ProxyProvider) GetAssignedApplicationName() string {
 // GetAssignedApplicationNameOk returns a tuple with the AssignedApplicationName field value
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetAssignedApplicationNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AssignedApplicationName, true
@@ -266,7 +266,7 @@ func (o *ProxyProvider) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -290,7 +290,7 @@ func (o *ProxyProvider) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -346,7 +346,7 @@ func (o *ProxyProvider) GetExternalHost() string {
 // GetExternalHostOk returns a tuple with the ExternalHost field value
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetExternalHostOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ExternalHost, true
@@ -402,7 +402,7 @@ func (o *ProxyProvider) GetCertificate() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxyProvider) GetCertificateOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Certificate.Get(), o.Certificate.IsSet()
@@ -421,6 +421,7 @@ func (o *ProxyProvider) HasCertificate() bool {
 func (o *ProxyProvider) SetCertificate(v string) {
 	o.Certificate.Set(&v)
 }
+
 // SetCertificateNil sets the value for Certificate to be an explicit nil
 func (o *ProxyProvider) SetCertificateNil() {
 	o.Certificate.Set(nil)
@@ -604,7 +605,7 @@ func (o *ProxyProvider) GetRedirectUris() string {
 // GetRedirectUrisOk returns a tuple with the RedirectUris field value
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetRedirectUrisOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.RedirectUris, true
@@ -782,5 +783,3 @@ func (v *NullableProxyProvider) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,7 +19,7 @@ import (
 type TOTPDevice struct {
 	// The human-readable name of this device.
 	Name string `json:"name"`
-	Pk int32 `json:"pk"`
+	Pk   int32  `json:"pk"`
 }
 
 // NewTOTPDevice instantiates a new TOTPDevice object
@@ -54,7 +54,7 @@ func (o *TOTPDevice) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *TOTPDevice) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -78,7 +78,7 @@ func (o *TOTPDevice) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *TOTPDevice) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -135,5 +135,3 @@ func (v *NullableTOTPDevice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

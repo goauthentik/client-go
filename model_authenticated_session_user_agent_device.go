@@ -17,9 +17,9 @@ import (
 
 // AuthenticatedSessionUserAgentDevice struct for AuthenticatedSessionUserAgentDevice
 type AuthenticatedSessionUserAgentDevice struct {
-	Brand *string `json:"brand,omitempty"`
+	Brand  *string `json:"brand,omitempty"`
 	Family *string `json:"family,omitempty"`
-	Model *string `json:"model,omitempty"`
+	Model  *string `json:"model,omitempty"`
 }
 
 // NewAuthenticatedSessionUserAgentDevice instantiates a new AuthenticatedSessionUserAgentDevice object
@@ -184,5 +184,3 @@ func (v *NullableAuthenticatedSessionUserAgentDevice) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

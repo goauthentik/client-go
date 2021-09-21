@@ -18,7 +18,7 @@ import (
 // PaginatedPromptList struct for PaginatedPromptList
 type PaginatedPromptList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []Prompt `json:"results"`
+	Results    []Prompt                           `json:"results"`
 }
 
 // NewPaginatedPromptList instantiates a new PaginatedPromptList object
@@ -53,7 +53,7 @@ func (o *PaginatedPromptList) GetPagination() PaginatedApplicationListPagination
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedPromptList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedPromptList) GetResults() []Prompt {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedPromptList) GetResultsOk() (*[]Prompt, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedPromptList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

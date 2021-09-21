@@ -18,9 +18,9 @@ import (
 // AuthenticatedSessionUserAgentUserAgent struct for AuthenticatedSessionUserAgentUserAgent
 type AuthenticatedSessionUserAgentUserAgent struct {
 	Family *string `json:"family,omitempty"`
-	Major *string `json:"major,omitempty"`
-	Minor *string `json:"minor,omitempty"`
-	Patch *string `json:"patch,omitempty"`
+	Major  *string `json:"major,omitempty"`
+	Minor  *string `json:"minor,omitempty"`
+	Patch  *string `json:"patch,omitempty"`
 }
 
 // NewAuthenticatedSessionUserAgentUserAgent instantiates a new AuthenticatedSessionUserAgentUserAgent object
@@ -220,5 +220,3 @@ func (v *NullableAuthenticatedSessionUserAgentUserAgent) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

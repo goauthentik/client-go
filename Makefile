@@ -13,4 +13,6 @@ default:
 		-g go \
 		-o /local \
 		-c /local/config.yaml
-	gofmt -w .
+	go get
+	go fmt .
+	go mod tidy

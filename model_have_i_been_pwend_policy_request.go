@@ -22,7 +22,7 @@ type HaveIBeenPwendPolicyRequest struct {
 	ExecutionLogging *bool `json:"execution_logging,omitempty"`
 	// Field key to check, field keys defined in Prompt stages are available.
 	PasswordField *string `json:"password_field,omitempty"`
-	AllowedCount *int32 `json:"allowed_count,omitempty"`
+	AllowedCount  *int32  `json:"allowed_count,omitempty"`
 }
 
 // NewHaveIBeenPwendPolicyRequest instantiates a new HaveIBeenPwendPolicyRequest object
@@ -55,7 +55,7 @@ func (o *HaveIBeenPwendPolicyRequest) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HaveIBeenPwendPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -74,6 +74,7 @@ func (o *HaveIBeenPwendPolicyRequest) HasName() bool {
 func (o *HaveIBeenPwendPolicyRequest) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *HaveIBeenPwendPolicyRequest) SetNameNil() {
 	o.Name.Set(nil)
@@ -232,5 +233,3 @@ func (v *NullableHaveIBeenPwendPolicyRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

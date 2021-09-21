@@ -20,12 +20,12 @@ type PatchedSAMLSourceRequest struct {
 	// Source's display Name.
 	Name *string `json:"name,omitempty"`
 	// Internal source name, used in URLs.
-	Slug *string `json:"slug,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
+	Slug    *string `json:"slug,omitempty"`
+	Enabled *bool   `json:"enabled,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
-	EnrollmentFlow NullableString `json:"enrollment_flow,omitempty"`
+	EnrollmentFlow   NullableString    `json:"enrollment_flow,omitempty"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
@@ -41,10 +41,10 @@ type PatchedSAMLSourceRequest struct {
 	AllowIdpInitiated *bool `json:"allow_idp_initiated,omitempty"`
 	// NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.
 	NameIdPolicy *NameIdPolicyEnum `json:"name_id_policy,omitempty"`
-	BindingType *BindingTypeEnum `json:"binding_type,omitempty"`
+	BindingType  *BindingTypeEnum  `json:"binding_type,omitempty"`
 	// Keypair which is used to sign outgoing requests. Leave empty to disable signing.
-	SigningKp NullableString `json:"signing_kp,omitempty"`
-	DigestAlgorithm *DigestAlgorithmEnum `json:"digest_algorithm,omitempty"`
+	SigningKp          NullableString          `json:"signing_kp,omitempty"`
+	DigestAlgorithm    *DigestAlgorithmEnum    `json:"digest_algorithm,omitempty"`
 	SignatureAlgorithm *SignatureAlgorithmEnum `json:"signature_algorithm,omitempty"`
 	// Time offset when temporary users should be deleted. This only applies if your IDP uses the NameID Format 'transient', and the user doesn't log out manually. (Format: hours=1;minutes=2;seconds=3).
 	TemporaryUserDeleteAfter *string `json:"temporary_user_delete_after,omitempty"`
@@ -176,7 +176,7 @@ func (o *PatchedSAMLSourceRequest) GetAuthenticationFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedSAMLSourceRequest) GetAuthenticationFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AuthenticationFlow.Get(), o.AuthenticationFlow.IsSet()
@@ -195,6 +195,7 @@ func (o *PatchedSAMLSourceRequest) HasAuthenticationFlow() bool {
 func (o *PatchedSAMLSourceRequest) SetAuthenticationFlow(v string) {
 	o.AuthenticationFlow.Set(&v)
 }
+
 // SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
 func (o *PatchedSAMLSourceRequest) SetAuthenticationFlowNil() {
 	o.AuthenticationFlow.Set(nil)
@@ -218,7 +219,7 @@ func (o *PatchedSAMLSourceRequest) GetEnrollmentFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedSAMLSourceRequest) GetEnrollmentFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.EnrollmentFlow.Get(), o.EnrollmentFlow.IsSet()
@@ -237,6 +238,7 @@ func (o *PatchedSAMLSourceRequest) HasEnrollmentFlow() bool {
 func (o *PatchedSAMLSourceRequest) SetEnrollmentFlow(v string) {
 	o.EnrollmentFlow.Set(&v)
 }
+
 // SetEnrollmentFlowNil sets the value for EnrollmentFlow to be an explicit nil
 func (o *PatchedSAMLSourceRequest) SetEnrollmentFlowNil() {
 	o.EnrollmentFlow.Set(nil)
@@ -420,7 +422,7 @@ func (o *PatchedSAMLSourceRequest) GetSloUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedSAMLSourceRequest) GetSloUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SloUrl.Get(), o.SloUrl.IsSet()
@@ -439,6 +441,7 @@ func (o *PatchedSAMLSourceRequest) HasSloUrl() bool {
 func (o *PatchedSAMLSourceRequest) SetSloUrl(v string) {
 	o.SloUrl.Set(&v)
 }
+
 // SetSloUrlNil sets the value for SloUrl to be an explicit nil
 func (o *PatchedSAMLSourceRequest) SetSloUrlNil() {
 	o.SloUrl.Set(nil)
@@ -558,7 +561,7 @@ func (o *PatchedSAMLSourceRequest) GetSigningKp() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedSAMLSourceRequest) GetSigningKpOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SigningKp.Get(), o.SigningKp.IsSet()
@@ -577,6 +580,7 @@ func (o *PatchedSAMLSourceRequest) HasSigningKp() bool {
 func (o *PatchedSAMLSourceRequest) SetSigningKp(v string) {
 	o.SigningKp.Set(&v)
 }
+
 // SetSigningKpNil sets the value for SigningKp to be an explicit nil
 func (o *PatchedSAMLSourceRequest) SetSigningKpNil() {
 	o.SigningKp.Set(nil)
@@ -777,5 +781,3 @@ func (v *NullablePatchedSAMLSourceRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,15 +17,15 @@ import (
 
 // ExpressionPolicy Group Membership Policy Serializer
 type ExpressionPolicy struct {
-	Pk string `json:"pk"`
+	Pk   string         `json:"pk"`
 	Name NullableString `json:"name,omitempty"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool `json:"execution_logging,omitempty"`
-	Component string `json:"component"`
-	VerboseName string `json:"verbose_name"`
+	ExecutionLogging  *bool  `json:"execution_logging,omitempty"`
+	Component         string `json:"component"`
+	VerboseName       string `json:"verbose_name"`
 	VerboseNamePlural string `json:"verbose_name_plural"`
-	BoundTo int32 `json:"bound_to"`
-	Expression string `json:"expression"`
+	BoundTo           int32  `json:"bound_to"`
+	Expression        string `json:"expression"`
 }
 
 // NewExpressionPolicy instantiates a new ExpressionPolicy object
@@ -64,7 +64,7 @@ func (o *ExpressionPolicy) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *ExpressionPolicy) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -88,7 +88,7 @@ func (o *ExpressionPolicy) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ExpressionPolicy) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -107,6 +107,7 @@ func (o *ExpressionPolicy) HasName() bool {
 func (o *ExpressionPolicy) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ExpressionPolicy) SetNameNil() {
 	o.Name.Set(nil)
@@ -162,7 +163,7 @@ func (o *ExpressionPolicy) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *ExpressionPolicy) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -186,7 +187,7 @@ func (o *ExpressionPolicy) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *ExpressionPolicy) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -210,7 +211,7 @@ func (o *ExpressionPolicy) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *ExpressionPolicy) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -234,7 +235,7 @@ func (o *ExpressionPolicy) GetBoundTo() int32 {
 // GetBoundToOk returns a tuple with the BoundTo field value
 // and a boolean to check if the value has been set.
 func (o *ExpressionPolicy) GetBoundToOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BoundTo, true
@@ -258,7 +259,7 @@ func (o *ExpressionPolicy) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value
 // and a boolean to check if the value has been set.
 func (o *ExpressionPolicy) GetExpressionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Expression, true
@@ -333,5 +334,3 @@ func (v *NullableExpressionPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

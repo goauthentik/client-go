@@ -19,10 +19,10 @@ import (
 type PatchedDummyPolicyRequest struct {
 	Name NullableString `json:"name,omitempty"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool `json:"execution_logging,omitempty"`
-	Result *bool `json:"result,omitempty"`
-	WaitMin *int32 `json:"wait_min,omitempty"`
-	WaitMax *int32 `json:"wait_max,omitempty"`
+	ExecutionLogging *bool  `json:"execution_logging,omitempty"`
+	Result           *bool  `json:"result,omitempty"`
+	WaitMin          *int32 `json:"wait_min,omitempty"`
+	WaitMax          *int32 `json:"wait_max,omitempty"`
 }
 
 // NewPatchedDummyPolicyRequest instantiates a new PatchedDummyPolicyRequest object
@@ -55,7 +55,7 @@ func (o *PatchedDummyPolicyRequest) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedDummyPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -74,6 +74,7 @@ func (o *PatchedDummyPolicyRequest) HasName() bool {
 func (o *PatchedDummyPolicyRequest) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PatchedDummyPolicyRequest) SetNameNil() {
 	o.Name.Set(nil)
@@ -267,5 +268,3 @@ func (v *NullablePatchedDummyPolicyRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

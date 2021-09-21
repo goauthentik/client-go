@@ -20,7 +20,7 @@ type UserSelfRequest struct {
 	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
 	Username string `json:"username"`
 	// User's display name.
-	Name string `json:"name"`
+	Name  string  `json:"name"`
 	Email *string `json:"email,omitempty"`
 }
 
@@ -56,7 +56,7 @@ func (o *UserSelfRequest) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
 func (o *UserSelfRequest) GetUsernameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Username, true
@@ -80,7 +80,7 @@ func (o *UserSelfRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *UserSelfRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -172,5 +172,3 @@ func (v *NullableUserSelfRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

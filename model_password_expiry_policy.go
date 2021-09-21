@@ -17,16 +17,16 @@ import (
 
 // PasswordExpiryPolicy Password Expiry Policy Serializer
 type PasswordExpiryPolicy struct {
-	Pk string `json:"pk"`
+	Pk   string         `json:"pk"`
 	Name NullableString `json:"name,omitempty"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool `json:"execution_logging,omitempty"`
-	Component string `json:"component"`
-	VerboseName string `json:"verbose_name"`
+	ExecutionLogging  *bool  `json:"execution_logging,omitempty"`
+	Component         string `json:"component"`
+	VerboseName       string `json:"verbose_name"`
 	VerboseNamePlural string `json:"verbose_name_plural"`
-	BoundTo int32 `json:"bound_to"`
-	Days int32 `json:"days"`
-	DenyOnly *bool `json:"deny_only,omitempty"`
+	BoundTo           int32  `json:"bound_to"`
+	Days              int32  `json:"days"`
+	DenyOnly          *bool  `json:"deny_only,omitempty"`
 }
 
 // NewPasswordExpiryPolicy instantiates a new PasswordExpiryPolicy object
@@ -65,7 +65,7 @@ func (o *PasswordExpiryPolicy) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *PasswordExpiryPolicy) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -89,7 +89,7 @@ func (o *PasswordExpiryPolicy) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PasswordExpiryPolicy) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -108,6 +108,7 @@ func (o *PasswordExpiryPolicy) HasName() bool {
 func (o *PasswordExpiryPolicy) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PasswordExpiryPolicy) SetNameNil() {
 	o.Name.Set(nil)
@@ -163,7 +164,7 @@ func (o *PasswordExpiryPolicy) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *PasswordExpiryPolicy) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -187,7 +188,7 @@ func (o *PasswordExpiryPolicy) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *PasswordExpiryPolicy) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -211,7 +212,7 @@ func (o *PasswordExpiryPolicy) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *PasswordExpiryPolicy) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -235,7 +236,7 @@ func (o *PasswordExpiryPolicy) GetBoundTo() int32 {
 // GetBoundToOk returns a tuple with the BoundTo field value
 // and a boolean to check if the value has been set.
 func (o *PasswordExpiryPolicy) GetBoundToOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BoundTo, true
@@ -259,7 +260,7 @@ func (o *PasswordExpiryPolicy) GetDays() int32 {
 // GetDaysOk returns a tuple with the Days field value
 // and a boolean to check if the value has been set.
 func (o *PasswordExpiryPolicy) GetDaysOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Days, true
@@ -369,5 +370,3 @@ func (v *NullablePasswordExpiryPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

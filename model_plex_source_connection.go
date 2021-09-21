@@ -17,11 +17,11 @@ import (
 
 // PlexSourceConnection Plex Source connection Serializer
 type PlexSourceConnection struct {
-	Pk int32 `json:"pk"`
-	User int32 `json:"user"`
-	Source string `json:"source"`
+	Pk         int32  `json:"pk"`
+	User       int32  `json:"user"`
+	Source     string `json:"source"`
 	Identifier string `json:"identifier"`
-	PlexToken string `json:"plex_token"`
+	PlexToken  string `json:"plex_token"`
 }
 
 // NewPlexSourceConnection instantiates a new PlexSourceConnection object
@@ -59,7 +59,7 @@ func (o *PlexSourceConnection) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *PlexSourceConnection) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -83,7 +83,7 @@ func (o *PlexSourceConnection) GetUser() int32 {
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
 func (o *PlexSourceConnection) GetUserOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.User, true
@@ -107,7 +107,7 @@ func (o *PlexSourceConnection) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
 func (o *PlexSourceConnection) GetSourceOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Source, true
@@ -131,7 +131,7 @@ func (o *PlexSourceConnection) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value
 // and a boolean to check if the value has been set.
 func (o *PlexSourceConnection) GetIdentifierOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Identifier, true
@@ -155,7 +155,7 @@ func (o *PlexSourceConnection) GetPlexToken() string {
 // GetPlexTokenOk returns a tuple with the PlexToken field value
 // and a boolean to check if the value has been set.
 func (o *PlexSourceConnection) GetPlexTokenOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PlexToken, true
@@ -221,5 +221,3 @@ func (v *NullablePlexSourceConnection) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

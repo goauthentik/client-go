@@ -19,10 +19,10 @@ import (
 type GroupRequest struct {
 	Name string `json:"name"`
 	// Users added to this group will be superusers.
-	IsSuperuser *bool `json:"is_superuser,omitempty"`
-	Parent NullableString `json:"parent"`
-	Users []int32 `json:"users"`
-	Attributes *map[string]interface{} `json:"attributes,omitempty"`
+	IsSuperuser *bool                   `json:"is_superuser,omitempty"`
+	Parent      NullableString          `json:"parent"`
+	Users       []int32                 `json:"users"`
+	Attributes  *map[string]interface{} `json:"attributes,omitempty"`
 }
 
 // NewGroupRequest instantiates a new GroupRequest object
@@ -58,7 +58,7 @@ func (o *GroupRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *GroupRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -116,7 +116,7 @@ func (o *GroupRequest) GetParent() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GroupRequest) GetParentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Parent.Get(), o.Parent.IsSet()
@@ -140,7 +140,7 @@ func (o *GroupRequest) GetUsers() []int32 {
 // GetUsersOk returns a tuple with the Users field value
 // and a boolean to check if the value has been set.
 func (o *GroupRequest) GetUsersOk() (*[]int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Users, true
@@ -238,5 +238,3 @@ func (v *NullableGroupRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

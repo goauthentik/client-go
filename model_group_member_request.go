@@ -23,9 +23,9 @@ type GroupMemberRequest struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive *bool `json:"is_active,omitempty"`
-	LastLogin NullableTime `json:"last_login,omitempty"`
-	Email *string `json:"email,omitempty"`
+	IsActive   *bool                   `json:"is_active,omitempty"`
+	LastLogin  NullableTime            `json:"last_login,omitempty"`
+	Email      *string                 `json:"email,omitempty"`
 	Attributes *map[string]interface{} `json:"attributes,omitempty"`
 }
 
@@ -61,7 +61,7 @@ func (o *GroupMemberRequest) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
 func (o *GroupMemberRequest) GetUsernameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Username, true
@@ -85,7 +85,7 @@ func (o *GroupMemberRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *GroupMemberRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -141,7 +141,7 @@ func (o *GroupMemberRequest) GetLastLogin() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GroupMemberRequest) GetLastLoginOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.LastLogin.Get(), o.LastLogin.IsSet()
@@ -160,6 +160,7 @@ func (o *GroupMemberRequest) HasLastLogin() bool {
 func (o *GroupMemberRequest) SetLastLogin(v time.Time) {
 	o.LastLogin.Set(&v)
 }
+
 // SetLastLoginNil sets the value for LastLogin to be an explicit nil
 func (o *GroupMemberRequest) SetLastLoginNil() {
 	o.LastLogin.Set(nil)
@@ -292,5 +293,3 @@ func (v *NullableGroupMemberRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,8 +17,8 @@ import (
 
 // AuthenticatorWebAuthnChallengeResponseRequest WebAuthn Challenge response
 type AuthenticatorWebAuthnChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
-	Response map[string]interface{} `json:"response"`
+	Component *string                `json:"component,omitempty"`
+	Response  map[string]interface{} `json:"response"`
 }
 
 // NewAuthenticatorWebAuthnChallengeResponseRequest instantiates a new AuthenticatorWebAuthnChallengeResponseRequest object
@@ -88,7 +88,7 @@ func (o *AuthenticatorWebAuthnChallengeResponseRequest) GetResponse() map[string
 // GetResponseOk returns a tuple with the Response field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorWebAuthnChallengeResponseRequest) GetResponseOk() (*map[string]interface{}, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Response, true
@@ -145,5 +145,3 @@ func (v *NullableAuthenticatorWebAuthnChallengeResponseRequest) UnmarshalJSON(sr
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

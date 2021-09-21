@@ -24,12 +24,12 @@ type GroupMember struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive *bool `json:"is_active,omitempty"`
-	LastLogin NullableTime `json:"last_login,omitempty"`
-	Email *string `json:"email,omitempty"`
-	Avatar string `json:"avatar"`
+	IsActive   *bool                   `json:"is_active,omitempty"`
+	LastLogin  NullableTime            `json:"last_login,omitempty"`
+	Email      *string                 `json:"email,omitempty"`
+	Avatar     string                  `json:"avatar"`
 	Attributes *map[string]interface{} `json:"attributes,omitempty"`
-	Uid string `json:"uid"`
+	Uid        string                  `json:"uid"`
 }
 
 // NewGroupMember instantiates a new GroupMember object
@@ -67,7 +67,7 @@ func (o *GroupMember) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *GroupMember) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -91,7 +91,7 @@ func (o *GroupMember) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
 func (o *GroupMember) GetUsernameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Username, true
@@ -115,7 +115,7 @@ func (o *GroupMember) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *GroupMember) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -171,7 +171,7 @@ func (o *GroupMember) GetLastLogin() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GroupMember) GetLastLoginOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.LastLogin.Get(), o.LastLogin.IsSet()
@@ -190,6 +190,7 @@ func (o *GroupMember) HasLastLogin() bool {
 func (o *GroupMember) SetLastLogin(v time.Time) {
 	o.LastLogin.Set(&v)
 }
+
 // SetLastLoginNil sets the value for LastLogin to be an explicit nil
 func (o *GroupMember) SetLastLoginNil() {
 	o.LastLogin.Set(nil)
@@ -245,7 +246,7 @@ func (o *GroupMember) GetAvatar() string {
 // GetAvatarOk returns a tuple with the Avatar field value
 // and a boolean to check if the value has been set.
 func (o *GroupMember) GetAvatarOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Avatar, true
@@ -301,7 +302,7 @@ func (o *GroupMember) GetUid() string {
 // GetUidOk returns a tuple with the Uid field value
 // and a boolean to check if the value has been set.
 func (o *GroupMember) GetUidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Uid, true
@@ -379,5 +380,3 @@ func (v *NullableGroupMember) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

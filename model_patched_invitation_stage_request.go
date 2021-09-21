@@ -17,7 +17,7 @@ import (
 
 // PatchedInvitationStageRequest InvitationStage Serializer
 type PatchedInvitationStageRequest struct {
-	Name *string `json:"name,omitempty"`
+	Name    *string        `json:"name,omitempty"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// If this flag is set, this Stage will jump to the next Stage when no Invitation is given. By default this Stage will cancel the Flow when no invitation is given.
 	ContinueFlowWithoutInvitation *bool `json:"continue_flow_without_invitation,omitempty"`
@@ -185,5 +185,3 @@ func (v *NullablePatchedInvitationStageRequest) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

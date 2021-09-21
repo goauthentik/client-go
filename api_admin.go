@@ -29,10 +29,9 @@ var (
 type AdminApiService service
 
 type ApiAdminAppsListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AdminApiService
 }
-
 
 func (r ApiAdminAppsListRequest) Execute() ([]App, *_nethttp.Response, error) {
 	return r.ApiService.AdminAppsListExecute(r)
@@ -49,7 +48,7 @@ List current messages and pass into Serializer
 func (a *AdminApiService) AdminAppsList(ctx _context.Context) ApiAdminAppsListRequest {
 	return ApiAdminAppsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -145,10 +144,9 @@ func (a *AdminApiService) AdminAppsListExecute(r ApiAdminAppsListRequest) ([]App
 }
 
 type ApiAdminMetricsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AdminApiService
 }
-
 
 func (r ApiAdminMetricsRetrieveRequest) Execute() (LoginMetrics, *_nethttp.Response, error) {
 	return r.ApiService.AdminMetricsRetrieveExecute(r)
@@ -165,7 +163,7 @@ Login Metrics per 1h
 func (a *AdminApiService) AdminMetricsRetrieve(ctx _context.Context) ApiAdminMetricsRetrieveRequest {
 	return ApiAdminMetricsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -261,10 +259,9 @@ func (a *AdminApiService) AdminMetricsRetrieveExecute(r ApiAdminMetricsRetrieveR
 }
 
 type ApiAdminSystemRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AdminApiService
 }
-
 
 func (r ApiAdminSystemRetrieveRequest) Execute() (System, *_nethttp.Response, error) {
 	return r.ApiService.AdminSystemRetrieveExecute(r)
@@ -281,7 +278,7 @@ Get system information.
 func (a *AdminApiService) AdminSystemRetrieve(ctx _context.Context) ApiAdminSystemRetrieveRequest {
 	return ApiAdminSystemRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -377,10 +374,9 @@ func (a *AdminApiService) AdminSystemRetrieveExecute(r ApiAdminSystemRetrieveReq
 }
 
 type ApiAdminSystemTasksListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AdminApiService
 }
-
 
 func (r ApiAdminSystemTasksListRequest) Execute() ([]Task, *_nethttp.Response, error) {
 	return r.ApiService.AdminSystemTasksListExecute(r)
@@ -397,7 +393,7 @@ List system tasks
 func (a *AdminApiService) AdminSystemTasksList(ctx _context.Context) ApiAdminSystemTasksListRequest {
 	return ApiAdminSystemTasksListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -493,11 +489,10 @@ func (a *AdminApiService) AdminSystemTasksListExecute(r ApiAdminSystemTasksListR
 }
 
 type ApiAdminSystemTasksRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AdminApiService
-	id string
+	id         string
 }
-
 
 func (r ApiAdminSystemTasksRetrieveRequest) Execute() (Task, *_nethttp.Response, error) {
 	return r.ApiService.AdminSystemTasksRetrieveExecute(r)
@@ -515,8 +510,8 @@ Get a single system task
 func (a *AdminApiService) AdminSystemTasksRetrieve(ctx _context.Context, id string) ApiAdminSystemTasksRetrieveRequest {
 	return ApiAdminSystemTasksRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -613,11 +608,10 @@ func (a *AdminApiService) AdminSystemTasksRetrieveExecute(r ApiAdminSystemTasksR
 }
 
 type ApiAdminSystemTasksRetryCreateRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AdminApiService
-	id string
+	id         string
 }
-
 
 func (r ApiAdminSystemTasksRetryCreateRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.AdminSystemTasksRetryCreateExecute(r)
@@ -635,8 +629,8 @@ Retry task
 func (a *AdminApiService) AdminSystemTasksRetryCreate(ctx _context.Context, id string) ApiAdminSystemTasksRetryCreateRequest {
 	return ApiAdminSystemTasksRetryCreateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -722,10 +716,9 @@ func (a *AdminApiService) AdminSystemTasksRetryCreateExecute(r ApiAdminSystemTas
 }
 
 type ApiAdminVersionRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AdminApiService
 }
-
 
 func (r ApiAdminVersionRetrieveRequest) Execute() (Version, *_nethttp.Response, error) {
 	return r.ApiService.AdminVersionRetrieveExecute(r)
@@ -742,7 +735,7 @@ Get running and latest version.
 func (a *AdminApiService) AdminVersionRetrieve(ctx _context.Context) ApiAdminVersionRetrieveRequest {
 	return ApiAdminVersionRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -838,10 +831,9 @@ func (a *AdminApiService) AdminVersionRetrieveExecute(r ApiAdminVersionRetrieveR
 }
 
 type ApiAdminWorkersRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AdminApiService
 }
-
 
 func (r ApiAdminWorkersRetrieveRequest) Execute() (Workers, *_nethttp.Response, error) {
 	return r.ApiService.AdminWorkersRetrieveExecute(r)
@@ -858,7 +850,7 @@ Get currently connected worker count.
 func (a *AdminApiService) AdminWorkersRetrieve(ctx _context.Context) ApiAdminWorkersRetrieveRequest {
 	return ApiAdminWorkersRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 

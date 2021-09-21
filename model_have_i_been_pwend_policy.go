@@ -17,17 +17,17 @@ import (
 
 // HaveIBeenPwendPolicy Have I Been Pwned Policy Serializer
 type HaveIBeenPwendPolicy struct {
-	Pk string `json:"pk"`
+	Pk   string         `json:"pk"`
 	Name NullableString `json:"name,omitempty"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool `json:"execution_logging,omitempty"`
-	Component string `json:"component"`
-	VerboseName string `json:"verbose_name"`
+	ExecutionLogging  *bool  `json:"execution_logging,omitempty"`
+	Component         string `json:"component"`
+	VerboseName       string `json:"verbose_name"`
 	VerboseNamePlural string `json:"verbose_name_plural"`
-	BoundTo int32 `json:"bound_to"`
+	BoundTo           int32  `json:"bound_to"`
 	// Field key to check, field keys defined in Prompt stages are available.
 	PasswordField *string `json:"password_field,omitempty"`
-	AllowedCount *int32 `json:"allowed_count,omitempty"`
+	AllowedCount  *int32  `json:"allowed_count,omitempty"`
 }
 
 // NewHaveIBeenPwendPolicy instantiates a new HaveIBeenPwendPolicy object
@@ -65,7 +65,7 @@ func (o *HaveIBeenPwendPolicy) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *HaveIBeenPwendPolicy) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -89,7 +89,7 @@ func (o *HaveIBeenPwendPolicy) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HaveIBeenPwendPolicy) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -108,6 +108,7 @@ func (o *HaveIBeenPwendPolicy) HasName() bool {
 func (o *HaveIBeenPwendPolicy) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *HaveIBeenPwendPolicy) SetNameNil() {
 	o.Name.Set(nil)
@@ -163,7 +164,7 @@ func (o *HaveIBeenPwendPolicy) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *HaveIBeenPwendPolicy) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -187,7 +188,7 @@ func (o *HaveIBeenPwendPolicy) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *HaveIBeenPwendPolicy) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -211,7 +212,7 @@ func (o *HaveIBeenPwendPolicy) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *HaveIBeenPwendPolicy) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -235,7 +236,7 @@ func (o *HaveIBeenPwendPolicy) GetBoundTo() int32 {
 // GetBoundToOk returns a tuple with the BoundTo field value
 // and a boolean to check if the value has been set.
 func (o *HaveIBeenPwendPolicy) GetBoundToOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BoundTo, true
@@ -377,5 +378,3 @@ func (v *NullableHaveIBeenPwendPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

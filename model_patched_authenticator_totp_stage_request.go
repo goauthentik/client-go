@@ -17,11 +17,11 @@ import (
 
 // PatchedAuthenticatorTOTPStageRequest AuthenticatorTOTPStage Serializer
 type PatchedAuthenticatorTOTPStageRequest struct {
-	Name *string `json:"name,omitempty"`
+	Name    *string        `json:"name,omitempty"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	Digits *DigitsEnum `json:"digits,omitempty"`
+	Digits        *DigitsEnum    `json:"digits,omitempty"`
 }
 
 // NewPatchedAuthenticatorTOTPStageRequest instantiates a new PatchedAuthenticatorTOTPStageRequest object
@@ -118,7 +118,7 @@ func (o *PatchedAuthenticatorTOTPStageRequest) GetConfigureFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedAuthenticatorTOTPStageRequest) GetConfigureFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ConfigureFlow.Get(), o.ConfigureFlow.IsSet()
@@ -137,6 +137,7 @@ func (o *PatchedAuthenticatorTOTPStageRequest) HasConfigureFlow() bool {
 func (o *PatchedAuthenticatorTOTPStageRequest) SetConfigureFlow(v string) {
 	o.ConfigureFlow.Set(&v)
 }
+
 // SetConfigureFlowNil sets the value for ConfigureFlow to be an explicit nil
 func (o *PatchedAuthenticatorTOTPStageRequest) SetConfigureFlowNil() {
 	o.ConfigureFlow.Set(nil)
@@ -231,5 +232,3 @@ func (v *NullablePatchedAuthenticatorTOTPStageRequest) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

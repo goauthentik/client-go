@@ -116,5 +116,3 @@ func (v *NullableConsentChallengeResponseRequest) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,9 +17,9 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"strings"
 	"os"
 	"reflect"
+	"strings"
 	"time"
 )
 
@@ -32,10 +32,10 @@ var (
 type CoreApiService service
 
 type ApiCoreApplicationsCheckAccessRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	slug string
-	forUser *int32
+	slug       string
+	forUser    *int32
 }
 
 func (r ApiCoreApplicationsCheckAccessRetrieveRequest) ForUser(forUser int32) ApiCoreApplicationsCheckAccessRetrieveRequest {
@@ -59,8 +59,8 @@ Check access to a single application by slug
 func (a *CoreApiService) CoreApplicationsCheckAccessRetrieve(ctx _context.Context, slug string) ApiCoreApplicationsCheckAccessRetrieveRequest {
 	return ApiCoreApplicationsCheckAccessRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -160,8 +160,8 @@ func (a *CoreApiService) CoreApplicationsCheckAccessRetrieveExecute(r ApiCoreApp
 }
 
 type ApiCoreApplicationsCreateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
+	ctx                _context.Context
+	ApiService         *CoreApiService
 	applicationRequest *ApplicationRequest
 }
 
@@ -185,7 +185,7 @@ Application Viewset
 func (a *CoreApiService) CoreApplicationsCreate(ctx _context.Context) ApiCoreApplicationsCreateRequest {
 	return ApiCoreApplicationsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -286,11 +286,10 @@ func (a *CoreApiService) CoreApplicationsCreateExecute(r ApiCoreApplicationsCrea
 }
 
 type ApiCoreApplicationsDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiCoreApplicationsDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.CoreApplicationsDestroyExecute(r)
@@ -308,8 +307,8 @@ Application Viewset
 func (a *CoreApiService) CoreApplicationsDestroy(ctx _context.Context, slug string) ApiCoreApplicationsDestroyRequest {
 	return ApiCoreApplicationsDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -395,12 +394,12 @@ func (a *CoreApiService) CoreApplicationsDestroyExecute(r ApiCoreApplicationsDes
 }
 
 type ApiCoreApplicationsListRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	ctx               _context.Context
+	ApiService        *CoreApiService
+	ordering          *string
+	page              *int32
+	pageSize          *int32
+	search            *string
 	superuserFullList *bool
 }
 
@@ -409,16 +408,19 @@ func (r ApiCoreApplicationsListRequest) Ordering(ordering string) ApiCoreApplica
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiCoreApplicationsListRequest) Page(page int32) ApiCoreApplicationsListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiCoreApplicationsListRequest) PageSize(pageSize int32) ApiCoreApplicationsListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiCoreApplicationsListRequest) Search(search string) ApiCoreApplicationsListRequest {
 	r.search = &search
@@ -444,7 +446,7 @@ Custom list method that checks Policy based access instead of guardian
 func (a *CoreApiService) CoreApplicationsList(ctx _context.Context) ApiCoreApplicationsListRequest {
 	return ApiCoreApplicationsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -555,11 +557,10 @@ func (a *CoreApiService) CoreApplicationsListExecute(r ApiCoreApplicationsListRe
 }
 
 type ApiCoreApplicationsMetricsListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiCoreApplicationsMetricsListRequest) Execute() ([]Coordinate, *_nethttp.Response, error) {
 	return r.ApiService.CoreApplicationsMetricsListExecute(r)
@@ -577,8 +578,8 @@ Metrics for application logins
 func (a *CoreApiService) CoreApplicationsMetricsList(ctx _context.Context, slug string) ApiCoreApplicationsMetricsListRequest {
 	return ApiCoreApplicationsMetricsListRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -675,9 +676,9 @@ func (a *CoreApiService) CoreApplicationsMetricsListExecute(r ApiCoreApplication
 }
 
 type ApiCoreApplicationsPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	slug string
+	ctx                       _context.Context
+	ApiService                *CoreApiService
+	slug                      string
 	patchedApplicationRequest *PatchedApplicationRequest
 }
 
@@ -702,8 +703,8 @@ Application Viewset
 func (a *CoreApiService) CoreApplicationsPartialUpdate(ctx _context.Context, slug string) ApiCoreApplicationsPartialUpdateRequest {
 	return ApiCoreApplicationsPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -802,11 +803,10 @@ func (a *CoreApiService) CoreApplicationsPartialUpdateExecute(r ApiCoreApplicati
 }
 
 type ApiCoreApplicationsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiCoreApplicationsRetrieveRequest) Execute() (Application, *_nethttp.Response, error) {
 	return r.ApiService.CoreApplicationsRetrieveExecute(r)
@@ -824,8 +824,8 @@ Application Viewset
 func (a *CoreApiService) CoreApplicationsRetrieve(ctx _context.Context, slug string) ApiCoreApplicationsRetrieveRequest {
 	return ApiCoreApplicationsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -922,11 +922,11 @@ func (a *CoreApiService) CoreApplicationsRetrieveExecute(r ApiCoreApplicationsRe
 }
 
 type ApiCoreApplicationsSetIconCreateRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	slug string
-	file **os.File
-	clear *bool
+	slug       string
+	file       **os.File
+	clear      *bool
 }
 
 func (r ApiCoreApplicationsSetIconCreateRequest) File(file *os.File) ApiCoreApplicationsSetIconCreateRequest {
@@ -954,8 +954,8 @@ Set application icon
 func (a *CoreApiService) CoreApplicationsSetIconCreate(ctx _context.Context, slug string) ApiCoreApplicationsSetIconCreateRequest {
 	return ApiCoreApplicationsSetIconCreateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -1055,9 +1055,9 @@ func (a *CoreApiService) CoreApplicationsSetIconCreateExecute(r ApiCoreApplicati
 }
 
 type ApiCoreApplicationsSetIconUrlCreateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	slug string
+	ctx             _context.Context
+	ApiService      *CoreApiService
+	slug            string
 	filePathRequest *FilePathRequest
 }
 
@@ -1082,8 +1082,8 @@ Set application icon (as URL)
 func (a *CoreApiService) CoreApplicationsSetIconUrlCreate(ctx _context.Context, slug string) ApiCoreApplicationsSetIconUrlCreateRequest {
 	return ApiCoreApplicationsSetIconUrlCreateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -1174,9 +1174,9 @@ func (a *CoreApiService) CoreApplicationsSetIconUrlCreateExecute(r ApiCoreApplic
 }
 
 type ApiCoreApplicationsUpdateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	slug string
+	ctx                _context.Context
+	ApiService         *CoreApiService
+	slug               string
 	applicationRequest *ApplicationRequest
 }
 
@@ -1201,8 +1201,8 @@ Application Viewset
 func (a *CoreApiService) CoreApplicationsUpdate(ctx _context.Context, slug string) ApiCoreApplicationsUpdateRequest {
 	return ApiCoreApplicationsUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -1304,11 +1304,10 @@ func (a *CoreApiService) CoreApplicationsUpdateExecute(r ApiCoreApplicationsUpda
 }
 
 type ApiCoreApplicationsUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiCoreApplicationsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.CoreApplicationsUsedByListExecute(r)
@@ -1326,8 +1325,8 @@ Get a list of all objects that use this object
 func (a *CoreApiService) CoreApplicationsUsedByList(ctx _context.Context, slug string) ApiCoreApplicationsUsedByListRequest {
 	return ApiCoreApplicationsUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -1424,11 +1423,10 @@ func (a *CoreApiService) CoreApplicationsUsedByListExecute(r ApiCoreApplications
 }
 
 type ApiCoreAuthenticatedSessionsDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiCoreAuthenticatedSessionsDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.CoreAuthenticatedSessionsDestroyExecute(r)
@@ -1446,8 +1444,8 @@ AuthenticatedSession Viewset
 func (a *CoreApiService) CoreAuthenticatedSessionsDestroy(ctx _context.Context, uuid string) ApiCoreAuthenticatedSessionsDestroyRequest {
 	return ApiCoreAuthenticatedSessionsDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -1533,15 +1531,15 @@ func (a *CoreApiService) CoreAuthenticatedSessionsDestroyExecute(r ApiCoreAuthen
 }
 
 type ApiCoreAuthenticatedSessionsListRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	lastIp *string
+	ctx           _context.Context
+	ApiService    *CoreApiService
+	lastIp        *string
 	lastUserAgent *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	userUsername *string
+	ordering      *string
+	page          *int32
+	pageSize      *int32
+	search        *string
+	userUsername  *string
 }
 
 func (r ApiCoreAuthenticatedSessionsListRequest) LastIp(lastIp string) ApiCoreAuthenticatedSessionsListRequest {
@@ -1552,21 +1550,25 @@ func (r ApiCoreAuthenticatedSessionsListRequest) LastUserAgent(lastUserAgent str
 	r.lastUserAgent = &lastUserAgent
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiCoreAuthenticatedSessionsListRequest) Ordering(ordering string) ApiCoreAuthenticatedSessionsListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiCoreAuthenticatedSessionsListRequest) Page(page int32) ApiCoreAuthenticatedSessionsListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiCoreAuthenticatedSessionsListRequest) PageSize(pageSize int32) ApiCoreAuthenticatedSessionsListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiCoreAuthenticatedSessionsListRequest) Search(search string) ApiCoreAuthenticatedSessionsListRequest {
 	r.search = &search
@@ -1592,7 +1594,7 @@ AuthenticatedSession Viewset
 func (a *CoreApiService) CoreAuthenticatedSessionsList(ctx _context.Context) ApiCoreAuthenticatedSessionsListRequest {
 	return ApiCoreAuthenticatedSessionsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1709,11 +1711,10 @@ func (a *CoreApiService) CoreAuthenticatedSessionsListExecute(r ApiCoreAuthentic
 }
 
 type ApiCoreAuthenticatedSessionsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiCoreAuthenticatedSessionsRetrieveRequest) Execute() (AuthenticatedSession, *_nethttp.Response, error) {
 	return r.ApiService.CoreAuthenticatedSessionsRetrieveExecute(r)
@@ -1731,8 +1732,8 @@ AuthenticatedSession Viewset
 func (a *CoreApiService) CoreAuthenticatedSessionsRetrieve(ctx _context.Context, uuid string) ApiCoreAuthenticatedSessionsRetrieveRequest {
 	return ApiCoreAuthenticatedSessionsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -1829,11 +1830,10 @@ func (a *CoreApiService) CoreAuthenticatedSessionsRetrieveExecute(r ApiCoreAuthe
 }
 
 type ApiCoreAuthenticatedSessionsUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiCoreAuthenticatedSessionsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.CoreAuthenticatedSessionsUsedByListExecute(r)
@@ -1851,8 +1851,8 @@ Get a list of all objects that use this object
 func (a *CoreApiService) CoreAuthenticatedSessionsUsedByList(ctx _context.Context, uuid string) ApiCoreAuthenticatedSessionsUsedByListRequest {
 	return ApiCoreAuthenticatedSessionsUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -1949,8 +1949,8 @@ func (a *CoreApiService) CoreAuthenticatedSessionsUsedByListExecute(r ApiCoreAut
 }
 
 type ApiCoreGroupsCreateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
+	ctx          _context.Context
+	ApiService   *CoreApiService
 	groupRequest *GroupRequest
 }
 
@@ -1974,7 +1974,7 @@ Group Viewset
 func (a *CoreApiService) CoreGroupsCreate(ctx _context.Context) ApiCoreGroupsCreateRequest {
 	return ApiCoreGroupsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2075,11 +2075,10 @@ func (a *CoreApiService) CoreGroupsCreateExecute(r ApiCoreGroupsCreateRequest) (
 }
 
 type ApiCoreGroupsDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	groupUuid string
+	groupUuid  string
 }
-
 
 func (r ApiCoreGroupsDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.CoreGroupsDestroyExecute(r)
@@ -2097,8 +2096,8 @@ Group Viewset
 func (a *CoreApiService) CoreGroupsDestroy(ctx _context.Context, groupUuid string) ApiCoreGroupsDestroyRequest {
 	return ApiCoreGroupsDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupUuid: groupUuid,
+		ctx:        ctx,
+		groupUuid:  groupUuid,
 	}
 }
 
@@ -2184,16 +2183,16 @@ func (a *CoreApiService) CoreGroupsDestroyExecute(r ApiCoreGroupsDestroyRequest)
 }
 
 type ApiCoreGroupsListRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	isSuperuser *bool
-	membersByPk *[]int32
+	ctx               _context.Context
+	ApiService        *CoreApiService
+	isSuperuser       *bool
+	membersByPk       *[]int32
 	membersByUsername *[]string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	name              *string
+	ordering          *string
+	page              *int32
+	pageSize          *int32
+	search            *string
 }
 
 func (r ApiCoreGroupsListRequest) IsSuperuser(isSuperuser bool) ApiCoreGroupsListRequest {
@@ -2204,6 +2203,7 @@ func (r ApiCoreGroupsListRequest) MembersByPk(membersByPk []int32) ApiCoreGroups
 	r.membersByPk = &membersByPk
 	return r
 }
+
 // Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
 func (r ApiCoreGroupsListRequest) MembersByUsername(membersByUsername []string) ApiCoreGroupsListRequest {
 	r.membersByUsername = &membersByUsername
@@ -2213,21 +2213,25 @@ func (r ApiCoreGroupsListRequest) Name(name string) ApiCoreGroupsListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiCoreGroupsListRequest) Ordering(ordering string) ApiCoreGroupsListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiCoreGroupsListRequest) Page(page int32) ApiCoreGroupsListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiCoreGroupsListRequest) PageSize(pageSize int32) ApiCoreGroupsListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiCoreGroupsListRequest) Search(search string) ApiCoreGroupsListRequest {
 	r.search = &search
@@ -2249,7 +2253,7 @@ Group Viewset
 func (a *CoreApiService) CoreGroupsList(ctx _context.Context) ApiCoreGroupsListRequest {
 	return ApiCoreGroupsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2385,9 +2389,9 @@ func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (Pagi
 }
 
 type ApiCoreGroupsPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	groupUuid string
+	ctx                 _context.Context
+	ApiService          *CoreApiService
+	groupUuid           string
 	patchedGroupRequest *PatchedGroupRequest
 }
 
@@ -2412,8 +2416,8 @@ Group Viewset
 func (a *CoreApiService) CoreGroupsPartialUpdate(ctx _context.Context, groupUuid string) ApiCoreGroupsPartialUpdateRequest {
 	return ApiCoreGroupsPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupUuid: groupUuid,
+		ctx:        ctx,
+		groupUuid:  groupUuid,
 	}
 }
 
@@ -2512,11 +2516,10 @@ func (a *CoreApiService) CoreGroupsPartialUpdateExecute(r ApiCoreGroupsPartialUp
 }
 
 type ApiCoreGroupsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	groupUuid string
+	groupUuid  string
 }
-
 
 func (r ApiCoreGroupsRetrieveRequest) Execute() (Group, *_nethttp.Response, error) {
 	return r.ApiService.CoreGroupsRetrieveExecute(r)
@@ -2534,8 +2537,8 @@ Group Viewset
 func (a *CoreApiService) CoreGroupsRetrieve(ctx _context.Context, groupUuid string) ApiCoreGroupsRetrieveRequest {
 	return ApiCoreGroupsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupUuid: groupUuid,
+		ctx:        ctx,
+		groupUuid:  groupUuid,
 	}
 }
 
@@ -2632,9 +2635,9 @@ func (a *CoreApiService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveReques
 }
 
 type ApiCoreGroupsUpdateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	groupUuid string
+	ctx          _context.Context
+	ApiService   *CoreApiService
+	groupUuid    string
 	groupRequest *GroupRequest
 }
 
@@ -2659,8 +2662,8 @@ Group Viewset
 func (a *CoreApiService) CoreGroupsUpdate(ctx _context.Context, groupUuid string) ApiCoreGroupsUpdateRequest {
 	return ApiCoreGroupsUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupUuid: groupUuid,
+		ctx:        ctx,
+		groupUuid:  groupUuid,
 	}
 }
 
@@ -2762,11 +2765,10 @@ func (a *CoreApiService) CoreGroupsUpdateExecute(r ApiCoreGroupsUpdateRequest) (
 }
 
 type ApiCoreGroupsUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	groupUuid string
+	groupUuid  string
 }
-
 
 func (r ApiCoreGroupsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.CoreGroupsUsedByListExecute(r)
@@ -2784,8 +2786,8 @@ Get a list of all objects that use this object
 func (a *CoreApiService) CoreGroupsUsedByList(ctx _context.Context, groupUuid string) ApiCoreGroupsUsedByListRequest {
 	return ApiCoreGroupsUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupUuid: groupUuid,
+		ctx:        ctx,
+		groupUuid:  groupUuid,
 	}
 }
 
@@ -2882,8 +2884,8 @@ func (a *CoreApiService) CoreGroupsUsedByListExecute(r ApiCoreGroupsUsedByListRe
 }
 
 type ApiCoreTenantsCreateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
+	ctx           _context.Context
+	ApiService    *CoreApiService
 	tenantRequest *TenantRequest
 }
 
@@ -2907,7 +2909,7 @@ Tenant Viewset
 func (a *CoreApiService) CoreTenantsCreate(ctx _context.Context) ApiCoreTenantsCreateRequest {
 	return ApiCoreTenantsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3008,10 +3010,9 @@ func (a *CoreApiService) CoreTenantsCreateExecute(r ApiCoreTenantsCreateRequest)
 }
 
 type ApiCoreTenantsCurrentRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
 }
-
 
 func (r ApiCoreTenantsCurrentRetrieveRequest) Execute() (CurrentTenant, *_nethttp.Response, error) {
 	return r.ApiService.CoreTenantsCurrentRetrieveExecute(r)
@@ -3028,7 +3029,7 @@ Get current tenant
 func (a *CoreApiService) CoreTenantsCurrentRetrieve(ctx _context.Context) ApiCoreTenantsCurrentRetrieveRequest {
 	return ApiCoreTenantsCurrentRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3124,11 +3125,10 @@ func (a *CoreApiService) CoreTenantsCurrentRetrieveExecute(r ApiCoreTenantsCurre
 }
 
 type ApiCoreTenantsDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
 	tenantUuid string
 }
-
 
 func (r ApiCoreTenantsDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.CoreTenantsDestroyExecute(r)
@@ -3146,7 +3146,7 @@ Tenant Viewset
 func (a *CoreApiService) CoreTenantsDestroy(ctx _context.Context, tenantUuid string) ApiCoreTenantsDestroyRequest {
 	return ApiCoreTenantsDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		tenantUuid: tenantUuid,
 	}
 }
@@ -3233,23 +3233,23 @@ func (a *CoreApiService) CoreTenantsDestroyExecute(r ApiCoreTenantsDestroyReques
 }
 
 type ApiCoreTenantsListRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	brandingFavicon *string
-	brandingLogo *string
-	brandingTitle *string
-	default_ *bool
-	domain *string
-	eventRetention *string
+	ctx                _context.Context
+	ApiService         *CoreApiService
+	brandingFavicon    *string
+	brandingLogo       *string
+	brandingTitle      *string
+	default_           *bool
+	domain             *string
+	eventRetention     *string
 	flowAuthentication *string
-	flowInvalidation *string
-	flowRecovery *string
-	flowUnenrollment *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	tenantUuid *string
+	flowInvalidation   *string
+	flowRecovery       *string
+	flowUnenrollment   *string
+	ordering           *string
+	page               *int32
+	pageSize           *int32
+	search             *string
+	tenantUuid         *string
 }
 
 func (r ApiCoreTenantsListRequest) BrandingFavicon(brandingFavicon string) ApiCoreTenantsListRequest {
@@ -3292,21 +3292,25 @@ func (r ApiCoreTenantsListRequest) FlowUnenrollment(flowUnenrollment string) Api
 	r.flowUnenrollment = &flowUnenrollment
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiCoreTenantsListRequest) Ordering(ordering string) ApiCoreTenantsListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiCoreTenantsListRequest) Page(page int32) ApiCoreTenantsListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiCoreTenantsListRequest) PageSize(pageSize int32) ApiCoreTenantsListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiCoreTenantsListRequest) Search(search string) ApiCoreTenantsListRequest {
 	r.search = &search
@@ -3332,7 +3336,7 @@ Tenant Viewset
 func (a *CoreApiService) CoreTenantsList(ctx _context.Context) ApiCoreTenantsListRequest {
 	return ApiCoreTenantsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3473,9 +3477,9 @@ func (a *CoreApiService) CoreTenantsListExecute(r ApiCoreTenantsListRequest) (Pa
 }
 
 type ApiCoreTenantsPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	tenantUuid string
+	ctx                  _context.Context
+	ApiService           *CoreApiService
+	tenantUuid           string
 	patchedTenantRequest *PatchedTenantRequest
 }
 
@@ -3500,7 +3504,7 @@ Tenant Viewset
 func (a *CoreApiService) CoreTenantsPartialUpdate(ctx _context.Context, tenantUuid string) ApiCoreTenantsPartialUpdateRequest {
 	return ApiCoreTenantsPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		tenantUuid: tenantUuid,
 	}
 }
@@ -3600,11 +3604,10 @@ func (a *CoreApiService) CoreTenantsPartialUpdateExecute(r ApiCoreTenantsPartial
 }
 
 type ApiCoreTenantsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
 	tenantUuid string
 }
-
 
 func (r ApiCoreTenantsRetrieveRequest) Execute() (Tenant, *_nethttp.Response, error) {
 	return r.ApiService.CoreTenantsRetrieveExecute(r)
@@ -3622,7 +3625,7 @@ Tenant Viewset
 func (a *CoreApiService) CoreTenantsRetrieve(ctx _context.Context, tenantUuid string) ApiCoreTenantsRetrieveRequest {
 	return ApiCoreTenantsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		tenantUuid: tenantUuid,
 	}
 }
@@ -3720,9 +3723,9 @@ func (a *CoreApiService) CoreTenantsRetrieveExecute(r ApiCoreTenantsRetrieveRequ
 }
 
 type ApiCoreTenantsUpdateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	tenantUuid string
+	ctx           _context.Context
+	ApiService    *CoreApiService
+	tenantUuid    string
 	tenantRequest *TenantRequest
 }
 
@@ -3747,7 +3750,7 @@ Tenant Viewset
 func (a *CoreApiService) CoreTenantsUpdate(ctx _context.Context, tenantUuid string) ApiCoreTenantsUpdateRequest {
 	return ApiCoreTenantsUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		tenantUuid: tenantUuid,
 	}
 }
@@ -3850,11 +3853,10 @@ func (a *CoreApiService) CoreTenantsUpdateExecute(r ApiCoreTenantsUpdateRequest)
 }
 
 type ApiCoreTenantsUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
 	tenantUuid string
 }
-
 
 func (r ApiCoreTenantsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.CoreTenantsUsedByListExecute(r)
@@ -3872,7 +3874,7 @@ Get a list of all objects that use this object
 func (a *CoreApiService) CoreTenantsUsedByList(ctx _context.Context, tenantUuid string) ApiCoreTenantsUsedByListRequest {
 	return ApiCoreTenantsUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		tenantUuid: tenantUuid,
 	}
 }
@@ -3970,8 +3972,8 @@ func (a *CoreApiService) CoreTenantsUsedByListExecute(r ApiCoreTenantsUsedByList
 }
 
 type ApiCoreTokensCreateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
+	ctx          _context.Context
+	ApiService   *CoreApiService
 	tokenRequest *TokenRequest
 }
 
@@ -3995,7 +3997,7 @@ Token Viewset
 func (a *CoreApiService) CoreTokensCreate(ctx _context.Context) ApiCoreTokensCreateRequest {
 	return ApiCoreTokensCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -4096,11 +4098,10 @@ func (a *CoreApiService) CoreTokensCreateExecute(r ApiCoreTokensCreateRequest) (
 }
 
 type ApiCoreTokensDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
 	identifier string
 }
-
 
 func (r ApiCoreTokensDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.CoreTokensDestroyExecute(r)
@@ -4118,7 +4119,7 @@ Token Viewset
 func (a *CoreApiService) CoreTokensDestroy(ctx _context.Context, identifier string) ApiCoreTokensDestroyRequest {
 	return ApiCoreTokensDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		identifier: identifier,
 	}
 }
@@ -4205,17 +4206,17 @@ func (a *CoreApiService) CoreTokensDestroyExecute(r ApiCoreTokensDestroyRequest)
 }
 
 type ApiCoreTokensListRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	description *string
-	expires *time.Time
-	expiring *bool
-	identifier *string
-	intent *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	ctx          _context.Context
+	ApiService   *CoreApiService
+	description  *string
+	expires      *time.Time
+	expiring     *bool
+	identifier   *string
+	intent       *string
+	ordering     *string
+	page         *int32
+	pageSize     *int32
+	search       *string
 	userUsername *string
 }
 
@@ -4239,21 +4240,25 @@ func (r ApiCoreTokensListRequest) Intent(intent string) ApiCoreTokensListRequest
 	r.intent = &intent
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiCoreTokensListRequest) Ordering(ordering string) ApiCoreTokensListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiCoreTokensListRequest) Page(page int32) ApiCoreTokensListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiCoreTokensListRequest) PageSize(pageSize int32) ApiCoreTokensListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiCoreTokensListRequest) Search(search string) ApiCoreTokensListRequest {
 	r.search = &search
@@ -4279,7 +4284,7 @@ Token Viewset
 func (a *CoreApiService) CoreTokensList(ctx _context.Context) ApiCoreTokensListRequest {
 	return ApiCoreTokensListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -4405,9 +4410,9 @@ func (a *CoreApiService) CoreTokensListExecute(r ApiCoreTokensListRequest) (Pagi
 }
 
 type ApiCoreTokensPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	identifier string
+	ctx                 _context.Context
+	ApiService          *CoreApiService
+	identifier          string
 	patchedTokenRequest *PatchedTokenRequest
 }
 
@@ -4432,7 +4437,7 @@ Token Viewset
 func (a *CoreApiService) CoreTokensPartialUpdate(ctx _context.Context, identifier string) ApiCoreTokensPartialUpdateRequest {
 	return ApiCoreTokensPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		identifier: identifier,
 	}
 }
@@ -4532,11 +4537,10 @@ func (a *CoreApiService) CoreTokensPartialUpdateExecute(r ApiCoreTokensPartialUp
 }
 
 type ApiCoreTokensRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
 	identifier string
 }
-
 
 func (r ApiCoreTokensRetrieveRequest) Execute() (Token, *_nethttp.Response, error) {
 	return r.ApiService.CoreTokensRetrieveExecute(r)
@@ -4554,7 +4558,7 @@ Token Viewset
 func (a *CoreApiService) CoreTokensRetrieve(ctx _context.Context, identifier string) ApiCoreTokensRetrieveRequest {
 	return ApiCoreTokensRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		identifier: identifier,
 	}
 }
@@ -4652,9 +4656,9 @@ func (a *CoreApiService) CoreTokensRetrieveExecute(r ApiCoreTokensRetrieveReques
 }
 
 type ApiCoreTokensUpdateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	identifier string
+	ctx          _context.Context
+	ApiService   *CoreApiService
+	identifier   string
 	tokenRequest *TokenRequest
 }
 
@@ -4679,7 +4683,7 @@ Token Viewset
 func (a *CoreApiService) CoreTokensUpdate(ctx _context.Context, identifier string) ApiCoreTokensUpdateRequest {
 	return ApiCoreTokensUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		identifier: identifier,
 	}
 }
@@ -4782,11 +4786,10 @@ func (a *CoreApiService) CoreTokensUpdateExecute(r ApiCoreTokensUpdateRequest) (
 }
 
 type ApiCoreTokensUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
 	identifier string
 }
-
 
 func (r ApiCoreTokensUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.CoreTokensUsedByListExecute(r)
@@ -4804,7 +4807,7 @@ Get a list of all objects that use this object
 func (a *CoreApiService) CoreTokensUsedByList(ctx _context.Context, identifier string) ApiCoreTokensUsedByListRequest {
 	return ApiCoreTokensUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		identifier: identifier,
 	}
 }
@@ -4902,11 +4905,10 @@ func (a *CoreApiService) CoreTokensUsedByListExecute(r ApiCoreTokensUsedByListRe
 }
 
 type ApiCoreTokensViewKeyRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
 	identifier string
 }
-
 
 func (r ApiCoreTokensViewKeyRetrieveRequest) Execute() (TokenView, *_nethttp.Response, error) {
 	return r.ApiService.CoreTokensViewKeyRetrieveExecute(r)
@@ -4924,7 +4926,7 @@ Return token key and log access
 func (a *CoreApiService) CoreTokensViewKeyRetrieve(ctx _context.Context, identifier string) ApiCoreTokensViewKeyRetrieveRequest {
 	return ApiCoreTokensViewKeyRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		identifier: identifier,
 	}
 }
@@ -5022,11 +5024,10 @@ func (a *CoreApiService) CoreTokensViewKeyRetrieveExecute(r ApiCoreTokensViewKey
 }
 
 type ApiCoreUserConsentDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiCoreUserConsentDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.CoreUserConsentDestroyExecute(r)
@@ -5044,8 +5045,8 @@ UserConsent Viewset
 func (a *CoreApiService) CoreUserConsentDestroy(ctx _context.Context, id int32) ApiCoreUserConsentDestroyRequest {
 	return ApiCoreUserConsentDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -5131,35 +5132,39 @@ func (a *CoreApiService) CoreUserConsentDestroyExecute(r ApiCoreUserConsentDestr
 }
 
 type ApiCoreUserConsentListRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
+	ctx         _context.Context
+	ApiService  *CoreApiService
 	application *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	user *int32
+	ordering    *string
+	page        *int32
+	pageSize    *int32
+	search      *string
+	user        *int32
 }
 
 func (r ApiCoreUserConsentListRequest) Application(application string) ApiCoreUserConsentListRequest {
 	r.application = &application
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiCoreUserConsentListRequest) Ordering(ordering string) ApiCoreUserConsentListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiCoreUserConsentListRequest) Page(page int32) ApiCoreUserConsentListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiCoreUserConsentListRequest) PageSize(pageSize int32) ApiCoreUserConsentListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiCoreUserConsentListRequest) Search(search string) ApiCoreUserConsentListRequest {
 	r.search = &search
@@ -5185,7 +5190,7 @@ UserConsent Viewset
 func (a *CoreApiService) CoreUserConsentList(ctx _context.Context) ApiCoreUserConsentListRequest {
 	return ApiCoreUserConsentListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -5299,11 +5304,10 @@ func (a *CoreApiService) CoreUserConsentListExecute(r ApiCoreUserConsentListRequ
 }
 
 type ApiCoreUserConsentRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiCoreUserConsentRetrieveRequest) Execute() (UserConsent, *_nethttp.Response, error) {
 	return r.ApiService.CoreUserConsentRetrieveExecute(r)
@@ -5321,8 +5325,8 @@ UserConsent Viewset
 func (a *CoreApiService) CoreUserConsentRetrieve(ctx _context.Context, id int32) ApiCoreUserConsentRetrieveRequest {
 	return ApiCoreUserConsentRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -5419,11 +5423,10 @@ func (a *CoreApiService) CoreUserConsentRetrieveExecute(r ApiCoreUserConsentRetr
 }
 
 type ApiCoreUserConsentUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiCoreUserConsentUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.CoreUserConsentUsedByListExecute(r)
@@ -5441,8 +5444,8 @@ Get a list of all objects that use this object
 func (a *CoreApiService) CoreUserConsentUsedByList(ctx _context.Context, id int32) ApiCoreUserConsentUsedByListRequest {
 	return ApiCoreUserConsentUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -5539,8 +5542,8 @@ func (a *CoreApiService) CoreUserConsentUsedByListExecute(r ApiCoreUserConsentUs
 }
 
 type ApiCoreUsersCreateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
+	ctx         _context.Context
+	ApiService  *CoreApiService
 	userRequest *UserRequest
 }
 
@@ -5564,7 +5567,7 @@ User Viewset
 func (a *CoreApiService) CoreUsersCreate(ctx _context.Context) ApiCoreUsersCreateRequest {
 	return ApiCoreUsersCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -5665,11 +5668,10 @@ func (a *CoreApiService) CoreUsersCreateExecute(r ApiCoreUsersCreateRequest) (Us
 }
 
 type ApiCoreUsersDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiCoreUsersDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.CoreUsersDestroyExecute(r)
@@ -5687,8 +5689,8 @@ User Viewset
 func (a *CoreApiService) CoreUsersDestroy(ctx _context.Context, id int32) ApiCoreUsersDestroyRequest {
 	return ApiCoreUsersDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -5774,20 +5776,20 @@ func (a *CoreApiService) CoreUsersDestroyExecute(r ApiCoreUsersDestroyRequest) (
 }
 
 type ApiCoreUsersListRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	attributes *string
-	email *string
+	ctx          _context.Context
+	ApiService   *CoreApiService
+	attributes   *string
+	email        *string
 	groupsByName *[]string
-	groupsByPk *[]string
-	isActive *bool
-	isSuperuser *bool
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	username *string
+	groupsByPk   *[]string
+	isActive     *bool
+	isSuperuser  *bool
+	name         *string
+	ordering     *string
+	page         *int32
+	pageSize     *int32
+	search       *string
+	username     *string
 }
 
 // Attributes
@@ -5819,21 +5821,25 @@ func (r ApiCoreUsersListRequest) Name(name string) ApiCoreUsersListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiCoreUsersListRequest) Ordering(ordering string) ApiCoreUsersListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiCoreUsersListRequest) Page(page int32) ApiCoreUsersListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiCoreUsersListRequest) PageSize(pageSize int32) ApiCoreUsersListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiCoreUsersListRequest) Search(search string) ApiCoreUsersListRequest {
 	r.search = &search
@@ -5859,7 +5865,7 @@ User Viewset
 func (a *CoreApiService) CoreUsersList(ctx _context.Context) ApiCoreUsersListRequest {
 	return ApiCoreUsersListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -6007,10 +6013,9 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (Pagina
 }
 
 type ApiCoreUsersMeRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
 }
-
 
 func (r ApiCoreUsersMeRetrieveRequest) Execute() (SessionUser, *_nethttp.Response, error) {
 	return r.ApiService.CoreUsersMeRetrieveExecute(r)
@@ -6027,7 +6032,7 @@ Get information about current user
 func (a *CoreApiService) CoreUsersMeRetrieve(ctx _context.Context) ApiCoreUsersMeRetrieveRequest {
 	return ApiCoreUsersMeRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -6123,11 +6128,10 @@ func (a *CoreApiService) CoreUsersMeRetrieveExecute(r ApiCoreUsersMeRetrieveRequ
 }
 
 type ApiCoreUsersMetricsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiCoreUsersMetricsRetrieveRequest) Execute() (UserMetrics, *_nethttp.Response, error) {
 	return r.ApiService.CoreUsersMetricsRetrieveExecute(r)
@@ -6145,8 +6149,8 @@ User metrics per 1h
 func (a *CoreApiService) CoreUsersMetricsRetrieve(ctx _context.Context, id int32) ApiCoreUsersMetricsRetrieveRequest {
 	return ApiCoreUsersMetricsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -6243,9 +6247,9 @@ func (a *CoreApiService) CoreUsersMetricsRetrieveExecute(r ApiCoreUsersMetricsRe
 }
 
 type ApiCoreUsersPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	id int32
+	ctx                _context.Context
+	ApiService         *CoreApiService
+	id                 int32
 	patchedUserRequest *PatchedUserRequest
 }
 
@@ -6270,8 +6274,8 @@ User Viewset
 func (a *CoreApiService) CoreUsersPartialUpdate(ctx _context.Context, id int32) ApiCoreUsersPartialUpdateRequest {
 	return ApiCoreUsersPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -6370,10 +6374,10 @@ func (a *CoreApiService) CoreUsersPartialUpdateExecute(r ApiCoreUsersPartialUpda
 }
 
 type ApiCoreUsersRecoveryEmailRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
 	emailStage *string
-	id int32
+	id         int32
 }
 
 func (r ApiCoreUsersRecoveryEmailRetrieveRequest) EmailStage(emailStage string) ApiCoreUsersRecoveryEmailRetrieveRequest {
@@ -6397,8 +6401,8 @@ Create a temporary link that a user can use to recover their accounts
 func (a *CoreApiService) CoreUsersRecoveryEmailRetrieve(ctx _context.Context, id int32) ApiCoreUsersRecoveryEmailRetrieveRequest {
 	return ApiCoreUsersRecoveryEmailRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -6488,11 +6492,10 @@ func (a *CoreApiService) CoreUsersRecoveryEmailRetrieveExecute(r ApiCoreUsersRec
 }
 
 type ApiCoreUsersRecoveryRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiCoreUsersRecoveryRetrieveRequest) Execute() (Link, *_nethttp.Response, error) {
 	return r.ApiService.CoreUsersRecoveryRetrieveExecute(r)
@@ -6510,8 +6513,8 @@ Create a temporary link that a user can use to recover their accounts
 func (a *CoreApiService) CoreUsersRecoveryRetrieve(ctx _context.Context, id int32) ApiCoreUsersRecoveryRetrieveRequest {
 	return ApiCoreUsersRecoveryRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -6618,11 +6621,10 @@ func (a *CoreApiService) CoreUsersRecoveryRetrieveExecute(r ApiCoreUsersRecovery
 }
 
 type ApiCoreUsersRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiCoreUsersRetrieveRequest) Execute() (User, *_nethttp.Response, error) {
 	return r.ApiService.CoreUsersRetrieveExecute(r)
@@ -6640,8 +6642,8 @@ User Viewset
 func (a *CoreApiService) CoreUsersRetrieve(ctx _context.Context, id int32) ApiCoreUsersRetrieveRequest {
 	return ApiCoreUsersRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -6738,8 +6740,8 @@ func (a *CoreApiService) CoreUsersRetrieveExecute(r ApiCoreUsersRetrieveRequest)
 }
 
 type ApiCoreUsersServiceAccountCreateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
+	ctx                       _context.Context
+	ApiService                *CoreApiService
 	userServiceAccountRequest *UserServiceAccountRequest
 }
 
@@ -6763,7 +6765,7 @@ Create a new user account that is marked as a service account
 func (a *CoreApiService) CoreUsersServiceAccountCreate(ctx _context.Context) ApiCoreUsersServiceAccountCreateRequest {
 	return ApiCoreUsersServiceAccountCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -6864,9 +6866,9 @@ func (a *CoreApiService) CoreUsersServiceAccountCreateExecute(r ApiCoreUsersServ
 }
 
 type ApiCoreUsersUpdateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
-	id int32
+	ctx         _context.Context
+	ApiService  *CoreApiService
+	id          int32
 	userRequest *UserRequest
 }
 
@@ -6891,8 +6893,8 @@ User Viewset
 func (a *CoreApiService) CoreUsersUpdate(ctx _context.Context, id int32) ApiCoreUsersUpdateRequest {
 	return ApiCoreUsersUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -6994,8 +6996,8 @@ func (a *CoreApiService) CoreUsersUpdateExecute(r ApiCoreUsersUpdateRequest) (Us
 }
 
 type ApiCoreUsersUpdateSelfUpdateRequest struct {
-	ctx _context.Context
-	ApiService *CoreApiService
+	ctx             _context.Context
+	ApiService      *CoreApiService
 	userSelfRequest *UserSelfRequest
 }
 
@@ -7019,7 +7021,7 @@ Allow users to change information on their own profile
 func (a *CoreApiService) CoreUsersUpdateSelfUpdate(ctx _context.Context) ApiCoreUsersUpdateSelfUpdateRequest {
 	return ApiCoreUsersUpdateSelfUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -7120,11 +7122,10 @@ func (a *CoreApiService) CoreUsersUpdateSelfUpdateExecute(r ApiCoreUsersUpdateSe
 }
 
 type ApiCoreUsersUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CoreApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiCoreUsersUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.CoreUsersUsedByListExecute(r)
@@ -7142,8 +7143,8 @@ Get a list of all objects that use this object
 func (a *CoreApiService) CoreUsersUsedByList(ctx _context.Context, id int32) ApiCoreUsersUsedByListRequest {
 	return ApiCoreUsersUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 

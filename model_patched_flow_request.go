@@ -23,8 +23,8 @@ type PatchedFlowRequest struct {
 	// Shown as the Title in Flow pages.
 	Title *string `json:"title,omitempty"`
 	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
-	Designation *FlowDesignationEnum `json:"designation,omitempty"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	Designation      *FlowDesignationEnum `json:"designation,omitempty"`
+	PolicyEngineMode *PolicyEngineMode    `json:"policy_engine_mode,omitempty"`
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
 	CompatibilityMode *bool `json:"compatibility_mode,omitempty"`
 }
@@ -296,5 +296,3 @@ func (v *NullablePatchedFlowRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

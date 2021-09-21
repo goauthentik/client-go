@@ -51,7 +51,7 @@ func (o *FlowDiagram) GetDiagram() string {
 // GetDiagramOk returns a tuple with the Diagram field value
 // and a boolean to check if the value has been set.
 func (o *FlowDiagram) GetDiagramOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Diagram, true
@@ -105,5 +105,3 @@ func (v *NullableFlowDiagram) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

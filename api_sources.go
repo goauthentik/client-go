@@ -17,8 +17,8 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
 
 // Linger please
@@ -30,11 +30,10 @@ var (
 type SourcesApiService service
 
 type ApiSourcesAllDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesAllDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.SourcesAllDestroyExecute(r)
@@ -52,8 +51,8 @@ Source Viewset
 func (a *SourcesApiService) SourcesAllDestroy(ctx _context.Context, slug string) ApiSourcesAllDestroyRequest {
 	return ApiSourcesAllDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -139,12 +138,12 @@ func (a *SourcesApiService) SourcesAllDestroyExecute(r ApiSourcesAllDestroyReque
 }
 
 type ApiSourcesAllListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 // Which field to use when ordering the results.
@@ -152,16 +151,19 @@ func (r ApiSourcesAllListRequest) Ordering(ordering string) ApiSourcesAllListReq
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiSourcesAllListRequest) Page(page int32) ApiSourcesAllListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiSourcesAllListRequest) PageSize(pageSize int32) ApiSourcesAllListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiSourcesAllListRequest) Search(search string) ApiSourcesAllListRequest {
 	r.search = &search
@@ -183,7 +185,7 @@ Source Viewset
 func (a *SourcesApiService) SourcesAllList(ctx _context.Context) ApiSourcesAllListRequest {
 	return ApiSourcesAllListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -291,11 +293,10 @@ func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (P
 }
 
 type ApiSourcesAllRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesAllRetrieveRequest) Execute() (Source, *_nethttp.Response, error) {
 	return r.ApiService.SourcesAllRetrieveExecute(r)
@@ -313,8 +314,8 @@ Source Viewset
 func (a *SourcesApiService) SourcesAllRetrieve(ctx _context.Context, slug string) ApiSourcesAllRetrieveRequest {
 	return ApiSourcesAllRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -411,10 +412,9 @@ func (a *SourcesApiService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveReq
 }
 
 type ApiSourcesAllTypesListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
 }
-
 
 func (r ApiSourcesAllTypesListRequest) Execute() ([]TypeCreate, *_nethttp.Response, error) {
 	return r.ApiService.SourcesAllTypesListExecute(r)
@@ -431,7 +431,7 @@ Get all creatable source types
 func (a *SourcesApiService) SourcesAllTypesList(ctx _context.Context) ApiSourcesAllTypesListRequest {
 	return ApiSourcesAllTypesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -527,11 +527,10 @@ func (a *SourcesApiService) SourcesAllTypesListExecute(r ApiSourcesAllTypesListR
 }
 
 type ApiSourcesAllUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesAllUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.SourcesAllUsedByListExecute(r)
@@ -549,8 +548,8 @@ Get a list of all objects that use this object
 func (a *SourcesApiService) SourcesAllUsedByList(ctx _context.Context, slug string) ApiSourcesAllUsedByListRequest {
 	return ApiSourcesAllUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -647,10 +646,9 @@ func (a *SourcesApiService) SourcesAllUsedByListExecute(r ApiSourcesAllUsedByLis
 }
 
 type ApiSourcesAllUserSettingsListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
 }
-
 
 func (r ApiSourcesAllUserSettingsListRequest) Execute() ([]UserSetting, *_nethttp.Response, error) {
 	return r.ApiService.SourcesAllUserSettingsListExecute(r)
@@ -667,7 +665,7 @@ Get all sources the user can configure
 func (a *SourcesApiService) SourcesAllUserSettingsList(ctx _context.Context) ApiSourcesAllUserSettingsListRequest {
 	return ApiSourcesAllUserSettingsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -763,8 +761,8 @@ func (a *SourcesApiService) SourcesAllUserSettingsListExecute(r ApiSourcesAllUse
 }
 
 type ApiSourcesLdapCreateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
+	ctx               _context.Context
+	ApiService        *SourcesApiService
 	lDAPSourceRequest *LDAPSourceRequest
 }
 
@@ -788,7 +786,7 @@ LDAP Source Viewset
 func (a *SourcesApiService) SourcesLdapCreate(ctx _context.Context) ApiSourcesLdapCreateRequest {
 	return ApiSourcesLdapCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -889,11 +887,10 @@ func (a *SourcesApiService) SourcesLdapCreateExecute(r ApiSourcesLdapCreateReque
 }
 
 type ApiSourcesLdapDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesLdapDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.SourcesLdapDestroyExecute(r)
@@ -911,8 +908,8 @@ LDAP Source Viewset
 func (a *SourcesApiService) SourcesLdapDestroy(ctx _context.Context, slug string) ApiSourcesLdapDestroyRequest {
 	return ApiSourcesLdapDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -998,34 +995,34 @@ func (a *SourcesApiService) SourcesLdapDestroyExecute(r ApiSourcesLdapDestroyReq
 }
 
 type ApiSourcesLdapListRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	additionalGroupDn *string
-	additionalUserDn *string
-	authenticationFlow *string
-	baseDn *string
-	bindCn *string
-	enabled *bool
-	enrollmentFlow *string
-	groupMembershipField *string
-	groupObjectFilter *string
-	name *string
+	ctx                   _context.Context
+	ApiService            *SourcesApiService
+	additionalGroupDn     *string
+	additionalUserDn      *string
+	authenticationFlow    *string
+	baseDn                *string
+	bindCn                *string
+	enabled               *bool
+	enrollmentFlow        *string
+	groupMembershipField  *string
+	groupObjectFilter     *string
+	name                  *string
 	objectUniquenessField *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	policyEngineMode *string
-	propertyMappings *[]string
+	ordering              *string
+	page                  *int32
+	pageSize              *int32
+	policyEngineMode      *string
+	propertyMappings      *[]string
 	propertyMappingsGroup *[]string
-	search *string
-	serverUri *string
-	slug *string
-	startTls *bool
-	syncGroups *bool
-	syncParentGroup *string
-	syncUsers *bool
-	syncUsersPassword *bool
-	userObjectFilter *string
+	search                *string
+	serverUri             *string
+	slug                  *string
+	startTls              *bool
+	syncGroups            *bool
+	syncParentGroup       *string
+	syncUsers             *bool
+	syncUsersPassword     *bool
+	userObjectFilter      *string
 }
 
 func (r ApiSourcesLdapListRequest) AdditionalGroupDn(additionalGroupDn string) ApiSourcesLdapListRequest {
@@ -1072,16 +1069,19 @@ func (r ApiSourcesLdapListRequest) ObjectUniquenessField(objectUniquenessField s
 	r.objectUniquenessField = &objectUniquenessField
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiSourcesLdapListRequest) Ordering(ordering string) ApiSourcesLdapListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiSourcesLdapListRequest) Page(page int32) ApiSourcesLdapListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiSourcesLdapListRequest) PageSize(pageSize int32) ApiSourcesLdapListRequest {
 	r.pageSize = &pageSize
@@ -1099,6 +1099,7 @@ func (r ApiSourcesLdapListRequest) PropertyMappingsGroup(propertyMappingsGroup [
 	r.propertyMappingsGroup = &propertyMappingsGroup
 	return r
 }
+
 // A search term.
 func (r ApiSourcesLdapListRequest) Search(search string) ApiSourcesLdapListRequest {
 	r.search = &search
@@ -1152,7 +1153,7 @@ LDAP Source Viewset
 func (a *SourcesApiService) SourcesLdapList(ctx _context.Context) ApiSourcesLdapListRequest {
 	return ApiSourcesLdapListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1342,9 +1343,9 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 }
 
 type ApiSourcesLdapPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	slug string
+	ctx                      _context.Context
+	ApiService               *SourcesApiService
+	slug                     string
 	patchedLDAPSourceRequest *PatchedLDAPSourceRequest
 }
 
@@ -1369,8 +1370,8 @@ LDAP Source Viewset
 func (a *SourcesApiService) SourcesLdapPartialUpdate(ctx _context.Context, slug string) ApiSourcesLdapPartialUpdateRequest {
 	return ApiSourcesLdapPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -1469,11 +1470,10 @@ func (a *SourcesApiService) SourcesLdapPartialUpdateExecute(r ApiSourcesLdapPart
 }
 
 type ApiSourcesLdapRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesLdapRetrieveRequest) Execute() (LDAPSource, *_nethttp.Response, error) {
 	return r.ApiService.SourcesLdapRetrieveExecute(r)
@@ -1491,8 +1491,8 @@ LDAP Source Viewset
 func (a *SourcesApiService) SourcesLdapRetrieve(ctx _context.Context, slug string) ApiSourcesLdapRetrieveRequest {
 	return ApiSourcesLdapRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -1589,11 +1589,10 @@ func (a *SourcesApiService) SourcesLdapRetrieveExecute(r ApiSourcesLdapRetrieveR
 }
 
 type ApiSourcesLdapSyncStatusListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesLdapSyncStatusListRequest) Execute() ([]Task, *_nethttp.Response, error) {
 	return r.ApiService.SourcesLdapSyncStatusListExecute(r)
@@ -1611,8 +1610,8 @@ Get source's sync status
 func (a *SourcesApiService) SourcesLdapSyncStatusList(ctx _context.Context, slug string) ApiSourcesLdapSyncStatusListRequest {
 	return ApiSourcesLdapSyncStatusListRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -1709,9 +1708,9 @@ func (a *SourcesApiService) SourcesLdapSyncStatusListExecute(r ApiSourcesLdapSyn
 }
 
 type ApiSourcesLdapUpdateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	slug string
+	ctx               _context.Context
+	ApiService        *SourcesApiService
+	slug              string
 	lDAPSourceRequest *LDAPSourceRequest
 }
 
@@ -1736,8 +1735,8 @@ LDAP Source Viewset
 func (a *SourcesApiService) SourcesLdapUpdate(ctx _context.Context, slug string) ApiSourcesLdapUpdateRequest {
 	return ApiSourcesLdapUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -1839,11 +1838,10 @@ func (a *SourcesApiService) SourcesLdapUpdateExecute(r ApiSourcesLdapUpdateReque
 }
 
 type ApiSourcesLdapUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesLdapUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.SourcesLdapUsedByListExecute(r)
@@ -1861,8 +1859,8 @@ Get a list of all objects that use this object
 func (a *SourcesApiService) SourcesLdapUsedByList(ctx _context.Context, slug string) ApiSourcesLdapUsedByListRequest {
 	return ApiSourcesLdapUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -1959,8 +1957,8 @@ func (a *SourcesApiService) SourcesLdapUsedByListExecute(r ApiSourcesLdapUsedByL
 }
 
 type ApiSourcesOauthCreateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
+	ctx                _context.Context
+	ApiService         *SourcesApiService
 	oAuthSourceRequest *OAuthSourceRequest
 }
 
@@ -1984,7 +1982,7 @@ Source Viewset
 func (a *SourcesApiService) SourcesOauthCreate(ctx _context.Context) ApiSourcesOauthCreateRequest {
 	return ApiSourcesOauthCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2085,11 +2083,10 @@ func (a *SourcesApiService) SourcesOauthCreateExecute(r ApiSourcesOauthCreateReq
 }
 
 type ApiSourcesOauthDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesOauthDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.SourcesOauthDestroyExecute(r)
@@ -2107,8 +2104,8 @@ Source Viewset
 func (a *SourcesApiService) SourcesOauthDestroy(ctx _context.Context, slug string) ApiSourcesOauthDestroyRequest {
 	return ApiSourcesOauthDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -2194,25 +2191,25 @@ func (a *SourcesApiService) SourcesOauthDestroyExecute(r ApiSourcesOauthDestroyR
 }
 
 type ApiSourcesOauthListRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	accessTokenUrl *string
+	ctx                _context.Context
+	ApiService         *SourcesApiService
+	accessTokenUrl     *string
 	authenticationFlow *string
-	authorizationUrl *string
-	consumerKey *string
-	enabled *bool
-	enrollmentFlow *string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	policyEngineMode *string
-	profileUrl *string
-	providerType *string
-	requestTokenUrl *string
-	search *string
-	slug *string
-	userMatchingMode *string
+	authorizationUrl   *string
+	consumerKey        *string
+	enabled            *bool
+	enrollmentFlow     *string
+	name               *string
+	ordering           *string
+	page               *int32
+	pageSize           *int32
+	policyEngineMode   *string
+	profileUrl         *string
+	providerType       *string
+	requestTokenUrl    *string
+	search             *string
+	slug               *string
+	userMatchingMode   *string
 }
 
 func (r ApiSourcesOauthListRequest) AccessTokenUrl(accessTokenUrl string) ApiSourcesOauthListRequest {
@@ -2243,16 +2240,19 @@ func (r ApiSourcesOauthListRequest) Name(name string) ApiSourcesOauthListRequest
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiSourcesOauthListRequest) Ordering(ordering string) ApiSourcesOauthListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiSourcesOauthListRequest) Page(page int32) ApiSourcesOauthListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiSourcesOauthListRequest) PageSize(pageSize int32) ApiSourcesOauthListRequest {
 	r.pageSize = &pageSize
@@ -2274,6 +2274,7 @@ func (r ApiSourcesOauthListRequest) RequestTokenUrl(requestTokenUrl string) ApiS
 	r.requestTokenUrl = &requestTokenUrl
 	return r
 }
+
 // A search term.
 func (r ApiSourcesOauthListRequest) Search(search string) ApiSourcesOauthListRequest {
 	r.search = &search
@@ -2283,6 +2284,7 @@ func (r ApiSourcesOauthListRequest) Slug(slug string) ApiSourcesOauthListRequest
 	r.slug = &slug
 	return r
 }
+
 // How the source determines if an existing user should be authenticated or a new user enrolled.
 func (r ApiSourcesOauthListRequest) UserMatchingMode(userMatchingMode string) ApiSourcesOauthListRequest {
 	r.userMatchingMode = &userMatchingMode
@@ -2304,7 +2306,7 @@ Source Viewset
 func (a *SourcesApiService) SourcesOauthList(ctx _context.Context) ApiSourcesOauthListRequest {
 	return ApiSourcesOauthListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2451,9 +2453,9 @@ func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest
 }
 
 type ApiSourcesOauthPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	slug string
+	ctx                       _context.Context
+	ApiService                *SourcesApiService
+	slug                      string
 	patchedOAuthSourceRequest *PatchedOAuthSourceRequest
 }
 
@@ -2478,8 +2480,8 @@ Source Viewset
 func (a *SourcesApiService) SourcesOauthPartialUpdate(ctx _context.Context, slug string) ApiSourcesOauthPartialUpdateRequest {
 	return ApiSourcesOauthPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -2578,11 +2580,10 @@ func (a *SourcesApiService) SourcesOauthPartialUpdateExecute(r ApiSourcesOauthPa
 }
 
 type ApiSourcesOauthRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesOauthRetrieveRequest) Execute() (OAuthSource, *_nethttp.Response, error) {
 	return r.ApiService.SourcesOauthRetrieveExecute(r)
@@ -2600,8 +2601,8 @@ Source Viewset
 func (a *SourcesApiService) SourcesOauthRetrieve(ctx _context.Context, slug string) ApiSourcesOauthRetrieveRequest {
 	return ApiSourcesOauthRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -2698,9 +2699,9 @@ func (a *SourcesApiService) SourcesOauthRetrieveExecute(r ApiSourcesOauthRetriev
 }
 
 type ApiSourcesOauthSourceTypesListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	name *string
+	name       *string
 }
 
 func (r ApiSourcesOauthSourceTypesListRequest) Name(name string) ApiSourcesOauthSourceTypesListRequest {
@@ -2724,7 +2725,7 @@ If <name> isn't found, returns the default type.
 func (a *SourcesApiService) SourcesOauthSourceTypesList(ctx _context.Context) ApiSourcesOauthSourceTypesListRequest {
 	return ApiSourcesOauthSourceTypesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2823,9 +2824,9 @@ func (a *SourcesApiService) SourcesOauthSourceTypesListExecute(r ApiSourcesOauth
 }
 
 type ApiSourcesOauthUpdateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	slug string
+	ctx                _context.Context
+	ApiService         *SourcesApiService
+	slug               string
 	oAuthSourceRequest *OAuthSourceRequest
 }
 
@@ -2850,8 +2851,8 @@ Source Viewset
 func (a *SourcesApiService) SourcesOauthUpdate(ctx _context.Context, slug string) ApiSourcesOauthUpdateRequest {
 	return ApiSourcesOauthUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -2953,11 +2954,10 @@ func (a *SourcesApiService) SourcesOauthUpdateExecute(r ApiSourcesOauthUpdateReq
 }
 
 type ApiSourcesOauthUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesOauthUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.SourcesOauthUsedByListExecute(r)
@@ -2975,8 +2975,8 @@ Get a list of all objects that use this object
 func (a *SourcesApiService) SourcesOauthUsedByList(ctx _context.Context, slug string) ApiSourcesOauthUsedByListRequest {
 	return ApiSourcesOauthUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -3073,8 +3073,8 @@ func (a *SourcesApiService) SourcesOauthUsedByListExecute(r ApiSourcesOauthUsedB
 }
 
 type ApiSourcesPlexCreateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
+	ctx               _context.Context
+	ApiService        *SourcesApiService
 	plexSourceRequest *PlexSourceRequest
 }
 
@@ -3098,7 +3098,7 @@ Plex source Viewset
 func (a *SourcesApiService) SourcesPlexCreate(ctx _context.Context) ApiSourcesPlexCreateRequest {
 	return ApiSourcesPlexCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3199,11 +3199,10 @@ func (a *SourcesApiService) SourcesPlexCreateExecute(r ApiSourcesPlexCreateReque
 }
 
 type ApiSourcesPlexDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesPlexDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.SourcesPlexDestroyExecute(r)
@@ -3221,8 +3220,8 @@ Plex source Viewset
 func (a *SourcesApiService) SourcesPlexDestroy(ctx _context.Context, slug string) ApiSourcesPlexDestroyRequest {
 	return ApiSourcesPlexDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -3308,21 +3307,21 @@ func (a *SourcesApiService) SourcesPlexDestroyExecute(r ApiSourcesPlexDestroyReq
 }
 
 type ApiSourcesPlexListRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	allowFriends *bool
+	ctx                _context.Context
+	ApiService         *SourcesApiService
+	allowFriends       *bool
 	authenticationFlow *string
-	clientId *string
-	enabled *bool
-	enrollmentFlow *string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	policyEngineMode *string
-	search *string
-	slug *string
-	userMatchingMode *string
+	clientId           *string
+	enabled            *bool
+	enrollmentFlow     *string
+	name               *string
+	ordering           *string
+	page               *int32
+	pageSize           *int32
+	policyEngineMode   *string
+	search             *string
+	slug               *string
+	userMatchingMode   *string
 }
 
 func (r ApiSourcesPlexListRequest) AllowFriends(allowFriends bool) ApiSourcesPlexListRequest {
@@ -3349,16 +3348,19 @@ func (r ApiSourcesPlexListRequest) Name(name string) ApiSourcesPlexListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiSourcesPlexListRequest) Ordering(ordering string) ApiSourcesPlexListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiSourcesPlexListRequest) Page(page int32) ApiSourcesPlexListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiSourcesPlexListRequest) PageSize(pageSize int32) ApiSourcesPlexListRequest {
 	r.pageSize = &pageSize
@@ -3368,6 +3370,7 @@ func (r ApiSourcesPlexListRequest) PolicyEngineMode(policyEngineMode string) Api
 	r.policyEngineMode = &policyEngineMode
 	return r
 }
+
 // A search term.
 func (r ApiSourcesPlexListRequest) Search(search string) ApiSourcesPlexListRequest {
 	r.search = &search
@@ -3377,6 +3380,7 @@ func (r ApiSourcesPlexListRequest) Slug(slug string) ApiSourcesPlexListRequest {
 	r.slug = &slug
 	return r
 }
+
 // How the source determines if an existing user should be authenticated or a new user enrolled.
 func (r ApiSourcesPlexListRequest) UserMatchingMode(userMatchingMode string) ApiSourcesPlexListRequest {
 	r.userMatchingMode = &userMatchingMode
@@ -3398,7 +3402,7 @@ Plex source Viewset
 func (a *SourcesApiService) SourcesPlexList(ctx _context.Context) ApiSourcesPlexListRequest {
 	return ApiSourcesPlexListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3533,9 +3537,9 @@ func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) 
 }
 
 type ApiSourcesPlexPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	slug string
+	ctx                      _context.Context
+	ApiService               *SourcesApiService
+	slug                     string
 	patchedPlexSourceRequest *PatchedPlexSourceRequest
 }
 
@@ -3560,8 +3564,8 @@ Plex source Viewset
 func (a *SourcesApiService) SourcesPlexPartialUpdate(ctx _context.Context, slug string) ApiSourcesPlexPartialUpdateRequest {
 	return ApiSourcesPlexPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -3660,10 +3664,10 @@ func (a *SourcesApiService) SourcesPlexPartialUpdateExecute(r ApiSourcesPlexPart
 }
 
 type ApiSourcesPlexRedeemTokenCreateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
+	ctx                    _context.Context
+	ApiService             *SourcesApiService
 	plexTokenRedeemRequest *PlexTokenRedeemRequest
-	slug *string
+	slug                   *string
 }
 
 func (r ApiSourcesPlexRedeemTokenCreateRequest) PlexTokenRedeemRequest(plexTokenRedeemRequest PlexTokenRedeemRequest) ApiSourcesPlexRedeemTokenCreateRequest {
@@ -3691,7 +3695,7 @@ for the source, and redirect to an authentication/enrollment flow.
 func (a *SourcesApiService) SourcesPlexRedeemTokenCreate(ctx _context.Context) ApiSourcesPlexRedeemTokenCreateRequest {
 	return ApiSourcesPlexRedeemTokenCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3795,11 +3799,10 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenCreateExecute(r ApiSourcesPlex
 }
 
 type ApiSourcesPlexRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesPlexRetrieveRequest) Execute() (PlexSource, *_nethttp.Response, error) {
 	return r.ApiService.SourcesPlexRetrieveExecute(r)
@@ -3817,8 +3820,8 @@ Plex source Viewset
 func (a *SourcesApiService) SourcesPlexRetrieve(ctx _context.Context, slug string) ApiSourcesPlexRetrieveRequest {
 	return ApiSourcesPlexRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -3915,9 +3918,9 @@ func (a *SourcesApiService) SourcesPlexRetrieveExecute(r ApiSourcesPlexRetrieveR
 }
 
 type ApiSourcesPlexUpdateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	slug string
+	ctx               _context.Context
+	ApiService        *SourcesApiService
+	slug              string
 	plexSourceRequest *PlexSourceRequest
 }
 
@@ -3942,8 +3945,8 @@ Plex source Viewset
 func (a *SourcesApiService) SourcesPlexUpdate(ctx _context.Context, slug string) ApiSourcesPlexUpdateRequest {
 	return ApiSourcesPlexUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -4045,11 +4048,10 @@ func (a *SourcesApiService) SourcesPlexUpdateExecute(r ApiSourcesPlexUpdateReque
 }
 
 type ApiSourcesPlexUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesPlexUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.SourcesPlexUsedByListExecute(r)
@@ -4067,8 +4069,8 @@ Get a list of all objects that use this object
 func (a *SourcesApiService) SourcesPlexUsedByList(ctx _context.Context, slug string) ApiSourcesPlexUsedByListRequest {
 	return ApiSourcesPlexUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -4165,8 +4167,8 @@ func (a *SourcesApiService) SourcesPlexUsedByListExecute(r ApiSourcesPlexUsedByL
 }
 
 type ApiSourcesSamlCreateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
+	ctx               _context.Context
+	ApiService        *SourcesApiService
 	sAMLSourceRequest *SAMLSourceRequest
 }
 
@@ -4190,7 +4192,7 @@ SAMLSource Viewset
 func (a *SourcesApiService) SourcesSamlCreate(ctx _context.Context) ApiSourcesSamlCreateRequest {
 	return ApiSourcesSamlCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -4291,11 +4293,10 @@ func (a *SourcesApiService) SourcesSamlCreateExecute(r ApiSourcesSamlCreateReque
 }
 
 type ApiSourcesSamlDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesSamlDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.SourcesSamlDestroyExecute(r)
@@ -4313,8 +4314,8 @@ SAMLSource Viewset
 func (a *SourcesApiService) SourcesSamlDestroy(ctx _context.Context, slug string) ApiSourcesSamlDestroyRequest {
 	return ApiSourcesSamlDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -4400,34 +4401,34 @@ func (a *SourcesApiService) SourcesSamlDestroyExecute(r ApiSourcesSamlDestroyReq
 }
 
 type ApiSourcesSamlListRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	allowIdpInitiated *bool
-	authenticationFlow *string
-	bindingType *string
-	digestAlgorithm *string
-	enabled *bool
-	enrollmentFlow *string
-	issuer *string
-	managed *string
-	name *string
-	nameIdPolicy *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	pbmUuid *string
-	policies *[]string
-	policyEngineMode *string
-	preAuthenticationFlow *string
-	propertyMappings *[]string
-	search *string
-	signatureAlgorithm *string
-	signingKp *string
-	sloUrl *string
-	slug *string
-	ssoUrl *string
+	ctx                      _context.Context
+	ApiService               *SourcesApiService
+	allowIdpInitiated        *bool
+	authenticationFlow       *string
+	bindingType              *string
+	digestAlgorithm          *string
+	enabled                  *bool
+	enrollmentFlow           *string
+	issuer                   *string
+	managed                  *string
+	name                     *string
+	nameIdPolicy             *string
+	ordering                 *string
+	page                     *int32
+	pageSize                 *int32
+	pbmUuid                  *string
+	policies                 *[]string
+	policyEngineMode         *string
+	preAuthenticationFlow    *string
+	propertyMappings         *[]string
+	search                   *string
+	signatureAlgorithm       *string
+	signingKp                *string
+	sloUrl                   *string
+	slug                     *string
+	ssoUrl                   *string
 	temporaryUserDeleteAfter *string
-	userMatchingMode *string
+	userMatchingMode         *string
 }
 
 func (r ApiSourcesSamlListRequest) AllowIdpInitiated(allowIdpInitiated bool) ApiSourcesSamlListRequest {
@@ -4466,21 +4467,25 @@ func (r ApiSourcesSamlListRequest) Name(name string) ApiSourcesSamlListRequest {
 	r.name = &name
 	return r
 }
+
 // NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.
 func (r ApiSourcesSamlListRequest) NameIdPolicy(nameIdPolicy string) ApiSourcesSamlListRequest {
 	r.nameIdPolicy = &nameIdPolicy
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiSourcesSamlListRequest) Ordering(ordering string) ApiSourcesSamlListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiSourcesSamlListRequest) Page(page int32) ApiSourcesSamlListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiSourcesSamlListRequest) PageSize(pageSize int32) ApiSourcesSamlListRequest {
 	r.pageSize = &pageSize
@@ -4506,6 +4511,7 @@ func (r ApiSourcesSamlListRequest) PropertyMappings(propertyMappings []string) A
 	r.propertyMappings = &propertyMappings
 	return r
 }
+
 // A search term.
 func (r ApiSourcesSamlListRequest) Search(search string) ApiSourcesSamlListRequest {
 	r.search = &search
@@ -4535,6 +4541,7 @@ func (r ApiSourcesSamlListRequest) TemporaryUserDeleteAfter(temporaryUserDeleteA
 	r.temporaryUserDeleteAfter = &temporaryUserDeleteAfter
 	return r
 }
+
 // How the source determines if an existing user should be authenticated or a new user enrolled.
 func (r ApiSourcesSamlListRequest) UserMatchingMode(userMatchingMode string) ApiSourcesSamlListRequest {
 	r.userMatchingMode = &userMatchingMode
@@ -4556,7 +4563,7 @@ SAMLSource Viewset
 func (a *SourcesApiService) SourcesSamlList(ctx _context.Context) ApiSourcesSamlListRequest {
 	return ApiSourcesSamlListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -4746,11 +4753,10 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 }
 
 type ApiSourcesSamlMetadataRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesSamlMetadataRetrieveRequest) Execute() (SAMLMetadata, *_nethttp.Response, error) {
 	return r.ApiService.SourcesSamlMetadataRetrieveExecute(r)
@@ -4768,8 +4774,8 @@ Return metadata as XML string
 func (a *SourcesApiService) SourcesSamlMetadataRetrieve(ctx _context.Context, slug string) ApiSourcesSamlMetadataRetrieveRequest {
 	return ApiSourcesSamlMetadataRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -4866,9 +4872,9 @@ func (a *SourcesApiService) SourcesSamlMetadataRetrieveExecute(r ApiSourcesSamlM
 }
 
 type ApiSourcesSamlPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	slug string
+	ctx                      _context.Context
+	ApiService               *SourcesApiService
+	slug                     string
 	patchedSAMLSourceRequest *PatchedSAMLSourceRequest
 }
 
@@ -4893,8 +4899,8 @@ SAMLSource Viewset
 func (a *SourcesApiService) SourcesSamlPartialUpdate(ctx _context.Context, slug string) ApiSourcesSamlPartialUpdateRequest {
 	return ApiSourcesSamlPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -4993,11 +4999,10 @@ func (a *SourcesApiService) SourcesSamlPartialUpdateExecute(r ApiSourcesSamlPart
 }
 
 type ApiSourcesSamlRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesSamlRetrieveRequest) Execute() (SAMLSource, *_nethttp.Response, error) {
 	return r.ApiService.SourcesSamlRetrieveExecute(r)
@@ -5015,8 +5020,8 @@ SAMLSource Viewset
 func (a *SourcesApiService) SourcesSamlRetrieve(ctx _context.Context, slug string) ApiSourcesSamlRetrieveRequest {
 	return ApiSourcesSamlRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -5113,9 +5118,9 @@ func (a *SourcesApiService) SourcesSamlRetrieveExecute(r ApiSourcesSamlRetrieveR
 }
 
 type ApiSourcesSamlUpdateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	slug string
+	ctx               _context.Context
+	ApiService        *SourcesApiService
+	slug              string
 	sAMLSourceRequest *SAMLSourceRequest
 }
 
@@ -5140,8 +5145,8 @@ SAMLSource Viewset
 func (a *SourcesApiService) SourcesSamlUpdate(ctx _context.Context, slug string) ApiSourcesSamlUpdateRequest {
 	return ApiSourcesSamlUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -5243,11 +5248,10 @@ func (a *SourcesApiService) SourcesSamlUpdateExecute(r ApiSourcesSamlUpdateReque
 }
 
 type ApiSourcesSamlUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	slug string
+	slug       string
 }
-
 
 func (r ApiSourcesSamlUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.SourcesSamlUsedByListExecute(r)
@@ -5265,8 +5269,8 @@ Get a list of all objects that use this object
 func (a *SourcesApiService) SourcesSamlUsedByList(ctx _context.Context, slug string) ApiSourcesSamlUsedByListRequest {
 	return ApiSourcesSamlUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		slug: slug,
+		ctx:        ctx,
+		slug:       slug,
 	}
 }
 
@@ -5363,11 +5367,10 @@ func (a *SourcesApiService) SourcesSamlUsedByListExecute(r ApiSourcesSamlUsedByL
 }
 
 type ApiSourcesUserConnectionsOauthDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiSourcesUserConnectionsOauthDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.SourcesUserConnectionsOauthDestroyExecute(r)
@@ -5385,8 +5388,8 @@ Source Viewset
 func (a *SourcesApiService) SourcesUserConnectionsOauthDestroy(ctx _context.Context, id int32) ApiSourcesUserConnectionsOauthDestroyRequest {
 	return ApiSourcesUserConnectionsOauthDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -5472,12 +5475,12 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthDestroyExecute(r ApiSourc
 }
 
 type ApiSourcesUserConnectionsOauthListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 	sourceSlug *string
 }
 
@@ -5486,16 +5489,19 @@ func (r ApiSourcesUserConnectionsOauthListRequest) Ordering(ordering string) Api
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiSourcesUserConnectionsOauthListRequest) Page(page int32) ApiSourcesUserConnectionsOauthListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiSourcesUserConnectionsOauthListRequest) PageSize(pageSize int32) ApiSourcesUserConnectionsOauthListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiSourcesUserConnectionsOauthListRequest) Search(search string) ApiSourcesUserConnectionsOauthListRequest {
 	r.search = &search
@@ -5521,7 +5527,7 @@ Source Viewset
 func (a *SourcesApiService) SourcesUserConnectionsOauthList(ctx _context.Context) ApiSourcesUserConnectionsOauthListRequest {
 	return ApiSourcesUserConnectionsOauthListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -5632,9 +5638,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthListExecute(r ApiSourcesU
 }
 
 type ApiSourcesUserConnectionsOauthPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	id int32
+	ctx                                     _context.Context
+	ApiService                              *SourcesApiService
+	id                                      int32
 	patchedUserOAuthSourceConnectionRequest *PatchedUserOAuthSourceConnectionRequest
 }
 
@@ -5659,8 +5665,8 @@ Source Viewset
 func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdate(ctx _context.Context, id int32) ApiSourcesUserConnectionsOauthPartialUpdateRequest {
 	return ApiSourcesUserConnectionsOauthPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -5759,11 +5765,10 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdateExecute(r Ap
 }
 
 type ApiSourcesUserConnectionsOauthRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiSourcesUserConnectionsOauthRetrieveRequest) Execute() (UserOAuthSourceConnection, *_nethttp.Response, error) {
 	return r.ApiService.SourcesUserConnectionsOauthRetrieveExecute(r)
@@ -5781,8 +5786,8 @@ Source Viewset
 func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieve(ctx _context.Context, id int32) ApiSourcesUserConnectionsOauthRetrieveRequest {
 	return ApiSourcesUserConnectionsOauthRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -5879,9 +5884,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieveExecute(r ApiSour
 }
 
 type ApiSourcesUserConnectionsOauthUpdateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	id int32
+	ctx                              _context.Context
+	ApiService                       *SourcesApiService
+	id                               int32
 	userOAuthSourceConnectionRequest *UserOAuthSourceConnectionRequest
 }
 
@@ -5906,8 +5911,8 @@ Source Viewset
 func (a *SourcesApiService) SourcesUserConnectionsOauthUpdate(ctx _context.Context, id int32) ApiSourcesUserConnectionsOauthUpdateRequest {
 	return ApiSourcesUserConnectionsOauthUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -6009,11 +6014,10 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUpdateExecute(r ApiSource
 }
 
 type ApiSourcesUserConnectionsOauthUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiSourcesUserConnectionsOauthUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.SourcesUserConnectionsOauthUsedByListExecute(r)
@@ -6031,8 +6035,8 @@ Get a list of all objects that use this object
 func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByList(ctx _context.Context, id int32) ApiSourcesUserConnectionsOauthUsedByListRequest {
 	return ApiSourcesUserConnectionsOauthUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -6129,11 +6133,10 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByListExecute(r ApiSo
 }
 
 type ApiSourcesUserConnectionsPlexDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiSourcesUserConnectionsPlexDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.SourcesUserConnectionsPlexDestroyExecute(r)
@@ -6151,8 +6154,8 @@ Plex Source connection Serializer
 func (a *SourcesApiService) SourcesUserConnectionsPlexDestroy(ctx _context.Context, id int32) ApiSourcesUserConnectionsPlexDestroyRequest {
 	return ApiSourcesUserConnectionsPlexDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -6238,12 +6241,12 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexDestroyExecute(r ApiSource
 }
 
 type ApiSourcesUserConnectionsPlexListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 	sourceSlug *string
 }
 
@@ -6252,16 +6255,19 @@ func (r ApiSourcesUserConnectionsPlexListRequest) Ordering(ordering string) ApiS
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiSourcesUserConnectionsPlexListRequest) Page(page int32) ApiSourcesUserConnectionsPlexListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiSourcesUserConnectionsPlexListRequest) PageSize(pageSize int32) ApiSourcesUserConnectionsPlexListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiSourcesUserConnectionsPlexListRequest) Search(search string) ApiSourcesUserConnectionsPlexListRequest {
 	r.search = &search
@@ -6287,7 +6293,7 @@ Plex Source connection Serializer
 func (a *SourcesApiService) SourcesUserConnectionsPlexList(ctx _context.Context) ApiSourcesUserConnectionsPlexListRequest {
 	return ApiSourcesUserConnectionsPlexListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -6398,9 +6404,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUs
 }
 
 type ApiSourcesUserConnectionsPlexPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	id int32
+	ctx                                _context.Context
+	ApiService                         *SourcesApiService
+	id                                 int32
 	patchedPlexSourceConnectionRequest *PatchedPlexSourceConnectionRequest
 }
 
@@ -6425,8 +6431,8 @@ Plex Source connection Serializer
 func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdate(ctx _context.Context, id int32) ApiSourcesUserConnectionsPlexPartialUpdateRequest {
 	return ApiSourcesUserConnectionsPlexPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -6525,11 +6531,10 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r Api
 }
 
 type ApiSourcesUserConnectionsPlexRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiSourcesUserConnectionsPlexRetrieveRequest) Execute() (PlexSourceConnection, *_nethttp.Response, error) {
 	return r.ApiService.SourcesUserConnectionsPlexRetrieveExecute(r)
@@ -6547,8 +6552,8 @@ Plex Source connection Serializer
 func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieve(ctx _context.Context, id int32) ApiSourcesUserConnectionsPlexRetrieveRequest {
 	return ApiSourcesUserConnectionsPlexRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -6645,9 +6650,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourc
 }
 
 type ApiSourcesUserConnectionsPlexUpdateRequest struct {
-	ctx _context.Context
-	ApiService *SourcesApiService
-	id int32
+	ctx                         _context.Context
+	ApiService                  *SourcesApiService
+	id                          int32
 	plexSourceConnectionRequest *PlexSourceConnectionRequest
 }
 
@@ -6672,8 +6677,8 @@ Plex Source connection Serializer
 func (a *SourcesApiService) SourcesUserConnectionsPlexUpdate(ctx _context.Context, id int32) ApiSourcesUserConnectionsPlexUpdateRequest {
 	return ApiSourcesUserConnectionsPlexUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -6775,11 +6780,10 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSources
 }
 
 type ApiSourcesUserConnectionsPlexUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *SourcesApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiSourcesUserConnectionsPlexUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.SourcesUserConnectionsPlexUsedByListExecute(r)
@@ -6797,8 +6801,8 @@ Get a list of all objects that use this object
 func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByList(ctx _context.Context, id int32) ApiSourcesUserConnectionsPlexUsedByListRequest {
 	return ApiSourcesUserConnectionsPlexUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 

@@ -17,12 +17,12 @@ import (
 
 // PatchedOutpostRequest Outpost Serializer
 type PatchedOutpostRequest struct {
-	Name *string `json:"name,omitempty"`
-	Type *OutpostTypeEnum `json:"type,omitempty"`
-	Providers *[]int32 `json:"providers,omitempty"`
+	Name      *string          `json:"name,omitempty"`
+	Type      *OutpostTypeEnum `json:"type,omitempty"`
+	Providers *[]int32         `json:"providers,omitempty"`
 	// Select Service-Connection authentik should use to manage this outpost. Leave empty if authentik should not handle the deployment.
-	ServiceConnection NullableString `json:"service_connection,omitempty"`
-	Config *map[string]interface{} `json:"config,omitempty"`
+	ServiceConnection NullableString          `json:"service_connection,omitempty"`
+	Config            *map[string]interface{} `json:"config,omitempty"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed NullableString `json:"managed,omitempty"`
 }
@@ -153,7 +153,7 @@ func (o *PatchedOutpostRequest) GetServiceConnection() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOutpostRequest) GetServiceConnectionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ServiceConnection.Get(), o.ServiceConnection.IsSet()
@@ -172,6 +172,7 @@ func (o *PatchedOutpostRequest) HasServiceConnection() bool {
 func (o *PatchedOutpostRequest) SetServiceConnection(v string) {
 	o.ServiceConnection.Set(&v)
 }
+
 // SetServiceConnectionNil sets the value for ServiceConnection to be an explicit nil
 func (o *PatchedOutpostRequest) SetServiceConnectionNil() {
 	o.ServiceConnection.Set(nil)
@@ -227,7 +228,7 @@ func (o *PatchedOutpostRequest) GetManaged() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOutpostRequest) GetManagedOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Managed.Get(), o.Managed.IsSet()
@@ -246,6 +247,7 @@ func (o *PatchedOutpostRequest) HasManaged() bool {
 func (o *PatchedOutpostRequest) SetManaged(v string) {
 	o.Managed.Set(&v)
 }
+
 // SetManagedNil sets the value for Managed to be an explicit nil
 func (o *PatchedOutpostRequest) SetManagedNil() {
 	o.Managed.Set(nil)
@@ -314,5 +316,3 @@ func (v *NullablePatchedOutpostRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

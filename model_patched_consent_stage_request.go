@@ -17,9 +17,9 @@ import (
 
 // PatchedConsentStageRequest ConsentStage Serializer
 type PatchedConsentStageRequest struct {
-	Name *string `json:"name,omitempty"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
-	Mode *ConsentStageModeEnum `json:"mode,omitempty"`
+	Name    *string               `json:"name,omitempty"`
+	FlowSet *[]FlowRequest        `json:"flow_set,omitempty"`
+	Mode    *ConsentStageModeEnum `json:"mode,omitempty"`
 	// Offset after which consent expires. (Format: hours=1;minutes=2;seconds=3).
 	ConsentExpireIn *string `json:"consent_expire_in,omitempty"`
 }
@@ -221,5 +221,3 @@ func (v *NullablePatchedConsentStageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

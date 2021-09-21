@@ -17,8 +17,8 @@ import (
 
 // GenericError Generic API Error
 type GenericError struct {
-	Detail string `json:"detail"`
-	Code *string `json:"code,omitempty"`
+	Detail string  `json:"detail"`
+	Code   *string `json:"code,omitempty"`
 }
 
 // NewGenericError instantiates a new GenericError object
@@ -52,7 +52,7 @@ func (o *GenericError) GetDetail() string {
 // GetDetailOk returns a tuple with the Detail field value
 // and a boolean to check if the value has been set.
 func (o *GenericError) GetDetailOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Detail, true
@@ -141,5 +141,3 @@ func (v *NullableGenericError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

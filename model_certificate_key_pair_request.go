@@ -56,7 +56,7 @@ func (o *CertificateKeyPairRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyPairRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -80,7 +80,7 @@ func (o *CertificateKeyPairRequest) GetCertificateData() string {
 // GetCertificateDataOk returns a tuple with the CertificateData field value
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyPairRequest) GetCertificateDataOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CertificateData, true
@@ -172,5 +172,3 @@ func (v *NullableCertificateKeyPairRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

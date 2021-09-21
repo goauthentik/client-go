@@ -18,13 +18,13 @@ import (
 // PatchedPolicyBindingRequest PolicyBinding Serializer
 type PatchedPolicyBindingRequest struct {
 	Policy NullableString `json:"policy,omitempty"`
-	Group NullableString `json:"group,omitempty"`
-	User NullableInt32 `json:"user,omitempty"`
-	Target *string `json:"target,omitempty"`
+	Group  NullableString `json:"group,omitempty"`
+	User   NullableInt32  `json:"user,omitempty"`
+	Target *string        `json:"target,omitempty"`
 	// Negates the outcome of the policy. Messages are unaffected.
-	Negate *bool `json:"negate,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Order *int32 `json:"order,omitempty"`
+	Negate  *bool  `json:"negate,omitempty"`
+	Enabled *bool  `json:"enabled,omitempty"`
+	Order   *int32 `json:"order,omitempty"`
 	// Timeout after which Policy execution is terminated.
 	Timeout *int32 `json:"timeout,omitempty"`
 }
@@ -59,7 +59,7 @@ func (o *PatchedPolicyBindingRequest) GetPolicy() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedPolicyBindingRequest) GetPolicyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Policy.Get(), o.Policy.IsSet()
@@ -78,6 +78,7 @@ func (o *PatchedPolicyBindingRequest) HasPolicy() bool {
 func (o *PatchedPolicyBindingRequest) SetPolicy(v string) {
 	o.Policy.Set(&v)
 }
+
 // SetPolicyNil sets the value for Policy to be an explicit nil
 func (o *PatchedPolicyBindingRequest) SetPolicyNil() {
 	o.Policy.Set(nil)
@@ -101,7 +102,7 @@ func (o *PatchedPolicyBindingRequest) GetGroup() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedPolicyBindingRequest) GetGroupOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Group.Get(), o.Group.IsSet()
@@ -120,6 +121,7 @@ func (o *PatchedPolicyBindingRequest) HasGroup() bool {
 func (o *PatchedPolicyBindingRequest) SetGroup(v string) {
 	o.Group.Set(&v)
 }
+
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *PatchedPolicyBindingRequest) SetGroupNil() {
 	o.Group.Set(nil)
@@ -143,7 +145,7 @@ func (o *PatchedPolicyBindingRequest) GetUser() int32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedPolicyBindingRequest) GetUserOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.User.Get(), o.User.IsSet()
@@ -162,6 +164,7 @@ func (o *PatchedPolicyBindingRequest) HasUser() bool {
 func (o *PatchedPolicyBindingRequest) SetUser(v int32) {
 	o.User.Set(&v)
 }
+
 // SetUserNil sets the value for User to be an explicit nil
 func (o *PatchedPolicyBindingRequest) SetUserNil() {
 	o.User.Set(nil)
@@ -396,5 +399,3 @@ func (v *NullablePatchedPolicyBindingRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

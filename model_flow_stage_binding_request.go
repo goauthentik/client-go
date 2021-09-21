@@ -18,13 +18,13 @@ import (
 // FlowStageBindingRequest FlowStageBinding Serializer
 type FlowStageBindingRequest struct {
 	Target string `json:"target"`
-	Stage string `json:"stage"`
+	Stage  string `json:"stage"`
 	// Evaluate policies during the Flow planning process. Disable this for input-based policies.
 	EvaluateOnPlan *bool `json:"evaluate_on_plan,omitempty"`
 	// Evaluate policies when the Stage is present to the user.
-	ReEvaluatePolicies *bool `json:"re_evaluate_policies,omitempty"`
-	Order int32 `json:"order"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	ReEvaluatePolicies *bool             `json:"re_evaluate_policies,omitempty"`
+	Order              int32             `json:"order"`
+	PolicyEngineMode   *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.
 	InvalidResponseAction *InvalidResponseActionEnum `json:"invalid_response_action,omitempty"`
 }
@@ -62,7 +62,7 @@ func (o *FlowStageBindingRequest) GetTarget() string {
 // GetTargetOk returns a tuple with the Target field value
 // and a boolean to check if the value has been set.
 func (o *FlowStageBindingRequest) GetTargetOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Target, true
@@ -86,7 +86,7 @@ func (o *FlowStageBindingRequest) GetStage() string {
 // GetStageOk returns a tuple with the Stage field value
 // and a boolean to check if the value has been set.
 func (o *FlowStageBindingRequest) GetStageOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Stage, true
@@ -174,7 +174,7 @@ func (o *FlowStageBindingRequest) GetOrder() int32 {
 // GetOrderOk returns a tuple with the Order field value
 // and a boolean to check if the value has been set.
 func (o *FlowStageBindingRequest) GetOrderOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Order, true
@@ -310,5 +310,3 @@ func (v *NullableFlowStageBindingRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

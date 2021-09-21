@@ -17,9 +17,9 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
+	"reflect"
 	"strings"
 	"time"
-	"reflect"
 )
 
 // Linger please
@@ -31,11 +31,10 @@ var (
 type StagesApiService service
 
 type ApiStagesAllDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAllDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesAllDestroyExecute(r)
@@ -53,8 +52,8 @@ Stage Viewset
 func (a *StagesApiService) StagesAllDestroy(ctx _context.Context, stageUuid string) ApiStagesAllDestroyRequest {
 	return ApiStagesAllDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -140,34 +139,38 @@ func (a *StagesApiService) StagesAllDestroyExecute(r ApiStagesAllDestroyRequest)
 }
 
 type ApiStagesAllListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 func (r ApiStagesAllListRequest) Name(name string) ApiStagesAllListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesAllListRequest) Ordering(ordering string) ApiStagesAllListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesAllListRequest) Page(page int32) ApiStagesAllListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesAllListRequest) PageSize(pageSize int32) ApiStagesAllListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesAllListRequest) Search(search string) ApiStagesAllListRequest {
 	r.search = &search
@@ -189,7 +192,7 @@ Stage Viewset
 func (a *StagesApiService) StagesAllList(ctx _context.Context) ApiStagesAllListRequest {
 	return ApiStagesAllListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -300,11 +303,10 @@ func (a *StagesApiService) StagesAllListExecute(r ApiStagesAllListRequest) (Pagi
 }
 
 type ApiStagesAllRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAllRetrieveRequest) Execute() (Stage, *_nethttp.Response, error) {
 	return r.ApiService.StagesAllRetrieveExecute(r)
@@ -322,8 +324,8 @@ Stage Viewset
 func (a *StagesApiService) StagesAllRetrieve(ctx _context.Context, stageUuid string) ApiStagesAllRetrieveRequest {
 	return ApiStagesAllRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -420,10 +422,9 @@ func (a *StagesApiService) StagesAllRetrieveExecute(r ApiStagesAllRetrieveReques
 }
 
 type ApiStagesAllTypesListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
 }
-
 
 func (r ApiStagesAllTypesListRequest) Execute() ([]TypeCreate, *_nethttp.Response, error) {
 	return r.ApiService.StagesAllTypesListExecute(r)
@@ -440,7 +441,7 @@ Get all creatable stage types
 func (a *StagesApiService) StagesAllTypesList(ctx _context.Context) ApiStagesAllTypesListRequest {
 	return ApiStagesAllTypesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -536,11 +537,10 @@ func (a *StagesApiService) StagesAllTypesListExecute(r ApiStagesAllTypesListRequ
 }
 
 type ApiStagesAllUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAllUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesAllUsedByListExecute(r)
@@ -558,8 +558,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesAllUsedByList(ctx _context.Context, stageUuid string) ApiStagesAllUsedByListRequest {
 	return ApiStagesAllUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -656,10 +656,9 @@ func (a *StagesApiService) StagesAllUsedByListExecute(r ApiStagesAllUsedByListRe
 }
 
 type ApiStagesAllUserSettingsListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
 }
-
 
 func (r ApiStagesAllUserSettingsListRequest) Execute() ([]UserSetting, *_nethttp.Response, error) {
 	return r.ApiService.StagesAllUserSettingsListExecute(r)
@@ -676,7 +675,7 @@ Get all stages the user can configure
 func (a *StagesApiService) StagesAllUserSettingsList(ctx _context.Context) ApiStagesAllUserSettingsListRequest {
 	return ApiStagesAllUserSettingsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -772,8 +771,8 @@ func (a *StagesApiService) StagesAllUserSettingsListExecute(r ApiStagesAllUserSe
 }
 
 type ApiStagesAuthenticatorDuoCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                          _context.Context
+	ApiService                   *StagesApiService
 	authenticatorDuoStageRequest *AuthenticatorDuoStageRequest
 }
 
@@ -797,7 +796,7 @@ AuthenticatorDuoStage Viewset
 func (a *StagesApiService) StagesAuthenticatorDuoCreate(ctx _context.Context) ApiStagesAuthenticatorDuoCreateRequest {
 	return ApiStagesAuthenticatorDuoCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -898,11 +897,10 @@ func (a *StagesApiService) StagesAuthenticatorDuoCreateExecute(r ApiStagesAuthen
 }
 
 type ApiStagesAuthenticatorDuoDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorDuoDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorDuoDestroyExecute(r)
@@ -920,8 +918,8 @@ AuthenticatorDuoStage Viewset
 func (a *StagesApiService) StagesAuthenticatorDuoDestroy(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorDuoDestroyRequest {
 	return ApiStagesAuthenticatorDuoDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -1007,11 +1005,10 @@ func (a *StagesApiService) StagesAuthenticatorDuoDestroyExecute(r ApiStagesAuthe
 }
 
 type ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorDuoEnrollmentStatusCreateExecute(r)
@@ -1029,8 +1026,8 @@ Check enrollment status of user details in current session
 func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest {
 	return ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -1116,12 +1113,12 @@ func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreateExecute(r
 }
 
 type ApiStagesAuthenticatorDuoImportDevicesCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                          _context.Context
+	ApiService                   *StagesApiService
+	stageUuid                    string
 	authenticatorDuoStageRequest *AuthenticatorDuoStageRequest
-	duoUserId *string
-	username *string
+	duoUserId                    *string
+	username                     *string
 }
 
 func (r ApiStagesAuthenticatorDuoImportDevicesCreateRequest) AuthenticatorDuoStageRequest(authenticatorDuoStageRequest AuthenticatorDuoStageRequest) ApiStagesAuthenticatorDuoImportDevicesCreateRequest {
@@ -1153,8 +1150,8 @@ Import duo devices into authentik
 func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesCreate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorDuoImportDevicesCreateRequest {
 	return ApiStagesAuthenticatorDuoImportDevicesCreateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -1251,16 +1248,16 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesCreateExecute(r Ap
 }
 
 type ApiStagesAuthenticatorDuoListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	apiHostname *string
-	clientId *string
+	ctx           _context.Context
+	ApiService    *StagesApiService
+	apiHostname   *string
+	clientId      *string
 	configureFlow *string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	name          *string
+	ordering      *string
+	page          *int32
+	pageSize      *int32
+	search        *string
 }
 
 func (r ApiStagesAuthenticatorDuoListRequest) ApiHostname(apiHostname string) ApiStagesAuthenticatorDuoListRequest {
@@ -1279,21 +1276,25 @@ func (r ApiStagesAuthenticatorDuoListRequest) Name(name string) ApiStagesAuthent
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesAuthenticatorDuoListRequest) Ordering(ordering string) ApiStagesAuthenticatorDuoListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesAuthenticatorDuoListRequest) Page(page int32) ApiStagesAuthenticatorDuoListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesAuthenticatorDuoListRequest) PageSize(pageSize int32) ApiStagesAuthenticatorDuoListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesAuthenticatorDuoListRequest) Search(search string) ApiStagesAuthenticatorDuoListRequest {
 	r.search = &search
@@ -1315,7 +1316,7 @@ AuthenticatorDuoStage Viewset
 func (a *StagesApiService) StagesAuthenticatorDuoList(ctx _context.Context) ApiStagesAuthenticatorDuoListRequest {
 	return ApiStagesAuthenticatorDuoListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1435,9 +1436,9 @@ func (a *StagesApiService) StagesAuthenticatorDuoListExecute(r ApiStagesAuthenti
 }
 
 type ApiStagesAuthenticatorDuoPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                                 _context.Context
+	ApiService                          *StagesApiService
+	stageUuid                           string
 	patchedAuthenticatorDuoStageRequest *PatchedAuthenticatorDuoStageRequest
 }
 
@@ -1462,8 +1463,8 @@ AuthenticatorDuoStage Viewset
 func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorDuoPartialUpdateRequest {
 	return ApiStagesAuthenticatorDuoPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -1562,11 +1563,10 @@ func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdateExecute(r ApiStage
 }
 
 type ApiStagesAuthenticatorDuoRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorDuoRetrieveRequest) Execute() (AuthenticatorDuoStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorDuoRetrieveExecute(r)
@@ -1584,8 +1584,8 @@ AuthenticatorDuoStage Viewset
 func (a *StagesApiService) StagesAuthenticatorDuoRetrieve(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorDuoRetrieveRequest {
 	return ApiStagesAuthenticatorDuoRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -1682,9 +1682,9 @@ func (a *StagesApiService) StagesAuthenticatorDuoRetrieveExecute(r ApiStagesAuth
 }
 
 type ApiStagesAuthenticatorDuoUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                          _context.Context
+	ApiService                   *StagesApiService
+	stageUuid                    string
 	authenticatorDuoStageRequest *AuthenticatorDuoStageRequest
 }
 
@@ -1709,8 +1709,8 @@ AuthenticatorDuoStage Viewset
 func (a *StagesApiService) StagesAuthenticatorDuoUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorDuoUpdateRequest {
 	return ApiStagesAuthenticatorDuoUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -1812,11 +1812,10 @@ func (a *StagesApiService) StagesAuthenticatorDuoUpdateExecute(r ApiStagesAuthen
 }
 
 type ApiStagesAuthenticatorDuoUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorDuoUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorDuoUsedByListExecute(r)
@@ -1834,8 +1833,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesAuthenticatorDuoUsedByList(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorDuoUsedByListRequest {
 	return ApiStagesAuthenticatorDuoUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -1932,8 +1931,8 @@ func (a *StagesApiService) StagesAuthenticatorDuoUsedByListExecute(r ApiStagesAu
 }
 
 type ApiStagesAuthenticatorStaticCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                             _context.Context
+	ApiService                      *StagesApiService
 	authenticatorStaticStageRequest *AuthenticatorStaticStageRequest
 }
 
@@ -1957,7 +1956,7 @@ AuthenticatorStaticStage Viewset
 func (a *StagesApiService) StagesAuthenticatorStaticCreate(ctx _context.Context) ApiStagesAuthenticatorStaticCreateRequest {
 	return ApiStagesAuthenticatorStaticCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2058,11 +2057,10 @@ func (a *StagesApiService) StagesAuthenticatorStaticCreateExecute(r ApiStagesAut
 }
 
 type ApiStagesAuthenticatorStaticDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorStaticDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorStaticDestroyExecute(r)
@@ -2080,8 +2078,8 @@ AuthenticatorStaticStage Viewset
 func (a *StagesApiService) StagesAuthenticatorStaticDestroy(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorStaticDestroyRequest {
 	return ApiStagesAuthenticatorStaticDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -2167,16 +2165,16 @@ func (a *StagesApiService) StagesAuthenticatorStaticDestroyExecute(r ApiStagesAu
 }
 
 type ApiStagesAuthenticatorStaticListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx           _context.Context
+	ApiService    *StagesApiService
 	configureFlow *string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	stageUuid *string
-	tokenCount *int32
+	name          *string
+	ordering      *string
+	page          *int32
+	pageSize      *int32
+	search        *string
+	stageUuid     *string
+	tokenCount    *int32
 }
 
 func (r ApiStagesAuthenticatorStaticListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorStaticListRequest {
@@ -2187,21 +2185,25 @@ func (r ApiStagesAuthenticatorStaticListRequest) Name(name string) ApiStagesAuth
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesAuthenticatorStaticListRequest) Ordering(ordering string) ApiStagesAuthenticatorStaticListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesAuthenticatorStaticListRequest) Page(page int32) ApiStagesAuthenticatorStaticListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesAuthenticatorStaticListRequest) PageSize(pageSize int32) ApiStagesAuthenticatorStaticListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesAuthenticatorStaticListRequest) Search(search string) ApiStagesAuthenticatorStaticListRequest {
 	r.search = &search
@@ -2231,7 +2233,7 @@ AuthenticatorStaticStage Viewset
 func (a *StagesApiService) StagesAuthenticatorStaticList(ctx _context.Context) ApiStagesAuthenticatorStaticListRequest {
 	return ApiStagesAuthenticatorStaticListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2351,9 +2353,9 @@ func (a *StagesApiService) StagesAuthenticatorStaticListExecute(r ApiStagesAuthe
 }
 
 type ApiStagesAuthenticatorStaticPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                                    _context.Context
+	ApiService                             *StagesApiService
+	stageUuid                              string
 	patchedAuthenticatorStaticStageRequest *PatchedAuthenticatorStaticStageRequest
 }
 
@@ -2378,8 +2380,8 @@ AuthenticatorStaticStage Viewset
 func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorStaticPartialUpdateRequest {
 	return ApiStagesAuthenticatorStaticPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -2478,11 +2480,10 @@ func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdateExecute(r ApiSt
 }
 
 type ApiStagesAuthenticatorStaticRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorStaticRetrieveRequest) Execute() (AuthenticatorStaticStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorStaticRetrieveExecute(r)
@@ -2500,8 +2501,8 @@ AuthenticatorStaticStage Viewset
 func (a *StagesApiService) StagesAuthenticatorStaticRetrieve(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorStaticRetrieveRequest {
 	return ApiStagesAuthenticatorStaticRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -2598,9 +2599,9 @@ func (a *StagesApiService) StagesAuthenticatorStaticRetrieveExecute(r ApiStagesA
 }
 
 type ApiStagesAuthenticatorStaticUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                             _context.Context
+	ApiService                      *StagesApiService
+	stageUuid                       string
 	authenticatorStaticStageRequest *AuthenticatorStaticStageRequest
 }
 
@@ -2625,8 +2626,8 @@ AuthenticatorStaticStage Viewset
 func (a *StagesApiService) StagesAuthenticatorStaticUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorStaticUpdateRequest {
 	return ApiStagesAuthenticatorStaticUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -2728,11 +2729,10 @@ func (a *StagesApiService) StagesAuthenticatorStaticUpdateExecute(r ApiStagesAut
 }
 
 type ApiStagesAuthenticatorStaticUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorStaticUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorStaticUsedByListExecute(r)
@@ -2750,8 +2750,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesAuthenticatorStaticUsedByList(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorStaticUsedByListRequest {
 	return ApiStagesAuthenticatorStaticUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -2848,8 +2848,8 @@ func (a *StagesApiService) StagesAuthenticatorStaticUsedByListExecute(r ApiStage
 }
 
 type ApiStagesAuthenticatorTotpCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                           _context.Context
+	ApiService                    *StagesApiService
 	authenticatorTOTPStageRequest *AuthenticatorTOTPStageRequest
 }
 
@@ -2873,7 +2873,7 @@ AuthenticatorTOTPStage Viewset
 func (a *StagesApiService) StagesAuthenticatorTotpCreate(ctx _context.Context) ApiStagesAuthenticatorTotpCreateRequest {
 	return ApiStagesAuthenticatorTotpCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2974,11 +2974,10 @@ func (a *StagesApiService) StagesAuthenticatorTotpCreateExecute(r ApiStagesAuthe
 }
 
 type ApiStagesAuthenticatorTotpDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorTotpDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorTotpDestroyExecute(r)
@@ -2996,8 +2995,8 @@ AuthenticatorTOTPStage Viewset
 func (a *StagesApiService) StagesAuthenticatorTotpDestroy(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorTotpDestroyRequest {
 	return ApiStagesAuthenticatorTotpDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -3083,16 +3082,16 @@ func (a *StagesApiService) StagesAuthenticatorTotpDestroyExecute(r ApiStagesAuth
 }
 
 type ApiStagesAuthenticatorTotpListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx           _context.Context
+	ApiService    *StagesApiService
 	configureFlow *string
-	digits *int32
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	stageUuid *string
+	digits        *int32
+	name          *string
+	ordering      *string
+	page          *int32
+	pageSize      *int32
+	search        *string
+	stageUuid     *string
 }
 
 func (r ApiStagesAuthenticatorTotpListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorTotpListRequest {
@@ -3107,21 +3106,25 @@ func (r ApiStagesAuthenticatorTotpListRequest) Name(name string) ApiStagesAuthen
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesAuthenticatorTotpListRequest) Ordering(ordering string) ApiStagesAuthenticatorTotpListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesAuthenticatorTotpListRequest) Page(page int32) ApiStagesAuthenticatorTotpListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesAuthenticatorTotpListRequest) PageSize(pageSize int32) ApiStagesAuthenticatorTotpListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesAuthenticatorTotpListRequest) Search(search string) ApiStagesAuthenticatorTotpListRequest {
 	r.search = &search
@@ -3147,7 +3150,7 @@ AuthenticatorTOTPStage Viewset
 func (a *StagesApiService) StagesAuthenticatorTotpList(ctx _context.Context) ApiStagesAuthenticatorTotpListRequest {
 	return ApiStagesAuthenticatorTotpListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3267,9 +3270,9 @@ func (a *StagesApiService) StagesAuthenticatorTotpListExecute(r ApiStagesAuthent
 }
 
 type ApiStagesAuthenticatorTotpPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                                  _context.Context
+	ApiService                           *StagesApiService
+	stageUuid                            string
 	patchedAuthenticatorTOTPStageRequest *PatchedAuthenticatorTOTPStageRequest
 }
 
@@ -3294,8 +3297,8 @@ AuthenticatorTOTPStage Viewset
 func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorTotpPartialUpdateRequest {
 	return ApiStagesAuthenticatorTotpPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -3394,11 +3397,10 @@ func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdateExecute(r ApiStag
 }
 
 type ApiStagesAuthenticatorTotpRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorTotpRetrieveRequest) Execute() (AuthenticatorTOTPStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorTotpRetrieveExecute(r)
@@ -3416,8 +3418,8 @@ AuthenticatorTOTPStage Viewset
 func (a *StagesApiService) StagesAuthenticatorTotpRetrieve(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorTotpRetrieveRequest {
 	return ApiStagesAuthenticatorTotpRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -3514,9 +3516,9 @@ func (a *StagesApiService) StagesAuthenticatorTotpRetrieveExecute(r ApiStagesAut
 }
 
 type ApiStagesAuthenticatorTotpUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                           _context.Context
+	ApiService                    *StagesApiService
+	stageUuid                     string
 	authenticatorTOTPStageRequest *AuthenticatorTOTPStageRequest
 }
 
@@ -3541,8 +3543,8 @@ AuthenticatorTOTPStage Viewset
 func (a *StagesApiService) StagesAuthenticatorTotpUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorTotpUpdateRequest {
 	return ApiStagesAuthenticatorTotpUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -3644,11 +3646,10 @@ func (a *StagesApiService) StagesAuthenticatorTotpUpdateExecute(r ApiStagesAuthe
 }
 
 type ApiStagesAuthenticatorTotpUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorTotpUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorTotpUsedByListExecute(r)
@@ -3666,8 +3667,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesAuthenticatorTotpUsedByList(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorTotpUsedByListRequest {
 	return ApiStagesAuthenticatorTotpUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -3764,8 +3765,8 @@ func (a *StagesApiService) StagesAuthenticatorTotpUsedByListExecute(r ApiStagesA
 }
 
 type ApiStagesAuthenticatorValidateCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                               _context.Context
+	ApiService                        *StagesApiService
 	authenticatorValidateStageRequest *AuthenticatorValidateStageRequest
 }
 
@@ -3789,7 +3790,7 @@ AuthenticatorValidateStage Viewset
 func (a *StagesApiService) StagesAuthenticatorValidateCreate(ctx _context.Context) ApiStagesAuthenticatorValidateCreateRequest {
 	return ApiStagesAuthenticatorValidateCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3890,11 +3891,10 @@ func (a *StagesApiService) StagesAuthenticatorValidateCreateExecute(r ApiStagesA
 }
 
 type ApiStagesAuthenticatorValidateDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorValidateDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorValidateDestroyExecute(r)
@@ -3912,8 +3912,8 @@ AuthenticatorValidateStage Viewset
 func (a *StagesApiService) StagesAuthenticatorValidateDestroy(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorValidateDestroyRequest {
 	return ApiStagesAuthenticatorValidateDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -3999,15 +3999,15 @@ func (a *StagesApiService) StagesAuthenticatorValidateDestroyExecute(r ApiStages
 }
 
 type ApiStagesAuthenticatorValidateListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	configurationStage *string
-	name *string
+	ctx                 _context.Context
+	ApiService          *StagesApiService
+	configurationStage  *string
+	name                *string
 	notConfiguredAction *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	ordering            *string
+	page                *int32
+	pageSize            *int32
+	search              *string
 }
 
 func (r ApiStagesAuthenticatorValidateListRequest) ConfigurationStage(configurationStage string) ApiStagesAuthenticatorValidateListRequest {
@@ -4022,21 +4022,25 @@ func (r ApiStagesAuthenticatorValidateListRequest) NotConfiguredAction(notConfig
 	r.notConfiguredAction = &notConfiguredAction
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesAuthenticatorValidateListRequest) Ordering(ordering string) ApiStagesAuthenticatorValidateListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesAuthenticatorValidateListRequest) Page(page int32) ApiStagesAuthenticatorValidateListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesAuthenticatorValidateListRequest) PageSize(pageSize int32) ApiStagesAuthenticatorValidateListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesAuthenticatorValidateListRequest) Search(search string) ApiStagesAuthenticatorValidateListRequest {
 	r.search = &search
@@ -4058,7 +4062,7 @@ AuthenticatorValidateStage Viewset
 func (a *StagesApiService) StagesAuthenticatorValidateList(ctx _context.Context) ApiStagesAuthenticatorValidateListRequest {
 	return ApiStagesAuthenticatorValidateListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -4175,9 +4179,9 @@ func (a *StagesApiService) StagesAuthenticatorValidateListExecute(r ApiStagesAut
 }
 
 type ApiStagesAuthenticatorValidatePartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                                      _context.Context
+	ApiService                               *StagesApiService
+	stageUuid                                string
 	patchedAuthenticatorValidateStageRequest *PatchedAuthenticatorValidateStageRequest
 }
 
@@ -4202,8 +4206,8 @@ AuthenticatorValidateStage Viewset
 func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorValidatePartialUpdateRequest {
 	return ApiStagesAuthenticatorValidatePartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -4302,11 +4306,10 @@ func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdateExecute(r Api
 }
 
 type ApiStagesAuthenticatorValidateRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorValidateRetrieveRequest) Execute() (AuthenticatorValidateStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorValidateRetrieveExecute(r)
@@ -4324,8 +4327,8 @@ AuthenticatorValidateStage Viewset
 func (a *StagesApiService) StagesAuthenticatorValidateRetrieve(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorValidateRetrieveRequest {
 	return ApiStagesAuthenticatorValidateRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -4422,9 +4425,9 @@ func (a *StagesApiService) StagesAuthenticatorValidateRetrieveExecute(r ApiStage
 }
 
 type ApiStagesAuthenticatorValidateUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                               _context.Context
+	ApiService                        *StagesApiService
+	stageUuid                         string
 	authenticatorValidateStageRequest *AuthenticatorValidateStageRequest
 }
 
@@ -4449,8 +4452,8 @@ AuthenticatorValidateStage Viewset
 func (a *StagesApiService) StagesAuthenticatorValidateUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorValidateUpdateRequest {
 	return ApiStagesAuthenticatorValidateUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -4552,11 +4555,10 @@ func (a *StagesApiService) StagesAuthenticatorValidateUpdateExecute(r ApiStagesA
 }
 
 type ApiStagesAuthenticatorValidateUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorValidateUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorValidateUsedByListExecute(r)
@@ -4574,8 +4576,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesAuthenticatorValidateUsedByList(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorValidateUsedByListRequest {
 	return ApiStagesAuthenticatorValidateUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -4672,8 +4674,8 @@ func (a *StagesApiService) StagesAuthenticatorValidateUsedByListExecute(r ApiSta
 }
 
 type ApiStagesAuthenticatorWebauthnCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                              _context.Context
+	ApiService                       *StagesApiService
 	authenticateWebAuthnStageRequest *AuthenticateWebAuthnStageRequest
 }
 
@@ -4697,7 +4699,7 @@ AuthenticateWebAuthnStage Viewset
 func (a *StagesApiService) StagesAuthenticatorWebauthnCreate(ctx _context.Context) ApiStagesAuthenticatorWebauthnCreateRequest {
 	return ApiStagesAuthenticatorWebauthnCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -4798,11 +4800,10 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesA
 }
 
 type ApiStagesAuthenticatorWebauthnDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorWebauthnDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnDestroyExecute(r)
@@ -4820,8 +4821,8 @@ AuthenticateWebAuthnStage Viewset
 func (a *StagesApiService) StagesAuthenticatorWebauthnDestroy(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnDestroyRequest {
 	return ApiStagesAuthenticatorWebauthnDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -4907,15 +4908,15 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnDestroyExecute(r ApiStages
 }
 
 type ApiStagesAuthenticatorWebauthnListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx           _context.Context
+	ApiService    *StagesApiService
 	configureFlow *string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	stageUuid *string
+	name          *string
+	ordering      *string
+	page          *int32
+	pageSize      *int32
+	search        *string
+	stageUuid     *string
 }
 
 func (r ApiStagesAuthenticatorWebauthnListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorWebauthnListRequest {
@@ -4926,21 +4927,25 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) Name(name string) ApiStagesAu
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesAuthenticatorWebauthnListRequest) Ordering(ordering string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesAuthenticatorWebauthnListRequest) Page(page int32) ApiStagesAuthenticatorWebauthnListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesAuthenticatorWebauthnListRequest) PageSize(pageSize int32) ApiStagesAuthenticatorWebauthnListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesAuthenticatorWebauthnListRequest) Search(search string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.search = &search
@@ -4966,7 +4971,7 @@ AuthenticateWebAuthnStage Viewset
 func (a *StagesApiService) StagesAuthenticatorWebauthnList(ctx _context.Context) ApiStagesAuthenticatorWebauthnListRequest {
 	return ApiStagesAuthenticatorWebauthnListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -5083,9 +5088,9 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 }
 
 type ApiStagesAuthenticatorWebauthnPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                                     _context.Context
+	ApiService                              *StagesApiService
+	stageUuid                               string
 	patchedAuthenticateWebAuthnStageRequest *PatchedAuthenticateWebAuthnStageRequest
 }
 
@@ -5110,8 +5115,8 @@ AuthenticateWebAuthnStage Viewset
 func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnPartialUpdateRequest {
 	return ApiStagesAuthenticatorWebauthnPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -5210,11 +5215,10 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r Api
 }
 
 type ApiStagesAuthenticatorWebauthnRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorWebauthnRetrieveRequest) Execute() (AuthenticateWebAuthnStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnRetrieveExecute(r)
@@ -5232,8 +5236,8 @@ AuthenticateWebAuthnStage Viewset
 func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieve(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnRetrieveRequest {
 	return ApiStagesAuthenticatorWebauthnRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -5330,9 +5334,9 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStage
 }
 
 type ApiStagesAuthenticatorWebauthnUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                              _context.Context
+	ApiService                       *StagesApiService
+	stageUuid                        string
 	authenticateWebAuthnStageRequest *AuthenticateWebAuthnStageRequest
 }
 
@@ -5357,8 +5361,8 @@ AuthenticateWebAuthnStage Viewset
 func (a *StagesApiService) StagesAuthenticatorWebauthnUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnUpdateRequest {
 	return ApiStagesAuthenticatorWebauthnUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -5460,11 +5464,10 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesA
 }
 
 type ApiStagesAuthenticatorWebauthnUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesAuthenticatorWebauthnUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnUsedByListExecute(r)
@@ -5482,8 +5485,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByList(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnUsedByListRequest {
 	return ApiStagesAuthenticatorWebauthnUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -5580,8 +5583,8 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByListExecute(r ApiSta
 }
 
 type ApiStagesCaptchaCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                 _context.Context
+	ApiService          *StagesApiService
 	captchaStageRequest *CaptchaStageRequest
 }
 
@@ -5605,7 +5608,7 @@ CaptchaStage Viewset
 func (a *StagesApiService) StagesCaptchaCreate(ctx _context.Context) ApiStagesCaptchaCreateRequest {
 	return ApiStagesCaptchaCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -5706,11 +5709,10 @@ func (a *StagesApiService) StagesCaptchaCreateExecute(r ApiStagesCaptchaCreateRe
 }
 
 type ApiStagesCaptchaDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesCaptchaDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesCaptchaDestroyExecute(r)
@@ -5728,8 +5730,8 @@ CaptchaStage Viewset
 func (a *StagesApiService) StagesCaptchaDestroy(ctx _context.Context, stageUuid string) ApiStagesCaptchaDestroyRequest {
 	return ApiStagesCaptchaDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -5815,30 +5817,33 @@ func (a *StagesApiService) StagesCaptchaDestroyExecute(r ApiStagesCaptchaDestroy
 }
 
 type ApiStagesCaptchaListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	publicKey *string
-	search *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	publicKey  *string
+	search     *string
 }
 
 func (r ApiStagesCaptchaListRequest) Name(name string) ApiStagesCaptchaListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesCaptchaListRequest) Ordering(ordering string) ApiStagesCaptchaListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesCaptchaListRequest) Page(page int32) ApiStagesCaptchaListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesCaptchaListRequest) PageSize(pageSize int32) ApiStagesCaptchaListRequest {
 	r.pageSize = &pageSize
@@ -5848,6 +5853,7 @@ func (r ApiStagesCaptchaListRequest) PublicKey(publicKey string) ApiStagesCaptch
 	r.publicKey = &publicKey
 	return r
 }
+
 // A search term.
 func (r ApiStagesCaptchaListRequest) Search(search string) ApiStagesCaptchaListRequest {
 	r.search = &search
@@ -5869,7 +5875,7 @@ CaptchaStage Viewset
 func (a *StagesApiService) StagesCaptchaList(ctx _context.Context) ApiStagesCaptchaListRequest {
 	return ApiStagesCaptchaListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -5983,9 +5989,9 @@ func (a *StagesApiService) StagesCaptchaListExecute(r ApiStagesCaptchaListReques
 }
 
 type ApiStagesCaptchaPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                        _context.Context
+	ApiService                 *StagesApiService
+	stageUuid                  string
 	patchedCaptchaStageRequest *PatchedCaptchaStageRequest
 }
 
@@ -6010,8 +6016,8 @@ CaptchaStage Viewset
 func (a *StagesApiService) StagesCaptchaPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesCaptchaPartialUpdateRequest {
 	return ApiStagesCaptchaPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -6110,11 +6116,10 @@ func (a *StagesApiService) StagesCaptchaPartialUpdateExecute(r ApiStagesCaptchaP
 }
 
 type ApiStagesCaptchaRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesCaptchaRetrieveRequest) Execute() (CaptchaStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesCaptchaRetrieveExecute(r)
@@ -6132,8 +6137,8 @@ CaptchaStage Viewset
 func (a *StagesApiService) StagesCaptchaRetrieve(ctx _context.Context, stageUuid string) ApiStagesCaptchaRetrieveRequest {
 	return ApiStagesCaptchaRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -6230,9 +6235,9 @@ func (a *StagesApiService) StagesCaptchaRetrieveExecute(r ApiStagesCaptchaRetrie
 }
 
 type ApiStagesCaptchaUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                 _context.Context
+	ApiService          *StagesApiService
+	stageUuid           string
 	captchaStageRequest *CaptchaStageRequest
 }
 
@@ -6257,8 +6262,8 @@ CaptchaStage Viewset
 func (a *StagesApiService) StagesCaptchaUpdate(ctx _context.Context, stageUuid string) ApiStagesCaptchaUpdateRequest {
 	return ApiStagesCaptchaUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -6360,11 +6365,10 @@ func (a *StagesApiService) StagesCaptchaUpdateExecute(r ApiStagesCaptchaUpdateRe
 }
 
 type ApiStagesCaptchaUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesCaptchaUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesCaptchaUsedByListExecute(r)
@@ -6382,8 +6386,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesCaptchaUsedByList(ctx _context.Context, stageUuid string) ApiStagesCaptchaUsedByListRequest {
 	return ApiStagesCaptchaUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -6480,8 +6484,8 @@ func (a *StagesApiService) StagesCaptchaUsedByListExecute(r ApiStagesCaptchaUsed
 }
 
 type ApiStagesConsentCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                 _context.Context
+	ApiService          *StagesApiService
 	consentStageRequest *ConsentStageRequest
 }
 
@@ -6505,7 +6509,7 @@ ConsentStage Viewset
 func (a *StagesApiService) StagesConsentCreate(ctx _context.Context) ApiStagesConsentCreateRequest {
 	return ApiStagesConsentCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -6606,11 +6610,10 @@ func (a *StagesApiService) StagesConsentCreateExecute(r ApiStagesConsentCreateRe
 }
 
 type ApiStagesConsentDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesConsentDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesConsentDestroyExecute(r)
@@ -6628,8 +6631,8 @@ ConsentStage Viewset
 func (a *StagesApiService) StagesConsentDestroy(ctx _context.Context, stageUuid string) ApiStagesConsentDestroyRequest {
 	return ApiStagesConsentDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -6715,16 +6718,16 @@ func (a *StagesApiService) StagesConsentDestroyExecute(r ApiStagesConsentDestroy
 }
 
 type ApiStagesConsentListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx             _context.Context
+	ApiService      *StagesApiService
 	consentExpireIn *string
-	mode *string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	stageUuid *string
+	mode            *string
+	name            *string
+	ordering        *string
+	page            *int32
+	pageSize        *int32
+	search          *string
+	stageUuid       *string
 }
 
 func (r ApiStagesConsentListRequest) ConsentExpireIn(consentExpireIn string) ApiStagesConsentListRequest {
@@ -6739,21 +6742,25 @@ func (r ApiStagesConsentListRequest) Name(name string) ApiStagesConsentListReque
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesConsentListRequest) Ordering(ordering string) ApiStagesConsentListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesConsentListRequest) Page(page int32) ApiStagesConsentListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesConsentListRequest) PageSize(pageSize int32) ApiStagesConsentListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesConsentListRequest) Search(search string) ApiStagesConsentListRequest {
 	r.search = &search
@@ -6779,7 +6786,7 @@ ConsentStage Viewset
 func (a *StagesApiService) StagesConsentList(ctx _context.Context) ApiStagesConsentListRequest {
 	return ApiStagesConsentListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -6899,9 +6906,9 @@ func (a *StagesApiService) StagesConsentListExecute(r ApiStagesConsentListReques
 }
 
 type ApiStagesConsentPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                        _context.Context
+	ApiService                 *StagesApiService
+	stageUuid                  string
 	patchedConsentStageRequest *PatchedConsentStageRequest
 }
 
@@ -6926,8 +6933,8 @@ ConsentStage Viewset
 func (a *StagesApiService) StagesConsentPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesConsentPartialUpdateRequest {
 	return ApiStagesConsentPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -7026,11 +7033,10 @@ func (a *StagesApiService) StagesConsentPartialUpdateExecute(r ApiStagesConsentP
 }
 
 type ApiStagesConsentRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesConsentRetrieveRequest) Execute() (ConsentStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesConsentRetrieveExecute(r)
@@ -7048,8 +7054,8 @@ ConsentStage Viewset
 func (a *StagesApiService) StagesConsentRetrieve(ctx _context.Context, stageUuid string) ApiStagesConsentRetrieveRequest {
 	return ApiStagesConsentRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -7146,9 +7152,9 @@ func (a *StagesApiService) StagesConsentRetrieveExecute(r ApiStagesConsentRetrie
 }
 
 type ApiStagesConsentUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                 _context.Context
+	ApiService          *StagesApiService
+	stageUuid           string
 	consentStageRequest *ConsentStageRequest
 }
 
@@ -7173,8 +7179,8 @@ ConsentStage Viewset
 func (a *StagesApiService) StagesConsentUpdate(ctx _context.Context, stageUuid string) ApiStagesConsentUpdateRequest {
 	return ApiStagesConsentUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -7276,11 +7282,10 @@ func (a *StagesApiService) StagesConsentUpdateExecute(r ApiStagesConsentUpdateRe
 }
 
 type ApiStagesConsentUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesConsentUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesConsentUsedByListExecute(r)
@@ -7298,8 +7303,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesConsentUsedByList(ctx _context.Context, stageUuid string) ApiStagesConsentUsedByListRequest {
 	return ApiStagesConsentUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -7396,8 +7401,8 @@ func (a *StagesApiService) StagesConsentUsedByListExecute(r ApiStagesConsentUsed
 }
 
 type ApiStagesDenyCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx              _context.Context
+	ApiService       *StagesApiService
 	denyStageRequest *DenyStageRequest
 }
 
@@ -7421,7 +7426,7 @@ DenyStage Viewset
 func (a *StagesApiService) StagesDenyCreate(ctx _context.Context) ApiStagesDenyCreateRequest {
 	return ApiStagesDenyCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -7522,11 +7527,10 @@ func (a *StagesApiService) StagesDenyCreateExecute(r ApiStagesDenyCreateRequest)
 }
 
 type ApiStagesDenyDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesDenyDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesDenyDestroyExecute(r)
@@ -7544,8 +7548,8 @@ DenyStage Viewset
 func (a *StagesApiService) StagesDenyDestroy(ctx _context.Context, stageUuid string) ApiStagesDenyDestroyRequest {
 	return ApiStagesDenyDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -7631,35 +7635,39 @@ func (a *StagesApiService) StagesDenyDestroyExecute(r ApiStagesDenyDestroyReques
 }
 
 type ApiStagesDenyListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	stageUuid *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
+	stageUuid  *string
 }
 
 func (r ApiStagesDenyListRequest) Name(name string) ApiStagesDenyListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesDenyListRequest) Ordering(ordering string) ApiStagesDenyListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesDenyListRequest) Page(page int32) ApiStagesDenyListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesDenyListRequest) PageSize(pageSize int32) ApiStagesDenyListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesDenyListRequest) Search(search string) ApiStagesDenyListRequest {
 	r.search = &search
@@ -7685,7 +7693,7 @@ DenyStage Viewset
 func (a *StagesApiService) StagesDenyList(ctx _context.Context) ApiStagesDenyListRequest {
 	return ApiStagesDenyListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -7799,9 +7807,9 @@ func (a *StagesApiService) StagesDenyListExecute(r ApiStagesDenyListRequest) (Pa
 }
 
 type ApiStagesDenyPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                     _context.Context
+	ApiService              *StagesApiService
+	stageUuid               string
 	patchedDenyStageRequest *PatchedDenyStageRequest
 }
 
@@ -7826,8 +7834,8 @@ DenyStage Viewset
 func (a *StagesApiService) StagesDenyPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesDenyPartialUpdateRequest {
 	return ApiStagesDenyPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -7926,11 +7934,10 @@ func (a *StagesApiService) StagesDenyPartialUpdateExecute(r ApiStagesDenyPartial
 }
 
 type ApiStagesDenyRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesDenyRetrieveRequest) Execute() (DenyStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesDenyRetrieveExecute(r)
@@ -7948,8 +7955,8 @@ DenyStage Viewset
 func (a *StagesApiService) StagesDenyRetrieve(ctx _context.Context, stageUuid string) ApiStagesDenyRetrieveRequest {
 	return ApiStagesDenyRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -8046,9 +8053,9 @@ func (a *StagesApiService) StagesDenyRetrieveExecute(r ApiStagesDenyRetrieveRequ
 }
 
 type ApiStagesDenyUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx              _context.Context
+	ApiService       *StagesApiService
+	stageUuid        string
 	denyStageRequest *DenyStageRequest
 }
 
@@ -8073,8 +8080,8 @@ DenyStage Viewset
 func (a *StagesApiService) StagesDenyUpdate(ctx _context.Context, stageUuid string) ApiStagesDenyUpdateRequest {
 	return ApiStagesDenyUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -8176,11 +8183,10 @@ func (a *StagesApiService) StagesDenyUpdateExecute(r ApiStagesDenyUpdateRequest)
 }
 
 type ApiStagesDenyUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesDenyUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesDenyUsedByListExecute(r)
@@ -8198,8 +8204,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesDenyUsedByList(ctx _context.Context, stageUuid string) ApiStagesDenyUsedByListRequest {
 	return ApiStagesDenyUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -8296,8 +8302,8 @@ func (a *StagesApiService) StagesDenyUsedByListExecute(r ApiStagesDenyUsedByList
 }
 
 type ApiStagesDummyCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx               _context.Context
+	ApiService        *StagesApiService
 	dummyStageRequest *DummyStageRequest
 }
 
@@ -8321,7 +8327,7 @@ DummyStage Viewset
 func (a *StagesApiService) StagesDummyCreate(ctx _context.Context) ApiStagesDummyCreateRequest {
 	return ApiStagesDummyCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -8422,11 +8428,10 @@ func (a *StagesApiService) StagesDummyCreateExecute(r ApiStagesDummyCreateReques
 }
 
 type ApiStagesDummyDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesDummyDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesDummyDestroyExecute(r)
@@ -8444,8 +8449,8 @@ DummyStage Viewset
 func (a *StagesApiService) StagesDummyDestroy(ctx _context.Context, stageUuid string) ApiStagesDummyDestroyRequest {
 	return ApiStagesDummyDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -8531,35 +8536,39 @@ func (a *StagesApiService) StagesDummyDestroyExecute(r ApiStagesDummyDestroyRequ
 }
 
 type ApiStagesDummyListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	stageUuid *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
+	stageUuid  *string
 }
 
 func (r ApiStagesDummyListRequest) Name(name string) ApiStagesDummyListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesDummyListRequest) Ordering(ordering string) ApiStagesDummyListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesDummyListRequest) Page(page int32) ApiStagesDummyListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesDummyListRequest) PageSize(pageSize int32) ApiStagesDummyListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesDummyListRequest) Search(search string) ApiStagesDummyListRequest {
 	r.search = &search
@@ -8585,7 +8594,7 @@ DummyStage Viewset
 func (a *StagesApiService) StagesDummyList(ctx _context.Context) ApiStagesDummyListRequest {
 	return ApiStagesDummyListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -8699,9 +8708,9 @@ func (a *StagesApiService) StagesDummyListExecute(r ApiStagesDummyListRequest) (
 }
 
 type ApiStagesDummyPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                      _context.Context
+	ApiService               *StagesApiService
+	stageUuid                string
 	patchedDummyStageRequest *PatchedDummyStageRequest
 }
 
@@ -8726,8 +8735,8 @@ DummyStage Viewset
 func (a *StagesApiService) StagesDummyPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesDummyPartialUpdateRequest {
 	return ApiStagesDummyPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -8826,11 +8835,10 @@ func (a *StagesApiService) StagesDummyPartialUpdateExecute(r ApiStagesDummyParti
 }
 
 type ApiStagesDummyRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesDummyRetrieveRequest) Execute() (DummyStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesDummyRetrieveExecute(r)
@@ -8848,8 +8856,8 @@ DummyStage Viewset
 func (a *StagesApiService) StagesDummyRetrieve(ctx _context.Context, stageUuid string) ApiStagesDummyRetrieveRequest {
 	return ApiStagesDummyRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -8946,9 +8954,9 @@ func (a *StagesApiService) StagesDummyRetrieveExecute(r ApiStagesDummyRetrieveRe
 }
 
 type ApiStagesDummyUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx               _context.Context
+	ApiService        *StagesApiService
+	stageUuid         string
 	dummyStageRequest *DummyStageRequest
 }
 
@@ -8973,8 +8981,8 @@ DummyStage Viewset
 func (a *StagesApiService) StagesDummyUpdate(ctx _context.Context, stageUuid string) ApiStagesDummyUpdateRequest {
 	return ApiStagesDummyUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -9076,11 +9084,10 @@ func (a *StagesApiService) StagesDummyUpdateExecute(r ApiStagesDummyUpdateReques
 }
 
 type ApiStagesDummyUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesDummyUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesDummyUsedByListExecute(r)
@@ -9098,8 +9105,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesDummyUsedByList(ctx _context.Context, stageUuid string) ApiStagesDummyUsedByListRequest {
 	return ApiStagesDummyUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -9196,8 +9203,8 @@ func (a *StagesApiService) StagesDummyUsedByListExecute(r ApiStagesDummyUsedByLi
 }
 
 type ApiStagesEmailCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx               _context.Context
+	ApiService        *StagesApiService
 	emailStageRequest *EmailStageRequest
 }
 
@@ -9221,7 +9228,7 @@ EmailStage Viewset
 func (a *StagesApiService) StagesEmailCreate(ctx _context.Context) ApiStagesEmailCreateRequest {
 	return ApiStagesEmailCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -9322,11 +9329,10 @@ func (a *StagesApiService) StagesEmailCreateExecute(r ApiStagesEmailCreateReques
 }
 
 type ApiStagesEmailDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesEmailDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesEmailDestroyExecute(r)
@@ -9344,8 +9350,8 @@ EmailStage Viewset
 func (a *StagesApiService) StagesEmailDestroy(ctx _context.Context, stageUuid string) ApiStagesEmailDestroyRequest {
 	return ApiStagesEmailDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -9431,24 +9437,24 @@ func (a *StagesApiService) StagesEmailDestroyExecute(r ApiStagesEmailDestroyRequ
 }
 
 type ApiStagesEmailListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	fromAddress *string
-	host *string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	port *int32
-	search *string
-	subject *string
-	template *string
-	timeout *int32
-	tokenExpiry *int32
+	ctx               _context.Context
+	ApiService        *StagesApiService
+	fromAddress       *string
+	host              *string
+	name              *string
+	ordering          *string
+	page              *int32
+	pageSize          *int32
+	port              *int32
+	search            *string
+	subject           *string
+	template          *string
+	timeout           *int32
+	tokenExpiry       *int32
 	useGlobalSettings *bool
-	useSsl *bool
-	useTls *bool
-	username *string
+	useSsl            *bool
+	useTls            *bool
+	username          *string
 }
 
 func (r ApiStagesEmailListRequest) FromAddress(fromAddress string) ApiStagesEmailListRequest {
@@ -9463,16 +9469,19 @@ func (r ApiStagesEmailListRequest) Name(name string) ApiStagesEmailListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesEmailListRequest) Ordering(ordering string) ApiStagesEmailListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesEmailListRequest) Page(page int32) ApiStagesEmailListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesEmailListRequest) PageSize(pageSize int32) ApiStagesEmailListRequest {
 	r.pageSize = &pageSize
@@ -9482,6 +9491,7 @@ func (r ApiStagesEmailListRequest) Port(port int32) ApiStagesEmailListRequest {
 	r.port = &port
 	return r
 }
+
 // A search term.
 func (r ApiStagesEmailListRequest) Search(search string) ApiStagesEmailListRequest {
 	r.search = &search
@@ -9535,7 +9545,7 @@ EmailStage Viewset
 func (a *StagesApiService) StagesEmailList(ctx _context.Context) ApiStagesEmailListRequest {
 	return ApiStagesEmailListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -9679,9 +9689,9 @@ func (a *StagesApiService) StagesEmailListExecute(r ApiStagesEmailListRequest) (
 }
 
 type ApiStagesEmailPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                      _context.Context
+	ApiService               *StagesApiService
+	stageUuid                string
 	patchedEmailStageRequest *PatchedEmailStageRequest
 }
 
@@ -9706,8 +9716,8 @@ EmailStage Viewset
 func (a *StagesApiService) StagesEmailPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesEmailPartialUpdateRequest {
 	return ApiStagesEmailPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -9806,11 +9816,10 @@ func (a *StagesApiService) StagesEmailPartialUpdateExecute(r ApiStagesEmailParti
 }
 
 type ApiStagesEmailRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesEmailRetrieveRequest) Execute() (EmailStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesEmailRetrieveExecute(r)
@@ -9828,8 +9837,8 @@ EmailStage Viewset
 func (a *StagesApiService) StagesEmailRetrieve(ctx _context.Context, stageUuid string) ApiStagesEmailRetrieveRequest {
 	return ApiStagesEmailRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -9926,10 +9935,9 @@ func (a *StagesApiService) StagesEmailRetrieveExecute(r ApiStagesEmailRetrieveRe
 }
 
 type ApiStagesEmailTemplatesListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
 }
-
 
 func (r ApiStagesEmailTemplatesListRequest) Execute() ([]TypeCreate, *_nethttp.Response, error) {
 	return r.ApiService.StagesEmailTemplatesListExecute(r)
@@ -9946,7 +9954,7 @@ Get all available templates, including custom templates
 func (a *StagesApiService) StagesEmailTemplatesList(ctx _context.Context) ApiStagesEmailTemplatesListRequest {
 	return ApiStagesEmailTemplatesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -10042,9 +10050,9 @@ func (a *StagesApiService) StagesEmailTemplatesListExecute(r ApiStagesEmailTempl
 }
 
 type ApiStagesEmailUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx               _context.Context
+	ApiService        *StagesApiService
+	stageUuid         string
 	emailStageRequest *EmailStageRequest
 }
 
@@ -10069,8 +10077,8 @@ EmailStage Viewset
 func (a *StagesApiService) StagesEmailUpdate(ctx _context.Context, stageUuid string) ApiStagesEmailUpdateRequest {
 	return ApiStagesEmailUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -10172,11 +10180,10 @@ func (a *StagesApiService) StagesEmailUpdateExecute(r ApiStagesEmailUpdateReques
 }
 
 type ApiStagesEmailUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesEmailUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesEmailUsedByListExecute(r)
@@ -10194,8 +10201,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesEmailUsedByList(ctx _context.Context, stageUuid string) ApiStagesEmailUsedByListRequest {
 	return ApiStagesEmailUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -10292,8 +10299,8 @@ func (a *StagesApiService) StagesEmailUsedByListExecute(r ApiStagesEmailUsedByLi
 }
 
 type ApiStagesIdentificationCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                        _context.Context
+	ApiService                 *StagesApiService
 	identificationStageRequest *IdentificationStageRequest
 }
 
@@ -10317,7 +10324,7 @@ IdentificationStage Viewset
 func (a *StagesApiService) StagesIdentificationCreate(ctx _context.Context) ApiStagesIdentificationCreateRequest {
 	return ApiStagesIdentificationCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -10418,11 +10425,10 @@ func (a *StagesApiService) StagesIdentificationCreateExecute(r ApiStagesIdentifi
 }
 
 type ApiStagesIdentificationDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesIdentificationDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesIdentificationDestroyExecute(r)
@@ -10440,8 +10446,8 @@ IdentificationStage Viewset
 func (a *StagesApiService) StagesIdentificationDestroy(ctx _context.Context, stageUuid string) ApiStagesIdentificationDestroyRequest {
 	return ApiStagesIdentificationDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -10527,18 +10533,18 @@ func (a *StagesApiService) StagesIdentificationDestroyExecute(r ApiStagesIdentif
 }
 
 type ApiStagesIdentificationListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                     _context.Context
+	ApiService              *StagesApiService
 	caseInsensitiveMatching *bool
-	enrollmentFlow *string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	passwordStage *string
-	recoveryFlow *string
-	search *string
-	showMatchedUser *bool
+	enrollmentFlow          *string
+	name                    *string
+	ordering                *string
+	page                    *int32
+	pageSize                *int32
+	passwordStage           *string
+	recoveryFlow            *string
+	search                  *string
+	showMatchedUser         *bool
 }
 
 func (r ApiStagesIdentificationListRequest) CaseInsensitiveMatching(caseInsensitiveMatching bool) ApiStagesIdentificationListRequest {
@@ -10553,16 +10559,19 @@ func (r ApiStagesIdentificationListRequest) Name(name string) ApiStagesIdentific
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesIdentificationListRequest) Ordering(ordering string) ApiStagesIdentificationListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesIdentificationListRequest) Page(page int32) ApiStagesIdentificationListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesIdentificationListRequest) PageSize(pageSize int32) ApiStagesIdentificationListRequest {
 	r.pageSize = &pageSize
@@ -10576,6 +10585,7 @@ func (r ApiStagesIdentificationListRequest) RecoveryFlow(recoveryFlow string) Ap
 	r.recoveryFlow = &recoveryFlow
 	return r
 }
+
 // A search term.
 func (r ApiStagesIdentificationListRequest) Search(search string) ApiStagesIdentificationListRequest {
 	r.search = &search
@@ -10601,7 +10611,7 @@ IdentificationStage Viewset
 func (a *StagesApiService) StagesIdentificationList(ctx _context.Context) ApiStagesIdentificationListRequest {
 	return ApiStagesIdentificationListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -10727,9 +10737,9 @@ func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentifica
 }
 
 type ApiStagesIdentificationPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                               _context.Context
+	ApiService                        *StagesApiService
+	stageUuid                         string
 	patchedIdentificationStageRequest *PatchedIdentificationStageRequest
 }
 
@@ -10754,8 +10764,8 @@ IdentificationStage Viewset
 func (a *StagesApiService) StagesIdentificationPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesIdentificationPartialUpdateRequest {
 	return ApiStagesIdentificationPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -10854,11 +10864,10 @@ func (a *StagesApiService) StagesIdentificationPartialUpdateExecute(r ApiStagesI
 }
 
 type ApiStagesIdentificationRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesIdentificationRetrieveRequest) Execute() (IdentificationStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesIdentificationRetrieveExecute(r)
@@ -10876,8 +10885,8 @@ IdentificationStage Viewset
 func (a *StagesApiService) StagesIdentificationRetrieve(ctx _context.Context, stageUuid string) ApiStagesIdentificationRetrieveRequest {
 	return ApiStagesIdentificationRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -10974,9 +10983,9 @@ func (a *StagesApiService) StagesIdentificationRetrieveExecute(r ApiStagesIdenti
 }
 
 type ApiStagesIdentificationUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                        _context.Context
+	ApiService                 *StagesApiService
+	stageUuid                  string
 	identificationStageRequest *IdentificationStageRequest
 }
 
@@ -11001,8 +11010,8 @@ IdentificationStage Viewset
 func (a *StagesApiService) StagesIdentificationUpdate(ctx _context.Context, stageUuid string) ApiStagesIdentificationUpdateRequest {
 	return ApiStagesIdentificationUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -11104,11 +11113,10 @@ func (a *StagesApiService) StagesIdentificationUpdateExecute(r ApiStagesIdentifi
 }
 
 type ApiStagesIdentificationUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesIdentificationUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesIdentificationUsedByListExecute(r)
@@ -11126,8 +11134,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesIdentificationUsedByList(ctx _context.Context, stageUuid string) ApiStagesIdentificationUsedByListRequest {
 	return ApiStagesIdentificationUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -11224,8 +11232,8 @@ func (a *StagesApiService) StagesIdentificationUsedByListExecute(r ApiStagesIden
 }
 
 type ApiStagesInvitationInvitationsCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx               _context.Context
+	ApiService        *StagesApiService
 	invitationRequest *InvitationRequest
 }
 
@@ -11249,7 +11257,7 @@ Invitation Viewset
 func (a *StagesApiService) StagesInvitationInvitationsCreate(ctx _context.Context) ApiStagesInvitationInvitationsCreateRequest {
 	return ApiStagesInvitationInvitationsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -11347,11 +11355,10 @@ func (a *StagesApiService) StagesInvitationInvitationsCreateExecute(r ApiStagesI
 }
 
 type ApiStagesInvitationInvitationsDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
 	inviteUuid string
 }
-
 
 func (r ApiStagesInvitationInvitationsDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesInvitationInvitationsDestroyExecute(r)
@@ -11369,7 +11376,7 @@ Invitation Viewset
 func (a *StagesApiService) StagesInvitationInvitationsDestroy(ctx _context.Context, inviteUuid string) ApiStagesInvitationInvitationsDestroyRequest {
 	return ApiStagesInvitationInvitationsDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		inviteUuid: inviteUuid,
 	}
 }
@@ -11456,14 +11463,14 @@ func (a *StagesApiService) StagesInvitationInvitationsDestroyExecute(r ApiStages
 }
 
 type ApiStagesInvitationInvitationsListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx               _context.Context
+	ApiService        *StagesApiService
 	createdByUsername *string
-	expires *time.Time
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	expires           *time.Time
+	ordering          *string
+	page              *int32
+	pageSize          *int32
+	search            *string
 }
 
 func (r ApiStagesInvitationInvitationsListRequest) CreatedByUsername(createdByUsername string) ApiStagesInvitationInvitationsListRequest {
@@ -11474,21 +11481,25 @@ func (r ApiStagesInvitationInvitationsListRequest) Expires(expires time.Time) Ap
 	r.expires = &expires
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesInvitationInvitationsListRequest) Ordering(ordering string) ApiStagesInvitationInvitationsListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesInvitationInvitationsListRequest) Page(page int32) ApiStagesInvitationInvitationsListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesInvitationInvitationsListRequest) PageSize(pageSize int32) ApiStagesInvitationInvitationsListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesInvitationInvitationsListRequest) Search(search string) ApiStagesInvitationInvitationsListRequest {
 	r.search = &search
@@ -11510,7 +11521,7 @@ Invitation Viewset
 func (a *StagesApiService) StagesInvitationInvitationsList(ctx _context.Context) ApiStagesInvitationInvitationsListRequest {
 	return ApiStagesInvitationInvitationsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -11624,9 +11635,9 @@ func (a *StagesApiService) StagesInvitationInvitationsListExecute(r ApiStagesInv
 }
 
 type ApiStagesInvitationInvitationsPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	inviteUuid string
+	ctx                      _context.Context
+	ApiService               *StagesApiService
+	inviteUuid               string
 	patchedInvitationRequest *PatchedInvitationRequest
 }
 
@@ -11651,7 +11662,7 @@ Invitation Viewset
 func (a *StagesApiService) StagesInvitationInvitationsPartialUpdate(ctx _context.Context, inviteUuid string) ApiStagesInvitationInvitationsPartialUpdateRequest {
 	return ApiStagesInvitationInvitationsPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		inviteUuid: inviteUuid,
 	}
 }
@@ -11751,11 +11762,10 @@ func (a *StagesApiService) StagesInvitationInvitationsPartialUpdateExecute(r Api
 }
 
 type ApiStagesInvitationInvitationsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
 	inviteUuid string
 }
-
 
 func (r ApiStagesInvitationInvitationsRetrieveRequest) Execute() (Invitation, *_nethttp.Response, error) {
 	return r.ApiService.StagesInvitationInvitationsRetrieveExecute(r)
@@ -11773,7 +11783,7 @@ Invitation Viewset
 func (a *StagesApiService) StagesInvitationInvitationsRetrieve(ctx _context.Context, inviteUuid string) ApiStagesInvitationInvitationsRetrieveRequest {
 	return ApiStagesInvitationInvitationsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		inviteUuid: inviteUuid,
 	}
 }
@@ -11871,9 +11881,9 @@ func (a *StagesApiService) StagesInvitationInvitationsRetrieveExecute(r ApiStage
 }
 
 type ApiStagesInvitationInvitationsUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	inviteUuid string
+	ctx               _context.Context
+	ApiService        *StagesApiService
+	inviteUuid        string
 	invitationRequest *InvitationRequest
 }
 
@@ -11898,7 +11908,7 @@ Invitation Viewset
 func (a *StagesApiService) StagesInvitationInvitationsUpdate(ctx _context.Context, inviteUuid string) ApiStagesInvitationInvitationsUpdateRequest {
 	return ApiStagesInvitationInvitationsUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		inviteUuid: inviteUuid,
 	}
 }
@@ -11998,11 +12008,10 @@ func (a *StagesApiService) StagesInvitationInvitationsUpdateExecute(r ApiStagesI
 }
 
 type ApiStagesInvitationInvitationsUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
 	inviteUuid string
 }
-
 
 func (r ApiStagesInvitationInvitationsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesInvitationInvitationsUsedByListExecute(r)
@@ -12020,7 +12029,7 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesInvitationInvitationsUsedByList(ctx _context.Context, inviteUuid string) ApiStagesInvitationInvitationsUsedByListRequest {
 	return ApiStagesInvitationInvitationsUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		inviteUuid: inviteUuid,
 	}
 }
@@ -12118,8 +12127,8 @@ func (a *StagesApiService) StagesInvitationInvitationsUsedByListExecute(r ApiSta
 }
 
 type ApiStagesInvitationStagesCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                    _context.Context
+	ApiService             *StagesApiService
 	invitationStageRequest *InvitationStageRequest
 }
 
@@ -12143,7 +12152,7 @@ InvitationStage Viewset
 func (a *StagesApiService) StagesInvitationStagesCreate(ctx _context.Context) ApiStagesInvitationStagesCreateRequest {
 	return ApiStagesInvitationStagesCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -12244,11 +12253,10 @@ func (a *StagesApiService) StagesInvitationStagesCreateExecute(r ApiStagesInvita
 }
 
 type ApiStagesInvitationStagesDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesInvitationStagesDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesInvitationStagesDestroyExecute(r)
@@ -12266,8 +12274,8 @@ InvitationStage Viewset
 func (a *StagesApiService) StagesInvitationStagesDestroy(ctx _context.Context, stageUuid string) ApiStagesInvitationStagesDestroyRequest {
 	return ApiStagesInvitationStagesDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -12353,15 +12361,15 @@ func (a *StagesApiService) StagesInvitationStagesDestroyExecute(r ApiStagesInvit
 }
 
 type ApiStagesInvitationStagesListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                           _context.Context
+	ApiService                    *StagesApiService
 	continueFlowWithoutInvitation *bool
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	stageUuid *string
+	name                          *string
+	ordering                      *string
+	page                          *int32
+	pageSize                      *int32
+	search                        *string
+	stageUuid                     *string
 }
 
 func (r ApiStagesInvitationStagesListRequest) ContinueFlowWithoutInvitation(continueFlowWithoutInvitation bool) ApiStagesInvitationStagesListRequest {
@@ -12372,21 +12380,25 @@ func (r ApiStagesInvitationStagesListRequest) Name(name string) ApiStagesInvitat
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesInvitationStagesListRequest) Ordering(ordering string) ApiStagesInvitationStagesListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesInvitationStagesListRequest) Page(page int32) ApiStagesInvitationStagesListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesInvitationStagesListRequest) PageSize(pageSize int32) ApiStagesInvitationStagesListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesInvitationStagesListRequest) Search(search string) ApiStagesInvitationStagesListRequest {
 	r.search = &search
@@ -12412,7 +12424,7 @@ InvitationStage Viewset
 func (a *StagesApiService) StagesInvitationStagesList(ctx _context.Context) ApiStagesInvitationStagesListRequest {
 	return ApiStagesInvitationStagesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -12529,9 +12541,9 @@ func (a *StagesApiService) StagesInvitationStagesListExecute(r ApiStagesInvitati
 }
 
 type ApiStagesInvitationStagesPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                           _context.Context
+	ApiService                    *StagesApiService
+	stageUuid                     string
 	patchedInvitationStageRequest *PatchedInvitationStageRequest
 }
 
@@ -12556,8 +12568,8 @@ InvitationStage Viewset
 func (a *StagesApiService) StagesInvitationStagesPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesInvitationStagesPartialUpdateRequest {
 	return ApiStagesInvitationStagesPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -12656,11 +12668,10 @@ func (a *StagesApiService) StagesInvitationStagesPartialUpdateExecute(r ApiStage
 }
 
 type ApiStagesInvitationStagesRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesInvitationStagesRetrieveRequest) Execute() (InvitationStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesInvitationStagesRetrieveExecute(r)
@@ -12678,8 +12689,8 @@ InvitationStage Viewset
 func (a *StagesApiService) StagesInvitationStagesRetrieve(ctx _context.Context, stageUuid string) ApiStagesInvitationStagesRetrieveRequest {
 	return ApiStagesInvitationStagesRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -12776,9 +12787,9 @@ func (a *StagesApiService) StagesInvitationStagesRetrieveExecute(r ApiStagesInvi
 }
 
 type ApiStagesInvitationStagesUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                    _context.Context
+	ApiService             *StagesApiService
+	stageUuid              string
 	invitationStageRequest *InvitationStageRequest
 }
 
@@ -12803,8 +12814,8 @@ InvitationStage Viewset
 func (a *StagesApiService) StagesInvitationStagesUpdate(ctx _context.Context, stageUuid string) ApiStagesInvitationStagesUpdateRequest {
 	return ApiStagesInvitationStagesUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -12906,11 +12917,10 @@ func (a *StagesApiService) StagesInvitationStagesUpdateExecute(r ApiStagesInvita
 }
 
 type ApiStagesInvitationStagesUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesInvitationStagesUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesInvitationStagesUsedByListExecute(r)
@@ -12928,8 +12938,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesInvitationStagesUsedByList(ctx _context.Context, stageUuid string) ApiStagesInvitationStagesUsedByListRequest {
 	return ApiStagesInvitationStagesUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -13026,8 +13036,8 @@ func (a *StagesApiService) StagesInvitationStagesUsedByListExecute(r ApiStagesIn
 }
 
 type ApiStagesPasswordCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                  _context.Context
+	ApiService           *StagesApiService
 	passwordStageRequest *PasswordStageRequest
 }
 
@@ -13051,7 +13061,7 @@ PasswordStage Viewset
 func (a *StagesApiService) StagesPasswordCreate(ctx _context.Context) ApiStagesPasswordCreateRequest {
 	return ApiStagesPasswordCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -13152,11 +13162,10 @@ func (a *StagesApiService) StagesPasswordCreateExecute(r ApiStagesPasswordCreate
 }
 
 type ApiStagesPasswordDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesPasswordDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesPasswordDestroyExecute(r)
@@ -13174,8 +13183,8 @@ PasswordStage Viewset
 func (a *StagesApiService) StagesPasswordDestroy(ctx _context.Context, stageUuid string) ApiStagesPasswordDestroyRequest {
 	return ApiStagesPasswordDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -13261,15 +13270,15 @@ func (a *StagesApiService) StagesPasswordDestroyExecute(r ApiStagesPasswordDestr
 }
 
 type ApiStagesPasswordListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	configureFlow *string
+	ctx                        _context.Context
+	ApiService                 *StagesApiService
+	configureFlow              *string
 	failedAttemptsBeforeCancel *int32
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	name                       *string
+	ordering                   *string
+	page                       *int32
+	pageSize                   *int32
+	search                     *string
 }
 
 func (r ApiStagesPasswordListRequest) ConfigureFlow(configureFlow string) ApiStagesPasswordListRequest {
@@ -13284,21 +13293,25 @@ func (r ApiStagesPasswordListRequest) Name(name string) ApiStagesPasswordListReq
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesPasswordListRequest) Ordering(ordering string) ApiStagesPasswordListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesPasswordListRequest) Page(page int32) ApiStagesPasswordListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesPasswordListRequest) PageSize(pageSize int32) ApiStagesPasswordListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesPasswordListRequest) Search(search string) ApiStagesPasswordListRequest {
 	r.search = &search
@@ -13320,7 +13333,7 @@ PasswordStage Viewset
 func (a *StagesApiService) StagesPasswordList(ctx _context.Context) ApiStagesPasswordListRequest {
 	return ApiStagesPasswordListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -13437,9 +13450,9 @@ func (a *StagesApiService) StagesPasswordListExecute(r ApiStagesPasswordListRequ
 }
 
 type ApiStagesPasswordPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                         _context.Context
+	ApiService                  *StagesApiService
+	stageUuid                   string
 	patchedPasswordStageRequest *PatchedPasswordStageRequest
 }
 
@@ -13464,8 +13477,8 @@ PasswordStage Viewset
 func (a *StagesApiService) StagesPasswordPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesPasswordPartialUpdateRequest {
 	return ApiStagesPasswordPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -13564,11 +13577,10 @@ func (a *StagesApiService) StagesPasswordPartialUpdateExecute(r ApiStagesPasswor
 }
 
 type ApiStagesPasswordRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesPasswordRetrieveRequest) Execute() (PasswordStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesPasswordRetrieveExecute(r)
@@ -13586,8 +13598,8 @@ PasswordStage Viewset
 func (a *StagesApiService) StagesPasswordRetrieve(ctx _context.Context, stageUuid string) ApiStagesPasswordRetrieveRequest {
 	return ApiStagesPasswordRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -13684,9 +13696,9 @@ func (a *StagesApiService) StagesPasswordRetrieveExecute(r ApiStagesPasswordRetr
 }
 
 type ApiStagesPasswordUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                  _context.Context
+	ApiService           *StagesApiService
+	stageUuid            string
 	passwordStageRequest *PasswordStageRequest
 }
 
@@ -13711,8 +13723,8 @@ PasswordStage Viewset
 func (a *StagesApiService) StagesPasswordUpdate(ctx _context.Context, stageUuid string) ApiStagesPasswordUpdateRequest {
 	return ApiStagesPasswordUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -13814,11 +13826,10 @@ func (a *StagesApiService) StagesPasswordUpdateExecute(r ApiStagesPasswordUpdate
 }
 
 type ApiStagesPasswordUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesPasswordUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesPasswordUsedByListExecute(r)
@@ -13836,8 +13847,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesPasswordUsedByList(ctx _context.Context, stageUuid string) ApiStagesPasswordUsedByListRequest {
 	return ApiStagesPasswordUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -13934,8 +13945,8 @@ func (a *StagesApiService) StagesPasswordUsedByListExecute(r ApiStagesPasswordUs
 }
 
 type ApiStagesPromptPromptsCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx           _context.Context
+	ApiService    *StagesApiService
 	promptRequest *PromptRequest
 }
 
@@ -13959,7 +13970,7 @@ Prompt Viewset
 func (a *StagesApiService) StagesPromptPromptsCreate(ctx _context.Context) ApiStagesPromptPromptsCreateRequest {
 	return ApiStagesPromptPromptsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -14060,11 +14071,10 @@ func (a *StagesApiService) StagesPromptPromptsCreateExecute(r ApiStagesPromptPro
 }
 
 type ApiStagesPromptPromptsDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
 	promptUuid string
 }
-
 
 func (r ApiStagesPromptPromptsDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesPromptPromptsDestroyExecute(r)
@@ -14082,7 +14092,7 @@ Prompt Viewset
 func (a *StagesApiService) StagesPromptPromptsDestroy(ctx _context.Context, promptUuid string) ApiStagesPromptPromptsDestroyRequest {
 	return ApiStagesPromptPromptsDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		promptUuid: promptUuid,
 	}
 }
@@ -14169,16 +14179,16 @@ func (a *StagesApiService) StagesPromptPromptsDestroyExecute(r ApiStagesPromptPr
 }
 
 type ApiStagesPromptPromptsListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	fieldKey *string
-	label *string
-	ordering *string
-	page *int32
-	pageSize *int32
+	ctx         _context.Context
+	ApiService  *StagesApiService
+	fieldKey    *string
+	label       *string
+	ordering    *string
+	page        *int32
+	pageSize    *int32
 	placeholder *string
-	search *string
-	type_ *string
+	search      *string
+	type_       *string
 }
 
 func (r ApiStagesPromptPromptsListRequest) FieldKey(fieldKey string) ApiStagesPromptPromptsListRequest {
@@ -14189,16 +14199,19 @@ func (r ApiStagesPromptPromptsListRequest) Label(label string) ApiStagesPromptPr
 	r.label = &label
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesPromptPromptsListRequest) Ordering(ordering string) ApiStagesPromptPromptsListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesPromptPromptsListRequest) Page(page int32) ApiStagesPromptPromptsListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesPromptPromptsListRequest) PageSize(pageSize int32) ApiStagesPromptPromptsListRequest {
 	r.pageSize = &pageSize
@@ -14208,6 +14221,7 @@ func (r ApiStagesPromptPromptsListRequest) Placeholder(placeholder string) ApiSt
 	r.placeholder = &placeholder
 	return r
 }
+
 // A search term.
 func (r ApiStagesPromptPromptsListRequest) Search(search string) ApiStagesPromptPromptsListRequest {
 	r.search = &search
@@ -14233,7 +14247,7 @@ Prompt Viewset
 func (a *StagesApiService) StagesPromptPromptsList(ctx _context.Context) ApiStagesPromptPromptsListRequest {
 	return ApiStagesPromptPromptsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -14353,9 +14367,9 @@ func (a *StagesApiService) StagesPromptPromptsListExecute(r ApiStagesPromptPromp
 }
 
 type ApiStagesPromptPromptsPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	promptUuid string
+	ctx                  _context.Context
+	ApiService           *StagesApiService
+	promptUuid           string
 	patchedPromptRequest *PatchedPromptRequest
 }
 
@@ -14380,7 +14394,7 @@ Prompt Viewset
 func (a *StagesApiService) StagesPromptPromptsPartialUpdate(ctx _context.Context, promptUuid string) ApiStagesPromptPromptsPartialUpdateRequest {
 	return ApiStagesPromptPromptsPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		promptUuid: promptUuid,
 	}
 }
@@ -14480,11 +14494,10 @@ func (a *StagesApiService) StagesPromptPromptsPartialUpdateExecute(r ApiStagesPr
 }
 
 type ApiStagesPromptPromptsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
 	promptUuid string
 }
-
 
 func (r ApiStagesPromptPromptsRetrieveRequest) Execute() (Prompt, *_nethttp.Response, error) {
 	return r.ApiService.StagesPromptPromptsRetrieveExecute(r)
@@ -14502,7 +14515,7 @@ Prompt Viewset
 func (a *StagesApiService) StagesPromptPromptsRetrieve(ctx _context.Context, promptUuid string) ApiStagesPromptPromptsRetrieveRequest {
 	return ApiStagesPromptPromptsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		promptUuid: promptUuid,
 	}
 }
@@ -14600,9 +14613,9 @@ func (a *StagesApiService) StagesPromptPromptsRetrieveExecute(r ApiStagesPromptP
 }
 
 type ApiStagesPromptPromptsUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	promptUuid string
+	ctx           _context.Context
+	ApiService    *StagesApiService
+	promptUuid    string
 	promptRequest *PromptRequest
 }
 
@@ -14627,7 +14640,7 @@ Prompt Viewset
 func (a *StagesApiService) StagesPromptPromptsUpdate(ctx _context.Context, promptUuid string) ApiStagesPromptPromptsUpdateRequest {
 	return ApiStagesPromptPromptsUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		promptUuid: promptUuid,
 	}
 }
@@ -14730,11 +14743,10 @@ func (a *StagesApiService) StagesPromptPromptsUpdateExecute(r ApiStagesPromptPro
 }
 
 type ApiStagesPromptPromptsUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
 	promptUuid string
 }
-
 
 func (r ApiStagesPromptPromptsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesPromptPromptsUsedByListExecute(r)
@@ -14752,7 +14764,7 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesPromptPromptsUsedByList(ctx _context.Context, promptUuid string) ApiStagesPromptPromptsUsedByListRequest {
 	return ApiStagesPromptPromptsUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		promptUuid: promptUuid,
 	}
 }
@@ -14850,8 +14862,8 @@ func (a *StagesApiService) StagesPromptPromptsUsedByListExecute(r ApiStagesPromp
 }
 
 type ApiStagesPromptStagesCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                _context.Context
+	ApiService         *StagesApiService
 	promptStageRequest *PromptStageRequest
 }
 
@@ -14875,7 +14887,7 @@ PromptStage Viewset
 func (a *StagesApiService) StagesPromptStagesCreate(ctx _context.Context) ApiStagesPromptStagesCreateRequest {
 	return ApiStagesPromptStagesCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -14976,11 +14988,10 @@ func (a *StagesApiService) StagesPromptStagesCreateExecute(r ApiStagesPromptStag
 }
 
 type ApiStagesPromptStagesDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesPromptStagesDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesPromptStagesDestroyExecute(r)
@@ -14998,8 +15009,8 @@ PromptStage Viewset
 func (a *StagesApiService) StagesPromptStagesDestroy(ctx _context.Context, stageUuid string) ApiStagesPromptStagesDestroyRequest {
 	return ApiStagesPromptStagesDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -15085,15 +15096,15 @@ func (a *StagesApiService) StagesPromptStagesDestroyExecute(r ApiStagesPromptSta
 }
 
 type ApiStagesPromptStagesListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	fields *[]string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	stageUuid *string
+	ctx                _context.Context
+	ApiService         *StagesApiService
+	fields             *[]string
+	name               *string
+	ordering           *string
+	page               *int32
+	pageSize           *int32
+	search             *string
+	stageUuid          *string
 	validationPolicies *[]string
 }
 
@@ -15105,21 +15116,25 @@ func (r ApiStagesPromptStagesListRequest) Name(name string) ApiStagesPromptStage
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesPromptStagesListRequest) Ordering(ordering string) ApiStagesPromptStagesListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesPromptStagesListRequest) Page(page int32) ApiStagesPromptStagesListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesPromptStagesListRequest) PageSize(pageSize int32) ApiStagesPromptStagesListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesPromptStagesListRequest) Search(search string) ApiStagesPromptStagesListRequest {
 	r.search = &search
@@ -15149,7 +15164,7 @@ PromptStage Viewset
 func (a *StagesApiService) StagesPromptStagesList(ctx _context.Context) ApiStagesPromptStagesListRequest {
 	return ApiStagesPromptStagesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -15285,9 +15300,9 @@ func (a *StagesApiService) StagesPromptStagesListExecute(r ApiStagesPromptStages
 }
 
 type ApiStagesPromptStagesPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                       _context.Context
+	ApiService                *StagesApiService
+	stageUuid                 string
 	patchedPromptStageRequest *PatchedPromptStageRequest
 }
 
@@ -15312,8 +15327,8 @@ PromptStage Viewset
 func (a *StagesApiService) StagesPromptStagesPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesPromptStagesPartialUpdateRequest {
 	return ApiStagesPromptStagesPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -15412,11 +15427,10 @@ func (a *StagesApiService) StagesPromptStagesPartialUpdateExecute(r ApiStagesPro
 }
 
 type ApiStagesPromptStagesRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesPromptStagesRetrieveRequest) Execute() (PromptStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesPromptStagesRetrieveExecute(r)
@@ -15434,8 +15448,8 @@ PromptStage Viewset
 func (a *StagesApiService) StagesPromptStagesRetrieve(ctx _context.Context, stageUuid string) ApiStagesPromptStagesRetrieveRequest {
 	return ApiStagesPromptStagesRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -15532,9 +15546,9 @@ func (a *StagesApiService) StagesPromptStagesRetrieveExecute(r ApiStagesPromptSt
 }
 
 type ApiStagesPromptStagesUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                _context.Context
+	ApiService         *StagesApiService
+	stageUuid          string
 	promptStageRequest *PromptStageRequest
 }
 
@@ -15559,8 +15573,8 @@ PromptStage Viewset
 func (a *StagesApiService) StagesPromptStagesUpdate(ctx _context.Context, stageUuid string) ApiStagesPromptStagesUpdateRequest {
 	return ApiStagesPromptStagesUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -15662,11 +15676,10 @@ func (a *StagesApiService) StagesPromptStagesUpdateExecute(r ApiStagesPromptStag
 }
 
 type ApiStagesPromptStagesUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesPromptStagesUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesPromptStagesUsedByListExecute(r)
@@ -15684,8 +15697,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesPromptStagesUsedByList(ctx _context.Context, stageUuid string) ApiStagesPromptStagesUsedByListRequest {
 	return ApiStagesPromptStagesUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -15782,8 +15795,8 @@ func (a *StagesApiService) StagesPromptStagesUsedByListExecute(r ApiStagesPrompt
 }
 
 type ApiStagesUserDeleteCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                    _context.Context
+	ApiService             *StagesApiService
 	userDeleteStageRequest *UserDeleteStageRequest
 }
 
@@ -15807,7 +15820,7 @@ UserDeleteStage Viewset
 func (a *StagesApiService) StagesUserDeleteCreate(ctx _context.Context) ApiStagesUserDeleteCreateRequest {
 	return ApiStagesUserDeleteCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -15908,11 +15921,10 @@ func (a *StagesApiService) StagesUserDeleteCreateExecute(r ApiStagesUserDeleteCr
 }
 
 type ApiStagesUserDeleteDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesUserDeleteDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesUserDeleteDestroyExecute(r)
@@ -15930,8 +15942,8 @@ UserDeleteStage Viewset
 func (a *StagesApiService) StagesUserDeleteDestroy(ctx _context.Context, stageUuid string) ApiStagesUserDeleteDestroyRequest {
 	return ApiStagesUserDeleteDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -16017,35 +16029,39 @@ func (a *StagesApiService) StagesUserDeleteDestroyExecute(r ApiStagesUserDeleteD
 }
 
 type ApiStagesUserDeleteListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	stageUuid *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
+	stageUuid  *string
 }
 
 func (r ApiStagesUserDeleteListRequest) Name(name string) ApiStagesUserDeleteListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesUserDeleteListRequest) Ordering(ordering string) ApiStagesUserDeleteListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesUserDeleteListRequest) Page(page int32) ApiStagesUserDeleteListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesUserDeleteListRequest) PageSize(pageSize int32) ApiStagesUserDeleteListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesUserDeleteListRequest) Search(search string) ApiStagesUserDeleteListRequest {
 	r.search = &search
@@ -16071,7 +16087,7 @@ UserDeleteStage Viewset
 func (a *StagesApiService) StagesUserDeleteList(ctx _context.Context) ApiStagesUserDeleteListRequest {
 	return ApiStagesUserDeleteListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -16185,9 +16201,9 @@ func (a *StagesApiService) StagesUserDeleteListExecute(r ApiStagesUserDeleteList
 }
 
 type ApiStagesUserDeletePartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                           _context.Context
+	ApiService                    *StagesApiService
+	stageUuid                     string
 	patchedUserDeleteStageRequest *PatchedUserDeleteStageRequest
 }
 
@@ -16212,8 +16228,8 @@ UserDeleteStage Viewset
 func (a *StagesApiService) StagesUserDeletePartialUpdate(ctx _context.Context, stageUuid string) ApiStagesUserDeletePartialUpdateRequest {
 	return ApiStagesUserDeletePartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -16312,11 +16328,10 @@ func (a *StagesApiService) StagesUserDeletePartialUpdateExecute(r ApiStagesUserD
 }
 
 type ApiStagesUserDeleteRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesUserDeleteRetrieveRequest) Execute() (UserDeleteStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesUserDeleteRetrieveExecute(r)
@@ -16334,8 +16349,8 @@ UserDeleteStage Viewset
 func (a *StagesApiService) StagesUserDeleteRetrieve(ctx _context.Context, stageUuid string) ApiStagesUserDeleteRetrieveRequest {
 	return ApiStagesUserDeleteRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -16432,9 +16447,9 @@ func (a *StagesApiService) StagesUserDeleteRetrieveExecute(r ApiStagesUserDelete
 }
 
 type ApiStagesUserDeleteUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                    _context.Context
+	ApiService             *StagesApiService
+	stageUuid              string
 	userDeleteStageRequest *UserDeleteStageRequest
 }
 
@@ -16459,8 +16474,8 @@ UserDeleteStage Viewset
 func (a *StagesApiService) StagesUserDeleteUpdate(ctx _context.Context, stageUuid string) ApiStagesUserDeleteUpdateRequest {
 	return ApiStagesUserDeleteUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -16562,11 +16577,10 @@ func (a *StagesApiService) StagesUserDeleteUpdateExecute(r ApiStagesUserDeleteUp
 }
 
 type ApiStagesUserDeleteUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesUserDeleteUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesUserDeleteUsedByListExecute(r)
@@ -16584,8 +16598,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesUserDeleteUsedByList(ctx _context.Context, stageUuid string) ApiStagesUserDeleteUsedByListRequest {
 	return ApiStagesUserDeleteUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -16682,8 +16696,8 @@ func (a *StagesApiService) StagesUserDeleteUsedByListExecute(r ApiStagesUserDele
 }
 
 type ApiStagesUserLoginCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                   _context.Context
+	ApiService            *StagesApiService
 	userLoginStageRequest *UserLoginStageRequest
 }
 
@@ -16707,7 +16721,7 @@ UserLoginStage Viewset
 func (a *StagesApiService) StagesUserLoginCreate(ctx _context.Context) ApiStagesUserLoginCreateRequest {
 	return ApiStagesUserLoginCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -16808,11 +16822,10 @@ func (a *StagesApiService) StagesUserLoginCreateExecute(r ApiStagesUserLoginCrea
 }
 
 type ApiStagesUserLoginDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesUserLoginDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesUserLoginDestroyExecute(r)
@@ -16830,8 +16843,8 @@ UserLoginStage Viewset
 func (a *StagesApiService) StagesUserLoginDestroy(ctx _context.Context, stageUuid string) ApiStagesUserLoginDestroyRequest {
 	return ApiStagesUserLoginDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -16917,36 +16930,40 @@ func (a *StagesApiService) StagesUserLoginDestroyExecute(r ApiStagesUserLoginDes
 }
 
 type ApiStagesUserLoginListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	ctx             _context.Context
+	ApiService      *StagesApiService
+	name            *string
+	ordering        *string
+	page            *int32
+	pageSize        *int32
+	search          *string
 	sessionDuration *string
-	stageUuid *string
+	stageUuid       *string
 }
 
 func (r ApiStagesUserLoginListRequest) Name(name string) ApiStagesUserLoginListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesUserLoginListRequest) Ordering(ordering string) ApiStagesUserLoginListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesUserLoginListRequest) Page(page int32) ApiStagesUserLoginListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesUserLoginListRequest) PageSize(pageSize int32) ApiStagesUserLoginListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesUserLoginListRequest) Search(search string) ApiStagesUserLoginListRequest {
 	r.search = &search
@@ -16976,7 +16993,7 @@ UserLoginStage Viewset
 func (a *StagesApiService) StagesUserLoginList(ctx _context.Context) ApiStagesUserLoginListRequest {
 	return ApiStagesUserLoginListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -17093,9 +17110,9 @@ func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRe
 }
 
 type ApiStagesUserLoginPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                          _context.Context
+	ApiService                   *StagesApiService
+	stageUuid                    string
 	patchedUserLoginStageRequest *PatchedUserLoginStageRequest
 }
 
@@ -17120,8 +17137,8 @@ UserLoginStage Viewset
 func (a *StagesApiService) StagesUserLoginPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesUserLoginPartialUpdateRequest {
 	return ApiStagesUserLoginPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -17220,11 +17237,10 @@ func (a *StagesApiService) StagesUserLoginPartialUpdateExecute(r ApiStagesUserLo
 }
 
 type ApiStagesUserLoginRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesUserLoginRetrieveRequest) Execute() (UserLoginStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesUserLoginRetrieveExecute(r)
@@ -17242,8 +17258,8 @@ UserLoginStage Viewset
 func (a *StagesApiService) StagesUserLoginRetrieve(ctx _context.Context, stageUuid string) ApiStagesUserLoginRetrieveRequest {
 	return ApiStagesUserLoginRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -17340,9 +17356,9 @@ func (a *StagesApiService) StagesUserLoginRetrieveExecute(r ApiStagesUserLoginRe
 }
 
 type ApiStagesUserLoginUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                   _context.Context
+	ApiService            *StagesApiService
+	stageUuid             string
 	userLoginStageRequest *UserLoginStageRequest
 }
 
@@ -17367,8 +17383,8 @@ UserLoginStage Viewset
 func (a *StagesApiService) StagesUserLoginUpdate(ctx _context.Context, stageUuid string) ApiStagesUserLoginUpdateRequest {
 	return ApiStagesUserLoginUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -17470,11 +17486,10 @@ func (a *StagesApiService) StagesUserLoginUpdateExecute(r ApiStagesUserLoginUpda
 }
 
 type ApiStagesUserLoginUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesUserLoginUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesUserLoginUsedByListExecute(r)
@@ -17492,8 +17507,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesUserLoginUsedByList(ctx _context.Context, stageUuid string) ApiStagesUserLoginUsedByListRequest {
 	return ApiStagesUserLoginUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -17590,8 +17605,8 @@ func (a *StagesApiService) StagesUserLoginUsedByListExecute(r ApiStagesUserLogin
 }
 
 type ApiStagesUserLogoutCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                    _context.Context
+	ApiService             *StagesApiService
 	userLogoutStageRequest *UserLogoutStageRequest
 }
 
@@ -17615,7 +17630,7 @@ UserLogoutStage Viewset
 func (a *StagesApiService) StagesUserLogoutCreate(ctx _context.Context) ApiStagesUserLogoutCreateRequest {
 	return ApiStagesUserLogoutCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -17716,11 +17731,10 @@ func (a *StagesApiService) StagesUserLogoutCreateExecute(r ApiStagesUserLogoutCr
 }
 
 type ApiStagesUserLogoutDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesUserLogoutDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesUserLogoutDestroyExecute(r)
@@ -17738,8 +17752,8 @@ UserLogoutStage Viewset
 func (a *StagesApiService) StagesUserLogoutDestroy(ctx _context.Context, stageUuid string) ApiStagesUserLogoutDestroyRequest {
 	return ApiStagesUserLogoutDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -17825,35 +17839,39 @@ func (a *StagesApiService) StagesUserLogoutDestroyExecute(r ApiStagesUserLogoutD
 }
 
 type ApiStagesUserLogoutListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	stageUuid *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
+	stageUuid  *string
 }
 
 func (r ApiStagesUserLogoutListRequest) Name(name string) ApiStagesUserLogoutListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesUserLogoutListRequest) Ordering(ordering string) ApiStagesUserLogoutListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesUserLogoutListRequest) Page(page int32) ApiStagesUserLogoutListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesUserLogoutListRequest) PageSize(pageSize int32) ApiStagesUserLogoutListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesUserLogoutListRequest) Search(search string) ApiStagesUserLogoutListRequest {
 	r.search = &search
@@ -17879,7 +17897,7 @@ UserLogoutStage Viewset
 func (a *StagesApiService) StagesUserLogoutList(ctx _context.Context) ApiStagesUserLogoutListRequest {
 	return ApiStagesUserLogoutListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -17993,9 +18011,9 @@ func (a *StagesApiService) StagesUserLogoutListExecute(r ApiStagesUserLogoutList
 }
 
 type ApiStagesUserLogoutPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                           _context.Context
+	ApiService                    *StagesApiService
+	stageUuid                     string
 	patchedUserLogoutStageRequest *PatchedUserLogoutStageRequest
 }
 
@@ -18020,8 +18038,8 @@ UserLogoutStage Viewset
 func (a *StagesApiService) StagesUserLogoutPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesUserLogoutPartialUpdateRequest {
 	return ApiStagesUserLogoutPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -18120,11 +18138,10 @@ func (a *StagesApiService) StagesUserLogoutPartialUpdateExecute(r ApiStagesUserL
 }
 
 type ApiStagesUserLogoutRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesUserLogoutRetrieveRequest) Execute() (UserLogoutStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesUserLogoutRetrieveExecute(r)
@@ -18142,8 +18159,8 @@ UserLogoutStage Viewset
 func (a *StagesApiService) StagesUserLogoutRetrieve(ctx _context.Context, stageUuid string) ApiStagesUserLogoutRetrieveRequest {
 	return ApiStagesUserLogoutRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -18240,9 +18257,9 @@ func (a *StagesApiService) StagesUserLogoutRetrieveExecute(r ApiStagesUserLogout
 }
 
 type ApiStagesUserLogoutUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                    _context.Context
+	ApiService             *StagesApiService
+	stageUuid              string
 	userLogoutStageRequest *UserLogoutStageRequest
 }
 
@@ -18267,8 +18284,8 @@ UserLogoutStage Viewset
 func (a *StagesApiService) StagesUserLogoutUpdate(ctx _context.Context, stageUuid string) ApiStagesUserLogoutUpdateRequest {
 	return ApiStagesUserLogoutUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -18370,11 +18387,10 @@ func (a *StagesApiService) StagesUserLogoutUpdateExecute(r ApiStagesUserLogoutUp
 }
 
 type ApiStagesUserLogoutUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesUserLogoutUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesUserLogoutUsedByListExecute(r)
@@ -18392,8 +18408,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesUserLogoutUsedByList(ctx _context.Context, stageUuid string) ApiStagesUserLogoutUsedByListRequest {
 	return ApiStagesUserLogoutUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -18490,8 +18506,8 @@ func (a *StagesApiService) StagesUserLogoutUsedByListExecute(r ApiStagesUserLogo
 }
 
 type ApiStagesUserWriteCreateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                   _context.Context
+	ApiService            *StagesApiService
 	userWriteStageRequest *UserWriteStageRequest
 }
 
@@ -18515,7 +18531,7 @@ UserWriteStage Viewset
 func (a *StagesApiService) StagesUserWriteCreate(ctx _context.Context) ApiStagesUserWriteCreateRequest {
 	return ApiStagesUserWriteCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -18616,11 +18632,10 @@ func (a *StagesApiService) StagesUserWriteCreateExecute(r ApiStagesUserWriteCrea
 }
 
 type ApiStagesUserWriteDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesUserWriteDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.StagesUserWriteDestroyExecute(r)
@@ -18638,8 +18653,8 @@ UserWriteStage Viewset
 func (a *StagesApiService) StagesUserWriteDestroy(ctx _context.Context, stageUuid string) ApiStagesUserWriteDestroyRequest {
 	return ApiStagesUserWriteDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -18725,16 +18740,16 @@ func (a *StagesApiService) StagesUserWriteDestroyExecute(r ApiStagesUserWriteDes
 }
 
 type ApiStagesUserWriteListRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
+	ctx                   _context.Context
+	ApiService            *StagesApiService
 	createUsersAsInactive *bool
-	createUsersGroup *string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	stageUuid *string
+	createUsersGroup      *string
+	name                  *string
+	ordering              *string
+	page                  *int32
+	pageSize              *int32
+	search                *string
+	stageUuid             *string
 }
 
 func (r ApiStagesUserWriteListRequest) CreateUsersAsInactive(createUsersAsInactive bool) ApiStagesUserWriteListRequest {
@@ -18749,21 +18764,25 @@ func (r ApiStagesUserWriteListRequest) Name(name string) ApiStagesUserWriteListR
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiStagesUserWriteListRequest) Ordering(ordering string) ApiStagesUserWriteListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiStagesUserWriteListRequest) Page(page int32) ApiStagesUserWriteListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiStagesUserWriteListRequest) PageSize(pageSize int32) ApiStagesUserWriteListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiStagesUserWriteListRequest) Search(search string) ApiStagesUserWriteListRequest {
 	r.search = &search
@@ -18789,7 +18808,7 @@ UserWriteStage Viewset
 func (a *StagesApiService) StagesUserWriteList(ctx _context.Context) ApiStagesUserWriteListRequest {
 	return ApiStagesUserWriteListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -18909,9 +18928,9 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 }
 
 type ApiStagesUserWritePartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                          _context.Context
+	ApiService                   *StagesApiService
+	stageUuid                    string
 	patchedUserWriteStageRequest *PatchedUserWriteStageRequest
 }
 
@@ -18936,8 +18955,8 @@ UserWriteStage Viewset
 func (a *StagesApiService) StagesUserWritePartialUpdate(ctx _context.Context, stageUuid string) ApiStagesUserWritePartialUpdateRequest {
 	return ApiStagesUserWritePartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -19036,11 +19055,10 @@ func (a *StagesApiService) StagesUserWritePartialUpdateExecute(r ApiStagesUserWr
 }
 
 type ApiStagesUserWriteRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesUserWriteRetrieveRequest) Execute() (UserWriteStage, *_nethttp.Response, error) {
 	return r.ApiService.StagesUserWriteRetrieveExecute(r)
@@ -19058,8 +19076,8 @@ UserWriteStage Viewset
 func (a *StagesApiService) StagesUserWriteRetrieve(ctx _context.Context, stageUuid string) ApiStagesUserWriteRetrieveRequest {
 	return ApiStagesUserWriteRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -19156,9 +19174,9 @@ func (a *StagesApiService) StagesUserWriteRetrieveExecute(r ApiStagesUserWriteRe
 }
 
 type ApiStagesUserWriteUpdateRequest struct {
-	ctx _context.Context
-	ApiService *StagesApiService
-	stageUuid string
+	ctx                   _context.Context
+	ApiService            *StagesApiService
+	stageUuid             string
 	userWriteStageRequest *UserWriteStageRequest
 }
 
@@ -19183,8 +19201,8 @@ UserWriteStage Viewset
 func (a *StagesApiService) StagesUserWriteUpdate(ctx _context.Context, stageUuid string) ApiStagesUserWriteUpdateRequest {
 	return ApiStagesUserWriteUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 
@@ -19286,11 +19304,10 @@ func (a *StagesApiService) StagesUserWriteUpdateExecute(r ApiStagesUserWriteUpda
 }
 
 type ApiStagesUserWriteUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *StagesApiService
-	stageUuid string
+	stageUuid  string
 }
-
 
 func (r ApiStagesUserWriteUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.StagesUserWriteUsedByListExecute(r)
@@ -19308,8 +19325,8 @@ Get a list of all objects that use this object
 func (a *StagesApiService) StagesUserWriteUsedByList(ctx _context.Context, stageUuid string) ApiStagesUserWriteUsedByListRequest {
 	return ApiStagesUserWriteUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		stageUuid: stageUuid,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
 	}
 }
 

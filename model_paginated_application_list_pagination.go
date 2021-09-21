@@ -17,13 +17,13 @@ import (
 
 // PaginatedApplicationListPagination struct for PaginatedApplicationListPagination
 type PaginatedApplicationListPagination struct {
-	Next float32 `json:"next"`
-	Previous float32 `json:"previous"`
-	Count float32 `json:"count"`
-	Current float32 `json:"current"`
+	Next       float32 `json:"next"`
+	Previous   float32 `json:"previous"`
+	Count      float32 `json:"count"`
+	Current    float32 `json:"current"`
 	TotalPages float32 `json:"total_pages"`
 	StartIndex float32 `json:"start_index"`
-	EndIndex float32 `json:"end_index"`
+	EndIndex   float32 `json:"end_index"`
 }
 
 // NewPaginatedApplicationListPagination instantiates a new PaginatedApplicationListPagination object
@@ -63,7 +63,7 @@ func (o *PaginatedApplicationListPagination) GetNext() float32 {
 // GetNextOk returns a tuple with the Next field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedApplicationListPagination) GetNextOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Next, true
@@ -87,7 +87,7 @@ func (o *PaginatedApplicationListPagination) GetPrevious() float32 {
 // GetPreviousOk returns a tuple with the Previous field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedApplicationListPagination) GetPreviousOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Previous, true
@@ -111,7 +111,7 @@ func (o *PaginatedApplicationListPagination) GetCount() float32 {
 // GetCountOk returns a tuple with the Count field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedApplicationListPagination) GetCountOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Count, true
@@ -135,7 +135,7 @@ func (o *PaginatedApplicationListPagination) GetCurrent() float32 {
 // GetCurrentOk returns a tuple with the Current field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedApplicationListPagination) GetCurrentOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Current, true
@@ -159,7 +159,7 @@ func (o *PaginatedApplicationListPagination) GetTotalPages() float32 {
 // GetTotalPagesOk returns a tuple with the TotalPages field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedApplicationListPagination) GetTotalPagesOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TotalPages, true
@@ -183,7 +183,7 @@ func (o *PaginatedApplicationListPagination) GetStartIndex() float32 {
 // GetStartIndexOk returns a tuple with the StartIndex field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedApplicationListPagination) GetStartIndexOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.StartIndex, true
@@ -207,7 +207,7 @@ func (o *PaginatedApplicationListPagination) GetEndIndex() float32 {
 // GetEndIndexOk returns a tuple with the EndIndex field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedApplicationListPagination) GetEndIndexOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.EndIndex, true
@@ -279,5 +279,3 @@ func (v *NullablePaginatedApplicationListPagination) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

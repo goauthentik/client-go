@@ -21,32 +21,32 @@ type EventActions string
 
 // List of EventActions
 const (
-	EVENTACTIONS_LOGIN EventActions = "login"
-	EVENTACTIONS_LOGIN_FAILED EventActions = "login_failed"
-	EVENTACTIONS_LOGOUT EventActions = "logout"
-	EVENTACTIONS_USER_WRITE EventActions = "user_write"
-	EVENTACTIONS_SUSPICIOUS_REQUEST EventActions = "suspicious_request"
-	EVENTACTIONS_PASSWORD_SET EventActions = "password_set"
-	EVENTACTIONS_SECRET_VIEW EventActions = "secret_view"
-	EVENTACTIONS_SECRET_ROTATE EventActions = "secret_rotate"
-	EVENTACTIONS_INVITATION_USED EventActions = "invitation_used"
-	EVENTACTIONS_AUTHORIZE_APPLICATION EventActions = "authorize_application"
-	EVENTACTIONS_SOURCE_LINKED EventActions = "source_linked"
-	EVENTACTIONS_IMPERSONATION_STARTED EventActions = "impersonation_started"
-	EVENTACTIONS_IMPERSONATION_ENDED EventActions = "impersonation_ended"
-	EVENTACTIONS_POLICY_EXECUTION EventActions = "policy_execution"
-	EVENTACTIONS_POLICY_EXCEPTION EventActions = "policy_exception"
+	EVENTACTIONS_LOGIN                      EventActions = "login"
+	EVENTACTIONS_LOGIN_FAILED               EventActions = "login_failed"
+	EVENTACTIONS_LOGOUT                     EventActions = "logout"
+	EVENTACTIONS_USER_WRITE                 EventActions = "user_write"
+	EVENTACTIONS_SUSPICIOUS_REQUEST         EventActions = "suspicious_request"
+	EVENTACTIONS_PASSWORD_SET               EventActions = "password_set"
+	EVENTACTIONS_SECRET_VIEW                EventActions = "secret_view"
+	EVENTACTIONS_SECRET_ROTATE              EventActions = "secret_rotate"
+	EVENTACTIONS_INVITATION_USED            EventActions = "invitation_used"
+	EVENTACTIONS_AUTHORIZE_APPLICATION      EventActions = "authorize_application"
+	EVENTACTIONS_SOURCE_LINKED              EventActions = "source_linked"
+	EVENTACTIONS_IMPERSONATION_STARTED      EventActions = "impersonation_started"
+	EVENTACTIONS_IMPERSONATION_ENDED        EventActions = "impersonation_ended"
+	EVENTACTIONS_POLICY_EXECUTION           EventActions = "policy_execution"
+	EVENTACTIONS_POLICY_EXCEPTION           EventActions = "policy_exception"
 	EVENTACTIONS_PROPERTY_MAPPING_EXCEPTION EventActions = "property_mapping_exception"
-	EVENTACTIONS_SYSTEM_TASK_EXECUTION EventActions = "system_task_execution"
-	EVENTACTIONS_SYSTEM_TASK_EXCEPTION EventActions = "system_task_exception"
-	EVENTACTIONS_SYSTEM_EXCEPTION EventActions = "system_exception"
-	EVENTACTIONS_CONFIGURATION_ERROR EventActions = "configuration_error"
-	EVENTACTIONS_MODEL_CREATED EventActions = "model_created"
-	EVENTACTIONS_MODEL_UPDATED EventActions = "model_updated"
-	EVENTACTIONS_MODEL_DELETED EventActions = "model_deleted"
-	EVENTACTIONS_EMAIL_SENT EventActions = "email_sent"
-	EVENTACTIONS_UPDATE_AVAILABLE EventActions = "update_available"
-	EVENTACTIONS_CUSTOM EventActions = "custom_"
+	EVENTACTIONS_SYSTEM_TASK_EXECUTION      EventActions = "system_task_execution"
+	EVENTACTIONS_SYSTEM_TASK_EXCEPTION      EventActions = "system_task_exception"
+	EVENTACTIONS_SYSTEM_EXCEPTION           EventActions = "system_exception"
+	EVENTACTIONS_CONFIGURATION_ERROR        EventActions = "configuration_error"
+	EVENTACTIONS_MODEL_CREATED              EventActions = "model_created"
+	EVENTACTIONS_MODEL_UPDATED              EventActions = "model_updated"
+	EVENTACTIONS_MODEL_DELETED              EventActions = "model_deleted"
+	EVENTACTIONS_EMAIL_SENT                 EventActions = "email_sent"
+	EVENTACTIONS_UPDATE_AVAILABLE           EventActions = "update_available"
+	EVENTACTIONS_CUSTOM                     EventActions = "custom_"
 )
 
 // All allowed values of EventActions enum
@@ -157,4 +157,3 @@ func (v *NullableEventActions) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

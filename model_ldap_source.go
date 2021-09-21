@@ -21,22 +21,22 @@ type LDAPSource struct {
 	// Source's display Name.
 	Name string `json:"name"`
 	// Internal source name, used in URLs.
-	Slug string `json:"slug"`
-	Enabled *bool `json:"enabled,omitempty"`
+	Slug    string `json:"slug"`
+	Enabled *bool  `json:"enabled,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
-	EnrollmentFlow NullableString `json:"enrollment_flow,omitempty"`
-	Component string `json:"component"`
-	VerboseName string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	EnrollmentFlow    NullableString    `json:"enrollment_flow,omitempty"`
+	Component         string            `json:"component"`
+	VerboseName       string            `json:"verbose_name"`
+	VerboseNamePlural string            `json:"verbose_name_plural"`
+	PolicyEngineMode  *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
-	ServerUri string `json:"server_uri"`
-	BindCn *string `json:"bind_cn,omitempty"`
-	StartTls *bool `json:"start_tls,omitempty"`
-	BaseDn string `json:"base_dn"`
+	ServerUri        string                `json:"server_uri"`
+	BindCn           *string               `json:"bind_cn,omitempty"`
+	StartTls         *bool                 `json:"start_tls,omitempty"`
+	BaseDn           string                `json:"base_dn"`
 	// Prepended to Base DN for User-queries.
 	AdditionalUserDn *string `json:"additional_user_dn,omitempty"`
 	// Prepended to Base DN for Group-queries.
@@ -49,12 +49,12 @@ type LDAPSource struct {
 	GroupMembershipField *string `json:"group_membership_field,omitempty"`
 	// Field which contains a unique Identifier.
 	ObjectUniquenessField *string `json:"object_uniqueness_field,omitempty"`
-	SyncUsers *bool `json:"sync_users,omitempty"`
+	SyncUsers             *bool   `json:"sync_users,omitempty"`
 	// When a user changes their password, sync it back to LDAP. This can only be enabled on a single LDAP source.
-	SyncUsersPassword *bool `json:"sync_users_password,omitempty"`
-	SyncGroups *bool `json:"sync_groups,omitempty"`
-	SyncParentGroup NullableString `json:"sync_parent_group,omitempty"`
-	PropertyMappings *[]string `json:"property_mappings,omitempty"`
+	SyncUsersPassword *bool          `json:"sync_users_password,omitempty"`
+	SyncGroups        *bool          `json:"sync_groups,omitempty"`
+	SyncParentGroup   NullableString `json:"sync_parent_group,omitempty"`
+	PropertyMappings  *[]string      `json:"property_mappings,omitempty"`
 	// Property mappings used for group creation/updating.
 	PropertyMappingsGroup *[]string `json:"property_mappings_group,omitempty"`
 }
@@ -97,7 +97,7 @@ func (o *LDAPSource) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -121,7 +121,7 @@ func (o *LDAPSource) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -145,7 +145,7 @@ func (o *LDAPSource) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetSlugOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Slug, true
@@ -201,7 +201,7 @@ func (o *LDAPSource) GetAuthenticationFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LDAPSource) GetAuthenticationFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AuthenticationFlow.Get(), o.AuthenticationFlow.IsSet()
@@ -220,6 +220,7 @@ func (o *LDAPSource) HasAuthenticationFlow() bool {
 func (o *LDAPSource) SetAuthenticationFlow(v string) {
 	o.AuthenticationFlow.Set(&v)
 }
+
 // SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
 func (o *LDAPSource) SetAuthenticationFlowNil() {
 	o.AuthenticationFlow.Set(nil)
@@ -243,7 +244,7 @@ func (o *LDAPSource) GetEnrollmentFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LDAPSource) GetEnrollmentFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.EnrollmentFlow.Get(), o.EnrollmentFlow.IsSet()
@@ -262,6 +263,7 @@ func (o *LDAPSource) HasEnrollmentFlow() bool {
 func (o *LDAPSource) SetEnrollmentFlow(v string) {
 	o.EnrollmentFlow.Set(&v)
 }
+
 // SetEnrollmentFlowNil sets the value for EnrollmentFlow to be an explicit nil
 func (o *LDAPSource) SetEnrollmentFlowNil() {
 	o.EnrollmentFlow.Set(nil)
@@ -285,7 +287,7 @@ func (o *LDAPSource) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -309,7 +311,7 @@ func (o *LDAPSource) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -333,7 +335,7 @@ func (o *LDAPSource) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -421,7 +423,7 @@ func (o *LDAPSource) GetServerUri() string {
 // GetServerUriOk returns a tuple with the ServerUri field value
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetServerUriOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ServerUri, true
@@ -509,7 +511,7 @@ func (o *LDAPSource) GetBaseDn() string {
 // GetBaseDnOk returns a tuple with the BaseDn field value
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetBaseDnOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BaseDn, true
@@ -821,7 +823,7 @@ func (o *LDAPSource) GetSyncParentGroup() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LDAPSource) GetSyncParentGroupOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SyncParentGroup.Get(), o.SyncParentGroup.IsSet()
@@ -840,6 +842,7 @@ func (o *LDAPSource) HasSyncParentGroup() bool {
 func (o *LDAPSource) SetSyncParentGroup(v string) {
 	o.SyncParentGroup.Set(&v)
 }
+
 // SetSyncParentGroupNil sets the value for SyncParentGroup to be an explicit nil
 func (o *LDAPSource) SetSyncParentGroupNil() {
 	o.SyncParentGroup.Set(nil)
@@ -1035,5 +1038,3 @@ func (v *NullableLDAPSource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

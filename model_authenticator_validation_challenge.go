@@ -17,13 +17,13 @@ import (
 
 // AuthenticatorValidationChallenge Authenticator challenge
 type AuthenticatorValidationChallenge struct {
-	Type ChallengeChoices `json:"type"`
-	FlowInfo *ContextualFlowInfo `json:"flow_info,omitempty"`
-	Component *string `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser string `json:"pending_user"`
-	PendingUserAvatar string `json:"pending_user_avatar"`
-	DeviceChallenges []DeviceChallenge `json:"device_challenges"`
+	Type              ChallengeChoices          `json:"type"`
+	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component         *string                   `json:"component,omitempty"`
+	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser       string                    `json:"pending_user"`
+	PendingUserAvatar string                    `json:"pending_user_avatar"`
+	DeviceChallenges  []DeviceChallenge         `json:"device_challenges"`
 }
 
 // NewAuthenticatorValidationChallenge instantiates a new AuthenticatorValidationChallenge object
@@ -64,7 +64,7 @@ func (o *AuthenticatorValidationChallenge) GetType() ChallengeChoices {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidationChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -184,7 +184,7 @@ func (o *AuthenticatorValidationChallenge) GetPendingUser() string {
 // GetPendingUserOk returns a tuple with the PendingUser field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidationChallenge) GetPendingUserOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PendingUser, true
@@ -208,7 +208,7 @@ func (o *AuthenticatorValidationChallenge) GetPendingUserAvatar() string {
 // GetPendingUserAvatarOk returns a tuple with the PendingUserAvatar field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidationChallenge) GetPendingUserAvatarOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PendingUserAvatar, true
@@ -232,7 +232,7 @@ func (o *AuthenticatorValidationChallenge) GetDeviceChallenges() []DeviceChallen
 // GetDeviceChallengesOk returns a tuple with the DeviceChallenges field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidationChallenge) GetDeviceChallengesOk() (*[]DeviceChallenge, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.DeviceChallenges, true
@@ -304,5 +304,3 @@ func (v *NullableAuthenticatorValidationChallenge) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

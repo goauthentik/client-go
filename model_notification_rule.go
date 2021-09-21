@@ -17,15 +17,15 @@ import (
 
 // NotificationRule NotificationRule Serializer
 type NotificationRule struct {
-	Pk string `json:"pk"`
+	Pk   string `json:"pk"`
 	Name string `json:"name"`
 	// Select which transports should be used to notify the user. If none are selected, the notification will only be shown in the authentik UI.
 	Transports []string `json:"transports"`
 	// Controls which severity level the created notifications will have.
 	Severity *SeverityEnum `json:"severity,omitempty"`
 	// Define which group of users this notification should be sent and shown to. If left empty, Notification won't ben sent.
-	Group NullableString `json:"group,omitempty"`
-	GroupObj Group `json:"group_obj"`
+	Group    NullableString `json:"group,omitempty"`
+	GroupObj Group          `json:"group_obj"`
 }
 
 // NewNotificationRule instantiates a new NotificationRule object
@@ -62,7 +62,7 @@ func (o *NotificationRule) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *NotificationRule) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -86,7 +86,7 @@ func (o *NotificationRule) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *NotificationRule) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -110,7 +110,7 @@ func (o *NotificationRule) GetTransports() []string {
 // GetTransportsOk returns a tuple with the Transports field value
 // and a boolean to check if the value has been set.
 func (o *NotificationRule) GetTransportsOk() (*[]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Transports, true
@@ -166,7 +166,7 @@ func (o *NotificationRule) GetGroup() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NotificationRule) GetGroupOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Group.Get(), o.Group.IsSet()
@@ -185,6 +185,7 @@ func (o *NotificationRule) HasGroup() bool {
 func (o *NotificationRule) SetGroup(v string) {
 	o.Group.Set(&v)
 }
+
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *NotificationRule) SetGroupNil() {
 	o.Group.Set(nil)
@@ -208,7 +209,7 @@ func (o *NotificationRule) GetGroupObj() Group {
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
 func (o *NotificationRule) GetGroupObjOk() (*Group, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.GroupObj, true
@@ -277,5 +278,3 @@ func (v *NullableNotificationRule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

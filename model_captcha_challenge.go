@@ -17,13 +17,13 @@ import (
 
 // CaptchaChallenge Site public key
 type CaptchaChallenge struct {
-	Type ChallengeChoices `json:"type"`
-	FlowInfo *ContextualFlowInfo `json:"flow_info,omitempty"`
-	Component *string `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser string `json:"pending_user"`
-	PendingUserAvatar string `json:"pending_user_avatar"`
-	SiteKey string `json:"site_key"`
+	Type              ChallengeChoices          `json:"type"`
+	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component         *string                   `json:"component,omitempty"`
+	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser       string                    `json:"pending_user"`
+	PendingUserAvatar string                    `json:"pending_user_avatar"`
+	SiteKey           string                    `json:"site_key"`
 }
 
 // NewCaptchaChallenge instantiates a new CaptchaChallenge object
@@ -64,7 +64,7 @@ func (o *CaptchaChallenge) GetType() ChallengeChoices {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *CaptchaChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -184,7 +184,7 @@ func (o *CaptchaChallenge) GetPendingUser() string {
 // GetPendingUserOk returns a tuple with the PendingUser field value
 // and a boolean to check if the value has been set.
 func (o *CaptchaChallenge) GetPendingUserOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PendingUser, true
@@ -208,7 +208,7 @@ func (o *CaptchaChallenge) GetPendingUserAvatar() string {
 // GetPendingUserAvatarOk returns a tuple with the PendingUserAvatar field value
 // and a boolean to check if the value has been set.
 func (o *CaptchaChallenge) GetPendingUserAvatarOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PendingUserAvatar, true
@@ -232,7 +232,7 @@ func (o *CaptchaChallenge) GetSiteKey() string {
 // GetSiteKeyOk returns a tuple with the SiteKey field value
 // and a boolean to check if the value has been set.
 func (o *CaptchaChallenge) GetSiteKeyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.SiteKey, true
@@ -304,5 +304,3 @@ func (v *NullableCaptchaChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

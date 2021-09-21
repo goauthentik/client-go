@@ -17,7 +17,7 @@ import (
 
 // AuthenticateWebAuthnStageRequest AuthenticateWebAuthnStage Serializer
 type AuthenticateWebAuthnStageRequest struct {
-	Name string `json:"name"`
+	Name    string         `json:"name"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
@@ -54,7 +54,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticateWebAuthnStageRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -110,7 +110,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetConfigureFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticateWebAuthnStageRequest) GetConfigureFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ConfigureFlow.Get(), o.ConfigureFlow.IsSet()
@@ -129,6 +129,7 @@ func (o *AuthenticateWebAuthnStageRequest) HasConfigureFlow() bool {
 func (o *AuthenticateWebAuthnStageRequest) SetConfigureFlow(v string) {
 	o.ConfigureFlow.Set(&v)
 }
+
 // SetConfigureFlowNil sets the value for ConfigureFlow to be an explicit nil
 func (o *AuthenticateWebAuthnStageRequest) SetConfigureFlowNil() {
 	o.ConfigureFlow.Set(nil)
@@ -188,5 +189,3 @@ func (v *NullableAuthenticateWebAuthnStageRequest) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

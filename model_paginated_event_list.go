@@ -18,7 +18,7 @@ import (
 // PaginatedEventList struct for PaginatedEventList
 type PaginatedEventList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []Event `json:"results"`
+	Results    []Event                            `json:"results"`
 }
 
 // NewPaginatedEventList instantiates a new PaginatedEventList object
@@ -53,7 +53,7 @@ func (o *PaginatedEventList) GetPagination() PaginatedApplicationListPagination 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedEventList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedEventList) GetResults() []Event {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedEventList) GetResultsOk() (*[]Event, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedEventList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

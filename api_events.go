@@ -30,10 +30,9 @@ var (
 type EventsApiService service
 
 type ApiEventsEventsActionsListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
 }
-
 
 func (r ApiEventsEventsActionsListRequest) Execute() ([]TypeCreate, *_nethttp.Response, error) {
 	return r.ApiService.EventsEventsActionsListExecute(r)
@@ -50,7 +49,7 @@ Get all actions
 func (a *EventsApiService) EventsEventsActionsList(ctx _context.Context) ApiEventsEventsActionsListRequest {
 	return ApiEventsEventsActionsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -146,8 +145,8 @@ func (a *EventsApiService) EventsEventsActionsListExecute(r ApiEventsEventsActio
 }
 
 type ApiEventsEventsCreateRequest struct {
-	ctx _context.Context
-	ApiService *EventsApiService
+	ctx          _context.Context
+	ApiService   *EventsApiService
 	eventRequest *EventRequest
 }
 
@@ -171,7 +170,7 @@ Event Read-Only Viewset
 func (a *EventsApiService) EventsEventsCreate(ctx _context.Context) ApiEventsEventsCreateRequest {
 	return ApiEventsEventsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -272,11 +271,10 @@ func (a *EventsApiService) EventsEventsCreateExecute(r ApiEventsEventsCreateRequ
 }
 
 type ApiEventsEventsDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	eventUuid string
+	eventUuid  string
 }
-
 
 func (r ApiEventsEventsDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.EventsEventsDestroyExecute(r)
@@ -294,8 +292,8 @@ Event Read-Only Viewset
 func (a *EventsApiService) EventsEventsDestroy(ctx _context.Context, eventUuid string) ApiEventsEventsDestroyRequest {
 	return ApiEventsEventsDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		eventUuid: eventUuid,
+		ctx:        ctx,
+		eventUuid:  eventUuid,
 	}
 }
 
@@ -381,20 +379,20 @@ func (a *EventsApiService) EventsEventsDestroyExecute(r ApiEventsEventsDestroyRe
 }
 
 type ApiEventsEventsListRequest struct {
-	ctx _context.Context
-	ApiService *EventsApiService
-	action *string
-	clientIp *string
+	ctx                  _context.Context
+	ApiService           *EventsApiService
+	action               *string
+	clientIp             *string
 	contextAuthorizedApp *string
-	contextModelApp *string
-	contextModelName *string
-	contextModelPk *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	tenantName *string
-	username *string
+	contextModelApp      *string
+	contextModelName     *string
+	contextModelPk       *string
+	ordering             *string
+	page                 *int32
+	pageSize             *int32
+	search               *string
+	tenantName           *string
+	username             *string
 }
 
 func (r ApiEventsEventsListRequest) Action(action string) ApiEventsEventsListRequest {
@@ -405,51 +403,61 @@ func (r ApiEventsEventsListRequest) ClientIp(clientIp string) ApiEventsEventsLis
 	r.clientIp = &clientIp
 	return r
 }
+
 // Context Authorized application
 func (r ApiEventsEventsListRequest) ContextAuthorizedApp(contextAuthorizedApp string) ApiEventsEventsListRequest {
 	r.contextAuthorizedApp = &contextAuthorizedApp
 	return r
 }
+
 // Context Model App
 func (r ApiEventsEventsListRequest) ContextModelApp(contextModelApp string) ApiEventsEventsListRequest {
 	r.contextModelApp = &contextModelApp
 	return r
 }
+
 // Context Model Name
 func (r ApiEventsEventsListRequest) ContextModelName(contextModelName string) ApiEventsEventsListRequest {
 	r.contextModelName = &contextModelName
 	return r
 }
+
 // Context Model Primary Key
 func (r ApiEventsEventsListRequest) ContextModelPk(contextModelPk string) ApiEventsEventsListRequest {
 	r.contextModelPk = &contextModelPk
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiEventsEventsListRequest) Ordering(ordering string) ApiEventsEventsListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiEventsEventsListRequest) Page(page int32) ApiEventsEventsListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiEventsEventsListRequest) PageSize(pageSize int32) ApiEventsEventsListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiEventsEventsListRequest) Search(search string) ApiEventsEventsListRequest {
 	r.search = &search
 	return r
 }
+
 // Tenant name
 func (r ApiEventsEventsListRequest) TenantName(tenantName string) ApiEventsEventsListRequest {
 	r.tenantName = &tenantName
 	return r
 }
+
 // Username
 func (r ApiEventsEventsListRequest) Username(username string) ApiEventsEventsListRequest {
 	r.username = &username
@@ -471,7 +479,7 @@ Event Read-Only Viewset
 func (a *EventsApiService) EventsEventsList(ctx _context.Context) ApiEventsEventsListRequest {
 	return ApiEventsEventsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -603,9 +611,9 @@ func (a *EventsApiService) EventsEventsListExecute(r ApiEventsEventsListRequest)
 }
 
 type ApiEventsEventsPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *EventsApiService
-	eventUuid string
+	ctx                 _context.Context
+	ApiService          *EventsApiService
+	eventUuid           string
 	patchedEventRequest *PatchedEventRequest
 }
 
@@ -630,8 +638,8 @@ Event Read-Only Viewset
 func (a *EventsApiService) EventsEventsPartialUpdate(ctx _context.Context, eventUuid string) ApiEventsEventsPartialUpdateRequest {
 	return ApiEventsEventsPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		eventUuid: eventUuid,
+		ctx:        ctx,
+		eventUuid:  eventUuid,
 	}
 }
 
@@ -730,11 +738,10 @@ func (a *EventsApiService) EventsEventsPartialUpdateExecute(r ApiEventsEventsPar
 }
 
 type ApiEventsEventsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	eventUuid string
+	eventUuid  string
 }
-
 
 func (r ApiEventsEventsRetrieveRequest) Execute() (Event, *_nethttp.Response, error) {
 	return r.ApiService.EventsEventsRetrieveExecute(r)
@@ -752,8 +759,8 @@ Event Read-Only Viewset
 func (a *EventsApiService) EventsEventsRetrieve(ctx _context.Context, eventUuid string) ApiEventsEventsRetrieveRequest {
 	return ApiEventsEventsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		eventUuid: eventUuid,
+		ctx:        ctx,
+		eventUuid:  eventUuid,
 	}
 }
 
@@ -850,19 +857,19 @@ func (a *EventsApiService) EventsEventsRetrieveExecute(r ApiEventsEventsRetrieve
 }
 
 type ApiEventsEventsTopPerUserListRequest struct {
-	ctx _context.Context
-	ApiService *EventsApiService
-	action *string
-	clientIp *string
+	ctx                  _context.Context
+	ApiService           *EventsApiService
+	action               *string
+	clientIp             *string
 	contextAuthorizedApp *string
-	contextModelApp *string
-	contextModelName *string
-	contextModelPk *string
-	ordering *string
-	search *string
-	tenantName *string
-	topN *int32
-	username *string
+	contextModelApp      *string
+	contextModelName     *string
+	contextModelPk       *string
+	ordering             *string
+	search               *string
+	tenantName           *string
+	topN                 *int32
+	username             *string
 }
 
 func (r ApiEventsEventsTopPerUserListRequest) Action(action string) ApiEventsEventsTopPerUserListRequest {
@@ -873,36 +880,43 @@ func (r ApiEventsEventsTopPerUserListRequest) ClientIp(clientIp string) ApiEvent
 	r.clientIp = &clientIp
 	return r
 }
+
 // Context Authorized application
 func (r ApiEventsEventsTopPerUserListRequest) ContextAuthorizedApp(contextAuthorizedApp string) ApiEventsEventsTopPerUserListRequest {
 	r.contextAuthorizedApp = &contextAuthorizedApp
 	return r
 }
+
 // Context Model App
 func (r ApiEventsEventsTopPerUserListRequest) ContextModelApp(contextModelApp string) ApiEventsEventsTopPerUserListRequest {
 	r.contextModelApp = &contextModelApp
 	return r
 }
+
 // Context Model Name
 func (r ApiEventsEventsTopPerUserListRequest) ContextModelName(contextModelName string) ApiEventsEventsTopPerUserListRequest {
 	r.contextModelName = &contextModelName
 	return r
 }
+
 // Context Model Primary Key
 func (r ApiEventsEventsTopPerUserListRequest) ContextModelPk(contextModelPk string) ApiEventsEventsTopPerUserListRequest {
 	r.contextModelPk = &contextModelPk
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiEventsEventsTopPerUserListRequest) Ordering(ordering string) ApiEventsEventsTopPerUserListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A search term.
 func (r ApiEventsEventsTopPerUserListRequest) Search(search string) ApiEventsEventsTopPerUserListRequest {
 	r.search = &search
 	return r
 }
+
 // Tenant name
 func (r ApiEventsEventsTopPerUserListRequest) TenantName(tenantName string) ApiEventsEventsTopPerUserListRequest {
 	r.tenantName = &tenantName
@@ -912,6 +926,7 @@ func (r ApiEventsEventsTopPerUserListRequest) TopN(topN int32) ApiEventsEventsTo
 	r.topN = &topN
 	return r
 }
+
 // Username
 func (r ApiEventsEventsTopPerUserListRequest) Username(username string) ApiEventsEventsTopPerUserListRequest {
 	r.username = &username
@@ -933,7 +948,7 @@ Get the top_n events grouped by user count
 func (a *EventsApiService) EventsEventsTopPerUserList(ctx _context.Context) ApiEventsEventsTopPerUserListRequest {
 	return ApiEventsEventsTopPerUserListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1062,9 +1077,9 @@ func (a *EventsApiService) EventsEventsTopPerUserListExecute(r ApiEventsEventsTo
 }
 
 type ApiEventsEventsUpdateRequest struct {
-	ctx _context.Context
-	ApiService *EventsApiService
-	eventUuid string
+	ctx          _context.Context
+	ApiService   *EventsApiService
+	eventUuid    string
 	eventRequest *EventRequest
 }
 
@@ -1089,8 +1104,8 @@ Event Read-Only Viewset
 func (a *EventsApiService) EventsEventsUpdate(ctx _context.Context, eventUuid string) ApiEventsEventsUpdateRequest {
 	return ApiEventsEventsUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		eventUuid: eventUuid,
+		ctx:        ctx,
+		eventUuid:  eventUuid,
 	}
 }
 
@@ -1192,11 +1207,10 @@ func (a *EventsApiService) EventsEventsUpdateExecute(r ApiEventsEventsUpdateRequ
 }
 
 type ApiEventsNotificationsDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiEventsNotificationsDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.EventsNotificationsDestroyExecute(r)
@@ -1214,8 +1228,8 @@ Notification Viewset
 func (a *EventsApiService) EventsNotificationsDestroy(ctx _context.Context, uuid string) ApiEventsNotificationsDestroyRequest {
 	return ApiEventsNotificationsDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -1301,17 +1315,17 @@ func (a *EventsApiService) EventsNotificationsDestroyExecute(r ApiEventsNotifica
 }
 
 type ApiEventsNotificationsListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	body *string
-	created *time.Time
-	event *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	seen *bool
-	severity *string
+	body       *string
+	created    *time.Time
+	event      *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
+	seen       *bool
+	severity   *string
 }
 
 func (r ApiEventsNotificationsListRequest) Body(body string) ApiEventsNotificationsListRequest {
@@ -1326,21 +1340,25 @@ func (r ApiEventsNotificationsListRequest) Event(event string) ApiEventsNotifica
 	r.event = &event
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiEventsNotificationsListRequest) Ordering(ordering string) ApiEventsNotificationsListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiEventsNotificationsListRequest) Page(page int32) ApiEventsNotificationsListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiEventsNotificationsListRequest) PageSize(pageSize int32) ApiEventsNotificationsListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiEventsNotificationsListRequest) Search(search string) ApiEventsNotificationsListRequest {
 	r.search = &search
@@ -1370,7 +1388,7 @@ Notification Viewset
 func (a *EventsApiService) EventsNotificationsList(ctx _context.Context) ApiEventsNotificationsListRequest {
 	return ApiEventsNotificationsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1493,10 +1511,9 @@ func (a *EventsApiService) EventsNotificationsListExecute(r ApiEventsNotificatio
 }
 
 type ApiEventsNotificationsMarkAllSeenCreateRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
 }
-
 
 func (r ApiEventsNotificationsMarkAllSeenCreateRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.EventsNotificationsMarkAllSeenCreateExecute(r)
@@ -1513,7 +1530,7 @@ Mark all the user's notifications as seen
 func (a *EventsApiService) EventsNotificationsMarkAllSeenCreate(ctx _context.Context) ApiEventsNotificationsMarkAllSeenCreateRequest {
 	return ApiEventsNotificationsMarkAllSeenCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1598,9 +1615,9 @@ func (a *EventsApiService) EventsNotificationsMarkAllSeenCreateExecute(r ApiEven
 }
 
 type ApiEventsNotificationsPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *EventsApiService
-	uuid string
+	ctx                        _context.Context
+	ApiService                 *EventsApiService
+	uuid                       string
 	patchedNotificationRequest *PatchedNotificationRequest
 }
 
@@ -1625,8 +1642,8 @@ Notification Viewset
 func (a *EventsApiService) EventsNotificationsPartialUpdate(ctx _context.Context, uuid string) ApiEventsNotificationsPartialUpdateRequest {
 	return ApiEventsNotificationsPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -1725,11 +1742,10 @@ func (a *EventsApiService) EventsNotificationsPartialUpdateExecute(r ApiEventsNo
 }
 
 type ApiEventsNotificationsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiEventsNotificationsRetrieveRequest) Execute() (Notification, *_nethttp.Response, error) {
 	return r.ApiService.EventsNotificationsRetrieveExecute(r)
@@ -1747,8 +1763,8 @@ Notification Viewset
 func (a *EventsApiService) EventsNotificationsRetrieve(ctx _context.Context, uuid string) ApiEventsNotificationsRetrieveRequest {
 	return ApiEventsNotificationsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -1845,9 +1861,9 @@ func (a *EventsApiService) EventsNotificationsRetrieveExecute(r ApiEventsNotific
 }
 
 type ApiEventsNotificationsUpdateRequest struct {
-	ctx _context.Context
-	ApiService *EventsApiService
-	uuid string
+	ctx                 _context.Context
+	ApiService          *EventsApiService
+	uuid                string
 	notificationRequest *NotificationRequest
 }
 
@@ -1872,8 +1888,8 @@ Notification Viewset
 func (a *EventsApiService) EventsNotificationsUpdate(ctx _context.Context, uuid string) ApiEventsNotificationsUpdateRequest {
 	return ApiEventsNotificationsUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -1972,11 +1988,10 @@ func (a *EventsApiService) EventsNotificationsUpdateExecute(r ApiEventsNotificat
 }
 
 type ApiEventsNotificationsUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiEventsNotificationsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.EventsNotificationsUsedByListExecute(r)
@@ -1994,8 +2009,8 @@ Get a list of all objects that use this object
 func (a *EventsApiService) EventsNotificationsUsedByList(ctx _context.Context, uuid string) ApiEventsNotificationsUsedByListRequest {
 	return ApiEventsNotificationsUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -2092,8 +2107,8 @@ func (a *EventsApiService) EventsNotificationsUsedByListExecute(r ApiEventsNotif
 }
 
 type ApiEventsRulesCreateRequest struct {
-	ctx _context.Context
-	ApiService *EventsApiService
+	ctx                     _context.Context
+	ApiService              *EventsApiService
 	notificationRuleRequest *NotificationRuleRequest
 }
 
@@ -2117,7 +2132,7 @@ NotificationRule Viewset
 func (a *EventsApiService) EventsRulesCreate(ctx _context.Context) ApiEventsRulesCreateRequest {
 	return ApiEventsRulesCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2218,11 +2233,10 @@ func (a *EventsApiService) EventsRulesCreateExecute(r ApiEventsRulesCreateReques
 }
 
 type ApiEventsRulesDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	pbmUuid string
+	pbmUuid    string
 }
-
 
 func (r ApiEventsRulesDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.EventsRulesDestroyExecute(r)
@@ -2240,8 +2254,8 @@ NotificationRule Viewset
 func (a *EventsApiService) EventsRulesDestroy(ctx _context.Context, pbmUuid string) ApiEventsRulesDestroyRequest {
 	return ApiEventsRulesDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		pbmUuid: pbmUuid,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
 	}
 }
 
@@ -2327,15 +2341,15 @@ func (a *EventsApiService) EventsRulesDestroyExecute(r ApiEventsRulesDestroyRequ
 }
 
 type ApiEventsRulesListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	groupName *string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	severity *string
+	groupName  *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
+	severity   *string
 }
 
 func (r ApiEventsRulesListRequest) GroupName(groupName string) ApiEventsRulesListRequest {
@@ -2346,26 +2360,31 @@ func (r ApiEventsRulesListRequest) Name(name string) ApiEventsRulesListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiEventsRulesListRequest) Ordering(ordering string) ApiEventsRulesListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiEventsRulesListRequest) Page(page int32) ApiEventsRulesListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiEventsRulesListRequest) PageSize(pageSize int32) ApiEventsRulesListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiEventsRulesListRequest) Search(search string) ApiEventsRulesListRequest {
 	r.search = &search
 	return r
 }
+
 // Controls which severity level the created notifications will have.
 func (r ApiEventsRulesListRequest) Severity(severity string) ApiEventsRulesListRequest {
 	r.severity = &severity
@@ -2387,7 +2406,7 @@ NotificationRule Viewset
 func (a *EventsApiService) EventsRulesList(ctx _context.Context) ApiEventsRulesListRequest {
 	return ApiEventsRulesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2504,9 +2523,9 @@ func (a *EventsApiService) EventsRulesListExecute(r ApiEventsRulesListRequest) (
 }
 
 type ApiEventsRulesPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *EventsApiService
-	pbmUuid string
+	ctx                            _context.Context
+	ApiService                     *EventsApiService
+	pbmUuid                        string
 	patchedNotificationRuleRequest *PatchedNotificationRuleRequest
 }
 
@@ -2531,8 +2550,8 @@ NotificationRule Viewset
 func (a *EventsApiService) EventsRulesPartialUpdate(ctx _context.Context, pbmUuid string) ApiEventsRulesPartialUpdateRequest {
 	return ApiEventsRulesPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		pbmUuid: pbmUuid,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
 	}
 }
 
@@ -2631,11 +2650,10 @@ func (a *EventsApiService) EventsRulesPartialUpdateExecute(r ApiEventsRulesParti
 }
 
 type ApiEventsRulesRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	pbmUuid string
+	pbmUuid    string
 }
-
 
 func (r ApiEventsRulesRetrieveRequest) Execute() (NotificationRule, *_nethttp.Response, error) {
 	return r.ApiService.EventsRulesRetrieveExecute(r)
@@ -2653,8 +2671,8 @@ NotificationRule Viewset
 func (a *EventsApiService) EventsRulesRetrieve(ctx _context.Context, pbmUuid string) ApiEventsRulesRetrieveRequest {
 	return ApiEventsRulesRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		pbmUuid: pbmUuid,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
 	}
 }
 
@@ -2751,9 +2769,9 @@ func (a *EventsApiService) EventsRulesRetrieveExecute(r ApiEventsRulesRetrieveRe
 }
 
 type ApiEventsRulesUpdateRequest struct {
-	ctx _context.Context
-	ApiService *EventsApiService
-	pbmUuid string
+	ctx                     _context.Context
+	ApiService              *EventsApiService
+	pbmUuid                 string
 	notificationRuleRequest *NotificationRuleRequest
 }
 
@@ -2778,8 +2796,8 @@ NotificationRule Viewset
 func (a *EventsApiService) EventsRulesUpdate(ctx _context.Context, pbmUuid string) ApiEventsRulesUpdateRequest {
 	return ApiEventsRulesUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		pbmUuid: pbmUuid,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
 	}
 }
 
@@ -2881,11 +2899,10 @@ func (a *EventsApiService) EventsRulesUpdateExecute(r ApiEventsRulesUpdateReques
 }
 
 type ApiEventsRulesUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	pbmUuid string
+	pbmUuid    string
 }
-
 
 func (r ApiEventsRulesUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.EventsRulesUsedByListExecute(r)
@@ -2903,8 +2920,8 @@ Get a list of all objects that use this object
 func (a *EventsApiService) EventsRulesUsedByList(ctx _context.Context, pbmUuid string) ApiEventsRulesUsedByListRequest {
 	return ApiEventsRulesUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		pbmUuid: pbmUuid,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
 	}
 }
 
@@ -3001,8 +3018,8 @@ func (a *EventsApiService) EventsRulesUsedByListExecute(r ApiEventsRulesUsedByLi
 }
 
 type ApiEventsTransportsCreateRequest struct {
-	ctx _context.Context
-	ApiService *EventsApiService
+	ctx                          _context.Context
+	ApiService                   *EventsApiService
 	notificationTransportRequest *NotificationTransportRequest
 }
 
@@ -3026,7 +3043,7 @@ NotificationTransport Viewset
 func (a *EventsApiService) EventsTransportsCreate(ctx _context.Context) ApiEventsTransportsCreateRequest {
 	return ApiEventsTransportsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3127,11 +3144,10 @@ func (a *EventsApiService) EventsTransportsCreateExecute(r ApiEventsTransportsCr
 }
 
 type ApiEventsTransportsDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiEventsTransportsDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.EventsTransportsDestroyExecute(r)
@@ -3149,8 +3165,8 @@ NotificationTransport Viewset
 func (a *EventsApiService) EventsTransportsDestroy(ctx _context.Context, uuid string) ApiEventsTransportsDestroyRequest {
 	return ApiEventsTransportsDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -3236,15 +3252,15 @@ func (a *EventsApiService) EventsTransportsDestroyExecute(r ApiEventsTransportsD
 }
 
 type ApiEventsTransportsListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	mode *string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	sendOnce *bool
+	mode       *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
+	sendOnce   *bool
 	webhookUrl *string
 }
 
@@ -3256,21 +3272,25 @@ func (r ApiEventsTransportsListRequest) Name(name string) ApiEventsTransportsLis
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiEventsTransportsListRequest) Ordering(ordering string) ApiEventsTransportsListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiEventsTransportsListRequest) Page(page int32) ApiEventsTransportsListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiEventsTransportsListRequest) PageSize(pageSize int32) ApiEventsTransportsListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiEventsTransportsListRequest) Search(search string) ApiEventsTransportsListRequest {
 	r.search = &search
@@ -3300,7 +3320,7 @@ NotificationTransport Viewset
 func (a *EventsApiService) EventsTransportsList(ctx _context.Context) ApiEventsTransportsListRequest {
 	return ApiEventsTransportsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3420,9 +3440,9 @@ func (a *EventsApiService) EventsTransportsListExecute(r ApiEventsTransportsList
 }
 
 type ApiEventsTransportsPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *EventsApiService
-	uuid string
+	ctx                                 _context.Context
+	ApiService                          *EventsApiService
+	uuid                                string
 	patchedNotificationTransportRequest *PatchedNotificationTransportRequest
 }
 
@@ -3447,8 +3467,8 @@ NotificationTransport Viewset
 func (a *EventsApiService) EventsTransportsPartialUpdate(ctx _context.Context, uuid string) ApiEventsTransportsPartialUpdateRequest {
 	return ApiEventsTransportsPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -3547,11 +3567,10 @@ func (a *EventsApiService) EventsTransportsPartialUpdateExecute(r ApiEventsTrans
 }
 
 type ApiEventsTransportsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiEventsTransportsRetrieveRequest) Execute() (NotificationTransport, *_nethttp.Response, error) {
 	return r.ApiService.EventsTransportsRetrieveExecute(r)
@@ -3569,8 +3588,8 @@ NotificationTransport Viewset
 func (a *EventsApiService) EventsTransportsRetrieve(ctx _context.Context, uuid string) ApiEventsTransportsRetrieveRequest {
 	return ApiEventsTransportsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -3667,11 +3686,10 @@ func (a *EventsApiService) EventsTransportsRetrieveExecute(r ApiEventsTransports
 }
 
 type ApiEventsTransportsTestCreateRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiEventsTransportsTestCreateRequest) Execute() (NotificationTransportTest, *_nethttp.Response, error) {
 	return r.ApiService.EventsTransportsTestCreateExecute(r)
@@ -3690,8 +3708,8 @@ Modify permissions.
 func (a *EventsApiService) EventsTransportsTestCreate(ctx _context.Context, uuid string) ApiEventsTransportsTestCreateRequest {
 	return ApiEventsTransportsTestCreateRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -3788,9 +3806,9 @@ func (a *EventsApiService) EventsTransportsTestCreateExecute(r ApiEventsTranspor
 }
 
 type ApiEventsTransportsUpdateRequest struct {
-	ctx _context.Context
-	ApiService *EventsApiService
-	uuid string
+	ctx                          _context.Context
+	ApiService                   *EventsApiService
+	uuid                         string
 	notificationTransportRequest *NotificationTransportRequest
 }
 
@@ -3815,8 +3833,8 @@ NotificationTransport Viewset
 func (a *EventsApiService) EventsTransportsUpdate(ctx _context.Context, uuid string) ApiEventsTransportsUpdateRequest {
 	return ApiEventsTransportsUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 
@@ -3918,11 +3936,10 @@ func (a *EventsApiService) EventsTransportsUpdateExecute(r ApiEventsTransportsUp
 }
 
 type ApiEventsTransportsUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *EventsApiService
-	uuid string
+	uuid       string
 }
-
 
 func (r ApiEventsTransportsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.EventsTransportsUsedByListExecute(r)
@@ -3940,8 +3957,8 @@ Get a list of all objects that use this object
 func (a *EventsApiService) EventsTransportsUsedByList(ctx _context.Context, uuid string) ApiEventsTransportsUsedByListRequest {
 	return ApiEventsTransportsUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
+		ctx:        ctx,
+		uuid:       uuid,
 	}
 }
 

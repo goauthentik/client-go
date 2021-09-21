@@ -17,7 +17,7 @@ import (
 
 // CaptchaStageRequest CaptchaStage Serializer
 type CaptchaStageRequest struct {
-	Name string `json:"name"`
+	Name    string         `json:"name"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// Public key, acquired from https://www.google.com/recaptcha/intro/v3.html
 	PublicKey string `json:"public_key"`
@@ -58,7 +58,7 @@ func (o *CaptchaStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *CaptchaStageRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -114,7 +114,7 @@ func (o *CaptchaStageRequest) GetPublicKey() string {
 // GetPublicKeyOk returns a tuple with the PublicKey field value
 // and a boolean to check if the value has been set.
 func (o *CaptchaStageRequest) GetPublicKeyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PublicKey, true
@@ -138,7 +138,7 @@ func (o *CaptchaStageRequest) GetPrivateKey() string {
 // GetPrivateKeyOk returns a tuple with the PrivateKey field value
 // and a boolean to check if the value has been set.
 func (o *CaptchaStageRequest) GetPrivateKeyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PrivateKey, true
@@ -201,5 +201,3 @@ func (v *NullableCaptchaStageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

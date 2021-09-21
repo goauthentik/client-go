@@ -17,10 +17,10 @@ import (
 
 // TypeCreate Types of an object that can be created
 type TypeCreate struct {
-	Name string `json:"name"`
+	Name        string `json:"name"`
 	Description string `json:"description"`
-	Component string `json:"component"`
-	ModelName string `json:"model_name"`
+	Component   string `json:"component"`
+	ModelName   string `json:"model_name"`
 }
 
 // NewTypeCreate instantiates a new TypeCreate object
@@ -57,7 +57,7 @@ func (o *TypeCreate) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *TypeCreate) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -81,7 +81,7 @@ func (o *TypeCreate) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 func (o *TypeCreate) GetDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Description, true
@@ -105,7 +105,7 @@ func (o *TypeCreate) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *TypeCreate) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -129,7 +129,7 @@ func (o *TypeCreate) GetModelName() string {
 // GetModelNameOk returns a tuple with the ModelName field value
 // and a boolean to check if the value has been set.
 func (o *TypeCreate) GetModelNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ModelName, true
@@ -192,5 +192,3 @@ func (v *NullableTypeCreate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

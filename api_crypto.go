@@ -29,8 +29,8 @@ var (
 type CryptoApiService service
 
 type ApiCryptoCertificatekeypairsCreateRequest struct {
-	ctx _context.Context
-	ApiService *CryptoApiService
+	ctx                       _context.Context
+	ApiService                *CryptoApiService
 	certificateKeyPairRequest *CertificateKeyPairRequest
 }
 
@@ -54,7 +54,7 @@ CertificateKeyPair Viewset
 func (a *CryptoApiService) CryptoCertificatekeypairsCreate(ctx _context.Context) ApiCryptoCertificatekeypairsCreateRequest {
 	return ApiCryptoCertificatekeypairsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -155,11 +155,10 @@ func (a *CryptoApiService) CryptoCertificatekeypairsCreateExecute(r ApiCryptoCer
 }
 
 type ApiCryptoCertificatekeypairsDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CryptoApiService
-	kpUuid string
+	kpUuid     string
 }
-
 
 func (r ApiCryptoCertificatekeypairsDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.CryptoCertificatekeypairsDestroyExecute(r)
@@ -177,8 +176,8 @@ CertificateKeyPair Viewset
 func (a *CryptoApiService) CryptoCertificatekeypairsDestroy(ctx _context.Context, kpUuid string) ApiCryptoCertificatekeypairsDestroyRequest {
 	return ApiCryptoCertificatekeypairsDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		kpUuid: kpUuid,
+		ctx:        ctx,
+		kpUuid:     kpUuid,
 	}
 }
 
@@ -264,8 +263,8 @@ func (a *CryptoApiService) CryptoCertificatekeypairsDestroyExecute(r ApiCryptoCe
 }
 
 type ApiCryptoCertificatekeypairsGenerateCreateRequest struct {
-	ctx _context.Context
-	ApiService *CryptoApiService
+	ctx                          _context.Context
+	ApiService                   *CryptoApiService
 	certificateGenerationRequest *CertificateGenerationRequest
 }
 
@@ -289,7 +288,7 @@ Generate a new, self-signed certificate-key pair
 func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreate(ctx _context.Context) ApiCryptoCertificatekeypairsGenerateCreateRequest {
 	return ApiCryptoCertificatekeypairsGenerateCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -390,14 +389,14 @@ func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreateExecute(r ApiC
 }
 
 type ApiCryptoCertificatekeypairsListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CryptoApiService
-	hasKey *bool
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	hasKey     *bool
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 // Only return certificate-key pairs with keys
@@ -409,21 +408,25 @@ func (r ApiCryptoCertificatekeypairsListRequest) Name(name string) ApiCryptoCert
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiCryptoCertificatekeypairsListRequest) Ordering(ordering string) ApiCryptoCertificatekeypairsListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiCryptoCertificatekeypairsListRequest) Page(page int32) ApiCryptoCertificatekeypairsListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiCryptoCertificatekeypairsListRequest) PageSize(pageSize int32) ApiCryptoCertificatekeypairsListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiCryptoCertificatekeypairsListRequest) Search(search string) ApiCryptoCertificatekeypairsListRequest {
 	r.search = &search
@@ -445,7 +448,7 @@ CertificateKeyPair Viewset
 func (a *CryptoApiService) CryptoCertificatekeypairsList(ctx _context.Context) ApiCryptoCertificatekeypairsListRequest {
 	return ApiCryptoCertificatekeypairsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -559,9 +562,9 @@ func (a *CryptoApiService) CryptoCertificatekeypairsListExecute(r ApiCryptoCerti
 }
 
 type ApiCryptoCertificatekeypairsPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *CryptoApiService
-	kpUuid string
+	ctx                              _context.Context
+	ApiService                       *CryptoApiService
+	kpUuid                           string
 	patchedCertificateKeyPairRequest *PatchedCertificateKeyPairRequest
 }
 
@@ -586,8 +589,8 @@ CertificateKeyPair Viewset
 func (a *CryptoApiService) CryptoCertificatekeypairsPartialUpdate(ctx _context.Context, kpUuid string) ApiCryptoCertificatekeypairsPartialUpdateRequest {
 	return ApiCryptoCertificatekeypairsPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		kpUuid: kpUuid,
+		ctx:        ctx,
+		kpUuid:     kpUuid,
 	}
 }
 
@@ -686,11 +689,10 @@ func (a *CryptoApiService) CryptoCertificatekeypairsPartialUpdateExecute(r ApiCr
 }
 
 type ApiCryptoCertificatekeypairsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CryptoApiService
-	kpUuid string
+	kpUuid     string
 }
-
 
 func (r ApiCryptoCertificatekeypairsRetrieveRequest) Execute() (CertificateKeyPair, *_nethttp.Response, error) {
 	return r.ApiService.CryptoCertificatekeypairsRetrieveExecute(r)
@@ -708,8 +710,8 @@ CertificateKeyPair Viewset
 func (a *CryptoApiService) CryptoCertificatekeypairsRetrieve(ctx _context.Context, kpUuid string) ApiCryptoCertificatekeypairsRetrieveRequest {
 	return ApiCryptoCertificatekeypairsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		kpUuid: kpUuid,
+		ctx:        ctx,
+		kpUuid:     kpUuid,
 	}
 }
 
@@ -806,9 +808,9 @@ func (a *CryptoApiService) CryptoCertificatekeypairsRetrieveExecute(r ApiCryptoC
 }
 
 type ApiCryptoCertificatekeypairsUpdateRequest struct {
-	ctx _context.Context
-	ApiService *CryptoApiService
-	kpUuid string
+	ctx                       _context.Context
+	ApiService                *CryptoApiService
+	kpUuid                    string
 	certificateKeyPairRequest *CertificateKeyPairRequest
 }
 
@@ -833,8 +835,8 @@ CertificateKeyPair Viewset
 func (a *CryptoApiService) CryptoCertificatekeypairsUpdate(ctx _context.Context, kpUuid string) ApiCryptoCertificatekeypairsUpdateRequest {
 	return ApiCryptoCertificatekeypairsUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		kpUuid: kpUuid,
+		ctx:        ctx,
+		kpUuid:     kpUuid,
 	}
 }
 
@@ -936,11 +938,10 @@ func (a *CryptoApiService) CryptoCertificatekeypairsUpdateExecute(r ApiCryptoCer
 }
 
 type ApiCryptoCertificatekeypairsUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CryptoApiService
-	kpUuid string
+	kpUuid     string
 }
-
 
 func (r ApiCryptoCertificatekeypairsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.CryptoCertificatekeypairsUsedByListExecute(r)
@@ -958,8 +959,8 @@ Get a list of all objects that use this object
 func (a *CryptoApiService) CryptoCertificatekeypairsUsedByList(ctx _context.Context, kpUuid string) ApiCryptoCertificatekeypairsUsedByListRequest {
 	return ApiCryptoCertificatekeypairsUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		kpUuid: kpUuid,
+		ctx:        ctx,
+		kpUuid:     kpUuid,
 	}
 }
 
@@ -1056,10 +1057,10 @@ func (a *CryptoApiService) CryptoCertificatekeypairsUsedByListExecute(r ApiCrypt
 }
 
 type ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CryptoApiService
-	kpUuid string
-	download *bool
+	kpUuid     string
+	download   *bool
 }
 
 func (r ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest) Download(download bool) ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest {
@@ -1083,8 +1084,8 @@ Return certificate-key pairs certificate and log access
 func (a *CryptoApiService) CryptoCertificatekeypairsViewCertificateRetrieve(ctx _context.Context, kpUuid string) ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest {
 	return ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		kpUuid: kpUuid,
+		ctx:        ctx,
+		kpUuid:     kpUuid,
 	}
 }
 
@@ -1184,10 +1185,10 @@ func (a *CryptoApiService) CryptoCertificatekeypairsViewCertificateRetrieveExecu
 }
 
 type ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CryptoApiService
-	kpUuid string
-	download *bool
+	kpUuid     string
+	download   *bool
 }
 
 func (r ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest) Download(download bool) ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest {
@@ -1211,8 +1212,8 @@ Return certificate-key pairs private key and log access
 func (a *CryptoApiService) CryptoCertificatekeypairsViewPrivateKeyRetrieve(ctx _context.Context, kpUuid string) ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest {
 	return ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		kpUuid: kpUuid,
+		ctx:        ctx,
+		kpUuid:     kpUuid,
 	}
 }
 

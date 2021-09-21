@@ -18,12 +18,12 @@ import (
 // PromptRequest Prompt Serializer
 type PromptRequest struct {
 	// Name of the form field, also used to store the value
-	FieldKey string `json:"field_key"`
-	Label string `json:"label"`
-	Type PromptTypeEnum `json:"type"`
-	Required *bool `json:"required,omitempty"`
-	Placeholder *string `json:"placeholder,omitempty"`
-	Order *int32 `json:"order,omitempty"`
+	FieldKey       string          `json:"field_key"`
+	Label          string          `json:"label"`
+	Type           PromptTypeEnum  `json:"type"`
+	Required       *bool           `json:"required,omitempty"`
+	Placeholder    *string         `json:"placeholder,omitempty"`
+	Order          *int32          `json:"order,omitempty"`
 	PromptstageSet *[]StageRequest `json:"promptstage_set,omitempty"`
 }
 
@@ -60,7 +60,7 @@ func (o *PromptRequest) GetFieldKey() string {
 // GetFieldKeyOk returns a tuple with the FieldKey field value
 // and a boolean to check if the value has been set.
 func (o *PromptRequest) GetFieldKeyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.FieldKey, true
@@ -84,7 +84,7 @@ func (o *PromptRequest) GetLabel() string {
 // GetLabelOk returns a tuple with the Label field value
 // and a boolean to check if the value has been set.
 func (o *PromptRequest) GetLabelOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Label, true
@@ -108,7 +108,7 @@ func (o *PromptRequest) GetType() PromptTypeEnum {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *PromptRequest) GetTypeOk() (*PromptTypeEnum, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -308,5 +308,3 @@ func (v *NullablePromptRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

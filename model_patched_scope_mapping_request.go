@@ -18,9 +18,9 @@ import (
 // PatchedScopeMappingRequest ScopeMapping Serializer
 type PatchedScopeMappingRequest struct {
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed NullableString `json:"managed,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Expression *string `json:"expression,omitempty"`
+	Managed    NullableString `json:"managed,omitempty"`
+	Name       *string        `json:"name,omitempty"`
+	Expression *string        `json:"expression,omitempty"`
 	// Scope used by the client
 	ScopeName *string `json:"scope_name,omitempty"`
 	// Description shown to the user when consenting. If left empty, the user won't be informed.
@@ -57,7 +57,7 @@ func (o *PatchedScopeMappingRequest) GetManaged() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedScopeMappingRequest) GetManagedOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Managed.Get(), o.Managed.IsSet()
@@ -76,6 +76,7 @@ func (o *PatchedScopeMappingRequest) HasManaged() bool {
 func (o *PatchedScopeMappingRequest) SetManaged(v string) {
 	o.Managed.Set(&v)
 }
+
 // SetManagedNil sets the value for Managed to be an explicit nil
 func (o *PatchedScopeMappingRequest) SetManagedNil() {
 	o.Managed.Set(nil)
@@ -269,5 +270,3 @@ func (v *NullablePatchedScopeMappingRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,7 +17,7 @@ import (
 
 // PatchedUserLogoutStageRequest UserLogoutStage Serializer
 type PatchedUserLogoutStageRequest struct {
-	Name *string `json:"name,omitempty"`
+	Name    *string        `json:"name,omitempty"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 }
 
@@ -148,5 +148,3 @@ func (v *NullablePatchedUserLogoutStageRequest) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

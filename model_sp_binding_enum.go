@@ -22,7 +22,7 @@ type SpBindingEnum string
 // List of SpBindingEnum
 const (
 	SPBINDINGENUM_REDIRECT SpBindingEnum = "redirect"
-	SPBINDINGENUM_POST SpBindingEnum = "post"
+	SPBINDINGENUM_POST     SpBindingEnum = "post"
 )
 
 // All allowed values of SpBindingEnum enum
@@ -109,4 +109,3 @@ func (v *NullableSpBindingEnum) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

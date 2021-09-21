@@ -17,7 +17,7 @@ import (
 
 // PasswordStageRequest PasswordStage Serializer
 type PasswordStageRequest struct {
-	Name string `json:"name"`
+	Name    string         `json:"name"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// Selection of backends to test the password against.
 	Backends []BackendsEnum `json:"backends"`
@@ -59,7 +59,7 @@ func (o *PasswordStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *PasswordStageRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -115,7 +115,7 @@ func (o *PasswordStageRequest) GetBackends() []BackendsEnum {
 // GetBackendsOk returns a tuple with the Backends field value
 // and a boolean to check if the value has been set.
 func (o *PasswordStageRequest) GetBackendsOk() (*[]BackendsEnum, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Backends, true
@@ -139,7 +139,7 @@ func (o *PasswordStageRequest) GetConfigureFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PasswordStageRequest) GetConfigureFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ConfigureFlow.Get(), o.ConfigureFlow.IsSet()
@@ -158,6 +158,7 @@ func (o *PasswordStageRequest) HasConfigureFlow() bool {
 func (o *PasswordStageRequest) SetConfigureFlow(v string) {
 	o.ConfigureFlow.Set(&v)
 }
+
 // SetConfigureFlowNil sets the value for ConfigureFlow to be an explicit nil
 func (o *PasswordStageRequest) SetConfigureFlowNil() {
 	o.ConfigureFlow.Set(nil)
@@ -255,5 +256,3 @@ func (v *NullablePasswordStageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

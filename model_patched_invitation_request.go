@@ -18,7 +18,7 @@ import (
 
 // PatchedInvitationRequest Invitation Serializer
 type PatchedInvitationRequest struct {
-	Expires *time.Time `json:"expires,omitempty"`
+	Expires   *time.Time              `json:"expires,omitempty"`
 	FixedData *map[string]interface{} `json:"fixed_data,omitempty"`
 	// When enabled, the invitation will be deleted after usage.
 	SingleUse *bool `json:"single_use,omitempty"`
@@ -186,5 +186,3 @@ func (v *NullablePatchedInvitationRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

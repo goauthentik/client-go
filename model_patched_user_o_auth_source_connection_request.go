@@ -17,8 +17,8 @@ import (
 
 // PatchedUserOAuthSourceConnectionRequest OAuth Source Serializer
 type PatchedUserOAuthSourceConnectionRequest struct {
-	User *int32 `json:"user,omitempty"`
-	Source *string `json:"source,omitempty"`
+	User       *int32  `json:"user,omitempty"`
+	Source     *string `json:"source,omitempty"`
 	Identifier *string `json:"identifier,omitempty"`
 }
 
@@ -184,5 +184,3 @@ func (v *NullablePatchedUserOAuthSourceConnectionRequest) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

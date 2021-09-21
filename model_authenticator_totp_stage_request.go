@@ -17,11 +17,11 @@ import (
 
 // AuthenticatorTOTPStageRequest AuthenticatorTOTPStage Serializer
 type AuthenticatorTOTPStageRequest struct {
-	Name string `json:"name"`
+	Name    string         `json:"name"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	Digits DigitsEnum `json:"digits"`
+	Digits        DigitsEnum     `json:"digits"`
 }
 
 // NewAuthenticatorTOTPStageRequest instantiates a new AuthenticatorTOTPStageRequest object
@@ -56,7 +56,7 @@ func (o *AuthenticatorTOTPStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorTOTPStageRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -112,7 +112,7 @@ func (o *AuthenticatorTOTPStageRequest) GetConfigureFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatorTOTPStageRequest) GetConfigureFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ConfigureFlow.Get(), o.ConfigureFlow.IsSet()
@@ -131,6 +131,7 @@ func (o *AuthenticatorTOTPStageRequest) HasConfigureFlow() bool {
 func (o *AuthenticatorTOTPStageRequest) SetConfigureFlow(v string) {
 	o.ConfigureFlow.Set(&v)
 }
+
 // SetConfigureFlowNil sets the value for ConfigureFlow to be an explicit nil
 func (o *AuthenticatorTOTPStageRequest) SetConfigureFlowNil() {
 	o.ConfigureFlow.Set(nil)
@@ -154,7 +155,7 @@ func (o *AuthenticatorTOTPStageRequest) GetDigits() DigitsEnum {
 // GetDigitsOk returns a tuple with the Digits field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorTOTPStageRequest) GetDigitsOk() (*DigitsEnum, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Digits, true
@@ -217,5 +218,3 @@ func (v *NullableAuthenticatorTOTPStageRequest) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

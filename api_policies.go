@@ -30,10 +30,9 @@ var (
 type PoliciesApiService service
 
 type ApiPoliciesAllCacheClearCreateRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 }
-
 
 func (r ApiPoliciesAllCacheClearCreateRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PoliciesAllCacheClearCreateExecute(r)
@@ -50,7 +49,7 @@ Clear policy cache
 func (a *PoliciesApiService) PoliciesAllCacheClearCreate(ctx _context.Context) ApiPoliciesAllCacheClearCreateRequest {
 	return ApiPoliciesAllCacheClearCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -135,10 +134,9 @@ func (a *PoliciesApiService) PoliciesAllCacheClearCreateExecute(r ApiPoliciesAll
 }
 
 type ApiPoliciesAllCacheInfoRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 }
-
 
 func (r ApiPoliciesAllCacheInfoRetrieveRequest) Execute() (Cache, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesAllCacheInfoRetrieveExecute(r)
@@ -155,7 +153,7 @@ Info about cached policies
 func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieve(ctx _context.Context) ApiPoliciesAllCacheInfoRetrieveRequest {
 	return ApiPoliciesAllCacheInfoRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -251,11 +249,10 @@ func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieveExecute(r ApiPoliciesAl
 }
 
 type ApiPoliciesAllDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesAllDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PoliciesAllDestroyExecute(r)
@@ -273,7 +270,7 @@ Policy Viewset
 func (a *PoliciesApiService) PoliciesAllDestroy(ctx _context.Context, policyUuid string) ApiPoliciesAllDestroyRequest {
 	return ApiPoliciesAllDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -360,30 +357,33 @@ func (a *PoliciesApiService) PoliciesAllDestroyExecute(r ApiPoliciesAllDestroyRe
 }
 
 type ApiPoliciesAllListRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	bindingsIsnull *bool
-	ordering *string
-	page *int32
-	pageSize *int32
+	ctx               _context.Context
+	ApiService        *PoliciesApiService
+	bindingsIsnull    *bool
+	ordering          *string
+	page              *int32
+	pageSize          *int32
 	promptstageIsnull *bool
-	search *string
+	search            *string
 }
 
 func (r ApiPoliciesAllListRequest) BindingsIsnull(bindingsIsnull bool) ApiPoliciesAllListRequest {
 	r.bindingsIsnull = &bindingsIsnull
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPoliciesAllListRequest) Ordering(ordering string) ApiPoliciesAllListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPoliciesAllListRequest) Page(page int32) ApiPoliciesAllListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPoliciesAllListRequest) PageSize(pageSize int32) ApiPoliciesAllListRequest {
 	r.pageSize = &pageSize
@@ -393,6 +393,7 @@ func (r ApiPoliciesAllListRequest) PromptstageIsnull(promptstageIsnull bool) Api
 	r.promptstageIsnull = &promptstageIsnull
 	return r
 }
+
 // A search term.
 func (r ApiPoliciesAllListRequest) Search(search string) ApiPoliciesAllListRequest {
 	r.search = &search
@@ -414,7 +415,7 @@ Policy Viewset
 func (a *PoliciesApiService) PoliciesAllList(ctx _context.Context) ApiPoliciesAllListRequest {
 	return ApiPoliciesAllListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -528,11 +529,10 @@ func (a *PoliciesApiService) PoliciesAllListExecute(r ApiPoliciesAllListRequest)
 }
 
 type ApiPoliciesAllRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesAllRetrieveRequest) Execute() (Policy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesAllRetrieveExecute(r)
@@ -550,7 +550,7 @@ Policy Viewset
 func (a *PoliciesApiService) PoliciesAllRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesAllRetrieveRequest {
 	return ApiPoliciesAllRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -648,9 +648,9 @@ func (a *PoliciesApiService) PoliciesAllRetrieveExecute(r ApiPoliciesAllRetrieve
 }
 
 type ApiPoliciesAllTestCreateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx               _context.Context
+	ApiService        *PoliciesApiService
+	policyUuid        string
 	policyTestRequest *PolicyTestRequest
 }
 
@@ -675,7 +675,7 @@ Test policy
 func (a *PoliciesApiService) PoliciesAllTestCreate(ctx _context.Context, policyUuid string) ApiPoliciesAllTestCreateRequest {
 	return ApiPoliciesAllTestCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -778,10 +778,9 @@ func (a *PoliciesApiService) PoliciesAllTestCreateExecute(r ApiPoliciesAllTestCr
 }
 
 type ApiPoliciesAllTypesListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 }
-
 
 func (r ApiPoliciesAllTypesListRequest) Execute() ([]TypeCreate, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesAllTypesListExecute(r)
@@ -798,7 +797,7 @@ Get all creatable policy types
 func (a *PoliciesApiService) PoliciesAllTypesList(ctx _context.Context) ApiPoliciesAllTypesListRequest {
 	return ApiPoliciesAllTypesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -894,11 +893,10 @@ func (a *PoliciesApiService) PoliciesAllTypesListExecute(r ApiPoliciesAllTypesLi
 }
 
 type ApiPoliciesAllUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesAllUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesAllUsedByListExecute(r)
@@ -916,7 +914,7 @@ Get a list of all objects that use this object
 func (a *PoliciesApiService) PoliciesAllUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesAllUsedByListRequest {
 	return ApiPoliciesAllUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -1014,8 +1012,8 @@ func (a *PoliciesApiService) PoliciesAllUsedByListExecute(r ApiPoliciesAllUsedBy
 }
 
 type ApiPoliciesBindingsCreateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
+	ctx                  _context.Context
+	ApiService           *PoliciesApiService
 	policyBindingRequest *PolicyBindingRequest
 }
 
@@ -1039,7 +1037,7 @@ PolicyBinding Viewset
 func (a *PoliciesApiService) PoliciesBindingsCreate(ctx _context.Context) ApiPoliciesBindingsCreateRequest {
 	return ApiPoliciesBindingsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1140,11 +1138,10 @@ func (a *PoliciesApiService) PoliciesBindingsCreateExecute(r ApiPoliciesBindings
 }
 
 type ApiPoliciesBindingsDestroyRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
+	ctx               _context.Context
+	ApiService        *PoliciesApiService
 	policyBindingUuid string
 }
-
 
 func (r ApiPoliciesBindingsDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PoliciesBindingsDestroyExecute(r)
@@ -1161,8 +1158,8 @@ PolicyBinding Viewset
 */
 func (a *PoliciesApiService) PoliciesBindingsDestroy(ctx _context.Context, policyBindingUuid string) ApiPoliciesBindingsDestroyRequest {
 	return ApiPoliciesBindingsDestroyRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:        a,
+		ctx:               ctx,
 		policyBindingUuid: policyBindingUuid,
 	}
 }
@@ -1249,17 +1246,17 @@ func (a *PoliciesApiService) PoliciesBindingsDestroyExecute(r ApiPoliciesBinding
 }
 
 type ApiPoliciesBindingsListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
-	enabled *bool
-	order *int32
-	ordering *string
-	page *int32
-	pageSize *int32
-	policy *string
-	search *string
-	target *string
-	timeout *int32
+	enabled    *bool
+	order      *int32
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	policy     *string
+	search     *string
+	target     *string
+	timeout    *int32
 }
 
 func (r ApiPoliciesBindingsListRequest) Enabled(enabled bool) ApiPoliciesBindingsListRequest {
@@ -1270,16 +1267,19 @@ func (r ApiPoliciesBindingsListRequest) Order(order int32) ApiPoliciesBindingsLi
 	r.order = &order
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPoliciesBindingsListRequest) Ordering(ordering string) ApiPoliciesBindingsListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPoliciesBindingsListRequest) Page(page int32) ApiPoliciesBindingsListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPoliciesBindingsListRequest) PageSize(pageSize int32) ApiPoliciesBindingsListRequest {
 	r.pageSize = &pageSize
@@ -1289,6 +1289,7 @@ func (r ApiPoliciesBindingsListRequest) Policy(policy string) ApiPoliciesBinding
 	r.policy = &policy
 	return r
 }
+
 // A search term.
 func (r ApiPoliciesBindingsListRequest) Search(search string) ApiPoliciesBindingsListRequest {
 	r.search = &search
@@ -1318,7 +1319,7 @@ PolicyBinding Viewset
 func (a *PoliciesApiService) PoliciesBindingsList(ctx _context.Context) ApiPoliciesBindingsListRequest {
 	return ApiPoliciesBindingsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1441,9 +1442,9 @@ func (a *PoliciesApiService) PoliciesBindingsListExecute(r ApiPoliciesBindingsLi
 }
 
 type ApiPoliciesBindingsPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyBindingUuid string
+	ctx                         _context.Context
+	ApiService                  *PoliciesApiService
+	policyBindingUuid           string
 	patchedPolicyBindingRequest *PatchedPolicyBindingRequest
 }
 
@@ -1467,8 +1468,8 @@ PolicyBinding Viewset
 */
 func (a *PoliciesApiService) PoliciesBindingsPartialUpdate(ctx _context.Context, policyBindingUuid string) ApiPoliciesBindingsPartialUpdateRequest {
 	return ApiPoliciesBindingsPartialUpdateRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:        a,
+		ctx:               ctx,
 		policyBindingUuid: policyBindingUuid,
 	}
 }
@@ -1568,11 +1569,10 @@ func (a *PoliciesApiService) PoliciesBindingsPartialUpdateExecute(r ApiPoliciesB
 }
 
 type ApiPoliciesBindingsRetrieveRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
+	ctx               _context.Context
+	ApiService        *PoliciesApiService
 	policyBindingUuid string
 }
-
 
 func (r ApiPoliciesBindingsRetrieveRequest) Execute() (PolicyBinding, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesBindingsRetrieveExecute(r)
@@ -1589,8 +1589,8 @@ PolicyBinding Viewset
 */
 func (a *PoliciesApiService) PoliciesBindingsRetrieve(ctx _context.Context, policyBindingUuid string) ApiPoliciesBindingsRetrieveRequest {
 	return ApiPoliciesBindingsRetrieveRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:        a,
+		ctx:               ctx,
 		policyBindingUuid: policyBindingUuid,
 	}
 }
@@ -1688,9 +1688,9 @@ func (a *PoliciesApiService) PoliciesBindingsRetrieveExecute(r ApiPoliciesBindin
 }
 
 type ApiPoliciesBindingsUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyBindingUuid string
+	ctx                  _context.Context
+	ApiService           *PoliciesApiService
+	policyBindingUuid    string
 	policyBindingRequest *PolicyBindingRequest
 }
 
@@ -1714,8 +1714,8 @@ PolicyBinding Viewset
 */
 func (a *PoliciesApiService) PoliciesBindingsUpdate(ctx _context.Context, policyBindingUuid string) ApiPoliciesBindingsUpdateRequest {
 	return ApiPoliciesBindingsUpdateRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:        a,
+		ctx:               ctx,
 		policyBindingUuid: policyBindingUuid,
 	}
 }
@@ -1818,11 +1818,10 @@ func (a *PoliciesApiService) PoliciesBindingsUpdateExecute(r ApiPoliciesBindings
 }
 
 type ApiPoliciesBindingsUsedByListRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
+	ctx               _context.Context
+	ApiService        *PoliciesApiService
 	policyBindingUuid string
 }
-
 
 func (r ApiPoliciesBindingsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesBindingsUsedByListExecute(r)
@@ -1839,8 +1838,8 @@ Get a list of all objects that use this object
 */
 func (a *PoliciesApiService) PoliciesBindingsUsedByList(ctx _context.Context, policyBindingUuid string) ApiPoliciesBindingsUsedByListRequest {
 	return ApiPoliciesBindingsUsedByListRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:        a,
+		ctx:               ctx,
 		policyBindingUuid: policyBindingUuid,
 	}
 }
@@ -1938,8 +1937,8 @@ func (a *PoliciesApiService) PoliciesBindingsUsedByListExecute(r ApiPoliciesBind
 }
 
 type ApiPoliciesDummyCreateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
+	ctx                _context.Context
+	ApiService         *PoliciesApiService
 	dummyPolicyRequest *DummyPolicyRequest
 }
 
@@ -1963,7 +1962,7 @@ Dummy Viewset
 func (a *PoliciesApiService) PoliciesDummyCreate(ctx _context.Context) ApiPoliciesDummyCreateRequest {
 	return ApiPoliciesDummyCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2061,11 +2060,10 @@ func (a *PoliciesApiService) PoliciesDummyCreateExecute(r ApiPoliciesDummyCreate
 }
 
 type ApiPoliciesDummyDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesDummyDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PoliciesDummyDestroyExecute(r)
@@ -2083,7 +2081,7 @@ Dummy Viewset
 func (a *PoliciesApiService) PoliciesDummyDestroy(ctx _context.Context, policyUuid string) ApiPoliciesDummyDestroyRequest {
 	return ApiPoliciesDummyDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -2170,20 +2168,20 @@ func (a *PoliciesApiService) PoliciesDummyDestroyExecute(r ApiPoliciesDummyDestr
 }
 
 type ApiPoliciesDummyListRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	created *time.Time
+	ctx              _context.Context
+	ApiService       *PoliciesApiService
+	created          *time.Time
 	executionLogging *bool
-	lastUpdated *time.Time
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	policyUuid *string
-	result *bool
-	search *string
-	waitMax *int32
-	waitMin *int32
+	lastUpdated      *time.Time
+	name             *string
+	ordering         *string
+	page             *int32
+	pageSize         *int32
+	policyUuid       *string
+	result           *bool
+	search           *string
+	waitMax          *int32
+	waitMin          *int32
 }
 
 func (r ApiPoliciesDummyListRequest) Created(created time.Time) ApiPoliciesDummyListRequest {
@@ -2202,16 +2200,19 @@ func (r ApiPoliciesDummyListRequest) Name(name string) ApiPoliciesDummyListReque
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPoliciesDummyListRequest) Ordering(ordering string) ApiPoliciesDummyListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPoliciesDummyListRequest) Page(page int32) ApiPoliciesDummyListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPoliciesDummyListRequest) PageSize(pageSize int32) ApiPoliciesDummyListRequest {
 	r.pageSize = &pageSize
@@ -2225,6 +2226,7 @@ func (r ApiPoliciesDummyListRequest) Result(result bool) ApiPoliciesDummyListReq
 	r.result = &result
 	return r
 }
+
 // A search term.
 func (r ApiPoliciesDummyListRequest) Search(search string) ApiPoliciesDummyListRequest {
 	r.search = &search
@@ -2254,7 +2256,7 @@ Dummy Viewset
 func (a *PoliciesApiService) PoliciesDummyList(ctx _context.Context) ApiPoliciesDummyListRequest {
 	return ApiPoliciesDummyListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2386,9 +2388,9 @@ func (a *PoliciesApiService) PoliciesDummyListExecute(r ApiPoliciesDummyListRequ
 }
 
 type ApiPoliciesDummyPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx                       _context.Context
+	ApiService                *PoliciesApiService
+	policyUuid                string
 	patchedDummyPolicyRequest *PatchedDummyPolicyRequest
 }
 
@@ -2413,7 +2415,7 @@ Dummy Viewset
 func (a *PoliciesApiService) PoliciesDummyPartialUpdate(ctx _context.Context, policyUuid string) ApiPoliciesDummyPartialUpdateRequest {
 	return ApiPoliciesDummyPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -2513,11 +2515,10 @@ func (a *PoliciesApiService) PoliciesDummyPartialUpdateExecute(r ApiPoliciesDumm
 }
 
 type ApiPoliciesDummyRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesDummyRetrieveRequest) Execute() (DummyPolicy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesDummyRetrieveExecute(r)
@@ -2535,7 +2536,7 @@ Dummy Viewset
 func (a *PoliciesApiService) PoliciesDummyRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesDummyRetrieveRequest {
 	return ApiPoliciesDummyRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -2633,9 +2634,9 @@ func (a *PoliciesApiService) PoliciesDummyRetrieveExecute(r ApiPoliciesDummyRetr
 }
 
 type ApiPoliciesDummyUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx                _context.Context
+	ApiService         *PoliciesApiService
+	policyUuid         string
 	dummyPolicyRequest *DummyPolicyRequest
 }
 
@@ -2660,7 +2661,7 @@ Dummy Viewset
 func (a *PoliciesApiService) PoliciesDummyUpdate(ctx _context.Context, policyUuid string) ApiPoliciesDummyUpdateRequest {
 	return ApiPoliciesDummyUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -2760,11 +2761,10 @@ func (a *PoliciesApiService) PoliciesDummyUpdateExecute(r ApiPoliciesDummyUpdate
 }
 
 type ApiPoliciesDummyUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesDummyUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesDummyUsedByListExecute(r)
@@ -2782,7 +2782,7 @@ Get a list of all objects that use this object
 func (a *PoliciesApiService) PoliciesDummyUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesDummyUsedByListRequest {
 	return ApiPoliciesDummyUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -2880,8 +2880,8 @@ func (a *PoliciesApiService) PoliciesDummyUsedByListExecute(r ApiPoliciesDummyUs
 }
 
 type ApiPoliciesEventMatcherCreateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
+	ctx                       _context.Context
+	ApiService                *PoliciesApiService
 	eventMatcherPolicyRequest *EventMatcherPolicyRequest
 }
 
@@ -2905,7 +2905,7 @@ Event Matcher Policy Viewset
 func (a *PoliciesApiService) PoliciesEventMatcherCreate(ctx _context.Context) ApiPoliciesEventMatcherCreateRequest {
 	return ApiPoliciesEventMatcherCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3003,11 +3003,10 @@ func (a *PoliciesApiService) PoliciesEventMatcherCreateExecute(r ApiPoliciesEven
 }
 
 type ApiPoliciesEventMatcherDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesEventMatcherDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PoliciesEventMatcherDestroyExecute(r)
@@ -3025,7 +3024,7 @@ Event Matcher Policy Viewset
 func (a *PoliciesApiService) PoliciesEventMatcherDestroy(ctx _context.Context, policyUuid string) ApiPoliciesEventMatcherDestroyRequest {
 	return ApiPoliciesEventMatcherDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -3112,20 +3111,20 @@ func (a *PoliciesApiService) PoliciesEventMatcherDestroyExecute(r ApiPoliciesEve
 }
 
 type ApiPoliciesEventMatcherListRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	action *string
-	app *string
-	clientIp *string
-	created *time.Time
+	ctx              _context.Context
+	ApiService       *PoliciesApiService
+	action           *string
+	app              *string
+	clientIp         *string
+	created          *time.Time
 	executionLogging *bool
-	lastUpdated *time.Time
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	policyUuid *string
-	search *string
+	lastUpdated      *time.Time
+	name             *string
+	ordering         *string
+	page             *int32
+	pageSize         *int32
+	policyUuid       *string
+	search           *string
 }
 
 // Match created events with this action type. When left empty, all action types will be matched.
@@ -3133,6 +3132,7 @@ func (r ApiPoliciesEventMatcherListRequest) Action(action string) ApiPoliciesEve
 	r.action = &action
 	return r
 }
+
 // Match events created by selected application. When left empty, all applications are matched.
 func (r ApiPoliciesEventMatcherListRequest) App(app string) ApiPoliciesEventMatcherListRequest {
 	r.app = &app
@@ -3158,16 +3158,19 @@ func (r ApiPoliciesEventMatcherListRequest) Name(name string) ApiPoliciesEventMa
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPoliciesEventMatcherListRequest) Ordering(ordering string) ApiPoliciesEventMatcherListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPoliciesEventMatcherListRequest) Page(page int32) ApiPoliciesEventMatcherListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPoliciesEventMatcherListRequest) PageSize(pageSize int32) ApiPoliciesEventMatcherListRequest {
 	r.pageSize = &pageSize
@@ -3177,6 +3180,7 @@ func (r ApiPoliciesEventMatcherListRequest) PolicyUuid(policyUuid string) ApiPol
 	r.policyUuid = &policyUuid
 	return r
 }
+
 // A search term.
 func (r ApiPoliciesEventMatcherListRequest) Search(search string) ApiPoliciesEventMatcherListRequest {
 	r.search = &search
@@ -3198,7 +3202,7 @@ Event Matcher Policy Viewset
 func (a *PoliciesApiService) PoliciesEventMatcherList(ctx _context.Context) ApiPoliciesEventMatcherListRequest {
 	return ApiPoliciesEventMatcherListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3330,9 +3334,9 @@ func (a *PoliciesApiService) PoliciesEventMatcherListExecute(r ApiPoliciesEventM
 }
 
 type ApiPoliciesEventMatcherPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx                              _context.Context
+	ApiService                       *PoliciesApiService
+	policyUuid                       string
 	patchedEventMatcherPolicyRequest *PatchedEventMatcherPolicyRequest
 }
 
@@ -3357,7 +3361,7 @@ Event Matcher Policy Viewset
 func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdate(ctx _context.Context, policyUuid string) ApiPoliciesEventMatcherPartialUpdateRequest {
 	return ApiPoliciesEventMatcherPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -3457,11 +3461,10 @@ func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdateExecute(r ApiPolic
 }
 
 type ApiPoliciesEventMatcherRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesEventMatcherRetrieveRequest) Execute() (EventMatcherPolicy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesEventMatcherRetrieveExecute(r)
@@ -3479,7 +3482,7 @@ Event Matcher Policy Viewset
 func (a *PoliciesApiService) PoliciesEventMatcherRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesEventMatcherRetrieveRequest {
 	return ApiPoliciesEventMatcherRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -3577,9 +3580,9 @@ func (a *PoliciesApiService) PoliciesEventMatcherRetrieveExecute(r ApiPoliciesEv
 }
 
 type ApiPoliciesEventMatcherUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx                       _context.Context
+	ApiService                *PoliciesApiService
+	policyUuid                string
 	eventMatcherPolicyRequest *EventMatcherPolicyRequest
 }
 
@@ -3604,7 +3607,7 @@ Event Matcher Policy Viewset
 func (a *PoliciesApiService) PoliciesEventMatcherUpdate(ctx _context.Context, policyUuid string) ApiPoliciesEventMatcherUpdateRequest {
 	return ApiPoliciesEventMatcherUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -3704,11 +3707,10 @@ func (a *PoliciesApiService) PoliciesEventMatcherUpdateExecute(r ApiPoliciesEven
 }
 
 type ApiPoliciesEventMatcherUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesEventMatcherUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesEventMatcherUsedByListExecute(r)
@@ -3726,7 +3728,7 @@ Get a list of all objects that use this object
 func (a *PoliciesApiService) PoliciesEventMatcherUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesEventMatcherUsedByListRequest {
 	return ApiPoliciesEventMatcherUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -3824,8 +3826,8 @@ func (a *PoliciesApiService) PoliciesEventMatcherUsedByListExecute(r ApiPolicies
 }
 
 type ApiPoliciesExpressionCreateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
+	ctx                     _context.Context
+	ApiService              *PoliciesApiService
 	expressionPolicyRequest *ExpressionPolicyRequest
 }
 
@@ -3849,7 +3851,7 @@ Source Viewset
 func (a *PoliciesApiService) PoliciesExpressionCreate(ctx _context.Context) ApiPoliciesExpressionCreateRequest {
 	return ApiPoliciesExpressionCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3950,11 +3952,10 @@ func (a *PoliciesApiService) PoliciesExpressionCreateExecute(r ApiPoliciesExpres
 }
 
 type ApiPoliciesExpressionDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesExpressionDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PoliciesExpressionDestroyExecute(r)
@@ -3972,7 +3973,7 @@ Source Viewset
 func (a *PoliciesApiService) PoliciesExpressionDestroy(ctx _context.Context, policyUuid string) ApiPoliciesExpressionDestroyRequest {
 	return ApiPoliciesExpressionDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -4059,18 +4060,18 @@ func (a *PoliciesApiService) PoliciesExpressionDestroyExecute(r ApiPoliciesExpre
 }
 
 type ApiPoliciesExpressionListRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	created *time.Time
+	ctx              _context.Context
+	ApiService       *PoliciesApiService
+	created          *time.Time
 	executionLogging *bool
-	expression *string
-	lastUpdated *time.Time
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	policyUuid *string
-	search *string
+	expression       *string
+	lastUpdated      *time.Time
+	name             *string
+	ordering         *string
+	page             *int32
+	pageSize         *int32
+	policyUuid       *string
+	search           *string
 }
 
 func (r ApiPoliciesExpressionListRequest) Created(created time.Time) ApiPoliciesExpressionListRequest {
@@ -4093,16 +4094,19 @@ func (r ApiPoliciesExpressionListRequest) Name(name string) ApiPoliciesExpressio
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPoliciesExpressionListRequest) Ordering(ordering string) ApiPoliciesExpressionListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPoliciesExpressionListRequest) Page(page int32) ApiPoliciesExpressionListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPoliciesExpressionListRequest) PageSize(pageSize int32) ApiPoliciesExpressionListRequest {
 	r.pageSize = &pageSize
@@ -4112,6 +4116,7 @@ func (r ApiPoliciesExpressionListRequest) PolicyUuid(policyUuid string) ApiPolic
 	r.policyUuid = &policyUuid
 	return r
 }
+
 // A search term.
 func (r ApiPoliciesExpressionListRequest) Search(search string) ApiPoliciesExpressionListRequest {
 	r.search = &search
@@ -4133,7 +4138,7 @@ Source Viewset
 func (a *PoliciesApiService) PoliciesExpressionList(ctx _context.Context) ApiPoliciesExpressionListRequest {
 	return ApiPoliciesExpressionListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -4259,9 +4264,9 @@ func (a *PoliciesApiService) PoliciesExpressionListExecute(r ApiPoliciesExpressi
 }
 
 type ApiPoliciesExpressionPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx                            _context.Context
+	ApiService                     *PoliciesApiService
+	policyUuid                     string
 	patchedExpressionPolicyRequest *PatchedExpressionPolicyRequest
 }
 
@@ -4286,7 +4291,7 @@ Source Viewset
 func (a *PoliciesApiService) PoliciesExpressionPartialUpdate(ctx _context.Context, policyUuid string) ApiPoliciesExpressionPartialUpdateRequest {
 	return ApiPoliciesExpressionPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -4386,11 +4391,10 @@ func (a *PoliciesApiService) PoliciesExpressionPartialUpdateExecute(r ApiPolicie
 }
 
 type ApiPoliciesExpressionRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesExpressionRetrieveRequest) Execute() (ExpressionPolicy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesExpressionRetrieveExecute(r)
@@ -4408,7 +4412,7 @@ Source Viewset
 func (a *PoliciesApiService) PoliciesExpressionRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesExpressionRetrieveRequest {
 	return ApiPoliciesExpressionRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -4506,9 +4510,9 @@ func (a *PoliciesApiService) PoliciesExpressionRetrieveExecute(r ApiPoliciesExpr
 }
 
 type ApiPoliciesExpressionUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx                     _context.Context
+	ApiService              *PoliciesApiService
+	policyUuid              string
 	expressionPolicyRequest *ExpressionPolicyRequest
 }
 
@@ -4533,7 +4537,7 @@ Source Viewset
 func (a *PoliciesApiService) PoliciesExpressionUpdate(ctx _context.Context, policyUuid string) ApiPoliciesExpressionUpdateRequest {
 	return ApiPoliciesExpressionUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -4636,11 +4640,10 @@ func (a *PoliciesApiService) PoliciesExpressionUpdateExecute(r ApiPoliciesExpres
 }
 
 type ApiPoliciesExpressionUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesExpressionUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesExpressionUsedByListExecute(r)
@@ -4658,7 +4661,7 @@ Get a list of all objects that use this object
 func (a *PoliciesApiService) PoliciesExpressionUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesExpressionUsedByListRequest {
 	return ApiPoliciesExpressionUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -4756,8 +4759,8 @@ func (a *PoliciesApiService) PoliciesExpressionUsedByListExecute(r ApiPoliciesEx
 }
 
 type ApiPoliciesHaveibeenpwnedCreateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
+	ctx                         _context.Context
+	ApiService                  *PoliciesApiService
 	haveIBeenPwendPolicyRequest *HaveIBeenPwendPolicyRequest
 }
 
@@ -4781,7 +4784,7 @@ Source Viewset
 func (a *PoliciesApiService) PoliciesHaveibeenpwnedCreate(ctx _context.Context) ApiPoliciesHaveibeenpwnedCreateRequest {
 	return ApiPoliciesHaveibeenpwnedCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -4879,11 +4882,10 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedCreateExecute(r ApiPoliciesHa
 }
 
 type ApiPoliciesHaveibeenpwnedDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesHaveibeenpwnedDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PoliciesHaveibeenpwnedDestroyExecute(r)
@@ -4901,7 +4903,7 @@ Source Viewset
 func (a *PoliciesApiService) PoliciesHaveibeenpwnedDestroy(ctx _context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedDestroyRequest {
 	return ApiPoliciesHaveibeenpwnedDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -4988,19 +4990,19 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedDestroyExecute(r ApiPoliciesH
 }
 
 type ApiPoliciesHaveibeenpwnedListRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	allowedCount *int32
-	created *time.Time
+	ctx              _context.Context
+	ApiService       *PoliciesApiService
+	allowedCount     *int32
+	created          *time.Time
 	executionLogging *bool
-	lastUpdated *time.Time
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	passwordField *string
-	policyUuid *string
-	search *string
+	lastUpdated      *time.Time
+	name             *string
+	ordering         *string
+	page             *int32
+	pageSize         *int32
+	passwordField    *string
+	policyUuid       *string
+	search           *string
 }
 
 func (r ApiPoliciesHaveibeenpwnedListRequest) AllowedCount(allowedCount int32) ApiPoliciesHaveibeenpwnedListRequest {
@@ -5023,16 +5025,19 @@ func (r ApiPoliciesHaveibeenpwnedListRequest) Name(name string) ApiPoliciesHavei
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPoliciesHaveibeenpwnedListRequest) Ordering(ordering string) ApiPoliciesHaveibeenpwnedListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPoliciesHaveibeenpwnedListRequest) Page(page int32) ApiPoliciesHaveibeenpwnedListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPoliciesHaveibeenpwnedListRequest) PageSize(pageSize int32) ApiPoliciesHaveibeenpwnedListRequest {
 	r.pageSize = &pageSize
@@ -5046,6 +5051,7 @@ func (r ApiPoliciesHaveibeenpwnedListRequest) PolicyUuid(policyUuid string) ApiP
 	r.policyUuid = &policyUuid
 	return r
 }
+
 // A search term.
 func (r ApiPoliciesHaveibeenpwnedListRequest) Search(search string) ApiPoliciesHaveibeenpwnedListRequest {
 	r.search = &search
@@ -5067,7 +5073,7 @@ Source Viewset
 func (a *PoliciesApiService) PoliciesHaveibeenpwnedList(ctx _context.Context) ApiPoliciesHaveibeenpwnedListRequest {
 	return ApiPoliciesHaveibeenpwnedListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -5196,9 +5202,9 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedListExecute(r ApiPoliciesHave
 }
 
 type ApiPoliciesHaveibeenpwnedPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx                                _context.Context
+	ApiService                         *PoliciesApiService
+	policyUuid                         string
 	patchedHaveIBeenPwendPolicyRequest *PatchedHaveIBeenPwendPolicyRequest
 }
 
@@ -5223,7 +5229,7 @@ Source Viewset
 func (a *PoliciesApiService) PoliciesHaveibeenpwnedPartialUpdate(ctx _context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedPartialUpdateRequest {
 	return ApiPoliciesHaveibeenpwnedPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -5323,11 +5329,10 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedPartialUpdateExecute(r ApiPol
 }
 
 type ApiPoliciesHaveibeenpwnedRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesHaveibeenpwnedRetrieveRequest) Execute() (HaveIBeenPwendPolicy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesHaveibeenpwnedRetrieveExecute(r)
@@ -5345,7 +5350,7 @@ Source Viewset
 func (a *PoliciesApiService) PoliciesHaveibeenpwnedRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedRetrieveRequest {
 	return ApiPoliciesHaveibeenpwnedRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -5443,9 +5448,9 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedRetrieveExecute(r ApiPolicies
 }
 
 type ApiPoliciesHaveibeenpwnedUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx                         _context.Context
+	ApiService                  *PoliciesApiService
+	policyUuid                  string
 	haveIBeenPwendPolicyRequest *HaveIBeenPwendPolicyRequest
 }
 
@@ -5470,7 +5475,7 @@ Source Viewset
 func (a *PoliciesApiService) PoliciesHaveibeenpwnedUpdate(ctx _context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedUpdateRequest {
 	return ApiPoliciesHaveibeenpwnedUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -5570,11 +5575,10 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedUpdateExecute(r ApiPoliciesHa
 }
 
 type ApiPoliciesHaveibeenpwnedUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesHaveibeenpwnedUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesHaveibeenpwnedUsedByListExecute(r)
@@ -5592,7 +5596,7 @@ Get a list of all objects that use this object
 func (a *PoliciesApiService) PoliciesHaveibeenpwnedUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedUsedByListRequest {
 	return ApiPoliciesHaveibeenpwnedUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -5690,8 +5694,8 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedUsedByListExecute(r ApiPolici
 }
 
 type ApiPoliciesPasswordCreateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
+	ctx                   _context.Context
+	ApiService            *PoliciesApiService
 	passwordPolicyRequest *PasswordPolicyRequest
 }
 
@@ -5715,7 +5719,7 @@ Password Policy Viewset
 func (a *PoliciesApiService) PoliciesPasswordCreate(ctx _context.Context) ApiPoliciesPasswordCreateRequest {
 	return ApiPoliciesPasswordCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -5816,11 +5820,10 @@ func (a *PoliciesApiService) PoliciesPasswordCreateExecute(r ApiPoliciesPassword
 }
 
 type ApiPoliciesPasswordDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesPasswordDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PoliciesPasswordDestroyExecute(r)
@@ -5838,7 +5841,7 @@ Password Policy Viewset
 func (a *PoliciesApiService) PoliciesPasswordDestroy(ctx _context.Context, policyUuid string) ApiPoliciesPasswordDestroyRequest {
 	return ApiPoliciesPasswordDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -5925,8 +5928,8 @@ func (a *PoliciesApiService) PoliciesPasswordDestroyExecute(r ApiPoliciesPasswor
 }
 
 type ApiPoliciesPasswordExpiryCreateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
+	ctx                         _context.Context
+	ApiService                  *PoliciesApiService
 	passwordExpiryPolicyRequest *PasswordExpiryPolicyRequest
 }
 
@@ -5950,7 +5953,7 @@ Password Expiry Viewset
 func (a *PoliciesApiService) PoliciesPasswordExpiryCreate(ctx _context.Context) ApiPoliciesPasswordExpiryCreateRequest {
 	return ApiPoliciesPasswordExpiryCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -6051,11 +6054,10 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryCreateExecute(r ApiPoliciesPa
 }
 
 type ApiPoliciesPasswordExpiryDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesPasswordExpiryDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PoliciesPasswordExpiryDestroyExecute(r)
@@ -6073,7 +6075,7 @@ Password Expiry Viewset
 func (a *PoliciesApiService) PoliciesPasswordExpiryDestroy(ctx _context.Context, policyUuid string) ApiPoliciesPasswordExpiryDestroyRequest {
 	return ApiPoliciesPasswordExpiryDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -6160,19 +6162,19 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryDestroyExecute(r ApiPoliciesP
 }
 
 type ApiPoliciesPasswordExpiryListRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	created *time.Time
-	days *int32
-	denyOnly *bool
+	ctx              _context.Context
+	ApiService       *PoliciesApiService
+	created          *time.Time
+	days             *int32
+	denyOnly         *bool
 	executionLogging *bool
-	lastUpdated *time.Time
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	policyUuid *string
-	search *string
+	lastUpdated      *time.Time
+	name             *string
+	ordering         *string
+	page             *int32
+	pageSize         *int32
+	policyUuid       *string
+	search           *string
 }
 
 func (r ApiPoliciesPasswordExpiryListRequest) Created(created time.Time) ApiPoliciesPasswordExpiryListRequest {
@@ -6199,16 +6201,19 @@ func (r ApiPoliciesPasswordExpiryListRequest) Name(name string) ApiPoliciesPassw
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPoliciesPasswordExpiryListRequest) Ordering(ordering string) ApiPoliciesPasswordExpiryListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPoliciesPasswordExpiryListRequest) Page(page int32) ApiPoliciesPasswordExpiryListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPoliciesPasswordExpiryListRequest) PageSize(pageSize int32) ApiPoliciesPasswordExpiryListRequest {
 	r.pageSize = &pageSize
@@ -6218,6 +6223,7 @@ func (r ApiPoliciesPasswordExpiryListRequest) PolicyUuid(policyUuid string) ApiP
 	r.policyUuid = &policyUuid
 	return r
 }
+
 // A search term.
 func (r ApiPoliciesPasswordExpiryListRequest) Search(search string) ApiPoliciesPasswordExpiryListRequest {
 	r.search = &search
@@ -6239,7 +6245,7 @@ Password Expiry Viewset
 func (a *PoliciesApiService) PoliciesPasswordExpiryList(ctx _context.Context) ApiPoliciesPasswordExpiryListRequest {
 	return ApiPoliciesPasswordExpiryListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -6368,9 +6374,9 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryListExecute(r ApiPoliciesPass
 }
 
 type ApiPoliciesPasswordExpiryPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx                                _context.Context
+	ApiService                         *PoliciesApiService
+	policyUuid                         string
 	patchedPasswordExpiryPolicyRequest *PatchedPasswordExpiryPolicyRequest
 }
 
@@ -6395,7 +6401,7 @@ Password Expiry Viewset
 func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdate(ctx _context.Context, policyUuid string) ApiPoliciesPasswordExpiryPartialUpdateRequest {
 	return ApiPoliciesPasswordExpiryPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -6495,11 +6501,10 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdateExecute(r ApiPol
 }
 
 type ApiPoliciesPasswordExpiryRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesPasswordExpiryRetrieveRequest) Execute() (PasswordExpiryPolicy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesPasswordExpiryRetrieveExecute(r)
@@ -6517,7 +6522,7 @@ Password Expiry Viewset
 func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesPasswordExpiryRetrieveRequest {
 	return ApiPoliciesPasswordExpiryRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -6615,9 +6620,9 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieveExecute(r ApiPolicies
 }
 
 type ApiPoliciesPasswordExpiryUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx                         _context.Context
+	ApiService                  *PoliciesApiService
+	policyUuid                  string
 	passwordExpiryPolicyRequest *PasswordExpiryPolicyRequest
 }
 
@@ -6642,7 +6647,7 @@ Password Expiry Viewset
 func (a *PoliciesApiService) PoliciesPasswordExpiryUpdate(ctx _context.Context, policyUuid string) ApiPoliciesPasswordExpiryUpdateRequest {
 	return ApiPoliciesPasswordExpiryUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -6745,11 +6750,10 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUpdateExecute(r ApiPoliciesPa
 }
 
 type ApiPoliciesPasswordExpiryUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesPasswordExpiryUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesPasswordExpiryUsedByListExecute(r)
@@ -6767,7 +6771,7 @@ Get a list of all objects that use this object
 func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesPasswordExpiryUsedByListRequest {
 	return ApiPoliciesPasswordExpiryUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -6865,24 +6869,24 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByListExecute(r ApiPolici
 }
 
 type ApiPoliciesPasswordListRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	amountLowercase *int32
-	amountSymbols *int32
-	amountUppercase *int32
-	created *time.Time
-	errorMessage *string
+	ctx              _context.Context
+	ApiService       *PoliciesApiService
+	amountLowercase  *int32
+	amountSymbols    *int32
+	amountUppercase  *int32
+	created          *time.Time
+	errorMessage     *string
 	executionLogging *bool
-	lastUpdated *time.Time
-	lengthMin *int32
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	passwordField *string
-	policyUuid *string
-	search *string
-	symbolCharset *string
+	lastUpdated      *time.Time
+	lengthMin        *int32
+	name             *string
+	ordering         *string
+	page             *int32
+	pageSize         *int32
+	passwordField    *string
+	policyUuid       *string
+	search           *string
+	symbolCharset    *string
 }
 
 func (r ApiPoliciesPasswordListRequest) AmountLowercase(amountLowercase int32) ApiPoliciesPasswordListRequest {
@@ -6921,16 +6925,19 @@ func (r ApiPoliciesPasswordListRequest) Name(name string) ApiPoliciesPasswordLis
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPoliciesPasswordListRequest) Ordering(ordering string) ApiPoliciesPasswordListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPoliciesPasswordListRequest) Page(page int32) ApiPoliciesPasswordListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPoliciesPasswordListRequest) PageSize(pageSize int32) ApiPoliciesPasswordListRequest {
 	r.pageSize = &pageSize
@@ -6944,6 +6951,7 @@ func (r ApiPoliciesPasswordListRequest) PolicyUuid(policyUuid string) ApiPolicie
 	r.policyUuid = &policyUuid
 	return r
 }
+
 // A search term.
 func (r ApiPoliciesPasswordListRequest) Search(search string) ApiPoliciesPasswordListRequest {
 	r.search = &search
@@ -6969,7 +6977,7 @@ Password Policy Viewset
 func (a *PoliciesApiService) PoliciesPasswordList(ctx _context.Context) ApiPoliciesPasswordListRequest {
 	return ApiPoliciesPasswordListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -7113,9 +7121,9 @@ func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordLi
 }
 
 type ApiPoliciesPasswordPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx                          _context.Context
+	ApiService                   *PoliciesApiService
+	policyUuid                   string
 	patchedPasswordPolicyRequest *PatchedPasswordPolicyRequest
 }
 
@@ -7140,7 +7148,7 @@ Password Policy Viewset
 func (a *PoliciesApiService) PoliciesPasswordPartialUpdate(ctx _context.Context, policyUuid string) ApiPoliciesPasswordPartialUpdateRequest {
 	return ApiPoliciesPasswordPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -7240,11 +7248,10 @@ func (a *PoliciesApiService) PoliciesPasswordPartialUpdateExecute(r ApiPoliciesP
 }
 
 type ApiPoliciesPasswordRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesPasswordRetrieveRequest) Execute() (PasswordPolicy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesPasswordRetrieveExecute(r)
@@ -7262,7 +7269,7 @@ Password Policy Viewset
 func (a *PoliciesApiService) PoliciesPasswordRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesPasswordRetrieveRequest {
 	return ApiPoliciesPasswordRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -7360,9 +7367,9 @@ func (a *PoliciesApiService) PoliciesPasswordRetrieveExecute(r ApiPoliciesPasswo
 }
 
 type ApiPoliciesPasswordUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx                   _context.Context
+	ApiService            *PoliciesApiService
+	policyUuid            string
 	passwordPolicyRequest *PasswordPolicyRequest
 }
 
@@ -7387,7 +7394,7 @@ Password Policy Viewset
 func (a *PoliciesApiService) PoliciesPasswordUpdate(ctx _context.Context, policyUuid string) ApiPoliciesPasswordUpdateRequest {
 	return ApiPoliciesPasswordUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -7490,11 +7497,10 @@ func (a *PoliciesApiService) PoliciesPasswordUpdateExecute(r ApiPoliciesPassword
 }
 
 type ApiPoliciesPasswordUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesPasswordUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesPasswordUsedByListExecute(r)
@@ -7512,7 +7518,7 @@ Get a list of all objects that use this object
 func (a *PoliciesApiService) PoliciesPasswordUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesPasswordUsedByListRequest {
 	return ApiPoliciesPasswordUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -7610,8 +7616,8 @@ func (a *PoliciesApiService) PoliciesPasswordUsedByListExecute(r ApiPoliciesPass
 }
 
 type ApiPoliciesReputationCreateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
+	ctx                     _context.Context
+	ApiService              *PoliciesApiService
 	reputationPolicyRequest *ReputationPolicyRequest
 }
 
@@ -7635,7 +7641,7 @@ Reputation Policy Viewset
 func (a *PoliciesApiService) PoliciesReputationCreate(ctx _context.Context) ApiPoliciesReputationCreateRequest {
 	return ApiPoliciesReputationCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -7733,11 +7739,10 @@ func (a *PoliciesApiService) PoliciesReputationCreateExecute(r ApiPoliciesReputa
 }
 
 type ApiPoliciesReputationDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesReputationDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PoliciesReputationDestroyExecute(r)
@@ -7755,7 +7760,7 @@ Reputation Policy Viewset
 func (a *PoliciesApiService) PoliciesReputationDestroy(ctx _context.Context, policyUuid string) ApiPoliciesReputationDestroyRequest {
 	return ApiPoliciesReputationDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -7842,11 +7847,10 @@ func (a *PoliciesApiService) PoliciesReputationDestroyExecute(r ApiPoliciesReput
 }
 
 type ApiPoliciesReputationIpsDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiPoliciesReputationIpsDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PoliciesReputationIpsDestroyExecute(r)
@@ -7864,8 +7868,8 @@ IPReputation Viewset
 func (a *PoliciesApiService) PoliciesReputationIpsDestroy(ctx _context.Context, id int32) ApiPoliciesReputationIpsDestroyRequest {
 	return ApiPoliciesReputationIpsDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -7951,30 +7955,33 @@ func (a *PoliciesApiService) PoliciesReputationIpsDestroyExecute(r ApiPoliciesRe
 }
 
 type ApiPoliciesReputationIpsListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
-	ip *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	score *int32
-	search *string
+	ip         *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	score      *int32
+	search     *string
 }
 
 func (r ApiPoliciesReputationIpsListRequest) Ip(ip string) ApiPoliciesReputationIpsListRequest {
 	r.ip = &ip
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPoliciesReputationIpsListRequest) Ordering(ordering string) ApiPoliciesReputationIpsListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPoliciesReputationIpsListRequest) Page(page int32) ApiPoliciesReputationIpsListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPoliciesReputationIpsListRequest) PageSize(pageSize int32) ApiPoliciesReputationIpsListRequest {
 	r.pageSize = &pageSize
@@ -7984,6 +7991,7 @@ func (r ApiPoliciesReputationIpsListRequest) Score(score int32) ApiPoliciesReput
 	r.score = &score
 	return r
 }
+
 // A search term.
 func (r ApiPoliciesReputationIpsListRequest) Search(search string) ApiPoliciesReputationIpsListRequest {
 	r.search = &search
@@ -8005,7 +8013,7 @@ IPReputation Viewset
 func (a *PoliciesApiService) PoliciesReputationIpsList(ctx _context.Context) ApiPoliciesReputationIpsListRequest {
 	return ApiPoliciesReputationIpsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -8119,11 +8127,10 @@ func (a *PoliciesApiService) PoliciesReputationIpsListExecute(r ApiPoliciesReput
 }
 
 type ApiPoliciesReputationIpsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiPoliciesReputationIpsRetrieveRequest) Execute() (IPReputation, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesReputationIpsRetrieveExecute(r)
@@ -8141,8 +8148,8 @@ IPReputation Viewset
 func (a *PoliciesApiService) PoliciesReputationIpsRetrieve(ctx _context.Context, id int32) ApiPoliciesReputationIpsRetrieveRequest {
 	return ApiPoliciesReputationIpsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -8239,11 +8246,10 @@ func (a *PoliciesApiService) PoliciesReputationIpsRetrieveExecute(r ApiPoliciesR
 }
 
 type ApiPoliciesReputationIpsUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiPoliciesReputationIpsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesReputationIpsUsedByListExecute(r)
@@ -8261,8 +8267,8 @@ Get a list of all objects that use this object
 func (a *PoliciesApiService) PoliciesReputationIpsUsedByList(ctx _context.Context, id int32) ApiPoliciesReputationIpsUsedByListRequest {
 	return ApiPoliciesReputationIpsUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -8359,20 +8365,20 @@ func (a *PoliciesApiService) PoliciesReputationIpsUsedByListExecute(r ApiPolicie
 }
 
 type ApiPoliciesReputationListRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	checkIp *bool
-	checkUsername *bool
-	created *time.Time
+	ctx              _context.Context
+	ApiService       *PoliciesApiService
+	checkIp          *bool
+	checkUsername    *bool
+	created          *time.Time
 	executionLogging *bool
-	lastUpdated *time.Time
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	policyUuid *string
-	search *string
-	threshold *int32
+	lastUpdated      *time.Time
+	name             *string
+	ordering         *string
+	page             *int32
+	pageSize         *int32
+	policyUuid       *string
+	search           *string
+	threshold        *int32
 }
 
 func (r ApiPoliciesReputationListRequest) CheckIp(checkIp bool) ApiPoliciesReputationListRequest {
@@ -8399,16 +8405,19 @@ func (r ApiPoliciesReputationListRequest) Name(name string) ApiPoliciesReputatio
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPoliciesReputationListRequest) Ordering(ordering string) ApiPoliciesReputationListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPoliciesReputationListRequest) Page(page int32) ApiPoliciesReputationListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPoliciesReputationListRequest) PageSize(pageSize int32) ApiPoliciesReputationListRequest {
 	r.pageSize = &pageSize
@@ -8418,6 +8427,7 @@ func (r ApiPoliciesReputationListRequest) PolicyUuid(policyUuid string) ApiPolic
 	r.policyUuid = &policyUuid
 	return r
 }
+
 // A search term.
 func (r ApiPoliciesReputationListRequest) Search(search string) ApiPoliciesReputationListRequest {
 	r.search = &search
@@ -8443,7 +8453,7 @@ Reputation Policy Viewset
 func (a *PoliciesApiService) PoliciesReputationList(ctx _context.Context) ApiPoliciesReputationListRequest {
 	return ApiPoliciesReputationListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -8575,9 +8585,9 @@ func (a *PoliciesApiService) PoliciesReputationListExecute(r ApiPoliciesReputati
 }
 
 type ApiPoliciesReputationPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx                            _context.Context
+	ApiService                     *PoliciesApiService
+	policyUuid                     string
 	patchedReputationPolicyRequest *PatchedReputationPolicyRequest
 }
 
@@ -8602,7 +8612,7 @@ Reputation Policy Viewset
 func (a *PoliciesApiService) PoliciesReputationPartialUpdate(ctx _context.Context, policyUuid string) ApiPoliciesReputationPartialUpdateRequest {
 	return ApiPoliciesReputationPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -8702,11 +8712,10 @@ func (a *PoliciesApiService) PoliciesReputationPartialUpdateExecute(r ApiPolicie
 }
 
 type ApiPoliciesReputationRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesReputationRetrieveRequest) Execute() (ReputationPolicy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesReputationRetrieveExecute(r)
@@ -8724,7 +8733,7 @@ Reputation Policy Viewset
 func (a *PoliciesApiService) PoliciesReputationRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesReputationRetrieveRequest {
 	return ApiPoliciesReputationRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -8822,9 +8831,9 @@ func (a *PoliciesApiService) PoliciesReputationRetrieveExecute(r ApiPoliciesRepu
 }
 
 type ApiPoliciesReputationUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PoliciesApiService
-	policyUuid string
+	ctx                     _context.Context
+	ApiService              *PoliciesApiService
+	policyUuid              string
 	reputationPolicyRequest *ReputationPolicyRequest
 }
 
@@ -8849,7 +8858,7 @@ Reputation Policy Viewset
 func (a *PoliciesApiService) PoliciesReputationUpdate(ctx _context.Context, policyUuid string) ApiPoliciesReputationUpdateRequest {
 	return ApiPoliciesReputationUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -8949,11 +8958,10 @@ func (a *PoliciesApiService) PoliciesReputationUpdateExecute(r ApiPoliciesReputa
 }
 
 type ApiPoliciesReputationUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
-
 
 func (r ApiPoliciesReputationUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesReputationUsedByListExecute(r)
@@ -8971,7 +8979,7 @@ Get a list of all objects that use this object
 func (a *PoliciesApiService) PoliciesReputationUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesReputationUsedByListRequest {
 	return ApiPoliciesReputationUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		policyUuid: policyUuid,
 	}
 }
@@ -9069,11 +9077,10 @@ func (a *PoliciesApiService) PoliciesReputationUsedByListExecute(r ApiPoliciesRe
 }
 
 type ApiPoliciesReputationUsersDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiPoliciesReputationUsersDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PoliciesReputationUsersDestroyExecute(r)
@@ -9091,8 +9098,8 @@ UserReputation Viewset
 func (a *PoliciesApiService) PoliciesReputationUsersDestroy(ctx _context.Context, id int32) ApiPoliciesReputationUsersDestroyRequest {
 	return ApiPoliciesReputationUsersDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -9178,14 +9185,14 @@ func (a *PoliciesApiService) PoliciesReputationUsersDestroyExecute(r ApiPolicies
 }
 
 type ApiPoliciesReputationUsersListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
-	ordering *string
-	page *int32
-	pageSize *int32
-	score *int32
-	search *string
-	username *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	score      *int32
+	search     *string
+	username   *string
 }
 
 // Which field to use when ordering the results.
@@ -9193,11 +9200,13 @@ func (r ApiPoliciesReputationUsersListRequest) Ordering(ordering string) ApiPoli
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPoliciesReputationUsersListRequest) Page(page int32) ApiPoliciesReputationUsersListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPoliciesReputationUsersListRequest) PageSize(pageSize int32) ApiPoliciesReputationUsersListRequest {
 	r.pageSize = &pageSize
@@ -9207,6 +9216,7 @@ func (r ApiPoliciesReputationUsersListRequest) Score(score int32) ApiPoliciesRep
 	r.score = &score
 	return r
 }
+
 // A search term.
 func (r ApiPoliciesReputationUsersListRequest) Search(search string) ApiPoliciesReputationUsersListRequest {
 	r.search = &search
@@ -9232,7 +9242,7 @@ UserReputation Viewset
 func (a *PoliciesApiService) PoliciesReputationUsersList(ctx _context.Context) ApiPoliciesReputationUsersListRequest {
 	return ApiPoliciesReputationUsersListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -9346,11 +9356,10 @@ func (a *PoliciesApiService) PoliciesReputationUsersListExecute(r ApiPoliciesRep
 }
 
 type ApiPoliciesReputationUsersRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiPoliciesReputationUsersRetrieveRequest) Execute() (UserReputation, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesReputationUsersRetrieveExecute(r)
@@ -9368,8 +9377,8 @@ UserReputation Viewset
 func (a *PoliciesApiService) PoliciesReputationUsersRetrieve(ctx _context.Context, id int32) ApiPoliciesReputationUsersRetrieveRequest {
 	return ApiPoliciesReputationUsersRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -9466,11 +9475,10 @@ func (a *PoliciesApiService) PoliciesReputationUsersRetrieveExecute(r ApiPolicie
 }
 
 type ApiPoliciesReputationUsersUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoliciesApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiPoliciesReputationUsersUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PoliciesReputationUsersUsedByListExecute(r)
@@ -9488,8 +9496,8 @@ Get a list of all objects that use this object
 func (a *PoliciesApiService) PoliciesReputationUsersUsedByList(ctx _context.Context, id int32) ApiPoliciesReputationUsersUsedByListRequest {
 	return ApiPoliciesReputationUsersUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 

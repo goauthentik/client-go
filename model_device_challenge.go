@@ -17,9 +17,9 @@ import (
 
 // DeviceChallenge Single device challenge
 type DeviceChallenge struct {
-	DeviceClass string `json:"device_class"`
-	DeviceUid string `json:"device_uid"`
-	Challenge map[string]interface{} `json:"challenge"`
+	DeviceClass string                 `json:"device_class"`
+	DeviceUid   string                 `json:"device_uid"`
+	Challenge   map[string]interface{} `json:"challenge"`
 }
 
 // NewDeviceChallenge instantiates a new DeviceChallenge object
@@ -55,7 +55,7 @@ func (o *DeviceChallenge) GetDeviceClass() string {
 // GetDeviceClassOk returns a tuple with the DeviceClass field value
 // and a boolean to check if the value has been set.
 func (o *DeviceChallenge) GetDeviceClassOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.DeviceClass, true
@@ -79,7 +79,7 @@ func (o *DeviceChallenge) GetDeviceUid() string {
 // GetDeviceUidOk returns a tuple with the DeviceUid field value
 // and a boolean to check if the value has been set.
 func (o *DeviceChallenge) GetDeviceUidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.DeviceUid, true
@@ -103,7 +103,7 @@ func (o *DeviceChallenge) GetChallenge() map[string]interface{} {
 // GetChallengeOk returns a tuple with the Challenge field value
 // and a boolean to check if the value has been set.
 func (o *DeviceChallenge) GetChallengeOk() (*map[string]interface{}, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Challenge, true
@@ -163,5 +163,3 @@ func (v *NullableDeviceChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

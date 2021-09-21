@@ -17,10 +17,10 @@ import (
 
 // PromptStageRequest PromptStage Serializer
 type PromptStageRequest struct {
-	Name string `json:"name"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
-	Fields []string `json:"fields"`
-	ValidationPolicies *[]string `json:"validation_policies,omitempty"`
+	Name               string         `json:"name"`
+	FlowSet            *[]FlowRequest `json:"flow_set,omitempty"`
+	Fields             []string       `json:"fields"`
+	ValidationPolicies *[]string      `json:"validation_policies,omitempty"`
 }
 
 // NewPromptStageRequest instantiates a new PromptStageRequest object
@@ -55,7 +55,7 @@ func (o *PromptStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *PromptStageRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -111,7 +111,7 @@ func (o *PromptStageRequest) GetFields() []string {
 // GetFieldsOk returns a tuple with the Fields field value
 // and a boolean to check if the value has been set.
 func (o *PromptStageRequest) GetFieldsOk() (*[]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Fields, true
@@ -206,5 +206,3 @@ func (v *NullablePromptStageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

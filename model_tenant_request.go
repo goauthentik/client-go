@@ -18,15 +18,15 @@ import (
 // TenantRequest Tenant Serializer
 type TenantRequest struct {
 	// Domain that activates this tenant. Can be a superset, i.e. `a.b` for `aa.b` and `ba.b`
-	Domain string `json:"domain"`
-	Default *bool `json:"default,omitempty"`
-	BrandingTitle *string `json:"branding_title,omitempty"`
-	BrandingLogo *string `json:"branding_logo,omitempty"`
-	BrandingFavicon *string `json:"branding_favicon,omitempty"`
+	Domain             string         `json:"domain"`
+	Default            *bool          `json:"default,omitempty"`
+	BrandingTitle      *string        `json:"branding_title,omitempty"`
+	BrandingLogo       *string        `json:"branding_logo,omitempty"`
+	BrandingFavicon    *string        `json:"branding_favicon,omitempty"`
 	FlowAuthentication NullableString `json:"flow_authentication,omitempty"`
-	FlowInvalidation NullableString `json:"flow_invalidation,omitempty"`
-	FlowRecovery NullableString `json:"flow_recovery,omitempty"`
-	FlowUnenrollment NullableString `json:"flow_unenrollment,omitempty"`
+	FlowInvalidation   NullableString `json:"flow_invalidation,omitempty"`
+	FlowRecovery       NullableString `json:"flow_recovery,omitempty"`
+	FlowUnenrollment   NullableString `json:"flow_unenrollment,omitempty"`
 	// Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2).
 	EventRetention *string `json:"event_retention,omitempty"`
 }
@@ -62,7 +62,7 @@ func (o *TenantRequest) GetDomain() string {
 // GetDomainOk returns a tuple with the Domain field value
 // and a boolean to check if the value has been set.
 func (o *TenantRequest) GetDomainOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Domain, true
@@ -214,7 +214,7 @@ func (o *TenantRequest) GetFlowAuthentication() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TenantRequest) GetFlowAuthenticationOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.FlowAuthentication.Get(), o.FlowAuthentication.IsSet()
@@ -233,6 +233,7 @@ func (o *TenantRequest) HasFlowAuthentication() bool {
 func (o *TenantRequest) SetFlowAuthentication(v string) {
 	o.FlowAuthentication.Set(&v)
 }
+
 // SetFlowAuthenticationNil sets the value for FlowAuthentication to be an explicit nil
 func (o *TenantRequest) SetFlowAuthenticationNil() {
 	o.FlowAuthentication.Set(nil)
@@ -256,7 +257,7 @@ func (o *TenantRequest) GetFlowInvalidation() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TenantRequest) GetFlowInvalidationOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.FlowInvalidation.Get(), o.FlowInvalidation.IsSet()
@@ -275,6 +276,7 @@ func (o *TenantRequest) HasFlowInvalidation() bool {
 func (o *TenantRequest) SetFlowInvalidation(v string) {
 	o.FlowInvalidation.Set(&v)
 }
+
 // SetFlowInvalidationNil sets the value for FlowInvalidation to be an explicit nil
 func (o *TenantRequest) SetFlowInvalidationNil() {
 	o.FlowInvalidation.Set(nil)
@@ -298,7 +300,7 @@ func (o *TenantRequest) GetFlowRecovery() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TenantRequest) GetFlowRecoveryOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.FlowRecovery.Get(), o.FlowRecovery.IsSet()
@@ -317,6 +319,7 @@ func (o *TenantRequest) HasFlowRecovery() bool {
 func (o *TenantRequest) SetFlowRecovery(v string) {
 	o.FlowRecovery.Set(&v)
 }
+
 // SetFlowRecoveryNil sets the value for FlowRecovery to be an explicit nil
 func (o *TenantRequest) SetFlowRecoveryNil() {
 	o.FlowRecovery.Set(nil)
@@ -340,7 +343,7 @@ func (o *TenantRequest) GetFlowUnenrollment() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TenantRequest) GetFlowUnenrollmentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.FlowUnenrollment.Get(), o.FlowUnenrollment.IsSet()
@@ -359,6 +362,7 @@ func (o *TenantRequest) HasFlowUnenrollment() bool {
 func (o *TenantRequest) SetFlowUnenrollment(v string) {
 	o.FlowUnenrollment.Set(&v)
 }
+
 // SetFlowUnenrollmentNil sets the value for FlowUnenrollment to be an explicit nil
 func (o *TenantRequest) SetFlowUnenrollmentNil() {
 	o.FlowUnenrollment.Set(nil)
@@ -471,5 +475,3 @@ func (v *NullableTenantRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,13 +17,13 @@ import (
 
 // PasswordChallenge Password challenge UI fields
 type PasswordChallenge struct {
-	Type ChallengeChoices `json:"type"`
-	FlowInfo *ContextualFlowInfo `json:"flow_info,omitempty"`
-	Component *string `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser string `json:"pending_user"`
-	PendingUserAvatar string `json:"pending_user_avatar"`
-	RecoveryUrl *string `json:"recovery_url,omitempty"`
+	Type              ChallengeChoices          `json:"type"`
+	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component         *string                   `json:"component,omitempty"`
+	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser       string                    `json:"pending_user"`
+	PendingUserAvatar string                    `json:"pending_user_avatar"`
+	RecoveryUrl       *string                   `json:"recovery_url,omitempty"`
 }
 
 // NewPasswordChallenge instantiates a new PasswordChallenge object
@@ -63,7 +63,7 @@ func (o *PasswordChallenge) GetType() ChallengeChoices {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *PasswordChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -183,7 +183,7 @@ func (o *PasswordChallenge) GetPendingUser() string {
 // GetPendingUserOk returns a tuple with the PendingUser field value
 // and a boolean to check if the value has been set.
 func (o *PasswordChallenge) GetPendingUserOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PendingUser, true
@@ -207,7 +207,7 @@ func (o *PasswordChallenge) GetPendingUserAvatar() string {
 // GetPendingUserAvatarOk returns a tuple with the PendingUserAvatar field value
 // and a boolean to check if the value has been set.
 func (o *PasswordChallenge) GetPendingUserAvatarOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PendingUserAvatar, true
@@ -311,5 +311,3 @@ func (v *NullablePasswordChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

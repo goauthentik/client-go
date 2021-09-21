@@ -21,13 +21,13 @@ type PasswordPolicyRequest struct {
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
 	ExecutionLogging *bool `json:"execution_logging,omitempty"`
 	// Field key to check, field keys defined in Prompt stages are available.
-	PasswordField *string `json:"password_field,omitempty"`
-	AmountUppercase *int32 `json:"amount_uppercase,omitempty"`
-	AmountLowercase *int32 `json:"amount_lowercase,omitempty"`
-	AmountSymbols *int32 `json:"amount_symbols,omitempty"`
-	LengthMin *int32 `json:"length_min,omitempty"`
-	SymbolCharset *string `json:"symbol_charset,omitempty"`
-	ErrorMessage string `json:"error_message"`
+	PasswordField   *string `json:"password_field,omitempty"`
+	AmountUppercase *int32  `json:"amount_uppercase,omitempty"`
+	AmountLowercase *int32  `json:"amount_lowercase,omitempty"`
+	AmountSymbols   *int32  `json:"amount_symbols,omitempty"`
+	LengthMin       *int32  `json:"length_min,omitempty"`
+	SymbolCharset   *string `json:"symbol_charset,omitempty"`
+	ErrorMessage    string  `json:"error_message"`
 }
 
 // NewPasswordPolicyRequest instantiates a new PasswordPolicyRequest object
@@ -61,7 +61,7 @@ func (o *PasswordPolicyRequest) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PasswordPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -80,6 +80,7 @@ func (o *PasswordPolicyRequest) HasName() bool {
 func (o *PasswordPolicyRequest) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PasswordPolicyRequest) SetNameNil() {
 	o.Name.Set(nil)
@@ -327,7 +328,7 @@ func (o *PasswordPolicyRequest) GetErrorMessage() string {
 // GetErrorMessageOk returns a tuple with the ErrorMessage field value
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyRequest) GetErrorMessageOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ErrorMessage, true
@@ -405,5 +406,3 @@ func (v *NullablePasswordPolicyRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

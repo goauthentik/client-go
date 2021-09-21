@@ -18,10 +18,10 @@ import (
 
 // UserReputation UserReputation Serializer
 type UserReputation struct {
-	Pk int32 `json:"pk"`
-	Username string `json:"username"`
-	Score *int32 `json:"score,omitempty"`
-	Updated time.Time `json:"updated"`
+	Pk       int32     `json:"pk"`
+	Username string    `json:"username"`
+	Score    *int32    `json:"score,omitempty"`
+	Updated  time.Time `json:"updated"`
 }
 
 // NewUserReputation instantiates a new UserReputation object
@@ -57,7 +57,7 @@ func (o *UserReputation) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *UserReputation) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -81,7 +81,7 @@ func (o *UserReputation) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
 func (o *UserReputation) GetUsernameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Username, true
@@ -137,7 +137,7 @@ func (o *UserReputation) GetUpdated() time.Time {
 // GetUpdatedOk returns a tuple with the Updated field value
 // and a boolean to check if the value has been set.
 func (o *UserReputation) GetUpdatedOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Updated, true
@@ -200,5 +200,3 @@ func (v *NullableUserReputation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

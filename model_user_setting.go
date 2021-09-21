@@ -17,9 +17,9 @@ import (
 
 // UserSetting Serializer for User settings for stages and sources
 type UserSetting struct {
-	ObjectUid string `json:"object_uid"`
-	Component string `json:"component"`
-	Title string `json:"title"`
+	ObjectUid    string  `json:"object_uid"`
+	Component    string  `json:"component"`
+	Title        string  `json:"title"`
 	ConfigureUrl *string `json:"configure_url,omitempty"`
 }
 
@@ -56,7 +56,7 @@ func (o *UserSetting) GetObjectUid() string {
 // GetObjectUidOk returns a tuple with the ObjectUid field value
 // and a boolean to check if the value has been set.
 func (o *UserSetting) GetObjectUidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ObjectUid, true
@@ -80,7 +80,7 @@ func (o *UserSetting) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *UserSetting) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -104,7 +104,7 @@ func (o *UserSetting) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value
 // and a boolean to check if the value has been set.
 func (o *UserSetting) GetTitleOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Title, true
@@ -199,5 +199,3 @@ func (v *NullableUserSetting) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

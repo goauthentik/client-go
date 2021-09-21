@@ -28,10 +28,9 @@ var (
 type RootApiService service
 
 type ApiRootConfigRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *RootApiService
 }
-
 
 func (r ApiRootConfigRetrieveRequest) Execute() (Config, *_nethttp.Response, error) {
 	return r.ApiService.RootConfigRetrieveExecute(r)
@@ -48,7 +47,7 @@ Retrive public configuration options
 func (a *RootApiService) RootConfigRetrieve(ctx _context.Context) ApiRootConfigRetrieveRequest {
 	return ApiRootConfigRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 

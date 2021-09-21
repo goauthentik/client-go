@@ -17,8 +17,8 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
 
 // Linger please
@@ -30,11 +30,10 @@ var (
 type PropertymappingsApiService service
 
 type ApiPropertymappingsAllDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsAllDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsAllDestroyExecute(r)
@@ -52,8 +51,8 @@ PropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsAllDestroy(ctx _context.Context, pmUuid string) ApiPropertymappingsAllDestroyRequest {
 	return ApiPropertymappingsAllDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -139,34 +138,38 @@ func (a *PropertymappingsApiService) PropertymappingsAllDestroyExecute(r ApiProp
 }
 
 type ApiPropertymappingsAllListRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
+	ctx           _context.Context
+	ApiService    *PropertymappingsApiService
 	managedIsnull *bool
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	ordering      *string
+	page          *int32
+	pageSize      *int32
+	search        *string
 }
 
 func (r ApiPropertymappingsAllListRequest) ManagedIsnull(managedIsnull bool) ApiPropertymappingsAllListRequest {
 	r.managedIsnull = &managedIsnull
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPropertymappingsAllListRequest) Ordering(ordering string) ApiPropertymappingsAllListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPropertymappingsAllListRequest) Page(page int32) ApiPropertymappingsAllListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPropertymappingsAllListRequest) PageSize(pageSize int32) ApiPropertymappingsAllListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiPropertymappingsAllListRequest) Search(search string) ApiPropertymappingsAllListRequest {
 	r.search = &search
@@ -188,7 +191,7 @@ PropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsAllList(ctx _context.Context) ApiPropertymappingsAllListRequest {
 	return ApiPropertymappingsAllListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -299,11 +302,10 @@ func (a *PropertymappingsApiService) PropertymappingsAllListExecute(r ApiPropert
 }
 
 type ApiPropertymappingsAllRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsAllRetrieveRequest) Execute() (PropertyMapping, *_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsAllRetrieveExecute(r)
@@ -321,8 +323,8 @@ PropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsAllRetrieve(ctx _context.Context, pmUuid string) ApiPropertymappingsAllRetrieveRequest {
 	return ApiPropertymappingsAllRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -419,11 +421,11 @@ func (a *PropertymappingsApiService) PropertymappingsAllRetrieveExecute(r ApiPro
 }
 
 type ApiPropertymappingsAllTestCreateRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
-	pmUuid string
+	ctx               _context.Context
+	ApiService        *PropertymappingsApiService
+	pmUuid            string
 	policyTestRequest *PolicyTestRequest
-	formatResult *bool
+	formatResult      *bool
 }
 
 func (r ApiPropertymappingsAllTestCreateRequest) PolicyTestRequest(policyTestRequest PolicyTestRequest) ApiPropertymappingsAllTestCreateRequest {
@@ -451,8 +453,8 @@ Test Property Mapping
 func (a *PropertymappingsApiService) PropertymappingsAllTestCreate(ctx _context.Context, pmUuid string) ApiPropertymappingsAllTestCreateRequest {
 	return ApiPropertymappingsAllTestCreateRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -557,10 +559,9 @@ func (a *PropertymappingsApiService) PropertymappingsAllTestCreateExecute(r ApiP
 }
 
 type ApiPropertymappingsAllTypesListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
 }
-
 
 func (r ApiPropertymappingsAllTypesListRequest) Execute() ([]TypeCreate, *_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsAllTypesListExecute(r)
@@ -577,7 +578,7 @@ Get all creatable property-mapping types
 func (a *PropertymappingsApiService) PropertymappingsAllTypesList(ctx _context.Context) ApiPropertymappingsAllTypesListRequest {
 	return ApiPropertymappingsAllTypesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -673,11 +674,10 @@ func (a *PropertymappingsApiService) PropertymappingsAllTypesListExecute(r ApiPr
 }
 
 type ApiPropertymappingsAllUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsAllUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsAllUsedByListExecute(r)
@@ -695,8 +695,8 @@ Get a list of all objects that use this object
 func (a *PropertymappingsApiService) PropertymappingsAllUsedByList(ctx _context.Context, pmUuid string) ApiPropertymappingsAllUsedByListRequest {
 	return ApiPropertymappingsAllUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -793,8 +793,8 @@ func (a *PropertymappingsApiService) PropertymappingsAllUsedByListExecute(r ApiP
 }
 
 type ApiPropertymappingsLdapCreateRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
+	ctx                        _context.Context
+	ApiService                 *PropertymappingsApiService
 	lDAPPropertyMappingRequest *LDAPPropertyMappingRequest
 }
 
@@ -818,7 +818,7 @@ LDAP PropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsLdapCreate(ctx _context.Context) ApiPropertymappingsLdapCreateRequest {
 	return ApiPropertymappingsLdapCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -919,11 +919,10 @@ func (a *PropertymappingsApiService) PropertymappingsLdapCreateExecute(r ApiProp
 }
 
 type ApiPropertymappingsLdapDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsLdapDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsLdapDestroyExecute(r)
@@ -941,8 +940,8 @@ LDAP PropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsLdapDestroy(ctx _context.Context, pmUuid string) ApiPropertymappingsLdapDestroyRequest {
 	return ApiPropertymappingsLdapDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -1028,17 +1027,17 @@ func (a *PropertymappingsApiService) PropertymappingsLdapDestroyExecute(r ApiPro
 }
 
 type ApiPropertymappingsLdapListRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
-	expression *string
-	managed *[]string
-	name *string
+	ctx         _context.Context
+	ApiService  *PropertymappingsApiService
+	expression  *string
+	managed     *[]string
+	name        *string
 	objectField *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	pmUuid *string
-	search *string
+	ordering    *string
+	page        *int32
+	pageSize    *int32
+	pmUuid      *string
+	search      *string
 }
 
 func (r ApiPropertymappingsLdapListRequest) Expression(expression string) ApiPropertymappingsLdapListRequest {
@@ -1057,16 +1056,19 @@ func (r ApiPropertymappingsLdapListRequest) ObjectField(objectField string) ApiP
 	r.objectField = &objectField
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPropertymappingsLdapListRequest) Ordering(ordering string) ApiPropertymappingsLdapListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPropertymappingsLdapListRequest) Page(page int32) ApiPropertymappingsLdapListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPropertymappingsLdapListRequest) PageSize(pageSize int32) ApiPropertymappingsLdapListRequest {
 	r.pageSize = &pageSize
@@ -1076,6 +1078,7 @@ func (r ApiPropertymappingsLdapListRequest) PmUuid(pmUuid string) ApiPropertymap
 	r.pmUuid = &pmUuid
 	return r
 }
+
 // A search term.
 func (r ApiPropertymappingsLdapListRequest) Search(search string) ApiPropertymappingsLdapListRequest {
 	r.search = &search
@@ -1097,7 +1100,7 @@ LDAP PropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsLdapList(ctx _context.Context) ApiPropertymappingsLdapListRequest {
 	return ApiPropertymappingsLdapListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1228,9 +1231,9 @@ func (a *PropertymappingsApiService) PropertymappingsLdapListExecute(r ApiProper
 }
 
 type ApiPropertymappingsLdapPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
-	pmUuid string
+	ctx                               _context.Context
+	ApiService                        *PropertymappingsApiService
+	pmUuid                            string
 	patchedLDAPPropertyMappingRequest *PatchedLDAPPropertyMappingRequest
 }
 
@@ -1255,8 +1258,8 @@ LDAP PropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsLdapPartialUpdateRequest {
 	return ApiPropertymappingsLdapPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -1355,11 +1358,10 @@ func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdateExecute(r 
 }
 
 type ApiPropertymappingsLdapRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsLdapRetrieveRequest) Execute() (LDAPPropertyMapping, *_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsLdapRetrieveExecute(r)
@@ -1377,8 +1379,8 @@ LDAP PropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsLdapRetrieve(ctx _context.Context, pmUuid string) ApiPropertymappingsLdapRetrieveRequest {
 	return ApiPropertymappingsLdapRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -1475,9 +1477,9 @@ func (a *PropertymappingsApiService) PropertymappingsLdapRetrieveExecute(r ApiPr
 }
 
 type ApiPropertymappingsLdapUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
-	pmUuid string
+	ctx                        _context.Context
+	ApiService                 *PropertymappingsApiService
+	pmUuid                     string
 	lDAPPropertyMappingRequest *LDAPPropertyMappingRequest
 }
 
@@ -1502,8 +1504,8 @@ LDAP PropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsLdapUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsLdapUpdateRequest {
 	return ApiPropertymappingsLdapUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -1605,11 +1607,10 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUpdateExecute(r ApiProp
 }
 
 type ApiPropertymappingsLdapUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsLdapUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsLdapUsedByListExecute(r)
@@ -1627,8 +1628,8 @@ Get a list of all objects that use this object
 func (a *PropertymappingsApiService) PropertymappingsLdapUsedByList(ctx _context.Context, pmUuid string) ApiPropertymappingsLdapUsedByListRequest {
 	return ApiPropertymappingsLdapUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -1725,8 +1726,8 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUsedByListExecute(r Api
 }
 
 type ApiPropertymappingsNotificationCreateRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
+	ctx                               _context.Context
+	ApiService                        *PropertymappingsApiService
 	notificationWebhookMappingRequest *NotificationWebhookMappingRequest
 }
 
@@ -1750,7 +1751,7 @@ NotificationWebhookMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsNotificationCreate(ctx _context.Context) ApiPropertymappingsNotificationCreateRequest {
 	return ApiPropertymappingsNotificationCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1851,11 +1852,10 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationCreateExecute(r
 }
 
 type ApiPropertymappingsNotificationDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsNotificationDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsNotificationDestroyExecute(r)
@@ -1873,8 +1873,8 @@ NotificationWebhookMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsNotificationDestroy(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationDestroyRequest {
 	return ApiPropertymappingsNotificationDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -1960,34 +1960,38 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationDestroyExecute(
 }
 
 type ApiPropertymappingsNotificationListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
 }
 
 func (r ApiPropertymappingsNotificationListRequest) Name(name string) ApiPropertymappingsNotificationListRequest {
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPropertymappingsNotificationListRequest) Ordering(ordering string) ApiPropertymappingsNotificationListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPropertymappingsNotificationListRequest) Page(page int32) ApiPropertymappingsNotificationListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPropertymappingsNotificationListRequest) PageSize(pageSize int32) ApiPropertymappingsNotificationListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiPropertymappingsNotificationListRequest) Search(search string) ApiPropertymappingsNotificationListRequest {
 	r.search = &search
@@ -2009,7 +2013,7 @@ NotificationWebhookMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsNotificationList(ctx _context.Context) ApiPropertymappingsNotificationListRequest {
 	return ApiPropertymappingsNotificationListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2120,9 +2124,9 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationListExecute(r A
 }
 
 type ApiPropertymappingsNotificationPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
-	pmUuid string
+	ctx                                      _context.Context
+	ApiService                               *PropertymappingsApiService
+	pmUuid                                   string
 	patchedNotificationWebhookMappingRequest *PatchedNotificationWebhookMappingRequest
 }
 
@@ -2147,8 +2151,8 @@ NotificationWebhookMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationPartialUpdateRequest {
 	return ApiPropertymappingsNotificationPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -2247,11 +2251,10 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdateEx
 }
 
 type ApiPropertymappingsNotificationRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsNotificationRetrieveRequest) Execute() (NotificationWebhookMapping, *_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsNotificationRetrieveExecute(r)
@@ -2269,8 +2272,8 @@ NotificationWebhookMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieve(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationRetrieveRequest {
 	return ApiPropertymappingsNotificationRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -2367,9 +2370,9 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieveExecute
 }
 
 type ApiPropertymappingsNotificationUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
-	pmUuid string
+	ctx                               _context.Context
+	ApiService                        *PropertymappingsApiService
+	pmUuid                            string
 	notificationWebhookMappingRequest *NotificationWebhookMappingRequest
 }
 
@@ -2394,8 +2397,8 @@ NotificationWebhookMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsNotificationUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationUpdateRequest {
 	return ApiPropertymappingsNotificationUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -2497,11 +2500,10 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUpdateExecute(r
 }
 
 type ApiPropertymappingsNotificationUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsNotificationUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsNotificationUsedByListExecute(r)
@@ -2519,8 +2521,8 @@ Get a list of all objects that use this object
 func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByList(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationUsedByListRequest {
 	return ApiPropertymappingsNotificationUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -2617,8 +2619,8 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecu
 }
 
 type ApiPropertymappingsSamlCreateRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
+	ctx                        _context.Context
+	ApiService                 *PropertymappingsApiService
 	sAMLPropertyMappingRequest *SAMLPropertyMappingRequest
 }
 
@@ -2642,7 +2644,7 @@ SAMLPropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsSamlCreate(ctx _context.Context) ApiPropertymappingsSamlCreateRequest {
 	return ApiPropertymappingsSamlCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2743,11 +2745,10 @@ func (a *PropertymappingsApiService) PropertymappingsSamlCreateExecute(r ApiProp
 }
 
 type ApiPropertymappingsSamlDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsSamlDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsSamlDestroyExecute(r)
@@ -2765,8 +2766,8 @@ SAMLPropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsSamlDestroy(ctx _context.Context, pmUuid string) ApiPropertymappingsSamlDestroyRequest {
 	return ApiPropertymappingsSamlDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -2852,18 +2853,18 @@ func (a *PropertymappingsApiService) PropertymappingsSamlDestroyExecute(r ApiPro
 }
 
 type ApiPropertymappingsSamlListRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
-	expression *string
+	ctx          _context.Context
+	ApiService   *PropertymappingsApiService
+	expression   *string
 	friendlyName *string
-	managed *[]string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	pmUuid *string
-	samlName *string
-	search *string
+	managed      *[]string
+	name         *string
+	ordering     *string
+	page         *int32
+	pageSize     *int32
+	pmUuid       *string
+	samlName     *string
+	search       *string
 }
 
 func (r ApiPropertymappingsSamlListRequest) Expression(expression string) ApiPropertymappingsSamlListRequest {
@@ -2882,16 +2883,19 @@ func (r ApiPropertymappingsSamlListRequest) Name(name string) ApiPropertymapping
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPropertymappingsSamlListRequest) Ordering(ordering string) ApiPropertymappingsSamlListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPropertymappingsSamlListRequest) Page(page int32) ApiPropertymappingsSamlListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPropertymappingsSamlListRequest) PageSize(pageSize int32) ApiPropertymappingsSamlListRequest {
 	r.pageSize = &pageSize
@@ -2905,6 +2909,7 @@ func (r ApiPropertymappingsSamlListRequest) SamlName(samlName string) ApiPropert
 	r.samlName = &samlName
 	return r
 }
+
 // A search term.
 func (r ApiPropertymappingsSamlListRequest) Search(search string) ApiPropertymappingsSamlListRequest {
 	r.search = &search
@@ -2926,7 +2931,7 @@ SAMLPropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsSamlList(ctx _context.Context) ApiPropertymappingsSamlListRequest {
 	return ApiPropertymappingsSamlListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3060,9 +3065,9 @@ func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiProper
 }
 
 type ApiPropertymappingsSamlPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
-	pmUuid string
+	ctx                               _context.Context
+	ApiService                        *PropertymappingsApiService
+	pmUuid                            string
 	patchedSAMLPropertyMappingRequest *PatchedSAMLPropertyMappingRequest
 }
 
@@ -3087,8 +3092,8 @@ SAMLPropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsSamlPartialUpdateRequest {
 	return ApiPropertymappingsSamlPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -3187,11 +3192,10 @@ func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r 
 }
 
 type ApiPropertymappingsSamlRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsSamlRetrieveRequest) Execute() (SAMLPropertyMapping, *_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsSamlRetrieveExecute(r)
@@ -3209,8 +3213,8 @@ SAMLPropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsSamlRetrieve(ctx _context.Context, pmUuid string) ApiPropertymappingsSamlRetrieveRequest {
 	return ApiPropertymappingsSamlRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -3307,9 +3311,9 @@ func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPr
 }
 
 type ApiPropertymappingsSamlUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
-	pmUuid string
+	ctx                        _context.Context
+	ApiService                 *PropertymappingsApiService
+	pmUuid                     string
 	sAMLPropertyMappingRequest *SAMLPropertyMappingRequest
 }
 
@@ -3334,8 +3338,8 @@ SAMLPropertyMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsSamlUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsSamlUpdateRequest {
 	return ApiPropertymappingsSamlUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -3437,11 +3441,10 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiProp
 }
 
 type ApiPropertymappingsSamlUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsSamlUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsSamlUsedByListExecute(r)
@@ -3459,8 +3462,8 @@ Get a list of all objects that use this object
 func (a *PropertymappingsApiService) PropertymappingsSamlUsedByList(ctx _context.Context, pmUuid string) ApiPropertymappingsSamlUsedByListRequest {
 	return ApiPropertymappingsSamlUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -3557,8 +3560,8 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r Api
 }
 
 type ApiPropertymappingsScopeCreateRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
+	ctx                 _context.Context
+	ApiService          *PropertymappingsApiService
 	scopeMappingRequest *ScopeMappingRequest
 }
 
@@ -3582,7 +3585,7 @@ ScopeMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsScopeCreate(ctx _context.Context) ApiPropertymappingsScopeCreateRequest {
 	return ApiPropertymappingsScopeCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3683,11 +3686,10 @@ func (a *PropertymappingsApiService) PropertymappingsScopeCreateExecute(r ApiPro
 }
 
 type ApiPropertymappingsScopeDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsScopeDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsScopeDestroyExecute(r)
@@ -3705,8 +3707,8 @@ ScopeMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsScopeDestroy(ctx _context.Context, pmUuid string) ApiPropertymappingsScopeDestroyRequest {
 	return ApiPropertymappingsScopeDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -3792,15 +3794,15 @@ func (a *PropertymappingsApiService) PropertymappingsScopeDestroyExecute(r ApiPr
 }
 
 type ApiPropertymappingsScopeListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	managed *[]string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	scopeName *string
-	search *string
+	managed    *[]string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	scopeName  *string
+	search     *string
 }
 
 func (r ApiPropertymappingsScopeListRequest) Managed(managed []string) ApiPropertymappingsScopeListRequest {
@@ -3811,16 +3813,19 @@ func (r ApiPropertymappingsScopeListRequest) Name(name string) ApiPropertymappin
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiPropertymappingsScopeListRequest) Ordering(ordering string) ApiPropertymappingsScopeListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiPropertymappingsScopeListRequest) Page(page int32) ApiPropertymappingsScopeListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiPropertymappingsScopeListRequest) PageSize(pageSize int32) ApiPropertymappingsScopeListRequest {
 	r.pageSize = &pageSize
@@ -3830,6 +3835,7 @@ func (r ApiPropertymappingsScopeListRequest) ScopeName(scopeName string) ApiProp
 	r.scopeName = &scopeName
 	return r
 }
+
 // A search term.
 func (r ApiPropertymappingsScopeListRequest) Search(search string) ApiPropertymappingsScopeListRequest {
 	r.search = &search
@@ -3851,7 +3857,7 @@ ScopeMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsScopeList(ctx _context.Context) ApiPropertymappingsScopeListRequest {
 	return ApiPropertymappingsScopeListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3976,9 +3982,9 @@ func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPrope
 }
 
 type ApiPropertymappingsScopePartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
-	pmUuid string
+	ctx                        _context.Context
+	ApiService                 *PropertymappingsApiService
+	pmUuid                     string
 	patchedScopeMappingRequest *PatchedScopeMappingRequest
 }
 
@@ -4003,8 +4009,8 @@ ScopeMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsScopePartialUpdateRequest {
 	return ApiPropertymappingsScopePartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -4103,11 +4109,10 @@ func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r
 }
 
 type ApiPropertymappingsScopeRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsScopeRetrieveRequest) Execute() (ScopeMapping, *_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsScopeRetrieveExecute(r)
@@ -4125,8 +4130,8 @@ ScopeMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsScopeRetrieve(ctx _context.Context, pmUuid string) ApiPropertymappingsScopeRetrieveRequest {
 	return ApiPropertymappingsScopeRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -4223,9 +4228,9 @@ func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiP
 }
 
 type ApiPropertymappingsScopeUpdateRequest struct {
-	ctx _context.Context
-	ApiService *PropertymappingsApiService
-	pmUuid string
+	ctx                 _context.Context
+	ApiService          *PropertymappingsApiService
+	pmUuid              string
 	scopeMappingRequest *ScopeMappingRequest
 }
 
@@ -4250,8 +4255,8 @@ ScopeMapping Viewset
 func (a *PropertymappingsApiService) PropertymappingsScopeUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsScopeUpdateRequest {
 	return ApiPropertymappingsScopeUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 
@@ -4353,11 +4358,10 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPro
 }
 
 type ApiPropertymappingsScopeUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PropertymappingsApiService
-	pmUuid string
+	pmUuid     string
 }
-
 
 func (r ApiPropertymappingsScopeUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.PropertymappingsScopeUsedByListExecute(r)
@@ -4375,8 +4379,8 @@ Get a list of all objects that use this object
 func (a *PropertymappingsApiService) PropertymappingsScopeUsedByList(ctx _context.Context, pmUuid string) ApiPropertymappingsScopeUsedByListRequest {
 	return ApiPropertymappingsScopeUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		pmUuid: pmUuid,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
 	}
 }
 

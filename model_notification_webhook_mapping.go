@@ -17,8 +17,8 @@ import (
 
 // NotificationWebhookMapping NotificationWebhookMapping Serializer
 type NotificationWebhookMapping struct {
-	Pk string `json:"pk"`
-	Name string `json:"name"`
+	Pk         string `json:"pk"`
+	Name       string `json:"name"`
 	Expression string `json:"expression"`
 }
 
@@ -55,7 +55,7 @@ func (o *NotificationWebhookMapping) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *NotificationWebhookMapping) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -79,7 +79,7 @@ func (o *NotificationWebhookMapping) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *NotificationWebhookMapping) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -103,7 +103,7 @@ func (o *NotificationWebhookMapping) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value
 // and a boolean to check if the value has been set.
 func (o *NotificationWebhookMapping) GetExpressionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Expression, true
@@ -163,5 +163,3 @@ func (v *NullableNotificationWebhookMapping) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

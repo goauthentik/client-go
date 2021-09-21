@@ -18,10 +18,10 @@ import (
 // SAMLPropertyMappingRequest SAMLPropertyMapping Serializer
 type SAMLPropertyMappingRequest struct {
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed NullableString `json:"managed,omitempty"`
-	Name string `json:"name"`
-	Expression string `json:"expression"`
-	SamlName string `json:"saml_name"`
+	Managed      NullableString `json:"managed,omitempty"`
+	Name         string         `json:"name"`
+	Expression   string         `json:"expression"`
+	SamlName     string         `json:"saml_name"`
 	FriendlyName NullableString `json:"friendly_name,omitempty"`
 }
 
@@ -58,7 +58,7 @@ func (o *SAMLPropertyMappingRequest) GetManaged() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SAMLPropertyMappingRequest) GetManagedOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Managed.Get(), o.Managed.IsSet()
@@ -77,6 +77,7 @@ func (o *SAMLPropertyMappingRequest) HasManaged() bool {
 func (o *SAMLPropertyMappingRequest) SetManaged(v string) {
 	o.Managed.Set(&v)
 }
+
 // SetManagedNil sets the value for Managed to be an explicit nil
 func (o *SAMLPropertyMappingRequest) SetManagedNil() {
 	o.Managed.Set(nil)
@@ -100,7 +101,7 @@ func (o *SAMLPropertyMappingRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *SAMLPropertyMappingRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -124,7 +125,7 @@ func (o *SAMLPropertyMappingRequest) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value
 // and a boolean to check if the value has been set.
 func (o *SAMLPropertyMappingRequest) GetExpressionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Expression, true
@@ -148,7 +149,7 @@ func (o *SAMLPropertyMappingRequest) GetSamlName() string {
 // GetSamlNameOk returns a tuple with the SamlName field value
 // and a boolean to check if the value has been set.
 func (o *SAMLPropertyMappingRequest) GetSamlNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.SamlName, true
@@ -172,7 +173,7 @@ func (o *SAMLPropertyMappingRequest) GetFriendlyName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SAMLPropertyMappingRequest) GetFriendlyNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.FriendlyName.Get(), o.FriendlyName.IsSet()
@@ -191,6 +192,7 @@ func (o *SAMLPropertyMappingRequest) HasFriendlyName() bool {
 func (o *SAMLPropertyMappingRequest) SetFriendlyName(v string) {
 	o.FriendlyName.Set(&v)
 }
+
 // SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
 func (o *SAMLPropertyMappingRequest) SetFriendlyNameNil() {
 	o.FriendlyName.Set(nil)
@@ -256,5 +258,3 @@ func (v *NullableSAMLPropertyMappingRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

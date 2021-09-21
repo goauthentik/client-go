@@ -17,12 +17,12 @@ import (
 
 // OutpostRequest Outpost Serializer
 type OutpostRequest struct {
-	Name string `json:"name"`
-	Type OutpostTypeEnum `json:"type"`
-	Providers []int32 `json:"providers"`
+	Name      string          `json:"name"`
+	Type      OutpostTypeEnum `json:"type"`
+	Providers []int32         `json:"providers"`
 	// Select Service-Connection authentik should use to manage this outpost. Leave empty if authentik should not handle the deployment.
-	ServiceConnection NullableString `json:"service_connection,omitempty"`
-	Config map[string]interface{} `json:"config"`
+	ServiceConnection NullableString         `json:"service_connection,omitempty"`
+	Config            map[string]interface{} `json:"config"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed NullableString `json:"managed,omitempty"`
 }
@@ -61,7 +61,7 @@ func (o *OutpostRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *OutpostRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -85,7 +85,7 @@ func (o *OutpostRequest) GetType() OutpostTypeEnum {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *OutpostRequest) GetTypeOk() (*OutpostTypeEnum, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -109,7 +109,7 @@ func (o *OutpostRequest) GetProviders() []int32 {
 // GetProvidersOk returns a tuple with the Providers field value
 // and a boolean to check if the value has been set.
 func (o *OutpostRequest) GetProvidersOk() (*[]int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Providers, true
@@ -133,7 +133,7 @@ func (o *OutpostRequest) GetServiceConnection() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OutpostRequest) GetServiceConnectionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ServiceConnection.Get(), o.ServiceConnection.IsSet()
@@ -152,6 +152,7 @@ func (o *OutpostRequest) HasServiceConnection() bool {
 func (o *OutpostRequest) SetServiceConnection(v string) {
 	o.ServiceConnection.Set(&v)
 }
+
 // SetServiceConnectionNil sets the value for ServiceConnection to be an explicit nil
 func (o *OutpostRequest) SetServiceConnectionNil() {
 	o.ServiceConnection.Set(nil)
@@ -175,7 +176,7 @@ func (o *OutpostRequest) GetConfig() map[string]interface{} {
 // GetConfigOk returns a tuple with the Config field value
 // and a boolean to check if the value has been set.
 func (o *OutpostRequest) GetConfigOk() (*map[string]interface{}, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Config, true
@@ -199,7 +200,7 @@ func (o *OutpostRequest) GetManaged() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OutpostRequest) GetManagedOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Managed.Get(), o.Managed.IsSet()
@@ -218,6 +219,7 @@ func (o *OutpostRequest) HasManaged() bool {
 func (o *OutpostRequest) SetManaged(v string) {
 	o.Managed.Set(&v)
 }
+
 // SetManagedNil sets the value for Managed to be an explicit nil
 func (o *OutpostRequest) SetManagedNil() {
 	o.Managed.Set(nil)
@@ -286,5 +288,3 @@ func (v *NullableOutpostRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

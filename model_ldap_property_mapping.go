@@ -19,13 +19,13 @@ import (
 type LDAPPropertyMapping struct {
 	Pk string `json:"pk"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed NullableString `json:"managed,omitempty"`
-	Name string `json:"name"`
-	Expression string `json:"expression"`
-	Component string `json:"component"`
-	VerboseName string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
-	ObjectField string `json:"object_field"`
+	Managed           NullableString `json:"managed,omitempty"`
+	Name              string         `json:"name"`
+	Expression        string         `json:"expression"`
+	Component         string         `json:"component"`
+	VerboseName       string         `json:"verbose_name"`
+	VerboseNamePlural string         `json:"verbose_name_plural"`
+	ObjectField       string         `json:"object_field"`
 }
 
 // NewLDAPPropertyMapping instantiates a new LDAPPropertyMapping object
@@ -65,7 +65,7 @@ func (o *LDAPPropertyMapping) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *LDAPPropertyMapping) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -89,7 +89,7 @@ func (o *LDAPPropertyMapping) GetManaged() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LDAPPropertyMapping) GetManagedOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Managed.Get(), o.Managed.IsSet()
@@ -108,6 +108,7 @@ func (o *LDAPPropertyMapping) HasManaged() bool {
 func (o *LDAPPropertyMapping) SetManaged(v string) {
 	o.Managed.Set(&v)
 }
+
 // SetManagedNil sets the value for Managed to be an explicit nil
 func (o *LDAPPropertyMapping) SetManagedNil() {
 	o.Managed.Set(nil)
@@ -131,7 +132,7 @@ func (o *LDAPPropertyMapping) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *LDAPPropertyMapping) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -155,7 +156,7 @@ func (o *LDAPPropertyMapping) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value
 // and a boolean to check if the value has been set.
 func (o *LDAPPropertyMapping) GetExpressionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Expression, true
@@ -179,7 +180,7 @@ func (o *LDAPPropertyMapping) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *LDAPPropertyMapping) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -203,7 +204,7 @@ func (o *LDAPPropertyMapping) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *LDAPPropertyMapping) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -227,7 +228,7 @@ func (o *LDAPPropertyMapping) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *LDAPPropertyMapping) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -251,7 +252,7 @@ func (o *LDAPPropertyMapping) GetObjectField() string {
 // GetObjectFieldOk returns a tuple with the ObjectField field value
 // and a boolean to check if the value has been set.
 func (o *LDAPPropertyMapping) GetObjectFieldOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ObjectField, true
@@ -326,5 +327,3 @@ func (v *NullableLDAPPropertyMapping) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

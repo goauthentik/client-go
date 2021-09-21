@@ -17,7 +17,7 @@ import (
 
 // PolicyTestResult result of a policy test
 type PolicyTestResult struct {
-	Passing bool `json:"passing"`
+	Passing  bool     `json:"passing"`
 	Messages []string `json:"messages"`
 }
 
@@ -53,7 +53,7 @@ func (o *PolicyTestResult) GetPassing() bool {
 // GetPassingOk returns a tuple with the Passing field value
 // and a boolean to check if the value has been set.
 func (o *PolicyTestResult) GetPassingOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Passing, true
@@ -77,7 +77,7 @@ func (o *PolicyTestResult) GetMessages() []string {
 // GetMessagesOk returns a tuple with the Messages field value
 // and a boolean to check if the value has been set.
 func (o *PolicyTestResult) GetMessagesOk() (*[]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Messages, true
@@ -134,5 +134,3 @@ func (v *NullablePolicyTestResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

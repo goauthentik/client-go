@@ -17,12 +17,12 @@ import (
 
 // PlexAuthenticationChallenge Challenge shown to the user in identification stage
 type PlexAuthenticationChallenge struct {
-	Type ChallengeChoices `json:"type"`
-	FlowInfo *ContextualFlowInfo `json:"flow_info,omitempty"`
-	Component *string `json:"component,omitempty"`
+	Type           ChallengeChoices          `json:"type"`
+	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	ClientId string `json:"client_id"`
-	Slug string `json:"slug"`
+	ClientId       string                    `json:"client_id"`
+	Slug           string                    `json:"slug"`
 }
 
 // NewPlexAuthenticationChallenge instantiates a new PlexAuthenticationChallenge object
@@ -62,7 +62,7 @@ func (o *PlexAuthenticationChallenge) GetType() ChallengeChoices {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *PlexAuthenticationChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -182,7 +182,7 @@ func (o *PlexAuthenticationChallenge) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value
 // and a boolean to check if the value has been set.
 func (o *PlexAuthenticationChallenge) GetClientIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ClientId, true
@@ -206,7 +206,7 @@ func (o *PlexAuthenticationChallenge) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value
 // and a boolean to check if the value has been set.
 func (o *PlexAuthenticationChallenge) GetSlugOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Slug, true
@@ -275,5 +275,3 @@ func (v *NullablePlexAuthenticationChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

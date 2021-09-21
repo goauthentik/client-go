@@ -19,12 +19,12 @@ import (
 type PatchedOAuth2ProviderRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string `json:"authorization_flow,omitempty"`
-	PropertyMappings *[]string `json:"property_mappings,omitempty"`
+	AuthorizationFlow *string   `json:"authorization_flow,omitempty"`
+	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
 	// Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable.
-	ClientType *ClientTypeEnum `json:"client_type,omitempty"`
-	ClientId *string `json:"client_id,omitempty"`
-	ClientSecret *string `json:"client_secret,omitempty"`
+	ClientType   *ClientTypeEnum `json:"client_type,omitempty"`
+	ClientId     *string         `json:"client_id,omitempty"`
+	ClientSecret *string         `json:"client_secret,omitempty"`
 	// Access codes not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	AccessCodeValidity *string `json:"access_code_validity,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
@@ -393,7 +393,7 @@ func (o *PatchedOAuth2ProviderRequest) GetRsaKey() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuth2ProviderRequest) GetRsaKeyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.RsaKey.Get(), o.RsaKey.IsSet()
@@ -412,6 +412,7 @@ func (o *PatchedOAuth2ProviderRequest) HasRsaKey() bool {
 func (o *PatchedOAuth2ProviderRequest) SetRsaKey(v string) {
 	o.RsaKey.Set(&v)
 }
+
 // SetRsaKeyNil sets the value for RsaKey to be an explicit nil
 func (o *PatchedOAuth2ProviderRequest) SetRsaKeyNil() {
 	o.RsaKey.Set(nil)
@@ -600,5 +601,3 @@ func (v *NullablePatchedOAuth2ProviderRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

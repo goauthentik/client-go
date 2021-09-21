@@ -19,14 +19,14 @@ import (
 // PatchedTokenRequest Token Serializer
 type PatchedTokenRequest struct {
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed NullableString `json:"managed,omitempty"`
-	Identifier *string `json:"identifier,omitempty"`
-	Intent *IntentEnum `json:"intent,omitempty"`
-	User *int32 `json:"user,omitempty"`
-	UserObj *UserRequest `json:"user_obj,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Expires *time.Time `json:"expires,omitempty"`
-	Expiring *bool `json:"expiring,omitempty"`
+	Managed     NullableString `json:"managed,omitempty"`
+	Identifier  *string        `json:"identifier,omitempty"`
+	Intent      *IntentEnum    `json:"intent,omitempty"`
+	User        *int32         `json:"user,omitempty"`
+	UserObj     *UserRequest   `json:"user_obj,omitempty"`
+	Description *string        `json:"description,omitempty"`
+	Expires     *time.Time     `json:"expires,omitempty"`
+	Expiring    *bool          `json:"expiring,omitempty"`
 }
 
 // NewPatchedTokenRequest instantiates a new PatchedTokenRequest object
@@ -59,7 +59,7 @@ func (o *PatchedTokenRequest) GetManaged() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedTokenRequest) GetManagedOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Managed.Get(), o.Managed.IsSet()
@@ -78,6 +78,7 @@ func (o *PatchedTokenRequest) HasManaged() bool {
 func (o *PatchedTokenRequest) SetManaged(v string) {
 	o.Managed.Set(&v)
 }
+
 // SetManagedNil sets the value for Managed to be an explicit nil
 func (o *PatchedTokenRequest) SetManagedNil() {
 	o.Managed.Set(nil)
@@ -376,5 +377,3 @@ func (v *NullablePatchedTokenRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,9 +17,9 @@ import (
 
 // ConsentStageRequest ConsentStage Serializer
 type ConsentStageRequest struct {
-	Name string `json:"name"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
-	Mode *ConsentStageModeEnum `json:"mode,omitempty"`
+	Name    string                `json:"name"`
+	FlowSet *[]FlowRequest        `json:"flow_set,omitempty"`
+	Mode    *ConsentStageModeEnum `json:"mode,omitempty"`
 	// Offset after which consent expires. (Format: hours=1;minutes=2;seconds=3).
 	ConsentExpireIn *string `json:"consent_expire_in,omitempty"`
 }
@@ -55,7 +55,7 @@ func (o *ConsentStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ConsentStageRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -214,5 +214,3 @@ func (v *NullableConsentStageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

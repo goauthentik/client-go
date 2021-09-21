@@ -20,8 +20,8 @@ type PasswordExpiryPolicyRequest struct {
 	Name NullableString `json:"name,omitempty"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
 	ExecutionLogging *bool `json:"execution_logging,omitempty"`
-	Days int32 `json:"days"`
-	DenyOnly *bool `json:"deny_only,omitempty"`
+	Days             int32 `json:"days"`
+	DenyOnly         *bool `json:"deny_only,omitempty"`
 }
 
 // NewPasswordExpiryPolicyRequest instantiates a new PasswordExpiryPolicyRequest object
@@ -55,7 +55,7 @@ func (o *PasswordExpiryPolicyRequest) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PasswordExpiryPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -74,6 +74,7 @@ func (o *PasswordExpiryPolicyRequest) HasName() bool {
 func (o *PasswordExpiryPolicyRequest) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PasswordExpiryPolicyRequest) SetNameNil() {
 	o.Name.Set(nil)
@@ -129,7 +130,7 @@ func (o *PasswordExpiryPolicyRequest) GetDays() int32 {
 // GetDaysOk returns a tuple with the Days field value
 // and a boolean to check if the value has been set.
 func (o *PasswordExpiryPolicyRequest) GetDaysOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Days, true
@@ -224,5 +225,3 @@ func (v *NullablePasswordExpiryPolicyRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

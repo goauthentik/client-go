@@ -17,10 +17,10 @@ import (
 
 // AuthenticatedSessionUserAgent struct for AuthenticatedSessionUserAgent
 type AuthenticatedSessionUserAgent struct {
-	Device *AuthenticatedSessionUserAgentDevice `json:"device,omitempty"`
-	Os *AuthenticatedSessionUserAgentOs `json:"os,omitempty"`
+	Device    *AuthenticatedSessionUserAgentDevice    `json:"device,omitempty"`
+	Os        *AuthenticatedSessionUserAgentOs        `json:"os,omitempty"`
 	UserAgent *AuthenticatedSessionUserAgentUserAgent `json:"user_agent,omitempty"`
-	String *string `json:"string,omitempty"`
+	String    *string                                 `json:"string,omitempty"`
 }
 
 // NewAuthenticatedSessionUserAgent instantiates a new AuthenticatedSessionUserAgent object
@@ -220,5 +220,3 @@ func (v *NullableAuthenticatedSessionUserAgent) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

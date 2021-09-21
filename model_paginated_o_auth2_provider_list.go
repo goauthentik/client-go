@@ -18,7 +18,7 @@ import (
 // PaginatedOAuth2ProviderList struct for PaginatedOAuth2ProviderList
 type PaginatedOAuth2ProviderList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []OAuth2Provider `json:"results"`
+	Results    []OAuth2Provider                   `json:"results"`
 }
 
 // NewPaginatedOAuth2ProviderList instantiates a new PaginatedOAuth2ProviderList object
@@ -53,7 +53,7 @@ func (o *PaginatedOAuth2ProviderList) GetPagination() PaginatedApplicationListPa
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedOAuth2ProviderList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedOAuth2ProviderList) GetResults() []OAuth2Provider {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedOAuth2ProviderList) GetResultsOk() (*[]OAuth2Provider, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedOAuth2ProviderList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

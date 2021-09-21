@@ -19,14 +19,14 @@ import (
 type PatchedLDAPProviderRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string `json:"authorization_flow,omitempty"`
-	PropertyMappings *[]string `json:"property_mappings,omitempty"`
+	AuthorizationFlow *string   `json:"authorization_flow,omitempty"`
+	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
 	// DN under which objects are accessible.
 	BaseDn *string `json:"base_dn,omitempty"`
 	// Users in this group can do search queries. If not set, every user can execute search queries.
-	SearchGroup NullableString `json:"search_group,omitempty"`
-	Certificate NullableString `json:"certificate,omitempty"`
-	TlsServerName *string `json:"tls_server_name,omitempty"`
+	SearchGroup   NullableString `json:"search_group,omitempty"`
+	Certificate   NullableString `json:"certificate,omitempty"`
+	TlsServerName *string        `json:"tls_server_name,omitempty"`
 	// The start for uidNumbers, this number is added to the user.Pk to make sure that the numbers aren't too low for POSIX users. Default is 2000 to ensure that we don't collide with local users uidNumber
 	UidStartNumber *int32 `json:"uid_start_number,omitempty"`
 	// The start for gidNumbers, this number is added to a number generated from the group.Pk to make sure that the numbers aren't too low for POSIX groups. Default is 4000 to ensure that we don't collide with local groups or users primary groups gidNumber
@@ -191,7 +191,7 @@ func (o *PatchedLDAPProviderRequest) GetSearchGroup() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedLDAPProviderRequest) GetSearchGroupOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SearchGroup.Get(), o.SearchGroup.IsSet()
@@ -210,6 +210,7 @@ func (o *PatchedLDAPProviderRequest) HasSearchGroup() bool {
 func (o *PatchedLDAPProviderRequest) SetSearchGroup(v string) {
 	o.SearchGroup.Set(&v)
 }
+
 // SetSearchGroupNil sets the value for SearchGroup to be an explicit nil
 func (o *PatchedLDAPProviderRequest) SetSearchGroupNil() {
 	o.SearchGroup.Set(nil)
@@ -233,7 +234,7 @@ func (o *PatchedLDAPProviderRequest) GetCertificate() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedLDAPProviderRequest) GetCertificateOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Certificate.Get(), o.Certificate.IsSet()
@@ -252,6 +253,7 @@ func (o *PatchedLDAPProviderRequest) HasCertificate() bool {
 func (o *PatchedLDAPProviderRequest) SetCertificate(v string) {
 	o.Certificate.Set(&v)
 }
+
 // SetCertificateNil sets the value for Certificate to be an explicit nil
 func (o *PatchedLDAPProviderRequest) SetCertificateNil() {
 	o.Certificate.Set(nil)
@@ -425,5 +427,3 @@ func (v *NullablePatchedLDAPProviderRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

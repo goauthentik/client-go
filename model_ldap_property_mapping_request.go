@@ -18,10 +18,10 @@ import (
 // LDAPPropertyMappingRequest LDAP PropertyMapping Serializer
 type LDAPPropertyMappingRequest struct {
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed NullableString `json:"managed,omitempty"`
-	Name string `json:"name"`
-	Expression string `json:"expression"`
-	ObjectField string `json:"object_field"`
+	Managed     NullableString `json:"managed,omitempty"`
+	Name        string         `json:"name"`
+	Expression  string         `json:"expression"`
+	ObjectField string         `json:"object_field"`
 }
 
 // NewLDAPPropertyMappingRequest instantiates a new LDAPPropertyMappingRequest object
@@ -57,7 +57,7 @@ func (o *LDAPPropertyMappingRequest) GetManaged() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LDAPPropertyMappingRequest) GetManagedOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Managed.Get(), o.Managed.IsSet()
@@ -76,6 +76,7 @@ func (o *LDAPPropertyMappingRequest) HasManaged() bool {
 func (o *LDAPPropertyMappingRequest) SetManaged(v string) {
 	o.Managed.Set(&v)
 }
+
 // SetManagedNil sets the value for Managed to be an explicit nil
 func (o *LDAPPropertyMappingRequest) SetManagedNil() {
 	o.Managed.Set(nil)
@@ -99,7 +100,7 @@ func (o *LDAPPropertyMappingRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *LDAPPropertyMappingRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -123,7 +124,7 @@ func (o *LDAPPropertyMappingRequest) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value
 // and a boolean to check if the value has been set.
 func (o *LDAPPropertyMappingRequest) GetExpressionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Expression, true
@@ -147,7 +148,7 @@ func (o *LDAPPropertyMappingRequest) GetObjectField() string {
 // GetObjectFieldOk returns a tuple with the ObjectField field value
 // and a boolean to check if the value has been set.
 func (o *LDAPPropertyMappingRequest) GetObjectFieldOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ObjectField, true
@@ -210,5 +211,3 @@ func (v *NullableLDAPPropertyMappingRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -18,7 +18,7 @@ import (
 // PaginatedDockerServiceConnectionList struct for PaginatedDockerServiceConnectionList
 type PaginatedDockerServiceConnectionList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []DockerServiceConnection `json:"results"`
+	Results    []DockerServiceConnection          `json:"results"`
 }
 
 // NewPaginatedDockerServiceConnectionList instantiates a new PaginatedDockerServiceConnectionList object
@@ -53,7 +53,7 @@ func (o *PaginatedDockerServiceConnectionList) GetPagination() PaginatedApplicat
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedDockerServiceConnectionList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedDockerServiceConnectionList) GetResults() []DockerServiceConne
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedDockerServiceConnectionList) GetResultsOk() (*[]DockerServiceConnection, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedDockerServiceConnectionList) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

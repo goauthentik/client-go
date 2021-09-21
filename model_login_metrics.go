@@ -17,7 +17,7 @@ import (
 
 // LoginMetrics Login Metrics per 1h
 type LoginMetrics struct {
-	LoginsPer1h []Coordinate `json:"logins_per_1h"`
+	LoginsPer1h       []Coordinate `json:"logins_per_1h"`
 	LoginsFailedPer1h []Coordinate `json:"logins_failed_per_1h"`
 }
 
@@ -53,7 +53,7 @@ func (o *LoginMetrics) GetLoginsPer1h() []Coordinate {
 // GetLoginsPer1hOk returns a tuple with the LoginsPer1h field value
 // and a boolean to check if the value has been set.
 func (o *LoginMetrics) GetLoginsPer1hOk() (*[]Coordinate, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.LoginsPer1h, true
@@ -77,7 +77,7 @@ func (o *LoginMetrics) GetLoginsFailedPer1h() []Coordinate {
 // GetLoginsFailedPer1hOk returns a tuple with the LoginsFailedPer1h field value
 // and a boolean to check if the value has been set.
 func (o *LoginMetrics) GetLoginsFailedPer1hOk() (*[]Coordinate, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.LoginsFailedPer1h, true
@@ -134,5 +134,3 @@ func (v *NullableLoginMetrics) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

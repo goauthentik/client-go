@@ -17,11 +17,11 @@ import (
 
 // PromptChallenge Initial challenge being sent, define fields
 type PromptChallenge struct {
-	Type ChallengeChoices `json:"type"`
-	FlowInfo *ContextualFlowInfo `json:"flow_info,omitempty"`
-	Component *string `json:"component,omitempty"`
+	Type           ChallengeChoices          `json:"type"`
+	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	Fields []StagePrompt `json:"fields"`
+	Fields         []StagePrompt             `json:"fields"`
 }
 
 // NewPromptChallenge instantiates a new PromptChallenge object
@@ -60,7 +60,7 @@ func (o *PromptChallenge) GetType() ChallengeChoices {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *PromptChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -180,7 +180,7 @@ func (o *PromptChallenge) GetFields() []StagePrompt {
 // GetFieldsOk returns a tuple with the Fields field value
 // and a boolean to check if the value has been set.
 func (o *PromptChallenge) GetFieldsOk() (*[]StagePrompt, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Fields, true
@@ -246,5 +246,3 @@ func (v *NullablePromptChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

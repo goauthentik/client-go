@@ -18,9 +18,9 @@ import (
 // ScopeMappingRequest ScopeMapping Serializer
 type ScopeMappingRequest struct {
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed NullableString `json:"managed,omitempty"`
-	Name string `json:"name"`
-	Expression string `json:"expression"`
+	Managed    NullableString `json:"managed,omitempty"`
+	Name       string         `json:"name"`
+	Expression string         `json:"expression"`
 	// Scope used by the client
 	ScopeName string `json:"scope_name"`
 	// Description shown to the user when consenting. If left empty, the user won't be informed.
@@ -60,7 +60,7 @@ func (o *ScopeMappingRequest) GetManaged() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ScopeMappingRequest) GetManagedOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Managed.Get(), o.Managed.IsSet()
@@ -79,6 +79,7 @@ func (o *ScopeMappingRequest) HasManaged() bool {
 func (o *ScopeMappingRequest) SetManaged(v string) {
 	o.Managed.Set(&v)
 }
+
 // SetManagedNil sets the value for Managed to be an explicit nil
 func (o *ScopeMappingRequest) SetManagedNil() {
 	o.Managed.Set(nil)
@@ -102,7 +103,7 @@ func (o *ScopeMappingRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ScopeMappingRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -126,7 +127,7 @@ func (o *ScopeMappingRequest) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value
 // and a boolean to check if the value has been set.
 func (o *ScopeMappingRequest) GetExpressionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Expression, true
@@ -150,7 +151,7 @@ func (o *ScopeMappingRequest) GetScopeName() string {
 // GetScopeNameOk returns a tuple with the ScopeName field value
 // and a boolean to check if the value has been set.
 func (o *ScopeMappingRequest) GetScopeNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ScopeName, true
@@ -248,5 +249,3 @@ func (v *NullableScopeMappingRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

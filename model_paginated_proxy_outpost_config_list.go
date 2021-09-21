@@ -18,7 +18,7 @@ import (
 // PaginatedProxyOutpostConfigList struct for PaginatedProxyOutpostConfigList
 type PaginatedProxyOutpostConfigList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []ProxyOutpostConfig `json:"results"`
+	Results    []ProxyOutpostConfig               `json:"results"`
 }
 
 // NewPaginatedProxyOutpostConfigList instantiates a new PaginatedProxyOutpostConfigList object
@@ -53,7 +53,7 @@ func (o *PaginatedProxyOutpostConfigList) GetPagination() PaginatedApplicationLi
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedProxyOutpostConfigList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedProxyOutpostConfigList) GetResults() []ProxyOutpostConfig {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedProxyOutpostConfigList) GetResultsOk() (*[]ProxyOutpostConfig, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedProxyOutpostConfigList) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,23 +17,23 @@ import (
 
 // Flow Flow Serializer
 type Flow struct {
-	Pk string `json:"pk"`
+	Pk                      string `json:"pk"`
 	PolicybindingmodelPtrId string `json:"policybindingmodel_ptr_id"`
-	Name string `json:"name"`
+	Name                    string `json:"name"`
 	// Visible in the URL.
 	Slug string `json:"slug"`
 	// Shown as the Title in Flow pages.
 	Title string `json:"title"`
 	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
-	Designation FlowDesignationEnum `json:"designation"`
-	Background string `json:"background"`
-	Stages []string `json:"stages"`
-	Policies []string `json:"policies"`
-	CacheCount int32 `json:"cache_count"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	Designation      FlowDesignationEnum `json:"designation"`
+	Background       string              `json:"background"`
+	Stages           []string            `json:"stages"`
+	Policies         []string            `json:"policies"`
+	CacheCount       int32               `json:"cache_count"`
+	PolicyEngineMode *PolicyEngineMode   `json:"policy_engine_mode,omitempty"`
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
-	CompatibilityMode *bool `json:"compatibility_mode,omitempty"`
-	ExportUrl string `json:"export_url"`
+	CompatibilityMode *bool  `json:"compatibility_mode,omitempty"`
+	ExportUrl         string `json:"export_url"`
 }
 
 // NewFlow instantiates a new Flow object
@@ -77,7 +77,7 @@ func (o *Flow) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *Flow) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -101,7 +101,7 @@ func (o *Flow) GetPolicybindingmodelPtrId() string {
 // GetPolicybindingmodelPtrIdOk returns a tuple with the PolicybindingmodelPtrId field value
 // and a boolean to check if the value has been set.
 func (o *Flow) GetPolicybindingmodelPtrIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PolicybindingmodelPtrId, true
@@ -125,7 +125,7 @@ func (o *Flow) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Flow) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -149,7 +149,7 @@ func (o *Flow) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value
 // and a boolean to check if the value has been set.
 func (o *Flow) GetSlugOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Slug, true
@@ -173,7 +173,7 @@ func (o *Flow) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value
 // and a boolean to check if the value has been set.
 func (o *Flow) GetTitleOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Title, true
@@ -197,7 +197,7 @@ func (o *Flow) GetDesignation() FlowDesignationEnum {
 // GetDesignationOk returns a tuple with the Designation field value
 // and a boolean to check if the value has been set.
 func (o *Flow) GetDesignationOk() (*FlowDesignationEnum, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Designation, true
@@ -221,7 +221,7 @@ func (o *Flow) GetBackground() string {
 // GetBackgroundOk returns a tuple with the Background field value
 // and a boolean to check if the value has been set.
 func (o *Flow) GetBackgroundOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Background, true
@@ -245,7 +245,7 @@ func (o *Flow) GetStages() []string {
 // GetStagesOk returns a tuple with the Stages field value
 // and a boolean to check if the value has been set.
 func (o *Flow) GetStagesOk() (*[]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Stages, true
@@ -269,7 +269,7 @@ func (o *Flow) GetPolicies() []string {
 // GetPoliciesOk returns a tuple with the Policies field value
 // and a boolean to check if the value has been set.
 func (o *Flow) GetPoliciesOk() (*[]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Policies, true
@@ -293,7 +293,7 @@ func (o *Flow) GetCacheCount() int32 {
 // GetCacheCountOk returns a tuple with the CacheCount field value
 // and a boolean to check if the value has been set.
 func (o *Flow) GetCacheCountOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CacheCount, true
@@ -381,7 +381,7 @@ func (o *Flow) GetExportUrl() string {
 // GetExportUrlOk returns a tuple with the ExportUrl field value
 // and a boolean to check if the value has been set.
 func (o *Flow) GetExportUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ExportUrl, true
@@ -471,5 +471,3 @@ func (v *NullableFlow) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

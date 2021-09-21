@@ -17,17 +17,17 @@ import (
 
 // ProxyOutpostConfig Proxy provider serializer for outposts
 type ProxyOutpostConfig struct {
-	Pk int32 `json:"pk"`
-	Name string `json:"name"`
+	Pk           int32   `json:"pk"`
+	Name         string  `json:"name"`
 	InternalHost *string `json:"internal_host,omitempty"`
-	ExternalHost string `json:"external_host"`
+	ExternalHost string  `json:"external_host"`
 	// Validate SSL Certificates of upstream servers
-	InternalHostSslValidation *bool `json:"internal_host_ssl_validation,omitempty"`
-	ClientId *string `json:"client_id,omitempty"`
-	ClientSecret *string `json:"client_secret,omitempty"`
-	OidcConfiguration OpenIDConnectConfiguration `json:"oidc_configuration"`
-	CookieSecret *string `json:"cookie_secret,omitempty"`
-	Certificate NullableString `json:"certificate,omitempty"`
+	InternalHostSslValidation *bool                      `json:"internal_host_ssl_validation,omitempty"`
+	ClientId                  *string                    `json:"client_id,omitempty"`
+	ClientSecret              *string                    `json:"client_secret,omitempty"`
+	OidcConfiguration         OpenIDConnectConfiguration `json:"oidc_configuration"`
+	CookieSecret              *string                    `json:"cookie_secret,omitempty"`
+	Certificate               NullableString             `json:"certificate,omitempty"`
 	// Regular expressions for which authentication is not required. Each new line is interpreted as a new Regular Expression.
 	SkipPathRegex *string `json:"skip_path_regex,omitempty"`
 	// Set a custom HTTP-Basic Authentication header based on values from authentik.
@@ -37,8 +37,8 @@ type ProxyOutpostConfig struct {
 	// User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user's Email address is used.
 	BasicAuthUserAttribute *string `json:"basic_auth_user_attribute,omitempty"`
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
-	Mode *ProxyMode `json:"mode,omitempty"`
-	CookieDomain *string `json:"cookie_domain,omitempty"`
+	Mode         *ProxyMode `json:"mode,omitempty"`
+	CookieDomain *string    `json:"cookie_domain,omitempty"`
 }
 
 // NewProxyOutpostConfig instantiates a new ProxyOutpostConfig object
@@ -75,7 +75,7 @@ func (o *ProxyOutpostConfig) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *ProxyOutpostConfig) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -99,7 +99,7 @@ func (o *ProxyOutpostConfig) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ProxyOutpostConfig) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -155,7 +155,7 @@ func (o *ProxyOutpostConfig) GetExternalHost() string {
 // GetExternalHostOk returns a tuple with the ExternalHost field value
 // and a boolean to check if the value has been set.
 func (o *ProxyOutpostConfig) GetExternalHostOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ExternalHost, true
@@ -275,7 +275,7 @@ func (o *ProxyOutpostConfig) GetOidcConfiguration() OpenIDConnectConfiguration {
 // GetOidcConfigurationOk returns a tuple with the OidcConfiguration field value
 // and a boolean to check if the value has been set.
 func (o *ProxyOutpostConfig) GetOidcConfigurationOk() (*OpenIDConnectConfiguration, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.OidcConfiguration, true
@@ -331,7 +331,7 @@ func (o *ProxyOutpostConfig) GetCertificate() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxyOutpostConfig) GetCertificateOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Certificate.Get(), o.Certificate.IsSet()
@@ -350,6 +350,7 @@ func (o *ProxyOutpostConfig) HasCertificate() bool {
 func (o *ProxyOutpostConfig) SetCertificate(v string) {
 	o.Certificate.Set(&v)
 }
+
 // SetCertificateNil sets the value for Certificate to be an explicit nil
 func (o *ProxyOutpostConfig) SetCertificateNil() {
 	o.Certificate.Set(nil)
@@ -640,5 +641,3 @@ func (v *NullableProxyOutpostConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

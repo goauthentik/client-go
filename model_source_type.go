@@ -17,13 +17,13 @@ import (
 
 // SourceType Serializer for SourceType
 type SourceType struct {
-	Name string `json:"name"`
-	Slug string `json:"slug"`
-	UrlsCustomizable bool `json:"urls_customizable"`
-	RequestTokenUrl NullableString `json:"request_token_url"`
+	Name             string         `json:"name"`
+	Slug             string         `json:"slug"`
+	UrlsCustomizable bool           `json:"urls_customizable"`
+	RequestTokenUrl  NullableString `json:"request_token_url"`
 	AuthorizationUrl NullableString `json:"authorization_url"`
-	AccessTokenUrl NullableString `json:"access_token_url"`
-	ProfileUrl NullableString `json:"profile_url"`
+	AccessTokenUrl   NullableString `json:"access_token_url"`
+	ProfileUrl       NullableString `json:"profile_url"`
 }
 
 // NewSourceType instantiates a new SourceType object
@@ -63,7 +63,7 @@ func (o *SourceType) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *SourceType) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -87,7 +87,7 @@ func (o *SourceType) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value
 // and a boolean to check if the value has been set.
 func (o *SourceType) GetSlugOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Slug, true
@@ -111,7 +111,7 @@ func (o *SourceType) GetUrlsCustomizable() bool {
 // GetUrlsCustomizableOk returns a tuple with the UrlsCustomizable field value
 // and a boolean to check if the value has been set.
 func (o *SourceType) GetUrlsCustomizableOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.UrlsCustomizable, true
@@ -137,7 +137,7 @@ func (o *SourceType) GetRequestTokenUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SourceType) GetRequestTokenUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.RequestTokenUrl.Get(), o.RequestTokenUrl.IsSet()
@@ -163,7 +163,7 @@ func (o *SourceType) GetAuthorizationUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SourceType) GetAuthorizationUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AuthorizationUrl.Get(), o.AuthorizationUrl.IsSet()
@@ -189,7 +189,7 @@ func (o *SourceType) GetAccessTokenUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SourceType) GetAccessTokenUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AccessTokenUrl.Get(), o.AccessTokenUrl.IsSet()
@@ -215,7 +215,7 @@ func (o *SourceType) GetProfileUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SourceType) GetProfileUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ProfileUrl.Get(), o.ProfileUrl.IsSet()
@@ -287,5 +287,3 @@ func (v *NullableSourceType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

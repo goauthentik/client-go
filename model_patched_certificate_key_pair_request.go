@@ -186,5 +186,3 @@ func (v *NullablePatchedCertificateKeyPairRequest) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

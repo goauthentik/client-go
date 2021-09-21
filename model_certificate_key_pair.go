@@ -18,15 +18,15 @@ import (
 
 // CertificateKeyPair CertificateKeyPair Serializer
 type CertificateKeyPair struct {
-	Pk string `json:"pk"`
-	Name string `json:"name"`
-	FingerprintSha256 string `json:"fingerprint_sha256"`
-	FingerprintSha1 string `json:"fingerprint_sha1"`
-	CertExpiry time.Time `json:"cert_expiry"`
-	CertSubject string `json:"cert_subject"`
-	PrivateKeyAvailable bool `json:"private_key_available"`
-	CertificateDownloadUrl string `json:"certificate_download_url"`
-	PrivateKeyDownloadUrl string `json:"private_key_download_url"`
+	Pk                     string    `json:"pk"`
+	Name                   string    `json:"name"`
+	FingerprintSha256      string    `json:"fingerprint_sha256"`
+	FingerprintSha1        string    `json:"fingerprint_sha1"`
+	CertExpiry             time.Time `json:"cert_expiry"`
+	CertSubject            string    `json:"cert_subject"`
+	PrivateKeyAvailable    bool      `json:"private_key_available"`
+	CertificateDownloadUrl string    `json:"certificate_download_url"`
+	PrivateKeyDownloadUrl  string    `json:"private_key_download_url"`
 }
 
 // NewCertificateKeyPair instantiates a new CertificateKeyPair object
@@ -68,7 +68,7 @@ func (o *CertificateKeyPair) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyPair) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -92,7 +92,7 @@ func (o *CertificateKeyPair) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyPair) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -116,7 +116,7 @@ func (o *CertificateKeyPair) GetFingerprintSha256() string {
 // GetFingerprintSha256Ok returns a tuple with the FingerprintSha256 field value
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyPair) GetFingerprintSha256Ok() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.FingerprintSha256, true
@@ -140,7 +140,7 @@ func (o *CertificateKeyPair) GetFingerprintSha1() string {
 // GetFingerprintSha1Ok returns a tuple with the FingerprintSha1 field value
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyPair) GetFingerprintSha1Ok() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.FingerprintSha1, true
@@ -164,7 +164,7 @@ func (o *CertificateKeyPair) GetCertExpiry() time.Time {
 // GetCertExpiryOk returns a tuple with the CertExpiry field value
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyPair) GetCertExpiryOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CertExpiry, true
@@ -188,7 +188,7 @@ func (o *CertificateKeyPair) GetCertSubject() string {
 // GetCertSubjectOk returns a tuple with the CertSubject field value
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyPair) GetCertSubjectOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CertSubject, true
@@ -212,7 +212,7 @@ func (o *CertificateKeyPair) GetPrivateKeyAvailable() bool {
 // GetPrivateKeyAvailableOk returns a tuple with the PrivateKeyAvailable field value
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyPair) GetPrivateKeyAvailableOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PrivateKeyAvailable, true
@@ -236,7 +236,7 @@ func (o *CertificateKeyPair) GetCertificateDownloadUrl() string {
 // GetCertificateDownloadUrlOk returns a tuple with the CertificateDownloadUrl field value
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyPair) GetCertificateDownloadUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CertificateDownloadUrl, true
@@ -260,7 +260,7 @@ func (o *CertificateKeyPair) GetPrivateKeyDownloadUrl() string {
 // GetPrivateKeyDownloadUrlOk returns a tuple with the PrivateKeyDownloadUrl field value
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyPair) GetPrivateKeyDownloadUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PrivateKeyDownloadUrl, true
@@ -338,5 +338,3 @@ func (v *NullableCertificateKeyPair) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

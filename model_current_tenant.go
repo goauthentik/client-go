@@ -17,15 +17,15 @@ import (
 
 // CurrentTenant Partial tenant information for styling
 type CurrentTenant struct {
-	MatchedDomain string `json:"matched_domain"`
-	BrandingTitle string `json:"branding_title"`
-	BrandingLogo string `json:"branding_logo"`
-	BrandingFavicon string `json:"branding_favicon"`
-	UiFooterLinks []FooterLink `json:"ui_footer_links"`
-	FlowAuthentication *string `json:"flow_authentication,omitempty"`
-	FlowInvalidation *string `json:"flow_invalidation,omitempty"`
-	FlowRecovery *string `json:"flow_recovery,omitempty"`
-	FlowUnenrollment *string `json:"flow_unenrollment,omitempty"`
+	MatchedDomain      string       `json:"matched_domain"`
+	BrandingTitle      string       `json:"branding_title"`
+	BrandingLogo       string       `json:"branding_logo"`
+	BrandingFavicon    string       `json:"branding_favicon"`
+	UiFooterLinks      []FooterLink `json:"ui_footer_links"`
+	FlowAuthentication *string      `json:"flow_authentication,omitempty"`
+	FlowInvalidation   *string      `json:"flow_invalidation,omitempty"`
+	FlowRecovery       *string      `json:"flow_recovery,omitempty"`
+	FlowUnenrollment   *string      `json:"flow_unenrollment,omitempty"`
 }
 
 // NewCurrentTenant instantiates a new CurrentTenant object
@@ -63,7 +63,7 @@ func (o *CurrentTenant) GetMatchedDomain() string {
 // GetMatchedDomainOk returns a tuple with the MatchedDomain field value
 // and a boolean to check if the value has been set.
 func (o *CurrentTenant) GetMatchedDomainOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.MatchedDomain, true
@@ -87,7 +87,7 @@ func (o *CurrentTenant) GetBrandingTitle() string {
 // GetBrandingTitleOk returns a tuple with the BrandingTitle field value
 // and a boolean to check if the value has been set.
 func (o *CurrentTenant) GetBrandingTitleOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BrandingTitle, true
@@ -111,7 +111,7 @@ func (o *CurrentTenant) GetBrandingLogo() string {
 // GetBrandingLogoOk returns a tuple with the BrandingLogo field value
 // and a boolean to check if the value has been set.
 func (o *CurrentTenant) GetBrandingLogoOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BrandingLogo, true
@@ -135,7 +135,7 @@ func (o *CurrentTenant) GetBrandingFavicon() string {
 // GetBrandingFaviconOk returns a tuple with the BrandingFavicon field value
 // and a boolean to check if the value has been set.
 func (o *CurrentTenant) GetBrandingFaviconOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BrandingFavicon, true
@@ -159,7 +159,7 @@ func (o *CurrentTenant) GetUiFooterLinks() []FooterLink {
 // GetUiFooterLinksOk returns a tuple with the UiFooterLinks field value
 // and a boolean to check if the value has been set.
 func (o *CurrentTenant) GetUiFooterLinksOk() (*[]FooterLink, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.UiFooterLinks, true
@@ -365,5 +365,3 @@ func (v *NullableCurrentTenant) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -18,14 +18,14 @@ import (
 
 // System Get system information.
 type System struct {
-	Env map[string]string `json:"env"`
-	HttpHeaders map[string]string `json:"http_headers"`
-	HttpHost string `json:"http_host"`
-	HttpIsSecure bool `json:"http_is_secure"`
-	Runtime SystemRuntime `json:"runtime"`
-	Tenant string `json:"tenant"`
-	ServerTime time.Time `json:"server_time"`
-	EmbeddedOutpostHost string `json:"embedded_outpost_host"`
+	Env                 map[string]string `json:"env"`
+	HttpHeaders         map[string]string `json:"http_headers"`
+	HttpHost            string            `json:"http_host"`
+	HttpIsSecure        bool              `json:"http_is_secure"`
+	Runtime             SystemRuntime     `json:"runtime"`
+	Tenant              string            `json:"tenant"`
+	ServerTime          time.Time         `json:"server_time"`
+	EmbeddedOutpostHost string            `json:"embedded_outpost_host"`
 }
 
 // NewSystem instantiates a new System object
@@ -66,7 +66,7 @@ func (o *System) GetEnv() map[string]string {
 // GetEnvOk returns a tuple with the Env field value
 // and a boolean to check if the value has been set.
 func (o *System) GetEnvOk() (*map[string]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Env, true
@@ -90,7 +90,7 @@ func (o *System) GetHttpHeaders() map[string]string {
 // GetHttpHeadersOk returns a tuple with the HttpHeaders field value
 // and a boolean to check if the value has been set.
 func (o *System) GetHttpHeadersOk() (*map[string]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.HttpHeaders, true
@@ -114,7 +114,7 @@ func (o *System) GetHttpHost() string {
 // GetHttpHostOk returns a tuple with the HttpHost field value
 // and a boolean to check if the value has been set.
 func (o *System) GetHttpHostOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.HttpHost, true
@@ -138,7 +138,7 @@ func (o *System) GetHttpIsSecure() bool {
 // GetHttpIsSecureOk returns a tuple with the HttpIsSecure field value
 // and a boolean to check if the value has been set.
 func (o *System) GetHttpIsSecureOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.HttpIsSecure, true
@@ -162,7 +162,7 @@ func (o *System) GetRuntime() SystemRuntime {
 // GetRuntimeOk returns a tuple with the Runtime field value
 // and a boolean to check if the value has been set.
 func (o *System) GetRuntimeOk() (*SystemRuntime, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Runtime, true
@@ -186,7 +186,7 @@ func (o *System) GetTenant() string {
 // GetTenantOk returns a tuple with the Tenant field value
 // and a boolean to check if the value has been set.
 func (o *System) GetTenantOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Tenant, true
@@ -210,7 +210,7 @@ func (o *System) GetServerTime() time.Time {
 // GetServerTimeOk returns a tuple with the ServerTime field value
 // and a boolean to check if the value has been set.
 func (o *System) GetServerTimeOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ServerTime, true
@@ -234,7 +234,7 @@ func (o *System) GetEmbeddedOutpostHost() string {
 // GetEmbeddedOutpostHostOk returns a tuple with the EmbeddedOutpostHost field value
 // and a boolean to check if the value has been set.
 func (o *System) GetEmbeddedOutpostHostOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.EmbeddedOutpostHost, true
@@ -309,5 +309,3 @@ func (v *NullableSystem) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

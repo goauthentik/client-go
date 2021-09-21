@@ -18,7 +18,7 @@ import (
 // PaginatedKubernetesServiceConnectionList struct for PaginatedKubernetesServiceConnectionList
 type PaginatedKubernetesServiceConnectionList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []KubernetesServiceConnection `json:"results"`
+	Results    []KubernetesServiceConnection      `json:"results"`
 }
 
 // NewPaginatedKubernetesServiceConnectionList instantiates a new PaginatedKubernetesServiceConnectionList object
@@ -53,7 +53,7 @@ func (o *PaginatedKubernetesServiceConnectionList) GetPagination() PaginatedAppl
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedKubernetesServiceConnectionList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedKubernetesServiceConnectionList) GetResults() []KubernetesServ
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedKubernetesServiceConnectionList) GetResultsOk() (*[]KubernetesServiceConnection, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedKubernetesServiceConnectionList) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

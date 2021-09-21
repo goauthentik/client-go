@@ -154,7 +154,7 @@ func (o *PatchedDockerServiceConnectionRequest) GetTlsVerification() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedDockerServiceConnectionRequest) GetTlsVerificationOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TlsVerification.Get(), o.TlsVerification.IsSet()
@@ -173,6 +173,7 @@ func (o *PatchedDockerServiceConnectionRequest) HasTlsVerification() bool {
 func (o *PatchedDockerServiceConnectionRequest) SetTlsVerification(v string) {
 	o.TlsVerification.Set(&v)
 }
+
 // SetTlsVerificationNil sets the value for TlsVerification to be an explicit nil
 func (o *PatchedDockerServiceConnectionRequest) SetTlsVerificationNil() {
 	o.TlsVerification.Set(nil)
@@ -196,7 +197,7 @@ func (o *PatchedDockerServiceConnectionRequest) GetTlsAuthentication() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedDockerServiceConnectionRequest) GetTlsAuthenticationOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.TlsAuthentication.Get(), o.TlsAuthentication.IsSet()
@@ -215,6 +216,7 @@ func (o *PatchedDockerServiceConnectionRequest) HasTlsAuthentication() bool {
 func (o *PatchedDockerServiceConnectionRequest) SetTlsAuthentication(v string) {
 	o.TlsAuthentication.Set(&v)
 }
+
 // SetTlsAuthenticationNil sets the value for TlsAuthentication to be an explicit nil
 func (o *PatchedDockerServiceConnectionRequest) SetTlsAuthenticationNil() {
 	o.TlsAuthentication.Set(nil)
@@ -280,5 +282,3 @@ func (v *NullablePatchedDockerServiceConnectionRequest) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

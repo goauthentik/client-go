@@ -18,7 +18,7 @@ import (
 // PaginatedUserReputationList struct for PaginatedUserReputationList
 type PaginatedUserReputationList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []UserReputation `json:"results"`
+	Results    []UserReputation                   `json:"results"`
 }
 
 // NewPaginatedUserReputationList instantiates a new PaginatedUserReputationList object
@@ -53,7 +53,7 @@ func (o *PaginatedUserReputationList) GetPagination() PaginatedApplicationListPa
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedUserReputationList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedUserReputationList) GetResults() []UserReputation {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedUserReputationList) GetResultsOk() (*[]UserReputation, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedUserReputationList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

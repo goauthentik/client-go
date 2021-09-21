@@ -17,11 +17,11 @@ import (
 
 // RedirectChallenge Challenge type to redirect the client
 type RedirectChallenge struct {
-	Type ChallengeChoices `json:"type"`
-	FlowInfo *ContextualFlowInfo `json:"flow_info,omitempty"`
-	Component *string `json:"component,omitempty"`
+	Type           ChallengeChoices          `json:"type"`
+	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	To string `json:"to"`
+	To             string                    `json:"to"`
 }
 
 // NewRedirectChallenge instantiates a new RedirectChallenge object
@@ -60,7 +60,7 @@ func (o *RedirectChallenge) GetType() ChallengeChoices {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *RedirectChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -180,7 +180,7 @@ func (o *RedirectChallenge) GetTo() string {
 // GetToOk returns a tuple with the To field value
 // and a boolean to check if the value has been set.
 func (o *RedirectChallenge) GetToOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.To, true
@@ -246,5 +246,3 @@ func (v *NullableRedirectChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

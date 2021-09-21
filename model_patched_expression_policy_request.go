@@ -19,8 +19,8 @@ import (
 type PatchedExpressionPolicyRequest struct {
 	Name NullableString `json:"name,omitempty"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool `json:"execution_logging,omitempty"`
-	Expression *string `json:"expression,omitempty"`
+	ExecutionLogging *bool   `json:"execution_logging,omitempty"`
+	Expression       *string `json:"expression,omitempty"`
 }
 
 // NewPatchedExpressionPolicyRequest instantiates a new PatchedExpressionPolicyRequest object
@@ -53,7 +53,7 @@ func (o *PatchedExpressionPolicyRequest) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedExpressionPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -72,6 +72,7 @@ func (o *PatchedExpressionPolicyRequest) HasName() bool {
 func (o *PatchedExpressionPolicyRequest) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PatchedExpressionPolicyRequest) SetNameNil() {
 	o.Name.Set(nil)
@@ -195,5 +196,3 @@ func (v *NullablePatchedExpressionPolicyRequest) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

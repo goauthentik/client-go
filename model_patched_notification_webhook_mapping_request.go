@@ -17,7 +17,7 @@ import (
 
 // PatchedNotificationWebhookMappingRequest NotificationWebhookMapping Serializer
 type PatchedNotificationWebhookMappingRequest struct {
-	Name *string `json:"name,omitempty"`
+	Name       *string `json:"name,omitempty"`
 	Expression *string `json:"expression,omitempty"`
 }
 
@@ -148,5 +148,3 @@ func (v *NullablePatchedNotificationWebhookMappingRequest) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

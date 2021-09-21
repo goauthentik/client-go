@@ -18,7 +18,7 @@ import (
 // PaginatedInvitationList struct for PaginatedInvitationList
 type PaginatedInvitationList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []Invitation `json:"results"`
+	Results    []Invitation                       `json:"results"`
 }
 
 // NewPaginatedInvitationList instantiates a new PaginatedInvitationList object
@@ -53,7 +53,7 @@ func (o *PaginatedInvitationList) GetPagination() PaginatedApplicationListPagina
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedInvitationList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedInvitationList) GetResults() []Invitation {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedInvitationList) GetResultsOk() (*[]Invitation, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedInvitationList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

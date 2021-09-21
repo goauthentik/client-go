@@ -23,10 +23,10 @@ type UserRequest struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive *bool `json:"is_active,omitempty"`
-	LastLogin NullableTime `json:"last_login,omitempty"`
-	Groups []string `json:"groups"`
-	Email *string `json:"email,omitempty"`
+	IsActive   *bool                   `json:"is_active,omitempty"`
+	LastLogin  NullableTime            `json:"last_login,omitempty"`
+	Groups     []string                `json:"groups"`
+	Email      *string                 `json:"email,omitempty"`
 	Attributes *map[string]interface{} `json:"attributes,omitempty"`
 }
 
@@ -63,7 +63,7 @@ func (o *UserRequest) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
 func (o *UserRequest) GetUsernameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Username, true
@@ -87,7 +87,7 @@ func (o *UserRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *UserRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -143,7 +143,7 @@ func (o *UserRequest) GetLastLogin() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserRequest) GetLastLoginOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.LastLogin.Get(), o.LastLogin.IsSet()
@@ -162,6 +162,7 @@ func (o *UserRequest) HasLastLogin() bool {
 func (o *UserRequest) SetLastLogin(v time.Time) {
 	o.LastLogin.Set(&v)
 }
+
 // SetLastLoginNil sets the value for LastLogin to be an explicit nil
 func (o *UserRequest) SetLastLoginNil() {
 	o.LastLogin.Set(nil)
@@ -185,7 +186,7 @@ func (o *UserRequest) GetGroups() []string {
 // GetGroupsOk returns a tuple with the Groups field value
 // and a boolean to check if the value has been set.
 func (o *UserRequest) GetGroupsOk() (*[]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Groups, true
@@ -321,5 +322,3 @@ func (v *NullableUserRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,14 +17,14 @@ import (
 
 // ConsentChallenge Challenge info for consent screens
 type ConsentChallenge struct {
-	Type ChallengeChoices `json:"type"`
-	FlowInfo *ContextualFlowInfo `json:"flow_info,omitempty"`
-	Component *string `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser string `json:"pending_user"`
-	PendingUserAvatar string `json:"pending_user_avatar"`
-	HeaderText string `json:"header_text"`
-	Permissions []Permission `json:"permissions"`
+	Type              ChallengeChoices          `json:"type"`
+	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component         *string                   `json:"component,omitempty"`
+	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser       string                    `json:"pending_user"`
+	PendingUserAvatar string                    `json:"pending_user_avatar"`
+	HeaderText        string                    `json:"header_text"`
+	Permissions       []Permission              `json:"permissions"`
 }
 
 // NewConsentChallenge instantiates a new ConsentChallenge object
@@ -66,7 +66,7 @@ func (o *ConsentChallenge) GetType() ChallengeChoices {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *ConsentChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -186,7 +186,7 @@ func (o *ConsentChallenge) GetPendingUser() string {
 // GetPendingUserOk returns a tuple with the PendingUser field value
 // and a boolean to check if the value has been set.
 func (o *ConsentChallenge) GetPendingUserOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PendingUser, true
@@ -210,7 +210,7 @@ func (o *ConsentChallenge) GetPendingUserAvatar() string {
 // GetPendingUserAvatarOk returns a tuple with the PendingUserAvatar field value
 // and a boolean to check if the value has been set.
 func (o *ConsentChallenge) GetPendingUserAvatarOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PendingUserAvatar, true
@@ -234,7 +234,7 @@ func (o *ConsentChallenge) GetHeaderText() string {
 // GetHeaderTextOk returns a tuple with the HeaderText field value
 // and a boolean to check if the value has been set.
 func (o *ConsentChallenge) GetHeaderTextOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.HeaderText, true
@@ -258,7 +258,7 @@ func (o *ConsentChallenge) GetPermissions() []Permission {
 // GetPermissionsOk returns a tuple with the Permissions field value
 // and a boolean to check if the value has been set.
 func (o *ConsentChallenge) GetPermissionsOk() (*[]Permission, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Permissions, true
@@ -333,5 +333,3 @@ func (v *NullableConsentChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

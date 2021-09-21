@@ -18,7 +18,7 @@ import (
 // PaginatedSAMLPropertyMappingList struct for PaginatedSAMLPropertyMappingList
 type PaginatedSAMLPropertyMappingList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []SAMLPropertyMapping `json:"results"`
+	Results    []SAMLPropertyMapping              `json:"results"`
 }
 
 // NewPaginatedSAMLPropertyMappingList instantiates a new PaginatedSAMLPropertyMappingList object
@@ -53,7 +53,7 @@ func (o *PaginatedSAMLPropertyMappingList) GetPagination() PaginatedApplicationL
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedSAMLPropertyMappingList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedSAMLPropertyMappingList) GetResults() []SAMLPropertyMapping {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedSAMLPropertyMappingList) GetResultsOk() (*[]SAMLPropertyMapping, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedSAMLPropertyMappingList) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

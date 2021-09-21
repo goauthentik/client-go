@@ -17,8 +17,8 @@ import (
 
 // PropertyMappingTestResult Result of a Property-mapping test
 type PropertyMappingTestResult struct {
-	Result string `json:"result"`
-	Successful bool `json:"successful"`
+	Result     string `json:"result"`
+	Successful bool   `json:"successful"`
 }
 
 // NewPropertyMappingTestResult instantiates a new PropertyMappingTestResult object
@@ -53,7 +53,7 @@ func (o *PropertyMappingTestResult) GetResult() string {
 // GetResultOk returns a tuple with the Result field value
 // and a boolean to check if the value has been set.
 func (o *PropertyMappingTestResult) GetResultOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Result, true
@@ -77,7 +77,7 @@ func (o *PropertyMappingTestResult) GetSuccessful() bool {
 // GetSuccessfulOk returns a tuple with the Successful field value
 // and a boolean to check if the value has been set.
 func (o *PropertyMappingTestResult) GetSuccessfulOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Successful, true
@@ -134,5 +134,3 @@ func (v *NullablePropertyMappingTestResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

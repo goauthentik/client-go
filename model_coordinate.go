@@ -53,7 +53,7 @@ func (o *Coordinate) GetXCord() int32 {
 // GetXCordOk returns a tuple with the XCord field value
 // and a boolean to check if the value has been set.
 func (o *Coordinate) GetXCordOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.XCord, true
@@ -77,7 +77,7 @@ func (o *Coordinate) GetYCord() int32 {
 // GetYCordOk returns a tuple with the YCord field value
 // and a boolean to check if the value has been set.
 func (o *Coordinate) GetYCordOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.YCord, true
@@ -134,5 +134,3 @@ func (v *NullableCoordinate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,10 +19,10 @@ import (
 type PatchedGroupRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Users added to this group will be superusers.
-	IsSuperuser *bool `json:"is_superuser,omitempty"`
-	Parent NullableString `json:"parent,omitempty"`
-	Users *[]int32 `json:"users,omitempty"`
-	Attributes *map[string]interface{} `json:"attributes,omitempty"`
+	IsSuperuser *bool                   `json:"is_superuser,omitempty"`
+	Parent      NullableString          `json:"parent,omitempty"`
+	Users       *[]int32                `json:"users,omitempty"`
+	Attributes  *map[string]interface{} `json:"attributes,omitempty"`
 }
 
 // NewPatchedGroupRequest instantiates a new PatchedGroupRequest object
@@ -119,7 +119,7 @@ func (o *PatchedGroupRequest) GetParent() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedGroupRequest) GetParentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Parent.Get(), o.Parent.IsSet()
@@ -138,6 +138,7 @@ func (o *PatchedGroupRequest) HasParent() bool {
 func (o *PatchedGroupRequest) SetParent(v string) {
 	o.Parent.Set(&v)
 }
+
 // SetParentNil sets the value for Parent to be an explicit nil
 func (o *PatchedGroupRequest) SetParentNil() {
 	o.Parent.Set(nil)
@@ -267,5 +268,3 @@ func (v *NullablePatchedGroupRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -18,9 +18,9 @@ import (
 // StaticDevice Serializer for static authenticator devices
 type StaticDevice struct {
 	// The human-readable name of this device.
-	Name string `json:"name"`
+	Name     string              `json:"name"`
 	TokenSet []StaticDeviceToken `json:"token_set"`
-	Pk int32 `json:"pk"`
+	Pk       int32               `json:"pk"`
 }
 
 // NewStaticDevice instantiates a new StaticDevice object
@@ -56,7 +56,7 @@ func (o *StaticDevice) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *StaticDevice) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -80,7 +80,7 @@ func (o *StaticDevice) GetTokenSet() []StaticDeviceToken {
 // GetTokenSetOk returns a tuple with the TokenSet field value
 // and a boolean to check if the value has been set.
 func (o *StaticDevice) GetTokenSetOk() (*[]StaticDeviceToken, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TokenSet, true
@@ -104,7 +104,7 @@ func (o *StaticDevice) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *StaticDevice) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -164,5 +164,3 @@ func (v *NullableStaticDevice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

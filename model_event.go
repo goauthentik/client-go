@@ -18,15 +18,15 @@ import (
 
 // Event Event Serializer
 type Event struct {
-	Pk string `json:"pk"`
-	User *map[string]interface{} `json:"user,omitempty"`
-	Action EventActions `json:"action"`
-	App string `json:"app"`
-	Context *map[string]interface{} `json:"context,omitempty"`
-	ClientIp NullableString `json:"client_ip,omitempty"`
-	Created time.Time `json:"created"`
-	Expires *time.Time `json:"expires,omitempty"`
-	Tenant *map[string]interface{} `json:"tenant,omitempty"`
+	Pk       string                  `json:"pk"`
+	User     *map[string]interface{} `json:"user,omitempty"`
+	Action   EventActions            `json:"action"`
+	App      string                  `json:"app"`
+	Context  *map[string]interface{} `json:"context,omitempty"`
+	ClientIp NullableString          `json:"client_ip,omitempty"`
+	Created  time.Time               `json:"created"`
+	Expires  *time.Time              `json:"expires,omitempty"`
+	Tenant   *map[string]interface{} `json:"tenant,omitempty"`
 }
 
 // NewEvent instantiates a new Event object
@@ -63,7 +63,7 @@ func (o *Event) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *Event) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -119,7 +119,7 @@ func (o *Event) GetAction() EventActions {
 // GetActionOk returns a tuple with the Action field value
 // and a boolean to check if the value has been set.
 func (o *Event) GetActionOk() (*EventActions, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Action, true
@@ -143,7 +143,7 @@ func (o *Event) GetApp() string {
 // GetAppOk returns a tuple with the App field value
 // and a boolean to check if the value has been set.
 func (o *Event) GetAppOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.App, true
@@ -199,7 +199,7 @@ func (o *Event) GetClientIp() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Event) GetClientIpOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ClientIp.Get(), o.ClientIp.IsSet()
@@ -218,6 +218,7 @@ func (o *Event) HasClientIp() bool {
 func (o *Event) SetClientIp(v string) {
 	o.ClientIp.Set(&v)
 }
+
 // SetClientIpNil sets the value for ClientIp to be an explicit nil
 func (o *Event) SetClientIpNil() {
 	o.ClientIp.Set(nil)
@@ -241,7 +242,7 @@ func (o *Event) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
 func (o *Event) GetCreatedOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Created, true
@@ -383,5 +384,3 @@ func (v *NullableEvent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,10 +17,10 @@ import (
 
 // PatchedNotificationTransportRequest NotificationTransport Serializer
 type PatchedNotificationTransportRequest struct {
-	Name *string `json:"name,omitempty"`
-	Mode *NotificationTransportModeEnum `json:"mode,omitempty"`
-	WebhookUrl *string `json:"webhook_url,omitempty"`
-	WebhookMapping NullableString `json:"webhook_mapping,omitempty"`
+	Name           *string                        `json:"name,omitempty"`
+	Mode           *NotificationTransportModeEnum `json:"mode,omitempty"`
+	WebhookUrl     *string                        `json:"webhook_url,omitempty"`
+	WebhookMapping NullableString                 `json:"webhook_mapping,omitempty"`
 	// Only send notification once, for example when sending a webhook into a chat channel.
 	SendOnce *bool `json:"send_once,omitempty"`
 }
@@ -151,7 +151,7 @@ func (o *PatchedNotificationTransportRequest) GetWebhookMapping() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedNotificationTransportRequest) GetWebhookMappingOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.WebhookMapping.Get(), o.WebhookMapping.IsSet()
@@ -170,6 +170,7 @@ func (o *PatchedNotificationTransportRequest) HasWebhookMapping() bool {
 func (o *PatchedNotificationTransportRequest) SetWebhookMapping(v string) {
 	o.WebhookMapping.Set(&v)
 }
+
 // SetWebhookMappingNil sets the value for WebhookMapping to be an explicit nil
 func (o *PatchedNotificationTransportRequest) SetWebhookMappingNil() {
 	o.WebhookMapping.Set(nil)
@@ -267,5 +268,3 @@ func (v *NullablePatchedNotificationTransportRequest) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -22,8 +22,8 @@ type StatusEnum string
 // List of StatusEnum
 const (
 	STATUSENUM_SUCCESSFUL StatusEnum = "SUCCESSFUL"
-	STATUSENUM_WARNING StatusEnum = "WARNING"
-	STATUSENUM_ERROR StatusEnum = "ERROR"
+	STATUSENUM_WARNING    StatusEnum = "WARNING"
+	STATUSENUM_ERROR      StatusEnum = "ERROR"
 )
 
 // All allowed values of StatusEnum enum
@@ -111,4 +111,3 @@ func (v *NullableStatusEnum) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

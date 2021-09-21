@@ -23,10 +23,10 @@ type PatchedUserRequest struct {
 	// User's display name.
 	Name *string `json:"name,omitempty"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive *bool `json:"is_active,omitempty"`
-	LastLogin NullableTime `json:"last_login,omitempty"`
-	Groups *[]string `json:"groups,omitempty"`
-	Email *string `json:"email,omitempty"`
+	IsActive   *bool                   `json:"is_active,omitempty"`
+	LastLogin  NullableTime            `json:"last_login,omitempty"`
+	Groups     *[]string               `json:"groups,omitempty"`
+	Email      *string                 `json:"email,omitempty"`
 	Attributes *map[string]interface{} `json:"attributes,omitempty"`
 }
 
@@ -156,7 +156,7 @@ func (o *PatchedUserRequest) GetLastLogin() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedUserRequest) GetLastLoginOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.LastLogin.Get(), o.LastLogin.IsSet()
@@ -175,6 +175,7 @@ func (o *PatchedUserRequest) HasLastLogin() bool {
 func (o *PatchedUserRequest) SetLastLogin(v time.Time) {
 	o.LastLogin.Set(&v)
 }
+
 // SetLastLoginNil sets the value for LastLogin to be an explicit nil
 func (o *PatchedUserRequest) SetLastLoginNil() {
 	o.LastLogin.Set(nil)
@@ -342,5 +343,3 @@ func (v *NullablePatchedUserRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

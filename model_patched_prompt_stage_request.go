@@ -17,10 +17,10 @@ import (
 
 // PatchedPromptStageRequest PromptStage Serializer
 type PatchedPromptStageRequest struct {
-	Name *string `json:"name,omitempty"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
-	Fields *[]string `json:"fields,omitempty"`
-	ValidationPolicies *[]string `json:"validation_policies,omitempty"`
+	Name               *string        `json:"name,omitempty"`
+	FlowSet            *[]FlowRequest `json:"flow_set,omitempty"`
+	Fields             *[]string      `json:"fields,omitempty"`
+	ValidationPolicies *[]string      `json:"validation_policies,omitempty"`
 }
 
 // NewPatchedPromptStageRequest instantiates a new PatchedPromptStageRequest object
@@ -220,5 +220,3 @@ func (v *NullablePatchedPromptStageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

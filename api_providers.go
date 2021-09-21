@@ -17,9 +17,9 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"strings"
-	"reflect"
 	"os"
+	"reflect"
+	"strings"
 )
 
 // Linger please
@@ -31,11 +31,10 @@ var (
 type ProvidersApiService service
 
 type ApiProvidersAllDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersAllDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.ProvidersAllDestroyExecute(r)
@@ -53,8 +52,8 @@ Provider Viewset
 func (a *ProvidersApiService) ProvidersAllDestroy(ctx _context.Context, id int32) ApiProvidersAllDestroyRequest {
 	return ApiProvidersAllDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -140,34 +139,38 @@ func (a *ProvidersApiService) ProvidersAllDestroyExecute(r ApiProvidersAllDestro
 }
 
 type ApiProvidersAllListRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
+	ctx               _context.Context
+	ApiService        *ProvidersApiService
 	applicationIsnull *bool
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
+	ordering          *string
+	page              *int32
+	pageSize          *int32
+	search            *string
 }
 
 func (r ApiProvidersAllListRequest) ApplicationIsnull(applicationIsnull bool) ApiProvidersAllListRequest {
 	r.applicationIsnull = &applicationIsnull
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiProvidersAllListRequest) Ordering(ordering string) ApiProvidersAllListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiProvidersAllListRequest) Page(page int32) ApiProvidersAllListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiProvidersAllListRequest) PageSize(pageSize int32) ApiProvidersAllListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiProvidersAllListRequest) Search(search string) ApiProvidersAllListRequest {
 	r.search = &search
@@ -189,7 +192,7 @@ Provider Viewset
 func (a *ProvidersApiService) ProvidersAllList(ctx _context.Context) ApiProvidersAllListRequest {
 	return ApiProvidersAllListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -300,11 +303,10 @@ func (a *ProvidersApiService) ProvidersAllListExecute(r ApiProvidersAllListReque
 }
 
 type ApiProvidersAllRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersAllRetrieveRequest) Execute() (Provider, *_nethttp.Response, error) {
 	return r.ApiService.ProvidersAllRetrieveExecute(r)
@@ -322,8 +324,8 @@ Provider Viewset
 func (a *ProvidersApiService) ProvidersAllRetrieve(ctx _context.Context, id int32) ApiProvidersAllRetrieveRequest {
 	return ApiProvidersAllRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -420,10 +422,9 @@ func (a *ProvidersApiService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetri
 }
 
 type ApiProvidersAllTypesListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
 }
-
 
 func (r ApiProvidersAllTypesListRequest) Execute() ([]TypeCreate, *_nethttp.Response, error) {
 	return r.ApiService.ProvidersAllTypesListExecute(r)
@@ -440,7 +441,7 @@ Get all creatable provider types
 func (a *ProvidersApiService) ProvidersAllTypesList(ctx _context.Context) ApiProvidersAllTypesListRequest {
 	return ApiProvidersAllTypesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -536,11 +537,10 @@ func (a *ProvidersApiService) ProvidersAllTypesListExecute(r ApiProvidersAllType
 }
 
 type ApiProvidersAllUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersAllUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.ProvidersAllUsedByListExecute(r)
@@ -558,8 +558,8 @@ Get a list of all objects that use this object
 func (a *ProvidersApiService) ProvidersAllUsedByList(ctx _context.Context, id int32) ApiProvidersAllUsedByListRequest {
 	return ApiProvidersAllUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -656,8 +656,8 @@ func (a *ProvidersApiService) ProvidersAllUsedByListExecute(r ApiProvidersAllUse
 }
 
 type ApiProvidersLdapCreateRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
+	ctx                 _context.Context
+	ApiService          *ProvidersApiService
 	lDAPProviderRequest *LDAPProviderRequest
 }
 
@@ -681,7 +681,7 @@ LDAPProvider Viewset
 func (a *ProvidersApiService) ProvidersLdapCreate(ctx _context.Context) ApiProvidersLdapCreateRequest {
 	return ApiProvidersLdapCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -782,11 +782,10 @@ func (a *ProvidersApiService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreat
 }
 
 type ApiProvidersLdapDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersLdapDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.ProvidersLdapDestroyExecute(r)
@@ -804,8 +803,8 @@ LDAPProvider Viewset
 func (a *ProvidersApiService) ProvidersLdapDestroy(ctx _context.Context, id int32) ApiProvidersLdapDestroyRequest {
 	return ApiProvidersLdapDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -891,23 +890,23 @@ func (a *ProvidersApiService) ProvidersLdapDestroyExecute(r ApiProvidersLdapDest
 }
 
 type ApiProvidersLdapListRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
-	applicationIsnull *bool
+	ctx                         _context.Context
+	ApiService                  *ProvidersApiService
+	applicationIsnull           *bool
 	authorizationFlowSlugIexact *string
-	baseDnIexact *string
-	certificateKpUuidIexact *string
-	certificateNameIexact *string
-	gidStartNumberIexact *int32
-	nameIexact *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	search *string
-	searchGroupGroupUuidIexact *string
-	searchGroupNameIexact *string
-	tlsServerNameIexact *string
-	uidStartNumberIexact *int32
+	baseDnIexact                *string
+	certificateKpUuidIexact     *string
+	certificateNameIexact       *string
+	gidStartNumberIexact        *int32
+	nameIexact                  *string
+	ordering                    *string
+	page                        *int32
+	pageSize                    *int32
+	search                      *string
+	searchGroupGroupUuidIexact  *string
+	searchGroupNameIexact       *string
+	tlsServerNameIexact         *string
+	uidStartNumberIexact        *int32
 }
 
 func (r ApiProvidersLdapListRequest) ApplicationIsnull(applicationIsnull bool) ApiProvidersLdapListRequest {
@@ -938,21 +937,25 @@ func (r ApiProvidersLdapListRequest) NameIexact(nameIexact string) ApiProvidersL
 	r.nameIexact = &nameIexact
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiProvidersLdapListRequest) Ordering(ordering string) ApiProvidersLdapListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiProvidersLdapListRequest) Page(page int32) ApiProvidersLdapListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiProvidersLdapListRequest) PageSize(pageSize int32) ApiProvidersLdapListRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 // A search term.
 func (r ApiProvidersLdapListRequest) Search(search string) ApiProvidersLdapListRequest {
 	r.search = &search
@@ -990,7 +993,7 @@ LDAPProvider Viewset
 func (a *ProvidersApiService) ProvidersLdapList(ctx _context.Context) ApiProvidersLdapListRequest {
 	return ApiProvidersLdapListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1131,9 +1134,9 @@ func (a *ProvidersApiService) ProvidersLdapListExecute(r ApiProvidersLdapListReq
 }
 
 type ApiProvidersLdapPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
-	id int32
+	ctx                        _context.Context
+	ApiService                 *ProvidersApiService
+	id                         int32
 	patchedLDAPProviderRequest *PatchedLDAPProviderRequest
 }
 
@@ -1158,8 +1161,8 @@ LDAPProvider Viewset
 func (a *ProvidersApiService) ProvidersLdapPartialUpdate(ctx _context.Context, id int32) ApiProvidersLdapPartialUpdateRequest {
 	return ApiProvidersLdapPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -1258,11 +1261,10 @@ func (a *ProvidersApiService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLd
 }
 
 type ApiProvidersLdapRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersLdapRetrieveRequest) Execute() (LDAPProvider, *_nethttp.Response, error) {
 	return r.ApiService.ProvidersLdapRetrieveExecute(r)
@@ -1280,8 +1282,8 @@ LDAPProvider Viewset
 func (a *ProvidersApiService) ProvidersLdapRetrieve(ctx _context.Context, id int32) ApiProvidersLdapRetrieveRequest {
 	return ApiProvidersLdapRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -1378,9 +1380,9 @@ func (a *ProvidersApiService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRet
 }
 
 type ApiProvidersLdapUpdateRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
-	id int32
+	ctx                 _context.Context
+	ApiService          *ProvidersApiService
+	id                  int32
 	lDAPProviderRequest *LDAPProviderRequest
 }
 
@@ -1405,8 +1407,8 @@ LDAPProvider Viewset
 func (a *ProvidersApiService) ProvidersLdapUpdate(ctx _context.Context, id int32) ApiProvidersLdapUpdateRequest {
 	return ApiProvidersLdapUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -1508,11 +1510,10 @@ func (a *ProvidersApiService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdat
 }
 
 type ApiProvidersLdapUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersLdapUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.ProvidersLdapUsedByListExecute(r)
@@ -1530,8 +1531,8 @@ Get a list of all objects that use this object
 func (a *ProvidersApiService) ProvidersLdapUsedByList(ctx _context.Context, id int32) ApiProvidersLdapUsedByListRequest {
 	return ApiProvidersLdapUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -1628,8 +1629,8 @@ func (a *ProvidersApiService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapU
 }
 
 type ApiProvidersOauth2CreateRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
+	ctx                   _context.Context
+	ApiService            *ProvidersApiService
 	oAuth2ProviderRequest *OAuth2ProviderRequest
 }
 
@@ -1653,7 +1654,7 @@ OAuth2Provider Viewset
 func (a *ProvidersApiService) ProvidersOauth2Create(ctx _context.Context) ApiProvidersOauth2CreateRequest {
 	return ApiProvidersOauth2CreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1754,11 +1755,10 @@ func (a *ProvidersApiService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2C
 }
 
 type ApiProvidersOauth2DestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersOauth2DestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.ProvidersOauth2DestroyExecute(r)
@@ -1776,8 +1776,8 @@ OAuth2Provider Viewset
 func (a *ProvidersApiService) ProvidersOauth2Destroy(ctx _context.Context, id int32) ApiProvidersOauth2DestroyRequest {
 	return ApiProvidersOauth2DestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -1863,26 +1863,26 @@ func (a *ProvidersApiService) ProvidersOauth2DestroyExecute(r ApiProvidersOauth2
 }
 
 type ApiProvidersOauth2ListRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
-	accessCodeValidity *string
-	application *string
-	authorizationFlow *string
-	clientId *string
-	clientType *string
+	ctx                    _context.Context
+	ApiService             *ProvidersApiService
+	accessCodeValidity     *string
+	application            *string
+	authorizationFlow      *string
+	clientId               *string
+	clientType             *string
 	includeClaimsInIdToken *bool
-	issuerMode *string
-	jwtAlg *string
-	name *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	propertyMappings *[]string
-	redirectUris *string
-	rsaKey *string
-	search *string
-	subMode *string
-	tokenValidity *string
+	issuerMode             *string
+	jwtAlg                 *string
+	name                   *string
+	ordering               *string
+	page                   *int32
+	pageSize               *int32
+	propertyMappings       *[]string
+	redirectUris           *string
+	rsaKey                 *string
+	search                 *string
+	subMode                *string
+	tokenValidity          *string
 }
 
 func (r ApiProvidersOauth2ListRequest) AccessCodeValidity(accessCodeValidity string) ApiProvidersOauth2ListRequest {
@@ -1901,6 +1901,7 @@ func (r ApiProvidersOauth2ListRequest) ClientId(clientId string) ApiProvidersOau
 	r.clientId = &clientId
 	return r
 }
+
 // Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable.
 func (r ApiProvidersOauth2ListRequest) ClientType(clientType string) ApiProvidersOauth2ListRequest {
 	r.clientType = &clientType
@@ -1910,11 +1911,13 @@ func (r ApiProvidersOauth2ListRequest) IncludeClaimsInIdToken(includeClaimsInIdT
 	r.includeClaimsInIdToken = &includeClaimsInIdToken
 	return r
 }
+
 // Configure how the issuer field of the ID Token should be filled.
 func (r ApiProvidersOauth2ListRequest) IssuerMode(issuerMode string) ApiProvidersOauth2ListRequest {
 	r.issuerMode = &issuerMode
 	return r
 }
+
 // Algorithm used to sign the JWT Token
 func (r ApiProvidersOauth2ListRequest) JwtAlg(jwtAlg string) ApiProvidersOauth2ListRequest {
 	r.jwtAlg = &jwtAlg
@@ -1924,16 +1927,19 @@ func (r ApiProvidersOauth2ListRequest) Name(name string) ApiProvidersOauth2ListR
 	r.name = &name
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiProvidersOauth2ListRequest) Ordering(ordering string) ApiProvidersOauth2ListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiProvidersOauth2ListRequest) Page(page int32) ApiProvidersOauth2ListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiProvidersOauth2ListRequest) PageSize(pageSize int32) ApiProvidersOauth2ListRequest {
 	r.pageSize = &pageSize
@@ -1951,11 +1957,13 @@ func (r ApiProvidersOauth2ListRequest) RsaKey(rsaKey string) ApiProvidersOauth2L
 	r.rsaKey = &rsaKey
 	return r
 }
+
 // A search term.
 func (r ApiProvidersOauth2ListRequest) Search(search string) ApiProvidersOauth2ListRequest {
 	r.search = &search
 	return r
 }
+
 // Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
 func (r ApiProvidersOauth2ListRequest) SubMode(subMode string) ApiProvidersOauth2ListRequest {
 	r.subMode = &subMode
@@ -1981,7 +1989,7 @@ OAuth2Provider Viewset
 func (a *ProvidersApiService) ProvidersOauth2List(ctx _context.Context) ApiProvidersOauth2ListRequest {
 	return ApiProvidersOauth2ListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2139,9 +2147,9 @@ func (a *ProvidersApiService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 }
 
 type ApiProvidersOauth2PartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
-	id int32
+	ctx                          _context.Context
+	ApiService                   *ProvidersApiService
+	id                           int32
 	patchedOAuth2ProviderRequest *PatchedOAuth2ProviderRequest
 }
 
@@ -2166,8 +2174,8 @@ OAuth2Provider Viewset
 func (a *ProvidersApiService) ProvidersOauth2PartialUpdate(ctx _context.Context, id int32) ApiProvidersOauth2PartialUpdateRequest {
 	return ApiProvidersOauth2PartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -2266,11 +2274,10 @@ func (a *ProvidersApiService) ProvidersOauth2PartialUpdateExecute(r ApiProviders
 }
 
 type ApiProvidersOauth2RetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersOauth2RetrieveRequest) Execute() (OAuth2Provider, *_nethttp.Response, error) {
 	return r.ApiService.ProvidersOauth2RetrieveExecute(r)
@@ -2288,8 +2295,8 @@ OAuth2Provider Viewset
 func (a *ProvidersApiService) ProvidersOauth2Retrieve(ctx _context.Context, id int32) ApiProvidersOauth2RetrieveRequest {
 	return ApiProvidersOauth2RetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -2386,11 +2393,10 @@ func (a *ProvidersApiService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth
 }
 
 type ApiProvidersOauth2SetupUrlsRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersOauth2SetupUrlsRetrieveRequest) Execute() (OAuth2ProviderSetupURLs, *_nethttp.Response, error) {
 	return r.ApiService.ProvidersOauth2SetupUrlsRetrieveExecute(r)
@@ -2408,8 +2414,8 @@ Get Providers setup URLs
 func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieve(ctx _context.Context, id int32) ApiProvidersOauth2SetupUrlsRetrieveRequest {
 	return ApiProvidersOauth2SetupUrlsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -2506,9 +2512,9 @@ func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvi
 }
 
 type ApiProvidersOauth2UpdateRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
-	id int32
+	ctx                   _context.Context
+	ApiService            *ProvidersApiService
+	id                    int32
 	oAuth2ProviderRequest *OAuth2ProviderRequest
 }
 
@@ -2533,8 +2539,8 @@ OAuth2Provider Viewset
 func (a *ProvidersApiService) ProvidersOauth2Update(ctx _context.Context, id int32) ApiProvidersOauth2UpdateRequest {
 	return ApiProvidersOauth2UpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -2636,11 +2642,10 @@ func (a *ProvidersApiService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2U
 }
 
 type ApiProvidersOauth2UsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersOauth2UsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.ProvidersOauth2UsedByListExecute(r)
@@ -2658,8 +2663,8 @@ Get a list of all objects that use this object
 func (a *ProvidersApiService) ProvidersOauth2UsedByList(ctx _context.Context, id int32) ApiProvidersOauth2UsedByListRequest {
 	return ApiProvidersOauth2UsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -2756,8 +2761,8 @@ func (a *ProvidersApiService) ProvidersOauth2UsedByListExecute(r ApiProvidersOau
 }
 
 type ApiProvidersProxyCreateRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
+	ctx                  _context.Context
+	ApiService           *ProvidersApiService
 	proxyProviderRequest *ProxyProviderRequest
 }
 
@@ -2781,7 +2786,7 @@ ProxyProvider Viewset
 func (a *ProvidersApiService) ProvidersProxyCreate(ctx _context.Context) ApiProvidersProxyCreateRequest {
 	return ApiProvidersProxyCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -2882,11 +2887,10 @@ func (a *ProvidersApiService) ProvidersProxyCreateExecute(r ApiProvidersProxyCre
 }
 
 type ApiProvidersProxyDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersProxyDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.ProvidersProxyDestroyExecute(r)
@@ -2904,8 +2908,8 @@ ProxyProvider Viewset
 func (a *ProvidersApiService) ProvidersProxyDestroy(ctx _context.Context, id int32) ApiProvidersProxyDestroyRequest {
 	return ApiProvidersProxyDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -2991,28 +2995,28 @@ func (a *ProvidersApiService) ProvidersProxyDestroyExecute(r ApiProvidersProxyDe
 }
 
 type ApiProvidersProxyListRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
-	applicationIsnull *bool
-	authorizationFlowSlugIexact *string
-	basicAuthEnabledIexact *bool
+	ctx                              _context.Context
+	ApiService                       *ProvidersApiService
+	applicationIsnull                *bool
+	authorizationFlowSlugIexact      *string
+	basicAuthEnabledIexact           *bool
 	basicAuthPasswordAttributeIexact *string
-	basicAuthUserAttributeIexact *string
-	certificateKpUuidIexact *string
-	certificateNameIexact *string
-	cookieDomainIexact *string
-	externalHostIexact *string
-	internalHostIexact *string
-	internalHostSslValidationIexact *bool
-	modeIexact *string
-	nameIexact *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	propertyMappingsIexact *[]string
-	redirectUrisIexact *string
-	search *string
-	skipPathRegexIexact *string
+	basicAuthUserAttributeIexact     *string
+	certificateKpUuidIexact          *string
+	certificateNameIexact            *string
+	cookieDomainIexact               *string
+	externalHostIexact               *string
+	internalHostIexact               *string
+	internalHostSslValidationIexact  *bool
+	modeIexact                       *string
+	nameIexact                       *string
+	ordering                         *string
+	page                             *int32
+	pageSize                         *int32
+	propertyMappingsIexact           *[]string
+	redirectUrisIexact               *string
+	search                           *string
+	skipPathRegexIexact              *string
 }
 
 func (r ApiProvidersProxyListRequest) ApplicationIsnull(applicationIsnull bool) ApiProvidersProxyListRequest {
@@ -3067,16 +3071,19 @@ func (r ApiProvidersProxyListRequest) NameIexact(nameIexact string) ApiProviders
 	r.nameIexact = &nameIexact
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiProvidersProxyListRequest) Ordering(ordering string) ApiProvidersProxyListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiProvidersProxyListRequest) Page(page int32) ApiProvidersProxyListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiProvidersProxyListRequest) PageSize(pageSize int32) ApiProvidersProxyListRequest {
 	r.pageSize = &pageSize
@@ -3090,6 +3097,7 @@ func (r ApiProvidersProxyListRequest) RedirectUrisIexact(redirectUrisIexact stri
 	r.redirectUrisIexact = &redirectUrisIexact
 	return r
 }
+
 // A search term.
 func (r ApiProvidersProxyListRequest) Search(search string) ApiProvidersProxyListRequest {
 	r.search = &search
@@ -3115,7 +3123,7 @@ ProxyProvider Viewset
 func (a *ProvidersApiService) ProvidersProxyList(ctx _context.Context) ApiProvidersProxyListRequest {
 	return ApiProvidersProxyListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3279,9 +3287,9 @@ func (a *ProvidersApiService) ProvidersProxyListExecute(r ApiProvidersProxyListR
 }
 
 type ApiProvidersProxyPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
-	id int32
+	ctx                         _context.Context
+	ApiService                  *ProvidersApiService
+	id                          int32
 	patchedProxyProviderRequest *PatchedProxyProviderRequest
 }
 
@@ -3306,8 +3314,8 @@ ProxyProvider Viewset
 func (a *ProvidersApiService) ProvidersProxyPartialUpdate(ctx _context.Context, id int32) ApiProvidersProxyPartialUpdateRequest {
 	return ApiProvidersProxyPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -3406,11 +3414,10 @@ func (a *ProvidersApiService) ProvidersProxyPartialUpdateExecute(r ApiProvidersP
 }
 
 type ApiProvidersProxyRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersProxyRetrieveRequest) Execute() (ProxyProvider, *_nethttp.Response, error) {
 	return r.ApiService.ProvidersProxyRetrieveExecute(r)
@@ -3428,8 +3435,8 @@ ProxyProvider Viewset
 func (a *ProvidersApiService) ProvidersProxyRetrieve(ctx _context.Context, id int32) ApiProvidersProxyRetrieveRequest {
 	return ApiProvidersProxyRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -3526,9 +3533,9 @@ func (a *ProvidersApiService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyR
 }
 
 type ApiProvidersProxyUpdateRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
-	id int32
+	ctx                  _context.Context
+	ApiService           *ProvidersApiService
+	id                   int32
 	proxyProviderRequest *ProxyProviderRequest
 }
 
@@ -3553,8 +3560,8 @@ ProxyProvider Viewset
 func (a *ProvidersApiService) ProvidersProxyUpdate(ctx _context.Context, id int32) ApiProvidersProxyUpdateRequest {
 	return ApiProvidersProxyUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -3656,11 +3663,10 @@ func (a *ProvidersApiService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpd
 }
 
 type ApiProvidersProxyUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersProxyUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.ProvidersProxyUsedByListExecute(r)
@@ -3678,8 +3684,8 @@ Get a list of all objects that use this object
 func (a *ProvidersApiService) ProvidersProxyUsedByList(ctx _context.Context, id int32) ApiProvidersProxyUsedByListRequest {
 	return ApiProvidersProxyUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -3776,8 +3782,8 @@ func (a *ProvidersApiService) ProvidersProxyUsedByListExecute(r ApiProvidersProx
 }
 
 type ApiProvidersSamlCreateRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
+	ctx                 _context.Context
+	ApiService          *ProvidersApiService
 	sAMLProviderRequest *SAMLProviderRequest
 }
 
@@ -3801,7 +3807,7 @@ SAMLProvider Viewset
 func (a *ProvidersApiService) ProvidersSamlCreate(ctx _context.Context) ApiProvidersSamlCreateRequest {
 	return ApiProvidersSamlCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -3902,11 +3908,10 @@ func (a *ProvidersApiService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreat
 }
 
 type ApiProvidersSamlDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersSamlDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.ProvidersSamlDestroyExecute(r)
@@ -3924,8 +3929,8 @@ SAMLProvider Viewset
 func (a *ProvidersApiService) ProvidersSamlDestroy(ctx _context.Context, id int32) ApiProvidersSamlDestroyRequest {
 	return ApiProvidersSamlDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -4011,11 +4016,11 @@ func (a *ProvidersApiService) ProvidersSamlDestroyExecute(r ApiProvidersSamlDest
 }
 
 type ApiProvidersSamlImportMetadataCreateRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
-	name *string
+	ctx               _context.Context
+	ApiService        *ProvidersApiService
+	name              *string
 	authorizationFlow *string
-	file **os.File
+	file              **os.File
 }
 
 func (r ApiProvidersSamlImportMetadataCreateRequest) Name(name string) ApiProvidersSamlImportMetadataCreateRequest {
@@ -4046,7 +4051,7 @@ Create provider from SAML Metadata
 func (a *ProvidersApiService) ProvidersSamlImportMetadataCreate(ctx _context.Context) ApiProvidersSamlImportMetadataCreateRequest {
 	return ApiProvidersSamlImportMetadataCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -4150,27 +4155,27 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 }
 
 type ApiProvidersSamlListRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
-	acsUrl *string
-	assertionValidNotBefore *string
+	ctx                        _context.Context
+	ApiService                 *ProvidersApiService
+	acsUrl                     *string
+	assertionValidNotBefore    *string
 	assertionValidNotOnOrAfter *string
-	audience *string
-	authorizationFlow *string
-	digestAlgorithm *string
-	issuer *string
-	name *string
-	nameIdMapping *string
-	ordering *string
-	page *int32
-	pageSize *int32
-	propertyMappings *[]string
-	search *string
-	sessionValidNotOnOrAfter *string
-	signatureAlgorithm *string
-	signingKp *string
-	spBinding *string
-	verificationKp *string
+	audience                   *string
+	authorizationFlow          *string
+	digestAlgorithm            *string
+	issuer                     *string
+	name                       *string
+	nameIdMapping              *string
+	ordering                   *string
+	page                       *int32
+	pageSize                   *int32
+	propertyMappings           *[]string
+	search                     *string
+	sessionValidNotOnOrAfter   *string
+	signatureAlgorithm         *string
+	signingKp                  *string
+	spBinding                  *string
+	verificationKp             *string
 }
 
 func (r ApiProvidersSamlListRequest) AcsUrl(acsUrl string) ApiProvidersSamlListRequest {
@@ -4209,16 +4214,19 @@ func (r ApiProvidersSamlListRequest) NameIdMapping(nameIdMapping string) ApiProv
 	r.nameIdMapping = &nameIdMapping
 	return r
 }
+
 // Which field to use when ordering the results.
 func (r ApiProvidersSamlListRequest) Ordering(ordering string) ApiProvidersSamlListRequest {
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiProvidersSamlListRequest) Page(page int32) ApiProvidersSamlListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiProvidersSamlListRequest) PageSize(pageSize int32) ApiProvidersSamlListRequest {
 	r.pageSize = &pageSize
@@ -4228,6 +4236,7 @@ func (r ApiProvidersSamlListRequest) PropertyMappings(propertyMappings []string)
 	r.propertyMappings = &propertyMappings
 	return r
 }
+
 // A search term.
 func (r ApiProvidersSamlListRequest) Search(search string) ApiProvidersSamlListRequest {
 	r.search = &search
@@ -4245,6 +4254,7 @@ func (r ApiProvidersSamlListRequest) SigningKp(signingKp string) ApiProvidersSam
 	r.signingKp = &signingKp
 	return r
 }
+
 // This determines how authentik sends the response back to the Service Provider.
 func (r ApiProvidersSamlListRequest) SpBinding(spBinding string) ApiProvidersSamlListRequest {
 	r.spBinding = &spBinding
@@ -4270,7 +4280,7 @@ SAMLProvider Viewset
 func (a *ProvidersApiService) ProvidersSamlList(ctx _context.Context) ApiProvidersSamlListRequest {
 	return ApiProvidersSamlListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -4431,10 +4441,10 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 }
 
 type ApiProvidersSamlMetadataRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
-	download *bool
+	id         int32
+	download   *bool
 }
 
 func (r ApiProvidersSamlMetadataRetrieveRequest) Download(download bool) ApiProvidersSamlMetadataRetrieveRequest {
@@ -4458,8 +4468,8 @@ Return metadata as XML string
 func (a *ProvidersApiService) ProvidersSamlMetadataRetrieve(ctx _context.Context, id int32) ApiProvidersSamlMetadataRetrieveRequest {
 	return ApiProvidersSamlMetadataRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -4559,9 +4569,9 @@ func (a *ProvidersApiService) ProvidersSamlMetadataRetrieveExecute(r ApiProvider
 }
 
 type ApiProvidersSamlPartialUpdateRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
-	id int32
+	ctx                        _context.Context
+	ApiService                 *ProvidersApiService
+	id                         int32
 	patchedSAMLProviderRequest *PatchedSAMLProviderRequest
 }
 
@@ -4586,8 +4596,8 @@ SAMLProvider Viewset
 func (a *ProvidersApiService) ProvidersSamlPartialUpdate(ctx _context.Context, id int32) ApiProvidersSamlPartialUpdateRequest {
 	return ApiProvidersSamlPartialUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -4686,11 +4696,10 @@ func (a *ProvidersApiService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSa
 }
 
 type ApiProvidersSamlRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersSamlRetrieveRequest) Execute() (SAMLProvider, *_nethttp.Response, error) {
 	return r.ApiService.ProvidersSamlRetrieveExecute(r)
@@ -4708,8 +4717,8 @@ SAMLProvider Viewset
 func (a *ProvidersApiService) ProvidersSamlRetrieve(ctx _context.Context, id int32) ApiProvidersSamlRetrieveRequest {
 	return ApiProvidersSamlRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -4806,9 +4815,9 @@ func (a *ProvidersApiService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRet
 }
 
 type ApiProvidersSamlUpdateRequest struct {
-	ctx _context.Context
-	ApiService *ProvidersApiService
-	id int32
+	ctx                 _context.Context
+	ApiService          *ProvidersApiService
+	id                  int32
 	sAMLProviderRequest *SAMLProviderRequest
 }
 
@@ -4833,8 +4842,8 @@ SAMLProvider Viewset
 func (a *ProvidersApiService) ProvidersSamlUpdate(ctx _context.Context, id int32) ApiProvidersSamlUpdateRequest {
 	return ApiProvidersSamlUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -4936,11 +4945,10 @@ func (a *ProvidersApiService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdat
 }
 
 type ApiProvidersSamlUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProvidersApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiProvidersSamlUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.ProvidersSamlUsedByListExecute(r)
@@ -4958,8 +4966,8 @@ Get a list of all objects that use this object
 func (a *ProvidersApiService) ProvidersSamlUsedByList(ctx _context.Context, id int32) ApiProvidersSamlUsedByListRequest {
 	return ApiProvidersSamlUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 

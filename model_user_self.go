@@ -23,12 +23,12 @@ type UserSelf struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive bool `json:"is_active"`
-	IsSuperuser bool `json:"is_superuser"`
-	Groups []Group `json:"groups"`
-	Email *string `json:"email,omitempty"`
-	Avatar string `json:"avatar"`
-	Uid string `json:"uid"`
+	IsActive    bool    `json:"is_active"`
+	IsSuperuser bool    `json:"is_superuser"`
+	Groups      []Group `json:"groups"`
+	Email       *string `json:"email,omitempty"`
+	Avatar      string  `json:"avatar"`
+	Uid         string  `json:"uid"`
 }
 
 // NewUserSelf instantiates a new UserSelf object
@@ -69,7 +69,7 @@ func (o *UserSelf) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *UserSelf) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -93,7 +93,7 @@ func (o *UserSelf) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
 func (o *UserSelf) GetUsernameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Username, true
@@ -117,7 +117,7 @@ func (o *UserSelf) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *UserSelf) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -141,7 +141,7 @@ func (o *UserSelf) GetIsActive() bool {
 // GetIsActiveOk returns a tuple with the IsActive field value
 // and a boolean to check if the value has been set.
 func (o *UserSelf) GetIsActiveOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IsActive, true
@@ -165,7 +165,7 @@ func (o *UserSelf) GetIsSuperuser() bool {
 // GetIsSuperuserOk returns a tuple with the IsSuperuser field value
 // and a boolean to check if the value has been set.
 func (o *UserSelf) GetIsSuperuserOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IsSuperuser, true
@@ -189,7 +189,7 @@ func (o *UserSelf) GetGroups() []Group {
 // GetGroupsOk returns a tuple with the Groups field value
 // and a boolean to check if the value has been set.
 func (o *UserSelf) GetGroupsOk() (*[]Group, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Groups, true
@@ -245,7 +245,7 @@ func (o *UserSelf) GetAvatar() string {
 // GetAvatarOk returns a tuple with the Avatar field value
 // and a boolean to check if the value has been set.
 func (o *UserSelf) GetAvatarOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Avatar, true
@@ -269,7 +269,7 @@ func (o *UserSelf) GetUid() string {
 // GetUidOk returns a tuple with the Uid field value
 // and a boolean to check if the value has been set.
 func (o *UserSelf) GetUidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Uid, true
@@ -347,5 +347,3 @@ func (v *NullableUserSelf) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

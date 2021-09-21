@@ -17,8 +17,8 @@ import (
 
 // LoginSource Serializer for Login buttons of sources
 type LoginSource struct {
-	Name string `json:"name"`
-	IconUrl NullableString `json:"icon_url,omitempty"`
+	Name      string         `json:"name"`
+	IconUrl   NullableString `json:"icon_url,omitempty"`
 	Challenge ChallengeTypes `json:"challenge"`
 }
 
@@ -54,7 +54,7 @@ func (o *LoginSource) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *LoginSource) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -78,7 +78,7 @@ func (o *LoginSource) GetIconUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LoginSource) GetIconUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IconUrl.Get(), o.IconUrl.IsSet()
@@ -97,6 +97,7 @@ func (o *LoginSource) HasIconUrl() bool {
 func (o *LoginSource) SetIconUrl(v string) {
 	o.IconUrl.Set(&v)
 }
+
 // SetIconUrlNil sets the value for IconUrl to be an explicit nil
 func (o *LoginSource) SetIconUrlNil() {
 	o.IconUrl.Set(nil)
@@ -120,7 +121,7 @@ func (o *LoginSource) GetChallenge() ChallengeTypes {
 // GetChallengeOk returns a tuple with the Challenge field value
 // and a boolean to check if the value has been set.
 func (o *LoginSource) GetChallengeOk() (*ChallengeTypes, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Challenge, true
@@ -180,5 +181,3 @@ func (v *NullableLoginSource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

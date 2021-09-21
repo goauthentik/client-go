@@ -21,10 +21,10 @@ type UsedByActionEnum string
 
 // List of UsedByActionEnum
 const (
-	USEDBYACTIONENUM_CASCADE UsedByActionEnum = "CASCADE"
+	USEDBYACTIONENUM_CASCADE      UsedByActionEnum = "CASCADE"
 	USEDBYACTIONENUM_CASCADE_MANY UsedByActionEnum = "CASCADE_MANY"
-	USEDBYACTIONENUM_SET_NULL UsedByActionEnum = "SET_NULL"
-	USEDBYACTIONENUM_SET_DEFAULT UsedByActionEnum = "SET_DEFAULT"
+	USEDBYACTIONENUM_SET_NULL     UsedByActionEnum = "SET_NULL"
+	USEDBYACTIONENUM_SET_DEFAULT  UsedByActionEnum = "SET_DEFAULT"
 )
 
 // All allowed values of UsedByActionEnum enum
@@ -113,4 +113,3 @@ func (v *NullableUsedByActionEnum) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

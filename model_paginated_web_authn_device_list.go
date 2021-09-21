@@ -18,7 +18,7 @@ import (
 // PaginatedWebAuthnDeviceList struct for PaginatedWebAuthnDeviceList
 type PaginatedWebAuthnDeviceList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []WebAuthnDevice `json:"results"`
+	Results    []WebAuthnDevice                   `json:"results"`
 }
 
 // NewPaginatedWebAuthnDeviceList instantiates a new PaginatedWebAuthnDeviceList object
@@ -53,7 +53,7 @@ func (o *PaginatedWebAuthnDeviceList) GetPagination() PaginatedApplicationListPa
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedWebAuthnDeviceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedWebAuthnDeviceList) GetResults() []WebAuthnDevice {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedWebAuthnDeviceList) GetResultsOk() (*[]WebAuthnDevice, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedWebAuthnDeviceList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

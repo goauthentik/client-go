@@ -21,8 +21,8 @@ type BackendsEnum string
 
 // List of BackendsEnum
 const (
-	BACKENDSENUM_CORE_AUTH_INBUILT_BACKEND BackendsEnum = "authentik.core.auth.InbuiltBackend"
-	BACKENDSENUM_CORE_AUTH_TOKEN_BACKEND BackendsEnum = "authentik.core.auth.TokenBackend"
+	BACKENDSENUM_CORE_AUTH_INBUILT_BACKEND      BackendsEnum = "authentik.core.auth.InbuiltBackend"
+	BACKENDSENUM_CORE_AUTH_TOKEN_BACKEND        BackendsEnum = "authentik.core.auth.TokenBackend"
 	BACKENDSENUM_SOURCES_LDAP_AUTH_LDAP_BACKEND BackendsEnum = "authentik.sources.ldap.auth.LDAPBackend"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableBackendsEnum) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

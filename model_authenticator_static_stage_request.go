@@ -17,11 +17,11 @@ import (
 
 // AuthenticatorStaticStageRequest AuthenticatorStaticStage Serializer
 type AuthenticatorStaticStageRequest struct {
-	Name string `json:"name"`
+	Name    string         `json:"name"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	TokenCount *int32 `json:"token_count,omitempty"`
+	TokenCount    *int32         `json:"token_count,omitempty"`
 }
 
 // NewAuthenticatorStaticStageRequest instantiates a new AuthenticatorStaticStageRequest object
@@ -55,7 +55,7 @@ func (o *AuthenticatorStaticStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorStaticStageRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -111,7 +111,7 @@ func (o *AuthenticatorStaticStageRequest) GetConfigureFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatorStaticStageRequest) GetConfigureFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ConfigureFlow.Get(), o.ConfigureFlow.IsSet()
@@ -130,6 +130,7 @@ func (o *AuthenticatorStaticStageRequest) HasConfigureFlow() bool {
 func (o *AuthenticatorStaticStageRequest) SetConfigureFlow(v string) {
 	o.ConfigureFlow.Set(&v)
 }
+
 // SetConfigureFlowNil sets the value for ConfigureFlow to be an explicit nil
 func (o *AuthenticatorStaticStageRequest) SetConfigureFlowNil() {
 	o.ConfigureFlow.Set(nil)
@@ -224,5 +225,3 @@ func (v *NullableAuthenticatorStaticStageRequest) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -18,7 +18,7 @@ import (
 // PaginatedConsentStageList struct for PaginatedConsentStageList
 type PaginatedConsentStageList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []ConsentStage `json:"results"`
+	Results    []ConsentStage                     `json:"results"`
 }
 
 // NewPaginatedConsentStageList instantiates a new PaginatedConsentStageList object
@@ -53,7 +53,7 @@ func (o *PaginatedConsentStageList) GetPagination() PaginatedApplicationListPagi
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedConsentStageList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedConsentStageList) GetResults() []ConsentStage {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedConsentStageList) GetResultsOk() (*[]ConsentStage, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedConsentStageList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

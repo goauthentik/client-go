@@ -29,11 +29,10 @@ var (
 type Oauth2ApiService service
 
 type ApiOauth2AuthorizationCodesDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *Oauth2ApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiOauth2AuthorizationCodesDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.Oauth2AuthorizationCodesDestroyExecute(r)
@@ -51,8 +50,8 @@ AuthorizationCode Viewset
 func (a *Oauth2ApiService) Oauth2AuthorizationCodesDestroy(ctx _context.Context, id int32) ApiOauth2AuthorizationCodesDestroyRequest {
 	return ApiOauth2AuthorizationCodesDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -138,14 +137,14 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesDestroyExecute(r ApiOauth2Aut
 }
 
 type ApiOauth2AuthorizationCodesListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *Oauth2ApiService
-	ordering *string
-	page *int32
-	pageSize *int32
-	provider *int32
-	search *string
-	user *int32
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	provider   *int32
+	search     *string
+	user       *int32
 }
 
 // Which field to use when ordering the results.
@@ -153,11 +152,13 @@ func (r ApiOauth2AuthorizationCodesListRequest) Ordering(ordering string) ApiOau
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiOauth2AuthorizationCodesListRequest) Page(page int32) ApiOauth2AuthorizationCodesListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiOauth2AuthorizationCodesListRequest) PageSize(pageSize int32) ApiOauth2AuthorizationCodesListRequest {
 	r.pageSize = &pageSize
@@ -167,6 +168,7 @@ func (r ApiOauth2AuthorizationCodesListRequest) Provider(provider int32) ApiOaut
 	r.provider = &provider
 	return r
 }
+
 // A search term.
 func (r ApiOauth2AuthorizationCodesListRequest) Search(search string) ApiOauth2AuthorizationCodesListRequest {
 	r.search = &search
@@ -192,7 +194,7 @@ AuthorizationCode Viewset
 func (a *Oauth2ApiService) Oauth2AuthorizationCodesList(ctx _context.Context) ApiOauth2AuthorizationCodesListRequest {
 	return ApiOauth2AuthorizationCodesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -306,11 +308,10 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesListExecute(r ApiOauth2Author
 }
 
 type ApiOauth2AuthorizationCodesRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *Oauth2ApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiOauth2AuthorizationCodesRetrieveRequest) Execute() (ExpiringBaseGrantModel, *_nethttp.Response, error) {
 	return r.ApiService.Oauth2AuthorizationCodesRetrieveExecute(r)
@@ -328,8 +329,8 @@ AuthorizationCode Viewset
 func (a *Oauth2ApiService) Oauth2AuthorizationCodesRetrieve(ctx _context.Context, id int32) ApiOauth2AuthorizationCodesRetrieveRequest {
 	return ApiOauth2AuthorizationCodesRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -426,11 +427,10 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesRetrieveExecute(r ApiOauth2Au
 }
 
 type ApiOauth2AuthorizationCodesUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *Oauth2ApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiOauth2AuthorizationCodesUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.Oauth2AuthorizationCodesUsedByListExecute(r)
@@ -448,8 +448,8 @@ Get a list of all objects that use this object
 func (a *Oauth2ApiService) Oauth2AuthorizationCodesUsedByList(ctx _context.Context, id int32) ApiOauth2AuthorizationCodesUsedByListRequest {
 	return ApiOauth2AuthorizationCodesUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -546,11 +546,10 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesUsedByListExecute(r ApiOauth2
 }
 
 type ApiOauth2RefreshTokensDestroyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *Oauth2ApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiOauth2RefreshTokensDestroyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.Oauth2RefreshTokensDestroyExecute(r)
@@ -568,8 +567,8 @@ RefreshToken Viewset
 func (a *Oauth2ApiService) Oauth2RefreshTokensDestroy(ctx _context.Context, id int32) ApiOauth2RefreshTokensDestroyRequest {
 	return ApiOauth2RefreshTokensDestroyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -655,14 +654,14 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensDestroyExecute(r ApiOauth2RefreshT
 }
 
 type ApiOauth2RefreshTokensListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *Oauth2ApiService
-	ordering *string
-	page *int32
-	pageSize *int32
-	provider *int32
-	search *string
-	user *int32
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	provider   *int32
+	search     *string
+	user       *int32
 }
 
 // Which field to use when ordering the results.
@@ -670,11 +669,13 @@ func (r ApiOauth2RefreshTokensListRequest) Ordering(ordering string) ApiOauth2Re
 	r.ordering = &ordering
 	return r
 }
+
 // A page number within the paginated result set.
 func (r ApiOauth2RefreshTokensListRequest) Page(page int32) ApiOauth2RefreshTokensListRequest {
 	r.page = &page
 	return r
 }
+
 // Number of results to return per page.
 func (r ApiOauth2RefreshTokensListRequest) PageSize(pageSize int32) ApiOauth2RefreshTokensListRequest {
 	r.pageSize = &pageSize
@@ -684,6 +685,7 @@ func (r ApiOauth2RefreshTokensListRequest) Provider(provider int32) ApiOauth2Ref
 	r.provider = &provider
 	return r
 }
+
 // A search term.
 func (r ApiOauth2RefreshTokensListRequest) Search(search string) ApiOauth2RefreshTokensListRequest {
 	r.search = &search
@@ -709,7 +711,7 @@ RefreshToken Viewset
 func (a *Oauth2ApiService) Oauth2RefreshTokensList(ctx _context.Context) ApiOauth2RefreshTokensListRequest {
 	return ApiOauth2RefreshTokensListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -823,11 +825,10 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensListExecute(r ApiOauth2RefreshToke
 }
 
 type ApiOauth2RefreshTokensRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *Oauth2ApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiOauth2RefreshTokensRetrieveRequest) Execute() (RefreshTokenModel, *_nethttp.Response, error) {
 	return r.ApiService.Oauth2RefreshTokensRetrieveExecute(r)
@@ -845,8 +846,8 @@ RefreshToken Viewset
 func (a *Oauth2ApiService) Oauth2RefreshTokensRetrieve(ctx _context.Context, id int32) ApiOauth2RefreshTokensRetrieveRequest {
 	return ApiOauth2RefreshTokensRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -943,11 +944,10 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensRetrieveExecute(r ApiOauth2Refresh
 }
 
 type ApiOauth2RefreshTokensUsedByListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *Oauth2ApiService
-	id int32
+	id         int32
 }
-
 
 func (r ApiOauth2RefreshTokensUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
 	return r.ApiService.Oauth2RefreshTokensUsedByListExecute(r)
@@ -965,8 +965,8 @@ Get a list of all objects that use this object
 func (a *Oauth2ApiService) Oauth2RefreshTokensUsedByList(ctx _context.Context, id int32) ApiOauth2RefreshTokensUsedByListRequest {
 	return ApiOauth2RefreshTokensUsedByListRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 

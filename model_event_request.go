@@ -18,13 +18,13 @@ import (
 
 // EventRequest Event Serializer
 type EventRequest struct {
-	User *map[string]interface{} `json:"user,omitempty"`
-	Action EventActions `json:"action"`
-	App string `json:"app"`
-	Context *map[string]interface{} `json:"context,omitempty"`
-	ClientIp NullableString `json:"client_ip,omitempty"`
-	Expires *time.Time `json:"expires,omitempty"`
-	Tenant *map[string]interface{} `json:"tenant,omitempty"`
+	User     *map[string]interface{} `json:"user,omitempty"`
+	Action   EventActions            `json:"action"`
+	App      string                  `json:"app"`
+	Context  *map[string]interface{} `json:"context,omitempty"`
+	ClientIp NullableString          `json:"client_ip,omitempty"`
+	Expires  *time.Time              `json:"expires,omitempty"`
+	Tenant   *map[string]interface{} `json:"tenant,omitempty"`
 }
 
 // NewEventRequest instantiates a new EventRequest object
@@ -91,7 +91,7 @@ func (o *EventRequest) GetAction() EventActions {
 // GetActionOk returns a tuple with the Action field value
 // and a boolean to check if the value has been set.
 func (o *EventRequest) GetActionOk() (*EventActions, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Action, true
@@ -115,7 +115,7 @@ func (o *EventRequest) GetApp() string {
 // GetAppOk returns a tuple with the App field value
 // and a boolean to check if the value has been set.
 func (o *EventRequest) GetAppOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.App, true
@@ -171,7 +171,7 @@ func (o *EventRequest) GetClientIp() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EventRequest) GetClientIpOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ClientIp.Get(), o.ClientIp.IsSet()
@@ -190,6 +190,7 @@ func (o *EventRequest) HasClientIp() bool {
 func (o *EventRequest) SetClientIp(v string) {
 	o.ClientIp.Set(&v)
 }
+
 // SetClientIpNil sets the value for ClientIp to be an explicit nil
 func (o *EventRequest) SetClientIpNil() {
 	o.ClientIp.Set(nil)
@@ -325,5 +326,3 @@ func (v *NullableEventRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,12 +17,12 @@ import (
 
 // StagePrompt Serializer for a single Prompt field
 type StagePrompt struct {
-	FieldKey string `json:"field_key"`
-	Label string `json:"label"`
-	Type string `json:"type"`
-	Required bool `json:"required"`
+	FieldKey    string `json:"field_key"`
+	Label       string `json:"label"`
+	Type        string `json:"type"`
+	Required    bool   `json:"required"`
 	Placeholder string `json:"placeholder"`
-	Order int32 `json:"order"`
+	Order       int32  `json:"order"`
 }
 
 // NewStagePrompt instantiates a new StagePrompt object
@@ -61,7 +61,7 @@ func (o *StagePrompt) GetFieldKey() string {
 // GetFieldKeyOk returns a tuple with the FieldKey field value
 // and a boolean to check if the value has been set.
 func (o *StagePrompt) GetFieldKeyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.FieldKey, true
@@ -85,7 +85,7 @@ func (o *StagePrompt) GetLabel() string {
 // GetLabelOk returns a tuple with the Label field value
 // and a boolean to check if the value has been set.
 func (o *StagePrompt) GetLabelOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Label, true
@@ -109,7 +109,7 @@ func (o *StagePrompt) GetType() string {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *StagePrompt) GetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -133,7 +133,7 @@ func (o *StagePrompt) GetRequired() bool {
 // GetRequiredOk returns a tuple with the Required field value
 // and a boolean to check if the value has been set.
 func (o *StagePrompt) GetRequiredOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Required, true
@@ -157,7 +157,7 @@ func (o *StagePrompt) GetPlaceholder() string {
 // GetPlaceholderOk returns a tuple with the Placeholder field value
 // and a boolean to check if the value has been set.
 func (o *StagePrompt) GetPlaceholderOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Placeholder, true
@@ -181,7 +181,7 @@ func (o *StagePrompt) GetOrder() int32 {
 // GetOrderOk returns a tuple with the Order field value
 // and a boolean to check if the value has been set.
 func (o *StagePrompt) GetOrderOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Order, true
@@ -250,5 +250,3 @@ func (v *NullableStagePrompt) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

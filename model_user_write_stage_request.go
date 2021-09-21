@@ -17,7 +17,7 @@ import (
 
 // UserWriteStageRequest UserWriteStage Serializer
 type UserWriteStageRequest struct {
-	Name string `json:"name"`
+	Name    string         `json:"name"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// When set, newly created users are inactive and cannot login.
 	CreateUsersAsInactive *bool `json:"create_users_as_inactive,omitempty"`
@@ -56,7 +56,7 @@ func (o *UserWriteStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *UserWriteStageRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -144,7 +144,7 @@ func (o *UserWriteStageRequest) GetCreateUsersGroup() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserWriteStageRequest) GetCreateUsersGroupOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CreateUsersGroup.Get(), o.CreateUsersGroup.IsSet()
@@ -163,6 +163,7 @@ func (o *UserWriteStageRequest) HasCreateUsersGroup() bool {
 func (o *UserWriteStageRequest) SetCreateUsersGroup(v string) {
 	o.CreateUsersGroup.Set(&v)
 }
+
 // SetCreateUsersGroupNil sets the value for CreateUsersGroup to be an explicit nil
 func (o *UserWriteStageRequest) SetCreateUsersGroupNil() {
 	o.CreateUsersGroup.Set(nil)
@@ -225,5 +226,3 @@ func (v *NullableUserWriteStageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

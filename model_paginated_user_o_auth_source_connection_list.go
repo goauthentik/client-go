@@ -18,7 +18,7 @@ import (
 // PaginatedUserOAuthSourceConnectionList struct for PaginatedUserOAuthSourceConnectionList
 type PaginatedUserOAuthSourceConnectionList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []UserOAuthSourceConnection `json:"results"`
+	Results    []UserOAuthSourceConnection        `json:"results"`
 }
 
 // NewPaginatedUserOAuthSourceConnectionList instantiates a new PaginatedUserOAuthSourceConnectionList object
@@ -53,7 +53,7 @@ func (o *PaginatedUserOAuthSourceConnectionList) GetPagination() PaginatedApplic
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedUserOAuthSourceConnectionList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedUserOAuthSourceConnectionList) GetResults() []UserOAuthSourceC
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedUserOAuthSourceConnectionList) GetResultsOk() (*[]UserOAuthSourceConnection, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedUserOAuthSourceConnectionList) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

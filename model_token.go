@@ -20,14 +20,14 @@ import (
 type Token struct {
 	Pk string `json:"pk"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed NullableString `json:"managed,omitempty"`
-	Identifier string `json:"identifier"`
-	Intent *IntentEnum `json:"intent,omitempty"`
-	User *int32 `json:"user,omitempty"`
-	UserObj *User `json:"user_obj,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Expires *time.Time `json:"expires,omitempty"`
-	Expiring *bool `json:"expiring,omitempty"`
+	Managed     NullableString `json:"managed,omitempty"`
+	Identifier  string         `json:"identifier"`
+	Intent      *IntentEnum    `json:"intent,omitempty"`
+	User        *int32         `json:"user,omitempty"`
+	UserObj     *User          `json:"user_obj,omitempty"`
+	Description *string        `json:"description,omitempty"`
+	Expires     *time.Time     `json:"expires,omitempty"`
+	Expiring    *bool          `json:"expiring,omitempty"`
 }
 
 // NewToken instantiates a new Token object
@@ -62,7 +62,7 @@ func (o *Token) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *Token) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -86,7 +86,7 @@ func (o *Token) GetManaged() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Token) GetManagedOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Managed.Get(), o.Managed.IsSet()
@@ -105,6 +105,7 @@ func (o *Token) HasManaged() bool {
 func (o *Token) SetManaged(v string) {
 	o.Managed.Set(&v)
 }
+
 // SetManagedNil sets the value for Managed to be an explicit nil
 func (o *Token) SetManagedNil() {
 	o.Managed.Set(nil)
@@ -128,7 +129,7 @@ func (o *Token) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value
 // and a boolean to check if the value has been set.
 func (o *Token) GetIdentifierOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Identifier, true
@@ -398,5 +399,3 @@ func (v *NullableToken) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

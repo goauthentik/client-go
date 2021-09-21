@@ -17,10 +17,10 @@ import (
 
 // NotificationTransportRequest NotificationTransport Serializer
 type NotificationTransportRequest struct {
-	Name string `json:"name"`
-	Mode NotificationTransportModeEnum `json:"mode"`
-	WebhookUrl *string `json:"webhook_url,omitempty"`
-	WebhookMapping NullableString `json:"webhook_mapping,omitempty"`
+	Name           string                        `json:"name"`
+	Mode           NotificationTransportModeEnum `json:"mode"`
+	WebhookUrl     *string                       `json:"webhook_url,omitempty"`
+	WebhookMapping NullableString                `json:"webhook_mapping,omitempty"`
 	// Only send notification once, for example when sending a webhook into a chat channel.
 	SendOnce *bool `json:"send_once,omitempty"`
 }
@@ -57,7 +57,7 @@ func (o *NotificationTransportRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *NotificationTransportRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -81,7 +81,7 @@ func (o *NotificationTransportRequest) GetMode() NotificationTransportModeEnum {
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
 func (o *NotificationTransportRequest) GetModeOk() (*NotificationTransportModeEnum, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Mode, true
@@ -137,7 +137,7 @@ func (o *NotificationTransportRequest) GetWebhookMapping() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NotificationTransportRequest) GetWebhookMappingOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.WebhookMapping.Get(), o.WebhookMapping.IsSet()
@@ -156,6 +156,7 @@ func (o *NotificationTransportRequest) HasWebhookMapping() bool {
 func (o *NotificationTransportRequest) SetWebhookMapping(v string) {
 	o.WebhookMapping.Set(&v)
 }
+
 // SetWebhookMappingNil sets the value for WebhookMapping to be an explicit nil
 func (o *NotificationTransportRequest) SetWebhookMappingNil() {
 	o.WebhookMapping.Set(nil)
@@ -253,5 +254,3 @@ func (v *NullableNotificationTransportRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

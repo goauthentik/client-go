@@ -18,12 +18,12 @@ import (
 // PatchedPromptRequest Prompt Serializer
 type PatchedPromptRequest struct {
 	// Name of the form field, also used to store the value
-	FieldKey *string `json:"field_key,omitempty"`
-	Label *string `json:"label,omitempty"`
-	Type *PromptTypeEnum `json:"type,omitempty"`
-	Required *bool `json:"required,omitempty"`
-	Placeholder *string `json:"placeholder,omitempty"`
-	Order *int32 `json:"order,omitempty"`
+	FieldKey       *string         `json:"field_key,omitempty"`
+	Label          *string         `json:"label,omitempty"`
+	Type           *PromptTypeEnum `json:"type,omitempty"`
+	Required       *bool           `json:"required,omitempty"`
+	Placeholder    *string         `json:"placeholder,omitempty"`
+	Order          *int32          `json:"order,omitempty"`
 	PromptstageSet *[]StageRequest `json:"promptstage_set,omitempty"`
 }
 
@@ -329,5 +329,3 @@ func (v *NullablePatchedPromptRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

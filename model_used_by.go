@@ -17,11 +17,11 @@ import (
 
 // UsedBy A list of all objects referencing the queried object
 type UsedBy struct {
-	App string `json:"app"`
-	ModelName string `json:"model_name"`
-	Pk string `json:"pk"`
-	Name string `json:"name"`
-	Action UsedByActionEnum `json:"action"`
+	App       string           `json:"app"`
+	ModelName string           `json:"model_name"`
+	Pk        string           `json:"pk"`
+	Name      string           `json:"name"`
+	Action    UsedByActionEnum `json:"action"`
 }
 
 // NewUsedBy instantiates a new UsedBy object
@@ -59,7 +59,7 @@ func (o *UsedBy) GetApp() string {
 // GetAppOk returns a tuple with the App field value
 // and a boolean to check if the value has been set.
 func (o *UsedBy) GetAppOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.App, true
@@ -83,7 +83,7 @@ func (o *UsedBy) GetModelName() string {
 // GetModelNameOk returns a tuple with the ModelName field value
 // and a boolean to check if the value has been set.
 func (o *UsedBy) GetModelNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ModelName, true
@@ -107,7 +107,7 @@ func (o *UsedBy) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *UsedBy) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -131,7 +131,7 @@ func (o *UsedBy) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *UsedBy) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -155,7 +155,7 @@ func (o *UsedBy) GetAction() UsedByActionEnum {
 // GetActionOk returns a tuple with the Action field value
 // and a boolean to check if the value has been set.
 func (o *UsedBy) GetActionOk() (*UsedByActionEnum, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Action, true
@@ -221,5 +221,3 @@ func (v *NullableUsedBy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

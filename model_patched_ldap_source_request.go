@@ -20,20 +20,20 @@ type PatchedLDAPSourceRequest struct {
 	// Source's display Name.
 	Name *string `json:"name,omitempty"`
 	// Internal source name, used in URLs.
-	Slug *string `json:"slug,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
+	Slug    *string `json:"slug,omitempty"`
+	Enabled *bool   `json:"enabled,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
-	EnrollmentFlow NullableString `json:"enrollment_flow,omitempty"`
+	EnrollmentFlow   NullableString    `json:"enrollment_flow,omitempty"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
-	ServerUri *string `json:"server_uri,omitempty"`
-	BindCn *string `json:"bind_cn,omitempty"`
-	BindPassword *string `json:"bind_password,omitempty"`
-	StartTls *bool `json:"start_tls,omitempty"`
-	BaseDn *string `json:"base_dn,omitempty"`
+	ServerUri        *string               `json:"server_uri,omitempty"`
+	BindCn           *string               `json:"bind_cn,omitempty"`
+	BindPassword     *string               `json:"bind_password,omitempty"`
+	StartTls         *bool                 `json:"start_tls,omitempty"`
+	BaseDn           *string               `json:"base_dn,omitempty"`
 	// Prepended to Base DN for User-queries.
 	AdditionalUserDn *string `json:"additional_user_dn,omitempty"`
 	// Prepended to Base DN for Group-queries.
@@ -46,12 +46,12 @@ type PatchedLDAPSourceRequest struct {
 	GroupMembershipField *string `json:"group_membership_field,omitempty"`
 	// Field which contains a unique Identifier.
 	ObjectUniquenessField *string `json:"object_uniqueness_field,omitempty"`
-	SyncUsers *bool `json:"sync_users,omitempty"`
+	SyncUsers             *bool   `json:"sync_users,omitempty"`
 	// When a user changes their password, sync it back to LDAP. This can only be enabled on a single LDAP source.
-	SyncUsersPassword *bool `json:"sync_users_password,omitempty"`
-	SyncGroups *bool `json:"sync_groups,omitempty"`
-	SyncParentGroup NullableString `json:"sync_parent_group,omitempty"`
-	PropertyMappings *[]string `json:"property_mappings,omitempty"`
+	SyncUsersPassword *bool          `json:"sync_users_password,omitempty"`
+	SyncGroups        *bool          `json:"sync_groups,omitempty"`
+	SyncParentGroup   NullableString `json:"sync_parent_group,omitempty"`
+	PropertyMappings  *[]string      `json:"property_mappings,omitempty"`
 	// Property mappings used for group creation/updating.
 	PropertyMappingsGroup *[]string `json:"property_mappings_group,omitempty"`
 }
@@ -182,7 +182,7 @@ func (o *PatchedLDAPSourceRequest) GetAuthenticationFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedLDAPSourceRequest) GetAuthenticationFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AuthenticationFlow.Get(), o.AuthenticationFlow.IsSet()
@@ -201,6 +201,7 @@ func (o *PatchedLDAPSourceRequest) HasAuthenticationFlow() bool {
 func (o *PatchedLDAPSourceRequest) SetAuthenticationFlow(v string) {
 	o.AuthenticationFlow.Set(&v)
 }
+
 // SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
 func (o *PatchedLDAPSourceRequest) SetAuthenticationFlowNil() {
 	o.AuthenticationFlow.Set(nil)
@@ -224,7 +225,7 @@ func (o *PatchedLDAPSourceRequest) GetEnrollmentFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedLDAPSourceRequest) GetEnrollmentFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.EnrollmentFlow.Get(), o.EnrollmentFlow.IsSet()
@@ -243,6 +244,7 @@ func (o *PatchedLDAPSourceRequest) HasEnrollmentFlow() bool {
 func (o *PatchedLDAPSourceRequest) SetEnrollmentFlow(v string) {
 	o.EnrollmentFlow.Set(&v)
 }
+
 // SetEnrollmentFlowNil sets the value for EnrollmentFlow to be an explicit nil
 func (o *PatchedLDAPSourceRequest) SetEnrollmentFlowNil() {
 	o.EnrollmentFlow.Set(nil)
@@ -778,7 +780,7 @@ func (o *PatchedLDAPSourceRequest) GetSyncParentGroup() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedLDAPSourceRequest) GetSyncParentGroupOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.SyncParentGroup.Get(), o.SyncParentGroup.IsSet()
@@ -797,6 +799,7 @@ func (o *PatchedLDAPSourceRequest) HasSyncParentGroup() bool {
 func (o *PatchedLDAPSourceRequest) SetSyncParentGroup(v string) {
 	o.SyncParentGroup.Set(&v)
 }
+
 // SetSyncParentGroupNil sets the value for SyncParentGroup to be an explicit nil
 func (o *PatchedLDAPSourceRequest) SetSyncParentGroupNil() {
 	o.SyncParentGroup.Set(nil)
@@ -983,5 +986,3 @@ func (v *NullablePatchedLDAPSourceRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

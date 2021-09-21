@@ -24,15 +24,15 @@ type User struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive *bool `json:"is_active,omitempty"`
-	LastLogin NullableTime `json:"last_login,omitempty"`
-	IsSuperuser bool `json:"is_superuser"`
-	Groups []string `json:"groups"`
-	GroupsObj []Group `json:"groups_obj"`
-	Email *string `json:"email,omitempty"`
-	Avatar string `json:"avatar"`
-	Attributes *map[string]interface{} `json:"attributes,omitempty"`
-	Uid string `json:"uid"`
+	IsActive    *bool                   `json:"is_active,omitempty"`
+	LastLogin   NullableTime            `json:"last_login,omitempty"`
+	IsSuperuser bool                    `json:"is_superuser"`
+	Groups      []string                `json:"groups"`
+	GroupsObj   []Group                 `json:"groups_obj"`
+	Email       *string                 `json:"email,omitempty"`
+	Avatar      string                  `json:"avatar"`
+	Attributes  *map[string]interface{} `json:"attributes,omitempty"`
+	Uid         string                  `json:"uid"`
 }
 
 // NewUser instantiates a new User object
@@ -73,7 +73,7 @@ func (o *User) GetPk() int32 {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *User) GetPkOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -97,7 +97,7 @@ func (o *User) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
 func (o *User) GetUsernameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Username, true
@@ -121,7 +121,7 @@ func (o *User) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *User) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -177,7 +177,7 @@ func (o *User) GetLastLogin() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *User) GetLastLoginOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.LastLogin.Get(), o.LastLogin.IsSet()
@@ -196,6 +196,7 @@ func (o *User) HasLastLogin() bool {
 func (o *User) SetLastLogin(v time.Time) {
 	o.LastLogin.Set(&v)
 }
+
 // SetLastLoginNil sets the value for LastLogin to be an explicit nil
 func (o *User) SetLastLoginNil() {
 	o.LastLogin.Set(nil)
@@ -219,7 +220,7 @@ func (o *User) GetIsSuperuser() bool {
 // GetIsSuperuserOk returns a tuple with the IsSuperuser field value
 // and a boolean to check if the value has been set.
 func (o *User) GetIsSuperuserOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IsSuperuser, true
@@ -243,7 +244,7 @@ func (o *User) GetGroups() []string {
 // GetGroupsOk returns a tuple with the Groups field value
 // and a boolean to check if the value has been set.
 func (o *User) GetGroupsOk() (*[]string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Groups, true
@@ -267,7 +268,7 @@ func (o *User) GetGroupsObj() []Group {
 // GetGroupsObjOk returns a tuple with the GroupsObj field value
 // and a boolean to check if the value has been set.
 func (o *User) GetGroupsObjOk() (*[]Group, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.GroupsObj, true
@@ -323,7 +324,7 @@ func (o *User) GetAvatar() string {
 // GetAvatarOk returns a tuple with the Avatar field value
 // and a boolean to check if the value has been set.
 func (o *User) GetAvatarOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Avatar, true
@@ -379,7 +380,7 @@ func (o *User) GetUid() string {
 // GetUidOk returns a tuple with the Uid field value
 // and a boolean to check if the value has been set.
 func (o *User) GetUidOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Uid, true
@@ -466,5 +467,3 @@ func (v *NullableUser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

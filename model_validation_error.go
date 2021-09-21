@@ -18,7 +18,7 @@ import (
 // ValidationError Validation Error
 type ValidationError struct {
 	NonFieldErrors *[]string `json:"non_field_errors,omitempty"`
-	Code *string `json:"code,omitempty"`
+	Code           *string   `json:"code,omitempty"`
 }
 
 // NewValidationError instantiates a new ValidationError object
@@ -148,5 +148,3 @@ func (v *NullableValidationError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

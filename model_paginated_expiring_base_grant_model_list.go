@@ -18,7 +18,7 @@ import (
 // PaginatedExpiringBaseGrantModelList struct for PaginatedExpiringBaseGrantModelList
 type PaginatedExpiringBaseGrantModelList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []ExpiringBaseGrantModel `json:"results"`
+	Results    []ExpiringBaseGrantModel           `json:"results"`
 }
 
 // NewPaginatedExpiringBaseGrantModelList instantiates a new PaginatedExpiringBaseGrantModelList object
@@ -53,7 +53,7 @@ func (o *PaginatedExpiringBaseGrantModelList) GetPagination() PaginatedApplicati
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedExpiringBaseGrantModelList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedExpiringBaseGrantModelList) GetResults() []ExpiringBaseGrantMo
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedExpiringBaseGrantModelList) GetResultsOk() (*[]ExpiringBaseGrantModel, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedExpiringBaseGrantModelList) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

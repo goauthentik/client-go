@@ -17,7 +17,7 @@ import (
 
 // NotificationWebhookMappingRequest NotificationWebhookMapping Serializer
 type NotificationWebhookMappingRequest struct {
-	Name string `json:"name"`
+	Name       string `json:"name"`
 	Expression string `json:"expression"`
 }
 
@@ -53,7 +53,7 @@ func (o *NotificationWebhookMappingRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *NotificationWebhookMappingRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -77,7 +77,7 @@ func (o *NotificationWebhookMappingRequest) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value
 // and a boolean to check if the value has been set.
 func (o *NotificationWebhookMappingRequest) GetExpressionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Expression, true
@@ -134,5 +134,3 @@ func (v *NullableNotificationWebhookMappingRequest) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -18,9 +18,9 @@ import (
 // Version Get running and latest version.
 type Version struct {
 	VersionCurrent string `json:"version_current"`
-	VersionLatest string `json:"version_latest"`
-	BuildHash string `json:"build_hash"`
-	Outdated bool `json:"outdated"`
+	VersionLatest  string `json:"version_latest"`
+	BuildHash      string `json:"build_hash"`
+	Outdated       bool   `json:"outdated"`
 }
 
 // NewVersion instantiates a new Version object
@@ -57,7 +57,7 @@ func (o *Version) GetVersionCurrent() string {
 // GetVersionCurrentOk returns a tuple with the VersionCurrent field value
 // and a boolean to check if the value has been set.
 func (o *Version) GetVersionCurrentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VersionCurrent, true
@@ -81,7 +81,7 @@ func (o *Version) GetVersionLatest() string {
 // GetVersionLatestOk returns a tuple with the VersionLatest field value
 // and a boolean to check if the value has been set.
 func (o *Version) GetVersionLatestOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VersionLatest, true
@@ -105,7 +105,7 @@ func (o *Version) GetBuildHash() string {
 // GetBuildHashOk returns a tuple with the BuildHash field value
 // and a boolean to check if the value has been set.
 func (o *Version) GetBuildHashOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BuildHash, true
@@ -129,7 +129,7 @@ func (o *Version) GetOutdated() bool {
 // GetOutdatedOk returns a tuple with the Outdated field value
 // and a boolean to check if the value has been set.
 func (o *Version) GetOutdatedOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Outdated, true
@@ -192,5 +192,3 @@ func (v *NullableVersion) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

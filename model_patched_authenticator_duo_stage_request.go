@@ -17,13 +17,13 @@ import (
 
 // PatchedAuthenticatorDuoStageRequest AuthenticatorDuoStage Serializer
 type PatchedAuthenticatorDuoStageRequest struct {
-	Name *string `json:"name,omitempty"`
+	Name    *string        `json:"name,omitempty"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	ClientId *string `json:"client_id,omitempty"`
-	ClientSecret *string `json:"client_secret,omitempty"`
-	ApiHostname *string `json:"api_hostname,omitempty"`
+	ClientId      *string        `json:"client_id,omitempty"`
+	ClientSecret  *string        `json:"client_secret,omitempty"`
+	ApiHostname   *string        `json:"api_hostname,omitempty"`
 }
 
 // NewPatchedAuthenticatorDuoStageRequest instantiates a new PatchedAuthenticatorDuoStageRequest object
@@ -120,7 +120,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetConfigureFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedAuthenticatorDuoStageRequest) GetConfigureFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ConfigureFlow.Get(), o.ConfigureFlow.IsSet()
@@ -139,6 +139,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) HasConfigureFlow() bool {
 func (o *PatchedAuthenticatorDuoStageRequest) SetConfigureFlow(v string) {
 	o.ConfigureFlow.Set(&v)
 }
+
 // SetConfigureFlowNil sets the value for ConfigureFlow to be an explicit nil
 func (o *PatchedAuthenticatorDuoStageRequest) SetConfigureFlowNil() {
 	o.ConfigureFlow.Set(nil)
@@ -303,5 +304,3 @@ func (v *NullablePatchedAuthenticatorDuoStageRequest) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

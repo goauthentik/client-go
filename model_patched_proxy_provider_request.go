@@ -19,13 +19,13 @@ import (
 type PatchedProxyProviderRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string `json:"authorization_flow,omitempty"`
-	PropertyMappings *[]string `json:"property_mappings,omitempty"`
-	InternalHost *string `json:"internal_host,omitempty"`
-	ExternalHost *string `json:"external_host,omitempty"`
+	AuthorizationFlow *string   `json:"authorization_flow,omitempty"`
+	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
+	InternalHost      *string   `json:"internal_host,omitempty"`
+	ExternalHost      *string   `json:"external_host,omitempty"`
 	// Validate SSL Certificates of upstream servers
-	InternalHostSslValidation *bool `json:"internal_host_ssl_validation,omitempty"`
-	Certificate NullableString `json:"certificate,omitempty"`
+	InternalHostSslValidation *bool          `json:"internal_host_ssl_validation,omitempty"`
+	Certificate               NullableString `json:"certificate,omitempty"`
 	// Regular expressions for which authentication is not required. Each new line is interpreted as a new Regular Expression.
 	SkipPathRegex *string `json:"skip_path_regex,omitempty"`
 	// Set a custom HTTP-Basic Authentication header based on values from authentik.
@@ -35,8 +35,8 @@ type PatchedProxyProviderRequest struct {
 	// User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user's Email address is used.
 	BasicAuthUserAttribute *string `json:"basic_auth_user_attribute,omitempty"`
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
-	Mode *ProxyMode `json:"mode,omitempty"`
-	CookieDomain *string `json:"cookie_domain,omitempty"`
+	Mode         *ProxyMode `json:"mode,omitempty"`
+	CookieDomain *string    `json:"cookie_domain,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	TokenValidity *string `json:"token_validity,omitempty"`
 }
@@ -263,7 +263,7 @@ func (o *PatchedProxyProviderRequest) GetCertificate() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedProxyProviderRequest) GetCertificateOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Certificate.Get(), o.Certificate.IsSet()
@@ -282,6 +282,7 @@ func (o *PatchedProxyProviderRequest) HasCertificate() bool {
 func (o *PatchedProxyProviderRequest) SetCertificate(v string) {
 	o.Certificate.Set(&v)
 }
+
 // SetCertificateNil sets the value for Certificate to be an explicit nil
 func (o *PatchedProxyProviderRequest) SetCertificateNil() {
 	o.Certificate.Set(nil)
@@ -598,5 +599,3 @@ func (v *NullablePatchedProxyProviderRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

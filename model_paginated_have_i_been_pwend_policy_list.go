@@ -18,7 +18,7 @@ import (
 // PaginatedHaveIBeenPwendPolicyList struct for PaginatedHaveIBeenPwendPolicyList
 type PaginatedHaveIBeenPwendPolicyList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results []HaveIBeenPwendPolicy `json:"results"`
+	Results    []HaveIBeenPwendPolicy             `json:"results"`
 }
 
 // NewPaginatedHaveIBeenPwendPolicyList instantiates a new PaginatedHaveIBeenPwendPolicyList object
@@ -53,7 +53,7 @@ func (o *PaginatedHaveIBeenPwendPolicyList) GetPagination() PaginatedApplication
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedHaveIBeenPwendPolicyList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pagination, true
@@ -77,7 +77,7 @@ func (o *PaginatedHaveIBeenPwendPolicyList) GetResults() []HaveIBeenPwendPolicy 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *PaginatedHaveIBeenPwendPolicyList) GetResultsOk() (*[]HaveIBeenPwendPolicy, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -134,5 +134,3 @@ func (v *NullablePaginatedHaveIBeenPwendPolicyList) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

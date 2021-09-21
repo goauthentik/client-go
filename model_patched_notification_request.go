@@ -18,7 +18,7 @@ import (
 // PatchedNotificationRequest Notification Serializer
 type PatchedNotificationRequest struct {
 	Event *EventRequest `json:"event,omitempty"`
-	Seen *bool `json:"seen,omitempty"`
+	Seen  *bool         `json:"seen,omitempty"`
 }
 
 // NewPatchedNotificationRequest instantiates a new PatchedNotificationRequest object
@@ -148,5 +148,3 @@ func (v *NullablePatchedNotificationRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

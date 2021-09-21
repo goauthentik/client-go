@@ -17,12 +17,12 @@ import (
 
 // AuthenticatorValidateStage AuthenticatorValidateStage Serializer
 type AuthenticatorValidateStage struct {
-	Pk string `json:"pk"`
-	Name string `json:"name"`
-	Component string `json:"component"`
-	VerboseName string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
-	FlowSet *[]Flow `json:"flow_set,omitempty"`
+	Pk                  string                   `json:"pk"`
+	Name                string                   `json:"name"`
+	Component           string                   `json:"component"`
+	VerboseName         string                   `json:"verbose_name"`
+	VerboseNamePlural   string                   `json:"verbose_name_plural"`
+	FlowSet             *[]Flow                  `json:"flow_set,omitempty"`
 	NotConfiguredAction *NotConfiguredActionEnum `json:"not_configured_action,omitempty"`
 	// Device classes which can be used to authenticate
 	DeviceClasses *[]DeviceClassesEnum `json:"device_classes,omitempty"`
@@ -65,7 +65,7 @@ func (o *AuthenticatorValidateStage) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidateStage) GetPkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Pk, true
@@ -89,7 +89,7 @@ func (o *AuthenticatorValidateStage) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidateStage) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -113,7 +113,7 @@ func (o *AuthenticatorValidateStage) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidateStage) GetComponentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Component, true
@@ -137,7 +137,7 @@ func (o *AuthenticatorValidateStage) GetVerboseName() string {
 // GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidateStage) GetVerboseNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseName, true
@@ -161,7 +161,7 @@ func (o *AuthenticatorValidateStage) GetVerboseNamePlural() string {
 // GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidateStage) GetVerboseNamePluralOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.VerboseNamePlural, true
@@ -281,7 +281,7 @@ func (o *AuthenticatorValidateStage) GetConfigurationStage() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatorValidateStage) GetConfigurationStageOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ConfigurationStage.Get(), o.ConfigurationStage.IsSet()
@@ -300,6 +300,7 @@ func (o *AuthenticatorValidateStage) HasConfigurationStage() bool {
 func (o *AuthenticatorValidateStage) SetConfigurationStage(v string) {
 	o.ConfigurationStage.Set(&v)
 }
+
 // SetConfigurationStageNil sets the value for ConfigurationStage to be an explicit nil
 func (o *AuthenticatorValidateStage) SetConfigurationStageNil() {
 	o.ConfigurationStage.Set(nil)
@@ -377,5 +378,3 @@ func (v *NullableAuthenticatorValidateStage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -18,11 +18,11 @@ import (
 
 // Task Serialize TaskInfo and TaskResult
 type Task struct {
-	TaskName string `json:"task_name"`
-	TaskDescription string `json:"task_description"`
-	TaskFinishTimestamp time.Time `json:"task_finish_timestamp"`
-	Status StatusEnum `json:"status"`
-	Messages []interface{} `json:"messages"`
+	TaskName            string        `json:"task_name"`
+	TaskDescription     string        `json:"task_description"`
+	TaskFinishTimestamp time.Time     `json:"task_finish_timestamp"`
+	Status              StatusEnum    `json:"status"`
+	Messages            []interface{} `json:"messages"`
 }
 
 // NewTask instantiates a new Task object
@@ -60,7 +60,7 @@ func (o *Task) GetTaskName() string {
 // GetTaskNameOk returns a tuple with the TaskName field value
 // and a boolean to check if the value has been set.
 func (o *Task) GetTaskNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TaskName, true
@@ -84,7 +84,7 @@ func (o *Task) GetTaskDescription() string {
 // GetTaskDescriptionOk returns a tuple with the TaskDescription field value
 // and a boolean to check if the value has been set.
 func (o *Task) GetTaskDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TaskDescription, true
@@ -108,7 +108,7 @@ func (o *Task) GetTaskFinishTimestamp() time.Time {
 // GetTaskFinishTimestampOk returns a tuple with the TaskFinishTimestamp field value
 // and a boolean to check if the value has been set.
 func (o *Task) GetTaskFinishTimestampOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TaskFinishTimestamp, true
@@ -132,7 +132,7 @@ func (o *Task) GetStatus() StatusEnum {
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 func (o *Task) GetStatusOk() (*StatusEnum, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Status, true
@@ -156,7 +156,7 @@ func (o *Task) GetMessages() []interface{} {
 // GetMessagesOk returns a tuple with the Messages field value
 // and a boolean to check if the value has been set.
 func (o *Task) GetMessagesOk() (*[]interface{}, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Messages, true
@@ -222,5 +222,3 @@ func (v *NullableTask) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,16 +20,16 @@ type PatchedOAuthSourceRequest struct {
 	// Source's display Name.
 	Name *string `json:"name,omitempty"`
 	// Internal source name, used in URLs.
-	Slug *string `json:"slug,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
+	Slug    *string `json:"slug,omitempty"`
+	Enabled *bool   `json:"enabled,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
-	EnrollmentFlow NullableString `json:"enrollment_flow,omitempty"`
+	EnrollmentFlow   NullableString    `json:"enrollment_flow,omitempty"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
-	ProviderType *string `json:"provider_type,omitempty"`
+	ProviderType     *string               `json:"provider_type,omitempty"`
 	// URL used to request the initial token. This URL is only required for OAuth 1.
 	RequestTokenUrl NullableString `json:"request_token_url,omitempty"`
 	// URL the user is redirect to to conest the flow.
@@ -37,9 +37,9 @@ type PatchedOAuthSourceRequest struct {
 	// URL used by authentik to retrive tokens.
 	AccessTokenUrl NullableString `json:"access_token_url,omitempty"`
 	// URL used by authentik to get user information.
-	ProfileUrl NullableString `json:"profile_url,omitempty"`
-	ConsumerKey *string `json:"consumer_key,omitempty"`
-	ConsumerSecret *string `json:"consumer_secret,omitempty"`
+	ProfileUrl     NullableString `json:"profile_url,omitempty"`
+	ConsumerKey    *string        `json:"consumer_key,omitempty"`
+	ConsumerSecret *string        `json:"consumer_secret,omitempty"`
 }
 
 // NewPatchedOAuthSourceRequest instantiates a new PatchedOAuthSourceRequest object
@@ -168,7 +168,7 @@ func (o *PatchedOAuthSourceRequest) GetAuthenticationFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuthSourceRequest) GetAuthenticationFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AuthenticationFlow.Get(), o.AuthenticationFlow.IsSet()
@@ -187,6 +187,7 @@ func (o *PatchedOAuthSourceRequest) HasAuthenticationFlow() bool {
 func (o *PatchedOAuthSourceRequest) SetAuthenticationFlow(v string) {
 	o.AuthenticationFlow.Set(&v)
 }
+
 // SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
 func (o *PatchedOAuthSourceRequest) SetAuthenticationFlowNil() {
 	o.AuthenticationFlow.Set(nil)
@@ -210,7 +211,7 @@ func (o *PatchedOAuthSourceRequest) GetEnrollmentFlow() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuthSourceRequest) GetEnrollmentFlowOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.EnrollmentFlow.Get(), o.EnrollmentFlow.IsSet()
@@ -229,6 +230,7 @@ func (o *PatchedOAuthSourceRequest) HasEnrollmentFlow() bool {
 func (o *PatchedOAuthSourceRequest) SetEnrollmentFlow(v string) {
 	o.EnrollmentFlow.Set(&v)
 }
+
 // SetEnrollmentFlowNil sets the value for EnrollmentFlow to be an explicit nil
 func (o *PatchedOAuthSourceRequest) SetEnrollmentFlowNil() {
 	o.EnrollmentFlow.Set(nil)
@@ -348,7 +350,7 @@ func (o *PatchedOAuthSourceRequest) GetRequestTokenUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuthSourceRequest) GetRequestTokenUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.RequestTokenUrl.Get(), o.RequestTokenUrl.IsSet()
@@ -367,6 +369,7 @@ func (o *PatchedOAuthSourceRequest) HasRequestTokenUrl() bool {
 func (o *PatchedOAuthSourceRequest) SetRequestTokenUrl(v string) {
 	o.RequestTokenUrl.Set(&v)
 }
+
 // SetRequestTokenUrlNil sets the value for RequestTokenUrl to be an explicit nil
 func (o *PatchedOAuthSourceRequest) SetRequestTokenUrlNil() {
 	o.RequestTokenUrl.Set(nil)
@@ -390,7 +393,7 @@ func (o *PatchedOAuthSourceRequest) GetAuthorizationUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuthSourceRequest) GetAuthorizationUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AuthorizationUrl.Get(), o.AuthorizationUrl.IsSet()
@@ -409,6 +412,7 @@ func (o *PatchedOAuthSourceRequest) HasAuthorizationUrl() bool {
 func (o *PatchedOAuthSourceRequest) SetAuthorizationUrl(v string) {
 	o.AuthorizationUrl.Set(&v)
 }
+
 // SetAuthorizationUrlNil sets the value for AuthorizationUrl to be an explicit nil
 func (o *PatchedOAuthSourceRequest) SetAuthorizationUrlNil() {
 	o.AuthorizationUrl.Set(nil)
@@ -432,7 +436,7 @@ func (o *PatchedOAuthSourceRequest) GetAccessTokenUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuthSourceRequest) GetAccessTokenUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.AccessTokenUrl.Get(), o.AccessTokenUrl.IsSet()
@@ -451,6 +455,7 @@ func (o *PatchedOAuthSourceRequest) HasAccessTokenUrl() bool {
 func (o *PatchedOAuthSourceRequest) SetAccessTokenUrl(v string) {
 	o.AccessTokenUrl.Set(&v)
 }
+
 // SetAccessTokenUrlNil sets the value for AccessTokenUrl to be an explicit nil
 func (o *PatchedOAuthSourceRequest) SetAccessTokenUrlNil() {
 	o.AccessTokenUrl.Set(nil)
@@ -474,7 +479,7 @@ func (o *PatchedOAuthSourceRequest) GetProfileUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuthSourceRequest) GetProfileUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ProfileUrl.Get(), o.ProfileUrl.IsSet()
@@ -493,6 +498,7 @@ func (o *PatchedOAuthSourceRequest) HasProfileUrl() bool {
 func (o *PatchedOAuthSourceRequest) SetProfileUrl(v string) {
 	o.ProfileUrl.Set(&v)
 }
+
 // SetProfileUrlNil sets the value for ProfileUrl to be an explicit nil
 func (o *PatchedOAuthSourceRequest) SetProfileUrlNil() {
 	o.ProfileUrl.Set(nil)
@@ -649,5 +655,3 @@ func (v *NullablePatchedOAuthSourceRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

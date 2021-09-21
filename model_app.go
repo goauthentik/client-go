@@ -17,7 +17,7 @@ import (
 
 // App Serialize Application info
 type App struct {
-	Name string `json:"name"`
+	Name  string `json:"name"`
 	Label string `json:"label"`
 }
 
@@ -53,7 +53,7 @@ func (o *App) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *App) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -77,7 +77,7 @@ func (o *App) GetLabel() string {
 // GetLabelOk returns a tuple with the Label field value
 // and a boolean to check if the value has been set.
 func (o *App) GetLabelOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Label, true
@@ -134,5 +134,3 @@ func (v *NullableApp) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

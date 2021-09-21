@@ -17,13 +17,13 @@ import (
 
 // AuthenticatorTOTPChallenge TOTP Setup challenge
 type AuthenticatorTOTPChallenge struct {
-	Type ChallengeChoices `json:"type"`
-	FlowInfo *ContextualFlowInfo `json:"flow_info,omitempty"`
-	Component *string `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser string `json:"pending_user"`
-	PendingUserAvatar string `json:"pending_user_avatar"`
-	ConfigUrl string `json:"config_url"`
+	Type              ChallengeChoices          `json:"type"`
+	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component         *string                   `json:"component,omitempty"`
+	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser       string                    `json:"pending_user"`
+	PendingUserAvatar string                    `json:"pending_user_avatar"`
+	ConfigUrl         string                    `json:"config_url"`
 }
 
 // NewAuthenticatorTOTPChallenge instantiates a new AuthenticatorTOTPChallenge object
@@ -64,7 +64,7 @@ func (o *AuthenticatorTOTPChallenge) GetType() ChallengeChoices {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorTOTPChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -184,7 +184,7 @@ func (o *AuthenticatorTOTPChallenge) GetPendingUser() string {
 // GetPendingUserOk returns a tuple with the PendingUser field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorTOTPChallenge) GetPendingUserOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PendingUser, true
@@ -208,7 +208,7 @@ func (o *AuthenticatorTOTPChallenge) GetPendingUserAvatar() string {
 // GetPendingUserAvatarOk returns a tuple with the PendingUserAvatar field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorTOTPChallenge) GetPendingUserAvatarOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PendingUserAvatar, true
@@ -232,7 +232,7 @@ func (o *AuthenticatorTOTPChallenge) GetConfigUrl() string {
 // GetConfigUrlOk returns a tuple with the ConfigUrl field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorTOTPChallenge) GetConfigUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ConfigUrl, true
@@ -304,5 +304,3 @@ func (v *NullableAuthenticatorTOTPChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
