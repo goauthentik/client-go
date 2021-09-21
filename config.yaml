@@ -1,0 +1,10 @@
+templateDir: /local/templates/
+additionalProperties:
+  packageName: api
+  enumClassPrefix: true
+  useOneOfDiscriminatorLookup: true
+  hideGenerationTimestamp: false
+files:
+  README.mustache:
+    templateType: SupportingFiles
+    destinationFilename: README.md

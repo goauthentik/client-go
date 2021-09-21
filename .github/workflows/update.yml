@@ -11,11 +11,9 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
       - name: Check for updates
-        id: update
-        run: |
-          wget -O schema.yml https://raw.githubusercontent.com/goauthentik/authentik/master/schema.yml
-          make
+        run: make
       - name: Push
         id: push
         run: |
