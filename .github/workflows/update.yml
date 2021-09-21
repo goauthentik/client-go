@@ -22,3 +22,6 @@ jobs:
           git add .
           git commit -m "Update API Client" || exit 0
           git push
+          version=$(cd version && go run .)
+          git tag $version
+          git push --tags
