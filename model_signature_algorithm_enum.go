@@ -28,7 +28,8 @@ const (
 	SIGNATUREALGORITHMENUM__2000_09_XMLDSIGDSA_SHA1 SignatureAlgorithmEnum = "http://www.w3.org/2000/09/xmldsig#dsa-sha1"
 )
 
-var allowedSignatureAlgorithmEnumEnumValues = []SignatureAlgorithmEnum{
+// All allowed values of SignatureAlgorithmEnum enum
+var AllowedSignatureAlgorithmEnumEnumValues = []SignatureAlgorithmEnum{
 	"http://www.w3.org/2000/09/xmldsig#rsa-sha1",
 	"http://www.w3.org/2001/04/xmldsig-more#rsa-sha256",
 	"http://www.w3.org/2001/04/xmldsig-more#rsa-sha384",
@@ -43,7 +44,7 @@ func (v *SignatureAlgorithmEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := SignatureAlgorithmEnum(value)
-	for _, existing := range allowedSignatureAlgorithmEnumEnumValues {
+	for _, existing := range AllowedSignatureAlgorithmEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -60,13 +61,13 @@ func NewSignatureAlgorithmEnumFromValue(v string) (*SignatureAlgorithmEnum, erro
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for SignatureAlgorithmEnum: valid values are %v", v, allowedSignatureAlgorithmEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for SignatureAlgorithmEnum: valid values are %v", v, AllowedSignatureAlgorithmEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v SignatureAlgorithmEnum) IsValid() bool {
-	for _, existing := range allowedSignatureAlgorithmEnumEnumValues {
+	for _, existing := range AllowedSignatureAlgorithmEnumEnumValues {
 		if existing == v {
 			return true
 		}

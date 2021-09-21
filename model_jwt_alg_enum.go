@@ -25,7 +25,8 @@ const (
 	JWTALGENUM_RS256 JwtAlgEnum = "RS256"
 )
 
-var allowedJwtAlgEnumEnumValues = []JwtAlgEnum{
+// All allowed values of JwtAlgEnum enum
+var AllowedJwtAlgEnumEnumValues = []JwtAlgEnum{
 	"HS256",
 	"RS256",
 }
@@ -37,7 +38,7 @@ func (v *JwtAlgEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := JwtAlgEnum(value)
-	for _, existing := range allowedJwtAlgEnumEnumValues {
+	for _, existing := range AllowedJwtAlgEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +55,13 @@ func NewJwtAlgEnumFromValue(v string) (*JwtAlgEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for JwtAlgEnum: valid values are %v", v, allowedJwtAlgEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for JwtAlgEnum: valid values are %v", v, AllowedJwtAlgEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v JwtAlgEnum) IsValid() bool {
-	for _, existing := range allowedJwtAlgEnumEnumValues {
+	for _, existing := range AllowedJwtAlgEnumEnumValues {
 		if existing == v {
 			return true
 		}

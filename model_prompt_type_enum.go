@@ -34,7 +34,8 @@ const (
 	PROMPTTYPEENUM_STATIC PromptTypeEnum = "static"
 )
 
-var allowedPromptTypeEnumEnumValues = []PromptTypeEnum{
+// All allowed values of PromptTypeEnum enum
+var AllowedPromptTypeEnumEnumValues = []PromptTypeEnum{
 	"text",
 	"username",
 	"email",
@@ -55,7 +56,7 @@ func (v *PromptTypeEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := PromptTypeEnum(value)
-	for _, existing := range allowedPromptTypeEnumEnumValues {
+	for _, existing := range AllowedPromptTypeEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -72,13 +73,13 @@ func NewPromptTypeEnumFromValue(v string) (*PromptTypeEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for PromptTypeEnum: valid values are %v", v, allowedPromptTypeEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for PromptTypeEnum: valid values are %v", v, AllowedPromptTypeEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v PromptTypeEnum) IsValid() bool {
-	for _, existing := range allowedPromptTypeEnumEnumValues {
+	for _, existing := range AllowedPromptTypeEnumEnumValues {
 		if existing == v {
 			return true
 		}

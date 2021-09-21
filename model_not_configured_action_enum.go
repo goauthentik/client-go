@@ -26,7 +26,8 @@ const (
 	NOTCONFIGUREDACTIONENUM_CONFIGURE NotConfiguredActionEnum = "configure"
 )
 
-var allowedNotConfiguredActionEnumEnumValues = []NotConfiguredActionEnum{
+// All allowed values of NotConfiguredActionEnum enum
+var AllowedNotConfiguredActionEnumEnumValues = []NotConfiguredActionEnum{
 	"skip",
 	"deny",
 	"configure",
@@ -39,7 +40,7 @@ func (v *NotConfiguredActionEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := NotConfiguredActionEnum(value)
-	for _, existing := range allowedNotConfiguredActionEnumEnumValues {
+	for _, existing := range AllowedNotConfiguredActionEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -56,13 +57,13 @@ func NewNotConfiguredActionEnumFromValue(v string) (*NotConfiguredActionEnum, er
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for NotConfiguredActionEnum: valid values are %v", v, allowedNotConfiguredActionEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for NotConfiguredActionEnum: valid values are %v", v, AllowedNotConfiguredActionEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v NotConfiguredActionEnum) IsValid() bool {
-	for _, existing := range allowedNotConfiguredActionEnumEnumValues {
+	for _, existing := range AllowedNotConfiguredActionEnumEnumValues {
 		if existing == v {
 			return true
 		}

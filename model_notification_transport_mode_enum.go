@@ -26,7 +26,8 @@ const (
 	NOTIFICATIONTRANSPORTMODEENUM_EMAIL NotificationTransportModeEnum = "email"
 )
 
-var allowedNotificationTransportModeEnumEnumValues = []NotificationTransportModeEnum{
+// All allowed values of NotificationTransportModeEnum enum
+var AllowedNotificationTransportModeEnumEnumValues = []NotificationTransportModeEnum{
 	"webhook",
 	"webhook_slack",
 	"email",
@@ -39,7 +40,7 @@ func (v *NotificationTransportModeEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := NotificationTransportModeEnum(value)
-	for _, existing := range allowedNotificationTransportModeEnumEnumValues {
+	for _, existing := range AllowedNotificationTransportModeEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -56,13 +57,13 @@ func NewNotificationTransportModeEnumFromValue(v string) (*NotificationTransport
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for NotificationTransportModeEnum: valid values are %v", v, allowedNotificationTransportModeEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for NotificationTransportModeEnum: valid values are %v", v, AllowedNotificationTransportModeEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v NotificationTransportModeEnum) IsValid() bool {
-	for _, existing := range allowedNotificationTransportModeEnumEnumValues {
+	for _, existing := range AllowedNotificationTransportModeEnumEnumValues {
 		if existing == v {
 			return true
 		}
