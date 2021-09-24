@@ -24980,7 +24980,7 @@ components:
     NotificationTransport:
       description: NotificationTransport Serializer
       example:
-        webhook_url: webhook_url
+        webhook_url: https://openapi-generator.tech
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mode_verbose: mode_verbose
@@ -25000,6 +25000,7 @@ components:
           readOnly: true
           type: string
         webhook_url:
+          format: uri
           type: string
         webhook_mapping:
           format: uuid
@@ -25024,7 +25025,7 @@ components:
     NotificationTransportRequest:
       description: NotificationTransport Serializer
       example:
-        webhook_url: webhook_url
+        webhook_url: https://openapi-generator.tech
         name: name
         webhook_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         send_once: true
@@ -25034,6 +25035,7 @@ components:
         mode:
           $ref: '#/components/schemas/NotificationTransportModeEnum'
         webhook_url:
+          format: uri
           type: string
         webhook_mapping:
           format: uuid
@@ -28282,13 +28284,13 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - webhook_url: webhook_url
+        - webhook_url: https://openapi-generator.tech
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           mode_verbose: mode_verbose
           webhook_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           send_once: true
-        - webhook_url: webhook_url
+        - webhook_url: https://openapi-generator.tech
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           mode_verbose: mode_verbose
@@ -32694,7 +32696,7 @@ components:
     PatchedNotificationTransportRequest:
       description: NotificationTransport Serializer
       example:
-        webhook_url: webhook_url
+        webhook_url: https://openapi-generator.tech
         name: name
         webhook_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         send_once: true
@@ -32704,6 +32706,7 @@ components:
         mode:
           $ref: '#/components/schemas/NotificationTransportModeEnum'
         webhook_url:
+          format: uri
           type: string
         webhook_mapping:
           format: uuid
