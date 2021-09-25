@@ -39,7 +39,7 @@ func (r ApiRootConfigRetrieveRequest) Execute() (Config, *_nethttp.Response, err
 /*
 RootConfigRetrieve Method for RootConfigRetrieve
 
-Retrive public configuration options
+Retrieve public configuration options
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiRootConfigRetrieveRequest

@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **BasicAuthUserAttribute** | Pointer to **string** | User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user&#39;s Email address is used. | [optional] 
 **Mode** | Pointer to [**ProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
+**TokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 
 ## Methods
 
@@ -429,6 +430,31 @@ SetCookieDomain sets CookieDomain field to given value.
 `func (o *ProxyOutpostConfig) HasCookieDomain() bool`
 
 HasCookieDomain returns a boolean if a field has been set.
+
+### GetTokenValidity
+
+`func (o *ProxyOutpostConfig) GetTokenValidity() string`
+
+GetTokenValidity returns the TokenValidity field if non-nil, zero value otherwise.
+
+### GetTokenValidityOk
+
+`func (o *ProxyOutpostConfig) GetTokenValidityOk() (*string, bool)`
+
+GetTokenValidityOk returns a tuple with the TokenValidity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenValidity
+
+`func (o *ProxyOutpostConfig) SetTokenValidity(v string)`
+
+SetTokenValidity sets TokenValidity field to given value.
+
+### HasTokenValidity
+
+`func (o *ProxyOutpostConfig) HasTokenValidity() bool`
+
+HasTokenValidity returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -39,7 +39,7 @@ type PlexSource struct {
 	AllowedServers *[]string `json:"allowed_servers,omitempty"`
 	// Allow friends to authenticate, even if you don't share a server.
 	AllowFriends *bool `json:"allow_friends,omitempty"`
-	// Plex token used to check firends
+	// Plex token used to check friends
 	PlexToken string `json:"plex_token"`
 }
 

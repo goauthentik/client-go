@@ -34,7 +34,7 @@ type OAuthSourceRequest struct {
 	RequestTokenUrl NullableString `json:"request_token_url,omitempty"`
 	// URL the user is redirect to to conest the flow.
 	AuthorizationUrl NullableString `json:"authorization_url,omitempty"`
-	// URL used by authentik to retrive tokens.
+	// URL used by authentik to retrieve tokens.
 	AccessTokenUrl NullableString `json:"access_token_url,omitempty"`
 	// URL used by authentik to get user information.
 	ProfileUrl     NullableString `json:"profile_url,omitempty"`

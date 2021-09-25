@@ -12751,7 +12751,7 @@ paths:
       - providers
   /root/config/:
     get:
-      description: Retrive public configuration options
+      description: Retrieve public configuration options
       operationId: root_config_retrieve
       responses:
         "200":
@@ -25409,7 +25409,7 @@ components:
           nullable: true
           type: string
         access_token_url:
-          description: URL used by authentik to retrive tokens.
+          description: URL used by authentik to retrieve tokens.
           maxLength: 255
           nullable: true
           type: string
@@ -25498,7 +25498,7 @@ components:
           nullable: true
           type: string
         access_token_url:
-          description: URL used by authentik to retrive tokens.
+          description: URL used by authentik to retrieve tokens.
           maxLength: 255
           nullable: true
           type: string
@@ -29320,6 +29320,7 @@ components:
           pk: 0
           client_secret: client_secret
           internal_host_ssl_validation: true
+          token_validity: token_validity
         - external_host: https://openapi-generator.tech
           cookie_domain: cookie_domain
           skip_path_regex: skip_path_regex
@@ -29336,6 +29337,7 @@ components:
           pk: 0
           client_secret: client_secret
           internal_host_ssl_validation: true
+          token_validity: token_validity
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -32866,7 +32868,7 @@ components:
           nullable: true
           type: string
         access_token_url:
-          description: URL used by authentik to retrive tokens.
+          description: URL used by authentik to retrieve tokens.
           maxLength: 255
           nullable: true
           type: string
@@ -33105,7 +33107,7 @@ components:
           description: Allow friends to authenticate, even if you don't share a server.
           type: boolean
         plex_token:
-          description: Plex token used to check firends
+          description: Plex token used to check friends
           type: string
       type: object
     PatchedPolicyBindingRequest:
@@ -33985,7 +33987,7 @@ components:
           description: Allow friends to authenticate, even if you don't share a server.
           type: boolean
         plex_token:
-          description: Plex token used to check firends
+          description: Plex token used to check friends
           type: string
       required:
       - component
@@ -34104,7 +34106,7 @@ components:
           description: Allow friends to authenticate, even if you don't share a server.
           type: boolean
         plex_token:
-          description: Plex token used to check firends
+          description: Plex token used to check friends
           type: string
       required:
       - name
@@ -34848,6 +34850,7 @@ components:
         pk: 0
         client_secret: client_secret
         internal_host_ssl_validation: true
+        token_validity: token_validity
       properties:
         pk:
           readOnly: true
@@ -34905,6 +34908,10 @@ components:
           description: Enable support for forwardAuth in traefik and nginx auth_request.
             Exclusive with internal_host.
         cookie_domain:
+          type: string
+        token_validity:
+          description: 'Tokens not valid on or after current time + this value (Format:
+            hours=1;minutes=2;seconds=3).'
           type: string
       required:
       - external_host

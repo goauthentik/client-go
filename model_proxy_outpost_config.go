@@ -39,6 +39,8 @@ type ProxyOutpostConfig struct {
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
 	Mode         *ProxyMode `json:"mode,omitempty"`
 	CookieDomain *string    `json:"cookie_domain,omitempty"`
+	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
+	TokenValidity *string `json:"token_validity,omitempty"`
 }
 
 // NewProxyOutpostConfig instantiates a new ProxyOutpostConfig object
@@ -553,6 +555,38 @@ func (o *ProxyOutpostConfig) SetCookieDomain(v string) {
 	o.CookieDomain = &v
 }
 
+// GetTokenValidity returns the TokenValidity field value if set, zero value otherwise.
+func (o *ProxyOutpostConfig) GetTokenValidity() string {
+	if o == nil || o.TokenValidity == nil {
+		var ret string
+		return ret
+	}
+	return *o.TokenValidity
+}
+
+// GetTokenValidityOk returns a tuple with the TokenValidity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProxyOutpostConfig) GetTokenValidityOk() (*string, bool) {
+	if o == nil || o.TokenValidity == nil {
+		return nil, false
+	}
+	return o.TokenValidity, true
+}
+
+// HasTokenValidity returns a boolean if a field has been set.
+func (o *ProxyOutpostConfig) HasTokenValidity() bool {
+	if o != nil && o.TokenValidity != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenValidity gets a reference to the given string and assigns it to the TokenValidity field.
+func (o *ProxyOutpostConfig) SetTokenValidity(v string) {
+	o.TokenValidity = &v
+}
+
 func (o ProxyOutpostConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -602,6 +636,9 @@ func (o ProxyOutpostConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.CookieDomain != nil {
 		toSerialize["cookie_domain"] = o.CookieDomain
+	}
+	if o.TokenValidity != nil {
+		toSerialize["token_validity"] = o.TokenValidity
 	}
 	return json.Marshal(toSerialize)
 }

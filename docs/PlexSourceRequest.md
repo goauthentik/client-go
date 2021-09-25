@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **ClientId** | Pointer to **string** | Client identifier used to talk to Plex. | [optional] 
 **AllowedServers** | Pointer to **[]string** | Which servers a user has to be a member of to be granted access. Empty list allows every server. | [optional] 
 **AllowFriends** | Pointer to **bool** | Allow friends to authenticate, even if you don&#39;t share a server. | [optional] 
-**PlexToken** | **string** | Plex token used to check firends | 
+**PlexToken** | **string** | Plex token used to check friends | 
 
 ## Methods
 

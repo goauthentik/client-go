@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **ProviderType** | **string** |  | 
 **RequestTokenUrl** | Pointer to **NullableString** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] 
 **AuthorizationUrl** | Pointer to **NullableString** | URL the user is redirect to to conest the flow. | [optional] 
-**AccessTokenUrl** | Pointer to **NullableString** | URL used by authentik to retrive tokens. | [optional] 
+**AccessTokenUrl** | Pointer to **NullableString** | URL used by authentik to retrieve tokens. | [optional] 
 **ProfileUrl** | Pointer to **NullableString** | URL used by authentik to get user information. | [optional] 
 **ConsumerKey** | **string** |  | 
 **CallbackUrl** | **string** |  | [readonly] 
