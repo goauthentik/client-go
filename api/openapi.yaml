@@ -29320,7 +29320,7 @@ components:
           pk: 0
           client_secret: client_secret
           internal_host_ssl_validation: true
-          token_validity: token_validity
+          token_validity: 6
         - external_host: https://openapi-generator.tech
           cookie_domain: cookie_domain
           skip_path_regex: skip_path_regex
@@ -29337,7 +29337,7 @@ components:
           pk: 0
           client_secret: client_secret
           internal_host_ssl_validation: true
-          token_validity: token_validity
+          token_validity: 6
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -34850,7 +34850,7 @@ components:
         pk: 0
         client_secret: client_secret
         internal_host_ssl_validation: true
-        token_validity: token_validity
+        token_validity: 6
       properties:
         pk:
           readOnly: true
@@ -34910,14 +34910,14 @@ components:
         cookie_domain:
           type: string
         token_validity:
-          description: 'Tokens not valid on or after current time + this value (Format:
-            hours=1;minutes=2;seconds=3).'
-          type: string
+          readOnly: true
+          type: integer
       required:
       - external_host
       - name
       - oidc_configuration
       - pk
+      - token_validity
       type: object
     ProxyProvider:
       description: ProxyProvider Serializer
