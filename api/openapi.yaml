@@ -29320,7 +29320,7 @@ components:
           pk: 0
           client_secret: client_secret
           internal_host_ssl_validation: true
-          token_validity: 6
+          token_validity: 6.0274563
         - external_host: https://openapi-generator.tech
           cookie_domain: cookie_domain
           skip_path_regex: skip_path_regex
@@ -29337,7 +29337,7 @@ components:
           pk: 0
           client_secret: client_secret
           internal_host_ssl_validation: true
-          token_validity: 6
+          token_validity: 6.0274563
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -34850,7 +34850,7 @@ components:
         pk: 0
         client_secret: client_secret
         internal_host_ssl_validation: true
-        token_validity: 6
+        token_validity: 6.0274563
       properties:
         pk:
           readOnly: true
@@ -34910,8 +34910,10 @@ components:
         cookie_domain:
           type: string
         token_validity:
+          format: float
+          nullable: true
           readOnly: true
-          type: integer
+          type: number
       required:
       - external_host
       - name
