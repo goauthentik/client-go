@@ -26,8 +26,7 @@ const (
 	CAPABILITIESENUM_BACKUP     CapabilitiesEnum = "can_backup"
 )
 
-// All allowed values of CapabilitiesEnum enum
-var AllowedCapabilitiesEnumEnumValues = []CapabilitiesEnum{
+var allowedCapabilitiesEnumEnumValues = []CapabilitiesEnum{
 	"can_save_media",
 	"can_geo_ip",
 	"can_backup",
@@ -40,7 +39,7 @@ func (v *CapabilitiesEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := CapabilitiesEnum(value)
-	for _, existing := range AllowedCapabilitiesEnumEnumValues {
+	for _, existing := range allowedCapabilitiesEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -57,13 +56,13 @@ func NewCapabilitiesEnumFromValue(v string) (*CapabilitiesEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CapabilitiesEnum: valid values are %v", v, AllowedCapabilitiesEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for CapabilitiesEnum: valid values are %v", v, allowedCapabilitiesEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v CapabilitiesEnum) IsValid() bool {
-	for _, existing := range AllowedCapabilitiesEnumEnumValues {
+	for _, existing := range allowedCapabilitiesEnumEnumValues {
 		if existing == v {
 			return true
 		}

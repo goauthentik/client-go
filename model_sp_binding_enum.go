@@ -25,8 +25,7 @@ const (
 	SPBINDINGENUM_POST     SpBindingEnum = "post"
 )
 
-// All allowed values of SpBindingEnum enum
-var AllowedSpBindingEnumEnumValues = []SpBindingEnum{
+var allowedSpBindingEnumEnumValues = []SpBindingEnum{
 	"redirect",
 	"post",
 }
@@ -38,7 +37,7 @@ func (v *SpBindingEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := SpBindingEnum(value)
-	for _, existing := range AllowedSpBindingEnumEnumValues {
+	for _, existing := range allowedSpBindingEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -55,13 +54,13 @@ func NewSpBindingEnumFromValue(v string) (*SpBindingEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for SpBindingEnum: valid values are %v", v, AllowedSpBindingEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for SpBindingEnum: valid values are %v", v, allowedSpBindingEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v SpBindingEnum) IsValid() bool {
-	for _, existing := range AllowedSpBindingEnumEnumValues {
+	for _, existing := range allowedSpBindingEnumEnumValues {
 		if existing == v {
 			return true
 		}

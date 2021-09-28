@@ -129,7 +129,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 	var jsonDict map[string]interface{}
 	err = json.Unmarshal(data, &jsonDict)
 	if err != nil {
-		return fmt.Errorf("Failed to unmarshal JSON into map for the discriminator lookup.")
+		return fmt.Errorf("Failed to unmarshal JSON into map for the discrimintor lookup.")
 	}
 
 	// check if the discriminator value is 'AccessDeniedChallenge'

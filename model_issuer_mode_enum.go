@@ -25,8 +25,7 @@ const (
 	ISSUERMODEENUM_PER_PROVIDER IssuerModeEnum = "per_provider"
 )
 
-// All allowed values of IssuerModeEnum enum
-var AllowedIssuerModeEnumEnumValues = []IssuerModeEnum{
+var allowedIssuerModeEnumEnumValues = []IssuerModeEnum{
 	"global",
 	"per_provider",
 }
@@ -38,7 +37,7 @@ func (v *IssuerModeEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := IssuerModeEnum(value)
-	for _, existing := range AllowedIssuerModeEnumEnumValues {
+	for _, existing := range allowedIssuerModeEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -55,13 +54,13 @@ func NewIssuerModeEnumFromValue(v string) (*IssuerModeEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for IssuerModeEnum: valid values are %v", v, AllowedIssuerModeEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for IssuerModeEnum: valid values are %v", v, allowedIssuerModeEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v IssuerModeEnum) IsValid() bool {
-	for _, existing := range AllowedIssuerModeEnumEnumValues {
+	for _, existing := range allowedIssuerModeEnumEnumValues {
 		if existing == v {
 			return true
 		}

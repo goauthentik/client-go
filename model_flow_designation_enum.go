@@ -30,8 +30,7 @@ const (
 	FLOWDESIGNATIONENUM_STAGE_CONFIGURATION FlowDesignationEnum = "stage_configuration"
 )
 
-// All allowed values of FlowDesignationEnum enum
-var AllowedFlowDesignationEnumEnumValues = []FlowDesignationEnum{
+var allowedFlowDesignationEnumEnumValues = []FlowDesignationEnum{
 	"authentication",
 	"authorization",
 	"invalidation",
@@ -48,7 +47,7 @@ func (v *FlowDesignationEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := FlowDesignationEnum(value)
-	for _, existing := range AllowedFlowDesignationEnumEnumValues {
+	for _, existing := range allowedFlowDesignationEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -65,13 +64,13 @@ func NewFlowDesignationEnumFromValue(v string) (*FlowDesignationEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for FlowDesignationEnum: valid values are %v", v, AllowedFlowDesignationEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for FlowDesignationEnum: valid values are %v", v, allowedFlowDesignationEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v FlowDesignationEnum) IsValid() bool {
-	for _, existing := range AllowedFlowDesignationEnumEnumValues {
+	for _, existing := range allowedFlowDesignationEnumEnumValues {
 		if existing == v {
 			return true
 		}

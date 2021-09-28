@@ -26,8 +26,7 @@ const (
 	SEVERITYENUM_ALERT   SeverityEnum = "alert"
 )
 
-// All allowed values of SeverityEnum enum
-var AllowedSeverityEnumEnumValues = []SeverityEnum{
+var allowedSeverityEnumEnumValues = []SeverityEnum{
 	"notice",
 	"warning",
 	"alert",
@@ -40,7 +39,7 @@ func (v *SeverityEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := SeverityEnum(value)
-	for _, existing := range AllowedSeverityEnumEnumValues {
+	for _, existing := range allowedSeverityEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -57,13 +56,13 @@ func NewSeverityEnumFromValue(v string) (*SeverityEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for SeverityEnum: valid values are %v", v, AllowedSeverityEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for SeverityEnum: valid values are %v", v, allowedSeverityEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v SeverityEnum) IsValid() bool {
-	for _, existing := range AllowedSeverityEnumEnumValues {
+	for _, existing := range allowedSeverityEnumEnumValues {
 		if existing == v {
 			return true
 		}

@@ -26,8 +26,7 @@ const (
 	CHALLENGECHOICES_REDIRECT ChallengeChoices = "redirect"
 )
 
-// All allowed values of ChallengeChoices enum
-var AllowedChallengeChoicesEnumValues = []ChallengeChoices{
+var allowedChallengeChoicesEnumValues = []ChallengeChoices{
 	"native",
 	"shell",
 	"redirect",
@@ -40,7 +39,7 @@ func (v *ChallengeChoices) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := ChallengeChoices(value)
-	for _, existing := range AllowedChallengeChoicesEnumValues {
+	for _, existing := range allowedChallengeChoicesEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -57,13 +56,13 @@ func NewChallengeChoicesFromValue(v string) (*ChallengeChoices, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ChallengeChoices: valid values are %v", v, AllowedChallengeChoicesEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for ChallengeChoices: valid values are %v", v, allowedChallengeChoicesEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v ChallengeChoices) IsValid() bool {
-	for _, existing := range AllowedChallengeChoicesEnumValues {
+	for _, existing := range allowedChallengeChoicesEnumValues {
 		if existing == v {
 			return true
 		}

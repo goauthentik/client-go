@@ -28,8 +28,7 @@ const (
 	NAMEIDPOLICYENUM__2_0NAMEID_FORMATTRANSIENT                     NameIdPolicyEnum = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
 )
 
-// All allowed values of NameIdPolicyEnum enum
-var AllowedNameIdPolicyEnumEnumValues = []NameIdPolicyEnum{
+var allowedNameIdPolicyEnumEnumValues = []NameIdPolicyEnum{
 	"urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
 	"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
 	"urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName",
@@ -44,7 +43,7 @@ func (v *NameIdPolicyEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := NameIdPolicyEnum(value)
-	for _, existing := range AllowedNameIdPolicyEnumEnumValues {
+	for _, existing := range allowedNameIdPolicyEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -61,13 +60,13 @@ func NewNameIdPolicyEnumFromValue(v string) (*NameIdPolicyEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for NameIdPolicyEnum: valid values are %v", v, AllowedNameIdPolicyEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for NameIdPolicyEnum: valid values are %v", v, allowedNameIdPolicyEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v NameIdPolicyEnum) IsValid() bool {
-	for _, existing := range AllowedNameIdPolicyEnumEnumValues {
+	for _, existing := range allowedNameIdPolicyEnumEnumValues {
 		if existing == v {
 			return true
 		}

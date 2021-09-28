@@ -26,8 +26,7 @@ const (
 	BINDINGTYPEENUM_POST_AUTO BindingTypeEnum = "POST_AUTO"
 )
 
-// All allowed values of BindingTypeEnum enum
-var AllowedBindingTypeEnumEnumValues = []BindingTypeEnum{
+var allowedBindingTypeEnumEnumValues = []BindingTypeEnum{
 	"REDIRECT",
 	"POST",
 	"POST_AUTO",
@@ -40,7 +39,7 @@ func (v *BindingTypeEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := BindingTypeEnum(value)
-	for _, existing := range AllowedBindingTypeEnumEnumValues {
+	for _, existing := range allowedBindingTypeEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -57,13 +56,13 @@ func NewBindingTypeEnumFromValue(v string) (*BindingTypeEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for BindingTypeEnum: valid values are %v", v, AllowedBindingTypeEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for BindingTypeEnum: valid values are %v", v, allowedBindingTypeEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v BindingTypeEnum) IsValid() bool {
-	for _, existing := range AllowedBindingTypeEnumEnumValues {
+	for _, existing := range allowedBindingTypeEnumEnumValues {
 		if existing == v {
 			return true
 		}

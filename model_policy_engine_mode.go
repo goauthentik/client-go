@@ -25,8 +25,7 @@ const (
 	POLICYENGINEMODE_ANY PolicyEngineMode = "any"
 )
 
-// All allowed values of PolicyEngineMode enum
-var AllowedPolicyEngineModeEnumValues = []PolicyEngineMode{
+var allowedPolicyEngineModeEnumValues = []PolicyEngineMode{
 	"all",
 	"any",
 }
@@ -38,7 +37,7 @@ func (v *PolicyEngineMode) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := PolicyEngineMode(value)
-	for _, existing := range AllowedPolicyEngineModeEnumValues {
+	for _, existing := range allowedPolicyEngineModeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -55,13 +54,13 @@ func NewPolicyEngineModeFromValue(v string) (*PolicyEngineMode, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for PolicyEngineMode: valid values are %v", v, AllowedPolicyEngineModeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for PolicyEngineMode: valid values are %v", v, allowedPolicyEngineModeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v PolicyEngineMode) IsValid() bool {
-	for _, existing := range AllowedPolicyEngineModeEnumValues {
+	for _, existing := range allowedPolicyEngineModeEnumValues {
 		if existing == v {
 			return true
 		}

@@ -26,8 +26,7 @@ const (
 	CONSENTSTAGEMODEENUM_EXPIRING       ConsentStageModeEnum = "expiring"
 )
 
-// All allowed values of ConsentStageModeEnum enum
-var AllowedConsentStageModeEnumEnumValues = []ConsentStageModeEnum{
+var allowedConsentStageModeEnumEnumValues = []ConsentStageModeEnum{
 	"always_require",
 	"permanent",
 	"expiring",
@@ -40,7 +39,7 @@ func (v *ConsentStageModeEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := ConsentStageModeEnum(value)
-	for _, existing := range AllowedConsentStageModeEnumEnumValues {
+	for _, existing := range allowedConsentStageModeEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -57,13 +56,13 @@ func NewConsentStageModeEnumFromValue(v string) (*ConsentStageModeEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ConsentStageModeEnum: valid values are %v", v, AllowedConsentStageModeEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for ConsentStageModeEnum: valid values are %v", v, allowedConsentStageModeEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v ConsentStageModeEnum) IsValid() bool {
-	for _, existing := range AllowedConsentStageModeEnumEnumValues {
+	for _, existing := range allowedConsentStageModeEnumEnumValues {
 		if existing == v {
 			return true
 		}

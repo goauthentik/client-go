@@ -26,8 +26,7 @@ const (
 	USERFIELDSENUM_UPN      UserFieldsEnum = "upn"
 )
 
-// All allowed values of UserFieldsEnum enum
-var AllowedUserFieldsEnumEnumValues = []UserFieldsEnum{
+var allowedUserFieldsEnumEnumValues = []UserFieldsEnum{
 	"email",
 	"username",
 	"upn",
@@ -40,7 +39,7 @@ func (v *UserFieldsEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := UserFieldsEnum(value)
-	for _, existing := range AllowedUserFieldsEnumEnumValues {
+	for _, existing := range allowedUserFieldsEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -57,13 +56,13 @@ func NewUserFieldsEnumFromValue(v string) (*UserFieldsEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for UserFieldsEnum: valid values are %v", v, AllowedUserFieldsEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for UserFieldsEnum: valid values are %v", v, allowedUserFieldsEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v UserFieldsEnum) IsValid() bool {
-	for _, existing := range AllowedUserFieldsEnumEnumValues {
+	for _, existing := range allowedUserFieldsEnumEnumValues {
 		if existing == v {
 			return true
 		}

@@ -25,8 +25,7 @@ const (
 	CLIENTTYPEENUM_PUBLIC       ClientTypeEnum = "public"
 )
 
-// All allowed values of ClientTypeEnum enum
-var AllowedClientTypeEnumEnumValues = []ClientTypeEnum{
+var allowedClientTypeEnumEnumValues = []ClientTypeEnum{
 	"confidential",
 	"public",
 }
@@ -38,7 +37,7 @@ func (v *ClientTypeEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := ClientTypeEnum(value)
-	for _, existing := range AllowedClientTypeEnumEnumValues {
+	for _, existing := range allowedClientTypeEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -55,13 +54,13 @@ func NewClientTypeEnumFromValue(v string) (*ClientTypeEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ClientTypeEnum: valid values are %v", v, AllowedClientTypeEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for ClientTypeEnum: valid values are %v", v, allowedClientTypeEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v ClientTypeEnum) IsValid() bool {
-	for _, existing := range AllowedClientTypeEnumEnumValues {
+	for _, existing := range allowedClientTypeEnumEnumValues {
 		if existing == v {
 			return true
 		}

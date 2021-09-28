@@ -8,7 +8,7 @@ default:
 	docker run \
 		--rm -v ${PWD}:/local \
 		--user ${UID}:${GID} \
-		openapitools/openapi-generator-cli generate \
+		openapitools/openapi-generator-cli:v5.2.1 generate \
 		-i /local/schema.yml \
 		-g go \
 		-o /local \

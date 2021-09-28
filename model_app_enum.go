@@ -68,8 +68,7 @@ const (
 	APPENUM_MANAGED                       AppEnum = "authentik.managed"
 )
 
-// All allowed values of AppEnum enum
-var AllowedAppEnumEnumValues = []AppEnum{
+var allowedAppEnumEnumValues = []AppEnum{
 	"authentik.admin",
 	"authentik.api",
 	"authentik.events",
@@ -124,7 +123,7 @@ func (v *AppEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := AppEnum(value)
-	for _, existing := range AllowedAppEnumEnumValues {
+	for _, existing := range allowedAppEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -141,13 +140,13 @@ func NewAppEnumFromValue(v string) (*AppEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for AppEnum: valid values are %v", v, AllowedAppEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for AppEnum: valid values are %v", v, allowedAppEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v AppEnum) IsValid() bool {
-	for _, existing := range AllowedAppEnumEnumValues {
+	for _, existing := range allowedAppEnumEnumValues {
 		if existing == v {
 			return true
 		}

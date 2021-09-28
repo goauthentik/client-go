@@ -26,8 +26,7 @@ const (
 	STATUSENUM_ERROR      StatusEnum = "ERROR"
 )
 
-// All allowed values of StatusEnum enum
-var AllowedStatusEnumEnumValues = []StatusEnum{
+var allowedStatusEnumEnumValues = []StatusEnum{
 	"SUCCESSFUL",
 	"WARNING",
 	"ERROR",
@@ -40,7 +39,7 @@ func (v *StatusEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := StatusEnum(value)
-	for _, existing := range AllowedStatusEnumEnumValues {
+	for _, existing := range allowedStatusEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -57,13 +56,13 @@ func NewStatusEnumFromValue(v string) (*StatusEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for StatusEnum: valid values are %v", v, AllowedStatusEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for StatusEnum: valid values are %v", v, allowedStatusEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v StatusEnum) IsValid() bool {
-	for _, existing := range AllowedStatusEnumEnumValues {
+	for _, existing := range allowedStatusEnumEnumValues {
 		if existing == v {
 			return true
 		}

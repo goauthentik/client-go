@@ -26,8 +26,7 @@ const (
 	BACKENDSENUM_SOURCES_LDAP_AUTH_LDAP_BACKEND BackendsEnum = "authentik.sources.ldap.auth.LDAPBackend"
 )
 
-// All allowed values of BackendsEnum enum
-var AllowedBackendsEnumEnumValues = []BackendsEnum{
+var allowedBackendsEnumEnumValues = []BackendsEnum{
 	"authentik.core.auth.InbuiltBackend",
 	"authentik.core.auth.TokenBackend",
 	"authentik.sources.ldap.auth.LDAPBackend",
@@ -40,7 +39,7 @@ func (v *BackendsEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := BackendsEnum(value)
-	for _, existing := range AllowedBackendsEnumEnumValues {
+	for _, existing := range allowedBackendsEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -57,13 +56,13 @@ func NewBackendsEnumFromValue(v string) (*BackendsEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for BackendsEnum: valid values are %v", v, AllowedBackendsEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for BackendsEnum: valid values are %v", v, allowedBackendsEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v BackendsEnum) IsValid() bool {
-	for _, existing := range AllowedBackendsEnumEnumValues {
+	for _, existing := range allowedBackendsEnumEnumValues {
 		if existing == v {
 			return true
 		}

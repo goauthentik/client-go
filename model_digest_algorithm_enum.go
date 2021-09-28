@@ -27,8 +27,7 @@ const (
 	DIGESTALGORITHMENUM__2001_04_XMLENCSHA512       DigestAlgorithmEnum = "http://www.w3.org/2001/04/xmlenc#sha512"
 )
 
-// All allowed values of DigestAlgorithmEnum enum
-var AllowedDigestAlgorithmEnumEnumValues = []DigestAlgorithmEnum{
+var allowedDigestAlgorithmEnumEnumValues = []DigestAlgorithmEnum{
 	"http://www.w3.org/2000/09/xmldsig#sha1",
 	"http://www.w3.org/2001/04/xmlenc#sha256",
 	"http://www.w3.org/2001/04/xmldsig-more#sha384",
@@ -42,7 +41,7 @@ func (v *DigestAlgorithmEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := DigestAlgorithmEnum(value)
-	for _, existing := range AllowedDigestAlgorithmEnumEnumValues {
+	for _, existing := range allowedDigestAlgorithmEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -59,13 +58,13 @@ func NewDigestAlgorithmEnumFromValue(v string) (*DigestAlgorithmEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for DigestAlgorithmEnum: valid values are %v", v, AllowedDigestAlgorithmEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for DigestAlgorithmEnum: valid values are %v", v, allowedDigestAlgorithmEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v DigestAlgorithmEnum) IsValid() bool {
-	for _, existing := range AllowedDigestAlgorithmEnumEnumValues {
+	for _, existing := range allowedDigestAlgorithmEnumEnumValues {
 		if existing == v {
 			return true
 		}
