@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**FlowsBindingsUsedByList**](FlowsApi.md#FlowsBindingsUsedByList) | **Get** /flows/bindings/{fsb_uuid}/used_by/ | 
 [**FlowsExecutorGet**](FlowsApi.md#FlowsExecutorGet) | **Get** /flows/executor/{flow_slug}/ | 
 [**FlowsExecutorSolve**](FlowsApi.md#FlowsExecutorSolve) | **Post** /flows/executor/{flow_slug}/ | 
+[**FlowsInspectorGet**](FlowsApi.md#FlowsInspectorGet) | **Get** /flows/inspector/{flow_slug}/ | 
 [**FlowsInstancesCacheClearCreate**](FlowsApi.md#FlowsInstancesCacheClearCreate) | **Post** /flows/instances/cache_clear/ | 
 [**FlowsInstancesCacheInfoRetrieve**](FlowsApi.md#FlowsInstancesCacheInfoRetrieve) | **Get** /flows/instances/cache_info/ | 
 [**FlowsInstancesCreate**](FlowsApi.md#FlowsInstancesCreate) | **Post** /flows/instances/ | 
@@ -680,6 +681,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## FlowsInspectorGet
+
+> FlowInspection FlowsInspectorGet(ctx, flowSlug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    flowSlug := "flowSlug_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.FlowsApi.FlowsInspectorGet(context.Background(), flowSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInspectorGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsInspectorGet`: FlowInspection
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsInspectorGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**flowSlug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiFlowsInspectorGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**FlowInspection**](FlowInspection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

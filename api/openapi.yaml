@@ -5253,6 +5253,32 @@ paths:
       - {}
       tags:
       - flows
+  /flows/inspector/{flow_slug}/:
+    get:
+      description: Get current flow state and record it
+      operationId: flows_inspector_get
+      parameters:
+      - explode: false
+        in: path
+        name: flow_slug
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowInspection'
+        "400":
+          description: No flow plan in session.
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - flows
   /flows/instances/:
     get:
       description: Flow Viewset
@@ -23263,6 +23289,70 @@ components:
           type: string
       required:
       - diagram
+      type: object
+    FlowInspection:
+      description: Serializer for inspect endpoint
+      example:
+        current_plan:
+          session_id: session_id
+          next_planned_stage: ""
+          current_stage: ""
+          plan_context:
+            key: ""
+        plans:
+        - session_id: session_id
+          next_planned_stage: ""
+          current_stage: ""
+          plan_context:
+            key: ""
+        - session_id: session_id
+          next_planned_stage: ""
+          current_stage: ""
+          plan_context:
+            key: ""
+        is_completed: true
+      properties:
+        plans:
+          items:
+            $ref: '#/components/schemas/FlowInspectorPlan'
+          type: array
+        current_plan:
+          $ref: '#/components/schemas/FlowInspectorPlan'
+        is_completed:
+          type: boolean
+      required:
+      - is_completed
+      - plans
+      type: object
+    FlowInspectorPlan:
+      description: Serializer for an active FlowPlan
+      example:
+        session_id: session_id
+        next_planned_stage: ""
+        current_stage: ""
+        plan_context:
+          key: ""
+      properties:
+        current_stage:
+          allOf:
+          - $ref: '#/components/schemas/FlowStageBinding'
+          readOnly: true
+        next_planned_stage:
+          allOf:
+          - $ref: '#/components/schemas/FlowStageBinding'
+          readOnly: true
+        plan_context:
+          additionalProperties: {}
+          readOnly: true
+          type: object
+        session_id:
+          readOnly: true
+          type: string
+      required:
+      - current_stage
+      - next_planned_stage
+      - plan_context
+      - session_id
       type: object
     FlowRequest:
       description: Flow Serializer

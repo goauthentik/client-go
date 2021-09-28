@@ -185,6 +185,7 @@ Class | Method | HTTP request | Description
 *FlowsApi* | [**FlowsBindingsUsedByList**](docs/FlowsApi.md#flowsbindingsusedbylist) | **Get** /flows/bindings/{fsb_uuid}/used_by/ | 
 *FlowsApi* | [**FlowsExecutorGet**](docs/FlowsApi.md#flowsexecutorget) | **Get** /flows/executor/{flow_slug}/ | 
 *FlowsApi* | [**FlowsExecutorSolve**](docs/FlowsApi.md#flowsexecutorsolve) | **Post** /flows/executor/{flow_slug}/ | 
+*FlowsApi* | [**FlowsInspectorGet**](docs/FlowsApi.md#flowsinspectorget) | **Get** /flows/inspector/{flow_slug}/ | 
 *FlowsApi* | [**FlowsInstancesCacheClearCreate**](docs/FlowsApi.md#flowsinstancescacheclearcreate) | **Post** /flows/instances/cache_clear/ | 
 *FlowsApi* | [**FlowsInstancesCacheInfoRetrieve**](docs/FlowsApi.md#flowsinstancescacheinforetrieve) | **Get** /flows/instances/cache_info/ | 
 *FlowsApi* | [**FlowsInstancesCreate**](docs/FlowsApi.md#flowsinstancescreate) | **Post** /flows/instances/ | 
@@ -681,6 +682,8 @@ Class | Method | HTTP request | Description
  - [FlowChallengeResponseRequest](docs/FlowChallengeResponseRequest.md)
  - [FlowDesignationEnum](docs/FlowDesignationEnum.md)
  - [FlowDiagram](docs/FlowDiagram.md)
+ - [FlowInspection](docs/FlowInspection.md)
+ - [FlowInspectorPlan](docs/FlowInspectorPlan.md)
  - [FlowRequest](docs/FlowRequest.md)
  - [FlowStageBinding](docs/FlowStageBinding.md)
  - [FlowStageBindingRequest](docs/FlowStageBindingRequest.md)
