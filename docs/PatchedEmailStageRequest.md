@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **TokenExpiry** | Pointer to **int32** | Time in minutes the token sent is valid. | [optional] 
 **Subject** | Pointer to **string** |  | [optional] 
 **Template** | Pointer to **string** |  | [optional] 
+**ActivateUserOnSuccess** | Pointer to **bool** | Activate users upon completion of stage. | [optional] 
 
 ## Methods
 
@@ -387,6 +388,31 @@ SetTemplate sets Template field to given value.
 `func (o *PatchedEmailStageRequest) HasTemplate() bool`
 
 HasTemplate returns a boolean if a field has been set.
+
+### GetActivateUserOnSuccess
+
+`func (o *PatchedEmailStageRequest) GetActivateUserOnSuccess() bool`
+
+GetActivateUserOnSuccess returns the ActivateUserOnSuccess field if non-nil, zero value otherwise.
+
+### GetActivateUserOnSuccessOk
+
+`func (o *PatchedEmailStageRequest) GetActivateUserOnSuccessOk() (*bool, bool)`
+
+GetActivateUserOnSuccessOk returns a tuple with the ActivateUserOnSuccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActivateUserOnSuccess
+
+`func (o *PatchedEmailStageRequest) SetActivateUserOnSuccess(v bool)`
+
+SetActivateUserOnSuccess sets ActivateUserOnSuccess field to given value.
+
+### HasActivateUserOnSuccess
+
+`func (o *PatchedEmailStageRequest) HasActivateUserOnSuccess() bool`
+
+HasActivateUserOnSuccess returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -17526,6 +17526,13 @@ paths:
       parameters:
       - explode: true
         in: query
+        name: activate_user_on_success
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: from_address
         required: false
         schema:
@@ -22556,6 +22563,7 @@ components:
         component: component
         verbose_name: verbose_name
         port: -1803530559
+        activate_user_on_success: true
         name: name
         host: host
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -22615,6 +22623,9 @@ components:
           type: string
         template:
           type: string
+        activate_user_on_success:
+          description: Activate users upon completion of stage.
+          type: boolean
       required:
       - component
       - name
@@ -22645,6 +22656,7 @@ components:
         use_tls: true
         password: password
         port: -1803530559
+        activate_user_on_success: true
         name: name
         host: host
         from_address: from_address
@@ -22692,6 +22704,9 @@ components:
           type: string
         template:
           type: string
+        activate_user_on_success:
+          description: Activate users upon completion of stage.
+          type: boolean
       required:
       - name
       type: object
@@ -27092,6 +27107,7 @@ components:
           component: component
           verbose_name: verbose_name
           port: -1803530559
+          activate_user_on_success: true
           name: name
           host: host
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -27141,6 +27157,7 @@ components:
           component: component
           verbose_name: verbose_name
           port: -1803530559
+          activate_user_on_success: true
           name: name
           host: host
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -32148,6 +32165,7 @@ components:
         use_tls: true
         password: password
         port: -1803530559
+        activate_user_on_success: true
         name: name
         host: host
         from_address: from_address
@@ -32195,6 +32213,9 @@ components:
           type: string
         template:
           type: string
+        activate_user_on_success:
+          description: Activate users upon completion of stage.
+          type: boolean
       type: object
     PatchedEventMatcherPolicyRequest:
       description: Event Matcher Policy Serializer

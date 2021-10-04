@@ -9437,26 +9437,31 @@ func (a *StagesApiService) StagesEmailDestroyExecute(r ApiStagesEmailDestroyRequ
 }
 
 type ApiStagesEmailListRequest struct {
-	ctx               _context.Context
-	ApiService        *StagesApiService
-	fromAddress       *string
-	host              *string
-	name              *string
-	ordering          *string
-	page              *int32
-	pageSize          *int32
-	port              *int32
-	search            *string
-	subject           *string
-	template          *string
-	timeout           *int32
-	tokenExpiry       *int32
-	useGlobalSettings *bool
-	useSsl            *bool
-	useTls            *bool
-	username          *string
+	ctx                   _context.Context
+	ApiService            *StagesApiService
+	activateUserOnSuccess *bool
+	fromAddress           *string
+	host                  *string
+	name                  *string
+	ordering              *string
+	page                  *int32
+	pageSize              *int32
+	port                  *int32
+	search                *string
+	subject               *string
+	template              *string
+	timeout               *int32
+	tokenExpiry           *int32
+	useGlobalSettings     *bool
+	useSsl                *bool
+	useTls                *bool
+	username              *string
 }
 
+func (r ApiStagesEmailListRequest) ActivateUserOnSuccess(activateUserOnSuccess bool) ApiStagesEmailListRequest {
+	r.activateUserOnSuccess = &activateUserOnSuccess
+	return r
+}
 func (r ApiStagesEmailListRequest) FromAddress(fromAddress string) ApiStagesEmailListRequest {
 	r.fromAddress = &fromAddress
 	return r
@@ -9572,6 +9577,9 @@ func (a *StagesApiService) StagesEmailListExecute(r ApiStagesEmailListRequest) (
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.activateUserOnSuccess != nil {
+		localVarQueryParams.Add("activate_user_on_success", parameterToString(*r.activateUserOnSuccess, ""))
+	}
 	if r.fromAddress != nil {
 		localVarQueryParams.Add("from_address", parameterToString(*r.fromAddress, ""))
 	}

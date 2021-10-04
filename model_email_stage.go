@@ -36,6 +36,8 @@ type EmailStage struct {
 	TokenExpiry *int32  `json:"token_expiry,omitempty"`
 	Subject     *string `json:"subject,omitempty"`
 	Template    *string `json:"template,omitempty"`
+	// Activate users upon completion of stage.
+	ActivateUserOnSuccess *bool `json:"activate_user_on_success,omitempty"`
 }
 
 // NewEmailStage instantiates a new EmailStage object
@@ -564,6 +566,38 @@ func (o *EmailStage) SetTemplate(v string) {
 	o.Template = &v
 }
 
+// GetActivateUserOnSuccess returns the ActivateUserOnSuccess field value if set, zero value otherwise.
+func (o *EmailStage) GetActivateUserOnSuccess() bool {
+	if o == nil || o.ActivateUserOnSuccess == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ActivateUserOnSuccess
+}
+
+// GetActivateUserOnSuccessOk returns a tuple with the ActivateUserOnSuccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EmailStage) GetActivateUserOnSuccessOk() (*bool, bool) {
+	if o == nil || o.ActivateUserOnSuccess == nil {
+		return nil, false
+	}
+	return o.ActivateUserOnSuccess, true
+}
+
+// HasActivateUserOnSuccess returns a boolean if a field has been set.
+func (o *EmailStage) HasActivateUserOnSuccess() bool {
+	if o != nil && o.ActivateUserOnSuccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActivateUserOnSuccess gets a reference to the given bool and assigns it to the ActivateUserOnSuccess field.
+func (o *EmailStage) SetActivateUserOnSuccess(v bool) {
+	o.ActivateUserOnSuccess = &v
+}
+
 func (o EmailStage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -616,6 +650,9 @@ func (o EmailStage) MarshalJSON() ([]byte, error) {
 	}
 	if o.Template != nil {
 		toSerialize["template"] = o.Template
+	}
+	if o.ActivateUserOnSuccess != nil {
+		toSerialize["activate_user_on_success"] = o.ActivateUserOnSuccess
 	}
 	return json.Marshal(toSerialize)
 }

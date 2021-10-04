@@ -5304,7 +5304,7 @@ Name | Type | Description  | Notes
 
 ## StagesEmailList
 
-> PaginatedEmailStageList StagesEmailList(ctx).FromAddress(fromAddress).Host(host).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Port(port).Search(search).Subject(subject).Template(template).Timeout(timeout).TokenExpiry(tokenExpiry).UseGlobalSettings(useGlobalSettings).UseSsl(useSsl).UseTls(useTls).Username(username).Execute()
+> PaginatedEmailStageList StagesEmailList(ctx).ActivateUserOnSuccess(activateUserOnSuccess).FromAddress(fromAddress).Host(host).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Port(port).Search(search).Subject(subject).Template(template).Timeout(timeout).TokenExpiry(tokenExpiry).UseGlobalSettings(useGlobalSettings).UseSsl(useSsl).UseTls(useTls).Username(username).Execute()
 
 
 
@@ -5323,6 +5323,7 @@ import (
 )
 
 func main() {
+    activateUserOnSuccess := true // bool |  (optional)
     fromAddress := "fromAddress_example" // string |  (optional)
     host := "host_example" // string |  (optional)
     name := "name_example" // string |  (optional)
@@ -5342,7 +5343,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.StagesApi.StagesEmailList(context.Background()).FromAddress(fromAddress).Host(host).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Port(port).Search(search).Subject(subject).Template(template).Timeout(timeout).TokenExpiry(tokenExpiry).UseGlobalSettings(useGlobalSettings).UseSsl(useSsl).UseTls(useTls).Username(username).Execute()
+    resp, r, err := api_client.StagesApi.StagesEmailList(context.Background()).ActivateUserOnSuccess(activateUserOnSuccess).FromAddress(fromAddress).Host(host).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Port(port).Search(search).Subject(subject).Template(template).Timeout(timeout).TokenExpiry(tokenExpiry).UseGlobalSettings(useGlobalSettings).UseSsl(useSsl).UseTls(useTls).Username(username).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesEmailList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5363,6 +5364,7 @@ Other parameters are passed through a pointer to a apiStagesEmailListRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **activateUserOnSuccess** | **bool** |  | 
  **fromAddress** | **string** |  | 
  **host** | **string** |  | 
  **name** | **string** |  | 
