@@ -36201,8 +36201,10 @@ components:
           is_superuser: true
           name: name
           groups:
-          - groups
-          - groups
+          - name: name
+            pk: pk
+          - name: name
+            pk: pk
           pk: 0
           avatar: avatar
           email: email
@@ -36213,8 +36215,10 @@ components:
           is_superuser: true
           name: name
           groups:
-          - groups
-          - groups
+          - name: name
+            pk: pk
+          - name: name
+            pk: pk
           pk: 0
           avatar: avatar
           email: email
@@ -37752,8 +37756,10 @@ components:
         is_superuser: true
         name: name
         groups:
-        - groups
-        - groups
+        - name: name
+          pk: pk
+        - name: name
+          pk: pk
         pk: 0
         avatar: avatar
         email: email
@@ -37783,7 +37789,7 @@ components:
           type: boolean
         groups:
           items:
-            type: string
+            $ref: '#/components/schemas/UserSelfGroups'
           readOnly: true
           type: array
         email:
@@ -37806,6 +37812,21 @@ components:
       - pk
       - uid
       - username
+      type: object
+    UserSelfGroups:
+      example:
+        name: name
+        pk: pk
+      properties:
+        name:
+          readOnly: true
+          type: string
+        pk:
+          readOnly: true
+          type: string
+      required:
+      - name
+      - pk
       type: object
     UserSelfRequest:
       description: |-

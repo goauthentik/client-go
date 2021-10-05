@@ -425,6 +425,7 @@ docs/UserOAuthSourceConnectionRequest.md
 docs/UserReputation.md
 docs/UserRequest.md
 docs/UserSelf.md
+docs/UserSelfGroups.md
 docs/UserSelfRequest.md
 docs/UserServiceAccountRequest.md
 docs/UserServiceAccountResponse.md
@@ -828,6 +829,7 @@ model_user_o_auth_source_connection_request.go
 model_user_reputation.go
 model_user_request.go
 model_user_self.go
+model_user_self_groups.go
 model_user_self_request.go
 model_user_service_account_request.go
 model_user_service_account_response.go

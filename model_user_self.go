@@ -23,19 +23,19 @@ type UserSelf struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive    bool     `json:"is_active"`
-	IsSuperuser bool     `json:"is_superuser"`
-	Groups      []string `json:"groups"`
-	Email       *string  `json:"email,omitempty"`
-	Avatar      string   `json:"avatar"`
-	Uid         string   `json:"uid"`
+	IsActive    bool             `json:"is_active"`
+	IsSuperuser bool             `json:"is_superuser"`
+	Groups      []UserSelfGroups `json:"groups"`
+	Email       *string          `json:"email,omitempty"`
+	Avatar      string           `json:"avatar"`
+	Uid         string           `json:"uid"`
 }
 
 // NewUserSelf instantiates a new UserSelf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperuser bool, groups []string, avatar string, uid string) *UserSelf {
+func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperuser bool, groups []UserSelfGroups, avatar string, uid string) *UserSelf {
 	this := UserSelf{}
 	this.Pk = pk
 	this.Username = username
@@ -177,9 +177,9 @@ func (o *UserSelf) SetIsSuperuser(v bool) {
 }
 
 // GetGroups returns the Groups field value
-func (o *UserSelf) GetGroups() []string {
+func (o *UserSelf) GetGroups() []UserSelfGroups {
 	if o == nil {
-		var ret []string
+		var ret []UserSelfGroups
 		return ret
 	}
 
@@ -188,7 +188,7 @@ func (o *UserSelf) GetGroups() []string {
 
 // GetGroupsOk returns a tuple with the Groups field value
 // and a boolean to check if the value has been set.
-func (o *UserSelf) GetGroupsOk() (*[]string, bool) {
+func (o *UserSelf) GetGroupsOk() (*[]UserSelfGroups, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -196,7 +196,7 @@ func (o *UserSelf) GetGroupsOk() (*[]string, bool) {
 }
 
 // SetGroups sets field value
-func (o *UserSelf) SetGroups(v []string) {
+func (o *UserSelf) SetGroups(v []UserSelfGroups) {
 	o.Groups = v
 }
 

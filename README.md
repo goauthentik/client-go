@@ -979,6 +979,7 @@ Class | Method | HTTP request | Description
  - [UserReputation](docs/UserReputation.md)
  - [UserRequest](docs/UserRequest.md)
  - [UserSelf](docs/UserSelf.md)
+ - [UserSelfGroups](docs/UserSelfGroups.md)
  - [UserSelfRequest](docs/UserSelfRequest.md)
  - [UserServiceAccountRequest](docs/UserServiceAccountRequest.md)
  - [UserServiceAccountResponse](docs/UserServiceAccountResponse.md)
