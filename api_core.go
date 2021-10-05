@@ -4213,6 +4213,7 @@ type ApiCoreTokensListRequest struct {
 	expiring     *bool
 	identifier   *string
 	intent       *string
+	managed      *string
 	ordering     *string
 	page         *int32
 	pageSize     *int32
@@ -4238,6 +4239,10 @@ func (r ApiCoreTokensListRequest) Identifier(identifier string) ApiCoreTokensLis
 }
 func (r ApiCoreTokensListRequest) Intent(intent string) ApiCoreTokensListRequest {
 	r.intent = &intent
+	return r
+}
+func (r ApiCoreTokensListRequest) Managed(managed string) ApiCoreTokensListRequest {
+	r.managed = &managed
 	return r
 }
 
@@ -4325,6 +4330,9 @@ func (a *CoreApiService) CoreTokensListExecute(r ApiCoreTokensListRequest) (Pagi
 	}
 	if r.intent != nil {
 		localVarQueryParams.Add("intent", parameterToString(*r.intent, ""))
+	}
+	if r.managed != nil {
+		localVarQueryParams.Add("managed", parameterToString(*r.managed, ""))
 	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))

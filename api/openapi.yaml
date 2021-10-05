@@ -2552,6 +2552,13 @@ paths:
           - verification
           type: string
         style: form
+      - explode: true
+        in: query
+        name: managed
+        required: false
+        schema:
+          type: string
+        style: form
       - description: Which field to use when ordering the results.
         explode: true
         in: query
