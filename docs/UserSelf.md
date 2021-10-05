@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Name** | **string** | User&#39;s display name. | 
 **IsActive** | **bool** | Designates whether this user should be treated as active. Unselect this instead of deleting accounts. | [readonly] 
 **IsSuperuser** | **bool** |  | [readonly] 
-**Groups** | [**[]Group**](Group.md) |  | [readonly] 
+**Groups** | **[]string** |  | [readonly] 
 **Email** | Pointer to **string** |  | [optional] 
 **Avatar** | **string** |  | [readonly] 
 **Uid** | **string** |  | [readonly] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewUserSelf
 
-`func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperuser bool, groups []Group, avatar string, uid string, ) *UserSelf`
+`func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperuser bool, groups []string, avatar string, uid string, ) *UserSelf`
 
 NewUserSelf instantiates a new UserSelf object
 This constructor will assign default values to properties that have it defined,
@@ -135,20 +135,20 @@ SetIsSuperuser sets IsSuperuser field to given value.
 
 ### GetGroups
 
-`func (o *UserSelf) GetGroups() []Group`
+`func (o *UserSelf) GetGroups() []string`
 
 GetGroups returns the Groups field if non-nil, zero value otherwise.
 
 ### GetGroupsOk
 
-`func (o *UserSelf) GetGroupsOk() (*[]Group, bool)`
+`func (o *UserSelf) GetGroupsOk() (*[]string, bool)`
 
 GetGroupsOk returns a tuple with the Groups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroups
 
-`func (o *UserSelf) SetGroups(v []Group)`
+`func (o *UserSelf) SetGroups(v []string)`
 
 SetGroups sets Groups field to given value.
 

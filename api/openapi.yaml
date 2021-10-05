@@ -36201,66 +36201,8 @@ components:
           is_superuser: true
           name: name
           groups:
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            is_superuser: true
-            name: name
-            attributes:
-              key: ""
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            users_obj:
-            - uid: uid
-              is_active: true
-              last_login: 2000-01-23T04:56:07.000+00:00
-              name: name
-              attributes:
-                key: ""
-              pk: 6
-              avatar: avatar
-              email: email
-              username: username
-            - uid: uid
-              is_active: true
-              last_login: 2000-01-23T04:56:07.000+00:00
-              name: name
-              attributes:
-                key: ""
-              pk: 6
-              avatar: avatar
-              email: email
-              username: username
-            users:
-            - 0
-            - 0
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            is_superuser: true
-            name: name
-            attributes:
-              key: ""
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            users_obj:
-            - uid: uid
-              is_active: true
-              last_login: 2000-01-23T04:56:07.000+00:00
-              name: name
-              attributes:
-                key: ""
-              pk: 6
-              avatar: avatar
-              email: email
-              username: username
-            - uid: uid
-              is_active: true
-              last_login: 2000-01-23T04:56:07.000+00:00
-              name: name
-              attributes:
-                key: ""
-              pk: 6
-              avatar: avatar
-              email: email
-              username: username
-            users:
-            - 0
-            - 0
+          - groups
+          - groups
           pk: 0
           avatar: avatar
           email: email
@@ -36271,66 +36213,8 @@ components:
           is_superuser: true
           name: name
           groups:
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            is_superuser: true
-            name: name
-            attributes:
-              key: ""
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            users_obj:
-            - uid: uid
-              is_active: true
-              last_login: 2000-01-23T04:56:07.000+00:00
-              name: name
-              attributes:
-                key: ""
-              pk: 6
-              avatar: avatar
-              email: email
-              username: username
-            - uid: uid
-              is_active: true
-              last_login: 2000-01-23T04:56:07.000+00:00
-              name: name
-              attributes:
-                key: ""
-              pk: 6
-              avatar: avatar
-              email: email
-              username: username
-            users:
-            - 0
-            - 0
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            is_superuser: true
-            name: name
-            attributes:
-              key: ""
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            users_obj:
-            - uid: uid
-              is_active: true
-              last_login: 2000-01-23T04:56:07.000+00:00
-              name: name
-              attributes:
-                key: ""
-              pk: 6
-              avatar: avatar
-              email: email
-              username: username
-            - uid: uid
-              is_active: true
-              last_login: 2000-01-23T04:56:07.000+00:00
-              name: name
-              attributes:
-                key: ""
-              pk: 6
-              avatar: avatar
-              email: email
-              username: username
-            users:
-            - 0
-            - 0
+          - groups
+          - groups
           pk: 0
           avatar: avatar
           email: email
@@ -37868,66 +37752,8 @@ components:
         is_superuser: true
         name: name
         groups:
-        - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          is_superuser: true
-          name: name
-          attributes:
-            key: ""
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          users_obj:
-          - uid: uid
-            is_active: true
-            last_login: 2000-01-23T04:56:07.000+00:00
-            name: name
-            attributes:
-              key: ""
-            pk: 6
-            avatar: avatar
-            email: email
-            username: username
-          - uid: uid
-            is_active: true
-            last_login: 2000-01-23T04:56:07.000+00:00
-            name: name
-            attributes:
-              key: ""
-            pk: 6
-            avatar: avatar
-            email: email
-            username: username
-          users:
-          - 0
-          - 0
-        - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          is_superuser: true
-          name: name
-          attributes:
-            key: ""
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          users_obj:
-          - uid: uid
-            is_active: true
-            last_login: 2000-01-23T04:56:07.000+00:00
-            name: name
-            attributes:
-              key: ""
-            pk: 6
-            avatar: avatar
-            email: email
-            username: username
-          - uid: uid
-            is_active: true
-            last_login: 2000-01-23T04:56:07.000+00:00
-            name: name
-            attributes:
-              key: ""
-            pk: 6
-            avatar: avatar
-            email: email
-            username: username
-          users:
-          - 0
-          - 0
+        - groups
+        - groups
         pk: 0
         avatar: avatar
         email: email
@@ -37957,7 +37783,7 @@ components:
           type: boolean
         groups:
           items:
-            $ref: '#/components/schemas/Group'
+            type: string
           readOnly: true
           type: array
         email:
