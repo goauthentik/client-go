@@ -23,13 +23,14 @@ type StagePrompt struct {
 	Required    bool   `json:"required"`
 	Placeholder string `json:"placeholder"`
 	Order       int32  `json:"order"`
+	SubText     string `json:"sub_text"`
 }
 
 // NewStagePrompt instantiates a new StagePrompt object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStagePrompt(fieldKey string, label string, type_ string, required bool, placeholder string, order int32) *StagePrompt {
+func NewStagePrompt(fieldKey string, label string, type_ string, required bool, placeholder string, order int32, subText string) *StagePrompt {
 	this := StagePrompt{}
 	this.FieldKey = fieldKey
 	this.Label = label
@@ -37,6 +38,7 @@ func NewStagePrompt(fieldKey string, label string, type_ string, required bool, 
 	this.Required = required
 	this.Placeholder = placeholder
 	this.Order = order
+	this.SubText = subText
 	return &this
 }
 
@@ -192,6 +194,30 @@ func (o *StagePrompt) SetOrder(v int32) {
 	o.Order = v
 }
 
+// GetSubText returns the SubText field value
+func (o *StagePrompt) GetSubText() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SubText
+}
+
+// GetSubTextOk returns a tuple with the SubText field value
+// and a boolean to check if the value has been set.
+func (o *StagePrompt) GetSubTextOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SubText, true
+}
+
+// SetSubText sets field value
+func (o *StagePrompt) SetSubText(v string) {
+	o.SubText = v
+}
+
 func (o StagePrompt) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -211,6 +237,9 @@ func (o StagePrompt) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["order"] = o.Order
+	}
+	if true {
+		toSerialize["sub_text"] = o.SubText
 	}
 	return json.Marshal(toSerialize)
 }

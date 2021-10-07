@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **Required** | **bool** |  | 
 **Placeholder** | **string** |  | 
 **Order** | **int32** |  | 
+**SubText** | **string** |  | 
 
 ## Methods
 
 ### NewStagePrompt
 
-`func NewStagePrompt(fieldKey string, label string, type_ string, required bool, placeholder string, order int32, ) *StagePrompt`
+`func NewStagePrompt(fieldKey string, label string, type_ string, required bool, placeholder string, order int32, subText string, ) *StagePrompt`
 
 NewStagePrompt instantiates a new StagePrompt object
 This constructor will assign default values to properties that have it defined,
@@ -148,6 +149,26 @@ and a boolean to check if the value has been set.
 `func (o *StagePrompt) SetOrder(v int32)`
 
 SetOrder sets Order field to given value.
+
+
+### GetSubText
+
+`func (o *StagePrompt) GetSubText() string`
+
+GetSubText returns the SubText field if non-nil, zero value otherwise.
+
+### GetSubTextOk
+
+`func (o *StagePrompt) GetSubTextOk() (*string, bool)`
+
+GetSubTextOk returns a tuple with the SubText field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubText
+
+`func (o *StagePrompt) SetSubText(v string)`
+
+SetSubText sets SubText field to given value.
 
 
 

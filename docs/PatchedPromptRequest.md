@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Placeholder** | Pointer to **string** |  | [optional] 
 **Order** | Pointer to **int32** |  | [optional] 
 **PromptstageSet** | Pointer to [**[]StageRequest**](StageRequest.md) |  | [optional] 
+**SubText** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -205,6 +206,31 @@ SetPromptstageSet sets PromptstageSet field to given value.
 `func (o *PatchedPromptRequest) HasPromptstageSet() bool`
 
 HasPromptstageSet returns a boolean if a field has been set.
+
+### GetSubText
+
+`func (o *PatchedPromptRequest) GetSubText() string`
+
+GetSubText returns the SubText field if non-nil, zero value otherwise.
+
+### GetSubTextOk
+
+`func (o *PatchedPromptRequest) GetSubTextOk() (*string, bool)`
+
+GetSubTextOk returns a tuple with the SubText field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubText
+
+`func (o *PatchedPromptRequest) SetSubText(v string)`
+
+SetSubText sets SubText field to given value.
+
+### HasSubText
+
+`func (o *PatchedPromptRequest) HasSubText() bool`
+
+HasSubText returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

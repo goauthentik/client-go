@@ -25,6 +25,7 @@ type PromptRequest struct {
 	Placeholder    *string         `json:"placeholder,omitempty"`
 	Order          *int32          `json:"order,omitempty"`
 	PromptstageSet *[]StageRequest `json:"promptstage_set,omitempty"`
+	SubText        *string         `json:"sub_text,omitempty"`
 }
 
 // NewPromptRequest instantiates a new PromptRequest object
@@ -247,6 +248,38 @@ func (o *PromptRequest) SetPromptstageSet(v []StageRequest) {
 	o.PromptstageSet = &v
 }
 
+// GetSubText returns the SubText field value if set, zero value otherwise.
+func (o *PromptRequest) GetSubText() string {
+	if o == nil || o.SubText == nil {
+		var ret string
+		return ret
+	}
+	return *o.SubText
+}
+
+// GetSubTextOk returns a tuple with the SubText field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PromptRequest) GetSubTextOk() (*string, bool) {
+	if o == nil || o.SubText == nil {
+		return nil, false
+	}
+	return o.SubText, true
+}
+
+// HasSubText returns a boolean if a field has been set.
+func (o *PromptRequest) HasSubText() bool {
+	if o != nil && o.SubText != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubText gets a reference to the given string and assigns it to the SubText field.
+func (o *PromptRequest) SetSubText(v string) {
+	o.SubText = &v
+}
+
 func (o PromptRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -269,6 +302,9 @@ func (o PromptRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.PromptstageSet != nil {
 		toSerialize["promptstage_set"] = o.PromptstageSet
+	}
+	if o.SubText != nil {
+		toSerialize["sub_text"] = o.SubText
 	}
 	return json.Marshal(toSerialize)
 }

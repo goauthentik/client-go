@@ -29040,7 +29040,8 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - promptstage_set:
+        - sub_text: sub_text
+          promptstage_set:
           - component: component
             verbose_name: verbose_name
             verbose_name_plural: verbose_name_plural
@@ -29123,7 +29124,8 @@ components:
           placeholder: placeholder
           required: true
           order: -1803530559
-        - promptstage_set:
+        - sub_text: sub_text
+          promptstage_set:
           - component: component
             verbose_name: verbose_name
             verbose_name_plural: verbose_name_plural
@@ -33272,6 +33274,7 @@ components:
     PatchedPromptRequest:
       description: Prompt Serializer
       example:
+        sub_text: sub_text
         promptstage_set:
         - name: name
           flow_set:
@@ -33324,6 +33327,8 @@ components:
           items:
             $ref: '#/components/schemas/StageRequest'
           type: array
+        sub_text:
+          type: string
       type: object
     PatchedPromptStageRequest:
       description: PromptStage Serializer
@@ -34449,6 +34454,7 @@ components:
     Prompt:
       description: Prompt Serializer
       example:
+        sub_text: sub_text
         promptstage_set:
         - component: component
           verbose_name: verbose_name
@@ -34559,6 +34565,8 @@ components:
           items:
             $ref: '#/components/schemas/Stage'
           type: array
+        sub_text:
+          type: string
       required:
       - field_key
       - label
@@ -34602,6 +34610,7 @@ components:
     PromptRequest:
       description: Prompt Serializer
       example:
+        sub_text: sub_text
         promptstage_set:
         - name: name
           flow_set:
@@ -34654,6 +34663,8 @@ components:
           items:
             $ref: '#/components/schemas/StageRequest'
           type: array
+        sub_text:
+          type: string
       required:
       - field_key
       - label
@@ -36461,12 +36472,15 @@ components:
           type: string
         order:
           type: integer
+        sub_text:
+          type: string
       required:
       - field_key
       - label
       - order
       - placeholder
       - required
+      - sub_text
       - type
       type: object
     StageRequest:
