@@ -23,12 +23,13 @@ type UserSelf struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive    bool             `json:"is_active"`
-	IsSuperuser bool             `json:"is_superuser"`
-	Groups      []UserSelfGroups `json:"groups"`
-	Email       *string          `json:"email,omitempty"`
-	Avatar      string           `json:"avatar"`
-	Uid         string           `json:"uid"`
+	IsActive    bool                    `json:"is_active"`
+	IsSuperuser bool                    `json:"is_superuser"`
+	Groups      []UserSelfGroups        `json:"groups"`
+	Email       *string                 `json:"email,omitempty"`
+	Avatar      string                  `json:"avatar"`
+	Uid         string                  `json:"uid"`
+	Settings    *map[string]interface{} `json:"settings,omitempty"`
 }
 
 // NewUserSelf instantiates a new UserSelf object
@@ -280,6 +281,38 @@ func (o *UserSelf) SetUid(v string) {
 	o.Uid = v
 }
 
+// GetSettings returns the Settings field value if set, zero value otherwise.
+func (o *UserSelf) GetSettings() map[string]interface{} {
+	if o == nil || o.Settings == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Settings
+}
+
+// GetSettingsOk returns a tuple with the Settings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserSelf) GetSettingsOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Settings == nil {
+		return nil, false
+	}
+	return o.Settings, true
+}
+
+// HasSettings returns a boolean if a field has been set.
+func (o *UserSelf) HasSettings() bool {
+	if o != nil && o.Settings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSettings gets a reference to the given map[string]interface{} and assigns it to the Settings field.
+func (o *UserSelf) SetSettings(v map[string]interface{}) {
+	o.Settings = &v
+}
+
 func (o UserSelf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -308,6 +341,9 @@ func (o UserSelf) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["uid"] = o.Uid
+	}
+	if o.Settings != nil {
+		toSerialize["settings"] = o.Settings
 	}
 	return json.Marshal(toSerialize)
 }

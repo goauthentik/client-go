@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Email** | Pointer to **string** |  | [optional] 
 **Avatar** | **string** |  | [readonly] 
 **Uid** | **string** |  | [readonly] 
+**Settings** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -217,6 +218,31 @@ and a boolean to check if the value has been set.
 
 SetUid sets Uid field to given value.
 
+
+### GetSettings
+
+`func (o *UserSelf) GetSettings() map[string]interface{}`
+
+GetSettings returns the Settings field if non-nil, zero value otherwise.
+
+### GetSettingsOk
+
+`func (o *UserSelf) GetSettingsOk() (*map[string]interface{}, bool)`
+
+GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSettings
+
+`func (o *UserSelf) SetSettings(v map[string]interface{})`
+
+SetSettings sets Settings field to given value.
+
+### HasSettings
+
+`func (o *UserSelf) HasSettings() bool`
+
+HasSettings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

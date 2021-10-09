@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Username** | **string** | Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. | 
 **Name** | **string** | User&#39;s display name. | 
 **Email** | Pointer to **string** |  | [optional] 
+**Settings** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -91,6 +92,31 @@ SetEmail sets Email field to given value.
 `func (o *UserSelfRequest) HasEmail() bool`
 
 HasEmail returns a boolean if a field has been set.
+
+### GetSettings
+
+`func (o *UserSelfRequest) GetSettings() map[string]interface{}`
+
+GetSettings returns the Settings field if non-nil, zero value otherwise.
+
+### GetSettingsOk
+
+`func (o *UserSelfRequest) GetSettingsOk() (*map[string]interface{}, bool)`
+
+GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSettings
+
+`func (o *UserSelfRequest) SetSettings(v map[string]interface{})`
+
+SetSettings sets Settings field to given value.
+
+### HasSettings
+
+`func (o *UserSelfRequest) HasSettings() bool`
+
+HasSettings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

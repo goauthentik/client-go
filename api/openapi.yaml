@@ -36208,6 +36208,8 @@ components:
       example:
         original:
           uid: uid
+          settings:
+            key: ""
           is_active: true
           is_superuser: true
           name: name
@@ -36222,6 +36224,8 @@ components:
           username: username
         user:
           uid: uid
+          settings:
+            key: ""
           is_active: true
           is_superuser: true
           name: name
@@ -37766,6 +37770,8 @@ components:
         update about themselves
       example:
         uid: uid
+        settings:
+          key: ""
         is_active: true
         is_superuser: true
         name: name
@@ -37817,6 +37823,9 @@ components:
         uid:
           readOnly: true
           type: string
+        settings:
+          additionalProperties: {}
+          type: object
       required:
       - avatar
       - groups
@@ -37847,6 +37856,8 @@ components:
         User Serializer for information a user can retrieve about themselves and
         update about themselves
       example:
+        settings:
+          key: ""
         name: name
         email: email
         username: username
@@ -37865,6 +37876,9 @@ components:
           maxLength: 254
           title: Email address
           type: string
+        settings:
+          additionalProperties: {}
+          type: object
       required:
       - name
       - username
