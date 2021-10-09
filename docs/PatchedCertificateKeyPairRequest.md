@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **CertificateData** | Pointer to **string** | PEM-encoded Certificate data | [optional] 
 **KeyData** | Pointer to **string** | Optional Private Key. If this is set, you can use this keypair for encryption. | [optional] 
+**Managed** | Pointer to **NullableString** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [optional] 
 
 ## Methods
 
@@ -102,6 +103,41 @@ SetKeyData sets KeyData field to given value.
 
 HasKeyData returns a boolean if a field has been set.
 
+### GetManaged
+
+`func (o *PatchedCertificateKeyPairRequest) GetManaged() string`
+
+GetManaged returns the Managed field if non-nil, zero value otherwise.
+
+### GetManagedOk
+
+`func (o *PatchedCertificateKeyPairRequest) GetManagedOk() (*string, bool)`
+
+GetManagedOk returns a tuple with the Managed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManaged
+
+`func (o *PatchedCertificateKeyPairRequest) SetManaged(v string)`
+
+SetManaged sets Managed field to given value.
+
+### HasManaged
+
+`func (o *PatchedCertificateKeyPairRequest) HasManaged() bool`
+
+HasManaged returns a boolean if a field has been set.
+
+### SetManagedNil
+
+`func (o *PatchedCertificateKeyPairRequest) SetManagedNil(b bool)`
+
+ SetManagedNil sets the value for Managed to be an explicit nil
+
+### UnsetManaged
+`func (o *PatchedCertificateKeyPairRequest) UnsetManaged()`
+
+UnsetManaged ensures that no value is present for Managed, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

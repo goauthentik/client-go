@@ -3396,6 +3396,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: managed
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: name
         required: false
         schema:
@@ -21640,6 +21647,7 @@ components:
       example:
         certificate_download_url: certificate_download_url
         fingerprint_sha1: fingerprint_sha1
+        managed: managed
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         cert_expiry: 2000-01-23T04:56:07.000+00:00
@@ -21677,6 +21685,14 @@ components:
         private_key_download_url:
           readOnly: true
           type: string
+        managed:
+          description: Objects which are managed by authentik. These objects are created
+            and updated automatically. This is flag only indicates that an object
+            can be overwritten by migrations. You can still modify the objects via
+            the API, but expect changes to be overwritten in a later update.
+          nullable: true
+          title: Managed by authentik
+          type: string
       required:
       - cert_expiry
       - cert_subject
@@ -21692,6 +21708,7 @@ components:
       description: CertificateKeyPair Serializer
       example:
         certificate_data: certificate_data
+        managed: managed
         name: name
         key_data: key_data
       properties:
@@ -21706,6 +21723,14 @@ components:
             for encryption.
           type: string
           writeOnly: true
+        managed:
+          description: Objects which are managed by authentik. These objects are created
+            and updated automatically. This is flag only indicates that an object
+            can be overwritten by migrations. You can still modify the objects via
+            the API, but expect changes to be overwritten in a later update.
+          nullable: true
+          title: Managed by authentik
+          type: string
       required:
       - certificate_data
       - name
@@ -26628,6 +26653,7 @@ components:
         results:
         - certificate_download_url: certificate_download_url
           fingerprint_sha1: fingerprint_sha1
+          managed: managed
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cert_expiry: 2000-01-23T04:56:07.000+00:00
@@ -26637,6 +26663,7 @@ components:
           cert_subject: cert_subject
         - certificate_download_url: certificate_download_url
           fingerprint_sha1: fingerprint_sha1
+          managed: managed
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cert_expiry: 2000-01-23T04:56:07.000+00:00
@@ -31990,6 +32017,7 @@ components:
       description: CertificateKeyPair Serializer
       example:
         certificate_data: certificate_data
+        managed: managed
         name: name
         key_data: key_data
       properties:
@@ -32004,6 +32032,14 @@ components:
             for encryption.
           type: string
           writeOnly: true
+        managed:
+          description: Objects which are managed by authentik. These objects are created
+            and updated automatically. This is flag only indicates that an object
+            can be overwritten by migrations. You can still modify the objects via
+            the API, but expect changes to be overwritten in a later update.
+          nullable: true
+          title: Managed by authentik
+          type: string
       type: object
     PatchedConsentStageRequest:
       description: ConsentStage Serializer

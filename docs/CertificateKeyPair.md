@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **PrivateKeyAvailable** | **bool** |  | [readonly] 
 **CertificateDownloadUrl** | **string** |  | [readonly] 
 **PrivateKeyDownloadUrl** | **string** |  | [readonly] 
+**Managed** | Pointer to **NullableString** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [optional] 
 
 ## Methods
 
@@ -213,6 +214,41 @@ and a boolean to check if the value has been set.
 SetPrivateKeyDownloadUrl sets PrivateKeyDownloadUrl field to given value.
 
 
+### GetManaged
+
+`func (o *CertificateKeyPair) GetManaged() string`
+
+GetManaged returns the Managed field if non-nil, zero value otherwise.
+
+### GetManagedOk
+
+`func (o *CertificateKeyPair) GetManagedOk() (*string, bool)`
+
+GetManagedOk returns a tuple with the Managed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManaged
+
+`func (o *CertificateKeyPair) SetManaged(v string)`
+
+SetManaged sets Managed field to given value.
+
+### HasManaged
+
+`func (o *CertificateKeyPair) HasManaged() bool`
+
+HasManaged returns a boolean if a field has been set.
+
+### SetManagedNil
+
+`func (o *CertificateKeyPair) SetManagedNil(b bool)`
+
+ SetManagedNil sets the value for Managed to be an explicit nil
+
+### UnsetManaged
+`func (o *CertificateKeyPair) UnsetManaged()`
+
+UnsetManaged ensures that no value is present for Managed, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

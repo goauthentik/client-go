@@ -392,6 +392,7 @@ type ApiCryptoCertificatekeypairsListRequest struct {
 	ctx        _context.Context
 	ApiService *CryptoApiService
 	hasKey     *bool
+	managed    *string
 	name       *string
 	ordering   *string
 	page       *int32
@@ -402,6 +403,10 @@ type ApiCryptoCertificatekeypairsListRequest struct {
 // Only return certificate-key pairs with keys
 func (r ApiCryptoCertificatekeypairsListRequest) HasKey(hasKey bool) ApiCryptoCertificatekeypairsListRequest {
 	r.hasKey = &hasKey
+	return r
+}
+func (r ApiCryptoCertificatekeypairsListRequest) Managed(managed string) ApiCryptoCertificatekeypairsListRequest {
+	r.managed = &managed
 	return r
 }
 func (r ApiCryptoCertificatekeypairsListRequest) Name(name string) ApiCryptoCertificatekeypairsListRequest {
@@ -477,6 +482,9 @@ func (a *CryptoApiService) CryptoCertificatekeypairsListExecute(r ApiCryptoCerti
 
 	if r.hasKey != nil {
 		localVarQueryParams.Add("has_key", parameterToString(*r.hasKey, ""))
+	}
+	if r.managed != nil {
+		localVarQueryParams.Add("managed", parameterToString(*r.managed, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))

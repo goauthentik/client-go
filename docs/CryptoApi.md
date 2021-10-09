@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ## CryptoCertificatekeypairsList
 
-> PaginatedCertificateKeyPairList CryptoCertificatekeypairsList(ctx).HasKey(hasKey).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedCertificateKeyPairList CryptoCertificatekeypairsList(ctx).HasKey(hasKey).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -239,6 +239,7 @@ import (
 
 func main() {
     hasKey := true // bool | Only return certificate-key pairs with keys (optional)
+    managed := "managed_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -247,7 +248,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CryptoApi.CryptoCertificatekeypairsList(context.Background()).HasKey(hasKey).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := api_client.CryptoApi.CryptoCertificatekeypairsList(context.Background()).HasKey(hasKey).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -269,6 +270,7 @@ Other parameters are passed through a pointer to a apiCryptoCertificatekeypairsL
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **hasKey** | **bool** | Only return certificate-key pairs with keys | 
+ **managed** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
