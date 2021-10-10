@@ -33344,8 +33344,6 @@ components:
       properties:
         field_key:
           description: Name of the form field, also used to store the value
-          maxLength: 50
-          pattern: ^[-a-zA-Z0-9_]+$
           type: string
         label:
           type: string
@@ -34582,8 +34580,6 @@ components:
           type: string
         field_key:
           description: Name of the form field, also used to store the value
-          maxLength: 50
-          pattern: ^[-a-zA-Z0-9_]+$
           type: string
         label:
           type: string
@@ -34680,8 +34676,6 @@ components:
       properties:
         field_key:
           description: Name of the form field, also used to store the value
-          maxLength: 50
-          pattern: ^[-a-zA-Z0-9_]+$
           type: string
         label:
           type: string
