@@ -1930,6 +1930,947 @@ func (a *StagesApiService) StagesAuthenticatorDuoUsedByListExecute(r ApiStagesAu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiStagesAuthenticatorSmsCreateRequest struct {
+	ctx                          _context.Context
+	ApiService                   *StagesApiService
+	authenticatorSMSStageRequest *AuthenticatorSMSStageRequest
+}
+
+func (r ApiStagesAuthenticatorSmsCreateRequest) AuthenticatorSMSStageRequest(authenticatorSMSStageRequest AuthenticatorSMSStageRequest) ApiStagesAuthenticatorSmsCreateRequest {
+	r.authenticatorSMSStageRequest = &authenticatorSMSStageRequest
+	return r
+}
+
+func (r ApiStagesAuthenticatorSmsCreateRequest) Execute() (AuthenticatorSMSStage, *_nethttp.Response, error) {
+	return r.ApiService.StagesAuthenticatorSmsCreateExecute(r)
+}
+
+/*
+StagesAuthenticatorSmsCreate Method for StagesAuthenticatorSmsCreate
+
+AuthenticatorSMSStage Viewset
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAuthenticatorSmsCreateRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorSmsCreate(ctx _context.Context) ApiStagesAuthenticatorSmsCreateRequest {
+	return ApiStagesAuthenticatorSmsCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//  @return AuthenticatorSMSStage
+func (a *StagesApiService) StagesAuthenticatorSmsCreateExecute(r ApiStagesAuthenticatorSmsCreateRequest) (AuthenticatorSMSStage, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AuthenticatorSMSStage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorSmsCreate")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/sms/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.authenticatorSMSStageRequest == nil {
+		return localVarReturnValue, nil, reportError("authenticatorSMSStageRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.authenticatorSMSStageRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesAuthenticatorSmsDestroyRequest struct {
+	ctx        _context.Context
+	ApiService *StagesApiService
+	stageUuid  string
+}
+
+func (r ApiStagesAuthenticatorSmsDestroyRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.StagesAuthenticatorSmsDestroyExecute(r)
+}
+
+/*
+StagesAuthenticatorSmsDestroy Method for StagesAuthenticatorSmsDestroy
+
+AuthenticatorSMSStage Viewset
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorSmsDestroyRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorSmsDestroy(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorSmsDestroyRequest {
+	return ApiStagesAuthenticatorSmsDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+func (a *StagesApiService) StagesAuthenticatorSmsDestroyExecute(r ApiStagesAuthenticatorSmsDestroyRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorSmsDestroy")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiStagesAuthenticatorSmsListRequest struct {
+	ctx              _context.Context
+	ApiService       *StagesApiService
+	configureFlow    *string
+	fromNumber       *string
+	name             *string
+	ordering         *string
+	page             *int32
+	pageSize         *int32
+	provider         *string
+	search           *string
+	stageUuid        *string
+	twilioAccountSid *string
+	twilioAuth       *string
+}
+
+func (r ApiStagesAuthenticatorSmsListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorSmsListRequest {
+	r.configureFlow = &configureFlow
+	return r
+}
+func (r ApiStagesAuthenticatorSmsListRequest) FromNumber(fromNumber string) ApiStagesAuthenticatorSmsListRequest {
+	r.fromNumber = &fromNumber
+	return r
+}
+func (r ApiStagesAuthenticatorSmsListRequest) Name(name string) ApiStagesAuthenticatorSmsListRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiStagesAuthenticatorSmsListRequest) Ordering(ordering string) ApiStagesAuthenticatorSmsListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiStagesAuthenticatorSmsListRequest) Page(page int32) ApiStagesAuthenticatorSmsListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiStagesAuthenticatorSmsListRequest) PageSize(pageSize int32) ApiStagesAuthenticatorSmsListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+func (r ApiStagesAuthenticatorSmsListRequest) Provider(provider string) ApiStagesAuthenticatorSmsListRequest {
+	r.provider = &provider
+	return r
+}
+
+// A search term.
+func (r ApiStagesAuthenticatorSmsListRequest) Search(search string) ApiStagesAuthenticatorSmsListRequest {
+	r.search = &search
+	return r
+}
+func (r ApiStagesAuthenticatorSmsListRequest) StageUuid(stageUuid string) ApiStagesAuthenticatorSmsListRequest {
+	r.stageUuid = &stageUuid
+	return r
+}
+func (r ApiStagesAuthenticatorSmsListRequest) TwilioAccountSid(twilioAccountSid string) ApiStagesAuthenticatorSmsListRequest {
+	r.twilioAccountSid = &twilioAccountSid
+	return r
+}
+func (r ApiStagesAuthenticatorSmsListRequest) TwilioAuth(twilioAuth string) ApiStagesAuthenticatorSmsListRequest {
+	r.twilioAuth = &twilioAuth
+	return r
+}
+
+func (r ApiStagesAuthenticatorSmsListRequest) Execute() (PaginatedAuthenticatorSMSStageList, *_nethttp.Response, error) {
+	return r.ApiService.StagesAuthenticatorSmsListExecute(r)
+}
+
+/*
+StagesAuthenticatorSmsList Method for StagesAuthenticatorSmsList
+
+AuthenticatorSMSStage Viewset
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAuthenticatorSmsListRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorSmsList(ctx _context.Context) ApiStagesAuthenticatorSmsListRequest {
+	return ApiStagesAuthenticatorSmsListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//  @return PaginatedAuthenticatorSMSStageList
+func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenticatorSmsListRequest) (PaginatedAuthenticatorSMSStageList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  PaginatedAuthenticatorSMSStageList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorSmsList")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/sms/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.configureFlow != nil {
+		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
+	}
+	if r.fromNumber != nil {
+		localVarQueryParams.Add("from_number", parameterToString(*r.fromNumber, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.provider != nil {
+		localVarQueryParams.Add("provider", parameterToString(*r.provider, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.stageUuid != nil {
+		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+	}
+	if r.twilioAccountSid != nil {
+		localVarQueryParams.Add("twilio_account_sid", parameterToString(*r.twilioAccountSid, ""))
+	}
+	if r.twilioAuth != nil {
+		localVarQueryParams.Add("twilio_auth", parameterToString(*r.twilioAuth, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesAuthenticatorSmsPartialUpdateRequest struct {
+	ctx                                 _context.Context
+	ApiService                          *StagesApiService
+	stageUuid                           string
+	patchedAuthenticatorSMSStageRequest *PatchedAuthenticatorSMSStageRequest
+}
+
+func (r ApiStagesAuthenticatorSmsPartialUpdateRequest) PatchedAuthenticatorSMSStageRequest(patchedAuthenticatorSMSStageRequest PatchedAuthenticatorSMSStageRequest) ApiStagesAuthenticatorSmsPartialUpdateRequest {
+	r.patchedAuthenticatorSMSStageRequest = &patchedAuthenticatorSMSStageRequest
+	return r
+}
+
+func (r ApiStagesAuthenticatorSmsPartialUpdateRequest) Execute() (AuthenticatorSMSStage, *_nethttp.Response, error) {
+	return r.ApiService.StagesAuthenticatorSmsPartialUpdateExecute(r)
+}
+
+/*
+StagesAuthenticatorSmsPartialUpdate Method for StagesAuthenticatorSmsPartialUpdate
+
+AuthenticatorSMSStage Viewset
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorSmsPartialUpdateRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorSmsPartialUpdateRequest {
+	return ApiStagesAuthenticatorSmsPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+//  @return AuthenticatorSMSStage
+func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdateExecute(r ApiStagesAuthenticatorSmsPartialUpdateRequest) (AuthenticatorSMSStage, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPatch
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AuthenticatorSMSStage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorSmsPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedAuthenticatorSMSStageRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesAuthenticatorSmsRetrieveRequest struct {
+	ctx        _context.Context
+	ApiService *StagesApiService
+	stageUuid  string
+}
+
+func (r ApiStagesAuthenticatorSmsRetrieveRequest) Execute() (AuthenticatorSMSStage, *_nethttp.Response, error) {
+	return r.ApiService.StagesAuthenticatorSmsRetrieveExecute(r)
+}
+
+/*
+StagesAuthenticatorSmsRetrieve Method for StagesAuthenticatorSmsRetrieve
+
+AuthenticatorSMSStage Viewset
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorSmsRetrieveRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorSmsRetrieve(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorSmsRetrieveRequest {
+	return ApiStagesAuthenticatorSmsRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+//  @return AuthenticatorSMSStage
+func (a *StagesApiService) StagesAuthenticatorSmsRetrieveExecute(r ApiStagesAuthenticatorSmsRetrieveRequest) (AuthenticatorSMSStage, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AuthenticatorSMSStage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorSmsRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesAuthenticatorSmsUpdateRequest struct {
+	ctx                          _context.Context
+	ApiService                   *StagesApiService
+	stageUuid                    string
+	authenticatorSMSStageRequest *AuthenticatorSMSStageRequest
+}
+
+func (r ApiStagesAuthenticatorSmsUpdateRequest) AuthenticatorSMSStageRequest(authenticatorSMSStageRequest AuthenticatorSMSStageRequest) ApiStagesAuthenticatorSmsUpdateRequest {
+	r.authenticatorSMSStageRequest = &authenticatorSMSStageRequest
+	return r
+}
+
+func (r ApiStagesAuthenticatorSmsUpdateRequest) Execute() (AuthenticatorSMSStage, *_nethttp.Response, error) {
+	return r.ApiService.StagesAuthenticatorSmsUpdateExecute(r)
+}
+
+/*
+StagesAuthenticatorSmsUpdate Method for StagesAuthenticatorSmsUpdate
+
+AuthenticatorSMSStage Viewset
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorSmsUpdateRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorSmsUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorSmsUpdateRequest {
+	return ApiStagesAuthenticatorSmsUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+//  @return AuthenticatorSMSStage
+func (a *StagesApiService) StagesAuthenticatorSmsUpdateExecute(r ApiStagesAuthenticatorSmsUpdateRequest) (AuthenticatorSMSStage, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AuthenticatorSMSStage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorSmsUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.authenticatorSMSStageRequest == nil {
+		return localVarReturnValue, nil, reportError("authenticatorSMSStageRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.authenticatorSMSStageRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesAuthenticatorSmsUsedByListRequest struct {
+	ctx        _context.Context
+	ApiService *StagesApiService
+	stageUuid  string
+}
+
+func (r ApiStagesAuthenticatorSmsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+	return r.ApiService.StagesAuthenticatorSmsUsedByListExecute(r)
+}
+
+/*
+StagesAuthenticatorSmsUsedByList Method for StagesAuthenticatorSmsUsedByList
+
+Get a list of all objects that use this object
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorSmsUsedByListRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorSmsUsedByList(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorSmsUsedByListRequest {
+	return ApiStagesAuthenticatorSmsUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+//  @return []UsedBy
+func (a *StagesApiService) StagesAuthenticatorSmsUsedByListExecute(r ApiStagesAuthenticatorSmsUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorSmsUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiStagesAuthenticatorStaticCreateRequest struct {
 	ctx                             _context.Context
 	ApiService                      *StagesApiService

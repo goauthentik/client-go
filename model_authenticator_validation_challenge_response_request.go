@@ -17,10 +17,11 @@ import (
 
 // AuthenticatorValidationChallengeResponseRequest Challenge used for Code-based and WebAuthn authenticators
 type AuthenticatorValidationChallengeResponseRequest struct {
-	Component *string                 `json:"component,omitempty"`
-	Code      *string                 `json:"code,omitempty"`
-	Webauthn  *map[string]interface{} `json:"webauthn,omitempty"`
-	Duo       *int32                  `json:"duo,omitempty"`
+	Component         *string                 `json:"component,omitempty"`
+	SelectedChallenge *DeviceChallengeRequest `json:"selected_challenge,omitempty"`
+	Code              *string                 `json:"code,omitempty"`
+	Webauthn          *map[string]interface{} `json:"webauthn,omitempty"`
+	Duo               *int32                  `json:"duo,omitempty"`
 }
 
 // NewAuthenticatorValidationChallengeResponseRequest instantiates a new AuthenticatorValidationChallengeResponseRequest object
@@ -74,6 +75,38 @@ func (o *AuthenticatorValidationChallengeResponseRequest) HasComponent() bool {
 // SetComponent gets a reference to the given string and assigns it to the Component field.
 func (o *AuthenticatorValidationChallengeResponseRequest) SetComponent(v string) {
 	o.Component = &v
+}
+
+// GetSelectedChallenge returns the SelectedChallenge field value if set, zero value otherwise.
+func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedChallenge() DeviceChallengeRequest {
+	if o == nil || o.SelectedChallenge == nil {
+		var ret DeviceChallengeRequest
+		return ret
+	}
+	return *o.SelectedChallenge
+}
+
+// GetSelectedChallengeOk returns a tuple with the SelectedChallenge field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedChallengeOk() (*DeviceChallengeRequest, bool) {
+	if o == nil || o.SelectedChallenge == nil {
+		return nil, false
+	}
+	return o.SelectedChallenge, true
+}
+
+// HasSelectedChallenge returns a boolean if a field has been set.
+func (o *AuthenticatorValidationChallengeResponseRequest) HasSelectedChallenge() bool {
+	if o != nil && o.SelectedChallenge != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectedChallenge gets a reference to the given DeviceChallengeRequest and assigns it to the SelectedChallenge field.
+func (o *AuthenticatorValidationChallengeResponseRequest) SetSelectedChallenge(v DeviceChallengeRequest) {
+	o.SelectedChallenge = &v
 }
 
 // GetCode returns the Code field value if set, zero value otherwise.
@@ -176,6 +209,9 @@ func (o AuthenticatorValidationChallengeResponseRequest) MarshalJSON() ([]byte, 
 	toSerialize := map[string]interface{}{}
 	if o.Component != nil {
 		toSerialize["component"] = o.Component
+	}
+	if o.SelectedChallenge != nil {
+		toSerialize["selected_challenge"] = o.SelectedChallenge
 	}
 	if o.Code != nil {
 		toSerialize["code"] = o.Code

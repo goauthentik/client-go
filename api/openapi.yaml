@@ -373,6 +373,91 @@ paths:
       - authentik: []
       tags:
       - authenticators
+  /authenticators/admin/sms/:
+    get:
+      description: Viewset for sms authenticator devices (for admins)
+      operationId: authenticators_admin_sms_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSMSDeviceList'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+  /authenticators/admin/sms/{id}/:
+    get:
+      description: Viewset for sms authenticator devices (for admins)
+      operationId: authenticators_admin_sms_retrieve
+      parameters:
+      - description: A unique integer value identifying this SMS Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMSDevice'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
   /authenticators/admin/static/:
     get:
       description: Viewset for static authenticator devices (for admins)
@@ -805,6 +890,206 @@ paths:
       operationId: authenticators_duo_used_by_list
       parameters:
       - description: A unique integer value identifying this Duo Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+  /authenticators/sms/:
+    get:
+      description: Viewset for sms authenticator devices
+      operationId: authenticators_sms_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSMSDeviceList'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+  /authenticators/sms/{id}/:
+    delete:
+      description: Viewset for sms authenticator devices
+      operationId: authenticators_sms_destroy
+      parameters:
+      - description: A unique integer value identifying this SMS Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    get:
+      description: Viewset for sms authenticator devices
+      operationId: authenticators_sms_retrieve
+      parameters:
+      - description: A unique integer value identifying this SMS Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMSDevice'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    patch:
+      description: Viewset for sms authenticator devices
+      operationId: authenticators_sms_partial_update
+      parameters:
+      - description: A unique integer value identifying this SMS Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSMSDeviceRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMSDevice'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    put:
+      description: Viewset for sms authenticator devices
+      operationId: authenticators_sms_update
+      parameters:
+      - description: A unique integer value identifying this SMS Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SMSDeviceRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMSDevice'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+  /authenticators/sms/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: authenticators_sms_used_by_list
+      parameters:
+      - description: A unique integer value identifying this SMS Device.
         explode: false
         in: path
         name: id
@@ -8070,6 +8355,7 @@ paths:
           - authentik.sources.plex
           - authentik.sources.saml
           - authentik.stages.authenticator_duo
+          - authentik.stages.authenticator_sms
           - authentik.stages.authenticator_static
           - authentik.stages.authenticator_totp
           - authentik.stages.authenticator_validate
@@ -15576,6 +15862,280 @@ paths:
       - authentik: []
       tags:
       - stages
+  /stages/authenticator/sms/:
+    get:
+      description: AuthenticatorSMSStage Viewset
+      operationId: stages_authenticator_sms_list
+      parameters:
+      - explode: true
+        in: query
+        name: configure_flow
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: from_number
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: provider
+        required: false
+        schema:
+          enum:
+          - twilio
+          type: string
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: stage_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: twilio_account_sid
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: twilio_auth
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAuthenticatorSMSStageList'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - stages
+    post:
+      description: AuthenticatorSMSStage Viewset
+      operationId: stages_authenticator_sms_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticatorSMSStageRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorSMSStage'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/authenticator/sms/{stage_uuid}/:
+    delete:
+      description: AuthenticatorSMSStage Viewset
+      operationId: stages_authenticator_sms_destroy
+      parameters:
+      - description: A UUID string identifying this SMS Authenticator Setup Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - stages
+    get:
+      description: AuthenticatorSMSStage Viewset
+      operationId: stages_authenticator_sms_retrieve
+      parameters:
+      - description: A UUID string identifying this SMS Authenticator Setup Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorSMSStage'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - stages
+    patch:
+      description: AuthenticatorSMSStage Viewset
+      operationId: stages_authenticator_sms_partial_update
+      parameters:
+      - description: A UUID string identifying this SMS Authenticator Setup Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAuthenticatorSMSStageRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorSMSStage'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - stages
+    put:
+      description: AuthenticatorSMSStage Viewset
+      operationId: stages_authenticator_sms_update
+      parameters:
+      - description: A UUID string identifying this SMS Authenticator Setup Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticatorSMSStageRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorSMSStage'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/authenticator/sms/{stage_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: stages_authenticator_sms_used_by_list
+      parameters:
+      - description: A UUID string identifying this SMS Authenticator Setup Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - stages
   /stages/authenticator/static/:
     get:
       description: AuthenticatorStaticStage Viewset
@@ -20375,12 +20935,11 @@ components:
       enum:
       - authentik.admin
       - authentik.api
-      - authentik.events
       - authentik.crypto
+      - authentik.events
       - authentik.flows
-      - authentik.outposts
       - authentik.lib
-      - authentik.policies
+      - authentik.outposts
       - authentik.policies.dummy
       - authentik.policies.event_matcher
       - authentik.policies.expiry
@@ -20388,9 +20947,10 @@ components:
       - authentik.policies.hibp
       - authentik.policies.password
       - authentik.policies.reputation
-      - authentik.providers.proxy
+      - authentik.policies
       - authentik.providers.ldap
       - authentik.providers.oauth2
+      - authentik.providers.proxy
       - authentik.providers.saml
       - authentik.recovery
       - authentik.sources.ldap
@@ -20398,6 +20958,7 @@ components:
       - authentik.sources.plex
       - authentik.sources.saml
       - authentik.stages.authenticator_duo
+      - authentik.stages.authenticator_sms
       - authentik.stages.authenticator_static
       - authentik.stages.authenticator_totp
       - authentik.stages.authenticator_validate
@@ -20870,6 +21431,183 @@ components:
       - client_id
       - client_secret
       - name
+      type: object
+    AuthenticatorSMSChallenge:
+      description: SMS Setup challenge
+      properties:
+        type:
+          $ref: '#/components/schemas/ChallengeChoices'
+        flow_info:
+          $ref: '#/components/schemas/ContextualFlowInfo'
+        component:
+          default: ak-stage-authenticator-sms
+          type: string
+        response_errors:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/ErrorDetail'
+            type: array
+          type: object
+        pending_user:
+          type: string
+        pending_user_avatar:
+          type: string
+        phone_number_required:
+          default: true
+          type: boolean
+      required:
+      - pending_user
+      - pending_user_avatar
+      - type
+      type: object
+    AuthenticatorSMSChallengeResponseRequest:
+      description: SMS Challenge response, device is set by get_response_instance
+      properties:
+        component:
+          default: ak-stage-authenticator-sms
+          type: string
+        code:
+          type: integer
+        phone_number:
+          type: string
+      type: object
+    AuthenticatorSMSStage:
+      description: AuthenticatorSMSStage Serializer
+      example:
+        component: component
+        verbose_name: verbose_name
+        configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        verbose_name_plural: verbose_name_plural
+        from_number: from_number
+        twilio_account_sid: twilio_account_sid
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        flow_set:
+        - compatibility_mode: true
+          policies:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          title: title
+          policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          background: background
+          name: name
+          stages:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          export_url: export_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          designation: ""
+          cache_count: 0
+          slug: slug
+        - compatibility_mode: true
+          policies:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          title: title
+          policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          background: background
+          name: name
+          stages:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          export_url: export_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          designation: ""
+          cache_count: 0
+          slug: slug
+        twilio_auth: twilio_auth
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Stage uuid
+          type: string
+        name:
+          type: string
+        component:
+          readOnly: true
+          type: string
+        verbose_name:
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          readOnly: true
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/Flow'
+          type: array
+        configure_flow:
+          description: Flow used by an authenticated user to configure this Stage.
+            If empty, user will not be able to configure this stage.
+          format: uuid
+          nullable: true
+          type: string
+        provider:
+          $ref: '#/components/schemas/ProviderEnum'
+        from_number:
+          type: string
+        twilio_account_sid:
+          type: string
+        twilio_auth:
+          type: string
+      required:
+      - component
+      - from_number
+      - name
+      - pk
+      - provider
+      - twilio_account_sid
+      - twilio_auth
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    AuthenticatorSMSStageRequest:
+      description: AuthenticatorSMSStage Serializer
+      example:
+        configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        from_number: from_number
+        twilio_account_sid: twilio_account_sid
+        name: name
+        flow_set:
+        - compatibility_mode: true
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        - compatibility_mode: true
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        twilio_auth: twilio_auth
+      properties:
+        name:
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowRequest'
+          type: array
+        configure_flow:
+          description: Flow used by an authenticated user to configure this Stage.
+            If empty, user will not be able to configure this stage.
+          format: uuid
+          nullable: true
+          type: string
+        provider:
+          $ref: '#/components/schemas/ProviderEnum'
+        from_number:
+          type: string
+        twilio_account_sid:
+          type: string
+        twilio_auth:
+          type: string
+      required:
+      - from_number
+      - name
+      - provider
+      - twilio_account_sid
+      - twilio_auth
       type: object
     AuthenticatorStaticChallenge:
       description: Static authenticator challenge
@@ -21353,6 +22091,8 @@ components:
         component:
           default: ak-stage-authenticator-validate
           type: string
+        selected_challenge:
+          $ref: '#/components/schemas/DeviceChallengeRequest'
         code:
           type: string
         webauthn:
@@ -21746,6 +22486,7 @@ components:
         mapping:
           ak-stage-access-denied: '#/components/schemas/AccessDeniedChallenge'
           ak-stage-authenticator-duo: '#/components/schemas/AuthenticatorDuoChallenge'
+          ak-stage-authenticator-sms: '#/components/schemas/AuthenticatorSMSChallenge'
           ak-stage-authenticator-static: '#/components/schemas/AuthenticatorStaticChallenge'
           ak-stage-authenticator-totp: '#/components/schemas/AuthenticatorTOTPChallenge'
           ak-stage-authenticator-validate: '#/components/schemas/AuthenticatorValidationChallenge'
@@ -21765,6 +22506,7 @@ components:
       oneOf:
       - $ref: '#/components/schemas/AccessDeniedChallenge'
       - $ref: '#/components/schemas/AuthenticatorDuoChallenge'
+      - $ref: '#/components/schemas/AuthenticatorSMSChallenge'
       - $ref: '#/components/schemas/AuthenticatorStaticChallenge'
       - $ref: '#/components/schemas/AuthenticatorTOTPChallenge'
       - $ref: '#/components/schemas/AuthenticatorValidationChallenge'
@@ -22175,12 +22917,28 @@ components:
       - device_class
       - device_uid
       type: object
+    DeviceChallengeRequest:
+      description: Single device challenge
+      properties:
+        device_class:
+          type: string
+        device_uid:
+          type: string
+        challenge:
+          additionalProperties: {}
+          type: object
+      required:
+      - challenge
+      - device_class
+      - device_uid
+      type: object
     DeviceClassesEnum:
       enum:
       - static
       - totp
       - webauthn
       - duo
+      - sms
       type: string
     DigestAlgorithmEnum:
       enum:
@@ -23287,6 +24045,7 @@ components:
       discriminator:
         mapping:
           ak-stage-authenticator-duo: '#/components/schemas/AuthenticatorDuoChallengeResponseRequest'
+          ak-stage-authenticator-sms: '#/components/schemas/AuthenticatorSMSChallengeResponseRequest'
           ak-stage-authenticator-static: '#/components/schemas/AuthenticatorStaticChallengeResponseRequest'
           ak-stage-authenticator-totp: '#/components/schemas/AuthenticatorTOTPChallengeResponseRequest'
           ak-stage-authenticator-validate: '#/components/schemas/AuthenticatorValidationChallengeResponseRequest'
@@ -23303,6 +24062,7 @@ components:
         propertyName: component
       oneOf:
       - $ref: '#/components/schemas/AuthenticatorDuoChallengeResponseRequest'
+      - $ref: '#/components/schemas/AuthenticatorSMSChallengeResponseRequest'
       - $ref: '#/components/schemas/AuthenticatorStaticChallengeResponseRequest'
       - $ref: '#/components/schemas/AuthenticatorTOTPChallengeResponseRequest'
       - $ref: '#/components/schemas/AuthenticatorValidationChallengeResponseRequest'
@@ -26225,6 +26985,112 @@ components:
         results:
           items:
             $ref: '#/components/schemas/AuthenticatorDuoStage'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedAuthenticatorSMSStageList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - component: component
+          verbose_name: verbose_name
+          configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          verbose_name_plural: verbose_name_plural
+          from_number: from_number
+          twilio_account_sid: twilio_account_sid
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_set:
+          - compatibility_mode: true
+            policies:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            title: title
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            name: name
+            stages:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            cache_count: 0
+            slug: slug
+          - compatibility_mode: true
+            policies:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            title: title
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            name: name
+            stages:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            cache_count: 0
+            slug: slug
+          twilio_auth: twilio_auth
+        - component: component
+          verbose_name: verbose_name
+          configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          verbose_name_plural: verbose_name_plural
+          from_number: from_number
+          twilio_account_sid: twilio_account_sid
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_set:
+          - compatibility_mode: true
+            policies:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            title: title
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            name: name
+            stages:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            cache_count: 0
+            slug: slug
+          - compatibility_mode: true
+            policies:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            title: title
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            name: name
+            stages:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            cache_count: 0
+            slug: slug
+          twilio_auth: twilio_auth
+      properties:
+        pagination:
+          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/AuthenticatorSMSStage'
           type: array
       required:
       - pagination
@@ -30002,6 +30868,34 @@ components:
       - pagination
       - results
       type: object
+    PaginatedSMSDeviceList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - name: name
+          phone_number: phone_number
+          pk: 0
+        - name: name
+          phone_number: phone_number
+          pk: 0
+      properties:
+        pagination:
+          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/SMSDevice'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedScopeMappingList:
       example:
         pagination:
@@ -31869,6 +32763,47 @@ components:
         api_hostname:
           type: string
       type: object
+    PatchedAuthenticatorSMSStageRequest:
+      description: AuthenticatorSMSStage Serializer
+      example:
+        configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        from_number: from_number
+        twilio_account_sid: twilio_account_sid
+        name: name
+        flow_set:
+        - compatibility_mode: true
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        - compatibility_mode: true
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        twilio_auth: twilio_auth
+      properties:
+        name:
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowRequest'
+          type: array
+        configure_flow:
+          description: Flow used by an authenticated user to configure this Stage.
+            If empty, user will not be able to configure this stage.
+          format: uuid
+          nullable: true
+          type: string
+        provider:
+          $ref: '#/components/schemas/ProviderEnum'
+        from_number:
+          type: string
+        twilio_account_sid:
+          type: string
+        twilio_auth:
+          type: string
+      type: object
     PatchedAuthenticatorStaticStageRequest:
       description: AuthenticatorStaticStage Serializer
       example:
@@ -33707,6 +34642,16 @@ components:
           title: Delete temporary users after
           type: string
       type: object
+    PatchedSMSDeviceRequest:
+      description: Serializer for sms authenticator devices
+      example:
+        name: name
+      properties:
+        name:
+          description: The human-readable name of this device.
+          maxLength: 64
+          type: string
+      type: object
     PatchedScopeMappingRequest:
       description: ScopeMapping Serializer
       example:
@@ -34960,6 +35905,10 @@ components:
       - verbose_name
       - verbose_name_plural
       type: object
+    ProviderEnum:
+      enum:
+      - twilio
+      type: string
     ProviderRequest:
       description: Provider Serializer
       example:
@@ -36077,6 +37026,41 @@ components:
       - pre_authentication_flow
       - slug
       - sso_url
+      type: object
+    SMSDevice:
+      description: Serializer for sms authenticator devices
+      example:
+        name: name
+        phone_number: phone_number
+        pk: 0
+      properties:
+        name:
+          description: The human-readable name of this device.
+          maxLength: 64
+          type: string
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        phone_number:
+          readOnly: true
+          type: string
+      required:
+      - name
+      - phone_number
+      - pk
+      type: object
+    SMSDeviceRequest:
+      description: Serializer for sms authenticator devices
+      example:
+        name: name
+      properties:
+        name:
+          description: The human-readable name of this device.
+          maxLength: 64
+          type: string
+      required:
+      - name
       type: object
     ScopeMapping:
       description: ScopeMapping Serializer

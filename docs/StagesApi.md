@@ -19,6 +19,13 @@ Method | HTTP request | Description
 [**StagesAuthenticatorDuoRetrieve**](StagesApi.md#StagesAuthenticatorDuoRetrieve) | **Get** /stages/authenticator/duo/{stage_uuid}/ | 
 [**StagesAuthenticatorDuoUpdate**](StagesApi.md#StagesAuthenticatorDuoUpdate) | **Put** /stages/authenticator/duo/{stage_uuid}/ | 
 [**StagesAuthenticatorDuoUsedByList**](StagesApi.md#StagesAuthenticatorDuoUsedByList) | **Get** /stages/authenticator/duo/{stage_uuid}/used_by/ | 
+[**StagesAuthenticatorSmsCreate**](StagesApi.md#StagesAuthenticatorSmsCreate) | **Post** /stages/authenticator/sms/ | 
+[**StagesAuthenticatorSmsDestroy**](StagesApi.md#StagesAuthenticatorSmsDestroy) | **Delete** /stages/authenticator/sms/{stage_uuid}/ | 
+[**StagesAuthenticatorSmsList**](StagesApi.md#StagesAuthenticatorSmsList) | **Get** /stages/authenticator/sms/ | 
+[**StagesAuthenticatorSmsPartialUpdate**](StagesApi.md#StagesAuthenticatorSmsPartialUpdate) | **Patch** /stages/authenticator/sms/{stage_uuid}/ | 
+[**StagesAuthenticatorSmsRetrieve**](StagesApi.md#StagesAuthenticatorSmsRetrieve) | **Get** /stages/authenticator/sms/{stage_uuid}/ | 
+[**StagesAuthenticatorSmsUpdate**](StagesApi.md#StagesAuthenticatorSmsUpdate) | **Put** /stages/authenticator/sms/{stage_uuid}/ | 
+[**StagesAuthenticatorSmsUsedByList**](StagesApi.md#StagesAuthenticatorSmsUsedByList) | **Get** /stages/authenticator/sms/{stage_uuid}/used_by/ | 
 [**StagesAuthenticatorStaticCreate**](StagesApi.md#StagesAuthenticatorStaticCreate) | **Post** /stages/authenticator/static/ | 
 [**StagesAuthenticatorStaticDestroy**](StagesApi.md#StagesAuthenticatorStaticDestroy) | **Delete** /stages/authenticator/static/{stage_uuid}/ | 
 [**StagesAuthenticatorStaticList**](StagesApi.md#StagesAuthenticatorStaticList) | **Get** /stages/authenticator/static/ | 
@@ -1176,6 +1183,510 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStagesAuthenticatorDuoUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorSmsCreate
+
+> AuthenticatorSMSStage StagesAuthenticatorSmsCreate(ctx).AuthenticatorSMSStageRequest(authenticatorSMSStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    authenticatorSMSStageRequest := *openapiclient.NewAuthenticatorSMSStageRequest("Name_example", openapiclient.ProviderEnum("twilio"), "FromNumber_example", "TwilioAccountSid_example", "TwilioAuth_example") // AuthenticatorSMSStageRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StagesApi.StagesAuthenticatorSmsCreate(context.Background()).AuthenticatorSMSStageRequest(authenticatorSMSStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorSmsCreate`: AuthenticatorSMSStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorSmsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorSmsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authenticatorSMSStageRequest** | [**AuthenticatorSMSStageRequest**](AuthenticatorSMSStageRequest.md) |  | 
+
+### Return type
+
+[**AuthenticatorSMSStage**](AuthenticatorSMSStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorSmsDestroy
+
+> StagesAuthenticatorSmsDestroy(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := TODO // string | A UUID string identifying this SMS Authenticator Setup Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StagesApi.StagesAuthenticatorSmsDestroy(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | [**string**](.md) | A UUID string identifying this SMS Authenticator Setup Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorSmsDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorSmsList
+
+> PaginatedAuthenticatorSMSStageList StagesAuthenticatorSmsList(ctx).ConfigureFlow(configureFlow).FromNumber(fromNumber).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).TwilioAccountSid(twilioAccountSid).TwilioAuth(twilioAuth).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    configureFlow := TODO // string |  (optional)
+    fromNumber := "fromNumber_example" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    provider := "provider_example" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    stageUuid := TODO // string |  (optional)
+    twilioAccountSid := "twilioAccountSid_example" // string |  (optional)
+    twilioAuth := "twilioAuth_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StagesApi.StagesAuthenticatorSmsList(context.Background()).ConfigureFlow(configureFlow).FromNumber(fromNumber).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).TwilioAccountSid(twilioAccountSid).TwilioAuth(twilioAuth).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorSmsList`: PaginatedAuthenticatorSMSStageList
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorSmsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorSmsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **configureFlow** | [**string**](string.md) |  | 
+ **fromNumber** | **string** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **provider** | **string** |  | 
+ **search** | **string** | A search term. | 
+ **stageUuid** | [**string**](string.md) |  | 
+ **twilioAccountSid** | **string** |  | 
+ **twilioAuth** | **string** |  | 
+
+### Return type
+
+[**PaginatedAuthenticatorSMSStageList**](PaginatedAuthenticatorSMSStageList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorSmsPartialUpdate
+
+> AuthenticatorSMSStage StagesAuthenticatorSmsPartialUpdate(ctx, stageUuid).PatchedAuthenticatorSMSStageRequest(patchedAuthenticatorSMSStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := TODO // string | A UUID string identifying this SMS Authenticator Setup Stage.
+    patchedAuthenticatorSMSStageRequest := *openapiclient.NewPatchedAuthenticatorSMSStageRequest() // PatchedAuthenticatorSMSStageRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StagesApi.StagesAuthenticatorSmsPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorSMSStageRequest(patchedAuthenticatorSMSStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorSmsPartialUpdate`: AuthenticatorSMSStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorSmsPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | [**string**](.md) | A UUID string identifying this SMS Authenticator Setup Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorSmsPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedAuthenticatorSMSStageRequest** | [**PatchedAuthenticatorSMSStageRequest**](PatchedAuthenticatorSMSStageRequest.md) |  | 
+
+### Return type
+
+[**AuthenticatorSMSStage**](AuthenticatorSMSStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorSmsRetrieve
+
+> AuthenticatorSMSStage StagesAuthenticatorSmsRetrieve(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := TODO // string | A UUID string identifying this SMS Authenticator Setup Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StagesApi.StagesAuthenticatorSmsRetrieve(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorSmsRetrieve`: AuthenticatorSMSStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorSmsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | [**string**](.md) | A UUID string identifying this SMS Authenticator Setup Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorSmsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**AuthenticatorSMSStage**](AuthenticatorSMSStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorSmsUpdate
+
+> AuthenticatorSMSStage StagesAuthenticatorSmsUpdate(ctx, stageUuid).AuthenticatorSMSStageRequest(authenticatorSMSStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := TODO // string | A UUID string identifying this SMS Authenticator Setup Stage.
+    authenticatorSMSStageRequest := *openapiclient.NewAuthenticatorSMSStageRequest("Name_example", openapiclient.ProviderEnum("twilio"), "FromNumber_example", "TwilioAccountSid_example", "TwilioAuth_example") // AuthenticatorSMSStageRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StagesApi.StagesAuthenticatorSmsUpdate(context.Background(), stageUuid).AuthenticatorSMSStageRequest(authenticatorSMSStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorSmsUpdate`: AuthenticatorSMSStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorSmsUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | [**string**](.md) | A UUID string identifying this SMS Authenticator Setup Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorSmsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authenticatorSMSStageRequest** | [**AuthenticatorSMSStageRequest**](AuthenticatorSMSStageRequest.md) |  | 
+
+### Return type
+
+[**AuthenticatorSMSStage**](AuthenticatorSMSStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorSmsUsedByList
+
+> []UsedBy StagesAuthenticatorSmsUsedByList(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := TODO // string | A UUID string identifying this SMS Authenticator Setup Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StagesApi.StagesAuthenticatorSmsUsedByList(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorSmsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorSmsUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | [**string**](.md) | A UUID string identifying this SMS Authenticator Setup Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorSmsUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

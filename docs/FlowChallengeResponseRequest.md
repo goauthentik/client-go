@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Component** | Pointer to **string** |  | [optional] [default to "ak-stage-prompt"]
 **Code** | **string** |  | 
+**PhoneNumber** | Pointer to **string** |  | [optional] 
+**SelectedChallenge** | Pointer to [**DeviceChallengeRequest**](DeviceChallengeRequest.md) |  | [optional] 
 **Webauthn** | Pointer to **map[string]interface{}** |  | [optional] 
 **Duo** | Pointer to **int32** |  | [optional] 
 **Response** | **map[string]interface{}** |  | 
@@ -76,6 +78,56 @@ and a boolean to check if the value has been set.
 
 SetCode sets Code field to given value.
 
+
+### GetPhoneNumber
+
+`func (o *FlowChallengeResponseRequest) GetPhoneNumber() string`
+
+GetPhoneNumber returns the PhoneNumber field if non-nil, zero value otherwise.
+
+### GetPhoneNumberOk
+
+`func (o *FlowChallengeResponseRequest) GetPhoneNumberOk() (*string, bool)`
+
+GetPhoneNumberOk returns a tuple with the PhoneNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPhoneNumber
+
+`func (o *FlowChallengeResponseRequest) SetPhoneNumber(v string)`
+
+SetPhoneNumber sets PhoneNumber field to given value.
+
+### HasPhoneNumber
+
+`func (o *FlowChallengeResponseRequest) HasPhoneNumber() bool`
+
+HasPhoneNumber returns a boolean if a field has been set.
+
+### GetSelectedChallenge
+
+`func (o *FlowChallengeResponseRequest) GetSelectedChallenge() DeviceChallengeRequest`
+
+GetSelectedChallenge returns the SelectedChallenge field if non-nil, zero value otherwise.
+
+### GetSelectedChallengeOk
+
+`func (o *FlowChallengeResponseRequest) GetSelectedChallengeOk() (*DeviceChallengeRequest, bool)`
+
+GetSelectedChallengeOk returns a tuple with the SelectedChallenge field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelectedChallenge
+
+`func (o *FlowChallengeResponseRequest) SetSelectedChallenge(v DeviceChallengeRequest)`
+
+SetSelectedChallenge sets SelectedChallenge field to given value.
+
+### HasSelectedChallenge
+
+`func (o *FlowChallengeResponseRequest) HasSelectedChallenge() bool`
+
+HasSelectedChallenge returns a boolean if a field has been set.
 
 ### GetWebauthn
 

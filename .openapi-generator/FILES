@@ -38,6 +38,10 @@ docs/AuthenticatorDuoChallenge.md
 docs/AuthenticatorDuoChallengeResponseRequest.md
 docs/AuthenticatorDuoStage.md
 docs/AuthenticatorDuoStageRequest.md
+docs/AuthenticatorSMSChallenge.md
+docs/AuthenticatorSMSChallengeResponseRequest.md
+docs/AuthenticatorSMSStage.md
+docs/AuthenticatorSMSStageRequest.md
 docs/AuthenticatorStaticChallenge.md
 docs/AuthenticatorStaticChallengeResponseRequest.md
 docs/AuthenticatorStaticStage.md
@@ -84,6 +88,7 @@ docs/CurrentTenant.md
 docs/DenyStage.md
 docs/DenyStageRequest.md
 docs/DeviceChallenge.md
+docs/DeviceChallengeRequest.md
 docs/DeviceClassesEnum.md
 docs/DigestAlgorithmEnum.md
 docs/DigitsEnum.md
@@ -186,6 +191,7 @@ docs/PaginatedApplicationListPagination.md
 docs/PaginatedAuthenticateWebAuthnStageList.md
 docs/PaginatedAuthenticatedSessionList.md
 docs/PaginatedAuthenticatorDuoStageList.md
+docs/PaginatedAuthenticatorSMSStageList.md
 docs/PaginatedAuthenticatorStaticStageList.md
 docs/PaginatedAuthenticatorTOTPStageList.md
 docs/PaginatedAuthenticatorValidateStageList.md
@@ -240,6 +246,7 @@ docs/PaginatedReputationPolicyList.md
 docs/PaginatedSAMLPropertyMappingList.md
 docs/PaginatedSAMLProviderList.md
 docs/PaginatedSAMLSourceList.md
+docs/PaginatedSMSDeviceList.md
 docs/PaginatedScopeMappingList.md
 docs/PaginatedServiceConnectionList.md
 docs/PaginatedSourceList.md
@@ -268,6 +275,7 @@ docs/PasswordStageRequest.md
 docs/PatchedApplicationRequest.md
 docs/PatchedAuthenticateWebAuthnStageRequest.md
 docs/PatchedAuthenticatorDuoStageRequest.md
+docs/PatchedAuthenticatorSMSStageRequest.md
 docs/PatchedAuthenticatorStaticStageRequest.md
 docs/PatchedAuthenticatorTOTPStageRequest.md
 docs/PatchedAuthenticatorValidateStageRequest.md
@@ -314,6 +322,7 @@ docs/PatchedReputationPolicyRequest.md
 docs/PatchedSAMLPropertyMappingRequest.md
 docs/PatchedSAMLProviderRequest.md
 docs/PatchedSAMLSourceRequest.md
+docs/PatchedSMSDeviceRequest.md
 docs/PatchedScopeMappingRequest.md
 docs/PatchedStaticDeviceRequest.md
 docs/PatchedTOTPDeviceRequest.md
@@ -353,6 +362,7 @@ docs/PropertyMapping.md
 docs/PropertyMappingTestResult.md
 docs/PropertymappingsApi.md
 docs/Provider.md
+docs/ProviderEnum.md
 docs/ProviderRequest.md
 docs/ProvidersApi.md
 docs/ProxyMode.md
@@ -371,6 +381,8 @@ docs/SAMLProvider.md
 docs/SAMLProviderRequest.md
 docs/SAMLSource.md
 docs/SAMLSourceRequest.md
+docs/SMSDevice.md
+docs/SMSDeviceRequest.md
 docs/SchemaApi.md
 docs/ScopeMapping.md
 docs/ScopeMappingRequest.md
@@ -457,6 +469,10 @@ model_authenticator_duo_challenge.go
 model_authenticator_duo_challenge_response_request.go
 model_authenticator_duo_stage.go
 model_authenticator_duo_stage_request.go
+model_authenticator_sms_challenge.go
+model_authenticator_sms_challenge_response_request.go
+model_authenticator_sms_stage.go
+model_authenticator_sms_stage_request.go
 model_authenticator_static_challenge.go
 model_authenticator_static_challenge_response_request.go
 model_authenticator_static_stage.go
@@ -500,6 +516,7 @@ model_current_tenant.go
 model_deny_stage.go
 model_deny_stage_request.go
 model_device_challenge.go
+model_device_challenge_request.go
 model_device_classes_enum.go
 model_digest_algorithm_enum.go
 model_digits_enum.go
@@ -598,6 +615,7 @@ model_paginated_application_list_pagination.go
 model_paginated_authenticate_web_authn_stage_list.go
 model_paginated_authenticated_session_list.go
 model_paginated_authenticator_duo_stage_list.go
+model_paginated_authenticator_sms_stage_list.go
 model_paginated_authenticator_static_stage_list.go
 model_paginated_authenticator_totp_stage_list.go
 model_paginated_authenticator_validate_stage_list.go
@@ -654,6 +672,7 @@ model_paginated_saml_provider_list.go
 model_paginated_saml_source_list.go
 model_paginated_scope_mapping_list.go
 model_paginated_service_connection_list.go
+model_paginated_sms_device_list.go
 model_paginated_source_list.go
 model_paginated_stage_list.go
 model_paginated_static_device_list.go
@@ -680,6 +699,7 @@ model_password_stage_request.go
 model_patched_application_request.go
 model_patched_authenticate_web_authn_stage_request.go
 model_patched_authenticator_duo_stage_request.go
+model_patched_authenticator_sms_stage_request.go
 model_patched_authenticator_static_stage_request.go
 model_patched_authenticator_totp_stage_request.go
 model_patched_authenticator_validate_stage_request.go
@@ -727,6 +747,7 @@ model_patched_saml_property_mapping_request.go
 model_patched_saml_provider_request.go
 model_patched_saml_source_request.go
 model_patched_scope_mapping_request.go
+model_patched_sms_device_request.go
 model_patched_static_device_request.go
 model_patched_tenant_request.go
 model_patched_token_request.go
@@ -763,6 +784,7 @@ model_prompt_type_enum.go
 model_property_mapping.go
 model_property_mapping_test_result.go
 model_provider.go
+model_provider_enum.go
 model_provider_request.go
 model_proxy_mode.go
 model_proxy_outpost_config.go
@@ -788,6 +810,8 @@ model_session_user.go
 model_severity_enum.go
 model_shell_challenge.go
 model_signature_algorithm_enum.go
+model_sms_device.go
+model_sms_device_request.go
 model_source.go
 model_source_type.go
 model_sp_binding_enum.go

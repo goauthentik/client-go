@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Component** | Pointer to **string** |  | [optional] [default to "ak-stage-authenticator-validate"]
+**SelectedChallenge** | Pointer to [**DeviceChallengeRequest**](DeviceChallengeRequest.md) |  | [optional] 
 **Code** | Pointer to **string** |  | [optional] 
 **Webauthn** | Pointer to **map[string]interface{}** |  | [optional] 
 **Duo** | Pointer to **int32** |  | [optional] 
@@ -52,6 +53,31 @@ SetComponent sets Component field to given value.
 `func (o *AuthenticatorValidationChallengeResponseRequest) HasComponent() bool`
 
 HasComponent returns a boolean if a field has been set.
+
+### GetSelectedChallenge
+
+`func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedChallenge() DeviceChallengeRequest`
+
+GetSelectedChallenge returns the SelectedChallenge field if non-nil, zero value otherwise.
+
+### GetSelectedChallengeOk
+
+`func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedChallengeOk() (*DeviceChallengeRequest, bool)`
+
+GetSelectedChallengeOk returns a tuple with the SelectedChallenge field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelectedChallenge
+
+`func (o *AuthenticatorValidationChallengeResponseRequest) SetSelectedChallenge(v DeviceChallengeRequest)`
+
+SetSelectedChallenge sets SelectedChallenge field to given value.
+
+### HasSelectedChallenge
+
+`func (o *AuthenticatorValidationChallengeResponseRequest) HasSelectedChallenge() bool`
+
+HasSelectedChallenge returns a boolean if a field has been set.
 
 ### GetCode
 

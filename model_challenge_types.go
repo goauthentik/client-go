@@ -20,6 +20,7 @@ import (
 type ChallengeTypes struct {
 	AccessDeniedChallenge            *AccessDeniedChallenge
 	AuthenticatorDuoChallenge        *AuthenticatorDuoChallenge
+	AuthenticatorSMSChallenge        *AuthenticatorSMSChallenge
 	AuthenticatorStaticChallenge     *AuthenticatorStaticChallenge
 	AuthenticatorTOTPChallenge       *AuthenticatorTOTPChallenge
 	AuthenticatorValidationChallenge *AuthenticatorValidationChallenge
@@ -45,6 +46,11 @@ func AccessDeniedChallengeAsChallengeTypes(v *AccessDeniedChallenge) ChallengeTy
 // AuthenticatorDuoChallengeAsChallengeTypes is a convenience function that returns AuthenticatorDuoChallenge wrapped in ChallengeTypes
 func AuthenticatorDuoChallengeAsChallengeTypes(v *AuthenticatorDuoChallenge) ChallengeTypes {
 	return ChallengeTypes{AuthenticatorDuoChallenge: v}
+}
+
+// AuthenticatorSMSChallengeAsChallengeTypes is a convenience function that returns AuthenticatorSMSChallenge wrapped in ChallengeTypes
+func AuthenticatorSMSChallengeAsChallengeTypes(v *AuthenticatorSMSChallenge) ChallengeTypes {
+	return ChallengeTypes{AuthenticatorSMSChallenge: v}
 }
 
 // AuthenticatorStaticChallengeAsChallengeTypes is a convenience function that returns AuthenticatorStaticChallenge wrapped in ChallengeTypes
@@ -153,6 +159,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.AuthenticatorDuoChallenge = nil
 			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorDuoChallenge: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'AuthenticatorSMSChallenge'
+	if jsonDict["component"] == "AuthenticatorSMSChallenge" {
+		// try to unmarshal JSON data into AuthenticatorSMSChallenge
+		err = json.Unmarshal(data, &dst.AuthenticatorSMSChallenge)
+		if err == nil {
+			return nil // data stored in dst.AuthenticatorSMSChallenge, return on the first match
+		} else {
+			dst.AuthenticatorSMSChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorSMSChallenge: %s", err.Error())
 		}
 	}
 
@@ -372,6 +390,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'ak-stage-authenticator-sms'
+	if jsonDict["component"] == "ak-stage-authenticator-sms" {
+		// try to unmarshal JSON data into AuthenticatorSMSChallenge
+		err = json.Unmarshal(data, &dst.AuthenticatorSMSChallenge)
+		if err == nil {
+			return nil // data stored in dst.AuthenticatorSMSChallenge, return on the first match
+		} else {
+			dst.AuthenticatorSMSChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorSMSChallenge: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ak-stage-authenticator-static'
 	if jsonDict["component"] == "ak-stage-authenticator-static" {
 		// try to unmarshal JSON data into AuthenticatorStaticChallenge
@@ -553,6 +583,10 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.AuthenticatorDuoChallenge)
 	}
 
+	if src.AuthenticatorSMSChallenge != nil {
+		return json.Marshal(&src.AuthenticatorSMSChallenge)
+	}
+
 	if src.AuthenticatorStaticChallenge != nil {
 		return json.Marshal(&src.AuthenticatorStaticChallenge)
 	}
@@ -624,6 +658,10 @@ func (obj *ChallengeTypes) GetActualInstance() interface{} {
 
 	if obj.AuthenticatorDuoChallenge != nil {
 		return obj.AuthenticatorDuoChallenge
+	}
+
+	if obj.AuthenticatorSMSChallenge != nil {
+		return obj.AuthenticatorSMSChallenge
 	}
 
 	if obj.AuthenticatorStaticChallenge != nil {

@@ -51,6 +51,8 @@ Class | Method | HTTP request | Description
 *AuthenticatorsApi* | [**AuthenticatorsAdminDuoPartialUpdate**](docs/AuthenticatorsApi.md#authenticatorsadminduopartialupdate) | **Patch** /authenticators/admin/duo/{id}/ | 
 *AuthenticatorsApi* | [**AuthenticatorsAdminDuoRetrieve**](docs/AuthenticatorsApi.md#authenticatorsadminduoretrieve) | **Get** /authenticators/admin/duo/{id}/ | 
 *AuthenticatorsApi* | [**AuthenticatorsAdminDuoUpdate**](docs/AuthenticatorsApi.md#authenticatorsadminduoupdate) | **Put** /authenticators/admin/duo/{id}/ | 
+*AuthenticatorsApi* | [**AuthenticatorsAdminSmsList**](docs/AuthenticatorsApi.md#authenticatorsadminsmslist) | **Get** /authenticators/admin/sms/ | 
+*AuthenticatorsApi* | [**AuthenticatorsAdminSmsRetrieve**](docs/AuthenticatorsApi.md#authenticatorsadminsmsretrieve) | **Get** /authenticators/admin/sms/{id}/ | 
 *AuthenticatorsApi* | [**AuthenticatorsAdminStaticList**](docs/AuthenticatorsApi.md#authenticatorsadminstaticlist) | **Get** /authenticators/admin/static/ | 
 *AuthenticatorsApi* | [**AuthenticatorsAdminStaticRetrieve**](docs/AuthenticatorsApi.md#authenticatorsadminstaticretrieve) | **Get** /authenticators/admin/static/{id}/ | 
 *AuthenticatorsApi* | [**AuthenticatorsAdminTotpList**](docs/AuthenticatorsApi.md#authenticatorsadmintotplist) | **Get** /authenticators/admin/totp/ | 
@@ -63,6 +65,12 @@ Class | Method | HTTP request | Description
 *AuthenticatorsApi* | [**AuthenticatorsDuoRetrieve**](docs/AuthenticatorsApi.md#authenticatorsduoretrieve) | **Get** /authenticators/duo/{id}/ | 
 *AuthenticatorsApi* | [**AuthenticatorsDuoUpdate**](docs/AuthenticatorsApi.md#authenticatorsduoupdate) | **Put** /authenticators/duo/{id}/ | 
 *AuthenticatorsApi* | [**AuthenticatorsDuoUsedByList**](docs/AuthenticatorsApi.md#authenticatorsduousedbylist) | **Get** /authenticators/duo/{id}/used_by/ | 
+*AuthenticatorsApi* | [**AuthenticatorsSmsDestroy**](docs/AuthenticatorsApi.md#authenticatorssmsdestroy) | **Delete** /authenticators/sms/{id}/ | 
+*AuthenticatorsApi* | [**AuthenticatorsSmsList**](docs/AuthenticatorsApi.md#authenticatorssmslist) | **Get** /authenticators/sms/ | 
+*AuthenticatorsApi* | [**AuthenticatorsSmsPartialUpdate**](docs/AuthenticatorsApi.md#authenticatorssmspartialupdate) | **Patch** /authenticators/sms/{id}/ | 
+*AuthenticatorsApi* | [**AuthenticatorsSmsRetrieve**](docs/AuthenticatorsApi.md#authenticatorssmsretrieve) | **Get** /authenticators/sms/{id}/ | 
+*AuthenticatorsApi* | [**AuthenticatorsSmsUpdate**](docs/AuthenticatorsApi.md#authenticatorssmsupdate) | **Put** /authenticators/sms/{id}/ | 
+*AuthenticatorsApi* | [**AuthenticatorsSmsUsedByList**](docs/AuthenticatorsApi.md#authenticatorssmsusedbylist) | **Get** /authenticators/sms/{id}/used_by/ | 
 *AuthenticatorsApi* | [**AuthenticatorsStaticDestroy**](docs/AuthenticatorsApi.md#authenticatorsstaticdestroy) | **Delete** /authenticators/static/{id}/ | 
 *AuthenticatorsApi* | [**AuthenticatorsStaticList**](docs/AuthenticatorsApi.md#authenticatorsstaticlist) | **Get** /authenticators/static/ | 
 *AuthenticatorsApi* | [**AuthenticatorsStaticPartialUpdate**](docs/AuthenticatorsApi.md#authenticatorsstaticpartialupdate) | **Patch** /authenticators/static/{id}/ | 
@@ -452,6 +460,13 @@ Class | Method | HTTP request | Description
 *StagesApi* | [**StagesAuthenticatorDuoRetrieve**](docs/StagesApi.md#stagesauthenticatorduoretrieve) | **Get** /stages/authenticator/duo/{stage_uuid}/ | 
 *StagesApi* | [**StagesAuthenticatorDuoUpdate**](docs/StagesApi.md#stagesauthenticatorduoupdate) | **Put** /stages/authenticator/duo/{stage_uuid}/ | 
 *StagesApi* | [**StagesAuthenticatorDuoUsedByList**](docs/StagesApi.md#stagesauthenticatorduousedbylist) | **Get** /stages/authenticator/duo/{stage_uuid}/used_by/ | 
+*StagesApi* | [**StagesAuthenticatorSmsCreate**](docs/StagesApi.md#stagesauthenticatorsmscreate) | **Post** /stages/authenticator/sms/ | 
+*StagesApi* | [**StagesAuthenticatorSmsDestroy**](docs/StagesApi.md#stagesauthenticatorsmsdestroy) | **Delete** /stages/authenticator/sms/{stage_uuid}/ | 
+*StagesApi* | [**StagesAuthenticatorSmsList**](docs/StagesApi.md#stagesauthenticatorsmslist) | **Get** /stages/authenticator/sms/ | 
+*StagesApi* | [**StagesAuthenticatorSmsPartialUpdate**](docs/StagesApi.md#stagesauthenticatorsmspartialupdate) | **Patch** /stages/authenticator/sms/{stage_uuid}/ | 
+*StagesApi* | [**StagesAuthenticatorSmsRetrieve**](docs/StagesApi.md#stagesauthenticatorsmsretrieve) | **Get** /stages/authenticator/sms/{stage_uuid}/ | 
+*StagesApi* | [**StagesAuthenticatorSmsUpdate**](docs/StagesApi.md#stagesauthenticatorsmsupdate) | **Put** /stages/authenticator/sms/{stage_uuid}/ | 
+*StagesApi* | [**StagesAuthenticatorSmsUsedByList**](docs/StagesApi.md#stagesauthenticatorsmsusedbylist) | **Get** /stages/authenticator/sms/{stage_uuid}/used_by/ | 
 *StagesApi* | [**StagesAuthenticatorStaticCreate**](docs/StagesApi.md#stagesauthenticatorstaticcreate) | **Post** /stages/authenticator/static/ | 
 *StagesApi* | [**StagesAuthenticatorStaticDestroy**](docs/StagesApi.md#stagesauthenticatorstaticdestroy) | **Delete** /stages/authenticator/static/{stage_uuid}/ | 
 *StagesApi* | [**StagesAuthenticatorStaticList**](docs/StagesApi.md#stagesauthenticatorstaticlist) | **Get** /stages/authenticator/static/ | 
@@ -607,6 +622,10 @@ Class | Method | HTTP request | Description
  - [AuthenticatorDuoChallengeResponseRequest](docs/AuthenticatorDuoChallengeResponseRequest.md)
  - [AuthenticatorDuoStage](docs/AuthenticatorDuoStage.md)
  - [AuthenticatorDuoStageRequest](docs/AuthenticatorDuoStageRequest.md)
+ - [AuthenticatorSMSChallenge](docs/AuthenticatorSMSChallenge.md)
+ - [AuthenticatorSMSChallengeResponseRequest](docs/AuthenticatorSMSChallengeResponseRequest.md)
+ - [AuthenticatorSMSStage](docs/AuthenticatorSMSStage.md)
+ - [AuthenticatorSMSStageRequest](docs/AuthenticatorSMSStageRequest.md)
  - [AuthenticatorStaticChallenge](docs/AuthenticatorStaticChallenge.md)
  - [AuthenticatorStaticChallengeResponseRequest](docs/AuthenticatorStaticChallengeResponseRequest.md)
  - [AuthenticatorStaticStage](docs/AuthenticatorStaticStage.md)
@@ -650,6 +669,7 @@ Class | Method | HTTP request | Description
  - [DenyStage](docs/DenyStage.md)
  - [DenyStageRequest](docs/DenyStageRequest.md)
  - [DeviceChallenge](docs/DeviceChallenge.md)
+ - [DeviceChallengeRequest](docs/DeviceChallengeRequest.md)
  - [DeviceClassesEnum](docs/DeviceClassesEnum.md)
  - [DigestAlgorithmEnum](docs/DigestAlgorithmEnum.md)
  - [DigitsEnum](docs/DigitsEnum.md)
@@ -748,6 +768,7 @@ Class | Method | HTTP request | Description
  - [PaginatedAuthenticateWebAuthnStageList](docs/PaginatedAuthenticateWebAuthnStageList.md)
  - [PaginatedAuthenticatedSessionList](docs/PaginatedAuthenticatedSessionList.md)
  - [PaginatedAuthenticatorDuoStageList](docs/PaginatedAuthenticatorDuoStageList.md)
+ - [PaginatedAuthenticatorSMSStageList](docs/PaginatedAuthenticatorSMSStageList.md)
  - [PaginatedAuthenticatorStaticStageList](docs/PaginatedAuthenticatorStaticStageList.md)
  - [PaginatedAuthenticatorTOTPStageList](docs/PaginatedAuthenticatorTOTPStageList.md)
  - [PaginatedAuthenticatorValidateStageList](docs/PaginatedAuthenticatorValidateStageList.md)
@@ -802,6 +823,7 @@ Class | Method | HTTP request | Description
  - [PaginatedSAMLPropertyMappingList](docs/PaginatedSAMLPropertyMappingList.md)
  - [PaginatedSAMLProviderList](docs/PaginatedSAMLProviderList.md)
  - [PaginatedSAMLSourceList](docs/PaginatedSAMLSourceList.md)
+ - [PaginatedSMSDeviceList](docs/PaginatedSMSDeviceList.md)
  - [PaginatedScopeMappingList](docs/PaginatedScopeMappingList.md)
  - [PaginatedServiceConnectionList](docs/PaginatedServiceConnectionList.md)
  - [PaginatedSourceList](docs/PaginatedSourceList.md)
@@ -830,6 +852,7 @@ Class | Method | HTTP request | Description
  - [PatchedApplicationRequest](docs/PatchedApplicationRequest.md)
  - [PatchedAuthenticateWebAuthnStageRequest](docs/PatchedAuthenticateWebAuthnStageRequest.md)
  - [PatchedAuthenticatorDuoStageRequest](docs/PatchedAuthenticatorDuoStageRequest.md)
+ - [PatchedAuthenticatorSMSStageRequest](docs/PatchedAuthenticatorSMSStageRequest.md)
  - [PatchedAuthenticatorStaticStageRequest](docs/PatchedAuthenticatorStaticStageRequest.md)
  - [PatchedAuthenticatorTOTPStageRequest](docs/PatchedAuthenticatorTOTPStageRequest.md)
  - [PatchedAuthenticatorValidateStageRequest](docs/PatchedAuthenticatorValidateStageRequest.md)
@@ -876,6 +899,7 @@ Class | Method | HTTP request | Description
  - [PatchedSAMLPropertyMappingRequest](docs/PatchedSAMLPropertyMappingRequest.md)
  - [PatchedSAMLProviderRequest](docs/PatchedSAMLProviderRequest.md)
  - [PatchedSAMLSourceRequest](docs/PatchedSAMLSourceRequest.md)
+ - [PatchedSMSDeviceRequest](docs/PatchedSMSDeviceRequest.md)
  - [PatchedScopeMappingRequest](docs/PatchedScopeMappingRequest.md)
  - [PatchedStaticDeviceRequest](docs/PatchedStaticDeviceRequest.md)
  - [PatchedTOTPDeviceRequest](docs/PatchedTOTPDeviceRequest.md)
@@ -913,6 +937,7 @@ Class | Method | HTTP request | Description
  - [PropertyMapping](docs/PropertyMapping.md)
  - [PropertyMappingTestResult](docs/PropertyMappingTestResult.md)
  - [Provider](docs/Provider.md)
+ - [ProviderEnum](docs/ProviderEnum.md)
  - [ProviderRequest](docs/ProviderRequest.md)
  - [ProxyMode](docs/ProxyMode.md)
  - [ProxyOutpostConfig](docs/ProxyOutpostConfig.md)
@@ -929,6 +954,8 @@ Class | Method | HTTP request | Description
  - [SAMLProviderRequest](docs/SAMLProviderRequest.md)
  - [SAMLSource](docs/SAMLSource.md)
  - [SAMLSourceRequest](docs/SAMLSourceRequest.md)
+ - [SMSDevice](docs/SMSDevice.md)
+ - [SMSDeviceRequest](docs/SMSDeviceRequest.md)
  - [ScopeMapping](docs/ScopeMapping.md)
  - [ScopeMappingRequest](docs/ScopeMappingRequest.md)
  - [ServiceConnection](docs/ServiceConnection.md)

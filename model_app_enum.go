@@ -23,12 +23,11 @@ type AppEnum string
 const (
 	APPENUM_ADMIN                         AppEnum = "authentik.admin"
 	APPENUM_API                           AppEnum = "authentik.api"
-	APPENUM_EVENTS                        AppEnum = "authentik.events"
 	APPENUM_CRYPTO                        AppEnum = "authentik.crypto"
+	APPENUM_EVENTS                        AppEnum = "authentik.events"
 	APPENUM_FLOWS                         AppEnum = "authentik.flows"
-	APPENUM_OUTPOSTS                      AppEnum = "authentik.outposts"
 	APPENUM_LIB                           AppEnum = "authentik.lib"
-	APPENUM_POLICIES                      AppEnum = "authentik.policies"
+	APPENUM_OUTPOSTS                      AppEnum = "authentik.outposts"
 	APPENUM_POLICIES_DUMMY                AppEnum = "authentik.policies.dummy"
 	APPENUM_POLICIES_EVENT_MATCHER        AppEnum = "authentik.policies.event_matcher"
 	APPENUM_POLICIES_EXPIRY               AppEnum = "authentik.policies.expiry"
@@ -36,9 +35,10 @@ const (
 	APPENUM_POLICIES_HIBP                 AppEnum = "authentik.policies.hibp"
 	APPENUM_POLICIES_PASSWORD             AppEnum = "authentik.policies.password"
 	APPENUM_POLICIES_REPUTATION           AppEnum = "authentik.policies.reputation"
-	APPENUM_PROVIDERS_PROXY               AppEnum = "authentik.providers.proxy"
+	APPENUM_POLICIES                      AppEnum = "authentik.policies"
 	APPENUM_PROVIDERS_LDAP                AppEnum = "authentik.providers.ldap"
 	APPENUM_PROVIDERS_OAUTH2              AppEnum = "authentik.providers.oauth2"
+	APPENUM_PROVIDERS_PROXY               AppEnum = "authentik.providers.proxy"
 	APPENUM_PROVIDERS_SAML                AppEnum = "authentik.providers.saml"
 	APPENUM_RECOVERY                      AppEnum = "authentik.recovery"
 	APPENUM_SOURCES_LDAP                  AppEnum = "authentik.sources.ldap"
@@ -46,6 +46,7 @@ const (
 	APPENUM_SOURCES_PLEX                  AppEnum = "authentik.sources.plex"
 	APPENUM_SOURCES_SAML                  AppEnum = "authentik.sources.saml"
 	APPENUM_STAGES_AUTHENTICATOR_DUO      AppEnum = "authentik.stages.authenticator_duo"
+	APPENUM_STAGES_AUTHENTICATOR_SMS      AppEnum = "authentik.stages.authenticator_sms"
 	APPENUM_STAGES_AUTHENTICATOR_STATIC   AppEnum = "authentik.stages.authenticator_static"
 	APPENUM_STAGES_AUTHENTICATOR_TOTP     AppEnum = "authentik.stages.authenticator_totp"
 	APPENUM_STAGES_AUTHENTICATOR_VALIDATE AppEnum = "authentik.stages.authenticator_validate"
@@ -71,12 +72,11 @@ const (
 var allowedAppEnumEnumValues = []AppEnum{
 	"authentik.admin",
 	"authentik.api",
-	"authentik.events",
 	"authentik.crypto",
+	"authentik.events",
 	"authentik.flows",
-	"authentik.outposts",
 	"authentik.lib",
-	"authentik.policies",
+	"authentik.outposts",
 	"authentik.policies.dummy",
 	"authentik.policies.event_matcher",
 	"authentik.policies.expiry",
@@ -84,9 +84,10 @@ var allowedAppEnumEnumValues = []AppEnum{
 	"authentik.policies.hibp",
 	"authentik.policies.password",
 	"authentik.policies.reputation",
-	"authentik.providers.proxy",
+	"authentik.policies",
 	"authentik.providers.ldap",
 	"authentik.providers.oauth2",
+	"authentik.providers.proxy",
 	"authentik.providers.saml",
 	"authentik.recovery",
 	"authentik.sources.ldap",
@@ -94,6 +95,7 @@ var allowedAppEnumEnumValues = []AppEnum{
 	"authentik.sources.plex",
 	"authentik.sources.saml",
 	"authentik.stages.authenticator_duo",
+	"authentik.stages.authenticator_sms",
 	"authentik.stages.authenticator_static",
 	"authentik.stages.authenticator_totp",
 	"authentik.stages.authenticator_validate",

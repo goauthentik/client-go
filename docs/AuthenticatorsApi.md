@@ -10,6 +10,8 @@ Method | HTTP request | Description
 [**AuthenticatorsAdminDuoPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminDuoPartialUpdate) | **Patch** /authenticators/admin/duo/{id}/ | 
 [**AuthenticatorsAdminDuoRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminDuoRetrieve) | **Get** /authenticators/admin/duo/{id}/ | 
 [**AuthenticatorsAdminDuoUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminDuoUpdate) | **Put** /authenticators/admin/duo/{id}/ | 
+[**AuthenticatorsAdminSmsList**](AuthenticatorsApi.md#AuthenticatorsAdminSmsList) | **Get** /authenticators/admin/sms/ | 
+[**AuthenticatorsAdminSmsRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminSmsRetrieve) | **Get** /authenticators/admin/sms/{id}/ | 
 [**AuthenticatorsAdminStaticList**](AuthenticatorsApi.md#AuthenticatorsAdminStaticList) | **Get** /authenticators/admin/static/ | 
 [**AuthenticatorsAdminStaticRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminStaticRetrieve) | **Get** /authenticators/admin/static/{id}/ | 
 [**AuthenticatorsAdminTotpList**](AuthenticatorsApi.md#AuthenticatorsAdminTotpList) | **Get** /authenticators/admin/totp/ | 
@@ -22,6 +24,12 @@ Method | HTTP request | Description
 [**AuthenticatorsDuoRetrieve**](AuthenticatorsApi.md#AuthenticatorsDuoRetrieve) | **Get** /authenticators/duo/{id}/ | 
 [**AuthenticatorsDuoUpdate**](AuthenticatorsApi.md#AuthenticatorsDuoUpdate) | **Put** /authenticators/duo/{id}/ | 
 [**AuthenticatorsDuoUsedByList**](AuthenticatorsApi.md#AuthenticatorsDuoUsedByList) | **Get** /authenticators/duo/{id}/used_by/ | 
+[**AuthenticatorsSmsDestroy**](AuthenticatorsApi.md#AuthenticatorsSmsDestroy) | **Delete** /authenticators/sms/{id}/ | 
+[**AuthenticatorsSmsList**](AuthenticatorsApi.md#AuthenticatorsSmsList) | **Get** /authenticators/sms/ | 
+[**AuthenticatorsSmsPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsSmsPartialUpdate) | **Patch** /authenticators/sms/{id}/ | 
+[**AuthenticatorsSmsRetrieve**](AuthenticatorsApi.md#AuthenticatorsSmsRetrieve) | **Get** /authenticators/sms/{id}/ | 
+[**AuthenticatorsSmsUpdate**](AuthenticatorsApi.md#AuthenticatorsSmsUpdate) | **Put** /authenticators/sms/{id}/ | 
+[**AuthenticatorsSmsUsedByList**](AuthenticatorsApi.md#AuthenticatorsSmsUsedByList) | **Get** /authenticators/sms/{id}/used_by/ | 
 [**AuthenticatorsStaticDestroy**](AuthenticatorsApi.md#AuthenticatorsStaticDestroy) | **Delete** /authenticators/static/{id}/ | 
 [**AuthenticatorsStaticList**](AuthenticatorsApi.md#AuthenticatorsStaticList) | **Get** /authenticators/static/ | 
 [**AuthenticatorsStaticPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsStaticPartialUpdate) | **Patch** /authenticators/static/{id}/ | 
@@ -458,6 +466,150 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminSmsList
+
+> PaginatedSMSDeviceList AuthenticatorsAdminSmsList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminSmsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminSmsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminSmsList`: PaginatedSMSDeviceList
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminSmsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminSmsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedSMSDeviceList**](PaginatedSMSDeviceList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminSmsRetrieve
+
+> SMSDevice AuthenticatorsAdminSmsRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminSmsRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminSmsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminSmsRetrieve`: SMSDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminSmsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SMS Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminSmsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SMSDevice**](SMSDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1299,6 +1451,432 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAuthenticatorsDuoUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsSmsDestroy
+
+> AuthenticatorsSmsDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsSmsDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SMS Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsSmsDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsSmsList
+
+> PaginatedSMSDeviceList AuthenticatorsSmsList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsSmsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsSmsList`: PaginatedSMSDeviceList
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsSmsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsSmsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedSMSDeviceList**](PaginatedSMSDeviceList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsSmsPartialUpdate
+
+> SMSDevice AuthenticatorsSmsPartialUpdate(ctx, id).PatchedSMSDeviceRequest(patchedSMSDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+    patchedSMSDeviceRequest := *openapiclient.NewPatchedSMSDeviceRequest() // PatchedSMSDeviceRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsSmsPartialUpdate(context.Background(), id).PatchedSMSDeviceRequest(patchedSMSDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsSmsPartialUpdate`: SMSDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsSmsPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SMS Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsSmsPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedSMSDeviceRequest** | [**PatchedSMSDeviceRequest**](PatchedSMSDeviceRequest.md) |  | 
+
+### Return type
+
+[**SMSDevice**](SMSDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsSmsRetrieve
+
+> SMSDevice AuthenticatorsSmsRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsSmsRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsSmsRetrieve`: SMSDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsSmsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SMS Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsSmsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SMSDevice**](SMSDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsSmsUpdate
+
+> SMSDevice AuthenticatorsSmsUpdate(ctx, id).SMSDeviceRequest(sMSDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+    sMSDeviceRequest := *openapiclient.NewSMSDeviceRequest("Name_example") // SMSDeviceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsSmsUpdate(context.Background(), id).SMSDeviceRequest(sMSDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsSmsUpdate`: SMSDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsSmsUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SMS Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsSmsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **sMSDeviceRequest** | [**SMSDeviceRequest**](SMSDeviceRequest.md) |  | 
+
+### Return type
+
+[**SMSDevice**](SMSDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsSmsUsedByList
+
+> []UsedBy AuthenticatorsSmsUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsSmsUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsSmsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsSmsUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SMS Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsSmsUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

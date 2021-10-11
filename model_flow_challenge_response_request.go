@@ -19,6 +19,7 @@ import (
 // FlowChallengeResponseRequest - struct for FlowChallengeResponseRequest
 type FlowChallengeResponseRequest struct {
 	AuthenticatorDuoChallengeResponseRequest        *AuthenticatorDuoChallengeResponseRequest
+	AuthenticatorSMSChallengeResponseRequest        *AuthenticatorSMSChallengeResponseRequest
 	AuthenticatorStaticChallengeResponseRequest     *AuthenticatorStaticChallengeResponseRequest
 	AuthenticatorTOTPChallengeResponseRequest       *AuthenticatorTOTPChallengeResponseRequest
 	AuthenticatorValidationChallengeResponseRequest *AuthenticatorValidationChallengeResponseRequest
@@ -37,6 +38,11 @@ type FlowChallengeResponseRequest struct {
 // AuthenticatorDuoChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns AuthenticatorDuoChallengeResponseRequest wrapped in FlowChallengeResponseRequest
 func AuthenticatorDuoChallengeResponseRequestAsFlowChallengeResponseRequest(v *AuthenticatorDuoChallengeResponseRequest) FlowChallengeResponseRequest {
 	return FlowChallengeResponseRequest{AuthenticatorDuoChallengeResponseRequest: v}
+}
+
+// AuthenticatorSMSChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns AuthenticatorSMSChallengeResponseRequest wrapped in FlowChallengeResponseRequest
+func AuthenticatorSMSChallengeResponseRequestAsFlowChallengeResponseRequest(v *AuthenticatorSMSChallengeResponseRequest) FlowChallengeResponseRequest {
+	return FlowChallengeResponseRequest{AuthenticatorSMSChallengeResponseRequest: v}
 }
 
 // AuthenticatorStaticChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns AuthenticatorStaticChallengeResponseRequest wrapped in FlowChallengeResponseRequest
@@ -123,6 +129,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.AuthenticatorDuoChallengeResponseRequest = nil
 			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorDuoChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'AuthenticatorSMSChallengeResponseRequest'
+	if jsonDict["component"] == "AuthenticatorSMSChallengeResponseRequest" {
+		// try to unmarshal JSON data into AuthenticatorSMSChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.AuthenticatorSMSChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.AuthenticatorSMSChallengeResponseRequest, return on the first match
+		} else {
+			dst.AuthenticatorSMSChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorSMSChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -306,6 +324,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'ak-stage-authenticator-sms'
+	if jsonDict["component"] == "ak-stage-authenticator-sms" {
+		// try to unmarshal JSON data into AuthenticatorSMSChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.AuthenticatorSMSChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.AuthenticatorSMSChallengeResponseRequest, return on the first match
+		} else {
+			dst.AuthenticatorSMSChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorSMSChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ak-stage-authenticator-static'
 	if jsonDict["component"] == "ak-stage-authenticator-static" {
 		// try to unmarshal JSON data into AuthenticatorStaticChallengeResponseRequest
@@ -459,6 +489,10 @@ func (src FlowChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.AuthenticatorDuoChallengeResponseRequest)
 	}
 
+	if src.AuthenticatorSMSChallengeResponseRequest != nil {
+		return json.Marshal(&src.AuthenticatorSMSChallengeResponseRequest)
+	}
+
 	if src.AuthenticatorStaticChallengeResponseRequest != nil {
 		return json.Marshal(&src.AuthenticatorStaticChallengeResponseRequest)
 	}
@@ -518,6 +552,10 @@ func (src FlowChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 func (obj *FlowChallengeResponseRequest) GetActualInstance() interface{} {
 	if obj.AuthenticatorDuoChallengeResponseRequest != nil {
 		return obj.AuthenticatorDuoChallengeResponseRequest
+	}
+
+	if obj.AuthenticatorSMSChallengeResponseRequest != nil {
+		return obj.AuthenticatorSMSChallengeResponseRequest
 	}
 
 	if obj.AuthenticatorStaticChallengeResponseRequest != nil {

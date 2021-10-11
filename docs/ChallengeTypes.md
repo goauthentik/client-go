@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ActivationBarcode** | **string** |  | 
 **ActivationCode** | **string** |  | 
 **StageUuid** | **string** |  | 
+**PhoneNumberRequired** | Pointer to **bool** |  | [optional] [default to true]
 **Codes** | **[]string** |  | 
 **ConfigUrl** | **string** |  | 
 **DeviceChallenges** | [**[]DeviceChallenge**](DeviceChallenge.md) |  | 
@@ -274,6 +275,31 @@ and a boolean to check if the value has been set.
 
 SetStageUuid sets StageUuid field to given value.
 
+
+### GetPhoneNumberRequired
+
+`func (o *ChallengeTypes) GetPhoneNumberRequired() bool`
+
+GetPhoneNumberRequired returns the PhoneNumberRequired field if non-nil, zero value otherwise.
+
+### GetPhoneNumberRequiredOk
+
+`func (o *ChallengeTypes) GetPhoneNumberRequiredOk() (*bool, bool)`
+
+GetPhoneNumberRequiredOk returns a tuple with the PhoneNumberRequired field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPhoneNumberRequired
+
+`func (o *ChallengeTypes) SetPhoneNumberRequired(v bool)`
+
+SetPhoneNumberRequired sets PhoneNumberRequired field to given value.
+
+### HasPhoneNumberRequired
+
+`func (o *ChallengeTypes) HasPhoneNumberRequired() bool`
+
+HasPhoneNumberRequired returns a boolean if a field has been set.
 
 ### GetCodes
 
