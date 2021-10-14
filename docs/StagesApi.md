@@ -1228,7 +1228,7 @@ import (
 )
 
 func main() {
-    authenticatorSMSStageRequest := *openapiclient.NewAuthenticatorSMSStageRequest("Name_example", openapiclient.ProviderEnum("twilio"), "FromNumber_example", "TwilioAccountSid_example", "TwilioAuth_example") // AuthenticatorSMSStageRequest | 
+    authenticatorSMSStageRequest := *openapiclient.NewAuthenticatorSMSStageRequest("Name_example", openapiclient.ProviderEnum("twilio"), "FromNumber_example", "AccountSid_example", "Auth_example") // AuthenticatorSMSStageRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1343,7 +1343,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorSmsList
 
-> PaginatedAuthenticatorSMSStageList StagesAuthenticatorSmsList(ctx).ConfigureFlow(configureFlow).FromNumber(fromNumber).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).TwilioAccountSid(twilioAccountSid).TwilioAuth(twilioAuth).Execute()
+> PaginatedAuthenticatorSMSStageList StagesAuthenticatorSmsList(ctx).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FromNumber(fromNumber).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).Execute()
 
 
 
@@ -1362,6 +1362,10 @@ import (
 )
 
 func main() {
+    accountSid := "accountSid_example" // string |  (optional)
+    auth := "auth_example" // string |  (optional)
+    authPassword := "authPassword_example" // string |  (optional)
+    authType := "authType_example" // string |  (optional)
     configureFlow := TODO // string |  (optional)
     fromNumber := "fromNumber_example" // string |  (optional)
     name := "name_example" // string |  (optional)
@@ -1371,12 +1375,10 @@ func main() {
     provider := "provider_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     stageUuid := TODO // string |  (optional)
-    twilioAccountSid := "twilioAccountSid_example" // string |  (optional)
-    twilioAuth := "twilioAuth_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.StagesApi.StagesAuthenticatorSmsList(context.Background()).ConfigureFlow(configureFlow).FromNumber(fromNumber).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).TwilioAccountSid(twilioAccountSid).TwilioAuth(twilioAuth).Execute()
+    resp, r, err := api_client.StagesApi.StagesAuthenticatorSmsList(context.Background()).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FromNumber(fromNumber).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1397,6 +1399,10 @@ Other parameters are passed through a pointer to a apiStagesAuthenticatorSmsList
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accountSid** | **string** |  | 
+ **auth** | **string** |  | 
+ **authPassword** | **string** |  | 
+ **authType** | **string** |  | 
  **configureFlow** | [**string**](string.md) |  | 
  **fromNumber** | **string** |  | 
  **name** | **string** |  | 
@@ -1406,8 +1412,6 @@ Name | Type | Description  | Notes
  **provider** | **string** |  | 
  **search** | **string** | A search term. | 
  **stageUuid** | [**string**](string.md) |  | 
- **twilioAccountSid** | **string** |  | 
- **twilioAuth** | **string** |  | 
 
 ### Return type
 
@@ -1591,7 +1595,7 @@ import (
 
 func main() {
     stageUuid := TODO // string | A UUID string identifying this SMS Authenticator Setup Stage.
-    authenticatorSMSStageRequest := *openapiclient.NewAuthenticatorSMSStageRequest("Name_example", openapiclient.ProviderEnum("twilio"), "FromNumber_example", "TwilioAccountSid_example", "TwilioAuth_example") // AuthenticatorSMSStageRequest | 
+    authenticatorSMSStageRequest := *openapiclient.NewAuthenticatorSMSStageRequest("Name_example", openapiclient.ProviderEnum("twilio"), "FromNumber_example", "AccountSid_example", "Auth_example") // AuthenticatorSMSStageRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

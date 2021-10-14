@@ -20,11 +20,13 @@ type PatchedAuthenticatorSMSStageRequest struct {
 	Name    *string        `json:"name,omitempty"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow    NullableString `json:"configure_flow,omitempty"`
-	Provider         *ProviderEnum  `json:"provider,omitempty"`
-	FromNumber       *string        `json:"from_number,omitempty"`
-	TwilioAccountSid *string        `json:"twilio_account_sid,omitempty"`
-	TwilioAuth       *string        `json:"twilio_auth,omitempty"`
+	ConfigureFlow NullableString       `json:"configure_flow,omitempty"`
+	Provider      *ProviderEnum        `json:"provider,omitempty"`
+	FromNumber    *string              `json:"from_number,omitempty"`
+	AccountSid    *string              `json:"account_sid,omitempty"`
+	Auth          *string              `json:"auth,omitempty"`
+	AuthPassword  NullableString       `json:"auth_password,omitempty"`
+	AuthType      NullableAuthTypeEnum `json:"auth_type,omitempty"`
 }
 
 // NewPatchedAuthenticatorSMSStageRequest instantiates a new PatchedAuthenticatorSMSStageRequest object
@@ -215,68 +217,154 @@ func (o *PatchedAuthenticatorSMSStageRequest) SetFromNumber(v string) {
 	o.FromNumber = &v
 }
 
-// GetTwilioAccountSid returns the TwilioAccountSid field value if set, zero value otherwise.
-func (o *PatchedAuthenticatorSMSStageRequest) GetTwilioAccountSid() string {
-	if o == nil || o.TwilioAccountSid == nil {
+// GetAccountSid returns the AccountSid field value if set, zero value otherwise.
+func (o *PatchedAuthenticatorSMSStageRequest) GetAccountSid() string {
+	if o == nil || o.AccountSid == nil {
 		var ret string
 		return ret
 	}
-	return *o.TwilioAccountSid
+	return *o.AccountSid
 }
 
-// GetTwilioAccountSidOk returns a tuple with the TwilioAccountSid field value if set, nil otherwise
+// GetAccountSidOk returns a tuple with the AccountSid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedAuthenticatorSMSStageRequest) GetTwilioAccountSidOk() (*string, bool) {
-	if o == nil || o.TwilioAccountSid == nil {
+func (o *PatchedAuthenticatorSMSStageRequest) GetAccountSidOk() (*string, bool) {
+	if o == nil || o.AccountSid == nil {
 		return nil, false
 	}
-	return o.TwilioAccountSid, true
+	return o.AccountSid, true
 }
 
-// HasTwilioAccountSid returns a boolean if a field has been set.
-func (o *PatchedAuthenticatorSMSStageRequest) HasTwilioAccountSid() bool {
-	if o != nil && o.TwilioAccountSid != nil {
+// HasAccountSid returns a boolean if a field has been set.
+func (o *PatchedAuthenticatorSMSStageRequest) HasAccountSid() bool {
+	if o != nil && o.AccountSid != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTwilioAccountSid gets a reference to the given string and assigns it to the TwilioAccountSid field.
-func (o *PatchedAuthenticatorSMSStageRequest) SetTwilioAccountSid(v string) {
-	o.TwilioAccountSid = &v
+// SetAccountSid gets a reference to the given string and assigns it to the AccountSid field.
+func (o *PatchedAuthenticatorSMSStageRequest) SetAccountSid(v string) {
+	o.AccountSid = &v
 }
 
-// GetTwilioAuth returns the TwilioAuth field value if set, zero value otherwise.
-func (o *PatchedAuthenticatorSMSStageRequest) GetTwilioAuth() string {
-	if o == nil || o.TwilioAuth == nil {
+// GetAuth returns the Auth field value if set, zero value otherwise.
+func (o *PatchedAuthenticatorSMSStageRequest) GetAuth() string {
+	if o == nil || o.Auth == nil {
 		var ret string
 		return ret
 	}
-	return *o.TwilioAuth
+	return *o.Auth
 }
 
-// GetTwilioAuthOk returns a tuple with the TwilioAuth field value if set, nil otherwise
+// GetAuthOk returns a tuple with the Auth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedAuthenticatorSMSStageRequest) GetTwilioAuthOk() (*string, bool) {
-	if o == nil || o.TwilioAuth == nil {
+func (o *PatchedAuthenticatorSMSStageRequest) GetAuthOk() (*string, bool) {
+	if o == nil || o.Auth == nil {
 		return nil, false
 	}
-	return o.TwilioAuth, true
+	return o.Auth, true
 }
 
-// HasTwilioAuth returns a boolean if a field has been set.
-func (o *PatchedAuthenticatorSMSStageRequest) HasTwilioAuth() bool {
-	if o != nil && o.TwilioAuth != nil {
+// HasAuth returns a boolean if a field has been set.
+func (o *PatchedAuthenticatorSMSStageRequest) HasAuth() bool {
+	if o != nil && o.Auth != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTwilioAuth gets a reference to the given string and assigns it to the TwilioAuth field.
-func (o *PatchedAuthenticatorSMSStageRequest) SetTwilioAuth(v string) {
-	o.TwilioAuth = &v
+// SetAuth gets a reference to the given string and assigns it to the Auth field.
+func (o *PatchedAuthenticatorSMSStageRequest) SetAuth(v string) {
+	o.Auth = &v
+}
+
+// GetAuthPassword returns the AuthPassword field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedAuthenticatorSMSStageRequest) GetAuthPassword() string {
+	if o == nil || o.AuthPassword.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthPassword.Get()
+}
+
+// GetAuthPasswordOk returns a tuple with the AuthPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedAuthenticatorSMSStageRequest) GetAuthPasswordOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthPassword.Get(), o.AuthPassword.IsSet()
+}
+
+// HasAuthPassword returns a boolean if a field has been set.
+func (o *PatchedAuthenticatorSMSStageRequest) HasAuthPassword() bool {
+	if o != nil && o.AuthPassword.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthPassword gets a reference to the given NullableString and assigns it to the AuthPassword field.
+func (o *PatchedAuthenticatorSMSStageRequest) SetAuthPassword(v string) {
+	o.AuthPassword.Set(&v)
+}
+
+// SetAuthPasswordNil sets the value for AuthPassword to be an explicit nil
+func (o *PatchedAuthenticatorSMSStageRequest) SetAuthPasswordNil() {
+	o.AuthPassword.Set(nil)
+}
+
+// UnsetAuthPassword ensures that no value is present for AuthPassword, not even an explicit nil
+func (o *PatchedAuthenticatorSMSStageRequest) UnsetAuthPassword() {
+	o.AuthPassword.Unset()
+}
+
+// GetAuthType returns the AuthType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedAuthenticatorSMSStageRequest) GetAuthType() AuthTypeEnum {
+	if o == nil || o.AuthType.Get() == nil {
+		var ret AuthTypeEnum
+		return ret
+	}
+	return *o.AuthType.Get()
+}
+
+// GetAuthTypeOk returns a tuple with the AuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedAuthenticatorSMSStageRequest) GetAuthTypeOk() (*AuthTypeEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthType.Get(), o.AuthType.IsSet()
+}
+
+// HasAuthType returns a boolean if a field has been set.
+func (o *PatchedAuthenticatorSMSStageRequest) HasAuthType() bool {
+	if o != nil && o.AuthType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthType gets a reference to the given NullableAuthTypeEnum and assigns it to the AuthType field.
+func (o *PatchedAuthenticatorSMSStageRequest) SetAuthType(v AuthTypeEnum) {
+	o.AuthType.Set(&v)
+}
+
+// SetAuthTypeNil sets the value for AuthType to be an explicit nil
+func (o *PatchedAuthenticatorSMSStageRequest) SetAuthTypeNil() {
+	o.AuthType.Set(nil)
+}
+
+// UnsetAuthType ensures that no value is present for AuthType, not even an explicit nil
+func (o *PatchedAuthenticatorSMSStageRequest) UnsetAuthType() {
+	o.AuthType.Unset()
 }
 
 func (o PatchedAuthenticatorSMSStageRequest) MarshalJSON() ([]byte, error) {
@@ -296,11 +384,17 @@ func (o PatchedAuthenticatorSMSStageRequest) MarshalJSON() ([]byte, error) {
 	if o.FromNumber != nil {
 		toSerialize["from_number"] = o.FromNumber
 	}
-	if o.TwilioAccountSid != nil {
-		toSerialize["twilio_account_sid"] = o.TwilioAccountSid
+	if o.AccountSid != nil {
+		toSerialize["account_sid"] = o.AccountSid
 	}
-	if o.TwilioAuth != nil {
-		toSerialize["twilio_auth"] = o.TwilioAuth
+	if o.Auth != nil {
+		toSerialize["auth"] = o.Auth
+	}
+	if o.AuthPassword.IsSet() {
+		toSerialize["auth_password"] = o.AuthPassword.Get()
+	}
+	if o.AuthType.IsSet() {
+		toSerialize["auth_type"] = o.AuthType.Get()
 	}
 	return json.Marshal(toSerialize)
 }

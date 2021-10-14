@@ -9,8 +9,10 @@ Name | Type | Description | Notes
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
 **Provider** | Pointer to [**ProviderEnum**](ProviderEnum.md) |  | [optional] 
 **FromNumber** | Pointer to **string** |  | [optional] 
-**TwilioAccountSid** | Pointer to **string** |  | [optional] 
-**TwilioAuth** | Pointer to **string** |  | [optional] 
+**AccountSid** | Pointer to **string** |  | [optional] 
+**Auth** | Pointer to **string** |  | [optional] 
+**AuthPassword** | Pointer to **NullableString** |  | [optional] 
+**AuthType** | Pointer to [**NullableAuthTypeEnum**](AuthTypeEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -166,56 +168,126 @@ SetFromNumber sets FromNumber field to given value.
 
 HasFromNumber returns a boolean if a field has been set.
 
-### GetTwilioAccountSid
+### GetAccountSid
 
-`func (o *PatchedAuthenticatorSMSStageRequest) GetTwilioAccountSid() string`
+`func (o *PatchedAuthenticatorSMSStageRequest) GetAccountSid() string`
 
-GetTwilioAccountSid returns the TwilioAccountSid field if non-nil, zero value otherwise.
+GetAccountSid returns the AccountSid field if non-nil, zero value otherwise.
 
-### GetTwilioAccountSidOk
+### GetAccountSidOk
 
-`func (o *PatchedAuthenticatorSMSStageRequest) GetTwilioAccountSidOk() (*string, bool)`
+`func (o *PatchedAuthenticatorSMSStageRequest) GetAccountSidOk() (*string, bool)`
 
-GetTwilioAccountSidOk returns a tuple with the TwilioAccountSid field if it's non-nil, zero value otherwise
+GetAccountSidOk returns a tuple with the AccountSid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTwilioAccountSid
+### SetAccountSid
 
-`func (o *PatchedAuthenticatorSMSStageRequest) SetTwilioAccountSid(v string)`
+`func (o *PatchedAuthenticatorSMSStageRequest) SetAccountSid(v string)`
 
-SetTwilioAccountSid sets TwilioAccountSid field to given value.
+SetAccountSid sets AccountSid field to given value.
 
-### HasTwilioAccountSid
+### HasAccountSid
 
-`func (o *PatchedAuthenticatorSMSStageRequest) HasTwilioAccountSid() bool`
+`func (o *PatchedAuthenticatorSMSStageRequest) HasAccountSid() bool`
 
-HasTwilioAccountSid returns a boolean if a field has been set.
+HasAccountSid returns a boolean if a field has been set.
 
-### GetTwilioAuth
+### GetAuth
 
-`func (o *PatchedAuthenticatorSMSStageRequest) GetTwilioAuth() string`
+`func (o *PatchedAuthenticatorSMSStageRequest) GetAuth() string`
 
-GetTwilioAuth returns the TwilioAuth field if non-nil, zero value otherwise.
+GetAuth returns the Auth field if non-nil, zero value otherwise.
 
-### GetTwilioAuthOk
+### GetAuthOk
 
-`func (o *PatchedAuthenticatorSMSStageRequest) GetTwilioAuthOk() (*string, bool)`
+`func (o *PatchedAuthenticatorSMSStageRequest) GetAuthOk() (*string, bool)`
 
-GetTwilioAuthOk returns a tuple with the TwilioAuth field if it's non-nil, zero value otherwise
+GetAuthOk returns a tuple with the Auth field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTwilioAuth
+### SetAuth
 
-`func (o *PatchedAuthenticatorSMSStageRequest) SetTwilioAuth(v string)`
+`func (o *PatchedAuthenticatorSMSStageRequest) SetAuth(v string)`
 
-SetTwilioAuth sets TwilioAuth field to given value.
+SetAuth sets Auth field to given value.
 
-### HasTwilioAuth
+### HasAuth
 
-`func (o *PatchedAuthenticatorSMSStageRequest) HasTwilioAuth() bool`
+`func (o *PatchedAuthenticatorSMSStageRequest) HasAuth() bool`
 
-HasTwilioAuth returns a boolean if a field has been set.
+HasAuth returns a boolean if a field has been set.
 
+### GetAuthPassword
+
+`func (o *PatchedAuthenticatorSMSStageRequest) GetAuthPassword() string`
+
+GetAuthPassword returns the AuthPassword field if non-nil, zero value otherwise.
+
+### GetAuthPasswordOk
+
+`func (o *PatchedAuthenticatorSMSStageRequest) GetAuthPasswordOk() (*string, bool)`
+
+GetAuthPasswordOk returns a tuple with the AuthPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthPassword
+
+`func (o *PatchedAuthenticatorSMSStageRequest) SetAuthPassword(v string)`
+
+SetAuthPassword sets AuthPassword field to given value.
+
+### HasAuthPassword
+
+`func (o *PatchedAuthenticatorSMSStageRequest) HasAuthPassword() bool`
+
+HasAuthPassword returns a boolean if a field has been set.
+
+### SetAuthPasswordNil
+
+`func (o *PatchedAuthenticatorSMSStageRequest) SetAuthPasswordNil(b bool)`
+
+ SetAuthPasswordNil sets the value for AuthPassword to be an explicit nil
+
+### UnsetAuthPassword
+`func (o *PatchedAuthenticatorSMSStageRequest) UnsetAuthPassword()`
+
+UnsetAuthPassword ensures that no value is present for AuthPassword, not even an explicit nil
+### GetAuthType
+
+`func (o *PatchedAuthenticatorSMSStageRequest) GetAuthType() AuthTypeEnum`
+
+GetAuthType returns the AuthType field if non-nil, zero value otherwise.
+
+### GetAuthTypeOk
+
+`func (o *PatchedAuthenticatorSMSStageRequest) GetAuthTypeOk() (*AuthTypeEnum, bool)`
+
+GetAuthTypeOk returns a tuple with the AuthType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthType
+
+`func (o *PatchedAuthenticatorSMSStageRequest) SetAuthType(v AuthTypeEnum)`
+
+SetAuthType sets AuthType field to given value.
+
+### HasAuthType
+
+`func (o *PatchedAuthenticatorSMSStageRequest) HasAuthType() bool`
+
+HasAuthType returns a boolean if a field has been set.
+
+### SetAuthTypeNil
+
+`func (o *PatchedAuthenticatorSMSStageRequest) SetAuthTypeNil(b bool)`
+
+ SetAuthTypeNil sets the value for AuthType to be an explicit nil
+
+### UnsetAuthType
+`func (o *PatchedAuthenticatorSMSStageRequest) UnsetAuthType()`
+
+UnsetAuthType ensures that no value is present for AuthType, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

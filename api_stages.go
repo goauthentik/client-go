@@ -2165,21 +2165,39 @@ func (a *StagesApiService) StagesAuthenticatorSmsDestroyExecute(r ApiStagesAuthe
 }
 
 type ApiStagesAuthenticatorSmsListRequest struct {
-	ctx              _context.Context
-	ApiService       *StagesApiService
-	configureFlow    *string
-	fromNumber       *string
-	name             *string
-	ordering         *string
-	page             *int32
-	pageSize         *int32
-	provider         *string
-	search           *string
-	stageUuid        *string
-	twilioAccountSid *string
-	twilioAuth       *string
+	ctx           _context.Context
+	ApiService    *StagesApiService
+	accountSid    *string
+	auth          *string
+	authPassword  *string
+	authType      *string
+	configureFlow *string
+	fromNumber    *string
+	name          *string
+	ordering      *string
+	page          *int32
+	pageSize      *int32
+	provider      *string
+	search        *string
+	stageUuid     *string
 }
 
+func (r ApiStagesAuthenticatorSmsListRequest) AccountSid(accountSid string) ApiStagesAuthenticatorSmsListRequest {
+	r.accountSid = &accountSid
+	return r
+}
+func (r ApiStagesAuthenticatorSmsListRequest) Auth(auth string) ApiStagesAuthenticatorSmsListRequest {
+	r.auth = &auth
+	return r
+}
+func (r ApiStagesAuthenticatorSmsListRequest) AuthPassword(authPassword string) ApiStagesAuthenticatorSmsListRequest {
+	r.authPassword = &authPassword
+	return r
+}
+func (r ApiStagesAuthenticatorSmsListRequest) AuthType(authType string) ApiStagesAuthenticatorSmsListRequest {
+	r.authType = &authType
+	return r
+}
 func (r ApiStagesAuthenticatorSmsListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorSmsListRequest {
 	r.configureFlow = &configureFlow
 	return r
@@ -2222,14 +2240,6 @@ func (r ApiStagesAuthenticatorSmsListRequest) Search(search string) ApiStagesAut
 }
 func (r ApiStagesAuthenticatorSmsListRequest) StageUuid(stageUuid string) ApiStagesAuthenticatorSmsListRequest {
 	r.stageUuid = &stageUuid
-	return r
-}
-func (r ApiStagesAuthenticatorSmsListRequest) TwilioAccountSid(twilioAccountSid string) ApiStagesAuthenticatorSmsListRequest {
-	r.twilioAccountSid = &twilioAccountSid
-	return r
-}
-func (r ApiStagesAuthenticatorSmsListRequest) TwilioAuth(twilioAuth string) ApiStagesAuthenticatorSmsListRequest {
-	r.twilioAuth = &twilioAuth
 	return r
 }
 
@@ -2275,6 +2285,18 @@ func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenti
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.accountSid != nil {
+		localVarQueryParams.Add("account_sid", parameterToString(*r.accountSid, ""))
+	}
+	if r.auth != nil {
+		localVarQueryParams.Add("auth", parameterToString(*r.auth, ""))
+	}
+	if r.authPassword != nil {
+		localVarQueryParams.Add("auth_password", parameterToString(*r.authPassword, ""))
+	}
+	if r.authType != nil {
+		localVarQueryParams.Add("auth_type", parameterToString(*r.authType, ""))
+	}
 	if r.configureFlow != nil {
 		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
 	}
@@ -2301,12 +2323,6 @@ func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenti
 	}
 	if r.stageUuid != nil {
 		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
-	}
-	if r.twilioAccountSid != nil {
-		localVarQueryParams.Add("twilio_account_sid", parameterToString(*r.twilioAccountSid, ""))
-	}
-	if r.twilioAuth != nil {
-		localVarQueryParams.Add("twilio_auth", parameterToString(*r.twilioAuth, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

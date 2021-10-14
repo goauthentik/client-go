@@ -26,6 +26,7 @@ docs/App.md
 docs/AppEnum.md
 docs/Application.md
 docs/ApplicationRequest.md
+docs/AuthTypeEnum.md
 docs/AuthenticateWebAuthnStage.md
 docs/AuthenticateWebAuthnStageRequest.md
 docs/AuthenticatedSession.md
@@ -457,6 +458,7 @@ model_app.go
 model_app_enum.go
 model_application.go
 model_application_request.go
+model_auth_type_enum.go
 model_authenticate_web_authn_stage.go
 model_authenticate_web_authn_stage_request.go
 model_authenticated_session.go

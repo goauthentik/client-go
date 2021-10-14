@@ -21,11 +21,13 @@ type ProviderEnum string
 
 // List of ProviderEnum
 const (
-	PROVIDERENUM_TWILIO ProviderEnum = "twilio"
+	PROVIDERENUM_TWILIO  ProviderEnum = "twilio"
+	PROVIDERENUM_GENERIC ProviderEnum = "generic"
 )
 
 var allowedProviderEnumEnumValues = []ProviderEnum{
 	"twilio",
+	"generic",
 }
 
 func (v *ProviderEnum) UnmarshalJSON(src []byte) error {

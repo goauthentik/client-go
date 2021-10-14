@@ -24,18 +24,20 @@ type AuthenticatorSMSStage struct {
 	VerboseNamePlural string  `json:"verbose_name_plural"`
 	FlowSet           *[]Flow `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow    NullableString `json:"configure_flow,omitempty"`
-	Provider         ProviderEnum   `json:"provider"`
-	FromNumber       string         `json:"from_number"`
-	TwilioAccountSid string         `json:"twilio_account_sid"`
-	TwilioAuth       string         `json:"twilio_auth"`
+	ConfigureFlow NullableString       `json:"configure_flow,omitempty"`
+	Provider      ProviderEnum         `json:"provider"`
+	FromNumber    string               `json:"from_number"`
+	AccountSid    string               `json:"account_sid"`
+	Auth          string               `json:"auth"`
+	AuthPassword  NullableString       `json:"auth_password,omitempty"`
+	AuthType      NullableAuthTypeEnum `json:"auth_type,omitempty"`
 }
 
 // NewAuthenticatorSMSStage instantiates a new AuthenticatorSMSStage object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorSMSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, provider ProviderEnum, fromNumber string, twilioAccountSid string, twilioAuth string) *AuthenticatorSMSStage {
+func NewAuthenticatorSMSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, provider ProviderEnum, fromNumber string, accountSid string, auth string) *AuthenticatorSMSStage {
 	this := AuthenticatorSMSStage{}
 	this.Pk = pk
 	this.Name = name
@@ -44,8 +46,8 @@ func NewAuthenticatorSMSStage(pk string, name string, component string, verboseN
 	this.VerboseNamePlural = verboseNamePlural
 	this.Provider = provider
 	this.FromNumber = fromNumber
-	this.TwilioAccountSid = twilioAccountSid
-	this.TwilioAuth = twilioAuth
+	this.AccountSid = accountSid
+	this.Auth = auth
 	return &this
 }
 
@@ -300,52 +302,138 @@ func (o *AuthenticatorSMSStage) SetFromNumber(v string) {
 	o.FromNumber = v
 }
 
-// GetTwilioAccountSid returns the TwilioAccountSid field value
-func (o *AuthenticatorSMSStage) GetTwilioAccountSid() string {
+// GetAccountSid returns the AccountSid field value
+func (o *AuthenticatorSMSStage) GetAccountSid() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.TwilioAccountSid
+	return o.AccountSid
 }
 
-// GetTwilioAccountSidOk returns a tuple with the TwilioAccountSid field value
+// GetAccountSidOk returns a tuple with the AccountSid field value
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorSMSStage) GetTwilioAccountSidOk() (*string, bool) {
+func (o *AuthenticatorSMSStage) GetAccountSidOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.TwilioAccountSid, true
+	return &o.AccountSid, true
 }
 
-// SetTwilioAccountSid sets field value
-func (o *AuthenticatorSMSStage) SetTwilioAccountSid(v string) {
-	o.TwilioAccountSid = v
+// SetAccountSid sets field value
+func (o *AuthenticatorSMSStage) SetAccountSid(v string) {
+	o.AccountSid = v
 }
 
-// GetTwilioAuth returns the TwilioAuth field value
-func (o *AuthenticatorSMSStage) GetTwilioAuth() string {
+// GetAuth returns the Auth field value
+func (o *AuthenticatorSMSStage) GetAuth() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.TwilioAuth
+	return o.Auth
 }
 
-// GetTwilioAuthOk returns a tuple with the TwilioAuth field value
+// GetAuthOk returns a tuple with the Auth field value
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorSMSStage) GetTwilioAuthOk() (*string, bool) {
+func (o *AuthenticatorSMSStage) GetAuthOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.TwilioAuth, true
+	return &o.Auth, true
 }
 
-// SetTwilioAuth sets field value
-func (o *AuthenticatorSMSStage) SetTwilioAuth(v string) {
-	o.TwilioAuth = v
+// SetAuth sets field value
+func (o *AuthenticatorSMSStage) SetAuth(v string) {
+	o.Auth = v
+}
+
+// GetAuthPassword returns the AuthPassword field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AuthenticatorSMSStage) GetAuthPassword() string {
+	if o == nil || o.AuthPassword.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthPassword.Get()
+}
+
+// GetAuthPasswordOk returns a tuple with the AuthPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AuthenticatorSMSStage) GetAuthPasswordOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthPassword.Get(), o.AuthPassword.IsSet()
+}
+
+// HasAuthPassword returns a boolean if a field has been set.
+func (o *AuthenticatorSMSStage) HasAuthPassword() bool {
+	if o != nil && o.AuthPassword.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthPassword gets a reference to the given NullableString and assigns it to the AuthPassword field.
+func (o *AuthenticatorSMSStage) SetAuthPassword(v string) {
+	o.AuthPassword.Set(&v)
+}
+
+// SetAuthPasswordNil sets the value for AuthPassword to be an explicit nil
+func (o *AuthenticatorSMSStage) SetAuthPasswordNil() {
+	o.AuthPassword.Set(nil)
+}
+
+// UnsetAuthPassword ensures that no value is present for AuthPassword, not even an explicit nil
+func (o *AuthenticatorSMSStage) UnsetAuthPassword() {
+	o.AuthPassword.Unset()
+}
+
+// GetAuthType returns the AuthType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AuthenticatorSMSStage) GetAuthType() AuthTypeEnum {
+	if o == nil || o.AuthType.Get() == nil {
+		var ret AuthTypeEnum
+		return ret
+	}
+	return *o.AuthType.Get()
+}
+
+// GetAuthTypeOk returns a tuple with the AuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AuthenticatorSMSStage) GetAuthTypeOk() (*AuthTypeEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthType.Get(), o.AuthType.IsSet()
+}
+
+// HasAuthType returns a boolean if a field has been set.
+func (o *AuthenticatorSMSStage) HasAuthType() bool {
+	if o != nil && o.AuthType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthType gets a reference to the given NullableAuthTypeEnum and assigns it to the AuthType field.
+func (o *AuthenticatorSMSStage) SetAuthType(v AuthTypeEnum) {
+	o.AuthType.Set(&v)
+}
+
+// SetAuthTypeNil sets the value for AuthType to be an explicit nil
+func (o *AuthenticatorSMSStage) SetAuthTypeNil() {
+	o.AuthType.Set(nil)
+}
+
+// UnsetAuthType ensures that no value is present for AuthType, not even an explicit nil
+func (o *AuthenticatorSMSStage) UnsetAuthType() {
+	o.AuthType.Unset()
 }
 
 func (o AuthenticatorSMSStage) MarshalJSON() ([]byte, error) {
@@ -378,10 +466,16 @@ func (o AuthenticatorSMSStage) MarshalJSON() ([]byte, error) {
 		toSerialize["from_number"] = o.FromNumber
 	}
 	if true {
-		toSerialize["twilio_account_sid"] = o.TwilioAccountSid
+		toSerialize["account_sid"] = o.AccountSid
 	}
 	if true {
-		toSerialize["twilio_auth"] = o.TwilioAuth
+		toSerialize["auth"] = o.Auth
+	}
+	if o.AuthPassword.IsSet() {
+		toSerialize["auth_password"] = o.AuthPassword.Get()
+	}
+	if o.AuthType.IsSet() {
+		toSerialize["auth_type"] = o.AuthType.Get()
 	}
 	return json.Marshal(toSerialize)
 }

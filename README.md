@@ -610,6 +610,7 @@ Class | Method | HTTP request | Description
  - [AppEnum](docs/AppEnum.md)
  - [Application](docs/Application.md)
  - [ApplicationRequest](docs/ApplicationRequest.md)
+ - [AuthTypeEnum](docs/AuthTypeEnum.md)
  - [AuthenticateWebAuthnStage](docs/AuthenticateWebAuthnStage.md)
  - [AuthenticateWebAuthnStageRequest](docs/AuthenticateWebAuthnStageRequest.md)
  - [AuthenticatedSession](docs/AuthenticatedSession.md)

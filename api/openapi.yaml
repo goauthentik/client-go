@@ -15869,6 +15869,38 @@ paths:
       parameters:
       - explode: true
         in: query
+        name: account_sid
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: auth
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: auth_password
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: auth_type
+        required: false
+        schema:
+          enum:
+          - basic
+          - bearer
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: configure_flow
         required: false
         schema:
@@ -15919,6 +15951,7 @@ paths:
         required: false
         schema:
           enum:
+          - generic
           - twilio
           type: string
         style: form
@@ -15936,20 +15969,6 @@ paths:
         required: false
         schema:
           format: uuid
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: twilio_account_sid
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: twilio_auth
-        required: false
-        schema:
           type: string
         style: form
       responses:
@@ -21089,6 +21108,11 @@ components:
       - name
       - slug
       type: object
+    AuthTypeEnum:
+      enum:
+      - bearer
+      - basic
+      type: string
     AuthenticateWebAuthnStage:
       description: AuthenticateWebAuthnStage Serializer
       example:
@@ -21474,14 +21498,11 @@ components:
     AuthenticatorSMSStage:
       description: AuthenticatorSMSStage Serializer
       example:
-        component: component
-        verbose_name: verbose_name
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        auth_type: ""
         verbose_name_plural: verbose_name_plural
-        from_number: from_number
-        twilio_account_sid: twilio_account_sid
-        name: name
-        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        auth: auth
+        auth_password: auth_password
         flow_set:
         - compatibility_mode: true
           policies:
@@ -21515,7 +21536,12 @@ components:
           designation: ""
           cache_count: 0
           slug: slug
-        twilio_auth: twilio_auth
+        component: component
+        verbose_name: verbose_name
+        from_number: from_number
+        name: name
+        account_sid: account_sid
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
           format: uuid
@@ -21547,18 +21573,25 @@ components:
           $ref: '#/components/schemas/ProviderEnum'
         from_number:
           type: string
-        twilio_account_sid:
+        account_sid:
           type: string
-        twilio_auth:
+        auth:
           type: string
+        auth_password:
+          nullable: true
+          type: string
+        auth_type:
+          allOf:
+          - $ref: '#/components/schemas/AuthTypeEnum'
+          nullable: true
       required:
+      - account_sid
+      - auth
       - component
       - from_number
       - name
       - pk
       - provider
-      - twilio_account_sid
-      - twilio_auth
       - verbose_name
       - verbose_name_plural
       type: object
@@ -21566,9 +21599,12 @@ components:
       description: AuthenticatorSMSStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        auth_type: ""
+        auth: auth
         from_number: from_number
-        twilio_account_sid: twilio_account_sid
         name: name
+        account_sid: account_sid
+        auth_password: auth_password
         flow_set:
         - compatibility_mode: true
           name: name
@@ -21580,7 +21616,6 @@ components:
           designation: ""
           title: title
           slug: slug
-        twilio_auth: twilio_auth
       properties:
         name:
           type: string
@@ -21598,16 +21633,23 @@ components:
           $ref: '#/components/schemas/ProviderEnum'
         from_number:
           type: string
-        twilio_account_sid:
+        account_sid:
           type: string
-        twilio_auth:
+        auth:
           type: string
+        auth_password:
+          nullable: true
+          type: string
+        auth_type:
+          allOf:
+          - $ref: '#/components/schemas/AuthTypeEnum'
+          nullable: true
       required:
+      - account_sid
+      - auth
       - from_number
       - name
       - provider
-      - twilio_account_sid
-      - twilio_auth
       type: object
     AuthenticatorStaticChallenge:
       description: Static authenticator challenge
@@ -27001,14 +27043,11 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - component: component
-          verbose_name: verbose_name
-          configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          auth_type: ""
           verbose_name_plural: verbose_name_plural
-          from_number: from_number
-          twilio_account_sid: twilio_account_sid
-          name: name
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          auth: auth
+          auth_password: auth_password
           flow_set:
           - compatibility_mode: true
             policies:
@@ -27042,15 +27081,17 @@ components:
             designation: ""
             cache_count: 0
             slug: slug
-          twilio_auth: twilio_auth
-        - component: component
+          component: component
           verbose_name: verbose_name
-          configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          verbose_name_plural: verbose_name_plural
           from_number: from_number
-          twilio_account_sid: twilio_account_sid
           name: name
+          account_sid: account_sid
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          auth_type: ""
+          verbose_name_plural: verbose_name_plural
+          auth: auth
+          auth_password: auth_password
           flow_set:
           - compatibility_mode: true
             policies:
@@ -27084,7 +27125,12 @@ components:
             designation: ""
             cache_count: 0
             slug: slug
-          twilio_auth: twilio_auth
+          component: component
+          verbose_name: verbose_name
+          from_number: from_number
+          name: name
+          account_sid: account_sid
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -32767,9 +32813,12 @@ components:
       description: AuthenticatorSMSStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        auth_type: ""
+        auth: auth
         from_number: from_number
-        twilio_account_sid: twilio_account_sid
         name: name
+        account_sid: account_sid
+        auth_password: auth_password
         flow_set:
         - compatibility_mode: true
           name: name
@@ -32781,7 +32830,6 @@ components:
           designation: ""
           title: title
           slug: slug
-        twilio_auth: twilio_auth
       properties:
         name:
           type: string
@@ -32799,10 +32847,17 @@ components:
           $ref: '#/components/schemas/ProviderEnum'
         from_number:
           type: string
-        twilio_account_sid:
+        account_sid:
           type: string
-        twilio_auth:
+        auth:
           type: string
+        auth_password:
+          nullable: true
+          type: string
+        auth_type:
+          allOf:
+          - $ref: '#/components/schemas/AuthTypeEnum'
+          nullable: true
       type: object
     PatchedAuthenticatorStaticStageRequest:
       description: AuthenticatorStaticStage Serializer
@@ -35908,6 +35963,7 @@ components:
     ProviderEnum:
       enum:
       - twilio
+      - generic
       type: string
     ProviderRequest:
       description: Provider Serializer
