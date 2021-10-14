@@ -24,13 +24,13 @@ type AuthenticatorSMSStage struct {
 	VerboseNamePlural string  `json:"verbose_name_plural"`
 	FlowSet           *[]Flow `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString       `json:"configure_flow,omitempty"`
-	Provider      ProviderEnum         `json:"provider"`
-	FromNumber    string               `json:"from_number"`
-	AccountSid    string               `json:"account_sid"`
-	Auth          string               `json:"auth"`
-	AuthPassword  NullableString       `json:"auth_password,omitempty"`
-	AuthType      NullableAuthTypeEnum `json:"auth_type,omitempty"`
+	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
+	Provider      ProviderEnum   `json:"provider"`
+	FromNumber    string         `json:"from_number"`
+	AccountSid    string         `json:"account_sid"`
+	Auth          string         `json:"auth"`
+	AuthPassword  *string        `json:"auth_password,omitempty"`
+	AuthType      *AuthTypeEnum  `json:"auth_type,omitempty"`
 }
 
 // NewAuthenticatorSMSStage instantiates a new AuthenticatorSMSStage object
@@ -350,90 +350,68 @@ func (o *AuthenticatorSMSStage) SetAuth(v string) {
 	o.Auth = v
 }
 
-// GetAuthPassword returns the AuthPassword field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAuthPassword returns the AuthPassword field value if set, zero value otherwise.
 func (o *AuthenticatorSMSStage) GetAuthPassword() string {
-	if o == nil || o.AuthPassword.Get() == nil {
+	if o == nil || o.AuthPassword == nil {
 		var ret string
 		return ret
 	}
-	return *o.AuthPassword.Get()
+	return *o.AuthPassword
 }
 
 // GetAuthPasswordOk returns a tuple with the AuthPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatorSMSStage) GetAuthPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.AuthPassword == nil {
 		return nil, false
 	}
-	return o.AuthPassword.Get(), o.AuthPassword.IsSet()
+	return o.AuthPassword, true
 }
 
 // HasAuthPassword returns a boolean if a field has been set.
 func (o *AuthenticatorSMSStage) HasAuthPassword() bool {
-	if o != nil && o.AuthPassword.IsSet() {
+	if o != nil && o.AuthPassword != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAuthPassword gets a reference to the given NullableString and assigns it to the AuthPassword field.
+// SetAuthPassword gets a reference to the given string and assigns it to the AuthPassword field.
 func (o *AuthenticatorSMSStage) SetAuthPassword(v string) {
-	o.AuthPassword.Set(&v)
+	o.AuthPassword = &v
 }
 
-// SetAuthPasswordNil sets the value for AuthPassword to be an explicit nil
-func (o *AuthenticatorSMSStage) SetAuthPasswordNil() {
-	o.AuthPassword.Set(nil)
-}
-
-// UnsetAuthPassword ensures that no value is present for AuthPassword, not even an explicit nil
-func (o *AuthenticatorSMSStage) UnsetAuthPassword() {
-	o.AuthPassword.Unset()
-}
-
-// GetAuthType returns the AuthType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAuthType returns the AuthType field value if set, zero value otherwise.
 func (o *AuthenticatorSMSStage) GetAuthType() AuthTypeEnum {
-	if o == nil || o.AuthType.Get() == nil {
+	if o == nil || o.AuthType == nil {
 		var ret AuthTypeEnum
 		return ret
 	}
-	return *o.AuthType.Get()
+	return *o.AuthType
 }
 
 // GetAuthTypeOk returns a tuple with the AuthType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatorSMSStage) GetAuthTypeOk() (*AuthTypeEnum, bool) {
-	if o == nil {
+	if o == nil || o.AuthType == nil {
 		return nil, false
 	}
-	return o.AuthType.Get(), o.AuthType.IsSet()
+	return o.AuthType, true
 }
 
 // HasAuthType returns a boolean if a field has been set.
 func (o *AuthenticatorSMSStage) HasAuthType() bool {
-	if o != nil && o.AuthType.IsSet() {
+	if o != nil && o.AuthType != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAuthType gets a reference to the given NullableAuthTypeEnum and assigns it to the AuthType field.
+// SetAuthType gets a reference to the given AuthTypeEnum and assigns it to the AuthType field.
 func (o *AuthenticatorSMSStage) SetAuthType(v AuthTypeEnum) {
-	o.AuthType.Set(&v)
-}
-
-// SetAuthTypeNil sets the value for AuthType to be an explicit nil
-func (o *AuthenticatorSMSStage) SetAuthTypeNil() {
-	o.AuthType.Set(nil)
-}
-
-// UnsetAuthType ensures that no value is present for AuthType, not even an explicit nil
-func (o *AuthenticatorSMSStage) UnsetAuthType() {
-	o.AuthType.Unset()
+	o.AuthType = &v
 }
 
 func (o AuthenticatorSMSStage) MarshalJSON() ([]byte, error) {
@@ -471,11 +449,11 @@ func (o AuthenticatorSMSStage) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["auth"] = o.Auth
 	}
-	if o.AuthPassword.IsSet() {
-		toSerialize["auth_password"] = o.AuthPassword.Get()
+	if o.AuthPassword != nil {
+		toSerialize["auth_password"] = o.AuthPassword
 	}
-	if o.AuthType.IsSet() {
-		toSerialize["auth_type"] = o.AuthType.Get()
+	if o.AuthType != nil {
+		toSerialize["auth_type"] = o.AuthType
 	}
 	return json.Marshal(toSerialize)
 }

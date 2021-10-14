@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **FromNumber** | Pointer to **string** |  | [optional] 
 **AccountSid** | Pointer to **string** |  | [optional] 
 **Auth** | Pointer to **string** |  | [optional] 
-**AuthPassword** | Pointer to **NullableString** |  | [optional] 
-**AuthType** | Pointer to [**NullableAuthTypeEnum**](AuthTypeEnum.md) |  | [optional] 
+**AuthPassword** | Pointer to **string** |  | [optional] 
+**AuthType** | Pointer to [**AuthTypeEnum**](AuthTypeEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -243,16 +243,6 @@ SetAuthPassword sets AuthPassword field to given value.
 
 HasAuthPassword returns a boolean if a field has been set.
 
-### SetAuthPasswordNil
-
-`func (o *PatchedAuthenticatorSMSStageRequest) SetAuthPasswordNil(b bool)`
-
- SetAuthPasswordNil sets the value for AuthPassword to be an explicit nil
-
-### UnsetAuthPassword
-`func (o *PatchedAuthenticatorSMSStageRequest) UnsetAuthPassword()`
-
-UnsetAuthPassword ensures that no value is present for AuthPassword, not even an explicit nil
 ### GetAuthType
 
 `func (o *PatchedAuthenticatorSMSStageRequest) GetAuthType() AuthTypeEnum`
@@ -278,16 +268,6 @@ SetAuthType sets AuthType field to given value.
 
 HasAuthType returns a boolean if a field has been set.
 
-### SetAuthTypeNil
-
-`func (o *PatchedAuthenticatorSMSStageRequest) SetAuthTypeNil(b bool)`
-
- SetAuthTypeNil sets the value for AuthType to be an explicit nil
-
-### UnsetAuthType
-`func (o *PatchedAuthenticatorSMSStageRequest) UnsetAuthType()`
-
-UnsetAuthType ensures that no value is present for AuthType, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

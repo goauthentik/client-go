@@ -15896,7 +15896,6 @@ paths:
           enum:
           - basic
           - bearer
-          nullable: true
           type: string
         style: form
       - explode: true
@@ -21110,8 +21109,8 @@ components:
       type: object
     AuthTypeEnum:
       enum:
-      - bearer
       - basic
+      - bearer
       type: string
     AuthenticateWebAuthnStage:
       description: AuthenticateWebAuthnStage Serializer
@@ -21499,7 +21498,6 @@ components:
       description: AuthenticatorSMSStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        auth_type: ""
         verbose_name_plural: verbose_name_plural
         auth: auth
         auth_password: auth_password
@@ -21578,12 +21576,9 @@ components:
         auth:
           type: string
         auth_password:
-          nullable: true
           type: string
         auth_type:
-          allOf:
-          - $ref: '#/components/schemas/AuthTypeEnum'
-          nullable: true
+          $ref: '#/components/schemas/AuthTypeEnum'
       required:
       - account_sid
       - auth
@@ -21599,7 +21594,6 @@ components:
       description: AuthenticatorSMSStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        auth_type: ""
         auth: auth
         from_number: from_number
         name: name
@@ -21638,12 +21632,9 @@ components:
         auth:
           type: string
         auth_password:
-          nullable: true
           type: string
         auth_type:
-          allOf:
-          - $ref: '#/components/schemas/AuthTypeEnum'
-          nullable: true
+          $ref: '#/components/schemas/AuthTypeEnum'
       required:
       - account_sid
       - auth
@@ -27044,7 +27035,6 @@ components:
           total_pages: 5.637376656633329
         results:
         - configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          auth_type: ""
           verbose_name_plural: verbose_name_plural
           auth: auth
           auth_password: auth_password
@@ -27088,7 +27078,6 @@ components:
           account_sid: account_sid
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          auth_type: ""
           verbose_name_plural: verbose_name_plural
           auth: auth
           auth_password: auth_password
@@ -32813,7 +32802,6 @@ components:
       description: AuthenticatorSMSStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        auth_type: ""
         auth: auth
         from_number: from_number
         name: name
@@ -32852,12 +32840,9 @@ components:
         auth:
           type: string
         auth_password:
-          nullable: true
           type: string
         auth_type:
-          allOf:
-          - $ref: '#/components/schemas/AuthTypeEnum'
-          nullable: true
+          $ref: '#/components/schemas/AuthTypeEnum'
       type: object
     PatchedAuthenticatorStaticStageRequest:
       description: AuthenticatorStaticStage Serializer

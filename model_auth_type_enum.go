@@ -21,13 +21,13 @@ type AuthTypeEnum string
 
 // List of AuthTypeEnum
 const (
-	AUTHTYPEENUM_BEARER AuthTypeEnum = "bearer"
 	AUTHTYPEENUM_BASIC  AuthTypeEnum = "basic"
+	AUTHTYPEENUM_BEARER AuthTypeEnum = "bearer"
 )
 
 var allowedAuthTypeEnumEnumValues = []AuthTypeEnum{
-	"bearer",
 	"basic",
+	"bearer",
 }
 
 func (v *AuthTypeEnum) UnmarshalJSON(src []byte) error {
