@@ -7794,6 +7794,13 @@ paths:
           format: uuid
           type: string
         style: form
+      - explode: true
+        in: query
+        name: policy__isnull
+        required: false
+        schema:
+          type: boolean
+        style: form
       - description: A search term.
         explode: true
         in: query
@@ -7809,6 +7816,16 @@ paths:
         schema:
           format: uuid
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: target_in
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
         style: form
       - explode: true
         in: query
@@ -37631,6 +37648,7 @@ components:
       - SUCCESSFUL
       - WARNING
       - ERROR
+      - UNKNOWN
       type: string
     SubModeEnum:
       enum:

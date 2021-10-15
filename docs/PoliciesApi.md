@@ -752,7 +752,7 @@ Name | Type | Description  | Notes
 
 ## PoliciesBindingsList
 
-> PaginatedPolicyBindingList PoliciesBindingsList(ctx).Enabled(enabled).Order(order).Ordering(ordering).Page(page).PageSize(pageSize).Policy(policy).Search(search).Target(target).Timeout(timeout).Execute()
+> PaginatedPolicyBindingList PoliciesBindingsList(ctx).Enabled(enabled).Order(order).Ordering(ordering).Page(page).PageSize(pageSize).Policy(policy).PolicyIsnull(policyIsnull).Search(search).Target(target).TargetIn(targetIn).Timeout(timeout).Execute()
 
 
 
@@ -777,13 +777,15 @@ func main() {
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     policy := TODO // string |  (optional)
+    policyIsnull := true // bool |  (optional)
     search := "search_example" // string | A search term. (optional)
     target := TODO // string |  (optional)
+    targetIn := []string{"Inner_example"} // []string |  (optional)
     timeout := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesBindingsList(context.Background()).Enabled(enabled).Order(order).Ordering(ordering).Page(page).PageSize(pageSize).Policy(policy).Search(search).Target(target).Timeout(timeout).Execute()
+    resp, r, err := api_client.PoliciesApi.PoliciesBindingsList(context.Background()).Enabled(enabled).Order(order).Ordering(ordering).Page(page).PageSize(pageSize).Policy(policy).PolicyIsnull(policyIsnull).Search(search).Target(target).TargetIn(targetIn).Timeout(timeout).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesBindingsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -810,8 +812,10 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **policy** | [**string**](string.md) |  | 
+ **policyIsnull** | **bool** |  | 
  **search** | **string** | A search term. | 
  **target** | [**string**](string.md) |  | 
+ **targetIn** | **[]string** |  | 
  **timeout** | **int32** |  | 
 
 ### Return type

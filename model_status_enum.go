@@ -24,12 +24,14 @@ const (
 	STATUSENUM_SUCCESSFUL StatusEnum = "SUCCESSFUL"
 	STATUSENUM_WARNING    StatusEnum = "WARNING"
 	STATUSENUM_ERROR      StatusEnum = "ERROR"
+	STATUSENUM_UNKNOWN    StatusEnum = "UNKNOWN"
 )
 
 var allowedStatusEnumEnumValues = []StatusEnum{
 	"SUCCESSFUL",
 	"WARNING",
 	"ERROR",
+	"UNKNOWN",
 }
 
 func (v *StatusEnum) UnmarshalJSON(src []byte) error {

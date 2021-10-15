@@ -17,6 +17,7 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
+	"reflect"
 	"strings"
 	"time"
 )
@@ -1246,17 +1247,19 @@ func (a *PoliciesApiService) PoliciesBindingsDestroyExecute(r ApiPoliciesBinding
 }
 
 type ApiPoliciesBindingsListRequest struct {
-	ctx        _context.Context
-	ApiService *PoliciesApiService
-	enabled    *bool
-	order      *int32
-	ordering   *string
-	page       *int32
-	pageSize   *int32
-	policy     *string
-	search     *string
-	target     *string
-	timeout    *int32
+	ctx          _context.Context
+	ApiService   *PoliciesApiService
+	enabled      *bool
+	order        *int32
+	ordering     *string
+	page         *int32
+	pageSize     *int32
+	policy       *string
+	policyIsnull *bool
+	search       *string
+	target       *string
+	targetIn     *[]string
+	timeout      *int32
 }
 
 func (r ApiPoliciesBindingsListRequest) Enabled(enabled bool) ApiPoliciesBindingsListRequest {
@@ -1289,6 +1292,10 @@ func (r ApiPoliciesBindingsListRequest) Policy(policy string) ApiPoliciesBinding
 	r.policy = &policy
 	return r
 }
+func (r ApiPoliciesBindingsListRequest) PolicyIsnull(policyIsnull bool) ApiPoliciesBindingsListRequest {
+	r.policyIsnull = &policyIsnull
+	return r
+}
 
 // A search term.
 func (r ApiPoliciesBindingsListRequest) Search(search string) ApiPoliciesBindingsListRequest {
@@ -1297,6 +1304,10 @@ func (r ApiPoliciesBindingsListRequest) Search(search string) ApiPoliciesBinding
 }
 func (r ApiPoliciesBindingsListRequest) Target(target string) ApiPoliciesBindingsListRequest {
 	r.target = &target
+	return r
+}
+func (r ApiPoliciesBindingsListRequest) TargetIn(targetIn []string) ApiPoliciesBindingsListRequest {
+	r.targetIn = &targetIn
 	return r
 }
 func (r ApiPoliciesBindingsListRequest) Timeout(timeout int32) ApiPoliciesBindingsListRequest {
@@ -1364,11 +1375,25 @@ func (a *PoliciesApiService) PoliciesBindingsListExecute(r ApiPoliciesBindingsLi
 	if r.policy != nil {
 		localVarQueryParams.Add("policy", parameterToString(*r.policy, ""))
 	}
+	if r.policyIsnull != nil {
+		localVarQueryParams.Add("policy__isnull", parameterToString(*r.policyIsnull, ""))
+	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.target != nil {
 		localVarQueryParams.Add("target", parameterToString(*r.target, ""))
+	}
+	if r.targetIn != nil {
+		t := *r.targetIn
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("target_in", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("target_in", parameterToString(t, "multi"))
+		}
 	}
 	if r.timeout != nil {
 		localVarQueryParams.Add("timeout", parameterToString(*r.timeout, ""))
