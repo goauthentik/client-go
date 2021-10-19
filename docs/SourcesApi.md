@@ -1084,7 +1084,7 @@ import (
 )
 
 func main() {
-    oAuthSourceRequest := *openapiclient.NewOAuthSourceRequest("Name_example", "Slug_example", "ProviderType_example", "ConsumerKey_example", "ConsumerSecret_example") // OAuthSourceRequest | 
+    oAuthSourceRequest := *openapiclient.NewOAuthSourceRequest("Name_example", "Slug_example", openapiclient.ProviderTypeEnum("apple"), "ConsumerKey_example", "ConsumerSecret_example") // OAuthSourceRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1525,7 +1525,7 @@ import (
 
 func main() {
     slug := "slug_example" // string | 
-    oAuthSourceRequest := *openapiclient.NewOAuthSourceRequest("Name_example", "Slug_example", "ProviderType_example", "ConsumerKey_example", "ConsumerSecret_example") // OAuthSourceRequest | 
+    oAuthSourceRequest := *openapiclient.NewOAuthSourceRequest("Name_example", "Slug_example", openapiclient.ProviderTypeEnum("apple"), "ConsumerKey_example", "ConsumerSecret_example") // OAuthSourceRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
-**ProviderType** | Pointer to **string** |  | [optional] 
+**ProviderType** | Pointer to [**ProviderTypeEnum**](ProviderTypeEnum.md) |  | [optional] 
 **RequestTokenUrl** | Pointer to **NullableString** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] 
 **AuthorizationUrl** | Pointer to **NullableString** | URL the user is redirect to to conest the flow. | [optional] 
 **AccessTokenUrl** | Pointer to **NullableString** | URL used by authentik to retrieve tokens. | [optional] 
@@ -235,20 +235,20 @@ HasUserMatchingMode returns a boolean if a field has been set.
 
 ### GetProviderType
 
-`func (o *PatchedOAuthSourceRequest) GetProviderType() string`
+`func (o *PatchedOAuthSourceRequest) GetProviderType() ProviderTypeEnum`
 
 GetProviderType returns the ProviderType field if non-nil, zero value otherwise.
 
 ### GetProviderTypeOk
 
-`func (o *PatchedOAuthSourceRequest) GetProviderTypeOk() (*string, bool)`
+`func (o *PatchedOAuthSourceRequest) GetProviderTypeOk() (*ProviderTypeEnum, bool)`
 
 GetProviderTypeOk returns a tuple with the ProviderType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProviderType
 
-`func (o *PatchedOAuthSourceRequest) SetProviderType(v string)`
+`func (o *PatchedOAuthSourceRequest) SetProviderType(v ProviderTypeEnum)`
 
 SetProviderType sets ProviderType field to given value.
 

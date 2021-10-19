@@ -940,6 +940,7 @@ Class | Method | HTTP request | Description
  - [Provider](docs/Provider.md)
  - [ProviderEnum](docs/ProviderEnum.md)
  - [ProviderRequest](docs/ProviderRequest.md)
+ - [ProviderTypeEnum](docs/ProviderTypeEnum.md)
  - [ProxyMode](docs/ProxyMode.md)
  - [ProxyOutpostConfig](docs/ProxyOutpostConfig.md)
  - [ProxyProvider](docs/ProxyProvider.md)

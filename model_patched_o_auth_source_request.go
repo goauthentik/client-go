@@ -29,7 +29,7 @@ type PatchedOAuthSourceRequest struct {
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
-	ProviderType     *string               `json:"provider_type,omitempty"`
+	ProviderType     *ProviderTypeEnum     `json:"provider_type,omitempty"`
 	// URL used to request the initial token. This URL is only required for OAuth 1.
 	RequestTokenUrl NullableString `json:"request_token_url,omitempty"`
 	// URL the user is redirect to to conest the flow.
@@ -306,9 +306,9 @@ func (o *PatchedOAuthSourceRequest) SetUserMatchingMode(v UserMatchingModeEnum) 
 }
 
 // GetProviderType returns the ProviderType field value if set, zero value otherwise.
-func (o *PatchedOAuthSourceRequest) GetProviderType() string {
+func (o *PatchedOAuthSourceRequest) GetProviderType() ProviderTypeEnum {
 	if o == nil || o.ProviderType == nil {
-		var ret string
+		var ret ProviderTypeEnum
 		return ret
 	}
 	return *o.ProviderType
@@ -316,7 +316,7 @@ func (o *PatchedOAuthSourceRequest) GetProviderType() string {
 
 // GetProviderTypeOk returns a tuple with the ProviderType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedOAuthSourceRequest) GetProviderTypeOk() (*string, bool) {
+func (o *PatchedOAuthSourceRequest) GetProviderTypeOk() (*ProviderTypeEnum, bool) {
 	if o == nil || o.ProviderType == nil {
 		return nil, false
 	}
@@ -332,8 +332,8 @@ func (o *PatchedOAuthSourceRequest) HasProviderType() bool {
 	return false
 }
 
-// SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
-func (o *PatchedOAuthSourceRequest) SetProviderType(v string) {
+// SetProviderType gets a reference to the given ProviderTypeEnum and assigns it to the ProviderType field.
+func (o *PatchedOAuthSourceRequest) SetProviderType(v ProviderTypeEnum) {
 	o.ProviderType = &v
 }
 

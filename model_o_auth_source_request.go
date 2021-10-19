@@ -29,7 +29,7 @@ type OAuthSourceRequest struct {
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
-	ProviderType     string                `json:"provider_type"`
+	ProviderType     ProviderTypeEnum      `json:"provider_type"`
 	// URL used to request the initial token. This URL is only required for OAuth 1.
 	RequestTokenUrl NullableString `json:"request_token_url,omitempty"`
 	// URL the user is redirect to to conest the flow.
@@ -46,7 +46,7 @@ type OAuthSourceRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuthSourceRequest(name string, slug string, providerType string, consumerKey string, consumerSecret string) *OAuthSourceRequest {
+func NewOAuthSourceRequest(name string, slug string, providerType ProviderTypeEnum, consumerKey string, consumerSecret string) *OAuthSourceRequest {
 	this := OAuthSourceRequest{}
 	this.Name = name
 	this.Slug = slug
@@ -295,9 +295,9 @@ func (o *OAuthSourceRequest) SetUserMatchingMode(v UserMatchingModeEnum) {
 }
 
 // GetProviderType returns the ProviderType field value
-func (o *OAuthSourceRequest) GetProviderType() string {
+func (o *OAuthSourceRequest) GetProviderType() ProviderTypeEnum {
 	if o == nil {
-		var ret string
+		var ret ProviderTypeEnum
 		return ret
 	}
 
@@ -306,7 +306,7 @@ func (o *OAuthSourceRequest) GetProviderType() string {
 
 // GetProviderTypeOk returns a tuple with the ProviderType field value
 // and a boolean to check if the value has been set.
-func (o *OAuthSourceRequest) GetProviderTypeOk() (*string, bool) {
+func (o *OAuthSourceRequest) GetProviderTypeOk() (*ProviderTypeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -314,7 +314,7 @@ func (o *OAuthSourceRequest) GetProviderTypeOk() (*string, bool) {
 }
 
 // SetProviderType sets field value
-func (o *OAuthSourceRequest) SetProviderType(v string) {
+func (o *OAuthSourceRequest) SetProviderType(v ProviderTypeEnum) {
 	o.ProviderType = v
 }
 

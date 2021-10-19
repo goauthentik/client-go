@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
-**ProviderType** | **string** |  | 
+**ProviderType** | [**ProviderTypeEnum**](ProviderTypeEnum.md) |  | 
 **RequestTokenUrl** | Pointer to **NullableString** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] 
 **AuthorizationUrl** | Pointer to **NullableString** | URL the user is redirect to to conest the flow. | [optional] 
 **AccessTokenUrl** | Pointer to **NullableString** | URL used by authentik to retrieve tokens. | [optional] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewOAuthSourceRequest
 
-`func NewOAuthSourceRequest(name string, slug string, providerType string, consumerKey string, consumerSecret string, ) *OAuthSourceRequest`
+`func NewOAuthSourceRequest(name string, slug string, providerType ProviderTypeEnum, consumerKey string, consumerSecret string, ) *OAuthSourceRequest`
 
 NewOAuthSourceRequest instantiates a new OAuthSourceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -225,20 +225,20 @@ HasUserMatchingMode returns a boolean if a field has been set.
 
 ### GetProviderType
 
-`func (o *OAuthSourceRequest) GetProviderType() string`
+`func (o *OAuthSourceRequest) GetProviderType() ProviderTypeEnum`
 
 GetProviderType returns the ProviderType field if non-nil, zero value otherwise.
 
 ### GetProviderTypeOk
 
-`func (o *OAuthSourceRequest) GetProviderTypeOk() (*string, bool)`
+`func (o *OAuthSourceRequest) GetProviderTypeOk() (*ProviderTypeEnum, bool)`
 
 GetProviderTypeOk returns a tuple with the ProviderType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProviderType
 
-`func (o *OAuthSourceRequest) SetProviderType(v string)`
+`func (o *OAuthSourceRequest) SetProviderType(v ProviderTypeEnum)`
 
 SetProviderType sets ProviderType field to given value.
 

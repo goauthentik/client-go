@@ -26281,7 +26281,6 @@ components:
     OAuthSource:
       description: OAuth Source Serializer
       example:
-        provider_type: provider_type
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
         request_token_url: request_token_url
@@ -26342,8 +26341,7 @@ components:
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
         provider_type:
-          maxLength: 255
-          type: string
+          $ref: '#/components/schemas/ProviderTypeEnum'
         request_token_url:
           description: URL used to request the initial token. This URL is only required
             for OAuth 1.
@@ -26389,7 +26387,6 @@ components:
     OAuthSourceRequest:
       description: OAuth Source Serializer
       example:
-        provider_type: provider_type
         user_matching_mode: ""
         consumer_secret: consumer_secret
         request_token_url: request_token_url
@@ -26431,8 +26428,7 @@ components:
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
         provider_type:
-          maxLength: 255
-          type: string
+          $ref: '#/components/schemas/ProviderTypeEnum'
         request_token_url:
           description: URL used to request the initial token. This URL is only required
             for OAuth 1.
@@ -29471,8 +29467,7 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - provider_type: provider_type
-          user_matching_mode: ""
+        - user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           request_token_url: request_token_url
           profile_url: profile_url
@@ -29489,8 +29484,7 @@ components:
           access_token_url: access_token_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
-        - provider_type: provider_type
-          user_matching_mode: ""
+        - user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           request_token_url: request_token_url
           profile_url: profile_url
@@ -33960,7 +33954,6 @@ components:
     PatchedOAuthSourceRequest:
       description: OAuth Source Serializer
       example:
-        provider_type: provider_type
         user_matching_mode: ""
         consumer_secret: consumer_secret
         request_token_url: request_token_url
@@ -34002,8 +33995,7 @@ components:
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
         provider_type:
-          maxLength: 255
-          type: string
+          $ref: '#/components/schemas/ProviderTypeEnum'
         request_token_url:
           description: URL used to request the initial token. This URL is only required
             for OAuth 1.
@@ -35991,6 +35983,18 @@ components:
       - authorization_flow
       - name
       type: object
+    ProviderTypeEnum:
+      enum:
+      - apple
+      - azuread
+      - discord
+      - facebook
+      - github
+      - google
+      - openidconnect
+      - reddit
+      - twitter
+      type: string
     ProxyMode:
       enum:
       - proxy

@@ -365,6 +365,7 @@ docs/PropertymappingsApi.md
 docs/Provider.md
 docs/ProviderEnum.md
 docs/ProviderRequest.md
+docs/ProviderTypeEnum.md
 docs/ProvidersApi.md
 docs/ProxyMode.md
 docs/ProxyOutpostConfig.md
@@ -788,6 +789,7 @@ model_property_mapping_test_result.go
 model_provider.go
 model_provider_enum.go
 model_provider_request.go
+model_provider_type_enum.go
 model_proxy_mode.go
 model_proxy_outpost_config.go
 model_proxy_provider.go
