@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **BrandingTitle** | **string** |  | 
 **BrandingLogo** | **string** |  | 
 **BrandingFavicon** | **string** |  | 
-**UiFooterLinks** | [**[]FooterLink**](FooterLink.md) |  | [readonly] [default to [{"href":"https://goauthentik.io/docs/","name":"Documentation"},{"href":"https://goauthentik.io/","name":"authentik Website"}]]
+**UiFooterLinks** | [**[]FooterLink**](FooterLink.md) |  | [readonly] [default to [{"href":"https://goauthentik.io/docs/?utm_source=authentik","name":"Documentation"},{"href":"https://goauthentik.io/?utm_source=authentik","name":"authentik Website"}]]
 **FlowAuthentication** | Pointer to **string** |  | [optional] 
 **FlowInvalidation** | Pointer to **string** |  | [optional] 
 **FlowRecovery** | Pointer to **string** |  | [optional] 
