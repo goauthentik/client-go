@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2021.10.1-rc2
+API version: 2021.10.1-rc3
 Contact: hello@beryju.org
 */
 
