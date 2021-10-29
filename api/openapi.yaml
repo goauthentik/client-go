@@ -713,6 +713,26 @@ paths:
       - authentik: []
       tags:
       - authenticators
+  /authenticators/all/:
+    get:
+      description: Get all devices for current user
+      operationId: authenticators_all_list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Device'
+                type: array
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
   /authenticators/duo/:
     get:
       description: Viewset for Duo authenticator devices
@@ -22951,6 +22971,35 @@ components:
           type: array
       required:
       - name
+      type: object
+    Device:
+      description: Serializer for Duo authenticator devices
+      example:
+        verbose_name: verbose_name
+        verbose_name_plural: verbose_name_plural
+        name: name
+        pk: 0
+        type: type
+      properties:
+        verbose_name:
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          readOnly: true
+          type: string
+        pk:
+          type: integer
+        name:
+          type: string
+        type:
+          readOnly: true
+          type: string
+      required:
+      - name
+      - pk
+      - type
+      - verbose_name
+      - verbose_name_plural
       type: object
     DeviceChallenge:
       description: Single device challenge

@@ -59,6 +59,7 @@ Class | Method | HTTP request | Description
 *AuthenticatorsApi* | [**AuthenticatorsAdminTotpRetrieve**](docs/AuthenticatorsApi.md#authenticatorsadmintotpretrieve) | **Get** /authenticators/admin/totp/{id}/ | 
 *AuthenticatorsApi* | [**AuthenticatorsAdminWebauthnList**](docs/AuthenticatorsApi.md#authenticatorsadminwebauthnlist) | **Get** /authenticators/admin/webauthn/ | 
 *AuthenticatorsApi* | [**AuthenticatorsAdminWebauthnRetrieve**](docs/AuthenticatorsApi.md#authenticatorsadminwebauthnretrieve) | **Get** /authenticators/admin/webauthn/{id}/ | 
+*AuthenticatorsApi* | [**AuthenticatorsAllList**](docs/AuthenticatorsApi.md#authenticatorsalllist) | **Get** /authenticators/all/ | 
 *AuthenticatorsApi* | [**AuthenticatorsDuoDestroy**](docs/AuthenticatorsApi.md#authenticatorsduodestroy) | **Delete** /authenticators/duo/{id}/ | 
 *AuthenticatorsApi* | [**AuthenticatorsDuoList**](docs/AuthenticatorsApi.md#authenticatorsduolist) | **Get** /authenticators/duo/ | 
 *AuthenticatorsApi* | [**AuthenticatorsDuoPartialUpdate**](docs/AuthenticatorsApi.md#authenticatorsduopartialupdate) | **Patch** /authenticators/duo/{id}/ | 
@@ -669,6 +670,7 @@ Class | Method | HTTP request | Description
  - [CurrentTenant](docs/CurrentTenant.md)
  - [DenyStage](docs/DenyStage.md)
  - [DenyStageRequest](docs/DenyStageRequest.md)
+ - [Device](docs/Device.md)
  - [DeviceChallenge](docs/DeviceChallenge.md)
  - [DeviceChallengeRequest](docs/DeviceChallengeRequest.md)
  - [DeviceClassesEnum](docs/DeviceClassesEnum.md)

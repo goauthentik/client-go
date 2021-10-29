@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**AuthenticatorsAdminTotpRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminTotpRetrieve) | **Get** /authenticators/admin/totp/{id}/ | 
 [**AuthenticatorsAdminWebauthnList**](AuthenticatorsApi.md#AuthenticatorsAdminWebauthnList) | **Get** /authenticators/admin/webauthn/ | 
 [**AuthenticatorsAdminWebauthnRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminWebauthnRetrieve) | **Get** /authenticators/admin/webauthn/{id}/ | 
+[**AuthenticatorsAllList**](AuthenticatorsApi.md#AuthenticatorsAllList) | **Get** /authenticators/all/ | 
 [**AuthenticatorsDuoDestroy**](AuthenticatorsApi.md#AuthenticatorsDuoDestroy) | **Delete** /authenticators/duo/{id}/ | 
 [**AuthenticatorsDuoList**](AuthenticatorsApi.md#AuthenticatorsDuoList) | **Get** /authenticators/duo/ | 
 [**AuthenticatorsDuoPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsDuoPartialUpdate) | **Patch** /authenticators/duo/{id}/ | 
@@ -1034,6 +1035,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**WebAuthnDevice**](WebAuthnDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAllList
+
+> []Device AuthenticatorsAllList(ctx).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAllList(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAllList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAllList`: []Device
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAllList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAllListRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]Device**](Device.md)
 
 ### Authorization
 
