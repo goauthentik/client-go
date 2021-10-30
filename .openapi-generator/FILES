@@ -336,7 +336,6 @@ docs/PatchedUserLoginStageRequest.md
 docs/PatchedUserLogoutStageRequest.md
 docs/PatchedUserOAuthSourceConnectionRequest.md
 docs/PatchedUserRequest.md
-docs/PatchedUserSourceConnectionRequest.md
 docs/PatchedUserWriteStageRequest.md
 docs/PatchedWebAuthnDeviceRequest.md
 docs/Permission.md
@@ -449,7 +448,6 @@ docs/UserServiceAccountRequest.md
 docs/UserServiceAccountResponse.md
 docs/UserSetting.md
 docs/UserSourceConnection.md
-docs/UserSourceConnectionRequest.md
 docs/UserWriteStage.md
 docs/UserWriteStageRequest.md
 docs/ValidationError.md
@@ -768,7 +766,6 @@ model_patched_user_login_stage_request.go
 model_patched_user_logout_stage_request.go
 model_patched_user_o_auth_source_connection_request.go
 model_patched_user_request.go
-model_patched_user_source_connection_request.go
 model_patched_user_write_stage_request.go
 model_patched_web_authn_device_request.go
 model_permission.go
@@ -873,7 +870,6 @@ model_user_service_account_request.go
 model_user_service_account_response.go
 model_user_setting.go
 model_user_source_connection.go
-model_user_source_connection_request.go
 model_user_write_stage.go
 model_user_write_stage_request.go
 model_validation_error.go

@@ -13,24 +13,27 @@ package api
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // UserSourceConnection OAuth Source Serializer
 type UserSourceConnection struct {
-	Pk     int32  `json:"pk"`
-	User   int32  `json:"user"`
-	Source Source `json:"source"`
+	Pk      int32     `json:"pk"`
+	User    int32     `json:"user"`
+	Source  Source    `json:"source"`
+	Created time.Time `json:"created"`
 }
 
 // NewUserSourceConnection instantiates a new UserSourceConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserSourceConnection(pk int32, user int32, source Source) *UserSourceConnection {
+func NewUserSourceConnection(pk int32, user int32, source Source, created time.Time) *UserSourceConnection {
 	this := UserSourceConnection{}
 	this.Pk = pk
 	this.User = user
 	this.Source = source
+	this.Created = created
 	return &this
 }
 
@@ -114,6 +117,30 @@ func (o *UserSourceConnection) SetSource(v Source) {
 	o.Source = v
 }
 
+// GetCreated returns the Created field value
+func (o *UserSourceConnection) GetCreated() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value
+// and a boolean to check if the value has been set.
+func (o *UserSourceConnection) GetCreatedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Created, true
+}
+
+// SetCreated sets field value
+func (o *UserSourceConnection) SetCreated(v time.Time) {
+	o.Created = v
+}
+
 func (o UserSourceConnection) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -124,6 +151,9 @@ func (o UserSourceConnection) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["source"] = o.Source
+	}
+	if true {
+		toSerialize["created"] = o.Created
 	}
 	return json.Marshal(toSerialize)
 }

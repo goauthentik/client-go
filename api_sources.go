@@ -5630,15 +5630,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUse
 }
 
 type ApiSourcesUserConnectionsAllPartialUpdateRequest struct {
-	ctx                                _context.Context
-	ApiService                         *SourcesApiService
-	id                                 int32
-	patchedUserSourceConnectionRequest *PatchedUserSourceConnectionRequest
-}
-
-func (r ApiSourcesUserConnectionsAllPartialUpdateRequest) PatchedUserSourceConnectionRequest(patchedUserSourceConnectionRequest PatchedUserSourceConnectionRequest) ApiSourcesUserConnectionsAllPartialUpdateRequest {
-	r.patchedUserSourceConnectionRequest = &patchedUserSourceConnectionRequest
-	return r
+	ctx        _context.Context
+	ApiService *SourcesApiService
+	id         int32
 }
 
 func (r ApiSourcesUserConnectionsAllPartialUpdateRequest) Execute() (UserSourceConnection, *_nethttp.Response, error) {
@@ -5687,7 +5681,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiS
 	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -5703,8 +5697,6 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiS
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.patchedUserSourceConnectionRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -5876,15 +5868,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllRetrieveExecute(r ApiSource
 }
 
 type ApiSourcesUserConnectionsAllUpdateRequest struct {
-	ctx                         _context.Context
-	ApiService                  *SourcesApiService
-	id                          int32
-	userSourceConnectionRequest *UserSourceConnectionRequest
-}
-
-func (r ApiSourcesUserConnectionsAllUpdateRequest) UserSourceConnectionRequest(userSourceConnectionRequest UserSourceConnectionRequest) ApiSourcesUserConnectionsAllUpdateRequest {
-	r.userSourceConnectionRequest = &userSourceConnectionRequest
-	return r
+	ctx        _context.Context
+	ApiService *SourcesApiService
+	id         int32
 }
 
 func (r ApiSourcesUserConnectionsAllUpdateRequest) Execute() (UserSourceConnection, *_nethttp.Response, error) {
@@ -5931,12 +5917,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesU
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.userSourceConnectionRequest == nil {
-		return localVarReturnValue, nil, reportError("userSourceConnectionRequest is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -5952,8 +5935,6 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesU
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.userSourceConnectionRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

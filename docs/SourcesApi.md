@@ -2973,7 +2973,7 @@ Name | Type | Description  | Notes
 
 ## SourcesUserConnectionsAllPartialUpdate
 
-> UserSourceConnection SourcesUserConnectionsAllPartialUpdate(ctx, id).PatchedUserSourceConnectionRequest(patchedUserSourceConnectionRequest).Execute()
+> UserSourceConnection SourcesUserConnectionsAllPartialUpdate(ctx, id).Execute()
 
 
 
@@ -2993,11 +2993,10 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this user source connection.
-    patchedUserSourceConnectionRequest := *openapiclient.NewPatchedUserSourceConnectionRequest() // PatchedUserSourceConnectionRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllPartialUpdate(context.Background(), id).PatchedUserSourceConnectionRequest(patchedUserSourceConnectionRequest).Execute()
+    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllPartialUpdate(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3023,7 +3022,6 @@ Other parameters are passed through a pointer to a apiSourcesUserConnectionsAllP
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **patchedUserSourceConnectionRequest** | [**PatchedUserSourceConnectionRequest**](PatchedUserSourceConnectionRequest.md) |  | 
 
 ### Return type
 
@@ -3035,7 +3033,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -3115,7 +3113,7 @@ Name | Type | Description  | Notes
 
 ## SourcesUserConnectionsAllUpdate
 
-> UserSourceConnection SourcesUserConnectionsAllUpdate(ctx, id).UserSourceConnectionRequest(userSourceConnectionRequest).Execute()
+> UserSourceConnection SourcesUserConnectionsAllUpdate(ctx, id).Execute()
 
 
 
@@ -3135,11 +3133,10 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this user source connection.
-    userSourceConnectionRequest := *openapiclient.NewUserSourceConnectionRequest(int32(123)) // UserSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllUpdate(context.Background(), id).UserSourceConnectionRequest(userSourceConnectionRequest).Execute()
+    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllUpdate(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3165,7 +3162,6 @@ Other parameters are passed through a pointer to a apiSourcesUserConnectionsAllU
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **userSourceConnectionRequest** | [**UserSourceConnectionRequest**](UserSourceConnectionRequest.md) |  | 
 
 ### Return type
 
@@ -3177,7 +3173,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -3561,7 +3557,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
-    userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserOAuthSourceConnectionRequest | 
+    userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest("Source_example", "Identifier_example") // UserOAuthSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3987,7 +3983,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
-    plexSourceConnectionRequest := *openapiclient.NewPlexSourceConnectionRequest(int32(123), "Source_example", "Identifier_example", "PlexToken_example") // PlexSourceConnectionRequest | 
+    plexSourceConnectionRequest := *openapiclient.NewPlexSourceConnectionRequest("Source_example", "Identifier_example", "PlexToken_example") // PlexSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

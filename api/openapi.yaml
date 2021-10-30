@@ -15110,11 +15110,6 @@ paths:
         schema:
           type: integer
         style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedUserSourceConnectionRequest'
       responses:
         "200":
           content:
@@ -15141,12 +15136,6 @@ paths:
         schema:
           type: integer
         style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserSourceConnectionRequest'
-        required: true
       responses:
         "200":
           content:
@@ -32449,10 +32438,12 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - pk: 0
+        - created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
           source: ""
           user: 6
-        - pk: 0
+        - created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
           source: ""
           user: 6
       properties:
@@ -34449,10 +34440,7 @@ components:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plex_token: plex_token
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -35192,10 +35180,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -35248,14 +35233,6 @@ components:
         attributes:
           additionalProperties: {}
           type: object
-      type: object
-    PatchedUserSourceConnectionRequest:
-      description: OAuth Source Serializer
-      example:
-        user: 0
-      properties:
-        user:
-          type: integer
       type: object
     PatchedUserWriteStageRequest:
       description: UserWriteStage Serializer
@@ -35441,6 +35418,7 @@ components:
           title: ID
           type: integer
         user:
+          readOnly: true
           type: integer
         source:
           format: uuid
@@ -35462,10 +35440,7 @@ components:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plex_token: plex_token
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -35477,7 +35452,6 @@ components:
       - identifier
       - plex_token
       - source
-      - user
       type: object
     PlexSourceRequest:
       description: Plex Source Serializer
@@ -39043,6 +39017,7 @@ components:
           title: ID
           type: integer
         user:
+          readOnly: true
           type: integer
         source:
           format: uuid
@@ -39061,10 +39036,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -39074,7 +39046,6 @@ components:
       required:
       - identifier
       - source
-      - user
       type: object
     UserReputation:
       description: UserReputation Serializer
@@ -39322,6 +39293,7 @@ components:
     UserSourceConnection:
       description: OAuth Source Serializer
       example:
+        created: 2000-01-23T04:56:07.000+00:00
         pk: 0
         source: ""
         user: 6
@@ -39331,24 +39303,20 @@ components:
           title: ID
           type: integer
         user:
+          readOnly: true
           type: integer
         source:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
+        created:
+          format: date-time
+          readOnly: true
+          type: string
       required:
+      - created
       - pk
       - source
-      - user
-      type: object
-    UserSourceConnectionRequest:
-      description: OAuth Source Serializer
-      example:
-        user: 0
-      properties:
-        user:
-          type: integer
-      required:
       - user
       type: object
     UserWriteStage:
