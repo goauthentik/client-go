@@ -42,6 +42,12 @@ Method | HTTP request | Description
 [**SourcesSamlRetrieve**](SourcesApi.md#SourcesSamlRetrieve) | **Get** /sources/saml/{slug}/ | 
 [**SourcesSamlUpdate**](SourcesApi.md#SourcesSamlUpdate) | **Put** /sources/saml/{slug}/ | 
 [**SourcesSamlUsedByList**](SourcesApi.md#SourcesSamlUsedByList) | **Get** /sources/saml/{slug}/used_by/ | 
+[**SourcesUserConnectionsAllDestroy**](SourcesApi.md#SourcesUserConnectionsAllDestroy) | **Delete** /sources/user_connections/all/{id}/ | 
+[**SourcesUserConnectionsAllList**](SourcesApi.md#SourcesUserConnectionsAllList) | **Get** /sources/user_connections/all/ | 
+[**SourcesUserConnectionsAllPartialUpdate**](SourcesApi.md#SourcesUserConnectionsAllPartialUpdate) | **Patch** /sources/user_connections/all/{id}/ | 
+[**SourcesUserConnectionsAllRetrieve**](SourcesApi.md#SourcesUserConnectionsAllRetrieve) | **Get** /sources/user_connections/all/{id}/ | 
+[**SourcesUserConnectionsAllUpdate**](SourcesApi.md#SourcesUserConnectionsAllUpdate) | **Put** /sources/user_connections/all/{id}/ | 
+[**SourcesUserConnectionsAllUsedByList**](SourcesApi.md#SourcesUserConnectionsAllUsedByList) | **Get** /sources/user_connections/all/{id}/used_by/ | 
 [**SourcesUserConnectionsOauthDestroy**](SourcesApi.md#SourcesUserConnectionsOauthDestroy) | **Delete** /sources/user_connections/oauth/{id}/ | 
 [**SourcesUserConnectionsOauthList**](SourcesApi.md#SourcesUserConnectionsOauthList) | **Get** /sources/user_connections/oauth/ | 
 [**SourcesUserConnectionsOauthPartialUpdate**](SourcesApi.md#SourcesUserConnectionsOauthPartialUpdate) | **Patch** /sources/user_connections/oauth/{id}/ | 
@@ -2801,6 +2807,430 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSourcesSamlUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsAllDestroy
+
+> SourcesUserConnectionsAllDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this user source connection.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this user source connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsAllDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsAllList
+
+> PaginatedUserSourceConnectionList SourcesUserConnectionsAllList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsAllList`: PaginatedUserSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsAllList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsAllListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedUserSourceConnectionList**](PaginatedUserSourceConnectionList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsAllPartialUpdate
+
+> UserSourceConnection SourcesUserConnectionsAllPartialUpdate(ctx, id).PatchedUserSourceConnectionRequest(patchedUserSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this user source connection.
+    patchedUserSourceConnectionRequest := *openapiclient.NewPatchedUserSourceConnectionRequest() // PatchedUserSourceConnectionRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllPartialUpdate(context.Background(), id).PatchedUserSourceConnectionRequest(patchedUserSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsAllPartialUpdate`: UserSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsAllPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this user source connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsAllPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedUserSourceConnectionRequest** | [**PatchedUserSourceConnectionRequest**](PatchedUserSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserSourceConnection**](UserSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsAllRetrieve
+
+> UserSourceConnection SourcesUserConnectionsAllRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this user source connection.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsAllRetrieve`: UserSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsAllRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this user source connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsAllRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**UserSourceConnection**](UserSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsAllUpdate
+
+> UserSourceConnection SourcesUserConnectionsAllUpdate(ctx, id).UserSourceConnectionRequest(userSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this user source connection.
+    userSourceConnectionRequest := *openapiclient.NewUserSourceConnectionRequest(int32(123)) // UserSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllUpdate(context.Background(), id).UserSourceConnectionRequest(userSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsAllUpdate`: UserSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsAllUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this user source connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsAllUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **userSourceConnectionRequest** | [**UserSourceConnectionRequest**](UserSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserSourceConnection**](UserSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsAllUsedByList
+
+> []UsedBy SourcesUserConnectionsAllUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this user source connection.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsAllUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsAllUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this user source connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsAllUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -434,6 +434,12 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesSamlRetrieve**](docs/SourcesApi.md#sourcessamlretrieve) | **Get** /sources/saml/{slug}/ | 
 *SourcesApi* | [**SourcesSamlUpdate**](docs/SourcesApi.md#sourcessamlupdate) | **Put** /sources/saml/{slug}/ | 
 *SourcesApi* | [**SourcesSamlUsedByList**](docs/SourcesApi.md#sourcessamlusedbylist) | **Get** /sources/saml/{slug}/used_by/ | 
+*SourcesApi* | [**SourcesUserConnectionsAllDestroy**](docs/SourcesApi.md#sourcesuserconnectionsalldestroy) | **Delete** /sources/user_connections/all/{id}/ | 
+*SourcesApi* | [**SourcesUserConnectionsAllList**](docs/SourcesApi.md#sourcesuserconnectionsalllist) | **Get** /sources/user_connections/all/ | 
+*SourcesApi* | [**SourcesUserConnectionsAllPartialUpdate**](docs/SourcesApi.md#sourcesuserconnectionsallpartialupdate) | **Patch** /sources/user_connections/all/{id}/ | 
+*SourcesApi* | [**SourcesUserConnectionsAllRetrieve**](docs/SourcesApi.md#sourcesuserconnectionsallretrieve) | **Get** /sources/user_connections/all/{id}/ | 
+*SourcesApi* | [**SourcesUserConnectionsAllUpdate**](docs/SourcesApi.md#sourcesuserconnectionsallupdate) | **Put** /sources/user_connections/all/{id}/ | 
+*SourcesApi* | [**SourcesUserConnectionsAllUsedByList**](docs/SourcesApi.md#sourcesuserconnectionsallusedbylist) | **Get** /sources/user_connections/all/{id}/used_by/ | 
 *SourcesApi* | [**SourcesUserConnectionsOauthDestroy**](docs/SourcesApi.md#sourcesuserconnectionsoauthdestroy) | **Delete** /sources/user_connections/oauth/{id}/ | 
 *SourcesApi* | [**SourcesUserConnectionsOauthList**](docs/SourcesApi.md#sourcesuserconnectionsoauthlist) | **Get** /sources/user_connections/oauth/ | 
 *SourcesApi* | [**SourcesUserConnectionsOauthPartialUpdate**](docs/SourcesApi.md#sourcesuserconnectionsoauthpartialupdate) | **Patch** /sources/user_connections/oauth/{id}/ | 
@@ -842,6 +848,7 @@ Class | Method | HTTP request | Description
  - [PaginatedUserLogoutStageList](docs/PaginatedUserLogoutStageList.md)
  - [PaginatedUserOAuthSourceConnectionList](docs/PaginatedUserOAuthSourceConnectionList.md)
  - [PaginatedUserReputationList](docs/PaginatedUserReputationList.md)
+ - [PaginatedUserSourceConnectionList](docs/PaginatedUserSourceConnectionList.md)
  - [PaginatedUserWriteStageList](docs/PaginatedUserWriteStageList.md)
  - [PaginatedWebAuthnDeviceList](docs/PaginatedWebAuthnDeviceList.md)
  - [PasswordChallenge](docs/PasswordChallenge.md)
@@ -913,6 +920,7 @@ Class | Method | HTTP request | Description
  - [PatchedUserLogoutStageRequest](docs/PatchedUserLogoutStageRequest.md)
  - [PatchedUserOAuthSourceConnectionRequest](docs/PatchedUserOAuthSourceConnectionRequest.md)
  - [PatchedUserRequest](docs/PatchedUserRequest.md)
+ - [PatchedUserSourceConnectionRequest](docs/PatchedUserSourceConnectionRequest.md)
  - [PatchedUserWriteStageRequest](docs/PatchedUserWriteStageRequest.md)
  - [PatchedWebAuthnDeviceRequest](docs/PatchedWebAuthnDeviceRequest.md)
  - [Permission](docs/Permission.md)
@@ -970,6 +978,7 @@ Class | Method | HTTP request | Description
  - [ShellChallenge](docs/ShellChallenge.md)
  - [SignatureAlgorithmEnum](docs/SignatureAlgorithmEnum.md)
  - [Source](docs/Source.md)
+ - [SourceRequest](docs/SourceRequest.md)
  - [SourceType](docs/SourceType.md)
  - [SpBindingEnum](docs/SpBindingEnum.md)
  - [Stage](docs/Stage.md)
@@ -1015,6 +1024,8 @@ Class | Method | HTTP request | Description
  - [UserServiceAccountRequest](docs/UserServiceAccountRequest.md)
  - [UserServiceAccountResponse](docs/UserServiceAccountResponse.md)
  - [UserSetting](docs/UserSetting.md)
+ - [UserSourceConnection](docs/UserSourceConnection.md)
+ - [UserSourceConnectionRequest](docs/UserSourceConnectionRequest.md)
  - [UserWriteStage](docs/UserWriteStage.md)
  - [UserWriteStageRequest](docs/UserWriteStageRequest.md)
  - [ValidationError](docs/ValidationError.md)
