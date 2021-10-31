@@ -11510,6 +11510,7 @@ type ApiStagesIdentificationListRequest struct {
 	recoveryFlow            *string
 	search                  *string
 	showMatchedUser         *bool
+	showSourceLabels        *bool
 }
 
 func (r ApiStagesIdentificationListRequest) CaseInsensitiveMatching(caseInsensitiveMatching bool) ApiStagesIdentificationListRequest {
@@ -11558,6 +11559,10 @@ func (r ApiStagesIdentificationListRequest) Search(search string) ApiStagesIdent
 }
 func (r ApiStagesIdentificationListRequest) ShowMatchedUser(showMatchedUser bool) ApiStagesIdentificationListRequest {
 	r.showMatchedUser = &showMatchedUser
+	return r
+}
+func (r ApiStagesIdentificationListRequest) ShowSourceLabels(showSourceLabels bool) ApiStagesIdentificationListRequest {
+	r.showSourceLabels = &showSourceLabels
 	return r
 }
 
@@ -11632,6 +11637,9 @@ func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentifica
 	}
 	if r.showMatchedUser != nil {
 		localVarQueryParams.Add("show_matched_user", parameterToString(*r.showMatchedUser, ""))
+	}
+	if r.showSourceLabels != nil {
+		localVarQueryParams.Add("show_source_labels", parameterToString(*r.showSourceLabels, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

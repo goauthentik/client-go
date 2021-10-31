@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **EnrollmentFlow** | Pointer to **NullableString** | Optional enrollment flow, which is linked at the bottom of the page. | [optional] 
 **RecoveryFlow** | Pointer to **NullableString** | Optional recovery flow, which is linked at the bottom of the page. | [optional] 
 **Sources** | Pointer to **[]string** | Specify which sources should be shown. | [optional] 
+**ShowSourceLabels** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -282,6 +283,31 @@ SetSources sets Sources field to given value.
 `func (o *IdentificationStageRequest) HasSources() bool`
 
 HasSources returns a boolean if a field has been set.
+
+### GetShowSourceLabels
+
+`func (o *IdentificationStageRequest) GetShowSourceLabels() bool`
+
+GetShowSourceLabels returns the ShowSourceLabels field if non-nil, zero value otherwise.
+
+### GetShowSourceLabelsOk
+
+`func (o *IdentificationStageRequest) GetShowSourceLabelsOk() (*bool, bool)`
+
+GetShowSourceLabelsOk returns a tuple with the ShowSourceLabels field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShowSourceLabels
+
+`func (o *IdentificationStageRequest) SetShowSourceLabels(v bool)`
+
+SetShowSourceLabels sets ShowSourceLabels field to given value.
+
+### HasShowSourceLabels
+
+`func (o *IdentificationStageRequest) HasShowSourceLabels() bool`
+
+HasShowSourceLabels returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

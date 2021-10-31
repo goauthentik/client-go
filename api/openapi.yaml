@@ -18744,6 +18744,13 @@ paths:
         schema:
           type: boolean
         style: form
+      - explode: true
+        in: query
+        name: show_source_labels
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -24935,9 +24942,12 @@ components:
           items:
             $ref: '#/components/schemas/LoginSource'
           type: array
+        show_source_labels:
+          type: boolean
       required:
       - password_fields
       - primary_action
+      - show_source_labels
       - type
       - user_fields
       type: object
@@ -24958,6 +24968,7 @@ components:
     IdentificationStage:
       description: IdentificationStage Serializer
       example:
+        show_source_labels: true
         verbose_name_plural: verbose_name_plural
         sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -25066,6 +25077,8 @@ components:
             format: uuid
             type: string
           type: array
+        show_source_labels:
+          type: boolean
       required:
       - component
       - name
@@ -25077,6 +25090,7 @@ components:
       description: IdentificationStage Serializer
       example:
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        show_source_labels: true
         user_fields:
         - null
         - null
@@ -25144,6 +25158,8 @@ components:
             format: uuid
             type: string
           type: array
+        show_source_labels:
+          type: boolean
       required:
       - name
       type: object
@@ -28966,7 +28982,8 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - verbose_name_plural: verbose_name_plural
+        - show_source_labels: true
+          verbose_name_plural: verbose_name_plural
           sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -29015,7 +29032,8 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           case_insensitive_matching: true
-        - verbose_name_plural: verbose_name_plural
+        - show_source_labels: true
+          verbose_name_plural: verbose_name_plural
           sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -33716,6 +33734,7 @@ components:
       description: IdentificationStage Serializer
       example:
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        show_source_labels: true
         user_fields:
         - null
         - null
@@ -33783,6 +33802,8 @@ components:
             format: uuid
             type: string
           type: array
+        show_source_labels:
+          type: boolean
       type: object
     PatchedInvitationRequest:
       description: Invitation Serializer

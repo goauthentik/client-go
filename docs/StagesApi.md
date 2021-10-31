@@ -6396,7 +6396,7 @@ Name | Type | Description  | Notes
 
 ## StagesIdentificationList
 
-> PaginatedIdentificationStageList StagesIdentificationList(ctx).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).Execute()
+> PaginatedIdentificationStageList StagesIdentificationList(ctx).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).Execute()
 
 
 
@@ -6425,10 +6425,11 @@ func main() {
     recoveryFlow := TODO // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     showMatchedUser := true // bool |  (optional)
+    showSourceLabels := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.StagesApi.StagesIdentificationList(context.Background()).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).Execute()
+    resp, r, err := api_client.StagesApi.StagesIdentificationList(context.Background()).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesIdentificationList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6459,6 +6460,7 @@ Name | Type | Description  | Notes
  **recoveryFlow** | [**string**](string.md) |  | 
  **search** | **string** | A search term. | 
  **showMatchedUser** | **bool** |  | 
+ **showSourceLabels** | **bool** |  | 
 
 ### Return type
 

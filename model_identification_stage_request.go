@@ -32,7 +32,8 @@ type IdentificationStageRequest struct {
 	// Optional recovery flow, which is linked at the bottom of the page.
 	RecoveryFlow NullableString `json:"recovery_flow,omitempty"`
 	// Specify which sources should be shown.
-	Sources *[]string `json:"sources,omitempty"`
+	Sources          *[]string `json:"sources,omitempty"`
+	ShowSourceLabels *bool     `json:"show_source_labels,omitempty"`
 }
 
 // NewIdentificationStageRequest instantiates a new IdentificationStageRequest object
@@ -366,6 +367,38 @@ func (o *IdentificationStageRequest) SetSources(v []string) {
 	o.Sources = &v
 }
 
+// GetShowSourceLabels returns the ShowSourceLabels field value if set, zero value otherwise.
+func (o *IdentificationStageRequest) GetShowSourceLabels() bool {
+	if o == nil || o.ShowSourceLabels == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ShowSourceLabels
+}
+
+// GetShowSourceLabelsOk returns a tuple with the ShowSourceLabels field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentificationStageRequest) GetShowSourceLabelsOk() (*bool, bool) {
+	if o == nil || o.ShowSourceLabels == nil {
+		return nil, false
+	}
+	return o.ShowSourceLabels, true
+}
+
+// HasShowSourceLabels returns a boolean if a field has been set.
+func (o *IdentificationStageRequest) HasShowSourceLabels() bool {
+	if o != nil && o.ShowSourceLabels != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetShowSourceLabels gets a reference to the given bool and assigns it to the ShowSourceLabels field.
+func (o *IdentificationStageRequest) SetShowSourceLabels(v bool) {
+	o.ShowSourceLabels = &v
+}
+
 func (o IdentificationStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -394,6 +427,9 @@ func (o IdentificationStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Sources != nil {
 		toSerialize["sources"] = o.Sources
+	}
+	if o.ShowSourceLabels != nil {
+		toSerialize["show_source_labels"] = o.ShowSourceLabels
 	}
 	return json.Marshal(toSerialize)
 }

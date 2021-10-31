@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **RecoveryUrl** | Pointer to **string** |  | [optional] 
 **PrimaryAction** | **string** |  | 
 **Sources** | Pointer to [**[]LoginSource**](LoginSource.md) |  | [optional] 
+**ShowSourceLabels** | **bool** |  | 
 **ClientId** | **string** |  | 
 **Slug** | **string** |  | 
 **Fields** | [**[]StagePrompt**](StagePrompt.md) |  | 
@@ -41,7 +42,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, headerText string, permissions []Permission, userFields []string, passwordFields bool, primaryAction string, clientId string, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
+`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, headerText string, permissions []Permission, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, clientId string, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -650,6 +651,26 @@ SetSources sets Sources field to given value.
 `func (o *ChallengeTypes) HasSources() bool`
 
 HasSources returns a boolean if a field has been set.
+
+### GetShowSourceLabels
+
+`func (o *ChallengeTypes) GetShowSourceLabels() bool`
+
+GetShowSourceLabels returns the ShowSourceLabels field if non-nil, zero value otherwise.
+
+### GetShowSourceLabelsOk
+
+`func (o *ChallengeTypes) GetShowSourceLabelsOk() (*bool, bool)`
+
+GetShowSourceLabelsOk returns a tuple with the ShowSourceLabels field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShowSourceLabels
+
+`func (o *ChallengeTypes) SetShowSourceLabels(v bool)`
+
+SetShowSourceLabels sets ShowSourceLabels field to given value.
+
 
 ### GetClientId
 

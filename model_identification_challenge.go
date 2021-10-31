@@ -17,24 +17,25 @@ import (
 
 // IdentificationChallenge Identification challenges with all UI elements
 type IdentificationChallenge struct {
-	Type           ChallengeChoices          `json:"type"`
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	UserFields     []string                  `json:"user_fields"`
-	PasswordFields bool                      `json:"password_fields"`
-	ApplicationPre *string                   `json:"application_pre,omitempty"`
-	EnrollUrl      *string                   `json:"enroll_url,omitempty"`
-	RecoveryUrl    *string                   `json:"recovery_url,omitempty"`
-	PrimaryAction  string                    `json:"primary_action"`
-	Sources        *[]LoginSource            `json:"sources,omitempty"`
+	Type             ChallengeChoices          `json:"type"`
+	FlowInfo         *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component        *string                   `json:"component,omitempty"`
+	ResponseErrors   *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	UserFields       []string                  `json:"user_fields"`
+	PasswordFields   bool                      `json:"password_fields"`
+	ApplicationPre   *string                   `json:"application_pre,omitempty"`
+	EnrollUrl        *string                   `json:"enroll_url,omitempty"`
+	RecoveryUrl      *string                   `json:"recovery_url,omitempty"`
+	PrimaryAction    string                    `json:"primary_action"`
+	Sources          *[]LoginSource            `json:"sources,omitempty"`
+	ShowSourceLabels bool                      `json:"show_source_labels"`
 }
 
 // NewIdentificationChallenge instantiates a new IdentificationChallenge object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentificationChallenge(type_ ChallengeChoices, userFields []string, passwordFields bool, primaryAction string) *IdentificationChallenge {
+func NewIdentificationChallenge(type_ ChallengeChoices, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool) *IdentificationChallenge {
 	this := IdentificationChallenge{}
 	this.Type = type_
 	var component string = "ak-stage-identification"
@@ -42,6 +43,7 @@ func NewIdentificationChallenge(type_ ChallengeChoices, userFields []string, pas
 	this.UserFields = userFields
 	this.PasswordFields = passwordFields
 	this.PrimaryAction = primaryAction
+	this.ShowSourceLabels = showSourceLabels
 	return &this
 }
 
@@ -377,6 +379,30 @@ func (o *IdentificationChallenge) SetSources(v []LoginSource) {
 	o.Sources = &v
 }
 
+// GetShowSourceLabels returns the ShowSourceLabels field value
+func (o *IdentificationChallenge) GetShowSourceLabels() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.ShowSourceLabels
+}
+
+// GetShowSourceLabelsOk returns a tuple with the ShowSourceLabels field value
+// and a boolean to check if the value has been set.
+func (o *IdentificationChallenge) GetShowSourceLabelsOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ShowSourceLabels, true
+}
+
+// SetShowSourceLabels sets field value
+func (o *IdentificationChallenge) SetShowSourceLabels(v bool) {
+	o.ShowSourceLabels = v
+}
+
 func (o IdentificationChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -411,6 +437,9 @@ func (o IdentificationChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if o.Sources != nil {
 		toSerialize["sources"] = o.Sources
+	}
+	if true {
+		toSerialize["show_source_labels"] = o.ShowSourceLabels
 	}
 	return json.Marshal(toSerialize)
 }
