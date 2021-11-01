@@ -37852,7 +37852,7 @@ components:
         label:
           type: string
         type:
-          type: string
+          $ref: '#/components/schemas/PromptTypeEnum'
         required:
           type: boolean
         placeholder:

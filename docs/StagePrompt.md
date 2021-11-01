@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FieldKey** | **string** |  | 
 **Label** | **string** |  | 
-**Type** | **string** |  | 
+**Type** | [**PromptTypeEnum**](PromptTypeEnum.md) |  | 
 **Required** | **bool** |  | 
 **Placeholder** | **string** |  | 
 **Order** | **int32** |  | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewStagePrompt
 
-`func NewStagePrompt(fieldKey string, label string, type_ string, required bool, placeholder string, order int32, subText string, ) *StagePrompt`
+`func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, order int32, subText string, ) *StagePrompt`
 
 NewStagePrompt instantiates a new StagePrompt object
 This constructor will assign default values to properties that have it defined,
@@ -73,20 +73,20 @@ SetLabel sets Label field to given value.
 
 ### GetType
 
-`func (o *StagePrompt) GetType() string`
+`func (o *StagePrompt) GetType() PromptTypeEnum`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *StagePrompt) GetTypeOk() (*string, bool)`
+`func (o *StagePrompt) GetTypeOk() (*PromptTypeEnum, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *StagePrompt) SetType(v string)`
+`func (o *StagePrompt) SetType(v PromptTypeEnum)`
 
 SetType sets Type field to given value.
 

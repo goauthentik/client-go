@@ -17,20 +17,20 @@ import (
 
 // StagePrompt Serializer for a single Prompt field
 type StagePrompt struct {
-	FieldKey    string `json:"field_key"`
-	Label       string `json:"label"`
-	Type        string `json:"type"`
-	Required    bool   `json:"required"`
-	Placeholder string `json:"placeholder"`
-	Order       int32  `json:"order"`
-	SubText     string `json:"sub_text"`
+	FieldKey    string         `json:"field_key"`
+	Label       string         `json:"label"`
+	Type        PromptTypeEnum `json:"type"`
+	Required    bool           `json:"required"`
+	Placeholder string         `json:"placeholder"`
+	Order       int32          `json:"order"`
+	SubText     string         `json:"sub_text"`
 }
 
 // NewStagePrompt instantiates a new StagePrompt object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStagePrompt(fieldKey string, label string, type_ string, required bool, placeholder string, order int32, subText string) *StagePrompt {
+func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, order int32, subText string) *StagePrompt {
 	this := StagePrompt{}
 	this.FieldKey = fieldKey
 	this.Label = label
@@ -99,9 +99,9 @@ func (o *StagePrompt) SetLabel(v string) {
 }
 
 // GetType returns the Type field value
-func (o *StagePrompt) GetType() string {
+func (o *StagePrompt) GetType() PromptTypeEnum {
 	if o == nil {
-		var ret string
+		var ret PromptTypeEnum
 		return ret
 	}
 
@@ -110,7 +110,7 @@ func (o *StagePrompt) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *StagePrompt) GetTypeOk() (*string, bool) {
+func (o *StagePrompt) GetTypeOk() (*PromptTypeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -118,7 +118,7 @@ func (o *StagePrompt) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *StagePrompt) SetType(v string) {
+func (o *StagePrompt) SetType(v PromptTypeEnum) {
 	o.Type = v
 }
 
