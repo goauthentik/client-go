@@ -13282,21 +13282,6 @@ paths:
       - {}
       tags:
       - schema
-  /sentry/:
-    post:
-      description: Sentry tunnel, to prevent ad blockers from blocking sentry
-      operationId: sentry_create
-      responses:
-        "200":
-          description: No response body
-        "400":
-          $ref: '#/components/schemas/ValidationError'
-        "403":
-          $ref: '#/components/schemas/GenericError'
-      security:
-      - {}
-      tags:
-      - sentry
   /sources/all/:
     get:
       description: Source Viewset
@@ -14553,6 +14538,35 @@ paths:
       security:
       - authentik: []
       - {}
+      tags:
+      - sources
+  /sources/plex/redeem_token_authenticated/:
+    post:
+      description: Redeem a plex token for an authenticated user, creating a connection
+      operationId: sources_plex_redeem_token_authenticated_create
+      parameters:
+      - explode: true
+        in: query
+        name: slug
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlexTokenRedeemRequest'
+        required: true
+      responses:
+        "204":
+          description: No response body
+        "400":
+          description: Token not found
+        "403":
+          description: Access denied
+      security:
+      - authentik: []
       tags:
       - sources
   /sources/saml/:

@@ -15,7 +15,6 @@ api_propertymappings.go
 api_providers.go
 api_root.go
 api_schema.go
-api_sentry.go
 api_sources.go
 api_stages.go
 client.go
@@ -390,7 +389,6 @@ docs/SMSDeviceRequest.md
 docs/SchemaApi.md
 docs/ScopeMapping.md
 docs/ScopeMappingRequest.md
-docs/SentryApi.md
 docs/ServiceConnection.md
 docs/ServiceConnectionRequest.md
 docs/ServiceConnectionState.md

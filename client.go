@@ -76,8 +76,6 @@ type APIClient struct {
 
 	SchemaApi *SchemaApiService
 
-	SentryApi *SentryApiService
-
 	SourcesApi *SourcesApiService
 
 	StagesApi *StagesApiService
@@ -112,7 +110,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProvidersApi = (*ProvidersApiService)(&c.common)
 	c.RootApi = (*RootApiService)(&c.common)
 	c.SchemaApi = (*SchemaApiService)(&c.common)
-	c.SentryApi = (*SentryApiService)(&c.common)
 	c.SourcesApi = (*SourcesApiService)(&c.common)
 	c.StagesApi = (*StagesApiService)(&c.common)
 

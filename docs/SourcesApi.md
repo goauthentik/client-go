@@ -30,6 +30,7 @@ Method | HTTP request | Description
 [**SourcesPlexDestroy**](SourcesApi.md#SourcesPlexDestroy) | **Delete** /sources/plex/{slug}/ | 
 [**SourcesPlexList**](SourcesApi.md#SourcesPlexList) | **Get** /sources/plex/ | 
 [**SourcesPlexPartialUpdate**](SourcesApi.md#SourcesPlexPartialUpdate) | **Patch** /sources/plex/{slug}/ | 
+[**SourcesPlexRedeemTokenAuthenticatedCreate**](SourcesApi.md#SourcesPlexRedeemTokenAuthenticatedCreate) | **Post** /sources/plex/redeem_token_authenticated/ | 
 [**SourcesPlexRedeemTokenCreate**](SourcesApi.md#SourcesPlexRedeemTokenCreate) | **Post** /sources/plex/redeem_token/ | 
 [**SourcesPlexRetrieve**](SourcesApi.md#SourcesPlexRetrieve) | **Get** /sources/plex/{slug}/ | 
 [**SourcesPlexUpdate**](SourcesApi.md#SourcesPlexUpdate) | **Put** /sources/plex/{slug}/ | 
@@ -1941,6 +1942,72 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesPlexRedeemTokenAuthenticatedCreate
+
+> SourcesPlexRedeemTokenAuthenticatedCreate(ctx).PlexTokenRedeemRequest(plexTokenRedeemRequest).Slug(slug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    plexTokenRedeemRequest := *openapiclient.NewPlexTokenRedeemRequest("PlexToken_example") // PlexTokenRedeemRequest | 
+    slug := "slug_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.SourcesApi.SourcesPlexRedeemTokenAuthenticatedCreate(context.Background()).PlexTokenRedeemRequest(plexTokenRedeemRequest).Slug(slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexRedeemTokenAuthenticatedCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesPlexRedeemTokenAuthenticatedCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **plexTokenRedeemRequest** | [**PlexTokenRedeemRequest**](PlexTokenRedeemRequest.md) |  | 
+ **slug** | **string** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

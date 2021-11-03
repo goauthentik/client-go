@@ -395,7 +395,6 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersSamlUsedByList**](docs/ProvidersApi.md#providerssamlusedbylist) | **Get** /providers/saml/{id}/used_by/ | 
 *RootApi* | [**RootConfigRetrieve**](docs/RootApi.md#rootconfigretrieve) | **Get** /root/config/ | 
 *SchemaApi* | [**SchemaRetrieve**](docs/SchemaApi.md#schemaretrieve) | **Get** /schema/ | 
-*SentryApi* | [**SentryCreate**](docs/SentryApi.md#sentrycreate) | **Post** /sentry/ | 
 *SourcesApi* | [**SourcesAllDestroy**](docs/SourcesApi.md#sourcesalldestroy) | **Delete** /sources/all/{slug}/ | 
 *SourcesApi* | [**SourcesAllList**](docs/SourcesApi.md#sourcesalllist) | **Get** /sources/all/ | 
 *SourcesApi* | [**SourcesAllRetrieve**](docs/SourcesApi.md#sourcesallretrieve) | **Get** /sources/all/{slug}/ | 
@@ -422,6 +421,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesPlexDestroy**](docs/SourcesApi.md#sourcesplexdestroy) | **Delete** /sources/plex/{slug}/ | 
 *SourcesApi* | [**SourcesPlexList**](docs/SourcesApi.md#sourcesplexlist) | **Get** /sources/plex/ | 
 *SourcesApi* | [**SourcesPlexPartialUpdate**](docs/SourcesApi.md#sourcesplexpartialupdate) | **Patch** /sources/plex/{slug}/ | 
+*SourcesApi* | [**SourcesPlexRedeemTokenAuthenticatedCreate**](docs/SourcesApi.md#sourcesplexredeemtokenauthenticatedcreate) | **Post** /sources/plex/redeem_token_authenticated/ | 
 *SourcesApi* | [**SourcesPlexRedeemTokenCreate**](docs/SourcesApi.md#sourcesplexredeemtokencreate) | **Post** /sources/plex/redeem_token/ | 
 *SourcesApi* | [**SourcesPlexRetrieve**](docs/SourcesApi.md#sourcesplexretrieve) | **Get** /sources/plex/{slug}/ | 
 *SourcesApi* | [**SourcesPlexUpdate**](docs/SourcesApi.md#sourcesplexupdate) | **Put** /sources/plex/{slug}/ | 
