@@ -7395,7 +7395,7 @@ Name | Type | Description  | Notes
 
 ## StagesInvitationStagesList
 
-> PaginatedInvitationStageList StagesInvitationStagesList(ctx).ContinueFlowWithoutInvitation(continueFlowWithoutInvitation).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+> PaginatedInvitationStageList StagesInvitationStagesList(ctx).ContinueFlowWithoutInvitation(continueFlowWithoutInvitation).Name(name).NoFlows(noFlows).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
 
 
 
@@ -7416,6 +7416,7 @@ import (
 func main() {
     continueFlowWithoutInvitation := true // bool |  (optional)
     name := "name_example" // string |  (optional)
+    noFlows := true // bool |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -7424,7 +7425,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.StagesApi.StagesInvitationStagesList(context.Background()).ContinueFlowWithoutInvitation(continueFlowWithoutInvitation).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+    resp, r, err := api_client.StagesApi.StagesInvitationStagesList(context.Background()).ContinueFlowWithoutInvitation(continueFlowWithoutInvitation).Name(name).NoFlows(noFlows).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationStagesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7447,6 +7448,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **continueFlowWithoutInvitation** | **bool** |  | 
  **name** | **string** |  | 
+ **noFlows** | **bool** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 

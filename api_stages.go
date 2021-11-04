@@ -13338,6 +13338,7 @@ type ApiStagesInvitationStagesListRequest struct {
 	ApiService                    *StagesApiService
 	continueFlowWithoutInvitation *bool
 	name                          *string
+	noFlows                       *bool
 	ordering                      *string
 	page                          *int32
 	pageSize                      *int32
@@ -13351,6 +13352,10 @@ func (r ApiStagesInvitationStagesListRequest) ContinueFlowWithoutInvitation(cont
 }
 func (r ApiStagesInvitationStagesListRequest) Name(name string) ApiStagesInvitationStagesListRequest {
 	r.name = &name
+	return r
+}
+func (r ApiStagesInvitationStagesListRequest) NoFlows(noFlows bool) ApiStagesInvitationStagesListRequest {
+	r.noFlows = &noFlows
 	return r
 }
 
@@ -13429,6 +13434,9 @@ func (a *StagesApiService) StagesInvitationStagesListExecute(r ApiStagesInvitati
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.noFlows != nil {
+		localVarQueryParams.Add("no_flows", parameterToString(*r.noFlows, ""))
 	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
