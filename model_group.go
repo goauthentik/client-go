@@ -22,6 +22,7 @@ type Group struct {
 	// Users added to this group will be superusers.
 	IsSuperuser *bool                   `json:"is_superuser,omitempty"`
 	Parent      NullableString          `json:"parent"`
+	ParentName  string                  `json:"parent_name"`
 	Users       []int32                 `json:"users"`
 	Attributes  *map[string]interface{} `json:"attributes,omitempty"`
 	UsersObj    []GroupMember           `json:"users_obj"`
@@ -31,11 +32,12 @@ type Group struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroup(pk string, name string, parent NullableString, users []int32, usersObj []GroupMember) *Group {
+func NewGroup(pk string, name string, parent NullableString, parentName string, users []int32, usersObj []GroupMember) *Group {
 	this := Group{}
 	this.Pk = pk
 	this.Name = name
 	this.Parent = parent
+	this.ParentName = parentName
 	this.Users = users
 	this.UsersObj = usersObj
 	return &this
@@ -155,6 +157,30 @@ func (o *Group) SetParent(v string) {
 	o.Parent.Set(&v)
 }
 
+// GetParentName returns the ParentName field value
+func (o *Group) GetParentName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ParentName
+}
+
+// GetParentNameOk returns a tuple with the ParentName field value
+// and a boolean to check if the value has been set.
+func (o *Group) GetParentNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ParentName, true
+}
+
+// SetParentName sets field value
+func (o *Group) SetParentName(v string) {
+	o.ParentName = v
+}
+
 // GetUsers returns the Users field value
 func (o *Group) GetUsers() []int32 {
 	if o == nil {
@@ -248,6 +274,9 @@ func (o Group) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["parent"] = o.Parent.Get()
+	}
+	if true {
+		toSerialize["parent_name"] = o.ParentName
 	}
 	if true {
 		toSerialize["users"] = o.Users

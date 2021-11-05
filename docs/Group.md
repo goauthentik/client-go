@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **IsSuperuser** | Pointer to **bool** | Users added to this group will be superusers. | [optional] 
 **Parent** | **NullableString** |  | 
+**ParentName** | **string** |  | [readonly] 
 **Users** | **[]int32** |  | 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 **UsersObj** | [**[]GroupMember**](GroupMember.md) |  | [readonly] 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewGroup
 
-`func NewGroup(pk string, name string, parent NullableString, users []int32, usersObj []GroupMember, ) *Group`
+`func NewGroup(pk string, name string, parent NullableString, parentName string, users []int32, usersObj []GroupMember, ) *Group`
 
 NewGroup instantiates a new Group object
 This constructor will assign default values to properties that have it defined,
@@ -126,6 +127,26 @@ SetParent sets Parent field to given value.
 `func (o *Group) UnsetParent()`
 
 UnsetParent ensures that no value is present for Parent, not even an explicit nil
+### GetParentName
+
+`func (o *Group) GetParentName() string`
+
+GetParentName returns the ParentName field if non-nil, zero value otherwise.
+
+### GetParentNameOk
+
+`func (o *Group) GetParentNameOk() (*string, bool)`
+
+GetParentNameOk returns a tuple with the ParentName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentName
+
+`func (o *Group) SetParentName(v string)`
+
+SetParentName sets ParentName field to given value.
+
+
 ### GetUsers
 
 `func (o *Group) GetUsers() []int32`

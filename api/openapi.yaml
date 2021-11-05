@@ -24093,7 +24093,8 @@ components:
           pk: 6
           avatar: avatar
           groups_obj:
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - parent_name: parent_name
+            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             is_superuser: true
             name: name
             attributes:
@@ -24123,7 +24124,8 @@ components:
             users:
             - 0
             - 0
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - parent_name: parent_name
+            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             is_superuser: true
             name: name
             attributes:
@@ -24636,6 +24638,7 @@ components:
     Group:
       description: Group Serializer
       example:
+        parent_name: parent_name
         parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         is_superuser: true
         name: name
@@ -24682,6 +24685,9 @@ components:
           format: uuid
           nullable: true
           type: string
+        parent_name:
+          readOnly: true
+          type: string
         users:
           items:
             type: integer
@@ -24697,6 +24703,7 @@ components:
       required:
       - name
       - parent
+      - parent_name
       - pk
       - users
       - users_obj
@@ -25574,6 +25581,9 @@ components:
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tls_server_name: tls_server_name
         assigned_application_slug: assigned_application_slug
+        outpost_set:
+        - outpost_set
+        - outpost_set
         component: component
         verbose_name: verbose_name
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -25648,12 +25658,18 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
+        outpost_set:
+          items:
+            type: string
+          readOnly: true
+          type: array
       required:
       - assigned_application_name
       - assigned_application_slug
       - authorization_flow
       - component
       - name
+      - outpost_set
       - pk
       - verbose_name
       - verbose_name_plural
@@ -28530,7 +28546,8 @@ components:
             pk: 6
             avatar: avatar
             groups_obj:
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -28560,7 +28577,8 @@ components:
               users:
               - 0
               - 0
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -28635,7 +28653,8 @@ components:
             pk: 6
             avatar: avatar
             groups_obj:
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -28665,7 +28684,8 @@ components:
               users:
               - 0
               - 0
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -28851,7 +28871,8 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - parent_name: parent_name
+          parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           is_superuser: true
           name: name
           attributes:
@@ -28881,7 +28902,8 @@ components:
           users:
           - 0
           - 0
-        - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - parent_name: parent_name
+          parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           is_superuser: true
           name: name
           attributes:
@@ -29383,6 +29405,9 @@ components:
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tls_server_name: tls_server_name
           assigned_application_slug: assigned_application_slug
+          outpost_set:
+          - outpost_set
+          - outpost_set
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -29400,6 +29425,9 @@ components:
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tls_server_name: tls_server_name
           assigned_application_slug: assigned_application_slug
+          outpost_set:
+          - outpost_set
+          - outpost_set
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -30695,6 +30723,9 @@ components:
           redirect_uris: redirect_uris
           mode: ""
           internal_host: https://openapi-generator.tech
+          outpost_set:
+          - outpost_set
+          - outpost_set
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -30718,6 +30749,9 @@ components:
           redirect_uris: redirect_uris
           mode: ""
           internal_host: https://openapi-generator.tech
+          outpost_set:
+          - outpost_set
+          - outpost_set
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -30798,7 +30832,8 @@ components:
             pk: 6
             avatar: avatar
             groups_obj:
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -30828,7 +30863,8 @@ components:
               users:
               - 0
               - 0
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -30905,7 +30941,8 @@ components:
             pk: 6
             avatar: avatar
             groups_obj:
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -30935,7 +30972,8 @@ components:
               users:
               - 0
               - 0
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -31554,7 +31592,8 @@ components:
             pk: 6
             avatar: avatar
             groups_obj:
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -31584,7 +31623,8 @@ components:
               users:
               - 0
               - 0
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -31637,7 +31677,8 @@ components:
             pk: 6
             avatar: avatar
             groups_obj:
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -31667,7 +31708,8 @@ components:
               users:
               - 0
               - 0
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -31765,7 +31807,8 @@ components:
             pk: 6
             avatar: avatar
             groups_obj:
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -31795,7 +31838,8 @@ components:
               users:
               - 0
               - 0
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -31865,7 +31909,8 @@ components:
             pk: 6
             avatar: avatar
             groups_obj:
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -31895,7 +31940,8 @@ components:
               users:
               - 0
               - 0
-            - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               is_superuser: true
               name: name
               attributes:
@@ -32060,7 +32106,8 @@ components:
           pk: 6
           avatar: avatar
           groups_obj:
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - parent_name: parent_name
+            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             is_superuser: true
             name: name
             attributes:
@@ -32090,7 +32137,8 @@ components:
             users:
             - 0
             - 0
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - parent_name: parent_name
+            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             is_superuser: true
             name: name
             attributes:
@@ -32135,7 +32183,8 @@ components:
           pk: 6
           avatar: avatar
           groups_obj:
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - parent_name: parent_name
+            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             is_superuser: true
             name: name
             attributes:
@@ -32165,7 +32214,8 @@ components:
             users:
             - 0
             - 0
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - parent_name: parent_name
+            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             is_superuser: true
             name: name
             attributes:
@@ -36398,6 +36448,9 @@ components:
         redirect_uris: redirect_uris
         mode: ""
         internal_host: https://openapi-generator.tech
+        outpost_set:
+        - outpost_set
+        - outpost_set
         component: component
         verbose_name: verbose_name
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36490,6 +36543,11 @@ components:
           description: 'Tokens not valid on or after current time + this value (Format:
             hours=1;minutes=2;seconds=3).'
           type: string
+        outpost_set:
+          items:
+            type: string
+          readOnly: true
+          type: array
       required:
       - assigned_application_name
       - assigned_application_slug
@@ -36497,6 +36555,7 @@ components:
       - component
       - external_host
       - name
+      - outpost_set
       - pk
       - redirect_uris
       - verbose_name
@@ -36664,7 +36723,8 @@ components:
           pk: 6
           avatar: avatar
           groups_obj:
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - parent_name: parent_name
+            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             is_superuser: true
             name: name
             attributes:
@@ -36694,7 +36754,8 @@ components:
             users:
             - 0
             - 0
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - parent_name: parent_name
+            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             is_superuser: true
             name: name
             attributes:
@@ -38226,7 +38287,8 @@ components:
           pk: 6
           avatar: avatar
           groups_obj:
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - parent_name: parent_name
+            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             is_superuser: true
             name: name
             attributes:
@@ -38256,7 +38318,8 @@ components:
             users:
             - 0
             - 0
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - parent_name: parent_name
+            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             is_superuser: true
             name: name
             attributes:
@@ -38459,7 +38522,8 @@ components:
         pk: 6
         avatar: avatar
         groups_obj:
-        - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - parent_name: parent_name
+          parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           is_superuser: true
           name: name
           attributes:
@@ -38489,7 +38553,8 @@ components:
           users:
           - 0
           - 0
-        - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - parent_name: parent_name
+          parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           is_superuser: true
           name: name
           attributes:
@@ -38622,7 +38687,8 @@ components:
           pk: 6
           avatar: avatar
           groups_obj:
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - parent_name: parent_name
+            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             is_superuser: true
             name: name
             attributes:
@@ -38652,7 +38718,8 @@ components:
             users:
             - 0
             - 0
-          - parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - parent_name: parent_name
+            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             is_superuser: true
             name: name
             attributes:

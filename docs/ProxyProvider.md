@@ -25,12 +25,13 @@ Name | Type | Description | Notes
 **RedirectUris** | **string** |  | [readonly] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
 **TokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
+**OutpostSet** | **[]string** |  | [readonly] 
 
 ## Methods
 
 ### NewProxyProvider
 
-`func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, externalHost string, redirectUris string, ) *ProxyProvider`
+`func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, externalHost string, redirectUris string, outpostSet []string, ) *ProxyProvider`
 
 NewProxyProvider instantiates a new ProxyProvider object
 This constructor will assign default values to properties that have it defined,
@@ -529,6 +530,26 @@ SetTokenValidity sets TokenValidity field to given value.
 `func (o *ProxyProvider) HasTokenValidity() bool`
 
 HasTokenValidity returns a boolean if a field has been set.
+
+### GetOutpostSet
+
+`func (o *ProxyProvider) GetOutpostSet() []string`
+
+GetOutpostSet returns the OutpostSet field if non-nil, zero value otherwise.
+
+### GetOutpostSetOk
+
+`func (o *ProxyProvider) GetOutpostSetOk() (*[]string, bool)`
+
+GetOutpostSetOk returns a tuple with the OutpostSet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutpostSet
+
+`func (o *ProxyProvider) SetOutpostSet(v []string)`
+
+SetOutpostSet sets OutpostSet field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

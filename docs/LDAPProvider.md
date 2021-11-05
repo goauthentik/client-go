@@ -19,12 +19,13 @@ Name | Type | Description | Notes
 **TlsServerName** | Pointer to **string** |  | [optional] 
 **UidStartNumber** | Pointer to **int32** | The start for uidNumbers, this number is added to the user.Pk to make sure that the numbers aren&#39;t too low for POSIX users. Default is 2000 to ensure that we don&#39;t collide with local users uidNumber | [optional] 
 **GidStartNumber** | Pointer to **int32** | The start for gidNumbers, this number is added to a number generated from the group.Pk to make sure that the numbers aren&#39;t too low for POSIX groups. Default is 4000 to ensure that we don&#39;t collide with local groups or users primary groups gidNumber | [optional] 
+**OutpostSet** | **[]string** |  | [readonly] 
 
 ## Methods
 
 ### NewLDAPProvider
 
-`func NewLDAPProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, ) *LDAPProvider`
+`func NewLDAPProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, outpostSet []string, ) *LDAPProvider`
 
 NewLDAPProvider instantiates a new LDAPProvider object
 This constructor will assign default values to properties that have it defined,
@@ -393,6 +394,26 @@ SetGidStartNumber sets GidStartNumber field to given value.
 `func (o *LDAPProvider) HasGidStartNumber() bool`
 
 HasGidStartNumber returns a boolean if a field has been set.
+
+### GetOutpostSet
+
+`func (o *LDAPProvider) GetOutpostSet() []string`
+
+GetOutpostSet returns the OutpostSet field if non-nil, zero value otherwise.
+
+### GetOutpostSetOk
+
+`func (o *LDAPProvider) GetOutpostSetOk() (*[]string, bool)`
+
+GetOutpostSetOk returns a tuple with the OutpostSet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutpostSet
+
+`func (o *LDAPProvider) SetOutpostSet(v []string)`
+
+SetOutpostSet sets OutpostSet field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

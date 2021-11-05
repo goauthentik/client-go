@@ -38,14 +38,15 @@ type LDAPProvider struct {
 	// The start for uidNumbers, this number is added to the user.Pk to make sure that the numbers aren't too low for POSIX users. Default is 2000 to ensure that we don't collide with local users uidNumber
 	UidStartNumber *int32 `json:"uid_start_number,omitempty"`
 	// The start for gidNumbers, this number is added to a number generated from the group.Pk to make sure that the numbers aren't too low for POSIX groups. Default is 4000 to ensure that we don't collide with local groups or users primary groups gidNumber
-	GidStartNumber *int32 `json:"gid_start_number,omitempty"`
+	GidStartNumber *int32   `json:"gid_start_number,omitempty"`
+	OutpostSet     []string `json:"outpost_set"`
 }
 
 // NewLDAPProvider instantiates a new LDAPProvider object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLDAPProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string) *LDAPProvider {
+func NewLDAPProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, outpostSet []string) *LDAPProvider {
 	this := LDAPProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -55,6 +56,7 @@ func NewLDAPProvider(pk int32, name string, authorizationFlow string, component 
 	this.AssignedApplicationName = assignedApplicationName
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.OutpostSet = outpostSet
 	return &this
 }
 
@@ -504,6 +506,30 @@ func (o *LDAPProvider) SetGidStartNumber(v int32) {
 	o.GidStartNumber = &v
 }
 
+// GetOutpostSet returns the OutpostSet field value
+func (o *LDAPProvider) GetOutpostSet() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.OutpostSet
+}
+
+// GetOutpostSetOk returns a tuple with the OutpostSet field value
+// and a boolean to check if the value has been set.
+func (o *LDAPProvider) GetOutpostSetOk() (*[]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.OutpostSet, true
+}
+
+// SetOutpostSet sets field value
+func (o *LDAPProvider) SetOutpostSet(v []string) {
+	o.OutpostSet = v
+}
+
 func (o LDAPProvider) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -550,6 +576,9 @@ func (o LDAPProvider) MarshalJSON() ([]byte, error) {
 	}
 	if o.GidStartNumber != nil {
 		toSerialize["gid_start_number"] = o.GidStartNumber
+	}
+	if true {
+		toSerialize["outpost_set"] = o.OutpostSet
 	}
 	return json.Marshal(toSerialize)
 }

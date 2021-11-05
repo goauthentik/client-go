@@ -47,14 +47,15 @@ type ProxyProvider struct {
 	RedirectUris string     `json:"redirect_uris"`
 	CookieDomain *string    `json:"cookie_domain,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
-	TokenValidity *string `json:"token_validity,omitempty"`
+	TokenValidity *string  `json:"token_validity,omitempty"`
+	OutpostSet    []string `json:"outpost_set"`
 }
 
 // NewProxyProvider instantiates a new ProxyProvider object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, externalHost string, redirectUris string) *ProxyProvider {
+func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, externalHost string, redirectUris string, outpostSet []string) *ProxyProvider {
 	this := ProxyProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -66,6 +67,7 @@ func NewProxyProvider(pk int32, name string, authorizationFlow string, component
 	this.VerboseNamePlural = verboseNamePlural
 	this.ExternalHost = externalHost
 	this.RedirectUris = redirectUris
+	this.OutpostSet = outpostSet
 	return &this
 }
 
@@ -680,6 +682,30 @@ func (o *ProxyProvider) SetTokenValidity(v string) {
 	o.TokenValidity = &v
 }
 
+// GetOutpostSet returns the OutpostSet field value
+func (o *ProxyProvider) GetOutpostSet() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.OutpostSet
+}
+
+// GetOutpostSetOk returns a tuple with the OutpostSet field value
+// and a boolean to check if the value has been set.
+func (o *ProxyProvider) GetOutpostSetOk() (*[]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.OutpostSet, true
+}
+
+// SetOutpostSet sets field value
+func (o *ProxyProvider) SetOutpostSet(v []string) {
+	o.OutpostSet = v
+}
+
 func (o ProxyProvider) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -744,6 +770,9 @@ func (o ProxyProvider) MarshalJSON() ([]byte, error) {
 	}
 	if o.TokenValidity != nil {
 		toSerialize["token_validity"] = o.TokenValidity
+	}
+	if true {
+		toSerialize["outpost_set"] = o.OutpostSet
 	}
 	return json.Marshal(toSerialize)
 }
