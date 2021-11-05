@@ -30,7 +30,8 @@ type LDAPOutpostConfig struct {
 	// The start for uidNumbers, this number is added to the user.Pk to make sure that the numbers aren't too low for POSIX users. Default is 2000 to ensure that we don't collide with local users uidNumber
 	UidStartNumber *int32 `json:"uid_start_number,omitempty"`
 	// The start for gidNumbers, this number is added to a number generated from the group.Pk to make sure that the numbers aren't too low for POSIX groups. Default is 4000 to ensure that we don't collide with local groups or users primary groups gidNumber
-	GidStartNumber *int32 `json:"gid_start_number,omitempty"`
+	GidStartNumber *int32          `json:"gid_start_number,omitempty"`
+	SearchMode     *SearchModeEnum `json:"search_mode,omitempty"`
 }
 
 // NewLDAPOutpostConfig instantiates a new LDAPOutpostConfig object
@@ -364,6 +365,38 @@ func (o *LDAPOutpostConfig) SetGidStartNumber(v int32) {
 	o.GidStartNumber = &v
 }
 
+// GetSearchMode returns the SearchMode field value if set, zero value otherwise.
+func (o *LDAPOutpostConfig) GetSearchMode() SearchModeEnum {
+	if o == nil || o.SearchMode == nil {
+		var ret SearchModeEnum
+		return ret
+	}
+	return *o.SearchMode
+}
+
+// GetSearchModeOk returns a tuple with the SearchMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LDAPOutpostConfig) GetSearchModeOk() (*SearchModeEnum, bool) {
+	if o == nil || o.SearchMode == nil {
+		return nil, false
+	}
+	return o.SearchMode, true
+}
+
+// HasSearchMode returns a boolean if a field has been set.
+func (o *LDAPOutpostConfig) HasSearchMode() bool {
+	if o != nil && o.SearchMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSearchMode gets a reference to the given SearchModeEnum and assigns it to the SearchMode field.
+func (o *LDAPOutpostConfig) SetSearchMode(v SearchModeEnum) {
+	o.SearchMode = &v
+}
+
 func (o LDAPOutpostConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -395,6 +428,9 @@ func (o LDAPOutpostConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.GidStartNumber != nil {
 		toSerialize["gid_start_number"] = o.GidStartNumber
+	}
+	if o.SearchMode != nil {
+		toSerialize["search_mode"] = o.SearchMode
 	}
 	return json.Marshal(toSerialize)
 }

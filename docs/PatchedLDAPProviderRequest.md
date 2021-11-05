@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **TlsServerName** | Pointer to **string** |  | [optional] 
 **UidStartNumber** | Pointer to **int32** | The start for uidNumbers, this number is added to the user.Pk to make sure that the numbers aren&#39;t too low for POSIX users. Default is 2000 to ensure that we don&#39;t collide with local users uidNumber | [optional] 
 **GidStartNumber** | Pointer to **int32** | The start for gidNumbers, this number is added to a number generated from the group.Pk to make sure that the numbers aren&#39;t too low for POSIX groups. Default is 4000 to ensure that we don&#39;t collide with local groups or users primary groups gidNumber | [optional] 
+**SearchMode** | Pointer to [**SearchModeEnum**](SearchModeEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -277,6 +278,31 @@ SetGidStartNumber sets GidStartNumber field to given value.
 `func (o *PatchedLDAPProviderRequest) HasGidStartNumber() bool`
 
 HasGidStartNumber returns a boolean if a field has been set.
+
+### GetSearchMode
+
+`func (o *PatchedLDAPProviderRequest) GetSearchMode() SearchModeEnum`
+
+GetSearchMode returns the SearchMode field if non-nil, zero value otherwise.
+
+### GetSearchModeOk
+
+`func (o *PatchedLDAPProviderRequest) GetSearchModeOk() (*SearchModeEnum, bool)`
+
+GetSearchModeOk returns a tuple with the SearchMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSearchMode
+
+`func (o *PatchedLDAPProviderRequest) SetSearchMode(v SearchModeEnum)`
+
+SetSearchMode sets SearchMode field to given value.
+
+### HasSearchMode
+
+`func (o *PatchedLDAPProviderRequest) HasSearchMode() bool`
+
+HasSearchMode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

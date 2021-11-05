@@ -969,6 +969,7 @@ Class | Method | HTTP request | Description
  - [SMSDeviceRequest](docs/SMSDeviceRequest.md)
  - [ScopeMapping](docs/ScopeMapping.md)
  - [ScopeMappingRequest](docs/ScopeMappingRequest.md)
+ - [SearchModeEnum](docs/SearchModeEnum.md)
  - [ServiceConnection](docs/ServiceConnection.md)
  - [ServiceConnectionRequest](docs/ServiceConnectionRequest.md)
  - [ServiceConnectionState](docs/ServiceConnectionState.md)

@@ -25490,6 +25490,8 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
+        search_mode:
+          $ref: '#/components/schemas/SearchModeEnum'
       required:
       - application_slug
       - bind_flow_slug
@@ -25663,6 +25665,8 @@ components:
             type: string
           readOnly: true
           type: array
+        search_mode:
+          $ref: '#/components/schemas/SearchModeEnum'
       required:
       - assigned_application_name
       - assigned_application_slug
@@ -25730,6 +25734,8 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
+        search_mode:
+          $ref: '#/components/schemas/SearchModeEnum'
       required:
       - authorization_flow
       - name
@@ -34022,6 +34028,8 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
+        search_mode:
+          $ref: '#/components/schemas/SearchModeEnum'
       type: object
     PatchedLDAPSourceRequest:
       description: LDAP Source Serializer
@@ -37567,6 +37575,11 @@ components:
       - name
       - scope_name
       type: object
+    SearchModeEnum:
+      enum:
+      - direct
+      - cached
+      type: string
     ServiceConnection:
       description: ServiceConnection Serializer
       example:
