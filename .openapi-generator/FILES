@@ -160,6 +160,7 @@ docs/LDAPProviderRequest.md
 docs/LDAPSource.md
 docs/LDAPSourceRequest.md
 docs/Link.md
+docs/LoginChallengeTypes.md
 docs/LoginMetrics.md
 docs/LoginSource.md
 docs/NameIdPolicyEnum.md
@@ -592,6 +593,7 @@ model_ldap_provider_request.go
 model_ldap_source.go
 model_ldap_source_request.go
 model_link.go
+model_login_challenge_types.go
 model_login_metrics.go
 model_login_source.go
 model_name_id_policy_enum.go

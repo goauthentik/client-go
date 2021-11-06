@@ -17,16 +17,16 @@ import (
 
 // LoginSource Serializer for Login buttons of sources
 type LoginSource struct {
-	Name      string         `json:"name"`
-	IconUrl   NullableString `json:"icon_url,omitempty"`
-	Challenge ChallengeTypes `json:"challenge"`
+	Name      string              `json:"name"`
+	IconUrl   NullableString      `json:"icon_url,omitempty"`
+	Challenge LoginChallengeTypes `json:"challenge"`
 }
 
 // NewLoginSource instantiates a new LoginSource object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLoginSource(name string, challenge ChallengeTypes) *LoginSource {
+func NewLoginSource(name string, challenge LoginChallengeTypes) *LoginSource {
 	this := LoginSource{}
 	this.Name = name
 	this.Challenge = challenge
@@ -109,9 +109,9 @@ func (o *LoginSource) UnsetIconUrl() {
 }
 
 // GetChallenge returns the Challenge field value
-func (o *LoginSource) GetChallenge() ChallengeTypes {
+func (o *LoginSource) GetChallenge() LoginChallengeTypes {
 	if o == nil {
-		var ret ChallengeTypes
+		var ret LoginChallengeTypes
 		return ret
 	}
 
@@ -120,7 +120,7 @@ func (o *LoginSource) GetChallenge() ChallengeTypes {
 
 // GetChallengeOk returns a tuple with the Challenge field value
 // and a boolean to check if the value has been set.
-func (o *LoginSource) GetChallengeOk() (*ChallengeTypes, bool) {
+func (o *LoginSource) GetChallengeOk() (*LoginChallengeTypes, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -128,7 +128,7 @@ func (o *LoginSource) GetChallengeOk() (*ChallengeTypes, bool) {
 }
 
 // SetChallenge sets field value
-func (o *LoginSource) SetChallenge(v ChallengeTypes) {
+func (o *LoginSource) SetChallenge(v LoginChallengeTypes) {
 	o.Challenge = v
 }
 

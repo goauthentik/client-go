@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **IconUrl** | Pointer to **NullableString** |  | [optional] 
-**Challenge** | [**ChallengeTypes**](ChallengeTypes.md) |  | 
+**Challenge** | [**LoginChallengeTypes**](LoginChallengeTypes.md) |  | 
 
 ## Methods
 
 ### NewLoginSource
 
-`func NewLoginSource(name string, challenge ChallengeTypes, ) *LoginSource`
+`func NewLoginSource(name string, challenge LoginChallengeTypes, ) *LoginSource`
 
 NewLoginSource instantiates a new LoginSource object
 This constructor will assign default values to properties that have it defined,
@@ -84,20 +84,20 @@ HasIconUrl returns a boolean if a field has been set.
 UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
 ### GetChallenge
 
-`func (o *LoginSource) GetChallenge() ChallengeTypes`
+`func (o *LoginSource) GetChallenge() LoginChallengeTypes`
 
 GetChallenge returns the Challenge field if non-nil, zero value otherwise.
 
 ### GetChallengeOk
 
-`func (o *LoginSource) GetChallengeOk() (*ChallengeTypes, bool)`
+`func (o *LoginSource) GetChallengeOk() (*LoginChallengeTypes, bool)`
 
 GetChallengeOk returns a tuple with the Challenge field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChallenge
 
-`func (o *LoginSource) SetChallenge(v ChallengeTypes)`
+`func (o *LoginSource) SetChallenge(v LoginChallengeTypes)`
 
 SetChallenge sets Challenge field to given value.
 

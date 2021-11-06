@@ -747,6 +747,7 @@ Class | Method | HTTP request | Description
  - [LDAPSource](docs/LDAPSource.md)
  - [LDAPSourceRequest](docs/LDAPSourceRequest.md)
  - [Link](docs/Link.md)
+ - [LoginChallengeTypes](docs/LoginChallengeTypes.md)
  - [LoginMetrics](docs/LoginMetrics.md)
  - [LoginSource](docs/LoginSource.md)
  - [NameIdPolicyEnum](docs/NameIdPolicyEnum.md)

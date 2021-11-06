@@ -26008,6 +26008,15 @@ components:
       required:
       - link
       type: object
+    LoginChallengeTypes:
+      discriminator:
+        mapping:
+          xak-flow-redirect: '#/components/schemas/RedirectChallenge'
+          ak-flow-sources-plex: '#/components/schemas/PlexAuthenticationChallenge'
+        propertyName: component
+      oneOf:
+      - $ref: '#/components/schemas/RedirectChallenge'
+      - $ref: '#/components/schemas/PlexAuthenticationChallenge'
     LoginMetrics:
       description: Login Metrics per 1h
       example:
@@ -26045,7 +26054,7 @@ components:
           nullable: true
           type: string
         challenge:
-          $ref: '#/components/schemas/ChallengeTypes'
+          $ref: '#/components/schemas/LoginChallengeTypes'
       required:
       - challenge
       - name
