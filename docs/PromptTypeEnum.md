@@ -5,6 +5,8 @@
 
 * `TEXT` (value: `"text"`)
 
+* `TEXT_READ_ONLY` (value: `"text_read_only"`)
+
 * `USERNAME` (value: `"username"`)
 
 * `EMAIL` (value: `"email"`)

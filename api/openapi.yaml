@@ -19750,6 +19750,7 @@ paths:
           - separator
           - static
           - text
+          - text_read_only
           - username
           type: string
         style: form
@@ -36186,6 +36187,7 @@ components:
     PromptTypeEnum:
       enum:
       - text
+      - text_read_only
       - username
       - email
       - password

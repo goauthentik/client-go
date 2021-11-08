@@ -21,21 +21,23 @@ type PromptTypeEnum string
 
 // List of PromptTypeEnum
 const (
-	PROMPTTYPEENUM_TEXT      PromptTypeEnum = "text"
-	PROMPTTYPEENUM_USERNAME  PromptTypeEnum = "username"
-	PROMPTTYPEENUM_EMAIL     PromptTypeEnum = "email"
-	PROMPTTYPEENUM_PASSWORD  PromptTypeEnum = "password"
-	PROMPTTYPEENUM_NUMBER    PromptTypeEnum = "number"
-	PROMPTTYPEENUM_CHECKBOX  PromptTypeEnum = "checkbox"
-	PROMPTTYPEENUM_DATE      PromptTypeEnum = "date"
-	PROMPTTYPEENUM_DATE_TIME PromptTypeEnum = "date-time"
-	PROMPTTYPEENUM_SEPARATOR PromptTypeEnum = "separator"
-	PROMPTTYPEENUM_HIDDEN    PromptTypeEnum = "hidden"
-	PROMPTTYPEENUM_STATIC    PromptTypeEnum = "static"
+	PROMPTTYPEENUM_TEXT           PromptTypeEnum = "text"
+	PROMPTTYPEENUM_TEXT_READ_ONLY PromptTypeEnum = "text_read_only"
+	PROMPTTYPEENUM_USERNAME       PromptTypeEnum = "username"
+	PROMPTTYPEENUM_EMAIL          PromptTypeEnum = "email"
+	PROMPTTYPEENUM_PASSWORD       PromptTypeEnum = "password"
+	PROMPTTYPEENUM_NUMBER         PromptTypeEnum = "number"
+	PROMPTTYPEENUM_CHECKBOX       PromptTypeEnum = "checkbox"
+	PROMPTTYPEENUM_DATE           PromptTypeEnum = "date"
+	PROMPTTYPEENUM_DATE_TIME      PromptTypeEnum = "date-time"
+	PROMPTTYPEENUM_SEPARATOR      PromptTypeEnum = "separator"
+	PROMPTTYPEENUM_HIDDEN         PromptTypeEnum = "hidden"
+	PROMPTTYPEENUM_STATIC         PromptTypeEnum = "static"
 )
 
 var allowedPromptTypeEnumEnumValues = []PromptTypeEnum{
 	"text",
+	"text_read_only",
 	"username",
 	"email",
 	"password",
