@@ -37,22 +37,24 @@ type ProxyOutpostConfig struct {
 	// User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user's Email address is used.
 	BasicAuthUserAttribute *string `json:"basic_auth_user_attribute,omitempty"`
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
-	Mode          *ProxyMode      `json:"mode,omitempty"`
-	CookieDomain  *string         `json:"cookie_domain,omitempty"`
-	TokenValidity NullableFloat32 `json:"token_validity"`
+	Mode            *ProxyMode      `json:"mode,omitempty"`
+	CookieDomain    *string         `json:"cookie_domain,omitempty"`
+	TokenValidity   NullableFloat32 `json:"token_validity"`
+	ScopesToRequest []string        `json:"scopes_to_request"`
 }
 
 // NewProxyOutpostConfig instantiates a new ProxyOutpostConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration OpenIDConnectConfiguration, tokenValidity NullableFloat32) *ProxyOutpostConfig {
+func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration OpenIDConnectConfiguration, tokenValidity NullableFloat32, scopesToRequest []string) *ProxyOutpostConfig {
 	this := ProxyOutpostConfig{}
 	this.Pk = pk
 	this.Name = name
 	this.ExternalHost = externalHost
 	this.OidcConfiguration = oidcConfiguration
 	this.TokenValidity = tokenValidity
+	this.ScopesToRequest = scopesToRequest
 	return &this
 }
 
@@ -581,6 +583,30 @@ func (o *ProxyOutpostConfig) SetTokenValidity(v float32) {
 	o.TokenValidity.Set(&v)
 }
 
+// GetScopesToRequest returns the ScopesToRequest field value
+func (o *ProxyOutpostConfig) GetScopesToRequest() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.ScopesToRequest
+}
+
+// GetScopesToRequestOk returns a tuple with the ScopesToRequest field value
+// and a boolean to check if the value has been set.
+func (o *ProxyOutpostConfig) GetScopesToRequestOk() (*[]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ScopesToRequest, true
+}
+
+// SetScopesToRequest sets field value
+func (o *ProxyOutpostConfig) SetScopesToRequest(v []string) {
+	o.ScopesToRequest = v
+}
+
 func (o ProxyOutpostConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -633,6 +659,9 @@ func (o ProxyOutpostConfig) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["token_validity"] = o.TokenValidity.Get()
+	}
+	if true {
+		toSerialize["scopes_to_request"] = o.ScopesToRequest
 	}
 	return json.Marshal(toSerialize)
 }

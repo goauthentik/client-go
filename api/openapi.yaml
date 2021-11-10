@@ -30686,6 +30686,9 @@ components:
           basic_auth_enabled: true
           basic_auth_user_attribute: basic_auth_user_attribute
           name: name
+          scopes_to_request:
+          - scopes_to_request
+          - scopes_to_request
           pk: 0
           client_secret: client_secret
           internal_host_ssl_validation: true
@@ -30703,6 +30706,9 @@ components:
           basic_auth_enabled: true
           basic_auth_user_attribute: basic_auth_user_attribute
           name: name
+          scopes_to_request:
+          - scopes_to_request
+          - scopes_to_request
           pk: 0
           client_secret: client_secret
           internal_host_ssl_validation: true
@@ -36380,6 +36386,9 @@ components:
         basic_auth_enabled: true
         basic_auth_user_attribute: basic_auth_user_attribute
         name: name
+        scopes_to_request:
+        - scopes_to_request
+        - scopes_to_request
         pk: 0
         client_secret: client_secret
         internal_host_ssl_validation: true
@@ -36447,11 +36456,17 @@ components:
           nullable: true
           readOnly: true
           type: number
+        scopes_to_request:
+          items:
+            type: string
+          readOnly: true
+          type: array
       required:
       - external_host
       - name
       - oidc_configuration
       - pk
+      - scopes_to_request
       - token_validity
       type: object
     ProxyProvider:

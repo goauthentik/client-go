@@ -21,12 +21,13 @@ Name | Type | Description | Notes
 **Mode** | Pointer to [**ProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
 **TokenValidity** | **NullableFloat32** |  | [readonly] 
+**ScopesToRequest** | **[]string** |  | [readonly] 
 
 ## Methods
 
 ### NewProxyOutpostConfig
 
-`func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration OpenIDConnectConfiguration, tokenValidity NullableFloat32, ) *ProxyOutpostConfig`
+`func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration OpenIDConnectConfiguration, tokenValidity NullableFloat32, scopesToRequest []string, ) *ProxyOutpostConfig`
 
 NewProxyOutpostConfig instantiates a new ProxyOutpostConfig object
 This constructor will assign default values to properties that have it defined,
@@ -461,6 +462,26 @@ SetTokenValidity sets TokenValidity field to given value.
 `func (o *ProxyOutpostConfig) UnsetTokenValidity()`
 
 UnsetTokenValidity ensures that no value is present for TokenValidity, not even an explicit nil
+### GetScopesToRequest
+
+`func (o *ProxyOutpostConfig) GetScopesToRequest() []string`
+
+GetScopesToRequest returns the ScopesToRequest field if non-nil, zero value otherwise.
+
+### GetScopesToRequestOk
+
+`func (o *ProxyOutpostConfig) GetScopesToRequestOk() (*[]string, bool)`
+
+GetScopesToRequestOk returns a tuple with the ScopesToRequest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScopesToRequest
+
+`func (o *ProxyOutpostConfig) SetScopesToRequest(v []string)`
+
+SetScopesToRequest sets ScopesToRequest field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
