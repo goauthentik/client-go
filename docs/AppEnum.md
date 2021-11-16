@@ -91,9 +91,9 @@
 
 * `TENANTS` (value: `"authentik.tenants"`)
 
-* `CORE` (value: `"authentik.core"`)
-
 * `MANAGED` (value: `"authentik.managed"`)
+
+* `CORE` (value: `"authentik.core"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

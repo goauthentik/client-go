@@ -4078,6 +4078,9 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 	if r.name == nil {
 		return nil, reportError("name is required and must be specified")
 	}
+	if strlen(*r.name) < 1 {
+		return nil, reportError("name must have at least 1 elements")
+	}
 	if r.authorizationFlow == nil {
 		return nil, reportError("authorizationFlow is required and must be specified")
 	}

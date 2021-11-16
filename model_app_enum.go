@@ -65,8 +65,8 @@ const (
 	APPENUM_STAGES_USER_LOGOUT            AppEnum = "authentik.stages.user_logout"
 	APPENUM_STAGES_USER_WRITE             AppEnum = "authentik.stages.user_write"
 	APPENUM_TENANTS                       AppEnum = "authentik.tenants"
-	APPENUM_CORE                          AppEnum = "authentik.core"
 	APPENUM_MANAGED                       AppEnum = "authentik.managed"
+	APPENUM_CORE                          AppEnum = "authentik.core"
 )
 
 var allowedAppEnumEnumValues = []AppEnum{
@@ -114,8 +114,8 @@ var allowedAppEnumEnumValues = []AppEnum{
 	"authentik.stages.user_logout",
 	"authentik.stages.user_write",
 	"authentik.tenants",
-	"authentik.core",
 	"authentik.managed",
+	"authentik.core",
 }
 
 func (v *AppEnum) UnmarshalJSON(src []byte) error {
