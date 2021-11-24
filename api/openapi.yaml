@@ -35259,7 +35259,7 @@ components:
             to disable signing.
           format: uuid
           nullable: true
-          title: Singing Keypair
+          title: Signing Keypair
           type: string
         digest_algorithm:
           $ref: '#/components/schemas/DigestAlgorithmEnum'
@@ -37617,7 +37617,7 @@ components:
             to disable signing.
           format: uuid
           nullable: true
-          title: Singing Keypair
+          title: Signing Keypair
           type: string
         digest_algorithm:
           $ref: '#/components/schemas/DigestAlgorithmEnum'
@@ -37721,7 +37721,7 @@ components:
             to disable signing.
           format: uuid
           nullable: true
-          title: Singing Keypair
+          title: Signing Keypair
           type: string
         digest_algorithm:
           $ref: '#/components/schemas/DigestAlgorithmEnum'
