@@ -23223,6 +23223,7 @@ components:
       example:
         verbose_name: verbose_name
         verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
         name: name
         pk: 0
         type: type
@@ -23233,6 +23234,9 @@ components:
         verbose_name_plural:
           readOnly: true
           type: string
+        meta_model_name:
+          readOnly: true
+          type: string
         pk:
           type: integer
         name:
@@ -23241,6 +23245,7 @@ components:
           readOnly: true
           type: string
       required:
+      - meta_model_name
       - name
       - pk
       - type

@@ -19,6 +19,7 @@ import (
 type Device struct {
 	VerboseName       string `json:"verbose_name"`
 	VerboseNamePlural string `json:"verbose_name_plural"`
+	MetaModelName     string `json:"meta_model_name"`
 	Pk                int32  `json:"pk"`
 	Name              string `json:"name"`
 	Type              string `json:"type"`
@@ -28,10 +29,11 @@ type Device struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDevice(verboseName string, verboseNamePlural string, pk int32, name string, type_ string) *Device {
+func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string) *Device {
 	this := Device{}
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	this.Pk = pk
 	this.Name = name
 	this.Type = type_
@@ -92,6 +94,30 @@ func (o *Device) GetVerboseNamePluralOk() (*string, bool) {
 // SetVerboseNamePlural sets field value
 func (o *Device) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
+}
+
+// GetMetaModelName returns the MetaModelName field value
+func (o *Device) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *Device) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *Device) SetMetaModelName(v string) {
+	o.MetaModelName = v
 }
 
 // GetPk returns the Pk field value
@@ -173,6 +199,9 @@ func (o Device) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if true {
 		toSerialize["pk"] = o.Pk
