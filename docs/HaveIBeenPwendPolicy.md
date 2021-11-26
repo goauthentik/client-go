@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **BoundTo** | **int32** |  | [readonly] 
 **PasswordField** | Pointer to **string** | Field key to check, field keys defined in Prompt stages are available. | [optional] 
 **AllowedCount** | Pointer to **int32** |  | [optional] 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewHaveIBeenPwendPolicy
 
-`func NewHaveIBeenPwendPolicy(pk string, component string, verboseName string, verboseNamePlural string, boundTo int32, ) *HaveIBeenPwendPolicy`
+`func NewHaveIBeenPwendPolicy(pk string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, ) *HaveIBeenPwendPolicy`
 
 NewHaveIBeenPwendPolicy instantiates a new HaveIBeenPwendPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -171,6 +172,26 @@ and a boolean to check if the value has been set.
 `func (o *HaveIBeenPwendPolicy) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *HaveIBeenPwendPolicy) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *HaveIBeenPwendPolicy) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *HaveIBeenPwendPolicy) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetBoundTo

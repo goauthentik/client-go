@@ -25,6 +25,7 @@ type SAMLPropertyMapping struct {
 	Component         string         `json:"component"`
 	VerboseName       string         `json:"verbose_name"`
 	VerboseNamePlural string         `json:"verbose_name_plural"`
+	MetaModelName     string         `json:"meta_model_name"`
 	SamlName          string         `json:"saml_name"`
 	FriendlyName      NullableString `json:"friendly_name,omitempty"`
 }
@@ -33,7 +34,7 @@ type SAMLPropertyMapping struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSAMLPropertyMapping(pk string, name string, expression string, component string, verboseName string, verboseNamePlural string, samlName string) *SAMLPropertyMapping {
+func NewSAMLPropertyMapping(pk string, name string, expression string, component string, verboseName string, verboseNamePlural string, metaModelName string, samlName string) *SAMLPropertyMapping {
 	this := SAMLPropertyMapping{}
 	this.Pk = pk
 	this.Name = name
@@ -41,6 +42,7 @@ func NewSAMLPropertyMapping(pk string, name string, expression string, component
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	this.SamlName = samlName
 	return &this
 }
@@ -240,6 +242,30 @@ func (o *SAMLPropertyMapping) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
 }
 
+// GetMetaModelName returns the MetaModelName field value
+func (o *SAMLPropertyMapping) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *SAMLPropertyMapping) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *SAMLPropertyMapping) SetMetaModelName(v string) {
+	o.MetaModelName = v
+}
+
 // GetSamlName returns the SamlName field value
 func (o *SAMLPropertyMapping) GetSamlName() string {
 	if o == nil {
@@ -329,6 +355,9 @@ func (o SAMLPropertyMapping) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if true {
 		toSerialize["saml_name"] = o.SamlName

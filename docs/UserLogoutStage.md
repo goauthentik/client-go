@@ -9,13 +9,14 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
 
 ## Methods
 
 ### NewUserLogoutStage
 
-`func NewUserLogoutStage(pk string, name string, component string, verboseName string, verboseNamePlural string, ) *UserLogoutStage`
+`func NewUserLogoutStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, ) *UserLogoutStage`
 
 NewUserLogoutStage instantiates a new UserLogoutStage object
 This constructor will assign default values to properties that have it defined,
@@ -128,6 +129,26 @@ and a boolean to check if the value has been set.
 `func (o *UserLogoutStage) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *UserLogoutStage) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *UserLogoutStage) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *UserLogoutStage) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetFlowSet

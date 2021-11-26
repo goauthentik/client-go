@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
 **Digits** | [**DigitsEnum**](DigitsEnum.md) |  | 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatorTOTPStage
 
-`func NewAuthenticatorTOTPStage(pk string, name string, component string, verboseName string, verboseNamePlural string, digits DigitsEnum, ) *AuthenticatorTOTPStage`
+`func NewAuthenticatorTOTPStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, digits DigitsEnum, ) *AuthenticatorTOTPStage`
 
 NewAuthenticatorTOTPStage instantiates a new AuthenticatorTOTPStage object
 This constructor will assign default values to properties that have it defined,
@@ -130,6 +131,26 @@ and a boolean to check if the value has been set.
 `func (o *AuthenticatorTOTPStage) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *AuthenticatorTOTPStage) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *AuthenticatorTOTPStage) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *AuthenticatorTOTPStage) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetFlowSet

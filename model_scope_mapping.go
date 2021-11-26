@@ -25,6 +25,7 @@ type ScopeMapping struct {
 	Component         string         `json:"component"`
 	VerboseName       string         `json:"verbose_name"`
 	VerboseNamePlural string         `json:"verbose_name_plural"`
+	MetaModelName     string         `json:"meta_model_name"`
 	// Scope used by the client
 	ScopeName string `json:"scope_name"`
 	// Description shown to the user when consenting. If left empty, the user won't be informed.
@@ -35,7 +36,7 @@ type ScopeMapping struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScopeMapping(pk string, name string, expression string, component string, verboseName string, verboseNamePlural string, scopeName string) *ScopeMapping {
+func NewScopeMapping(pk string, name string, expression string, component string, verboseName string, verboseNamePlural string, metaModelName string, scopeName string) *ScopeMapping {
 	this := ScopeMapping{}
 	this.Pk = pk
 	this.Name = name
@@ -43,6 +44,7 @@ func NewScopeMapping(pk string, name string, expression string, component string
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	this.ScopeName = scopeName
 	return &this
 }
@@ -242,6 +244,30 @@ func (o *ScopeMapping) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
 }
 
+// GetMetaModelName returns the MetaModelName field value
+func (o *ScopeMapping) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *ScopeMapping) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *ScopeMapping) SetMetaModelName(v string) {
+	o.MetaModelName = v
+}
+
 // GetScopeName returns the ScopeName field value
 func (o *ScopeMapping) GetScopeName() string {
 	if o == nil {
@@ -320,6 +346,9 @@ func (o ScopeMapping) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if true {
 		toSerialize["scope_name"] = o.ScopeName

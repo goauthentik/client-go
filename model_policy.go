@@ -24,6 +24,7 @@ type Policy struct {
 	Component         string `json:"component"`
 	VerboseName       string `json:"verbose_name"`
 	VerboseNamePlural string `json:"verbose_name_plural"`
+	MetaModelName     string `json:"meta_model_name"`
 	BoundTo           int32  `json:"bound_to"`
 }
 
@@ -31,12 +32,13 @@ type Policy struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPolicy(pk string, component string, verboseName string, verboseNamePlural string, boundTo int32) *Policy {
+func NewPolicy(pk string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32) *Policy {
 	this := Policy{}
 	this.Pk = pk
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	this.BoundTo = boundTo
 	return &this
 }
@@ -220,6 +222,30 @@ func (o *Policy) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
 }
 
+// GetMetaModelName returns the MetaModelName field value
+func (o *Policy) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *Policy) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *Policy) SetMetaModelName(v string) {
+	o.MetaModelName = v
+}
+
 // GetBoundTo returns the BoundTo field value
 func (o *Policy) GetBoundTo() int32 {
 	if o == nil {
@@ -263,6 +289,9 @@ func (o Policy) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if true {
 		toSerialize["bound_to"] = o.BoundTo

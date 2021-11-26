@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 
@@ -20,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewSource
 
-`func NewSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, ) *Source`
+`func NewSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, ) *Source`
 
 NewSource instantiates a new Source object
 This constructor will assign default values to properties that have it defined,
@@ -248,6 +249,26 @@ and a boolean to check if the value has been set.
 `func (o *Source) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *Source) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *Source) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *Source) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetPolicyEngineMode

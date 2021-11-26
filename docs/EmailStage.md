@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
 **UseGlobalSettings** | Pointer to **bool** | When enabled, global Email connection settings will be used and connection settings below will be ignored. | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewEmailStage
 
-`func NewEmailStage(pk string, name string, component string, verboseName string, verboseNamePlural string, ) *EmailStage`
+`func NewEmailStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, ) *EmailStage`
 
 NewEmailStage instantiates a new EmailStage object
 This constructor will assign default values to properties that have it defined,
@@ -140,6 +141,26 @@ and a boolean to check if the value has been set.
 `func (o *EmailStage) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *EmailStage) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *EmailStage) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *EmailStage) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetFlowSet

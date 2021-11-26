@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
 **Mode** | Pointer to [**ConsentStageModeEnum**](ConsentStageModeEnum.md) |  | [optional] 
 **ConsentExpireIn** | Pointer to **string** | Offset after which consent expires. (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewConsentStage
 
-`func NewConsentStage(pk string, name string, component string, verboseName string, verboseNamePlural string, ) *ConsentStage`
+`func NewConsentStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, ) *ConsentStage`
 
 NewConsentStage instantiates a new ConsentStage object
 This constructor will assign default values to properties that have it defined,
@@ -130,6 +131,26 @@ and a boolean to check if the value has been set.
 `func (o *ConsentStage) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *ConsentStage) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *ConsentStage) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *ConsentStage) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetFlowSet

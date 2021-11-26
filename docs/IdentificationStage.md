@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
 **UserFields** | Pointer to [**[]UserFieldsEnum**](UserFieldsEnum.md) | Fields of the user object to match against. (Hold shift to select multiple options) | [optional] 
 **PasswordStage** | Pointer to **NullableString** | When set, shows a password field, instead of showing the password field as seaprate step. | [optional] 
@@ -23,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewIdentificationStage
 
-`func NewIdentificationStage(pk string, name string, component string, verboseName string, verboseNamePlural string, ) *IdentificationStage`
+`func NewIdentificationStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, ) *IdentificationStage`
 
 NewIdentificationStage instantiates a new IdentificationStage object
 This constructor will assign default values to properties that have it defined,
@@ -136,6 +137,26 @@ and a boolean to check if the value has been set.
 `func (o *IdentificationStage) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *IdentificationStage) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *IdentificationStage) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *IdentificationStage) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetFlowSet

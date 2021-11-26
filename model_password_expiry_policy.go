@@ -24,6 +24,7 @@ type PasswordExpiryPolicy struct {
 	Component         string `json:"component"`
 	VerboseName       string `json:"verbose_name"`
 	VerboseNamePlural string `json:"verbose_name_plural"`
+	MetaModelName     string `json:"meta_model_name"`
 	BoundTo           int32  `json:"bound_to"`
 	Days              int32  `json:"days"`
 	DenyOnly          *bool  `json:"deny_only,omitempty"`
@@ -33,12 +34,13 @@ type PasswordExpiryPolicy struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPasswordExpiryPolicy(pk string, component string, verboseName string, verboseNamePlural string, boundTo int32, days int32) *PasswordExpiryPolicy {
+func NewPasswordExpiryPolicy(pk string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, days int32) *PasswordExpiryPolicy {
 	this := PasswordExpiryPolicy{}
 	this.Pk = pk
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	this.BoundTo = boundTo
 	this.Days = days
 	return &this
@@ -223,6 +225,30 @@ func (o *PasswordExpiryPolicy) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
 }
 
+// GetMetaModelName returns the MetaModelName field value
+func (o *PasswordExpiryPolicy) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *PasswordExpiryPolicy) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *PasswordExpiryPolicy) SetMetaModelName(v string) {
+	o.MetaModelName = v
+}
+
 // GetBoundTo returns the BoundTo field value
 func (o *PasswordExpiryPolicy) GetBoundTo() int32 {
 	if o == nil {
@@ -322,6 +348,9 @@ func (o PasswordExpiryPolicy) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if true {
 		toSerialize["bound_to"] = o.BoundTo

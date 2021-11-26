@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **AssignedApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **AcsUrl** | **string** |  | 
 **Audience** | Pointer to **string** | Value of the audience restriction field of the asseration. When left empty, no audience restriction will be added. | [optional] 
 **Issuer** | Pointer to **string** | Also known as EntityID | [optional] 
@@ -31,7 +32,7 @@ Name | Type | Description | Notes
 
 ### NewSAMLProvider
 
-`func NewSAMLProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, acsUrl string, metadataDownloadUrl string, ) *SAMLProvider`
+`func NewSAMLProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, metadataDownloadUrl string, ) *SAMLProvider`
 
 NewSAMLProvider instantiates a new SAMLProvider object
 This constructor will assign default values to properties that have it defined,
@@ -229,6 +230,26 @@ and a boolean to check if the value has been set.
 `func (o *SAMLProvider) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *SAMLProvider) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *SAMLProvider) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *SAMLProvider) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetAcsUrl

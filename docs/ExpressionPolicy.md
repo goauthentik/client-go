@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **BoundTo** | **int32** |  | [readonly] 
 **Expression** | **string** |  | 
 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewExpressionPolicy
 
-`func NewExpressionPolicy(pk string, component string, verboseName string, verboseNamePlural string, boundTo int32, expression string, ) *ExpressionPolicy`
+`func NewExpressionPolicy(pk string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, expression string, ) *ExpressionPolicy`
 
 NewExpressionPolicy instantiates a new ExpressionPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -170,6 +171,26 @@ and a boolean to check if the value has been set.
 `func (o *ExpressionPolicy) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *ExpressionPolicy) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *ExpressionPolicy) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *ExpressionPolicy) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetBoundTo

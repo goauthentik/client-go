@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **AssignedApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **InternalHost** | Pointer to **string** |  | [optional] 
 **ExternalHost** | **string** |  | 
 **InternalHostSslValidation** | Pointer to **bool** | Validate SSL Certificates of upstream servers | [optional] 
@@ -31,7 +32,7 @@ Name | Type | Description | Notes
 
 ### NewProxyProvider
 
-`func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, externalHost string, redirectUris string, outpostSet []string, ) *ProxyProvider`
+`func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, externalHost string, redirectUris string, outpostSet []string, ) *ProxyProvider`
 
 NewProxyProvider instantiates a new ProxyProvider object
 This constructor will assign default values to properties that have it defined,
@@ -229,6 +230,26 @@ and a boolean to check if the value has been set.
 `func (o *ProxyProvider) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *ProxyProvider) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *ProxyProvider) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *ProxyProvider) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetInternalHost

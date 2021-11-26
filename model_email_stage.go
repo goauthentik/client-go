@@ -22,6 +22,7 @@ type EmailStage struct {
 	Component         string  `json:"component"`
 	VerboseName       string  `json:"verbose_name"`
 	VerboseNamePlural string  `json:"verbose_name_plural"`
+	MetaModelName     string  `json:"meta_model_name"`
 	FlowSet           *[]Flow `json:"flow_set,omitempty"`
 	// When enabled, global Email connection settings will be used and connection settings below will be ignored.
 	UseGlobalSettings *bool   `json:"use_global_settings,omitempty"`
@@ -44,13 +45,14 @@ type EmailStage struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEmailStage(pk string, name string, component string, verboseName string, verboseNamePlural string) *EmailStage {
+func NewEmailStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string) *EmailStage {
 	this := EmailStage{}
 	this.Pk = pk
 	this.Name = name
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	return &this
 }
 
@@ -180,6 +182,30 @@ func (o *EmailStage) GetVerboseNamePluralOk() (*string, bool) {
 // SetVerboseNamePlural sets field value
 func (o *EmailStage) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
+}
+
+// GetMetaModelName returns the MetaModelName field value
+func (o *EmailStage) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *EmailStage) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *EmailStage) SetMetaModelName(v string) {
+	o.MetaModelName = v
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
@@ -614,6 +640,9 @@ func (o EmailStage) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet

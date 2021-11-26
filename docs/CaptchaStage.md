@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
 **PublicKey** | **string** | Public key, acquired from https://www.google.com/recaptcha/intro/v3.html | 
 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewCaptchaStage
 
-`func NewCaptchaStage(pk string, name string, component string, verboseName string, verboseNamePlural string, publicKey string, ) *CaptchaStage`
+`func NewCaptchaStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, publicKey string, ) *CaptchaStage`
 
 NewCaptchaStage instantiates a new CaptchaStage object
 This constructor will assign default values to properties that have it defined,
@@ -129,6 +130,26 @@ and a boolean to check if the value has been set.
 `func (o *CaptchaStage) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *CaptchaStage) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *CaptchaStage) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *CaptchaStage) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetFlowSet

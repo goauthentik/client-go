@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
 **NotConfiguredAction** | Pointer to [**NotConfiguredActionEnum**](NotConfiguredActionEnum.md) |  | [optional] 
 **DeviceClasses** | Pointer to [**[]DeviceClassesEnum**](DeviceClassesEnum.md) | Device classes which can be used to authenticate | [optional] 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatorValidateStage
 
-`func NewAuthenticatorValidateStage(pk string, name string, component string, verboseName string, verboseNamePlural string, ) *AuthenticatorValidateStage`
+`func NewAuthenticatorValidateStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, ) *AuthenticatorValidateStage`
 
 NewAuthenticatorValidateStage instantiates a new AuthenticatorValidateStage object
 This constructor will assign default values to properties that have it defined,
@@ -131,6 +132,26 @@ and a boolean to check if the value has been set.
 `func (o *AuthenticatorValidateStage) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *AuthenticatorValidateStage) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *AuthenticatorValidateStage) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *AuthenticatorValidateStage) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetFlowSet

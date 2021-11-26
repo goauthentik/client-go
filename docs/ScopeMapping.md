@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **ScopeName** | **string** | Scope used by the client | 
 **Description** | Pointer to **string** | Description shown to the user when consenting. If left empty, the user won&#39;t be informed. | [optional] 
 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewScopeMapping
 
-`func NewScopeMapping(pk string, name string, expression string, component string, verboseName string, verboseNamePlural string, scopeName string, ) *ScopeMapping`
+`func NewScopeMapping(pk string, name string, expression string, component string, verboseName string, verboseNamePlural string, metaModelName string, scopeName string, ) *ScopeMapping`
 
 NewScopeMapping instantiates a new ScopeMapping object
 This constructor will assign default values to properties that have it defined,
@@ -186,6 +187,26 @@ and a boolean to check if the value has been set.
 `func (o *ScopeMapping) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *ScopeMapping) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *ScopeMapping) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *ScopeMapping) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetScopeName

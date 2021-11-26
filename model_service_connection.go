@@ -24,19 +24,21 @@ type ServiceConnection struct {
 	Component         string `json:"component"`
 	VerboseName       string `json:"verbose_name"`
 	VerboseNamePlural string `json:"verbose_name_plural"`
+	MetaModelName     string `json:"meta_model_name"`
 }
 
 // NewServiceConnection instantiates a new ServiceConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServiceConnection(pk string, name string, component string, verboseName string, verboseNamePlural string) *ServiceConnection {
+func NewServiceConnection(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string) *ServiceConnection {
 	this := ServiceConnection{}
 	this.Pk = pk
 	this.Name = name
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	return &this
 }
 
@@ -200,6 +202,30 @@ func (o *ServiceConnection) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
 }
 
+// GetMetaModelName returns the MetaModelName field value
+func (o *ServiceConnection) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *ServiceConnection) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *ServiceConnection) SetMetaModelName(v string) {
+	o.MetaModelName = v
+}
+
 func (o ServiceConnection) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -219,6 +245,9 @@ func (o ServiceConnection) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	return json.Marshal(toSerialize)
 }

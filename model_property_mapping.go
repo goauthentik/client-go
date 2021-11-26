@@ -25,13 +25,14 @@ type PropertyMapping struct {
 	Component         string         `json:"component"`
 	VerboseName       string         `json:"verbose_name"`
 	VerboseNamePlural string         `json:"verbose_name_plural"`
+	MetaModelName     string         `json:"meta_model_name"`
 }
 
 // NewPropertyMapping instantiates a new PropertyMapping object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPropertyMapping(pk string, name string, expression string, component string, verboseName string, verboseNamePlural string) *PropertyMapping {
+func NewPropertyMapping(pk string, name string, expression string, component string, verboseName string, verboseNamePlural string, metaModelName string) *PropertyMapping {
 	this := PropertyMapping{}
 	this.Pk = pk
 	this.Name = name
@@ -39,6 +40,7 @@ func NewPropertyMapping(pk string, name string, expression string, component str
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	return &this
 }
 
@@ -237,6 +239,30 @@ func (o *PropertyMapping) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
 }
 
+// GetMetaModelName returns the MetaModelName field value
+func (o *PropertyMapping) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *PropertyMapping) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *PropertyMapping) SetMetaModelName(v string) {
+	o.MetaModelName = v
+}
+
 func (o PropertyMapping) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -259,6 +285,9 @@ func (o PropertyMapping) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	return json.Marshal(toSerialize)
 }

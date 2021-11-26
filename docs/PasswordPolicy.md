@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **BoundTo** | **int32** |  | [readonly] 
 **PasswordField** | Pointer to **string** | Field key to check, field keys defined in Prompt stages are available. | [optional] 
 **AmountUppercase** | Pointer to **int32** |  | [optional] 
@@ -23,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewPasswordPolicy
 
-`func NewPasswordPolicy(pk string, component string, verboseName string, verboseNamePlural string, boundTo int32, errorMessage string, ) *PasswordPolicy`
+`func NewPasswordPolicy(pk string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, errorMessage string, ) *PasswordPolicy`
 
 NewPasswordPolicy instantiates a new PasswordPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -176,6 +177,26 @@ and a boolean to check if the value has been set.
 `func (o *PasswordPolicy) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *PasswordPolicy) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *PasswordPolicy) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *PasswordPolicy) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetBoundTo

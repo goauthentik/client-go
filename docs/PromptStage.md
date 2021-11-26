@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
 **Fields** | **[]string** |  | 
 **ValidationPolicies** | Pointer to **[]string** |  | [optional] 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewPromptStage
 
-`func NewPromptStage(pk string, name string, component string, verboseName string, verboseNamePlural string, fields []string, ) *PromptStage`
+`func NewPromptStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, fields []string, ) *PromptStage`
 
 NewPromptStage instantiates a new PromptStage object
 This constructor will assign default values to properties that have it defined,
@@ -130,6 +131,26 @@ and a boolean to check if the value has been set.
 `func (o *PromptStage) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *PromptStage) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *PromptStage) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *PromptStage) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetFlowSet

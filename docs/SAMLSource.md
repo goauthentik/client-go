@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **PreAuthenticationFlow** | **string** | Flow used before authentication. | 
@@ -31,7 +32,7 @@ Name | Type | Description | Notes
 
 ### NewSAMLSource
 
-`func NewSAMLSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, preAuthenticationFlow string, ssoUrl string, ) *SAMLSource`
+`func NewSAMLSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, preAuthenticationFlow string, ssoUrl string, ) *SAMLSource`
 
 NewSAMLSource instantiates a new SAMLSource object
 This constructor will assign default values to properties that have it defined,
@@ -259,6 +260,26 @@ and a boolean to check if the value has been set.
 `func (o *SAMLSource) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *SAMLSource) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *SAMLSource) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *SAMLSource) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetPolicyEngineMode

@@ -30,6 +30,7 @@ type SAMLSource struct {
 	Component         string            `json:"component"`
 	VerboseName       string            `json:"verbose_name"`
 	VerboseNamePlural string            `json:"verbose_name_plural"`
+	MetaModelName     string            `json:"meta_model_name"`
 	PolicyEngineMode  *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
@@ -58,7 +59,7 @@ type SAMLSource struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSAMLSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, preAuthenticationFlow string, ssoUrl string) *SAMLSource {
+func NewSAMLSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, preAuthenticationFlow string, ssoUrl string) *SAMLSource {
 	this := SAMLSource{}
 	this.Pk = pk
 	this.Name = name
@@ -66,6 +67,7 @@ func NewSAMLSource(pk string, name string, slug string, component string, verbos
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	this.PreAuthenticationFlow = preAuthenticationFlow
 	this.SsoUrl = ssoUrl
 	return &this
@@ -339,6 +341,30 @@ func (o *SAMLSource) GetVerboseNamePluralOk() (*string, bool) {
 // SetVerboseNamePlural sets field value
 func (o *SAMLSource) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
+}
+
+// GetMetaModelName returns the MetaModelName field value
+func (o *SAMLSource) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *SAMLSource) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *SAMLSource) SetMetaModelName(v string) {
+	o.MetaModelName = v
 }
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
@@ -791,6 +817,9 @@ func (o SAMLSource) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode

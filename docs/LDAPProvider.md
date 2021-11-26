@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **AssignedApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **BaseDn** | Pointer to **string** | DN under which objects are accessible. | [optional] 
 **SearchGroup** | Pointer to **NullableString** | Users in this group can do search queries. If not set, every user can execute search queries. | [optional] 
 **Certificate** | Pointer to **NullableString** |  | [optional] 
@@ -26,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewLDAPProvider
 
-`func NewLDAPProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, outpostSet []string, ) *LDAPProvider`
+`func NewLDAPProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, outpostSet []string, ) *LDAPProvider`
 
 NewLDAPProvider instantiates a new LDAPProvider object
 This constructor will assign default values to properties that have it defined,
@@ -224,6 +225,26 @@ and a boolean to check if the value has been set.
 `func (o *LDAPProvider) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *LDAPProvider) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *LDAPProvider) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *LDAPProvider) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetBaseDn

@@ -29,6 +29,7 @@ type OAuth2Provider struct {
 	AssignedApplicationName string `json:"assigned_application_name"`
 	VerboseName             string `json:"verbose_name"`
 	VerboseNamePlural       string `json:"verbose_name_plural"`
+	MetaModelName           string `json:"meta_model_name"`
 	// Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable.
 	ClientType   *ClientTypeEnum `json:"client_type,omitempty"`
 	ClientId     *string         `json:"client_id,omitempty"`
@@ -55,7 +56,7 @@ type OAuth2Provider struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuth2Provider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string) *OAuth2Provider {
+func NewOAuth2Provider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string) *OAuth2Provider {
 	this := OAuth2Provider{}
 	this.Pk = pk
 	this.Name = name
@@ -65,6 +66,7 @@ func NewOAuth2Provider(pk int32, name string, authorizationFlow string, componen
 	this.AssignedApplicationName = assignedApplicationName
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	return &this
 }
 
@@ -298,6 +300,30 @@ func (o *OAuth2Provider) GetVerboseNamePluralOk() (*string, bool) {
 // SetVerboseNamePlural sets field value
 func (o *OAuth2Provider) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
+}
+
+// GetMetaModelName returns the MetaModelName field value
+func (o *OAuth2Provider) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *OAuth2Provider) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *OAuth2Provider) SetMetaModelName(v string) {
+	o.MetaModelName = v
 }
 
 // GetClientType returns the ClientType field value if set, zero value otherwise.
@@ -691,6 +717,9 @@ func (o OAuth2Provider) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if o.ClientType != nil {
 		toSerialize["client_type"] = o.ClientType

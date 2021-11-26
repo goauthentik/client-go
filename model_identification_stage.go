@@ -22,6 +22,7 @@ type IdentificationStage struct {
 	Component         string  `json:"component"`
 	VerboseName       string  `json:"verbose_name"`
 	VerboseNamePlural string  `json:"verbose_name_plural"`
+	MetaModelName     string  `json:"meta_model_name"`
 	FlowSet           *[]Flow `json:"flow_set,omitempty"`
 	// Fields of the user object to match against. (Hold shift to select multiple options)
 	UserFields *[]UserFieldsEnum `json:"user_fields,omitempty"`
@@ -44,13 +45,14 @@ type IdentificationStage struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentificationStage(pk string, name string, component string, verboseName string, verboseNamePlural string) *IdentificationStage {
+func NewIdentificationStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string) *IdentificationStage {
 	this := IdentificationStage{}
 	this.Pk = pk
 	this.Name = name
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	return &this
 }
 
@@ -180,6 +182,30 @@ func (o *IdentificationStage) GetVerboseNamePluralOk() (*string, bool) {
 // SetVerboseNamePlural sets field value
 func (o *IdentificationStage) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
+}
+
+// GetMetaModelName returns the MetaModelName field value
+func (o *IdentificationStage) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *IdentificationStage) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *IdentificationStage) SetMetaModelName(v string) {
+	o.MetaModelName = v
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
@@ -519,6 +545,9 @@ func (o IdentificationStage) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet

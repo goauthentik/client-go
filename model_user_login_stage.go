@@ -22,6 +22,7 @@ type UserLoginStage struct {
 	Component         string  `json:"component"`
 	VerboseName       string  `json:"verbose_name"`
 	VerboseNamePlural string  `json:"verbose_name_plural"`
+	MetaModelName     string  `json:"meta_model_name"`
 	FlowSet           *[]Flow `json:"flow_set,omitempty"`
 	// Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)
 	SessionDuration *string `json:"session_duration,omitempty"`
@@ -31,13 +32,14 @@ type UserLoginStage struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserLoginStage(pk string, name string, component string, verboseName string, verboseNamePlural string) *UserLoginStage {
+func NewUserLoginStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string) *UserLoginStage {
 	this := UserLoginStage{}
 	this.Pk = pk
 	this.Name = name
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	return &this
 }
 
@@ -169,6 +171,30 @@ func (o *UserLoginStage) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
 }
 
+// GetMetaModelName returns the MetaModelName field value
+func (o *UserLoginStage) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *UserLoginStage) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *UserLoginStage) SetMetaModelName(v string) {
+	o.MetaModelName = v
+}
+
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *UserLoginStage) GetFlowSet() []Flow {
 	if o == nil || o.FlowSet == nil {
@@ -249,6 +275,9 @@ func (o UserLoginStage) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet

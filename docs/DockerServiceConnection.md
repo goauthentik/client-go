@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **Url** | **string** | Can be in the format of &#39;unix://&lt;path&gt;&#39; when connecting to a local docker daemon, or &#39;https://&lt;hostname&gt;:2376&#39; when connecting to a remote system. | 
 **TlsVerification** | Pointer to **NullableString** | CA which the endpoint&#39;s Certificate is verified against. Can be left empty for no validation. | [optional] 
 **TlsAuthentication** | Pointer to **NullableString** | Certificate/Key used for authentication. Can be left empty for no authentication. | [optional] 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewDockerServiceConnection
 
-`func NewDockerServiceConnection(pk string, name string, component string, verboseName string, verboseNamePlural string, url string, ) *DockerServiceConnection`
+`func NewDockerServiceConnection(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, url string, ) *DockerServiceConnection`
 
 NewDockerServiceConnection instantiates a new DockerServiceConnection object
 This constructor will assign default values to properties that have it defined,
@@ -156,6 +157,26 @@ and a boolean to check if the value has been set.
 `func (o *DockerServiceConnection) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *DockerServiceConnection) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *DockerServiceConnection) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *DockerServiceConnection) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetUrl

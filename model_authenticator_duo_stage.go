@@ -22,6 +22,7 @@ type AuthenticatorDuoStage struct {
 	Component         string  `json:"component"`
 	VerboseName       string  `json:"verbose_name"`
 	VerboseNamePlural string  `json:"verbose_name_plural"`
+	MetaModelName     string  `json:"meta_model_name"`
 	FlowSet           *[]Flow `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
@@ -33,13 +34,14 @@ type AuthenticatorDuoStage struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorDuoStage(pk string, name string, component string, verboseName string, verboseNamePlural string, clientId string, apiHostname string) *AuthenticatorDuoStage {
+func NewAuthenticatorDuoStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, apiHostname string) *AuthenticatorDuoStage {
 	this := AuthenticatorDuoStage{}
 	this.Pk = pk
 	this.Name = name
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	this.ClientId = clientId
 	this.ApiHostname = apiHostname
 	return &this
@@ -171,6 +173,30 @@ func (o *AuthenticatorDuoStage) GetVerboseNamePluralOk() (*string, bool) {
 // SetVerboseNamePlural sets field value
 func (o *AuthenticatorDuoStage) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
+}
+
+// GetMetaModelName returns the MetaModelName field value
+func (o *AuthenticatorDuoStage) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorDuoStage) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *AuthenticatorDuoStage) SetMetaModelName(v string) {
+	o.MetaModelName = v
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
@@ -312,6 +338,9 @@ func (o AuthenticatorDuoStage) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet

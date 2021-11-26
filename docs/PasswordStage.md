@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
 **Backends** | [**[]BackendsEnum**](BackendsEnum.md) | Selection of backends to test the password against. | 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewPasswordStage
 
-`func NewPasswordStage(pk string, name string, component string, verboseName string, verboseNamePlural string, backends []BackendsEnum, ) *PasswordStage`
+`func NewPasswordStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, backends []BackendsEnum, ) *PasswordStage`
 
 NewPasswordStage instantiates a new PasswordStage object
 This constructor will assign default values to properties that have it defined,
@@ -131,6 +132,26 @@ and a boolean to check if the value has been set.
 `func (o *PasswordStage) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *PasswordStage) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *PasswordStage) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *PasswordStage) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetFlowSet

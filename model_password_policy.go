@@ -24,6 +24,7 @@ type PasswordPolicy struct {
 	Component         string `json:"component"`
 	VerboseName       string `json:"verbose_name"`
 	VerboseNamePlural string `json:"verbose_name_plural"`
+	MetaModelName     string `json:"meta_model_name"`
 	BoundTo           int32  `json:"bound_to"`
 	// Field key to check, field keys defined in Prompt stages are available.
 	PasswordField   *string `json:"password_field,omitempty"`
@@ -39,12 +40,13 @@ type PasswordPolicy struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPasswordPolicy(pk string, component string, verboseName string, verboseNamePlural string, boundTo int32, errorMessage string) *PasswordPolicy {
+func NewPasswordPolicy(pk string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, errorMessage string) *PasswordPolicy {
 	this := PasswordPolicy{}
 	this.Pk = pk
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	this.BoundTo = boundTo
 	this.ErrorMessage = errorMessage
 	return &this
@@ -227,6 +229,30 @@ func (o *PasswordPolicy) GetVerboseNamePluralOk() (*string, bool) {
 // SetVerboseNamePlural sets field value
 func (o *PasswordPolicy) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
+}
+
+// GetMetaModelName returns the MetaModelName field value
+func (o *PasswordPolicy) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *PasswordPolicy) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *PasswordPolicy) SetMetaModelName(v string) {
+	o.MetaModelName = v
 }
 
 // GetBoundTo returns the BoundTo field value
@@ -488,6 +514,9 @@ func (o PasswordPolicy) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if true {
 		toSerialize["bound_to"] = o.BoundTo

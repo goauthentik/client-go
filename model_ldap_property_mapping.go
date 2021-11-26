@@ -25,6 +25,7 @@ type LDAPPropertyMapping struct {
 	Component         string         `json:"component"`
 	VerboseName       string         `json:"verbose_name"`
 	VerboseNamePlural string         `json:"verbose_name_plural"`
+	MetaModelName     string         `json:"meta_model_name"`
 	ObjectField       string         `json:"object_field"`
 }
 
@@ -32,7 +33,7 @@ type LDAPPropertyMapping struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLDAPPropertyMapping(pk string, name string, expression string, component string, verboseName string, verboseNamePlural string, objectField string) *LDAPPropertyMapping {
+func NewLDAPPropertyMapping(pk string, name string, expression string, component string, verboseName string, verboseNamePlural string, metaModelName string, objectField string) *LDAPPropertyMapping {
 	this := LDAPPropertyMapping{}
 	this.Pk = pk
 	this.Name = name
@@ -40,6 +41,7 @@ func NewLDAPPropertyMapping(pk string, name string, expression string, component
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	this.ObjectField = objectField
 	return &this
 }
@@ -239,6 +241,30 @@ func (o *LDAPPropertyMapping) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
 }
 
+// GetMetaModelName returns the MetaModelName field value
+func (o *LDAPPropertyMapping) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *LDAPPropertyMapping) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *LDAPPropertyMapping) SetMetaModelName(v string) {
+	o.MetaModelName = v
+}
+
 // GetObjectField returns the ObjectField field value
 func (o *LDAPPropertyMapping) GetObjectField() string {
 	if o == nil {
@@ -285,6 +311,9 @@ func (o LDAPPropertyMapping) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if true {
 		toSerialize["object_field"] = o.ObjectField

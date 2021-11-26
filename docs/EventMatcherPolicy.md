@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **BoundTo** | **int32** |  | [readonly] 
 **Action** | Pointer to [**EventActions**](EventActions.md) | Match created events with this action type. When left empty, all action types will be matched. | [optional] 
 **ClientIp** | Pointer to **string** | Matches Event&#39;s Client IP (strict matching, for network matching use an Expression Policy) | [optional] 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewEventMatcherPolicy
 
-`func NewEventMatcherPolicy(pk string, component string, verboseName string, verboseNamePlural string, boundTo int32, ) *EventMatcherPolicy`
+`func NewEventMatcherPolicy(pk string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, ) *EventMatcherPolicy`
 
 NewEventMatcherPolicy instantiates a new EventMatcherPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -172,6 +173,26 @@ and a boolean to check if the value has been set.
 `func (o *EventMatcherPolicy) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *EventMatcherPolicy) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *EventMatcherPolicy) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *EventMatcherPolicy) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetBoundTo

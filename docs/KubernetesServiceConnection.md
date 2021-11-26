@@ -10,13 +10,14 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **Kubeconfig** | Pointer to **map[string]interface{}** | Paste your kubeconfig here. authentik will automatically use the currently selected context. | [optional] 
 
 ## Methods
 
 ### NewKubernetesServiceConnection
 
-`func NewKubernetesServiceConnection(pk string, name string, component string, verboseName string, verboseNamePlural string, ) *KubernetesServiceConnection`
+`func NewKubernetesServiceConnection(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, ) *KubernetesServiceConnection`
 
 NewKubernetesServiceConnection instantiates a new KubernetesServiceConnection object
 This constructor will assign default values to properties that have it defined,
@@ -154,6 +155,26 @@ and a boolean to check if the value has been set.
 `func (o *KubernetesServiceConnection) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *KubernetesServiceConnection) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *KubernetesServiceConnection) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *KubernetesServiceConnection) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetKubeconfig

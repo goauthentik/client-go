@@ -29,6 +29,7 @@ type ProxyProvider struct {
 	AssignedApplicationName string  `json:"assigned_application_name"`
 	VerboseName             string  `json:"verbose_name"`
 	VerboseNamePlural       string  `json:"verbose_name_plural"`
+	MetaModelName           string  `json:"meta_model_name"`
 	InternalHost            *string `json:"internal_host,omitempty"`
 	ExternalHost            string  `json:"external_host"`
 	// Validate SSL Certificates of upstream servers
@@ -55,7 +56,7 @@ type ProxyProvider struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, externalHost string, redirectUris string, outpostSet []string) *ProxyProvider {
+func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, externalHost string, redirectUris string, outpostSet []string) *ProxyProvider {
 	this := ProxyProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -65,6 +66,7 @@ func NewProxyProvider(pk int32, name string, authorizationFlow string, component
 	this.AssignedApplicationName = assignedApplicationName
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	this.ExternalHost = externalHost
 	this.RedirectUris = redirectUris
 	this.OutpostSet = outpostSet
@@ -301,6 +303,30 @@ func (o *ProxyProvider) GetVerboseNamePluralOk() (*string, bool) {
 // SetVerboseNamePlural sets field value
 func (o *ProxyProvider) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
+}
+
+// GetMetaModelName returns the MetaModelName field value
+func (o *ProxyProvider) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *ProxyProvider) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *ProxyProvider) SetMetaModelName(v string) {
+	o.MetaModelName = v
 }
 
 // GetInternalHost returns the InternalHost field value if set, zero value otherwise.
@@ -734,6 +760,9 @@ func (o ProxyProvider) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if o.InternalHost != nil {
 		toSerialize["internal_host"] = o.InternalHost

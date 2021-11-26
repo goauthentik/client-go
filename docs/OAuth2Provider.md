@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **AssignedApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **ClientType** | Pointer to [**ClientTypeEnum**](ClientTypeEnum.md) | Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable. | [optional] 
 **ClientId** | Pointer to **string** |  | [optional] 
 **ClientSecret** | Pointer to **string** |  | [optional] 
@@ -29,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewOAuth2Provider
 
-`func NewOAuth2Provider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, ) *OAuth2Provider`
+`func NewOAuth2Provider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, ) *OAuth2Provider`
 
 NewOAuth2Provider instantiates a new OAuth2Provider object
 This constructor will assign default values to properties that have it defined,
@@ -227,6 +228,26 @@ and a boolean to check if the value has been set.
 `func (o *OAuth2Provider) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *OAuth2Provider) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *OAuth2Provider) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *OAuth2Provider) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetClientType

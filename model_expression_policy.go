@@ -24,6 +24,7 @@ type ExpressionPolicy struct {
 	Component         string `json:"component"`
 	VerboseName       string `json:"verbose_name"`
 	VerboseNamePlural string `json:"verbose_name_plural"`
+	MetaModelName     string `json:"meta_model_name"`
 	BoundTo           int32  `json:"bound_to"`
 	Expression        string `json:"expression"`
 }
@@ -32,12 +33,13 @@ type ExpressionPolicy struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExpressionPolicy(pk string, component string, verboseName string, verboseNamePlural string, boundTo int32, expression string) *ExpressionPolicy {
+func NewExpressionPolicy(pk string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, expression string) *ExpressionPolicy {
 	this := ExpressionPolicy{}
 	this.Pk = pk
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	this.BoundTo = boundTo
 	this.Expression = expression
 	return &this
@@ -222,6 +224,30 @@ func (o *ExpressionPolicy) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
 }
 
+// GetMetaModelName returns the MetaModelName field value
+func (o *ExpressionPolicy) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *ExpressionPolicy) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *ExpressionPolicy) SetMetaModelName(v string) {
+	o.MetaModelName = v
+}
+
 // GetBoundTo returns the BoundTo field value
 func (o *ExpressionPolicy) GetBoundTo() int32 {
 	if o == nil {
@@ -289,6 +315,9 @@ func (o ExpressionPolicy) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if true {
 		toSerialize["bound_to"] = o.BoundTo

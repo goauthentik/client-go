@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
+**MetaModelName** | **string** |  | [readonly] 
 **FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
 **Provider** | [**ProviderEnum**](ProviderEnum.md) |  | 
@@ -22,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatorSMSStage
 
-`func NewAuthenticatorSMSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, provider ProviderEnum, fromNumber string, accountSid string, auth string, ) *AuthenticatorSMSStage`
+`func NewAuthenticatorSMSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, provider ProviderEnum, fromNumber string, accountSid string, auth string, ) *AuthenticatorSMSStage`
 
 NewAuthenticatorSMSStage instantiates a new AuthenticatorSMSStage object
 This constructor will assign default values to properties that have it defined,
@@ -135,6 +136,26 @@ and a boolean to check if the value has been set.
 `func (o *AuthenticatorSMSStage) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *AuthenticatorSMSStage) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *AuthenticatorSMSStage) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *AuthenticatorSMSStage) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
 
 
 ### GetFlowSet

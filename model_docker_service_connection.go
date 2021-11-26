@@ -24,6 +24,7 @@ type DockerServiceConnection struct {
 	Component         string `json:"component"`
 	VerboseName       string `json:"verbose_name"`
 	VerboseNamePlural string `json:"verbose_name_plural"`
+	MetaModelName     string `json:"meta_model_name"`
 	// Can be in the format of 'unix://<path>' when connecting to a local docker daemon, or 'https://<hostname>:2376' when connecting to a remote system.
 	Url string `json:"url"`
 	// CA which the endpoint's Certificate is verified against. Can be left empty for no validation.
@@ -36,13 +37,14 @@ type DockerServiceConnection struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDockerServiceConnection(pk string, name string, component string, verboseName string, verboseNamePlural string, url string) *DockerServiceConnection {
+func NewDockerServiceConnection(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, url string) *DockerServiceConnection {
 	this := DockerServiceConnection{}
 	this.Pk = pk
 	this.Name = name
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	this.Url = url
 	return &this
 }
@@ -207,6 +209,30 @@ func (o *DockerServiceConnection) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
 }
 
+// GetMetaModelName returns the MetaModelName field value
+func (o *DockerServiceConnection) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *DockerServiceConnection) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *DockerServiceConnection) SetMetaModelName(v string) {
+	o.MetaModelName = v
+}
+
 // GetUrl returns the Url field value
 func (o *DockerServiceConnection) GetUrl() string {
 	if o == nil {
@@ -336,6 +362,9 @@ func (o DockerServiceConnection) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if true {
 		toSerialize["url"] = o.Url

@@ -29,6 +29,7 @@ type SAMLProvider struct {
 	AssignedApplicationName string `json:"assigned_application_name"`
 	VerboseName             string `json:"verbose_name"`
 	VerboseNamePlural       string `json:"verbose_name_plural"`
+	MetaModelName           string `json:"meta_model_name"`
 	AcsUrl                  string `json:"acs_url"`
 	// Value of the audience restriction field of the asseration. When left empty, no audience restriction will be added.
 	Audience *string `json:"audience,omitempty"`
@@ -57,7 +58,7 @@ type SAMLProvider struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSAMLProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, acsUrl string, metadataDownloadUrl string) *SAMLProvider {
+func NewSAMLProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, metadataDownloadUrl string) *SAMLProvider {
 	this := SAMLProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -67,6 +68,7 @@ func NewSAMLProvider(pk int32, name string, authorizationFlow string, component 
 	this.AssignedApplicationName = assignedApplicationName
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	this.AcsUrl = acsUrl
 	this.MetadataDownloadUrl = metadataDownloadUrl
 	return &this
@@ -302,6 +304,30 @@ func (o *SAMLProvider) GetVerboseNamePluralOk() (*string, bool) {
 // SetVerboseNamePlural sets field value
 func (o *SAMLProvider) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
+}
+
+// GetMetaModelName returns the MetaModelName field value
+func (o *SAMLProvider) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *SAMLProvider) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *SAMLProvider) SetMetaModelName(v string) {
+	o.MetaModelName = v
 }
 
 // GetAcsUrl returns the AcsUrl field value
@@ -765,6 +791,9 @@ func (o SAMLProvider) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if true {
 		toSerialize["acs_url"] = o.AcsUrl

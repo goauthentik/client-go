@@ -22,6 +22,7 @@ type PromptStage struct {
 	Component          string    `json:"component"`
 	VerboseName        string    `json:"verbose_name"`
 	VerboseNamePlural  string    `json:"verbose_name_plural"`
+	MetaModelName      string    `json:"meta_model_name"`
 	FlowSet            *[]Flow   `json:"flow_set,omitempty"`
 	Fields             []string  `json:"fields"`
 	ValidationPolicies *[]string `json:"validation_policies,omitempty"`
@@ -31,13 +32,14 @@ type PromptStage struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPromptStage(pk string, name string, component string, verboseName string, verboseNamePlural string, fields []string) *PromptStage {
+func NewPromptStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, fields []string) *PromptStage {
 	this := PromptStage{}
 	this.Pk = pk
 	this.Name = name
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
+	this.MetaModelName = metaModelName
 	this.Fields = fields
 	return &this
 }
@@ -170,6 +172,30 @@ func (o *PromptStage) SetVerboseNamePlural(v string) {
 	o.VerboseNamePlural = v
 }
 
+// GetMetaModelName returns the MetaModelName field value
+func (o *PromptStage) GetMetaModelName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MetaModelName
+}
+
+// GetMetaModelNameOk returns a tuple with the MetaModelName field value
+// and a boolean to check if the value has been set.
+func (o *PromptStage) GetMetaModelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MetaModelName, true
+}
+
+// SetMetaModelName sets field value
+func (o *PromptStage) SetMetaModelName(v string) {
+	o.MetaModelName = v
+}
+
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PromptStage) GetFlowSet() []Flow {
 	if o == nil || o.FlowSet == nil {
@@ -274,6 +300,9 @@ func (o PromptStage) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
