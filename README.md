@@ -697,6 +697,7 @@ Class | Method | HTTP request | Description
  - [EmailStage](docs/EmailStage.md)
  - [EmailStageRequest](docs/EmailStageRequest.md)
  - [ErrorDetail](docs/ErrorDetail.md)
+ - [ErrorReportingConfig](docs/ErrorReportingConfig.md)
  - [Event](docs/Event.md)
  - [EventActions](docs/EventActions.md)
  - [EventMatcherPolicy](docs/EventMatcherPolicy.md)

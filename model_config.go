@@ -17,25 +17,21 @@ import (
 
 // Config Serialize authentik Config into DRF Object
 type Config struct {
-	ErrorReportingEnabled     bool               `json:"error_reporting_enabled"`
-	ErrorReportingEnvironment string             `json:"error_reporting_environment"`
-	ErrorReportingSendPii     bool               `json:"error_reporting_send_pii"`
-	Capabilities              []CapabilitiesEnum `json:"capabilities"`
-	CacheTimeout              int32              `json:"cache_timeout"`
-	CacheTimeoutFlows         int32              `json:"cache_timeout_flows"`
-	CacheTimeoutPolicies      int32              `json:"cache_timeout_policies"`
-	CacheTimeoutReputation    int32              `json:"cache_timeout_reputation"`
+	ErrorReporting         ErrorReportingConfig `json:"error_reporting"`
+	Capabilities           []CapabilitiesEnum   `json:"capabilities"`
+	CacheTimeout           int32                `json:"cache_timeout"`
+	CacheTimeoutFlows      int32                `json:"cache_timeout_flows"`
+	CacheTimeoutPolicies   int32                `json:"cache_timeout_policies"`
+	CacheTimeoutReputation int32                `json:"cache_timeout_reputation"`
 }
 
 // NewConfig instantiates a new Config object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConfig(errorReportingEnabled bool, errorReportingEnvironment string, errorReportingSendPii bool, capabilities []CapabilitiesEnum, cacheTimeout int32, cacheTimeoutFlows int32, cacheTimeoutPolicies int32, cacheTimeoutReputation int32) *Config {
+func NewConfig(errorReporting ErrorReportingConfig, capabilities []CapabilitiesEnum, cacheTimeout int32, cacheTimeoutFlows int32, cacheTimeoutPolicies int32, cacheTimeoutReputation int32) *Config {
 	this := Config{}
-	this.ErrorReportingEnabled = errorReportingEnabled
-	this.ErrorReportingEnvironment = errorReportingEnvironment
-	this.ErrorReportingSendPii = errorReportingSendPii
+	this.ErrorReporting = errorReporting
 	this.Capabilities = capabilities
 	this.CacheTimeout = cacheTimeout
 	this.CacheTimeoutFlows = cacheTimeoutFlows
@@ -52,76 +48,28 @@ func NewConfigWithDefaults() *Config {
 	return &this
 }
 
-// GetErrorReportingEnabled returns the ErrorReportingEnabled field value
-func (o *Config) GetErrorReportingEnabled() bool {
+// GetErrorReporting returns the ErrorReporting field value
+func (o *Config) GetErrorReporting() ErrorReportingConfig {
 	if o == nil {
-		var ret bool
+		var ret ErrorReportingConfig
 		return ret
 	}
 
-	return o.ErrorReportingEnabled
+	return o.ErrorReporting
 }
 
-// GetErrorReportingEnabledOk returns a tuple with the ErrorReportingEnabled field value
+// GetErrorReportingOk returns a tuple with the ErrorReporting field value
 // and a boolean to check if the value has been set.
-func (o *Config) GetErrorReportingEnabledOk() (*bool, bool) {
+func (o *Config) GetErrorReportingOk() (*ErrorReportingConfig, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ErrorReportingEnabled, true
+	return &o.ErrorReporting, true
 }
 
-// SetErrorReportingEnabled sets field value
-func (o *Config) SetErrorReportingEnabled(v bool) {
-	o.ErrorReportingEnabled = v
-}
-
-// GetErrorReportingEnvironment returns the ErrorReportingEnvironment field value
-func (o *Config) GetErrorReportingEnvironment() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ErrorReportingEnvironment
-}
-
-// GetErrorReportingEnvironmentOk returns a tuple with the ErrorReportingEnvironment field value
-// and a boolean to check if the value has been set.
-func (o *Config) GetErrorReportingEnvironmentOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ErrorReportingEnvironment, true
-}
-
-// SetErrorReportingEnvironment sets field value
-func (o *Config) SetErrorReportingEnvironment(v string) {
-	o.ErrorReportingEnvironment = v
-}
-
-// GetErrorReportingSendPii returns the ErrorReportingSendPii field value
-func (o *Config) GetErrorReportingSendPii() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.ErrorReportingSendPii
-}
-
-// GetErrorReportingSendPiiOk returns a tuple with the ErrorReportingSendPii field value
-// and a boolean to check if the value has been set.
-func (o *Config) GetErrorReportingSendPiiOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ErrorReportingSendPii, true
-}
-
-// SetErrorReportingSendPii sets field value
-func (o *Config) SetErrorReportingSendPii(v bool) {
-	o.ErrorReportingSendPii = v
+// SetErrorReporting sets field value
+func (o *Config) SetErrorReporting(v ErrorReportingConfig) {
+	o.ErrorReporting = v
 }
 
 // GetCapabilities returns the Capabilities field value
@@ -247,13 +195,7 @@ func (o *Config) SetCacheTimeoutReputation(v int32) {
 func (o Config) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["error_reporting_enabled"] = o.ErrorReportingEnabled
-	}
-	if true {
-		toSerialize["error_reporting_environment"] = o.ErrorReportingEnvironment
-	}
-	if true {
-		toSerialize["error_reporting_send_pii"] = o.ErrorReportingSendPii
+		toSerialize["error_reporting"] = o.ErrorReporting
 	}
 	if true {
 		toSerialize["capabilities"] = o.Capabilities

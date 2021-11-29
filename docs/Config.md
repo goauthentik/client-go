@@ -4,9 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ErrorReportingEnabled** | **bool** |  | [readonly] 
-**ErrorReportingEnvironment** | **string** |  | [readonly] 
-**ErrorReportingSendPii** | **bool** |  | [readonly] 
+**ErrorReporting** | [**ErrorReportingConfig**](ErrorReportingConfig.md) |  | 
 **Capabilities** | [**[]CapabilitiesEnum**](CapabilitiesEnum.md) |  | 
 **CacheTimeout** | **int32** |  | 
 **CacheTimeoutFlows** | **int32** |  | 
@@ -17,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewConfig
 
-`func NewConfig(errorReportingEnabled bool, errorReportingEnvironment string, errorReportingSendPii bool, capabilities []CapabilitiesEnum, cacheTimeout int32, cacheTimeoutFlows int32, cacheTimeoutPolicies int32, cacheTimeoutReputation int32, ) *Config`
+`func NewConfig(errorReporting ErrorReportingConfig, capabilities []CapabilitiesEnum, cacheTimeout int32, cacheTimeoutFlows int32, cacheTimeoutPolicies int32, cacheTimeoutReputation int32, ) *Config`
 
 NewConfig instantiates a new Config object
 This constructor will assign default values to properties that have it defined,
@@ -32,64 +30,24 @@ NewConfigWithDefaults instantiates a new Config object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetErrorReportingEnabled
+### GetErrorReporting
 
-`func (o *Config) GetErrorReportingEnabled() bool`
+`func (o *Config) GetErrorReporting() ErrorReportingConfig`
 
-GetErrorReportingEnabled returns the ErrorReportingEnabled field if non-nil, zero value otherwise.
+GetErrorReporting returns the ErrorReporting field if non-nil, zero value otherwise.
 
-### GetErrorReportingEnabledOk
+### GetErrorReportingOk
 
-`func (o *Config) GetErrorReportingEnabledOk() (*bool, bool)`
+`func (o *Config) GetErrorReportingOk() (*ErrorReportingConfig, bool)`
 
-GetErrorReportingEnabledOk returns a tuple with the ErrorReportingEnabled field if it's non-nil, zero value otherwise
+GetErrorReportingOk returns a tuple with the ErrorReporting field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetErrorReportingEnabled
+### SetErrorReporting
 
-`func (o *Config) SetErrorReportingEnabled(v bool)`
+`func (o *Config) SetErrorReporting(v ErrorReportingConfig)`
 
-SetErrorReportingEnabled sets ErrorReportingEnabled field to given value.
-
-
-### GetErrorReportingEnvironment
-
-`func (o *Config) GetErrorReportingEnvironment() string`
-
-GetErrorReportingEnvironment returns the ErrorReportingEnvironment field if non-nil, zero value otherwise.
-
-### GetErrorReportingEnvironmentOk
-
-`func (o *Config) GetErrorReportingEnvironmentOk() (*string, bool)`
-
-GetErrorReportingEnvironmentOk returns a tuple with the ErrorReportingEnvironment field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetErrorReportingEnvironment
-
-`func (o *Config) SetErrorReportingEnvironment(v string)`
-
-SetErrorReportingEnvironment sets ErrorReportingEnvironment field to given value.
-
-
-### GetErrorReportingSendPii
-
-`func (o *Config) GetErrorReportingSendPii() bool`
-
-GetErrorReportingSendPii returns the ErrorReportingSendPii field if non-nil, zero value otherwise.
-
-### GetErrorReportingSendPiiOk
-
-`func (o *Config) GetErrorReportingSendPiiOk() (*bool, bool)`
-
-GetErrorReportingSendPiiOk returns a tuple with the ErrorReportingSendPii field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetErrorReportingSendPii
-
-`func (o *Config) SetErrorReportingSendPii(v bool)`
-
-SetErrorReportingSendPii sets ErrorReportingSendPii field to given value.
+SetErrorReporting sets ErrorReporting field to given value.
 
 
 ### GetCapabilities

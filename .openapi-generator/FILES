@@ -108,6 +108,7 @@ docs/EmailChallengeResponseRequest.md
 docs/EmailStage.md
 docs/EmailStageRequest.md
 docs/ErrorDetail.md
+docs/ErrorReportingConfig.md
 docs/Event.md
 docs/EventActions.md
 docs/EventMatcherPolicy.md
@@ -543,6 +544,7 @@ model_email_challenge_response_request.go
 model_email_stage.go
 model_email_stage_request.go
 model_error_detail.go
+model_error_reporting_config.go
 model_event.go
 model_event_actions.go
 model_event_matcher_policy.go

@@ -22878,26 +22878,21 @@ components:
     Config:
       description: Serialize authentik Config into DRF Object
       example:
-        cache_timeout_policies: 1
-        error_reporting_environment: error_reporting_environment
+        cache_timeout_policies: 5
         capabilities:
         - null
         - null
         cache_timeout_reputation: 5
-        error_reporting_send_pii: true
-        cache_timeout: 0
-        error_reporting_enabled: true
-        cache_timeout_flows: 6
+        cache_timeout: 6
+        error_reporting:
+          environment: environment
+          send_pii: true
+          traces_sample_rate: 0.8008282
+          enabled: true
+        cache_timeout_flows: 1
       properties:
-        error_reporting_enabled:
-          readOnly: true
-          type: boolean
-        error_reporting_environment:
-          readOnly: true
-          type: string
-        error_reporting_send_pii:
-          readOnly: true
-          type: boolean
+        error_reporting:
+          $ref: '#/components/schemas/ErrorReportingConfig'
         capabilities:
           items:
             $ref: '#/components/schemas/CapabilitiesEnum'
@@ -22916,9 +22911,7 @@ components:
       - cache_timeout_policies
       - cache_timeout_reputation
       - capabilities
-      - error_reporting_enabled
-      - error_reporting_environment
-      - error_reporting_send_pii
+      - error_reporting
       type: object
     ConsentChallenge:
       description: Challenge info for consent screens
@@ -23942,6 +23935,33 @@ components:
       required:
       - code
       - string
+      type: object
+    ErrorReportingConfig:
+      description: Config for error reporting
+      example:
+        environment: environment
+        send_pii: true
+        traces_sample_rate: 0.8008282
+        enabled: true
+      properties:
+        enabled:
+          readOnly: true
+          type: boolean
+        environment:
+          readOnly: true
+          type: string
+        send_pii:
+          readOnly: true
+          type: boolean
+        traces_sample_rate:
+          format: float
+          readOnly: true
+          type: number
+      required:
+      - enabled
+      - environment
+      - send_pii
+      - traces_sample_rate
       type: object
     Event:
       description: Event Serializer
