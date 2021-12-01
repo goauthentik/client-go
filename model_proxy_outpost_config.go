@@ -41,13 +41,17 @@ type ProxyOutpostConfig struct {
 	CookieDomain    *string         `json:"cookie_domain,omitempty"`
 	TokenValidity   NullableFloat32 `json:"token_validity"`
 	ScopesToRequest []string        `json:"scopes_to_request"`
+	// Internal application name, used in URLs.
+	AssignedApplicationSlug string `json:"assigned_application_slug"`
+	// Application's display Name.
+	AssignedApplicationName string `json:"assigned_application_name"`
 }
 
 // NewProxyOutpostConfig instantiates a new ProxyOutpostConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration OpenIDConnectConfiguration, tokenValidity NullableFloat32, scopesToRequest []string) *ProxyOutpostConfig {
+func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration OpenIDConnectConfiguration, tokenValidity NullableFloat32, scopesToRequest []string, assignedApplicationSlug string, assignedApplicationName string) *ProxyOutpostConfig {
 	this := ProxyOutpostConfig{}
 	this.Pk = pk
 	this.Name = name
@@ -55,6 +59,8 @@ func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfi
 	this.OidcConfiguration = oidcConfiguration
 	this.TokenValidity = tokenValidity
 	this.ScopesToRequest = scopesToRequest
+	this.AssignedApplicationSlug = assignedApplicationSlug
+	this.AssignedApplicationName = assignedApplicationName
 	return &this
 }
 
@@ -607,6 +613,54 @@ func (o *ProxyOutpostConfig) SetScopesToRequest(v []string) {
 	o.ScopesToRequest = v
 }
 
+// GetAssignedApplicationSlug returns the AssignedApplicationSlug field value
+func (o *ProxyOutpostConfig) GetAssignedApplicationSlug() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AssignedApplicationSlug
+}
+
+// GetAssignedApplicationSlugOk returns a tuple with the AssignedApplicationSlug field value
+// and a boolean to check if the value has been set.
+func (o *ProxyOutpostConfig) GetAssignedApplicationSlugOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AssignedApplicationSlug, true
+}
+
+// SetAssignedApplicationSlug sets field value
+func (o *ProxyOutpostConfig) SetAssignedApplicationSlug(v string) {
+	o.AssignedApplicationSlug = v
+}
+
+// GetAssignedApplicationName returns the AssignedApplicationName field value
+func (o *ProxyOutpostConfig) GetAssignedApplicationName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AssignedApplicationName
+}
+
+// GetAssignedApplicationNameOk returns a tuple with the AssignedApplicationName field value
+// and a boolean to check if the value has been set.
+func (o *ProxyOutpostConfig) GetAssignedApplicationNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AssignedApplicationName, true
+}
+
+// SetAssignedApplicationName sets field value
+func (o *ProxyOutpostConfig) SetAssignedApplicationName(v string) {
+	o.AssignedApplicationName = v
+}
+
 func (o ProxyOutpostConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -662,6 +716,12 @@ func (o ProxyOutpostConfig) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["scopes_to_request"] = o.ScopesToRequest
+	}
+	if true {
+		toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug
+	}
+	if true {
+		toSerialize["assigned_application_name"] = o.AssignedApplicationName
 	}
 	return json.Marshal(toSerialize)
 }

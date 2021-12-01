@@ -22,12 +22,14 @@ Name | Type | Description | Notes
 **CookieDomain** | Pointer to **string** |  | [optional] 
 **TokenValidity** | **NullableFloat32** |  | [readonly] 
 **ScopesToRequest** | **[]string** |  | [readonly] 
+**AssignedApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
+**AssignedApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
 
 ## Methods
 
 ### NewProxyOutpostConfig
 
-`func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration OpenIDConnectConfiguration, tokenValidity NullableFloat32, scopesToRequest []string, ) *ProxyOutpostConfig`
+`func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration OpenIDConnectConfiguration, tokenValidity NullableFloat32, scopesToRequest []string, assignedApplicationSlug string, assignedApplicationName string, ) *ProxyOutpostConfig`
 
 NewProxyOutpostConfig instantiates a new ProxyOutpostConfig object
 This constructor will assign default values to properties that have it defined,
@@ -480,6 +482,46 @@ and a boolean to check if the value has been set.
 `func (o *ProxyOutpostConfig) SetScopesToRequest(v []string)`
 
 SetScopesToRequest sets ScopesToRequest field to given value.
+
+
+### GetAssignedApplicationSlug
+
+`func (o *ProxyOutpostConfig) GetAssignedApplicationSlug() string`
+
+GetAssignedApplicationSlug returns the AssignedApplicationSlug field if non-nil, zero value otherwise.
+
+### GetAssignedApplicationSlugOk
+
+`func (o *ProxyOutpostConfig) GetAssignedApplicationSlugOk() (*string, bool)`
+
+GetAssignedApplicationSlugOk returns a tuple with the AssignedApplicationSlug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssignedApplicationSlug
+
+`func (o *ProxyOutpostConfig) SetAssignedApplicationSlug(v string)`
+
+SetAssignedApplicationSlug sets AssignedApplicationSlug field to given value.
+
+
+### GetAssignedApplicationName
+
+`func (o *ProxyOutpostConfig) GetAssignedApplicationName() string`
+
+GetAssignedApplicationName returns the AssignedApplicationName field if non-nil, zero value otherwise.
+
+### GetAssignedApplicationNameOk
+
+`func (o *ProxyOutpostConfig) GetAssignedApplicationNameOk() (*string, bool)`
+
+GetAssignedApplicationNameOk returns a tuple with the AssignedApplicationName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssignedApplicationName
+
+`func (o *ProxyOutpostConfig) SetAssignedApplicationName(v string)`
+
+SetAssignedApplicationName sets AssignedApplicationName field to given value.
 
 
 

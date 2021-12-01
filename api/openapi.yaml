@@ -31000,12 +31000,14 @@ components:
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cookie_secret: cookie_secret
           basic_auth_password_attribute: basic_auth_password_attribute
+          assigned_application_slug: assigned_application_slug
           client_id: client_id
           mode: ""
           internal_host: https://openapi-generator.tech
           oidc_configuration: ""
           basic_auth_enabled: true
           basic_auth_user_attribute: basic_auth_user_attribute
+          assigned_application_name: assigned_application_name
           name: name
           scopes_to_request:
           - scopes_to_request
@@ -31020,12 +31022,14 @@ components:
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cookie_secret: cookie_secret
           basic_auth_password_attribute: basic_auth_password_attribute
+          assigned_application_slug: assigned_application_slug
           client_id: client_id
           mode: ""
           internal_host: https://openapi-generator.tech
           oidc_configuration: ""
           basic_auth_enabled: true
           basic_auth_user_attribute: basic_auth_user_attribute
+          assigned_application_name: assigned_application_name
           name: name
           scopes_to_request:
           - scopes_to_request
@@ -36920,12 +36924,14 @@ components:
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         cookie_secret: cookie_secret
         basic_auth_password_attribute: basic_auth_password_attribute
+        assigned_application_slug: assigned_application_slug
         client_id: client_id
         mode: ""
         internal_host: https://openapi-generator.tech
         oidc_configuration: ""
         basic_auth_enabled: true
         basic_auth_user_attribute: basic_auth_user_attribute
+        assigned_application_name: assigned_application_name
         name: name
         scopes_to_request:
         - scopes_to_request
@@ -37002,7 +37008,17 @@ components:
             type: string
           readOnly: true
           type: array
+        assigned_application_slug:
+          description: Internal application name, used in URLs.
+          readOnly: true
+          type: string
+        assigned_application_name:
+          description: Application's display Name.
+          readOnly: true
+          type: string
       required:
+      - assigned_application_name
+      - assigned_application_slug
       - external_host
       - name
       - oidc_configuration
