@@ -13472,14 +13472,6 @@ paths:
         style: form
       - explode: true
         in: query
-        name: authentication_flow
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      - explode: true
-        in: query
         name: base_dn
         required: false
         schema:
@@ -13498,14 +13490,6 @@ paths:
         required: false
         schema:
           type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: enrollment_flow
-        required: false
-        schema:
-          format: uuid
-          type: string
         style: form
       - explode: true
         in: query
@@ -13561,12 +13545,10 @@ paths:
         style: form
       - explode: true
         in: query
-        name: policy_engine_mode
+        name: peer_certificate
         required: false
         schema:
-          enum:
-          - all
-          - any
+          format: uuid
           type: string
         style: form
       - explode: true
@@ -25977,6 +25959,7 @@ components:
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user_object_filter: user_object_filter
+        peer_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
           format: uuid
@@ -26024,6 +26007,12 @@ components:
             or a new user enrolled.
         server_uri:
           format: uri
+          type: string
+        peer_certificate:
+          description: Optionally verify the LDAP Server's Certificate against the
+            CA Chain in this keypair.
+          format: uuid
+          nullable: true
           type: string
         bind_cn:
           type: string
@@ -26089,26 +26078,17 @@ components:
     LDAPSourceRequest:
       description: LDAP Source Serializer
       example:
-        bind_cn: bind_cn
         object_uniqueness_field: object_uniqueness_field
         user_matching_mode: ""
         start_tls: true
-        sync_groups: true
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         additional_user_dn: additional_user_dn
         sync_users: true
         enabled: true
-        group_object_filter: group_object_filter
-        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        sync_users_password: true
-        bind_password: bind_password
         base_dn: base_dn
-        name: name
         additional_group_dn: additional_group_dn
-        user_object_filter: user_object_filter
         sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -26116,6 +26096,16 @@ components:
         slug: slug
         group_membership_field: group_membership_field
         server_uri: https://openapi-generator.tech
+        bind_cn: bind_cn
+        sync_groups: true
+        group_object_filter: group_object_filter
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        sync_users_password: true
+        bind_password: bind_password
+        name: name
+        user_object_filter: user_object_filter
+        peer_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         name:
           description: Source's display Name.
@@ -26149,6 +26139,12 @@ components:
         server_uri:
           format: uri
           minLength: 1
+          type: string
+        peer_certificate:
+          description: Optionally verify the LDAP Server's Certificate against the
+            CA Chain in this keypair.
+          format: uuid
+          nullable: true
           type: string
         bind_cn:
           type: string
@@ -29799,6 +29795,7 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user_object_filter: user_object_filter
+          peer_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - object_uniqueness_field: object_uniqueness_field
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
@@ -29830,6 +29827,7 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user_object_filter: user_object_filter
+          peer_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -34475,26 +34473,17 @@ components:
     PatchedLDAPSourceRequest:
       description: LDAP Source Serializer
       example:
-        bind_cn: bind_cn
         object_uniqueness_field: object_uniqueness_field
         user_matching_mode: ""
         start_tls: true
-        sync_groups: true
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         additional_user_dn: additional_user_dn
         sync_users: true
         enabled: true
-        group_object_filter: group_object_filter
-        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        sync_users_password: true
-        bind_password: bind_password
         base_dn: base_dn
-        name: name
         additional_group_dn: additional_group_dn
-        user_object_filter: user_object_filter
         sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -34502,6 +34491,16 @@ components:
         slug: slug
         group_membership_field: group_membership_field
         server_uri: https://openapi-generator.tech
+        bind_cn: bind_cn
+        sync_groups: true
+        group_object_filter: group_object_filter
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        sync_users_password: true
+        bind_password: bind_password
+        name: name
+        user_object_filter: user_object_filter
+        peer_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         name:
           description: Source's display Name.
@@ -34535,6 +34534,12 @@ components:
         server_uri:
           format: uri
           minLength: 1
+          type: string
+        peer_certificate:
+          description: Optionally verify the LDAP Server's Certificate against the
+            CA Chain in this keypair.
+          format: uuid
+          nullable: true
           type: string
         bind_cn:
           type: string

@@ -999,11 +999,9 @@ type ApiSourcesLdapListRequest struct {
 	ApiService            *SourcesApiService
 	additionalGroupDn     *string
 	additionalUserDn      *string
-	authenticationFlow    *string
 	baseDn                *string
 	bindCn                *string
 	enabled               *bool
-	enrollmentFlow        *string
 	groupMembershipField  *string
 	groupObjectFilter     *string
 	name                  *string
@@ -1011,7 +1009,7 @@ type ApiSourcesLdapListRequest struct {
 	ordering              *string
 	page                  *int32
 	pageSize              *int32
-	policyEngineMode      *string
+	peerCertificate       *string
 	propertyMappings      *[]string
 	propertyMappingsGroup *[]string
 	search                *string
@@ -1033,10 +1031,6 @@ func (r ApiSourcesLdapListRequest) AdditionalUserDn(additionalUserDn string) Api
 	r.additionalUserDn = &additionalUserDn
 	return r
 }
-func (r ApiSourcesLdapListRequest) AuthenticationFlow(authenticationFlow string) ApiSourcesLdapListRequest {
-	r.authenticationFlow = &authenticationFlow
-	return r
-}
 func (r ApiSourcesLdapListRequest) BaseDn(baseDn string) ApiSourcesLdapListRequest {
 	r.baseDn = &baseDn
 	return r
@@ -1047,10 +1041,6 @@ func (r ApiSourcesLdapListRequest) BindCn(bindCn string) ApiSourcesLdapListReque
 }
 func (r ApiSourcesLdapListRequest) Enabled(enabled bool) ApiSourcesLdapListRequest {
 	r.enabled = &enabled
-	return r
-}
-func (r ApiSourcesLdapListRequest) EnrollmentFlow(enrollmentFlow string) ApiSourcesLdapListRequest {
-	r.enrollmentFlow = &enrollmentFlow
 	return r
 }
 func (r ApiSourcesLdapListRequest) GroupMembershipField(groupMembershipField string) ApiSourcesLdapListRequest {
@@ -1087,8 +1077,8 @@ func (r ApiSourcesLdapListRequest) PageSize(pageSize int32) ApiSourcesLdapListRe
 	r.pageSize = &pageSize
 	return r
 }
-func (r ApiSourcesLdapListRequest) PolicyEngineMode(policyEngineMode string) ApiSourcesLdapListRequest {
-	r.policyEngineMode = &policyEngineMode
+func (r ApiSourcesLdapListRequest) PeerCertificate(peerCertificate string) ApiSourcesLdapListRequest {
+	r.peerCertificate = &peerCertificate
 	return r
 }
 func (r ApiSourcesLdapListRequest) PropertyMappings(propertyMappings []string) ApiSourcesLdapListRequest {
@@ -1186,9 +1176,6 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	if r.additionalUserDn != nil {
 		localVarQueryParams.Add("additional_user_dn", parameterToString(*r.additionalUserDn, ""))
 	}
-	if r.authenticationFlow != nil {
-		localVarQueryParams.Add("authentication_flow", parameterToString(*r.authenticationFlow, ""))
-	}
 	if r.baseDn != nil {
 		localVarQueryParams.Add("base_dn", parameterToString(*r.baseDn, ""))
 	}
@@ -1197,9 +1184,6 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	}
 	if r.enabled != nil {
 		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
-	}
-	if r.enrollmentFlow != nil {
-		localVarQueryParams.Add("enrollment_flow", parameterToString(*r.enrollmentFlow, ""))
 	}
 	if r.groupMembershipField != nil {
 		localVarQueryParams.Add("group_membership_field", parameterToString(*r.groupMembershipField, ""))
@@ -1222,8 +1206,8 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	if r.pageSize != nil {
 		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
-	if r.policyEngineMode != nil {
-		localVarQueryParams.Add("policy_engine_mode", parameterToString(*r.policyEngineMode, ""))
+	if r.peerCertificate != nil {
+		localVarQueryParams.Add("peer_certificate", parameterToString(*r.peerCertificate, ""))
 	}
 	if r.propertyMappings != nil {
 		t := *r.propertyMappings

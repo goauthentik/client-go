@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **ServerUri** | **string** |  | 
+**PeerCertificate** | Pointer to **NullableString** | Optionally verify the LDAP Server&#39;s Certificate against the CA Chain in this keypair. | [optional] 
 **BindCn** | Pointer to **string** |  | [optional] 
 **StartTls** | Pointer to **bool** |  | [optional] 
 **BaseDn** | **string** |  | 
@@ -357,6 +358,41 @@ and a boolean to check if the value has been set.
 SetServerUri sets ServerUri field to given value.
 
 
+### GetPeerCertificate
+
+`func (o *LDAPSource) GetPeerCertificate() string`
+
+GetPeerCertificate returns the PeerCertificate field if non-nil, zero value otherwise.
+
+### GetPeerCertificateOk
+
+`func (o *LDAPSource) GetPeerCertificateOk() (*string, bool)`
+
+GetPeerCertificateOk returns a tuple with the PeerCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPeerCertificate
+
+`func (o *LDAPSource) SetPeerCertificate(v string)`
+
+SetPeerCertificate sets PeerCertificate field to given value.
+
+### HasPeerCertificate
+
+`func (o *LDAPSource) HasPeerCertificate() bool`
+
+HasPeerCertificate returns a boolean if a field has been set.
+
+### SetPeerCertificateNil
+
+`func (o *LDAPSource) SetPeerCertificateNil(b bool)`
+
+ SetPeerCertificateNil sets the value for PeerCertificate to be an explicit nil
+
+### UnsetPeerCertificate
+`func (o *LDAPSource) UnsetPeerCertificate()`
+
+UnsetPeerCertificate ensures that no value is present for PeerCertificate, not even an explicit nil
 ### GetBindCn
 
 `func (o *LDAPSource) GetBindCn() string`

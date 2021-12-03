@@ -30,10 +30,12 @@ type LDAPSourceRequest struct {
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	ServerUri        string                `json:"server_uri"`
-	BindCn           *string               `json:"bind_cn,omitempty"`
-	BindPassword     *string               `json:"bind_password,omitempty"`
-	StartTls         *bool                 `json:"start_tls,omitempty"`
-	BaseDn           string                `json:"base_dn"`
+	// Optionally verify the LDAP Server's Certificate against the CA Chain in this keypair.
+	PeerCertificate NullableString `json:"peer_certificate,omitempty"`
+	BindCn          *string        `json:"bind_cn,omitempty"`
+	BindPassword    *string        `json:"bind_password,omitempty"`
+	StartTls        *bool          `json:"start_tls,omitempty"`
+	BaseDn          string         `json:"base_dn"`
 	// Prepended to Base DN for User-queries.
 	AdditionalUserDn *string `json:"additional_user_dn,omitempty"`
 	// Prepended to Base DN for Group-queries.
@@ -329,6 +331,49 @@ func (o *LDAPSourceRequest) GetServerUriOk() (*string, bool) {
 // SetServerUri sets field value
 func (o *LDAPSourceRequest) SetServerUri(v string) {
 	o.ServerUri = v
+}
+
+// GetPeerCertificate returns the PeerCertificate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *LDAPSourceRequest) GetPeerCertificate() string {
+	if o == nil || o.PeerCertificate.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.PeerCertificate.Get()
+}
+
+// GetPeerCertificateOk returns a tuple with the PeerCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *LDAPSourceRequest) GetPeerCertificateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PeerCertificate.Get(), o.PeerCertificate.IsSet()
+}
+
+// HasPeerCertificate returns a boolean if a field has been set.
+func (o *LDAPSourceRequest) HasPeerCertificate() bool {
+	if o != nil && o.PeerCertificate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPeerCertificate gets a reference to the given NullableString and assigns it to the PeerCertificate field.
+func (o *LDAPSourceRequest) SetPeerCertificate(v string) {
+	o.PeerCertificate.Set(&v)
+}
+
+// SetPeerCertificateNil sets the value for PeerCertificate to be an explicit nil
+func (o *LDAPSourceRequest) SetPeerCertificateNil() {
+	o.PeerCertificate.Set(nil)
+}
+
+// UnsetPeerCertificate ensures that no value is present for PeerCertificate, not even an explicit nil
+func (o *LDAPSourceRequest) UnsetPeerCertificate() {
+	o.PeerCertificate.Unset()
 }
 
 // GetBindCn returns the BindCn field value if set, zero value otherwise.
@@ -871,6 +916,9 @@ func (o LDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["server_uri"] = o.ServerUri
+	}
+	if o.PeerCertificate.IsSet() {
+		toSerialize["peer_certificate"] = o.PeerCertificate.Get()
 	}
 	if o.BindCn != nil {
 		toSerialize["bind_cn"] = o.BindCn
