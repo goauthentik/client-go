@@ -4444,14 +4444,21 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 }
 
 type ApiProvidersSamlMetadataRetrieveRequest struct {
-	ctx        _context.Context
-	ApiService *ProvidersApiService
-	id         int32
-	download   *bool
+	ctx          _context.Context
+	ApiService   *ProvidersApiService
+	id           int32
+	download     *bool
+	forceBinding *string
 }
 
 func (r ApiProvidersSamlMetadataRetrieveRequest) Download(download bool) ApiProvidersSamlMetadataRetrieveRequest {
 	r.download = &download
+	return r
+}
+
+// Optionally force the metadata to only include one binding.
+func (r ApiProvidersSamlMetadataRetrieveRequest) ForceBinding(forceBinding string) ApiProvidersSamlMetadataRetrieveRequest {
+	r.forceBinding = &forceBinding
 	return r
 }
 
@@ -4502,6 +4509,9 @@ func (a *ProvidersApiService) ProvidersSamlMetadataRetrieveExecute(r ApiProvider
 
 	if r.download != nil {
 		localVarQueryParams.Add("download", parameterToString(*r.download, ""))
+	}
+	if r.forceBinding != nil {
+		localVarQueryParams.Add("force_binding", parameterToString(*r.forceBinding, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

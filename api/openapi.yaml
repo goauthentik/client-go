@@ -13036,6 +13036,17 @@ paths:
         schema:
           type: boolean
         style: form
+      - description: Optionally force the metadata to only include one binding.
+        explode: true
+        in: query
+        name: force_binding
+        required: false
+        schema:
+          enum:
+          - urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST
+          - urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect
+          type: string
+        style: form
       - description: A unique integer value identifying this SAML Provider.
         explode: false
         in: path

@@ -2314,7 +2314,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersSamlMetadataRetrieve
 
-> SAMLMetadata ProvidersSamlMetadataRetrieve(ctx, id).Download(download).Execute()
+> SAMLMetadata ProvidersSamlMetadataRetrieve(ctx, id).Download(download).ForceBinding(forceBinding).Execute()
 
 
 
@@ -2335,10 +2335,11 @@ import (
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this SAML Provider.
     download := true // bool |  (optional)
+    forceBinding := "forceBinding_example" // string | Optionally force the metadata to only include one binding. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersSamlMetadataRetrieve(context.Background(), id).Download(download).Execute()
+    resp, r, err := api_client.ProvidersApi.ProvidersSamlMetadataRetrieve(context.Background(), id).Download(download).ForceBinding(forceBinding).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlMetadataRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2365,6 +2366,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **download** | **bool** |  | 
+ **forceBinding** | **string** | Optionally force the metadata to only include one binding. | 
 
 ### Return type
 
