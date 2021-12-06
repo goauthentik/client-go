@@ -17,8 +17,9 @@ import (
 
 // UserOAuthSourceConnectionRequest OAuth Source Serializer
 type UserOAuthSourceConnectionRequest struct {
-	Source     string `json:"source"`
-	Identifier string `json:"identifier"`
+	Source      string         `json:"source"`
+	Identifier  string         `json:"identifier"`
+	AccessToken NullableString `json:"access_token,omitempty"`
 }
 
 // NewUserOAuthSourceConnectionRequest instantiates a new UserOAuthSourceConnectionRequest object
@@ -88,6 +89,49 @@ func (o *UserOAuthSourceConnectionRequest) SetIdentifier(v string) {
 	o.Identifier = v
 }
 
+// GetAccessToken returns the AccessToken field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UserOAuthSourceConnectionRequest) GetAccessToken() string {
+	if o == nil || o.AccessToken.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccessToken.Get()
+}
+
+// GetAccessTokenOk returns a tuple with the AccessToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UserOAuthSourceConnectionRequest) GetAccessTokenOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AccessToken.Get(), o.AccessToken.IsSet()
+}
+
+// HasAccessToken returns a boolean if a field has been set.
+func (o *UserOAuthSourceConnectionRequest) HasAccessToken() bool {
+	if o != nil && o.AccessToken.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessToken gets a reference to the given NullableString and assigns it to the AccessToken field.
+func (o *UserOAuthSourceConnectionRequest) SetAccessToken(v string) {
+	o.AccessToken.Set(&v)
+}
+
+// SetAccessTokenNil sets the value for AccessToken to be an explicit nil
+func (o *UserOAuthSourceConnectionRequest) SetAccessTokenNil() {
+	o.AccessToken.Set(nil)
+}
+
+// UnsetAccessToken ensures that no value is present for AccessToken, not even an explicit nil
+func (o *UserOAuthSourceConnectionRequest) UnsetAccessToken() {
+	o.AccessToken.Unset()
+}
+
 func (o UserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +139,9 @@ func (o UserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["identifier"] = o.Identifier
+	}
+	if o.AccessToken.IsSet() {
+		toSerialize["access_token"] = o.AccessToken.Get()
 	}
 	return json.Marshal(toSerialize)
 }

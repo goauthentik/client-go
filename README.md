@@ -440,12 +440,14 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesUserConnectionsAllRetrieve**](docs/SourcesApi.md#sourcesuserconnectionsallretrieve) | **Get** /sources/user_connections/all/{id}/ | 
 *SourcesApi* | [**SourcesUserConnectionsAllUpdate**](docs/SourcesApi.md#sourcesuserconnectionsallupdate) | **Put** /sources/user_connections/all/{id}/ | 
 *SourcesApi* | [**SourcesUserConnectionsAllUsedByList**](docs/SourcesApi.md#sourcesuserconnectionsallusedbylist) | **Get** /sources/user_connections/all/{id}/used_by/ | 
+*SourcesApi* | [**SourcesUserConnectionsOauthCreate**](docs/SourcesApi.md#sourcesuserconnectionsoauthcreate) | **Post** /sources/user_connections/oauth/ | 
 *SourcesApi* | [**SourcesUserConnectionsOauthDestroy**](docs/SourcesApi.md#sourcesuserconnectionsoauthdestroy) | **Delete** /sources/user_connections/oauth/{id}/ | 
 *SourcesApi* | [**SourcesUserConnectionsOauthList**](docs/SourcesApi.md#sourcesuserconnectionsoauthlist) | **Get** /sources/user_connections/oauth/ | 
 *SourcesApi* | [**SourcesUserConnectionsOauthPartialUpdate**](docs/SourcesApi.md#sourcesuserconnectionsoauthpartialupdate) | **Patch** /sources/user_connections/oauth/{id}/ | 
 *SourcesApi* | [**SourcesUserConnectionsOauthRetrieve**](docs/SourcesApi.md#sourcesuserconnectionsoauthretrieve) | **Get** /sources/user_connections/oauth/{id}/ | 
 *SourcesApi* | [**SourcesUserConnectionsOauthUpdate**](docs/SourcesApi.md#sourcesuserconnectionsoauthupdate) | **Put** /sources/user_connections/oauth/{id}/ | 
 *SourcesApi* | [**SourcesUserConnectionsOauthUsedByList**](docs/SourcesApi.md#sourcesuserconnectionsoauthusedbylist) | **Get** /sources/user_connections/oauth/{id}/used_by/ | 
+*SourcesApi* | [**SourcesUserConnectionsPlexCreate**](docs/SourcesApi.md#sourcesuserconnectionsplexcreate) | **Post** /sources/user_connections/plex/ | 
 *SourcesApi* | [**SourcesUserConnectionsPlexDestroy**](docs/SourcesApi.md#sourcesuserconnectionsplexdestroy) | **Delete** /sources/user_connections/plex/{id}/ | 
 *SourcesApi* | [**SourcesUserConnectionsPlexList**](docs/SourcesApi.md#sourcesuserconnectionsplexlist) | **Get** /sources/user_connections/plex/ | 
 *SourcesApi* | [**SourcesUserConnectionsPlexPartialUpdate**](docs/SourcesApi.md#sourcesuserconnectionsplexpartialupdate) | **Patch** /sources/user_connections/plex/{id}/ | 

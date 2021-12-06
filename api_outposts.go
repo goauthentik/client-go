@@ -17,6 +17,7 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
+	"reflect"
 	"strings"
 )
 
@@ -385,6 +386,7 @@ type ApiOutpostsInstancesHealthListRequest struct {
 	nameIexact                     *string
 	ordering                       *string
 	providersIsnull                *bool
+	providersByPk                  *[]int32
 	search                         *string
 	serviceConnectionNameIcontains *string
 	serviceConnectionNameIexact    *string
@@ -406,6 +408,10 @@ func (r ApiOutpostsInstancesHealthListRequest) Ordering(ordering string) ApiOutp
 }
 func (r ApiOutpostsInstancesHealthListRequest) ProvidersIsnull(providersIsnull bool) ApiOutpostsInstancesHealthListRequest {
 	r.providersIsnull = &providersIsnull
+	return r
+}
+func (r ApiOutpostsInstancesHealthListRequest) ProvidersByPk(providersByPk []int32) ApiOutpostsInstancesHealthListRequest {
+	r.providersByPk = &providersByPk
 	return r
 }
 
@@ -479,6 +485,17 @@ func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsIns
 	}
 	if r.providersIsnull != nil {
 		localVarQueryParams.Add("providers__isnull", parameterToString(*r.providersIsnull, ""))
+	}
+	if r.providersByPk != nil {
+		t := *r.providersByPk
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("providers_by_pk", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("providers_by_pk", parameterToString(t, "multi"))
+		}
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
@@ -566,6 +583,7 @@ type ApiOutpostsInstancesListRequest struct {
 	page                           *int32
 	pageSize                       *int32
 	providersIsnull                *bool
+	providersByPk                  *[]int32
 	search                         *string
 	serviceConnectionNameIcontains *string
 	serviceConnectionNameIexact    *string
@@ -599,6 +617,10 @@ func (r ApiOutpostsInstancesListRequest) PageSize(pageSize int32) ApiOutpostsIns
 }
 func (r ApiOutpostsInstancesListRequest) ProvidersIsnull(providersIsnull bool) ApiOutpostsInstancesListRequest {
 	r.providersIsnull = &providersIsnull
+	return r
+}
+func (r ApiOutpostsInstancesListRequest) ProvidersByPk(providersByPk []int32) ApiOutpostsInstancesListRequest {
+	r.providersByPk = &providersByPk
 	return r
 }
 
@@ -675,6 +697,17 @@ func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstances
 	}
 	if r.providersIsnull != nil {
 		localVarQueryParams.Add("providers__isnull", parameterToString(*r.providersIsnull, ""))
+	}
+	if r.providersByPk != nil {
+		t := *r.providersByPk
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("providers_by_pk", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("providers_by_pk", parameterToString(t, "multi"))
+		}
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))

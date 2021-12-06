@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Source** | **string** |  | 
 **Identifier** | **string** |  | 
+**AccessToken** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -66,6 +67,41 @@ and a boolean to check if the value has been set.
 SetIdentifier sets Identifier field to given value.
 
 
+### GetAccessToken
+
+`func (o *UserOAuthSourceConnectionRequest) GetAccessToken() string`
+
+GetAccessToken returns the AccessToken field if non-nil, zero value otherwise.
+
+### GetAccessTokenOk
+
+`func (o *UserOAuthSourceConnectionRequest) GetAccessTokenOk() (*string, bool)`
+
+GetAccessTokenOk returns a tuple with the AccessToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessToken
+
+`func (o *UserOAuthSourceConnectionRequest) SetAccessToken(v string)`
+
+SetAccessToken sets AccessToken field to given value.
+
+### HasAccessToken
+
+`func (o *UserOAuthSourceConnectionRequest) HasAccessToken() bool`
+
+HasAccessToken returns a boolean if a field has been set.
+
+### SetAccessTokenNil
+
+`func (o *UserOAuthSourceConnectionRequest) SetAccessTokenNil(b bool)`
+
+ SetAccessTokenNil sets the value for AccessToken to be an explicit nil
+
+### UnsetAccessToken
+`func (o *UserOAuthSourceConnectionRequest) UnsetAccessToken()`
+
+UnsetAccessToken ensures that no value is present for AccessToken, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ## OutpostsInstancesHealthList
 
-> []OutpostHealth OutpostsInstancesHealthList(ctx, uuid).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).ProvidersIsnull(providersIsnull).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
+> []OutpostHealth OutpostsInstancesHealthList(ctx, uuid).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
 
 
 
@@ -261,13 +261,14 @@ func main() {
     nameIexact := "nameIexact_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     providersIsnull := true // bool |  (optional)
+    providersByPk := []int32{int32(123)} // []int32 |  (optional)
     search := "search_example" // string | A search term. (optional)
     serviceConnectionNameIcontains := "serviceConnectionNameIcontains_example" // string |  (optional)
     serviceConnectionNameIexact := "serviceConnectionNameIexact_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsInstancesHealthList(context.Background(), uuid).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).ProvidersIsnull(providersIsnull).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
+    resp, r, err := api_client.OutpostsApi.OutpostsInstancesHealthList(context.Background(), uuid).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesHealthList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -297,6 +298,7 @@ Name | Type | Description  | Notes
  **nameIexact** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **providersIsnull** | **bool** |  | 
+ **providersByPk** | **[]int32** |  | 
  **search** | **string** | A search term. | 
  **serviceConnectionNameIcontains** | **string** |  | 
  **serviceConnectionNameIexact** | **string** |  | 
@@ -321,7 +323,7 @@ Name | Type | Description  | Notes
 
 ## OutpostsInstancesList
 
-> PaginatedOutpostList OutpostsInstancesList(ctx).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).ProvidersIsnull(providersIsnull).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
+> PaginatedOutpostList OutpostsInstancesList(ctx).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
 
 
 
@@ -346,13 +348,14 @@ func main() {
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     providersIsnull := true // bool |  (optional)
+    providersByPk := []int32{int32(123)} // []int32 |  (optional)
     search := "search_example" // string | A search term. (optional)
     serviceConnectionNameIcontains := "serviceConnectionNameIcontains_example" // string |  (optional)
     serviceConnectionNameIexact := "serviceConnectionNameIexact_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsInstancesList(context.Background()).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).ProvidersIsnull(providersIsnull).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
+    resp, r, err := api_client.OutpostsApi.OutpostsInstancesList(context.Background()).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -379,6 +382,7 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **providersIsnull** | **bool** |  | 
+ **providersByPk** | **[]int32** |  | 
  **search** | **string** | A search term. | 
  **serviceConnectionNameIcontains** | **string** |  | 
  **serviceConnectionNameIexact** | **string** |  | 

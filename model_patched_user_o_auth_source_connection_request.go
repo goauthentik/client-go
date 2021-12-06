@@ -17,8 +17,9 @@ import (
 
 // PatchedUserOAuthSourceConnectionRequest OAuth Source Serializer
 type PatchedUserOAuthSourceConnectionRequest struct {
-	Source     *string `json:"source,omitempty"`
-	Identifier *string `json:"identifier,omitempty"`
+	Source      *string        `json:"source,omitempty"`
+	Identifier  *string        `json:"identifier,omitempty"`
+	AccessToken NullableString `json:"access_token,omitempty"`
 }
 
 // NewPatchedUserOAuthSourceConnectionRequest instantiates a new PatchedUserOAuthSourceConnectionRequest object
@@ -102,6 +103,49 @@ func (o *PatchedUserOAuthSourceConnectionRequest) SetIdentifier(v string) {
 	o.Identifier = &v
 }
 
+// GetAccessToken returns the AccessToken field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedUserOAuthSourceConnectionRequest) GetAccessToken() string {
+	if o == nil || o.AccessToken.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccessToken.Get()
+}
+
+// GetAccessTokenOk returns a tuple with the AccessToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedUserOAuthSourceConnectionRequest) GetAccessTokenOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AccessToken.Get(), o.AccessToken.IsSet()
+}
+
+// HasAccessToken returns a boolean if a field has been set.
+func (o *PatchedUserOAuthSourceConnectionRequest) HasAccessToken() bool {
+	if o != nil && o.AccessToken.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessToken gets a reference to the given NullableString and assigns it to the AccessToken field.
+func (o *PatchedUserOAuthSourceConnectionRequest) SetAccessToken(v string) {
+	o.AccessToken.Set(&v)
+}
+
+// SetAccessTokenNil sets the value for AccessToken to be an explicit nil
+func (o *PatchedUserOAuthSourceConnectionRequest) SetAccessTokenNil() {
+	o.AccessToken.Set(nil)
+}
+
+// UnsetAccessToken ensures that no value is present for AccessToken, not even an explicit nil
+func (o *PatchedUserOAuthSourceConnectionRequest) UnsetAccessToken() {
+	o.AccessToken.Unset()
+}
+
 func (o PatchedUserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Source != nil {
@@ -109,6 +153,9 @@ func (o PatchedUserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Identifier != nil {
 		toSerialize["identifier"] = o.Identifier
+	}
+	if o.AccessToken.IsSet() {
+		toSerialize["access_token"] = o.AccessToken.Get()
 	}
 	return json.Marshal(toSerialize)
 }

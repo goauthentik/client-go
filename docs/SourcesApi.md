@@ -49,12 +49,14 @@ Method | HTTP request | Description
 [**SourcesUserConnectionsAllRetrieve**](SourcesApi.md#SourcesUserConnectionsAllRetrieve) | **Get** /sources/user_connections/all/{id}/ | 
 [**SourcesUserConnectionsAllUpdate**](SourcesApi.md#SourcesUserConnectionsAllUpdate) | **Put** /sources/user_connections/all/{id}/ | 
 [**SourcesUserConnectionsAllUsedByList**](SourcesApi.md#SourcesUserConnectionsAllUsedByList) | **Get** /sources/user_connections/all/{id}/used_by/ | 
+[**SourcesUserConnectionsOauthCreate**](SourcesApi.md#SourcesUserConnectionsOauthCreate) | **Post** /sources/user_connections/oauth/ | 
 [**SourcesUserConnectionsOauthDestroy**](SourcesApi.md#SourcesUserConnectionsOauthDestroy) | **Delete** /sources/user_connections/oauth/{id}/ | 
 [**SourcesUserConnectionsOauthList**](SourcesApi.md#SourcesUserConnectionsOauthList) | **Get** /sources/user_connections/oauth/ | 
 [**SourcesUserConnectionsOauthPartialUpdate**](SourcesApi.md#SourcesUserConnectionsOauthPartialUpdate) | **Patch** /sources/user_connections/oauth/{id}/ | 
 [**SourcesUserConnectionsOauthRetrieve**](SourcesApi.md#SourcesUserConnectionsOauthRetrieve) | **Get** /sources/user_connections/oauth/{id}/ | 
 [**SourcesUserConnectionsOauthUpdate**](SourcesApi.md#SourcesUserConnectionsOauthUpdate) | **Put** /sources/user_connections/oauth/{id}/ | 
 [**SourcesUserConnectionsOauthUsedByList**](SourcesApi.md#SourcesUserConnectionsOauthUsedByList) | **Get** /sources/user_connections/oauth/{id}/used_by/ | 
+[**SourcesUserConnectionsPlexCreate**](SourcesApi.md#SourcesUserConnectionsPlexCreate) | **Post** /sources/user_connections/plex/ | 
 [**SourcesUserConnectionsPlexDestroy**](SourcesApi.md#SourcesUserConnectionsPlexDestroy) | **Delete** /sources/user_connections/plex/{id}/ | 
 [**SourcesUserConnectionsPlexList**](SourcesApi.md#SourcesUserConnectionsPlexList) | **Get** /sources/user_connections/plex/ | 
 [**SourcesUserConnectionsPlexPartialUpdate**](SourcesApi.md#SourcesUserConnectionsPlexPartialUpdate) | **Patch** /sources/user_connections/plex/{id}/ | 
@@ -3314,6 +3316,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## SourcesUserConnectionsOauthCreate
+
+> UserOAuthSourceConnection SourcesUserConnectionsOauthCreate(ctx).UserOAuthSourceConnectionRequest(userOAuthSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest("Source_example", "Identifier_example") // UserOAuthSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsOauthCreate(context.Background()).UserOAuthSourceConnectionRequest(userOAuthSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsOauthCreate`: UserOAuthSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsOauthCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsOauthCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userOAuthSourceConnectionRequest** | [**UserOAuthSourceConnectionRequest**](UserOAuthSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserOAuthSourceConnection**](UserOAuthSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SourcesUserConnectionsOauthDestroy
 
 > SourcesUserConnectionsOauthDestroy(ctx, id).Execute()
@@ -3733,6 +3801,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsPlexCreate
+
+> PlexSourceConnection SourcesUserConnectionsPlexCreate(ctx).PlexSourceConnectionRequest(plexSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    plexSourceConnectionRequest := *openapiclient.NewPlexSourceConnectionRequest("Source_example", "Identifier_example", "PlexToken_example") // PlexSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsPlexCreate(context.Background()).PlexSourceConnectionRequest(plexSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsPlexCreate`: PlexSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsPlexCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsPlexCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **plexSourceConnectionRequest** | [**PlexSourceConnectionRequest**](PlexSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**PlexSourceConnection**](PlexSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

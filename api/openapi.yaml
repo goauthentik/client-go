@@ -6386,6 +6386,15 @@ paths:
         schema:
           type: boolean
         style: form
+      - explode: true
+        in: query
+        name: providers_by_pk
+        required: false
+        schema:
+          items:
+            type: integer
+          type: array
+        style: form
       - description: A search term.
         explode: true
         in: query
@@ -6595,6 +6604,15 @@ paths:
         required: false
         schema:
           type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: providers_by_pk
+        required: false
+        schema:
+          items:
+            type: integer
+          type: array
         style: form
       - description: A search term.
         explode: true
@@ -15243,6 +15261,29 @@ paths:
       - authentik: []
       tags:
       - sources
+    post:
+      description: Source Viewset
+      operationId: sources_user_connections_oauth_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserOAuthSourceConnectionRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserOAuthSourceConnection'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - sources
   /sources/user_connections/oauth/{id}/:
     delete:
       description: Source Viewset
@@ -15435,6 +15476,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedPlexSourceConnectionList'
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - sources
+    post:
+      description: Plex Source connection Serializer
+      operationId: sources_user_connections_plex_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlexSourceConnectionRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlexSourceConnection'
         "400":
           $ref: '#/components/schemas/ValidationError'
         "403":
@@ -35810,6 +35874,7 @@ components:
     PatchedUserOAuthSourceConnectionRequest:
       description: OAuth Source Serializer
       example:
+        access_token: access_token
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -35820,6 +35885,10 @@ components:
           maxLength: 255
           minLength: 1
           type: string
+        access_token:
+          nullable: true
+          type: string
+          writeOnly: true
       type: object
     PatchedUserRequest:
       description: User Serializer
@@ -39858,6 +39927,7 @@ components:
     UserOAuthSourceConnectionRequest:
       description: OAuth Source Serializer
       example:
+        access_token: access_token
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -39868,6 +39938,10 @@ components:
           maxLength: 255
           minLength: 1
           type: string
+        access_token:
+          nullable: true
+          type: string
+          writeOnly: true
       required:
       - identifier
       - source
