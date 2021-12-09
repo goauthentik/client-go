@@ -2239,6 +2239,14 @@ paths:
       description: Group Viewset
       operationId: core_groups_list
       parameters:
+      - description: Attributes
+        explode: true
+        in: query
+        name: attributes
+        required: false
+        schema:
+          type: string
+        style: form
       - explode: true
         in: query
         name: is_superuser
@@ -13247,6 +13255,7 @@ paths:
           - ml
           - mn
           - mr
+          - ms
           - my
           - nb
           - ne

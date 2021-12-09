@@ -2185,6 +2185,7 @@ func (a *CoreApiService) CoreGroupsDestroyExecute(r ApiCoreGroupsDestroyRequest)
 type ApiCoreGroupsListRequest struct {
 	ctx               _context.Context
 	ApiService        *CoreApiService
+	attributes        *string
 	isSuperuser       *bool
 	membersByPk       *[]int32
 	membersByUsername *[]string
@@ -2195,6 +2196,11 @@ type ApiCoreGroupsListRequest struct {
 	search            *string
 }
 
+// Attributes
+func (r ApiCoreGroupsListRequest) Attributes(attributes string) ApiCoreGroupsListRequest {
+	r.attributes = &attributes
+	return r
+}
 func (r ApiCoreGroupsListRequest) IsSuperuser(isSuperuser bool) ApiCoreGroupsListRequest {
 	r.isSuperuser = &isSuperuser
 	return r
@@ -2280,6 +2286,9 @@ func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (Pagi
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.attributes != nil {
+		localVarQueryParams.Add("attributes", parameterToString(*r.attributes, ""))
+	}
 	if r.isSuperuser != nil {
 		localVarQueryParams.Add("is_superuser", parameterToString(*r.isSuperuser, ""))
 	}
