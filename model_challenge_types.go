@@ -19,6 +19,7 @@ import (
 // ChallengeTypes - struct for ChallengeTypes
 type ChallengeTypes struct {
 	AccessDeniedChallenge            *AccessDeniedChallenge
+	AppleLoginChallenge              *AppleLoginChallenge
 	AuthenticatorDuoChallenge        *AuthenticatorDuoChallenge
 	AuthenticatorSMSChallenge        *AuthenticatorSMSChallenge
 	AuthenticatorStaticChallenge     *AuthenticatorStaticChallenge
@@ -41,6 +42,11 @@ type ChallengeTypes struct {
 // AccessDeniedChallengeAsChallengeTypes is a convenience function that returns AccessDeniedChallenge wrapped in ChallengeTypes
 func AccessDeniedChallengeAsChallengeTypes(v *AccessDeniedChallenge) ChallengeTypes {
 	return ChallengeTypes{AccessDeniedChallenge: v}
+}
+
+// AppleLoginChallengeAsChallengeTypes is a convenience function that returns AppleLoginChallenge wrapped in ChallengeTypes
+func AppleLoginChallengeAsChallengeTypes(v *AppleLoginChallenge) ChallengeTypes {
+	return ChallengeTypes{AppleLoginChallenge: v}
 }
 
 // AuthenticatorDuoChallengeAsChallengeTypes is a convenience function that returns AuthenticatorDuoChallenge wrapped in ChallengeTypes
@@ -147,6 +153,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.AccessDeniedChallenge = nil
 			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AccessDeniedChallenge: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'AppleLoginChallenge'
+	if jsonDict["component"] == "AppleLoginChallenge" {
+		// try to unmarshal JSON data into AppleLoginChallenge
+		err = json.Unmarshal(data, &dst.AppleLoginChallenge)
+		if err == nil {
+			return nil // data stored in dst.AppleLoginChallenge, return on the first match
+		} else {
+			dst.AppleLoginChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AppleLoginChallenge: %s", err.Error())
 		}
 	}
 
@@ -351,6 +369,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.ShellChallenge = nil
 			return fmt.Errorf("Failed to unmarshal ChallengeTypes as ShellChallenge: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-flow-sources-oauth-apple'
+	if jsonDict["component"] == "ak-flow-sources-oauth-apple" {
+		// try to unmarshal JSON data into AppleLoginChallenge
+		err = json.Unmarshal(data, &dst.AppleLoginChallenge)
+		if err == nil {
+			return nil // data stored in dst.AppleLoginChallenge, return on the first match
+		} else {
+			dst.AppleLoginChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AppleLoginChallenge: %s", err.Error())
 		}
 	}
 
@@ -579,6 +609,10 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.AccessDeniedChallenge)
 	}
 
+	if src.AppleLoginChallenge != nil {
+		return json.Marshal(&src.AppleLoginChallenge)
+	}
+
 	if src.AuthenticatorDuoChallenge != nil {
 		return json.Marshal(&src.AuthenticatorDuoChallenge)
 	}
@@ -654,6 +688,10 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 func (obj *ChallengeTypes) GetActualInstance() interface{} {
 	if obj.AccessDeniedChallenge != nil {
 		return obj.AccessDeniedChallenge
+	}
+
+	if obj.AppleLoginChallenge != nil {
+		return obj.AppleLoginChallenge
 	}
 
 	if obj.AuthenticatorDuoChallenge != nil {

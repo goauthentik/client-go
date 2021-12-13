@@ -617,6 +617,8 @@ Class | Method | HTTP request | Description
  - [AccessDeniedChallenge](docs/AccessDeniedChallenge.md)
  - [App](docs/App.md)
  - [AppEnum](docs/AppEnum.md)
+ - [AppleChallengeResponseRequest](docs/AppleChallengeResponseRequest.md)
+ - [AppleLoginChallenge](docs/AppleLoginChallenge.md)
  - [Application](docs/Application.md)
  - [ApplicationRequest](docs/ApplicationRequest.md)
  - [AuthTypeEnum](docs/AuthTypeEnum.md)

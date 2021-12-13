@@ -9,6 +9,10 @@ Name | Type | Description | Notes
 **Component** | Pointer to **string** |  | [optional] [default to "xak-flow-shell"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **ErrorMessage** | Pointer to **string** |  | [optional] 
+**ClientId** | **string** |  | 
+**Scope** | **string** |  | 
+**RedirectUri** | **string** |  | 
+**State** | **string** |  | 
 **PendingUser** | **string** |  | 
 **PendingUserAvatar** | **string** |  | 
 **ActivationBarcode** | **string** |  | 
@@ -32,7 +36,6 @@ Name | Type | Description | Notes
 **PrimaryAction** | **string** |  | 
 **Sources** | Pointer to [**[]LoginSource**](LoginSource.md) |  | [optional] 
 **ShowSourceLabels** | **bool** |  | 
-**ClientId** | **string** |  | 
 **Slug** | **string** |  | 
 **Fields** | [**[]StagePrompt**](StagePrompt.md) |  | 
 **To** | **string** |  | 
@@ -42,7 +45,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, headerText string, permissions []Permission, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, clientId string, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
+`func NewChallengeTypes(type_ ChallengeChoices, clientId string, scope string, redirectUri string, state string, pendingUser string, pendingUserAvatar string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, headerText string, permissions []Permission, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -176,6 +179,86 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *ChallengeTypes) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
+
+### GetClientId
+
+`func (o *ChallengeTypes) GetClientId() string`
+
+GetClientId returns the ClientId field if non-nil, zero value otherwise.
+
+### GetClientIdOk
+
+`func (o *ChallengeTypes) GetClientIdOk() (*string, bool)`
+
+GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientId
+
+`func (o *ChallengeTypes) SetClientId(v string)`
+
+SetClientId sets ClientId field to given value.
+
+
+### GetScope
+
+`func (o *ChallengeTypes) GetScope() string`
+
+GetScope returns the Scope field if non-nil, zero value otherwise.
+
+### GetScopeOk
+
+`func (o *ChallengeTypes) GetScopeOk() (*string, bool)`
+
+GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScope
+
+`func (o *ChallengeTypes) SetScope(v string)`
+
+SetScope sets Scope field to given value.
+
+
+### GetRedirectUri
+
+`func (o *ChallengeTypes) GetRedirectUri() string`
+
+GetRedirectUri returns the RedirectUri field if non-nil, zero value otherwise.
+
+### GetRedirectUriOk
+
+`func (o *ChallengeTypes) GetRedirectUriOk() (*string, bool)`
+
+GetRedirectUriOk returns a tuple with the RedirectUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRedirectUri
+
+`func (o *ChallengeTypes) SetRedirectUri(v string)`
+
+SetRedirectUri sets RedirectUri field to given value.
+
+
+### GetState
+
+`func (o *ChallengeTypes) GetState() string`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *ChallengeTypes) GetStateOk() (*string, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *ChallengeTypes) SetState(v string)`
+
+SetState sets State field to given value.
+
 
 ### GetPendingUser
 
@@ -670,26 +753,6 @@ and a boolean to check if the value has been set.
 `func (o *ChallengeTypes) SetShowSourceLabels(v bool)`
 
 SetShowSourceLabels sets ShowSourceLabels field to given value.
-
-
-### GetClientId
-
-`func (o *ChallengeTypes) GetClientId() string`
-
-GetClientId returns the ClientId field if non-nil, zero value otherwise.
-
-### GetClientIdOk
-
-`func (o *ChallengeTypes) GetClientIdOk() (*string, bool)`
-
-GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientId
-
-`func (o *ChallengeTypes) SetClientId(v string)`
-
-SetClientId sets ClientId field to given value.
 
 
 ### GetSlug

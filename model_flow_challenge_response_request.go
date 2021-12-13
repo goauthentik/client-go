@@ -18,6 +18,7 @@ import (
 
 // FlowChallengeResponseRequest - struct for FlowChallengeResponseRequest
 type FlowChallengeResponseRequest struct {
+	AppleChallengeResponseRequest                   *AppleChallengeResponseRequest
 	AuthenticatorDuoChallengeResponseRequest        *AuthenticatorDuoChallengeResponseRequest
 	AuthenticatorSMSChallengeResponseRequest        *AuthenticatorSMSChallengeResponseRequest
 	AuthenticatorStaticChallengeResponseRequest     *AuthenticatorStaticChallengeResponseRequest
@@ -33,6 +34,11 @@ type FlowChallengeResponseRequest struct {
 	PasswordChallengeResponseRequest                *PasswordChallengeResponseRequest
 	PlexAuthenticationChallengeResponseRequest      *PlexAuthenticationChallengeResponseRequest
 	PromptChallengeResponseRequest                  *PromptChallengeResponseRequest
+}
+
+// AppleChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns AppleChallengeResponseRequest wrapped in FlowChallengeResponseRequest
+func AppleChallengeResponseRequestAsFlowChallengeResponseRequest(v *AppleChallengeResponseRequest) FlowChallengeResponseRequest {
+	return FlowChallengeResponseRequest{AppleChallengeResponseRequest: v}
 }
 
 // AuthenticatorDuoChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns AuthenticatorDuoChallengeResponseRequest wrapped in FlowChallengeResponseRequest
@@ -118,6 +124,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &jsonDict)
 	if err != nil {
 		return fmt.Errorf("Failed to unmarshal JSON into map for the discrimintor lookup.")
+	}
+
+	// check if the discriminator value is 'AppleChallengeResponseRequest'
+	if jsonDict["component"] == "AppleChallengeResponseRequest" {
+		// try to unmarshal JSON data into AppleChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.AppleChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.AppleChallengeResponseRequest, return on the first match
+		} else {
+			dst.AppleChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AppleChallengeResponseRequest: %s", err.Error())
+		}
 	}
 
 	// check if the discriminator value is 'AuthenticatorDuoChallengeResponseRequest'
@@ -297,6 +315,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.PromptChallengeResponseRequest = nil
 			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as PromptChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-flow-sources-oauth-apple'
+	if jsonDict["component"] == "ak-flow-sources-oauth-apple" {
+		// try to unmarshal JSON data into AppleChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.AppleChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.AppleChallengeResponseRequest, return on the first match
+		} else {
+			dst.AppleChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AppleChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -485,6 +515,10 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src FlowChallengeResponseRequest) MarshalJSON() ([]byte, error) {
+	if src.AppleChallengeResponseRequest != nil {
+		return json.Marshal(&src.AppleChallengeResponseRequest)
+	}
+
 	if src.AuthenticatorDuoChallengeResponseRequest != nil {
 		return json.Marshal(&src.AuthenticatorDuoChallengeResponseRequest)
 	}
@@ -550,6 +584,10 @@ func (src FlowChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 
 // Get the actual instance
 func (obj *FlowChallengeResponseRequest) GetActualInstance() interface{} {
+	if obj.AppleChallengeResponseRequest != nil {
+		return obj.AppleChallengeResponseRequest
+	}
+
 	if obj.AuthenticatorDuoChallengeResponseRequest != nil {
 		return obj.AuthenticatorDuoChallengeResponseRequest
 	}

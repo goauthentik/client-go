@@ -637,7 +637,7 @@ import (
 func main() {
     flowSlug := "flowSlug_example" // string | 
     query := "query_example" // string | Querystring as received
-    flowChallengeResponseRequest := openapiclient.FlowChallengeResponseRequest{AuthenticatorDuoChallengeResponseRequest: openapiclient.NewAuthenticatorDuoChallengeResponseRequest()} // FlowChallengeResponseRequest |  (optional)
+    flowChallengeResponseRequest := openapiclient.FlowChallengeResponseRequest{AppleChallengeResponseRequest: openapiclient.NewAppleChallengeResponseRequest()} // FlowChallengeResponseRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

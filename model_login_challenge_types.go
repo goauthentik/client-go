@@ -18,8 +18,14 @@ import (
 
 // LoginChallengeTypes - struct for LoginChallengeTypes
 type LoginChallengeTypes struct {
+	AppleLoginChallenge         *AppleLoginChallenge
 	PlexAuthenticationChallenge *PlexAuthenticationChallenge
 	RedirectChallenge           *RedirectChallenge
+}
+
+// AppleLoginChallengeAsLoginChallengeTypes is a convenience function that returns AppleLoginChallenge wrapped in LoginChallengeTypes
+func AppleLoginChallengeAsLoginChallengeTypes(v *AppleLoginChallenge) LoginChallengeTypes {
+	return LoginChallengeTypes{AppleLoginChallenge: v}
 }
 
 // PlexAuthenticationChallengeAsLoginChallengeTypes is a convenience function that returns PlexAuthenticationChallenge wrapped in LoginChallengeTypes
@@ -40,6 +46,18 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &jsonDict)
 	if err != nil {
 		return fmt.Errorf("Failed to unmarshal JSON into map for the discrimintor lookup.")
+	}
+
+	// check if the discriminator value is 'AppleLoginChallenge'
+	if jsonDict["component"] == "AppleLoginChallenge" {
+		// try to unmarshal JSON data into AppleLoginChallenge
+		err = json.Unmarshal(data, &dst.AppleLoginChallenge)
+		if err == nil {
+			return nil // data stored in dst.AppleLoginChallenge, return on the first match
+		} else {
+			dst.AppleLoginChallenge = nil
+			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as AppleLoginChallenge: %s", err.Error())
+		}
 	}
 
 	// check if the discriminator value is 'PlexAuthenticationChallenge'
@@ -63,6 +81,18 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.RedirectChallenge = nil
 			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as RedirectChallenge: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-flow-sources-oauth-apple'
+	if jsonDict["component"] == "ak-flow-sources-oauth-apple" {
+		// try to unmarshal JSON data into AppleLoginChallenge
+		err = json.Unmarshal(data, &dst.AppleLoginChallenge)
+		if err == nil {
+			return nil // data stored in dst.AppleLoginChallenge, return on the first match
+		} else {
+			dst.AppleLoginChallenge = nil
+			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as AppleLoginChallenge: %s", err.Error())
 		}
 	}
 
@@ -95,6 +125,10 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src LoginChallengeTypes) MarshalJSON() ([]byte, error) {
+	if src.AppleLoginChallenge != nil {
+		return json.Marshal(&src.AppleLoginChallenge)
+	}
+
 	if src.PlexAuthenticationChallenge != nil {
 		return json.Marshal(&src.PlexAuthenticationChallenge)
 	}
@@ -108,6 +142,10 @@ func (src LoginChallengeTypes) MarshalJSON() ([]byte, error) {
 
 // Get the actual instance
 func (obj *LoginChallengeTypes) GetActualInstance() interface{} {
+	if obj.AppleLoginChallenge != nil {
+		return obj.AppleLoginChallenge
+	}
+
 	if obj.PlexAuthenticationChallenge != nil {
 		return obj.PlexAuthenticationChallenge
 	}

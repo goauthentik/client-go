@@ -23,6 +23,8 @@ docs/AccessDeniedChallenge.md
 docs/AdminApi.md
 docs/App.md
 docs/AppEnum.md
+docs/AppleChallengeResponseRequest.md
+docs/AppleLoginChallenge.md
 docs/Application.md
 docs/ApplicationRequest.md
 docs/AuthTypeEnum.md
@@ -462,6 +464,8 @@ go.sum
 model_access_denied_challenge.go
 model_app.go
 model_app_enum.go
+model_apple_challenge_response_request.go
+model_apple_login_challenge.go
 model_application.go
 model_application_request.go
 model_auth_type_enum.go
