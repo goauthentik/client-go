@@ -17,6 +17,8 @@
 
 * `OPENIDCONNECT` (value: `"openidconnect"`)
 
+* `OKTA` (value: `"okta"`)
+
 * `REDDIT` (value: `"reddit"`)
 
 * `TWITTER` (value: `"twitter"`)

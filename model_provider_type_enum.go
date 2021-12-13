@@ -28,6 +28,7 @@ const (
 	PROVIDERTYPEENUM_GITHUB        ProviderTypeEnum = "github"
 	PROVIDERTYPEENUM_GOOGLE        ProviderTypeEnum = "google"
 	PROVIDERTYPEENUM_OPENIDCONNECT ProviderTypeEnum = "openidconnect"
+	PROVIDERTYPEENUM_OKTA          ProviderTypeEnum = "okta"
 	PROVIDERTYPEENUM_REDDIT        ProviderTypeEnum = "reddit"
 	PROVIDERTYPEENUM_TWITTER       ProviderTypeEnum = "twitter"
 )
@@ -40,6 +41,7 @@ var allowedProviderTypeEnumEnumValues = []ProviderTypeEnum{
 	"github",
 	"google",
 	"openidconnect",
+	"okta",
 	"reddit",
 	"twitter",
 }

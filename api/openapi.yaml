@@ -37000,6 +37000,7 @@ components:
       - github
       - google
       - openidconnect
+      - okta
       - reddit
       - twitter
       type: string
