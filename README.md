@@ -1031,6 +1031,7 @@ Class | Method | HTTP request | Description
  - [UserServiceAccountResponse](docs/UserServiceAccountResponse.md)
  - [UserSetting](docs/UserSetting.md)
  - [UserSourceConnection](docs/UserSourceConnection.md)
+ - [UserVerificationEnum](docs/UserVerificationEnum.md)
  - [UserWriteStage](docs/UserWriteStage.md)
  - [UserWriteStageRequest](docs/UserWriteStageRequest.md)
  - [ValidationError](docs/ValidationError.md)

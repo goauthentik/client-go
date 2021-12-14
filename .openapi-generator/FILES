@@ -451,6 +451,7 @@ docs/UserServiceAccountRequest.md
 docs/UserServiceAccountResponse.md
 docs/UserSetting.md
 docs/UserSourceConnection.md
+docs/UserVerificationEnum.md
 docs/UserWriteStage.md
 docs/UserWriteStageRequest.md
 docs/ValidationError.md
@@ -878,6 +879,7 @@ model_user_service_account_request.go
 model_user_service_account_response.go
 model_user_setting.go
 model_user_source_connection.go
+model_user_verification_enum.go
 model_user_write_stage.go
 model_user_write_stage_request.go
 model_validation_error.go

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **FlowSet** | Pointer to [**[]FlowRequest**](FlowRequest.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
+**UserVerification** | Pointer to [**UserVerificationEnum**](UserVerificationEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -112,6 +113,31 @@ HasConfigureFlow returns a boolean if a field has been set.
 `func (o *PatchedAuthenticateWebAuthnStageRequest) UnsetConfigureFlow()`
 
 UnsetConfigureFlow ensures that no value is present for ConfigureFlow, not even an explicit nil
+### GetUserVerification
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) GetUserVerification() UserVerificationEnum`
+
+GetUserVerification returns the UserVerification field if non-nil, zero value otherwise.
+
+### GetUserVerificationOk
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) GetUserVerificationOk() (*UserVerificationEnum, bool)`
+
+GetUserVerificationOk returns a tuple with the UserVerification field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserVerification
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) SetUserVerification(v UserVerificationEnum)`
+
+SetUserVerification sets UserVerification field to given value.
+
+### HasUserVerification
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) HasUserVerification() bool`
+
+HasUserVerification returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

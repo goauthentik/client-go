@@ -5865,15 +5865,16 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnDestroyExecute(r ApiStages
 }
 
 type ApiStagesAuthenticatorWebauthnListRequest struct {
-	ctx           _context.Context
-	ApiService    *StagesApiService
-	configureFlow *string
-	name          *string
-	ordering      *string
-	page          *int32
-	pageSize      *int32
-	search        *string
-	stageUuid     *string
+	ctx              _context.Context
+	ApiService       *StagesApiService
+	configureFlow    *string
+	name             *string
+	ordering         *string
+	page             *int32
+	pageSize         *int32
+	search           *string
+	stageUuid        *string
+	userVerification *string
 }
 
 func (r ApiStagesAuthenticatorWebauthnListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorWebauthnListRequest {
@@ -5910,6 +5911,10 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) Search(search string) ApiStag
 }
 func (r ApiStagesAuthenticatorWebauthnListRequest) StageUuid(stageUuid string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.stageUuid = &stageUuid
+	return r
+}
+func (r ApiStagesAuthenticatorWebauthnListRequest) UserVerification(userVerification string) ApiStagesAuthenticatorWebauthnListRequest {
+	r.userVerification = &userVerification
 	return r
 }
 
@@ -5975,6 +5980,9 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 	}
 	if r.stageUuid != nil {
 		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+	}
+	if r.userVerification != nil {
+		localVarQueryParams.Add("user_verification", parameterToString(*r.userVerification, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

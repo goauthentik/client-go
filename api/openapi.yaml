@@ -17264,6 +17264,17 @@ paths:
           format: uuid
           type: string
         style: form
+      - explode: true
+        in: query
+        name: user_verification
+        required: false
+        schema:
+          enum:
+          - discouraged
+          - preferred
+          - required
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -21541,6 +21552,8 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_verification:
+          $ref: '#/components/schemas/UserVerificationEnum'
       required:
       - component
       - meta_model_name
@@ -21579,6 +21592,8 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_verification:
+          $ref: '#/components/schemas/UserVerificationEnum'
       required:
       - name
       type: object
@@ -33647,6 +33662,8 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_verification:
+          $ref: '#/components/schemas/UserVerificationEnum'
       type: object
     PatchedAuthenticatorDuoStageRequest:
       description: AuthenticatorDuoStage Serializer
@@ -40277,6 +40294,12 @@ components:
       - source
       - user
       type: object
+    UserVerificationEnum:
+      enum:
+      - required
+      - preferred
+      - discouraged
+      type: string
     UserWriteStage:
       description: UserWriteStage Serializer
       example:

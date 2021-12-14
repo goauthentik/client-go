@@ -3343,7 +3343,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorWebauthnList
 
-> PaginatedAuthenticateWebAuthnStageList StagesAuthenticatorWebauthnList(ctx).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+> PaginatedAuthenticateWebAuthnStageList StagesAuthenticatorWebauthnList(ctx).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
 
 
 
@@ -3369,10 +3369,11 @@ func main() {
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
     stageUuid := TODO // string |  (optional)
+    userVerification := "userVerification_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.StagesApi.StagesAuthenticatorWebauthnList(context.Background()).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+    resp, r, err := api_client.StagesApi.StagesAuthenticatorWebauthnList(context.Background()).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3400,6 +3401,7 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
  **stageUuid** | [**string**](string.md) |  | 
+ **userVerification** | **string** |  | 
 
 ### Return type
 

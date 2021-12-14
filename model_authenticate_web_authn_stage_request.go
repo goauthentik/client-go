@@ -20,7 +20,8 @@ type AuthenticateWebAuthnStageRequest struct {
 	Name    string         `json:"name"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
+	ConfigureFlow    NullableString        `json:"configure_flow,omitempty"`
+	UserVerification *UserVerificationEnum `json:"user_verification,omitempty"`
 }
 
 // NewAuthenticateWebAuthnStageRequest instantiates a new AuthenticateWebAuthnStageRequest object
@@ -140,6 +141,38 @@ func (o *AuthenticateWebAuthnStageRequest) UnsetConfigureFlow() {
 	o.ConfigureFlow.Unset()
 }
 
+// GetUserVerification returns the UserVerification field value if set, zero value otherwise.
+func (o *AuthenticateWebAuthnStageRequest) GetUserVerification() UserVerificationEnum {
+	if o == nil || o.UserVerification == nil {
+		var ret UserVerificationEnum
+		return ret
+	}
+	return *o.UserVerification
+}
+
+// GetUserVerificationOk returns a tuple with the UserVerification field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticateWebAuthnStageRequest) GetUserVerificationOk() (*UserVerificationEnum, bool) {
+	if o == nil || o.UserVerification == nil {
+		return nil, false
+	}
+	return o.UserVerification, true
+}
+
+// HasUserVerification returns a boolean if a field has been set.
+func (o *AuthenticateWebAuthnStageRequest) HasUserVerification() bool {
+	if o != nil && o.UserVerification != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserVerification gets a reference to the given UserVerificationEnum and assigns it to the UserVerification field.
+func (o *AuthenticateWebAuthnStageRequest) SetUserVerification(v UserVerificationEnum) {
+	o.UserVerification = &v
+}
+
 func (o AuthenticateWebAuthnStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -150,6 +183,9 @@ func (o AuthenticateWebAuthnStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
+	}
+	if o.UserVerification != nil {
+		toSerialize["user_verification"] = o.UserVerification
 	}
 	return json.Marshal(toSerialize)
 }
