@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Pk** | **string** |  | [readonly] 
 **Expires** | Pointer to **time.Time** |  | [optional] 
 **FixedData** | Pointer to **map[string]interface{}** |  | [optional] 
-**CreatedBy** | [**User**](User.md) |  | [readonly] 
+**CreatedBy** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 **SingleUse** | Pointer to **bool** | When enabled, the invitation will be deleted after usage. | [optional] 
 
 ## Methods
 
 ### NewInvitation
 
-`func NewInvitation(pk string, createdBy User, ) *Invitation`
+`func NewInvitation(pk string, createdBy GroupMember, ) *Invitation`
 
 NewInvitation instantiates a new Invitation object
 This constructor will assign default values to properties that have it defined,
@@ -101,20 +101,20 @@ HasFixedData returns a boolean if a field has been set.
 
 ### GetCreatedBy
 
-`func (o *Invitation) GetCreatedBy() User`
+`func (o *Invitation) GetCreatedBy() GroupMember`
 
 GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
 
 ### GetCreatedByOk
 
-`func (o *Invitation) GetCreatedByOk() (*User, bool)`
+`func (o *Invitation) GetCreatedByOk() (*GroupMember, bool)`
 
 GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedBy
 
-`func (o *Invitation) SetCreatedBy(v User)`
+`func (o *Invitation) SetCreatedBy(v GroupMember)`
 
 SetCreatedBy sets CreatedBy field to given value.
 

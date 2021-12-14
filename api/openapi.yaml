@@ -25527,7 +25527,7 @@ components:
           type: object
         created_by:
           allOf:
-          - $ref: '#/components/schemas/User'
+          - $ref: '#/components/schemas/GroupMember'
           readOnly: true
         single_use:
           description: When enabled, the invitation will be deleted after usage.

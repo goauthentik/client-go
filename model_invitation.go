@@ -21,7 +21,7 @@ type Invitation struct {
 	Pk        string                  `json:"pk"`
 	Expires   *time.Time              `json:"expires,omitempty"`
 	FixedData *map[string]interface{} `json:"fixed_data,omitempty"`
-	CreatedBy User                    `json:"created_by"`
+	CreatedBy GroupMember             `json:"created_by"`
 	// When enabled, the invitation will be deleted after usage.
 	SingleUse *bool `json:"single_use,omitempty"`
 }
@@ -30,7 +30,7 @@ type Invitation struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvitation(pk string, createdBy User) *Invitation {
+func NewInvitation(pk string, createdBy GroupMember) *Invitation {
 	this := Invitation{}
 	this.Pk = pk
 	this.CreatedBy = createdBy
@@ -134,9 +134,9 @@ func (o *Invitation) SetFixedData(v map[string]interface{}) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-func (o *Invitation) GetCreatedBy() User {
+func (o *Invitation) GetCreatedBy() GroupMember {
 	if o == nil {
-		var ret User
+		var ret GroupMember
 		return ret
 	}
 
@@ -145,7 +145,7 @@ func (o *Invitation) GetCreatedBy() User {
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-func (o *Invitation) GetCreatedByOk() (*User, bool) {
+func (o *Invitation) GetCreatedByOk() (*GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -153,7 +153,7 @@ func (o *Invitation) GetCreatedByOk() (*User, bool) {
 }
 
 // SetCreatedBy sets field value
-func (o *Invitation) SetCreatedBy(v User) {
+func (o *Invitation) SetCreatedBy(v GroupMember) {
 	o.CreatedBy = v
 }
 
