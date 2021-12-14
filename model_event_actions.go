@@ -34,6 +34,7 @@ const (
 	EVENTACTIONS_SOURCE_LINKED              EventActions = "source_linked"
 	EVENTACTIONS_IMPERSONATION_STARTED      EventActions = "impersonation_started"
 	EVENTACTIONS_IMPERSONATION_ENDED        EventActions = "impersonation_ended"
+	EVENTACTIONS_FLOW_EXECUTION             EventActions = "flow_execution"
 	EVENTACTIONS_POLICY_EXECUTION           EventActions = "policy_execution"
 	EVENTACTIONS_POLICY_EXCEPTION           EventActions = "policy_exception"
 	EVENTACTIONS_PROPERTY_MAPPING_EXCEPTION EventActions = "property_mapping_exception"
@@ -63,6 +64,7 @@ var allowedEventActionsEnumValues = []EventActions{
 	"source_linked",
 	"impersonation_started",
 	"impersonation_ended",
+	"flow_execution",
 	"policy_execution",
 	"policy_exception",
 	"property_mapping_exception",

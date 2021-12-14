@@ -29,6 +29,8 @@
 
 * `IMPERSONATION_ENDED` (value: `"impersonation_ended"`)
 
+* `FLOW_EXECUTION` (value: `"flow_execution"`)
+
 * `POLICY_EXECUTION` (value: `"policy_execution"`)
 
 * `POLICY_EXCEPTION` (value: `"policy_exception"`)
