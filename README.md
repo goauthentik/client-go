@@ -160,6 +160,7 @@ Class | Method | HTTP request | Description
 *EventsApi* | [**EventsEventsDestroy**](docs/EventsApi.md#eventseventsdestroy) | **Delete** /events/events/{event_uuid}/ | 
 *EventsApi* | [**EventsEventsList**](docs/EventsApi.md#eventseventslist) | **Get** /events/events/ | 
 *EventsApi* | [**EventsEventsPartialUpdate**](docs/EventsApi.md#eventseventspartialupdate) | **Patch** /events/events/{event_uuid}/ | 
+*EventsApi* | [**EventsEventsPerMonthList**](docs/EventsApi.md#eventseventspermonthlist) | **Get** /events/events/per_month/ | 
 *EventsApi* | [**EventsEventsRetrieve**](docs/EventsApi.md#eventseventsretrieve) | **Get** /events/events/{event_uuid}/ | 
 *EventsApi* | [**EventsEventsTopPerUserList**](docs/EventsApi.md#eventseventstopperuserlist) | **Get** /events/events/top_per_user/ | 
 *EventsApi* | [**EventsEventsUpdate**](docs/EventsApi.md#eventseventsupdate) | **Put** /events/events/{event_uuid}/ | 

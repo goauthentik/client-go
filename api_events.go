@@ -737,6 +737,138 @@ func (a *EventsApiService) EventsEventsPartialUpdateExecute(r ApiEventsEventsPar
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiEventsEventsPerMonthListRequest struct {
+	ctx        _context.Context
+	ApiService *EventsApiService
+	action     *string
+	query      *string
+}
+
+func (r ApiEventsEventsPerMonthListRequest) Action(action string) ApiEventsEventsPerMonthListRequest {
+	r.action = &action
+	return r
+}
+func (r ApiEventsEventsPerMonthListRequest) Query(query string) ApiEventsEventsPerMonthListRequest {
+	r.query = &query
+	return r
+}
+
+func (r ApiEventsEventsPerMonthListRequest) Execute() ([]Coordinate, *_nethttp.Response, error) {
+	return r.ApiService.EventsEventsPerMonthListExecute(r)
+}
+
+/*
+EventsEventsPerMonthList Method for EventsEventsPerMonthList
+
+Get the count of events per month
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiEventsEventsPerMonthListRequest
+*/
+func (a *EventsApiService) EventsEventsPerMonthList(ctx _context.Context) ApiEventsEventsPerMonthListRequest {
+	return ApiEventsEventsPerMonthListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []Coordinate
+func (a *EventsApiService) EventsEventsPerMonthListExecute(r ApiEventsEventsPerMonthListRequest) ([]Coordinate, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  []Coordinate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsEventsPerMonthList")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/events/events/per_month/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.action != nil {
+		localVarQueryParams.Add("action", parameterToString(*r.action, ""))
+	}
+	if r.query != nil {
+		localVarQueryParams.Add("query", parameterToString(*r.query, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiEventsEventsRetrieveRequest struct {
 	ctx        _context.Context
 	ApiService *EventsApiService
@@ -857,79 +989,18 @@ func (a *EventsApiService) EventsEventsRetrieveExecute(r ApiEventsEventsRetrieve
 }
 
 type ApiEventsEventsTopPerUserListRequest struct {
-	ctx                  _context.Context
-	ApiService           *EventsApiService
-	action               *string
-	clientIp             *string
-	contextAuthorizedApp *string
-	contextModelApp      *string
-	contextModelName     *string
-	contextModelPk       *string
-	ordering             *string
-	search               *string
-	tenantName           *string
-	topN                 *int32
-	username             *string
+	ctx        _context.Context
+	ApiService *EventsApiService
+	action     *string
+	topN       *int32
 }
 
 func (r ApiEventsEventsTopPerUserListRequest) Action(action string) ApiEventsEventsTopPerUserListRequest {
 	r.action = &action
 	return r
 }
-func (r ApiEventsEventsTopPerUserListRequest) ClientIp(clientIp string) ApiEventsEventsTopPerUserListRequest {
-	r.clientIp = &clientIp
-	return r
-}
-
-// Context Authorized application
-func (r ApiEventsEventsTopPerUserListRequest) ContextAuthorizedApp(contextAuthorizedApp string) ApiEventsEventsTopPerUserListRequest {
-	r.contextAuthorizedApp = &contextAuthorizedApp
-	return r
-}
-
-// Context Model App
-func (r ApiEventsEventsTopPerUserListRequest) ContextModelApp(contextModelApp string) ApiEventsEventsTopPerUserListRequest {
-	r.contextModelApp = &contextModelApp
-	return r
-}
-
-// Context Model Name
-func (r ApiEventsEventsTopPerUserListRequest) ContextModelName(contextModelName string) ApiEventsEventsTopPerUserListRequest {
-	r.contextModelName = &contextModelName
-	return r
-}
-
-// Context Model Primary Key
-func (r ApiEventsEventsTopPerUserListRequest) ContextModelPk(contextModelPk string) ApiEventsEventsTopPerUserListRequest {
-	r.contextModelPk = &contextModelPk
-	return r
-}
-
-// Which field to use when ordering the results.
-func (r ApiEventsEventsTopPerUserListRequest) Ordering(ordering string) ApiEventsEventsTopPerUserListRequest {
-	r.ordering = &ordering
-	return r
-}
-
-// A search term.
-func (r ApiEventsEventsTopPerUserListRequest) Search(search string) ApiEventsEventsTopPerUserListRequest {
-	r.search = &search
-	return r
-}
-
-// Tenant name
-func (r ApiEventsEventsTopPerUserListRequest) TenantName(tenantName string) ApiEventsEventsTopPerUserListRequest {
-	r.tenantName = &tenantName
-	return r
-}
 func (r ApiEventsEventsTopPerUserListRequest) TopN(topN int32) ApiEventsEventsTopPerUserListRequest {
 	r.topN = &topN
-	return r
-}
-
-// Username
-func (r ApiEventsEventsTopPerUserListRequest) Username(username string) ApiEventsEventsTopPerUserListRequest {
-	r.username = &username
 	return r
 }
 
@@ -978,35 +1049,8 @@ func (a *EventsApiService) EventsEventsTopPerUserListExecute(r ApiEventsEventsTo
 	if r.action != nil {
 		localVarQueryParams.Add("action", parameterToString(*r.action, ""))
 	}
-	if r.clientIp != nil {
-		localVarQueryParams.Add("client_ip", parameterToString(*r.clientIp, ""))
-	}
-	if r.contextAuthorizedApp != nil {
-		localVarQueryParams.Add("context_authorized_app", parameterToString(*r.contextAuthorizedApp, ""))
-	}
-	if r.contextModelApp != nil {
-		localVarQueryParams.Add("context_model_app", parameterToString(*r.contextModelApp, ""))
-	}
-	if r.contextModelName != nil {
-		localVarQueryParams.Add("context_model_name", parameterToString(*r.contextModelName, ""))
-	}
-	if r.contextModelPk != nil {
-		localVarQueryParams.Add("context_model_pk", parameterToString(*r.contextModelPk, ""))
-	}
-	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
-	}
-	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
-	}
-	if r.tenantName != nil {
-		localVarQueryParams.Add("tenant_name", parameterToString(*r.tenantName, ""))
-	}
 	if r.topN != nil {
 		localVarQueryParams.Add("top_n", parameterToString(*r.topN, ""))
-	}
-	if r.username != nil {
-		localVarQueryParams.Add("username", parameterToString(*r.username, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

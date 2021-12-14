@@ -4304,6 +4304,41 @@ paths:
       - authentik: []
       tags:
       - events
+  /events/events/per_month/:
+    get:
+      description: Get the count of events per month
+      operationId: events_events_per_month_list
+      parameters:
+      - explode: true
+        in: query
+        name: action
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: query
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Coordinate'
+                type: array
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - events
   /events/events/top_per_user/:
     get:
       description: Get the top_n events grouped by user count
@@ -4318,81 +4353,10 @@ paths:
         style: form
       - explode: true
         in: query
-        name: client_ip
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Context Authorized application
-        explode: true
-        in: query
-        name: context_authorized_app
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Context Model App
-        explode: true
-        in: query
-        name: context_model_app
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Context Model Name
-        explode: true
-        in: query
-        name: context_model_name
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Context Model Primary Key
-        explode: true
-        in: query
-        name: context_model_pk
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Which field to use when ordering the results.
-        explode: true
-        in: query
-        name: ordering
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: A search term.
-        explode: true
-        in: query
-        name: search
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Tenant name
-        explode: true
-        in: query
-        name: tenant_name
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
         name: top_n
         required: false
         schema:
           type: integer
-        style: form
-      - description: Username
-        explode: true
-        in: query
-        name: username
-        required: false
-        schema:
-          type: string
         style: form
       responses:
         "200":

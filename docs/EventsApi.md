@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**EventsEventsDestroy**](EventsApi.md#EventsEventsDestroy) | **Delete** /events/events/{event_uuid}/ | 
 [**EventsEventsList**](EventsApi.md#EventsEventsList) | **Get** /events/events/ | 
 [**EventsEventsPartialUpdate**](EventsApi.md#EventsEventsPartialUpdate) | **Patch** /events/events/{event_uuid}/ | 
+[**EventsEventsPerMonthList**](EventsApi.md#EventsEventsPerMonthList) | **Get** /events/events/per_month/ | 
 [**EventsEventsRetrieve**](EventsApi.md#EventsEventsRetrieve) | **Get** /events/events/{event_uuid}/ | 
 [**EventsEventsTopPerUserList**](EventsApi.md#EventsEventsTopPerUserList) | **Get** /events/events/top_per_user/ | 
 [**EventsEventsUpdate**](EventsApi.md#EventsEventsUpdate) | **Put** /events/events/{event_uuid}/ | 
@@ -392,6 +393,74 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## EventsEventsPerMonthList
+
+> []Coordinate EventsEventsPerMonthList(ctx).Action(action).Query(query).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    action := "action_example" // string |  (optional)
+    query := "query_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.EventsApi.EventsEventsPerMonthList(context.Background()).Action(action).Query(query).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsPerMonthList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsEventsPerMonthList`: []Coordinate
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsEventsPerMonthList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventsEventsPerMonthListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **action** | **string** |  | 
+ **query** | **string** |  | 
+
+### Return type
+
+[**[]Coordinate**](Coordinate.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## EventsEventsRetrieve
 
 > Event EventsEventsRetrieve(ctx, eventUuid).Execute()
@@ -464,7 +533,7 @@ Name | Type | Description  | Notes
 
 ## EventsEventsTopPerUserList
 
-> []EventTopPerUser EventsEventsTopPerUserList(ctx).Action(action).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Search(search).TenantName(tenantName).TopN(topN).Username(username).Execute()
+> []EventTopPerUser EventsEventsTopPerUserList(ctx).Action(action).TopN(topN).Execute()
 
 
 
@@ -484,20 +553,11 @@ import (
 
 func main() {
     action := "action_example" // string |  (optional)
-    clientIp := "clientIp_example" // string |  (optional)
-    contextAuthorizedApp := "contextAuthorizedApp_example" // string | Context Authorized application (optional)
-    contextModelApp := "contextModelApp_example" // string | Context Model App (optional)
-    contextModelName := "contextModelName_example" // string | Context Model Name (optional)
-    contextModelPk := "contextModelPk_example" // string | Context Model Primary Key (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    search := "search_example" // string | A search term. (optional)
-    tenantName := "tenantName_example" // string | Tenant name (optional)
     topN := int32(56) // int32 |  (optional)
-    username := "username_example" // string | Username (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsEventsTopPerUserList(context.Background()).Action(action).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Search(search).TenantName(tenantName).TopN(topN).Username(username).Execute()
+    resp, r, err := api_client.EventsApi.EventsEventsTopPerUserList(context.Background()).Action(action).TopN(topN).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsTopPerUserList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -519,16 +579,7 @@ Other parameters are passed through a pointer to a apiEventsEventsTopPerUserList
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **action** | **string** |  | 
- **clientIp** | **string** |  | 
- **contextAuthorizedApp** | **string** | Context Authorized application | 
- **contextModelApp** | **string** | Context Model App | 
- **contextModelName** | **string** | Context Model Name | 
- **contextModelPk** | **string** | Context Model Primary Key | 
- **ordering** | **string** | Which field to use when ordering the results. | 
- **search** | **string** | A search term. | 
- **tenantName** | **string** | Tenant name | 
  **topN** | **int32** |  | 
- **username** | **string** | Username | 
 
 ### Return type
 
