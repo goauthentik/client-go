@@ -35515,8 +35515,8 @@ components:
           minLength: 1
           type: string
         audience:
-          description: Value of the audience restriction field of the asseration.
-            When left empty, no audience restriction will be added.
+          description: Value of the audience restriction field of the assertion. When
+            left empty, no audience restriction will be added.
           type: string
         issuer:
           description: Also known as EntityID
@@ -37802,8 +37802,8 @@ components:
           maxLength: 200
           type: string
         audience:
-          description: Value of the audience restriction field of the asseration.
-            When left empty, no audience restriction will be added.
+          description: Value of the audience restriction field of the assertion. When
+            left empty, no audience restriction will be added.
           type: string
         issuer:
           description: Also known as EntityID
@@ -37920,8 +37920,8 @@ components:
           minLength: 1
           type: string
         audience:
-          description: Value of the audience restriction field of the asseration.
-            When left empty, no audience restriction will be added.
+          description: Value of the audience restriction field of the assertion. When
+            left empty, no audience restriction will be added.
           type: string
         issuer:
           description: Also known as EntityID

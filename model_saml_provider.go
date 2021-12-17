@@ -31,7 +31,7 @@ type SAMLProvider struct {
 	VerboseNamePlural       string `json:"verbose_name_plural"`
 	MetaModelName           string `json:"meta_model_name"`
 	AcsUrl                  string `json:"acs_url"`
-	// Value of the audience restriction field of the asseration. When left empty, no audience restriction will be added.
+	// Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added.
 	Audience *string `json:"audience,omitempty"`
 	// Also known as EntityID
 	Issuer *string `json:"issuer,omitempty"`

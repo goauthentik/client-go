@@ -22,7 +22,7 @@ type SAMLProviderRequest struct {
 	AuthorizationFlow string    `json:"authorization_flow"`
 	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
 	AcsUrl            string    `json:"acs_url"`
-	// Value of the audience restriction field of the asseration. When left empty, no audience restriction will be added.
+	// Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added.
 	Audience *string `json:"audience,omitempty"`
 	// Also known as EntityID
 	Issuer *string `json:"issuer,omitempty"`

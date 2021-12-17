@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **VerboseNamePlural** | **string** |  | [readonly] 
 **MetaModelName** | **string** |  | [readonly] 
 **AcsUrl** | **string** |  | 
-**Audience** | Pointer to **string** | Value of the audience restriction field of the asseration. When left empty, no audience restriction will be added. | [optional] 
+**Audience** | Pointer to **string** | Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added. | [optional] 
 **Issuer** | Pointer to **string** | Also known as EntityID | [optional] 
 **AssertionValidNotBefore** | Pointer to **string** | Assertion valid not before current time + this value (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3). | [optional] 
 **AssertionValidNotOnOrAfter** | Pointer to **string** | Assertion not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
