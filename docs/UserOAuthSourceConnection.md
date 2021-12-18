@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
-**User** | **int32** |  | [readonly] 
+**User** | **int32** |  | 
 **Source** | **string** |  | 
 **Identifier** | **string** |  | 
 

@@ -3337,7 +3337,7 @@ import (
 )
 
 func main() {
-    userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest("Source_example", "Identifier_example") // UserOAuthSourceConnectionRequest | 
+    userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserOAuthSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -3688,7 +3688,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
-    userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest("Source_example", "Identifier_example") // UserOAuthSourceConnectionRequest | 
+    userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserOAuthSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
