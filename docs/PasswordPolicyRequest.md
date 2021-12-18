@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **NullableString** |  | [optional] 
 **ExecutionLogging** | Pointer to **bool** | When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged. | [optional] 
 **PasswordField** | Pointer to **string** | Field key to check, field keys defined in Prompt stages are available. | [optional] 
+**AmountDigits** | Pointer to **int32** |  | [optional] 
 **AmountUppercase** | Pointer to **int32** |  | [optional] 
 **AmountLowercase** | Pointer to **int32** |  | [optional] 
 **AmountSymbols** | Pointer to **int32** |  | [optional] 
@@ -117,6 +118,31 @@ SetPasswordField sets PasswordField field to given value.
 `func (o *PasswordPolicyRequest) HasPasswordField() bool`
 
 HasPasswordField returns a boolean if a field has been set.
+
+### GetAmountDigits
+
+`func (o *PasswordPolicyRequest) GetAmountDigits() int32`
+
+GetAmountDigits returns the AmountDigits field if non-nil, zero value otherwise.
+
+### GetAmountDigitsOk
+
+`func (o *PasswordPolicyRequest) GetAmountDigitsOk() (*int32, bool)`
+
+GetAmountDigitsOk returns a tuple with the AmountDigits field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAmountDigits
+
+`func (o *PasswordPolicyRequest) SetAmountDigits(v int32)`
+
+SetAmountDigits sets AmountDigits field to given value.
+
+### HasAmountDigits
+
+`func (o *PasswordPolicyRequest) HasAmountDigits() bool`
+
+HasAmountDigits returns a boolean if a field has been set.
 
 ### GetAmountUppercase
 

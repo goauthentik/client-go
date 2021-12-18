@@ -22,6 +22,7 @@ type PasswordPolicyRequest struct {
 	ExecutionLogging *bool `json:"execution_logging,omitempty"`
 	// Field key to check, field keys defined in Prompt stages are available.
 	PasswordField   *string `json:"password_field,omitempty"`
+	AmountDigits    *int32  `json:"amount_digits,omitempty"`
 	AmountUppercase *int32  `json:"amount_uppercase,omitempty"`
 	AmountLowercase *int32  `json:"amount_lowercase,omitempty"`
 	AmountSymbols   *int32  `json:"amount_symbols,omitempty"`
@@ -153,6 +154,38 @@ func (o *PasswordPolicyRequest) HasPasswordField() bool {
 // SetPasswordField gets a reference to the given string and assigns it to the PasswordField field.
 func (o *PasswordPolicyRequest) SetPasswordField(v string) {
 	o.PasswordField = &v
+}
+
+// GetAmountDigits returns the AmountDigits field value if set, zero value otherwise.
+func (o *PasswordPolicyRequest) GetAmountDigits() int32 {
+	if o == nil || o.AmountDigits == nil {
+		var ret int32
+		return ret
+	}
+	return *o.AmountDigits
+}
+
+// GetAmountDigitsOk returns a tuple with the AmountDigits field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PasswordPolicyRequest) GetAmountDigitsOk() (*int32, bool) {
+	if o == nil || o.AmountDigits == nil {
+		return nil, false
+	}
+	return o.AmountDigits, true
+}
+
+// HasAmountDigits returns a boolean if a field has been set.
+func (o *PasswordPolicyRequest) HasAmountDigits() bool {
+	if o != nil && o.AmountDigits != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAmountDigits gets a reference to the given int32 and assigns it to the AmountDigits field.
+func (o *PasswordPolicyRequest) SetAmountDigits(v int32) {
+	o.AmountDigits = &v
 }
 
 // GetAmountUppercase returns the AmountUppercase field value if set, zero value otherwise.
@@ -349,6 +382,9 @@ func (o PasswordPolicyRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.PasswordField != nil {
 		toSerialize["password_field"] = o.PasswordField
+	}
+	if o.AmountDigits != nil {
+		toSerialize["amount_digits"] = o.AmountDigits
 	}
 	if o.AmountUppercase != nil {
 		toSerialize["amount_uppercase"] = o.AmountUppercase

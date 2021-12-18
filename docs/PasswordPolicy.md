@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **MetaModelName** | **string** |  | [readonly] 
 **BoundTo** | **int32** |  | [readonly] 
 **PasswordField** | Pointer to **string** | Field key to check, field keys defined in Prompt stages are available. | [optional] 
+**AmountDigits** | Pointer to **int32** |  | [optional] 
 **AmountUppercase** | Pointer to **int32** |  | [optional] 
 **AmountLowercase** | Pointer to **int32** |  | [optional] 
 **AmountSymbols** | Pointer to **int32** |  | [optional] 
@@ -243,6 +244,31 @@ SetPasswordField sets PasswordField field to given value.
 `func (o *PasswordPolicy) HasPasswordField() bool`
 
 HasPasswordField returns a boolean if a field has been set.
+
+### GetAmountDigits
+
+`func (o *PasswordPolicy) GetAmountDigits() int32`
+
+GetAmountDigits returns the AmountDigits field if non-nil, zero value otherwise.
+
+### GetAmountDigitsOk
+
+`func (o *PasswordPolicy) GetAmountDigitsOk() (*int32, bool)`
+
+GetAmountDigitsOk returns a tuple with the AmountDigits field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAmountDigits
+
+`func (o *PasswordPolicy) SetAmountDigits(v int32)`
+
+SetAmountDigits sets AmountDigits field to given value.
+
+### HasAmountDigits
+
+`func (o *PasswordPolicy) HasAmountDigits() bool`
+
+HasAmountDigits returns a boolean if a field has been set.
 
 ### GetAmountUppercase
 

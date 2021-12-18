@@ -6896,6 +6896,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByListExecute(r ApiPolici
 type ApiPoliciesPasswordListRequest struct {
 	ctx              _context.Context
 	ApiService       *PoliciesApiService
+	amountDigits     *int32
 	amountLowercase  *int32
 	amountSymbols    *int32
 	amountUppercase  *int32
@@ -6914,6 +6915,10 @@ type ApiPoliciesPasswordListRequest struct {
 	symbolCharset    *string
 }
 
+func (r ApiPoliciesPasswordListRequest) AmountDigits(amountDigits int32) ApiPoliciesPasswordListRequest {
+	r.amountDigits = &amountDigits
+	return r
+}
 func (r ApiPoliciesPasswordListRequest) AmountLowercase(amountLowercase int32) ApiPoliciesPasswordListRequest {
 	r.amountLowercase = &amountLowercase
 	return r
@@ -7029,6 +7034,9 @@ func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordLi
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.amountDigits != nil {
+		localVarQueryParams.Add("amount_digits", parameterToString(*r.amountDigits, ""))
+	}
 	if r.amountLowercase != nil {
 		localVarQueryParams.Add("amount_lowercase", parameterToString(*r.amountLowercase, ""))
 	}

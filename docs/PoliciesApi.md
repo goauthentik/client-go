@@ -3783,7 +3783,7 @@ Name | Type | Description  | Notes
 
 ## PoliciesPasswordList
 
-> PaginatedPasswordPolicyList PoliciesPasswordList(ctx).AmountLowercase(amountLowercase).AmountSymbols(amountSymbols).AmountUppercase(amountUppercase).Created(created).ErrorMessage(errorMessage).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).LengthMin(lengthMin).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordField(passwordField).PolicyUuid(policyUuid).Search(search).SymbolCharset(symbolCharset).Execute()
+> PaginatedPasswordPolicyList PoliciesPasswordList(ctx).AmountDigits(amountDigits).AmountLowercase(amountLowercase).AmountSymbols(amountSymbols).AmountUppercase(amountUppercase).Created(created).ErrorMessage(errorMessage).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).LengthMin(lengthMin).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordField(passwordField).PolicyUuid(policyUuid).Search(search).SymbolCharset(symbolCharset).Execute()
 
 
 
@@ -3803,6 +3803,7 @@ import (
 )
 
 func main() {
+    amountDigits := int32(56) // int32 |  (optional)
     amountLowercase := int32(56) // int32 |  (optional)
     amountSymbols := int32(56) // int32 |  (optional)
     amountUppercase := int32(56) // int32 |  (optional)
@@ -3822,7 +3823,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordList(context.Background()).AmountLowercase(amountLowercase).AmountSymbols(amountSymbols).AmountUppercase(amountUppercase).Created(created).ErrorMessage(errorMessage).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).LengthMin(lengthMin).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordField(passwordField).PolicyUuid(policyUuid).Search(search).SymbolCharset(symbolCharset).Execute()
+    resp, r, err := api_client.PoliciesApi.PoliciesPasswordList(context.Background()).AmountDigits(amountDigits).AmountLowercase(amountLowercase).AmountSymbols(amountSymbols).AmountUppercase(amountUppercase).Created(created).ErrorMessage(errorMessage).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).LengthMin(lengthMin).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordField(passwordField).PolicyUuid(policyUuid).Search(search).SymbolCharset(symbolCharset).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3843,6 +3844,7 @@ Other parameters are passed through a pointer to a apiPoliciesPasswordListReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **amountDigits** | **int32** |  | 
  **amountLowercase** | **int32** |  | 
  **amountSymbols** | **int32** |  | 
  **amountUppercase** | **int32** |  | 

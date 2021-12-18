@@ -9206,6 +9206,13 @@ paths:
       parameters:
       - explode: true
         in: query
+        name: amount_digits
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
         name: amount_lowercase
         required: false
         schema:
@@ -30380,30 +30387,32 @@ components:
           total_pages: 5.637376656633329
         results:
         - error_message: error_message
-          amount_symbols: 413233370
-          amount_lowercase: -1517921766
+          amount_symbols: 1210617418
+          amount_lowercase: 1280358508
           verbose_name_plural: verbose_name_plural
           execution_logging: true
-          amount_uppercase: 441289069
-          length_min: 273751188
+          amount_uppercase: 314780940
+          length_min: 494379917
           password_field: password_field
           component: component
           verbose_name: verbose_name
+          amount_digits: 1294386358
           meta_model_name: meta_model_name
           bound_to: 0
           symbol_charset: symbol_charset
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - error_message: error_message
-          amount_symbols: 413233370
-          amount_lowercase: -1517921766
+          amount_symbols: 1210617418
+          amount_lowercase: 1280358508
           verbose_name_plural: verbose_name_plural
           execution_logging: true
-          amount_uppercase: 441289069
-          length_min: 273751188
+          amount_uppercase: 314780940
+          length_min: 494379917
           password_field: password_field
           component: component
           verbose_name: verbose_name
+          amount_digits: 1294386358
           meta_model_name: meta_model_name
           bound_to: 0
           symbol_charset: symbol_charset
@@ -33286,15 +33295,16 @@ components:
       description: Password Policy Serializer
       example:
         error_message: error_message
-        amount_symbols: 413233370
-        amount_lowercase: -1517921766
+        amount_symbols: 1210617418
+        amount_lowercase: 1280358508
         verbose_name_plural: verbose_name_plural
         execution_logging: true
-        amount_uppercase: 441289069
-        length_min: 273751188
+        amount_uppercase: 314780940
+        length_min: 494379917
         password_field: password_field
         component: component
         verbose_name: verbose_name
+        amount_digits: 1294386358
         meta_model_name: meta_model_name
         bound_to: 0
         symbol_charset: symbol_charset
@@ -33332,21 +33342,25 @@ components:
           description: Field key to check, field keys defined in Prompt stages are
             available.
           type: string
+        amount_digits:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
         amount_uppercase:
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
         amount_lowercase:
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
         amount_symbols:
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
         length_min:
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
         symbol_charset:
           type: string
@@ -33366,13 +33380,14 @@ components:
       example:
         error_message: error_message
         password_field: password_field
-        amount_symbols: -1517921766
-        amount_lowercase: 441289069
+        amount_symbols: 1280358508
+        amount_digits: 171976544
+        amount_lowercase: 314780940
         execution_logging: true
         symbol_charset: symbol_charset
         name: name
-        amount_uppercase: -1803530559
-        length_min: 413233370
+        amount_uppercase: 1294386358
+        length_min: 1210617418
       properties:
         name:
           nullable: true
@@ -33386,21 +33401,25 @@ components:
             available.
           minLength: 1
           type: string
+        amount_digits:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
         amount_uppercase:
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
         amount_lowercase:
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
         amount_symbols:
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
         length_min:
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
         symbol_charset:
           minLength: 1
@@ -35034,13 +35053,14 @@ components:
       example:
         error_message: error_message
         password_field: password_field
-        amount_symbols: -1517921766
-        amount_lowercase: 441289069
+        amount_symbols: 1280358508
+        amount_digits: 171976544
+        amount_lowercase: 314780940
         execution_logging: true
         symbol_charset: symbol_charset
         name: name
-        amount_uppercase: -1803530559
-        length_min: 413233370
+        amount_uppercase: 1294386358
+        length_min: 1210617418
       properties:
         name:
           nullable: true
@@ -35054,21 +35074,25 @@ components:
             available.
           minLength: 1
           type: string
+        amount_digits:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
         amount_uppercase:
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
         amount_lowercase:
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
         amount_symbols:
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
         length_min:
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
         symbol_charset:
           minLength: 1
