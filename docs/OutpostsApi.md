@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ## OutpostsInstancesHealthList
 
-> []OutpostHealth OutpostsInstancesHealthList(ctx, uuid).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
+> []OutpostHealth OutpostsInstancesHealthList(ctx, uuid).ManagedIcontains(managedIcontains).ManagedIexact(managedIexact).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
 
 
 
@@ -257,6 +257,8 @@ import (
 
 func main() {
     uuid := TODO // string | A UUID string identifying this outpost.
+    managedIcontains := "managedIcontains_example" // string |  (optional)
+    managedIexact := "managedIexact_example" // string |  (optional)
     nameIcontains := "nameIcontains_example" // string |  (optional)
     nameIexact := "nameIexact_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
@@ -268,7 +270,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsInstancesHealthList(context.Background(), uuid).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
+    resp, r, err := api_client.OutpostsApi.OutpostsInstancesHealthList(context.Background(), uuid).ManagedIcontains(managedIcontains).ManagedIexact(managedIexact).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesHealthList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -294,6 +296,8 @@ Other parameters are passed through a pointer to a apiOutpostsInstancesHealthLis
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **managedIcontains** | **string** |  | 
+ **managedIexact** | **string** |  | 
  **nameIcontains** | **string** |  | 
  **nameIexact** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
@@ -323,7 +327,7 @@ Name | Type | Description  | Notes
 
 ## OutpostsInstancesList
 
-> PaginatedOutpostList OutpostsInstancesList(ctx).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
+> PaginatedOutpostList OutpostsInstancesList(ctx).ManagedIcontains(managedIcontains).ManagedIexact(managedIexact).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
 
 
 
@@ -342,6 +346,8 @@ import (
 )
 
 func main() {
+    managedIcontains := "managedIcontains_example" // string |  (optional)
+    managedIexact := "managedIexact_example" // string |  (optional)
     nameIcontains := "nameIcontains_example" // string |  (optional)
     nameIexact := "nameIexact_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
@@ -355,7 +361,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsInstancesList(context.Background()).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
+    resp, r, err := api_client.OutpostsApi.OutpostsInstancesList(context.Background()).ManagedIcontains(managedIcontains).ManagedIexact(managedIexact).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -376,6 +382,8 @@ Other parameters are passed through a pointer to a apiOutpostsInstancesListReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **managedIcontains** | **string** |  | 
+ **managedIexact** | **string** |  | 
  **nameIcontains** | **string** |  | 
  **nameIexact** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 

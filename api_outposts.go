@@ -382,6 +382,8 @@ type ApiOutpostsInstancesHealthListRequest struct {
 	ctx                            _context.Context
 	ApiService                     *OutpostsApiService
 	uuid                           string
+	managedIcontains               *string
+	managedIexact                  *string
 	nameIcontains                  *string
 	nameIexact                     *string
 	ordering                       *string
@@ -392,6 +394,14 @@ type ApiOutpostsInstancesHealthListRequest struct {
 	serviceConnectionNameIexact    *string
 }
 
+func (r ApiOutpostsInstancesHealthListRequest) ManagedIcontains(managedIcontains string) ApiOutpostsInstancesHealthListRequest {
+	r.managedIcontains = &managedIcontains
+	return r
+}
+func (r ApiOutpostsInstancesHealthListRequest) ManagedIexact(managedIexact string) ApiOutpostsInstancesHealthListRequest {
+	r.managedIexact = &managedIexact
+	return r
+}
 func (r ApiOutpostsInstancesHealthListRequest) NameIcontains(nameIcontains string) ApiOutpostsInstancesHealthListRequest {
 	r.nameIcontains = &nameIcontains
 	return r
@@ -474,6 +484,12 @@ func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsIns
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.managedIcontains != nil {
+		localVarQueryParams.Add("managed__icontains", parameterToString(*r.managedIcontains, ""))
+	}
+	if r.managedIexact != nil {
+		localVarQueryParams.Add("managed__iexact", parameterToString(*r.managedIexact, ""))
+	}
 	if r.nameIcontains != nil {
 		localVarQueryParams.Add("name__icontains", parameterToString(*r.nameIcontains, ""))
 	}
@@ -577,6 +593,8 @@ func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsIns
 type ApiOutpostsInstancesListRequest struct {
 	ctx                            _context.Context
 	ApiService                     *OutpostsApiService
+	managedIcontains               *string
+	managedIexact                  *string
 	nameIcontains                  *string
 	nameIexact                     *string
 	ordering                       *string
@@ -589,6 +607,14 @@ type ApiOutpostsInstancesListRequest struct {
 	serviceConnectionNameIexact    *string
 }
 
+func (r ApiOutpostsInstancesListRequest) ManagedIcontains(managedIcontains string) ApiOutpostsInstancesListRequest {
+	r.managedIcontains = &managedIcontains
+	return r
+}
+func (r ApiOutpostsInstancesListRequest) ManagedIexact(managedIexact string) ApiOutpostsInstancesListRequest {
+	r.managedIexact = &managedIexact
+	return r
+}
 func (r ApiOutpostsInstancesListRequest) NameIcontains(nameIcontains string) ApiOutpostsInstancesListRequest {
 	r.nameIcontains = &nameIcontains
 	return r
@@ -680,6 +706,12 @@ func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstances
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.managedIcontains != nil {
+		localVarQueryParams.Add("managed__icontains", parameterToString(*r.managedIcontains, ""))
+	}
+	if r.managedIexact != nil {
+		localVarQueryParams.Add("managed__iexact", parameterToString(*r.managedIexact, ""))
+	}
 	if r.nameIcontains != nil {
 		localVarQueryParams.Add("name__icontains", parameterToString(*r.nameIcontains, ""))
 	}

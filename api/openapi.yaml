@@ -6315,6 +6315,20 @@ paths:
       parameters:
       - explode: true
         in: query
+        name: managed__icontains
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: managed__iexact
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: name__icontains
         required: false
         schema:
@@ -6548,6 +6562,20 @@ paths:
       description: Get outposts current health
       operationId: outposts_instances_health_list
       parameters:
+      - explode: true
+        in: query
+        name: managed__icontains
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: managed__iexact
+        required: false
+        schema:
+          type: string
+        style: form
       - explode: true
         in: query
         name: name__icontains
