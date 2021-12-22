@@ -1872,15 +1872,14 @@ type ApiProvidersOauth2ListRequest struct {
 	clientType             *string
 	includeClaimsInIdToken *bool
 	issuerMode             *string
-	jwtAlg                 *string
 	name                   *string
 	ordering               *string
 	page                   *int32
 	pageSize               *int32
 	propertyMappings       *[]string
 	redirectUris           *string
-	rsaKey                 *string
 	search                 *string
+	signingKey             *string
 	subMode                *string
 	tokenValidity          *string
 }
@@ -1917,12 +1916,6 @@ func (r ApiProvidersOauth2ListRequest) IssuerMode(issuerMode string) ApiProvider
 	r.issuerMode = &issuerMode
 	return r
 }
-
-// Algorithm used to sign the JWT Token
-func (r ApiProvidersOauth2ListRequest) JwtAlg(jwtAlg string) ApiProvidersOauth2ListRequest {
-	r.jwtAlg = &jwtAlg
-	return r
-}
 func (r ApiProvidersOauth2ListRequest) Name(name string) ApiProvidersOauth2ListRequest {
 	r.name = &name
 	return r
@@ -1953,14 +1946,14 @@ func (r ApiProvidersOauth2ListRequest) RedirectUris(redirectUris string) ApiProv
 	r.redirectUris = &redirectUris
 	return r
 }
-func (r ApiProvidersOauth2ListRequest) RsaKey(rsaKey string) ApiProvidersOauth2ListRequest {
-	r.rsaKey = &rsaKey
-	return r
-}
 
 // A search term.
 func (r ApiProvidersOauth2ListRequest) Search(search string) ApiProvidersOauth2ListRequest {
 	r.search = &search
+	return r
+}
+func (r ApiProvidersOauth2ListRequest) SigningKey(signingKey string) ApiProvidersOauth2ListRequest {
+	r.signingKey = &signingKey
 	return r
 }
 
@@ -2037,9 +2030,6 @@ func (a *ProvidersApiService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 	if r.issuerMode != nil {
 		localVarQueryParams.Add("issuer_mode", parameterToString(*r.issuerMode, ""))
 	}
-	if r.jwtAlg != nil {
-		localVarQueryParams.Add("jwt_alg", parameterToString(*r.jwtAlg, ""))
-	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
@@ -2066,11 +2056,11 @@ func (a *ProvidersApiService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 	if r.redirectUris != nil {
 		localVarQueryParams.Add("redirect_uris", parameterToString(*r.redirectUris, ""))
 	}
-	if r.rsaKey != nil {
-		localVarQueryParams.Add("rsa_key", parameterToString(*r.rsaKey, ""))
-	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.signingKey != nil {
+		localVarQueryParams.Add("signing_key", parameterToString(*r.signingKey, ""))
 	}
 	if r.subMode != nil {
 		localVarQueryParams.Add("sub_mode", parameterToString(*r.subMode, ""))

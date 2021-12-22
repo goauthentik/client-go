@@ -12105,18 +12105,6 @@ paths:
           - per_provider
           type: string
         style: form
-      - description: Algorithm used to sign the JWT Token
-        explode: true
-        in: query
-        name: jwt_alg
-        required: false
-        schema:
-          enum:
-          - HS256
-          - RS256
-          title: JWT Algorithm
-          type: string
-        style: form
       - explode: true
         in: query
         name: name
@@ -12165,20 +12153,20 @@ paths:
         schema:
           type: string
         style: form
-      - explode: true
-        in: query
-        name: rsa_key
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
       - description: A search term.
         explode: true
         in: query
         name: search
         required: false
         schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: signing_key
+        required: false
+        schema:
+          format: uuid
           type: string
         style: form
       - description: Configure what data should be used as unique User Identifier.
@@ -24333,13 +24321,12 @@ components:
         is_expired: true
         provider:
           verbose_name_plural: verbose_name_plural
-          rsa_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_type: ""
           redirect_uris: redirect_uris
           sub_mode: ""
           client_id: client_id
-          jwt_alg: ""
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -25680,11 +25667,6 @@ components:
       - global
       - per_provider
       type: string
-    JwtAlgEnum:
-      enum:
-      - HS256
-      - RS256
-      type: string
     KubernetesServiceConnection:
       description: KubernetesServiceConnection Serializer
       example:
@@ -26718,13 +26700,12 @@ components:
       description: OAuth2Provider Serializer
       example:
         verbose_name_plural: verbose_name_plural
-        rsa_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_slug: assigned_application_slug
         client_type: ""
         redirect_uris: redirect_uris
         sub_mode: ""
         client_id: client_id
-        jwt_alg: ""
         component: component
         verbose_name: verbose_name
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -26800,16 +26781,12 @@ components:
           description: Include User claims from scopes in the id_token, for applications
             that don't access the userinfo endpoint.
           type: boolean
-        jwt_alg:
-          allOf:
-          - $ref: '#/components/schemas/JwtAlgEnum'
-          description: Algorithm used to sign the JWT Token
-          title: JWT Algorithm
-        rsa_key:
+        signing_key:
           description: Key used to sign the tokens. Only required when JWT Algorithm
             is set to RS256.
           format: uuid
           nullable: true
+          title: RSA Key
           type: string
         redirect_uris:
           description: Enter each URI on a new line.
@@ -26837,12 +26814,11 @@ components:
     OAuth2ProviderRequest:
       description: OAuth2Provider Serializer
       example:
-        rsa_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_type: ""
         redirect_uris: redirect_uris
         sub_mode: ""
         client_id: client_id
-        jwt_alg: ""
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         access_code_validity: access_code_validity
         include_claims_in_id_token: true
@@ -26893,16 +26869,12 @@ components:
           description: Include User claims from scopes in the id_token, for applications
             that don't access the userinfo endpoint.
           type: boolean
-        jwt_alg:
-          allOf:
-          - $ref: '#/components/schemas/JwtAlgEnum'
-          description: Algorithm used to sign the JWT Token
-          title: JWT Algorithm
-        rsa_key:
+        signing_key:
           description: Key used to sign the tokens. Only required when JWT Algorithm
             is set to RS256.
           format: uuid
           nullable: true
+          title: RSA Key
           type: string
         redirect_uris:
           description: Enter each URI on a new line.
@@ -28948,13 +28920,12 @@ components:
           is_expired: true
           provider:
             verbose_name_plural: verbose_name_plural
-            rsa_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             client_type: ""
             redirect_uris: redirect_uris
             sub_mode: ""
             client_id: client_id
-            jwt_alg: ""
             component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -29056,13 +29027,12 @@ components:
           is_expired: true
           provider:
             verbose_name_plural: verbose_name_plural
-            rsa_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             client_type: ""
             redirect_uris: redirect_uris
             sub_mode: ""
             client_id: client_id
-            jwt_alg: ""
             component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -30161,13 +30131,12 @@ components:
           total_pages: 5.637376656633329
         results:
         - verbose_name_plural: verbose_name_plural
-          rsa_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_type: ""
           redirect_uris: redirect_uris
           sub_mode: ""
           client_id: client_id
-          jwt_alg: ""
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -30184,13 +30153,12 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           token_validity: token_validity
         - verbose_name_plural: verbose_name_plural
-          rsa_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_type: ""
           redirect_uris: redirect_uris
           sub_mode: ""
           client_id: client_id
-          jwt_alg: ""
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -31294,13 +31262,12 @@ components:
           is_expired: true
           provider:
             verbose_name_plural: verbose_name_plural
-            rsa_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             client_type: ""
             redirect_uris: redirect_uris
             sub_mode: ""
             client_id: client_id
-            jwt_alg: ""
             component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -31404,13 +31371,12 @@ components:
           is_expired: true
           provider:
             verbose_name_plural: verbose_name_plural
-            rsa_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             client_type: ""
             redirect_uris: redirect_uris
             sub_mode: ""
             client_id: client_id
-            jwt_alg: ""
             component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -34864,12 +34830,11 @@ components:
     PatchedOAuth2ProviderRequest:
       description: OAuth2Provider Serializer
       example:
-        rsa_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_type: ""
         redirect_uris: redirect_uris
         sub_mode: ""
         client_id: client_id
-        jwt_alg: ""
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         access_code_validity: access_code_validity
         include_claims_in_id_token: true
@@ -34920,16 +34885,12 @@ components:
           description: Include User claims from scopes in the id_token, for applications
             that don't access the userinfo endpoint.
           type: boolean
-        jwt_alg:
-          allOf:
-          - $ref: '#/components/schemas/JwtAlgEnum'
-          description: Algorithm used to sign the JWT Token
-          title: JWT Algorithm
-        rsa_key:
+        signing_key:
           description: Key used to sign the tokens. Only required when JWT Algorithm
             is set to RS256.
           format: uuid
           nullable: true
+          title: RSA Key
           type: string
         redirect_uris:
           description: Enter each URI on a new line.
@@ -37476,13 +37437,12 @@ components:
         is_expired: true
         provider:
           verbose_name_plural: verbose_name_plural
-          rsa_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_type: ""
           redirect_uris: redirect_uris
           sub_mode: ""
           client_id: client_id
-          jwt_alg: ""
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

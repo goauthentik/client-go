@@ -742,7 +742,6 @@ Class | Method | HTTP request | Description
  - [InvitationStage](docs/InvitationStage.md)
  - [InvitationStageRequest](docs/InvitationStageRequest.md)
  - [IssuerModeEnum](docs/IssuerModeEnum.md)
- - [JwtAlgEnum](docs/JwtAlgEnum.md)
  - [KubernetesServiceConnection](docs/KubernetesServiceConnection.md)
  - [KubernetesServiceConnectionRequest](docs/KubernetesServiceConnectionRequest.md)
  - [LDAPOutpostConfig](docs/LDAPOutpostConfig.md)

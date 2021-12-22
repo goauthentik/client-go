@@ -13,8 +13,7 @@ Name | Type | Description | Notes
 **AccessCodeValidity** | Pointer to **string** | Access codes not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **TokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **IncludeClaimsInIdToken** | Pointer to **bool** | Include User claims from scopes in the id_token, for applications that don&#39;t access the userinfo endpoint. | [optional] 
-**JwtAlg** | Pointer to [**JwtAlgEnum**](JwtAlgEnum.md) | Algorithm used to sign the JWT Token | [optional] 
-**RsaKey** | Pointer to **NullableString** | Key used to sign the tokens. Only required when JWT Algorithm is set to RS256. | [optional] 
+**SigningKey** | Pointer to **NullableString** | Key used to sign the tokens. Only required when JWT Algorithm is set to RS256. | [optional] 
 **RedirectUris** | Pointer to **string** | Enter each URI on a new line. | [optional] 
 **SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
 **IssuerMode** | Pointer to [**IssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled. | [optional] 
@@ -263,66 +262,41 @@ SetIncludeClaimsInIdToken sets IncludeClaimsInIdToken field to given value.
 
 HasIncludeClaimsInIdToken returns a boolean if a field has been set.
 
-### GetJwtAlg
+### GetSigningKey
 
-`func (o *PatchedOAuth2ProviderRequest) GetJwtAlg() JwtAlgEnum`
+`func (o *PatchedOAuth2ProviderRequest) GetSigningKey() string`
 
-GetJwtAlg returns the JwtAlg field if non-nil, zero value otherwise.
+GetSigningKey returns the SigningKey field if non-nil, zero value otherwise.
 
-### GetJwtAlgOk
+### GetSigningKeyOk
 
-`func (o *PatchedOAuth2ProviderRequest) GetJwtAlgOk() (*JwtAlgEnum, bool)`
+`func (o *PatchedOAuth2ProviderRequest) GetSigningKeyOk() (*string, bool)`
 
-GetJwtAlgOk returns a tuple with the JwtAlg field if it's non-nil, zero value otherwise
+GetSigningKeyOk returns a tuple with the SigningKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetJwtAlg
+### SetSigningKey
 
-`func (o *PatchedOAuth2ProviderRequest) SetJwtAlg(v JwtAlgEnum)`
+`func (o *PatchedOAuth2ProviderRequest) SetSigningKey(v string)`
 
-SetJwtAlg sets JwtAlg field to given value.
+SetSigningKey sets SigningKey field to given value.
 
-### HasJwtAlg
+### HasSigningKey
 
-`func (o *PatchedOAuth2ProviderRequest) HasJwtAlg() bool`
+`func (o *PatchedOAuth2ProviderRequest) HasSigningKey() bool`
 
-HasJwtAlg returns a boolean if a field has been set.
+HasSigningKey returns a boolean if a field has been set.
 
-### GetRsaKey
+### SetSigningKeyNil
 
-`func (o *PatchedOAuth2ProviderRequest) GetRsaKey() string`
+`func (o *PatchedOAuth2ProviderRequest) SetSigningKeyNil(b bool)`
 
-GetRsaKey returns the RsaKey field if non-nil, zero value otherwise.
+ SetSigningKeyNil sets the value for SigningKey to be an explicit nil
 
-### GetRsaKeyOk
+### UnsetSigningKey
+`func (o *PatchedOAuth2ProviderRequest) UnsetSigningKey()`
 
-`func (o *PatchedOAuth2ProviderRequest) GetRsaKeyOk() (*string, bool)`
-
-GetRsaKeyOk returns a tuple with the RsaKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRsaKey
-
-`func (o *PatchedOAuth2ProviderRequest) SetRsaKey(v string)`
-
-SetRsaKey sets RsaKey field to given value.
-
-### HasRsaKey
-
-`func (o *PatchedOAuth2ProviderRequest) HasRsaKey() bool`
-
-HasRsaKey returns a boolean if a field has been set.
-
-### SetRsaKeyNil
-
-`func (o *PatchedOAuth2ProviderRequest) SetRsaKeyNil(b bool)`
-
- SetRsaKeyNil sets the value for RsaKey to be an explicit nil
-
-### UnsetRsaKey
-`func (o *PatchedOAuth2ProviderRequest) UnsetRsaKey()`
-
-UnsetRsaKey ensures that no value is present for RsaKey, not even an explicit nil
+UnsetSigningKey ensures that no value is present for SigningKey, not even an explicit nil
 ### GetRedirectUris
 
 `func (o *PatchedOAuth2ProviderRequest) GetRedirectUris() string`

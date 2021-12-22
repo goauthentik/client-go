@@ -1034,7 +1034,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersOauth2List
 
-> PaginatedOAuth2ProviderList ProvidersOauth2List(ctx).AccessCodeValidity(accessCodeValidity).Application(application).AuthorizationFlow(authorizationFlow).ClientId(clientId).ClientType(clientType).IncludeClaimsInIdToken(includeClaimsInIdToken).IssuerMode(issuerMode).JwtAlg(jwtAlg).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).RedirectUris(redirectUris).RsaKey(rsaKey).Search(search).SubMode(subMode).TokenValidity(tokenValidity).Execute()
+> PaginatedOAuth2ProviderList ProvidersOauth2List(ctx).AccessCodeValidity(accessCodeValidity).Application(application).AuthorizationFlow(authorizationFlow).ClientId(clientId).ClientType(clientType).IncludeClaimsInIdToken(includeClaimsInIdToken).IssuerMode(issuerMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).RedirectUris(redirectUris).Search(search).SigningKey(signingKey).SubMode(subMode).TokenValidity(tokenValidity).Execute()
 
 
 
@@ -1060,21 +1060,20 @@ func main() {
     clientType := "clientType_example" // string | Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable. (optional)
     includeClaimsInIdToken := true // bool |  (optional)
     issuerMode := "issuerMode_example" // string | Configure how the issuer field of the ID Token should be filled. (optional)
-    jwtAlg := "jwtAlg_example" // string | Algorithm used to sign the JWT Token (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     propertyMappings := []string{"Inner_example"} // []string |  (optional)
     redirectUris := "redirectUris_example" // string |  (optional)
-    rsaKey := TODO // string |  (optional)
     search := "search_example" // string | A search term. (optional)
+    signingKey := TODO // string |  (optional)
     subMode := "subMode_example" // string | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. (optional)
     tokenValidity := "tokenValidity_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersOauth2List(context.Background()).AccessCodeValidity(accessCodeValidity).Application(application).AuthorizationFlow(authorizationFlow).ClientId(clientId).ClientType(clientType).IncludeClaimsInIdToken(includeClaimsInIdToken).IssuerMode(issuerMode).JwtAlg(jwtAlg).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).RedirectUris(redirectUris).RsaKey(rsaKey).Search(search).SubMode(subMode).TokenValidity(tokenValidity).Execute()
+    resp, r, err := api_client.ProvidersApi.ProvidersOauth2List(context.Background()).AccessCodeValidity(accessCodeValidity).Application(application).AuthorizationFlow(authorizationFlow).ClientId(clientId).ClientType(clientType).IncludeClaimsInIdToken(includeClaimsInIdToken).IssuerMode(issuerMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).RedirectUris(redirectUris).Search(search).SigningKey(signingKey).SubMode(subMode).TokenValidity(tokenValidity).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersOauth2List``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1102,15 +1101,14 @@ Name | Type | Description  | Notes
  **clientType** | **string** | Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable. | 
  **includeClaimsInIdToken** | **bool** |  | 
  **issuerMode** | **string** | Configure how the issuer field of the ID Token should be filled. | 
- **jwtAlg** | **string** | Algorithm used to sign the JWT Token | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **propertyMappings** | **[]string** |  | 
  **redirectUris** | **string** |  | 
- **rsaKey** | [**string**](string.md) |  | 
  **search** | **string** | A search term. | 
+ **signingKey** | [**string**](string.md) |  | 
  **subMode** | **string** | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | 
  **tokenValidity** | **string** |  | 
 

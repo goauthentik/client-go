@@ -31,10 +31,8 @@ type PatchedOAuth2ProviderRequest struct {
 	TokenValidity *string `json:"token_validity,omitempty"`
 	// Include User claims from scopes in the id_token, for applications that don't access the userinfo endpoint.
 	IncludeClaimsInIdToken *bool `json:"include_claims_in_id_token,omitempty"`
-	// Algorithm used to sign the JWT Token
-	JwtAlg *JwtAlgEnum `json:"jwt_alg,omitempty"`
 	// Key used to sign the tokens. Only required when JWT Algorithm is set to RS256.
-	RsaKey NullableString `json:"rsa_key,omitempty"`
+	SigningKey NullableString `json:"signing_key,omitempty"`
 	// Enter each URI on a new line.
 	RedirectUris *string `json:"redirect_uris,omitempty"`
 	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
@@ -348,79 +346,47 @@ func (o *PatchedOAuth2ProviderRequest) SetIncludeClaimsInIdToken(v bool) {
 	o.IncludeClaimsInIdToken = &v
 }
 
-// GetJwtAlg returns the JwtAlg field value if set, zero value otherwise.
-func (o *PatchedOAuth2ProviderRequest) GetJwtAlg() JwtAlgEnum {
-	if o == nil || o.JwtAlg == nil {
-		var ret JwtAlgEnum
-		return ret
-	}
-	return *o.JwtAlg
-}
-
-// GetJwtAlgOk returns a tuple with the JwtAlg field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedOAuth2ProviderRequest) GetJwtAlgOk() (*JwtAlgEnum, bool) {
-	if o == nil || o.JwtAlg == nil {
-		return nil, false
-	}
-	return o.JwtAlg, true
-}
-
-// HasJwtAlg returns a boolean if a field has been set.
-func (o *PatchedOAuth2ProviderRequest) HasJwtAlg() bool {
-	if o != nil && o.JwtAlg != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetJwtAlg gets a reference to the given JwtAlgEnum and assigns it to the JwtAlg field.
-func (o *PatchedOAuth2ProviderRequest) SetJwtAlg(v JwtAlgEnum) {
-	o.JwtAlg = &v
-}
-
-// GetRsaKey returns the RsaKey field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PatchedOAuth2ProviderRequest) GetRsaKey() string {
-	if o == nil || o.RsaKey.Get() == nil {
+// GetSigningKey returns the SigningKey field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedOAuth2ProviderRequest) GetSigningKey() string {
+	if o == nil || o.SigningKey.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.RsaKey.Get()
+	return *o.SigningKey.Get()
 }
 
-// GetRsaKeyOk returns a tuple with the RsaKey field value if set, nil otherwise
+// GetSigningKeyOk returns a tuple with the SigningKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PatchedOAuth2ProviderRequest) GetRsaKeyOk() (*string, bool) {
+func (o *PatchedOAuth2ProviderRequest) GetSigningKeyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.RsaKey.Get(), o.RsaKey.IsSet()
+	return o.SigningKey.Get(), o.SigningKey.IsSet()
 }
 
-// HasRsaKey returns a boolean if a field has been set.
-func (o *PatchedOAuth2ProviderRequest) HasRsaKey() bool {
-	if o != nil && o.RsaKey.IsSet() {
+// HasSigningKey returns a boolean if a field has been set.
+func (o *PatchedOAuth2ProviderRequest) HasSigningKey() bool {
+	if o != nil && o.SigningKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRsaKey gets a reference to the given NullableString and assigns it to the RsaKey field.
-func (o *PatchedOAuth2ProviderRequest) SetRsaKey(v string) {
-	o.RsaKey.Set(&v)
+// SetSigningKey gets a reference to the given NullableString and assigns it to the SigningKey field.
+func (o *PatchedOAuth2ProviderRequest) SetSigningKey(v string) {
+	o.SigningKey.Set(&v)
 }
 
-// SetRsaKeyNil sets the value for RsaKey to be an explicit nil
-func (o *PatchedOAuth2ProviderRequest) SetRsaKeyNil() {
-	o.RsaKey.Set(nil)
+// SetSigningKeyNil sets the value for SigningKey to be an explicit nil
+func (o *PatchedOAuth2ProviderRequest) SetSigningKeyNil() {
+	o.SigningKey.Set(nil)
 }
 
-// UnsetRsaKey ensures that no value is present for RsaKey, not even an explicit nil
-func (o *PatchedOAuth2ProviderRequest) UnsetRsaKey() {
-	o.RsaKey.Unset()
+// UnsetSigningKey ensures that no value is present for SigningKey, not even an explicit nil
+func (o *PatchedOAuth2ProviderRequest) UnsetSigningKey() {
+	o.SigningKey.Unset()
 }
 
 // GetRedirectUris returns the RedirectUris field value if set, zero value otherwise.
@@ -548,11 +514,8 @@ func (o PatchedOAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
 	if o.IncludeClaimsInIdToken != nil {
 		toSerialize["include_claims_in_id_token"] = o.IncludeClaimsInIdToken
 	}
-	if o.JwtAlg != nil {
-		toSerialize["jwt_alg"] = o.JwtAlg
-	}
-	if o.RsaKey.IsSet() {
-		toSerialize["rsa_key"] = o.RsaKey.Get()
+	if o.SigningKey.IsSet() {
+		toSerialize["signing_key"] = o.SigningKey.Get()
 	}
 	if o.RedirectUris != nil {
 		toSerialize["redirect_uris"] = o.RedirectUris

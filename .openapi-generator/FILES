@@ -152,7 +152,6 @@ docs/InvitationRequest.md
 docs/InvitationStage.md
 docs/InvitationStageRequest.md
 docs/IssuerModeEnum.md
-docs/JwtAlgEnum.md
 docs/KubernetesServiceConnection.md
 docs/KubernetesServiceConnectionRequest.md
 docs/LDAPOutpostConfig.md
@@ -589,7 +588,6 @@ model_invitation_stage.go
 model_invitation_stage_request.go
 model_ip_reputation.go
 model_issuer_mode_enum.go
-model_jwt_alg_enum.go
 model_kubernetes_service_connection.go
 model_kubernetes_service_connection_request.go
 model_ldap_outpost_config.go
