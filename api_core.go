@@ -3259,6 +3259,7 @@ type ApiCoreTenantsListRequest struct {
 	pageSize           *int32
 	search             *string
 	tenantUuid         *string
+	webCertificate     *string
 }
 
 func (r ApiCoreTenantsListRequest) BrandingFavicon(brandingFavicon string) ApiCoreTenantsListRequest {
@@ -3327,6 +3328,10 @@ func (r ApiCoreTenantsListRequest) Search(search string) ApiCoreTenantsListReque
 }
 func (r ApiCoreTenantsListRequest) TenantUuid(tenantUuid string) ApiCoreTenantsListRequest {
 	r.tenantUuid = &tenantUuid
+	return r
+}
+func (r ApiCoreTenantsListRequest) WebCertificate(webCertificate string) ApiCoreTenantsListRequest {
+	r.webCertificate = &webCertificate
 	return r
 }
 
@@ -3416,6 +3421,9 @@ func (a *CoreApiService) CoreTenantsListExecute(r ApiCoreTenantsListRequest) (Pa
 	}
 	if r.tenantUuid != nil {
 		localVarQueryParams.Add("tenant_uuid", parameterToString(*r.tenantUuid, ""))
+	}
+	if r.webCertificate != nil {
+		localVarQueryParams.Add("web_certificate", parameterToString(*r.webCertificate, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

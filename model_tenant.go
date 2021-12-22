@@ -30,6 +30,8 @@ type Tenant struct {
 	FlowUnenrollment   NullableString `json:"flow_unenrollment,omitempty"`
 	// Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2).
 	EventRetention *string `json:"event_retention,omitempty"`
+	// Web Certificate used by the authentik Core webserver.
+	WebCertificate NullableString `json:"web_certificate,omitempty"`
 }
 
 // NewTenant instantiates a new Tenant object
@@ -431,6 +433,49 @@ func (o *Tenant) SetEventRetention(v string) {
 	o.EventRetention = &v
 }
 
+// GetWebCertificate returns the WebCertificate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Tenant) GetWebCertificate() string {
+	if o == nil || o.WebCertificate.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.WebCertificate.Get()
+}
+
+// GetWebCertificateOk returns a tuple with the WebCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Tenant) GetWebCertificateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.WebCertificate.Get(), o.WebCertificate.IsSet()
+}
+
+// HasWebCertificate returns a boolean if a field has been set.
+func (o *Tenant) HasWebCertificate() bool {
+	if o != nil && o.WebCertificate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetWebCertificate gets a reference to the given NullableString and assigns it to the WebCertificate field.
+func (o *Tenant) SetWebCertificate(v string) {
+	o.WebCertificate.Set(&v)
+}
+
+// SetWebCertificateNil sets the value for WebCertificate to be an explicit nil
+func (o *Tenant) SetWebCertificateNil() {
+	o.WebCertificate.Set(nil)
+}
+
+// UnsetWebCertificate ensures that no value is present for WebCertificate, not even an explicit nil
+func (o *Tenant) UnsetWebCertificate() {
+	o.WebCertificate.Unset()
+}
+
 func (o Tenant) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -465,6 +510,9 @@ func (o Tenant) MarshalJSON() ([]byte, error) {
 	}
 	if o.EventRetention != nil {
 		toSerialize["event_retention"] = o.EventRetention
+	}
+	if o.WebCertificate.IsSet() {
+		toSerialize["web_certificate"] = o.WebCertificate.Get()
 	}
 	return json.Marshal(toSerialize)
 }

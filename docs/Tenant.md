@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **FlowRecovery** | Pointer to **NullableString** |  | [optional] 
 **FlowUnenrollment** | Pointer to **NullableString** |  | [optional] 
 **EventRetention** | Pointer to **string** | Events will be deleted after this duration.(Format: weeks&#x3D;3;days&#x3D;2;hours&#x3D;3,seconds&#x3D;2). | [optional] 
+**WebCertificate** | Pointer to **NullableString** | Web Certificate used by the authentik Core webserver. | [optional] 
 
 ## Methods
 
@@ -340,6 +341,41 @@ SetEventRetention sets EventRetention field to given value.
 
 HasEventRetention returns a boolean if a field has been set.
 
+### GetWebCertificate
+
+`func (o *Tenant) GetWebCertificate() string`
+
+GetWebCertificate returns the WebCertificate field if non-nil, zero value otherwise.
+
+### GetWebCertificateOk
+
+`func (o *Tenant) GetWebCertificateOk() (*string, bool)`
+
+GetWebCertificateOk returns a tuple with the WebCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebCertificate
+
+`func (o *Tenant) SetWebCertificate(v string)`
+
+SetWebCertificate sets WebCertificate field to given value.
+
+### HasWebCertificate
+
+`func (o *Tenant) HasWebCertificate() bool`
+
+HasWebCertificate returns a boolean if a field has been set.
+
+### SetWebCertificateNil
+
+`func (o *Tenant) SetWebCertificateNil(b bool)`
+
+ SetWebCertificateNil sets the value for WebCertificate to be an explicit nil
+
+### UnsetWebCertificate
+`func (o *Tenant) UnsetWebCertificate()`
+
+UnsetWebCertificate ensures that no value is present for WebCertificate, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -2616,6 +2616,14 @@ paths:
           format: uuid
           type: string
         style: form
+      - explode: true
+        in: query
+        name: web_certificate
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -32057,6 +32065,7 @@ components:
           event_retention: event_retention
           branding_title: branding_title
           branding_favicon: branding_favicon
+          web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - branding_logo: branding_logo
           flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -32068,6 +32077,7 @@ components:
           event_retention: event_retention
           branding_title: branding_title
           branding_favicon: branding_favicon
+          web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -35796,6 +35806,7 @@ components:
         event_retention: event_retention
         branding_title: branding_title
         branding_favicon: branding_favicon
+        web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         domain:
           description: Domain that activates this tenant. Can be a superset, i.e.
@@ -35832,6 +35843,11 @@ components:
         event_retention:
           description: 'Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2).'
           minLength: 1
+          type: string
+        web_certificate:
+          description: Web Certificate used by the authentik Core webserver.
+          format: uuid
+          nullable: true
           type: string
       type: object
     PatchedTokenRequest:
@@ -39032,6 +39048,7 @@ components:
         event_retention: event_retention
         branding_title: branding_title
         branding_favicon: branding_favicon
+        web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         tenant_uuid:
           format: uuid
@@ -39068,6 +39085,11 @@ components:
         event_retention:
           description: 'Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2).'
           type: string
+        web_certificate:
+          description: Web Certificate used by the authentik Core webserver.
+          format: uuid
+          nullable: true
+          type: string
       required:
       - domain
       - tenant_uuid
@@ -39085,6 +39107,7 @@ components:
         event_retention: event_retention
         branding_title: branding_title
         branding_favicon: branding_favicon
+        web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         domain:
           description: Domain that activates this tenant. Can be a superset, i.e.
@@ -39121,6 +39144,11 @@ components:
         event_retention:
           description: 'Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2).'
           minLength: 1
+          type: string
+        web_certificate:
+          description: Web Certificate used by the authentik Core webserver.
+          format: uuid
+          nullable: true
           type: string
       required:
       - domain
