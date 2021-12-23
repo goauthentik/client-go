@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **ApplicationPre** | Pointer to **string** |  | [optional] 
 **EnrollUrl** | Pointer to **string** |  | [optional] 
 **RecoveryUrl** | Pointer to **string** |  | [optional] 
+**PasswordlessUrl** | Pointer to **string** |  | [optional] 
 **PrimaryAction** | **string** |  | 
 **Sources** | Pointer to [**[]LoginSource**](LoginSource.md) |  | [optional] 
 **ShowSourceLabels** | **bool** |  | 
@@ -689,6 +690,31 @@ SetRecoveryUrl sets RecoveryUrl field to given value.
 `func (o *ChallengeTypes) HasRecoveryUrl() bool`
 
 HasRecoveryUrl returns a boolean if a field has been set.
+
+### GetPasswordlessUrl
+
+`func (o *ChallengeTypes) GetPasswordlessUrl() string`
+
+GetPasswordlessUrl returns the PasswordlessUrl field if non-nil, zero value otherwise.
+
+### GetPasswordlessUrlOk
+
+`func (o *ChallengeTypes) GetPasswordlessUrlOk() (*string, bool)`
+
+GetPasswordlessUrlOk returns a tuple with the PasswordlessUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordlessUrl
+
+`func (o *ChallengeTypes) SetPasswordlessUrl(v string)`
+
+SetPasswordlessUrl sets PasswordlessUrl field to given value.
+
+### HasPasswordlessUrl
+
+`func (o *ChallengeTypes) HasPasswordlessUrl() bool`
+
+HasPasswordlessUrl returns a boolean if a field has been set.
 
 ### GetPrimaryAction
 

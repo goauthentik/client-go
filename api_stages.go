@@ -11515,6 +11515,7 @@ type ApiStagesIdentificationListRequest struct {
 	page                    *int32
 	pageSize                *int32
 	passwordStage           *string
+	passwordlessFlow        *string
 	recoveryFlow            *string
 	search                  *string
 	showMatchedUser         *bool
@@ -11553,6 +11554,10 @@ func (r ApiStagesIdentificationListRequest) PageSize(pageSize int32) ApiStagesId
 }
 func (r ApiStagesIdentificationListRequest) PasswordStage(passwordStage string) ApiStagesIdentificationListRequest {
 	r.passwordStage = &passwordStage
+	return r
+}
+func (r ApiStagesIdentificationListRequest) PasswordlessFlow(passwordlessFlow string) ApiStagesIdentificationListRequest {
+	r.passwordlessFlow = &passwordlessFlow
 	return r
 }
 func (r ApiStagesIdentificationListRequest) RecoveryFlow(recoveryFlow string) ApiStagesIdentificationListRequest {
@@ -11636,6 +11641,9 @@ func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentifica
 	}
 	if r.passwordStage != nil {
 		localVarQueryParams.Add("password_stage", parameterToString(*r.passwordStage, ""))
+	}
+	if r.passwordlessFlow != nil {
+		localVarQueryParams.Add("passwordless_flow", parameterToString(*r.passwordlessFlow, ""))
 	}
 	if r.recoveryFlow != nil {
 		localVarQueryParams.Add("recovery_flow", parameterToString(*r.recoveryFlow, ""))

@@ -18809,6 +18809,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: passwordless_flow
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: recovery_flow
         required: false
         schema:
@@ -25252,6 +25260,8 @@ components:
           type: string
         recovery_url:
           type: string
+        passwordless_url:
+          type: string
         primary_action:
           type: string
         sources:
@@ -25324,6 +25334,7 @@ components:
           designation: ""
           cache_count: 0
           slug: slug
+        passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         component: component
         verbose_name: verbose_name
@@ -25393,6 +25404,12 @@ components:
           format: uuid
           nullable: true
           type: string
+        passwordless_flow:
+          description: Optional passwordless flow, which is linked at the bottom of
+            the page.
+          format: uuid
+          nullable: true
+          type: string
         sources:
           description: Specify which sources should be shown.
           items:
@@ -25412,6 +25429,7 @@ components:
     IdentificationStageRequest:
       description: IdentificationStage Serializer
       example:
+        passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         show_source_labels: true
         user_fields:
@@ -25473,6 +25491,12 @@ components:
         recovery_flow:
           description: Optional recovery flow, which is linked at the bottom of the
             page.
+          format: uuid
+          nullable: true
+          type: string
+        passwordless_flow:
+          description: Optional passwordless flow, which is linked at the bottom of
+            the page.
           format: uuid
           nullable: true
           type: string
@@ -29480,6 +29504,7 @@ components:
             designation: ""
             cache_count: 0
             slug: slug
+          passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
@@ -29531,6 +29556,7 @@ components:
             designation: ""
             cache_count: 0
             slug: slug
+          passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
@@ -34376,6 +34402,7 @@ components:
     PatchedIdentificationStageRequest:
       description: IdentificationStage Serializer
       example:
+        passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         show_source_labels: true
         user_fields:
@@ -34437,6 +34464,12 @@ components:
         recovery_flow:
           description: Optional recovery flow, which is linked at the bottom of the
             page.
+          format: uuid
+          nullable: true
+          type: string
+        passwordless_flow:
+          description: Optional passwordless flow, which is linked at the bottom of
+            the page.
           format: uuid
           nullable: true
           type: string

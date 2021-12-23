@@ -6398,7 +6398,7 @@ Name | Type | Description  | Notes
 
 ## StagesIdentificationList
 
-> PaginatedIdentificationStageList StagesIdentificationList(ctx).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).Execute()
+> PaginatedIdentificationStageList StagesIdentificationList(ctx).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).PasswordlessFlow(passwordlessFlow).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).Execute()
 
 
 
@@ -6424,6 +6424,7 @@ func main() {
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     passwordStage := TODO // string |  (optional)
+    passwordlessFlow := TODO // string |  (optional)
     recoveryFlow := TODO // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     showMatchedUser := true // bool |  (optional)
@@ -6431,7 +6432,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.StagesApi.StagesIdentificationList(context.Background()).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).Execute()
+    resp, r, err := api_client.StagesApi.StagesIdentificationList(context.Background()).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).PasswordlessFlow(passwordlessFlow).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesIdentificationList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6459,6 +6460,7 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **passwordStage** | [**string**](string.md) |  | 
+ **passwordlessFlow** | [**string**](string.md) |  | 
  **recoveryFlow** | [**string**](string.md) |  | 
  **search** | **string** | A search term. | 
  **showMatchedUser** | **bool** |  | 

@@ -31,6 +31,8 @@ type PatchedIdentificationStageRequest struct {
 	EnrollmentFlow NullableString `json:"enrollment_flow,omitempty"`
 	// Optional recovery flow, which is linked at the bottom of the page.
 	RecoveryFlow NullableString `json:"recovery_flow,omitempty"`
+	// Optional passwordless flow, which is linked at the bottom of the page.
+	PasswordlessFlow NullableString `json:"passwordless_flow,omitempty"`
 	// Specify which sources should be shown.
 	Sources          *[]string `json:"sources,omitempty"`
 	ShowSourceLabels *bool     `json:"show_source_labels,omitempty"`
@@ -342,6 +344,49 @@ func (o *PatchedIdentificationStageRequest) UnsetRecoveryFlow() {
 	o.RecoveryFlow.Unset()
 }
 
+// GetPasswordlessFlow returns the PasswordlessFlow field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedIdentificationStageRequest) GetPasswordlessFlow() string {
+	if o == nil || o.PasswordlessFlow.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordlessFlow.Get()
+}
+
+// GetPasswordlessFlowOk returns a tuple with the PasswordlessFlow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedIdentificationStageRequest) GetPasswordlessFlowOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PasswordlessFlow.Get(), o.PasswordlessFlow.IsSet()
+}
+
+// HasPasswordlessFlow returns a boolean if a field has been set.
+func (o *PatchedIdentificationStageRequest) HasPasswordlessFlow() bool {
+	if o != nil && o.PasswordlessFlow.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordlessFlow gets a reference to the given NullableString and assigns it to the PasswordlessFlow field.
+func (o *PatchedIdentificationStageRequest) SetPasswordlessFlow(v string) {
+	o.PasswordlessFlow.Set(&v)
+}
+
+// SetPasswordlessFlowNil sets the value for PasswordlessFlow to be an explicit nil
+func (o *PatchedIdentificationStageRequest) SetPasswordlessFlowNil() {
+	o.PasswordlessFlow.Set(nil)
+}
+
+// UnsetPasswordlessFlow ensures that no value is present for PasswordlessFlow, not even an explicit nil
+func (o *PatchedIdentificationStageRequest) UnsetPasswordlessFlow() {
+	o.PasswordlessFlow.Unset()
+}
+
 // GetSources returns the Sources field value if set, zero value otherwise.
 func (o *PatchedIdentificationStageRequest) GetSources() []string {
 	if o == nil || o.Sources == nil {
@@ -431,6 +476,9 @@ func (o PatchedIdentificationStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.RecoveryFlow.IsSet() {
 		toSerialize["recovery_flow"] = o.RecoveryFlow.Get()
+	}
+	if o.PasswordlessFlow.IsSet() {
+		toSerialize["passwordless_flow"] = o.PasswordlessFlow.Get()
 	}
 	if o.Sources != nil {
 		toSerialize["sources"] = o.Sources

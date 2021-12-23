@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **ShowMatchedUser** | Pointer to **bool** | When a valid username/email has been entered, and this option is enabled, the user&#39;s username and avatar will be shown. Otherwise, the text that the user entered will be shown | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Optional enrollment flow, which is linked at the bottom of the page. | [optional] 
 **RecoveryFlow** | Pointer to **NullableString** | Optional recovery flow, which is linked at the bottom of the page. | [optional] 
+**PasswordlessFlow** | Pointer to **NullableString** | Optional passwordless flow, which is linked at the bottom of the page. | [optional] 
 **Sources** | Pointer to **[]string** | Specify which sources should be shown. | [optional] 
 **ShowSourceLabels** | Pointer to **bool** |  | [optional] 
 
@@ -264,6 +265,41 @@ HasRecoveryFlow returns a boolean if a field has been set.
 `func (o *PatchedIdentificationStageRequest) UnsetRecoveryFlow()`
 
 UnsetRecoveryFlow ensures that no value is present for RecoveryFlow, not even an explicit nil
+### GetPasswordlessFlow
+
+`func (o *PatchedIdentificationStageRequest) GetPasswordlessFlow() string`
+
+GetPasswordlessFlow returns the PasswordlessFlow field if non-nil, zero value otherwise.
+
+### GetPasswordlessFlowOk
+
+`func (o *PatchedIdentificationStageRequest) GetPasswordlessFlowOk() (*string, bool)`
+
+GetPasswordlessFlowOk returns a tuple with the PasswordlessFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordlessFlow
+
+`func (o *PatchedIdentificationStageRequest) SetPasswordlessFlow(v string)`
+
+SetPasswordlessFlow sets PasswordlessFlow field to given value.
+
+### HasPasswordlessFlow
+
+`func (o *PatchedIdentificationStageRequest) HasPasswordlessFlow() bool`
+
+HasPasswordlessFlow returns a boolean if a field has been set.
+
+### SetPasswordlessFlowNil
+
+`func (o *PatchedIdentificationStageRequest) SetPasswordlessFlowNil(b bool)`
+
+ SetPasswordlessFlowNil sets the value for PasswordlessFlow to be an explicit nil
+
+### UnsetPasswordlessFlow
+`func (o *PatchedIdentificationStageRequest) UnsetPasswordlessFlow()`
+
+UnsetPasswordlessFlow ensures that no value is present for PasswordlessFlow, not even an explicit nil
 ### GetSources
 
 `func (o *PatchedIdentificationStageRequest) GetSources() []string`

@@ -26,6 +26,7 @@ type IdentificationChallenge struct {
 	ApplicationPre   *string                   `json:"application_pre,omitempty"`
 	EnrollUrl        *string                   `json:"enroll_url,omitempty"`
 	RecoveryUrl      *string                   `json:"recovery_url,omitempty"`
+	PasswordlessUrl  *string                   `json:"passwordless_url,omitempty"`
 	PrimaryAction    string                    `json:"primary_action"`
 	Sources          *[]LoginSource            `json:"sources,omitempty"`
 	ShowSourceLabels bool                      `json:"show_source_labels"`
@@ -323,6 +324,38 @@ func (o *IdentificationChallenge) SetRecoveryUrl(v string) {
 	o.RecoveryUrl = &v
 }
 
+// GetPasswordlessUrl returns the PasswordlessUrl field value if set, zero value otherwise.
+func (o *IdentificationChallenge) GetPasswordlessUrl() string {
+	if o == nil || o.PasswordlessUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.PasswordlessUrl
+}
+
+// GetPasswordlessUrlOk returns a tuple with the PasswordlessUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentificationChallenge) GetPasswordlessUrlOk() (*string, bool) {
+	if o == nil || o.PasswordlessUrl == nil {
+		return nil, false
+	}
+	return o.PasswordlessUrl, true
+}
+
+// HasPasswordlessUrl returns a boolean if a field has been set.
+func (o *IdentificationChallenge) HasPasswordlessUrl() bool {
+	if o != nil && o.PasswordlessUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordlessUrl gets a reference to the given string and assigns it to the PasswordlessUrl field.
+func (o *IdentificationChallenge) SetPasswordlessUrl(v string) {
+	o.PasswordlessUrl = &v
+}
+
 // GetPrimaryAction returns the PrimaryAction field value
 func (o *IdentificationChallenge) GetPrimaryAction() string {
 	if o == nil {
@@ -431,6 +464,9 @@ func (o IdentificationChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if o.RecoveryUrl != nil {
 		toSerialize["recovery_url"] = o.RecoveryUrl
+	}
+	if o.PasswordlessUrl != nil {
+		toSerialize["passwordless_url"] = o.PasswordlessUrl
 	}
 	if true {
 		toSerialize["primary_action"] = o.PrimaryAction
