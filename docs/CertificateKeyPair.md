@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **CertExpiry** | **time.Time** |  | [readonly] 
 **CertSubject** | **string** |  | [readonly] 
 **PrivateKeyAvailable** | **bool** |  | [readonly] 
+**PrivateKeyType** | **NullableString** |  | [readonly] 
 **CertificateDownloadUrl** | **string** |  | [readonly] 
 **PrivateKeyDownloadUrl** | **string** |  | [readonly] 
 **Managed** | Pointer to **NullableString** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [optional] 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewCertificateKeyPair
 
-`func NewCertificateKeyPair(pk string, name string, fingerprintSha256 string, fingerprintSha1 string, certExpiry time.Time, certSubject string, privateKeyAvailable bool, certificateDownloadUrl string, privateKeyDownloadUrl string, ) *CertificateKeyPair`
+`func NewCertificateKeyPair(pk string, name string, fingerprintSha256 string, fingerprintSha1 string, certExpiry time.Time, certSubject string, privateKeyAvailable bool, privateKeyType NullableString, certificateDownloadUrl string, privateKeyDownloadUrl string, ) *CertificateKeyPair`
 
 NewCertificateKeyPair instantiates a new CertificateKeyPair object
 This constructor will assign default values to properties that have it defined,
@@ -174,6 +175,36 @@ and a boolean to check if the value has been set.
 SetPrivateKeyAvailable sets PrivateKeyAvailable field to given value.
 
 
+### GetPrivateKeyType
+
+`func (o *CertificateKeyPair) GetPrivateKeyType() string`
+
+GetPrivateKeyType returns the PrivateKeyType field if non-nil, zero value otherwise.
+
+### GetPrivateKeyTypeOk
+
+`func (o *CertificateKeyPair) GetPrivateKeyTypeOk() (*string, bool)`
+
+GetPrivateKeyTypeOk returns a tuple with the PrivateKeyType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKeyType
+
+`func (o *CertificateKeyPair) SetPrivateKeyType(v string)`
+
+SetPrivateKeyType sets PrivateKeyType field to given value.
+
+
+### SetPrivateKeyTypeNil
+
+`func (o *CertificateKeyPair) SetPrivateKeyTypeNil(b bool)`
+
+ SetPrivateKeyTypeNil sets the value for PrivateKeyType to be an explicit nil
+
+### UnsetPrivateKeyType
+`func (o *CertificateKeyPair) UnsetPrivateKeyType()`
+
+UnsetPrivateKeyType ensures that no value is present for PrivateKeyType, not even an explicit nil
 ### GetCertificateDownloadUrl
 
 `func (o *CertificateKeyPair) GetCertificateDownloadUrl() string`

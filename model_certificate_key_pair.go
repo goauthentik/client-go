@@ -18,15 +18,16 @@ import (
 
 // CertificateKeyPair CertificateKeyPair Serializer
 type CertificateKeyPair struct {
-	Pk                     string    `json:"pk"`
-	Name                   string    `json:"name"`
-	FingerprintSha256      string    `json:"fingerprint_sha256"`
-	FingerprintSha1        string    `json:"fingerprint_sha1"`
-	CertExpiry             time.Time `json:"cert_expiry"`
-	CertSubject            string    `json:"cert_subject"`
-	PrivateKeyAvailable    bool      `json:"private_key_available"`
-	CertificateDownloadUrl string    `json:"certificate_download_url"`
-	PrivateKeyDownloadUrl  string    `json:"private_key_download_url"`
+	Pk                     string         `json:"pk"`
+	Name                   string         `json:"name"`
+	FingerprintSha256      string         `json:"fingerprint_sha256"`
+	FingerprintSha1        string         `json:"fingerprint_sha1"`
+	CertExpiry             time.Time      `json:"cert_expiry"`
+	CertSubject            string         `json:"cert_subject"`
+	PrivateKeyAvailable    bool           `json:"private_key_available"`
+	PrivateKeyType         NullableString `json:"private_key_type"`
+	CertificateDownloadUrl string         `json:"certificate_download_url"`
+	PrivateKeyDownloadUrl  string         `json:"private_key_download_url"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed NullableString `json:"managed,omitempty"`
 }
@@ -35,7 +36,7 @@ type CertificateKeyPair struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificateKeyPair(pk string, name string, fingerprintSha256 string, fingerprintSha1 string, certExpiry time.Time, certSubject string, privateKeyAvailable bool, certificateDownloadUrl string, privateKeyDownloadUrl string) *CertificateKeyPair {
+func NewCertificateKeyPair(pk string, name string, fingerprintSha256 string, fingerprintSha1 string, certExpiry time.Time, certSubject string, privateKeyAvailable bool, privateKeyType NullableString, certificateDownloadUrl string, privateKeyDownloadUrl string) *CertificateKeyPair {
 	this := CertificateKeyPair{}
 	this.Pk = pk
 	this.Name = name
@@ -44,6 +45,7 @@ func NewCertificateKeyPair(pk string, name string, fingerprintSha256 string, fin
 	this.CertExpiry = certExpiry
 	this.CertSubject = certSubject
 	this.PrivateKeyAvailable = privateKeyAvailable
+	this.PrivateKeyType = privateKeyType
 	this.CertificateDownloadUrl = certificateDownloadUrl
 	this.PrivateKeyDownloadUrl = privateKeyDownloadUrl
 	return &this
@@ -225,6 +227,32 @@ func (o *CertificateKeyPair) SetPrivateKeyAvailable(v bool) {
 	o.PrivateKeyAvailable = v
 }
 
+// GetPrivateKeyType returns the PrivateKeyType field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *CertificateKeyPair) GetPrivateKeyType() string {
+	if o == nil || o.PrivateKeyType.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.PrivateKeyType.Get()
+}
+
+// GetPrivateKeyTypeOk returns a tuple with the PrivateKeyType field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CertificateKeyPair) GetPrivateKeyTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PrivateKeyType.Get(), o.PrivateKeyType.IsSet()
+}
+
+// SetPrivateKeyType sets field value
+func (o *CertificateKeyPair) SetPrivateKeyType(v string) {
+	o.PrivateKeyType.Set(&v)
+}
+
 // GetCertificateDownloadUrl returns the CertificateDownloadUrl field value
 func (o *CertificateKeyPair) GetCertificateDownloadUrl() string {
 	if o == nil {
@@ -338,6 +366,9 @@ func (o CertificateKeyPair) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["private_key_available"] = o.PrivateKeyAvailable
+	}
+	if true {
+		toSerialize["private_key_type"] = o.PrivateKeyType.Get()
 	}
 	if true {
 		toSerialize["certificate_download_url"] = o.CertificateDownloadUrl

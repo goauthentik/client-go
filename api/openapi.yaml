@@ -22858,6 +22858,7 @@ components:
         certificate_download_url: certificate_download_url
         fingerprint_sha1: fingerprint_sha1
         managed: managed
+        private_key_type: private_key_type
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         cert_expiry: 2000-01-23T04:56:07.000+00:00
@@ -22889,6 +22890,10 @@ components:
         private_key_available:
           readOnly: true
           type: boolean
+        private_key_type:
+          nullable: true
+          readOnly: true
+          type: string
         certificate_download_url:
           readOnly: true
           type: string
@@ -22913,6 +22918,7 @@ components:
       - pk
       - private_key_available
       - private_key_download_url
+      - private_key_type
       type: object
     CertificateKeyPairRequest:
       description: CertificateKeyPair Serializer
@@ -28275,6 +28281,7 @@ components:
         - certificate_download_url: certificate_download_url
           fingerprint_sha1: fingerprint_sha1
           managed: managed
+          private_key_type: private_key_type
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cert_expiry: 2000-01-23T04:56:07.000+00:00
@@ -28285,6 +28292,7 @@ components:
         - certificate_download_url: certificate_download_url
           fingerprint_sha1: fingerprint_sha1
           managed: managed
+          private_key_type: private_key_type
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cert_expiry: 2000-01-23T04:56:07.000+00:00
