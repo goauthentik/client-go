@@ -21,17 +21,19 @@ type UserSetting struct {
 	Component    string  `json:"component"`
 	Title        string  `json:"title"`
 	ConfigureUrl *string `json:"configure_url,omitempty"`
+	IconUrl      string  `json:"icon_url"`
 }
 
 // NewUserSetting instantiates a new UserSetting object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserSetting(objectUid string, component string, title string) *UserSetting {
+func NewUserSetting(objectUid string, component string, title string, iconUrl string) *UserSetting {
 	this := UserSetting{}
 	this.ObjectUid = objectUid
 	this.Component = component
 	this.Title = title
+	this.IconUrl = iconUrl
 	return &this
 }
 
@@ -147,6 +149,30 @@ func (o *UserSetting) SetConfigureUrl(v string) {
 	o.ConfigureUrl = &v
 }
 
+// GetIconUrl returns the IconUrl field value
+func (o *UserSetting) GetIconUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.IconUrl
+}
+
+// GetIconUrlOk returns a tuple with the IconUrl field value
+// and a boolean to check if the value has been set.
+func (o *UserSetting) GetIconUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IconUrl, true
+}
+
+// SetIconUrl sets field value
+func (o *UserSetting) SetIconUrl(v string) {
+	o.IconUrl = v
+}
+
 func (o UserSetting) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -160,6 +186,9 @@ func (o UserSetting) MarshalJSON() ([]byte, error) {
 	}
 	if o.ConfigureUrl != nil {
 		toSerialize["configure_url"] = o.ConfigureUrl
+	}
+	if true {
+		toSerialize["icon_url"] = o.IconUrl
 	}
 	return json.Marshal(toSerialize)
 }

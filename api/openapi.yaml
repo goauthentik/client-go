@@ -40310,6 +40310,7 @@ components:
     UserSetting:
       description: Serializer for User settings for stages and sources
       example:
+        icon_url: icon_url
         component: component
         configure_url: configure_url
         object_uid: object_uid
@@ -40323,8 +40324,11 @@ components:
           type: string
         configure_url:
           type: string
+        icon_url:
+          type: string
       required:
       - component
+      - icon_url
       - object_uid
       - title
       type: object

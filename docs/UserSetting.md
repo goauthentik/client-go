@@ -8,12 +8,13 @@ Name | Type | Description | Notes
 **Component** | **string** |  | 
 **Title** | **string** |  | 
 **ConfigureUrl** | Pointer to **string** |  | [optional] 
+**IconUrl** | **string** |  | 
 
 ## Methods
 
 ### NewUserSetting
 
-`func NewUserSetting(objectUid string, component string, title string, ) *UserSetting`
+`func NewUserSetting(objectUid string, component string, title string, iconUrl string, ) *UserSetting`
 
 NewUserSetting instantiates a new UserSetting object
 This constructor will assign default values to properties that have it defined,
@@ -112,6 +113,26 @@ SetConfigureUrl sets ConfigureUrl field to given value.
 `func (o *UserSetting) HasConfigureUrl() bool`
 
 HasConfigureUrl returns a boolean if a field has been set.
+
+### GetIconUrl
+
+`func (o *UserSetting) GetIconUrl() string`
+
+GetIconUrl returns the IconUrl field if non-nil, zero value otherwise.
+
+### GetIconUrlOk
+
+`func (o *UserSetting) GetIconUrlOk() (*string, bool)`
+
+GetIconUrlOk returns a tuple with the IconUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUrl
+
+`func (o *UserSetting) SetIconUrl(v string)`
+
+SetIconUrl sets IconUrl field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
