@@ -27311,8 +27311,10 @@ components:
       example:
         last_seen: 2000-01-23T04:56:07.000+00:00
         version_should: version_should
+        build_hash_should: build_hash_should
         version_outdated: true
         version: version
+        build_hash: build_hash
       properties:
         last_seen:
           format: date-time
@@ -27327,7 +27329,15 @@ components:
         version_outdated:
           readOnly: true
           type: boolean
+        build_hash:
+          readOnly: true
+          type: string
+        build_hash_should:
+          readOnly: true
+          type: string
       required:
+      - build_hash
+      - build_hash_should
       - last_seen
       - version
       - version_outdated

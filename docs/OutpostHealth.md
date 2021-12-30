@@ -8,12 +8,14 @@ Name | Type | Description | Notes
 **Version** | **string** |  | [readonly] 
 **VersionShould** | **string** |  | [readonly] 
 **VersionOutdated** | **bool** |  | [readonly] 
+**BuildHash** | **string** |  | [readonly] 
+**BuildHashShould** | **string** |  | [readonly] 
 
 ## Methods
 
 ### NewOutpostHealth
 
-`func NewOutpostHealth(lastSeen time.Time, version string, versionShould string, versionOutdated bool, ) *OutpostHealth`
+`func NewOutpostHealth(lastSeen time.Time, version string, versionShould string, versionOutdated bool, buildHash string, buildHashShould string, ) *OutpostHealth`
 
 NewOutpostHealth instantiates a new OutpostHealth object
 This constructor will assign default values to properties that have it defined,
@@ -106,6 +108,46 @@ and a boolean to check if the value has been set.
 `func (o *OutpostHealth) SetVersionOutdated(v bool)`
 
 SetVersionOutdated sets VersionOutdated field to given value.
+
+
+### GetBuildHash
+
+`func (o *OutpostHealth) GetBuildHash() string`
+
+GetBuildHash returns the BuildHash field if non-nil, zero value otherwise.
+
+### GetBuildHashOk
+
+`func (o *OutpostHealth) GetBuildHashOk() (*string, bool)`
+
+GetBuildHashOk returns a tuple with the BuildHash field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildHash
+
+`func (o *OutpostHealth) SetBuildHash(v string)`
+
+SetBuildHash sets BuildHash field to given value.
+
+
+### GetBuildHashShould
+
+`func (o *OutpostHealth) GetBuildHashShould() string`
+
+GetBuildHashShould returns the BuildHashShould field if non-nil, zero value otherwise.
+
+### GetBuildHashShouldOk
+
+`func (o *OutpostHealth) GetBuildHashShouldOk() (*string, bool)`
+
+GetBuildHashShouldOk returns a tuple with the BuildHashShould field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildHashShould
+
+`func (o *OutpostHealth) SetBuildHashShould(v string)`
+
+SetBuildHashShould sets BuildHashShould field to given value.
 
 
 

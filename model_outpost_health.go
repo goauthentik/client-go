@@ -22,18 +22,22 @@ type OutpostHealth struct {
 	Version         string    `json:"version"`
 	VersionShould   string    `json:"version_should"`
 	VersionOutdated bool      `json:"version_outdated"`
+	BuildHash       string    `json:"build_hash"`
+	BuildHashShould string    `json:"build_hash_should"`
 }
 
 // NewOutpostHealth instantiates a new OutpostHealth object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOutpostHealth(lastSeen time.Time, version string, versionShould string, versionOutdated bool) *OutpostHealth {
+func NewOutpostHealth(lastSeen time.Time, version string, versionShould string, versionOutdated bool, buildHash string, buildHashShould string) *OutpostHealth {
 	this := OutpostHealth{}
 	this.LastSeen = lastSeen
 	this.Version = version
 	this.VersionShould = versionShould
 	this.VersionOutdated = versionOutdated
+	this.BuildHash = buildHash
+	this.BuildHashShould = buildHashShould
 	return &this
 }
 
@@ -141,6 +145,54 @@ func (o *OutpostHealth) SetVersionOutdated(v bool) {
 	o.VersionOutdated = v
 }
 
+// GetBuildHash returns the BuildHash field value
+func (o *OutpostHealth) GetBuildHash() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BuildHash
+}
+
+// GetBuildHashOk returns a tuple with the BuildHash field value
+// and a boolean to check if the value has been set.
+func (o *OutpostHealth) GetBuildHashOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BuildHash, true
+}
+
+// SetBuildHash sets field value
+func (o *OutpostHealth) SetBuildHash(v string) {
+	o.BuildHash = v
+}
+
+// GetBuildHashShould returns the BuildHashShould field value
+func (o *OutpostHealth) GetBuildHashShould() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BuildHashShould
+}
+
+// GetBuildHashShouldOk returns a tuple with the BuildHashShould field value
+// and a boolean to check if the value has been set.
+func (o *OutpostHealth) GetBuildHashShouldOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BuildHashShould, true
+}
+
+// SetBuildHashShould sets field value
+func (o *OutpostHealth) SetBuildHashShould(v string) {
+	o.BuildHashShould = v
+}
+
 func (o OutpostHealth) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -154,6 +206,12 @@ func (o OutpostHealth) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["version_outdated"] = o.VersionOutdated
+	}
+	if true {
+		toSerialize["build_hash"] = o.BuildHash
+	}
+	if true {
+		toSerialize["build_hash_should"] = o.BuildHashShould
 	}
 	return json.Marshal(toSerialize)
 }
