@@ -8,13 +8,15 @@ Name | Type | Description | Notes
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
 **Component** | Pointer to **string** |  | [optional] [default to "ak-stage-access-denied"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
+**PendingUser** | **string** |  | 
+**PendingUserAvatar** | **string** |  | 
 **ErrorMessage** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewAccessDeniedChallenge
 
-`func NewAccessDeniedChallenge(type_ ChallengeChoices, ) *AccessDeniedChallenge`
+`func NewAccessDeniedChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, ) *AccessDeniedChallenge`
 
 NewAccessDeniedChallenge instantiates a new AccessDeniedChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -123,6 +125,46 @@ SetResponseErrors sets ResponseErrors field to given value.
 `func (o *AccessDeniedChallenge) HasResponseErrors() bool`
 
 HasResponseErrors returns a boolean if a field has been set.
+
+### GetPendingUser
+
+`func (o *AccessDeniedChallenge) GetPendingUser() string`
+
+GetPendingUser returns the PendingUser field if non-nil, zero value otherwise.
+
+### GetPendingUserOk
+
+`func (o *AccessDeniedChallenge) GetPendingUserOk() (*string, bool)`
+
+GetPendingUserOk returns a tuple with the PendingUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPendingUser
+
+`func (o *AccessDeniedChallenge) SetPendingUser(v string)`
+
+SetPendingUser sets PendingUser field to given value.
+
+
+### GetPendingUserAvatar
+
+`func (o *AccessDeniedChallenge) GetPendingUserAvatar() string`
+
+GetPendingUserAvatar returns the PendingUserAvatar field if non-nil, zero value otherwise.
+
+### GetPendingUserAvatarOk
+
+`func (o *AccessDeniedChallenge) GetPendingUserAvatarOk() (*string, bool)`
+
+GetPendingUserAvatarOk returns a tuple with the PendingUserAvatar field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPendingUserAvatar
+
+`func (o *AccessDeniedChallenge) SetPendingUserAvatar(v string)`
+
+SetPendingUserAvatar sets PendingUserAvatar field to given value.
+
 
 ### GetErrorMessage
 

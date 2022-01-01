@@ -17,22 +17,26 @@ import (
 
 // AccessDeniedChallenge Challenge when a flow's active stage calls `stage_invalid()`.
 type AccessDeniedChallenge struct {
-	Type           ChallengeChoices          `json:"type"`
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	ErrorMessage   *string                   `json:"error_message,omitempty"`
+	Type              ChallengeChoices          `json:"type"`
+	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component         *string                   `json:"component,omitempty"`
+	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser       string                    `json:"pending_user"`
+	PendingUserAvatar string                    `json:"pending_user_avatar"`
+	ErrorMessage      *string                   `json:"error_message,omitempty"`
 }
 
 // NewAccessDeniedChallenge instantiates a new AccessDeniedChallenge object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessDeniedChallenge(type_ ChallengeChoices) *AccessDeniedChallenge {
+func NewAccessDeniedChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string) *AccessDeniedChallenge {
 	this := AccessDeniedChallenge{}
 	this.Type = type_
 	var component string = "ak-stage-access-denied"
 	this.Component = &component
+	this.PendingUser = pendingUser
+	this.PendingUserAvatar = pendingUserAvatar
 	return &this
 }
 
@@ -166,6 +170,54 @@ func (o *AccessDeniedChallenge) SetResponseErrors(v map[string][]ErrorDetail) {
 	o.ResponseErrors = &v
 }
 
+// GetPendingUser returns the PendingUser field value
+func (o *AccessDeniedChallenge) GetPendingUser() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PendingUser
+}
+
+// GetPendingUserOk returns a tuple with the PendingUser field value
+// and a boolean to check if the value has been set.
+func (o *AccessDeniedChallenge) GetPendingUserOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PendingUser, true
+}
+
+// SetPendingUser sets field value
+func (o *AccessDeniedChallenge) SetPendingUser(v string) {
+	o.PendingUser = v
+}
+
+// GetPendingUserAvatar returns the PendingUserAvatar field value
+func (o *AccessDeniedChallenge) GetPendingUserAvatar() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PendingUserAvatar
+}
+
+// GetPendingUserAvatarOk returns a tuple with the PendingUserAvatar field value
+// and a boolean to check if the value has been set.
+func (o *AccessDeniedChallenge) GetPendingUserAvatarOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PendingUserAvatar, true
+}
+
+// SetPendingUserAvatar sets field value
+func (o *AccessDeniedChallenge) SetPendingUserAvatar(v string) {
+	o.PendingUserAvatar = v
+}
+
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
 func (o *AccessDeniedChallenge) GetErrorMessage() string {
 	if o == nil || o.ErrorMessage == nil {
@@ -211,6 +263,12 @@ func (o AccessDeniedChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if o.ResponseErrors != nil {
 		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	if true {
+		toSerialize["pending_user"] = o.PendingUser
+	}
+	if true {
+		toSerialize["pending_user_avatar"] = o.PendingUserAvatar
 	}
 	if o.ErrorMessage != nil {
 		toSerialize["error_message"] = o.ErrorMessage

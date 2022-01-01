@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
 **Component** | Pointer to **string** |  | [optional] [default to "xak-flow-shell"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
+**PendingUser** | **string** |  | 
+**PendingUserAvatar** | **string** |  | 
 **ErrorMessage** | Pointer to **string** |  | [optional] 
 **ClientId** | **string** |  | 
 **Scope** | **string** |  | 
 **RedirectUri** | **string** |  | 
 **State** | **string** |  | 
-**PendingUser** | **string** |  | 
-**PendingUserAvatar** | **string** |  | 
 **ActivationBarcode** | **string** |  | 
 **ActivationCode** | **string** |  | 
 **StageUuid** | **string** |  | 
@@ -46,7 +46,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(type_ ChallengeChoices, clientId string, scope string, redirectUri string, state string, pendingUser string, pendingUserAvatar string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, headerText string, permissions []Permission, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
+`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, headerText string, permissions []Permission, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -156,6 +156,46 @@ SetResponseErrors sets ResponseErrors field to given value.
 
 HasResponseErrors returns a boolean if a field has been set.
 
+### GetPendingUser
+
+`func (o *ChallengeTypes) GetPendingUser() string`
+
+GetPendingUser returns the PendingUser field if non-nil, zero value otherwise.
+
+### GetPendingUserOk
+
+`func (o *ChallengeTypes) GetPendingUserOk() (*string, bool)`
+
+GetPendingUserOk returns a tuple with the PendingUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPendingUser
+
+`func (o *ChallengeTypes) SetPendingUser(v string)`
+
+SetPendingUser sets PendingUser field to given value.
+
+
+### GetPendingUserAvatar
+
+`func (o *ChallengeTypes) GetPendingUserAvatar() string`
+
+GetPendingUserAvatar returns the PendingUserAvatar field if non-nil, zero value otherwise.
+
+### GetPendingUserAvatarOk
+
+`func (o *ChallengeTypes) GetPendingUserAvatarOk() (*string, bool)`
+
+GetPendingUserAvatarOk returns a tuple with the PendingUserAvatar field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPendingUserAvatar
+
+`func (o *ChallengeTypes) SetPendingUserAvatar(v string)`
+
+SetPendingUserAvatar sets PendingUserAvatar field to given value.
+
+
 ### GetErrorMessage
 
 `func (o *ChallengeTypes) GetErrorMessage() string`
@@ -259,46 +299,6 @@ and a boolean to check if the value has been set.
 `func (o *ChallengeTypes) SetState(v string)`
 
 SetState sets State field to given value.
-
-
-### GetPendingUser
-
-`func (o *ChallengeTypes) GetPendingUser() string`
-
-GetPendingUser returns the PendingUser field if non-nil, zero value otherwise.
-
-### GetPendingUserOk
-
-`func (o *ChallengeTypes) GetPendingUserOk() (*string, bool)`
-
-GetPendingUserOk returns a tuple with the PendingUser field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPendingUser
-
-`func (o *ChallengeTypes) SetPendingUser(v string)`
-
-SetPendingUser sets PendingUser field to given value.
-
-
-### GetPendingUserAvatar
-
-`func (o *ChallengeTypes) GetPendingUserAvatar() string`
-
-GetPendingUserAvatar returns the PendingUserAvatar field if non-nil, zero value otherwise.
-
-### GetPendingUserAvatarOk
-
-`func (o *ChallengeTypes) GetPendingUserAvatarOk() (*string, bool)`
-
-GetPendingUserAvatarOk returns a tuple with the PendingUserAvatar field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPendingUserAvatar
-
-`func (o *ChallengeTypes) SetPendingUserAvatar(v string)`
-
-SetPendingUserAvatar sets PendingUserAvatar field to given value.
 
 
 ### GetActivationBarcode
