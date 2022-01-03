@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **ProfileUrl** | Pointer to **NullableString** | URL used by authentik to get user information. | [optional] 
 **ConsumerKey** | Pointer to **string** |  | [optional] 
 **ConsumerSecret** | Pointer to **string** |  | [optional] 
+**AdditionalScopes** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -447,6 +448,31 @@ SetConsumerSecret sets ConsumerSecret field to given value.
 `func (o *PatchedOAuthSourceRequest) HasConsumerSecret() bool`
 
 HasConsumerSecret returns a boolean if a field has been set.
+
+### GetAdditionalScopes
+
+`func (o *PatchedOAuthSourceRequest) GetAdditionalScopes() string`
+
+GetAdditionalScopes returns the AdditionalScopes field if non-nil, zero value otherwise.
+
+### GetAdditionalScopesOk
+
+`func (o *PatchedOAuthSourceRequest) GetAdditionalScopesOk() (*string, bool)`
+
+GetAdditionalScopesOk returns a tuple with the AdditionalScopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalScopes
+
+`func (o *PatchedOAuthSourceRequest) SetAdditionalScopes(v string)`
+
+SetAdditionalScopes sets AdditionalScopes field to given value.
+
+### HasAdditionalScopes
+
+`func (o *PatchedOAuthSourceRequest) HasAdditionalScopes() bool`
+
+HasAdditionalScopes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

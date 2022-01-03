@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **ProfileUrl** | Pointer to **NullableString** | URL used by authentik to get user information. | [optional] 
 **ConsumerKey** | **string** |  | 
 **CallbackUrl** | **string** |  | [readonly] 
+**AdditionalScopes** | Pointer to **string** |  | [optional] 
 **Type** | [**SourceType**](SourceType.md) |  | [readonly] 
 
 ## Methods
@@ -528,6 +529,31 @@ and a boolean to check if the value has been set.
 
 SetCallbackUrl sets CallbackUrl field to given value.
 
+
+### GetAdditionalScopes
+
+`func (o *OAuthSource) GetAdditionalScopes() string`
+
+GetAdditionalScopes returns the AdditionalScopes field if non-nil, zero value otherwise.
+
+### GetAdditionalScopesOk
+
+`func (o *OAuthSource) GetAdditionalScopesOk() (*string, bool)`
+
+GetAdditionalScopesOk returns a tuple with the AdditionalScopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalScopes
+
+`func (o *OAuthSource) SetAdditionalScopes(v string)`
+
+SetAdditionalScopes sets AdditionalScopes field to given value.
+
+### HasAdditionalScopes
+
+`func (o *OAuthSource) HasAdditionalScopes() bool`
+
+HasAdditionalScopes returns a boolean if a field has been set.
 
 ### GetType
 

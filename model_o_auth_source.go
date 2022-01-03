@@ -42,10 +42,11 @@ type OAuthSource struct {
 	// URL used by authentik to retrieve tokens.
 	AccessTokenUrl NullableString `json:"access_token_url,omitempty"`
 	// URL used by authentik to get user information.
-	ProfileUrl  NullableString `json:"profile_url,omitempty"`
-	ConsumerKey string         `json:"consumer_key"`
-	CallbackUrl string         `json:"callback_url"`
-	Type        SourceType     `json:"type"`
+	ProfileUrl       NullableString `json:"profile_url,omitempty"`
+	ConsumerKey      string         `json:"consumer_key"`
+	CallbackUrl      string         `json:"callback_url"`
+	AdditionalScopes *string        `json:"additional_scopes,omitempty"`
+	Type             SourceType     `json:"type"`
 }
 
 // NewOAuthSource instantiates a new OAuthSource object
@@ -670,6 +671,38 @@ func (o *OAuthSource) SetCallbackUrl(v string) {
 	o.CallbackUrl = v
 }
 
+// GetAdditionalScopes returns the AdditionalScopes field value if set, zero value otherwise.
+func (o *OAuthSource) GetAdditionalScopes() string {
+	if o == nil || o.AdditionalScopes == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdditionalScopes
+}
+
+// GetAdditionalScopesOk returns a tuple with the AdditionalScopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthSource) GetAdditionalScopesOk() (*string, bool) {
+	if o == nil || o.AdditionalScopes == nil {
+		return nil, false
+	}
+	return o.AdditionalScopes, true
+}
+
+// HasAdditionalScopes returns a boolean if a field has been set.
+func (o *OAuthSource) HasAdditionalScopes() bool {
+	if o != nil && o.AdditionalScopes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalScopes gets a reference to the given string and assigns it to the AdditionalScopes field.
+func (o *OAuthSource) SetAdditionalScopes(v string) {
+	o.AdditionalScopes = &v
+}
+
 // GetType returns the Type field value
 func (o *OAuthSource) GetType() SourceType {
 	if o == nil {
@@ -752,6 +785,9 @@ func (o OAuthSource) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["callback_url"] = o.CallbackUrl
+	}
+	if o.AdditionalScopes != nil {
+		toSerialize["additional_scopes"] = o.AdditionalScopes
 	}
 	if true {
 		toSerialize["type"] = o.Type

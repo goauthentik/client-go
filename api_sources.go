@@ -2178,6 +2178,7 @@ type ApiSourcesOauthListRequest struct {
 	ctx                _context.Context
 	ApiService         *SourcesApiService
 	accessTokenUrl     *string
+	additionalScopes   *string
 	authenticationFlow *string
 	authorizationUrl   *string
 	consumerKey        *string
@@ -2198,6 +2199,10 @@ type ApiSourcesOauthListRequest struct {
 
 func (r ApiSourcesOauthListRequest) AccessTokenUrl(accessTokenUrl string) ApiSourcesOauthListRequest {
 	r.accessTokenUrl = &accessTokenUrl
+	return r
+}
+func (r ApiSourcesOauthListRequest) AdditionalScopes(additionalScopes string) ApiSourcesOauthListRequest {
+	r.additionalScopes = &additionalScopes
 	return r
 }
 func (r ApiSourcesOauthListRequest) AuthenticationFlow(authenticationFlow string) ApiSourcesOauthListRequest {
@@ -2319,6 +2324,9 @@ func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest
 
 	if r.accessTokenUrl != nil {
 		localVarQueryParams.Add("access_token_url", parameterToString(*r.accessTokenUrl, ""))
+	}
+	if r.additionalScopes != nil {
+		localVarQueryParams.Add("additional_scopes", parameterToString(*r.additionalScopes, ""))
 	}
 	if r.authenticationFlow != nil {
 		localVarQueryParams.Add("authentication_flow", parameterToString(*r.authenticationFlow, ""))

@@ -1204,7 +1204,7 @@ Name | Type | Description  | Notes
 
 ## SourcesOauthList
 
-> PaginatedOAuthSourceList SourcesOauthList(ctx).AccessTokenUrl(accessTokenUrl).AuthenticationFlow(authenticationFlow).AuthorizationUrl(authorizationUrl).ConsumerKey(consumerKey).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).ProfileUrl(profileUrl).ProviderType(providerType).RequestTokenUrl(requestTokenUrl).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
+> PaginatedOAuthSourceList SourcesOauthList(ctx).AccessTokenUrl(accessTokenUrl).AdditionalScopes(additionalScopes).AuthenticationFlow(authenticationFlow).AuthorizationUrl(authorizationUrl).ConsumerKey(consumerKey).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).ProfileUrl(profileUrl).ProviderType(providerType).RequestTokenUrl(requestTokenUrl).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
 
 
 
@@ -1224,6 +1224,7 @@ import (
 
 func main() {
     accessTokenUrl := "accessTokenUrl_example" // string |  (optional)
+    additionalScopes := "additionalScopes_example" // string |  (optional)
     authenticationFlow := TODO // string |  (optional)
     authorizationUrl := "authorizationUrl_example" // string |  (optional)
     consumerKey := "consumerKey_example" // string |  (optional)
@@ -1243,7 +1244,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesOauthList(context.Background()).AccessTokenUrl(accessTokenUrl).AuthenticationFlow(authenticationFlow).AuthorizationUrl(authorizationUrl).ConsumerKey(consumerKey).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).ProfileUrl(profileUrl).ProviderType(providerType).RequestTokenUrl(requestTokenUrl).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
+    resp, r, err := api_client.SourcesApi.SourcesOauthList(context.Background()).AccessTokenUrl(accessTokenUrl).AdditionalScopes(additionalScopes).AuthenticationFlow(authenticationFlow).AuthorizationUrl(authorizationUrl).ConsumerKey(consumerKey).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).ProfileUrl(profileUrl).ProviderType(providerType).RequestTokenUrl(requestTokenUrl).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1265,6 +1266,7 @@ Other parameters are passed through a pointer to a apiSourcesOauthListRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accessTokenUrl** | **string** |  | 
+ **additionalScopes** | **string** |  | 
  **authenticationFlow** | [**string**](string.md) |  | 
  **authorizationUrl** | **string** |  | 
  **consumerKey** | **string** |  | 

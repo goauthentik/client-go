@@ -37,9 +37,10 @@ type PatchedOAuthSourceRequest struct {
 	// URL used by authentik to retrieve tokens.
 	AccessTokenUrl NullableString `json:"access_token_url,omitempty"`
 	// URL used by authentik to get user information.
-	ProfileUrl     NullableString `json:"profile_url,omitempty"`
-	ConsumerKey    *string        `json:"consumer_key,omitempty"`
-	ConsumerSecret *string        `json:"consumer_secret,omitempty"`
+	ProfileUrl       NullableString `json:"profile_url,omitempty"`
+	ConsumerKey      *string        `json:"consumer_key,omitempty"`
+	ConsumerSecret   *string        `json:"consumer_secret,omitempty"`
+	AdditionalScopes *string        `json:"additional_scopes,omitempty"`
 }
 
 // NewPatchedOAuthSourceRequest instantiates a new PatchedOAuthSourceRequest object
@@ -573,6 +574,38 @@ func (o *PatchedOAuthSourceRequest) SetConsumerSecret(v string) {
 	o.ConsumerSecret = &v
 }
 
+// GetAdditionalScopes returns the AdditionalScopes field value if set, zero value otherwise.
+func (o *PatchedOAuthSourceRequest) GetAdditionalScopes() string {
+	if o == nil || o.AdditionalScopes == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdditionalScopes
+}
+
+// GetAdditionalScopesOk returns a tuple with the AdditionalScopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedOAuthSourceRequest) GetAdditionalScopesOk() (*string, bool) {
+	if o == nil || o.AdditionalScopes == nil {
+		return nil, false
+	}
+	return o.AdditionalScopes, true
+}
+
+// HasAdditionalScopes returns a boolean if a field has been set.
+func (o *PatchedOAuthSourceRequest) HasAdditionalScopes() bool {
+	if o != nil && o.AdditionalScopes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalScopes gets a reference to the given string and assigns it to the AdditionalScopes field.
+func (o *PatchedOAuthSourceRequest) SetAdditionalScopes(v string) {
+	o.AdditionalScopes = &v
+}
+
 func (o PatchedOAuthSourceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -616,6 +649,9 @@ func (o PatchedOAuthSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.ConsumerSecret != nil {
 		toSerialize["consumer_secret"] = o.ConsumerSecret
+	}
+	if o.AdditionalScopes != nil {
+		toSerialize["additional_scopes"] = o.AdditionalScopes
 	}
 	return json.Marshal(toSerialize)
 }

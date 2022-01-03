@@ -13922,6 +13922,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: additional_scopes
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: authentication_flow
         required: false
         schema:
@@ -27003,6 +27010,7 @@ components:
         profile_url: profile_url
         authorization_url: authorization_url
         type: ""
+        additional_scopes: additional_scopes
         enabled: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         consumer_key: consumer_key
@@ -27088,6 +27096,8 @@ components:
         callback_url:
           readOnly: true
           type: string
+        additional_scopes:
+          type: string
         type:
           allOf:
           - $ref: '#/components/schemas/SourceType'
@@ -27113,6 +27123,7 @@ components:
         request_token_url: request_token_url
         profile_url: profile_url
         authorization_url: authorization_url
+        additional_scopes: additional_scopes
         enabled: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         consumer_key: consumer_key
@@ -27184,6 +27195,9 @@ components:
           minLength: 1
           type: string
           writeOnly: true
+        additional_scopes:
+          minLength: 1
+          type: string
       required:
       - consumer_key
       - consumer_secret
@@ -30282,6 +30296,7 @@ components:
           profile_url: profile_url
           authorization_url: authorization_url
           type: ""
+          additional_scopes: additional_scopes
           enabled: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           consumer_key: consumer_key
@@ -30300,6 +30315,7 @@ components:
           profile_url: profile_url
           authorization_url: authorization_url
           type: ""
+          additional_scopes: additional_scopes
           enabled: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           consumer_key: consumer_key
@@ -35000,6 +35016,7 @@ components:
         request_token_url: request_token_url
         profile_url: profile_url
         authorization_url: authorization_url
+        additional_scopes: additional_scopes
         enabled: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         consumer_key: consumer_key
@@ -35071,6 +35088,9 @@ components:
           minLength: 1
           type: string
           writeOnly: true
+        additional_scopes:
+          minLength: 1
+          type: string
       type: object
     PatchedOutpostRequest:
       description: Outpost Serializer
