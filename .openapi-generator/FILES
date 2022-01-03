@@ -441,6 +441,7 @@ docs/UserMatchingModeEnum.md
 docs/UserMetrics.md
 docs/UserOAuthSourceConnection.md
 docs/UserOAuthSourceConnectionRequest.md
+docs/UserPasswordSetRequest.md
 docs/UserReputation.md
 docs/UserRequest.md
 docs/UserSelf.md
@@ -868,6 +869,7 @@ model_user_matching_mode_enum.go
 model_user_metrics.go
 model_user_o_auth_source_connection.go
 model_user_o_auth_source_connection_request.go
+model_user_password_set_request.go
 model_user_reputation.go
 model_user_request.go
 model_user_self.go

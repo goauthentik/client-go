@@ -3607,6 +3607,36 @@ paths:
       - authentik: []
       tags:
       - core
+  /core/users/{id}/set_password/:
+    post:
+      description: Set password for user
+      operationId: core_users_set_password_create
+      parameters:
+      - description: A unique integer value identifying this User.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserPasswordSetRequest'
+        required: true
+      responses:
+        "204":
+          description: No response body
+        "400":
+          description: No response body
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - core
   /core/users/{id}/used_by/:
     get:
       description: Get a list of all objects that use this object
@@ -40087,6 +40117,16 @@ components:
       - identifier
       - source
       - user
+      type: object
+    UserPasswordSetRequest:
+      example:
+        password: password
+      properties:
+        password:
+          minLength: 1
+          type: string
+      required:
+      - password
       type: object
     UserReputation:
       description: UserReputation Serializer

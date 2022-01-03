@@ -56,6 +56,7 @@ Method | HTTP request | Description
 [**CoreUsersRecoveryRetrieve**](CoreApi.md#CoreUsersRecoveryRetrieve) | **Get** /core/users/{id}/recovery/ | 
 [**CoreUsersRetrieve**](CoreApi.md#CoreUsersRetrieve) | **Get** /core/users/{id}/ | 
 [**CoreUsersServiceAccountCreate**](CoreApi.md#CoreUsersServiceAccountCreate) | **Post** /core/users/service_account/ | 
+[**CoreUsersSetPasswordCreate**](CoreApi.md#CoreUsersSetPasswordCreate) | **Post** /core/users/{id}/set_password/ | 
 [**CoreUsersUpdate**](CoreApi.md#CoreUsersUpdate) | **Put** /core/users/{id}/ | 
 [**CoreUsersUpdateSelfUpdate**](CoreApi.md#CoreUsersUpdateSelfUpdate) | **Put** /core/users/update_self/ | 
 [**CoreUsersUsedByList**](CoreApi.md#CoreUsersUsedByList) | **Get** /core/users/{id}/used_by/ | 
@@ -3753,6 +3754,76 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreUsersSetPasswordCreate
+
+> CoreUsersSetPasswordCreate(ctx, id).UserPasswordSetRequest(userPasswordSetRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User.
+    userPasswordSetRequest := *openapiclient.NewUserPasswordSetRequest("Password_example") // UserPasswordSetRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.CoreApi.CoreUsersSetPasswordCreate(context.Background(), id).UserPasswordSetRequest(userPasswordSetRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersSetPasswordCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreUsersSetPasswordCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **userPasswordSetRequest** | [**UserPasswordSetRequest**](UserPasswordSetRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
