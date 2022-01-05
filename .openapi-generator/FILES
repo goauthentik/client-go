@@ -140,7 +140,6 @@ docs/GroupMemberRequest.md
 docs/GroupRequest.md
 docs/HaveIBeenPwendPolicy.md
 docs/HaveIBeenPwendPolicyRequest.md
-docs/IPReputation.md
 docs/IdentificationChallenge.md
 docs/IdentificationChallengeResponseRequest.md
 docs/IdentificationStage.md
@@ -216,7 +215,6 @@ docs/PaginatedFlowList.md
 docs/PaginatedFlowStageBindingList.md
 docs/PaginatedGroupList.md
 docs/PaginatedHaveIBeenPwendPolicyList.md
-docs/PaginatedIPReputationList.md
 docs/PaginatedIdentificationStageList.md
 docs/PaginatedInvitationList.md
 docs/PaginatedInvitationStageList.md
@@ -246,6 +244,7 @@ docs/PaginatedProviderList.md
 docs/PaginatedProxyOutpostConfigList.md
 docs/PaginatedProxyProviderList.md
 docs/PaginatedRefreshTokenModelList.md
+docs/PaginatedReputationList.md
 docs/PaginatedReputationPolicyList.md
 docs/PaginatedSAMLPropertyMappingList.md
 docs/PaginatedSAMLProviderList.md
@@ -265,7 +264,6 @@ docs/PaginatedUserList.md
 docs/PaginatedUserLoginStageList.md
 docs/PaginatedUserLogoutStageList.md
 docs/PaginatedUserOAuthSourceConnectionList.md
-docs/PaginatedUserReputationList.md
 docs/PaginatedUserSourceConnectionList.md
 docs/PaginatedUserWriteStageList.md
 docs/PaginatedWebAuthnDeviceList.md
@@ -377,6 +375,7 @@ docs/ProxyProvider.md
 docs/ProxyProviderRequest.md
 docs/RedirectChallenge.md
 docs/RefreshTokenModel.md
+docs/Reputation.md
 docs/ReputationPolicy.md
 docs/ReputationPolicyRequest.md
 docs/RootApi.md
@@ -442,7 +441,6 @@ docs/UserMetrics.md
 docs/UserOAuthSourceConnection.md
 docs/UserOAuthSourceConnectionRequest.md
 docs/UserPasswordSetRequest.md
-docs/UserReputation.md
 docs/UserRequest.md
 docs/UserSelf.md
 docs/UserSelfGroups.md
@@ -587,7 +585,6 @@ model_invitation.go
 model_invitation_request.go
 model_invitation_stage.go
 model_invitation_stage_request.go
-model_ip_reputation.go
 model_issuer_mode_enum.go
 model_kubernetes_service_connection.go
 model_kubernetes_service_connection_request.go
@@ -654,7 +651,6 @@ model_paginated_have_i_been_pwend_policy_list.go
 model_paginated_identification_stage_list.go
 model_paginated_invitation_list.go
 model_paginated_invitation_stage_list.go
-model_paginated_ip_reputation_list.go
 model_paginated_kubernetes_service_connection_list.go
 model_paginated_ldap_outpost_config_list.go
 model_paginated_ldap_property_mapping_list.go
@@ -681,6 +677,7 @@ model_paginated_provider_list.go
 model_paginated_proxy_outpost_config_list.go
 model_paginated_proxy_provider_list.go
 model_paginated_refresh_token_model_list.go
+model_paginated_reputation_list.go
 model_paginated_reputation_policy_list.go
 model_paginated_saml_property_mapping_list.go
 model_paginated_saml_provider_list.go
@@ -700,7 +697,6 @@ model_paginated_user_list.go
 model_paginated_user_login_stage_list.go
 model_paginated_user_logout_stage_list.go
 model_paginated_user_o_auth_source_connection_list.go
-model_paginated_user_reputation_list.go
 model_paginated_user_source_connection_list.go
 model_paginated_user_write_stage_list.go
 model_paginated_web_authn_device_list.go
@@ -809,6 +805,7 @@ model_proxy_provider.go
 model_proxy_provider_request.go
 model_redirect_challenge.go
 model_refresh_token_model.go
+model_reputation.go
 model_reputation_policy.go
 model_reputation_policy_request.go
 model_saml_metadata.go
@@ -870,7 +867,6 @@ model_user_metrics.go
 model_user_o_auth_source_connection.go
 model_user_o_auth_source_connection_request.go
 model_user_password_set_request.go
-model_user_reputation.go
 model_user_request.go
 model_user_self.go
 model_user_self_groups.go

@@ -63,19 +63,15 @@ Method | HTTP request | Description
 [**PoliciesPasswordUsedByList**](PoliciesApi.md#PoliciesPasswordUsedByList) | **Get** /policies/password/{policy_uuid}/used_by/ | 
 [**PoliciesReputationCreate**](PoliciesApi.md#PoliciesReputationCreate) | **Post** /policies/reputation/ | 
 [**PoliciesReputationDestroy**](PoliciesApi.md#PoliciesReputationDestroy) | **Delete** /policies/reputation/{policy_uuid}/ | 
-[**PoliciesReputationIpsDestroy**](PoliciesApi.md#PoliciesReputationIpsDestroy) | **Delete** /policies/reputation/ips/{id}/ | 
-[**PoliciesReputationIpsList**](PoliciesApi.md#PoliciesReputationIpsList) | **Get** /policies/reputation/ips/ | 
-[**PoliciesReputationIpsRetrieve**](PoliciesApi.md#PoliciesReputationIpsRetrieve) | **Get** /policies/reputation/ips/{id}/ | 
-[**PoliciesReputationIpsUsedByList**](PoliciesApi.md#PoliciesReputationIpsUsedByList) | **Get** /policies/reputation/ips/{id}/used_by/ | 
 [**PoliciesReputationList**](PoliciesApi.md#PoliciesReputationList) | **Get** /policies/reputation/ | 
 [**PoliciesReputationPartialUpdate**](PoliciesApi.md#PoliciesReputationPartialUpdate) | **Patch** /policies/reputation/{policy_uuid}/ | 
 [**PoliciesReputationRetrieve**](PoliciesApi.md#PoliciesReputationRetrieve) | **Get** /policies/reputation/{policy_uuid}/ | 
+[**PoliciesReputationScoresDestroy**](PoliciesApi.md#PoliciesReputationScoresDestroy) | **Delete** /policies/reputation/scores/{reputation_uuid}/ | 
+[**PoliciesReputationScoresList**](PoliciesApi.md#PoliciesReputationScoresList) | **Get** /policies/reputation/scores/ | 
+[**PoliciesReputationScoresRetrieve**](PoliciesApi.md#PoliciesReputationScoresRetrieve) | **Get** /policies/reputation/scores/{reputation_uuid}/ | 
+[**PoliciesReputationScoresUsedByList**](PoliciesApi.md#PoliciesReputationScoresUsedByList) | **Get** /policies/reputation/scores/{reputation_uuid}/used_by/ | 
 [**PoliciesReputationUpdate**](PoliciesApi.md#PoliciesReputationUpdate) | **Put** /policies/reputation/{policy_uuid}/ | 
 [**PoliciesReputationUsedByList**](PoliciesApi.md#PoliciesReputationUsedByList) | **Get** /policies/reputation/{policy_uuid}/used_by/ | 
-[**PoliciesReputationUsersDestroy**](PoliciesApi.md#PoliciesReputationUsersDestroy) | **Delete** /policies/reputation/users/{id}/ | 
-[**PoliciesReputationUsersList**](PoliciesApi.md#PoliciesReputationUsersList) | **Get** /policies/reputation/users/ | 
-[**PoliciesReputationUsersRetrieve**](PoliciesApi.md#PoliciesReputationUsersRetrieve) | **Get** /policies/reputation/users/{id}/ | 
-[**PoliciesReputationUsersUsedByList**](PoliciesApi.md#PoliciesReputationUsersUsedByList) | **Get** /policies/reputation/users/{id}/used_by/ | 
 
 
 
@@ -4298,290 +4294,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PoliciesReputationIpsDestroy
-
-> PoliciesReputationIpsDestroy(ctx, id).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := int32(56) // int32 | A unique integer value identifying this ip reputation.
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationIpsDestroy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationIpsDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this ip reputation. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPoliciesReputationIpsDestroyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PoliciesReputationIpsList
-
-> PaginatedIPReputationList PoliciesReputationIpsList(ctx).Ip(ip).Ordering(ordering).Page(page).PageSize(pageSize).Score(score).Search(search).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    ip := "ip_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    score := int32(56) // int32 |  (optional)
-    search := "search_example" // string | A search term. (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationIpsList(context.Background()).Ip(ip).Ordering(ordering).Page(page).PageSize(pageSize).Score(score).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationIpsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PoliciesReputationIpsList`: PaginatedIPReputationList
-    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesReputationIpsList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPoliciesReputationIpsListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ip** | **string** |  | 
- **ordering** | **string** | Which field to use when ordering the results. | 
- **page** | **int32** | A page number within the paginated result set. | 
- **pageSize** | **int32** | Number of results to return per page. | 
- **score** | **int32** |  | 
- **search** | **string** | A search term. | 
-
-### Return type
-
-[**PaginatedIPReputationList**](PaginatedIPReputationList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PoliciesReputationIpsRetrieve
-
-> IPReputation PoliciesReputationIpsRetrieve(ctx, id).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := int32(56) // int32 | A unique integer value identifying this ip reputation.
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationIpsRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationIpsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PoliciesReputationIpsRetrieve`: IPReputation
-    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesReputationIpsRetrieve`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this ip reputation. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPoliciesReputationIpsRetrieveRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**IPReputation**](IPReputation.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PoliciesReputationIpsUsedByList
-
-> []UsedBy PoliciesReputationIpsUsedByList(ctx, id).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := int32(56) // int32 | A unique integer value identifying this ip reputation.
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationIpsUsedByList(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationIpsUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PoliciesReputationIpsUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesReputationIpsUsedByList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this ip reputation. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPoliciesReputationIpsUsedByListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**[]UsedBy**](UsedBy.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## PoliciesReputationList
 
 > PaginatedReputationPolicyList PoliciesReputationList(ctx).CheckIp(checkIp).CheckUsername(checkUsername).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Search(search).Threshold(threshold).Execute()
@@ -4813,6 +4525,292 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## PoliciesReputationScoresDestroy
+
+> PoliciesReputationScoresDestroy(ctx, reputationUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    reputationUuid := TODO // string | A UUID string identifying this reputation.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PoliciesApi.PoliciesReputationScoresDestroy(context.Background(), reputationUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationScoresDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reputationUuid** | [**string**](.md) | A UUID string identifying this reputation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesReputationScoresDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesReputationScoresList
+
+> PaginatedReputationList PoliciesReputationScoresList(ctx).Identifier(identifier).Ip(ip).Ordering(ordering).Page(page).PageSize(pageSize).Score(score).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    identifier := "identifier_example" // string |  (optional)
+    ip := "ip_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    score := int32(56) // int32 |  (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PoliciesApi.PoliciesReputationScoresList(context.Background()).Identifier(identifier).Ip(ip).Ordering(ordering).Page(page).PageSize(pageSize).Score(score).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationScoresList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesReputationScoresList`: PaginatedReputationList
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesReputationScoresList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesReputationScoresListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **string** |  | 
+ **ip** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **score** | **int32** |  | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedReputationList**](PaginatedReputationList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesReputationScoresRetrieve
+
+> Reputation PoliciesReputationScoresRetrieve(ctx, reputationUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    reputationUuid := TODO // string | A UUID string identifying this reputation.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PoliciesApi.PoliciesReputationScoresRetrieve(context.Background(), reputationUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationScoresRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesReputationScoresRetrieve`: Reputation
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesReputationScoresRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reputationUuid** | [**string**](.md) | A UUID string identifying this reputation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesReputationScoresRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**Reputation**](Reputation.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesReputationScoresUsedByList
+
+> []UsedBy PoliciesReputationScoresUsedByList(ctx, reputationUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    reputationUuid := TODO // string | A UUID string identifying this reputation.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PoliciesApi.PoliciesReputationScoresUsedByList(context.Background(), reputationUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationScoresUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesReputationScoresUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesReputationScoresUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reputationUuid** | [**string**](.md) | A UUID string identifying this reputation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesReputationScoresUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PoliciesReputationUpdate
 
 > ReputationPolicy PoliciesReputationUpdate(ctx, policyUuid).ReputationPolicyRequest(reputationPolicyRequest).Execute()
@@ -4931,290 +4929,6 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPoliciesReputationUsedByListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**[]UsedBy**](UsedBy.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PoliciesReputationUsersDestroy
-
-> PoliciesReputationUsersDestroy(ctx, id).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := int32(56) // int32 | A unique integer value identifying this user reputation.
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationUsersDestroy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationUsersDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this user reputation. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPoliciesReputationUsersDestroyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PoliciesReputationUsersList
-
-> PaginatedUserReputationList PoliciesReputationUsersList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Score(score).Search(search).Username(username).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    score := int32(56) // int32 |  (optional)
-    search := "search_example" // string | A search term. (optional)
-    username := "username_example" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationUsersList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Score(score).Search(search).Username(username).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationUsersList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PoliciesReputationUsersList`: PaginatedUserReputationList
-    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesReputationUsersList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPoliciesReputationUsersListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ordering** | **string** | Which field to use when ordering the results. | 
- **page** | **int32** | A page number within the paginated result set. | 
- **pageSize** | **int32** | Number of results to return per page. | 
- **score** | **int32** |  | 
- **search** | **string** | A search term. | 
- **username** | **string** |  | 
-
-### Return type
-
-[**PaginatedUserReputationList**](PaginatedUserReputationList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PoliciesReputationUsersRetrieve
-
-> UserReputation PoliciesReputationUsersRetrieve(ctx, id).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := int32(56) // int32 | A unique integer value identifying this user reputation.
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationUsersRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationUsersRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PoliciesReputationUsersRetrieve`: UserReputation
-    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesReputationUsersRetrieve`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this user reputation. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPoliciesReputationUsersRetrieveRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**UserReputation**](UserReputation.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PoliciesReputationUsersUsedByList
-
-> []UsedBy PoliciesReputationUsersUsedByList(ctx, id).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := int32(56) // int32 | A unique integer value identifying this user reputation.
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationUsersUsedByList(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationUsersUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PoliciesReputationUsersUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesReputationUsersUsedByList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this user reputation. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPoliciesReputationUsersUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

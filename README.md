@@ -312,19 +312,15 @@ Class | Method | HTTP request | Description
 *PoliciesApi* | [**PoliciesPasswordUsedByList**](docs/PoliciesApi.md#policiespasswordusedbylist) | **Get** /policies/password/{policy_uuid}/used_by/ | 
 *PoliciesApi* | [**PoliciesReputationCreate**](docs/PoliciesApi.md#policiesreputationcreate) | **Post** /policies/reputation/ | 
 *PoliciesApi* | [**PoliciesReputationDestroy**](docs/PoliciesApi.md#policiesreputationdestroy) | **Delete** /policies/reputation/{policy_uuid}/ | 
-*PoliciesApi* | [**PoliciesReputationIpsDestroy**](docs/PoliciesApi.md#policiesreputationipsdestroy) | **Delete** /policies/reputation/ips/{id}/ | 
-*PoliciesApi* | [**PoliciesReputationIpsList**](docs/PoliciesApi.md#policiesreputationipslist) | **Get** /policies/reputation/ips/ | 
-*PoliciesApi* | [**PoliciesReputationIpsRetrieve**](docs/PoliciesApi.md#policiesreputationipsretrieve) | **Get** /policies/reputation/ips/{id}/ | 
-*PoliciesApi* | [**PoliciesReputationIpsUsedByList**](docs/PoliciesApi.md#policiesreputationipsusedbylist) | **Get** /policies/reputation/ips/{id}/used_by/ | 
 *PoliciesApi* | [**PoliciesReputationList**](docs/PoliciesApi.md#policiesreputationlist) | **Get** /policies/reputation/ | 
 *PoliciesApi* | [**PoliciesReputationPartialUpdate**](docs/PoliciesApi.md#policiesreputationpartialupdate) | **Patch** /policies/reputation/{policy_uuid}/ | 
 *PoliciesApi* | [**PoliciesReputationRetrieve**](docs/PoliciesApi.md#policiesreputationretrieve) | **Get** /policies/reputation/{policy_uuid}/ | 
+*PoliciesApi* | [**PoliciesReputationScoresDestroy**](docs/PoliciesApi.md#policiesreputationscoresdestroy) | **Delete** /policies/reputation/scores/{reputation_uuid}/ | 
+*PoliciesApi* | [**PoliciesReputationScoresList**](docs/PoliciesApi.md#policiesreputationscoreslist) | **Get** /policies/reputation/scores/ | 
+*PoliciesApi* | [**PoliciesReputationScoresRetrieve**](docs/PoliciesApi.md#policiesreputationscoresretrieve) | **Get** /policies/reputation/scores/{reputation_uuid}/ | 
+*PoliciesApi* | [**PoliciesReputationScoresUsedByList**](docs/PoliciesApi.md#policiesreputationscoresusedbylist) | **Get** /policies/reputation/scores/{reputation_uuid}/used_by/ | 
 *PoliciesApi* | [**PoliciesReputationUpdate**](docs/PoliciesApi.md#policiesreputationupdate) | **Put** /policies/reputation/{policy_uuid}/ | 
 *PoliciesApi* | [**PoliciesReputationUsedByList**](docs/PoliciesApi.md#policiesreputationusedbylist) | **Get** /policies/reputation/{policy_uuid}/used_by/ | 
-*PoliciesApi* | [**PoliciesReputationUsersDestroy**](docs/PoliciesApi.md#policiesreputationusersdestroy) | **Delete** /policies/reputation/users/{id}/ | 
-*PoliciesApi* | [**PoliciesReputationUsersList**](docs/PoliciesApi.md#policiesreputationuserslist) | **Get** /policies/reputation/users/ | 
-*PoliciesApi* | [**PoliciesReputationUsersRetrieve**](docs/PoliciesApi.md#policiesreputationusersretrieve) | **Get** /policies/reputation/users/{id}/ | 
-*PoliciesApi* | [**PoliciesReputationUsersUsedByList**](docs/PoliciesApi.md#policiesreputationusersusedbylist) | **Get** /policies/reputation/users/{id}/used_by/ | 
 *PropertymappingsApi* | [**PropertymappingsAllDestroy**](docs/PropertymappingsApi.md#propertymappingsalldestroy) | **Delete** /propertymappings/all/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsAllList**](docs/PropertymappingsApi.md#propertymappingsalllist) | **Get** /propertymappings/all/ | 
 *PropertymappingsApi* | [**PropertymappingsAllRetrieve**](docs/PropertymappingsApi.md#propertymappingsallretrieve) | **Get** /propertymappings/all/{pm_uuid}/ | 
@@ -731,7 +727,6 @@ Class | Method | HTTP request | Description
  - [GroupRequest](docs/GroupRequest.md)
  - [HaveIBeenPwendPolicy](docs/HaveIBeenPwendPolicy.md)
  - [HaveIBeenPwendPolicyRequest](docs/HaveIBeenPwendPolicyRequest.md)
- - [IPReputation](docs/IPReputation.md)
  - [IdentificationChallenge](docs/IdentificationChallenge.md)
  - [IdentificationChallengeResponseRequest](docs/IdentificationChallengeResponseRequest.md)
  - [IdentificationStage](docs/IdentificationStage.md)
@@ -805,7 +800,6 @@ Class | Method | HTTP request | Description
  - [PaginatedFlowStageBindingList](docs/PaginatedFlowStageBindingList.md)
  - [PaginatedGroupList](docs/PaginatedGroupList.md)
  - [PaginatedHaveIBeenPwendPolicyList](docs/PaginatedHaveIBeenPwendPolicyList.md)
- - [PaginatedIPReputationList](docs/PaginatedIPReputationList.md)
  - [PaginatedIdentificationStageList](docs/PaginatedIdentificationStageList.md)
  - [PaginatedInvitationList](docs/PaginatedInvitationList.md)
  - [PaginatedInvitationStageList](docs/PaginatedInvitationStageList.md)
@@ -835,6 +829,7 @@ Class | Method | HTTP request | Description
  - [PaginatedProxyOutpostConfigList](docs/PaginatedProxyOutpostConfigList.md)
  - [PaginatedProxyProviderList](docs/PaginatedProxyProviderList.md)
  - [PaginatedRefreshTokenModelList](docs/PaginatedRefreshTokenModelList.md)
+ - [PaginatedReputationList](docs/PaginatedReputationList.md)
  - [PaginatedReputationPolicyList](docs/PaginatedReputationPolicyList.md)
  - [PaginatedSAMLPropertyMappingList](docs/PaginatedSAMLPropertyMappingList.md)
  - [PaginatedSAMLProviderList](docs/PaginatedSAMLProviderList.md)
@@ -854,7 +849,6 @@ Class | Method | HTTP request | Description
  - [PaginatedUserLoginStageList](docs/PaginatedUserLoginStageList.md)
  - [PaginatedUserLogoutStageList](docs/PaginatedUserLogoutStageList.md)
  - [PaginatedUserOAuthSourceConnectionList](docs/PaginatedUserOAuthSourceConnectionList.md)
- - [PaginatedUserReputationList](docs/PaginatedUserReputationList.md)
  - [PaginatedUserSourceConnectionList](docs/PaginatedUserSourceConnectionList.md)
  - [PaginatedUserWriteStageList](docs/PaginatedUserWriteStageList.md)
  - [PaginatedWebAuthnDeviceList](docs/PaginatedWebAuthnDeviceList.md)
@@ -963,6 +957,7 @@ Class | Method | HTTP request | Description
  - [ProxyProviderRequest](docs/ProxyProviderRequest.md)
  - [RedirectChallenge](docs/RedirectChallenge.md)
  - [RefreshTokenModel](docs/RefreshTokenModel.md)
+ - [Reputation](docs/Reputation.md)
  - [ReputationPolicy](docs/ReputationPolicy.md)
  - [ReputationPolicyRequest](docs/ReputationPolicyRequest.md)
  - [SAMLMetadata](docs/SAMLMetadata.md)
@@ -1024,7 +1019,6 @@ Class | Method | HTTP request | Description
  - [UserOAuthSourceConnection](docs/UserOAuthSourceConnection.md)
  - [UserOAuthSourceConnectionRequest](docs/UserOAuthSourceConnectionRequest.md)
  - [UserPasswordSetRequest](docs/UserPasswordSetRequest.md)
- - [UserReputation](docs/UserReputation.md)
  - [UserRequest](docs/UserRequest.md)
  - [UserSelf](docs/UserSelf.md)
  - [UserSelfGroups](docs/UserSelfGroups.md)
