@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2021.12.4
+API version: 2021.12.5
 Contact: hello@beryju.org
 */
 
@@ -107,10 +107,6 @@ func NewConfiguration() *Configuration {
 		Servers: ServerConfigurations{
 			{
 				URL:         "/api/v3",
-				Description: "No description provided",
-			},
-			{
-				URL:         "/api/v2beta",
 				Description: "No description provided",
 			},
 		},
