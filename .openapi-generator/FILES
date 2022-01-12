@@ -36,6 +36,7 @@ docs/AuthenticatedSessionUserAgent.md
 docs/AuthenticatedSessionUserAgentDevice.md
 docs/AuthenticatedSessionUserAgentOs.md
 docs/AuthenticatedSessionUserAgentUserAgent.md
+docs/AuthenticatorAttachmentEnum.md
 docs/AuthenticatorDuoChallenge.md
 docs/AuthenticatorDuoChallengeResponseRequest.md
 docs/AuthenticatorDuoStage.md
@@ -378,6 +379,7 @@ docs/RefreshTokenModel.md
 docs/Reputation.md
 docs/ReputationPolicy.md
 docs/ReputationPolicyRequest.md
+docs/ResidentKeyRequirementEnum.md
 docs/RootApi.md
 docs/SAMLMetadata.md
 docs/SAMLPropertyMapping.md
@@ -476,6 +478,7 @@ model_authenticated_session_user_agent.go
 model_authenticated_session_user_agent_device.go
 model_authenticated_session_user_agent_os.go
 model_authenticated_session_user_agent_user_agent.go
+model_authenticator_attachment_enum.go
 model_authenticator_duo_challenge.go
 model_authenticator_duo_challenge_response_request.go
 model_authenticator_duo_stage.go
@@ -808,6 +811,7 @@ model_refresh_token_model.go
 model_reputation.go
 model_reputation_policy.go
 model_reputation_policy_request.go
+model_resident_key_requirement_enum.go
 model_saml_metadata.go
 model_saml_property_mapping.go
 model_saml_property_mapping_request.go

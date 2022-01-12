@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **FlowSet** | Pointer to [**[]FlowRequest**](FlowRequest.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
 **UserVerification** | Pointer to [**UserVerificationEnum**](UserVerificationEnum.md) |  | [optional] 
+**AuthenticatorAttachment** | Pointer to [**NullableAuthenticatorAttachmentEnum**](AuthenticatorAttachmentEnum.md) |  | [optional] 
+**ResidentKeyRequirement** | Pointer to [**ResidentKeyRequirementEnum**](ResidentKeyRequirementEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -137,6 +139,66 @@ SetUserVerification sets UserVerification field to given value.
 `func (o *PatchedAuthenticateWebAuthnStageRequest) HasUserVerification() bool`
 
 HasUserVerification returns a boolean if a field has been set.
+
+### GetAuthenticatorAttachment
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) GetAuthenticatorAttachment() AuthenticatorAttachmentEnum`
+
+GetAuthenticatorAttachment returns the AuthenticatorAttachment field if non-nil, zero value otherwise.
+
+### GetAuthenticatorAttachmentOk
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) GetAuthenticatorAttachmentOk() (*AuthenticatorAttachmentEnum, bool)`
+
+GetAuthenticatorAttachmentOk returns a tuple with the AuthenticatorAttachment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthenticatorAttachment
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) SetAuthenticatorAttachment(v AuthenticatorAttachmentEnum)`
+
+SetAuthenticatorAttachment sets AuthenticatorAttachment field to given value.
+
+### HasAuthenticatorAttachment
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) HasAuthenticatorAttachment() bool`
+
+HasAuthenticatorAttachment returns a boolean if a field has been set.
+
+### SetAuthenticatorAttachmentNil
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) SetAuthenticatorAttachmentNil(b bool)`
+
+ SetAuthenticatorAttachmentNil sets the value for AuthenticatorAttachment to be an explicit nil
+
+### UnsetAuthenticatorAttachment
+`func (o *PatchedAuthenticateWebAuthnStageRequest) UnsetAuthenticatorAttachment()`
+
+UnsetAuthenticatorAttachment ensures that no value is present for AuthenticatorAttachment, not even an explicit nil
+### GetResidentKeyRequirement
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) GetResidentKeyRequirement() ResidentKeyRequirementEnum`
+
+GetResidentKeyRequirement returns the ResidentKeyRequirement field if non-nil, zero value otherwise.
+
+### GetResidentKeyRequirementOk
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) GetResidentKeyRequirementOk() (*ResidentKeyRequirementEnum, bool)`
+
+GetResidentKeyRequirementOk returns a tuple with the ResidentKeyRequirement field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResidentKeyRequirement
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) SetResidentKeyRequirement(v ResidentKeyRequirementEnum)`
+
+SetResidentKeyRequirement sets ResidentKeyRequirement field to given value.
+
+### HasResidentKeyRequirement
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) HasResidentKeyRequirement() bool`
+
+HasResidentKeyRequirement returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

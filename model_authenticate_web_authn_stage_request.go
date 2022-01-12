@@ -20,8 +20,10 @@ type AuthenticateWebAuthnStageRequest struct {
 	Name    string         `json:"name"`
 	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow    NullableString        `json:"configure_flow,omitempty"`
-	UserVerification *UserVerificationEnum `json:"user_verification,omitempty"`
+	ConfigureFlow           NullableString                      `json:"configure_flow,omitempty"`
+	UserVerification        *UserVerificationEnum               `json:"user_verification,omitempty"`
+	AuthenticatorAttachment NullableAuthenticatorAttachmentEnum `json:"authenticator_attachment,omitempty"`
+	ResidentKeyRequirement  *ResidentKeyRequirementEnum         `json:"resident_key_requirement,omitempty"`
 }
 
 // NewAuthenticateWebAuthnStageRequest instantiates a new AuthenticateWebAuthnStageRequest object
@@ -173,6 +175,81 @@ func (o *AuthenticateWebAuthnStageRequest) SetUserVerification(v UserVerificatio
 	o.UserVerification = &v
 }
 
+// GetAuthenticatorAttachment returns the AuthenticatorAttachment field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AuthenticateWebAuthnStageRequest) GetAuthenticatorAttachment() AuthenticatorAttachmentEnum {
+	if o == nil || o.AuthenticatorAttachment.Get() == nil {
+		var ret AuthenticatorAttachmentEnum
+		return ret
+	}
+	return *o.AuthenticatorAttachment.Get()
+}
+
+// GetAuthenticatorAttachmentOk returns a tuple with the AuthenticatorAttachment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AuthenticateWebAuthnStageRequest) GetAuthenticatorAttachmentOk() (*AuthenticatorAttachmentEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthenticatorAttachment.Get(), o.AuthenticatorAttachment.IsSet()
+}
+
+// HasAuthenticatorAttachment returns a boolean if a field has been set.
+func (o *AuthenticateWebAuthnStageRequest) HasAuthenticatorAttachment() bool {
+	if o != nil && o.AuthenticatorAttachment.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthenticatorAttachment gets a reference to the given NullableAuthenticatorAttachmentEnum and assigns it to the AuthenticatorAttachment field.
+func (o *AuthenticateWebAuthnStageRequest) SetAuthenticatorAttachment(v AuthenticatorAttachmentEnum) {
+	o.AuthenticatorAttachment.Set(&v)
+}
+
+// SetAuthenticatorAttachmentNil sets the value for AuthenticatorAttachment to be an explicit nil
+func (o *AuthenticateWebAuthnStageRequest) SetAuthenticatorAttachmentNil() {
+	o.AuthenticatorAttachment.Set(nil)
+}
+
+// UnsetAuthenticatorAttachment ensures that no value is present for AuthenticatorAttachment, not even an explicit nil
+func (o *AuthenticateWebAuthnStageRequest) UnsetAuthenticatorAttachment() {
+	o.AuthenticatorAttachment.Unset()
+}
+
+// GetResidentKeyRequirement returns the ResidentKeyRequirement field value if set, zero value otherwise.
+func (o *AuthenticateWebAuthnStageRequest) GetResidentKeyRequirement() ResidentKeyRequirementEnum {
+	if o == nil || o.ResidentKeyRequirement == nil {
+		var ret ResidentKeyRequirementEnum
+		return ret
+	}
+	return *o.ResidentKeyRequirement
+}
+
+// GetResidentKeyRequirementOk returns a tuple with the ResidentKeyRequirement field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticateWebAuthnStageRequest) GetResidentKeyRequirementOk() (*ResidentKeyRequirementEnum, bool) {
+	if o == nil || o.ResidentKeyRequirement == nil {
+		return nil, false
+	}
+	return o.ResidentKeyRequirement, true
+}
+
+// HasResidentKeyRequirement returns a boolean if a field has been set.
+func (o *AuthenticateWebAuthnStageRequest) HasResidentKeyRequirement() bool {
+	if o != nil && o.ResidentKeyRequirement != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResidentKeyRequirement gets a reference to the given ResidentKeyRequirementEnum and assigns it to the ResidentKeyRequirement field.
+func (o *AuthenticateWebAuthnStageRequest) SetResidentKeyRequirement(v ResidentKeyRequirementEnum) {
+	o.ResidentKeyRequirement = &v
+}
+
 func (o AuthenticateWebAuthnStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -186,6 +263,12 @@ func (o AuthenticateWebAuthnStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserVerification != nil {
 		toSerialize["user_verification"] = o.UserVerification
+	}
+	if o.AuthenticatorAttachment.IsSet() {
+		toSerialize["authenticator_attachment"] = o.AuthenticatorAttachment.Get()
+	}
+	if o.ResidentKeyRequirement != nil {
+		toSerialize["resident_key_requirement"] = o.ResidentKeyRequirement
 	}
 	return json.Marshal(toSerialize)
 }

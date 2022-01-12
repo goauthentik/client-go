@@ -17109,6 +17109,17 @@ paths:
       parameters:
       - explode: true
         in: query
+        name: authenticator_attachment
+        required: false
+        schema:
+          enum:
+          - cross-platform
+          - platform
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: configure_flow
         required: false
         schema:
@@ -17145,6 +17156,17 @@ paths:
         required: false
         schema:
           type: integer
+        style: form
+      - explode: true
+        in: query
+        name: resident_key_requirement
+        required: false
+        schema:
+          enum:
+          - discouraged
+          - preferred
+          - required
+          type: string
         style: form
       - description: A search term.
         explode: true
@@ -21434,6 +21456,7 @@ components:
           designation: ""
           cache_count: 0
           slug: slug
+        authenticator_attachment: ""
       properties:
         pk:
           format: uuid
@@ -21466,6 +21489,12 @@ components:
           type: string
         user_verification:
           $ref: '#/components/schemas/UserVerificationEnum'
+        authenticator_attachment:
+          allOf:
+          - $ref: '#/components/schemas/AuthenticatorAttachmentEnum'
+          nullable: true
+        resident_key_requirement:
+          $ref: '#/components/schemas/ResidentKeyRequirementEnum'
       required:
       - component
       - meta_model_name
@@ -21490,6 +21519,7 @@ components:
           designation: ""
           title: title
           slug: slug
+        authenticator_attachment: ""
       properties:
         name:
           minLength: 1
@@ -21506,6 +21536,12 @@ components:
           type: string
         user_verification:
           $ref: '#/components/schemas/UserVerificationEnum'
+        authenticator_attachment:
+          allOf:
+          - $ref: '#/components/schemas/AuthenticatorAttachmentEnum'
+          nullable: true
+        resident_key_requirement:
+          $ref: '#/components/schemas/ResidentKeyRequirementEnum'
       required:
       - name
       type: object
@@ -21574,6 +21610,11 @@ components:
       - user
       - user_agent
       type: object
+    AuthenticatorAttachmentEnum:
+      enum:
+      - platform
+      - cross-platform
+      type: string
     AuthenticatorDuoChallenge:
       description: Duo Challenge
       properties:
@@ -27397,6 +27438,7 @@ components:
             designation: ""
             cache_count: 0
             slug: slug
+          authenticator_attachment: ""
         - component: component
           verbose_name: verbose_name
           configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -27437,6 +27479,7 @@ components:
             designation: ""
             cache_count: 0
             slug: slug
+          authenticator_attachment: ""
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -33546,6 +33589,7 @@ components:
           designation: ""
           title: title
           slug: slug
+        authenticator_attachment: ""
       properties:
         name:
           minLength: 1
@@ -33562,6 +33606,12 @@ components:
           type: string
         user_verification:
           $ref: '#/components/schemas/UserVerificationEnum'
+        authenticator_attachment:
+          allOf:
+          - $ref: '#/components/schemas/AuthenticatorAttachmentEnum'
+          nullable: true
+        resident_key_requirement:
+          $ref: '#/components/schemas/ResidentKeyRequirementEnum'
       type: object
     PatchedAuthenticatorDuoStageRequest:
       description: AuthenticatorDuoStage Serializer
@@ -37612,6 +37662,12 @@ components:
           minimum: -2147483648
           type: integer
       type: object
+    ResidentKeyRequirementEnum:
+      enum:
+      - discouraged
+      - preferred
+      - required
+      type: string
     SAMLMetadata:
       description: SAML Provider Metadata serializer
       example:

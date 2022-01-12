@@ -5865,18 +5865,24 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnDestroyExecute(r ApiStages
 }
 
 type ApiStagesAuthenticatorWebauthnListRequest struct {
-	ctx              _context.Context
-	ApiService       *StagesApiService
-	configureFlow    *string
-	name             *string
-	ordering         *string
-	page             *int32
-	pageSize         *int32
-	search           *string
-	stageUuid        *string
-	userVerification *string
+	ctx                     _context.Context
+	ApiService              *StagesApiService
+	authenticatorAttachment *string
+	configureFlow           *string
+	name                    *string
+	ordering                *string
+	page                    *int32
+	pageSize                *int32
+	residentKeyRequirement  *string
+	search                  *string
+	stageUuid               *string
+	userVerification        *string
 }
 
+func (r ApiStagesAuthenticatorWebauthnListRequest) AuthenticatorAttachment(authenticatorAttachment string) ApiStagesAuthenticatorWebauthnListRequest {
+	r.authenticatorAttachment = &authenticatorAttachment
+	return r
+}
 func (r ApiStagesAuthenticatorWebauthnListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.configureFlow = &configureFlow
 	return r
@@ -5901,6 +5907,10 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) Page(page int32) ApiStagesAut
 // Number of results to return per page.
 func (r ApiStagesAuthenticatorWebauthnListRequest) PageSize(pageSize int32) ApiStagesAuthenticatorWebauthnListRequest {
 	r.pageSize = &pageSize
+	return r
+}
+func (r ApiStagesAuthenticatorWebauthnListRequest) ResidentKeyRequirement(residentKeyRequirement string) ApiStagesAuthenticatorWebauthnListRequest {
+	r.residentKeyRequirement = &residentKeyRequirement
 	return r
 }
 
@@ -5960,6 +5970,9 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authenticatorAttachment != nil {
+		localVarQueryParams.Add("authenticator_attachment", parameterToString(*r.authenticatorAttachment, ""))
+	}
 	if r.configureFlow != nil {
 		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
 	}
@@ -5974,6 +5987,9 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 	}
 	if r.pageSize != nil {
 		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.residentKeyRequirement != nil {
+		localVarQueryParams.Add("resident_key_requirement", parameterToString(*r.residentKeyRequirement, ""))
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))

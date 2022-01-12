@@ -3343,7 +3343,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorWebauthnList
 
-> PaginatedAuthenticateWebAuthnStageList StagesAuthenticatorWebauthnList(ctx).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
+> PaginatedAuthenticateWebAuthnStageList StagesAuthenticatorWebauthnList(ctx).AuthenticatorAttachment(authenticatorAttachment).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResidentKeyRequirement(residentKeyRequirement).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
 
 
 
@@ -3362,18 +3362,20 @@ import (
 )
 
 func main() {
+    authenticatorAttachment := "authenticatorAttachment_example" // string |  (optional)
     configureFlow := TODO // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    residentKeyRequirement := "residentKeyRequirement_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     stageUuid := TODO // string |  (optional)
     userVerification := "userVerification_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.StagesApi.StagesAuthenticatorWebauthnList(context.Background()).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
+    resp, r, err := api_client.StagesApi.StagesAuthenticatorWebauthnList(context.Background()).AuthenticatorAttachment(authenticatorAttachment).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResidentKeyRequirement(residentKeyRequirement).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3394,11 +3396,13 @@ Other parameters are passed through a pointer to a apiStagesAuthenticatorWebauth
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authenticatorAttachment** | **string** |  | 
  **configureFlow** | [**string**](string.md) |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
+ **residentKeyRequirement** | **string** |  | 
  **search** | **string** | A search term. | 
  **stageUuid** | [**string**](string.md) |  | 
  **userVerification** | **string** |  | 
