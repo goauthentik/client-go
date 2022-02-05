@@ -23,13 +23,11 @@ type CapabilitiesEnum string
 const (
 	CAPABILITIESENUM_SAVE_MEDIA CapabilitiesEnum = "can_save_media"
 	CAPABILITIESENUM_GEO_IP     CapabilitiesEnum = "can_geo_ip"
-	CAPABILITIESENUM_BACKUP     CapabilitiesEnum = "can_backup"
 )
 
 var allowedCapabilitiesEnumEnumValues = []CapabilitiesEnum{
 	"can_save_media",
 	"can_geo_ip",
-	"can_backup",
 }
 
 func (v *CapabilitiesEnum) UnmarshalJSON(src []byte) error {
