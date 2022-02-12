@@ -26,7 +26,12 @@ func getUpstreamVersion() string {
 	if err != nil {
 		panic(err)
 	}
-	return schema.Info.Version
+	v := schema.Info.Version
+	parts := strings.Split(v, ".")
+	m, _ := strconv.Atoi(parts[1])
+	parts[1] = fmt.Sprintf("%02d", m)
+	fmt.Sprintln(parts)
+	return strings.Join(parts, ".")
 }
 
 func getLatestTag() string {
