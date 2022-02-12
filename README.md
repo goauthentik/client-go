@@ -974,6 +974,7 @@ Class | Method | HTTP request | Description
  - [ScopeMapping](docs/ScopeMapping.md)
  - [ScopeMappingRequest](docs/ScopeMappingRequest.md)
  - [SearchModeEnum](docs/SearchModeEnum.md)
+ - [SelectableStage](docs/SelectableStage.md)
  - [ServiceConnection](docs/ServiceConnection.md)
  - [ServiceConnectionRequest](docs/ServiceConnectionRequest.md)
  - [ServiceConnectionState](docs/ServiceConnectionState.md)

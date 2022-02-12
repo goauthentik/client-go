@@ -19,6 +19,7 @@ import (
 type AuthenticatorValidationChallengeResponseRequest struct {
 	Component         *string                 `json:"component,omitempty"`
 	SelectedChallenge *DeviceChallengeRequest `json:"selected_challenge,omitempty"`
+	SelectedStage     *string                 `json:"selected_stage,omitempty"`
 	Code              *string                 `json:"code,omitempty"`
 	Webauthn          *map[string]interface{} `json:"webauthn,omitempty"`
 	Duo               *int32                  `json:"duo,omitempty"`
@@ -107,6 +108,38 @@ func (o *AuthenticatorValidationChallengeResponseRequest) HasSelectedChallenge()
 // SetSelectedChallenge gets a reference to the given DeviceChallengeRequest and assigns it to the SelectedChallenge field.
 func (o *AuthenticatorValidationChallengeResponseRequest) SetSelectedChallenge(v DeviceChallengeRequest) {
 	o.SelectedChallenge = &v
+}
+
+// GetSelectedStage returns the SelectedStage field value if set, zero value otherwise.
+func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedStage() string {
+	if o == nil || o.SelectedStage == nil {
+		var ret string
+		return ret
+	}
+	return *o.SelectedStage
+}
+
+// GetSelectedStageOk returns a tuple with the SelectedStage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedStageOk() (*string, bool) {
+	if o == nil || o.SelectedStage == nil {
+		return nil, false
+	}
+	return o.SelectedStage, true
+}
+
+// HasSelectedStage returns a boolean if a field has been set.
+func (o *AuthenticatorValidationChallengeResponseRequest) HasSelectedStage() bool {
+	if o != nil && o.SelectedStage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectedStage gets a reference to the given string and assigns it to the SelectedStage field.
+func (o *AuthenticatorValidationChallengeResponseRequest) SetSelectedStage(v string) {
+	o.SelectedStage = &v
 }
 
 // GetCode returns the Code field value if set, zero value otherwise.
@@ -212,6 +245,9 @@ func (o AuthenticatorValidationChallengeResponseRequest) MarshalJSON() ([]byte, 
 	}
 	if o.SelectedChallenge != nil {
 		toSerialize["selected_challenge"] = o.SelectedChallenge
+	}
+	if o.SelectedStage != nil {
+		toSerialize["selected_stage"] = o.SelectedStage
 	}
 	if o.Code != nil {
 		toSerialize["code"] = o.Code

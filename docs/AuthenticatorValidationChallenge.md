@@ -11,12 +11,13 @@ Name | Type | Description | Notes
 **PendingUser** | **string** |  | 
 **PendingUserAvatar** | **string** |  | 
 **DeviceChallenges** | [**[]DeviceChallenge**](DeviceChallenge.md) |  | 
+**ConfigurationStages** | [**[]SelectableStage**](SelectableStage.md) |  | 
 
 ## Methods
 
 ### NewAuthenticatorValidationChallenge
 
-`func NewAuthenticatorValidationChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, deviceChallenges []DeviceChallenge, ) *AuthenticatorValidationChallenge`
+`func NewAuthenticatorValidationChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, ) *AuthenticatorValidationChallenge`
 
 NewAuthenticatorValidationChallenge instantiates a new AuthenticatorValidationChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -184,6 +185,26 @@ and a boolean to check if the value has been set.
 `func (o *AuthenticatorValidationChallenge) SetDeviceChallenges(v []DeviceChallenge)`
 
 SetDeviceChallenges sets DeviceChallenges field to given value.
+
+
+### GetConfigurationStages
+
+`func (o *AuthenticatorValidationChallenge) GetConfigurationStages() []SelectableStage`
+
+GetConfigurationStages returns the ConfigurationStages field if non-nil, zero value otherwise.
+
+### GetConfigurationStagesOk
+
+`func (o *AuthenticatorValidationChallenge) GetConfigurationStagesOk() (*[]SelectableStage, bool)`
+
+GetConfigurationStagesOk returns a tuple with the ConfigurationStages field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigurationStages
+
+`func (o *AuthenticatorValidationChallenge) SetConfigurationStages(v []SelectableStage)`
+
+SetConfigurationStages sets ConfigurationStages field to given value.
 
 
 

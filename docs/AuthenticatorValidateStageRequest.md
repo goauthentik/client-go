@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **FlowSet** | Pointer to [**[]FlowRequest**](FlowRequest.md) |  | [optional] 
 **NotConfiguredAction** | Pointer to [**NotConfiguredActionEnum**](NotConfiguredActionEnum.md) |  | [optional] 
 **DeviceClasses** | Pointer to [**[]DeviceClassesEnum**](DeviceClassesEnum.md) | Device classes which can be used to authenticate | [optional] 
-**ConfigurationStage** | Pointer to **NullableString** | Stage used to configure Authenticator when user doesn&#39;t have any compatible devices. After this configuration Stage passes, the user is not prompted again. | [optional] 
+**ConfigurationStages** | Pointer to **[]string** | Stages used to configure Authenticator when user doesn&#39;t have any compatible devices. After this configuration Stage passes, the user is not prompted again. | [optional] 
 
 ## Methods
 
@@ -124,41 +124,31 @@ SetDeviceClasses sets DeviceClasses field to given value.
 
 HasDeviceClasses returns a boolean if a field has been set.
 
-### GetConfigurationStage
+### GetConfigurationStages
 
-`func (o *AuthenticatorValidateStageRequest) GetConfigurationStage() string`
+`func (o *AuthenticatorValidateStageRequest) GetConfigurationStages() []string`
 
-GetConfigurationStage returns the ConfigurationStage field if non-nil, zero value otherwise.
+GetConfigurationStages returns the ConfigurationStages field if non-nil, zero value otherwise.
 
-### GetConfigurationStageOk
+### GetConfigurationStagesOk
 
-`func (o *AuthenticatorValidateStageRequest) GetConfigurationStageOk() (*string, bool)`
+`func (o *AuthenticatorValidateStageRequest) GetConfigurationStagesOk() (*[]string, bool)`
 
-GetConfigurationStageOk returns a tuple with the ConfigurationStage field if it's non-nil, zero value otherwise
+GetConfigurationStagesOk returns a tuple with the ConfigurationStages field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConfigurationStage
+### SetConfigurationStages
 
-`func (o *AuthenticatorValidateStageRequest) SetConfigurationStage(v string)`
+`func (o *AuthenticatorValidateStageRequest) SetConfigurationStages(v []string)`
 
-SetConfigurationStage sets ConfigurationStage field to given value.
+SetConfigurationStages sets ConfigurationStages field to given value.
 
-### HasConfigurationStage
+### HasConfigurationStages
 
-`func (o *AuthenticatorValidateStageRequest) HasConfigurationStage() bool`
+`func (o *AuthenticatorValidateStageRequest) HasConfigurationStages() bool`
 
-HasConfigurationStage returns a boolean if a field has been set.
+HasConfigurationStages returns a boolean if a field has been set.
 
-### SetConfigurationStageNil
-
-`func (o *AuthenticatorValidateStageRequest) SetConfigurationStageNil(b bool)`
-
- SetConfigurationStageNil sets the value for ConfigurationStage to be an explicit nil
-
-### UnsetConfigurationStage
-`func (o *AuthenticatorValidateStageRequest) UnsetConfigurationStage()`
-
-UnsetConfigurationStage ensures that no value is present for ConfigurationStage, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

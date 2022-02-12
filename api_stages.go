@@ -4958,7 +4958,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateDestroyExecute(r ApiStages
 type ApiStagesAuthenticatorValidateListRequest struct {
 	ctx                 _context.Context
 	ApiService          *StagesApiService
-	configurationStage  *string
+	configurationStages *[]string
 	name                *string
 	notConfiguredAction *string
 	ordering            *string
@@ -4967,8 +4967,8 @@ type ApiStagesAuthenticatorValidateListRequest struct {
 	search              *string
 }
 
-func (r ApiStagesAuthenticatorValidateListRequest) ConfigurationStage(configurationStage string) ApiStagesAuthenticatorValidateListRequest {
-	r.configurationStage = &configurationStage
+func (r ApiStagesAuthenticatorValidateListRequest) ConfigurationStages(configurationStages []string) ApiStagesAuthenticatorValidateListRequest {
+	r.configurationStages = &configurationStages
 	return r
 }
 func (r ApiStagesAuthenticatorValidateListRequest) Name(name string) ApiStagesAuthenticatorValidateListRequest {
@@ -5046,8 +5046,16 @@ func (a *StagesApiService) StagesAuthenticatorValidateListExecute(r ApiStagesAut
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
-	if r.configurationStage != nil {
-		localVarQueryParams.Add("configuration_stage", parameterToString(*r.configurationStage, ""))
+	if r.configurationStages != nil {
+		t := *r.configurationStages
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("configuration_stages", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("configuration_stages", parameterToString(t, "multi"))
+		}
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))

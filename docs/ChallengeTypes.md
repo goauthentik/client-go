@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **Codes** | **[]string** |  | 
 **ConfigUrl** | **string** |  | 
 **DeviceChallenges** | [**[]DeviceChallenge**](DeviceChallenge.md) |  | 
+**ConfigurationStages** | [**[]SelectableStage**](SelectableStage.md) |  | 
 **Registration** | **map[string]interface{}** |  | 
 **Url** | **string** |  | 
 **Attrs** | **map[string]string** |  | 
@@ -46,7 +47,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, headerText string, permissions []Permission, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
+`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, headerText string, permissions []Permission, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -444,6 +445,26 @@ and a boolean to check if the value has been set.
 `func (o *ChallengeTypes) SetDeviceChallenges(v []DeviceChallenge)`
 
 SetDeviceChallenges sets DeviceChallenges field to given value.
+
+
+### GetConfigurationStages
+
+`func (o *ChallengeTypes) GetConfigurationStages() []SelectableStage`
+
+GetConfigurationStages returns the ConfigurationStages field if non-nil, zero value otherwise.
+
+### GetConfigurationStagesOk
+
+`func (o *ChallengeTypes) GetConfigurationStagesOk() (*[]SelectableStage, bool)`
+
+GetConfigurationStagesOk returns a tuple with the ConfigurationStages field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigurationStages
+
+`func (o *ChallengeTypes) SetConfigurationStages(v []SelectableStage)`
+
+SetConfigurationStages sets ConfigurationStages field to given value.
 
 
 ### GetRegistration

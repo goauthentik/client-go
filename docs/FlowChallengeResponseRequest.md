@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Code** | **string** |  | 
 **PhoneNumber** | Pointer to **string** |  | [optional] 
 **SelectedChallenge** | Pointer to [**DeviceChallengeRequest**](DeviceChallengeRequest.md) |  | [optional] 
+**SelectedStage** | Pointer to **string** |  | [optional] 
 **Webauthn** | Pointer to **map[string]interface{}** |  | [optional] 
 **Duo** | Pointer to **int32** |  | [optional] 
 **Response** | **map[string]interface{}** |  | 
@@ -128,6 +129,31 @@ SetSelectedChallenge sets SelectedChallenge field to given value.
 `func (o *FlowChallengeResponseRequest) HasSelectedChallenge() bool`
 
 HasSelectedChallenge returns a boolean if a field has been set.
+
+### GetSelectedStage
+
+`func (o *FlowChallengeResponseRequest) GetSelectedStage() string`
+
+GetSelectedStage returns the SelectedStage field if non-nil, zero value otherwise.
+
+### GetSelectedStageOk
+
+`func (o *FlowChallengeResponseRequest) GetSelectedStageOk() (*string, bool)`
+
+GetSelectedStageOk returns a tuple with the SelectedStage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelectedStage
+
+`func (o *FlowChallengeResponseRequest) SetSelectedStage(v string)`
+
+SetSelectedStage sets SelectedStage field to given value.
+
+### HasSelectedStage
+
+`func (o *FlowChallengeResponseRequest) HasSelectedStage() bool`
+
+HasSelectedStage returns a boolean if a field has been set.
 
 ### GetWebauthn
 

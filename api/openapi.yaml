@@ -16862,11 +16862,13 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: configuration_stage
+        name: configuration_stages
         required: false
         schema:
-          format: uuid
-          type: string
+          items:
+            format: uuid
+            type: string
+          type: array
         style: form
       - explode: true
         in: query
@@ -22330,7 +22332,6 @@ components:
         verbose_name: verbose_name
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
-        configuration_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         device_classes:
         - null
         - null
@@ -22369,6 +22370,9 @@ components:
           designation: ""
           cache_count: 0
           slug: slug
+        configuration_stages:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
           format: uuid
@@ -22400,13 +22404,14 @@ components:
           items:
             $ref: '#/components/schemas/DeviceClassesEnum'
           type: array
-        configuration_stage:
-          description: Stage used to configure Authenticator when user doesn't have
+        configuration_stages:
+          description: Stages used to configure Authenticator when user doesn't have
             any compatible devices. After this configuration Stage passes, the user
             is not prompted again.
-          format: uuid
-          nullable: true
-          type: string
+          items:
+            format: uuid
+            type: string
+          type: array
       required:
       - component
       - meta_model_name
@@ -22418,7 +22423,6 @@ components:
     AuthenticatorValidateStageRequest:
       description: AuthenticatorValidateStage Serializer
       example:
-        configuration_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         device_classes:
         - null
         - null
@@ -22434,6 +22438,9 @@ components:
           designation: ""
           title: title
           slug: slug
+        configuration_stages:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         name:
           minLength: 1
@@ -22449,13 +22456,14 @@ components:
           items:
             $ref: '#/components/schemas/DeviceClassesEnum'
           type: array
-        configuration_stage:
-          description: Stage used to configure Authenticator when user doesn't have
+        configuration_stages:
+          description: Stages used to configure Authenticator when user doesn't have
             any compatible devices. After this configuration Stage passes, the user
             is not prompted again.
-          format: uuid
-          nullable: true
-          type: string
+          items:
+            format: uuid
+            type: string
+          type: array
       required:
       - name
       type: object
@@ -22483,7 +22491,12 @@ components:
           items:
             $ref: '#/components/schemas/DeviceChallenge'
           type: array
+        configuration_stages:
+          items:
+            $ref: '#/components/schemas/SelectableStage'
+          type: array
       required:
+      - configuration_stages
       - device_challenges
       - pending_user
       - pending_user_avatar
@@ -22498,6 +22511,9 @@ components:
           type: string
         selected_challenge:
           $ref: '#/components/schemas/DeviceChallengeRequest'
+        selected_stage:
+          minLength: 1
+          type: string
         code:
           minLength: 1
           type: string
@@ -28011,7 +28027,6 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
-          configuration_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           device_classes:
           - null
           - null
@@ -28050,11 +28065,13 @@ components:
             designation: ""
             cache_count: 0
             slug: slug
+          configuration_stages:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - component: component
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
-          configuration_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           device_classes:
           - null
           - null
@@ -28093,6 +28110,9 @@ components:
             designation: ""
             cache_count: 0
             slug: slug
+          configuration_stages:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -33782,7 +33802,6 @@ components:
     PatchedAuthenticatorValidateStageRequest:
       description: AuthenticatorValidateStage Serializer
       example:
-        configuration_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         device_classes:
         - null
         - null
@@ -33798,6 +33817,9 @@ components:
           designation: ""
           title: title
           slug: slug
+        configuration_stages:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         name:
           minLength: 1
@@ -33813,13 +33835,14 @@ components:
           items:
             $ref: '#/components/schemas/DeviceClassesEnum'
           type: array
-        configuration_stage:
-          description: Stage used to configure Authenticator when user doesn't have
+        configuration_stages:
+          description: Stages used to configure Authenticator when user doesn't have
             any compatible devices. After this configuration Stage passes, the user
             is not prompted again.
-          format: uuid
-          nullable: true
-          type: string
+          items:
+            format: uuid
+            type: string
+          type: array
       type: object
     PatchedCaptchaStageRequest:
       description: CaptchaStage Serializer
@@ -38382,6 +38405,24 @@ components:
       - direct
       - cached
       type: string
+    SelectableStage:
+      description: Serializer for stages which can be selected by users
+      properties:
+        pk:
+          format: uuid
+          type: string
+        name:
+          type: string
+        verbose_name:
+          type: string
+        meta_model_name:
+          type: string
+      required:
+      - meta_model_name
+      - name
+      - pk
+      - verbose_name
+      type: object
     ServiceConnection:
       description: ServiceConnection Serializer
       example:

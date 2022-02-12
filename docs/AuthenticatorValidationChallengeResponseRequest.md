@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Component** | Pointer to **string** |  | [optional] [default to "ak-stage-authenticator-validate"]
 **SelectedChallenge** | Pointer to [**DeviceChallengeRequest**](DeviceChallengeRequest.md) |  | [optional] 
+**SelectedStage** | Pointer to **string** |  | [optional] 
 **Code** | Pointer to **string** |  | [optional] 
 **Webauthn** | Pointer to **map[string]interface{}** |  | [optional] 
 **Duo** | Pointer to **int32** |  | [optional] 
@@ -78,6 +79,31 @@ SetSelectedChallenge sets SelectedChallenge field to given value.
 `func (o *AuthenticatorValidationChallengeResponseRequest) HasSelectedChallenge() bool`
 
 HasSelectedChallenge returns a boolean if a field has been set.
+
+### GetSelectedStage
+
+`func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedStage() string`
+
+GetSelectedStage returns the SelectedStage field if non-nil, zero value otherwise.
+
+### GetSelectedStageOk
+
+`func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedStageOk() (*string, bool)`
+
+GetSelectedStageOk returns a tuple with the SelectedStage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelectedStage
+
+`func (o *AuthenticatorValidationChallengeResponseRequest) SetSelectedStage(v string)`
+
+SetSelectedStage sets SelectedStage field to given value.
+
+### HasSelectedStage
+
+`func (o *AuthenticatorValidationChallengeResponseRequest) HasSelectedStage() bool`
+
+HasSelectedStage returns a boolean if a field has been set.
 
 ### GetCode
 

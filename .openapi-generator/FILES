@@ -394,6 +394,7 @@ docs/SchemaApi.md
 docs/ScopeMapping.md
 docs/ScopeMappingRequest.md
 docs/SearchModeEnum.md
+docs/SelectableStage.md
 docs/ServiceConnection.md
 docs/ServiceConnectionRequest.md
 docs/ServiceConnectionState.md
@@ -822,6 +823,7 @@ model_saml_source_request.go
 model_scope_mapping.go
 model_scope_mapping_request.go
 model_search_mode_enum.go
+model_selectable_stage.go
 model_service_connection.go
 model_service_connection_request.go
 model_service_connection_state.go

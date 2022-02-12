@@ -22,8 +22,8 @@ type AuthenticatorValidateStageRequest struct {
 	NotConfiguredAction *NotConfiguredActionEnum `json:"not_configured_action,omitempty"`
 	// Device classes which can be used to authenticate
 	DeviceClasses *[]DeviceClassesEnum `json:"device_classes,omitempty"`
-	// Stage used to configure Authenticator when user doesn't have any compatible devices. After this configuration Stage passes, the user is not prompted again.
-	ConfigurationStage NullableString `json:"configuration_stage,omitempty"`
+	// Stages used to configure Authenticator when user doesn't have any compatible devices. After this configuration Stage passes, the user is not prompted again.
+	ConfigurationStages *[]string `json:"configuration_stages,omitempty"`
 }
 
 // NewAuthenticatorValidateStageRequest instantiates a new AuthenticatorValidateStageRequest object
@@ -164,47 +164,36 @@ func (o *AuthenticatorValidateStageRequest) SetDeviceClasses(v []DeviceClassesEn
 	o.DeviceClasses = &v
 }
 
-// GetConfigurationStage returns the ConfigurationStage field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AuthenticatorValidateStageRequest) GetConfigurationStage() string {
-	if o == nil || o.ConfigurationStage.Get() == nil {
-		var ret string
+// GetConfigurationStages returns the ConfigurationStages field value if set, zero value otherwise.
+func (o *AuthenticatorValidateStageRequest) GetConfigurationStages() []string {
+	if o == nil || o.ConfigurationStages == nil {
+		var ret []string
 		return ret
 	}
-	return *o.ConfigurationStage.Get()
+	return *o.ConfigurationStages
 }
 
-// GetConfigurationStageOk returns a tuple with the ConfigurationStage field value if set, nil otherwise
+// GetConfigurationStagesOk returns a tuple with the ConfigurationStages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AuthenticatorValidateStageRequest) GetConfigurationStageOk() (*string, bool) {
-	if o == nil {
+func (o *AuthenticatorValidateStageRequest) GetConfigurationStagesOk() (*[]string, bool) {
+	if o == nil || o.ConfigurationStages == nil {
 		return nil, false
 	}
-	return o.ConfigurationStage.Get(), o.ConfigurationStage.IsSet()
+	return o.ConfigurationStages, true
 }
 
-// HasConfigurationStage returns a boolean if a field has been set.
-func (o *AuthenticatorValidateStageRequest) HasConfigurationStage() bool {
-	if o != nil && o.ConfigurationStage.IsSet() {
+// HasConfigurationStages returns a boolean if a field has been set.
+func (o *AuthenticatorValidateStageRequest) HasConfigurationStages() bool {
+	if o != nil && o.ConfigurationStages != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetConfigurationStage gets a reference to the given NullableString and assigns it to the ConfigurationStage field.
-func (o *AuthenticatorValidateStageRequest) SetConfigurationStage(v string) {
-	o.ConfigurationStage.Set(&v)
-}
-
-// SetConfigurationStageNil sets the value for ConfigurationStage to be an explicit nil
-func (o *AuthenticatorValidateStageRequest) SetConfigurationStageNil() {
-	o.ConfigurationStage.Set(nil)
-}
-
-// UnsetConfigurationStage ensures that no value is present for ConfigurationStage, not even an explicit nil
-func (o *AuthenticatorValidateStageRequest) UnsetConfigurationStage() {
-	o.ConfigurationStage.Unset()
+// SetConfigurationStages gets a reference to the given []string and assigns it to the ConfigurationStages field.
+func (o *AuthenticatorValidateStageRequest) SetConfigurationStages(v []string) {
+	o.ConfigurationStages = &v
 }
 
 func (o AuthenticatorValidateStageRequest) MarshalJSON() ([]byte, error) {
@@ -221,8 +210,8 @@ func (o AuthenticatorValidateStageRequest) MarshalJSON() ([]byte, error) {
 	if o.DeviceClasses != nil {
 		toSerialize["device_classes"] = o.DeviceClasses
 	}
-	if o.ConfigurationStage.IsSet() {
-		toSerialize["configuration_stage"] = o.ConfigurationStage.Get()
+	if o.ConfigurationStages != nil {
+		toSerialize["configuration_stages"] = o.ConfigurationStages
 	}
 	return json.Marshal(toSerialize)
 }

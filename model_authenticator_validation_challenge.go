@@ -17,20 +17,21 @@ import (
 
 // AuthenticatorValidationChallenge Authenticator challenge
 type AuthenticatorValidationChallenge struct {
-	Type              ChallengeChoices          `json:"type"`
-	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component         *string                   `json:"component,omitempty"`
-	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser       string                    `json:"pending_user"`
-	PendingUserAvatar string                    `json:"pending_user_avatar"`
-	DeviceChallenges  []DeviceChallenge         `json:"device_challenges"`
+	Type                ChallengeChoices          `json:"type"`
+	FlowInfo            *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component           *string                   `json:"component,omitempty"`
+	ResponseErrors      *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser         string                    `json:"pending_user"`
+	PendingUserAvatar   string                    `json:"pending_user_avatar"`
+	DeviceChallenges    []DeviceChallenge         `json:"device_challenges"`
+	ConfigurationStages []SelectableStage         `json:"configuration_stages"`
 }
 
 // NewAuthenticatorValidationChallenge instantiates a new AuthenticatorValidationChallenge object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorValidationChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, deviceChallenges []DeviceChallenge) *AuthenticatorValidationChallenge {
+func NewAuthenticatorValidationChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage) *AuthenticatorValidationChallenge {
 	this := AuthenticatorValidationChallenge{}
 	this.Type = type_
 	var component string = "ak-stage-authenticator-validate"
@@ -38,6 +39,7 @@ func NewAuthenticatorValidationChallenge(type_ ChallengeChoices, pendingUser str
 	this.PendingUser = pendingUser
 	this.PendingUserAvatar = pendingUserAvatar
 	this.DeviceChallenges = deviceChallenges
+	this.ConfigurationStages = configurationStages
 	return &this
 }
 
@@ -243,6 +245,30 @@ func (o *AuthenticatorValidationChallenge) SetDeviceChallenges(v []DeviceChallen
 	o.DeviceChallenges = v
 }
 
+// GetConfigurationStages returns the ConfigurationStages field value
+func (o *AuthenticatorValidationChallenge) GetConfigurationStages() []SelectableStage {
+	if o == nil {
+		var ret []SelectableStage
+		return ret
+	}
+
+	return o.ConfigurationStages
+}
+
+// GetConfigurationStagesOk returns a tuple with the ConfigurationStages field value
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorValidationChallenge) GetConfigurationStagesOk() (*[]SelectableStage, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ConfigurationStages, true
+}
+
+// SetConfigurationStages sets field value
+func (o *AuthenticatorValidationChallenge) SetConfigurationStages(v []SelectableStage) {
+	o.ConfigurationStages = v
+}
+
 func (o AuthenticatorValidationChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -265,6 +291,9 @@ func (o AuthenticatorValidationChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["device_challenges"] = o.DeviceChallenges
+	}
+	if true {
+		toSerialize["configuration_stages"] = o.ConfigurationStages
 	}
 	return json.Marshal(toSerialize)
 }

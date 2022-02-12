@@ -2847,7 +2847,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorValidateList
 
-> PaginatedAuthenticatorValidateStageList StagesAuthenticatorValidateList(ctx).ConfigurationStage(configurationStage).Name(name).NotConfiguredAction(notConfiguredAction).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedAuthenticatorValidateStageList StagesAuthenticatorValidateList(ctx).ConfigurationStages(configurationStages).Name(name).NotConfiguredAction(notConfiguredAction).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -2866,7 +2866,7 @@ import (
 )
 
 func main() {
-    configurationStage := TODO // string |  (optional)
+    configurationStages := []string{"Inner_example"} // []string |  (optional)
     name := "name_example" // string |  (optional)
     notConfiguredAction := "notConfiguredAction_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
@@ -2876,7 +2876,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.StagesApi.StagesAuthenticatorValidateList(context.Background()).ConfigurationStage(configurationStage).Name(name).NotConfiguredAction(notConfiguredAction).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := api_client.StagesApi.StagesAuthenticatorValidateList(context.Background()).ConfigurationStages(configurationStages).Name(name).NotConfiguredAction(notConfiguredAction).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorValidateList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2897,7 +2897,7 @@ Other parameters are passed through a pointer to a apiStagesAuthenticatorValidat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **configurationStage** | [**string**](string.md) |  | 
+ **configurationStages** | **[]string** |  | 
  **name** | **string** |  | 
  **notConfiguredAction** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
