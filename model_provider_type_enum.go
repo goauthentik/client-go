@@ -31,6 +31,7 @@ const (
 	PROVIDERTYPEENUM_OKTA          ProviderTypeEnum = "okta"
 	PROVIDERTYPEENUM_REDDIT        ProviderTypeEnum = "reddit"
 	PROVIDERTYPEENUM_TWITTER       ProviderTypeEnum = "twitter"
+	PROVIDERTYPEENUM_MAILCOW       ProviderTypeEnum = "mailcow"
 )
 
 var allowedProviderTypeEnumEnumValues = []ProviderTypeEnum{
@@ -44,6 +45,7 @@ var allowedProviderTypeEnumEnumValues = []ProviderTypeEnum{
 	"okta",
 	"reddit",
 	"twitter",
+	"mailcow",
 }
 
 func (v *ProviderTypeEnum) UnmarshalJSON(src []byte) error {
