@@ -19,14 +19,15 @@ import (
 type Prompt struct {
 	Pk string `json:"pk"`
 	// Name of the form field, also used to store the value
-	FieldKey       string         `json:"field_key"`
-	Label          string         `json:"label"`
-	Type           PromptTypeEnum `json:"type"`
-	Required       *bool          `json:"required,omitempty"`
-	Placeholder    *string        `json:"placeholder,omitempty"`
-	Order          *int32         `json:"order,omitempty"`
-	PromptstageSet *[]Stage       `json:"promptstage_set,omitempty"`
-	SubText        *string        `json:"sub_text,omitempty"`
+	FieldKey              string         `json:"field_key"`
+	Label                 string         `json:"label"`
+	Type                  PromptTypeEnum `json:"type"`
+	Required              *bool          `json:"required,omitempty"`
+	Placeholder           *string        `json:"placeholder,omitempty"`
+	Order                 *int32         `json:"order,omitempty"`
+	PromptstageSet        *[]Stage       `json:"promptstage_set,omitempty"`
+	SubText               *string        `json:"sub_text,omitempty"`
+	PlaceholderExpression *bool          `json:"placeholder_expression,omitempty"`
 }
 
 // NewPrompt instantiates a new Prompt object
@@ -306,6 +307,38 @@ func (o *Prompt) SetSubText(v string) {
 	o.SubText = &v
 }
 
+// GetPlaceholderExpression returns the PlaceholderExpression field value if set, zero value otherwise.
+func (o *Prompt) GetPlaceholderExpression() bool {
+	if o == nil || o.PlaceholderExpression == nil {
+		var ret bool
+		return ret
+	}
+	return *o.PlaceholderExpression
+}
+
+// GetPlaceholderExpressionOk returns a tuple with the PlaceholderExpression field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Prompt) GetPlaceholderExpressionOk() (*bool, bool) {
+	if o == nil || o.PlaceholderExpression == nil {
+		return nil, false
+	}
+	return o.PlaceholderExpression, true
+}
+
+// HasPlaceholderExpression returns a boolean if a field has been set.
+func (o *Prompt) HasPlaceholderExpression() bool {
+	if o != nil && o.PlaceholderExpression != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPlaceholderExpression gets a reference to the given bool and assigns it to the PlaceholderExpression field.
+func (o *Prompt) SetPlaceholderExpression(v bool) {
+	o.PlaceholderExpression = &v
+}
+
 func (o Prompt) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -334,6 +367,9 @@ func (o Prompt) MarshalJSON() ([]byte, error) {
 	}
 	if o.SubText != nil {
 		toSerialize["sub_text"] = o.SubText
+	}
+	if o.PlaceholderExpression != nil {
+		toSerialize["placeholder_expression"] = o.PlaceholderExpression
 	}
 	return json.Marshal(toSerialize)
 }

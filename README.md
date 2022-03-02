@@ -144,7 +144,6 @@ Class | Method | HTTP request | Description
 *CoreApi* | [**CoreUsersServiceAccountCreate**](docs/CoreApi.md#coreusersserviceaccountcreate) | **Post** /core/users/service_account/ | 
 *CoreApi* | [**CoreUsersSetPasswordCreate**](docs/CoreApi.md#coreuserssetpasswordcreate) | **Post** /core/users/{id}/set_password/ | 
 *CoreApi* | [**CoreUsersUpdate**](docs/CoreApi.md#coreusersupdate) | **Put** /core/users/{id}/ | 
-*CoreApi* | [**CoreUsersUpdateSelfUpdate**](docs/CoreApi.md#coreusersupdateselfupdate) | **Put** /core/users/update_self/ | 
 *CoreApi* | [**CoreUsersUsedByList**](docs/CoreApi.md#coreusersusedbylist) | **Get** /core/users/{id}/used_by/ | 
 *CryptoApi* | [**CryptoCertificatekeypairsCreate**](docs/CryptoApi.md#cryptocertificatekeypairscreate) | **Post** /crypto/certificatekeypairs/ | 
 *CryptoApi* | [**CryptoCertificatekeypairsDestroy**](docs/CryptoApi.md#cryptocertificatekeypairsdestroy) | **Delete** /crypto/certificatekeypairs/{kp_uuid}/ | 
@@ -1025,7 +1024,6 @@ Class | Method | HTTP request | Description
  - [UserRequest](docs/UserRequest.md)
  - [UserSelf](docs/UserSelf.md)
  - [UserSelfGroups](docs/UserSelfGroups.md)
- - [UserSelfRequest](docs/UserSelfRequest.md)
  - [UserServiceAccountRequest](docs/UserServiceAccountRequest.md)
  - [UserServiceAccountResponse](docs/UserServiceAccountResponse.md)
  - [UserSetting](docs/UserSetting.md)

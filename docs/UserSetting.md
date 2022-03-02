@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **Component** | **string** |  | 
 **Title** | **string** |  | 
 **ConfigureUrl** | Pointer to **string** |  | [optional] 
-**IconUrl** | **string** |  | 
+**IconUrl** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewUserSetting
 
-`func NewUserSetting(objectUid string, component string, title string, iconUrl string, ) *UserSetting`
+`func NewUserSetting(objectUid string, component string, title string, ) *UserSetting`
 
 NewUserSetting instantiates a new UserSetting object
 This constructor will assign default values to properties that have it defined,
@@ -133,6 +133,11 @@ and a boolean to check if the value has been set.
 
 SetIconUrl sets IconUrl field to given value.
 
+### HasIconUrl
+
+`func (o *UserSetting) HasIconUrl() bool`
+
+HasIconUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

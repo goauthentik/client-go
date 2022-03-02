@@ -8,11 +8,12 @@ Name | Type | Description | Notes
 **BrandingTitle** | **string** |  | 
 **BrandingLogo** | **string** |  | 
 **BrandingFavicon** | **string** |  | 
-**UiFooterLinks** | [**[]FooterLink**](FooterLink.md) |  | [readonly] [default to [{"href":"https://goauthentik.io/docs/?utm_source=authentik","name":"Documentation"},{"href":"https://goauthentik.io/?utm_source=authentik","name":"authentik Website"}]]
+**UiFooterLinks** | [**[]FooterLink**](FooterLink.md) |  | [readonly] [default to []]
 **FlowAuthentication** | Pointer to **string** |  | [optional] 
 **FlowInvalidation** | Pointer to **string** |  | [optional] 
 **FlowRecovery** | Pointer to **string** |  | [optional] 
 **FlowUnenrollment** | Pointer to **string** |  | [optional] 
+**FlowUserSettings** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -232,6 +233,31 @@ SetFlowUnenrollment sets FlowUnenrollment field to given value.
 `func (o *CurrentTenant) HasFlowUnenrollment() bool`
 
 HasFlowUnenrollment returns a boolean if a field has been set.
+
+### GetFlowUserSettings
+
+`func (o *CurrentTenant) GetFlowUserSettings() string`
+
+GetFlowUserSettings returns the FlowUserSettings field if non-nil, zero value otherwise.
+
+### GetFlowUserSettingsOk
+
+`func (o *CurrentTenant) GetFlowUserSettingsOk() (*string, bool)`
+
+GetFlowUserSettingsOk returns a tuple with the FlowUserSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowUserSettings
+
+`func (o *CurrentTenant) SetFlowUserSettings(v string)`
+
+SetFlowUserSettings sets FlowUserSettings field to given value.
+
+### HasFlowUserSettings
+
+`func (o *CurrentTenant) HasFlowUserSettings() bool`
+
+HasFlowUserSettings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

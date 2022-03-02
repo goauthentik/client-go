@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Order** | Pointer to **int32** |  | [optional] 
 **PromptstageSet** | Pointer to [**[]StageRequest**](StageRequest.md) |  | [optional] 
 **SubText** | Pointer to **string** |  | [optional] 
+**PlaceholderExpression** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -216,6 +217,31 @@ SetSubText sets SubText field to given value.
 `func (o *PromptRequest) HasSubText() bool`
 
 HasSubText returns a boolean if a field has been set.
+
+### GetPlaceholderExpression
+
+`func (o *PromptRequest) GetPlaceholderExpression() bool`
+
+GetPlaceholderExpression returns the PlaceholderExpression field if non-nil, zero value otherwise.
+
+### GetPlaceholderExpressionOk
+
+`func (o *PromptRequest) GetPlaceholderExpressionOk() (*bool, bool)`
+
+GetPlaceholderExpressionOk returns a tuple with the PlaceholderExpression field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPlaceholderExpression
+
+`func (o *PromptRequest) SetPlaceholderExpression(v bool)`
+
+SetPlaceholderExpression sets PlaceholderExpression field to given value.
+
+### HasPlaceholderExpression
+
+`func (o *PromptRequest) HasPlaceholderExpression() bool`
+
+HasPlaceholderExpression returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

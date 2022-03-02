@@ -33,6 +33,7 @@ const (
 	PROMPTTYPEENUM_SEPARATOR      PromptTypeEnum = "separator"
 	PROMPTTYPEENUM_HIDDEN         PromptTypeEnum = "hidden"
 	PROMPTTYPEENUM_STATIC         PromptTypeEnum = "static"
+	PROMPTTYPEENUM_AK_LOCALE      PromptTypeEnum = "ak-locale"
 )
 
 var allowedPromptTypeEnumEnumValues = []PromptTypeEnum{
@@ -48,6 +49,7 @@ var allowedPromptTypeEnumEnumValues = []PromptTypeEnum{
 	"separator",
 	"hidden",
 	"static",
+	"ak-locale",
 }
 
 func (v *PromptTypeEnum) UnmarshalJSON(src []byte) error {

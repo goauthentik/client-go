@@ -447,7 +447,6 @@ docs/UserPasswordSetRequest.md
 docs/UserRequest.md
 docs/UserSelf.md
 docs/UserSelfGroups.md
-docs/UserSelfRequest.md
 docs/UserServiceAccountRequest.md
 docs/UserServiceAccountResponse.md
 docs/UserSetting.md
@@ -876,7 +875,6 @@ model_user_password_set_request.go
 model_user_request.go
 model_user_self.go
 model_user_self_groups.go
-model_user_self_request.go
 model_user_service_account_request.go
 model_user_service_account_response.go
 model_user_setting.go

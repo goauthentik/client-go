@@ -2575,6 +2575,14 @@ paths:
           format: uuid
           type: string
         style: form
+      - explode: true
+        in: query
+        name: flow_user_settings
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       - description: Which field to use when ordering the results.
         explode: true
         in: query
@@ -3699,30 +3707,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserServiceAccountResponse'
-        "400":
-          $ref: '#/components/schemas/ValidationError'
-        "403":
-          $ref: '#/components/schemas/GenericError'
-      security:
-      - authentik: []
-      tags:
-      - core
-  /core/users/update_self/:
-    put:
-      description: Allow users to change information on their own profile
-      operationId: core_users_update_self_update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserSelfRequest'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SessionUser'
         "400":
           $ref: '#/components/schemas/ValidationError'
         "403":
@@ -19746,6 +19730,7 @@ paths:
         required: false
         schema:
           enum:
+          - ak-locale
           - checkbox
           - date
           - date-time
@@ -23220,6 +23205,7 @@ components:
         matched_domain: matched_domain
         branding_title: branding_title
         branding_favicon: branding_favicon
+        flow_user_settings: flow_user_settings
       properties:
         matched_domain:
           type: string
@@ -23230,11 +23216,7 @@ components:
         branding_favicon:
           type: string
         ui_footer_links:
-          default:
-          - href: https://goauthentik.io/docs/?utm_source=authentik
-            name: Documentation
-          - href: https://goauthentik.io/?utm_source=authentik
-            name: authentik Website
+          default: []
           items:
             $ref: '#/components/schemas/FooterLink'
           readOnly: true
@@ -23246,6 +23228,8 @@ components:
         flow_recovery:
           type: string
         flow_unenrollment:
+          type: string
+        flow_user_settings:
           type: string
       required:
       - branding_favicon
@@ -30775,6 +30759,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           label: label
           placeholder: placeholder
+          placeholder_expression: true
           required: true
           order: -1803530559
         - sub_text: sub_text
@@ -30861,6 +30846,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           label: label
           placeholder: placeholder
+          placeholder_expression: true
           required: true
           order: -1803530559
       properties:
@@ -32022,6 +32008,7 @@ components:
           total_pages: 5.637376656633329
         results:
         - branding_logo: branding_logo
+          event_retention: event_retention
           flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           default: true
@@ -32029,11 +32016,12 @@ components:
           tenant_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           domain: domain
           flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          event_retention: event_retention
           branding_title: branding_title
           branding_favicon: branding_favicon
+          flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - branding_logo: branding_logo
+          event_retention: event_retention
           flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           default: true
@@ -32041,9 +32029,9 @@ components:
           tenant_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           domain: domain
           flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          event_retention: event_retention
           branding_title: branding_title
           branding_favicon: branding_favicon
+          flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
@@ -35291,6 +35279,7 @@ components:
         field_key: field_key
         label: label
         placeholder: placeholder
+        placeholder_expression: true
         required: true
         order: -1803530559
       properties:
@@ -35317,6 +35306,8 @@ components:
           type: array
         sub_text:
           type: string
+        placeholder_expression:
+          type: boolean
       type: object
     PatchedPromptStageRequest:
       description: PromptStage Serializer
@@ -35758,6 +35749,7 @@ components:
         event_retention: event_retention
         branding_title: branding_title
         branding_favicon: branding_favicon
+        flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         domain:
@@ -35789,6 +35781,10 @@ components:
           nullable: true
           type: string
         flow_unenrollment:
+          format: uuid
+          nullable: true
+          type: string
+        flow_user_settings:
           format: uuid
           nullable: true
           type: string
@@ -36603,6 +36599,7 @@ components:
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         label: label
         placeholder: placeholder
+        placeholder_expression: true
         required: true
         order: -1803530559
       properties:
@@ -36632,6 +36629,8 @@ components:
           type: array
         sub_text:
           type: string
+        placeholder_expression:
+          type: boolean
       required:
       - field_key
       - label
@@ -36705,6 +36704,7 @@ components:
         field_key: field_key
         label: label
         placeholder: placeholder
+        placeholder_expression: true
         required: true
         order: -1803530559
       properties:
@@ -36731,6 +36731,8 @@ components:
           type: array
         sub_text:
           type: string
+        placeholder_expression:
+          type: boolean
       required:
       - field_key
       - label
@@ -36884,6 +36886,7 @@ components:
       - separator
       - hidden
       - static
+      - ak-locale
       type: string
     PropertyMapping:
       description: PropertyMapping Serializer
@@ -39050,6 +39053,7 @@ components:
       description: Tenant Serializer
       example:
         branding_logo: branding_logo
+        event_retention: event_retention
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         default: true
@@ -39057,9 +39061,9 @@ components:
         tenant_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         domain: domain
         flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        event_retention: event_retention
         branding_title: branding_title
         branding_favicon: branding_favicon
+        flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         tenant_uuid:
@@ -39094,6 +39098,10 @@ components:
           format: uuid
           nullable: true
           type: string
+        flow_user_settings:
+          format: uuid
+          nullable: true
+          type: string
         event_retention:
           description: 'Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2).'
           type: string
@@ -39119,6 +39127,7 @@ components:
         event_retention: event_retention
         branding_title: branding_title
         branding_favicon: branding_favicon
+        flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         domain:
@@ -39150,6 +39159,10 @@ components:
           nullable: true
           type: string
         flow_unenrollment:
+          format: uuid
+          nullable: true
+          type: string
+        flow_user_settings:
           format: uuid
           nullable: true
           type: string
@@ -40231,39 +40244,6 @@ components:
       - name
       - pk
       type: object
-    UserSelfRequest:
-      description: |-
-        User Serializer for information a user can retrieve about themselves and
-        update about themselves
-      example:
-        settings:
-          key: ""
-        name: name
-        email: email
-        username: username
-      properties:
-        username:
-          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
-            only.
-          maxLength: 150
-          minLength: 1
-          pattern: ^[\w.@+-]+$
-          type: string
-        name:
-          description: User's display name.
-          type: string
-        email:
-          format: email
-          maxLength: 254
-          title: Email address
-          type: string
-        settings:
-          additionalProperties: {}
-          type: object
-      required:
-      - name
-      - username
-      type: object
     UserServiceAccountRequest:
       example:
         create_group: false
@@ -40312,7 +40292,6 @@ components:
           type: string
       required:
       - component
-      - icon_url
       - object_uid
       - title
       type: object

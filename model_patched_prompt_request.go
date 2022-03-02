@@ -18,14 +18,15 @@ import (
 // PatchedPromptRequest Prompt Serializer
 type PatchedPromptRequest struct {
 	// Name of the form field, also used to store the value
-	FieldKey       *string         `json:"field_key,omitempty"`
-	Label          *string         `json:"label,omitempty"`
-	Type           *PromptTypeEnum `json:"type,omitempty"`
-	Required       *bool           `json:"required,omitempty"`
-	Placeholder    *string         `json:"placeholder,omitempty"`
-	Order          *int32          `json:"order,omitempty"`
-	PromptstageSet *[]StageRequest `json:"promptstage_set,omitempty"`
-	SubText        *string         `json:"sub_text,omitempty"`
+	FieldKey              *string         `json:"field_key,omitempty"`
+	Label                 *string         `json:"label,omitempty"`
+	Type                  *PromptTypeEnum `json:"type,omitempty"`
+	Required              *bool           `json:"required,omitempty"`
+	Placeholder           *string         `json:"placeholder,omitempty"`
+	Order                 *int32          `json:"order,omitempty"`
+	PromptstageSet        *[]StageRequest `json:"promptstage_set,omitempty"`
+	SubText               *string         `json:"sub_text,omitempty"`
+	PlaceholderExpression *bool           `json:"placeholder_expression,omitempty"`
 }
 
 // NewPatchedPromptRequest instantiates a new PatchedPromptRequest object
@@ -301,6 +302,38 @@ func (o *PatchedPromptRequest) SetSubText(v string) {
 	o.SubText = &v
 }
 
+// GetPlaceholderExpression returns the PlaceholderExpression field value if set, zero value otherwise.
+func (o *PatchedPromptRequest) GetPlaceholderExpression() bool {
+	if o == nil || o.PlaceholderExpression == nil {
+		var ret bool
+		return ret
+	}
+	return *o.PlaceholderExpression
+}
+
+// GetPlaceholderExpressionOk returns a tuple with the PlaceholderExpression field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedPromptRequest) GetPlaceholderExpressionOk() (*bool, bool) {
+	if o == nil || o.PlaceholderExpression == nil {
+		return nil, false
+	}
+	return o.PlaceholderExpression, true
+}
+
+// HasPlaceholderExpression returns a boolean if a field has been set.
+func (o *PatchedPromptRequest) HasPlaceholderExpression() bool {
+	if o != nil && o.PlaceholderExpression != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPlaceholderExpression gets a reference to the given bool and assigns it to the PlaceholderExpression field.
+func (o *PatchedPromptRequest) SetPlaceholderExpression(v bool) {
+	o.PlaceholderExpression = &v
+}
+
 func (o PatchedPromptRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.FieldKey != nil {
@@ -326,6 +359,9 @@ func (o PatchedPromptRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.SubText != nil {
 		toSerialize["sub_text"] = o.SubText
+	}
+	if o.PlaceholderExpression != nil {
+		toSerialize["placeholder_expression"] = o.PlaceholderExpression
 	}
 	return json.Marshal(toSerialize)
 }

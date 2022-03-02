@@ -58,7 +58,6 @@ Method | HTTP request | Description
 [**CoreUsersServiceAccountCreate**](CoreApi.md#CoreUsersServiceAccountCreate) | **Post** /core/users/service_account/ | 
 [**CoreUsersSetPasswordCreate**](CoreApi.md#CoreUsersSetPasswordCreate) | **Post** /core/users/{id}/set_password/ | 
 [**CoreUsersUpdate**](CoreApi.md#CoreUsersUpdate) | **Put** /core/users/{id}/ | 
-[**CoreUsersUpdateSelfUpdate**](CoreApi.md#CoreUsersUpdateSelfUpdate) | **Put** /core/users/update_self/ | 
 [**CoreUsersUsedByList**](CoreApi.md#CoreUsersUsedByList) | **Get** /core/users/{id}/used_by/ | 
 
 
@@ -1822,7 +1821,7 @@ Name | Type | Description  | Notes
 
 ## CoreTenantsList
 
-> PaginatedTenantList CoreTenantsList(ctx).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).EventRetention(eventRetention).FlowAuthentication(flowAuthentication).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantUuid(tenantUuid).WebCertificate(webCertificate).Execute()
+> PaginatedTenantList CoreTenantsList(ctx).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).EventRetention(eventRetention).FlowAuthentication(flowAuthentication).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantUuid(tenantUuid).WebCertificate(webCertificate).Execute()
 
 
 
@@ -1851,6 +1850,7 @@ func main() {
     flowInvalidation := TODO // string |  (optional)
     flowRecovery := TODO // string |  (optional)
     flowUnenrollment := TODO // string |  (optional)
+    flowUserSettings := TODO // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -1860,7 +1860,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTenantsList(context.Background()).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).EventRetention(eventRetention).FlowAuthentication(flowAuthentication).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantUuid(tenantUuid).WebCertificate(webCertificate).Execute()
+    resp, r, err := api_client.CoreApi.CoreTenantsList(context.Background()).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).EventRetention(eventRetention).FlowAuthentication(flowAuthentication).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantUuid(tenantUuid).WebCertificate(webCertificate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1891,6 +1891,7 @@ Name | Type | Description  | Notes
  **flowInvalidation** | [**string**](string.md) |  | 
  **flowRecovery** | [**string**](string.md) |  | 
  **flowUnenrollment** | [**string**](string.md) |  | 
+ **flowUserSettings** | [**string**](string.md) |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
@@ -3887,72 +3888,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**User**](User.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CoreUsersUpdateSelfUpdate
-
-> SessionUser CoreUsersUpdateSelfUpdate(ctx).UserSelfRequest(userSelfRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    userSelfRequest := *openapiclient.NewUserSelfRequest("Username_example", "Name_example") // UserSelfRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUsersUpdateSelfUpdate(context.Background()).UserSelfRequest(userSelfRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersUpdateSelfUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CoreUsersUpdateSelfUpdate`: SessionUser
-    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreUsersUpdateSelfUpdate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreUsersUpdateSelfUpdateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userSelfRequest** | [**UserSelfRequest**](UserSelfRequest.md) |  | 
-
-### Return type
-
-[**SessionUser**](SessionUser.md)
 
 ### Authorization
 

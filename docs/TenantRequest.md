@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **FlowInvalidation** | Pointer to **NullableString** |  | [optional] 
 **FlowRecovery** | Pointer to **NullableString** |  | [optional] 
 **FlowUnenrollment** | Pointer to **NullableString** |  | [optional] 
+**FlowUserSettings** | Pointer to **NullableString** |  | [optional] 
 **EventRetention** | Pointer to **string** | Events will be deleted after this duration.(Format: weeks&#x3D;3;days&#x3D;2;hours&#x3D;3,seconds&#x3D;2). | [optional] 
 **WebCertificate** | Pointer to **NullableString** | Web Certificate used by the authentik Core webserver. | [optional] 
 
@@ -295,6 +296,41 @@ HasFlowUnenrollment returns a boolean if a field has been set.
 `func (o *TenantRequest) UnsetFlowUnenrollment()`
 
 UnsetFlowUnenrollment ensures that no value is present for FlowUnenrollment, not even an explicit nil
+### GetFlowUserSettings
+
+`func (o *TenantRequest) GetFlowUserSettings() string`
+
+GetFlowUserSettings returns the FlowUserSettings field if non-nil, zero value otherwise.
+
+### GetFlowUserSettingsOk
+
+`func (o *TenantRequest) GetFlowUserSettingsOk() (*string, bool)`
+
+GetFlowUserSettingsOk returns a tuple with the FlowUserSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowUserSettings
+
+`func (o *TenantRequest) SetFlowUserSettings(v string)`
+
+SetFlowUserSettings sets FlowUserSettings field to given value.
+
+### HasFlowUserSettings
+
+`func (o *TenantRequest) HasFlowUserSettings() bool`
+
+HasFlowUserSettings returns a boolean if a field has been set.
+
+### SetFlowUserSettingsNil
+
+`func (o *TenantRequest) SetFlowUserSettingsNil(b bool)`
+
+ SetFlowUserSettingsNil sets the value for FlowUserSettings to be an explicit nil
+
+### UnsetFlowUserSettings
+`func (o *TenantRequest) UnsetFlowUserSettings()`
+
+UnsetFlowUserSettings ensures that no value is present for FlowUserSettings, not even an explicit nil
 ### GetEventRetention
 
 `func (o *TenantRequest) GetEventRetention() string`

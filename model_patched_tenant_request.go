@@ -27,6 +27,7 @@ type PatchedTenantRequest struct {
 	FlowInvalidation   NullableString `json:"flow_invalidation,omitempty"`
 	FlowRecovery       NullableString `json:"flow_recovery,omitempty"`
 	FlowUnenrollment   NullableString `json:"flow_unenrollment,omitempty"`
+	FlowUserSettings   NullableString `json:"flow_user_settings,omitempty"`
 	// Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2).
 	EventRetention *string `json:"event_retention,omitempty"`
 	// Web Certificate used by the authentik Core webserver.
@@ -382,6 +383,49 @@ func (o *PatchedTenantRequest) UnsetFlowUnenrollment() {
 	o.FlowUnenrollment.Unset()
 }
 
+// GetFlowUserSettings returns the FlowUserSettings field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedTenantRequest) GetFlowUserSettings() string {
+	if o == nil || o.FlowUserSettings.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.FlowUserSettings.Get()
+}
+
+// GetFlowUserSettingsOk returns a tuple with the FlowUserSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedTenantRequest) GetFlowUserSettingsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FlowUserSettings.Get(), o.FlowUserSettings.IsSet()
+}
+
+// HasFlowUserSettings returns a boolean if a field has been set.
+func (o *PatchedTenantRequest) HasFlowUserSettings() bool {
+	if o != nil && o.FlowUserSettings.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowUserSettings gets a reference to the given NullableString and assigns it to the FlowUserSettings field.
+func (o *PatchedTenantRequest) SetFlowUserSettings(v string) {
+	o.FlowUserSettings.Set(&v)
+}
+
+// SetFlowUserSettingsNil sets the value for FlowUserSettings to be an explicit nil
+func (o *PatchedTenantRequest) SetFlowUserSettingsNil() {
+	o.FlowUserSettings.Set(nil)
+}
+
+// UnsetFlowUserSettings ensures that no value is present for FlowUserSettings, not even an explicit nil
+func (o *PatchedTenantRequest) UnsetFlowUserSettings() {
+	o.FlowUserSettings.Unset()
+}
+
 // GetEventRetention returns the EventRetention field value if set, zero value otherwise.
 func (o *PatchedTenantRequest) GetEventRetention() string {
 	if o == nil || o.EventRetention == nil {
@@ -485,6 +529,9 @@ func (o PatchedTenantRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.FlowUnenrollment.IsSet() {
 		toSerialize["flow_unenrollment"] = o.FlowUnenrollment.Get()
+	}
+	if o.FlowUserSettings.IsSet() {
+		toSerialize["flow_user_settings"] = o.FlowUserSettings.Get()
 	}
 	if o.EventRetention != nil {
 		toSerialize["event_retention"] = o.EventRetention

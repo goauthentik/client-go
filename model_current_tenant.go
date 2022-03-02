@@ -26,6 +26,7 @@ type CurrentTenant struct {
 	FlowInvalidation   *string      `json:"flow_invalidation,omitempty"`
 	FlowRecovery       *string      `json:"flow_recovery,omitempty"`
 	FlowUnenrollment   *string      `json:"flow_unenrollment,omitempty"`
+	FlowUserSettings   *string      `json:"flow_user_settings,omitempty"`
 }
 
 // NewCurrentTenant instantiates a new CurrentTenant object
@@ -298,6 +299,38 @@ func (o *CurrentTenant) SetFlowUnenrollment(v string) {
 	o.FlowUnenrollment = &v
 }
 
+// GetFlowUserSettings returns the FlowUserSettings field value if set, zero value otherwise.
+func (o *CurrentTenant) GetFlowUserSettings() string {
+	if o == nil || o.FlowUserSettings == nil {
+		var ret string
+		return ret
+	}
+	return *o.FlowUserSettings
+}
+
+// GetFlowUserSettingsOk returns a tuple with the FlowUserSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CurrentTenant) GetFlowUserSettingsOk() (*string, bool) {
+	if o == nil || o.FlowUserSettings == nil {
+		return nil, false
+	}
+	return o.FlowUserSettings, true
+}
+
+// HasFlowUserSettings returns a boolean if a field has been set.
+func (o *CurrentTenant) HasFlowUserSettings() bool {
+	if o != nil && o.FlowUserSettings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowUserSettings gets a reference to the given string and assigns it to the FlowUserSettings field.
+func (o *CurrentTenant) SetFlowUserSettings(v string) {
+	o.FlowUserSettings = &v
+}
+
 func (o CurrentTenant) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -326,6 +359,9 @@ func (o CurrentTenant) MarshalJSON() ([]byte, error) {
 	}
 	if o.FlowUnenrollment != nil {
 		toSerialize["flow_unenrollment"] = o.FlowUnenrollment
+	}
+	if o.FlowUserSettings != nil {
+		toSerialize["flow_user_settings"] = o.FlowUserSettings
 	}
 	return json.Marshal(toSerialize)
 }
