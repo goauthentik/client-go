@@ -10,6 +10,10 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+const (
+	majorVersion = "3"
+)
+
 type Schema struct {
 	Info struct {
 		Version string `yaml:"version"`
@@ -53,6 +57,6 @@ func main() {
 	if upstream != tag[1] {
 		rev = 0
 	}
-	newVersion := fmt.Sprintf("v0.%s.%d", upstream, rev+1)
+	newVersion := fmt.Sprintf("v%s.%s.%d", majorVersion, upstream, rev+1)
 	fmt.Print(newVersion)
 }
