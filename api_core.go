@@ -5822,6 +5822,7 @@ type ApiCoreUsersListRequest struct {
 	page         *int32
 	pageSize     *int32
 	search       *string
+	uid          *string
 	username     *string
 }
 
@@ -5876,6 +5877,10 @@ func (r ApiCoreUsersListRequest) PageSize(pageSize int32) ApiCoreUsersListReques
 // A search term.
 func (r ApiCoreUsersListRequest) Search(search string) ApiCoreUsersListRequest {
 	r.search = &search
+	return r
+}
+func (r ApiCoreUsersListRequest) Uid(uid string) ApiCoreUsersListRequest {
+	r.uid = &uid
 	return r
 }
 func (r ApiCoreUsersListRequest) Username(username string) ApiCoreUsersListRequest {
@@ -5973,6 +5978,9 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (Pagina
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.uid != nil {
+		localVarQueryParams.Add("uid", parameterToString(*r.uid, ""))
 	}
 	if r.username != nil {
 		localVarQueryParams.Add("username", parameterToString(*r.username, ""))

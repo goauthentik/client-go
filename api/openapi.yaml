@@ -3367,6 +3367,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: uid
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: username
         required: false
         schema:
