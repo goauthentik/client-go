@@ -3367,14 +3367,14 @@ paths:
         style: form
       - explode: true
         in: query
-        name: uid
+        name: username
         required: false
         schema:
           type: string
         style: form
       - explode: true
         in: query
-        name: username
+        name: uuid
         required: false
         schema:
           type: string

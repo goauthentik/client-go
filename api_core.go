@@ -5822,8 +5822,8 @@ type ApiCoreUsersListRequest struct {
 	page         *int32
 	pageSize     *int32
 	search       *string
-	uid          *string
 	username     *string
+	uuid         *string
 }
 
 // Attributes
@@ -5879,12 +5879,12 @@ func (r ApiCoreUsersListRequest) Search(search string) ApiCoreUsersListRequest {
 	r.search = &search
 	return r
 }
-func (r ApiCoreUsersListRequest) Uid(uid string) ApiCoreUsersListRequest {
-	r.uid = &uid
-	return r
-}
 func (r ApiCoreUsersListRequest) Username(username string) ApiCoreUsersListRequest {
 	r.username = &username
+	return r
+}
+func (r ApiCoreUsersListRequest) Uuid(uuid string) ApiCoreUsersListRequest {
+	r.uuid = &uuid
 	return r
 }
 
@@ -5979,11 +5979,11 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (Pagina
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
-	if r.uid != nil {
-		localVarQueryParams.Add("uid", parameterToString(*r.uid, ""))
-	}
 	if r.username != nil {
 		localVarQueryParams.Add("username", parameterToString(*r.username, ""))
+	}
+	if r.uuid != nil {
+		localVarQueryParams.Add("uuid", parameterToString(*r.uuid, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
