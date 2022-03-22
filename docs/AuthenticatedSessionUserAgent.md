@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Device** | Pointer to [**AuthenticatedSessionUserAgentDevice**](AuthenticatedSessionUserAgentDevice.md) |  | [optional] 
-**Os** | Pointer to [**AuthenticatedSessionUserAgentOs**](AuthenticatedSessionUserAgentOs.md) |  | [optional] 
-**UserAgent** | Pointer to [**AuthenticatedSessionUserAgentUserAgent**](AuthenticatedSessionUserAgentUserAgent.md) |  | [optional] 
-**String** | Pointer to **string** |  | [optional] 
+**Device** | [**AuthenticatedSessionUserAgentDevice**](AuthenticatedSessionUserAgentDevice.md) |  | 
+**Os** | [**AuthenticatedSessionUserAgentOs**](AuthenticatedSessionUserAgentOs.md) |  | 
+**UserAgent** | [**AuthenticatedSessionUserAgentUserAgent**](AuthenticatedSessionUserAgentUserAgent.md) |  | 
+**String** | **string** |  | 
 
 ## Methods
 
 ### NewAuthenticatedSessionUserAgent
 
-`func NewAuthenticatedSessionUserAgent() *AuthenticatedSessionUserAgent`
+`func NewAuthenticatedSessionUserAgent(device AuthenticatedSessionUserAgentDevice, os AuthenticatedSessionUserAgentOs, userAgent AuthenticatedSessionUserAgentUserAgent, string_ string, ) *AuthenticatedSessionUserAgent`
 
 NewAuthenticatedSessionUserAgent instantiates a new AuthenticatedSessionUserAgent object
 This constructor will assign default values to properties that have it defined,
@@ -47,11 +47,6 @@ and a boolean to check if the value has been set.
 
 SetDevice sets Device field to given value.
 
-### HasDevice
-
-`func (o *AuthenticatedSessionUserAgent) HasDevice() bool`
-
-HasDevice returns a boolean if a field has been set.
 
 ### GetOs
 
@@ -72,11 +67,6 @@ and a boolean to check if the value has been set.
 
 SetOs sets Os field to given value.
 
-### HasOs
-
-`func (o *AuthenticatedSessionUserAgent) HasOs() bool`
-
-HasOs returns a boolean if a field has been set.
 
 ### GetUserAgent
 
@@ -97,11 +87,6 @@ and a boolean to check if the value has been set.
 
 SetUserAgent sets UserAgent field to given value.
 
-### HasUserAgent
-
-`func (o *AuthenticatedSessionUserAgent) HasUserAgent() bool`
-
-HasUserAgent returns a boolean if a field has been set.
 
 ### GetString
 
@@ -122,11 +107,6 @@ and a boolean to check if the value has been set.
 
 SetString sets String field to given value.
 
-### HasString
-
-`func (o *AuthenticatedSessionUserAgent) HasString() bool`
-
-HasString returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

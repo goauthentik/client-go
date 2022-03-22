@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Brand** | Pointer to **string** |  | [optional] 
-**Family** | Pointer to **string** |  | [optional] 
-**Model** | Pointer to **string** |  | [optional] 
+**Brand** | **string** |  | 
+**Family** | **string** |  | 
+**Model** | **string** |  | 
 
 ## Methods
 
 ### NewAuthenticatedSessionUserAgentDevice
 
-`func NewAuthenticatedSessionUserAgentDevice() *AuthenticatedSessionUserAgentDevice`
+`func NewAuthenticatedSessionUserAgentDevice(brand string, family string, model string, ) *AuthenticatedSessionUserAgentDevice`
 
 NewAuthenticatedSessionUserAgentDevice instantiates a new AuthenticatedSessionUserAgentDevice object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetBrand sets Brand field to given value.
 
-### HasBrand
-
-`func (o *AuthenticatedSessionUserAgentDevice) HasBrand() bool`
-
-HasBrand returns a boolean if a field has been set.
 
 ### GetFamily
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetFamily sets Family field to given value.
 
-### HasFamily
-
-`func (o *AuthenticatedSessionUserAgentDevice) HasFamily() bool`
-
-HasFamily returns a boolean if a field has been set.
 
 ### GetModel
 
@@ -96,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetModel sets Model field to given value.
 
-### HasModel
-
-`func (o *AuthenticatedSessionUserAgentDevice) HasModel() bool`
-
-HasModel returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

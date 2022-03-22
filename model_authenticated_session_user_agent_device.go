@@ -15,19 +15,22 @@ import (
 	"encoding/json"
 )
 
-// AuthenticatedSessionUserAgentDevice struct for AuthenticatedSessionUserAgentDevice
+// AuthenticatedSessionUserAgentDevice User agent device
 type AuthenticatedSessionUserAgentDevice struct {
-	Brand  *string `json:"brand,omitempty"`
-	Family *string `json:"family,omitempty"`
-	Model  *string `json:"model,omitempty"`
+	Brand  string `json:"brand"`
+	Family string `json:"family"`
+	Model  string `json:"model"`
 }
 
 // NewAuthenticatedSessionUserAgentDevice instantiates a new AuthenticatedSessionUserAgentDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatedSessionUserAgentDevice() *AuthenticatedSessionUserAgentDevice {
+func NewAuthenticatedSessionUserAgentDevice(brand string, family string, model string) *AuthenticatedSessionUserAgentDevice {
 	this := AuthenticatedSessionUserAgentDevice{}
+	this.Brand = brand
+	this.Family = family
+	this.Model = model
 	return &this
 }
 
@@ -39,111 +42,87 @@ func NewAuthenticatedSessionUserAgentDeviceWithDefaults() *AuthenticatedSessionU
 	return &this
 }
 
-// GetBrand returns the Brand field value if set, zero value otherwise.
+// GetBrand returns the Brand field value
 func (o *AuthenticatedSessionUserAgentDevice) GetBrand() string {
-	if o == nil || o.Brand == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Brand
+
+	return o.Brand
 }
 
-// GetBrandOk returns a tuple with the Brand field value if set, nil otherwise
+// GetBrandOk returns a tuple with the Brand field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSessionUserAgentDevice) GetBrandOk() (*string, bool) {
-	if o == nil || o.Brand == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Brand, true
+	return &o.Brand, true
 }
 
-// HasBrand returns a boolean if a field has been set.
-func (o *AuthenticatedSessionUserAgentDevice) HasBrand() bool {
-	if o != nil && o.Brand != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBrand gets a reference to the given string and assigns it to the Brand field.
+// SetBrand sets field value
 func (o *AuthenticatedSessionUserAgentDevice) SetBrand(v string) {
-	o.Brand = &v
+	o.Brand = v
 }
 
-// GetFamily returns the Family field value if set, zero value otherwise.
+// GetFamily returns the Family field value
 func (o *AuthenticatedSessionUserAgentDevice) GetFamily() string {
-	if o == nil || o.Family == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Family
+
+	return o.Family
 }
 
-// GetFamilyOk returns a tuple with the Family field value if set, nil otherwise
+// GetFamilyOk returns a tuple with the Family field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSessionUserAgentDevice) GetFamilyOk() (*string, bool) {
-	if o == nil || o.Family == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Family, true
+	return &o.Family, true
 }
 
-// HasFamily returns a boolean if a field has been set.
-func (o *AuthenticatedSessionUserAgentDevice) HasFamily() bool {
-	if o != nil && o.Family != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFamily gets a reference to the given string and assigns it to the Family field.
+// SetFamily sets field value
 func (o *AuthenticatedSessionUserAgentDevice) SetFamily(v string) {
-	o.Family = &v
+	o.Family = v
 }
 
-// GetModel returns the Model field value if set, zero value otherwise.
+// GetModel returns the Model field value
 func (o *AuthenticatedSessionUserAgentDevice) GetModel() string {
-	if o == nil || o.Model == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Model
+
+	return o.Model
 }
 
-// GetModelOk returns a tuple with the Model field value if set, nil otherwise
+// GetModelOk returns a tuple with the Model field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSessionUserAgentDevice) GetModelOk() (*string, bool) {
-	if o == nil || o.Model == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Model, true
+	return &o.Model, true
 }
 
-// HasModel returns a boolean if a field has been set.
-func (o *AuthenticatedSessionUserAgentDevice) HasModel() bool {
-	if o != nil && o.Model != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetModel gets a reference to the given string and assigns it to the Model field.
+// SetModel sets field value
 func (o *AuthenticatedSessionUserAgentDevice) SetModel(v string) {
-	o.Model = &v
+	o.Model = v
 }
 
 func (o AuthenticatedSessionUserAgentDevice) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Brand != nil {
+	if true {
 		toSerialize["brand"] = o.Brand
 	}
-	if o.Family != nil {
+	if true {
 		toSerialize["family"] = o.Family
 	}
-	if o.Model != nil {
+	if true {
 		toSerialize["model"] = o.Model
 	}
 	return json.Marshal(toSerialize)

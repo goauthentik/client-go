@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PythonVersion** | Pointer to **string** |  | [optional] 
-**GunicornVersion** | Pointer to **string** |  | [optional] 
-**Environment** | Pointer to **string** |  | [optional] 
-**Architecture** | Pointer to **string** |  | [optional] 
-**Platform** | Pointer to **string** |  | [optional] 
-**Uname** | Pointer to **string** |  | [optional] 
+**PythonVersion** | **string** |  | 
+**GunicornVersion** | **string** |  | 
+**Environment** | **string** |  | 
+**Architecture** | **string** |  | 
+**Platform** | **string** |  | 
+**Uname** | **string** |  | 
 
 ## Methods
 
 ### NewSystemRuntime
 
-`func NewSystemRuntime() *SystemRuntime`
+`func NewSystemRuntime(pythonVersion string, gunicornVersion string, environment string, architecture string, platform string, uname string, ) *SystemRuntime`
 
 NewSystemRuntime instantiates a new SystemRuntime object
 This constructor will assign default values to properties that have it defined,
@@ -49,11 +49,6 @@ and a boolean to check if the value has been set.
 
 SetPythonVersion sets PythonVersion field to given value.
 
-### HasPythonVersion
-
-`func (o *SystemRuntime) HasPythonVersion() bool`
-
-HasPythonVersion returns a boolean if a field has been set.
 
 ### GetGunicornVersion
 
@@ -74,11 +69,6 @@ and a boolean to check if the value has been set.
 
 SetGunicornVersion sets GunicornVersion field to given value.
 
-### HasGunicornVersion
-
-`func (o *SystemRuntime) HasGunicornVersion() bool`
-
-HasGunicornVersion returns a boolean if a field has been set.
 
 ### GetEnvironment
 
@@ -99,11 +89,6 @@ and a boolean to check if the value has been set.
 
 SetEnvironment sets Environment field to given value.
 
-### HasEnvironment
-
-`func (o *SystemRuntime) HasEnvironment() bool`
-
-HasEnvironment returns a boolean if a field has been set.
 
 ### GetArchitecture
 
@@ -124,11 +109,6 @@ and a boolean to check if the value has been set.
 
 SetArchitecture sets Architecture field to given value.
 
-### HasArchitecture
-
-`func (o *SystemRuntime) HasArchitecture() bool`
-
-HasArchitecture returns a boolean if a field has been set.
 
 ### GetPlatform
 
@@ -149,11 +129,6 @@ and a boolean to check if the value has been set.
 
 SetPlatform sets Platform field to given value.
 
-### HasPlatform
-
-`func (o *SystemRuntime) HasPlatform() bool`
-
-HasPlatform returns a boolean if a field has been set.
 
 ### GetUname
 
@@ -174,11 +149,6 @@ and a boolean to check if the value has been set.
 
 SetUname sets Uname field to given value.
 
-### HasUname
-
-`func (o *SystemRuntime) HasUname() bool`
-
-HasUname returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

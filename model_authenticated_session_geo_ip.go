@@ -15,21 +15,26 @@ import (
 	"encoding/json"
 )
 
-// AuthenticatedSessionGeoIp struct for AuthenticatedSessionGeoIp
+// AuthenticatedSessionGeoIp GeoIP Details
 type AuthenticatedSessionGeoIp struct {
-	Continent *string  `json:"continent,omitempty"`
-	Country   *string  `json:"country,omitempty"`
-	Lat       *float32 `json:"lat,omitempty"`
-	Long      *float32 `json:"long,omitempty"`
-	City      *string  `json:"city,omitempty"`
+	Continent string  `json:"continent"`
+	Country   string  `json:"country"`
+	Lat       float32 `json:"lat"`
+	Long      float32 `json:"long"`
+	City      string  `json:"city"`
 }
 
 // NewAuthenticatedSessionGeoIp instantiates a new AuthenticatedSessionGeoIp object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatedSessionGeoIp() *AuthenticatedSessionGeoIp {
+func NewAuthenticatedSessionGeoIp(continent string, country string, lat float32, long float32, city string) *AuthenticatedSessionGeoIp {
 	this := AuthenticatedSessionGeoIp{}
+	this.Continent = continent
+	this.Country = country
+	this.Lat = lat
+	this.Long = long
+	this.City = city
 	return &this
 }
 
@@ -41,181 +46,141 @@ func NewAuthenticatedSessionGeoIpWithDefaults() *AuthenticatedSessionGeoIp {
 	return &this
 }
 
-// GetContinent returns the Continent field value if set, zero value otherwise.
+// GetContinent returns the Continent field value
 func (o *AuthenticatedSessionGeoIp) GetContinent() string {
-	if o == nil || o.Continent == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Continent
+
+	return o.Continent
 }
 
-// GetContinentOk returns a tuple with the Continent field value if set, nil otherwise
+// GetContinentOk returns a tuple with the Continent field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSessionGeoIp) GetContinentOk() (*string, bool) {
-	if o == nil || o.Continent == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Continent, true
+	return &o.Continent, true
 }
 
-// HasContinent returns a boolean if a field has been set.
-func (o *AuthenticatedSessionGeoIp) HasContinent() bool {
-	if o != nil && o.Continent != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetContinent gets a reference to the given string and assigns it to the Continent field.
+// SetContinent sets field value
 func (o *AuthenticatedSessionGeoIp) SetContinent(v string) {
-	o.Continent = &v
+	o.Continent = v
 }
 
-// GetCountry returns the Country field value if set, zero value otherwise.
+// GetCountry returns the Country field value
 func (o *AuthenticatedSessionGeoIp) GetCountry() string {
-	if o == nil || o.Country == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Country
+
+	return o.Country
 }
 
-// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
+// GetCountryOk returns a tuple with the Country field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSessionGeoIp) GetCountryOk() (*string, bool) {
-	if o == nil || o.Country == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Country, true
+	return &o.Country, true
 }
 
-// HasCountry returns a boolean if a field has been set.
-func (o *AuthenticatedSessionGeoIp) HasCountry() bool {
-	if o != nil && o.Country != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCountry gets a reference to the given string and assigns it to the Country field.
+// SetCountry sets field value
 func (o *AuthenticatedSessionGeoIp) SetCountry(v string) {
-	o.Country = &v
+	o.Country = v
 }
 
-// GetLat returns the Lat field value if set, zero value otherwise.
+// GetLat returns the Lat field value
 func (o *AuthenticatedSessionGeoIp) GetLat() float32 {
-	if o == nil || o.Lat == nil {
+	if o == nil {
 		var ret float32
 		return ret
 	}
-	return *o.Lat
+
+	return o.Lat
 }
 
-// GetLatOk returns a tuple with the Lat field value if set, nil otherwise
+// GetLatOk returns a tuple with the Lat field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSessionGeoIp) GetLatOk() (*float32, bool) {
-	if o == nil || o.Lat == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Lat, true
+	return &o.Lat, true
 }
 
-// HasLat returns a boolean if a field has been set.
-func (o *AuthenticatedSessionGeoIp) HasLat() bool {
-	if o != nil && o.Lat != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLat gets a reference to the given float32 and assigns it to the Lat field.
+// SetLat sets field value
 func (o *AuthenticatedSessionGeoIp) SetLat(v float32) {
-	o.Lat = &v
+	o.Lat = v
 }
 
-// GetLong returns the Long field value if set, zero value otherwise.
+// GetLong returns the Long field value
 func (o *AuthenticatedSessionGeoIp) GetLong() float32 {
-	if o == nil || o.Long == nil {
+	if o == nil {
 		var ret float32
 		return ret
 	}
-	return *o.Long
+
+	return o.Long
 }
 
-// GetLongOk returns a tuple with the Long field value if set, nil otherwise
+// GetLongOk returns a tuple with the Long field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSessionGeoIp) GetLongOk() (*float32, bool) {
-	if o == nil || o.Long == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Long, true
+	return &o.Long, true
 }
 
-// HasLong returns a boolean if a field has been set.
-func (o *AuthenticatedSessionGeoIp) HasLong() bool {
-	if o != nil && o.Long != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLong gets a reference to the given float32 and assigns it to the Long field.
+// SetLong sets field value
 func (o *AuthenticatedSessionGeoIp) SetLong(v float32) {
-	o.Long = &v
+	o.Long = v
 }
 
-// GetCity returns the City field value if set, zero value otherwise.
+// GetCity returns the City field value
 func (o *AuthenticatedSessionGeoIp) GetCity() string {
-	if o == nil || o.City == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.City
+
+	return o.City
 }
 
-// GetCityOk returns a tuple with the City field value if set, nil otherwise
+// GetCityOk returns a tuple with the City field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSessionGeoIp) GetCityOk() (*string, bool) {
-	if o == nil || o.City == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.City, true
+	return &o.City, true
 }
 
-// HasCity returns a boolean if a field has been set.
-func (o *AuthenticatedSessionGeoIp) HasCity() bool {
-	if o != nil && o.City != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCity gets a reference to the given string and assigns it to the City field.
+// SetCity sets field value
 func (o *AuthenticatedSessionGeoIp) SetCity(v string) {
-	o.City = &v
+	o.City = v
 }
 
 func (o AuthenticatedSessionGeoIp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Continent != nil {
+	if true {
 		toSerialize["continent"] = o.Continent
 	}
-	if o.Country != nil {
+	if true {
 		toSerialize["country"] = o.Country
 	}
-	if o.Lat != nil {
+	if true {
 		toSerialize["lat"] = o.Lat
 	}
-	if o.Long != nil {
+	if true {
 		toSerialize["long"] = o.Long
 	}
-	if o.City != nil {
+	if true {
 		toSerialize["city"] = o.City
 	}
 	return json.Marshal(toSerialize)

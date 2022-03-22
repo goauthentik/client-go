@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Enabled** | **bool** |  | [readonly] 
 **Environment** | **string** |  | [readonly] 
 **SendPii** | **bool** |  | [readonly] 
-**TracesSampleRate** | **float32** |  | [readonly] 
+**TracesSampleRate** | **float64** |  | [readonly] 
 
 ## Methods
 
 ### NewErrorReportingConfig
 
-`func NewErrorReportingConfig(enabled bool, environment string, sendPii bool, tracesSampleRate float32, ) *ErrorReportingConfig`
+`func NewErrorReportingConfig(enabled bool, environment string, sendPii bool, tracesSampleRate float64, ) *ErrorReportingConfig`
 
 NewErrorReportingConfig instantiates a new ErrorReportingConfig object
 This constructor will assign default values to properties that have it defined,
@@ -90,20 +90,20 @@ SetSendPii sets SendPii field to given value.
 
 ### GetTracesSampleRate
 
-`func (o *ErrorReportingConfig) GetTracesSampleRate() float32`
+`func (o *ErrorReportingConfig) GetTracesSampleRate() float64`
 
 GetTracesSampleRate returns the TracesSampleRate field if non-nil, zero value otherwise.
 
 ### GetTracesSampleRateOk
 
-`func (o *ErrorReportingConfig) GetTracesSampleRateOk() (*float32, bool)`
+`func (o *ErrorReportingConfig) GetTracesSampleRateOk() (*float64, bool)`
 
 GetTracesSampleRateOk returns a tuple with the TracesSampleRate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTracesSampleRate
 
-`func (o *ErrorReportingConfig) SetTracesSampleRate(v float32)`
+`func (o *ErrorReportingConfig) SetTracesSampleRate(v float64)`
 
 SetTracesSampleRate sets TracesSampleRate field to given value.
 

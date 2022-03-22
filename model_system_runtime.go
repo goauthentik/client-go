@@ -15,22 +15,28 @@ import (
 	"encoding/json"
 )
 
-// SystemRuntime struct for SystemRuntime
+// SystemRuntime Runtime information
 type SystemRuntime struct {
-	PythonVersion   *string `json:"python_version,omitempty"`
-	GunicornVersion *string `json:"gunicorn_version,omitempty"`
-	Environment     *string `json:"environment,omitempty"`
-	Architecture    *string `json:"architecture,omitempty"`
-	Platform        *string `json:"platform,omitempty"`
-	Uname           *string `json:"uname,omitempty"`
+	PythonVersion   string `json:"python_version"`
+	GunicornVersion string `json:"gunicorn_version"`
+	Environment     string `json:"environment"`
+	Architecture    string `json:"architecture"`
+	Platform        string `json:"platform"`
+	Uname           string `json:"uname"`
 }
 
 // NewSystemRuntime instantiates a new SystemRuntime object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSystemRuntime() *SystemRuntime {
+func NewSystemRuntime(pythonVersion string, gunicornVersion string, environment string, architecture string, platform string, uname string) *SystemRuntime {
 	this := SystemRuntime{}
+	this.PythonVersion = pythonVersion
+	this.GunicornVersion = gunicornVersion
+	this.Environment = environment
+	this.Architecture = architecture
+	this.Platform = platform
+	this.Uname = uname
 	return &this
 }
 
@@ -42,216 +48,168 @@ func NewSystemRuntimeWithDefaults() *SystemRuntime {
 	return &this
 }
 
-// GetPythonVersion returns the PythonVersion field value if set, zero value otherwise.
+// GetPythonVersion returns the PythonVersion field value
 func (o *SystemRuntime) GetPythonVersion() string {
-	if o == nil || o.PythonVersion == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.PythonVersion
+
+	return o.PythonVersion
 }
 
-// GetPythonVersionOk returns a tuple with the PythonVersion field value if set, nil otherwise
+// GetPythonVersionOk returns a tuple with the PythonVersion field value
 // and a boolean to check if the value has been set.
 func (o *SystemRuntime) GetPythonVersionOk() (*string, bool) {
-	if o == nil || o.PythonVersion == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.PythonVersion, true
+	return &o.PythonVersion, true
 }
 
-// HasPythonVersion returns a boolean if a field has been set.
-func (o *SystemRuntime) HasPythonVersion() bool {
-	if o != nil && o.PythonVersion != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPythonVersion gets a reference to the given string and assigns it to the PythonVersion field.
+// SetPythonVersion sets field value
 func (o *SystemRuntime) SetPythonVersion(v string) {
-	o.PythonVersion = &v
+	o.PythonVersion = v
 }
 
-// GetGunicornVersion returns the GunicornVersion field value if set, zero value otherwise.
+// GetGunicornVersion returns the GunicornVersion field value
 func (o *SystemRuntime) GetGunicornVersion() string {
-	if o == nil || o.GunicornVersion == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.GunicornVersion
+
+	return o.GunicornVersion
 }
 
-// GetGunicornVersionOk returns a tuple with the GunicornVersion field value if set, nil otherwise
+// GetGunicornVersionOk returns a tuple with the GunicornVersion field value
 // and a boolean to check if the value has been set.
 func (o *SystemRuntime) GetGunicornVersionOk() (*string, bool) {
-	if o == nil || o.GunicornVersion == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.GunicornVersion, true
+	return &o.GunicornVersion, true
 }
 
-// HasGunicornVersion returns a boolean if a field has been set.
-func (o *SystemRuntime) HasGunicornVersion() bool {
-	if o != nil && o.GunicornVersion != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGunicornVersion gets a reference to the given string and assigns it to the GunicornVersion field.
+// SetGunicornVersion sets field value
 func (o *SystemRuntime) SetGunicornVersion(v string) {
-	o.GunicornVersion = &v
+	o.GunicornVersion = v
 }
 
-// GetEnvironment returns the Environment field value if set, zero value otherwise.
+// GetEnvironment returns the Environment field value
 func (o *SystemRuntime) GetEnvironment() string {
-	if o == nil || o.Environment == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Environment
+
+	return o.Environment
 }
 
-// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// GetEnvironmentOk returns a tuple with the Environment field value
 // and a boolean to check if the value has been set.
 func (o *SystemRuntime) GetEnvironmentOk() (*string, bool) {
-	if o == nil || o.Environment == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Environment, true
+	return &o.Environment, true
 }
 
-// HasEnvironment returns a boolean if a field has been set.
-func (o *SystemRuntime) HasEnvironment() bool {
-	if o != nil && o.Environment != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnvironment gets a reference to the given string and assigns it to the Environment field.
+// SetEnvironment sets field value
 func (o *SystemRuntime) SetEnvironment(v string) {
-	o.Environment = &v
+	o.Environment = v
 }
 
-// GetArchitecture returns the Architecture field value if set, zero value otherwise.
+// GetArchitecture returns the Architecture field value
 func (o *SystemRuntime) GetArchitecture() string {
-	if o == nil || o.Architecture == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Architecture
+
+	return o.Architecture
 }
 
-// GetArchitectureOk returns a tuple with the Architecture field value if set, nil otherwise
+// GetArchitectureOk returns a tuple with the Architecture field value
 // and a boolean to check if the value has been set.
 func (o *SystemRuntime) GetArchitectureOk() (*string, bool) {
-	if o == nil || o.Architecture == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Architecture, true
+	return &o.Architecture, true
 }
 
-// HasArchitecture returns a boolean if a field has been set.
-func (o *SystemRuntime) HasArchitecture() bool {
-	if o != nil && o.Architecture != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetArchitecture gets a reference to the given string and assigns it to the Architecture field.
+// SetArchitecture sets field value
 func (o *SystemRuntime) SetArchitecture(v string) {
-	o.Architecture = &v
+	o.Architecture = v
 }
 
-// GetPlatform returns the Platform field value if set, zero value otherwise.
+// GetPlatform returns the Platform field value
 func (o *SystemRuntime) GetPlatform() string {
-	if o == nil || o.Platform == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Platform
+
+	return o.Platform
 }
 
-// GetPlatformOk returns a tuple with the Platform field value if set, nil otherwise
+// GetPlatformOk returns a tuple with the Platform field value
 // and a boolean to check if the value has been set.
 func (o *SystemRuntime) GetPlatformOk() (*string, bool) {
-	if o == nil || o.Platform == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Platform, true
+	return &o.Platform, true
 }
 
-// HasPlatform returns a boolean if a field has been set.
-func (o *SystemRuntime) HasPlatform() bool {
-	if o != nil && o.Platform != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPlatform gets a reference to the given string and assigns it to the Platform field.
+// SetPlatform sets field value
 func (o *SystemRuntime) SetPlatform(v string) {
-	o.Platform = &v
+	o.Platform = v
 }
 
-// GetUname returns the Uname field value if set, zero value otherwise.
+// GetUname returns the Uname field value
 func (o *SystemRuntime) GetUname() string {
-	if o == nil || o.Uname == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Uname
+
+	return o.Uname
 }
 
-// GetUnameOk returns a tuple with the Uname field value if set, nil otherwise
+// GetUnameOk returns a tuple with the Uname field value
 // and a boolean to check if the value has been set.
 func (o *SystemRuntime) GetUnameOk() (*string, bool) {
-	if o == nil || o.Uname == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Uname, true
+	return &o.Uname, true
 }
 
-// HasUname returns a boolean if a field has been set.
-func (o *SystemRuntime) HasUname() bool {
-	if o != nil && o.Uname != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUname gets a reference to the given string and assigns it to the Uname field.
+// SetUname sets field value
 func (o *SystemRuntime) SetUname(v string) {
-	o.Uname = &v
+	o.Uname = v
 }
 
 func (o SystemRuntime) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.PythonVersion != nil {
+	if true {
 		toSerialize["python_version"] = o.PythonVersion
 	}
-	if o.GunicornVersion != nil {
+	if true {
 		toSerialize["gunicorn_version"] = o.GunicornVersion
 	}
-	if o.Environment != nil {
+	if true {
 		toSerialize["environment"] = o.Environment
 	}
-	if o.Architecture != nil {
+	if true {
 		toSerialize["architecture"] = o.Architecture
 	}
-	if o.Platform != nil {
+	if true {
 		toSerialize["platform"] = o.Platform
 	}
-	if o.Uname != nil {
+	if true {
 		toSerialize["uname"] = o.Uname
 	}
 	return json.Marshal(toSerialize)

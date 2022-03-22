@@ -15,21 +15,26 @@ import (
 	"encoding/json"
 )
 
-// AuthenticatedSessionUserAgentOs struct for AuthenticatedSessionUserAgentOs
+// AuthenticatedSessionUserAgentOs User agent os
 type AuthenticatedSessionUserAgentOs struct {
-	Family     *string `json:"family,omitempty"`
-	Major      *string `json:"major,omitempty"`
-	Minor      *string `json:"minor,omitempty"`
-	Patch      *string `json:"patch,omitempty"`
-	PatchMinor *string `json:"patch_minor,omitempty"`
+	Family     string `json:"family"`
+	Major      string `json:"major"`
+	Minor      string `json:"minor"`
+	Patch      string `json:"patch"`
+	PatchMinor string `json:"patch_minor"`
 }
 
 // NewAuthenticatedSessionUserAgentOs instantiates a new AuthenticatedSessionUserAgentOs object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatedSessionUserAgentOs() *AuthenticatedSessionUserAgentOs {
+func NewAuthenticatedSessionUserAgentOs(family string, major string, minor string, patch string, patchMinor string) *AuthenticatedSessionUserAgentOs {
 	this := AuthenticatedSessionUserAgentOs{}
+	this.Family = family
+	this.Major = major
+	this.Minor = minor
+	this.Patch = patch
+	this.PatchMinor = patchMinor
 	return &this
 }
 
@@ -41,181 +46,141 @@ func NewAuthenticatedSessionUserAgentOsWithDefaults() *AuthenticatedSessionUserA
 	return &this
 }
 
-// GetFamily returns the Family field value if set, zero value otherwise.
+// GetFamily returns the Family field value
 func (o *AuthenticatedSessionUserAgentOs) GetFamily() string {
-	if o == nil || o.Family == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Family
+
+	return o.Family
 }
 
-// GetFamilyOk returns a tuple with the Family field value if set, nil otherwise
+// GetFamilyOk returns a tuple with the Family field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSessionUserAgentOs) GetFamilyOk() (*string, bool) {
-	if o == nil || o.Family == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Family, true
+	return &o.Family, true
 }
 
-// HasFamily returns a boolean if a field has been set.
-func (o *AuthenticatedSessionUserAgentOs) HasFamily() bool {
-	if o != nil && o.Family != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFamily gets a reference to the given string and assigns it to the Family field.
+// SetFamily sets field value
 func (o *AuthenticatedSessionUserAgentOs) SetFamily(v string) {
-	o.Family = &v
+	o.Family = v
 }
 
-// GetMajor returns the Major field value if set, zero value otherwise.
+// GetMajor returns the Major field value
 func (o *AuthenticatedSessionUserAgentOs) GetMajor() string {
-	if o == nil || o.Major == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Major
+
+	return o.Major
 }
 
-// GetMajorOk returns a tuple with the Major field value if set, nil otherwise
+// GetMajorOk returns a tuple with the Major field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSessionUserAgentOs) GetMajorOk() (*string, bool) {
-	if o == nil || o.Major == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Major, true
+	return &o.Major, true
 }
 
-// HasMajor returns a boolean if a field has been set.
-func (o *AuthenticatedSessionUserAgentOs) HasMajor() bool {
-	if o != nil && o.Major != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMajor gets a reference to the given string and assigns it to the Major field.
+// SetMajor sets field value
 func (o *AuthenticatedSessionUserAgentOs) SetMajor(v string) {
-	o.Major = &v
+	o.Major = v
 }
 
-// GetMinor returns the Minor field value if set, zero value otherwise.
+// GetMinor returns the Minor field value
 func (o *AuthenticatedSessionUserAgentOs) GetMinor() string {
-	if o == nil || o.Minor == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Minor
+
+	return o.Minor
 }
 
-// GetMinorOk returns a tuple with the Minor field value if set, nil otherwise
+// GetMinorOk returns a tuple with the Minor field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSessionUserAgentOs) GetMinorOk() (*string, bool) {
-	if o == nil || o.Minor == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Minor, true
+	return &o.Minor, true
 }
 
-// HasMinor returns a boolean if a field has been set.
-func (o *AuthenticatedSessionUserAgentOs) HasMinor() bool {
-	if o != nil && o.Minor != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMinor gets a reference to the given string and assigns it to the Minor field.
+// SetMinor sets field value
 func (o *AuthenticatedSessionUserAgentOs) SetMinor(v string) {
-	o.Minor = &v
+	o.Minor = v
 }
 
-// GetPatch returns the Patch field value if set, zero value otherwise.
+// GetPatch returns the Patch field value
 func (o *AuthenticatedSessionUserAgentOs) GetPatch() string {
-	if o == nil || o.Patch == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Patch
+
+	return o.Patch
 }
 
-// GetPatchOk returns a tuple with the Patch field value if set, nil otherwise
+// GetPatchOk returns a tuple with the Patch field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSessionUserAgentOs) GetPatchOk() (*string, bool) {
-	if o == nil || o.Patch == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Patch, true
+	return &o.Patch, true
 }
 
-// HasPatch returns a boolean if a field has been set.
-func (o *AuthenticatedSessionUserAgentOs) HasPatch() bool {
-	if o != nil && o.Patch != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPatch gets a reference to the given string and assigns it to the Patch field.
+// SetPatch sets field value
 func (o *AuthenticatedSessionUserAgentOs) SetPatch(v string) {
-	o.Patch = &v
+	o.Patch = v
 }
 
-// GetPatchMinor returns the PatchMinor field value if set, zero value otherwise.
+// GetPatchMinor returns the PatchMinor field value
 func (o *AuthenticatedSessionUserAgentOs) GetPatchMinor() string {
-	if o == nil || o.PatchMinor == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.PatchMinor
+
+	return o.PatchMinor
 }
 
-// GetPatchMinorOk returns a tuple with the PatchMinor field value if set, nil otherwise
+// GetPatchMinorOk returns a tuple with the PatchMinor field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSessionUserAgentOs) GetPatchMinorOk() (*string, bool) {
-	if o == nil || o.PatchMinor == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.PatchMinor, true
+	return &o.PatchMinor, true
 }
 
-// HasPatchMinor returns a boolean if a field has been set.
-func (o *AuthenticatedSessionUserAgentOs) HasPatchMinor() bool {
-	if o != nil && o.PatchMinor != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPatchMinor gets a reference to the given string and assigns it to the PatchMinor field.
+// SetPatchMinor sets field value
 func (o *AuthenticatedSessionUserAgentOs) SetPatchMinor(v string) {
-	o.PatchMinor = &v
+	o.PatchMinor = v
 }
 
 func (o AuthenticatedSessionUserAgentOs) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Family != nil {
+	if true {
 		toSerialize["family"] = o.Family
 	}
-	if o.Major != nil {
+	if true {
 		toSerialize["major"] = o.Major
 	}
-	if o.Minor != nil {
+	if true {
 		toSerialize["minor"] = o.Minor
 	}
-	if o.Patch != nil {
+	if true {
 		toSerialize["patch"] = o.Patch
 	}
-	if o.PatchMinor != nil {
+	if true {
 		toSerialize["patch_minor"] = o.PatchMinor
 	}
 	return json.Marshal(toSerialize)

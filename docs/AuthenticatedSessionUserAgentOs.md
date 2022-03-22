@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Family** | Pointer to **string** |  | [optional] 
-**Major** | Pointer to **string** |  | [optional] 
-**Minor** | Pointer to **string** |  | [optional] 
-**Patch** | Pointer to **string** |  | [optional] 
-**PatchMinor** | Pointer to **string** |  | [optional] 
+**Family** | **string** |  | 
+**Major** | **string** |  | 
+**Minor** | **string** |  | 
+**Patch** | **string** |  | 
+**PatchMinor** | **string** |  | 
 
 ## Methods
 
 ### NewAuthenticatedSessionUserAgentOs
 
-`func NewAuthenticatedSessionUserAgentOs() *AuthenticatedSessionUserAgentOs`
+`func NewAuthenticatedSessionUserAgentOs(family string, major string, minor string, patch string, patchMinor string, ) *AuthenticatedSessionUserAgentOs`
 
 NewAuthenticatedSessionUserAgentOs instantiates a new AuthenticatedSessionUserAgentOs object
 This constructor will assign default values to properties that have it defined,
@@ -48,11 +48,6 @@ and a boolean to check if the value has been set.
 
 SetFamily sets Family field to given value.
 
-### HasFamily
-
-`func (o *AuthenticatedSessionUserAgentOs) HasFamily() bool`
-
-HasFamily returns a boolean if a field has been set.
 
 ### GetMajor
 
@@ -73,11 +68,6 @@ and a boolean to check if the value has been set.
 
 SetMajor sets Major field to given value.
 
-### HasMajor
-
-`func (o *AuthenticatedSessionUserAgentOs) HasMajor() bool`
-
-HasMajor returns a boolean if a field has been set.
 
 ### GetMinor
 
@@ -98,11 +88,6 @@ and a boolean to check if the value has been set.
 
 SetMinor sets Minor field to given value.
 
-### HasMinor
-
-`func (o *AuthenticatedSessionUserAgentOs) HasMinor() bool`
-
-HasMinor returns a boolean if a field has been set.
 
 ### GetPatch
 
@@ -123,11 +108,6 @@ and a boolean to check if the value has been set.
 
 SetPatch sets Patch field to given value.
 
-### HasPatch
-
-`func (o *AuthenticatedSessionUserAgentOs) HasPatch() bool`
-
-HasPatch returns a boolean if a field has been set.
 
 ### GetPatchMinor
 
@@ -148,11 +128,6 @@ and a boolean to check if the value has been set.
 
 SetPatchMinor sets PatchMinor field to given value.
 
-### HasPatchMinor
-
-`func (o *AuthenticatedSessionUserAgentOs) HasPatchMinor() bool`
-
-HasPatchMinor returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

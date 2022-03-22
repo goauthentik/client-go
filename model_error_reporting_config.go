@@ -20,14 +20,14 @@ type ErrorReportingConfig struct {
 	Enabled          bool    `json:"enabled"`
 	Environment      string  `json:"environment"`
 	SendPii          bool    `json:"send_pii"`
-	TracesSampleRate float32 `json:"traces_sample_rate"`
+	TracesSampleRate float64 `json:"traces_sample_rate"`
 }
 
 // NewErrorReportingConfig instantiates a new ErrorReportingConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewErrorReportingConfig(enabled bool, environment string, sendPii bool, tracesSampleRate float32) *ErrorReportingConfig {
+func NewErrorReportingConfig(enabled bool, environment string, sendPii bool, tracesSampleRate float64) *ErrorReportingConfig {
 	this := ErrorReportingConfig{}
 	this.Enabled = enabled
 	this.Environment = environment
@@ -117,9 +117,9 @@ func (o *ErrorReportingConfig) SetSendPii(v bool) {
 }
 
 // GetTracesSampleRate returns the TracesSampleRate field value
-func (o *ErrorReportingConfig) GetTracesSampleRate() float32 {
+func (o *ErrorReportingConfig) GetTracesSampleRate() float64 {
 	if o == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -128,7 +128,7 @@ func (o *ErrorReportingConfig) GetTracesSampleRate() float32 {
 
 // GetTracesSampleRateOk returns a tuple with the TracesSampleRate field value
 // and a boolean to check if the value has been set.
-func (o *ErrorReportingConfig) GetTracesSampleRateOk() (*float32, bool) {
+func (o *ErrorReportingConfig) GetTracesSampleRateOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -136,7 +136,7 @@ func (o *ErrorReportingConfig) GetTracesSampleRateOk() (*float32, bool) {
 }
 
 // SetTracesSampleRate sets field value
-func (o *ErrorReportingConfig) SetTracesSampleRate(v float32) {
+func (o *ErrorReportingConfig) SetTracesSampleRate(v float64) {
 	o.TracesSampleRate = v
 }
 

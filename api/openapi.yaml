@@ -22976,7 +22976,7 @@ components:
         error_reporting:
           environment: environment
           send_pii: true
-          traces_sample_rate: 0.8008282
+          traces_sample_rate: 0.8008281904610115
           enabled: true
         cache_timeout_flows: 1
       properties:
@@ -24029,7 +24029,7 @@ components:
       example:
         environment: environment
         send_pii: true
-        traces_sample_rate: 0.8008282
+        traces_sample_rate: 0.8008281904610115
         enabled: true
       properties:
         enabled:
@@ -24042,7 +24042,7 @@ components:
           readOnly: true
           type: boolean
         traces_sample_rate:
-          format: float
+          format: double
           readOnly: true
           type: number
       required:
@@ -40539,6 +40539,7 @@ components:
       - count
       type: object
     AuthenticatedSession_user_agent_device:
+      description: User agent device
       example:
         model: model
         family: family
@@ -40550,8 +40551,13 @@ components:
           type: string
         model:
           type: string
+      required:
+      - brand
+      - family
+      - model
       type: object
     AuthenticatedSession_user_agent_os:
+      description: User agent os
       example:
         patch: patch
         patch_minor: patch_minor
@@ -40569,8 +40575,15 @@ components:
           type: string
         patch_minor:
           type: string
+      required:
+      - family
+      - major
+      - minor
+      - patch
+      - patch_minor
       type: object
     AuthenticatedSession_user_agent_user_agent:
+      description: User agent browser
       example:
         patch: patch
         major: major
@@ -40585,8 +40598,14 @@ components:
           type: string
         patch:
           type: string
+      required:
+      - family
+      - major
+      - minor
+      - patch
       type: object
     AuthenticatedSession_user_agent:
+      description: User agent details
       example:
         os:
           patch: patch
@@ -40614,8 +40633,14 @@ components:
         string:
           type: string
       readOnly: true
+      required:
+      - device
+      - os
+      - string
+      - user_agent
       type: object
     AuthenticatedSession_geo_ip:
+      description: GeoIP Details
       example:
         continent: continent
         country: country
@@ -40637,6 +40662,12 @@ components:
         city:
           type: string
       readOnly: true
+      required:
+      - city
+      - continent
+      - country
+      - lat
+      - long
       type: object
     PaginatedApplicationList_pagination:
       example:
@@ -40672,6 +40703,7 @@ components:
       - total_pages
       type: object
     System_runtime:
+      description: Runtime information
       example:
         environment: environment
         uname: uname
@@ -40693,6 +40725,13 @@ components:
         uname:
           type: string
       readOnly: true
+      required:
+      - architecture
+      - environment
+      - gunicorn_version
+      - platform
+      - python_version
+      - uname
       type: object
   securitySchemes:
     authentik:

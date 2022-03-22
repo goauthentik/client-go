@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Continent** | Pointer to **string** |  | [optional] 
-**Country** | Pointer to **string** |  | [optional] 
-**Lat** | Pointer to **float32** |  | [optional] 
-**Long** | Pointer to **float32** |  | [optional] 
-**City** | Pointer to **string** |  | [optional] 
+**Continent** | **string** |  | 
+**Country** | **string** |  | 
+**Lat** | **float32** |  | 
+**Long** | **float32** |  | 
+**City** | **string** |  | 
 
 ## Methods
 
 ### NewAuthenticatedSessionGeoIp
 
-`func NewAuthenticatedSessionGeoIp() *AuthenticatedSessionGeoIp`
+`func NewAuthenticatedSessionGeoIp(continent string, country string, lat float32, long float32, city string, ) *AuthenticatedSessionGeoIp`
 
 NewAuthenticatedSessionGeoIp instantiates a new AuthenticatedSessionGeoIp object
 This constructor will assign default values to properties that have it defined,
@@ -48,11 +48,6 @@ and a boolean to check if the value has been set.
 
 SetContinent sets Continent field to given value.
 
-### HasContinent
-
-`func (o *AuthenticatedSessionGeoIp) HasContinent() bool`
-
-HasContinent returns a boolean if a field has been set.
 
 ### GetCountry
 
@@ -73,11 +68,6 @@ and a boolean to check if the value has been set.
 
 SetCountry sets Country field to given value.
 
-### HasCountry
-
-`func (o *AuthenticatedSessionGeoIp) HasCountry() bool`
-
-HasCountry returns a boolean if a field has been set.
 
 ### GetLat
 
@@ -98,11 +88,6 @@ and a boolean to check if the value has been set.
 
 SetLat sets Lat field to given value.
 
-### HasLat
-
-`func (o *AuthenticatedSessionGeoIp) HasLat() bool`
-
-HasLat returns a boolean if a field has been set.
 
 ### GetLong
 
@@ -123,11 +108,6 @@ and a boolean to check if the value has been set.
 
 SetLong sets Long field to given value.
 
-### HasLong
-
-`func (o *AuthenticatedSessionGeoIp) HasLong() bool`
-
-HasLong returns a boolean if a field has been set.
 
 ### GetCity
 
@@ -148,11 +128,6 @@ and a boolean to check if the value has been set.
 
 SetCity sets City field to given value.
 
-### HasCity
-
-`func (o *AuthenticatedSessionGeoIp) HasCity() bool`
-
-HasCity returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
