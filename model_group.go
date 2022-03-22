@@ -17,8 +17,9 @@ import (
 
 // Group Group Serializer
 type Group struct {
-	Pk   string `json:"pk"`
-	Name string `json:"name"`
+	Pk    string `json:"pk"`
+	NumPk int32  `json:"num_pk"`
+	Name  string `json:"name"`
 	// Users added to this group will be superusers.
 	IsSuperuser *bool                   `json:"is_superuser,omitempty"`
 	Parent      NullableString          `json:"parent"`
@@ -32,9 +33,10 @@ type Group struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroup(pk string, name string, parent NullableString, parentName string, users []int32, usersObj []GroupMember) *Group {
+func NewGroup(pk string, numPk int32, name string, parent NullableString, parentName string, users []int32, usersObj []GroupMember) *Group {
 	this := Group{}
 	this.Pk = pk
+	this.NumPk = numPk
 	this.Name = name
 	this.Parent = parent
 	this.ParentName = parentName
@@ -73,6 +75,30 @@ func (o *Group) GetPkOk() (*string, bool) {
 // SetPk sets field value
 func (o *Group) SetPk(v string) {
 	o.Pk = v
+}
+
+// GetNumPk returns the NumPk field value
+func (o *Group) GetNumPk() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.NumPk
+}
+
+// GetNumPkOk returns a tuple with the NumPk field value
+// and a boolean to check if the value has been set.
+func (o *Group) GetNumPkOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.NumPk, true
+}
+
+// SetNumPk sets field value
+func (o *Group) SetNumPk(v int32) {
+	o.NumPk = v
 }
 
 // GetName returns the Name field value
@@ -265,6 +291,9 @@ func (o Group) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["num_pk"] = o.NumPk
 	}
 	if true {
 		toSerialize["name"] = o.Name

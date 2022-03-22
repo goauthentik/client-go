@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
+**NumPk** | **int32** |  | [readonly] 
 **Name** | **string** |  | 
 **IsSuperuser** | Pointer to **bool** | Users added to this group will be superusers. | [optional] 
 **Parent** | **NullableString** |  | 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewGroup
 
-`func NewGroup(pk string, name string, parent NullableString, parentName string, users []int32, usersObj []GroupMember, ) *Group`
+`func NewGroup(pk string, numPk int32, name string, parent NullableString, parentName string, users []int32, usersObj []GroupMember, ) *Group`
 
 NewGroup instantiates a new Group object
 This constructor will assign default values to properties that have it defined,
@@ -50,6 +51,26 @@ and a boolean to check if the value has been set.
 `func (o *Group) SetPk(v string)`
 
 SetPk sets Pk field to given value.
+
+
+### GetNumPk
+
+`func (o *Group) GetNumPk() int32`
+
+GetNumPk returns the NumPk field if non-nil, zero value otherwise.
+
+### GetNumPkOk
+
+`func (o *Group) GetNumPkOk() (*int32, bool)`
+
+GetNumPkOk returns a tuple with the NumPk field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNumPk
+
+`func (o *Group) SetNumPk(v int32)`
+
+SetNumPk sets NumPk field to given value.
 
 
 ### GetName
