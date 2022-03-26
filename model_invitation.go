@@ -19,6 +19,7 @@ import (
 // Invitation Invitation Serializer
 type Invitation struct {
 	Pk        string                  `json:"pk"`
+	Name      string                  `json:"name"`
 	Expires   *time.Time              `json:"expires,omitempty"`
 	FixedData *map[string]interface{} `json:"fixed_data,omitempty"`
 	CreatedBy GroupMember             `json:"created_by"`
@@ -30,9 +31,10 @@ type Invitation struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvitation(pk string, createdBy GroupMember) *Invitation {
+func NewInvitation(pk string, name string, createdBy GroupMember) *Invitation {
 	this := Invitation{}
 	this.Pk = pk
+	this.Name = name
 	this.CreatedBy = createdBy
 	return &this
 }
@@ -67,6 +69,30 @@ func (o *Invitation) GetPkOk() (*string, bool) {
 // SetPk sets field value
 func (o *Invitation) SetPk(v string) {
 	o.Pk = v
+}
+
+// GetName returns the Name field value
+func (o *Invitation) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *Invitation) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *Invitation) SetName(v string) {
+	o.Name = v
 }
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
@@ -193,6 +219,9 @@ func (o Invitation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
 	}
 	if o.Expires != nil {
 		toSerialize["expires"] = o.Expires

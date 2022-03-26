@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Name** | Pointer to **string** |  | [optional] 
 **Expires** | Pointer to **time.Time** |  | [optional] 
 **FixedData** | Pointer to **map[string]interface{}** |  | [optional] 
 **SingleUse** | Pointer to **bool** | When enabled, the invitation will be deleted after usage. | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewPatchedInvitationRequestWithDefaults instantiates a new PatchedInvitationRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetName
+
+`func (o *PatchedInvitationRequest) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *PatchedInvitationRequest) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *PatchedInvitationRequest) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *PatchedInvitationRequest) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetExpires
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Name** | **string** |  | 
 **Expires** | Pointer to **time.Time** |  | [optional] 
 **FixedData** | Pointer to **map[string]interface{}** |  | [optional] 
 **SingleUse** | Pointer to **bool** | When enabled, the invitation will be deleted after usage. | [optional] 
@@ -12,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewInvitationRequest
 
-`func NewInvitationRequest() *InvitationRequest`
+`func NewInvitationRequest(name string, ) *InvitationRequest`
 
 NewInvitationRequest instantiates a new InvitationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +27,26 @@ will change when the set of required properties is changed
 NewInvitationRequestWithDefaults instantiates a new InvitationRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetName
+
+`func (o *InvitationRequest) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *InvitationRequest) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *InvitationRequest) SetName(v string)`
+
+SetName sets Name field to given value.
+
 
 ### GetExpires
 

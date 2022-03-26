@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
+**Name** | **string** |  | 
 **Expires** | Pointer to **time.Time** |  | [optional] 
 **FixedData** | Pointer to **map[string]interface{}** |  | [optional] 
 **CreatedBy** | [**GroupMember**](GroupMember.md) |  | [readonly] 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewInvitation
 
-`func NewInvitation(pk string, createdBy GroupMember, ) *Invitation`
+`func NewInvitation(pk string, name string, createdBy GroupMember, ) *Invitation`
 
 NewInvitation instantiates a new Invitation object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +48,26 @@ and a boolean to check if the value has been set.
 `func (o *Invitation) SetPk(v string)`
 
 SetPk sets Pk field to given value.
+
+
+### GetName
+
+`func (o *Invitation) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *Invitation) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *Invitation) SetName(v string)`
+
+SetName sets Name field to given value.
 
 
 ### GetExpires

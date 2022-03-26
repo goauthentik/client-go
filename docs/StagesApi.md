@@ -6793,7 +6793,7 @@ import (
 )
 
 func main() {
-    invitationRequest := *openapiclient.NewInvitationRequest() // InvitationRequest |  (optional)
+    invitationRequest := *openapiclient.NewInvitationRequest("Name_example") // InvitationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -6908,7 +6908,7 @@ Name | Type | Description  | Notes
 
 ## StagesInvitationInvitationsList
 
-> PaginatedInvitationList StagesInvitationInvitationsList(ctx).CreatedByUsername(createdByUsername).Expires(expires).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedInvitationList StagesInvitationInvitationsList(ctx).CreatedByUsername(createdByUsername).Expires(expires).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -6930,6 +6930,7 @@ import (
 func main() {
     createdByUsername := "createdByUsername_example" // string |  (optional)
     expires := time.Now() // time.Time |  (optional)
+    name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -6937,7 +6938,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.StagesApi.StagesInvitationInvitationsList(context.Background()).CreatedByUsername(createdByUsername).Expires(expires).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := api_client.StagesApi.StagesInvitationInvitationsList(context.Background()).CreatedByUsername(createdByUsername).Expires(expires).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationInvitationsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6960,6 +6961,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createdByUsername** | **string** |  | 
  **expires** | **time.Time** |  | 
+ **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
@@ -7147,7 +7149,7 @@ import (
 
 func main() {
     inviteUuid := TODO // string | A UUID string identifying this Invitation.
-    invitationRequest := *openapiclient.NewInvitationRequest() // InvitationRequest |  (optional)
+    invitationRequest := *openapiclient.NewInvitationRequest("Name_example") // InvitationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

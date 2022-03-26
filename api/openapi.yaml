@@ -18966,6 +18966,13 @@ paths:
           format: date-time
           type: string
         style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
       - description: Which field to use when ordering the results.
         explode: true
         in: query
@@ -19020,6 +19027,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/InvitationRequest'
+        required: true
       responses:
         "201":
           content:
@@ -19136,6 +19144,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/InvitationRequest'
+        required: true
       responses:
         "200":
           content:
@@ -25471,6 +25480,7 @@ components:
         fixed_data:
           key: ""
         expires: 2000-01-23T04:56:07.000+00:00
+        name: name
         single_use: true
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         created_by: ""
@@ -25479,6 +25489,10 @@ components:
           format: uuid
           readOnly: true
           title: Invite uuid
+          type: string
+        name:
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
           type: string
         expires:
           format: date-time
@@ -25495,6 +25509,7 @@ components:
           type: boolean
       required:
       - created_by
+      - name
       - pk
       type: object
     InvitationRequest:
@@ -25503,8 +25518,14 @@ components:
         fixed_data:
           key: ""
         expires: 2000-01-23T04:56:07.000+00:00
+        name: name
         single_use: true
       properties:
+        name:
+          maxLength: 50
+          minLength: 1
+          pattern: ^[-a-zA-Z0-9_]+$
+          type: string
         expires:
           format: date-time
           type: string
@@ -25514,6 +25535,8 @@ components:
         single_use:
           description: When enabled, the invitation will be deleted after usage.
           type: boolean
+      required:
+      - name
       type: object
     InvitationStage:
       description: InvitationStage Serializer
@@ -29536,12 +29559,14 @@ components:
         - fixed_data:
             key: ""
           expires: 2000-01-23T04:56:07.000+00:00
+          name: name
           single_use: true
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           created_by: ""
         - fixed_data:
             key: ""
           expires: 2000-01-23T04:56:07.000+00:00
+          name: name
           single_use: true
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           created_by: ""
@@ -34467,8 +34492,14 @@ components:
         fixed_data:
           key: ""
         expires: 2000-01-23T04:56:07.000+00:00
+        name: name
         single_use: true
       properties:
+        name:
+          maxLength: 50
+          minLength: 1
+          pattern: ^[-a-zA-Z0-9_]+$
+          type: string
         expires:
           format: date-time
           type: string

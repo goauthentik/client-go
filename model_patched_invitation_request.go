@@ -18,6 +18,7 @@ import (
 
 // PatchedInvitationRequest Invitation Serializer
 type PatchedInvitationRequest struct {
+	Name      *string                 `json:"name,omitempty"`
 	Expires   *time.Time              `json:"expires,omitempty"`
 	FixedData *map[string]interface{} `json:"fixed_data,omitempty"`
 	// When enabled, the invitation will be deleted after usage.
@@ -39,6 +40,38 @@ func NewPatchedInvitationRequest() *PatchedInvitationRequest {
 func NewPatchedInvitationRequestWithDefaults() *PatchedInvitationRequest {
 	this := PatchedInvitationRequest{}
 	return &this
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *PatchedInvitationRequest) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedInvitationRequest) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *PatchedInvitationRequest) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *PatchedInvitationRequest) SetName(v string) {
+	o.Name = &v
 }
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
@@ -139,6 +172,9 @@ func (o *PatchedInvitationRequest) SetSingleUse(v bool) {
 
 func (o PatchedInvitationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
+	}
 	if o.Expires != nil {
 		toSerialize["expires"] = o.Expires
 	}

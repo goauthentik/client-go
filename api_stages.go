@@ -12296,6 +12296,9 @@ func (a *StagesApiService) StagesInvitationInvitationsCreateExecute(r ApiStagesI
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.invitationRequest == nil {
+		return localVarReturnValue, nil, reportError("invitationRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -12480,6 +12483,7 @@ type ApiStagesInvitationInvitationsListRequest struct {
 	ApiService        *StagesApiService
 	createdByUsername *string
 	expires           *time.Time
+	name              *string
 	ordering          *string
 	page              *int32
 	pageSize          *int32
@@ -12492,6 +12496,10 @@ func (r ApiStagesInvitationInvitationsListRequest) CreatedByUsername(createdByUs
 }
 func (r ApiStagesInvitationInvitationsListRequest) Expires(expires time.Time) ApiStagesInvitationInvitationsListRequest {
 	r.expires = &expires
+	return r
+}
+func (r ApiStagesInvitationInvitationsListRequest) Name(name string) ApiStagesInvitationInvitationsListRequest {
+	r.name = &name
 	return r
 }
 
@@ -12566,6 +12574,9 @@ func (a *StagesApiService) StagesInvitationInvitationsListExecute(r ApiStagesInv
 	}
 	if r.expires != nil {
 		localVarQueryParams.Add("expires", parameterToString(*r.expires, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
@@ -12949,6 +12960,9 @@ func (a *StagesApiService) StagesInvitationInvitationsUpdateExecute(r ApiStagesI
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.invitationRequest == nil {
+		return localVarReturnValue, nil, reportError("invitationRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
