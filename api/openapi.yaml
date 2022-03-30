@@ -24313,6 +24313,9 @@ components:
           include_claims_in_id_token: true
           assigned_application_name: assigned_application_name
           issuer_mode: ""
+          verification_keys:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 6
           client_secret: client_secret
@@ -26702,6 +26705,9 @@ components:
         include_claims_in_id_token: true
         assigned_application_name: assigned_application_name
         issuer_mode: ""
+        verification_keys:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         pk: 6
         client_secret: client_secret
@@ -26774,7 +26780,6 @@ components:
             is set to RS256.
           format: uuid
           nullable: true
-          title: RSA Key
           type: string
         redirect_uris:
           description: Enter each URI on a new line.
@@ -26788,6 +26793,15 @@ components:
           allOf:
           - $ref: '#/components/schemas/IssuerModeEnum'
           description: Configure how the issuer field of the ID Token should be filled.
+        verification_keys:
+          description: JWTs created with the configured certificates can authenticate
+            with this provider.
+          items:
+            format: uuid
+            title: Allowed certificates for JWT-based client_credentials
+            type: string
+          title: Allowed certificates for JWT-based client_credentials
+          type: array
       required:
       - assigned_application_name
       - assigned_application_slug
@@ -26798,6 +26812,7 @@ components:
       - pk
       - verbose_name
       - verbose_name_plural
+      - verification_keys
       type: object
     OAuth2ProviderRequest:
       description: OAuth2Provider Serializer
@@ -26811,6 +26826,9 @@ components:
         access_code_validity: access_code_validity
         include_claims_in_id_token: true
         issuer_mode: ""
+        verification_keys:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         client_secret: client_secret
         property_mappings:
@@ -26862,7 +26880,6 @@ components:
             is set to RS256.
           format: uuid
           nullable: true
-          title: RSA Key
           type: string
         redirect_uris:
           description: Enter each URI on a new line.
@@ -26876,9 +26893,19 @@ components:
           allOf:
           - $ref: '#/components/schemas/IssuerModeEnum'
           description: Configure how the issuer field of the ID Token should be filled.
+        verification_keys:
+          description: JWTs created with the configured certificates can authenticate
+            with this provider.
+          items:
+            format: uuid
+            title: Allowed certificates for JWT-based client_credentials
+            type: string
+          title: Allowed certificates for JWT-based client_credentials
+          type: array
       required:
       - authorization_flow
       - name
+      - verification_keys
       type: object
     OAuth2ProviderSetupURLs:
       description: OAuth2 Provider Metadata serializer
@@ -28946,6 +28973,9 @@ components:
             include_claims_in_id_token: true
             assigned_application_name: assigned_application_name
             issuer_mode: ""
+            verification_keys:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
             pk: 6
             client_secret: client_secret
@@ -29055,6 +29085,9 @@ components:
             include_claims_in_id_token: true
             assigned_application_name: assigned_application_name
             issuer_mode: ""
+            verification_keys:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
             pk: 6
             client_secret: client_secret
@@ -30137,6 +30170,9 @@ components:
           include_claims_in_id_token: true
           assigned_application_name: assigned_application_name
           issuer_mode: ""
+          verification_keys:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 6
           client_secret: client_secret
@@ -30159,6 +30195,9 @@ components:
           include_claims_in_id_token: true
           assigned_application_name: assigned_application_name
           issuer_mode: ""
+          verification_keys:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 6
           client_secret: client_secret
@@ -31272,6 +31311,9 @@ components:
             include_claims_in_id_token: true
             assigned_application_name: assigned_application_name
             issuer_mode: ""
+            verification_keys:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
             pk: 6
             client_secret: client_secret
@@ -31383,6 +31425,9 @@ components:
             include_claims_in_id_token: true
             assigned_application_name: assigned_application_name
             issuer_mode: ""
+            verification_keys:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
             pk: 6
             client_secret: client_secret
@@ -34882,6 +34927,9 @@ components:
         access_code_validity: access_code_validity
         include_claims_in_id_token: true
         issuer_mode: ""
+        verification_keys:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         client_secret: client_secret
         property_mappings:
@@ -34933,7 +34981,6 @@ components:
             is set to RS256.
           format: uuid
           nullable: true
-          title: RSA Key
           type: string
         redirect_uris:
           description: Enter each URI on a new line.
@@ -34947,6 +34994,15 @@ components:
           allOf:
           - $ref: '#/components/schemas/IssuerModeEnum'
           description: Configure how the issuer field of the ID Token should be filled.
+        verification_keys:
+          description: JWTs created with the configured certificates can authenticate
+            with this provider.
+          items:
+            format: uuid
+            title: Allowed certificates for JWT-based client_credentials
+            type: string
+          title: Allowed certificates for JWT-based client_credentials
+          type: array
       type: object
     PatchedOAuthSourceRequest:
       description: OAuth Source Serializer
@@ -37513,6 +37569,9 @@ components:
           include_claims_in_id_token: true
           assigned_application_name: assigned_application_name
           issuer_mode: ""
+          verification_keys:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 6
           client_secret: client_secret

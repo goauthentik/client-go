@@ -39,6 +39,8 @@ type PatchedOAuth2ProviderRequest struct {
 	SubMode *SubModeEnum `json:"sub_mode,omitempty"`
 	// Configure how the issuer field of the ID Token should be filled.
 	IssuerMode *IssuerModeEnum `json:"issuer_mode,omitempty"`
+	// JWTs created with the configured certificates can authenticate with this provider.
+	VerificationKeys *[]string `json:"verification_keys,omitempty"`
 }
 
 // NewPatchedOAuth2ProviderRequest instantiates a new PatchedOAuth2ProviderRequest object
@@ -485,6 +487,38 @@ func (o *PatchedOAuth2ProviderRequest) SetIssuerMode(v IssuerModeEnum) {
 	o.IssuerMode = &v
 }
 
+// GetVerificationKeys returns the VerificationKeys field value if set, zero value otherwise.
+func (o *PatchedOAuth2ProviderRequest) GetVerificationKeys() []string {
+	if o == nil || o.VerificationKeys == nil {
+		var ret []string
+		return ret
+	}
+	return *o.VerificationKeys
+}
+
+// GetVerificationKeysOk returns a tuple with the VerificationKeys field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedOAuth2ProviderRequest) GetVerificationKeysOk() (*[]string, bool) {
+	if o == nil || o.VerificationKeys == nil {
+		return nil, false
+	}
+	return o.VerificationKeys, true
+}
+
+// HasVerificationKeys returns a boolean if a field has been set.
+func (o *PatchedOAuth2ProviderRequest) HasVerificationKeys() bool {
+	if o != nil && o.VerificationKeys != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVerificationKeys gets a reference to the given []string and assigns it to the VerificationKeys field.
+func (o *PatchedOAuth2ProviderRequest) SetVerificationKeys(v []string) {
+	o.VerificationKeys = &v
+}
+
 func (o PatchedOAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -525,6 +559,9 @@ func (o PatchedOAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.IssuerMode != nil {
 		toSerialize["issuer_mode"] = o.IssuerMode
+	}
+	if o.VerificationKeys != nil {
+		toSerialize["verification_keys"] = o.VerificationKeys
 	}
 	return json.Marshal(toSerialize)
 }

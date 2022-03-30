@@ -39,16 +39,19 @@ type OAuth2ProviderRequest struct {
 	SubMode *SubModeEnum `json:"sub_mode,omitempty"`
 	// Configure how the issuer field of the ID Token should be filled.
 	IssuerMode *IssuerModeEnum `json:"issuer_mode,omitempty"`
+	// JWTs created with the configured certificates can authenticate with this provider.
+	VerificationKeys []string `json:"verification_keys"`
 }
 
 // NewOAuth2ProviderRequest instantiates a new OAuth2ProviderRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuth2ProviderRequest(name string, authorizationFlow string) *OAuth2ProviderRequest {
+func NewOAuth2ProviderRequest(name string, authorizationFlow string, verificationKeys []string) *OAuth2ProviderRequest {
 	this := OAuth2ProviderRequest{}
 	this.Name = name
 	this.AuthorizationFlow = authorizationFlow
+	this.VerificationKeys = verificationKeys
 	return &this
 }
 
@@ -471,6 +474,30 @@ func (o *OAuth2ProviderRequest) SetIssuerMode(v IssuerModeEnum) {
 	o.IssuerMode = &v
 }
 
+// GetVerificationKeys returns the VerificationKeys field value
+func (o *OAuth2ProviderRequest) GetVerificationKeys() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.VerificationKeys
+}
+
+// GetVerificationKeysOk returns a tuple with the VerificationKeys field value
+// and a boolean to check if the value has been set.
+func (o *OAuth2ProviderRequest) GetVerificationKeysOk() (*[]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.VerificationKeys, true
+}
+
+// SetVerificationKeys sets field value
+func (o *OAuth2ProviderRequest) SetVerificationKeys(v []string) {
+	o.VerificationKeys = v
+}
+
 func (o OAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -511,6 +538,9 @@ func (o OAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.IssuerMode != nil {
 		toSerialize["issuer_mode"] = o.IssuerMode
+	}
+	if true {
+		toSerialize["verification_keys"] = o.VerificationKeys
 	}
 	return json.Marshal(toSerialize)
 }

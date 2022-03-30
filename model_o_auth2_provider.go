@@ -48,13 +48,15 @@ type OAuth2Provider struct {
 	SubMode *SubModeEnum `json:"sub_mode,omitempty"`
 	// Configure how the issuer field of the ID Token should be filled.
 	IssuerMode *IssuerModeEnum `json:"issuer_mode,omitempty"`
+	// JWTs created with the configured certificates can authenticate with this provider.
+	VerificationKeys []string `json:"verification_keys"`
 }
 
 // NewOAuth2Provider instantiates a new OAuth2Provider object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuth2Provider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string) *OAuth2Provider {
+func NewOAuth2Provider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, verificationKeys []string) *OAuth2Provider {
 	this := OAuth2Provider{}
 	this.Pk = pk
 	this.Name = name
@@ -65,6 +67,7 @@ func NewOAuth2Provider(pk int32, name string, authorizationFlow string, componen
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
+	this.VerificationKeys = verificationKeys
 	return &this
 }
 
@@ -655,6 +658,30 @@ func (o *OAuth2Provider) SetIssuerMode(v IssuerModeEnum) {
 	o.IssuerMode = &v
 }
 
+// GetVerificationKeys returns the VerificationKeys field value
+func (o *OAuth2Provider) GetVerificationKeys() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.VerificationKeys
+}
+
+// GetVerificationKeysOk returns a tuple with the VerificationKeys field value
+// and a boolean to check if the value has been set.
+func (o *OAuth2Provider) GetVerificationKeysOk() (*[]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.VerificationKeys, true
+}
+
+// SetVerificationKeys sets field value
+func (o *OAuth2Provider) SetVerificationKeys(v []string) {
+	o.VerificationKeys = v
+}
+
 func (o OAuth2Provider) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -716,6 +743,9 @@ func (o OAuth2Provider) MarshalJSON() ([]byte, error) {
 	}
 	if o.IssuerMode != nil {
 		toSerialize["issuer_mode"] = o.IssuerMode
+	}
+	if true {
+		toSerialize["verification_keys"] = o.VerificationKeys
 	}
 	return json.Marshal(toSerialize)
 }
