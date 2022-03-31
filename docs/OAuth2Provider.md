@@ -24,13 +24,13 @@ Name | Type | Description | Notes
 **RedirectUris** | Pointer to **string** | Enter each URI on a new line. | [optional] 
 **SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
 **IssuerMode** | Pointer to [**IssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled. | [optional] 
-**VerificationKeys** | **[]string** | JWTs created with the configured certificates can authenticate with this provider. | 
+**VerificationKeys** | Pointer to **[]string** | JWTs created with the configured certificates can authenticate with this provider. | [optional] 
 
 ## Methods
 
 ### NewOAuth2Provider
 
-`func NewOAuth2Provider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, verificationKeys []string, ) *OAuth2Provider`
+`func NewOAuth2Provider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, ) *OAuth2Provider`
 
 NewOAuth2Provider instantiates a new OAuth2Provider object
 This constructor will assign default values to properties that have it defined,
@@ -529,6 +529,11 @@ and a boolean to check if the value has been set.
 
 SetVerificationKeys sets VerificationKeys field to given value.
 
+### HasVerificationKeys
+
+`func (o *OAuth2Provider) HasVerificationKeys() bool`
+
+HasVerificationKeys returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

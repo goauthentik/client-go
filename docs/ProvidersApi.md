@@ -919,7 +919,7 @@ import (
 )
 
 func main() {
-    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example", []string{"VerificationKeys_example"}) // OAuth2ProviderRequest | 
+    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example") // OAuth2ProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1364,7 +1364,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this OAuth2/OpenID Provider.
-    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example", []string{"VerificationKeys_example"}) // OAuth2ProviderRequest | 
+    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example") // OAuth2ProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

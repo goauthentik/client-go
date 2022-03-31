@@ -49,14 +49,14 @@ type OAuth2Provider struct {
 	// Configure how the issuer field of the ID Token should be filled.
 	IssuerMode *IssuerModeEnum `json:"issuer_mode,omitempty"`
 	// JWTs created with the configured certificates can authenticate with this provider.
-	VerificationKeys []string `json:"verification_keys"`
+	VerificationKeys *[]string `json:"verification_keys,omitempty"`
 }
 
 // NewOAuth2Provider instantiates a new OAuth2Provider object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuth2Provider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, verificationKeys []string) *OAuth2Provider {
+func NewOAuth2Provider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string) *OAuth2Provider {
 	this := OAuth2Provider{}
 	this.Pk = pk
 	this.Name = name
@@ -67,7 +67,6 @@ func NewOAuth2Provider(pk int32, name string, authorizationFlow string, componen
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
-	this.VerificationKeys = verificationKeys
 	return &this
 }
 
@@ -658,28 +657,36 @@ func (o *OAuth2Provider) SetIssuerMode(v IssuerModeEnum) {
 	o.IssuerMode = &v
 }
 
-// GetVerificationKeys returns the VerificationKeys field value
+// GetVerificationKeys returns the VerificationKeys field value if set, zero value otherwise.
 func (o *OAuth2Provider) GetVerificationKeys() []string {
-	if o == nil {
+	if o == nil || o.VerificationKeys == nil {
 		var ret []string
 		return ret
 	}
-
-	return o.VerificationKeys
+	return *o.VerificationKeys
 }
 
-// GetVerificationKeysOk returns a tuple with the VerificationKeys field value
+// GetVerificationKeysOk returns a tuple with the VerificationKeys field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OAuth2Provider) GetVerificationKeysOk() (*[]string, bool) {
-	if o == nil {
+	if o == nil || o.VerificationKeys == nil {
 		return nil, false
 	}
-	return &o.VerificationKeys, true
+	return o.VerificationKeys, true
 }
 
-// SetVerificationKeys sets field value
+// HasVerificationKeys returns a boolean if a field has been set.
+func (o *OAuth2Provider) HasVerificationKeys() bool {
+	if o != nil && o.VerificationKeys != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVerificationKeys gets a reference to the given []string and assigns it to the VerificationKeys field.
 func (o *OAuth2Provider) SetVerificationKeys(v []string) {
-	o.VerificationKeys = v
+	o.VerificationKeys = &v
 }
 
 func (o OAuth2Provider) MarshalJSON() ([]byte, error) {
@@ -744,7 +751,7 @@ func (o OAuth2Provider) MarshalJSON() ([]byte, error) {
 	if o.IssuerMode != nil {
 		toSerialize["issuer_mode"] = o.IssuerMode
 	}
-	if true {
+	if o.VerificationKeys != nil {
 		toSerialize["verification_keys"] = o.VerificationKeys
 	}
 	return json.Marshal(toSerialize)
