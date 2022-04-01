@@ -17,18 +17,20 @@ import (
 
 // PolicyTestResult result of a policy test
 type PolicyTestResult struct {
-	Passing  bool     `json:"passing"`
-	Messages []string `json:"messages"`
+	Passing     bool                     `json:"passing"`
+	Messages    []string                 `json:"messages"`
+	LogMessages []map[string]interface{} `json:"log_messages"`
 }
 
 // NewPolicyTestResult instantiates a new PolicyTestResult object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPolicyTestResult(passing bool, messages []string) *PolicyTestResult {
+func NewPolicyTestResult(passing bool, messages []string, logMessages []map[string]interface{}) *PolicyTestResult {
 	this := PolicyTestResult{}
 	this.Passing = passing
 	this.Messages = messages
+	this.LogMessages = logMessages
 	return &this
 }
 
@@ -88,6 +90,30 @@ func (o *PolicyTestResult) SetMessages(v []string) {
 	o.Messages = v
 }
 
+// GetLogMessages returns the LogMessages field value
+func (o *PolicyTestResult) GetLogMessages() []map[string]interface{} {
+	if o == nil {
+		var ret []map[string]interface{}
+		return ret
+	}
+
+	return o.LogMessages
+}
+
+// GetLogMessagesOk returns a tuple with the LogMessages field value
+// and a boolean to check if the value has been set.
+func (o *PolicyTestResult) GetLogMessagesOk() (*[]map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LogMessages, true
+}
+
+// SetLogMessages sets field value
+func (o *PolicyTestResult) SetLogMessages(v []map[string]interface{}) {
+	o.LogMessages = v
+}
+
 func (o PolicyTestResult) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +121,9 @@ func (o PolicyTestResult) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["messages"] = o.Messages
+	}
+	if true {
+		toSerialize["log_messages"] = o.LogMessages
 	}
 	return json.Marshal(toSerialize)
 }

@@ -36617,6 +36617,9 @@ components:
     PolicyTestResult:
       description: result of a policy test
       example:
+        log_messages:
+        - key: ""
+        - key: ""
         messages:
         - messages
         - messages
@@ -36629,7 +36632,14 @@ components:
             type: string
           readOnly: true
           type: array
+        log_messages:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
       required:
+      - log_messages
       - messages
       - passing
       type: object

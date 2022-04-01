@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Passing** | **bool** |  | 
 **Messages** | **[]string** |  | [readonly] 
+**LogMessages** | **[]map[string]interface{}** |  | [readonly] 
 
 ## Methods
 
 ### NewPolicyTestResult
 
-`func NewPolicyTestResult(passing bool, messages []string, ) *PolicyTestResult`
+`func NewPolicyTestResult(passing bool, messages []string, logMessages []map[string]interface{}, ) *PolicyTestResult`
 
 NewPolicyTestResult instantiates a new PolicyTestResult object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PolicyTestResult) SetMessages(v []string)`
 
 SetMessages sets Messages field to given value.
+
+
+### GetLogMessages
+
+`func (o *PolicyTestResult) GetLogMessages() []map[string]interface{}`
+
+GetLogMessages returns the LogMessages field if non-nil, zero value otherwise.
+
+### GetLogMessagesOk
+
+`func (o *PolicyTestResult) GetLogMessagesOk() (*[]map[string]interface{}, bool)`
+
+GetLogMessagesOk returns a tuple with the LogMessages field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLogMessages
+
+`func (o *PolicyTestResult) SetLogMessages(v []map[string]interface{})`
+
+SetLogMessages sets LogMessages field to given value.
 
 
 
