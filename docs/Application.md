@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **MetaDescription** | Pointer to **string** |  | [optional] 
 **MetaPublisher** | Pointer to **string** |  | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
+**Group** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -314,6 +315,31 @@ SetPolicyEngineMode sets PolicyEngineMode field to given value.
 `func (o *Application) HasPolicyEngineMode() bool`
 
 HasPolicyEngineMode returns a boolean if a field has been set.
+
+### GetGroup
+
+`func (o *Application) GetGroup() string`
+
+GetGroup returns the Group field if non-nil, zero value otherwise.
+
+### GetGroupOk
+
+`func (o *Application) GetGroupOk() (*string, bool)`
+
+GetGroupOk returns a tuple with the Group field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroup
+
+`func (o *Application) SetGroup(v string)`
+
+SetGroup sets Group field to given value.
+
+### HasGroup
+
+`func (o *Application) HasGroup() bool`
+
+HasGroup returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

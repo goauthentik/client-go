@@ -21324,6 +21324,7 @@ components:
         meta_icon: meta_icon
         slug: slug
         meta_publisher: meta_publisher
+        group: group
       properties:
         pk:
           format: uuid
@@ -21360,6 +21361,8 @@ components:
           type: string
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
+        group:
+          type: string
       required:
       - launch_url
       - meta_icon
@@ -21382,6 +21385,7 @@ components:
         meta_launch_url: https://openapi-generator.tech
         slug: slug
         meta_publisher: meta_publisher
+        group: group
       properties:
         name:
           description: Application's display Name.
@@ -21407,6 +21411,8 @@ components:
           type: string
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
+        group:
+          type: string
       required:
       - name
       - slug
@@ -27415,6 +27421,7 @@ components:
           meta_icon: meta_icon
           slug: slug
           meta_publisher: meta_publisher
+          group: group
         - meta_description: meta_description
           provider_obj:
             component: component
@@ -27437,6 +27444,7 @@ components:
           meta_icon: meta_icon
           slug: slug
           meta_publisher: meta_publisher
+          group: group
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -32367,6 +32375,7 @@ components:
             meta_icon: meta_icon
             slug: slug
             meta_publisher: meta_publisher
+            group: group
           pk: 0
           user:
             uid: uid
@@ -32472,6 +32481,7 @@ components:
             meta_icon: meta_icon
             slug: slug
             meta_publisher: meta_publisher
+            group: group
           pk: 0
           user:
             uid: uid
@@ -33658,6 +33668,7 @@ components:
         meta_launch_url: https://openapi-generator.tech
         slug: slug
         meta_publisher: meta_publisher
+        group: group
       properties:
         name:
           description: Application's display Name.
@@ -33683,6 +33694,8 @@ components:
           type: string
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
+        group:
+          type: string
       type: object
     PatchedAuthenticateWebAuthnStageRequest:
       description: AuthenticateWebAuthnStage Serializer
@@ -39724,6 +39737,7 @@ components:
           meta_icon: meta_icon
           slug: slug
           meta_publisher: meta_publisher
+          group: group
         pk: 0
         user:
           uid: uid
