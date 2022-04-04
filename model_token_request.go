@@ -23,7 +23,6 @@ type TokenRequest struct {
 	Identifier  string         `json:"identifier"`
 	Intent      *IntentEnum    `json:"intent,omitempty"`
 	User        *int32         `json:"user,omitempty"`
-	UserObj     *UserRequest   `json:"user_obj,omitempty"`
 	Description *string        `json:"description,omitempty"`
 	Expires     *time.Time     `json:"expires,omitempty"`
 	Expiring    *bool          `json:"expiring,omitempty"`
@@ -178,38 +177,6 @@ func (o *TokenRequest) SetUser(v int32) {
 	o.User = &v
 }
 
-// GetUserObj returns the UserObj field value if set, zero value otherwise.
-func (o *TokenRequest) GetUserObj() UserRequest {
-	if o == nil || o.UserObj == nil {
-		var ret UserRequest
-		return ret
-	}
-	return *o.UserObj
-}
-
-// GetUserObjOk returns a tuple with the UserObj field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TokenRequest) GetUserObjOk() (*UserRequest, bool) {
-	if o == nil || o.UserObj == nil {
-		return nil, false
-	}
-	return o.UserObj, true
-}
-
-// HasUserObj returns a boolean if a field has been set.
-func (o *TokenRequest) HasUserObj() bool {
-	if o != nil && o.UserObj != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUserObj gets a reference to the given UserRequest and assigns it to the UserObj field.
-func (o *TokenRequest) SetUserObj(v UserRequest) {
-	o.UserObj = &v
-}
-
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *TokenRequest) GetDescription() string {
 	if o == nil || o.Description == nil {
@@ -319,9 +286,6 @@ func (o TokenRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.User != nil {
 		toSerialize["user"] = o.User
-	}
-	if o.UserObj != nil {
-		toSerialize["user_obj"] = o.UserObj
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description

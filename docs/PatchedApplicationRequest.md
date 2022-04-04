@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Application&#39;s display Name. | [optional] 
 **Slug** | Pointer to **string** | Internal application name, used in URLs. | [optional] 
 **Provider** | Pointer to **NullableInt32** |  | [optional] 
-**ProviderObj** | Pointer to [**ProviderRequest**](ProviderRequest.md) |  | [optional] 
 **MetaLaunchUrl** | Pointer to **string** |  | [optional] 
 **MetaDescription** | Pointer to **string** |  | [optional] 
 **MetaPublisher** | Pointer to **string** |  | [optional] 
@@ -118,31 +117,6 @@ HasProvider returns a boolean if a field has been set.
 `func (o *PatchedApplicationRequest) UnsetProvider()`
 
 UnsetProvider ensures that no value is present for Provider, not even an explicit nil
-### GetProviderObj
-
-`func (o *PatchedApplicationRequest) GetProviderObj() ProviderRequest`
-
-GetProviderObj returns the ProviderObj field if non-nil, zero value otherwise.
-
-### GetProviderObjOk
-
-`func (o *PatchedApplicationRequest) GetProviderObjOk() (*ProviderRequest, bool)`
-
-GetProviderObjOk returns a tuple with the ProviderObj field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProviderObj
-
-`func (o *PatchedApplicationRequest) SetProviderObj(v ProviderRequest)`
-
-SetProviderObj sets ProviderObj field to given value.
-
-### HasProviderObj
-
-`func (o *PatchedApplicationRequest) HasProviderObj() bool`
-
-HasProviderObj returns a boolean if a field has been set.
-
 ### GetMetaLaunchUrl
 
 `func (o *PatchedApplicationRequest) GetMetaLaunchUrl() string`

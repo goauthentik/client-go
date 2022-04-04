@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Application&#39;s display Name. | 
 **Slug** | **string** | Internal application name, used in URLs. | 
 **Provider** | Pointer to **NullableInt32** |  | [optional] 
-**ProviderObj** | Pointer to [**Provider**](Provider.md) |  | [optional] 
+**ProviderObj** | [**Provider**](Provider.md) |  | [readonly] 
 **LaunchUrl** | **NullableString** |  | [readonly] 
 **MetaLaunchUrl** | Pointer to **string** |  | [optional] 
 **MetaIcon** | **NullableString** |  | [readonly] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewApplication
 
-`func NewApplication(pk string, name string, slug string, launchUrl NullableString, metaIcon NullableString, ) *Application`
+`func NewApplication(pk string, name string, slug string, providerObj Provider, launchUrl NullableString, metaIcon NullableString, ) *Application`
 
 NewApplication instantiates a new Application object
 This constructor will assign default values to properties that have it defined,
@@ -150,11 +150,6 @@ and a boolean to check if the value has been set.
 
 SetProviderObj sets ProviderObj field to given value.
 
-### HasProviderObj
-
-`func (o *Application) HasProviderObj() bool`
-
-HasProviderObj returns a boolean if a field has been set.
 
 ### GetLaunchUrl
 

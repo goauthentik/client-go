@@ -22,7 +22,6 @@ type PatchedApplicationRequest struct {
 	// Internal application name, used in URLs.
 	Slug             *string           `json:"slug,omitempty"`
 	Provider         NullableInt32     `json:"provider,omitempty"`
-	ProviderObj      *ProviderRequest  `json:"provider_obj,omitempty"`
 	MetaLaunchUrl    *string           `json:"meta_launch_url,omitempty"`
 	MetaDescription  *string           `json:"meta_description,omitempty"`
 	MetaPublisher    *string           `json:"meta_publisher,omitempty"`
@@ -152,38 +151,6 @@ func (o *PatchedApplicationRequest) SetProviderNil() {
 // UnsetProvider ensures that no value is present for Provider, not even an explicit nil
 func (o *PatchedApplicationRequest) UnsetProvider() {
 	o.Provider.Unset()
-}
-
-// GetProviderObj returns the ProviderObj field value if set, zero value otherwise.
-func (o *PatchedApplicationRequest) GetProviderObj() ProviderRequest {
-	if o == nil || o.ProviderObj == nil {
-		var ret ProviderRequest
-		return ret
-	}
-	return *o.ProviderObj
-}
-
-// GetProviderObjOk returns a tuple with the ProviderObj field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedApplicationRequest) GetProviderObjOk() (*ProviderRequest, bool) {
-	if o == nil || o.ProviderObj == nil {
-		return nil, false
-	}
-	return o.ProviderObj, true
-}
-
-// HasProviderObj returns a boolean if a field has been set.
-func (o *PatchedApplicationRequest) HasProviderObj() bool {
-	if o != nil && o.ProviderObj != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProviderObj gets a reference to the given ProviderRequest and assigns it to the ProviderObj field.
-func (o *PatchedApplicationRequest) SetProviderObj(v ProviderRequest) {
-	o.ProviderObj = &v
 }
 
 // GetMetaLaunchUrl returns the MetaLaunchUrl field value if set, zero value otherwise.
@@ -356,9 +323,6 @@ func (o PatchedApplicationRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Provider.IsSet() {
 		toSerialize["provider"] = o.Provider.Get()
-	}
-	if o.ProviderObj != nil {
-		toSerialize["provider_obj"] = o.ProviderObj
 	}
 	if o.MetaLaunchUrl != nil {
 		toSerialize["meta_launch_url"] = o.MetaLaunchUrl

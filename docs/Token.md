@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Identifier** | **string** |  | 
 **Intent** | Pointer to [**IntentEnum**](IntentEnum.md) |  | [optional] 
 **User** | Pointer to **int32** |  | [optional] 
-**UserObj** | Pointer to [**User**](User.md) |  | [optional] 
+**UserObj** | [**User**](User.md) |  | [readonly] 
 **Description** | Pointer to **string** |  | [optional] 
 **Expires** | Pointer to **time.Time** |  | [optional] 
 **Expiring** | Pointer to **bool** |  | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewToken
 
-`func NewToken(pk string, identifier string, ) *Token`
+`func NewToken(pk string, identifier string, userObj User, ) *Token`
 
 NewToken instantiates a new Token object
 This constructor will assign default values to properties that have it defined,
@@ -177,11 +177,6 @@ and a boolean to check if the value has been set.
 
 SetUserObj sets UserObj field to given value.
 
-### HasUserObj
-
-`func (o *Token) HasUserObj() bool`
-
-HasUserObj returns a boolean if a field has been set.
 
 ### GetDescription
 

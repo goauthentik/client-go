@@ -24,7 +24,7 @@ type Token struct {
 	Identifier  string         `json:"identifier"`
 	Intent      *IntentEnum    `json:"intent,omitempty"`
 	User        *int32         `json:"user,omitempty"`
-	UserObj     *User          `json:"user_obj,omitempty"`
+	UserObj     User           `json:"user_obj"`
 	Description *string        `json:"description,omitempty"`
 	Expires     *time.Time     `json:"expires,omitempty"`
 	Expiring    *bool          `json:"expiring,omitempty"`
@@ -34,10 +34,11 @@ type Token struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewToken(pk string, identifier string) *Token {
+func NewToken(pk string, identifier string, userObj User) *Token {
 	this := Token{}
 	this.Pk = pk
 	this.Identifier = identifier
+	this.UserObj = userObj
 	return &this
 }
 
@@ -204,36 +205,28 @@ func (o *Token) SetUser(v int32) {
 	o.User = &v
 }
 
-// GetUserObj returns the UserObj field value if set, zero value otherwise.
+// GetUserObj returns the UserObj field value
 func (o *Token) GetUserObj() User {
-	if o == nil || o.UserObj == nil {
+	if o == nil {
 		var ret User
 		return ret
 	}
-	return *o.UserObj
+
+	return o.UserObj
 }
 
-// GetUserObjOk returns a tuple with the UserObj field value if set, nil otherwise
+// GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
 func (o *Token) GetUserObjOk() (*User, bool) {
-	if o == nil || o.UserObj == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.UserObj, true
+	return &o.UserObj, true
 }
 
-// HasUserObj returns a boolean if a field has been set.
-func (o *Token) HasUserObj() bool {
-	if o != nil && o.UserObj != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUserObj gets a reference to the given User and assigns it to the UserObj field.
+// SetUserObj sets field value
 func (o *Token) SetUserObj(v User) {
-	o.UserObj = &v
+	o.UserObj = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -349,7 +342,7 @@ func (o Token) MarshalJSON() ([]byte, error) {
 	if o.User != nil {
 		toSerialize["user"] = o.User
 	}
-	if o.UserObj != nil {
+	if true {
 		toSerialize["user_obj"] = o.UserObj
 	}
 	if o.Description != nil {

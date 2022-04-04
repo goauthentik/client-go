@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Identifier** | Pointer to **string** |  | [optional] 
 **Intent** | Pointer to [**IntentEnum**](IntentEnum.md) |  | [optional] 
 **User** | Pointer to **int32** |  | [optional] 
-**UserObj** | Pointer to [**UserRequest**](UserRequest.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Expires** | Pointer to **time.Time** |  | [optional] 
 **Expiring** | Pointer to **bool** |  | [optional] 
@@ -141,31 +140,6 @@ SetUser sets User field to given value.
 `func (o *PatchedTokenRequest) HasUser() bool`
 
 HasUser returns a boolean if a field has been set.
-
-### GetUserObj
-
-`func (o *PatchedTokenRequest) GetUserObj() UserRequest`
-
-GetUserObj returns the UserObj field if non-nil, zero value otherwise.
-
-### GetUserObjOk
-
-`func (o *PatchedTokenRequest) GetUserObjOk() (*UserRequest, bool)`
-
-GetUserObjOk returns a tuple with the UserObj field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserObj
-
-`func (o *PatchedTokenRequest) SetUserObj(v UserRequest)`
-
-SetUserObj sets UserObj field to given value.
-
-### HasUserObj
-
-`func (o *PatchedTokenRequest) HasUserObj() bool`
-
-HasUserObj returns a boolean if a field has been set.
 
 ### GetDescription
 

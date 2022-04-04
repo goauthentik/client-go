@@ -23,7 +23,7 @@ type Application struct {
 	// Internal application name, used in URLs.
 	Slug             string            `json:"slug"`
 	Provider         NullableInt32     `json:"provider,omitempty"`
-	ProviderObj      *Provider         `json:"provider_obj,omitempty"`
+	ProviderObj      Provider          `json:"provider_obj"`
 	LaunchUrl        NullableString    `json:"launch_url"`
 	MetaLaunchUrl    *string           `json:"meta_launch_url,omitempty"`
 	MetaIcon         NullableString    `json:"meta_icon"`
@@ -37,11 +37,12 @@ type Application struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplication(pk string, name string, slug string, launchUrl NullableString, metaIcon NullableString) *Application {
+func NewApplication(pk string, name string, slug string, providerObj Provider, launchUrl NullableString, metaIcon NullableString) *Application {
 	this := Application{}
 	this.Pk = pk
 	this.Name = name
 	this.Slug = slug
+	this.ProviderObj = providerObj
 	this.LaunchUrl = launchUrl
 	this.MetaIcon = metaIcon
 	return &this
@@ -170,36 +171,28 @@ func (o *Application) UnsetProvider() {
 	o.Provider.Unset()
 }
 
-// GetProviderObj returns the ProviderObj field value if set, zero value otherwise.
+// GetProviderObj returns the ProviderObj field value
 func (o *Application) GetProviderObj() Provider {
-	if o == nil || o.ProviderObj == nil {
+	if o == nil {
 		var ret Provider
 		return ret
 	}
-	return *o.ProviderObj
+
+	return o.ProviderObj
 }
 
-// GetProviderObjOk returns a tuple with the ProviderObj field value if set, nil otherwise
+// GetProviderObjOk returns a tuple with the ProviderObj field value
 // and a boolean to check if the value has been set.
 func (o *Application) GetProviderObjOk() (*Provider, bool) {
-	if o == nil || o.ProviderObj == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProviderObj, true
+	return &o.ProviderObj, true
 }
 
-// HasProviderObj returns a boolean if a field has been set.
-func (o *Application) HasProviderObj() bool {
-	if o != nil && o.ProviderObj != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProviderObj gets a reference to the given Provider and assigns it to the ProviderObj field.
+// SetProviderObj sets field value
 func (o *Application) SetProviderObj(v Provider) {
-	o.ProviderObj = &v
+	o.ProviderObj = v
 }
 
 // GetLaunchUrl returns the LaunchUrl field value
@@ -428,7 +421,7 @@ func (o Application) MarshalJSON() ([]byte, error) {
 	if o.Provider.IsSet() {
 		toSerialize["provider"] = o.Provider.Get()
 	}
-	if o.ProviderObj != nil {
+	if true {
 		toSerialize["provider_obj"] = o.ProviderObj
 	}
 	if true {

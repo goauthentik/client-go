@@ -21303,19 +21303,7 @@ components:
       description: Application Serializer
       example:
         meta_description: meta_description
-        provider_obj:
-          component: component
-          verbose_name: verbose_name
-          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          verbose_name_plural: verbose_name_plural
-          meta_model_name: meta_model_name
-          assigned_application_name: assigned_application_name
-          name: name
-          pk: 6
-          assigned_application_slug: assigned_application_slug
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        provider_obj: ""
         launch_url: launch_url
         provider: 0
         name: name
@@ -21343,7 +21331,9 @@ components:
           nullable: true
           type: integer
         provider_obj:
-          $ref: '#/components/schemas/Provider'
+          allOf:
+          - $ref: '#/components/schemas/Provider'
+          readOnly: true
         launch_url:
           nullable: true
           readOnly: true
@@ -21368,18 +21358,13 @@ components:
       - meta_icon
       - name
       - pk
+      - provider_obj
       - slug
       type: object
     ApplicationRequest:
       description: Application Serializer
       example:
         meta_description: meta_description
-        provider_obj:
-          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         provider: 0
         name: name
         meta_launch_url: https://openapi-generator.tech
@@ -21400,8 +21385,6 @@ components:
         provider:
           nullable: true
           type: integer
-        provider_obj:
-          $ref: '#/components/schemas/ProviderRequest'
         meta_launch_url:
           format: uri
           type: string
@@ -27400,19 +27383,7 @@ components:
           total_pages: 5.637376656633329
         results:
         - meta_description: meta_description
-          provider_obj:
-            component: component
-            verbose_name: verbose_name
-            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            verbose_name_plural: verbose_name_plural
-            meta_model_name: meta_model_name
-            assigned_application_name: assigned_application_name
-            name: name
-            pk: 6
-            assigned_application_slug: assigned_application_slug
-            property_mappings:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          provider_obj: ""
           launch_url: launch_url
           provider: 0
           name: name
@@ -27423,19 +27394,7 @@ components:
           meta_publisher: meta_publisher
           group: group
         - meta_description: meta_description
-          provider_obj:
-            component: component
-            verbose_name: verbose_name
-            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            verbose_name_plural: verbose_name_plural
-            meta_model_name: meta_model_name
-            assigned_application_name: assigned_application_name
-            name: name
-            pk: 6
-            assigned_application_slug: assigned_application_slug
-            property_mappings:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          provider_obj: ""
           launch_url: launch_url
           provider: 0
           name: name
@@ -32156,86 +32115,7 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
-          user_obj:
-            uid: uid
-            is_active: true
-            is_superuser: true
-            last_login: 2000-01-23T04:56:07.000+00:00
-            name: name
-            groups:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            attributes:
-              key: ""
-            pk: 6
-            avatar: avatar
-            groups_obj:
-            - parent_name: parent_name
-              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              is_superuser: true
-              name: name
-              attributes:
-                key: ""
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              num_pk: 0
-              users_obj:
-              - uid: uid
-                is_active: true
-                last_login: 2000-01-23T04:56:07.000+00:00
-                name: name
-                attributes:
-                  key: ""
-                pk: 1
-                avatar: avatar
-                email: email
-                username: username
-              - uid: uid
-                is_active: true
-                last_login: 2000-01-23T04:56:07.000+00:00
-                name: name
-                attributes:
-                  key: ""
-                pk: 1
-                avatar: avatar
-                email: email
-                username: username
-              users:
-              - 6
-              - 6
-            - parent_name: parent_name
-              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              is_superuser: true
-              name: name
-              attributes:
-                key: ""
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              num_pk: 0
-              users_obj:
-              - uid: uid
-                is_active: true
-                last_login: 2000-01-23T04:56:07.000+00:00
-                name: name
-                attributes:
-                  key: ""
-                pk: 1
-                avatar: avatar
-                email: email
-                username: username
-              - uid: uid
-                is_active: true
-                last_login: 2000-01-23T04:56:07.000+00:00
-                name: name
-                attributes:
-                  key: ""
-                pk: 1
-                avatar: avatar
-                email: email
-                username: username
-              users:
-              - 6
-              - 6
-            email: email
-            username: username
+          user_obj: ""
           expires: 2000-01-23T04:56:07.000+00:00
           expiring: true
           managed: managed
@@ -32243,86 +32123,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
         - identifier: identifier
-          user_obj:
-            uid: uid
-            is_active: true
-            is_superuser: true
-            last_login: 2000-01-23T04:56:07.000+00:00
-            name: name
-            groups:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            attributes:
-              key: ""
-            pk: 6
-            avatar: avatar
-            groups_obj:
-            - parent_name: parent_name
-              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              is_superuser: true
-              name: name
-              attributes:
-                key: ""
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              num_pk: 0
-              users_obj:
-              - uid: uid
-                is_active: true
-                last_login: 2000-01-23T04:56:07.000+00:00
-                name: name
-                attributes:
-                  key: ""
-                pk: 1
-                avatar: avatar
-                email: email
-                username: username
-              - uid: uid
-                is_active: true
-                last_login: 2000-01-23T04:56:07.000+00:00
-                name: name
-                attributes:
-                  key: ""
-                pk: 1
-                avatar: avatar
-                email: email
-                username: username
-              users:
-              - 6
-              - 6
-            - parent_name: parent_name
-              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              is_superuser: true
-              name: name
-              attributes:
-                key: ""
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              num_pk: 0
-              users_obj:
-              - uid: uid
-                is_active: true
-                last_login: 2000-01-23T04:56:07.000+00:00
-                name: name
-                attributes:
-                  key: ""
-                pk: 1
-                avatar: avatar
-                email: email
-                username: username
-              - uid: uid
-                is_active: true
-                last_login: 2000-01-23T04:56:07.000+00:00
-                name: name
-                attributes:
-                  key: ""
-                pk: 1
-                avatar: avatar
-                email: email
-                username: username
-              users:
-              - 6
-              - 6
-            email: email
-            username: username
+          user_obj: ""
           expires: 2000-01-23T04:56:07.000+00:00
           expiring: true
           managed: managed
@@ -32354,19 +32155,7 @@ components:
         - expires: 2000-01-23T04:56:07.000+00:00
           application:
             meta_description: meta_description
-            provider_obj:
-              component: component
-              verbose_name: verbose_name
-              authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              verbose_name_plural: verbose_name_plural
-              meta_model_name: meta_model_name
-              assigned_application_name: assigned_application_name
-              name: name
-              pk: 6
-              assigned_application_slug: assigned_application_slug
-              property_mappings:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            provider_obj: ""
             launch_url: launch_url
             provider: 0
             name: name
@@ -32460,19 +32249,7 @@ components:
         - expires: 2000-01-23T04:56:07.000+00:00
           application:
             meta_description: meta_description
-            provider_obj:
-              component: component
-              verbose_name: verbose_name
-              authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              verbose_name_plural: verbose_name_plural
-              meta_model_name: meta_model_name
-              assigned_application_name: assigned_application_name
-              name: name
-              pk: 6
-              assigned_application_slug: assigned_application_slug
-              property_mappings:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            provider_obj: ""
             launch_url: launch_url
             provider: 0
             name: name
@@ -33657,12 +33434,6 @@ components:
       description: Application Serializer
       example:
         meta_description: meta_description
-        provider_obj:
-          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         provider: 0
         name: name
         meta_launch_url: https://openapi-generator.tech
@@ -33683,8 +33454,6 @@ components:
         provider:
           nullable: true
           type: integer
-        provider_obj:
-          $ref: '#/components/schemas/ProviderRequest'
         meta_launch_url:
           format: uri
           type: string
@@ -35936,17 +35705,6 @@ components:
       description: Token Serializer
       example:
         identifier: identifier
-        user_obj:
-          is_active: true
-          last_login: 2000-01-23T04:56:07.000+00:00
-          name: name
-          groups:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attributes:
-            key: ""
-          email: email
-          username: username
         expires: 2000-01-23T04:56:07.000+00:00
         expiring: true
         managed: managed
@@ -35971,8 +35729,6 @@ components:
           $ref: '#/components/schemas/IntentEnum'
         user:
           type: integer
-        user_obj:
-          $ref: '#/components/schemas/UserRequest'
         description:
           type: string
         expires:
@@ -37167,12 +36923,6 @@ components:
       type: string
     ProviderRequest:
       description: Provider Serializer
-      example:
-        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-        property_mappings:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         name:
           minLength: 1
@@ -39331,86 +39081,7 @@ components:
       description: Token Serializer
       example:
         identifier: identifier
-        user_obj:
-          uid: uid
-          is_active: true
-          is_superuser: true
-          last_login: 2000-01-23T04:56:07.000+00:00
-          name: name
-          groups:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attributes:
-            key: ""
-          pk: 6
-          avatar: avatar
-          groups_obj:
-          - parent_name: parent_name
-            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            is_superuser: true
-            name: name
-            attributes:
-              key: ""
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            num_pk: 0
-            users_obj:
-            - uid: uid
-              is_active: true
-              last_login: 2000-01-23T04:56:07.000+00:00
-              name: name
-              attributes:
-                key: ""
-              pk: 1
-              avatar: avatar
-              email: email
-              username: username
-            - uid: uid
-              is_active: true
-              last_login: 2000-01-23T04:56:07.000+00:00
-              name: name
-              attributes:
-                key: ""
-              pk: 1
-              avatar: avatar
-              email: email
-              username: username
-            users:
-            - 6
-            - 6
-          - parent_name: parent_name
-            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            is_superuser: true
-            name: name
-            attributes:
-              key: ""
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            num_pk: 0
-            users_obj:
-            - uid: uid
-              is_active: true
-              last_login: 2000-01-23T04:56:07.000+00:00
-              name: name
-              attributes:
-                key: ""
-              pk: 1
-              avatar: avatar
-              email: email
-              username: username
-            - uid: uid
-              is_active: true
-              last_login: 2000-01-23T04:56:07.000+00:00
-              name: name
-              attributes:
-                key: ""
-              pk: 1
-              avatar: avatar
-              email: email
-              username: username
-            users:
-            - 6
-            - 6
-          email: email
-          username: username
+        user_obj: ""
         expires: 2000-01-23T04:56:07.000+00:00
         expiring: true
         managed: managed
@@ -39440,7 +39111,9 @@ components:
         user:
           type: integer
         user_obj:
-          $ref: '#/components/schemas/User'
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
         description:
           type: string
         expires:
@@ -39451,22 +39124,12 @@ components:
       required:
       - identifier
       - pk
+      - user_obj
       type: object
     TokenRequest:
       description: Token Serializer
       example:
         identifier: identifier
-        user_obj:
-          is_active: true
-          last_login: 2000-01-23T04:56:07.000+00:00
-          name: name
-          groups:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attributes:
-            key: ""
-          email: email
-          username: username
         expires: 2000-01-23T04:56:07.000+00:00
         expiring: true
         managed: managed
@@ -39491,8 +39154,6 @@ components:
           $ref: '#/components/schemas/IntentEnum'
         user:
           type: integer
-        user_obj:
-          $ref: '#/components/schemas/UserRequest'
         description:
           type: string
         expires:
@@ -39716,19 +39377,7 @@ components:
         expires: 2000-01-23T04:56:07.000+00:00
         application:
           meta_description: meta_description
-          provider_obj:
-            component: component
-            verbose_name: verbose_name
-            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            verbose_name_plural: verbose_name_plural
-            meta_model_name: meta_model_name
-            assigned_application_name: assigned_application_name
-            name: name
-            pk: 6
-            assigned_application_slug: assigned_application_slug
-            property_mappings:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          provider_obj: ""
           launch_url: launch_url
           provider: 0
           name: name
