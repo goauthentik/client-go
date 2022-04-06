@@ -32075,6 +32075,8 @@ components:
           tenant_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           domain: domain
           flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          attributes:
+            key: ""
           branding_title: branding_title
           branding_favicon: branding_favicon
           flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -32088,6 +32090,8 @@ components:
           tenant_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           domain: domain
           flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          attributes:
+            key: ""
           branding_title: branding_title
           branding_favicon: branding_favicon
           flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35643,13 +35647,15 @@ components:
       description: Tenant Serializer
       example:
         branding_logo: branding_logo
+        event_retention: event_retention
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         default: true
         flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         domain: domain
         flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        event_retention: event_retention
+        attributes:
+          key: ""
         branding_title: branding_title
         branding_favicon: branding_favicon
         flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35700,6 +35706,9 @@ components:
           format: uuid
           nullable: true
           type: string
+        attributes:
+          additionalProperties: {}
+          type: object
       type: object
     PatchedTokenRequest:
       description: Token Serializer
@@ -38960,6 +38969,8 @@ components:
         tenant_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         domain: domain
         flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        attributes:
+          key: ""
         branding_title: branding_title
         branding_favicon: branding_favicon
         flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -39009,6 +39020,9 @@ components:
           format: uuid
           nullable: true
           type: string
+        attributes:
+          additionalProperties: {}
+          type: object
       required:
       - domain
       - tenant_uuid
@@ -39017,13 +39031,15 @@ components:
       description: Tenant Serializer
       example:
         branding_logo: branding_logo
+        event_retention: event_retention
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         default: true
         flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         domain: domain
         flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        event_retention: event_retention
+        attributes:
+          key: ""
         branding_title: branding_title
         branding_favicon: branding_favicon
         flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -39074,6 +39090,9 @@ components:
           format: uuid
           nullable: true
           type: string
+        attributes:
+          additionalProperties: {}
+          type: object
       required:
       - domain
       type: object
@@ -39963,9 +39982,7 @@ components:
       - username
       type: object
     UserSelf:
-      description: |-
-        User Serializer for information a user can retrieve about themselves and
-        update about themselves
+      description: User Serializer for information a user can retrieve about themselves
       example:
         uid: uid
         settings:
@@ -40023,6 +40040,7 @@ components:
           type: string
         settings:
           additionalProperties: {}
+          readOnly: true
           type: object
       required:
       - avatar
@@ -40031,6 +40049,7 @@ components:
       - is_superuser
       - name
       - pk
+      - settings
       - uid
       - username
       type: object

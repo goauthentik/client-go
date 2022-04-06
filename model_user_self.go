@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UserSelf User Serializer for information a user can retrieve about themselves and update about themselves
+// UserSelf User Serializer for information a user can retrieve about themselves
 type UserSelf struct {
 	Pk int32 `json:"pk"`
 	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
@@ -23,20 +23,20 @@ type UserSelf struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive    bool                    `json:"is_active"`
-	IsSuperuser bool                    `json:"is_superuser"`
-	Groups      []UserSelfGroups        `json:"groups"`
-	Email       *string                 `json:"email,omitempty"`
-	Avatar      string                  `json:"avatar"`
-	Uid         string                  `json:"uid"`
-	Settings    *map[string]interface{} `json:"settings,omitempty"`
+	IsActive    bool                   `json:"is_active"`
+	IsSuperuser bool                   `json:"is_superuser"`
+	Groups      []UserSelfGroups       `json:"groups"`
+	Email       *string                `json:"email,omitempty"`
+	Avatar      string                 `json:"avatar"`
+	Uid         string                 `json:"uid"`
+	Settings    map[string]interface{} `json:"settings"`
 }
 
 // NewUserSelf instantiates a new UserSelf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperuser bool, groups []UserSelfGroups, avatar string, uid string) *UserSelf {
+func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperuser bool, groups []UserSelfGroups, avatar string, uid string, settings map[string]interface{}) *UserSelf {
 	this := UserSelf{}
 	this.Pk = pk
 	this.Username = username
@@ -46,6 +46,7 @@ func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperu
 	this.Groups = groups
 	this.Avatar = avatar
 	this.Uid = uid
+	this.Settings = settings
 	return &this
 }
 
@@ -281,36 +282,28 @@ func (o *UserSelf) SetUid(v string) {
 	o.Uid = v
 }
 
-// GetSettings returns the Settings field value if set, zero value otherwise.
+// GetSettings returns the Settings field value
 func (o *UserSelf) GetSettings() map[string]interface{} {
-	if o == nil || o.Settings == nil {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Settings
+
+	return o.Settings
 }
 
-// GetSettingsOk returns a tuple with the Settings field value if set, nil otherwise
+// GetSettingsOk returns a tuple with the Settings field value
 // and a boolean to check if the value has been set.
 func (o *UserSelf) GetSettingsOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Settings == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Settings, true
+	return &o.Settings, true
 }
 
-// HasSettings returns a boolean if a field has been set.
-func (o *UserSelf) HasSettings() bool {
-	if o != nil && o.Settings != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSettings gets a reference to the given map[string]interface{} and assigns it to the Settings field.
+// SetSettings sets field value
 func (o *UserSelf) SetSettings(v map[string]interface{}) {
-	o.Settings = &v
+	o.Settings = v
 }
 
 func (o UserSelf) MarshalJSON() ([]byte, error) {
@@ -342,7 +335,7 @@ func (o UserSelf) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["uid"] = o.Uid
 	}
-	if o.Settings != nil {
+	if true {
 		toSerialize["settings"] = o.Settings
 	}
 	return json.Marshal(toSerialize)

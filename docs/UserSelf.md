@@ -13,13 +13,13 @@ Name | Type | Description | Notes
 **Email** | Pointer to **string** |  | [optional] 
 **Avatar** | **string** |  | [readonly] 
 **Uid** | **string** |  | [readonly] 
-**Settings** | Pointer to **map[string]interface{}** |  | [optional] 
+**Settings** | **map[string]interface{}** |  | [readonly] 
 
 ## Methods
 
 ### NewUserSelf
 
-`func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperuser bool, groups []UserSelfGroups, avatar string, uid string, ) *UserSelf`
+`func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperuser bool, groups []UserSelfGroups, avatar string, uid string, settings map[string]interface{}, ) *UserSelf`
 
 NewUserSelf instantiates a new UserSelf object
 This constructor will assign default values to properties that have it defined,
@@ -238,11 +238,6 @@ and a boolean to check if the value has been set.
 
 SetSettings sets Settings field to given value.
 
-### HasSettings
-
-`func (o *UserSelf) HasSettings() bool`
-
-HasSettings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

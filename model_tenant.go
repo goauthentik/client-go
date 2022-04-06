@@ -32,7 +32,8 @@ type Tenant struct {
 	// Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2).
 	EventRetention *string `json:"event_retention,omitempty"`
 	// Web Certificate used by the authentik Core webserver.
-	WebCertificate NullableString `json:"web_certificate,omitempty"`
+	WebCertificate NullableString          `json:"web_certificate,omitempty"`
+	Attributes     *map[string]interface{} `json:"attributes,omitempty"`
 }
 
 // NewTenant instantiates a new Tenant object
@@ -520,6 +521,38 @@ func (o *Tenant) UnsetWebCertificate() {
 	o.WebCertificate.Unset()
 }
 
+// GetAttributes returns the Attributes field value if set, zero value otherwise.
+func (o *Tenant) GetAttributes() map[string]interface{} {
+	if o == nil || o.Attributes == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Tenant) GetAttributesOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Attributes == nil {
+		return nil, false
+	}
+	return o.Attributes, true
+}
+
+// HasAttributes returns a boolean if a field has been set.
+func (o *Tenant) HasAttributes() bool {
+	if o != nil && o.Attributes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
+func (o *Tenant) SetAttributes(v map[string]interface{}) {
+	o.Attributes = &v
+}
+
 func (o Tenant) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -560,6 +593,9 @@ func (o Tenant) MarshalJSON() ([]byte, error) {
 	}
 	if o.WebCertificate.IsSet() {
 		toSerialize["web_certificate"] = o.WebCertificate.Get()
+	}
+	if o.Attributes != nil {
+		toSerialize["attributes"] = o.Attributes
 	}
 	return json.Marshal(toSerialize)
 }
