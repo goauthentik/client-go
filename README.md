@@ -125,6 +125,7 @@ Class | Method | HTTP request | Description
 *CoreApi* | [**CoreTokensList**](docs/CoreApi.md#coretokenslist) | **Get** /core/tokens/ | 
 *CoreApi* | [**CoreTokensPartialUpdate**](docs/CoreApi.md#coretokenspartialupdate) | **Patch** /core/tokens/{identifier}/ | 
 *CoreApi* | [**CoreTokensRetrieve**](docs/CoreApi.md#coretokensretrieve) | **Get** /core/tokens/{identifier}/ | 
+*CoreApi* | [**CoreTokensSetKeyCreate**](docs/CoreApi.md#coretokenssetkeycreate) | **Post** /core/tokens/{identifier}/set_key/ | 
 *CoreApi* | [**CoreTokensUpdate**](docs/CoreApi.md#coretokensupdate) | **Put** /core/tokens/{identifier}/ | 
 *CoreApi* | [**CoreTokensUsedByList**](docs/CoreApi.md#coretokensusedbylist) | **Get** /core/tokens/{identifier}/used_by/ | 
 *CoreApi* | [**CoreTokensViewKeyRetrieve**](docs/CoreApi.md#coretokensviewkeyretrieve) | **Get** /core/tokens/{identifier}/view_key/ | 
@@ -1003,6 +1004,7 @@ Class | Method | HTTP request | Description
  - [TenantRequest](docs/TenantRequest.md)
  - [Token](docs/Token.md)
  - [TokenRequest](docs/TokenRequest.md)
+ - [TokenSetKeyRequest](docs/TokenSetKeyRequest.md)
  - [TokenView](docs/TokenView.md)
  - [TypeCreate](docs/TypeCreate.md)
  - [UsedBy](docs/UsedBy.md)

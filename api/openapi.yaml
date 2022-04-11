@@ -3072,6 +3072,37 @@ paths:
       - authentik: []
       tags:
       - core
+  /core/tokens/{identifier}/set_key/:
+    post:
+      description: Return token key and log access
+      operationId: core_tokens_set_key_create
+      parameters:
+      - explode: false
+        in: path
+        name: identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenSetKeyRequest'
+        required: true
+      responses:
+        "204":
+          description: Successfully changed key
+        "400":
+          description: Missing key
+        "404":
+          description: Token not found or expired
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - core
   /core/tokens/{identifier}/used_by/:
     get:
       description: Get a list of all objects that use this object
@@ -39182,6 +39213,16 @@ components:
           type: boolean
       required:
       - identifier
+      type: object
+    TokenSetKeyRequest:
+      example:
+        key: key
+      properties:
+        key:
+          minLength: 1
+          type: string
+      required:
+      - key
       type: object
     TokenView:
       description: Show token's current key

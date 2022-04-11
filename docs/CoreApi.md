@@ -39,6 +39,7 @@ Method | HTTP request | Description
 [**CoreTokensList**](CoreApi.md#CoreTokensList) | **Get** /core/tokens/ | 
 [**CoreTokensPartialUpdate**](CoreApi.md#CoreTokensPartialUpdate) | **Patch** /core/tokens/{identifier}/ | 
 [**CoreTokensRetrieve**](CoreApi.md#CoreTokensRetrieve) | **Get** /core/tokens/{identifier}/ | 
+[**CoreTokensSetKeyCreate**](CoreApi.md#CoreTokensSetKeyCreate) | **Post** /core/tokens/{identifier}/set_key/ | 
 [**CoreTokensUpdate**](CoreApi.md#CoreTokensUpdate) | **Put** /core/tokens/{identifier}/ | 
 [**CoreTokensUsedByList**](CoreApi.md#CoreTokensUsedByList) | **Get** /core/tokens/{identifier}/used_by/ | 
 [**CoreTokensViewKeyRetrieve**](CoreApi.md#CoreTokensViewKeyRetrieve) | **Get** /core/tokens/{identifier}/view_key/ | 
@@ -2558,6 +2559,76 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreTokensSetKeyCreate
+
+> CoreTokensSetKeyCreate(ctx, identifier).TokenSetKeyRequest(tokenSetKeyRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    identifier := "identifier_example" // string | 
+    tokenSetKeyRequest := *openapiclient.NewTokenSetKeyRequest("Key_example") // TokenSetKeyRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.CoreApi.CoreTokensSetKeyCreate(context.Background(), identifier).TokenSetKeyRequest(tokenSetKeyRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTokensSetKeyCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**identifier** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreTokensSetKeyCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **tokenSetKeyRequest** | [**TokenSetKeyRequest**](TokenSetKeyRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

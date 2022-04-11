@@ -4688,6 +4688,125 @@ func (a *CoreApiService) CoreTokensRetrieveExecute(r ApiCoreTokensRetrieveReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCoreTokensSetKeyCreateRequest struct {
+	ctx                _context.Context
+	ApiService         *CoreApiService
+	identifier         string
+	tokenSetKeyRequest *TokenSetKeyRequest
+}
+
+func (r ApiCoreTokensSetKeyCreateRequest) TokenSetKeyRequest(tokenSetKeyRequest TokenSetKeyRequest) ApiCoreTokensSetKeyCreateRequest {
+	r.tokenSetKeyRequest = &tokenSetKeyRequest
+	return r
+}
+
+func (r ApiCoreTokensSetKeyCreateRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.CoreTokensSetKeyCreateExecute(r)
+}
+
+/*
+CoreTokensSetKeyCreate Method for CoreTokensSetKeyCreate
+
+Return token key and log access
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param identifier
+ @return ApiCoreTokensSetKeyCreateRequest
+*/
+func (a *CoreApiService) CoreTokensSetKeyCreate(ctx _context.Context, identifier string) ApiCoreTokensSetKeyCreateRequest {
+	return ApiCoreTokensSetKeyCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		identifier: identifier,
+	}
+}
+
+// Execute executes the request
+func (a *CoreApiService) CoreTokensSetKeyCreateExecute(r ApiCoreTokensSetKeyCreateRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreTokensSetKeyCreate")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/tokens/{identifier}/set_key/"
+	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", _neturl.PathEscape(parameterToString(r.identifier, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.tokenSetKeyRequest == nil {
+		return nil, reportError("tokenSetKeyRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.tokenSetKeyRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiCoreTokensUpdateRequest struct {
 	ctx          _context.Context
 	ApiService   *CoreApiService

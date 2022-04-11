@@ -426,6 +426,7 @@ docs/Tenant.md
 docs/TenantRequest.md
 docs/Token.md
 docs/TokenRequest.md
+docs/TokenSetKeyRequest.md
 docs/TokenView.md
 docs/TypeCreate.md
 docs/UsedBy.md
@@ -852,6 +853,7 @@ model_tenant.go
 model_tenant_request.go
 model_token.go
 model_token_request.go
+model_token_set_key_request.go
 model_token_view.go
 model_totp_device.go
 model_totp_device_request.go
