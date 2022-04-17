@@ -21,13 +21,15 @@ type CapabilitiesEnum string
 
 // List of CapabilitiesEnum
 const (
-	CAPABILITIESENUM_SAVE_MEDIA CapabilitiesEnum = "can_save_media"
-	CAPABILITIESENUM_GEO_IP     CapabilitiesEnum = "can_geo_ip"
+	CAPABILITIESENUM_SAVE_MEDIA  CapabilitiesEnum = "can_save_media"
+	CAPABILITIESENUM_GEO_IP      CapabilitiesEnum = "can_geo_ip"
+	CAPABILITIESENUM_IMPERSONATE CapabilitiesEnum = "can_impersonate"
 )
 
 var allowedCapabilitiesEnumEnumValues = []CapabilitiesEnum{
 	"can_save_media",
 	"can_geo_ip",
+	"can_impersonate",
 }
 
 func (v *CapabilitiesEnum) UnmarshalJSON(src []byte) error {
