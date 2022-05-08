@@ -63,6 +63,7 @@ docs/AuthenticatorsApi.md
 docs/AutoSubmitChallengeResponseRequest.md
 docs/AutosubmitChallenge.md
 docs/BackendsEnum.md
+docs/BindModeEnum.md
 docs/BindingTypeEnum.md
 docs/Cache.md
 docs/CapabilitiesEnum.md
@@ -505,6 +506,7 @@ model_authenticator_web_authn_challenge_response_request.go
 model_auto_submit_challenge_response_request.go
 model_autosubmit_challenge.go
 model_backends_enum.go
+model_bind_mode_enum.go
 model_binding_type_enum.go
 model_cache.go
 model_capabilities_enum.go

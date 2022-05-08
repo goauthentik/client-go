@@ -42,6 +42,7 @@ type LDAPProvider struct {
 	GidStartNumber *int32          `json:"gid_start_number,omitempty"`
 	OutpostSet     []string        `json:"outpost_set"`
 	SearchMode     *SearchModeEnum `json:"search_mode,omitempty"`
+	BindMode       *BindModeEnum   `json:"bind_mode,omitempty"`
 }
 
 // NewLDAPProvider instantiates a new LDAPProvider object
@@ -589,6 +590,38 @@ func (o *LDAPProvider) SetSearchMode(v SearchModeEnum) {
 	o.SearchMode = &v
 }
 
+// GetBindMode returns the BindMode field value if set, zero value otherwise.
+func (o *LDAPProvider) GetBindMode() BindModeEnum {
+	if o == nil || o.BindMode == nil {
+		var ret BindModeEnum
+		return ret
+	}
+	return *o.BindMode
+}
+
+// GetBindModeOk returns a tuple with the BindMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LDAPProvider) GetBindModeOk() (*BindModeEnum, bool) {
+	if o == nil || o.BindMode == nil {
+		return nil, false
+	}
+	return o.BindMode, true
+}
+
+// HasBindMode returns a boolean if a field has been set.
+func (o *LDAPProvider) HasBindMode() bool {
+	if o != nil && o.BindMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBindMode gets a reference to the given BindModeEnum and assigns it to the BindMode field.
+func (o *LDAPProvider) SetBindMode(v BindModeEnum) {
+	o.BindMode = &v
+}
+
 func (o LDAPProvider) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -644,6 +677,9 @@ func (o LDAPProvider) MarshalJSON() ([]byte, error) {
 	}
 	if o.SearchMode != nil {
 		toSerialize["search_mode"] = o.SearchMode
+	}
+	if o.BindMode != nil {
+		toSerialize["bind_mode"] = o.BindMode
 	}
 	return json.Marshal(toSerialize)
 }

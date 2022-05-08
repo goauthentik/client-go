@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **GidStartNumber** | Pointer to **int32** | The start for gidNumbers, this number is added to a number generated from the group.Pk to make sure that the numbers aren&#39;t too low for POSIX groups. Default is 4000 to ensure that we don&#39;t collide with local groups or users primary groups gidNumber | [optional] 
 **OutpostSet** | **[]string** |  | [readonly] 
 **SearchMode** | Pointer to [**SearchModeEnum**](SearchModeEnum.md) |  | [optional] 
+**BindMode** | Pointer to [**BindModeEnum**](BindModeEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -461,6 +462,31 @@ SetSearchMode sets SearchMode field to given value.
 `func (o *LDAPProvider) HasSearchMode() bool`
 
 HasSearchMode returns a boolean if a field has been set.
+
+### GetBindMode
+
+`func (o *LDAPProvider) GetBindMode() BindModeEnum`
+
+GetBindMode returns the BindMode field if non-nil, zero value otherwise.
+
+### GetBindModeOk
+
+`func (o *LDAPProvider) GetBindModeOk() (*BindModeEnum, bool)`
+
+GetBindModeOk returns a tuple with the BindMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBindMode
+
+`func (o *LDAPProvider) SetBindMode(v BindModeEnum)`
+
+SetBindMode sets BindMode field to given value.
+
+### HasBindMode
+
+`func (o *LDAPProvider) HasBindMode() bool`
+
+HasBindMode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

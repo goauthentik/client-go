@@ -3641,9 +3641,9 @@ paths:
         style: simple
       responses:
         "204":
-          description: No response body
+          description: Successfully sent recover email
         "404":
-          description: No response body
+          description: Bad request
         "400":
           $ref: '#/components/schemas/ValidationError'
         "403":
@@ -3673,9 +3673,9 @@ paths:
         required: true
       responses:
         "204":
-          description: No response body
+          description: Successfully changed password
         "400":
-          description: No response body
+          description: Bad request
         "403":
           $ref: '#/components/schemas/GenericError'
       security:
@@ -22627,6 +22627,11 @@ components:
       - authentik.core.auth.TokenBackend
       - authentik.sources.ldap.auth.LDAPBackend
       type: string
+    BindModeEnum:
+      enum:
+      - direct
+      - cached
+      type: string
     BindingTypeEnum:
       enum:
       - REDIRECT
@@ -25807,6 +25812,8 @@ components:
           type: integer
         search_mode:
           $ref: '#/components/schemas/SearchModeEnum'
+        bind_mode:
+          $ref: '#/components/schemas/BindModeEnum'
       required:
       - application_slug
       - bind_flow_slug
@@ -25995,6 +26002,8 @@ components:
           type: array
         search_mode:
           $ref: '#/components/schemas/SearchModeEnum'
+        bind_mode:
+          $ref: '#/components/schemas/BindModeEnum'
       required:
       - assigned_application_name
       - assigned_application_slug
@@ -26067,6 +26076,8 @@ components:
           type: integer
         search_mode:
           $ref: '#/components/schemas/SearchModeEnum'
+        bind_mode:
+          $ref: '#/components/schemas/BindModeEnum'
       required:
       - authorization_flow
       - name
@@ -34509,6 +34520,8 @@ components:
           type: integer
         search_mode:
           $ref: '#/components/schemas/SearchModeEnum'
+        bind_mode:
+          $ref: '#/components/schemas/BindModeEnum'
       type: object
     PatchedLDAPSourceRequest:
       description: LDAP Source Serializer

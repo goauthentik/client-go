@@ -32,6 +32,7 @@ type LDAPOutpostConfig struct {
 	// The start for gidNumbers, this number is added to a number generated from the group.Pk to make sure that the numbers aren't too low for POSIX groups. Default is 4000 to ensure that we don't collide with local groups or users primary groups gidNumber
 	GidStartNumber *int32          `json:"gid_start_number,omitempty"`
 	SearchMode     *SearchModeEnum `json:"search_mode,omitempty"`
+	BindMode       *BindModeEnum   `json:"bind_mode,omitempty"`
 }
 
 // NewLDAPOutpostConfig instantiates a new LDAPOutpostConfig object
@@ -397,6 +398,38 @@ func (o *LDAPOutpostConfig) SetSearchMode(v SearchModeEnum) {
 	o.SearchMode = &v
 }
 
+// GetBindMode returns the BindMode field value if set, zero value otherwise.
+func (o *LDAPOutpostConfig) GetBindMode() BindModeEnum {
+	if o == nil || o.BindMode == nil {
+		var ret BindModeEnum
+		return ret
+	}
+	return *o.BindMode
+}
+
+// GetBindModeOk returns a tuple with the BindMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LDAPOutpostConfig) GetBindModeOk() (*BindModeEnum, bool) {
+	if o == nil || o.BindMode == nil {
+		return nil, false
+	}
+	return o.BindMode, true
+}
+
+// HasBindMode returns a boolean if a field has been set.
+func (o *LDAPOutpostConfig) HasBindMode() bool {
+	if o != nil && o.BindMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBindMode gets a reference to the given BindModeEnum and assigns it to the BindMode field.
+func (o *LDAPOutpostConfig) SetBindMode(v BindModeEnum) {
+	o.BindMode = &v
+}
+
 func (o LDAPOutpostConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -431,6 +464,9 @@ func (o LDAPOutpostConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.SearchMode != nil {
 		toSerialize["search_mode"] = o.SearchMode
+	}
+	if o.BindMode != nil {
+		toSerialize["bind_mode"] = o.BindMode
 	}
 	return json.Marshal(toSerialize)
 }

@@ -654,6 +654,7 @@ Class | Method | HTTP request | Description
  - [AutoSubmitChallengeResponseRequest](docs/AutoSubmitChallengeResponseRequest.md)
  - [AutosubmitChallenge](docs/AutosubmitChallenge.md)
  - [BackendsEnum](docs/BackendsEnum.md)
+ - [BindModeEnum](docs/BindModeEnum.md)
  - [BindingTypeEnum](docs/BindingTypeEnum.md)
  - [Cache](docs/Cache.md)
  - [CapabilitiesEnum](docs/CapabilitiesEnum.md)
