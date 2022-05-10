@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **NotConfiguredAction** | Pointer to [**NotConfiguredActionEnum**](NotConfiguredActionEnum.md) |  | [optional] 
 **DeviceClasses** | Pointer to [**[]DeviceClassesEnum**](DeviceClassesEnum.md) | Device classes which can be used to authenticate | [optional] 
 **ConfigurationStages** | Pointer to **[]string** | Stages used to configure Authenticator when user doesn&#39;t have any compatible devices. After this configuration Stage passes, the user is not prompted again. | [optional] 
+**LastAuthThreshold** | Pointer to **string** | If any of the user&#39;s device has been used within this threshold, this stage will be skipped | [optional] 
 
 ## Methods
 
@@ -253,6 +254,31 @@ SetConfigurationStages sets ConfigurationStages field to given value.
 `func (o *AuthenticatorValidateStage) HasConfigurationStages() bool`
 
 HasConfigurationStages returns a boolean if a field has been set.
+
+### GetLastAuthThreshold
+
+`func (o *AuthenticatorValidateStage) GetLastAuthThreshold() string`
+
+GetLastAuthThreshold returns the LastAuthThreshold field if non-nil, zero value otherwise.
+
+### GetLastAuthThresholdOk
+
+`func (o *AuthenticatorValidateStage) GetLastAuthThresholdOk() (*string, bool)`
+
+GetLastAuthThresholdOk returns a tuple with the LastAuthThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastAuthThreshold
+
+`func (o *AuthenticatorValidateStage) SetLastAuthThreshold(v string)`
+
+SetLastAuthThreshold sets LastAuthThreshold field to given value.
+
+### HasLastAuthThreshold
+
+`func (o *AuthenticatorValidateStage) HasLastAuthThreshold() bool`
+
+HasLastAuthThreshold returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

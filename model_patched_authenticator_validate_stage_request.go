@@ -24,6 +24,8 @@ type PatchedAuthenticatorValidateStageRequest struct {
 	DeviceClasses *[]DeviceClassesEnum `json:"device_classes,omitempty"`
 	// Stages used to configure Authenticator when user doesn't have any compatible devices. After this configuration Stage passes, the user is not prompted again.
 	ConfigurationStages *[]string `json:"configuration_stages,omitempty"`
+	// If any of the user's device has been used within this threshold, this stage will be skipped
+	LastAuthThreshold *string `json:"last_auth_threshold,omitempty"`
 }
 
 // NewPatchedAuthenticatorValidateStageRequest instantiates a new PatchedAuthenticatorValidateStageRequest object
@@ -203,6 +205,38 @@ func (o *PatchedAuthenticatorValidateStageRequest) SetConfigurationStages(v []st
 	o.ConfigurationStages = &v
 }
 
+// GetLastAuthThreshold returns the LastAuthThreshold field value if set, zero value otherwise.
+func (o *PatchedAuthenticatorValidateStageRequest) GetLastAuthThreshold() string {
+	if o == nil || o.LastAuthThreshold == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastAuthThreshold
+}
+
+// GetLastAuthThresholdOk returns a tuple with the LastAuthThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedAuthenticatorValidateStageRequest) GetLastAuthThresholdOk() (*string, bool) {
+	if o == nil || o.LastAuthThreshold == nil {
+		return nil, false
+	}
+	return o.LastAuthThreshold, true
+}
+
+// HasLastAuthThreshold returns a boolean if a field has been set.
+func (o *PatchedAuthenticatorValidateStageRequest) HasLastAuthThreshold() bool {
+	if o != nil && o.LastAuthThreshold != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastAuthThreshold gets a reference to the given string and assigns it to the LastAuthThreshold field.
+func (o *PatchedAuthenticatorValidateStageRequest) SetLastAuthThreshold(v string) {
+	o.LastAuthThreshold = &v
+}
+
 func (o PatchedAuthenticatorValidateStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -219,6 +253,9 @@ func (o PatchedAuthenticatorValidateStageRequest) MarshalJSON() ([]byte, error) 
 	}
 	if o.ConfigurationStages != nil {
 		toSerialize["configuration_stages"] = o.ConfigurationStages
+	}
+	if o.LastAuthThreshold != nil {
+		toSerialize["last_auth_threshold"] = o.LastAuthThreshold
 	}
 	return json.Marshal(toSerialize)
 }

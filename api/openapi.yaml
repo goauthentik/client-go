@@ -22358,6 +22358,7 @@ components:
         - null
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        last_auth_threshold: last_auth_threshold
         flow_set:
         - compatibility_mode: true
           policies:
@@ -22433,6 +22434,10 @@ components:
             format: uuid
             type: string
           type: array
+        last_auth_threshold:
+          description: If any of the user's device has been used within this threshold,
+            this stage will be skipped
+          type: string
       required:
       - component
       - meta_model_name
@@ -22448,6 +22453,7 @@ components:
         - null
         - null
         name: name
+        last_auth_threshold: last_auth_threshold
         flow_set:
         - compatibility_mode: true
           name: name
@@ -22485,6 +22491,11 @@ components:
             format: uuid
             type: string
           type: array
+        last_auth_threshold:
+          description: If any of the user's device has been used within this threshold,
+            this stage will be skipped
+          minLength: 1
+          type: string
       required:
       - name
       type: object
@@ -28088,6 +28099,7 @@ components:
           - null
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          last_auth_threshold: last_auth_threshold
           flow_set:
           - compatibility_mode: true
             policies:
@@ -28133,6 +28145,7 @@ components:
           - null
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          last_auth_threshold: last_auth_threshold
           flow_set:
           - compatibility_mode: true
             policies:
@@ -33727,6 +33740,7 @@ components:
         - null
         - null
         name: name
+        last_auth_threshold: last_auth_threshold
         flow_set:
         - compatibility_mode: true
           name: name
@@ -33764,6 +33778,11 @@ components:
             format: uuid
             type: string
           type: array
+        last_auth_threshold:
+          description: If any of the user's device has been used within this threshold,
+            this stage will be skipped
+          minLength: 1
+          type: string
       type: object
     PatchedCaptchaStageRequest:
       description: CaptchaStage Serializer
