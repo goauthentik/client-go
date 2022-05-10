@@ -21,8 +21,8 @@ Name | Type | Description | Notes
 **UidStartNumber** | Pointer to **int32** | The start for uidNumbers, this number is added to the user.Pk to make sure that the numbers aren&#39;t too low for POSIX users. Default is 2000 to ensure that we don&#39;t collide with local users uidNumber | [optional] 
 **GidStartNumber** | Pointer to **int32** | The start for gidNumbers, this number is added to a number generated from the group.Pk to make sure that the numbers aren&#39;t too low for POSIX groups. Default is 4000 to ensure that we don&#39;t collide with local groups or users primary groups gidNumber | [optional] 
 **OutpostSet** | **[]string** |  | [readonly] 
-**SearchMode** | Pointer to [**SearchModeEnum**](SearchModeEnum.md) |  | [optional] 
-**BindMode** | Pointer to [**BindModeEnum**](BindModeEnum.md) |  | [optional] 
+**SearchMode** | Pointer to [**LDAPAPIAccessMode**](LDAPAPIAccessMode.md) |  | [optional] 
+**BindMode** | Pointer to [**LDAPAPIAccessMode**](LDAPAPIAccessMode.md) |  | [optional] 
 
 ## Methods
 
@@ -440,20 +440,20 @@ SetOutpostSet sets OutpostSet field to given value.
 
 ### GetSearchMode
 
-`func (o *LDAPProvider) GetSearchMode() SearchModeEnum`
+`func (o *LDAPProvider) GetSearchMode() LDAPAPIAccessMode`
 
 GetSearchMode returns the SearchMode field if non-nil, zero value otherwise.
 
 ### GetSearchModeOk
 
-`func (o *LDAPProvider) GetSearchModeOk() (*SearchModeEnum, bool)`
+`func (o *LDAPProvider) GetSearchModeOk() (*LDAPAPIAccessMode, bool)`
 
 GetSearchModeOk returns a tuple with the SearchMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSearchMode
 
-`func (o *LDAPProvider) SetSearchMode(v SearchModeEnum)`
+`func (o *LDAPProvider) SetSearchMode(v LDAPAPIAccessMode)`
 
 SetSearchMode sets SearchMode field to given value.
 
@@ -465,20 +465,20 @@ HasSearchMode returns a boolean if a field has been set.
 
 ### GetBindMode
 
-`func (o *LDAPProvider) GetBindMode() BindModeEnum`
+`func (o *LDAPProvider) GetBindMode() LDAPAPIAccessMode`
 
 GetBindMode returns the BindMode field if non-nil, zero value otherwise.
 
 ### GetBindModeOk
 
-`func (o *LDAPProvider) GetBindModeOk() (*BindModeEnum, bool)`
+`func (o *LDAPProvider) GetBindModeOk() (*LDAPAPIAccessMode, bool)`
 
 GetBindModeOk returns a tuple with the BindMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBindMode
 
-`func (o *LDAPProvider) SetBindMode(v BindModeEnum)`
+`func (o *LDAPProvider) SetBindMode(v LDAPAPIAccessMode)`
 
 SetBindMode sets BindMode field to given value.
 

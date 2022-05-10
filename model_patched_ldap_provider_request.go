@@ -30,9 +30,9 @@ type PatchedLDAPProviderRequest struct {
 	// The start for uidNumbers, this number is added to the user.Pk to make sure that the numbers aren't too low for POSIX users. Default is 2000 to ensure that we don't collide with local users uidNumber
 	UidStartNumber *int32 `json:"uid_start_number,omitempty"`
 	// The start for gidNumbers, this number is added to a number generated from the group.Pk to make sure that the numbers aren't too low for POSIX groups. Default is 4000 to ensure that we don't collide with local groups or users primary groups gidNumber
-	GidStartNumber *int32          `json:"gid_start_number,omitempty"`
-	SearchMode     *SearchModeEnum `json:"search_mode,omitempty"`
-	BindMode       *BindModeEnum   `json:"bind_mode,omitempty"`
+	GidStartNumber *int32             `json:"gid_start_number,omitempty"`
+	SearchMode     *LDAPAPIAccessMode `json:"search_mode,omitempty"`
+	BindMode       *LDAPAPIAccessMode `json:"bind_mode,omitempty"`
 }
 
 // NewPatchedLDAPProviderRequest instantiates a new PatchedLDAPProviderRequest object
@@ -363,9 +363,9 @@ func (o *PatchedLDAPProviderRequest) SetGidStartNumber(v int32) {
 }
 
 // GetSearchMode returns the SearchMode field value if set, zero value otherwise.
-func (o *PatchedLDAPProviderRequest) GetSearchMode() SearchModeEnum {
+func (o *PatchedLDAPProviderRequest) GetSearchMode() LDAPAPIAccessMode {
 	if o == nil || o.SearchMode == nil {
-		var ret SearchModeEnum
+		var ret LDAPAPIAccessMode
 		return ret
 	}
 	return *o.SearchMode
@@ -373,7 +373,7 @@ func (o *PatchedLDAPProviderRequest) GetSearchMode() SearchModeEnum {
 
 // GetSearchModeOk returns a tuple with the SearchMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedLDAPProviderRequest) GetSearchModeOk() (*SearchModeEnum, bool) {
+func (o *PatchedLDAPProviderRequest) GetSearchModeOk() (*LDAPAPIAccessMode, bool) {
 	if o == nil || o.SearchMode == nil {
 		return nil, false
 	}
@@ -389,15 +389,15 @@ func (o *PatchedLDAPProviderRequest) HasSearchMode() bool {
 	return false
 }
 
-// SetSearchMode gets a reference to the given SearchModeEnum and assigns it to the SearchMode field.
-func (o *PatchedLDAPProviderRequest) SetSearchMode(v SearchModeEnum) {
+// SetSearchMode gets a reference to the given LDAPAPIAccessMode and assigns it to the SearchMode field.
+func (o *PatchedLDAPProviderRequest) SetSearchMode(v LDAPAPIAccessMode) {
 	o.SearchMode = &v
 }
 
 // GetBindMode returns the BindMode field value if set, zero value otherwise.
-func (o *PatchedLDAPProviderRequest) GetBindMode() BindModeEnum {
+func (o *PatchedLDAPProviderRequest) GetBindMode() LDAPAPIAccessMode {
 	if o == nil || o.BindMode == nil {
-		var ret BindModeEnum
+		var ret LDAPAPIAccessMode
 		return ret
 	}
 	return *o.BindMode
@@ -405,7 +405,7 @@ func (o *PatchedLDAPProviderRequest) GetBindMode() BindModeEnum {
 
 // GetBindModeOk returns a tuple with the BindMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedLDAPProviderRequest) GetBindModeOk() (*BindModeEnum, bool) {
+func (o *PatchedLDAPProviderRequest) GetBindModeOk() (*LDAPAPIAccessMode, bool) {
 	if o == nil || o.BindMode == nil {
 		return nil, false
 	}
@@ -421,8 +421,8 @@ func (o *PatchedLDAPProviderRequest) HasBindMode() bool {
 	return false
 }
 
-// SetBindMode gets a reference to the given BindModeEnum and assigns it to the BindMode field.
-func (o *PatchedLDAPProviderRequest) SetBindMode(v BindModeEnum) {
+// SetBindMode gets a reference to the given LDAPAPIAccessMode and assigns it to the BindMode field.
+func (o *PatchedLDAPProviderRequest) SetBindMode(v LDAPAPIAccessMode) {
 	o.BindMode = &v
 }
 

@@ -22627,11 +22627,6 @@ components:
       - authentik.core.auth.TokenBackend
       - authentik.sources.ldap.auth.LDAPBackend
       type: string
-    BindModeEnum:
-      enum:
-      - direct
-      - cached
-      type: string
     BindingTypeEnum:
       enum:
       - REDIRECT
@@ -25756,6 +25751,11 @@ components:
       required:
       - name
       type: object
+    LDAPAPIAccessMode:
+      enum:
+      - direct
+      - cached
+      type: string
     LDAPOutpostConfig:
       description: LDAPProvider Serializer
       example:
@@ -25811,9 +25811,9 @@ components:
           minimum: -2147483648
           type: integer
         search_mode:
-          $ref: '#/components/schemas/SearchModeEnum'
+          $ref: '#/components/schemas/LDAPAPIAccessMode'
         bind_mode:
-          $ref: '#/components/schemas/BindModeEnum'
+          $ref: '#/components/schemas/LDAPAPIAccessMode'
       required:
       - application_slug
       - bind_flow_slug
@@ -26001,9 +26001,9 @@ components:
           readOnly: true
           type: array
         search_mode:
-          $ref: '#/components/schemas/SearchModeEnum'
+          $ref: '#/components/schemas/LDAPAPIAccessMode'
         bind_mode:
-          $ref: '#/components/schemas/BindModeEnum'
+          $ref: '#/components/schemas/LDAPAPIAccessMode'
       required:
       - assigned_application_name
       - assigned_application_slug
@@ -26075,9 +26075,9 @@ components:
           minimum: -2147483648
           type: integer
         search_mode:
-          $ref: '#/components/schemas/SearchModeEnum'
+          $ref: '#/components/schemas/LDAPAPIAccessMode'
         bind_mode:
-          $ref: '#/components/schemas/BindModeEnum'
+          $ref: '#/components/schemas/LDAPAPIAccessMode'
       required:
       - authorization_flow
       - name
@@ -34519,9 +34519,9 @@ components:
           minimum: -2147483648
           type: integer
         search_mode:
-          $ref: '#/components/schemas/SearchModeEnum'
+          $ref: '#/components/schemas/LDAPAPIAccessMode'
         bind_mode:
-          $ref: '#/components/schemas/BindModeEnum'
+          $ref: '#/components/schemas/LDAPAPIAccessMode'
       type: object
     PatchedLDAPSourceRequest:
       description: LDAP Source Serializer
@@ -38357,11 +38357,6 @@ components:
       - name
       - scope_name
       type: object
-    SearchModeEnum:
-      enum:
-      - direct
-      - cached
-      type: string
     SelectableStage:
       description: Serializer for stages which can be selected by users
       properties:

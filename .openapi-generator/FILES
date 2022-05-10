@@ -63,7 +63,6 @@ docs/AuthenticatorsApi.md
 docs/AutoSubmitChallengeResponseRequest.md
 docs/AutosubmitChallenge.md
 docs/BackendsEnum.md
-docs/BindModeEnum.md
 docs/BindingTypeEnum.md
 docs/Cache.md
 docs/CapabilitiesEnum.md
@@ -155,6 +154,7 @@ docs/InvitationStageRequest.md
 docs/IssuerModeEnum.md
 docs/KubernetesServiceConnection.md
 docs/KubernetesServiceConnectionRequest.md
+docs/LDAPAPIAccessMode.md
 docs/LDAPOutpostConfig.md
 docs/LDAPPropertyMapping.md
 docs/LDAPPropertyMappingRequest.md
@@ -394,7 +394,6 @@ docs/SMSDeviceRequest.md
 docs/SchemaApi.md
 docs/ScopeMapping.md
 docs/ScopeMappingRequest.md
-docs/SearchModeEnum.md
 docs/SelectableStage.md
 docs/ServiceConnection.md
 docs/ServiceConnectionRequest.md
@@ -506,7 +505,6 @@ model_authenticator_web_authn_challenge_response_request.go
 model_auto_submit_challenge_response_request.go
 model_autosubmit_challenge.go
 model_backends_enum.go
-model_bind_mode_enum.go
 model_binding_type_enum.go
 model_cache.go
 model_capabilities_enum.go
@@ -601,6 +599,7 @@ model_ldap_provider.go
 model_ldap_provider_request.go
 model_ldap_source.go
 model_ldap_source_request.go
+model_ldapapi_access_mode.go
 model_link.go
 model_login_challenge_types.go
 model_login_metrics.go
@@ -824,7 +823,6 @@ model_saml_source.go
 model_saml_source_request.go
 model_scope_mapping.go
 model_scope_mapping_request.go
-model_search_mode_enum.go
 model_selectable_stage.go
 model_service_connection.go
 model_service_connection_request.go
