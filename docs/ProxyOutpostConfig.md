@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **BasicAuthUserAttribute** | Pointer to **string** | User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user&#39;s Email address is used. | [optional] 
 **Mode** | Pointer to [**ProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
-**TokenValidity** | **NullableFloat32** |  | [readonly] 
+**TokenValidity** | **NullableFloat64** |  | [readonly] 
 **ScopesToRequest** | **[]string** |  | [readonly] 
 **AssignedApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
 **AssignedApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewProxyOutpostConfig
 
-`func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration OpenIDConnectConfiguration, tokenValidity NullableFloat32, scopesToRequest []string, assignedApplicationSlug string, assignedApplicationName string, ) *ProxyOutpostConfig`
+`func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration OpenIDConnectConfiguration, tokenValidity NullableFloat64, scopesToRequest []string, assignedApplicationSlug string, assignedApplicationName string, ) *ProxyOutpostConfig`
 
 NewProxyOutpostConfig instantiates a new ProxyOutpostConfig object
 This constructor will assign default values to properties that have it defined,
@@ -436,20 +436,20 @@ HasCookieDomain returns a boolean if a field has been set.
 
 ### GetTokenValidity
 
-`func (o *ProxyOutpostConfig) GetTokenValidity() float32`
+`func (o *ProxyOutpostConfig) GetTokenValidity() float64`
 
 GetTokenValidity returns the TokenValidity field if non-nil, zero value otherwise.
 
 ### GetTokenValidityOk
 
-`func (o *ProxyOutpostConfig) GetTokenValidityOk() (*float32, bool)`
+`func (o *ProxyOutpostConfig) GetTokenValidityOk() (*float64, bool)`
 
 GetTokenValidityOk returns a tuple with the TokenValidity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenValidity
 
-`func (o *ProxyOutpostConfig) SetTokenValidity(v float32)`
+`func (o *ProxyOutpostConfig) SetTokenValidity(v float64)`
 
 SetTokenValidity sets TokenValidity field to given value.
 

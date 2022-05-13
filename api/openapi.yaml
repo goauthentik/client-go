@@ -21578,8 +21578,8 @@ components:
           continent: continent
           country: country
           city: city
-          lat: 0.8008282
-          long: 6.0274563
+          lat: 0.8008281904610115
+          long: 6.027456183070403
         last_used: 2000-01-23T04:56:07.000+00:00
         last_user_agent: last_user_agent
         uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -22627,6 +22627,8 @@ components:
           additionalProperties:
             type: string
           type: object
+        title:
+          type: string
       required:
       - attrs
       - type
@@ -27591,8 +27593,8 @@ components:
             continent: continent
             country: country
             city: city
-            lat: 0.8008282
-            long: 6.0274563
+            lat: 0.8008281904610115
+            long: 6.027456183070403
           last_used: 2000-01-23T04:56:07.000+00:00
           last_user_agent: last_user_agent
           uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -27621,8 +27623,8 @@ components:
             continent: continent
             country: country
             city: city
-            lat: 0.8008282
-            long: 6.0274563
+            lat: 0.8008281904610115
+            long: 6.027456183070403
           last_used: 2000-01-23T04:56:07.000+00:00
           last_user_agent: last_user_agent
           uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -31193,7 +31195,7 @@ components:
           pk: 0
           client_secret: client_secret
           internal_host_ssl_validation: true
-          token_validity: 6.0274563
+          token_validity: 6.027456183070403
         - external_host: https://openapi-generator.tech
           cookie_domain: cookie_domain
           skip_path_regex: skip_path_regex
@@ -31215,7 +31217,7 @@ components:
           pk: 0
           client_secret: client_secret
           internal_host_ssl_validation: true
-          token_validity: 6.0274563
+          token_validity: 6.027456183070403
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -37057,7 +37059,7 @@ components:
         pk: 0
         client_secret: client_secret
         internal_host_ssl_validation: true
-        token_validity: 6.0274563
+        token_validity: 6.027456183070403
       properties:
         pk:
           readOnly: true
@@ -37117,7 +37119,7 @@ components:
         cookie_domain:
           type: string
         token_validity:
-          format: float
+          format: double
           nullable: true
           readOnly: true
           type: number
@@ -40531,8 +40533,8 @@ components:
         continent: continent
         country: country
         city: city
-        lat: 0.8008282
-        long: 6.0274563
+        lat: 0.8008281904610115
+        long: 6.027456183070403
       nullable: true
       properties:
         continent:
@@ -40540,10 +40542,10 @@ components:
         country:
           type: string
         lat:
-          format: float
+          format: double
           type: number
         long:
-          format: float
+          format: double
           type: number
         city:
           type: string

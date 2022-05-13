@@ -19,8 +19,8 @@ import (
 type AuthenticatedSessionGeoIp struct {
 	Continent string  `json:"continent"`
 	Country   string  `json:"country"`
-	Lat       float32 `json:"lat"`
-	Long      float32 `json:"long"`
+	Lat       float64 `json:"lat"`
+	Long      float64 `json:"long"`
 	City      string  `json:"city"`
 }
 
@@ -28,7 +28,7 @@ type AuthenticatedSessionGeoIp struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatedSessionGeoIp(continent string, country string, lat float32, long float32, city string) *AuthenticatedSessionGeoIp {
+func NewAuthenticatedSessionGeoIp(continent string, country string, lat float64, long float64, city string) *AuthenticatedSessionGeoIp {
 	this := AuthenticatedSessionGeoIp{}
 	this.Continent = continent
 	this.Country = country
@@ -95,9 +95,9 @@ func (o *AuthenticatedSessionGeoIp) SetCountry(v string) {
 }
 
 // GetLat returns the Lat field value
-func (o *AuthenticatedSessionGeoIp) GetLat() float32 {
+func (o *AuthenticatedSessionGeoIp) GetLat() float64 {
 	if o == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -106,7 +106,7 @@ func (o *AuthenticatedSessionGeoIp) GetLat() float32 {
 
 // GetLatOk returns a tuple with the Lat field value
 // and a boolean to check if the value has been set.
-func (o *AuthenticatedSessionGeoIp) GetLatOk() (*float32, bool) {
+func (o *AuthenticatedSessionGeoIp) GetLatOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -114,14 +114,14 @@ func (o *AuthenticatedSessionGeoIp) GetLatOk() (*float32, bool) {
 }
 
 // SetLat sets field value
-func (o *AuthenticatedSessionGeoIp) SetLat(v float32) {
+func (o *AuthenticatedSessionGeoIp) SetLat(v float64) {
 	o.Lat = v
 }
 
 // GetLong returns the Long field value
-func (o *AuthenticatedSessionGeoIp) GetLong() float32 {
+func (o *AuthenticatedSessionGeoIp) GetLong() float64 {
 	if o == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -130,7 +130,7 @@ func (o *AuthenticatedSessionGeoIp) GetLong() float32 {
 
 // GetLongOk returns a tuple with the Long field value
 // and a boolean to check if the value has been set.
-func (o *AuthenticatedSessionGeoIp) GetLongOk() (*float32, bool) {
+func (o *AuthenticatedSessionGeoIp) GetLongOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -138,7 +138,7 @@ func (o *AuthenticatedSessionGeoIp) GetLongOk() (*float32, bool) {
 }
 
 // SetLong sets field value
-func (o *AuthenticatedSessionGeoIp) SetLong(v float32) {
+func (o *AuthenticatedSessionGeoIp) SetLong(v float64) {
 	o.Long = v
 }
 

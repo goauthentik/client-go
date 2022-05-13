@@ -39,7 +39,7 @@ type ProxyOutpostConfig struct {
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
 	Mode            *ProxyMode      `json:"mode,omitempty"`
 	CookieDomain    *string         `json:"cookie_domain,omitempty"`
-	TokenValidity   NullableFloat32 `json:"token_validity"`
+	TokenValidity   NullableFloat64 `json:"token_validity"`
 	ScopesToRequest []string        `json:"scopes_to_request"`
 	// Internal application name, used in URLs.
 	AssignedApplicationSlug string `json:"assigned_application_slug"`
@@ -51,7 +51,7 @@ type ProxyOutpostConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration OpenIDConnectConfiguration, tokenValidity NullableFloat32, scopesToRequest []string, assignedApplicationSlug string, assignedApplicationName string) *ProxyOutpostConfig {
+func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration OpenIDConnectConfiguration, tokenValidity NullableFloat64, scopesToRequest []string, assignedApplicationSlug string, assignedApplicationName string) *ProxyOutpostConfig {
 	this := ProxyOutpostConfig{}
 	this.Pk = pk
 	this.Name = name
@@ -564,10 +564,10 @@ func (o *ProxyOutpostConfig) SetCookieDomain(v string) {
 }
 
 // GetTokenValidity returns the TokenValidity field value
-// If the value is explicit nil, the zero value for float32 will be returned
-func (o *ProxyOutpostConfig) GetTokenValidity() float32 {
+// If the value is explicit nil, the zero value for float64 will be returned
+func (o *ProxyOutpostConfig) GetTokenValidity() float64 {
 	if o == nil || o.TokenValidity.Get() == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -577,7 +577,7 @@ func (o *ProxyOutpostConfig) GetTokenValidity() float32 {
 // GetTokenValidityOk returns a tuple with the TokenValidity field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProxyOutpostConfig) GetTokenValidityOk() (*float32, bool) {
+func (o *ProxyOutpostConfig) GetTokenValidityOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -585,7 +585,7 @@ func (o *ProxyOutpostConfig) GetTokenValidityOk() (*float32, bool) {
 }
 
 // SetTokenValidity sets field value
-func (o *ProxyOutpostConfig) SetTokenValidity(v float32) {
+func (o *ProxyOutpostConfig) SetTokenValidity(v float64) {
 	o.TokenValidity.Set(&v)
 }
 

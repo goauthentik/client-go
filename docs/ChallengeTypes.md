@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **Registration** | **map[string]interface{}** |  | 
 **Url** | **string** |  | 
 **Attrs** | **map[string]string** |  | 
+**Title** | Pointer to **string** |  | [optional] 
 **SiteKey** | **string** |  | 
 **HeaderText** | **string** |  | 
 **Permissions** | [**[]Permission**](Permission.md) |  | 
@@ -526,6 +527,31 @@ and a boolean to check if the value has been set.
 
 SetAttrs sets Attrs field to given value.
 
+
+### GetTitle
+
+`func (o *ChallengeTypes) GetTitle() string`
+
+GetTitle returns the Title field if non-nil, zero value otherwise.
+
+### GetTitleOk
+
+`func (o *ChallengeTypes) GetTitleOk() (*string, bool)`
+
+GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTitle
+
+`func (o *ChallengeTypes) SetTitle(v string)`
+
+SetTitle sets Title field to given value.
+
+### HasTitle
+
+`func (o *ChallengeTypes) HasTitle() bool`
+
+HasTitle returns a boolean if a field has been set.
 
 ### GetSiteKey
 

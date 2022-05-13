@@ -6,15 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Continent** | **string** |  | 
 **Country** | **string** |  | 
-**Lat** | **float32** |  | 
-**Long** | **float32** |  | 
+**Lat** | **float64** |  | 
+**Long** | **float64** |  | 
 **City** | **string** |  | 
 
 ## Methods
 
 ### NewAuthenticatedSessionGeoIp
 
-`func NewAuthenticatedSessionGeoIp(continent string, country string, lat float32, long float32, city string, ) *AuthenticatedSessionGeoIp`
+`func NewAuthenticatedSessionGeoIp(continent string, country string, lat float64, long float64, city string, ) *AuthenticatedSessionGeoIp`
 
 NewAuthenticatedSessionGeoIp instantiates a new AuthenticatedSessionGeoIp object
 This constructor will assign default values to properties that have it defined,
@@ -71,40 +71,40 @@ SetCountry sets Country field to given value.
 
 ### GetLat
 
-`func (o *AuthenticatedSessionGeoIp) GetLat() float32`
+`func (o *AuthenticatedSessionGeoIp) GetLat() float64`
 
 GetLat returns the Lat field if non-nil, zero value otherwise.
 
 ### GetLatOk
 
-`func (o *AuthenticatedSessionGeoIp) GetLatOk() (*float32, bool)`
+`func (o *AuthenticatedSessionGeoIp) GetLatOk() (*float64, bool)`
 
 GetLatOk returns a tuple with the Lat field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLat
 
-`func (o *AuthenticatedSessionGeoIp) SetLat(v float32)`
+`func (o *AuthenticatedSessionGeoIp) SetLat(v float64)`
 
 SetLat sets Lat field to given value.
 
 
 ### GetLong
 
-`func (o *AuthenticatedSessionGeoIp) GetLong() float32`
+`func (o *AuthenticatedSessionGeoIp) GetLong() float64`
 
 GetLong returns the Long field if non-nil, zero value otherwise.
 
 ### GetLongOk
 
-`func (o *AuthenticatedSessionGeoIp) GetLongOk() (*float32, bool)`
+`func (o *AuthenticatedSessionGeoIp) GetLongOk() (*float64, bool)`
 
 GetLongOk returns a tuple with the Long field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLong
 
-`func (o *AuthenticatedSessionGeoIp) SetLong(v float32)`
+`func (o *AuthenticatedSessionGeoIp) SetLong(v float64)`
 
 SetLong sets Long field to given value.
 

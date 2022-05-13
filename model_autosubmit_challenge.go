@@ -23,6 +23,7 @@ type AutosubmitChallenge struct {
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
 	Url            string                    `json:"url"`
 	Attrs          map[string]string         `json:"attrs"`
+	Title          *string                   `json:"title,omitempty"`
 }
 
 // NewAutosubmitChallenge instantiates a new AutosubmitChallenge object
@@ -217,6 +218,38 @@ func (o *AutosubmitChallenge) SetAttrs(v map[string]string) {
 	o.Attrs = v
 }
 
+// GetTitle returns the Title field value if set, zero value otherwise.
+func (o *AutosubmitChallenge) GetTitle() string {
+	if o == nil || o.Title == nil {
+		var ret string
+		return ret
+	}
+	return *o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AutosubmitChallenge) GetTitleOk() (*string, bool) {
+	if o == nil || o.Title == nil {
+		return nil, false
+	}
+	return o.Title, true
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *AutosubmitChallenge) HasTitle() bool {
+	if o != nil && o.Title != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
+func (o *AutosubmitChallenge) SetTitle(v string) {
+	o.Title = &v
+}
+
 func (o AutosubmitChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -236,6 +269,9 @@ func (o AutosubmitChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["attrs"] = o.Attrs
+	}
+	if o.Title != nil {
+		toSerialize["title"] = o.Title
 	}
 	return json.Marshal(toSerialize)
 }
