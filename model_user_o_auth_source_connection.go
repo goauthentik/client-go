@@ -19,7 +19,7 @@ import (
 type UserOAuthSourceConnection struct {
 	Pk         int32  `json:"pk"`
 	User       int32  `json:"user"`
-	Source     string `json:"source"`
+	Source     Source `json:"source"`
 	Identifier string `json:"identifier"`
 }
 
@@ -27,7 +27,7 @@ type UserOAuthSourceConnection struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserOAuthSourceConnection(pk int32, user int32, source string, identifier string) *UserOAuthSourceConnection {
+func NewUserOAuthSourceConnection(pk int32, user int32, source Source, identifier string) *UserOAuthSourceConnection {
 	this := UserOAuthSourceConnection{}
 	this.Pk = pk
 	this.User = user
@@ -93,9 +93,9 @@ func (o *UserOAuthSourceConnection) SetUser(v int32) {
 }
 
 // GetSource returns the Source field value
-func (o *UserOAuthSourceConnection) GetSource() string {
+func (o *UserOAuthSourceConnection) GetSource() Source {
 	if o == nil {
-		var ret string
+		var ret Source
 		return ret
 	}
 
@@ -104,7 +104,7 @@ func (o *UserOAuthSourceConnection) GetSource() string {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *UserOAuthSourceConnection) GetSourceOk() (*string, bool) {
+func (o *UserOAuthSourceConnection) GetSourceOk() (*Source, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -112,7 +112,7 @@ func (o *UserOAuthSourceConnection) GetSourceOk() (*string, bool) {
 }
 
 // SetSource sets field value
-func (o *UserOAuthSourceConnection) SetSource(v string) {
+func (o *UserOAuthSourceConnection) SetSource(v Source) {
 	o.Source = v
 }
 

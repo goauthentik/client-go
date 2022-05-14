@@ -19,7 +19,7 @@ import (
 type PlexSourceConnection struct {
 	Pk         int32  `json:"pk"`
 	User       int32  `json:"user"`
-	Source     string `json:"source"`
+	Source     Source `json:"source"`
 	Identifier string `json:"identifier"`
 	PlexToken  string `json:"plex_token"`
 }
@@ -28,7 +28,7 @@ type PlexSourceConnection struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlexSourceConnection(pk int32, user int32, source string, identifier string, plexToken string) *PlexSourceConnection {
+func NewPlexSourceConnection(pk int32, user int32, source Source, identifier string, plexToken string) *PlexSourceConnection {
 	this := PlexSourceConnection{}
 	this.Pk = pk
 	this.User = user
@@ -95,9 +95,9 @@ func (o *PlexSourceConnection) SetUser(v int32) {
 }
 
 // GetSource returns the Source field value
-func (o *PlexSourceConnection) GetSource() string {
+func (o *PlexSourceConnection) GetSource() Source {
 	if o == nil {
-		var ret string
+		var ret Source
 		return ret
 	}
 
@@ -106,7 +106,7 @@ func (o *PlexSourceConnection) GetSource() string {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *PlexSourceConnection) GetSourceOk() (*string, bool) {
+func (o *PlexSourceConnection) GetSourceOk() (*Source, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -114,7 +114,7 @@ func (o *PlexSourceConnection) GetSourceOk() (*string, bool) {
 }
 
 // SetSource sets field value
-func (o *PlexSourceConnection) SetSource(v string) {
+func (o *PlexSourceConnection) SetSource(v Source) {
 	o.Source = v
 }
 

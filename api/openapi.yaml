@@ -30612,12 +30612,12 @@ components:
         results:
         - identifier: identifier
           pk: 0
-          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          source: ""
           plex_token: plex_token
           user: 6
         - identifier: identifier
           pk: 0
-          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          source: ""
           plex_token: plex_token
           user: 6
       properties:
@@ -32908,11 +32908,11 @@ components:
         results:
         - identifier: identifier
           pk: 0
-          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          source: ""
           user: 6
         - identifier: identifier
           pk: 0
-          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          source: ""
           user: 6
       properties:
         pagination:
@@ -35102,12 +35102,8 @@ components:
       description: Plex Source connection Serializer
       example:
         identifier: identifier
-        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plex_token: plex_token
       properties:
-        source:
-          format: uuid
-          type: string
         identifier:
           minLength: 1
           type: string
@@ -35895,14 +35891,10 @@ components:
       example:
         access_token: access_token
         identifier: identifier
-        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
       properties:
         user:
           type: integer
-        source:
-          format: uuid
-          type: string
         identifier:
           maxLength: 255
           minLength: 1
@@ -36142,7 +36134,7 @@ components:
       example:
         identifier: identifier
         pk: 0
-        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        source: ""
         plex_token: plex_token
         user: 6
       properties:
@@ -36154,8 +36146,9 @@ components:
           readOnly: true
           type: integer
         source:
-          format: uuid
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
         identifier:
           type: string
         plex_token:
@@ -36171,12 +36164,8 @@ components:
       description: Plex Source connection Serializer
       example:
         identifier: identifier
-        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plex_token: plex_token
       properties:
-        source:
-          format: uuid
-          type: string
         identifier:
           minLength: 1
           type: string
@@ -36186,7 +36175,6 @@ components:
       required:
       - identifier
       - plex_token
-      - source
       type: object
     PlexSourceRequest:
       description: Plex Source Serializer
@@ -39944,7 +39932,7 @@ components:
       example:
         identifier: identifier
         pk: 0
-        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        source: ""
         user: 6
       properties:
         pk:
@@ -39954,8 +39942,9 @@ components:
         user:
           type: integer
         source:
-          format: uuid
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
         identifier:
           maxLength: 255
           type: string
@@ -39970,14 +39959,10 @@ components:
       example:
         access_token: access_token
         identifier: identifier
-        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
       properties:
         user:
           type: integer
-        source:
-          format: uuid
-          type: string
         identifier:
           maxLength: 255
           minLength: 1
@@ -39988,7 +39973,6 @@ components:
           writeOnly: true
       required:
       - identifier
-      - source
       - user
       type: object
     UserPasswordSetRequest:

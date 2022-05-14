@@ -17,7 +17,6 @@ import (
 
 // PlexSourceConnectionRequest Plex Source connection Serializer
 type PlexSourceConnectionRequest struct {
-	Source     string `json:"source"`
 	Identifier string `json:"identifier"`
 	PlexToken  string `json:"plex_token"`
 }
@@ -26,9 +25,8 @@ type PlexSourceConnectionRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlexSourceConnectionRequest(source string, identifier string, plexToken string) *PlexSourceConnectionRequest {
+func NewPlexSourceConnectionRequest(identifier string, plexToken string) *PlexSourceConnectionRequest {
 	this := PlexSourceConnectionRequest{}
-	this.Source = source
 	this.Identifier = identifier
 	this.PlexToken = plexToken
 	return &this
@@ -40,30 +38,6 @@ func NewPlexSourceConnectionRequest(source string, identifier string, plexToken 
 func NewPlexSourceConnectionRequestWithDefaults() *PlexSourceConnectionRequest {
 	this := PlexSourceConnectionRequest{}
 	return &this
-}
-
-// GetSource returns the Source field value
-func (o *PlexSourceConnectionRequest) GetSource() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Source
-}
-
-// GetSourceOk returns a tuple with the Source field value
-// and a boolean to check if the value has been set.
-func (o *PlexSourceConnectionRequest) GetSourceOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Source, true
-}
-
-// SetSource sets field value
-func (o *PlexSourceConnectionRequest) SetSource(v string) {
-	o.Source = v
 }
 
 // GetIdentifier returns the Identifier field value
@@ -116,9 +90,6 @@ func (o *PlexSourceConnectionRequest) SetPlexToken(v string) {
 
 func (o PlexSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["source"] = o.Source
-	}
 	if true {
 		toSerialize["identifier"] = o.Identifier
 	}

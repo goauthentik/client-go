@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | Pointer to **string** |  | [optional] 
 **Identifier** | Pointer to **string** |  | [optional] 
 **PlexToken** | Pointer to **string** |  | [optional] 
 
@@ -26,31 +25,6 @@ will change when the set of required properties is changed
 NewPatchedPlexSourceConnectionRequestWithDefaults instantiates a new PatchedPlexSourceConnectionRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetSource
-
-`func (o *PatchedPlexSourceConnectionRequest) GetSource() string`
-
-GetSource returns the Source field if non-nil, zero value otherwise.
-
-### GetSourceOk
-
-`func (o *PatchedPlexSourceConnectionRequest) GetSourceOk() (*string, bool)`
-
-GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSource
-
-`func (o *PatchedPlexSourceConnectionRequest) SetSource(v string)`
-
-SetSource sets Source field to given value.
-
-### HasSource
-
-`func (o *PatchedPlexSourceConnectionRequest) HasSource() bool`
-
-HasSource returns a boolean if a field has been set.
 
 ### GetIdentifier
 

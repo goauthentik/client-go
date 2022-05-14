@@ -17,7 +17,6 @@ import (
 
 // PatchedPlexSourceConnectionRequest Plex Source connection Serializer
 type PatchedPlexSourceConnectionRequest struct {
-	Source     *string `json:"source,omitempty"`
 	Identifier *string `json:"identifier,omitempty"`
 	PlexToken  *string `json:"plex_token,omitempty"`
 }
@@ -37,38 +36,6 @@ func NewPatchedPlexSourceConnectionRequest() *PatchedPlexSourceConnectionRequest
 func NewPatchedPlexSourceConnectionRequestWithDefaults() *PatchedPlexSourceConnectionRequest {
 	this := PatchedPlexSourceConnectionRequest{}
 	return &this
-}
-
-// GetSource returns the Source field value if set, zero value otherwise.
-func (o *PatchedPlexSourceConnectionRequest) GetSource() string {
-	if o == nil || o.Source == nil {
-		var ret string
-		return ret
-	}
-	return *o.Source
-}
-
-// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedPlexSourceConnectionRequest) GetSourceOk() (*string, bool) {
-	if o == nil || o.Source == nil {
-		return nil, false
-	}
-	return o.Source, true
-}
-
-// HasSource returns a boolean if a field has been set.
-func (o *PatchedPlexSourceConnectionRequest) HasSource() bool {
-	if o != nil && o.Source != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSource gets a reference to the given string and assigns it to the Source field.
-func (o *PatchedPlexSourceConnectionRequest) SetSource(v string) {
-	o.Source = &v
 }
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
@@ -137,9 +104,6 @@ func (o *PatchedPlexSourceConnectionRequest) SetPlexToken(v string) {
 
 func (o PatchedPlexSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Source != nil {
-		toSerialize["source"] = o.Source
-	}
 	if o.Identifier != nil {
 		toSerialize["identifier"] = o.Identifier
 	}
