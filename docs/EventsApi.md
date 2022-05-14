@@ -741,7 +741,7 @@ Name | Type | Description  | Notes
 
 ## EventsNotificationsList
 
-> PaginatedNotificationList EventsNotificationsList(ctx).Body(body).Created(created).Event(event).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Seen(seen).Severity(severity).Execute()
+> PaginatedNotificationList EventsNotificationsList(ctx).Body(body).Created(created).Event(event).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Seen(seen).Severity(severity).User(user).Execute()
 
 
 
@@ -770,10 +770,11 @@ func main() {
     search := "search_example" // string | A search term. (optional)
     seen := true // bool |  (optional)
     severity := "severity_example" // string |  (optional)
+    user := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsNotificationsList(context.Background()).Body(body).Created(created).Event(event).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Seen(seen).Severity(severity).Execute()
+    resp, r, err := api_client.EventsApi.EventsNotificationsList(context.Background()).Body(body).Created(created).Event(event).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Seen(seen).Severity(severity).User(user).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -803,6 +804,7 @@ Name | Type | Description  | Notes
  **search** | **string** | A search term. | 
  **seen** | **bool** |  | 
  **severity** | **string** |  | 
+ **user** | **int32** |  | 
 
 ### Return type
 

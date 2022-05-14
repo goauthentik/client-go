@@ -4511,6 +4511,13 @@ paths:
           - warning
           type: string
         style: form
+      - explode: true
+        in: query
+        name: user
+        required: false
+        schema:
+          type: integer
+        style: form
       responses:
         "200":
           content:

@@ -1370,6 +1370,7 @@ type ApiEventsNotificationsListRequest struct {
 	search     *string
 	seen       *bool
 	severity   *string
+	user       *int32
 }
 
 func (r ApiEventsNotificationsListRequest) Body(body string) ApiEventsNotificationsListRequest {
@@ -1414,6 +1415,10 @@ func (r ApiEventsNotificationsListRequest) Seen(seen bool) ApiEventsNotification
 }
 func (r ApiEventsNotificationsListRequest) Severity(severity string) ApiEventsNotificationsListRequest {
 	r.severity = &severity
+	return r
+}
+func (r ApiEventsNotificationsListRequest) User(user int32) ApiEventsNotificationsListRequest {
+	r.user = &user
 	return r
 }
 
@@ -1485,6 +1490,9 @@ func (a *EventsApiService) EventsNotificationsListExecute(r ApiEventsNotificatio
 	}
 	if r.severity != nil {
 		localVarQueryParams.Add("severity", parameterToString(*r.severity, ""))
+	}
+	if r.user != nil {
+		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
