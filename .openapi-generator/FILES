@@ -162,6 +162,7 @@ docs/LDAPProvider.md
 docs/LDAPProviderRequest.md
 docs/LDAPSource.md
 docs/LDAPSourceRequest.md
+docs/LayoutEnum.md
 docs/Link.md
 docs/LoginChallengeTypes.md
 docs/LoginMetrics.md
@@ -592,6 +593,7 @@ model_invitation_stage_request.go
 model_issuer_mode_enum.go
 model_kubernetes_service_connection.go
 model_kubernetes_service_connection_request.go
+model_layout_enum.go
 model_ldap_outpost_config.go
 model_ldap_property_mapping.go
 model_ldap_property_mapping_request.go

@@ -26,7 +26,8 @@ type PatchedFlowRequest struct {
 	Designation      *FlowDesignationEnum `json:"designation,omitempty"`
 	PolicyEngineMode *PolicyEngineMode    `json:"policy_engine_mode,omitempty"`
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
-	CompatibilityMode *bool `json:"compatibility_mode,omitempty"`
+	CompatibilityMode *bool       `json:"compatibility_mode,omitempty"`
+	Layout            *LayoutEnum `json:"layout,omitempty"`
 }
 
 // NewPatchedFlowRequest instantiates a new PatchedFlowRequest object
@@ -238,6 +239,38 @@ func (o *PatchedFlowRequest) SetCompatibilityMode(v bool) {
 	o.CompatibilityMode = &v
 }
 
+// GetLayout returns the Layout field value if set, zero value otherwise.
+func (o *PatchedFlowRequest) GetLayout() LayoutEnum {
+	if o == nil || o.Layout == nil {
+		var ret LayoutEnum
+		return ret
+	}
+	return *o.Layout
+}
+
+// GetLayoutOk returns a tuple with the Layout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedFlowRequest) GetLayoutOk() (*LayoutEnum, bool) {
+	if o == nil || o.Layout == nil {
+		return nil, false
+	}
+	return o.Layout, true
+}
+
+// HasLayout returns a boolean if a field has been set.
+func (o *PatchedFlowRequest) HasLayout() bool {
+	if o != nil && o.Layout != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLayout gets a reference to the given LayoutEnum and assigns it to the Layout field.
+func (o *PatchedFlowRequest) SetLayout(v LayoutEnum) {
+	o.Layout = &v
+}
+
 func (o PatchedFlowRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -257,6 +290,9 @@ func (o PatchedFlowRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.CompatibilityMode != nil {
 		toSerialize["compatibility_mode"] = o.CompatibilityMode
+	}
+	if o.Layout != nil {
+		toSerialize["layout"] = o.Layout
 	}
 	return json.Marshal(toSerialize)
 }

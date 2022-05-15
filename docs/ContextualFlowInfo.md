@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **Title** | Pointer to **string** |  | [optional] 
 **Background** | Pointer to **string** |  | [optional] 
 **CancelUrl** | **string** |  | 
+**Layout** | [**LayoutEnum**](LayoutEnum.md) |  | 
 
 ## Methods
 
 ### NewContextualFlowInfo
 
-`func NewContextualFlowInfo(cancelUrl string, ) *ContextualFlowInfo`
+`func NewContextualFlowInfo(cancelUrl string, layout LayoutEnum, ) *ContextualFlowInfo`
 
 NewContextualFlowInfo instantiates a new ContextualFlowInfo object
 This constructor will assign default values to properties that have it defined,
@@ -95,6 +96,26 @@ and a boolean to check if the value has been set.
 `func (o *ContextualFlowInfo) SetCancelUrl(v string)`
 
 SetCancelUrl sets CancelUrl field to given value.
+
+
+### GetLayout
+
+`func (o *ContextualFlowInfo) GetLayout() LayoutEnum`
+
+GetLayout returns the Layout field if non-nil, zero value otherwise.
+
+### GetLayoutOk
+
+`func (o *ContextualFlowInfo) GetLayoutOk() (*LayoutEnum, bool)`
+
+GetLayoutOk returns a tuple with the Layout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLayout
+
+`func (o *ContextualFlowInfo) SetLayout(v LayoutEnum)`
+
+SetLayout sets Layout field to given value.
 
 
 

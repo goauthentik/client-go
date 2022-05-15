@@ -17,18 +17,20 @@ import (
 
 // ContextualFlowInfo Contextual flow information for a challenge
 type ContextualFlowInfo struct {
-	Title      *string `json:"title,omitempty"`
-	Background *string `json:"background,omitempty"`
-	CancelUrl  string  `json:"cancel_url"`
+	Title      *string    `json:"title,omitempty"`
+	Background *string    `json:"background,omitempty"`
+	CancelUrl  string     `json:"cancel_url"`
+	Layout     LayoutEnum `json:"layout"`
 }
 
 // NewContextualFlowInfo instantiates a new ContextualFlowInfo object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContextualFlowInfo(cancelUrl string) *ContextualFlowInfo {
+func NewContextualFlowInfo(cancelUrl string, layout LayoutEnum) *ContextualFlowInfo {
 	this := ContextualFlowInfo{}
 	this.CancelUrl = cancelUrl
+	this.Layout = layout
 	return &this
 }
 
@@ -128,6 +130,30 @@ func (o *ContextualFlowInfo) SetCancelUrl(v string) {
 	o.CancelUrl = v
 }
 
+// GetLayout returns the Layout field value
+func (o *ContextualFlowInfo) GetLayout() LayoutEnum {
+	if o == nil {
+		var ret LayoutEnum
+		return ret
+	}
+
+	return o.Layout
+}
+
+// GetLayoutOk returns a tuple with the Layout field value
+// and a boolean to check if the value has been set.
+func (o *ContextualFlowInfo) GetLayoutOk() (*LayoutEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Layout, true
+}
+
+// SetLayout sets field value
+func (o *ContextualFlowInfo) SetLayout(v LayoutEnum) {
+	o.Layout = v
+}
+
 func (o ContextualFlowInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Title != nil {
@@ -138,6 +164,9 @@ func (o ContextualFlowInfo) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["cancel_url"] = o.CancelUrl
+	}
+	if true {
+		toSerialize["layout"] = o.Layout
 	}
 	return json.Marshal(toSerialize)
 }

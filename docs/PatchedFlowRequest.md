@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Designation** | Pointer to [**FlowDesignationEnum**](FlowDesignationEnum.md) | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **CompatibilityMode** | Pointer to **bool** | Enable compatibility mode, increases compatibility with password managers on mobile devices. | [optional] 
+**Layout** | Pointer to [**LayoutEnum**](LayoutEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetCompatibilityMode sets CompatibilityMode field to given value.
 `func (o *PatchedFlowRequest) HasCompatibilityMode() bool`
 
 HasCompatibilityMode returns a boolean if a field has been set.
+
+### GetLayout
+
+`func (o *PatchedFlowRequest) GetLayout() LayoutEnum`
+
+GetLayout returns the Layout field if non-nil, zero value otherwise.
+
+### GetLayoutOk
+
+`func (o *PatchedFlowRequest) GetLayoutOk() (*LayoutEnum, bool)`
+
+GetLayoutOk returns a tuple with the Layout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLayout
+
+`func (o *PatchedFlowRequest) SetLayout(v LayoutEnum)`
+
+SetLayout sets Layout field to given value.
+
+### HasLayout
+
+`func (o *PatchedFlowRequest) HasLayout() bool`
+
+HasLayout returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -749,6 +749,7 @@ Class | Method | HTTP request | Description
  - [LDAPProviderRequest](docs/LDAPProviderRequest.md)
  - [LDAPSource](docs/LDAPSource.md)
  - [LDAPSourceRequest](docs/LDAPSourceRequest.md)
+ - [LayoutEnum](docs/LayoutEnum.md)
  - [Link](docs/Link.md)
  - [LoginChallengeTypes](docs/LoginChallengeTypes.md)
  - [LoginMetrics](docs/LoginMetrics.md)

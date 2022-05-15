@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **CompatibilityMode** | Pointer to **bool** | Enable compatibility mode, increases compatibility with password managers on mobile devices. | [optional] 
 **ExportUrl** | **string** |  | [readonly] 
+**Layout** | Pointer to [**LayoutEnum**](LayoutEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -306,6 +307,31 @@ and a boolean to check if the value has been set.
 
 SetExportUrl sets ExportUrl field to given value.
 
+
+### GetLayout
+
+`func (o *Flow) GetLayout() LayoutEnum`
+
+GetLayout returns the Layout field if non-nil, zero value otherwise.
+
+### GetLayoutOk
+
+`func (o *Flow) GetLayoutOk() (*LayoutEnum, bool)`
+
+GetLayoutOk returns a tuple with the Layout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLayout
+
+`func (o *Flow) SetLayout(v LayoutEnum)`
+
+SetLayout sets Layout field to given value.
+
+### HasLayout
+
+`func (o *Flow) HasLayout() bool`
+
+HasLayout returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
