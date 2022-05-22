@@ -26592,7 +26592,6 @@ components:
       - group_obj
       - name
       - pk
-      - transports
       type: object
     NotificationRuleRequest:
       description: NotificationRule Serializer
@@ -26628,7 +26627,6 @@ components:
           type: string
       required:
       - name
-      - transports
       type: object
     NotificationTransport:
       description: NotificationTransport Serializer

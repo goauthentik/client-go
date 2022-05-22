@@ -1188,7 +1188,7 @@ import (
 )
 
 func main() {
-    notificationRuleRequest := *openapiclient.NewNotificationRuleRequest("Name_example", []string{"Transports_example"}) // NotificationRuleRequest | 
+    notificationRuleRequest := *openapiclient.NewNotificationRuleRequest("Name_example") // NotificationRuleRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1543,7 +1543,7 @@ import (
 
 func main() {
     pbmUuid := TODO // string | A UUID string identifying this Notification Rule.
-    notificationRuleRequest := *openapiclient.NewNotificationRuleRequest("Name_example", []string{"Transports_example"}) // NotificationRuleRequest | 
+    notificationRuleRequest := *openapiclient.NewNotificationRuleRequest("Name_example") // NotificationRuleRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

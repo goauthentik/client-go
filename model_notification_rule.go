@@ -20,7 +20,7 @@ type NotificationRule struct {
 	Pk   string `json:"pk"`
 	Name string `json:"name"`
 	// Select which transports should be used to notify the user. If none are selected, the notification will only be shown in the authentik UI.
-	Transports []string `json:"transports"`
+	Transports *[]string `json:"transports,omitempty"`
 	// Controls which severity level the created notifications will have.
 	Severity *SeverityEnum `json:"severity,omitempty"`
 	// Define which group of users this notification should be sent and shown to. If left empty, Notification won't ben sent.
@@ -32,11 +32,10 @@ type NotificationRule struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationRule(pk string, name string, transports []string, groupObj Group) *NotificationRule {
+func NewNotificationRule(pk string, name string, groupObj Group) *NotificationRule {
 	this := NotificationRule{}
 	this.Pk = pk
 	this.Name = name
-	this.Transports = transports
 	this.GroupObj = groupObj
 	return &this
 }
@@ -97,28 +96,36 @@ func (o *NotificationRule) SetName(v string) {
 	o.Name = v
 }
 
-// GetTransports returns the Transports field value
+// GetTransports returns the Transports field value if set, zero value otherwise.
 func (o *NotificationRule) GetTransports() []string {
-	if o == nil {
+	if o == nil || o.Transports == nil {
 		var ret []string
 		return ret
 	}
-
-	return o.Transports
+	return *o.Transports
 }
 
-// GetTransportsOk returns a tuple with the Transports field value
+// GetTransportsOk returns a tuple with the Transports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationRule) GetTransportsOk() (*[]string, bool) {
-	if o == nil {
+	if o == nil || o.Transports == nil {
 		return nil, false
 	}
-	return &o.Transports, true
+	return o.Transports, true
 }
 
-// SetTransports sets field value
+// HasTransports returns a boolean if a field has been set.
+func (o *NotificationRule) HasTransports() bool {
+	if o != nil && o.Transports != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTransports gets a reference to the given []string and assigns it to the Transports field.
 func (o *NotificationRule) SetTransports(v []string) {
-	o.Transports = v
+	o.Transports = &v
 }
 
 // GetSeverity returns the Severity field value if set, zero value otherwise.
@@ -228,7 +235,7 @@ func (o NotificationRule) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if true {
+	if o.Transports != nil {
 		toSerialize["transports"] = o.Transports
 	}
 	if o.Severity != nil {

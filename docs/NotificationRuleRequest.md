@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Transports** | **[]string** | Select which transports should be used to notify the user. If none are selected, the notification will only be shown in the authentik UI. | 
+**Transports** | Pointer to **[]string** | Select which transports should be used to notify the user. If none are selected, the notification will only be shown in the authentik UI. | [optional] 
 **Severity** | Pointer to [**SeverityEnum**](SeverityEnum.md) | Controls which severity level the created notifications will have. | [optional] 
 **Group** | Pointer to **NullableString** | Define which group of users this notification should be sent and shown to. If left empty, Notification won&#39;t ben sent. | [optional] 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewNotificationRuleRequest
 
-`func NewNotificationRuleRequest(name string, transports []string, ) *NotificationRuleRequest`
+`func NewNotificationRuleRequest(name string, ) *NotificationRuleRequest`
 
 NewNotificationRuleRequest instantiates a new NotificationRuleRequest object
 This constructor will assign default values to properties that have it defined,
@@ -67,6 +67,11 @@ and a boolean to check if the value has been set.
 
 SetTransports sets Transports field to given value.
 
+### HasTransports
+
+`func (o *NotificationRuleRequest) HasTransports() bool`
+
+HasTransports returns a boolean if a field has been set.
 
 ### GetSeverity
 
