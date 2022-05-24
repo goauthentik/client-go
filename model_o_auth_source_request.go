@@ -37,10 +37,13 @@ type OAuthSourceRequest struct {
 	// URL used by authentik to retrieve tokens.
 	AccessTokenUrl NullableString `json:"access_token_url,omitempty"`
 	// URL used by authentik to get user information.
-	ProfileUrl       NullableString `json:"profile_url,omitempty"`
-	ConsumerKey      string         `json:"consumer_key"`
-	ConsumerSecret   string         `json:"consumer_secret"`
-	AdditionalScopes *string        `json:"additional_scopes,omitempty"`
+	ProfileUrl       NullableString          `json:"profile_url,omitempty"`
+	ConsumerKey      string                  `json:"consumer_key"`
+	ConsumerSecret   string                  `json:"consumer_secret"`
+	AdditionalScopes *string                 `json:"additional_scopes,omitempty"`
+	OidcWellKnownUrl *string                 `json:"oidc_well_known_url,omitempty"`
+	OidcJwksUrl      *string                 `json:"oidc_jwks_url,omitempty"`
+	OidcJwks         *map[string]interface{} `json:"oidc_jwks,omitempty"`
 }
 
 // NewOAuthSourceRequest instantiates a new OAuthSourceRequest object
@@ -571,6 +574,102 @@ func (o *OAuthSourceRequest) SetAdditionalScopes(v string) {
 	o.AdditionalScopes = &v
 }
 
+// GetOidcWellKnownUrl returns the OidcWellKnownUrl field value if set, zero value otherwise.
+func (o *OAuthSourceRequest) GetOidcWellKnownUrl() string {
+	if o == nil || o.OidcWellKnownUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.OidcWellKnownUrl
+}
+
+// GetOidcWellKnownUrlOk returns a tuple with the OidcWellKnownUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthSourceRequest) GetOidcWellKnownUrlOk() (*string, bool) {
+	if o == nil || o.OidcWellKnownUrl == nil {
+		return nil, false
+	}
+	return o.OidcWellKnownUrl, true
+}
+
+// HasOidcWellKnownUrl returns a boolean if a field has been set.
+func (o *OAuthSourceRequest) HasOidcWellKnownUrl() bool {
+	if o != nil && o.OidcWellKnownUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOidcWellKnownUrl gets a reference to the given string and assigns it to the OidcWellKnownUrl field.
+func (o *OAuthSourceRequest) SetOidcWellKnownUrl(v string) {
+	o.OidcWellKnownUrl = &v
+}
+
+// GetOidcJwksUrl returns the OidcJwksUrl field value if set, zero value otherwise.
+func (o *OAuthSourceRequest) GetOidcJwksUrl() string {
+	if o == nil || o.OidcJwksUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.OidcJwksUrl
+}
+
+// GetOidcJwksUrlOk returns a tuple with the OidcJwksUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthSourceRequest) GetOidcJwksUrlOk() (*string, bool) {
+	if o == nil || o.OidcJwksUrl == nil {
+		return nil, false
+	}
+	return o.OidcJwksUrl, true
+}
+
+// HasOidcJwksUrl returns a boolean if a field has been set.
+func (o *OAuthSourceRequest) HasOidcJwksUrl() bool {
+	if o != nil && o.OidcJwksUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOidcJwksUrl gets a reference to the given string and assigns it to the OidcJwksUrl field.
+func (o *OAuthSourceRequest) SetOidcJwksUrl(v string) {
+	o.OidcJwksUrl = &v
+}
+
+// GetOidcJwks returns the OidcJwks field value if set, zero value otherwise.
+func (o *OAuthSourceRequest) GetOidcJwks() map[string]interface{} {
+	if o == nil || o.OidcJwks == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.OidcJwks
+}
+
+// GetOidcJwksOk returns a tuple with the OidcJwks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthSourceRequest) GetOidcJwksOk() (*map[string]interface{}, bool) {
+	if o == nil || o.OidcJwks == nil {
+		return nil, false
+	}
+	return o.OidcJwks, true
+}
+
+// HasOidcJwks returns a boolean if a field has been set.
+func (o *OAuthSourceRequest) HasOidcJwks() bool {
+	if o != nil && o.OidcJwks != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOidcJwks gets a reference to the given map[string]interface{} and assigns it to the OidcJwks field.
+func (o *OAuthSourceRequest) SetOidcJwks(v map[string]interface{}) {
+	o.OidcJwks = &v
+}
+
 func (o OAuthSourceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -617,6 +716,15 @@ func (o OAuthSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.AdditionalScopes != nil {
 		toSerialize["additional_scopes"] = o.AdditionalScopes
+	}
+	if o.OidcWellKnownUrl != nil {
+		toSerialize["oidc_well_known_url"] = o.OidcWellKnownUrl
+	}
+	if o.OidcJwksUrl != nil {
+		toSerialize["oidc_jwks_url"] = o.OidcJwksUrl
+	}
+	if o.OidcJwks != nil {
+		toSerialize["oidc_jwks"] = o.OidcJwks
 	}
 	return json.Marshal(toSerialize)
 }

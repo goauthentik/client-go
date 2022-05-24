@@ -17,7 +17,8 @@ Name | Type | Description | Notes
 **RedirectUris** | Pointer to **string** | Enter each URI on a new line. | [optional] 
 **SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
 **IssuerMode** | Pointer to [**IssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled. | [optional] 
-**VerificationKeys** | Pointer to **[]string** | JWTs created with the configured certificates can authenticate with this provider. | [optional] 
+**VerificationKeys** | Pointer to **[]string** | DEPRECATED. JWTs created with the configured certificates can authenticate with this provider. | [optional] 
+**JwksSources** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -397,6 +398,31 @@ SetVerificationKeys sets VerificationKeys field to given value.
 `func (o *PatchedOAuth2ProviderRequest) HasVerificationKeys() bool`
 
 HasVerificationKeys returns a boolean if a field has been set.
+
+### GetJwksSources
+
+`func (o *PatchedOAuth2ProviderRequest) GetJwksSources() []string`
+
+GetJwksSources returns the JwksSources field if non-nil, zero value otherwise.
+
+### GetJwksSourcesOk
+
+`func (o *PatchedOAuth2ProviderRequest) GetJwksSourcesOk() (*[]string, bool)`
+
+GetJwksSourcesOk returns a tuple with the JwksSources field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwksSources
+
+`func (o *PatchedOAuth2ProviderRequest) SetJwksSources(v []string)`
+
+SetJwksSources sets JwksSources field to given value.
+
+### HasJwksSources
+
+`func (o *PatchedOAuth2ProviderRequest) HasJwksSources() bool`
+
+HasJwksSources returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

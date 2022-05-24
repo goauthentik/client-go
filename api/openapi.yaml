@@ -24360,6 +24360,9 @@ components:
           verification_keys:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          jwks_sources:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 6
           client_secret: client_secret
@@ -26773,6 +26776,9 @@ components:
         verification_keys:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        jwks_sources:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         pk: 6
         client_secret: client_secret
@@ -26859,13 +26865,21 @@ components:
           - $ref: '#/components/schemas/IssuerModeEnum'
           description: Configure how the issuer field of the ID Token should be filled.
         verification_keys:
-          description: JWTs created with the configured certificates can authenticate
-            with this provider.
+          description: DEPRECATED. JWTs created with the configured certificates can
+            authenticate with this provider.
           items:
             format: uuid
             title: Allowed certificates for JWT-based client_credentials
             type: string
           title: Allowed certificates for JWT-based client_credentials
+          type: array
+        jwks_sources:
+          items:
+            format: uuid
+            title: Any JWT signed by the JWK of the selected source can be used to
+              authenticate.
+            type: string
+          title: Any JWT signed by the JWK of the selected source can be used to authenticate.
           type: array
       required:
       - assigned_application_name
@@ -26891,6 +26905,9 @@ components:
         include_claims_in_id_token: true
         issuer_mode: ""
         verification_keys:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        jwks_sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
@@ -26958,13 +26975,21 @@ components:
           - $ref: '#/components/schemas/IssuerModeEnum'
           description: Configure how the issuer field of the ID Token should be filled.
         verification_keys:
-          description: JWTs created with the configured certificates can authenticate
-            with this provider.
+          description: DEPRECATED. JWTs created with the configured certificates can
+            authenticate with this provider.
           items:
             format: uuid
             title: Allowed certificates for JWT-based client_credentials
             type: string
           title: Allowed certificates for JWT-based client_credentials
+          type: array
+        jwks_sources:
+          items:
+            format: uuid
+            title: Any JWT signed by the JWK of the selected source can be used to
+              authenticate.
+            type: string
+          title: Any JWT signed by the JWK of the selected source can be used to authenticate.
           type: array
       required:
       - authorization_flow
@@ -27010,10 +27035,13 @@ components:
       description: OAuth Source Serializer
       example:
         user_matching_mode: ""
+        oidc_jwks_url: oidc_jwks_url
         verbose_name_plural: verbose_name_plural
         request_token_url: request_token_url
         profile_url: profile_url
         authorization_url: authorization_url
+        oidc_jwks:
+          key: ""
         type: ""
         additional_scopes: additional_scopes
         enabled: true
@@ -27021,6 +27049,7 @@ components:
         consumer_key: consumer_key
         callback_url: callback_url
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        oidc_well_known_url: oidc_well_known_url
         component: component
         verbose_name: verbose_name
         meta_model_name: meta_model_name
@@ -27107,6 +27136,13 @@ components:
           allOf:
           - $ref: '#/components/schemas/SourceType'
           readOnly: true
+        oidc_well_known_url:
+          type: string
+        oidc_jwks_url:
+          type: string
+        oidc_jwks:
+          additionalProperties: {}
+          type: object
       required:
       - callback_url
       - component
@@ -27125,14 +27161,18 @@ components:
       example:
         user_matching_mode: ""
         consumer_secret: consumer_secret
+        oidc_jwks_url: oidc_jwks_url
         request_token_url: request_token_url
         profile_url: profile_url
         authorization_url: authorization_url
+        oidc_jwks:
+          key: ""
         additional_scopes: additional_scopes
         enabled: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         consumer_key: consumer_key
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        oidc_well_known_url: oidc_well_known_url
         name: name
         access_token_url: access_token_url
         slug: slug
@@ -27202,6 +27242,13 @@ components:
           writeOnly: true
         additional_scopes:
           type: string
+        oidc_well_known_url:
+          type: string
+        oidc_jwks_url:
+          type: string
+        oidc_jwks:
+          additionalProperties: {}
+          type: object
       required:
       - consumer_key
       - consumer_secret
@@ -29019,6 +29066,9 @@ components:
             verification_keys:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            jwks_sources:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
             pk: 6
             client_secret: client_secret
@@ -29129,6 +29179,9 @@ components:
             assigned_application_name: assigned_application_name
             issuer_mode: ""
             verification_keys:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            jwks_sources:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -30216,6 +30269,9 @@ components:
           verification_keys:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          jwks_sources:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 6
           client_secret: client_secret
@@ -30239,6 +30295,9 @@ components:
           assigned_application_name: assigned_application_name
           issuer_mode: ""
           verification_keys:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
@@ -30271,10 +30330,13 @@ components:
           total_pages: 5.637376656633329
         results:
         - user_matching_mode: ""
+          oidc_jwks_url: oidc_jwks_url
           verbose_name_plural: verbose_name_plural
           request_token_url: request_token_url
           profile_url: profile_url
           authorization_url: authorization_url
+          oidc_jwks:
+            key: ""
           type: ""
           additional_scopes: additional_scopes
           enabled: true
@@ -30282,6 +30344,7 @@ components:
           consumer_key: consumer_key
           callback_url: callback_url
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          oidc_well_known_url: oidc_well_known_url
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
@@ -30290,10 +30353,13 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
         - user_matching_mode: ""
+          oidc_jwks_url: oidc_jwks_url
           verbose_name_plural: verbose_name_plural
           request_token_url: request_token_url
           profile_url: profile_url
           authorization_url: authorization_url
+          oidc_jwks:
+            key: ""
           type: ""
           additional_scopes: additional_scopes
           enabled: true
@@ -30301,6 +30367,7 @@ components:
           consumer_key: consumer_key
           callback_url: callback_url
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          oidc_well_known_url: oidc_well_known_url
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
@@ -31357,6 +31424,9 @@ components:
             verification_keys:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            jwks_sources:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
             pk: 6
             client_secret: client_secret
@@ -31469,6 +31539,9 @@ components:
             assigned_application_name: assigned_application_name
             issuer_mode: ""
             verification_keys:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            jwks_sources:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -34802,6 +34875,9 @@ components:
         verification_keys:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        jwks_sources:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         client_secret: client_secret
         property_mappings:
@@ -34867,13 +34943,21 @@ components:
           - $ref: '#/components/schemas/IssuerModeEnum'
           description: Configure how the issuer field of the ID Token should be filled.
         verification_keys:
-          description: JWTs created with the configured certificates can authenticate
-            with this provider.
+          description: DEPRECATED. JWTs created with the configured certificates can
+            authenticate with this provider.
           items:
             format: uuid
             title: Allowed certificates for JWT-based client_credentials
             type: string
           title: Allowed certificates for JWT-based client_credentials
+          type: array
+        jwks_sources:
+          items:
+            format: uuid
+            title: Any JWT signed by the JWK of the selected source can be used to
+              authenticate.
+            type: string
+          title: Any JWT signed by the JWK of the selected source can be used to authenticate.
           type: array
       type: object
     PatchedOAuthSourceRequest:
@@ -34881,14 +34965,18 @@ components:
       example:
         user_matching_mode: ""
         consumer_secret: consumer_secret
+        oidc_jwks_url: oidc_jwks_url
         request_token_url: request_token_url
         profile_url: profile_url
         authorization_url: authorization_url
+        oidc_jwks:
+          key: ""
         additional_scopes: additional_scopes
         enabled: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         consumer_key: consumer_key
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        oidc_well_known_url: oidc_well_known_url
         name: name
         access_token_url: access_token_url
         slug: slug
@@ -34958,6 +35046,13 @@ components:
           writeOnly: true
         additional_scopes:
           type: string
+        oidc_well_known_url:
+          type: string
+        oidc_jwks_url:
+          type: string
+        oidc_jwks:
+          additionalProperties: {}
+          type: object
       type: object
     PatchedOutpostRequest:
       description: Outpost Serializer
@@ -37423,6 +37518,9 @@ components:
           assigned_application_name: assigned_application_name
           issuer_mode: ""
           verification_keys:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name

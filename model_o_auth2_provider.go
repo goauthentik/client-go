@@ -48,8 +48,9 @@ type OAuth2Provider struct {
 	SubMode *SubModeEnum `json:"sub_mode,omitempty"`
 	// Configure how the issuer field of the ID Token should be filled.
 	IssuerMode *IssuerModeEnum `json:"issuer_mode,omitempty"`
-	// JWTs created with the configured certificates can authenticate with this provider.
+	// DEPRECATED. JWTs created with the configured certificates can authenticate with this provider.
 	VerificationKeys *[]string `json:"verification_keys,omitempty"`
+	JwksSources      *[]string `json:"jwks_sources,omitempty"`
 }
 
 // NewOAuth2Provider instantiates a new OAuth2Provider object
@@ -689,6 +690,38 @@ func (o *OAuth2Provider) SetVerificationKeys(v []string) {
 	o.VerificationKeys = &v
 }
 
+// GetJwksSources returns the JwksSources field value if set, zero value otherwise.
+func (o *OAuth2Provider) GetJwksSources() []string {
+	if o == nil || o.JwksSources == nil {
+		var ret []string
+		return ret
+	}
+	return *o.JwksSources
+}
+
+// GetJwksSourcesOk returns a tuple with the JwksSources field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuth2Provider) GetJwksSourcesOk() (*[]string, bool) {
+	if o == nil || o.JwksSources == nil {
+		return nil, false
+	}
+	return o.JwksSources, true
+}
+
+// HasJwksSources returns a boolean if a field has been set.
+func (o *OAuth2Provider) HasJwksSources() bool {
+	if o != nil && o.JwksSources != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwksSources gets a reference to the given []string and assigns it to the JwksSources field.
+func (o *OAuth2Provider) SetJwksSources(v []string) {
+	o.JwksSources = &v
+}
+
 func (o OAuth2Provider) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -753,6 +786,9 @@ func (o OAuth2Provider) MarshalJSON() ([]byte, error) {
 	}
 	if o.VerificationKeys != nil {
 		toSerialize["verification_keys"] = o.VerificationKeys
+	}
+	if o.JwksSources != nil {
+		toSerialize["jwks_sources"] = o.JwksSources
 	}
 	return json.Marshal(toSerialize)
 }
