@@ -18,8 +18,7 @@ import (
 
 // User User Serializer
 type User struct {
-	Pk int32 `json:"pk"`
-	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+	Pk       int32  `json:"pk"`
 	Username string `json:"username"`
 	// User's display name.
 	Name string `json:"name"`

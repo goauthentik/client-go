@@ -18,7 +18,6 @@ import (
 
 // PatchedUserRequest User Serializer
 type PatchedUserRequest struct {
-	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
 	Username *string `json:"username,omitempty"`
 	// User's display name.
 	Name *string `json:"name,omitempty"`

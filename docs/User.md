@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
-**Username** | **string** | Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. | 
+**Username** | **string** |  | 
 **Name** | **string** | User&#39;s display name. | 
 **IsActive** | Pointer to **bool** | Designates whether this user should be treated as active. Unselect this instead of deleting accounts. | [optional] 
 **LastLogin** | Pointer to **NullableTime** |  | [optional] 

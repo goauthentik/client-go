@@ -18,7 +18,6 @@ import (
 
 // UserRequest User Serializer
 type UserRequest struct {
-	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
 	Username string `json:"username"`
 	// User's display name.
 	Name string `json:"name"`
