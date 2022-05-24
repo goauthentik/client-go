@@ -1737,6 +1737,13 @@ paths:
       description: Custom list method that checks Policy based access instead of guardian
       operationId: core_applications_list
       parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
       - description: Which field to use when ordering the results.
         explode: true
         in: query
@@ -1765,6 +1772,13 @@ paths:
         explode: true
         in: query
         name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: slug
         required: false
         schema:
           type: string
@@ -6780,6 +6794,13 @@ paths:
       description: LDAPProvider Viewset
       operationId: outposts_ldap_list
       parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
       - description: Which field to use when ordering the results.
         explode: true
         in: query
@@ -6858,6 +6879,13 @@ paths:
       description: ProxyProvider Viewset
       operationId: outposts_proxy_list
       parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
       - description: Which field to use when ordering the results.
         explode: true
         in: query

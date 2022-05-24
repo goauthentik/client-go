@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ## CoreApplicationsList
 
-> PaginatedApplicationList CoreApplicationsList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SuperuserFullList(superuserFullList).Execute()
+> PaginatedApplicationList CoreApplicationsList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
 
 
 
@@ -290,15 +290,17 @@ import (
 )
 
 func main() {
+    name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
+    slug := "slug_example" // string |  (optional)
     superuserFullList := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreApplicationsList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SuperuserFullList(superuserFullList).Execute()
+    resp, r, err := api_client.CoreApi.CoreApplicationsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -319,10 +321,12 @@ Other parameters are passed through a pointer to a apiCoreApplicationsListReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
+ **slug** | **string** |  | 
  **superuserFullList** | **bool** |  | 
 
 ### Return type

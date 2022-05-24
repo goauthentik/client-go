@@ -699,7 +699,7 @@ Name | Type | Description  | Notes
 
 ## OutpostsLdapList
 
-> PaginatedLDAPOutpostConfigList OutpostsLdapList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedLDAPOutpostConfigList OutpostsLdapList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -718,6 +718,7 @@ import (
 )
 
 func main() {
+    name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -725,7 +726,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsLdapList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := api_client.OutpostsApi.OutpostsLdapList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsLdapList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -746,6 +747,7 @@ Other parameters are passed through a pointer to a apiOutpostsLdapListRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
@@ -841,7 +843,7 @@ Name | Type | Description  | Notes
 
 ## OutpostsProxyList
 
-> PaginatedProxyOutpostConfigList OutpostsProxyList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedProxyOutpostConfigList OutpostsProxyList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -860,6 +862,7 @@ import (
 )
 
 func main() {
+    name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -867,7 +870,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsProxyList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := api_client.OutpostsApi.OutpostsProxyList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsProxyList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -888,6 +891,7 @@ Other parameters are passed through a pointer to a apiOutpostsProxyListRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 

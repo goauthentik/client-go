@@ -396,11 +396,18 @@ func (a *CoreApiService) CoreApplicationsDestroyExecute(r ApiCoreApplicationsDes
 type ApiCoreApplicationsListRequest struct {
 	ctx               _context.Context
 	ApiService        *CoreApiService
+	name              *string
 	ordering          *string
 	page              *int32
 	pageSize          *int32
 	search            *string
+	slug              *string
 	superuserFullList *bool
+}
+
+func (r ApiCoreApplicationsListRequest) Name(name string) ApiCoreApplicationsListRequest {
+	r.name = &name
+	return r
 }
 
 // Which field to use when ordering the results.
@@ -424,6 +431,10 @@ func (r ApiCoreApplicationsListRequest) PageSize(pageSize int32) ApiCoreApplicat
 // A search term.
 func (r ApiCoreApplicationsListRequest) Search(search string) ApiCoreApplicationsListRequest {
 	r.search = &search
+	return r
+}
+func (r ApiCoreApplicationsListRequest) Slug(slug string) ApiCoreApplicationsListRequest {
+	r.slug = &slug
 	return r
 }
 func (r ApiCoreApplicationsListRequest) SuperuserFullList(superuserFullList bool) ApiCoreApplicationsListRequest {
@@ -473,6 +484,9 @@ func (a *CoreApiService) CoreApplicationsListExecute(r ApiCoreApplicationsListRe
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
@@ -484,6 +498,9 @@ func (a *CoreApiService) CoreApplicationsListExecute(r ApiCoreApplicationsListRe
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.slug != nil {
+		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
 	}
 	if r.superuserFullList != nil {
 		localVarQueryParams.Add("superuser_full_list", parameterToString(*r.superuserFullList, ""))

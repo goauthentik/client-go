@@ -1316,10 +1316,16 @@ func (a *OutpostsApiService) OutpostsInstancesUsedByListExecute(r ApiOutpostsIns
 type ApiOutpostsLdapListRequest struct {
 	ctx        _context.Context
 	ApiService *OutpostsApiService
+	name       *string
 	ordering   *string
 	page       *int32
 	pageSize   *int32
 	search     *string
+}
+
+func (r ApiOutpostsLdapListRequest) Name(name string) ApiOutpostsLdapListRequest {
+	r.name = &name
+	return r
 }
 
 // Which field to use when ordering the results.
@@ -1388,6 +1394,9 @@ func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListReques
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
@@ -1590,10 +1599,16 @@ func (a *OutpostsApiService) OutpostsLdapRetrieveExecute(r ApiOutpostsLdapRetrie
 type ApiOutpostsProxyListRequest struct {
 	ctx        _context.Context
 	ApiService *OutpostsApiService
+	name       *string
 	ordering   *string
 	page       *int32
 	pageSize   *int32
 	search     *string
+}
+
+func (r ApiOutpostsProxyListRequest) Name(name string) ApiOutpostsProxyListRequest {
+	r.name = &name
+	return r
 }
 
 // Which field to use when ordering the results.
@@ -1662,6 +1677,9 @@ func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequ
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
