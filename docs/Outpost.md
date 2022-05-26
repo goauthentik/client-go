@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Providers** | **[]int32** |  | 
 **ProvidersObj** | [**[]Provider**](Provider.md) |  | [readonly] 
 **ServiceConnection** | Pointer to **NullableString** | Select Service-Connection authentik should use to manage this outpost. Leave empty if authentik should not handle the deployment. | [optional] 
-**ServiceConnectionObj** | [**ServiceConnection**](ServiceConnection.md) |  | [readonly] 
+**ServiceConnectionObj** | [**OutpostServiceConnectionObj**](OutpostServiceConnectionObj.md) |  | 
 **TokenIdentifier** | **string** |  | [readonly] 
 **Config** | **map[string]interface{}** |  | 
 **Managed** | Pointer to **NullableString** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewOutpost
 
-`func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32, providersObj []Provider, serviceConnectionObj ServiceConnection, tokenIdentifier string, config map[string]interface{}, ) *Outpost`
+`func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32, providersObj []Provider, serviceConnectionObj OutpostServiceConnectionObj, tokenIdentifier string, config map[string]interface{}, ) *Outpost`
 
 NewOutpost instantiates a new Outpost object
 This constructor will assign default values to properties that have it defined,
@@ -171,20 +171,20 @@ HasServiceConnection returns a boolean if a field has been set.
 UnsetServiceConnection ensures that no value is present for ServiceConnection, not even an explicit nil
 ### GetServiceConnectionObj
 
-`func (o *Outpost) GetServiceConnectionObj() ServiceConnection`
+`func (o *Outpost) GetServiceConnectionObj() OutpostServiceConnectionObj`
 
 GetServiceConnectionObj returns the ServiceConnectionObj field if non-nil, zero value otherwise.
 
 ### GetServiceConnectionObjOk
 
-`func (o *Outpost) GetServiceConnectionObjOk() (*ServiceConnection, bool)`
+`func (o *Outpost) GetServiceConnectionObjOk() (*OutpostServiceConnectionObj, bool)`
 
 GetServiceConnectionObjOk returns a tuple with the ServiceConnectionObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceConnectionObj
 
-`func (o *Outpost) SetServiceConnectionObj(v ServiceConnection)`
+`func (o *Outpost) SetServiceConnectionObj(v OutpostServiceConnectionObj)`
 
 SetServiceConnectionObj sets ServiceConnectionObj field to given value.
 

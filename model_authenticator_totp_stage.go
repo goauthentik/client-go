@@ -17,23 +17,23 @@ import (
 
 // AuthenticatorTOTPStage AuthenticatorTOTPStage Serializer
 type AuthenticatorTOTPStage struct {
-	Pk                string  `json:"pk"`
-	Name              string  `json:"name"`
-	Component         string  `json:"component"`
-	VerboseName       string  `json:"verbose_name"`
-	VerboseNamePlural string  `json:"verbose_name_plural"`
-	MetaModelName     string  `json:"meta_model_name"`
-	FlowSet           *[]Flow `json:"flow_set,omitempty"`
+	Pk                string `json:"pk"`
+	Name              string `json:"name"`
+	Component         string `json:"component"`
+	VerboseName       string `json:"verbose_name"`
+	VerboseNamePlural string `json:"verbose_name_plural"`
+	MetaModelName     string `json:"meta_model_name"`
+	FlowSet           []Flow `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	Digits        DigitsEnum     `json:"digits"`
+	ConfigureFlow NullableString     `json:"configure_flow,omitempty"`
+	Digits        NullableDigitsEnum `json:"digits"`
 }
 
 // NewAuthenticatorTOTPStage instantiates a new AuthenticatorTOTPStage object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorTOTPStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, digits DigitsEnum) *AuthenticatorTOTPStage {
+func NewAuthenticatorTOTPStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, digits NullableDigitsEnum) *AuthenticatorTOTPStage {
 	this := AuthenticatorTOTPStage{}
 	this.Pk = pk
 	this.Name = name
@@ -203,12 +203,12 @@ func (o *AuthenticatorTOTPStage) GetFlowSet() []Flow {
 		var ret []Flow
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorTOTPStage) GetFlowSetOk() (*[]Flow, bool) {
+func (o *AuthenticatorTOTPStage) GetFlowSetOk() ([]Flow, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -226,7 +226,7 @@ func (o *AuthenticatorTOTPStage) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []Flow and assigns it to the FlowSet field.
 func (o *AuthenticatorTOTPStage) SetFlowSet(v []Flow) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -273,27 +273,29 @@ func (o *AuthenticatorTOTPStage) UnsetConfigureFlow() {
 }
 
 // GetDigits returns the Digits field value
+// If the value is explicit nil, the zero value for DigitsEnum will be returned
 func (o *AuthenticatorTOTPStage) GetDigits() DigitsEnum {
-	if o == nil {
+	if o == nil || o.Digits.Get() == nil {
 		var ret DigitsEnum
 		return ret
 	}
 
-	return o.Digits
+	return *o.Digits.Get()
 }
 
 // GetDigitsOk returns a tuple with the Digits field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatorTOTPStage) GetDigitsOk() (*DigitsEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Digits, true
+	return o.Digits.Get(), o.Digits.IsSet()
 }
 
 // SetDigits sets field value
 func (o *AuthenticatorTOTPStage) SetDigits(v DigitsEnum) {
-	o.Digits = v
+	o.Digits.Set(&v)
 }
 
 func (o AuthenticatorTOTPStage) MarshalJSON() ([]byte, error) {
@@ -323,7 +325,7 @@ func (o AuthenticatorTOTPStage) MarshalJSON() ([]byte, error) {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
 	if true {
-		toSerialize["digits"] = o.Digits
+		toSerialize["digits"] = o.Digits.Get()
 	}
 	return json.Marshal(toSerialize)
 }

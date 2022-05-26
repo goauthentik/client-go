@@ -25,7 +25,7 @@ type Prompt struct {
 	Required              *bool          `json:"required,omitempty"`
 	Placeholder           *string        `json:"placeholder,omitempty"`
 	Order                 *int32         `json:"order,omitempty"`
-	PromptstageSet        *[]Stage       `json:"promptstage_set,omitempty"`
+	PromptstageSet        []Stage        `json:"promptstage_set,omitempty"`
 	SubText               *string        `json:"sub_text,omitempty"`
 	PlaceholderExpression *bool          `json:"placeholder_expression,omitempty"`
 }
@@ -249,12 +249,12 @@ func (o *Prompt) GetPromptstageSet() []Stage {
 		var ret []Stage
 		return ret
 	}
-	return *o.PromptstageSet
+	return o.PromptstageSet
 }
 
 // GetPromptstageSetOk returns a tuple with the PromptstageSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Prompt) GetPromptstageSetOk() (*[]Stage, bool) {
+func (o *Prompt) GetPromptstageSetOk() ([]Stage, bool) {
 	if o == nil || o.PromptstageSet == nil {
 		return nil, false
 	}
@@ -272,7 +272,7 @@ func (o *Prompt) HasPromptstageSet() bool {
 
 // SetPromptstageSet gets a reference to the given []Stage and assigns it to the PromptstageSet field.
 func (o *Prompt) SetPromptstageSet(v []Stage) {
-	o.PromptstageSet = &v
+	o.PromptstageSet = v
 }
 
 // GetSubText returns the SubText field value if set, zero value otherwise.

@@ -13,22 +13,17 @@ package api
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
-)
-
-// Linger please
-var (
-	_ _context.Context
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 )
 
 // SchemaApiService SchemaApi service
 type SchemaApiService service
 
 type ApiSchemaRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *SchemaApiService
 	format     *string
 	lang       *string
@@ -38,12 +33,13 @@ func (r ApiSchemaRetrieveRequest) Format(format string) ApiSchemaRetrieveRequest
 	r.format = &format
 	return r
 }
+
 func (r ApiSchemaRetrieveRequest) Lang(lang string) ApiSchemaRetrieveRequest {
 	r.lang = &lang
 	return r
 }
 
-func (r ApiSchemaRetrieveRequest) Execute() (map[string]interface{}, *_nethttp.Response, error) {
+func (r ApiSchemaRetrieveRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.SchemaRetrieveExecute(r)
 }
 
@@ -55,10 +51,10 @@ OpenApi3 schema for this API. Format can be selected via content negotiation.
 - YAML: application/vnd.oai.openapi
 - JSON: application/vnd.oai.openapi+json
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSchemaRetrieveRequest
 */
-func (a *SchemaApiService) SchemaRetrieve(ctx _context.Context) ApiSchemaRetrieveRequest {
+func (a *SchemaApiService) SchemaRetrieve(ctx context.Context) ApiSchemaRetrieveRequest {
 	return ApiSchemaRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -67,26 +63,24 @@ func (a *SchemaApiService) SchemaRetrieve(ctx _context.Context) ApiSchemaRetriev
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *SchemaApiService) SchemaRetrieveExecute(r ApiSchemaRetrieveRequest) (map[string]interface{}, *_nethttp.Response, error) {
+func (a *SchemaApiService) SchemaRetrieveExecute(r ApiSchemaRetrieveRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SchemaApiService.SchemaRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/schema/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.format != nil {
 		localVarQueryParams.Add("format", parameterToString(*r.format, ""))
@@ -125,7 +119,7 @@ func (a *SchemaApiService) SchemaRetrieveExecute(r ApiSchemaRetrieveRequest) (ma
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -135,15 +129,15 @@ func (a *SchemaApiService) SchemaRetrieveExecute(r ApiSchemaRetrieveRequest) (ma
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -152,7 +146,7 @@ func (a *SchemaApiService) SchemaRetrieveExecute(r ApiSchemaRetrieveRequest) (ma
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

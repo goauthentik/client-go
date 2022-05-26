@@ -33,7 +33,7 @@ type Source struct {
 	MetaModelName     string            `json:"meta_model_name"`
 	PolicyEngineMode  *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
-	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
+	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 }
 
 // NewSource instantiates a new Source object
@@ -378,36 +378,47 @@ func (o *Source) SetPolicyEngineMode(v PolicyEngineMode) {
 	o.PolicyEngineMode = &v
 }
 
-// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
+// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Source) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil || o.UserMatchingMode.Get() == nil {
 		var ret UserMatchingModeEnum
 		return ret
 	}
-	return *o.UserMatchingMode
+	return *o.UserMatchingMode.Get()
 }
 
 // GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Source) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.UserMatchingMode, true
+	return o.UserMatchingMode.Get(), o.UserMatchingMode.IsSet()
 }
 
 // HasUserMatchingMode returns a boolean if a field has been set.
 func (o *Source) HasUserMatchingMode() bool {
-	if o != nil && o.UserMatchingMode != nil {
+	if o != nil && o.UserMatchingMode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUserMatchingMode gets a reference to the given UserMatchingModeEnum and assigns it to the UserMatchingMode field.
+// SetUserMatchingMode gets a reference to the given NullableUserMatchingModeEnum and assigns it to the UserMatchingMode field.
 func (o *Source) SetUserMatchingMode(v UserMatchingModeEnum) {
-	o.UserMatchingMode = &v
+	o.UserMatchingMode.Set(&v)
+}
+
+// SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
+func (o *Source) SetUserMatchingModeNil() {
+	o.UserMatchingMode.Set(nil)
+}
+
+// UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
+func (o *Source) UnsetUserMatchingMode() {
+	o.UserMatchingMode.Unset()
 }
 
 func (o Source) MarshalJSON() ([]byte, error) {
@@ -445,8 +456,8 @@ func (o Source) MarshalJSON() ([]byte, error) {
 	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if o.UserMatchingMode != nil {
-		toSerialize["user_matching_mode"] = o.UserMatchingMode
+	if o.UserMatchingMode.IsSet() {
+		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
 	}
 	return json.Marshal(toSerialize)
 }

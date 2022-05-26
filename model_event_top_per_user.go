@@ -54,11 +54,11 @@ func (o *EventTopPerUser) GetApplication() map[string]interface{} {
 
 // GetApplicationOk returns a tuple with the Application field value
 // and a boolean to check if the value has been set.
-func (o *EventTopPerUser) GetApplicationOk() (*map[string]interface{}, bool) {
+func (o *EventTopPerUser) GetApplicationOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Application, true
+	return o.Application, true
 }
 
 // SetApplication sets field value

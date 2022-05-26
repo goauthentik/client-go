@@ -8,18 +8,18 @@ Name | Type | Description | Notes
 **PolicybindingmodelPtrId** | **string** |  | [readonly] 
 **Target** | **string** |  | 
 **Stage** | **string** |  | 
-**StageObj** | [**Stage**](Stage.md) |  | [readonly] 
+**StageObj** | [**FlowStageBindingStageObj**](FlowStageBindingStageObj.md) |  | 
 **EvaluateOnPlan** | Pointer to **bool** | Evaluate policies during the Flow planning process. Disable this for input-based policies. | [optional] 
 **ReEvaluatePolicies** | Pointer to **bool** | Evaluate policies when the Stage is present to the user. | [optional] 
 **Order** | **int32** |  | 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
-**InvalidResponseAction** | Pointer to [**InvalidResponseActionEnum**](InvalidResponseActionEnum.md) | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context. | [optional] 
+**InvalidResponseAction** | Pointer to [**NullableInvalidResponseActionEnum**](InvalidResponseActionEnum.md) | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context. | [optional] 
 
 ## Methods
 
 ### NewFlowStageBinding
 
-`func NewFlowStageBinding(pk string, policybindingmodelPtrId string, target string, stage string, stageObj Stage, order int32, ) *FlowStageBinding`
+`func NewFlowStageBinding(pk string, policybindingmodelPtrId string, target string, stage string, stageObj FlowStageBindingStageObj, order int32, ) *FlowStageBinding`
 
 NewFlowStageBinding instantiates a new FlowStageBinding object
 This constructor will assign default values to properties that have it defined,
@@ -116,20 +116,20 @@ SetStage sets Stage field to given value.
 
 ### GetStageObj
 
-`func (o *FlowStageBinding) GetStageObj() Stage`
+`func (o *FlowStageBinding) GetStageObj() FlowStageBindingStageObj`
 
 GetStageObj returns the StageObj field if non-nil, zero value otherwise.
 
 ### GetStageObjOk
 
-`func (o *FlowStageBinding) GetStageObjOk() (*Stage, bool)`
+`func (o *FlowStageBinding) GetStageObjOk() (*FlowStageBindingStageObj, bool)`
 
 GetStageObjOk returns a tuple with the StageObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStageObj
 
-`func (o *FlowStageBinding) SetStageObj(v Stage)`
+`func (o *FlowStageBinding) SetStageObj(v FlowStageBindingStageObj)`
 
 SetStageObj sets StageObj field to given value.
 
@@ -254,6 +254,16 @@ SetInvalidResponseAction sets InvalidResponseAction field to given value.
 
 HasInvalidResponseAction returns a boolean if a field has been set.
 
+### SetInvalidResponseActionNil
+
+`func (o *FlowStageBinding) SetInvalidResponseActionNil(b bool)`
+
+ SetInvalidResponseActionNil sets the value for InvalidResponseAction to be an explicit nil
+
+### UnsetInvalidResponseAction
+`func (o *FlowStageBinding) UnsetInvalidResponseAction()`
+
+UnsetInvalidResponseAction ensures that no value is present for InvalidResponseAction, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

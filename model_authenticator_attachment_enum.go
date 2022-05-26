@@ -25,7 +25,8 @@ const (
 	AUTHENTICATORATTACHMENTENUM_CROSS_PLATFORM AuthenticatorAttachmentEnum = "cross-platform"
 )
 
-var allowedAuthenticatorAttachmentEnumEnumValues = []AuthenticatorAttachmentEnum{
+// All allowed values of AuthenticatorAttachmentEnum enum
+var AllowedAuthenticatorAttachmentEnumEnumValues = []AuthenticatorAttachmentEnum{
 	"platform",
 	"cross-platform",
 }
@@ -37,7 +38,7 @@ func (v *AuthenticatorAttachmentEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := AuthenticatorAttachmentEnum(value)
-	for _, existing := range allowedAuthenticatorAttachmentEnumEnumValues {
+	for _, existing := range AllowedAuthenticatorAttachmentEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +55,13 @@ func NewAuthenticatorAttachmentEnumFromValue(v string) (*AuthenticatorAttachment
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for AuthenticatorAttachmentEnum: valid values are %v", v, allowedAuthenticatorAttachmentEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for AuthenticatorAttachmentEnum: valid values are %v", v, AllowedAuthenticatorAttachmentEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v AuthenticatorAttachmentEnum) IsValid() bool {
-	for _, existing := range allowedAuthenticatorAttachmentEnumEnumValues {
+	for _, existing := range AllowedAuthenticatorAttachmentEnumEnumValues {
 		if existing == v {
 			return true
 		}

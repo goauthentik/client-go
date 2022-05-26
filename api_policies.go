@@ -13,29 +13,24 @@ package api
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"reflect"
 	"strings"
 	"time"
-)
-
-// Linger please
-var (
-	_ _context.Context
 )
 
 // PoliciesApiService PoliciesApi service
 type PoliciesApiService service
 
 type ApiPoliciesAllCacheClearCreateRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 }
 
-func (r ApiPoliciesAllCacheClearCreateRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPoliciesAllCacheClearCreateRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PoliciesAllCacheClearCreateExecute(r)
 }
 
@@ -44,10 +39,10 @@ PoliciesAllCacheClearCreate Method for PoliciesAllCacheClearCreate
 
 Clear policy cache
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesAllCacheClearCreateRequest
 */
-func (a *PoliciesApiService) PoliciesAllCacheClearCreate(ctx _context.Context) ApiPoliciesAllCacheClearCreateRequest {
+func (a *PoliciesApiService) PoliciesAllCacheClearCreate(ctx context.Context) ApiPoliciesAllCacheClearCreateRequest {
 	return ApiPoliciesAllCacheClearCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -55,25 +50,23 @@ func (a *PoliciesApiService) PoliciesAllCacheClearCreate(ctx _context.Context) A
 }
 
 // Execute executes the request
-func (a *PoliciesApiService) PoliciesAllCacheClearCreateExecute(r ApiPoliciesAllCacheClearCreateRequest) (*_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesAllCacheClearCreateExecute(r ApiPoliciesAllCacheClearCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesAllCacheClearCreate")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/all/cache_clear/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -106,7 +99,7 @@ func (a *PoliciesApiService) PoliciesAllCacheClearCreateExecute(r ApiPoliciesAll
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -116,15 +109,15 @@ func (a *PoliciesApiService) PoliciesAllCacheClearCreateExecute(r ApiPoliciesAll
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -135,11 +128,11 @@ func (a *PoliciesApiService) PoliciesAllCacheClearCreateExecute(r ApiPoliciesAll
 }
 
 type ApiPoliciesAllCacheInfoRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 }
 
-func (r ApiPoliciesAllCacheInfoRetrieveRequest) Execute() (Cache, *_nethttp.Response, error) {
+func (r ApiPoliciesAllCacheInfoRetrieveRequest) Execute() (*Cache, *http.Response, error) {
 	return r.ApiService.PoliciesAllCacheInfoRetrieveExecute(r)
 }
 
@@ -148,10 +141,10 @@ PoliciesAllCacheInfoRetrieve Method for PoliciesAllCacheInfoRetrieve
 
 Info about cached policies
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesAllCacheInfoRetrieveRequest
 */
-func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieve(ctx _context.Context) ApiPoliciesAllCacheInfoRetrieveRequest {
+func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieve(ctx context.Context) ApiPoliciesAllCacheInfoRetrieveRequest {
 	return ApiPoliciesAllCacheInfoRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -160,26 +153,24 @@ func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieve(ctx _context.Context) 
 
 // Execute executes the request
 //  @return Cache
-func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieveExecute(r ApiPoliciesAllCacheInfoRetrieveRequest) (Cache, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieveExecute(r ApiPoliciesAllCacheInfoRetrieveRequest) (*Cache, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Cache
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Cache
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesAllCacheInfoRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/all/cache_info/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -212,7 +203,7 @@ func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieveExecute(r ApiPoliciesAl
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -222,15 +213,15 @@ func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieveExecute(r ApiPoliciesAl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -239,7 +230,7 @@ func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieveExecute(r ApiPoliciesAl
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -250,12 +241,12 @@ func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieveExecute(r ApiPoliciesAl
 }
 
 type ApiPoliciesAllDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesAllDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPoliciesAllDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PoliciesAllDestroyExecute(r)
 }
 
@@ -264,11 +255,11 @@ PoliciesAllDestroy Method for PoliciesAllDestroy
 
 Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Policy.
  @return ApiPoliciesAllDestroyRequest
 */
-func (a *PoliciesApiService) PoliciesAllDestroy(ctx _context.Context, policyUuid string) ApiPoliciesAllDestroyRequest {
+func (a *PoliciesApiService) PoliciesAllDestroy(ctx context.Context, policyUuid string) ApiPoliciesAllDestroyRequest {
 	return ApiPoliciesAllDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -277,26 +268,24 @@ func (a *PoliciesApiService) PoliciesAllDestroy(ctx _context.Context, policyUuid
 }
 
 // Execute executes the request
-func (a *PoliciesApiService) PoliciesAllDestroyExecute(r ApiPoliciesAllDestroyRequest) (*_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesAllDestroyExecute(r ApiPoliciesAllDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesAllDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/all/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -329,7 +318,7 @@ func (a *PoliciesApiService) PoliciesAllDestroyExecute(r ApiPoliciesAllDestroyRe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -339,15 +328,15 @@ func (a *PoliciesApiService) PoliciesAllDestroyExecute(r ApiPoliciesAllDestroyRe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -358,7 +347,7 @@ func (a *PoliciesApiService) PoliciesAllDestroyExecute(r ApiPoliciesAllDestroyRe
 }
 
 type ApiPoliciesAllListRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *PoliciesApiService
 	bindingsIsnull    *bool
 	ordering          *string
@@ -390,6 +379,7 @@ func (r ApiPoliciesAllListRequest) PageSize(pageSize int32) ApiPoliciesAllListRe
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiPoliciesAllListRequest) PromptstageIsnull(promptstageIsnull bool) ApiPoliciesAllListRequest {
 	r.promptstageIsnull = &promptstageIsnull
 	return r
@@ -401,7 +391,7 @@ func (r ApiPoliciesAllListRequest) Search(search string) ApiPoliciesAllListReque
 	return r
 }
 
-func (r ApiPoliciesAllListRequest) Execute() (PaginatedPolicyList, *_nethttp.Response, error) {
+func (r ApiPoliciesAllListRequest) Execute() (*PaginatedPolicyList, *http.Response, error) {
 	return r.ApiService.PoliciesAllListExecute(r)
 }
 
@@ -410,10 +400,10 @@ PoliciesAllList Method for PoliciesAllList
 
 Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesAllListRequest
 */
-func (a *PoliciesApiService) PoliciesAllList(ctx _context.Context) ApiPoliciesAllListRequest {
+func (a *PoliciesApiService) PoliciesAllList(ctx context.Context) ApiPoliciesAllListRequest {
 	return ApiPoliciesAllListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -422,26 +412,24 @@ func (a *PoliciesApiService) PoliciesAllList(ctx _context.Context) ApiPoliciesAl
 
 // Execute executes the request
 //  @return PaginatedPolicyList
-func (a *PoliciesApiService) PoliciesAllListExecute(r ApiPoliciesAllListRequest) (PaginatedPolicyList, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesAllListExecute(r ApiPoliciesAllListRequest) (*PaginatedPolicyList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedPolicyList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedPolicyList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesAllList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/all/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.bindingsIsnull != nil {
 		localVarQueryParams.Add("bindings__isnull", parameterToString(*r.bindingsIsnull, ""))
@@ -492,7 +480,7 @@ func (a *PoliciesApiService) PoliciesAllListExecute(r ApiPoliciesAllListRequest)
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -502,15 +490,15 @@ func (a *PoliciesApiService) PoliciesAllListExecute(r ApiPoliciesAllListRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -519,7 +507,7 @@ func (a *PoliciesApiService) PoliciesAllListExecute(r ApiPoliciesAllListRequest)
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -530,12 +518,12 @@ func (a *PoliciesApiService) PoliciesAllListExecute(r ApiPoliciesAllListRequest)
 }
 
 type ApiPoliciesAllRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesAllRetrieveRequest) Execute() (Policy, *_nethttp.Response, error) {
+func (r ApiPoliciesAllRetrieveRequest) Execute() (*Policy, *http.Response, error) {
 	return r.ApiService.PoliciesAllRetrieveExecute(r)
 }
 
@@ -544,11 +532,11 @@ PoliciesAllRetrieve Method for PoliciesAllRetrieve
 
 Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Policy.
  @return ApiPoliciesAllRetrieveRequest
 */
-func (a *PoliciesApiService) PoliciesAllRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesAllRetrieveRequest {
+func (a *PoliciesApiService) PoliciesAllRetrieve(ctx context.Context, policyUuid string) ApiPoliciesAllRetrieveRequest {
 	return ApiPoliciesAllRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -558,27 +546,25 @@ func (a *PoliciesApiService) PoliciesAllRetrieve(ctx _context.Context, policyUui
 
 // Execute executes the request
 //  @return Policy
-func (a *PoliciesApiService) PoliciesAllRetrieveExecute(r ApiPoliciesAllRetrieveRequest) (Policy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesAllRetrieveExecute(r ApiPoliciesAllRetrieveRequest) (*Policy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Policy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Policy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesAllRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/all/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -611,7 +597,7 @@ func (a *PoliciesApiService) PoliciesAllRetrieveExecute(r ApiPoliciesAllRetrieve
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -621,15 +607,15 @@ func (a *PoliciesApiService) PoliciesAllRetrieveExecute(r ApiPoliciesAllRetrieve
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -638,7 +624,7 @@ func (a *PoliciesApiService) PoliciesAllRetrieveExecute(r ApiPoliciesAllRetrieve
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -649,7 +635,7 @@ func (a *PoliciesApiService) PoliciesAllRetrieveExecute(r ApiPoliciesAllRetrieve
 }
 
 type ApiPoliciesAllTestCreateRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *PoliciesApiService
 	policyUuid        string
 	policyTestRequest *PolicyTestRequest
@@ -660,7 +646,7 @@ func (r ApiPoliciesAllTestCreateRequest) PolicyTestRequest(policyTestRequest Pol
 	return r
 }
 
-func (r ApiPoliciesAllTestCreateRequest) Execute() (PolicyTestResult, *_nethttp.Response, error) {
+func (r ApiPoliciesAllTestCreateRequest) Execute() (*PolicyTestResult, *http.Response, error) {
 	return r.ApiService.PoliciesAllTestCreateExecute(r)
 }
 
@@ -669,11 +655,11 @@ PoliciesAllTestCreate Method for PoliciesAllTestCreate
 
 Test policy
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Policy.
  @return ApiPoliciesAllTestCreateRequest
 */
-func (a *PoliciesApiService) PoliciesAllTestCreate(ctx _context.Context, policyUuid string) ApiPoliciesAllTestCreateRequest {
+func (a *PoliciesApiService) PoliciesAllTestCreate(ctx context.Context, policyUuid string) ApiPoliciesAllTestCreateRequest {
 	return ApiPoliciesAllTestCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -683,27 +669,25 @@ func (a *PoliciesApiService) PoliciesAllTestCreate(ctx _context.Context, policyU
 
 // Execute executes the request
 //  @return PolicyTestResult
-func (a *PoliciesApiService) PoliciesAllTestCreateExecute(r ApiPoliciesAllTestCreateRequest) (PolicyTestResult, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesAllTestCreateExecute(r ApiPoliciesAllTestCreateRequest) (*PolicyTestResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PolicyTestResult
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PolicyTestResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesAllTestCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/all/{policy_uuid}/test/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.policyTestRequest == nil {
 		return localVarReturnValue, nil, reportError("policyTestRequest is required and must be specified")
 	}
@@ -741,7 +725,7 @@ func (a *PoliciesApiService) PoliciesAllTestCreateExecute(r ApiPoliciesAllTestCr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -751,15 +735,15 @@ func (a *PoliciesApiService) PoliciesAllTestCreateExecute(r ApiPoliciesAllTestCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -768,7 +752,7 @@ func (a *PoliciesApiService) PoliciesAllTestCreateExecute(r ApiPoliciesAllTestCr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -779,11 +763,11 @@ func (a *PoliciesApiService) PoliciesAllTestCreateExecute(r ApiPoliciesAllTestCr
 }
 
 type ApiPoliciesAllTypesListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 }
 
-func (r ApiPoliciesAllTypesListRequest) Execute() ([]TypeCreate, *_nethttp.Response, error) {
+func (r ApiPoliciesAllTypesListRequest) Execute() ([]TypeCreate, *http.Response, error) {
 	return r.ApiService.PoliciesAllTypesListExecute(r)
 }
 
@@ -792,10 +776,10 @@ PoliciesAllTypesList Method for PoliciesAllTypesList
 
 Get all creatable policy types
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesAllTypesListRequest
 */
-func (a *PoliciesApiService) PoliciesAllTypesList(ctx _context.Context) ApiPoliciesAllTypesListRequest {
+func (a *PoliciesApiService) PoliciesAllTypesList(ctx context.Context) ApiPoliciesAllTypesListRequest {
 	return ApiPoliciesAllTypesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -804,26 +788,24 @@ func (a *PoliciesApiService) PoliciesAllTypesList(ctx _context.Context) ApiPolic
 
 // Execute executes the request
 //  @return []TypeCreate
-func (a *PoliciesApiService) PoliciesAllTypesListExecute(r ApiPoliciesAllTypesListRequest) ([]TypeCreate, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesAllTypesListExecute(r ApiPoliciesAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []TypeCreate
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []TypeCreate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesAllTypesList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/all/types/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -856,7 +838,7 @@ func (a *PoliciesApiService) PoliciesAllTypesListExecute(r ApiPoliciesAllTypesLi
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -866,15 +848,15 @@ func (a *PoliciesApiService) PoliciesAllTypesListExecute(r ApiPoliciesAllTypesLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -883,7 +865,7 @@ func (a *PoliciesApiService) PoliciesAllTypesListExecute(r ApiPoliciesAllTypesLi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -894,12 +876,12 @@ func (a *PoliciesApiService) PoliciesAllTypesListExecute(r ApiPoliciesAllTypesLi
 }
 
 type ApiPoliciesAllUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesAllUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPoliciesAllUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PoliciesAllUsedByListExecute(r)
 }
 
@@ -908,11 +890,11 @@ PoliciesAllUsedByList Method for PoliciesAllUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Policy.
  @return ApiPoliciesAllUsedByListRequest
 */
-func (a *PoliciesApiService) PoliciesAllUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesAllUsedByListRequest {
+func (a *PoliciesApiService) PoliciesAllUsedByList(ctx context.Context, policyUuid string) ApiPoliciesAllUsedByListRequest {
 	return ApiPoliciesAllUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -922,27 +904,25 @@ func (a *PoliciesApiService) PoliciesAllUsedByList(ctx _context.Context, policyU
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PoliciesApiService) PoliciesAllUsedByListExecute(r ApiPoliciesAllUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesAllUsedByListExecute(r ApiPoliciesAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesAllUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/all/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -975,7 +955,7 @@ func (a *PoliciesApiService) PoliciesAllUsedByListExecute(r ApiPoliciesAllUsedBy
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -985,15 +965,15 @@ func (a *PoliciesApiService) PoliciesAllUsedByListExecute(r ApiPoliciesAllUsedBy
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1002,7 +982,7 @@ func (a *PoliciesApiService) PoliciesAllUsedByListExecute(r ApiPoliciesAllUsedBy
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1013,7 +993,7 @@ func (a *PoliciesApiService) PoliciesAllUsedByListExecute(r ApiPoliciesAllUsedBy
 }
 
 type ApiPoliciesBindingsCreateRequest struct {
-	ctx                  _context.Context
+	ctx                  context.Context
 	ApiService           *PoliciesApiService
 	policyBindingRequest *PolicyBindingRequest
 }
@@ -1023,7 +1003,7 @@ func (r ApiPoliciesBindingsCreateRequest) PolicyBindingRequest(policyBindingRequ
 	return r
 }
 
-func (r ApiPoliciesBindingsCreateRequest) Execute() (PolicyBinding, *_nethttp.Response, error) {
+func (r ApiPoliciesBindingsCreateRequest) Execute() (*PolicyBinding, *http.Response, error) {
 	return r.ApiService.PoliciesBindingsCreateExecute(r)
 }
 
@@ -1032,10 +1012,10 @@ PoliciesBindingsCreate Method for PoliciesBindingsCreate
 
 PolicyBinding Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesBindingsCreateRequest
 */
-func (a *PoliciesApiService) PoliciesBindingsCreate(ctx _context.Context) ApiPoliciesBindingsCreateRequest {
+func (a *PoliciesApiService) PoliciesBindingsCreate(ctx context.Context) ApiPoliciesBindingsCreateRequest {
 	return ApiPoliciesBindingsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1044,26 +1024,24 @@ func (a *PoliciesApiService) PoliciesBindingsCreate(ctx _context.Context) ApiPol
 
 // Execute executes the request
 //  @return PolicyBinding
-func (a *PoliciesApiService) PoliciesBindingsCreateExecute(r ApiPoliciesBindingsCreateRequest) (PolicyBinding, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesBindingsCreateExecute(r ApiPoliciesBindingsCreateRequest) (*PolicyBinding, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PolicyBinding
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PolicyBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesBindingsCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/bindings/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.policyBindingRequest == nil {
 		return localVarReturnValue, nil, reportError("policyBindingRequest is required and must be specified")
 	}
@@ -1101,7 +1079,7 @@ func (a *PoliciesApiService) PoliciesBindingsCreateExecute(r ApiPoliciesBindings
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1111,15 +1089,15 @@ func (a *PoliciesApiService) PoliciesBindingsCreateExecute(r ApiPoliciesBindings
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1128,7 +1106,7 @@ func (a *PoliciesApiService) PoliciesBindingsCreateExecute(r ApiPoliciesBindings
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1139,12 +1117,12 @@ func (a *PoliciesApiService) PoliciesBindingsCreateExecute(r ApiPoliciesBindings
 }
 
 type ApiPoliciesBindingsDestroyRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *PoliciesApiService
 	policyBindingUuid string
 }
 
-func (r ApiPoliciesBindingsDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPoliciesBindingsDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PoliciesBindingsDestroyExecute(r)
 }
 
@@ -1153,11 +1131,11 @@ PoliciesBindingsDestroy Method for PoliciesBindingsDestroy
 
 PolicyBinding Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyBindingUuid A UUID string identifying this Policy Binding.
  @return ApiPoliciesBindingsDestroyRequest
 */
-func (a *PoliciesApiService) PoliciesBindingsDestroy(ctx _context.Context, policyBindingUuid string) ApiPoliciesBindingsDestroyRequest {
+func (a *PoliciesApiService) PoliciesBindingsDestroy(ctx context.Context, policyBindingUuid string) ApiPoliciesBindingsDestroyRequest {
 	return ApiPoliciesBindingsDestroyRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1166,26 +1144,24 @@ func (a *PoliciesApiService) PoliciesBindingsDestroy(ctx _context.Context, polic
 }
 
 // Execute executes the request
-func (a *PoliciesApiService) PoliciesBindingsDestroyExecute(r ApiPoliciesBindingsDestroyRequest) (*_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesBindingsDestroyExecute(r ApiPoliciesBindingsDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesBindingsDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/bindings/{policy_binding_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1218,7 +1194,7 @@ func (a *PoliciesApiService) PoliciesBindingsDestroyExecute(r ApiPoliciesBinding
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -1228,15 +1204,15 @@ func (a *PoliciesApiService) PoliciesBindingsDestroyExecute(r ApiPoliciesBinding
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1247,7 +1223,7 @@ func (a *PoliciesApiService) PoliciesBindingsDestroyExecute(r ApiPoliciesBinding
 }
 
 type ApiPoliciesBindingsListRequest struct {
-	ctx          _context.Context
+	ctx          context.Context
 	ApiService   *PoliciesApiService
 	enabled      *bool
 	order        *int32
@@ -1266,6 +1242,7 @@ func (r ApiPoliciesBindingsListRequest) Enabled(enabled bool) ApiPoliciesBinding
 	r.enabled = &enabled
 	return r
 }
+
 func (r ApiPoliciesBindingsListRequest) Order(order int32) ApiPoliciesBindingsListRequest {
 	r.order = &order
 	return r
@@ -1288,10 +1265,12 @@ func (r ApiPoliciesBindingsListRequest) PageSize(pageSize int32) ApiPoliciesBind
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiPoliciesBindingsListRequest) Policy(policy string) ApiPoliciesBindingsListRequest {
 	r.policy = &policy
 	return r
 }
+
 func (r ApiPoliciesBindingsListRequest) PolicyIsnull(policyIsnull bool) ApiPoliciesBindingsListRequest {
 	r.policyIsnull = &policyIsnull
 	return r
@@ -1302,20 +1281,23 @@ func (r ApiPoliciesBindingsListRequest) Search(search string) ApiPoliciesBinding
 	r.search = &search
 	return r
 }
+
 func (r ApiPoliciesBindingsListRequest) Target(target string) ApiPoliciesBindingsListRequest {
 	r.target = &target
 	return r
 }
+
 func (r ApiPoliciesBindingsListRequest) TargetIn(targetIn []string) ApiPoliciesBindingsListRequest {
 	r.targetIn = &targetIn
 	return r
 }
+
 func (r ApiPoliciesBindingsListRequest) Timeout(timeout int32) ApiPoliciesBindingsListRequest {
 	r.timeout = &timeout
 	return r
 }
 
-func (r ApiPoliciesBindingsListRequest) Execute() (PaginatedPolicyBindingList, *_nethttp.Response, error) {
+func (r ApiPoliciesBindingsListRequest) Execute() (*PaginatedPolicyBindingList, *http.Response, error) {
 	return r.ApiService.PoliciesBindingsListExecute(r)
 }
 
@@ -1324,10 +1306,10 @@ PoliciesBindingsList Method for PoliciesBindingsList
 
 PolicyBinding Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesBindingsListRequest
 */
-func (a *PoliciesApiService) PoliciesBindingsList(ctx _context.Context) ApiPoliciesBindingsListRequest {
+func (a *PoliciesApiService) PoliciesBindingsList(ctx context.Context) ApiPoliciesBindingsListRequest {
 	return ApiPoliciesBindingsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1336,26 +1318,24 @@ func (a *PoliciesApiService) PoliciesBindingsList(ctx _context.Context) ApiPolic
 
 // Execute executes the request
 //  @return PaginatedPolicyBindingList
-func (a *PoliciesApiService) PoliciesBindingsListExecute(r ApiPoliciesBindingsListRequest) (PaginatedPolicyBindingList, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesBindingsListExecute(r ApiPoliciesBindingsListRequest) (*PaginatedPolicyBindingList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedPolicyBindingList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedPolicyBindingList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesBindingsList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/bindings/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.enabled != nil {
 		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
@@ -1429,7 +1409,7 @@ func (a *PoliciesApiService) PoliciesBindingsListExecute(r ApiPoliciesBindingsLi
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1439,15 +1419,15 @@ func (a *PoliciesApiService) PoliciesBindingsListExecute(r ApiPoliciesBindingsLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1456,7 +1436,7 @@ func (a *PoliciesApiService) PoliciesBindingsListExecute(r ApiPoliciesBindingsLi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1467,7 +1447,7 @@ func (a *PoliciesApiService) PoliciesBindingsListExecute(r ApiPoliciesBindingsLi
 }
 
 type ApiPoliciesBindingsPartialUpdateRequest struct {
-	ctx                         _context.Context
+	ctx                         context.Context
 	ApiService                  *PoliciesApiService
 	policyBindingUuid           string
 	patchedPolicyBindingRequest *PatchedPolicyBindingRequest
@@ -1478,7 +1458,7 @@ func (r ApiPoliciesBindingsPartialUpdateRequest) PatchedPolicyBindingRequest(pat
 	return r
 }
 
-func (r ApiPoliciesBindingsPartialUpdateRequest) Execute() (PolicyBinding, *_nethttp.Response, error) {
+func (r ApiPoliciesBindingsPartialUpdateRequest) Execute() (*PolicyBinding, *http.Response, error) {
 	return r.ApiService.PoliciesBindingsPartialUpdateExecute(r)
 }
 
@@ -1487,11 +1467,11 @@ PoliciesBindingsPartialUpdate Method for PoliciesBindingsPartialUpdate
 
 PolicyBinding Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyBindingUuid A UUID string identifying this Policy Binding.
  @return ApiPoliciesBindingsPartialUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesBindingsPartialUpdate(ctx _context.Context, policyBindingUuid string) ApiPoliciesBindingsPartialUpdateRequest {
+func (a *PoliciesApiService) PoliciesBindingsPartialUpdate(ctx context.Context, policyBindingUuid string) ApiPoliciesBindingsPartialUpdateRequest {
 	return ApiPoliciesBindingsPartialUpdateRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1501,27 +1481,25 @@ func (a *PoliciesApiService) PoliciesBindingsPartialUpdate(ctx _context.Context,
 
 // Execute executes the request
 //  @return PolicyBinding
-func (a *PoliciesApiService) PoliciesBindingsPartialUpdateExecute(r ApiPoliciesBindingsPartialUpdateRequest) (PolicyBinding, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesBindingsPartialUpdateExecute(r ApiPoliciesBindingsPartialUpdateRequest) (*PolicyBinding, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PolicyBinding
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PolicyBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesBindingsPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/bindings/{policy_binding_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1556,7 +1534,7 @@ func (a *PoliciesApiService) PoliciesBindingsPartialUpdateExecute(r ApiPoliciesB
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1566,15 +1544,15 @@ func (a *PoliciesApiService) PoliciesBindingsPartialUpdateExecute(r ApiPoliciesB
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1583,7 +1561,7 @@ func (a *PoliciesApiService) PoliciesBindingsPartialUpdateExecute(r ApiPoliciesB
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1594,12 +1572,12 @@ func (a *PoliciesApiService) PoliciesBindingsPartialUpdateExecute(r ApiPoliciesB
 }
 
 type ApiPoliciesBindingsRetrieveRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *PoliciesApiService
 	policyBindingUuid string
 }
 
-func (r ApiPoliciesBindingsRetrieveRequest) Execute() (PolicyBinding, *_nethttp.Response, error) {
+func (r ApiPoliciesBindingsRetrieveRequest) Execute() (*PolicyBinding, *http.Response, error) {
 	return r.ApiService.PoliciesBindingsRetrieveExecute(r)
 }
 
@@ -1608,11 +1586,11 @@ PoliciesBindingsRetrieve Method for PoliciesBindingsRetrieve
 
 PolicyBinding Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyBindingUuid A UUID string identifying this Policy Binding.
  @return ApiPoliciesBindingsRetrieveRequest
 */
-func (a *PoliciesApiService) PoliciesBindingsRetrieve(ctx _context.Context, policyBindingUuid string) ApiPoliciesBindingsRetrieveRequest {
+func (a *PoliciesApiService) PoliciesBindingsRetrieve(ctx context.Context, policyBindingUuid string) ApiPoliciesBindingsRetrieveRequest {
 	return ApiPoliciesBindingsRetrieveRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1622,27 +1600,25 @@ func (a *PoliciesApiService) PoliciesBindingsRetrieve(ctx _context.Context, poli
 
 // Execute executes the request
 //  @return PolicyBinding
-func (a *PoliciesApiService) PoliciesBindingsRetrieveExecute(r ApiPoliciesBindingsRetrieveRequest) (PolicyBinding, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesBindingsRetrieveExecute(r ApiPoliciesBindingsRetrieveRequest) (*PolicyBinding, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PolicyBinding
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PolicyBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesBindingsRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/bindings/{policy_binding_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1675,7 +1651,7 @@ func (a *PoliciesApiService) PoliciesBindingsRetrieveExecute(r ApiPoliciesBindin
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1685,15 +1661,15 @@ func (a *PoliciesApiService) PoliciesBindingsRetrieveExecute(r ApiPoliciesBindin
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1702,7 +1678,7 @@ func (a *PoliciesApiService) PoliciesBindingsRetrieveExecute(r ApiPoliciesBindin
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1713,7 +1689,7 @@ func (a *PoliciesApiService) PoliciesBindingsRetrieveExecute(r ApiPoliciesBindin
 }
 
 type ApiPoliciesBindingsUpdateRequest struct {
-	ctx                  _context.Context
+	ctx                  context.Context
 	ApiService           *PoliciesApiService
 	policyBindingUuid    string
 	policyBindingRequest *PolicyBindingRequest
@@ -1724,7 +1700,7 @@ func (r ApiPoliciesBindingsUpdateRequest) PolicyBindingRequest(policyBindingRequ
 	return r
 }
 
-func (r ApiPoliciesBindingsUpdateRequest) Execute() (PolicyBinding, *_nethttp.Response, error) {
+func (r ApiPoliciesBindingsUpdateRequest) Execute() (*PolicyBinding, *http.Response, error) {
 	return r.ApiService.PoliciesBindingsUpdateExecute(r)
 }
 
@@ -1733,11 +1709,11 @@ PoliciesBindingsUpdate Method for PoliciesBindingsUpdate
 
 PolicyBinding Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyBindingUuid A UUID string identifying this Policy Binding.
  @return ApiPoliciesBindingsUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesBindingsUpdate(ctx _context.Context, policyBindingUuid string) ApiPoliciesBindingsUpdateRequest {
+func (a *PoliciesApiService) PoliciesBindingsUpdate(ctx context.Context, policyBindingUuid string) ApiPoliciesBindingsUpdateRequest {
 	return ApiPoliciesBindingsUpdateRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1747,27 +1723,25 @@ func (a *PoliciesApiService) PoliciesBindingsUpdate(ctx _context.Context, policy
 
 // Execute executes the request
 //  @return PolicyBinding
-func (a *PoliciesApiService) PoliciesBindingsUpdateExecute(r ApiPoliciesBindingsUpdateRequest) (PolicyBinding, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesBindingsUpdateExecute(r ApiPoliciesBindingsUpdateRequest) (*PolicyBinding, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PolicyBinding
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PolicyBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesBindingsUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/bindings/{policy_binding_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.policyBindingRequest == nil {
 		return localVarReturnValue, nil, reportError("policyBindingRequest is required and must be specified")
 	}
@@ -1805,7 +1779,7 @@ func (a *PoliciesApiService) PoliciesBindingsUpdateExecute(r ApiPoliciesBindings
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1815,15 +1789,15 @@ func (a *PoliciesApiService) PoliciesBindingsUpdateExecute(r ApiPoliciesBindings
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1832,7 +1806,7 @@ func (a *PoliciesApiService) PoliciesBindingsUpdateExecute(r ApiPoliciesBindings
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1843,12 +1817,12 @@ func (a *PoliciesApiService) PoliciesBindingsUpdateExecute(r ApiPoliciesBindings
 }
 
 type ApiPoliciesBindingsUsedByListRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *PoliciesApiService
 	policyBindingUuid string
 }
 
-func (r ApiPoliciesBindingsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPoliciesBindingsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PoliciesBindingsUsedByListExecute(r)
 }
 
@@ -1857,11 +1831,11 @@ PoliciesBindingsUsedByList Method for PoliciesBindingsUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyBindingUuid A UUID string identifying this Policy Binding.
  @return ApiPoliciesBindingsUsedByListRequest
 */
-func (a *PoliciesApiService) PoliciesBindingsUsedByList(ctx _context.Context, policyBindingUuid string) ApiPoliciesBindingsUsedByListRequest {
+func (a *PoliciesApiService) PoliciesBindingsUsedByList(ctx context.Context, policyBindingUuid string) ApiPoliciesBindingsUsedByListRequest {
 	return ApiPoliciesBindingsUsedByListRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1871,27 +1845,25 @@ func (a *PoliciesApiService) PoliciesBindingsUsedByList(ctx _context.Context, po
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PoliciesApiService) PoliciesBindingsUsedByListExecute(r ApiPoliciesBindingsUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesBindingsUsedByListExecute(r ApiPoliciesBindingsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesBindingsUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/bindings/{policy_binding_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1924,7 +1896,7 @@ func (a *PoliciesApiService) PoliciesBindingsUsedByListExecute(r ApiPoliciesBind
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1934,15 +1906,15 @@ func (a *PoliciesApiService) PoliciesBindingsUsedByListExecute(r ApiPoliciesBind
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1951,7 +1923,7 @@ func (a *PoliciesApiService) PoliciesBindingsUsedByListExecute(r ApiPoliciesBind
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1962,7 +1934,7 @@ func (a *PoliciesApiService) PoliciesBindingsUsedByListExecute(r ApiPoliciesBind
 }
 
 type ApiPoliciesDummyCreateRequest struct {
-	ctx                _context.Context
+	ctx                context.Context
 	ApiService         *PoliciesApiService
 	dummyPolicyRequest *DummyPolicyRequest
 }
@@ -1972,7 +1944,7 @@ func (r ApiPoliciesDummyCreateRequest) DummyPolicyRequest(dummyPolicyRequest Dum
 	return r
 }
 
-func (r ApiPoliciesDummyCreateRequest) Execute() (DummyPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesDummyCreateRequest) Execute() (*DummyPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesDummyCreateExecute(r)
 }
 
@@ -1981,10 +1953,10 @@ PoliciesDummyCreate Method for PoliciesDummyCreate
 
 Dummy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesDummyCreateRequest
 */
-func (a *PoliciesApiService) PoliciesDummyCreate(ctx _context.Context) ApiPoliciesDummyCreateRequest {
+func (a *PoliciesApiService) PoliciesDummyCreate(ctx context.Context) ApiPoliciesDummyCreateRequest {
 	return ApiPoliciesDummyCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1993,26 +1965,24 @@ func (a *PoliciesApiService) PoliciesDummyCreate(ctx _context.Context) ApiPolici
 
 // Execute executes the request
 //  @return DummyPolicy
-func (a *PoliciesApiService) PoliciesDummyCreateExecute(r ApiPoliciesDummyCreateRequest) (DummyPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesDummyCreateExecute(r ApiPoliciesDummyCreateRequest) (*DummyPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DummyPolicy
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DummyPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesDummyCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/dummy/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2047,7 +2017,7 @@ func (a *PoliciesApiService) PoliciesDummyCreateExecute(r ApiPoliciesDummyCreate
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2057,15 +2027,15 @@ func (a *PoliciesApiService) PoliciesDummyCreateExecute(r ApiPoliciesDummyCreate
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2074,7 +2044,7 @@ func (a *PoliciesApiService) PoliciesDummyCreateExecute(r ApiPoliciesDummyCreate
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2085,12 +2055,12 @@ func (a *PoliciesApiService) PoliciesDummyCreateExecute(r ApiPoliciesDummyCreate
 }
 
 type ApiPoliciesDummyDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesDummyDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPoliciesDummyDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PoliciesDummyDestroyExecute(r)
 }
 
@@ -2099,11 +2069,11 @@ PoliciesDummyDestroy Method for PoliciesDummyDestroy
 
 Dummy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Dummy Policy.
  @return ApiPoliciesDummyDestroyRequest
 */
-func (a *PoliciesApiService) PoliciesDummyDestroy(ctx _context.Context, policyUuid string) ApiPoliciesDummyDestroyRequest {
+func (a *PoliciesApiService) PoliciesDummyDestroy(ctx context.Context, policyUuid string) ApiPoliciesDummyDestroyRequest {
 	return ApiPoliciesDummyDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2112,26 +2082,24 @@ func (a *PoliciesApiService) PoliciesDummyDestroy(ctx _context.Context, policyUu
 }
 
 // Execute executes the request
-func (a *PoliciesApiService) PoliciesDummyDestroyExecute(r ApiPoliciesDummyDestroyRequest) (*_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesDummyDestroyExecute(r ApiPoliciesDummyDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesDummyDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/dummy/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2164,7 +2132,7 @@ func (a *PoliciesApiService) PoliciesDummyDestroyExecute(r ApiPoliciesDummyDestr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2174,15 +2142,15 @@ func (a *PoliciesApiService) PoliciesDummyDestroyExecute(r ApiPoliciesDummyDestr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2193,7 +2161,7 @@ func (a *PoliciesApiService) PoliciesDummyDestroyExecute(r ApiPoliciesDummyDestr
 }
 
 type ApiPoliciesDummyListRequest struct {
-	ctx              _context.Context
+	ctx              context.Context
 	ApiService       *PoliciesApiService
 	created          *time.Time
 	executionLogging *bool
@@ -2213,14 +2181,17 @@ func (r ApiPoliciesDummyListRequest) Created(created time.Time) ApiPoliciesDummy
 	r.created = &created
 	return r
 }
+
 func (r ApiPoliciesDummyListRequest) ExecutionLogging(executionLogging bool) ApiPoliciesDummyListRequest {
 	r.executionLogging = &executionLogging
 	return r
 }
+
 func (r ApiPoliciesDummyListRequest) LastUpdated(lastUpdated time.Time) ApiPoliciesDummyListRequest {
 	r.lastUpdated = &lastUpdated
 	return r
 }
+
 func (r ApiPoliciesDummyListRequest) Name(name string) ApiPoliciesDummyListRequest {
 	r.name = &name
 	return r
@@ -2243,10 +2214,12 @@ func (r ApiPoliciesDummyListRequest) PageSize(pageSize int32) ApiPoliciesDummyLi
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiPoliciesDummyListRequest) PolicyUuid(policyUuid string) ApiPoliciesDummyListRequest {
 	r.policyUuid = &policyUuid
 	return r
 }
+
 func (r ApiPoliciesDummyListRequest) Result(result bool) ApiPoliciesDummyListRequest {
 	r.result = &result
 	return r
@@ -2257,16 +2230,18 @@ func (r ApiPoliciesDummyListRequest) Search(search string) ApiPoliciesDummyListR
 	r.search = &search
 	return r
 }
+
 func (r ApiPoliciesDummyListRequest) WaitMax(waitMax int32) ApiPoliciesDummyListRequest {
 	r.waitMax = &waitMax
 	return r
 }
+
 func (r ApiPoliciesDummyListRequest) WaitMin(waitMin int32) ApiPoliciesDummyListRequest {
 	r.waitMin = &waitMin
 	return r
 }
 
-func (r ApiPoliciesDummyListRequest) Execute() (PaginatedDummyPolicyList, *_nethttp.Response, error) {
+func (r ApiPoliciesDummyListRequest) Execute() (*PaginatedDummyPolicyList, *http.Response, error) {
 	return r.ApiService.PoliciesDummyListExecute(r)
 }
 
@@ -2275,10 +2250,10 @@ PoliciesDummyList Method for PoliciesDummyList
 
 Dummy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesDummyListRequest
 */
-func (a *PoliciesApiService) PoliciesDummyList(ctx _context.Context) ApiPoliciesDummyListRequest {
+func (a *PoliciesApiService) PoliciesDummyList(ctx context.Context) ApiPoliciesDummyListRequest {
 	return ApiPoliciesDummyListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2287,26 +2262,24 @@ func (a *PoliciesApiService) PoliciesDummyList(ctx _context.Context) ApiPolicies
 
 // Execute executes the request
 //  @return PaginatedDummyPolicyList
-func (a *PoliciesApiService) PoliciesDummyListExecute(r ApiPoliciesDummyListRequest) (PaginatedDummyPolicyList, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesDummyListExecute(r ApiPoliciesDummyListRequest) (*PaginatedDummyPolicyList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedDummyPolicyList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedDummyPolicyList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesDummyList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/dummy/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.created != nil {
 		localVarQueryParams.Add("created", parameterToString(*r.created, ""))
@@ -2375,7 +2348,7 @@ func (a *PoliciesApiService) PoliciesDummyListExecute(r ApiPoliciesDummyListRequ
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2385,15 +2358,15 @@ func (a *PoliciesApiService) PoliciesDummyListExecute(r ApiPoliciesDummyListRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2402,7 +2375,7 @@ func (a *PoliciesApiService) PoliciesDummyListExecute(r ApiPoliciesDummyListRequ
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2413,7 +2386,7 @@ func (a *PoliciesApiService) PoliciesDummyListExecute(r ApiPoliciesDummyListRequ
 }
 
 type ApiPoliciesDummyPartialUpdateRequest struct {
-	ctx                       _context.Context
+	ctx                       context.Context
 	ApiService                *PoliciesApiService
 	policyUuid                string
 	patchedDummyPolicyRequest *PatchedDummyPolicyRequest
@@ -2424,7 +2397,7 @@ func (r ApiPoliciesDummyPartialUpdateRequest) PatchedDummyPolicyRequest(patchedD
 	return r
 }
 
-func (r ApiPoliciesDummyPartialUpdateRequest) Execute() (DummyPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesDummyPartialUpdateRequest) Execute() (*DummyPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesDummyPartialUpdateExecute(r)
 }
 
@@ -2433,11 +2406,11 @@ PoliciesDummyPartialUpdate Method for PoliciesDummyPartialUpdate
 
 Dummy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Dummy Policy.
  @return ApiPoliciesDummyPartialUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesDummyPartialUpdate(ctx _context.Context, policyUuid string) ApiPoliciesDummyPartialUpdateRequest {
+func (a *PoliciesApiService) PoliciesDummyPartialUpdate(ctx context.Context, policyUuid string) ApiPoliciesDummyPartialUpdateRequest {
 	return ApiPoliciesDummyPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2447,27 +2420,25 @@ func (a *PoliciesApiService) PoliciesDummyPartialUpdate(ctx _context.Context, po
 
 // Execute executes the request
 //  @return DummyPolicy
-func (a *PoliciesApiService) PoliciesDummyPartialUpdateExecute(r ApiPoliciesDummyPartialUpdateRequest) (DummyPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesDummyPartialUpdateExecute(r ApiPoliciesDummyPartialUpdateRequest) (*DummyPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DummyPolicy
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DummyPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesDummyPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/dummy/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2502,7 +2473,7 @@ func (a *PoliciesApiService) PoliciesDummyPartialUpdateExecute(r ApiPoliciesDumm
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2512,15 +2483,15 @@ func (a *PoliciesApiService) PoliciesDummyPartialUpdateExecute(r ApiPoliciesDumm
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2529,7 +2500,7 @@ func (a *PoliciesApiService) PoliciesDummyPartialUpdateExecute(r ApiPoliciesDumm
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2540,12 +2511,12 @@ func (a *PoliciesApiService) PoliciesDummyPartialUpdateExecute(r ApiPoliciesDumm
 }
 
 type ApiPoliciesDummyRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesDummyRetrieveRequest) Execute() (DummyPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesDummyRetrieveRequest) Execute() (*DummyPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesDummyRetrieveExecute(r)
 }
 
@@ -2554,11 +2525,11 @@ PoliciesDummyRetrieve Method for PoliciesDummyRetrieve
 
 Dummy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Dummy Policy.
  @return ApiPoliciesDummyRetrieveRequest
 */
-func (a *PoliciesApiService) PoliciesDummyRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesDummyRetrieveRequest {
+func (a *PoliciesApiService) PoliciesDummyRetrieve(ctx context.Context, policyUuid string) ApiPoliciesDummyRetrieveRequest {
 	return ApiPoliciesDummyRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2568,27 +2539,25 @@ func (a *PoliciesApiService) PoliciesDummyRetrieve(ctx _context.Context, policyU
 
 // Execute executes the request
 //  @return DummyPolicy
-func (a *PoliciesApiService) PoliciesDummyRetrieveExecute(r ApiPoliciesDummyRetrieveRequest) (DummyPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesDummyRetrieveExecute(r ApiPoliciesDummyRetrieveRequest) (*DummyPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DummyPolicy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DummyPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesDummyRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/dummy/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2621,7 +2590,7 @@ func (a *PoliciesApiService) PoliciesDummyRetrieveExecute(r ApiPoliciesDummyRetr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2631,15 +2600,15 @@ func (a *PoliciesApiService) PoliciesDummyRetrieveExecute(r ApiPoliciesDummyRetr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2648,7 +2617,7 @@ func (a *PoliciesApiService) PoliciesDummyRetrieveExecute(r ApiPoliciesDummyRetr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2659,7 +2628,7 @@ func (a *PoliciesApiService) PoliciesDummyRetrieveExecute(r ApiPoliciesDummyRetr
 }
 
 type ApiPoliciesDummyUpdateRequest struct {
-	ctx                _context.Context
+	ctx                context.Context
 	ApiService         *PoliciesApiService
 	policyUuid         string
 	dummyPolicyRequest *DummyPolicyRequest
@@ -2670,7 +2639,7 @@ func (r ApiPoliciesDummyUpdateRequest) DummyPolicyRequest(dummyPolicyRequest Dum
 	return r
 }
 
-func (r ApiPoliciesDummyUpdateRequest) Execute() (DummyPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesDummyUpdateRequest) Execute() (*DummyPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesDummyUpdateExecute(r)
 }
 
@@ -2679,11 +2648,11 @@ PoliciesDummyUpdate Method for PoliciesDummyUpdate
 
 Dummy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Dummy Policy.
  @return ApiPoliciesDummyUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesDummyUpdate(ctx _context.Context, policyUuid string) ApiPoliciesDummyUpdateRequest {
+func (a *PoliciesApiService) PoliciesDummyUpdate(ctx context.Context, policyUuid string) ApiPoliciesDummyUpdateRequest {
 	return ApiPoliciesDummyUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2693,27 +2662,25 @@ func (a *PoliciesApiService) PoliciesDummyUpdate(ctx _context.Context, policyUui
 
 // Execute executes the request
 //  @return DummyPolicy
-func (a *PoliciesApiService) PoliciesDummyUpdateExecute(r ApiPoliciesDummyUpdateRequest) (DummyPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesDummyUpdateExecute(r ApiPoliciesDummyUpdateRequest) (*DummyPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DummyPolicy
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DummyPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesDummyUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/dummy/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2748,7 +2715,7 @@ func (a *PoliciesApiService) PoliciesDummyUpdateExecute(r ApiPoliciesDummyUpdate
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2758,15 +2725,15 @@ func (a *PoliciesApiService) PoliciesDummyUpdateExecute(r ApiPoliciesDummyUpdate
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2775,7 +2742,7 @@ func (a *PoliciesApiService) PoliciesDummyUpdateExecute(r ApiPoliciesDummyUpdate
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2786,12 +2753,12 @@ func (a *PoliciesApiService) PoliciesDummyUpdateExecute(r ApiPoliciesDummyUpdate
 }
 
 type ApiPoliciesDummyUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesDummyUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPoliciesDummyUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PoliciesDummyUsedByListExecute(r)
 }
 
@@ -2800,11 +2767,11 @@ PoliciesDummyUsedByList Method for PoliciesDummyUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Dummy Policy.
  @return ApiPoliciesDummyUsedByListRequest
 */
-func (a *PoliciesApiService) PoliciesDummyUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesDummyUsedByListRequest {
+func (a *PoliciesApiService) PoliciesDummyUsedByList(ctx context.Context, policyUuid string) ApiPoliciesDummyUsedByListRequest {
 	return ApiPoliciesDummyUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2814,27 +2781,25 @@ func (a *PoliciesApiService) PoliciesDummyUsedByList(ctx _context.Context, polic
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PoliciesApiService) PoliciesDummyUsedByListExecute(r ApiPoliciesDummyUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesDummyUsedByListExecute(r ApiPoliciesDummyUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesDummyUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/dummy/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2867,7 +2832,7 @@ func (a *PoliciesApiService) PoliciesDummyUsedByListExecute(r ApiPoliciesDummyUs
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2877,15 +2842,15 @@ func (a *PoliciesApiService) PoliciesDummyUsedByListExecute(r ApiPoliciesDummyUs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2894,7 +2859,7 @@ func (a *PoliciesApiService) PoliciesDummyUsedByListExecute(r ApiPoliciesDummyUs
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2905,7 +2870,7 @@ func (a *PoliciesApiService) PoliciesDummyUsedByListExecute(r ApiPoliciesDummyUs
 }
 
 type ApiPoliciesEventMatcherCreateRequest struct {
-	ctx                       _context.Context
+	ctx                       context.Context
 	ApiService                *PoliciesApiService
 	eventMatcherPolicyRequest *EventMatcherPolicyRequest
 }
@@ -2915,7 +2880,7 @@ func (r ApiPoliciesEventMatcherCreateRequest) EventMatcherPolicyRequest(eventMat
 	return r
 }
 
-func (r ApiPoliciesEventMatcherCreateRequest) Execute() (EventMatcherPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesEventMatcherCreateRequest) Execute() (*EventMatcherPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesEventMatcherCreateExecute(r)
 }
 
@@ -2924,10 +2889,10 @@ PoliciesEventMatcherCreate Method for PoliciesEventMatcherCreate
 
 Event Matcher Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesEventMatcherCreateRequest
 */
-func (a *PoliciesApiService) PoliciesEventMatcherCreate(ctx _context.Context) ApiPoliciesEventMatcherCreateRequest {
+func (a *PoliciesApiService) PoliciesEventMatcherCreate(ctx context.Context) ApiPoliciesEventMatcherCreateRequest {
 	return ApiPoliciesEventMatcherCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2936,26 +2901,24 @@ func (a *PoliciesApiService) PoliciesEventMatcherCreate(ctx _context.Context) Ap
 
 // Execute executes the request
 //  @return EventMatcherPolicy
-func (a *PoliciesApiService) PoliciesEventMatcherCreateExecute(r ApiPoliciesEventMatcherCreateRequest) (EventMatcherPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesEventMatcherCreateExecute(r ApiPoliciesEventMatcherCreateRequest) (*EventMatcherPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EventMatcherPolicy
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EventMatcherPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesEventMatcherCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/event_matcher/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2990,7 +2953,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherCreateExecute(r ApiPoliciesEven
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3000,15 +2963,15 @@ func (a *PoliciesApiService) PoliciesEventMatcherCreateExecute(r ApiPoliciesEven
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3017,7 +2980,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherCreateExecute(r ApiPoliciesEven
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3028,12 +2991,12 @@ func (a *PoliciesApiService) PoliciesEventMatcherCreateExecute(r ApiPoliciesEven
 }
 
 type ApiPoliciesEventMatcherDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesEventMatcherDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPoliciesEventMatcherDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PoliciesEventMatcherDestroyExecute(r)
 }
 
@@ -3042,11 +3005,11 @@ PoliciesEventMatcherDestroy Method for PoliciesEventMatcherDestroy
 
 Event Matcher Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Event Matcher Policy.
  @return ApiPoliciesEventMatcherDestroyRequest
 */
-func (a *PoliciesApiService) PoliciesEventMatcherDestroy(ctx _context.Context, policyUuid string) ApiPoliciesEventMatcherDestroyRequest {
+func (a *PoliciesApiService) PoliciesEventMatcherDestroy(ctx context.Context, policyUuid string) ApiPoliciesEventMatcherDestroyRequest {
 	return ApiPoliciesEventMatcherDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3055,26 +3018,24 @@ func (a *PoliciesApiService) PoliciesEventMatcherDestroy(ctx _context.Context, p
 }
 
 // Execute executes the request
-func (a *PoliciesApiService) PoliciesEventMatcherDestroyExecute(r ApiPoliciesEventMatcherDestroyRequest) (*_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesEventMatcherDestroyExecute(r ApiPoliciesEventMatcherDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesEventMatcherDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/event_matcher/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3107,7 +3068,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherDestroyExecute(r ApiPoliciesEve
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -3117,15 +3078,15 @@ func (a *PoliciesApiService) PoliciesEventMatcherDestroyExecute(r ApiPoliciesEve
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3136,7 +3097,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherDestroyExecute(r ApiPoliciesEve
 }
 
 type ApiPoliciesEventMatcherListRequest struct {
-	ctx              _context.Context
+	ctx              context.Context
 	ApiService       *PoliciesApiService
 	action           *string
 	app              *string
@@ -3163,22 +3124,27 @@ func (r ApiPoliciesEventMatcherListRequest) App(app string) ApiPoliciesEventMatc
 	r.app = &app
 	return r
 }
+
 func (r ApiPoliciesEventMatcherListRequest) ClientIp(clientIp string) ApiPoliciesEventMatcherListRequest {
 	r.clientIp = &clientIp
 	return r
 }
+
 func (r ApiPoliciesEventMatcherListRequest) Created(created time.Time) ApiPoliciesEventMatcherListRequest {
 	r.created = &created
 	return r
 }
+
 func (r ApiPoliciesEventMatcherListRequest) ExecutionLogging(executionLogging bool) ApiPoliciesEventMatcherListRequest {
 	r.executionLogging = &executionLogging
 	return r
 }
+
 func (r ApiPoliciesEventMatcherListRequest) LastUpdated(lastUpdated time.Time) ApiPoliciesEventMatcherListRequest {
 	r.lastUpdated = &lastUpdated
 	return r
 }
+
 func (r ApiPoliciesEventMatcherListRequest) Name(name string) ApiPoliciesEventMatcherListRequest {
 	r.name = &name
 	return r
@@ -3201,6 +3167,7 @@ func (r ApiPoliciesEventMatcherListRequest) PageSize(pageSize int32) ApiPolicies
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiPoliciesEventMatcherListRequest) PolicyUuid(policyUuid string) ApiPoliciesEventMatcherListRequest {
 	r.policyUuid = &policyUuid
 	return r
@@ -3212,7 +3179,7 @@ func (r ApiPoliciesEventMatcherListRequest) Search(search string) ApiPoliciesEve
 	return r
 }
 
-func (r ApiPoliciesEventMatcherListRequest) Execute() (PaginatedEventMatcherPolicyList, *_nethttp.Response, error) {
+func (r ApiPoliciesEventMatcherListRequest) Execute() (*PaginatedEventMatcherPolicyList, *http.Response, error) {
 	return r.ApiService.PoliciesEventMatcherListExecute(r)
 }
 
@@ -3221,10 +3188,10 @@ PoliciesEventMatcherList Method for PoliciesEventMatcherList
 
 Event Matcher Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesEventMatcherListRequest
 */
-func (a *PoliciesApiService) PoliciesEventMatcherList(ctx _context.Context) ApiPoliciesEventMatcherListRequest {
+func (a *PoliciesApiService) PoliciesEventMatcherList(ctx context.Context) ApiPoliciesEventMatcherListRequest {
 	return ApiPoliciesEventMatcherListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3233,26 +3200,24 @@ func (a *PoliciesApiService) PoliciesEventMatcherList(ctx _context.Context) ApiP
 
 // Execute executes the request
 //  @return PaginatedEventMatcherPolicyList
-func (a *PoliciesApiService) PoliciesEventMatcherListExecute(r ApiPoliciesEventMatcherListRequest) (PaginatedEventMatcherPolicyList, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesEventMatcherListExecute(r ApiPoliciesEventMatcherListRequest) (*PaginatedEventMatcherPolicyList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedEventMatcherPolicyList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedEventMatcherPolicyList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesEventMatcherList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/event_matcher/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.action != nil {
 		localVarQueryParams.Add("action", parameterToString(*r.action, ""))
@@ -3321,7 +3286,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherListExecute(r ApiPoliciesEventM
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3331,15 +3296,15 @@ func (a *PoliciesApiService) PoliciesEventMatcherListExecute(r ApiPoliciesEventM
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3348,7 +3313,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherListExecute(r ApiPoliciesEventM
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3359,7 +3324,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherListExecute(r ApiPoliciesEventM
 }
 
 type ApiPoliciesEventMatcherPartialUpdateRequest struct {
-	ctx                              _context.Context
+	ctx                              context.Context
 	ApiService                       *PoliciesApiService
 	policyUuid                       string
 	patchedEventMatcherPolicyRequest *PatchedEventMatcherPolicyRequest
@@ -3370,7 +3335,7 @@ func (r ApiPoliciesEventMatcherPartialUpdateRequest) PatchedEventMatcherPolicyRe
 	return r
 }
 
-func (r ApiPoliciesEventMatcherPartialUpdateRequest) Execute() (EventMatcherPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesEventMatcherPartialUpdateRequest) Execute() (*EventMatcherPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesEventMatcherPartialUpdateExecute(r)
 }
 
@@ -3379,11 +3344,11 @@ PoliciesEventMatcherPartialUpdate Method for PoliciesEventMatcherPartialUpdate
 
 Event Matcher Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Event Matcher Policy.
  @return ApiPoliciesEventMatcherPartialUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdate(ctx _context.Context, policyUuid string) ApiPoliciesEventMatcherPartialUpdateRequest {
+func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdate(ctx context.Context, policyUuid string) ApiPoliciesEventMatcherPartialUpdateRequest {
 	return ApiPoliciesEventMatcherPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3393,27 +3358,25 @@ func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdate(ctx _context.Cont
 
 // Execute executes the request
 //  @return EventMatcherPolicy
-func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdateExecute(r ApiPoliciesEventMatcherPartialUpdateRequest) (EventMatcherPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdateExecute(r ApiPoliciesEventMatcherPartialUpdateRequest) (*EventMatcherPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EventMatcherPolicy
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EventMatcherPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesEventMatcherPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/event_matcher/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3448,7 +3411,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdateExecute(r ApiPolic
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3458,15 +3421,15 @@ func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdateExecute(r ApiPolic
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3475,7 +3438,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdateExecute(r ApiPolic
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3486,12 +3449,12 @@ func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdateExecute(r ApiPolic
 }
 
 type ApiPoliciesEventMatcherRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesEventMatcherRetrieveRequest) Execute() (EventMatcherPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesEventMatcherRetrieveRequest) Execute() (*EventMatcherPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesEventMatcherRetrieveExecute(r)
 }
 
@@ -3500,11 +3463,11 @@ PoliciesEventMatcherRetrieve Method for PoliciesEventMatcherRetrieve
 
 Event Matcher Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Event Matcher Policy.
  @return ApiPoliciesEventMatcherRetrieveRequest
 */
-func (a *PoliciesApiService) PoliciesEventMatcherRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesEventMatcherRetrieveRequest {
+func (a *PoliciesApiService) PoliciesEventMatcherRetrieve(ctx context.Context, policyUuid string) ApiPoliciesEventMatcherRetrieveRequest {
 	return ApiPoliciesEventMatcherRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3514,27 +3477,25 @@ func (a *PoliciesApiService) PoliciesEventMatcherRetrieve(ctx _context.Context, 
 
 // Execute executes the request
 //  @return EventMatcherPolicy
-func (a *PoliciesApiService) PoliciesEventMatcherRetrieveExecute(r ApiPoliciesEventMatcherRetrieveRequest) (EventMatcherPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesEventMatcherRetrieveExecute(r ApiPoliciesEventMatcherRetrieveRequest) (*EventMatcherPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EventMatcherPolicy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EventMatcherPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesEventMatcherRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/event_matcher/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3567,7 +3528,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherRetrieveExecute(r ApiPoliciesEv
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3577,15 +3538,15 @@ func (a *PoliciesApiService) PoliciesEventMatcherRetrieveExecute(r ApiPoliciesEv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3594,7 +3555,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherRetrieveExecute(r ApiPoliciesEv
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3605,7 +3566,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherRetrieveExecute(r ApiPoliciesEv
 }
 
 type ApiPoliciesEventMatcherUpdateRequest struct {
-	ctx                       _context.Context
+	ctx                       context.Context
 	ApiService                *PoliciesApiService
 	policyUuid                string
 	eventMatcherPolicyRequest *EventMatcherPolicyRequest
@@ -3616,7 +3577,7 @@ func (r ApiPoliciesEventMatcherUpdateRequest) EventMatcherPolicyRequest(eventMat
 	return r
 }
 
-func (r ApiPoliciesEventMatcherUpdateRequest) Execute() (EventMatcherPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesEventMatcherUpdateRequest) Execute() (*EventMatcherPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesEventMatcherUpdateExecute(r)
 }
 
@@ -3625,11 +3586,11 @@ PoliciesEventMatcherUpdate Method for PoliciesEventMatcherUpdate
 
 Event Matcher Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Event Matcher Policy.
  @return ApiPoliciesEventMatcherUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesEventMatcherUpdate(ctx _context.Context, policyUuid string) ApiPoliciesEventMatcherUpdateRequest {
+func (a *PoliciesApiService) PoliciesEventMatcherUpdate(ctx context.Context, policyUuid string) ApiPoliciesEventMatcherUpdateRequest {
 	return ApiPoliciesEventMatcherUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3639,27 +3600,25 @@ func (a *PoliciesApiService) PoliciesEventMatcherUpdate(ctx _context.Context, po
 
 // Execute executes the request
 //  @return EventMatcherPolicy
-func (a *PoliciesApiService) PoliciesEventMatcherUpdateExecute(r ApiPoliciesEventMatcherUpdateRequest) (EventMatcherPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesEventMatcherUpdateExecute(r ApiPoliciesEventMatcherUpdateRequest) (*EventMatcherPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EventMatcherPolicy
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EventMatcherPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesEventMatcherUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/event_matcher/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3694,7 +3653,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherUpdateExecute(r ApiPoliciesEven
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3704,15 +3663,15 @@ func (a *PoliciesApiService) PoliciesEventMatcherUpdateExecute(r ApiPoliciesEven
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3721,7 +3680,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherUpdateExecute(r ApiPoliciesEven
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3732,12 +3691,12 @@ func (a *PoliciesApiService) PoliciesEventMatcherUpdateExecute(r ApiPoliciesEven
 }
 
 type ApiPoliciesEventMatcherUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesEventMatcherUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPoliciesEventMatcherUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PoliciesEventMatcherUsedByListExecute(r)
 }
 
@@ -3746,11 +3705,11 @@ PoliciesEventMatcherUsedByList Method for PoliciesEventMatcherUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Event Matcher Policy.
  @return ApiPoliciesEventMatcherUsedByListRequest
 */
-func (a *PoliciesApiService) PoliciesEventMatcherUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesEventMatcherUsedByListRequest {
+func (a *PoliciesApiService) PoliciesEventMatcherUsedByList(ctx context.Context, policyUuid string) ApiPoliciesEventMatcherUsedByListRequest {
 	return ApiPoliciesEventMatcherUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3760,27 +3719,25 @@ func (a *PoliciesApiService) PoliciesEventMatcherUsedByList(ctx _context.Context
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PoliciesApiService) PoliciesEventMatcherUsedByListExecute(r ApiPoliciesEventMatcherUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesEventMatcherUsedByListExecute(r ApiPoliciesEventMatcherUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesEventMatcherUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/event_matcher/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3813,7 +3770,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherUsedByListExecute(r ApiPolicies
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3823,15 +3780,15 @@ func (a *PoliciesApiService) PoliciesEventMatcherUsedByListExecute(r ApiPolicies
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3840,7 +3797,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherUsedByListExecute(r ApiPolicies
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3851,7 +3808,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherUsedByListExecute(r ApiPolicies
 }
 
 type ApiPoliciesExpressionCreateRequest struct {
-	ctx                     _context.Context
+	ctx                     context.Context
 	ApiService              *PoliciesApiService
 	expressionPolicyRequest *ExpressionPolicyRequest
 }
@@ -3861,7 +3818,7 @@ func (r ApiPoliciesExpressionCreateRequest) ExpressionPolicyRequest(expressionPo
 	return r
 }
 
-func (r ApiPoliciesExpressionCreateRequest) Execute() (ExpressionPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesExpressionCreateRequest) Execute() (*ExpressionPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesExpressionCreateExecute(r)
 }
 
@@ -3870,10 +3827,10 @@ PoliciesExpressionCreate Method for PoliciesExpressionCreate
 
 Source Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesExpressionCreateRequest
 */
-func (a *PoliciesApiService) PoliciesExpressionCreate(ctx _context.Context) ApiPoliciesExpressionCreateRequest {
+func (a *PoliciesApiService) PoliciesExpressionCreate(ctx context.Context) ApiPoliciesExpressionCreateRequest {
 	return ApiPoliciesExpressionCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3882,26 +3839,24 @@ func (a *PoliciesApiService) PoliciesExpressionCreate(ctx _context.Context) ApiP
 
 // Execute executes the request
 //  @return ExpressionPolicy
-func (a *PoliciesApiService) PoliciesExpressionCreateExecute(r ApiPoliciesExpressionCreateRequest) (ExpressionPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesExpressionCreateExecute(r ApiPoliciesExpressionCreateRequest) (*ExpressionPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ExpressionPolicy
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ExpressionPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesExpressionCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/expression/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.expressionPolicyRequest == nil {
 		return localVarReturnValue, nil, reportError("expressionPolicyRequest is required and must be specified")
 	}
@@ -3939,7 +3894,7 @@ func (a *PoliciesApiService) PoliciesExpressionCreateExecute(r ApiPoliciesExpres
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3949,15 +3904,15 @@ func (a *PoliciesApiService) PoliciesExpressionCreateExecute(r ApiPoliciesExpres
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3966,7 +3921,7 @@ func (a *PoliciesApiService) PoliciesExpressionCreateExecute(r ApiPoliciesExpres
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3977,12 +3932,12 @@ func (a *PoliciesApiService) PoliciesExpressionCreateExecute(r ApiPoliciesExpres
 }
 
 type ApiPoliciesExpressionDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesExpressionDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPoliciesExpressionDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PoliciesExpressionDestroyExecute(r)
 }
 
@@ -3991,11 +3946,11 @@ PoliciesExpressionDestroy Method for PoliciesExpressionDestroy
 
 Source Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Expression Policy.
  @return ApiPoliciesExpressionDestroyRequest
 */
-func (a *PoliciesApiService) PoliciesExpressionDestroy(ctx _context.Context, policyUuid string) ApiPoliciesExpressionDestroyRequest {
+func (a *PoliciesApiService) PoliciesExpressionDestroy(ctx context.Context, policyUuid string) ApiPoliciesExpressionDestroyRequest {
 	return ApiPoliciesExpressionDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4004,26 +3959,24 @@ func (a *PoliciesApiService) PoliciesExpressionDestroy(ctx _context.Context, pol
 }
 
 // Execute executes the request
-func (a *PoliciesApiService) PoliciesExpressionDestroyExecute(r ApiPoliciesExpressionDestroyRequest) (*_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesExpressionDestroyExecute(r ApiPoliciesExpressionDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesExpressionDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/expression/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4056,7 +4009,7 @@ func (a *PoliciesApiService) PoliciesExpressionDestroyExecute(r ApiPoliciesExpre
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -4066,15 +4019,15 @@ func (a *PoliciesApiService) PoliciesExpressionDestroyExecute(r ApiPoliciesExpre
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4085,7 +4038,7 @@ func (a *PoliciesApiService) PoliciesExpressionDestroyExecute(r ApiPoliciesExpre
 }
 
 type ApiPoliciesExpressionListRequest struct {
-	ctx              _context.Context
+	ctx              context.Context
 	ApiService       *PoliciesApiService
 	created          *time.Time
 	executionLogging *bool
@@ -4103,18 +4056,22 @@ func (r ApiPoliciesExpressionListRequest) Created(created time.Time) ApiPolicies
 	r.created = &created
 	return r
 }
+
 func (r ApiPoliciesExpressionListRequest) ExecutionLogging(executionLogging bool) ApiPoliciesExpressionListRequest {
 	r.executionLogging = &executionLogging
 	return r
 }
+
 func (r ApiPoliciesExpressionListRequest) Expression(expression string) ApiPoliciesExpressionListRequest {
 	r.expression = &expression
 	return r
 }
+
 func (r ApiPoliciesExpressionListRequest) LastUpdated(lastUpdated time.Time) ApiPoliciesExpressionListRequest {
 	r.lastUpdated = &lastUpdated
 	return r
 }
+
 func (r ApiPoliciesExpressionListRequest) Name(name string) ApiPoliciesExpressionListRequest {
 	r.name = &name
 	return r
@@ -4137,6 +4094,7 @@ func (r ApiPoliciesExpressionListRequest) PageSize(pageSize int32) ApiPoliciesEx
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiPoliciesExpressionListRequest) PolicyUuid(policyUuid string) ApiPoliciesExpressionListRequest {
 	r.policyUuid = &policyUuid
 	return r
@@ -4148,7 +4106,7 @@ func (r ApiPoliciesExpressionListRequest) Search(search string) ApiPoliciesExpre
 	return r
 }
 
-func (r ApiPoliciesExpressionListRequest) Execute() (PaginatedExpressionPolicyList, *_nethttp.Response, error) {
+func (r ApiPoliciesExpressionListRequest) Execute() (*PaginatedExpressionPolicyList, *http.Response, error) {
 	return r.ApiService.PoliciesExpressionListExecute(r)
 }
 
@@ -4157,10 +4115,10 @@ PoliciesExpressionList Method for PoliciesExpressionList
 
 Source Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesExpressionListRequest
 */
-func (a *PoliciesApiService) PoliciesExpressionList(ctx _context.Context) ApiPoliciesExpressionListRequest {
+func (a *PoliciesApiService) PoliciesExpressionList(ctx context.Context) ApiPoliciesExpressionListRequest {
 	return ApiPoliciesExpressionListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4169,26 +4127,24 @@ func (a *PoliciesApiService) PoliciesExpressionList(ctx _context.Context) ApiPol
 
 // Execute executes the request
 //  @return PaginatedExpressionPolicyList
-func (a *PoliciesApiService) PoliciesExpressionListExecute(r ApiPoliciesExpressionListRequest) (PaginatedExpressionPolicyList, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesExpressionListExecute(r ApiPoliciesExpressionListRequest) (*PaginatedExpressionPolicyList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedExpressionPolicyList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedExpressionPolicyList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesExpressionList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/expression/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.created != nil {
 		localVarQueryParams.Add("created", parameterToString(*r.created, ""))
@@ -4251,7 +4207,7 @@ func (a *PoliciesApiService) PoliciesExpressionListExecute(r ApiPoliciesExpressi
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4261,15 +4217,15 @@ func (a *PoliciesApiService) PoliciesExpressionListExecute(r ApiPoliciesExpressi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4278,7 +4234,7 @@ func (a *PoliciesApiService) PoliciesExpressionListExecute(r ApiPoliciesExpressi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4289,7 +4245,7 @@ func (a *PoliciesApiService) PoliciesExpressionListExecute(r ApiPoliciesExpressi
 }
 
 type ApiPoliciesExpressionPartialUpdateRequest struct {
-	ctx                            _context.Context
+	ctx                            context.Context
 	ApiService                     *PoliciesApiService
 	policyUuid                     string
 	patchedExpressionPolicyRequest *PatchedExpressionPolicyRequest
@@ -4300,7 +4256,7 @@ func (r ApiPoliciesExpressionPartialUpdateRequest) PatchedExpressionPolicyReques
 	return r
 }
 
-func (r ApiPoliciesExpressionPartialUpdateRequest) Execute() (ExpressionPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesExpressionPartialUpdateRequest) Execute() (*ExpressionPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesExpressionPartialUpdateExecute(r)
 }
 
@@ -4309,11 +4265,11 @@ PoliciesExpressionPartialUpdate Method for PoliciesExpressionPartialUpdate
 
 Source Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Expression Policy.
  @return ApiPoliciesExpressionPartialUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesExpressionPartialUpdate(ctx _context.Context, policyUuid string) ApiPoliciesExpressionPartialUpdateRequest {
+func (a *PoliciesApiService) PoliciesExpressionPartialUpdate(ctx context.Context, policyUuid string) ApiPoliciesExpressionPartialUpdateRequest {
 	return ApiPoliciesExpressionPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4323,27 +4279,25 @@ func (a *PoliciesApiService) PoliciesExpressionPartialUpdate(ctx _context.Contex
 
 // Execute executes the request
 //  @return ExpressionPolicy
-func (a *PoliciesApiService) PoliciesExpressionPartialUpdateExecute(r ApiPoliciesExpressionPartialUpdateRequest) (ExpressionPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesExpressionPartialUpdateExecute(r ApiPoliciesExpressionPartialUpdateRequest) (*ExpressionPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ExpressionPolicy
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ExpressionPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesExpressionPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/expression/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4378,7 +4332,7 @@ func (a *PoliciesApiService) PoliciesExpressionPartialUpdateExecute(r ApiPolicie
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4388,15 +4342,15 @@ func (a *PoliciesApiService) PoliciesExpressionPartialUpdateExecute(r ApiPolicie
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4405,7 +4359,7 @@ func (a *PoliciesApiService) PoliciesExpressionPartialUpdateExecute(r ApiPolicie
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4416,12 +4370,12 @@ func (a *PoliciesApiService) PoliciesExpressionPartialUpdateExecute(r ApiPolicie
 }
 
 type ApiPoliciesExpressionRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesExpressionRetrieveRequest) Execute() (ExpressionPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesExpressionRetrieveRequest) Execute() (*ExpressionPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesExpressionRetrieveExecute(r)
 }
 
@@ -4430,11 +4384,11 @@ PoliciesExpressionRetrieve Method for PoliciesExpressionRetrieve
 
 Source Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Expression Policy.
  @return ApiPoliciesExpressionRetrieveRequest
 */
-func (a *PoliciesApiService) PoliciesExpressionRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesExpressionRetrieveRequest {
+func (a *PoliciesApiService) PoliciesExpressionRetrieve(ctx context.Context, policyUuid string) ApiPoliciesExpressionRetrieveRequest {
 	return ApiPoliciesExpressionRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4444,27 +4398,25 @@ func (a *PoliciesApiService) PoliciesExpressionRetrieve(ctx _context.Context, po
 
 // Execute executes the request
 //  @return ExpressionPolicy
-func (a *PoliciesApiService) PoliciesExpressionRetrieveExecute(r ApiPoliciesExpressionRetrieveRequest) (ExpressionPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesExpressionRetrieveExecute(r ApiPoliciesExpressionRetrieveRequest) (*ExpressionPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ExpressionPolicy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ExpressionPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesExpressionRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/expression/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4497,7 +4449,7 @@ func (a *PoliciesApiService) PoliciesExpressionRetrieveExecute(r ApiPoliciesExpr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4507,15 +4459,15 @@ func (a *PoliciesApiService) PoliciesExpressionRetrieveExecute(r ApiPoliciesExpr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4524,7 +4476,7 @@ func (a *PoliciesApiService) PoliciesExpressionRetrieveExecute(r ApiPoliciesExpr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4535,7 +4487,7 @@ func (a *PoliciesApiService) PoliciesExpressionRetrieveExecute(r ApiPoliciesExpr
 }
 
 type ApiPoliciesExpressionUpdateRequest struct {
-	ctx                     _context.Context
+	ctx                     context.Context
 	ApiService              *PoliciesApiService
 	policyUuid              string
 	expressionPolicyRequest *ExpressionPolicyRequest
@@ -4546,7 +4498,7 @@ func (r ApiPoliciesExpressionUpdateRequest) ExpressionPolicyRequest(expressionPo
 	return r
 }
 
-func (r ApiPoliciesExpressionUpdateRequest) Execute() (ExpressionPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesExpressionUpdateRequest) Execute() (*ExpressionPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesExpressionUpdateExecute(r)
 }
 
@@ -4555,11 +4507,11 @@ PoliciesExpressionUpdate Method for PoliciesExpressionUpdate
 
 Source Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Expression Policy.
  @return ApiPoliciesExpressionUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesExpressionUpdate(ctx _context.Context, policyUuid string) ApiPoliciesExpressionUpdateRequest {
+func (a *PoliciesApiService) PoliciesExpressionUpdate(ctx context.Context, policyUuid string) ApiPoliciesExpressionUpdateRequest {
 	return ApiPoliciesExpressionUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4569,27 +4521,25 @@ func (a *PoliciesApiService) PoliciesExpressionUpdate(ctx _context.Context, poli
 
 // Execute executes the request
 //  @return ExpressionPolicy
-func (a *PoliciesApiService) PoliciesExpressionUpdateExecute(r ApiPoliciesExpressionUpdateRequest) (ExpressionPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesExpressionUpdateExecute(r ApiPoliciesExpressionUpdateRequest) (*ExpressionPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ExpressionPolicy
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ExpressionPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesExpressionUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/expression/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.expressionPolicyRequest == nil {
 		return localVarReturnValue, nil, reportError("expressionPolicyRequest is required and must be specified")
 	}
@@ -4627,7 +4577,7 @@ func (a *PoliciesApiService) PoliciesExpressionUpdateExecute(r ApiPoliciesExpres
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4637,15 +4587,15 @@ func (a *PoliciesApiService) PoliciesExpressionUpdateExecute(r ApiPoliciesExpres
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4654,7 +4604,7 @@ func (a *PoliciesApiService) PoliciesExpressionUpdateExecute(r ApiPoliciesExpres
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4665,12 +4615,12 @@ func (a *PoliciesApiService) PoliciesExpressionUpdateExecute(r ApiPoliciesExpres
 }
 
 type ApiPoliciesExpressionUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesExpressionUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPoliciesExpressionUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PoliciesExpressionUsedByListExecute(r)
 }
 
@@ -4679,11 +4629,11 @@ PoliciesExpressionUsedByList Method for PoliciesExpressionUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Expression Policy.
  @return ApiPoliciesExpressionUsedByListRequest
 */
-func (a *PoliciesApiService) PoliciesExpressionUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesExpressionUsedByListRequest {
+func (a *PoliciesApiService) PoliciesExpressionUsedByList(ctx context.Context, policyUuid string) ApiPoliciesExpressionUsedByListRequest {
 	return ApiPoliciesExpressionUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4693,27 +4643,25 @@ func (a *PoliciesApiService) PoliciesExpressionUsedByList(ctx _context.Context, 
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PoliciesApiService) PoliciesExpressionUsedByListExecute(r ApiPoliciesExpressionUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesExpressionUsedByListExecute(r ApiPoliciesExpressionUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesExpressionUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/expression/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4746,7 +4694,7 @@ func (a *PoliciesApiService) PoliciesExpressionUsedByListExecute(r ApiPoliciesEx
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4756,15 +4704,15 @@ func (a *PoliciesApiService) PoliciesExpressionUsedByListExecute(r ApiPoliciesEx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4773,7 +4721,7 @@ func (a *PoliciesApiService) PoliciesExpressionUsedByListExecute(r ApiPoliciesEx
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4784,7 +4732,7 @@ func (a *PoliciesApiService) PoliciesExpressionUsedByListExecute(r ApiPoliciesEx
 }
 
 type ApiPoliciesHaveibeenpwnedCreateRequest struct {
-	ctx                         _context.Context
+	ctx                         context.Context
 	ApiService                  *PoliciesApiService
 	haveIBeenPwendPolicyRequest *HaveIBeenPwendPolicyRequest
 }
@@ -4794,7 +4742,7 @@ func (r ApiPoliciesHaveibeenpwnedCreateRequest) HaveIBeenPwendPolicyRequest(have
 	return r
 }
 
-func (r ApiPoliciesHaveibeenpwnedCreateRequest) Execute() (HaveIBeenPwendPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesHaveibeenpwnedCreateRequest) Execute() (*HaveIBeenPwendPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesHaveibeenpwnedCreateExecute(r)
 }
 
@@ -4803,10 +4751,10 @@ PoliciesHaveibeenpwnedCreate Method for PoliciesHaveibeenpwnedCreate
 
 Source Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesHaveibeenpwnedCreateRequest
 */
-func (a *PoliciesApiService) PoliciesHaveibeenpwnedCreate(ctx _context.Context) ApiPoliciesHaveibeenpwnedCreateRequest {
+func (a *PoliciesApiService) PoliciesHaveibeenpwnedCreate(ctx context.Context) ApiPoliciesHaveibeenpwnedCreateRequest {
 	return ApiPoliciesHaveibeenpwnedCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4815,26 +4763,24 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedCreate(ctx _context.Context) 
 
 // Execute executes the request
 //  @return HaveIBeenPwendPolicy
-func (a *PoliciesApiService) PoliciesHaveibeenpwnedCreateExecute(r ApiPoliciesHaveibeenpwnedCreateRequest) (HaveIBeenPwendPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesHaveibeenpwnedCreateExecute(r ApiPoliciesHaveibeenpwnedCreateRequest) (*HaveIBeenPwendPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  HaveIBeenPwendPolicy
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *HaveIBeenPwendPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesHaveibeenpwnedCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/haveibeenpwned/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4869,7 +4815,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedCreateExecute(r ApiPoliciesHa
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4879,15 +4825,15 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedCreateExecute(r ApiPoliciesHa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4896,7 +4842,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedCreateExecute(r ApiPoliciesHa
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4907,12 +4853,12 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedCreateExecute(r ApiPoliciesHa
 }
 
 type ApiPoliciesHaveibeenpwnedDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesHaveibeenpwnedDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPoliciesHaveibeenpwnedDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PoliciesHaveibeenpwnedDestroyExecute(r)
 }
 
@@ -4921,11 +4867,11 @@ PoliciesHaveibeenpwnedDestroy Method for PoliciesHaveibeenpwnedDestroy
 
 Source Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Have I Been Pwned Policy.
  @return ApiPoliciesHaveibeenpwnedDestroyRequest
 */
-func (a *PoliciesApiService) PoliciesHaveibeenpwnedDestroy(ctx _context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedDestroyRequest {
+func (a *PoliciesApiService) PoliciesHaveibeenpwnedDestroy(ctx context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedDestroyRequest {
 	return ApiPoliciesHaveibeenpwnedDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4934,26 +4880,24 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedDestroy(ctx _context.Context,
 }
 
 // Execute executes the request
-func (a *PoliciesApiService) PoliciesHaveibeenpwnedDestroyExecute(r ApiPoliciesHaveibeenpwnedDestroyRequest) (*_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesHaveibeenpwnedDestroyExecute(r ApiPoliciesHaveibeenpwnedDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesHaveibeenpwnedDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/haveibeenpwned/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4986,7 +4930,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedDestroyExecute(r ApiPoliciesH
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -4996,15 +4940,15 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedDestroyExecute(r ApiPoliciesH
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5015,7 +4959,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedDestroyExecute(r ApiPoliciesH
 }
 
 type ApiPoliciesHaveibeenpwnedListRequest struct {
-	ctx              _context.Context
+	ctx              context.Context
 	ApiService       *PoliciesApiService
 	allowedCount     *int32
 	created          *time.Time
@@ -5034,18 +4978,22 @@ func (r ApiPoliciesHaveibeenpwnedListRequest) AllowedCount(allowedCount int32) A
 	r.allowedCount = &allowedCount
 	return r
 }
+
 func (r ApiPoliciesHaveibeenpwnedListRequest) Created(created time.Time) ApiPoliciesHaveibeenpwnedListRequest {
 	r.created = &created
 	return r
 }
+
 func (r ApiPoliciesHaveibeenpwnedListRequest) ExecutionLogging(executionLogging bool) ApiPoliciesHaveibeenpwnedListRequest {
 	r.executionLogging = &executionLogging
 	return r
 }
+
 func (r ApiPoliciesHaveibeenpwnedListRequest) LastUpdated(lastUpdated time.Time) ApiPoliciesHaveibeenpwnedListRequest {
 	r.lastUpdated = &lastUpdated
 	return r
 }
+
 func (r ApiPoliciesHaveibeenpwnedListRequest) Name(name string) ApiPoliciesHaveibeenpwnedListRequest {
 	r.name = &name
 	return r
@@ -5068,10 +5016,12 @@ func (r ApiPoliciesHaveibeenpwnedListRequest) PageSize(pageSize int32) ApiPolici
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiPoliciesHaveibeenpwnedListRequest) PasswordField(passwordField string) ApiPoliciesHaveibeenpwnedListRequest {
 	r.passwordField = &passwordField
 	return r
 }
+
 func (r ApiPoliciesHaveibeenpwnedListRequest) PolicyUuid(policyUuid string) ApiPoliciesHaveibeenpwnedListRequest {
 	r.policyUuid = &policyUuid
 	return r
@@ -5083,7 +5033,7 @@ func (r ApiPoliciesHaveibeenpwnedListRequest) Search(search string) ApiPoliciesH
 	return r
 }
 
-func (r ApiPoliciesHaveibeenpwnedListRequest) Execute() (PaginatedHaveIBeenPwendPolicyList, *_nethttp.Response, error) {
+func (r ApiPoliciesHaveibeenpwnedListRequest) Execute() (*PaginatedHaveIBeenPwendPolicyList, *http.Response, error) {
 	return r.ApiService.PoliciesHaveibeenpwnedListExecute(r)
 }
 
@@ -5092,10 +5042,10 @@ PoliciesHaveibeenpwnedList Method for PoliciesHaveibeenpwnedList
 
 Source Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesHaveibeenpwnedListRequest
 */
-func (a *PoliciesApiService) PoliciesHaveibeenpwnedList(ctx _context.Context) ApiPoliciesHaveibeenpwnedListRequest {
+func (a *PoliciesApiService) PoliciesHaveibeenpwnedList(ctx context.Context) ApiPoliciesHaveibeenpwnedListRequest {
 	return ApiPoliciesHaveibeenpwnedListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5104,26 +5054,24 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedList(ctx _context.Context) Ap
 
 // Execute executes the request
 //  @return PaginatedHaveIBeenPwendPolicyList
-func (a *PoliciesApiService) PoliciesHaveibeenpwnedListExecute(r ApiPoliciesHaveibeenpwnedListRequest) (PaginatedHaveIBeenPwendPolicyList, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesHaveibeenpwnedListExecute(r ApiPoliciesHaveibeenpwnedListRequest) (*PaginatedHaveIBeenPwendPolicyList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedHaveIBeenPwendPolicyList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedHaveIBeenPwendPolicyList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesHaveibeenpwnedList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/haveibeenpwned/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.allowedCount != nil {
 		localVarQueryParams.Add("allowed_count", parameterToString(*r.allowedCount, ""))
@@ -5189,7 +5137,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedListExecute(r ApiPoliciesHave
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5199,15 +5147,15 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedListExecute(r ApiPoliciesHave
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5216,7 +5164,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedListExecute(r ApiPoliciesHave
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5227,7 +5175,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedListExecute(r ApiPoliciesHave
 }
 
 type ApiPoliciesHaveibeenpwnedPartialUpdateRequest struct {
-	ctx                                _context.Context
+	ctx                                context.Context
 	ApiService                         *PoliciesApiService
 	policyUuid                         string
 	patchedHaveIBeenPwendPolicyRequest *PatchedHaveIBeenPwendPolicyRequest
@@ -5238,7 +5186,7 @@ func (r ApiPoliciesHaveibeenpwnedPartialUpdateRequest) PatchedHaveIBeenPwendPoli
 	return r
 }
 
-func (r ApiPoliciesHaveibeenpwnedPartialUpdateRequest) Execute() (HaveIBeenPwendPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesHaveibeenpwnedPartialUpdateRequest) Execute() (*HaveIBeenPwendPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesHaveibeenpwnedPartialUpdateExecute(r)
 }
 
@@ -5247,11 +5195,11 @@ PoliciesHaveibeenpwnedPartialUpdate Method for PoliciesHaveibeenpwnedPartialUpda
 
 Source Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Have I Been Pwned Policy.
  @return ApiPoliciesHaveibeenpwnedPartialUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesHaveibeenpwnedPartialUpdate(ctx _context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedPartialUpdateRequest {
+func (a *PoliciesApiService) PoliciesHaveibeenpwnedPartialUpdate(ctx context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedPartialUpdateRequest {
 	return ApiPoliciesHaveibeenpwnedPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5261,27 +5209,25 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedPartialUpdate(ctx _context.Co
 
 // Execute executes the request
 //  @return HaveIBeenPwendPolicy
-func (a *PoliciesApiService) PoliciesHaveibeenpwnedPartialUpdateExecute(r ApiPoliciesHaveibeenpwnedPartialUpdateRequest) (HaveIBeenPwendPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesHaveibeenpwnedPartialUpdateExecute(r ApiPoliciesHaveibeenpwnedPartialUpdateRequest) (*HaveIBeenPwendPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  HaveIBeenPwendPolicy
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *HaveIBeenPwendPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesHaveibeenpwnedPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/haveibeenpwned/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -5316,7 +5262,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedPartialUpdateExecute(r ApiPol
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5326,15 +5272,15 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedPartialUpdateExecute(r ApiPol
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5343,7 +5289,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedPartialUpdateExecute(r ApiPol
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5354,12 +5300,12 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedPartialUpdateExecute(r ApiPol
 }
 
 type ApiPoliciesHaveibeenpwnedRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesHaveibeenpwnedRetrieveRequest) Execute() (HaveIBeenPwendPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesHaveibeenpwnedRetrieveRequest) Execute() (*HaveIBeenPwendPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesHaveibeenpwnedRetrieveExecute(r)
 }
 
@@ -5368,11 +5314,11 @@ PoliciesHaveibeenpwnedRetrieve Method for PoliciesHaveibeenpwnedRetrieve
 
 Source Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Have I Been Pwned Policy.
  @return ApiPoliciesHaveibeenpwnedRetrieveRequest
 */
-func (a *PoliciesApiService) PoliciesHaveibeenpwnedRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedRetrieveRequest {
+func (a *PoliciesApiService) PoliciesHaveibeenpwnedRetrieve(ctx context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedRetrieveRequest {
 	return ApiPoliciesHaveibeenpwnedRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5382,27 +5328,25 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedRetrieve(ctx _context.Context
 
 // Execute executes the request
 //  @return HaveIBeenPwendPolicy
-func (a *PoliciesApiService) PoliciesHaveibeenpwnedRetrieveExecute(r ApiPoliciesHaveibeenpwnedRetrieveRequest) (HaveIBeenPwendPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesHaveibeenpwnedRetrieveExecute(r ApiPoliciesHaveibeenpwnedRetrieveRequest) (*HaveIBeenPwendPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  HaveIBeenPwendPolicy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *HaveIBeenPwendPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesHaveibeenpwnedRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/haveibeenpwned/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5435,7 +5379,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedRetrieveExecute(r ApiPolicies
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5445,15 +5389,15 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedRetrieveExecute(r ApiPolicies
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5462,7 +5406,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedRetrieveExecute(r ApiPolicies
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5473,7 +5417,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedRetrieveExecute(r ApiPolicies
 }
 
 type ApiPoliciesHaveibeenpwnedUpdateRequest struct {
-	ctx                         _context.Context
+	ctx                         context.Context
 	ApiService                  *PoliciesApiService
 	policyUuid                  string
 	haveIBeenPwendPolicyRequest *HaveIBeenPwendPolicyRequest
@@ -5484,7 +5428,7 @@ func (r ApiPoliciesHaveibeenpwnedUpdateRequest) HaveIBeenPwendPolicyRequest(have
 	return r
 }
 
-func (r ApiPoliciesHaveibeenpwnedUpdateRequest) Execute() (HaveIBeenPwendPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesHaveibeenpwnedUpdateRequest) Execute() (*HaveIBeenPwendPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesHaveibeenpwnedUpdateExecute(r)
 }
 
@@ -5493,11 +5437,11 @@ PoliciesHaveibeenpwnedUpdate Method for PoliciesHaveibeenpwnedUpdate
 
 Source Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Have I Been Pwned Policy.
  @return ApiPoliciesHaveibeenpwnedUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesHaveibeenpwnedUpdate(ctx _context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedUpdateRequest {
+func (a *PoliciesApiService) PoliciesHaveibeenpwnedUpdate(ctx context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedUpdateRequest {
 	return ApiPoliciesHaveibeenpwnedUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5507,27 +5451,25 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedUpdate(ctx _context.Context, 
 
 // Execute executes the request
 //  @return HaveIBeenPwendPolicy
-func (a *PoliciesApiService) PoliciesHaveibeenpwnedUpdateExecute(r ApiPoliciesHaveibeenpwnedUpdateRequest) (HaveIBeenPwendPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesHaveibeenpwnedUpdateExecute(r ApiPoliciesHaveibeenpwnedUpdateRequest) (*HaveIBeenPwendPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  HaveIBeenPwendPolicy
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *HaveIBeenPwendPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesHaveibeenpwnedUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/haveibeenpwned/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -5562,7 +5504,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedUpdateExecute(r ApiPoliciesHa
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5572,15 +5514,15 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedUpdateExecute(r ApiPoliciesHa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5589,7 +5531,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedUpdateExecute(r ApiPoliciesHa
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5600,12 +5542,12 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedUpdateExecute(r ApiPoliciesHa
 }
 
 type ApiPoliciesHaveibeenpwnedUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesHaveibeenpwnedUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPoliciesHaveibeenpwnedUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PoliciesHaveibeenpwnedUsedByListExecute(r)
 }
 
@@ -5614,11 +5556,11 @@ PoliciesHaveibeenpwnedUsedByList Method for PoliciesHaveibeenpwnedUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Have I Been Pwned Policy.
  @return ApiPoliciesHaveibeenpwnedUsedByListRequest
 */
-func (a *PoliciesApiService) PoliciesHaveibeenpwnedUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedUsedByListRequest {
+func (a *PoliciesApiService) PoliciesHaveibeenpwnedUsedByList(ctx context.Context, policyUuid string) ApiPoliciesHaveibeenpwnedUsedByListRequest {
 	return ApiPoliciesHaveibeenpwnedUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5628,27 +5570,25 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedUsedByList(ctx _context.Conte
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PoliciesApiService) PoliciesHaveibeenpwnedUsedByListExecute(r ApiPoliciesHaveibeenpwnedUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesHaveibeenpwnedUsedByListExecute(r ApiPoliciesHaveibeenpwnedUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesHaveibeenpwnedUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/haveibeenpwned/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5681,7 +5621,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedUsedByListExecute(r ApiPolici
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5691,15 +5631,15 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedUsedByListExecute(r ApiPolici
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5708,7 +5648,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedUsedByListExecute(r ApiPolici
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5719,7 +5659,7 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedUsedByListExecute(r ApiPolici
 }
 
 type ApiPoliciesPasswordCreateRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *PoliciesApiService
 	passwordPolicyRequest *PasswordPolicyRequest
 }
@@ -5729,7 +5669,7 @@ func (r ApiPoliciesPasswordCreateRequest) PasswordPolicyRequest(passwordPolicyRe
 	return r
 }
 
-func (r ApiPoliciesPasswordCreateRequest) Execute() (PasswordPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesPasswordCreateRequest) Execute() (*PasswordPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesPasswordCreateExecute(r)
 }
 
@@ -5738,10 +5678,10 @@ PoliciesPasswordCreate Method for PoliciesPasswordCreate
 
 Password Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesPasswordCreateRequest
 */
-func (a *PoliciesApiService) PoliciesPasswordCreate(ctx _context.Context) ApiPoliciesPasswordCreateRequest {
+func (a *PoliciesApiService) PoliciesPasswordCreate(ctx context.Context) ApiPoliciesPasswordCreateRequest {
 	return ApiPoliciesPasswordCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5750,26 +5690,24 @@ func (a *PoliciesApiService) PoliciesPasswordCreate(ctx _context.Context) ApiPol
 
 // Execute executes the request
 //  @return PasswordPolicy
-func (a *PoliciesApiService) PoliciesPasswordCreateExecute(r ApiPoliciesPasswordCreateRequest) (PasswordPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesPasswordCreateExecute(r ApiPoliciesPasswordCreateRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PasswordPolicy
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PasswordPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesPasswordCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/password/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.passwordPolicyRequest == nil {
 		return localVarReturnValue, nil, reportError("passwordPolicyRequest is required and must be specified")
 	}
@@ -5807,7 +5745,7 @@ func (a *PoliciesApiService) PoliciesPasswordCreateExecute(r ApiPoliciesPassword
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5817,15 +5755,15 @@ func (a *PoliciesApiService) PoliciesPasswordCreateExecute(r ApiPoliciesPassword
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5834,7 +5772,7 @@ func (a *PoliciesApiService) PoliciesPasswordCreateExecute(r ApiPoliciesPassword
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5845,12 +5783,12 @@ func (a *PoliciesApiService) PoliciesPasswordCreateExecute(r ApiPoliciesPassword
 }
 
 type ApiPoliciesPasswordDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesPasswordDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPoliciesPasswordDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PoliciesPasswordDestroyExecute(r)
 }
 
@@ -5859,11 +5797,11 @@ PoliciesPasswordDestroy Method for PoliciesPasswordDestroy
 
 Password Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Password Policy.
  @return ApiPoliciesPasswordDestroyRequest
 */
-func (a *PoliciesApiService) PoliciesPasswordDestroy(ctx _context.Context, policyUuid string) ApiPoliciesPasswordDestroyRequest {
+func (a *PoliciesApiService) PoliciesPasswordDestroy(ctx context.Context, policyUuid string) ApiPoliciesPasswordDestroyRequest {
 	return ApiPoliciesPasswordDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5872,26 +5810,24 @@ func (a *PoliciesApiService) PoliciesPasswordDestroy(ctx _context.Context, polic
 }
 
 // Execute executes the request
-func (a *PoliciesApiService) PoliciesPasswordDestroyExecute(r ApiPoliciesPasswordDestroyRequest) (*_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesPasswordDestroyExecute(r ApiPoliciesPasswordDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesPasswordDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/password/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5924,7 +5860,7 @@ func (a *PoliciesApiService) PoliciesPasswordDestroyExecute(r ApiPoliciesPasswor
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -5934,15 +5870,15 @@ func (a *PoliciesApiService) PoliciesPasswordDestroyExecute(r ApiPoliciesPasswor
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5953,7 +5889,7 @@ func (a *PoliciesApiService) PoliciesPasswordDestroyExecute(r ApiPoliciesPasswor
 }
 
 type ApiPoliciesPasswordExpiryCreateRequest struct {
-	ctx                         _context.Context
+	ctx                         context.Context
 	ApiService                  *PoliciesApiService
 	passwordExpiryPolicyRequest *PasswordExpiryPolicyRequest
 }
@@ -5963,7 +5899,7 @@ func (r ApiPoliciesPasswordExpiryCreateRequest) PasswordExpiryPolicyRequest(pass
 	return r
 }
 
-func (r ApiPoliciesPasswordExpiryCreateRequest) Execute() (PasswordExpiryPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesPasswordExpiryCreateRequest) Execute() (*PasswordExpiryPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesPasswordExpiryCreateExecute(r)
 }
 
@@ -5972,10 +5908,10 @@ PoliciesPasswordExpiryCreate Method for PoliciesPasswordExpiryCreate
 
 Password Expiry Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesPasswordExpiryCreateRequest
 */
-func (a *PoliciesApiService) PoliciesPasswordExpiryCreate(ctx _context.Context) ApiPoliciesPasswordExpiryCreateRequest {
+func (a *PoliciesApiService) PoliciesPasswordExpiryCreate(ctx context.Context) ApiPoliciesPasswordExpiryCreateRequest {
 	return ApiPoliciesPasswordExpiryCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5984,26 +5920,24 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryCreate(ctx _context.Context) 
 
 // Execute executes the request
 //  @return PasswordExpiryPolicy
-func (a *PoliciesApiService) PoliciesPasswordExpiryCreateExecute(r ApiPoliciesPasswordExpiryCreateRequest) (PasswordExpiryPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesPasswordExpiryCreateExecute(r ApiPoliciesPasswordExpiryCreateRequest) (*PasswordExpiryPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PasswordExpiryPolicy
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PasswordExpiryPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesPasswordExpiryCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/password_expiry/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.passwordExpiryPolicyRequest == nil {
 		return localVarReturnValue, nil, reportError("passwordExpiryPolicyRequest is required and must be specified")
 	}
@@ -6041,7 +5975,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryCreateExecute(r ApiPoliciesPa
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -6051,15 +5985,15 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryCreateExecute(r ApiPoliciesPa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6068,7 +6002,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryCreateExecute(r ApiPoliciesPa
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6079,12 +6013,12 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryCreateExecute(r ApiPoliciesPa
 }
 
 type ApiPoliciesPasswordExpiryDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesPasswordExpiryDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPoliciesPasswordExpiryDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PoliciesPasswordExpiryDestroyExecute(r)
 }
 
@@ -6093,11 +6027,11 @@ PoliciesPasswordExpiryDestroy Method for PoliciesPasswordExpiryDestroy
 
 Password Expiry Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Password Expiry Policy.
  @return ApiPoliciesPasswordExpiryDestroyRequest
 */
-func (a *PoliciesApiService) PoliciesPasswordExpiryDestroy(ctx _context.Context, policyUuid string) ApiPoliciesPasswordExpiryDestroyRequest {
+func (a *PoliciesApiService) PoliciesPasswordExpiryDestroy(ctx context.Context, policyUuid string) ApiPoliciesPasswordExpiryDestroyRequest {
 	return ApiPoliciesPasswordExpiryDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6106,26 +6040,24 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryDestroy(ctx _context.Context,
 }
 
 // Execute executes the request
-func (a *PoliciesApiService) PoliciesPasswordExpiryDestroyExecute(r ApiPoliciesPasswordExpiryDestroyRequest) (*_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesPasswordExpiryDestroyExecute(r ApiPoliciesPasswordExpiryDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesPasswordExpiryDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/password_expiry/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6158,7 +6090,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryDestroyExecute(r ApiPoliciesP
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -6168,15 +6100,15 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryDestroyExecute(r ApiPoliciesP
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6187,7 +6119,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryDestroyExecute(r ApiPoliciesP
 }
 
 type ApiPoliciesPasswordExpiryListRequest struct {
-	ctx              _context.Context
+	ctx              context.Context
 	ApiService       *PoliciesApiService
 	created          *time.Time
 	days             *int32
@@ -6206,22 +6138,27 @@ func (r ApiPoliciesPasswordExpiryListRequest) Created(created time.Time) ApiPoli
 	r.created = &created
 	return r
 }
+
 func (r ApiPoliciesPasswordExpiryListRequest) Days(days int32) ApiPoliciesPasswordExpiryListRequest {
 	r.days = &days
 	return r
 }
+
 func (r ApiPoliciesPasswordExpiryListRequest) DenyOnly(denyOnly bool) ApiPoliciesPasswordExpiryListRequest {
 	r.denyOnly = &denyOnly
 	return r
 }
+
 func (r ApiPoliciesPasswordExpiryListRequest) ExecutionLogging(executionLogging bool) ApiPoliciesPasswordExpiryListRequest {
 	r.executionLogging = &executionLogging
 	return r
 }
+
 func (r ApiPoliciesPasswordExpiryListRequest) LastUpdated(lastUpdated time.Time) ApiPoliciesPasswordExpiryListRequest {
 	r.lastUpdated = &lastUpdated
 	return r
 }
+
 func (r ApiPoliciesPasswordExpiryListRequest) Name(name string) ApiPoliciesPasswordExpiryListRequest {
 	r.name = &name
 	return r
@@ -6244,6 +6181,7 @@ func (r ApiPoliciesPasswordExpiryListRequest) PageSize(pageSize int32) ApiPolici
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiPoliciesPasswordExpiryListRequest) PolicyUuid(policyUuid string) ApiPoliciesPasswordExpiryListRequest {
 	r.policyUuid = &policyUuid
 	return r
@@ -6255,7 +6193,7 @@ func (r ApiPoliciesPasswordExpiryListRequest) Search(search string) ApiPoliciesP
 	return r
 }
 
-func (r ApiPoliciesPasswordExpiryListRequest) Execute() (PaginatedPasswordExpiryPolicyList, *_nethttp.Response, error) {
+func (r ApiPoliciesPasswordExpiryListRequest) Execute() (*PaginatedPasswordExpiryPolicyList, *http.Response, error) {
 	return r.ApiService.PoliciesPasswordExpiryListExecute(r)
 }
 
@@ -6264,10 +6202,10 @@ PoliciesPasswordExpiryList Method for PoliciesPasswordExpiryList
 
 Password Expiry Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesPasswordExpiryListRequest
 */
-func (a *PoliciesApiService) PoliciesPasswordExpiryList(ctx _context.Context) ApiPoliciesPasswordExpiryListRequest {
+func (a *PoliciesApiService) PoliciesPasswordExpiryList(ctx context.Context) ApiPoliciesPasswordExpiryListRequest {
 	return ApiPoliciesPasswordExpiryListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6276,26 +6214,24 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryList(ctx _context.Context) Ap
 
 // Execute executes the request
 //  @return PaginatedPasswordExpiryPolicyList
-func (a *PoliciesApiService) PoliciesPasswordExpiryListExecute(r ApiPoliciesPasswordExpiryListRequest) (PaginatedPasswordExpiryPolicyList, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesPasswordExpiryListExecute(r ApiPoliciesPasswordExpiryListRequest) (*PaginatedPasswordExpiryPolicyList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedPasswordExpiryPolicyList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedPasswordExpiryPolicyList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesPasswordExpiryList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/password_expiry/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.created != nil {
 		localVarQueryParams.Add("created", parameterToString(*r.created, ""))
@@ -6361,7 +6297,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryListExecute(r ApiPoliciesPass
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -6371,15 +6307,15 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryListExecute(r ApiPoliciesPass
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6388,7 +6324,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryListExecute(r ApiPoliciesPass
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6399,7 +6335,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryListExecute(r ApiPoliciesPass
 }
 
 type ApiPoliciesPasswordExpiryPartialUpdateRequest struct {
-	ctx                                _context.Context
+	ctx                                context.Context
 	ApiService                         *PoliciesApiService
 	policyUuid                         string
 	patchedPasswordExpiryPolicyRequest *PatchedPasswordExpiryPolicyRequest
@@ -6410,7 +6346,7 @@ func (r ApiPoliciesPasswordExpiryPartialUpdateRequest) PatchedPasswordExpiryPoli
 	return r
 }
 
-func (r ApiPoliciesPasswordExpiryPartialUpdateRequest) Execute() (PasswordExpiryPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesPasswordExpiryPartialUpdateRequest) Execute() (*PasswordExpiryPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesPasswordExpiryPartialUpdateExecute(r)
 }
 
@@ -6419,11 +6355,11 @@ PoliciesPasswordExpiryPartialUpdate Method for PoliciesPasswordExpiryPartialUpda
 
 Password Expiry Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Password Expiry Policy.
  @return ApiPoliciesPasswordExpiryPartialUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdate(ctx _context.Context, policyUuid string) ApiPoliciesPasswordExpiryPartialUpdateRequest {
+func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdate(ctx context.Context, policyUuid string) ApiPoliciesPasswordExpiryPartialUpdateRequest {
 	return ApiPoliciesPasswordExpiryPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6433,27 +6369,25 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdate(ctx _context.Co
 
 // Execute executes the request
 //  @return PasswordExpiryPolicy
-func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdateExecute(r ApiPoliciesPasswordExpiryPartialUpdateRequest) (PasswordExpiryPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdateExecute(r ApiPoliciesPasswordExpiryPartialUpdateRequest) (*PasswordExpiryPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PasswordExpiryPolicy
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PasswordExpiryPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesPasswordExpiryPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/password_expiry/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -6488,7 +6422,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdateExecute(r ApiPol
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -6498,15 +6432,15 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdateExecute(r ApiPol
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6515,7 +6449,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdateExecute(r ApiPol
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6526,12 +6460,12 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdateExecute(r ApiPol
 }
 
 type ApiPoliciesPasswordExpiryRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesPasswordExpiryRetrieveRequest) Execute() (PasswordExpiryPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesPasswordExpiryRetrieveRequest) Execute() (*PasswordExpiryPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesPasswordExpiryRetrieveExecute(r)
 }
 
@@ -6540,11 +6474,11 @@ PoliciesPasswordExpiryRetrieve Method for PoliciesPasswordExpiryRetrieve
 
 Password Expiry Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Password Expiry Policy.
  @return ApiPoliciesPasswordExpiryRetrieveRequest
 */
-func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesPasswordExpiryRetrieveRequest {
+func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieve(ctx context.Context, policyUuid string) ApiPoliciesPasswordExpiryRetrieveRequest {
 	return ApiPoliciesPasswordExpiryRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6554,27 +6488,25 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieve(ctx _context.Context
 
 // Execute executes the request
 //  @return PasswordExpiryPolicy
-func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieveExecute(r ApiPoliciesPasswordExpiryRetrieveRequest) (PasswordExpiryPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieveExecute(r ApiPoliciesPasswordExpiryRetrieveRequest) (*PasswordExpiryPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PasswordExpiryPolicy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PasswordExpiryPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesPasswordExpiryRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/password_expiry/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6607,7 +6539,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieveExecute(r ApiPolicies
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -6617,15 +6549,15 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieveExecute(r ApiPolicies
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6634,7 +6566,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieveExecute(r ApiPolicies
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6645,7 +6577,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieveExecute(r ApiPolicies
 }
 
 type ApiPoliciesPasswordExpiryUpdateRequest struct {
-	ctx                         _context.Context
+	ctx                         context.Context
 	ApiService                  *PoliciesApiService
 	policyUuid                  string
 	passwordExpiryPolicyRequest *PasswordExpiryPolicyRequest
@@ -6656,7 +6588,7 @@ func (r ApiPoliciesPasswordExpiryUpdateRequest) PasswordExpiryPolicyRequest(pass
 	return r
 }
 
-func (r ApiPoliciesPasswordExpiryUpdateRequest) Execute() (PasswordExpiryPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesPasswordExpiryUpdateRequest) Execute() (*PasswordExpiryPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesPasswordExpiryUpdateExecute(r)
 }
 
@@ -6665,11 +6597,11 @@ PoliciesPasswordExpiryUpdate Method for PoliciesPasswordExpiryUpdate
 
 Password Expiry Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Password Expiry Policy.
  @return ApiPoliciesPasswordExpiryUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesPasswordExpiryUpdate(ctx _context.Context, policyUuid string) ApiPoliciesPasswordExpiryUpdateRequest {
+func (a *PoliciesApiService) PoliciesPasswordExpiryUpdate(ctx context.Context, policyUuid string) ApiPoliciesPasswordExpiryUpdateRequest {
 	return ApiPoliciesPasswordExpiryUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6679,27 +6611,25 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUpdate(ctx _context.Context, 
 
 // Execute executes the request
 //  @return PasswordExpiryPolicy
-func (a *PoliciesApiService) PoliciesPasswordExpiryUpdateExecute(r ApiPoliciesPasswordExpiryUpdateRequest) (PasswordExpiryPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesPasswordExpiryUpdateExecute(r ApiPoliciesPasswordExpiryUpdateRequest) (*PasswordExpiryPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PasswordExpiryPolicy
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PasswordExpiryPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesPasswordExpiryUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/password_expiry/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.passwordExpiryPolicyRequest == nil {
 		return localVarReturnValue, nil, reportError("passwordExpiryPolicyRequest is required and must be specified")
 	}
@@ -6737,7 +6667,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUpdateExecute(r ApiPoliciesPa
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -6747,15 +6677,15 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUpdateExecute(r ApiPoliciesPa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6764,7 +6694,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUpdateExecute(r ApiPoliciesPa
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6775,12 +6705,12 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUpdateExecute(r ApiPoliciesPa
 }
 
 type ApiPoliciesPasswordExpiryUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesPasswordExpiryUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPoliciesPasswordExpiryUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PoliciesPasswordExpiryUsedByListExecute(r)
 }
 
@@ -6789,11 +6719,11 @@ PoliciesPasswordExpiryUsedByList Method for PoliciesPasswordExpiryUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Password Expiry Policy.
  @return ApiPoliciesPasswordExpiryUsedByListRequest
 */
-func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesPasswordExpiryUsedByListRequest {
+func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByList(ctx context.Context, policyUuid string) ApiPoliciesPasswordExpiryUsedByListRequest {
 	return ApiPoliciesPasswordExpiryUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6803,27 +6733,25 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByList(ctx _context.Conte
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByListExecute(r ApiPoliciesPasswordExpiryUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByListExecute(r ApiPoliciesPasswordExpiryUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesPasswordExpiryUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/password_expiry/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6856,7 +6784,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByListExecute(r ApiPolici
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -6866,15 +6794,15 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByListExecute(r ApiPolici
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6883,7 +6811,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByListExecute(r ApiPolici
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6894,7 +6822,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByListExecute(r ApiPolici
 }
 
 type ApiPoliciesPasswordListRequest struct {
-	ctx              _context.Context
+	ctx              context.Context
 	ApiService       *PoliciesApiService
 	amountDigits     *int32
 	amountLowercase  *int32
@@ -6919,38 +6847,47 @@ func (r ApiPoliciesPasswordListRequest) AmountDigits(amountDigits int32) ApiPoli
 	r.amountDigits = &amountDigits
 	return r
 }
+
 func (r ApiPoliciesPasswordListRequest) AmountLowercase(amountLowercase int32) ApiPoliciesPasswordListRequest {
 	r.amountLowercase = &amountLowercase
 	return r
 }
+
 func (r ApiPoliciesPasswordListRequest) AmountSymbols(amountSymbols int32) ApiPoliciesPasswordListRequest {
 	r.amountSymbols = &amountSymbols
 	return r
 }
+
 func (r ApiPoliciesPasswordListRequest) AmountUppercase(amountUppercase int32) ApiPoliciesPasswordListRequest {
 	r.amountUppercase = &amountUppercase
 	return r
 }
+
 func (r ApiPoliciesPasswordListRequest) Created(created time.Time) ApiPoliciesPasswordListRequest {
 	r.created = &created
 	return r
 }
+
 func (r ApiPoliciesPasswordListRequest) ErrorMessage(errorMessage string) ApiPoliciesPasswordListRequest {
 	r.errorMessage = &errorMessage
 	return r
 }
+
 func (r ApiPoliciesPasswordListRequest) ExecutionLogging(executionLogging bool) ApiPoliciesPasswordListRequest {
 	r.executionLogging = &executionLogging
 	return r
 }
+
 func (r ApiPoliciesPasswordListRequest) LastUpdated(lastUpdated time.Time) ApiPoliciesPasswordListRequest {
 	r.lastUpdated = &lastUpdated
 	return r
 }
+
 func (r ApiPoliciesPasswordListRequest) LengthMin(lengthMin int32) ApiPoliciesPasswordListRequest {
 	r.lengthMin = &lengthMin
 	return r
 }
+
 func (r ApiPoliciesPasswordListRequest) Name(name string) ApiPoliciesPasswordListRequest {
 	r.name = &name
 	return r
@@ -6973,10 +6910,12 @@ func (r ApiPoliciesPasswordListRequest) PageSize(pageSize int32) ApiPoliciesPass
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiPoliciesPasswordListRequest) PasswordField(passwordField string) ApiPoliciesPasswordListRequest {
 	r.passwordField = &passwordField
 	return r
 }
+
 func (r ApiPoliciesPasswordListRequest) PolicyUuid(policyUuid string) ApiPoliciesPasswordListRequest {
 	r.policyUuid = &policyUuid
 	return r
@@ -6987,12 +6926,13 @@ func (r ApiPoliciesPasswordListRequest) Search(search string) ApiPoliciesPasswor
 	r.search = &search
 	return r
 }
+
 func (r ApiPoliciesPasswordListRequest) SymbolCharset(symbolCharset string) ApiPoliciesPasswordListRequest {
 	r.symbolCharset = &symbolCharset
 	return r
 }
 
-func (r ApiPoliciesPasswordListRequest) Execute() (PaginatedPasswordPolicyList, *_nethttp.Response, error) {
+func (r ApiPoliciesPasswordListRequest) Execute() (*PaginatedPasswordPolicyList, *http.Response, error) {
 	return r.ApiService.PoliciesPasswordListExecute(r)
 }
 
@@ -7001,10 +6941,10 @@ PoliciesPasswordList Method for PoliciesPasswordList
 
 Password Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesPasswordListRequest
 */
-func (a *PoliciesApiService) PoliciesPasswordList(ctx _context.Context) ApiPoliciesPasswordListRequest {
+func (a *PoliciesApiService) PoliciesPasswordList(ctx context.Context) ApiPoliciesPasswordListRequest {
 	return ApiPoliciesPasswordListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7013,26 +6953,24 @@ func (a *PoliciesApiService) PoliciesPasswordList(ctx _context.Context) ApiPolic
 
 // Execute executes the request
 //  @return PaginatedPasswordPolicyList
-func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordListRequest) (PaginatedPasswordPolicyList, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordListRequest) (*PaginatedPasswordPolicyList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedPasswordPolicyList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedPasswordPolicyList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesPasswordList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/password/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.amountDigits != nil {
 		localVarQueryParams.Add("amount_digits", parameterToString(*r.amountDigits, ""))
@@ -7116,7 +7054,7 @@ func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordLi
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -7126,15 +7064,15 @@ func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7143,7 +7081,7 @@ func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordLi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7154,7 +7092,7 @@ func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordLi
 }
 
 type ApiPoliciesPasswordPartialUpdateRequest struct {
-	ctx                          _context.Context
+	ctx                          context.Context
 	ApiService                   *PoliciesApiService
 	policyUuid                   string
 	patchedPasswordPolicyRequest *PatchedPasswordPolicyRequest
@@ -7165,7 +7103,7 @@ func (r ApiPoliciesPasswordPartialUpdateRequest) PatchedPasswordPolicyRequest(pa
 	return r
 }
 
-func (r ApiPoliciesPasswordPartialUpdateRequest) Execute() (PasswordPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesPasswordPartialUpdateRequest) Execute() (*PasswordPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesPasswordPartialUpdateExecute(r)
 }
 
@@ -7174,11 +7112,11 @@ PoliciesPasswordPartialUpdate Method for PoliciesPasswordPartialUpdate
 
 Password Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Password Policy.
  @return ApiPoliciesPasswordPartialUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesPasswordPartialUpdate(ctx _context.Context, policyUuid string) ApiPoliciesPasswordPartialUpdateRequest {
+func (a *PoliciesApiService) PoliciesPasswordPartialUpdate(ctx context.Context, policyUuid string) ApiPoliciesPasswordPartialUpdateRequest {
 	return ApiPoliciesPasswordPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7188,27 +7126,25 @@ func (a *PoliciesApiService) PoliciesPasswordPartialUpdate(ctx _context.Context,
 
 // Execute executes the request
 //  @return PasswordPolicy
-func (a *PoliciesApiService) PoliciesPasswordPartialUpdateExecute(r ApiPoliciesPasswordPartialUpdateRequest) (PasswordPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesPasswordPartialUpdateExecute(r ApiPoliciesPasswordPartialUpdateRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PasswordPolicy
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PasswordPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesPasswordPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/password/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -7243,7 +7179,7 @@ func (a *PoliciesApiService) PoliciesPasswordPartialUpdateExecute(r ApiPoliciesP
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -7253,15 +7189,15 @@ func (a *PoliciesApiService) PoliciesPasswordPartialUpdateExecute(r ApiPoliciesP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7270,7 +7206,7 @@ func (a *PoliciesApiService) PoliciesPasswordPartialUpdateExecute(r ApiPoliciesP
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7281,12 +7217,12 @@ func (a *PoliciesApiService) PoliciesPasswordPartialUpdateExecute(r ApiPoliciesP
 }
 
 type ApiPoliciesPasswordRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesPasswordRetrieveRequest) Execute() (PasswordPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesPasswordRetrieveRequest) Execute() (*PasswordPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesPasswordRetrieveExecute(r)
 }
 
@@ -7295,11 +7231,11 @@ PoliciesPasswordRetrieve Method for PoliciesPasswordRetrieve
 
 Password Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Password Policy.
  @return ApiPoliciesPasswordRetrieveRequest
 */
-func (a *PoliciesApiService) PoliciesPasswordRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesPasswordRetrieveRequest {
+func (a *PoliciesApiService) PoliciesPasswordRetrieve(ctx context.Context, policyUuid string) ApiPoliciesPasswordRetrieveRequest {
 	return ApiPoliciesPasswordRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7309,27 +7245,25 @@ func (a *PoliciesApiService) PoliciesPasswordRetrieve(ctx _context.Context, poli
 
 // Execute executes the request
 //  @return PasswordPolicy
-func (a *PoliciesApiService) PoliciesPasswordRetrieveExecute(r ApiPoliciesPasswordRetrieveRequest) (PasswordPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesPasswordRetrieveExecute(r ApiPoliciesPasswordRetrieveRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PasswordPolicy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PasswordPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesPasswordRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/password/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7362,7 +7296,7 @@ func (a *PoliciesApiService) PoliciesPasswordRetrieveExecute(r ApiPoliciesPasswo
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -7372,15 +7306,15 @@ func (a *PoliciesApiService) PoliciesPasswordRetrieveExecute(r ApiPoliciesPasswo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7389,7 +7323,7 @@ func (a *PoliciesApiService) PoliciesPasswordRetrieveExecute(r ApiPoliciesPasswo
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7400,7 +7334,7 @@ func (a *PoliciesApiService) PoliciesPasswordRetrieveExecute(r ApiPoliciesPasswo
 }
 
 type ApiPoliciesPasswordUpdateRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *PoliciesApiService
 	policyUuid            string
 	passwordPolicyRequest *PasswordPolicyRequest
@@ -7411,7 +7345,7 @@ func (r ApiPoliciesPasswordUpdateRequest) PasswordPolicyRequest(passwordPolicyRe
 	return r
 }
 
-func (r ApiPoliciesPasswordUpdateRequest) Execute() (PasswordPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesPasswordUpdateRequest) Execute() (*PasswordPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesPasswordUpdateExecute(r)
 }
 
@@ -7420,11 +7354,11 @@ PoliciesPasswordUpdate Method for PoliciesPasswordUpdate
 
 Password Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Password Policy.
  @return ApiPoliciesPasswordUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesPasswordUpdate(ctx _context.Context, policyUuid string) ApiPoliciesPasswordUpdateRequest {
+func (a *PoliciesApiService) PoliciesPasswordUpdate(ctx context.Context, policyUuid string) ApiPoliciesPasswordUpdateRequest {
 	return ApiPoliciesPasswordUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7434,27 +7368,25 @@ func (a *PoliciesApiService) PoliciesPasswordUpdate(ctx _context.Context, policy
 
 // Execute executes the request
 //  @return PasswordPolicy
-func (a *PoliciesApiService) PoliciesPasswordUpdateExecute(r ApiPoliciesPasswordUpdateRequest) (PasswordPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesPasswordUpdateExecute(r ApiPoliciesPasswordUpdateRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PasswordPolicy
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PasswordPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesPasswordUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/password/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.passwordPolicyRequest == nil {
 		return localVarReturnValue, nil, reportError("passwordPolicyRequest is required and must be specified")
 	}
@@ -7492,7 +7424,7 @@ func (a *PoliciesApiService) PoliciesPasswordUpdateExecute(r ApiPoliciesPassword
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -7502,15 +7434,15 @@ func (a *PoliciesApiService) PoliciesPasswordUpdateExecute(r ApiPoliciesPassword
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7519,7 +7451,7 @@ func (a *PoliciesApiService) PoliciesPasswordUpdateExecute(r ApiPoliciesPassword
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7530,12 +7462,12 @@ func (a *PoliciesApiService) PoliciesPasswordUpdateExecute(r ApiPoliciesPassword
 }
 
 type ApiPoliciesPasswordUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesPasswordUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPoliciesPasswordUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PoliciesPasswordUsedByListExecute(r)
 }
 
@@ -7544,11 +7476,11 @@ PoliciesPasswordUsedByList Method for PoliciesPasswordUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Password Policy.
  @return ApiPoliciesPasswordUsedByListRequest
 */
-func (a *PoliciesApiService) PoliciesPasswordUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesPasswordUsedByListRequest {
+func (a *PoliciesApiService) PoliciesPasswordUsedByList(ctx context.Context, policyUuid string) ApiPoliciesPasswordUsedByListRequest {
 	return ApiPoliciesPasswordUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7558,27 +7490,25 @@ func (a *PoliciesApiService) PoliciesPasswordUsedByList(ctx _context.Context, po
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PoliciesApiService) PoliciesPasswordUsedByListExecute(r ApiPoliciesPasswordUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesPasswordUsedByListExecute(r ApiPoliciesPasswordUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesPasswordUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/password/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7611,7 +7541,7 @@ func (a *PoliciesApiService) PoliciesPasswordUsedByListExecute(r ApiPoliciesPass
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -7621,15 +7551,15 @@ func (a *PoliciesApiService) PoliciesPasswordUsedByListExecute(r ApiPoliciesPass
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7638,7 +7568,7 @@ func (a *PoliciesApiService) PoliciesPasswordUsedByListExecute(r ApiPoliciesPass
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7649,7 +7579,7 @@ func (a *PoliciesApiService) PoliciesPasswordUsedByListExecute(r ApiPoliciesPass
 }
 
 type ApiPoliciesReputationCreateRequest struct {
-	ctx                     _context.Context
+	ctx                     context.Context
 	ApiService              *PoliciesApiService
 	reputationPolicyRequest *ReputationPolicyRequest
 }
@@ -7659,7 +7589,7 @@ func (r ApiPoliciesReputationCreateRequest) ReputationPolicyRequest(reputationPo
 	return r
 }
 
-func (r ApiPoliciesReputationCreateRequest) Execute() (ReputationPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesReputationCreateRequest) Execute() (*ReputationPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesReputationCreateExecute(r)
 }
 
@@ -7668,10 +7598,10 @@ PoliciesReputationCreate Method for PoliciesReputationCreate
 
 Reputation Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesReputationCreateRequest
 */
-func (a *PoliciesApiService) PoliciesReputationCreate(ctx _context.Context) ApiPoliciesReputationCreateRequest {
+func (a *PoliciesApiService) PoliciesReputationCreate(ctx context.Context) ApiPoliciesReputationCreateRequest {
 	return ApiPoliciesReputationCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7680,26 +7610,24 @@ func (a *PoliciesApiService) PoliciesReputationCreate(ctx _context.Context) ApiP
 
 // Execute executes the request
 //  @return ReputationPolicy
-func (a *PoliciesApiService) PoliciesReputationCreateExecute(r ApiPoliciesReputationCreateRequest) (ReputationPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesReputationCreateExecute(r ApiPoliciesReputationCreateRequest) (*ReputationPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ReputationPolicy
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReputationPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesReputationCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -7734,7 +7662,7 @@ func (a *PoliciesApiService) PoliciesReputationCreateExecute(r ApiPoliciesReputa
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -7744,15 +7672,15 @@ func (a *PoliciesApiService) PoliciesReputationCreateExecute(r ApiPoliciesReputa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7761,7 +7689,7 @@ func (a *PoliciesApiService) PoliciesReputationCreateExecute(r ApiPoliciesReputa
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7772,12 +7700,12 @@ func (a *PoliciesApiService) PoliciesReputationCreateExecute(r ApiPoliciesReputa
 }
 
 type ApiPoliciesReputationDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesReputationDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPoliciesReputationDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PoliciesReputationDestroyExecute(r)
 }
 
@@ -7786,11 +7714,11 @@ PoliciesReputationDestroy Method for PoliciesReputationDestroy
 
 Reputation Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Reputation Policy.
  @return ApiPoliciesReputationDestroyRequest
 */
-func (a *PoliciesApiService) PoliciesReputationDestroy(ctx _context.Context, policyUuid string) ApiPoliciesReputationDestroyRequest {
+func (a *PoliciesApiService) PoliciesReputationDestroy(ctx context.Context, policyUuid string) ApiPoliciesReputationDestroyRequest {
 	return ApiPoliciesReputationDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7799,26 +7727,24 @@ func (a *PoliciesApiService) PoliciesReputationDestroy(ctx _context.Context, pol
 }
 
 // Execute executes the request
-func (a *PoliciesApiService) PoliciesReputationDestroyExecute(r ApiPoliciesReputationDestroyRequest) (*_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesReputationDestroyExecute(r ApiPoliciesReputationDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesReputationDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7851,7 +7777,7 @@ func (a *PoliciesApiService) PoliciesReputationDestroyExecute(r ApiPoliciesReput
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -7861,15 +7787,15 @@ func (a *PoliciesApiService) PoliciesReputationDestroyExecute(r ApiPoliciesReput
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7880,7 +7806,7 @@ func (a *PoliciesApiService) PoliciesReputationDestroyExecute(r ApiPoliciesReput
 }
 
 type ApiPoliciesReputationListRequest struct {
-	ctx              _context.Context
+	ctx              context.Context
 	ApiService       *PoliciesApiService
 	checkIp          *bool
 	checkUsername    *bool
@@ -7900,22 +7826,27 @@ func (r ApiPoliciesReputationListRequest) CheckIp(checkIp bool) ApiPoliciesReput
 	r.checkIp = &checkIp
 	return r
 }
+
 func (r ApiPoliciesReputationListRequest) CheckUsername(checkUsername bool) ApiPoliciesReputationListRequest {
 	r.checkUsername = &checkUsername
 	return r
 }
+
 func (r ApiPoliciesReputationListRequest) Created(created time.Time) ApiPoliciesReputationListRequest {
 	r.created = &created
 	return r
 }
+
 func (r ApiPoliciesReputationListRequest) ExecutionLogging(executionLogging bool) ApiPoliciesReputationListRequest {
 	r.executionLogging = &executionLogging
 	return r
 }
+
 func (r ApiPoliciesReputationListRequest) LastUpdated(lastUpdated time.Time) ApiPoliciesReputationListRequest {
 	r.lastUpdated = &lastUpdated
 	return r
 }
+
 func (r ApiPoliciesReputationListRequest) Name(name string) ApiPoliciesReputationListRequest {
 	r.name = &name
 	return r
@@ -7938,6 +7869,7 @@ func (r ApiPoliciesReputationListRequest) PageSize(pageSize int32) ApiPoliciesRe
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiPoliciesReputationListRequest) PolicyUuid(policyUuid string) ApiPoliciesReputationListRequest {
 	r.policyUuid = &policyUuid
 	return r
@@ -7948,12 +7880,13 @@ func (r ApiPoliciesReputationListRequest) Search(search string) ApiPoliciesReput
 	r.search = &search
 	return r
 }
+
 func (r ApiPoliciesReputationListRequest) Threshold(threshold int32) ApiPoliciesReputationListRequest {
 	r.threshold = &threshold
 	return r
 }
 
-func (r ApiPoliciesReputationListRequest) Execute() (PaginatedReputationPolicyList, *_nethttp.Response, error) {
+func (r ApiPoliciesReputationListRequest) Execute() (*PaginatedReputationPolicyList, *http.Response, error) {
 	return r.ApiService.PoliciesReputationListExecute(r)
 }
 
@@ -7962,10 +7895,10 @@ PoliciesReputationList Method for PoliciesReputationList
 
 Reputation Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesReputationListRequest
 */
-func (a *PoliciesApiService) PoliciesReputationList(ctx _context.Context) ApiPoliciesReputationListRequest {
+func (a *PoliciesApiService) PoliciesReputationList(ctx context.Context) ApiPoliciesReputationListRequest {
 	return ApiPoliciesReputationListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7974,26 +7907,24 @@ func (a *PoliciesApiService) PoliciesReputationList(ctx _context.Context) ApiPol
 
 // Execute executes the request
 //  @return PaginatedReputationPolicyList
-func (a *PoliciesApiService) PoliciesReputationListExecute(r ApiPoliciesReputationListRequest) (PaginatedReputationPolicyList, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesReputationListExecute(r ApiPoliciesReputationListRequest) (*PaginatedReputationPolicyList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedReputationPolicyList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedReputationPolicyList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesReputationList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.checkIp != nil {
 		localVarQueryParams.Add("check_ip", parameterToString(*r.checkIp, ""))
@@ -8062,7 +7993,7 @@ func (a *PoliciesApiService) PoliciesReputationListExecute(r ApiPoliciesReputati
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -8072,15 +8003,15 @@ func (a *PoliciesApiService) PoliciesReputationListExecute(r ApiPoliciesReputati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8089,7 +8020,7 @@ func (a *PoliciesApiService) PoliciesReputationListExecute(r ApiPoliciesReputati
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8100,7 +8031,7 @@ func (a *PoliciesApiService) PoliciesReputationListExecute(r ApiPoliciesReputati
 }
 
 type ApiPoliciesReputationPartialUpdateRequest struct {
-	ctx                            _context.Context
+	ctx                            context.Context
 	ApiService                     *PoliciesApiService
 	policyUuid                     string
 	patchedReputationPolicyRequest *PatchedReputationPolicyRequest
@@ -8111,7 +8042,7 @@ func (r ApiPoliciesReputationPartialUpdateRequest) PatchedReputationPolicyReques
 	return r
 }
 
-func (r ApiPoliciesReputationPartialUpdateRequest) Execute() (ReputationPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesReputationPartialUpdateRequest) Execute() (*ReputationPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesReputationPartialUpdateExecute(r)
 }
 
@@ -8120,11 +8051,11 @@ PoliciesReputationPartialUpdate Method for PoliciesReputationPartialUpdate
 
 Reputation Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Reputation Policy.
  @return ApiPoliciesReputationPartialUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesReputationPartialUpdate(ctx _context.Context, policyUuid string) ApiPoliciesReputationPartialUpdateRequest {
+func (a *PoliciesApiService) PoliciesReputationPartialUpdate(ctx context.Context, policyUuid string) ApiPoliciesReputationPartialUpdateRequest {
 	return ApiPoliciesReputationPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8134,27 +8065,25 @@ func (a *PoliciesApiService) PoliciesReputationPartialUpdate(ctx _context.Contex
 
 // Execute executes the request
 //  @return ReputationPolicy
-func (a *PoliciesApiService) PoliciesReputationPartialUpdateExecute(r ApiPoliciesReputationPartialUpdateRequest) (ReputationPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesReputationPartialUpdateExecute(r ApiPoliciesReputationPartialUpdateRequest) (*ReputationPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ReputationPolicy
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReputationPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesReputationPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -8189,7 +8118,7 @@ func (a *PoliciesApiService) PoliciesReputationPartialUpdateExecute(r ApiPolicie
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -8199,15 +8128,15 @@ func (a *PoliciesApiService) PoliciesReputationPartialUpdateExecute(r ApiPolicie
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8216,7 +8145,7 @@ func (a *PoliciesApiService) PoliciesReputationPartialUpdateExecute(r ApiPolicie
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8227,12 +8156,12 @@ func (a *PoliciesApiService) PoliciesReputationPartialUpdateExecute(r ApiPolicie
 }
 
 type ApiPoliciesReputationRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesReputationRetrieveRequest) Execute() (ReputationPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesReputationRetrieveRequest) Execute() (*ReputationPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesReputationRetrieveExecute(r)
 }
 
@@ -8241,11 +8170,11 @@ PoliciesReputationRetrieve Method for PoliciesReputationRetrieve
 
 Reputation Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Reputation Policy.
  @return ApiPoliciesReputationRetrieveRequest
 */
-func (a *PoliciesApiService) PoliciesReputationRetrieve(ctx _context.Context, policyUuid string) ApiPoliciesReputationRetrieveRequest {
+func (a *PoliciesApiService) PoliciesReputationRetrieve(ctx context.Context, policyUuid string) ApiPoliciesReputationRetrieveRequest {
 	return ApiPoliciesReputationRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8255,27 +8184,25 @@ func (a *PoliciesApiService) PoliciesReputationRetrieve(ctx _context.Context, po
 
 // Execute executes the request
 //  @return ReputationPolicy
-func (a *PoliciesApiService) PoliciesReputationRetrieveExecute(r ApiPoliciesReputationRetrieveRequest) (ReputationPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesReputationRetrieveExecute(r ApiPoliciesReputationRetrieveRequest) (*ReputationPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ReputationPolicy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReputationPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesReputationRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8308,7 +8235,7 @@ func (a *PoliciesApiService) PoliciesReputationRetrieveExecute(r ApiPoliciesRepu
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -8318,15 +8245,15 @@ func (a *PoliciesApiService) PoliciesReputationRetrieveExecute(r ApiPoliciesRepu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8335,7 +8262,7 @@ func (a *PoliciesApiService) PoliciesReputationRetrieveExecute(r ApiPoliciesRepu
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8346,12 +8273,12 @@ func (a *PoliciesApiService) PoliciesReputationRetrieveExecute(r ApiPoliciesRepu
 }
 
 type ApiPoliciesReputationScoresDestroyRequest struct {
-	ctx            _context.Context
+	ctx            context.Context
 	ApiService     *PoliciesApiService
 	reputationUuid string
 }
 
-func (r ApiPoliciesReputationScoresDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPoliciesReputationScoresDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PoliciesReputationScoresDestroyExecute(r)
 }
 
@@ -8360,11 +8287,11 @@ PoliciesReputationScoresDestroy Method for PoliciesReputationScoresDestroy
 
 Reputation Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param reputationUuid A UUID string identifying this reputation.
  @return ApiPoliciesReputationScoresDestroyRequest
 */
-func (a *PoliciesApiService) PoliciesReputationScoresDestroy(ctx _context.Context, reputationUuid string) ApiPoliciesReputationScoresDestroyRequest {
+func (a *PoliciesApiService) PoliciesReputationScoresDestroy(ctx context.Context, reputationUuid string) ApiPoliciesReputationScoresDestroyRequest {
 	return ApiPoliciesReputationScoresDestroyRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -8373,26 +8300,24 @@ func (a *PoliciesApiService) PoliciesReputationScoresDestroy(ctx _context.Contex
 }
 
 // Execute executes the request
-func (a *PoliciesApiService) PoliciesReputationScoresDestroyExecute(r ApiPoliciesReputationScoresDestroyRequest) (*_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesReputationScoresDestroyExecute(r ApiPoliciesReputationScoresDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesReputationScoresDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/scores/{reputation_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"reputation_uuid"+"}", _neturl.PathEscape(parameterToString(r.reputationUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"reputation_uuid"+"}", url.PathEscape(parameterToString(r.reputationUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8425,7 +8350,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresDestroyExecute(r ApiPolicie
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -8435,15 +8360,15 @@ func (a *PoliciesApiService) PoliciesReputationScoresDestroyExecute(r ApiPolicie
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8454,7 +8379,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresDestroyExecute(r ApiPolicie
 }
 
 type ApiPoliciesReputationScoresListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	identifier *string
 	ip         *string
@@ -8469,6 +8394,7 @@ func (r ApiPoliciesReputationScoresListRequest) Identifier(identifier string) Ap
 	r.identifier = &identifier
 	return r
 }
+
 func (r ApiPoliciesReputationScoresListRequest) Ip(ip string) ApiPoliciesReputationScoresListRequest {
 	r.ip = &ip
 	return r
@@ -8491,6 +8417,7 @@ func (r ApiPoliciesReputationScoresListRequest) PageSize(pageSize int32) ApiPoli
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiPoliciesReputationScoresListRequest) Score(score int32) ApiPoliciesReputationScoresListRequest {
 	r.score = &score
 	return r
@@ -8502,7 +8429,7 @@ func (r ApiPoliciesReputationScoresListRequest) Search(search string) ApiPolicie
 	return r
 }
 
-func (r ApiPoliciesReputationScoresListRequest) Execute() (PaginatedReputationList, *_nethttp.Response, error) {
+func (r ApiPoliciesReputationScoresListRequest) Execute() (*PaginatedReputationList, *http.Response, error) {
 	return r.ApiService.PoliciesReputationScoresListExecute(r)
 }
 
@@ -8511,10 +8438,10 @@ PoliciesReputationScoresList Method for PoliciesReputationScoresList
 
 Reputation Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPoliciesReputationScoresListRequest
 */
-func (a *PoliciesApiService) PoliciesReputationScoresList(ctx _context.Context) ApiPoliciesReputationScoresListRequest {
+func (a *PoliciesApiService) PoliciesReputationScoresList(ctx context.Context) ApiPoliciesReputationScoresListRequest {
 	return ApiPoliciesReputationScoresListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8523,26 +8450,24 @@ func (a *PoliciesApiService) PoliciesReputationScoresList(ctx _context.Context) 
 
 // Execute executes the request
 //  @return PaginatedReputationList
-func (a *PoliciesApiService) PoliciesReputationScoresListExecute(r ApiPoliciesReputationScoresListRequest) (PaginatedReputationList, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesReputationScoresListExecute(r ApiPoliciesReputationScoresListRequest) (*PaginatedReputationList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedReputationList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedReputationList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesReputationScoresList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/scores/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.identifier != nil {
 		localVarQueryParams.Add("identifier", parameterToString(*r.identifier, ""))
@@ -8596,7 +8521,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresListExecute(r ApiPoliciesRe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -8606,15 +8531,15 @@ func (a *PoliciesApiService) PoliciesReputationScoresListExecute(r ApiPoliciesRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8623,7 +8548,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresListExecute(r ApiPoliciesRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8634,12 +8559,12 @@ func (a *PoliciesApiService) PoliciesReputationScoresListExecute(r ApiPoliciesRe
 }
 
 type ApiPoliciesReputationScoresRetrieveRequest struct {
-	ctx            _context.Context
+	ctx            context.Context
 	ApiService     *PoliciesApiService
 	reputationUuid string
 }
 
-func (r ApiPoliciesReputationScoresRetrieveRequest) Execute() (Reputation, *_nethttp.Response, error) {
+func (r ApiPoliciesReputationScoresRetrieveRequest) Execute() (*Reputation, *http.Response, error) {
 	return r.ApiService.PoliciesReputationScoresRetrieveExecute(r)
 }
 
@@ -8648,11 +8573,11 @@ PoliciesReputationScoresRetrieve Method for PoliciesReputationScoresRetrieve
 
 Reputation Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param reputationUuid A UUID string identifying this reputation.
  @return ApiPoliciesReputationScoresRetrieveRequest
 */
-func (a *PoliciesApiService) PoliciesReputationScoresRetrieve(ctx _context.Context, reputationUuid string) ApiPoliciesReputationScoresRetrieveRequest {
+func (a *PoliciesApiService) PoliciesReputationScoresRetrieve(ctx context.Context, reputationUuid string) ApiPoliciesReputationScoresRetrieveRequest {
 	return ApiPoliciesReputationScoresRetrieveRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -8662,27 +8587,25 @@ func (a *PoliciesApiService) PoliciesReputationScoresRetrieve(ctx _context.Conte
 
 // Execute executes the request
 //  @return Reputation
-func (a *PoliciesApiService) PoliciesReputationScoresRetrieveExecute(r ApiPoliciesReputationScoresRetrieveRequest) (Reputation, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesReputationScoresRetrieveExecute(r ApiPoliciesReputationScoresRetrieveRequest) (*Reputation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Reputation
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Reputation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesReputationScoresRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/scores/{reputation_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"reputation_uuid"+"}", _neturl.PathEscape(parameterToString(r.reputationUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"reputation_uuid"+"}", url.PathEscape(parameterToString(r.reputationUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8715,7 +8638,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresRetrieveExecute(r ApiPolici
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -8725,15 +8648,15 @@ func (a *PoliciesApiService) PoliciesReputationScoresRetrieveExecute(r ApiPolici
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8742,7 +8665,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresRetrieveExecute(r ApiPolici
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8753,12 +8676,12 @@ func (a *PoliciesApiService) PoliciesReputationScoresRetrieveExecute(r ApiPolici
 }
 
 type ApiPoliciesReputationScoresUsedByListRequest struct {
-	ctx            _context.Context
+	ctx            context.Context
 	ApiService     *PoliciesApiService
 	reputationUuid string
 }
 
-func (r ApiPoliciesReputationScoresUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPoliciesReputationScoresUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PoliciesReputationScoresUsedByListExecute(r)
 }
 
@@ -8767,11 +8690,11 @@ PoliciesReputationScoresUsedByList Method for PoliciesReputationScoresUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param reputationUuid A UUID string identifying this reputation.
  @return ApiPoliciesReputationScoresUsedByListRequest
 */
-func (a *PoliciesApiService) PoliciesReputationScoresUsedByList(ctx _context.Context, reputationUuid string) ApiPoliciesReputationScoresUsedByListRequest {
+func (a *PoliciesApiService) PoliciesReputationScoresUsedByList(ctx context.Context, reputationUuid string) ApiPoliciesReputationScoresUsedByListRequest {
 	return ApiPoliciesReputationScoresUsedByListRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -8781,27 +8704,25 @@ func (a *PoliciesApiService) PoliciesReputationScoresUsedByList(ctx _context.Con
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PoliciesApiService) PoliciesReputationScoresUsedByListExecute(r ApiPoliciesReputationScoresUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesReputationScoresUsedByListExecute(r ApiPoliciesReputationScoresUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesReputationScoresUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/scores/{reputation_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"reputation_uuid"+"}", _neturl.PathEscape(parameterToString(r.reputationUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"reputation_uuid"+"}", url.PathEscape(parameterToString(r.reputationUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8834,7 +8755,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresUsedByListExecute(r ApiPoli
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -8844,15 +8765,15 @@ func (a *PoliciesApiService) PoliciesReputationScoresUsedByListExecute(r ApiPoli
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8861,7 +8782,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresUsedByListExecute(r ApiPoli
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8872,7 +8793,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresUsedByListExecute(r ApiPoli
 }
 
 type ApiPoliciesReputationUpdateRequest struct {
-	ctx                     _context.Context
+	ctx                     context.Context
 	ApiService              *PoliciesApiService
 	policyUuid              string
 	reputationPolicyRequest *ReputationPolicyRequest
@@ -8883,7 +8804,7 @@ func (r ApiPoliciesReputationUpdateRequest) ReputationPolicyRequest(reputationPo
 	return r
 }
 
-func (r ApiPoliciesReputationUpdateRequest) Execute() (ReputationPolicy, *_nethttp.Response, error) {
+func (r ApiPoliciesReputationUpdateRequest) Execute() (*ReputationPolicy, *http.Response, error) {
 	return r.ApiService.PoliciesReputationUpdateExecute(r)
 }
 
@@ -8892,11 +8813,11 @@ PoliciesReputationUpdate Method for PoliciesReputationUpdate
 
 Reputation Policy Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Reputation Policy.
  @return ApiPoliciesReputationUpdateRequest
 */
-func (a *PoliciesApiService) PoliciesReputationUpdate(ctx _context.Context, policyUuid string) ApiPoliciesReputationUpdateRequest {
+func (a *PoliciesApiService) PoliciesReputationUpdate(ctx context.Context, policyUuid string) ApiPoliciesReputationUpdateRequest {
 	return ApiPoliciesReputationUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8906,27 +8827,25 @@ func (a *PoliciesApiService) PoliciesReputationUpdate(ctx _context.Context, poli
 
 // Execute executes the request
 //  @return ReputationPolicy
-func (a *PoliciesApiService) PoliciesReputationUpdateExecute(r ApiPoliciesReputationUpdateRequest) (ReputationPolicy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesReputationUpdateExecute(r ApiPoliciesReputationUpdateRequest) (*ReputationPolicy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ReputationPolicy
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReputationPolicy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesReputationUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -8961,7 +8880,7 @@ func (a *PoliciesApiService) PoliciesReputationUpdateExecute(r ApiPoliciesReputa
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -8971,15 +8890,15 @@ func (a *PoliciesApiService) PoliciesReputationUpdateExecute(r ApiPoliciesReputa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8988,7 +8907,7 @@ func (a *PoliciesApiService) PoliciesReputationUpdateExecute(r ApiPoliciesReputa
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8999,12 +8918,12 @@ func (a *PoliciesApiService) PoliciesReputationUpdateExecute(r ApiPoliciesReputa
 }
 
 type ApiPoliciesReputationUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PoliciesApiService
 	policyUuid string
 }
 
-func (r ApiPoliciesReputationUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPoliciesReputationUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PoliciesReputationUsedByListExecute(r)
 }
 
@@ -9013,11 +8932,11 @@ PoliciesReputationUsedByList Method for PoliciesReputationUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param policyUuid A UUID string identifying this Reputation Policy.
  @return ApiPoliciesReputationUsedByListRequest
 */
-func (a *PoliciesApiService) PoliciesReputationUsedByList(ctx _context.Context, policyUuid string) ApiPoliciesReputationUsedByListRequest {
+func (a *PoliciesApiService) PoliciesReputationUsedByList(ctx context.Context, policyUuid string) ApiPoliciesReputationUsedByListRequest {
 	return ApiPoliciesReputationUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9027,27 +8946,25 @@ func (a *PoliciesApiService) PoliciesReputationUsedByList(ctx _context.Context, 
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PoliciesApiService) PoliciesReputationUsedByListExecute(r ApiPoliciesReputationUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PoliciesApiService) PoliciesReputationUsedByListExecute(r ApiPoliciesReputationUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesReputationUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", _neturl.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -9080,7 +8997,7 @@ func (a *PoliciesApiService) PoliciesReputationUsedByListExecute(r ApiPoliciesRe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -9090,15 +9007,15 @@ func (a *PoliciesApiService) PoliciesReputationUsedByListExecute(r ApiPoliciesRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9107,7 +9024,7 @@ func (a *PoliciesApiService) PoliciesReputationUsedByListExecute(r ApiPoliciesRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

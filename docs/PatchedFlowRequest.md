@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Slug** | Pointer to **string** | Visible in the URL. | [optional] 
 **Title** | Pointer to **string** | Shown as the Title in Flow pages. | [optional] 
-**Designation** | Pointer to [**FlowDesignationEnum**](FlowDesignationEnum.md) | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. | [optional] 
+**Designation** | Pointer to [**NullableFlowDesignationEnum**](FlowDesignationEnum.md) | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **CompatibilityMode** | Pointer to **bool** | Enable compatibility mode, increases compatibility with password managers on mobile devices. | [optional] 
 **Layout** | Pointer to [**LayoutEnum**](LayoutEnum.md) |  | [optional] 
@@ -131,6 +131,16 @@ SetDesignation sets Designation field to given value.
 
 HasDesignation returns a boolean if a field has been set.
 
+### SetDesignationNil
+
+`func (o *PatchedFlowRequest) SetDesignationNil(b bool)`
+
+ SetDesignationNil sets the value for Designation to be an explicit nil
+
+### UnsetDesignation
+`func (o *PatchedFlowRequest) UnsetDesignation()`
+
+UnsetDesignation ensures that no value is present for Designation, not even an explicit nil
 ### GetPolicyEngineMode
 
 `func (o *PatchedFlowRequest) GetPolicyEngineMode() PolicyEngineMode`

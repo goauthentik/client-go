@@ -28,8 +28,8 @@ type PatchedOAuthSourceRequest struct {
 	EnrollmentFlow   NullableString    `json:"enrollment_flow,omitempty"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
-	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
-	ProviderType     *ProviderTypeEnum     `json:"provider_type,omitempty"`
+	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
+	ProviderType     *ProviderTypeEnum            `json:"provider_type,omitempty"`
 	// URL used to request the initial token. This URL is only required for OAuth 1.
 	RequestTokenUrl NullableString `json:"request_token_url,omitempty"`
 	// URL the user is redirect to to conest the flow.
@@ -37,13 +37,13 @@ type PatchedOAuthSourceRequest struct {
 	// URL used by authentik to retrieve tokens.
 	AccessTokenUrl NullableString `json:"access_token_url,omitempty"`
 	// URL used by authentik to get user information.
-	ProfileUrl       NullableString          `json:"profile_url,omitempty"`
-	ConsumerKey      *string                 `json:"consumer_key,omitempty"`
-	ConsumerSecret   *string                 `json:"consumer_secret,omitempty"`
-	AdditionalScopes *string                 `json:"additional_scopes,omitempty"`
-	OidcWellKnownUrl *string                 `json:"oidc_well_known_url,omitempty"`
-	OidcJwksUrl      *string                 `json:"oidc_jwks_url,omitempty"`
-	OidcJwks         *map[string]interface{} `json:"oidc_jwks,omitempty"`
+	ProfileUrl       NullableString         `json:"profile_url,omitempty"`
+	ConsumerKey      *string                `json:"consumer_key,omitempty"`
+	ConsumerSecret   *string                `json:"consumer_secret,omitempty"`
+	AdditionalScopes *string                `json:"additional_scopes,omitempty"`
+	OidcWellKnownUrl *string                `json:"oidc_well_known_url,omitempty"`
+	OidcJwksUrl      *string                `json:"oidc_jwks_url,omitempty"`
+	OidcJwks         map[string]interface{} `json:"oidc_jwks,omitempty"`
 }
 
 // NewPatchedOAuthSourceRequest instantiates a new PatchedOAuthSourceRequest object
@@ -277,36 +277,47 @@ func (o *PatchedOAuthSourceRequest) SetPolicyEngineMode(v PolicyEngineMode) {
 	o.PolicyEngineMode = &v
 }
 
-// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
+// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedOAuthSourceRequest) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil || o.UserMatchingMode.Get() == nil {
 		var ret UserMatchingModeEnum
 		return ret
 	}
-	return *o.UserMatchingMode
+	return *o.UserMatchingMode.Get()
 }
 
 // GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuthSourceRequest) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.UserMatchingMode, true
+	return o.UserMatchingMode.Get(), o.UserMatchingMode.IsSet()
 }
 
 // HasUserMatchingMode returns a boolean if a field has been set.
 func (o *PatchedOAuthSourceRequest) HasUserMatchingMode() bool {
-	if o != nil && o.UserMatchingMode != nil {
+	if o != nil && o.UserMatchingMode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUserMatchingMode gets a reference to the given UserMatchingModeEnum and assigns it to the UserMatchingMode field.
+// SetUserMatchingMode gets a reference to the given NullableUserMatchingModeEnum and assigns it to the UserMatchingMode field.
 func (o *PatchedOAuthSourceRequest) SetUserMatchingMode(v UserMatchingModeEnum) {
-	o.UserMatchingMode = &v
+	o.UserMatchingMode.Set(&v)
+}
+
+// SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
+func (o *PatchedOAuthSourceRequest) SetUserMatchingModeNil() {
+	o.UserMatchingMode.Set(nil)
+}
+
+// UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
+func (o *PatchedOAuthSourceRequest) UnsetUserMatchingMode() {
+	o.UserMatchingMode.Unset()
 }
 
 // GetProviderType returns the ProviderType field value if set, zero value otherwise.
@@ -679,12 +690,12 @@ func (o *PatchedOAuthSourceRequest) GetOidcJwks() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.OidcJwks
+	return o.OidcJwks
 }
 
 // GetOidcJwksOk returns a tuple with the OidcJwks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedOAuthSourceRequest) GetOidcJwksOk() (*map[string]interface{}, bool) {
+func (o *PatchedOAuthSourceRequest) GetOidcJwksOk() (map[string]interface{}, bool) {
 	if o == nil || o.OidcJwks == nil {
 		return nil, false
 	}
@@ -702,7 +713,7 @@ func (o *PatchedOAuthSourceRequest) HasOidcJwks() bool {
 
 // SetOidcJwks gets a reference to the given map[string]interface{} and assigns it to the OidcJwks field.
 func (o *PatchedOAuthSourceRequest) SetOidcJwks(v map[string]interface{}) {
-	o.OidcJwks = &v
+	o.OidcJwks = v
 }
 
 func (o PatchedOAuthSourceRequest) MarshalJSON() ([]byte, error) {
@@ -725,8 +736,8 @@ func (o PatchedOAuthSourceRequest) MarshalJSON() ([]byte, error) {
 	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if o.UserMatchingMode != nil {
-		toSerialize["user_matching_mode"] = o.UserMatchingMode
+	if o.UserMatchingMode.IsSet() {
+		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
 	}
 	if o.ProviderType != nil {
 		toSerialize["provider_type"] = o.ProviderType

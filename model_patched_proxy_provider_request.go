@@ -19,10 +19,10 @@ import (
 type PatchedProxyProviderRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string   `json:"authorization_flow,omitempty"`
-	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
-	InternalHost      *string   `json:"internal_host,omitempty"`
-	ExternalHost      *string   `json:"external_host,omitempty"`
+	AuthorizationFlow *string  `json:"authorization_flow,omitempty"`
+	PropertyMappings  []string `json:"property_mappings,omitempty"`
+	InternalHost      *string  `json:"internal_host,omitempty"`
+	ExternalHost      *string  `json:"external_host,omitempty"`
 	// Validate SSL Certificates of upstream servers
 	InternalHostSslValidation *bool          `json:"internal_host_ssl_validation,omitempty"`
 	Certificate               NullableString `json:"certificate,omitempty"`
@@ -35,8 +35,8 @@ type PatchedProxyProviderRequest struct {
 	// User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user's Email address is used.
 	BasicAuthUserAttribute *string `json:"basic_auth_user_attribute,omitempty"`
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
-	Mode         *ProxyMode `json:"mode,omitempty"`
-	CookieDomain *string    `json:"cookie_domain,omitempty"`
+	Mode         NullableProxyMode `json:"mode,omitempty"`
+	CookieDomain *string           `json:"cookie_domain,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	TokenValidity *string `json:"token_validity,omitempty"`
 }
@@ -128,12 +128,12 @@ func (o *PatchedProxyProviderRequest) GetPropertyMappings() []string {
 		var ret []string
 		return ret
 	}
-	return *o.PropertyMappings
+	return o.PropertyMappings
 }
 
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedProxyProviderRequest) GetPropertyMappingsOk() (*[]string, bool) {
+func (o *PatchedProxyProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
 	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
@@ -151,7 +151,7 @@ func (o *PatchedProxyProviderRequest) HasPropertyMappings() bool {
 
 // SetPropertyMappings gets a reference to the given []string and assigns it to the PropertyMappings field.
 func (o *PatchedProxyProviderRequest) SetPropertyMappings(v []string) {
-	o.PropertyMappings = &v
+	o.PropertyMappings = v
 }
 
 // GetInternalHost returns the InternalHost field value if set, zero value otherwise.
@@ -421,36 +421,47 @@ func (o *PatchedProxyProviderRequest) SetBasicAuthUserAttribute(v string) {
 	o.BasicAuthUserAttribute = &v
 }
 
-// GetMode returns the Mode field value if set, zero value otherwise.
+// GetMode returns the Mode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedProxyProviderRequest) GetMode() ProxyMode {
-	if o == nil || o.Mode == nil {
+	if o == nil || o.Mode.Get() == nil {
 		var ret ProxyMode
 		return ret
 	}
-	return *o.Mode
+	return *o.Mode.Get()
 }
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedProxyProviderRequest) GetModeOk() (*ProxyMode, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Mode, true
+	return o.Mode.Get(), o.Mode.IsSet()
 }
 
 // HasMode returns a boolean if a field has been set.
 func (o *PatchedProxyProviderRequest) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && o.Mode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMode gets a reference to the given ProxyMode and assigns it to the Mode field.
+// SetMode gets a reference to the given NullableProxyMode and assigns it to the Mode field.
 func (o *PatchedProxyProviderRequest) SetMode(v ProxyMode) {
-	o.Mode = &v
+	o.Mode.Set(&v)
+}
+
+// SetModeNil sets the value for Mode to be an explicit nil
+func (o *PatchedProxyProviderRequest) SetModeNil() {
+	o.Mode.Set(nil)
+}
+
+// UnsetMode ensures that no value is present for Mode, not even an explicit nil
+func (o *PatchedProxyProviderRequest) UnsetMode() {
+	o.Mode.Unset()
 }
 
 // GetCookieDomain returns the CookieDomain field value if set, zero value otherwise.
@@ -552,8 +563,8 @@ func (o PatchedProxyProviderRequest) MarshalJSON() ([]byte, error) {
 	if o.BasicAuthUserAttribute != nil {
 		toSerialize["basic_auth_user_attribute"] = o.BasicAuthUserAttribute
 	}
-	if o.Mode != nil {
-		toSerialize["mode"] = o.Mode
+	if o.Mode.IsSet() {
+		toSerialize["mode"] = o.Mode.Get()
 	}
 	if o.CookieDomain != nil {
 		toSerialize["cookie_domain"] = o.CookieDomain

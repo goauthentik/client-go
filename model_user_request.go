@@ -22,11 +22,11 @@ type UserRequest struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive   *bool                   `json:"is_active,omitempty"`
-	LastLogin  NullableTime            `json:"last_login,omitempty"`
-	Groups     []string                `json:"groups"`
-	Email      *string                 `json:"email,omitempty"`
-	Attributes *map[string]interface{} `json:"attributes,omitempty"`
+	IsActive   *bool                  `json:"is_active,omitempty"`
+	LastLogin  NullableTime           `json:"last_login,omitempty"`
+	Groups     []string               `json:"groups"`
+	Email      *string                `json:"email,omitempty"`
+	Attributes map[string]interface{} `json:"attributes,omitempty"`
 }
 
 // NewUserRequest instantiates a new UserRequest object
@@ -184,11 +184,11 @@ func (o *UserRequest) GetGroups() []string {
 
 // GetGroupsOk returns a tuple with the Groups field value
 // and a boolean to check if the value has been set.
-func (o *UserRequest) GetGroupsOk() (*[]string, bool) {
+func (o *UserRequest) GetGroupsOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Groups, true
+	return o.Groups, true
 }
 
 // SetGroups sets field value
@@ -234,12 +234,12 @@ func (o *UserRequest) GetAttributes() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Attributes
+	return o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserRequest) GetAttributesOk() (*map[string]interface{}, bool) {
+func (o *UserRequest) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -257,7 +257,7 @@ func (o *UserRequest) HasAttributes() bool {
 
 // SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
 func (o *UserRequest) SetAttributes(v map[string]interface{}) {
-	o.Attributes = &v
+	o.Attributes = v
 }
 
 func (o UserRequest) MarshalJSON() ([]byte, error) {

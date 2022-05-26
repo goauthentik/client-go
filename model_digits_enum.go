@@ -25,7 +25,8 @@ const (
 	DIGITSENUM__8 DigitsEnum = 8
 )
 
-var allowedDigitsEnumEnumValues = []DigitsEnum{
+// All allowed values of DigitsEnum enum
+var AllowedDigitsEnumEnumValues = []DigitsEnum{
 	6,
 	8,
 }
@@ -37,7 +38,7 @@ func (v *DigitsEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := DigitsEnum(value)
-	for _, existing := range allowedDigitsEnumEnumValues {
+	for _, existing := range AllowedDigitsEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +55,13 @@ func NewDigitsEnumFromValue(v int32) (*DigitsEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for DigitsEnum: valid values are %v", v, allowedDigitsEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for DigitsEnum: valid values are %v", v, AllowedDigitsEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v DigitsEnum) IsValid() bool {
-	for _, existing := range allowedDigitsEnumEnumValues {
+	for _, existing := range AllowedDigitsEnumEnumValues {
 		if existing == v {
 			return true
 		}

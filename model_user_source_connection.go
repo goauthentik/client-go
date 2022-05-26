@@ -18,17 +18,17 @@ import (
 
 // UserSourceConnection OAuth Source Serializer
 type UserSourceConnection struct {
-	Pk      int32     `json:"pk"`
-	User    int32     `json:"user"`
-	Source  Source    `json:"source"`
-	Created time.Time `json:"created"`
+	Pk      int32                      `json:"pk"`
+	User    int32                      `json:"user"`
+	Source  PlexSourceConnectionSource `json:"source"`
+	Created time.Time                  `json:"created"`
 }
 
 // NewUserSourceConnection instantiates a new UserSourceConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserSourceConnection(pk int32, user int32, source Source, created time.Time) *UserSourceConnection {
+func NewUserSourceConnection(pk int32, user int32, source PlexSourceConnectionSource, created time.Time) *UserSourceConnection {
 	this := UserSourceConnection{}
 	this.Pk = pk
 	this.User = user
@@ -94,9 +94,9 @@ func (o *UserSourceConnection) SetUser(v int32) {
 }
 
 // GetSource returns the Source field value
-func (o *UserSourceConnection) GetSource() Source {
+func (o *UserSourceConnection) GetSource() PlexSourceConnectionSource {
 	if o == nil {
-		var ret Source
+		var ret PlexSourceConnectionSource
 		return ret
 	}
 
@@ -105,7 +105,7 @@ func (o *UserSourceConnection) GetSource() Source {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *UserSourceConnection) GetSourceOk() (*Source, bool) {
+func (o *UserSourceConnection) GetSourceOk() (*PlexSourceConnectionSource, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -113,7 +113,7 @@ func (o *UserSourceConnection) GetSourceOk() (*Source, bool) {
 }
 
 // SetSource sets field value
-func (o *UserSourceConnection) SetSource(v Source) {
+func (o *UserSourceConnection) SetSource(v PlexSourceConnectionSource) {
 	o.Source = v
 }
 

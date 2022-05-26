@@ -17,17 +17,17 @@ import (
 
 // UserOAuthSourceConnection OAuth Source Serializer
 type UserOAuthSourceConnection struct {
-	Pk         int32  `json:"pk"`
-	User       int32  `json:"user"`
-	Source     Source `json:"source"`
-	Identifier string `json:"identifier"`
+	Pk         int32                      `json:"pk"`
+	User       int32                      `json:"user"`
+	Source     PlexSourceConnectionSource `json:"source"`
+	Identifier string                     `json:"identifier"`
 }
 
 // NewUserOAuthSourceConnection instantiates a new UserOAuthSourceConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserOAuthSourceConnection(pk int32, user int32, source Source, identifier string) *UserOAuthSourceConnection {
+func NewUserOAuthSourceConnection(pk int32, user int32, source PlexSourceConnectionSource, identifier string) *UserOAuthSourceConnection {
 	this := UserOAuthSourceConnection{}
 	this.Pk = pk
 	this.User = user
@@ -93,9 +93,9 @@ func (o *UserOAuthSourceConnection) SetUser(v int32) {
 }
 
 // GetSource returns the Source field value
-func (o *UserOAuthSourceConnection) GetSource() Source {
+func (o *UserOAuthSourceConnection) GetSource() PlexSourceConnectionSource {
 	if o == nil {
-		var ret Source
+		var ret PlexSourceConnectionSource
 		return ret
 	}
 
@@ -104,7 +104,7 @@ func (o *UserOAuthSourceConnection) GetSource() Source {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *UserOAuthSourceConnection) GetSourceOk() (*Source, bool) {
+func (o *UserOAuthSourceConnection) GetSourceOk() (*PlexSourceConnectionSource, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -112,7 +112,7 @@ func (o *UserOAuthSourceConnection) GetSourceOk() (*Source, bool) {
 }
 
 // SetSource sets field value
-func (o *UserOAuthSourceConnection) SetSource(v Source) {
+func (o *UserOAuthSourceConnection) SetSource(v PlexSourceConnectionSource) {
 	o.Source = v
 }
 

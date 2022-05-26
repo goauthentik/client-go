@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **Transports** | Pointer to **[]string** | Select which transports should be used to notify the user. If none are selected, the notification will only be shown in the authentik UI. | [optional] 
-**Severity** | Pointer to [**SeverityEnum**](SeverityEnum.md) | Controls which severity level the created notifications will have. | [optional] 
+**Severity** | Pointer to [**NullableSeverityEnum**](SeverityEnum.md) | Controls which severity level the created notifications will have. | [optional] 
 **Group** | Pointer to **NullableString** | Define which group of users this notification should be sent and shown to. If left empty, Notification won&#39;t ben sent. | [optional] 
 
 ## Methods
@@ -98,6 +98,16 @@ SetSeverity sets Severity field to given value.
 
 HasSeverity returns a boolean if a field has been set.
 
+### SetSeverityNil
+
+`func (o *NotificationRuleRequest) SetSeverityNil(b bool)`
+
+ SetSeverityNil sets the value for Severity to be an explicit nil
+
+### UnsetSeverity
+`func (o *NotificationRuleRequest) UnsetSeverity()`
+
+UnsetSeverity ensures that no value is present for Severity, not even an explicit nil
 ### GetGroup
 
 `func (o *NotificationRuleRequest) GetGroup() string`

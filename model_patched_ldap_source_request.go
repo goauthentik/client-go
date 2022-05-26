@@ -28,8 +28,8 @@ type PatchedLDAPSourceRequest struct {
 	EnrollmentFlow   NullableString    `json:"enrollment_flow,omitempty"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
-	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
-	ServerUri        *string               `json:"server_uri,omitempty"`
+	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
+	ServerUri        *string                      `json:"server_uri,omitempty"`
 	// Optionally verify the LDAP Server's Certificate against the CA Chain in this keypair.
 	PeerCertificate NullableString `json:"peer_certificate,omitempty"`
 	BindCn          *string        `json:"bind_cn,omitempty"`
@@ -53,9 +53,9 @@ type PatchedLDAPSourceRequest struct {
 	SyncUsersPassword *bool          `json:"sync_users_password,omitempty"`
 	SyncGroups        *bool          `json:"sync_groups,omitempty"`
 	SyncParentGroup   NullableString `json:"sync_parent_group,omitempty"`
-	PropertyMappings  *[]string      `json:"property_mappings,omitempty"`
+	PropertyMappings  []string       `json:"property_mappings,omitempty"`
 	// Property mappings used for group creation/updating.
-	PropertyMappingsGroup *[]string `json:"property_mappings_group,omitempty"`
+	PropertyMappingsGroup []string `json:"property_mappings_group,omitempty"`
 }
 
 // NewPatchedLDAPSourceRequest instantiates a new PatchedLDAPSourceRequest object
@@ -289,36 +289,47 @@ func (o *PatchedLDAPSourceRequest) SetPolicyEngineMode(v PolicyEngineMode) {
 	o.PolicyEngineMode = &v
 }
 
-// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
+// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedLDAPSourceRequest) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil || o.UserMatchingMode.Get() == nil {
 		var ret UserMatchingModeEnum
 		return ret
 	}
-	return *o.UserMatchingMode
+	return *o.UserMatchingMode.Get()
 }
 
 // GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedLDAPSourceRequest) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.UserMatchingMode, true
+	return o.UserMatchingMode.Get(), o.UserMatchingMode.IsSet()
 }
 
 // HasUserMatchingMode returns a boolean if a field has been set.
 func (o *PatchedLDAPSourceRequest) HasUserMatchingMode() bool {
-	if o != nil && o.UserMatchingMode != nil {
+	if o != nil && o.UserMatchingMode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUserMatchingMode gets a reference to the given UserMatchingModeEnum and assigns it to the UserMatchingMode field.
+// SetUserMatchingMode gets a reference to the given NullableUserMatchingModeEnum and assigns it to the UserMatchingMode field.
 func (o *PatchedLDAPSourceRequest) SetUserMatchingMode(v UserMatchingModeEnum) {
-	o.UserMatchingMode = &v
+	o.UserMatchingMode.Set(&v)
+}
+
+// SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
+func (o *PatchedLDAPSourceRequest) SetUserMatchingModeNil() {
+	o.UserMatchingMode.Set(nil)
+}
+
+// UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
+func (o *PatchedLDAPSourceRequest) UnsetUserMatchingMode() {
+	o.UserMatchingMode.Unset()
 }
 
 // GetServerUri returns the ServerUri field value if set, zero value otherwise.
@@ -861,12 +872,12 @@ func (o *PatchedLDAPSourceRequest) GetPropertyMappings() []string {
 		var ret []string
 		return ret
 	}
-	return *o.PropertyMappings
+	return o.PropertyMappings
 }
 
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedLDAPSourceRequest) GetPropertyMappingsOk() (*[]string, bool) {
+func (o *PatchedLDAPSourceRequest) GetPropertyMappingsOk() ([]string, bool) {
 	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
@@ -884,7 +895,7 @@ func (o *PatchedLDAPSourceRequest) HasPropertyMappings() bool {
 
 // SetPropertyMappings gets a reference to the given []string and assigns it to the PropertyMappings field.
 func (o *PatchedLDAPSourceRequest) SetPropertyMappings(v []string) {
-	o.PropertyMappings = &v
+	o.PropertyMappings = v
 }
 
 // GetPropertyMappingsGroup returns the PropertyMappingsGroup field value if set, zero value otherwise.
@@ -893,12 +904,12 @@ func (o *PatchedLDAPSourceRequest) GetPropertyMappingsGroup() []string {
 		var ret []string
 		return ret
 	}
-	return *o.PropertyMappingsGroup
+	return o.PropertyMappingsGroup
 }
 
 // GetPropertyMappingsGroupOk returns a tuple with the PropertyMappingsGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedLDAPSourceRequest) GetPropertyMappingsGroupOk() (*[]string, bool) {
+func (o *PatchedLDAPSourceRequest) GetPropertyMappingsGroupOk() ([]string, bool) {
 	if o == nil || o.PropertyMappingsGroup == nil {
 		return nil, false
 	}
@@ -916,7 +927,7 @@ func (o *PatchedLDAPSourceRequest) HasPropertyMappingsGroup() bool {
 
 // SetPropertyMappingsGroup gets a reference to the given []string and assigns it to the PropertyMappingsGroup field.
 func (o *PatchedLDAPSourceRequest) SetPropertyMappingsGroup(v []string) {
-	o.PropertyMappingsGroup = &v
+	o.PropertyMappingsGroup = v
 }
 
 func (o PatchedLDAPSourceRequest) MarshalJSON() ([]byte, error) {
@@ -939,8 +950,8 @@ func (o PatchedLDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if o.UserMatchingMode != nil {
-		toSerialize["user_matching_mode"] = o.UserMatchingMode
+	if o.UserMatchingMode.IsSet() {
+		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
 	}
 	if o.ServerUri != nil {
 		toSerialize["server_uri"] = o.ServerUri

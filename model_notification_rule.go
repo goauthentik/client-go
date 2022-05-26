@@ -20,19 +20,19 @@ type NotificationRule struct {
 	Pk   string `json:"pk"`
 	Name string `json:"name"`
 	// Select which transports should be used to notify the user. If none are selected, the notification will only be shown in the authentik UI.
-	Transports *[]string `json:"transports,omitempty"`
+	Transports []string `json:"transports,omitempty"`
 	// Controls which severity level the created notifications will have.
-	Severity *SeverityEnum `json:"severity,omitempty"`
+	Severity NullableSeverityEnum `json:"severity,omitempty"`
 	// Define which group of users this notification should be sent and shown to. If left empty, Notification won't ben sent.
-	Group    NullableString `json:"group,omitempty"`
-	GroupObj Group          `json:"group_obj"`
+	Group    NullableString           `json:"group,omitempty"`
+	GroupObj NotificationRuleGroupObj `json:"group_obj"`
 }
 
 // NewNotificationRule instantiates a new NotificationRule object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationRule(pk string, name string, groupObj Group) *NotificationRule {
+func NewNotificationRule(pk string, name string, groupObj NotificationRuleGroupObj) *NotificationRule {
 	this := NotificationRule{}
 	this.Pk = pk
 	this.Name = name
@@ -102,12 +102,12 @@ func (o *NotificationRule) GetTransports() []string {
 		var ret []string
 		return ret
 	}
-	return *o.Transports
+	return o.Transports
 }
 
 // GetTransportsOk returns a tuple with the Transports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationRule) GetTransportsOk() (*[]string, bool) {
+func (o *NotificationRule) GetTransportsOk() ([]string, bool) {
 	if o == nil || o.Transports == nil {
 		return nil, false
 	}
@@ -125,39 +125,50 @@ func (o *NotificationRule) HasTransports() bool {
 
 // SetTransports gets a reference to the given []string and assigns it to the Transports field.
 func (o *NotificationRule) SetTransports(v []string) {
-	o.Transports = &v
+	o.Transports = v
 }
 
-// GetSeverity returns the Severity field value if set, zero value otherwise.
+// GetSeverity returns the Severity field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NotificationRule) GetSeverity() SeverityEnum {
-	if o == nil || o.Severity == nil {
+	if o == nil || o.Severity.Get() == nil {
 		var ret SeverityEnum
 		return ret
 	}
-	return *o.Severity
+	return *o.Severity.Get()
 }
 
 // GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NotificationRule) GetSeverityOk() (*SeverityEnum, bool) {
-	if o == nil || o.Severity == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Severity, true
+	return o.Severity.Get(), o.Severity.IsSet()
 }
 
 // HasSeverity returns a boolean if a field has been set.
 func (o *NotificationRule) HasSeverity() bool {
-	if o != nil && o.Severity != nil {
+	if o != nil && o.Severity.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSeverity gets a reference to the given SeverityEnum and assigns it to the Severity field.
+// SetSeverity gets a reference to the given NullableSeverityEnum and assigns it to the Severity field.
 func (o *NotificationRule) SetSeverity(v SeverityEnum) {
-	o.Severity = &v
+	o.Severity.Set(&v)
+}
+
+// SetSeverityNil sets the value for Severity to be an explicit nil
+func (o *NotificationRule) SetSeverityNil() {
+	o.Severity.Set(nil)
+}
+
+// UnsetSeverity ensures that no value is present for Severity, not even an explicit nil
+func (o *NotificationRule) UnsetSeverity() {
+	o.Severity.Unset()
 }
 
 // GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -204,9 +215,9 @@ func (o *NotificationRule) UnsetGroup() {
 }
 
 // GetGroupObj returns the GroupObj field value
-func (o *NotificationRule) GetGroupObj() Group {
+func (o *NotificationRule) GetGroupObj() NotificationRuleGroupObj {
 	if o == nil {
-		var ret Group
+		var ret NotificationRuleGroupObj
 		return ret
 	}
 
@@ -215,7 +226,7 @@ func (o *NotificationRule) GetGroupObj() Group {
 
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *NotificationRule) GetGroupObjOk() (*Group, bool) {
+func (o *NotificationRule) GetGroupObjOk() (*NotificationRuleGroupObj, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -223,7 +234,7 @@ func (o *NotificationRule) GetGroupObjOk() (*Group, bool) {
 }
 
 // SetGroupObj sets field value
-func (o *NotificationRule) SetGroupObj(v Group) {
+func (o *NotificationRule) SetGroupObj(v NotificationRuleGroupObj) {
 	o.GroupObj = v
 }
 
@@ -238,8 +249,8 @@ func (o NotificationRule) MarshalJSON() ([]byte, error) {
 	if o.Transports != nil {
 		toSerialize["transports"] = o.Transports
 	}
-	if o.Severity != nil {
-		toSerialize["severity"] = o.Severity
+	if o.Severity.IsSet() {
+		toSerialize["severity"] = o.Severity.Get()
 	}
 	if o.Group.IsSet() {
 		toSerialize["group"] = o.Group.Get()

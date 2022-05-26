@@ -76,11 +76,11 @@ func (o *PaginatedNotificationRuleList) GetResults() []NotificationRule {
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedNotificationRuleList) GetResultsOk() (*[]NotificationRule, bool) {
+func (o *PaginatedNotificationRuleList) GetResultsOk() ([]NotificationRule, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Results, true
+	return o.Results, true
 }
 
 // SetResults sets field value

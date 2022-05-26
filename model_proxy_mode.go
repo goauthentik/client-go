@@ -26,7 +26,8 @@ const (
 	PROXYMODE_FORWARD_DOMAIN ProxyMode = "forward_domain"
 )
 
-var allowedProxyModeEnumValues = []ProxyMode{
+// All allowed values of ProxyMode enum
+var AllowedProxyModeEnumValues = []ProxyMode{
 	"proxy",
 	"forward_single",
 	"forward_domain",
@@ -39,7 +40,7 @@ func (v *ProxyMode) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := ProxyMode(value)
-	for _, existing := range allowedProxyModeEnumValues {
+	for _, existing := range AllowedProxyModeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -56,13 +57,13 @@ func NewProxyModeFromValue(v string) (*ProxyMode, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ProxyMode: valid values are %v", v, allowedProxyModeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for ProxyMode: valid values are %v", v, AllowedProxyModeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v ProxyMode) IsValid() bool {
-	for _, existing := range allowedProxyModeEnumValues {
+	for _, existing := range AllowedProxyModeEnumValues {
 		if existing == v {
 			return true
 		}

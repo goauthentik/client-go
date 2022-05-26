@@ -19,10 +19,10 @@ import (
 type PatchedGroupRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Users added to this group will be superusers.
-	IsSuperuser *bool                   `json:"is_superuser,omitempty"`
-	Parent      NullableString          `json:"parent,omitempty"`
-	Users       *[]int32                `json:"users,omitempty"`
-	Attributes  *map[string]interface{} `json:"attributes,omitempty"`
+	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
+	Parent      NullableString         `json:"parent,omitempty"`
+	Users       []int32                `json:"users,omitempty"`
+	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 }
 
 // NewPatchedGroupRequest instantiates a new PatchedGroupRequest object
@@ -155,12 +155,12 @@ func (o *PatchedGroupRequest) GetUsers() []int32 {
 		var ret []int32
 		return ret
 	}
-	return *o.Users
+	return o.Users
 }
 
 // GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedGroupRequest) GetUsersOk() (*[]int32, bool) {
+func (o *PatchedGroupRequest) GetUsersOk() ([]int32, bool) {
 	if o == nil || o.Users == nil {
 		return nil, false
 	}
@@ -178,7 +178,7 @@ func (o *PatchedGroupRequest) HasUsers() bool {
 
 // SetUsers gets a reference to the given []int32 and assigns it to the Users field.
 func (o *PatchedGroupRequest) SetUsers(v []int32) {
-	o.Users = &v
+	o.Users = v
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
@@ -187,12 +187,12 @@ func (o *PatchedGroupRequest) GetAttributes() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Attributes
+	return o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedGroupRequest) GetAttributesOk() (*map[string]interface{}, bool) {
+func (o *PatchedGroupRequest) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -210,7 +210,7 @@ func (o *PatchedGroupRequest) HasAttributes() bool {
 
 // SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
 func (o *PatchedGroupRequest) SetAttributes(v map[string]interface{}) {
-	o.Attributes = &v
+	o.Attributes = v
 }
 
 func (o PatchedGroupRequest) MarshalJSON() ([]byte, error) {

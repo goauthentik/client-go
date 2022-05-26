@@ -19,9 +19,9 @@ import (
 type PatchedSAMLProviderRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string   `json:"authorization_flow,omitempty"`
-	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
-	AcsUrl            *string   `json:"acs_url,omitempty"`
+	AuthorizationFlow *string  `json:"authorization_flow,omitempty"`
+	PropertyMappings  []string `json:"property_mappings,omitempty"`
+	AcsUrl            *string  `json:"acs_url,omitempty"`
 	// Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added.
 	Audience *string `json:"audience,omitempty"`
 	// Also known as EntityID
@@ -41,7 +41,7 @@ type PatchedSAMLProviderRequest struct {
 	// When selected, incoming assertion's Signatures will be validated against this certificate. To allow unsigned Requests, leave on default.
 	VerificationKp NullableString `json:"verification_kp,omitempty"`
 	// This determines how authentik sends the response back to the Service Provider.
-	SpBinding *SpBindingEnum `json:"sp_binding,omitempty"`
+	SpBinding NullableSpBindingEnum `json:"sp_binding,omitempty"`
 }
 
 // NewPatchedSAMLProviderRequest instantiates a new PatchedSAMLProviderRequest object
@@ -131,12 +131,12 @@ func (o *PatchedSAMLProviderRequest) GetPropertyMappings() []string {
 		var ret []string
 		return ret
 	}
-	return *o.PropertyMappings
+	return o.PropertyMappings
 }
 
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedSAMLProviderRequest) GetPropertyMappingsOk() (*[]string, bool) {
+func (o *PatchedSAMLProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
 	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
@@ -154,7 +154,7 @@ func (o *PatchedSAMLProviderRequest) HasPropertyMappings() bool {
 
 // SetPropertyMappings gets a reference to the given []string and assigns it to the PropertyMappings field.
 func (o *PatchedSAMLProviderRequest) SetPropertyMappings(v []string) {
-	o.PropertyMappings = &v
+	o.PropertyMappings = v
 }
 
 // GetAcsUrl returns the AcsUrl field value if set, zero value otherwise.
@@ -542,36 +542,47 @@ func (o *PatchedSAMLProviderRequest) UnsetVerificationKp() {
 	o.VerificationKp.Unset()
 }
 
-// GetSpBinding returns the SpBinding field value if set, zero value otherwise.
+// GetSpBinding returns the SpBinding field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedSAMLProviderRequest) GetSpBinding() SpBindingEnum {
-	if o == nil || o.SpBinding == nil {
+	if o == nil || o.SpBinding.Get() == nil {
 		var ret SpBindingEnum
 		return ret
 	}
-	return *o.SpBinding
+	return *o.SpBinding.Get()
 }
 
 // GetSpBindingOk returns a tuple with the SpBinding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedSAMLProviderRequest) GetSpBindingOk() (*SpBindingEnum, bool) {
-	if o == nil || o.SpBinding == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.SpBinding, true
+	return o.SpBinding.Get(), o.SpBinding.IsSet()
 }
 
 // HasSpBinding returns a boolean if a field has been set.
 func (o *PatchedSAMLProviderRequest) HasSpBinding() bool {
-	if o != nil && o.SpBinding != nil {
+	if o != nil && o.SpBinding.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSpBinding gets a reference to the given SpBindingEnum and assigns it to the SpBinding field.
+// SetSpBinding gets a reference to the given NullableSpBindingEnum and assigns it to the SpBinding field.
 func (o *PatchedSAMLProviderRequest) SetSpBinding(v SpBindingEnum) {
-	o.SpBinding = &v
+	o.SpBinding.Set(&v)
+}
+
+// SetSpBindingNil sets the value for SpBinding to be an explicit nil
+func (o *PatchedSAMLProviderRequest) SetSpBindingNil() {
+	o.SpBinding.Set(nil)
+}
+
+// UnsetSpBinding ensures that no value is present for SpBinding, not even an explicit nil
+func (o *PatchedSAMLProviderRequest) UnsetSpBinding() {
+	o.SpBinding.Unset()
 }
 
 func (o PatchedSAMLProviderRequest) MarshalJSON() ([]byte, error) {
@@ -618,8 +629,8 @@ func (o PatchedSAMLProviderRequest) MarshalJSON() ([]byte, error) {
 	if o.VerificationKp.IsSet() {
 		toSerialize["verification_kp"] = o.VerificationKp.Get()
 	}
-	if o.SpBinding != nil {
-		toSerialize["sp_binding"] = o.SpBinding
+	if o.SpBinding.IsSet() {
+		toSerialize["sp_binding"] = o.SpBinding.Get()
 	}
 	return json.Marshal(toSerialize)
 }

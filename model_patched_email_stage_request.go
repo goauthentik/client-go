@@ -17,8 +17,8 @@ import (
 
 // PatchedEmailStageRequest EmailStage Serializer
 type PatchedEmailStageRequest struct {
-	Name    *string        `json:"name,omitempty"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
+	Name    *string       `json:"name,omitempty"`
+	FlowSet []FlowRequest `json:"flow_set,omitempty"`
 	// When enabled, global Email connection settings will be used and connection settings below will be ignored.
 	UseGlobalSettings *bool   `json:"use_global_settings,omitempty"`
 	Host              *string `json:"host,omitempty"`
@@ -92,12 +92,12 @@ func (o *PatchedEmailStageRequest) GetFlowSet() []FlowRequest {
 		var ret []FlowRequest
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedEmailStageRequest) GetFlowSetOk() (*[]FlowRequest, bool) {
+func (o *PatchedEmailStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -115,7 +115,7 @@ func (o *PatchedEmailStageRequest) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
 func (o *PatchedEmailStageRequest) SetFlowSet(v []FlowRequest) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetUseGlobalSettings returns the UseGlobalSettings field value if set, zero value otherwise.

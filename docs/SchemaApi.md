@@ -33,8 +33,8 @@ func main() {
     lang := "lang_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SchemaApi.SchemaRetrieve(context.Background()).Format(format).Lang(lang).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SchemaApi.SchemaRetrieve(context.Background()).Format(format).Lang(lang).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SchemaApi.SchemaRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -21,7 +21,7 @@ type AuthenticatorValidationChallengeResponseRequest struct {
 	SelectedChallenge *DeviceChallengeRequest `json:"selected_challenge,omitempty"`
 	SelectedStage     *string                 `json:"selected_stage,omitempty"`
 	Code              *string                 `json:"code,omitempty"`
-	Webauthn          *map[string]interface{} `json:"webauthn,omitempty"`
+	Webauthn          map[string]interface{}  `json:"webauthn,omitempty"`
 	Duo               *int32                  `json:"duo,omitempty"`
 }
 
@@ -180,12 +180,12 @@ func (o *AuthenticatorValidationChallengeResponseRequest) GetWebauthn() map[stri
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Webauthn
+	return o.Webauthn
 }
 
 // GetWebauthnOk returns a tuple with the Webauthn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorValidationChallengeResponseRequest) GetWebauthnOk() (*map[string]interface{}, bool) {
+func (o *AuthenticatorValidationChallengeResponseRequest) GetWebauthnOk() (map[string]interface{}, bool) {
 	if o == nil || o.Webauthn == nil {
 		return nil, false
 	}
@@ -203,7 +203,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) HasWebauthn() bool {
 
 // SetWebauthn gets a reference to the given map[string]interface{} and assigns it to the Webauthn field.
 func (o *AuthenticatorValidationChallengeResponseRequest) SetWebauthn(v map[string]interface{}) {
-	o.Webauthn = &v
+	o.Webauthn = v
 }
 
 // GetDuo returns the Duo field value if set, zero value otherwise.

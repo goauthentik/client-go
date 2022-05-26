@@ -179,11 +179,11 @@ func (o *PromptChallenge) GetFields() []StagePrompt {
 
 // GetFieldsOk returns a tuple with the Fields field value
 // and a boolean to check if the value has been set.
-func (o *PromptChallenge) GetFieldsOk() (*[]StagePrompt, bool) {
+func (o *PromptChallenge) GetFieldsOk() ([]StagePrompt, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Fields, true
+	return o.Fields, true
 }
 
 // SetFields sets field value

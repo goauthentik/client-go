@@ -18,13 +18,13 @@ import (
 
 // PatchedEventRequest Event Serializer
 type PatchedEventRequest struct {
-	User     *map[string]interface{} `json:"user,omitempty"`
-	Action   *EventActions           `json:"action,omitempty"`
-	App      *string                 `json:"app,omitempty"`
-	Context  *map[string]interface{} `json:"context,omitempty"`
-	ClientIp NullableString          `json:"client_ip,omitempty"`
-	Expires  *time.Time              `json:"expires,omitempty"`
-	Tenant   *map[string]interface{} `json:"tenant,omitempty"`
+	User     map[string]interface{} `json:"user,omitempty"`
+	Action   *EventActions          `json:"action,omitempty"`
+	App      *string                `json:"app,omitempty"`
+	Context  map[string]interface{} `json:"context,omitempty"`
+	ClientIp NullableString         `json:"client_ip,omitempty"`
+	Expires  *time.Time             `json:"expires,omitempty"`
+	Tenant   map[string]interface{} `json:"tenant,omitempty"`
 }
 
 // NewPatchedEventRequest instantiates a new PatchedEventRequest object
@@ -50,12 +50,12 @@ func (o *PatchedEventRequest) GetUser() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.User
+	return o.User
 }
 
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedEventRequest) GetUserOk() (*map[string]interface{}, bool) {
+func (o *PatchedEventRequest) GetUserOk() (map[string]interface{}, bool) {
 	if o == nil || o.User == nil {
 		return nil, false
 	}
@@ -73,7 +73,7 @@ func (o *PatchedEventRequest) HasUser() bool {
 
 // SetUser gets a reference to the given map[string]interface{} and assigns it to the User field.
 func (o *PatchedEventRequest) SetUser(v map[string]interface{}) {
-	o.User = &v
+	o.User = v
 }
 
 // GetAction returns the Action field value if set, zero value otherwise.
@@ -146,12 +146,12 @@ func (o *PatchedEventRequest) GetContext() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Context
+	return o.Context
 }
 
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedEventRequest) GetContextOk() (*map[string]interface{}, bool) {
+func (o *PatchedEventRequest) GetContextOk() (map[string]interface{}, bool) {
 	if o == nil || o.Context == nil {
 		return nil, false
 	}
@@ -169,7 +169,7 @@ func (o *PatchedEventRequest) HasContext() bool {
 
 // SetContext gets a reference to the given map[string]interface{} and assigns it to the Context field.
 func (o *PatchedEventRequest) SetContext(v map[string]interface{}) {
-	o.Context = &v
+	o.Context = v
 }
 
 // GetClientIp returns the ClientIp field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -253,12 +253,12 @@ func (o *PatchedEventRequest) GetTenant() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Tenant
+	return o.Tenant
 }
 
 // GetTenantOk returns a tuple with the Tenant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedEventRequest) GetTenantOk() (*map[string]interface{}, bool) {
+func (o *PatchedEventRequest) GetTenantOk() (map[string]interface{}, bool) {
 	if o == nil || o.Tenant == nil {
 		return nil, false
 	}
@@ -276,7 +276,7 @@ func (o *PatchedEventRequest) HasTenant() bool {
 
 // SetTenant gets a reference to the given map[string]interface{} and assigns it to the Tenant field.
 func (o *PatchedEventRequest) SetTenant(v map[string]interface{}) {
-	o.Tenant = &v
+	o.Tenant = v
 }
 
 func (o PatchedEventRequest) MarshalJSON() ([]byte, error) {

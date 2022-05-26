@@ -17,8 +17,8 @@ import (
 
 // PolicyTestRequest Test policy execution for a user with context
 type PolicyTestRequest struct {
-	User    int32                   `json:"user"`
-	Context *map[string]interface{} `json:"context,omitempty"`
+	User    int32                  `json:"user"`
+	Context map[string]interface{} `json:"context,omitempty"`
 }
 
 // NewPolicyTestRequest instantiates a new PolicyTestRequest object
@@ -69,12 +69,12 @@ func (o *PolicyTestRequest) GetContext() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Context
+	return o.Context
 }
 
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PolicyTestRequest) GetContextOk() (*map[string]interface{}, bool) {
+func (o *PolicyTestRequest) GetContextOk() (map[string]interface{}, bool) {
 	if o == nil || o.Context == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *PolicyTestRequest) HasContext() bool {
 
 // SetContext gets a reference to the given map[string]interface{} and assigns it to the Context field.
 func (o *PolicyTestRequest) SetContext(v map[string]interface{}) {
-	o.Context = &v
+	o.Context = v
 }
 
 func (o PolicyTestRequest) MarshalJSON() ([]byte, error) {

@@ -62,11 +62,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsAllDestroy(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsAllDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -80,7 +80,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Property Mapping. | 
 
 ### Other Parameters
 
@@ -137,8 +137,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsAllList(context.Background()).ManagedIsnull(managedIsnull).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllList(context.Background()).ManagedIsnull(managedIsnull).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsAllList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -204,11 +204,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsAllRetrieve(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllRetrieve(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsAllRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -224,7 +224,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Property Mapping. | 
 
 ### Other Parameters
 
@@ -274,13 +274,13 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Property Mapping.
     policyTestRequest := *openapiclient.NewPolicyTestRequest(int32(123)) // PolicyTestRequest | 
     formatResult := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsAllTestCreate(context.Background(), pmUuid).PolicyTestRequest(policyTestRequest).FormatResult(formatResult).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllTestCreate(context.Background(), pmUuid).PolicyTestRequest(policyTestRequest).FormatResult(formatResult).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsAllTestCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -296,7 +296,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Property Mapping. | 
 
 ### Other Parameters
 
@@ -350,8 +350,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsAllTypesList(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllTypesList(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsAllTypesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -409,11 +409,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsAllUsedByList(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllUsedByList(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsAllUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -429,7 +429,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Property Mapping. | 
 
 ### Other Parameters
 
@@ -482,8 +482,8 @@ func main() {
     lDAPPropertyMappingRequest := *openapiclient.NewLDAPPropertyMappingRequest("Name_example", "Expression_example", "ObjectField_example") // LDAPPropertyMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsLdapCreate(context.Background()).LDAPPropertyMappingRequest(lDAPPropertyMappingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapCreate(context.Background()).LDAPPropertyMappingRequest(lDAPPropertyMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -545,11 +545,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this LDAP Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsLdapDestroy(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -563,7 +563,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this LDAP Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this LDAP Property Mapping. | 
 
 ### Other Parameters
 
@@ -620,12 +620,12 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    pmUuid := TODO // string |  (optional)
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsLdapList(context.Background()).Expression(expression).Managed(managed).Name(name).ObjectField(objectField).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapList(context.Background()).Expression(expression).Managed(managed).Name(name).ObjectField(objectField).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -653,7 +653,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **pmUuid** | [**string**](string.md) |  | 
+ **pmUuid** | **string** |  | 
  **search** | **string** | A search term. | 
 
 ### Return type
@@ -695,12 +695,12 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this LDAP Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Property Mapping.
     patchedLDAPPropertyMappingRequest := *openapiclient.NewPatchedLDAPPropertyMappingRequest() // PatchedLDAPPropertyMappingRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsLdapPartialUpdate(context.Background(), pmUuid).PatchedLDAPPropertyMappingRequest(patchedLDAPPropertyMappingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapPartialUpdate(context.Background(), pmUuid).PatchedLDAPPropertyMappingRequest(patchedLDAPPropertyMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -716,7 +716,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this LDAP Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this LDAP Property Mapping. | 
 
 ### Other Parameters
 
@@ -767,11 +767,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this LDAP Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsLdapRetrieve(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapRetrieve(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -787,7 +787,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this LDAP Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this LDAP Property Mapping. | 
 
 ### Other Parameters
 
@@ -837,12 +837,12 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this LDAP Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Property Mapping.
     lDAPPropertyMappingRequest := *openapiclient.NewLDAPPropertyMappingRequest("Name_example", "Expression_example", "ObjectField_example") // LDAPPropertyMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsLdapUpdate(context.Background(), pmUuid).LDAPPropertyMappingRequest(lDAPPropertyMappingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapUpdate(context.Background(), pmUuid).LDAPPropertyMappingRequest(lDAPPropertyMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -858,7 +858,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this LDAP Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this LDAP Property Mapping. | 
 
 ### Other Parameters
 
@@ -909,11 +909,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this LDAP Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsLdapUsedByList(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapUsedByList(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -929,7 +929,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this LDAP Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this LDAP Property Mapping. | 
 
 ### Other Parameters
 
@@ -982,8 +982,8 @@ func main() {
     notificationWebhookMappingRequest := *openapiclient.NewNotificationWebhookMappingRequest("Name_example", "Expression_example") // NotificationWebhookMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsNotificationCreate(context.Background()).NotificationWebhookMappingRequest(notificationWebhookMappingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationCreate(context.Background()).NotificationWebhookMappingRequest(notificationWebhookMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1045,11 +1045,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this Notification Webhook Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Webhook Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsNotificationDestroy(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1063,7 +1063,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this Notification Webhook Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Notification Webhook Mapping. | 
 
 ### Other Parameters
 
@@ -1120,8 +1120,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsNotificationList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1187,12 +1187,12 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this Notification Webhook Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Webhook Mapping.
     patchedNotificationWebhookMappingRequest := *openapiclient.NewPatchedNotificationWebhookMappingRequest() // PatchedNotificationWebhookMappingRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsNotificationPartialUpdate(context.Background(), pmUuid).PatchedNotificationWebhookMappingRequest(patchedNotificationWebhookMappingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationPartialUpdate(context.Background(), pmUuid).PatchedNotificationWebhookMappingRequest(patchedNotificationWebhookMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1208,7 +1208,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this Notification Webhook Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Notification Webhook Mapping. | 
 
 ### Other Parameters
 
@@ -1259,11 +1259,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this Notification Webhook Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Webhook Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsNotificationRetrieve(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationRetrieve(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1279,7 +1279,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this Notification Webhook Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Notification Webhook Mapping. | 
 
 ### Other Parameters
 
@@ -1329,12 +1329,12 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this Notification Webhook Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Webhook Mapping.
     notificationWebhookMappingRequest := *openapiclient.NewNotificationWebhookMappingRequest("Name_example", "Expression_example") // NotificationWebhookMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsNotificationUpdate(context.Background(), pmUuid).NotificationWebhookMappingRequest(notificationWebhookMappingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationUpdate(context.Background(), pmUuid).NotificationWebhookMappingRequest(notificationWebhookMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1350,7 +1350,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this Notification Webhook Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Notification Webhook Mapping. | 
 
 ### Other Parameters
 
@@ -1401,11 +1401,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this Notification Webhook Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Webhook Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsNotificationUsedByList(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationUsedByList(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1421,7 +1421,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this Notification Webhook Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Notification Webhook Mapping. | 
 
 ### Other Parameters
 
@@ -1474,8 +1474,8 @@ func main() {
     sAMLPropertyMappingRequest := *openapiclient.NewSAMLPropertyMappingRequest("Name_example", "Expression_example", "SamlName_example") // SAMLPropertyMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsSamlCreate(context.Background()).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlCreate(context.Background()).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1537,11 +1537,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this SAML Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsSamlDestroy(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1555,7 +1555,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this SAML Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SAML Property Mapping. | 
 
 ### Other Parameters
 
@@ -1612,13 +1612,13 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    pmUuid := TODO // string |  (optional)
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     samlName := "samlName_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsSamlList(context.Background()).Expression(expression).FriendlyName(friendlyName).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).SamlName(samlName).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlList(context.Background()).Expression(expression).FriendlyName(friendlyName).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).SamlName(samlName).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1646,7 +1646,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **pmUuid** | [**string**](string.md) |  | 
+ **pmUuid** | **string** |  | 
  **samlName** | **string** |  | 
  **search** | **string** | A search term. | 
 
@@ -1689,12 +1689,12 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this SAML Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Property Mapping.
     patchedSAMLPropertyMappingRequest := *openapiclient.NewPatchedSAMLPropertyMappingRequest() // PatchedSAMLPropertyMappingRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsSamlPartialUpdate(context.Background(), pmUuid).PatchedSAMLPropertyMappingRequest(patchedSAMLPropertyMappingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlPartialUpdate(context.Background(), pmUuid).PatchedSAMLPropertyMappingRequest(patchedSAMLPropertyMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1710,7 +1710,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this SAML Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SAML Property Mapping. | 
 
 ### Other Parameters
 
@@ -1761,11 +1761,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this SAML Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsSamlRetrieve(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlRetrieve(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1781,7 +1781,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this SAML Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SAML Property Mapping. | 
 
 ### Other Parameters
 
@@ -1831,12 +1831,12 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this SAML Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Property Mapping.
     sAMLPropertyMappingRequest := *openapiclient.NewSAMLPropertyMappingRequest("Name_example", "Expression_example", "SamlName_example") // SAMLPropertyMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsSamlUpdate(context.Background(), pmUuid).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlUpdate(context.Background(), pmUuid).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1852,7 +1852,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this SAML Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SAML Property Mapping. | 
 
 ### Other Parameters
 
@@ -1903,11 +1903,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this SAML Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsSamlUsedByList(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlUsedByList(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1923,7 +1923,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this SAML Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SAML Property Mapping. | 
 
 ### Other Parameters
 
@@ -1976,8 +1976,8 @@ func main() {
     scopeMappingRequest := *openapiclient.NewScopeMappingRequest("Name_example", "Expression_example", "ScopeName_example") // ScopeMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsScopeCreate(context.Background()).ScopeMappingRequest(scopeMappingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopeCreate(context.Background()).ScopeMappingRequest(scopeMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopeCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2039,11 +2039,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this Scope Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsScopeDestroy(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopeDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopeDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2057,7 +2057,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this Scope Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Scope Mapping. | 
 
 ### Other Parameters
 
@@ -2116,8 +2116,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsScopeList(context.Background()).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ScopeName(scopeName).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopeList(context.Background()).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ScopeName(scopeName).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopeList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2185,12 +2185,12 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this Scope Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
     patchedScopeMappingRequest := *openapiclient.NewPatchedScopeMappingRequest() // PatchedScopeMappingRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsScopePartialUpdate(context.Background(), pmUuid).PatchedScopeMappingRequest(patchedScopeMappingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopePartialUpdate(context.Background(), pmUuid).PatchedScopeMappingRequest(patchedScopeMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopePartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2206,7 +2206,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this Scope Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Scope Mapping. | 
 
 ### Other Parameters
 
@@ -2257,11 +2257,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this Scope Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsScopeRetrieve(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopeRetrieve(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopeRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2277,7 +2277,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this Scope Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Scope Mapping. | 
 
 ### Other Parameters
 
@@ -2327,12 +2327,12 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this Scope Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
     scopeMappingRequest := *openapiclient.NewScopeMappingRequest("Name_example", "Expression_example", "ScopeName_example") // ScopeMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsScopeUpdate(context.Background(), pmUuid).ScopeMappingRequest(scopeMappingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopeUpdate(context.Background(), pmUuid).ScopeMappingRequest(scopeMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopeUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2348,7 +2348,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this Scope Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Scope Mapping. | 
 
 ### Other Parameters
 
@@ -2399,11 +2399,11 @@ import (
 )
 
 func main() {
-    pmUuid := TODO // string | A UUID string identifying this Scope Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PropertymappingsApi.PropertymappingsScopeUsedByList(context.Background(), pmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopeUsedByList(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopeUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2419,7 +2419,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | [**string**](.md) | A UUID string identifying this Scope Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Scope Mapping. | 
 
 ### Other Parameters
 

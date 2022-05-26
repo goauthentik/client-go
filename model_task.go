@@ -155,11 +155,11 @@ func (o *Task) GetMessages() []interface{} {
 
 // GetMessagesOk returns a tuple with the Messages field value
 // and a boolean to check if the value has been set.
-func (o *Task) GetMessagesOk() (*[]interface{}, bool) {
+func (o *Task) GetMessagesOk() ([]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Messages, true
+	return o.Messages, true
 }
 
 // SetMessages sets field value

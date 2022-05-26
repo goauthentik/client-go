@@ -28,7 +28,8 @@ const (
 	DEVICECLASSESENUM_SMS      DeviceClassesEnum = "sms"
 )
 
-var allowedDeviceClassesEnumEnumValues = []DeviceClassesEnum{
+// All allowed values of DeviceClassesEnum enum
+var AllowedDeviceClassesEnumEnumValues = []DeviceClassesEnum{
 	"static",
 	"totp",
 	"webauthn",
@@ -43,7 +44,7 @@ func (v *DeviceClassesEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := DeviceClassesEnum(value)
-	for _, existing := range allowedDeviceClassesEnumEnumValues {
+	for _, existing := range AllowedDeviceClassesEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -60,13 +61,13 @@ func NewDeviceClassesEnumFromValue(v string) (*DeviceClassesEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for DeviceClassesEnum: valid values are %v", v, allowedDeviceClassesEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for DeviceClassesEnum: valid values are %v", v, AllowedDeviceClassesEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v DeviceClassesEnum) IsValid() bool {
-	for _, existing := range allowedDeviceClassesEnumEnumValues {
+	for _, existing := range AllowedDeviceClassesEnumEnumValues {
 		if existing == v {
 			return true
 		}

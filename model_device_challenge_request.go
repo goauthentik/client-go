@@ -102,11 +102,11 @@ func (o *DeviceChallengeRequest) GetChallenge() map[string]interface{} {
 
 // GetChallengeOk returns a tuple with the Challenge field value
 // and a boolean to check if the value has been set.
-func (o *DeviceChallengeRequest) GetChallengeOk() (*map[string]interface{}, bool) {
+func (o *DeviceChallengeRequest) GetChallengeOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Challenge, true
+	return o.Challenge, true
 }
 
 // SetChallenge sets field value

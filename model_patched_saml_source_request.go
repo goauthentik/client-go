@@ -28,7 +28,7 @@ type PatchedSAMLSourceRequest struct {
 	EnrollmentFlow   NullableString    `json:"enrollment_flow,omitempty"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
-	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
+	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Flow used before authentication.
 	PreAuthenticationFlow *string `json:"pre_authentication_flow,omitempty"`
 	// Also known as Entity ID. Defaults the Metadata URL.
@@ -40,8 +40,8 @@ type PatchedSAMLSourceRequest struct {
 	// Allows authentication flows initiated by the IdP. This can be a security risk, as no validation of the request ID is done.
 	AllowIdpInitiated *bool `json:"allow_idp_initiated,omitempty"`
 	// NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.
-	NameIdPolicy *NameIdPolicyEnum `json:"name_id_policy,omitempty"`
-	BindingType  *BindingTypeEnum  `json:"binding_type,omitempty"`
+	NameIdPolicy NullableNameIdPolicyEnum `json:"name_id_policy,omitempty"`
+	BindingType  *BindingTypeEnum         `json:"binding_type,omitempty"`
 	// Keypair which is used to sign outgoing requests. Leave empty to disable signing.
 	SigningKp          NullableString          `json:"signing_kp,omitempty"`
 	DigestAlgorithm    *DigestAlgorithmEnum    `json:"digest_algorithm,omitempty"`
@@ -281,36 +281,47 @@ func (o *PatchedSAMLSourceRequest) SetPolicyEngineMode(v PolicyEngineMode) {
 	o.PolicyEngineMode = &v
 }
 
-// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
+// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedSAMLSourceRequest) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil || o.UserMatchingMode.Get() == nil {
 		var ret UserMatchingModeEnum
 		return ret
 	}
-	return *o.UserMatchingMode
+	return *o.UserMatchingMode.Get()
 }
 
 // GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedSAMLSourceRequest) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.UserMatchingMode, true
+	return o.UserMatchingMode.Get(), o.UserMatchingMode.IsSet()
 }
 
 // HasUserMatchingMode returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasUserMatchingMode() bool {
-	if o != nil && o.UserMatchingMode != nil {
+	if o != nil && o.UserMatchingMode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUserMatchingMode gets a reference to the given UserMatchingModeEnum and assigns it to the UserMatchingMode field.
+// SetUserMatchingMode gets a reference to the given NullableUserMatchingModeEnum and assigns it to the UserMatchingMode field.
 func (o *PatchedSAMLSourceRequest) SetUserMatchingMode(v UserMatchingModeEnum) {
-	o.UserMatchingMode = &v
+	o.UserMatchingMode.Set(&v)
+}
+
+// SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
+func (o *PatchedSAMLSourceRequest) SetUserMatchingModeNil() {
+	o.UserMatchingMode.Set(nil)
+}
+
+// UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
+func (o *PatchedSAMLSourceRequest) UnsetUserMatchingMode() {
+	o.UserMatchingMode.Unset()
 }
 
 // GetPreAuthenticationFlow returns the PreAuthenticationFlow field value if set, zero value otherwise.
@@ -484,36 +495,47 @@ func (o *PatchedSAMLSourceRequest) SetAllowIdpInitiated(v bool) {
 	o.AllowIdpInitiated = &v
 }
 
-// GetNameIdPolicy returns the NameIdPolicy field value if set, zero value otherwise.
+// GetNameIdPolicy returns the NameIdPolicy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedSAMLSourceRequest) GetNameIdPolicy() NameIdPolicyEnum {
-	if o == nil || o.NameIdPolicy == nil {
+	if o == nil || o.NameIdPolicy.Get() == nil {
 		var ret NameIdPolicyEnum
 		return ret
 	}
-	return *o.NameIdPolicy
+	return *o.NameIdPolicy.Get()
 }
 
 // GetNameIdPolicyOk returns a tuple with the NameIdPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedSAMLSourceRequest) GetNameIdPolicyOk() (*NameIdPolicyEnum, bool) {
-	if o == nil || o.NameIdPolicy == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.NameIdPolicy, true
+	return o.NameIdPolicy.Get(), o.NameIdPolicy.IsSet()
 }
 
 // HasNameIdPolicy returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasNameIdPolicy() bool {
-	if o != nil && o.NameIdPolicy != nil {
+	if o != nil && o.NameIdPolicy.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNameIdPolicy gets a reference to the given NameIdPolicyEnum and assigns it to the NameIdPolicy field.
+// SetNameIdPolicy gets a reference to the given NullableNameIdPolicyEnum and assigns it to the NameIdPolicy field.
 func (o *PatchedSAMLSourceRequest) SetNameIdPolicy(v NameIdPolicyEnum) {
-	o.NameIdPolicy = &v
+	o.NameIdPolicy.Set(&v)
+}
+
+// SetNameIdPolicyNil sets the value for NameIdPolicy to be an explicit nil
+func (o *PatchedSAMLSourceRequest) SetNameIdPolicyNil() {
+	o.NameIdPolicy.Set(nil)
+}
+
+// UnsetNameIdPolicy ensures that no value is present for NameIdPolicy, not even an explicit nil
+func (o *PatchedSAMLSourceRequest) UnsetNameIdPolicy() {
+	o.NameIdPolicy.Unset()
 }
 
 // GetBindingType returns the BindingType field value if set, zero value otherwise.
@@ -707,8 +729,8 @@ func (o PatchedSAMLSourceRequest) MarshalJSON() ([]byte, error) {
 	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if o.UserMatchingMode != nil {
-		toSerialize["user_matching_mode"] = o.UserMatchingMode
+	if o.UserMatchingMode.IsSet() {
+		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
 	}
 	if o.PreAuthenticationFlow != nil {
 		toSerialize["pre_authentication_flow"] = o.PreAuthenticationFlow
@@ -725,8 +747,8 @@ func (o PatchedSAMLSourceRequest) MarshalJSON() ([]byte, error) {
 	if o.AllowIdpInitiated != nil {
 		toSerialize["allow_idp_initiated"] = o.AllowIdpInitiated
 	}
-	if o.NameIdPolicy != nil {
-		toSerialize["name_id_policy"] = o.NameIdPolicy
+	if o.NameIdPolicy.IsSet() {
+		toSerialize["name_id_policy"] = o.NameIdPolicy.Get()
 	}
 	if o.BindingType != nil {
 		toSerialize["binding_type"] = o.BindingType

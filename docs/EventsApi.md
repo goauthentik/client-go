@@ -61,8 +61,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsEventsActionsList(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsActionsList(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsActionsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -123,8 +123,8 @@ func main() {
     eventRequest := *openapiclient.NewEventRequest(openapiclient.EventActions("login"), "App_example") // EventRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsEventsCreate(context.Background()).EventRequest(eventRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsCreate(context.Background()).EventRequest(eventRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -186,11 +186,11 @@ import (
 )
 
 func main() {
-    eventUuid := TODO // string | A UUID string identifying this Event.
+    eventUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsEventsDestroy(context.Background(), eventUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsDestroy(context.Background(), eventUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -204,7 +204,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**eventUuid** | [**string**](.md) | A UUID string identifying this Event. | 
+**eventUuid** | **string** | A UUID string identifying this Event. | 
 
 ### Other Parameters
 
@@ -268,8 +268,8 @@ func main() {
     username := "username_example" // string | Username (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsEventsList(context.Background()).Action(action).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantName(tenantName).Username(username).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsList(context.Background()).Action(action).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantName(tenantName).Username(username).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -342,12 +342,12 @@ import (
 )
 
 func main() {
-    eventUuid := TODO // string | A UUID string identifying this Event.
+    eventUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event.
     patchedEventRequest := *openapiclient.NewPatchedEventRequest() // PatchedEventRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsEventsPartialUpdate(context.Background(), eventUuid).PatchedEventRequest(patchedEventRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsPartialUpdate(context.Background(), eventUuid).PatchedEventRequest(patchedEventRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -363,7 +363,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**eventUuid** | [**string**](.md) | A UUID string identifying this Event. | 
+**eventUuid** | **string** | A UUID string identifying this Event. | 
 
 ### Other Parameters
 
@@ -418,8 +418,8 @@ func main() {
     query := "query_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsEventsPerMonthList(context.Background()).Action(action).Query(query).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsPerMonthList(context.Background()).Action(action).Query(query).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsPerMonthList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -482,11 +482,11 @@ import (
 )
 
 func main() {
-    eventUuid := TODO // string | A UUID string identifying this Event.
+    eventUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsEventsRetrieve(context.Background(), eventUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsRetrieve(context.Background(), eventUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -502,7 +502,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**eventUuid** | [**string**](.md) | A UUID string identifying this Event. | 
+**eventUuid** | **string** | A UUID string identifying this Event. | 
 
 ### Other Parameters
 
@@ -556,8 +556,8 @@ func main() {
     topN := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsEventsTopPerUserList(context.Background()).Action(action).TopN(topN).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsTopPerUserList(context.Background()).Action(action).TopN(topN).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsTopPerUserList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -620,12 +620,12 @@ import (
 )
 
 func main() {
-    eventUuid := TODO // string | A UUID string identifying this Event.
+    eventUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event.
     eventRequest := *openapiclient.NewEventRequest(openapiclient.EventActions("login"), "App_example") // EventRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsEventsUpdate(context.Background(), eventUuid).EventRequest(eventRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsUpdate(context.Background(), eventUuid).EventRequest(eventRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -641,7 +641,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**eventUuid** | [**string**](.md) | A UUID string identifying this Event. | 
+**eventUuid** | **string** | A UUID string identifying this Event. | 
 
 ### Other Parameters
 
@@ -692,11 +692,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Notification.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsNotificationsDestroy(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsNotificationsDestroy(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -710,7 +710,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Notification. | 
+**uuid** | **string** | A UUID string identifying this Notification. | 
 
 ### Other Parameters
 
@@ -763,7 +763,7 @@ import (
 func main() {
     body := "body_example" // string |  (optional)
     created := time.Now() // time.Time |  (optional)
-    event := TODO // string |  (optional)
+    event := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -773,8 +773,8 @@ func main() {
     user := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsNotificationsList(context.Background()).Body(body).Created(created).Event(event).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Seen(seen).Severity(severity).User(user).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsNotificationsList(context.Background()).Body(body).Created(created).Event(event).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Seen(seen).Severity(severity).User(user).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -797,7 +797,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **string** |  | 
  **created** | **time.Time** |  | 
- **event** | [**string**](string.md) |  | 
+ **event** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
@@ -847,8 +847,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsNotificationsMarkAllSeenCreate(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsNotificationsMarkAllSeenCreate(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsMarkAllSeenCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -904,12 +904,12 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Notification.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
     patchedNotificationRequest := *openapiclient.NewPatchedNotificationRequest() // PatchedNotificationRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsNotificationsPartialUpdate(context.Background(), uuid).PatchedNotificationRequest(patchedNotificationRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsNotificationsPartialUpdate(context.Background(), uuid).PatchedNotificationRequest(patchedNotificationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -925,7 +925,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Notification. | 
+**uuid** | **string** | A UUID string identifying this Notification. | 
 
 ### Other Parameters
 
@@ -976,11 +976,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Notification.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsNotificationsRetrieve(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsNotificationsRetrieve(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -996,7 +996,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Notification. | 
+**uuid** | **string** | A UUID string identifying this Notification. | 
 
 ### Other Parameters
 
@@ -1046,12 +1046,12 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Notification.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
     notificationRequest := *openapiclient.NewNotificationRequest() // NotificationRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsNotificationsUpdate(context.Background(), uuid).NotificationRequest(notificationRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsNotificationsUpdate(context.Background(), uuid).NotificationRequest(notificationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1067,7 +1067,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Notification. | 
+**uuid** | **string** | A UUID string identifying this Notification. | 
 
 ### Other Parameters
 
@@ -1118,11 +1118,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Notification.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsNotificationsUsedByList(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsNotificationsUsedByList(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1138,7 +1138,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Notification. | 
+**uuid** | **string** | A UUID string identifying this Notification. | 
 
 ### Other Parameters
 
@@ -1191,8 +1191,8 @@ func main() {
     notificationRuleRequest := *openapiclient.NewNotificationRuleRequest("Name_example") // NotificationRuleRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsRulesCreate(context.Background()).NotificationRuleRequest(notificationRuleRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsRulesCreate(context.Background()).NotificationRuleRequest(notificationRuleRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1254,11 +1254,11 @@ import (
 )
 
 func main() {
-    pbmUuid := TODO // string | A UUID string identifying this Notification Rule.
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsRulesDestroy(context.Background(), pbmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsRulesDestroy(context.Background(), pbmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1272,7 +1272,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pbmUuid** | [**string**](.md) | A UUID string identifying this Notification Rule. | 
+**pbmUuid** | **string** | A UUID string identifying this Notification Rule. | 
 
 ### Other Parameters
 
@@ -1331,8 +1331,8 @@ func main() {
     severity := "severity_example" // string | Controls which severity level the created notifications will have. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsRulesList(context.Background()).GroupName(groupName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Severity(severity).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsRulesList(context.Background()).GroupName(groupName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Severity(severity).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1400,12 +1400,12 @@ import (
 )
 
 func main() {
-    pbmUuid := TODO // string | A UUID string identifying this Notification Rule.
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
     patchedNotificationRuleRequest := *openapiclient.NewPatchedNotificationRuleRequest() // PatchedNotificationRuleRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsRulesPartialUpdate(context.Background(), pbmUuid).PatchedNotificationRuleRequest(patchedNotificationRuleRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsRulesPartialUpdate(context.Background(), pbmUuid).PatchedNotificationRuleRequest(patchedNotificationRuleRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1421,7 +1421,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pbmUuid** | [**string**](.md) | A UUID string identifying this Notification Rule. | 
+**pbmUuid** | **string** | A UUID string identifying this Notification Rule. | 
 
 ### Other Parameters
 
@@ -1472,11 +1472,11 @@ import (
 )
 
 func main() {
-    pbmUuid := TODO // string | A UUID string identifying this Notification Rule.
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsRulesRetrieve(context.Background(), pbmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsRulesRetrieve(context.Background(), pbmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1492,7 +1492,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pbmUuid** | [**string**](.md) | A UUID string identifying this Notification Rule. | 
+**pbmUuid** | **string** | A UUID string identifying this Notification Rule. | 
 
 ### Other Parameters
 
@@ -1542,12 +1542,12 @@ import (
 )
 
 func main() {
-    pbmUuid := TODO // string | A UUID string identifying this Notification Rule.
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
     notificationRuleRequest := *openapiclient.NewNotificationRuleRequest("Name_example") // NotificationRuleRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsRulesUpdate(context.Background(), pbmUuid).NotificationRuleRequest(notificationRuleRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsRulesUpdate(context.Background(), pbmUuid).NotificationRuleRequest(notificationRuleRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1563,7 +1563,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pbmUuid** | [**string**](.md) | A UUID string identifying this Notification Rule. | 
+**pbmUuid** | **string** | A UUID string identifying this Notification Rule. | 
 
 ### Other Parameters
 
@@ -1614,11 +1614,11 @@ import (
 )
 
 func main() {
-    pbmUuid := TODO // string | A UUID string identifying this Notification Rule.
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsRulesUsedByList(context.Background(), pbmUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsRulesUsedByList(context.Background(), pbmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1634,7 +1634,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pbmUuid** | [**string**](.md) | A UUID string identifying this Notification Rule. | 
+**pbmUuid** | **string** | A UUID string identifying this Notification Rule. | 
 
 ### Other Parameters
 
@@ -1687,8 +1687,8 @@ func main() {
     notificationTransportRequest := *openapiclient.NewNotificationTransportRequest("Name_example", openapiclient.NotificationTransportModeEnum("webhook")) // NotificationTransportRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsTransportsCreate(context.Background()).NotificationTransportRequest(notificationTransportRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsCreate(context.Background()).NotificationTransportRequest(notificationTransportRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1750,11 +1750,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Notification Transport.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsTransportsDestroy(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsDestroy(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1768,7 +1768,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Notification Transport. | 
+**uuid** | **string** | A UUID string identifying this Notification Transport. | 
 
 ### Other Parameters
 
@@ -1828,8 +1828,8 @@ func main() {
     webhookUrl := "webhookUrl_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsTransportsList(context.Background()).Mode(mode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SendOnce(sendOnce).WebhookUrl(webhookUrl).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsList(context.Background()).Mode(mode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SendOnce(sendOnce).WebhookUrl(webhookUrl).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1898,12 +1898,12 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Notification Transport.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
     patchedNotificationTransportRequest := *openapiclient.NewPatchedNotificationTransportRequest() // PatchedNotificationTransportRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsTransportsPartialUpdate(context.Background(), uuid).PatchedNotificationTransportRequest(patchedNotificationTransportRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsPartialUpdate(context.Background(), uuid).PatchedNotificationTransportRequest(patchedNotificationTransportRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1919,7 +1919,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Notification Transport. | 
+**uuid** | **string** | A UUID string identifying this Notification Transport. | 
 
 ### Other Parameters
 
@@ -1970,11 +1970,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Notification Transport.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsTransportsRetrieve(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsRetrieve(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1990,7 +1990,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Notification Transport. | 
+**uuid** | **string** | A UUID string identifying this Notification Transport. | 
 
 ### Other Parameters
 
@@ -2040,11 +2040,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Notification Transport.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsTransportsTestCreate(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsTestCreate(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsTestCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2060,7 +2060,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Notification Transport. | 
+**uuid** | **string** | A UUID string identifying this Notification Transport. | 
 
 ### Other Parameters
 
@@ -2110,12 +2110,12 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Notification Transport.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
     notificationTransportRequest := *openapiclient.NewNotificationTransportRequest("Name_example", openapiclient.NotificationTransportModeEnum("webhook")) // NotificationTransportRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsTransportsUpdate(context.Background(), uuid).NotificationTransportRequest(notificationTransportRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsUpdate(context.Background(), uuid).NotificationTransportRequest(notificationTransportRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2131,7 +2131,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Notification Transport. | 
+**uuid** | **string** | A UUID string identifying this Notification Transport. | 
 
 ### Other Parameters
 
@@ -2182,11 +2182,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Notification Transport.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EventsApi.EventsTransportsUsedByList(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsUsedByList(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2202,7 +2202,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Notification Transport. | 
+**uuid** | **string** | A UUID string identifying this Notification Transport. | 
 
 ### Other Parameters
 

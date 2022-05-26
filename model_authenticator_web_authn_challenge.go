@@ -231,11 +231,11 @@ func (o *AuthenticatorWebAuthnChallenge) GetRegistration() map[string]interface{
 
 // GetRegistrationOk returns a tuple with the Registration field value
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorWebAuthnChallenge) GetRegistrationOk() (*map[string]interface{}, bool) {
+func (o *AuthenticatorWebAuthnChallenge) GetRegistrationOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Registration, true
+	return o.Registration, true
 }
 
 // SetRegistration sets field value

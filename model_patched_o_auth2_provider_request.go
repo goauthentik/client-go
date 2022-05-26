@@ -19,12 +19,12 @@ import (
 type PatchedOAuth2ProviderRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string   `json:"authorization_flow,omitempty"`
-	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
+	AuthorizationFlow *string  `json:"authorization_flow,omitempty"`
+	PropertyMappings  []string `json:"property_mappings,omitempty"`
 	// Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable.
-	ClientType   *ClientTypeEnum `json:"client_type,omitempty"`
-	ClientId     *string         `json:"client_id,omitempty"`
-	ClientSecret *string         `json:"client_secret,omitempty"`
+	ClientType   NullableClientTypeEnum `json:"client_type,omitempty"`
+	ClientId     *string                `json:"client_id,omitempty"`
+	ClientSecret *string                `json:"client_secret,omitempty"`
 	// Access codes not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	AccessCodeValidity *string `json:"access_code_validity,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
@@ -36,12 +36,12 @@ type PatchedOAuth2ProviderRequest struct {
 	// Enter each URI on a new line.
 	RedirectUris *string `json:"redirect_uris,omitempty"`
 	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
-	SubMode *SubModeEnum `json:"sub_mode,omitempty"`
+	SubMode NullableSubModeEnum `json:"sub_mode,omitempty"`
 	// Configure how the issuer field of the ID Token should be filled.
-	IssuerMode *IssuerModeEnum `json:"issuer_mode,omitempty"`
+	IssuerMode NullableIssuerModeEnum `json:"issuer_mode,omitempty"`
 	// DEPRECATED. JWTs created with the configured certificates can authenticate with this provider.
-	VerificationKeys *[]string `json:"verification_keys,omitempty"`
-	JwksSources      *[]string `json:"jwks_sources,omitempty"`
+	VerificationKeys []string `json:"verification_keys,omitempty"`
+	JwksSources      []string `json:"jwks_sources,omitempty"`
 }
 
 // NewPatchedOAuth2ProviderRequest instantiates a new PatchedOAuth2ProviderRequest object
@@ -131,12 +131,12 @@ func (o *PatchedOAuth2ProviderRequest) GetPropertyMappings() []string {
 		var ret []string
 		return ret
 	}
-	return *o.PropertyMappings
+	return o.PropertyMappings
 }
 
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedOAuth2ProviderRequest) GetPropertyMappingsOk() (*[]string, bool) {
+func (o *PatchedOAuth2ProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
 	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
@@ -154,39 +154,50 @@ func (o *PatchedOAuth2ProviderRequest) HasPropertyMappings() bool {
 
 // SetPropertyMappings gets a reference to the given []string and assigns it to the PropertyMappings field.
 func (o *PatchedOAuth2ProviderRequest) SetPropertyMappings(v []string) {
-	o.PropertyMappings = &v
+	o.PropertyMappings = v
 }
 
-// GetClientType returns the ClientType field value if set, zero value otherwise.
+// GetClientType returns the ClientType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedOAuth2ProviderRequest) GetClientType() ClientTypeEnum {
-	if o == nil || o.ClientType == nil {
+	if o == nil || o.ClientType.Get() == nil {
 		var ret ClientTypeEnum
 		return ret
 	}
-	return *o.ClientType
+	return *o.ClientType.Get()
 }
 
 // GetClientTypeOk returns a tuple with the ClientType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuth2ProviderRequest) GetClientTypeOk() (*ClientTypeEnum, bool) {
-	if o == nil || o.ClientType == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ClientType, true
+	return o.ClientType.Get(), o.ClientType.IsSet()
 }
 
 // HasClientType returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasClientType() bool {
-	if o != nil && o.ClientType != nil {
+	if o != nil && o.ClientType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetClientType gets a reference to the given ClientTypeEnum and assigns it to the ClientType field.
+// SetClientType gets a reference to the given NullableClientTypeEnum and assigns it to the ClientType field.
 func (o *PatchedOAuth2ProviderRequest) SetClientType(v ClientTypeEnum) {
-	o.ClientType = &v
+	o.ClientType.Set(&v)
+}
+
+// SetClientTypeNil sets the value for ClientType to be an explicit nil
+func (o *PatchedOAuth2ProviderRequest) SetClientTypeNil() {
+	o.ClientType.Set(nil)
+}
+
+// UnsetClientType ensures that no value is present for ClientType, not even an explicit nil
+func (o *PatchedOAuth2ProviderRequest) UnsetClientType() {
+	o.ClientType.Unset()
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
@@ -424,68 +435,90 @@ func (o *PatchedOAuth2ProviderRequest) SetRedirectUris(v string) {
 	o.RedirectUris = &v
 }
 
-// GetSubMode returns the SubMode field value if set, zero value otherwise.
+// GetSubMode returns the SubMode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedOAuth2ProviderRequest) GetSubMode() SubModeEnum {
-	if o == nil || o.SubMode == nil {
+	if o == nil || o.SubMode.Get() == nil {
 		var ret SubModeEnum
 		return ret
 	}
-	return *o.SubMode
+	return *o.SubMode.Get()
 }
 
 // GetSubModeOk returns a tuple with the SubMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuth2ProviderRequest) GetSubModeOk() (*SubModeEnum, bool) {
-	if o == nil || o.SubMode == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.SubMode, true
+	return o.SubMode.Get(), o.SubMode.IsSet()
 }
 
 // HasSubMode returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasSubMode() bool {
-	if o != nil && o.SubMode != nil {
+	if o != nil && o.SubMode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSubMode gets a reference to the given SubModeEnum and assigns it to the SubMode field.
+// SetSubMode gets a reference to the given NullableSubModeEnum and assigns it to the SubMode field.
 func (o *PatchedOAuth2ProviderRequest) SetSubMode(v SubModeEnum) {
-	o.SubMode = &v
+	o.SubMode.Set(&v)
 }
 
-// GetIssuerMode returns the IssuerMode field value if set, zero value otherwise.
+// SetSubModeNil sets the value for SubMode to be an explicit nil
+func (o *PatchedOAuth2ProviderRequest) SetSubModeNil() {
+	o.SubMode.Set(nil)
+}
+
+// UnsetSubMode ensures that no value is present for SubMode, not even an explicit nil
+func (o *PatchedOAuth2ProviderRequest) UnsetSubMode() {
+	o.SubMode.Unset()
+}
+
+// GetIssuerMode returns the IssuerMode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedOAuth2ProviderRequest) GetIssuerMode() IssuerModeEnum {
-	if o == nil || o.IssuerMode == nil {
+	if o == nil || o.IssuerMode.Get() == nil {
 		var ret IssuerModeEnum
 		return ret
 	}
-	return *o.IssuerMode
+	return *o.IssuerMode.Get()
 }
 
 // GetIssuerModeOk returns a tuple with the IssuerMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuth2ProviderRequest) GetIssuerModeOk() (*IssuerModeEnum, bool) {
-	if o == nil || o.IssuerMode == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.IssuerMode, true
+	return o.IssuerMode.Get(), o.IssuerMode.IsSet()
 }
 
 // HasIssuerMode returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasIssuerMode() bool {
-	if o != nil && o.IssuerMode != nil {
+	if o != nil && o.IssuerMode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIssuerMode gets a reference to the given IssuerModeEnum and assigns it to the IssuerMode field.
+// SetIssuerMode gets a reference to the given NullableIssuerModeEnum and assigns it to the IssuerMode field.
 func (o *PatchedOAuth2ProviderRequest) SetIssuerMode(v IssuerModeEnum) {
-	o.IssuerMode = &v
+	o.IssuerMode.Set(&v)
+}
+
+// SetIssuerModeNil sets the value for IssuerMode to be an explicit nil
+func (o *PatchedOAuth2ProviderRequest) SetIssuerModeNil() {
+	o.IssuerMode.Set(nil)
+}
+
+// UnsetIssuerMode ensures that no value is present for IssuerMode, not even an explicit nil
+func (o *PatchedOAuth2ProviderRequest) UnsetIssuerMode() {
+	o.IssuerMode.Unset()
 }
 
 // GetVerificationKeys returns the VerificationKeys field value if set, zero value otherwise.
@@ -494,12 +527,12 @@ func (o *PatchedOAuth2ProviderRequest) GetVerificationKeys() []string {
 		var ret []string
 		return ret
 	}
-	return *o.VerificationKeys
+	return o.VerificationKeys
 }
 
 // GetVerificationKeysOk returns a tuple with the VerificationKeys field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedOAuth2ProviderRequest) GetVerificationKeysOk() (*[]string, bool) {
+func (o *PatchedOAuth2ProviderRequest) GetVerificationKeysOk() ([]string, bool) {
 	if o == nil || o.VerificationKeys == nil {
 		return nil, false
 	}
@@ -517,7 +550,7 @@ func (o *PatchedOAuth2ProviderRequest) HasVerificationKeys() bool {
 
 // SetVerificationKeys gets a reference to the given []string and assigns it to the VerificationKeys field.
 func (o *PatchedOAuth2ProviderRequest) SetVerificationKeys(v []string) {
-	o.VerificationKeys = &v
+	o.VerificationKeys = v
 }
 
 // GetJwksSources returns the JwksSources field value if set, zero value otherwise.
@@ -526,12 +559,12 @@ func (o *PatchedOAuth2ProviderRequest) GetJwksSources() []string {
 		var ret []string
 		return ret
 	}
-	return *o.JwksSources
+	return o.JwksSources
 }
 
 // GetJwksSourcesOk returns a tuple with the JwksSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedOAuth2ProviderRequest) GetJwksSourcesOk() (*[]string, bool) {
+func (o *PatchedOAuth2ProviderRequest) GetJwksSourcesOk() ([]string, bool) {
 	if o == nil || o.JwksSources == nil {
 		return nil, false
 	}
@@ -549,7 +582,7 @@ func (o *PatchedOAuth2ProviderRequest) HasJwksSources() bool {
 
 // SetJwksSources gets a reference to the given []string and assigns it to the JwksSources field.
 func (o *PatchedOAuth2ProviderRequest) SetJwksSources(v []string) {
-	o.JwksSources = &v
+	o.JwksSources = v
 }
 
 func (o PatchedOAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
@@ -563,8 +596,8 @@ func (o PatchedOAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
 	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if o.ClientType != nil {
-		toSerialize["client_type"] = o.ClientType
+	if o.ClientType.IsSet() {
+		toSerialize["client_type"] = o.ClientType.Get()
 	}
 	if o.ClientId != nil {
 		toSerialize["client_id"] = o.ClientId
@@ -587,11 +620,11 @@ func (o PatchedOAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
 	if o.RedirectUris != nil {
 		toSerialize["redirect_uris"] = o.RedirectUris
 	}
-	if o.SubMode != nil {
-		toSerialize["sub_mode"] = o.SubMode
+	if o.SubMode.IsSet() {
+		toSerialize["sub_mode"] = o.SubMode.Get()
 	}
-	if o.IssuerMode != nil {
-		toSerialize["issuer_mode"] = o.IssuerMode
+	if o.IssuerMode.IsSet() {
+		toSerialize["issuer_mode"] = o.IssuerMode.Get()
 	}
 	if o.VerificationKeys != nil {
 		toSerialize["verification_keys"] = o.VerificationKeys

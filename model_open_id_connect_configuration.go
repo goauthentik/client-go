@@ -238,11 +238,11 @@ func (o *OpenIDConnectConfiguration) GetResponseTypesSupported() []string {
 
 // GetResponseTypesSupportedOk returns a tuple with the ResponseTypesSupported field value
 // and a boolean to check if the value has been set.
-func (o *OpenIDConnectConfiguration) GetResponseTypesSupportedOk() (*[]string, bool) {
+func (o *OpenIDConnectConfiguration) GetResponseTypesSupportedOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ResponseTypesSupported, true
+	return o.ResponseTypesSupported, true
 }
 
 // SetResponseTypesSupported sets field value
@@ -262,11 +262,11 @@ func (o *OpenIDConnectConfiguration) GetIdTokenSigningAlgValuesSupported() []str
 
 // GetIdTokenSigningAlgValuesSupportedOk returns a tuple with the IdTokenSigningAlgValuesSupported field value
 // and a boolean to check if the value has been set.
-func (o *OpenIDConnectConfiguration) GetIdTokenSigningAlgValuesSupportedOk() (*[]string, bool) {
+func (o *OpenIDConnectConfiguration) GetIdTokenSigningAlgValuesSupportedOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.IdTokenSigningAlgValuesSupported, true
+	return o.IdTokenSigningAlgValuesSupported, true
 }
 
 // SetIdTokenSigningAlgValuesSupported sets field value
@@ -286,11 +286,11 @@ func (o *OpenIDConnectConfiguration) GetSubjectTypesSupported() []string {
 
 // GetSubjectTypesSupportedOk returns a tuple with the SubjectTypesSupported field value
 // and a boolean to check if the value has been set.
-func (o *OpenIDConnectConfiguration) GetSubjectTypesSupportedOk() (*[]string, bool) {
+func (o *OpenIDConnectConfiguration) GetSubjectTypesSupportedOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.SubjectTypesSupported, true
+	return o.SubjectTypesSupported, true
 }
 
 // SetSubjectTypesSupported sets field value
@@ -310,11 +310,11 @@ func (o *OpenIDConnectConfiguration) GetTokenEndpointAuthMethodsSupported() []st
 
 // GetTokenEndpointAuthMethodsSupportedOk returns a tuple with the TokenEndpointAuthMethodsSupported field value
 // and a boolean to check if the value has been set.
-func (o *OpenIDConnectConfiguration) GetTokenEndpointAuthMethodsSupportedOk() (*[]string, bool) {
+func (o *OpenIDConnectConfiguration) GetTokenEndpointAuthMethodsSupportedOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.TokenEndpointAuthMethodsSupported, true
+	return o.TokenEndpointAuthMethodsSupported, true
 }
 
 // SetTokenEndpointAuthMethodsSupported sets field value

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **FlowSet** | Pointer to [**[]FlowRequest**](FlowRequest.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
-**Digits** | Pointer to [**DigitsEnum**](DigitsEnum.md) |  | [optional] 
+**Digits** | Pointer to [**NullableDigitsEnum**](DigitsEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -138,6 +138,16 @@ SetDigits sets Digits field to given value.
 
 HasDigits returns a boolean if a field has been set.
 
+### SetDigitsNil
+
+`func (o *PatchedAuthenticatorTOTPStageRequest) SetDigitsNil(b bool)`
+
+ SetDigitsNil sets the value for Digits to be an explicit nil
+
+### UnsetDigits
+`func (o *PatchedAuthenticatorTOTPStageRequest) UnsetDigits()`
+
+UnsetDigits ensures that no value is present for Digits, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

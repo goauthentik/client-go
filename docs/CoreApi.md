@@ -88,8 +88,8 @@ func main() {
     forUser := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreApplicationsCheckAccessRetrieve(context.Background(), slug).ForUser(forUser).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationsCheckAccessRetrieve(context.Background(), slug).ForUser(forUser).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsCheckAccessRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -159,8 +159,8 @@ func main() {
     applicationRequest := *openapiclient.NewApplicationRequest("Name_example", "Slug_example") // ApplicationRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreApplicationsCreate(context.Background()).ApplicationRequest(applicationRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationsCreate(context.Background()).ApplicationRequest(applicationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -225,8 +225,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreApplicationsDestroy(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationsDestroy(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -299,8 +299,8 @@ func main() {
     superuserFullList := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreApplicationsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -371,8 +371,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreApplicationsMetricsList(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationsMetricsList(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsMetricsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -442,8 +442,8 @@ func main() {
     patchedApplicationRequest := *openapiclient.NewPatchedApplicationRequest() // PatchedApplicationRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreApplicationsPartialUpdate(context.Background(), slug).PatchedApplicationRequest(patchedApplicationRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationsPartialUpdate(context.Background(), slug).PatchedApplicationRequest(patchedApplicationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -513,8 +513,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreApplicationsRetrieve(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationsRetrieve(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -585,8 +585,8 @@ func main() {
     clear := true // bool |  (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreApplicationsSetIconCreate(context.Background(), slug).File(file).Clear(clear).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationsSetIconCreate(context.Background(), slug).File(file).Clear(clear).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsSetIconCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -656,8 +656,8 @@ func main() {
     filePathRequest := *openapiclient.NewFilePathRequest("Url_example") // FilePathRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreApplicationsSetIconUrlCreate(context.Background(), slug).FilePathRequest(filePathRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationsSetIconUrlCreate(context.Background(), slug).FilePathRequest(filePathRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsSetIconUrlCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -726,8 +726,8 @@ func main() {
     applicationRequest := *openapiclient.NewApplicationRequest("Name_example", "Slug_example") // ApplicationRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreApplicationsUpdate(context.Background(), slug).ApplicationRequest(applicationRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationsUpdate(context.Background(), slug).ApplicationRequest(applicationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -797,8 +797,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreApplicationsUsedByList(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationsUsedByList(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -864,11 +864,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Authenticated Session.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Authenticated Session.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreAuthenticatedSessionsDestroy(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreAuthenticatedSessionsDestroy(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreAuthenticatedSessionsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -882,7 +882,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Authenticated Session. | 
+**uuid** | **string** | A UUID string identifying this Authenticated Session. | 
 
 ### Other Parameters
 
@@ -941,8 +941,8 @@ func main() {
     userUsername := "userUsername_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreAuthenticatedSessionsList(context.Background()).LastIp(lastIp).LastUserAgent(lastUserAgent).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).UserUsername(userUsername).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreAuthenticatedSessionsList(context.Background()).LastIp(lastIp).LastUserAgent(lastUserAgent).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).UserUsername(userUsername).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreAuthenticatedSessionsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1010,11 +1010,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Authenticated Session.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Authenticated Session.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreAuthenticatedSessionsRetrieve(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreAuthenticatedSessionsRetrieve(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreAuthenticatedSessionsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1030,7 +1030,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Authenticated Session. | 
+**uuid** | **string** | A UUID string identifying this Authenticated Session. | 
 
 ### Other Parameters
 
@@ -1080,11 +1080,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Authenticated Session.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Authenticated Session.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreAuthenticatedSessionsUsedByList(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreAuthenticatedSessionsUsedByList(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreAuthenticatedSessionsUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1100,7 +1100,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Authenticated Session. | 
+**uuid** | **string** | A UUID string identifying this Authenticated Session. | 
 
 ### Other Parameters
 
@@ -1153,8 +1153,8 @@ func main() {
     groupRequest := *openapiclient.NewGroupRequest("Name_example", "Parent_example", []int32{int32(123)}) // GroupRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreGroupsCreate(context.Background()).GroupRequest(groupRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreGroupsCreate(context.Background()).GroupRequest(groupRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1216,11 +1216,11 @@ import (
 )
 
 func main() {
-    groupUuid := TODO // string | A UUID string identifying this group.
+    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreGroupsDestroy(context.Background(), groupUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreGroupsDestroy(context.Background(), groupUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1234,7 +1234,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupUuid** | [**string**](.md) | A UUID string identifying this group. | 
+**groupUuid** | **string** | A UUID string identifying this group. | 
 
 ### Other Parameters
 
@@ -1295,8 +1295,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreGroupsList(context.Background()).Attributes(attributes).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreGroupsList(context.Background()).Attributes(attributes).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1366,12 +1366,12 @@ import (
 )
 
 func main() {
-    groupUuid := TODO // string | A UUID string identifying this group.
+    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
     patchedGroupRequest := *openapiclient.NewPatchedGroupRequest() // PatchedGroupRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreGroupsPartialUpdate(context.Background(), groupUuid).PatchedGroupRequest(patchedGroupRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreGroupsPartialUpdate(context.Background(), groupUuid).PatchedGroupRequest(patchedGroupRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1387,7 +1387,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupUuid** | [**string**](.md) | A UUID string identifying this group. | 
+**groupUuid** | **string** | A UUID string identifying this group. | 
 
 ### Other Parameters
 
@@ -1438,11 +1438,11 @@ import (
 )
 
 func main() {
-    groupUuid := TODO // string | A UUID string identifying this group.
+    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreGroupsRetrieve(context.Background(), groupUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreGroupsRetrieve(context.Background(), groupUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1458,7 +1458,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupUuid** | [**string**](.md) | A UUID string identifying this group. | 
+**groupUuid** | **string** | A UUID string identifying this group. | 
 
 ### Other Parameters
 
@@ -1508,12 +1508,12 @@ import (
 )
 
 func main() {
-    groupUuid := TODO // string | A UUID string identifying this group.
+    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
     groupRequest := *openapiclient.NewGroupRequest("Name_example", "Parent_example", []int32{int32(123)}) // GroupRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreGroupsUpdate(context.Background(), groupUuid).GroupRequest(groupRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreGroupsUpdate(context.Background(), groupUuid).GroupRequest(groupRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1529,7 +1529,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupUuid** | [**string**](.md) | A UUID string identifying this group. | 
+**groupUuid** | **string** | A UUID string identifying this group. | 
 
 ### Other Parameters
 
@@ -1580,11 +1580,11 @@ import (
 )
 
 func main() {
-    groupUuid := TODO // string | A UUID string identifying this group.
+    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreGroupsUsedByList(context.Background(), groupUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreGroupsUsedByList(context.Background(), groupUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1600,7 +1600,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupUuid** | [**string**](.md) | A UUID string identifying this group. | 
+**groupUuid** | **string** | A UUID string identifying this group. | 
 
 ### Other Parameters
 
@@ -1653,8 +1653,8 @@ func main() {
     tenantRequest := *openapiclient.NewTenantRequest("Domain_example") // TenantRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTenantsCreate(context.Background()).TenantRequest(tenantRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTenantsCreate(context.Background()).TenantRequest(tenantRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1718,8 +1718,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTenantsCurrentRetrieve(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTenantsCurrentRetrieve(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsCurrentRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1777,11 +1777,11 @@ import (
 )
 
 func main() {
-    tenantUuid := TODO // string | A UUID string identifying this Tenant.
+    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTenantsDestroy(context.Background(), tenantUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTenantsDestroy(context.Background(), tenantUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1795,7 +1795,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenantUuid** | [**string**](.md) | A UUID string identifying this Tenant. | 
+**tenantUuid** | **string** | A UUID string identifying this Tenant. | 
 
 ### Other Parameters
 
@@ -1851,21 +1851,21 @@ func main() {
     default_ := true // bool |  (optional)
     domain := "domain_example" // string |  (optional)
     eventRetention := "eventRetention_example" // string |  (optional)
-    flowAuthentication := TODO // string |  (optional)
-    flowInvalidation := TODO // string |  (optional)
-    flowRecovery := TODO // string |  (optional)
-    flowUnenrollment := TODO // string |  (optional)
-    flowUserSettings := TODO // string |  (optional)
+    flowAuthentication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    flowInvalidation := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    flowRecovery := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    flowUnenrollment := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    flowUserSettings := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
-    tenantUuid := TODO // string |  (optional)
-    webCertificate := TODO // string |  (optional)
+    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    webCertificate := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTenantsList(context.Background()).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).EventRetention(eventRetention).FlowAuthentication(flowAuthentication).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantUuid(tenantUuid).WebCertificate(webCertificate).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTenantsList(context.Background()).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).EventRetention(eventRetention).FlowAuthentication(flowAuthentication).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantUuid(tenantUuid).WebCertificate(webCertificate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1892,17 +1892,17 @@ Name | Type | Description  | Notes
  **default_** | **bool** |  | 
  **domain** | **string** |  | 
  **eventRetention** | **string** |  | 
- **flowAuthentication** | [**string**](string.md) |  | 
- **flowInvalidation** | [**string**](string.md) |  | 
- **flowRecovery** | [**string**](string.md) |  | 
- **flowUnenrollment** | [**string**](string.md) |  | 
- **flowUserSettings** | [**string**](string.md) |  | 
+ **flowAuthentication** | **string** |  | 
+ **flowInvalidation** | **string** |  | 
+ **flowRecovery** | **string** |  | 
+ **flowUnenrollment** | **string** |  | 
+ **flowUserSettings** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
- **tenantUuid** | [**string**](string.md) |  | 
- **webCertificate** | [**string**](string.md) |  | 
+ **tenantUuid** | **string** |  | 
+ **webCertificate** | **string** |  | 
 
 ### Return type
 
@@ -1943,12 +1943,12 @@ import (
 )
 
 func main() {
-    tenantUuid := TODO // string | A UUID string identifying this Tenant.
+    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
     patchedTenantRequest := *openapiclient.NewPatchedTenantRequest() // PatchedTenantRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTenantsPartialUpdate(context.Background(), tenantUuid).PatchedTenantRequest(patchedTenantRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTenantsPartialUpdate(context.Background(), tenantUuid).PatchedTenantRequest(patchedTenantRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1964,7 +1964,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenantUuid** | [**string**](.md) | A UUID string identifying this Tenant. | 
+**tenantUuid** | **string** | A UUID string identifying this Tenant. | 
 
 ### Other Parameters
 
@@ -2015,11 +2015,11 @@ import (
 )
 
 func main() {
-    tenantUuid := TODO // string | A UUID string identifying this Tenant.
+    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTenantsRetrieve(context.Background(), tenantUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTenantsRetrieve(context.Background(), tenantUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2035,7 +2035,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenantUuid** | [**string**](.md) | A UUID string identifying this Tenant. | 
+**tenantUuid** | **string** | A UUID string identifying this Tenant. | 
 
 ### Other Parameters
 
@@ -2085,12 +2085,12 @@ import (
 )
 
 func main() {
-    tenantUuid := TODO // string | A UUID string identifying this Tenant.
+    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
     tenantRequest := *openapiclient.NewTenantRequest("Domain_example") // TenantRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTenantsUpdate(context.Background(), tenantUuid).TenantRequest(tenantRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTenantsUpdate(context.Background(), tenantUuid).TenantRequest(tenantRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2106,7 +2106,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenantUuid** | [**string**](.md) | A UUID string identifying this Tenant. | 
+**tenantUuid** | **string** | A UUID string identifying this Tenant. | 
 
 ### Other Parameters
 
@@ -2157,11 +2157,11 @@ import (
 )
 
 func main() {
-    tenantUuid := TODO // string | A UUID string identifying this Tenant.
+    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTenantsUsedByList(context.Background(), tenantUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTenantsUsedByList(context.Background(), tenantUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2177,7 +2177,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenantUuid** | [**string**](.md) | A UUID string identifying this Tenant. | 
+**tenantUuid** | **string** | A UUID string identifying this Tenant. | 
 
 ### Other Parameters
 
@@ -2230,8 +2230,8 @@ func main() {
     tokenRequest := *openapiclient.NewTokenRequest("Identifier_example") // TokenRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTokensCreate(context.Background()).TokenRequest(tokenRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTokensCreate(context.Background()).TokenRequest(tokenRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTokensCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2296,8 +2296,8 @@ func main() {
     identifier := "identifier_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTokensDestroy(context.Background(), identifier).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTokensDestroy(context.Background(), identifier).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTokensDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2375,8 +2375,8 @@ func main() {
     userUsername := "userUsername_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTokensList(context.Background()).Description(description).Expires(expires).Expiring(expiring).Identifier(identifier).Intent(intent).Managed(managed).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).UserUsername(userUsername).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTokensList(context.Background()).Description(description).Expires(expires).Expiring(expiring).Identifier(identifier).Intent(intent).Managed(managed).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).UserUsername(userUsername).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTokensList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2452,8 +2452,8 @@ func main() {
     patchedTokenRequest := *openapiclient.NewPatchedTokenRequest() // PatchedTokenRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTokensPartialUpdate(context.Background(), identifier).PatchedTokenRequest(patchedTokenRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTokensPartialUpdate(context.Background(), identifier).PatchedTokenRequest(patchedTokenRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTokensPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2523,8 +2523,8 @@ func main() {
     identifier := "identifier_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTokensRetrieve(context.Background(), identifier).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTokensRetrieve(context.Background(), identifier).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTokensRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2594,8 +2594,8 @@ func main() {
     tokenSetKeyRequest := *openapiclient.NewTokenSetKeyRequest("Key_example") // TokenSetKeyRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTokensSetKeyCreate(context.Background(), identifier).TokenSetKeyRequest(tokenSetKeyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTokensSetKeyCreate(context.Background(), identifier).TokenSetKeyRequest(tokenSetKeyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTokensSetKeyCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2664,8 +2664,8 @@ func main() {
     tokenRequest := *openapiclient.NewTokenRequest("Identifier_example") // TokenRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTokensUpdate(context.Background(), identifier).TokenRequest(tokenRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTokensUpdate(context.Background(), identifier).TokenRequest(tokenRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTokensUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2735,8 +2735,8 @@ func main() {
     identifier := "identifier_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTokensUsedByList(context.Background(), identifier).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTokensUsedByList(context.Background(), identifier).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTokensUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2805,8 +2805,8 @@ func main() {
     identifier := "identifier_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreTokensViewKeyRetrieve(context.Background(), identifier).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTokensViewKeyRetrieve(context.Background(), identifier).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTokensViewKeyRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2875,8 +2875,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User Consent.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUserConsentDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUserConsentDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUserConsentDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2940,7 +2940,7 @@ import (
 )
 
 func main() {
-    application := TODO // string |  (optional)
+    application := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -2948,8 +2948,8 @@ func main() {
     user := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUserConsentList(context.Background()).Application(application).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).User(user).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUserConsentList(context.Background()).Application(application).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).User(user).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUserConsentList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2970,7 +2970,7 @@ Other parameters are passed through a pointer to a apiCoreUserConsentListRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **application** | [**string**](string.md) |  | 
+ **application** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
@@ -3019,8 +3019,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User Consent.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUserConsentRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUserConsentRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUserConsentRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3089,8 +3089,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User Consent.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUserConsentUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUserConsentUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUserConsentUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3159,8 +3159,8 @@ func main() {
     userRequest := *openapiclient.NewUserRequest("Username_example", "Name_example", []string{"Groups_example"}) // UserRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUsersCreate(context.Background()).UserRequest(userRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersCreate(context.Background()).UserRequest(userRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3225,8 +3225,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUsersDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3305,8 +3305,8 @@ func main() {
     uuid := "uuid_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUsersList(context.Background()).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Username(username).Uuid(uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersList(context.Background()).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Username(username).Uuid(uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3382,8 +3382,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUsersMeRetrieve(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersMeRetrieve(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersMeRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3444,8 +3444,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUsersMetricsRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersMetricsRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersMetricsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3515,8 +3515,8 @@ func main() {
     patchedUserRequest := *openapiclient.NewPatchedUserRequest() // PatchedUserRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUsersPartialUpdate(context.Background(), id).PatchedUserRequest(patchedUserRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersPartialUpdate(context.Background(), id).PatchedUserRequest(patchedUserRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3587,8 +3587,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUsersRecoveryEmailRetrieve(context.Background(), id).EmailStage(emailStage).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersRecoveryEmailRetrieve(context.Background(), id).EmailStage(emailStage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersRecoveryEmailRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3656,8 +3656,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUsersRecoveryRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersRecoveryRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersRecoveryRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3726,8 +3726,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUsersRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3796,8 +3796,8 @@ func main() {
     userServiceAccountRequest := *openapiclient.NewUserServiceAccountRequest("Name_example") // UserServiceAccountRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUsersServiceAccountCreate(context.Background()).UserServiceAccountRequest(userServiceAccountRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersServiceAccountCreate(context.Background()).UserServiceAccountRequest(userServiceAccountRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersServiceAccountCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3863,8 +3863,8 @@ func main() {
     userPasswordSetRequest := *openapiclient.NewUserPasswordSetRequest("Password_example") // UserPasswordSetRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUsersSetPasswordCreate(context.Background(), id).UserPasswordSetRequest(userPasswordSetRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersSetPasswordCreate(context.Background(), id).UserPasswordSetRequest(userPasswordSetRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersSetPasswordCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3933,8 +3933,8 @@ func main() {
     userRequest := *openapiclient.NewUserRequest("Username_example", "Name_example", []string{"Groups_example"}) // UserRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUsersUpdate(context.Background(), id).UserRequest(userRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersUpdate(context.Background(), id).UserRequest(userRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4004,8 +4004,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CoreApi.CoreUsersUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -22,11 +22,11 @@ type PatchedUserRequest struct {
 	// User's display name.
 	Name *string `json:"name,omitempty"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive   *bool                   `json:"is_active,omitempty"`
-	LastLogin  NullableTime            `json:"last_login,omitempty"`
-	Groups     *[]string               `json:"groups,omitempty"`
-	Email      *string                 `json:"email,omitempty"`
-	Attributes *map[string]interface{} `json:"attributes,omitempty"`
+	IsActive   *bool                  `json:"is_active,omitempty"`
+	LastLogin  NullableTime           `json:"last_login,omitempty"`
+	Groups     []string               `json:"groups,omitempty"`
+	Email      *string                `json:"email,omitempty"`
+	Attributes map[string]interface{} `json:"attributes,omitempty"`
 }
 
 // NewPatchedUserRequest instantiates a new PatchedUserRequest object
@@ -191,12 +191,12 @@ func (o *PatchedUserRequest) GetGroups() []string {
 		var ret []string
 		return ret
 	}
-	return *o.Groups
+	return o.Groups
 }
 
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedUserRequest) GetGroupsOk() (*[]string, bool) {
+func (o *PatchedUserRequest) GetGroupsOk() ([]string, bool) {
 	if o == nil || o.Groups == nil {
 		return nil, false
 	}
@@ -214,7 +214,7 @@ func (o *PatchedUserRequest) HasGroups() bool {
 
 // SetGroups gets a reference to the given []string and assigns it to the Groups field.
 func (o *PatchedUserRequest) SetGroups(v []string) {
-	o.Groups = &v
+	o.Groups = v
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise.
@@ -255,12 +255,12 @@ func (o *PatchedUserRequest) GetAttributes() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Attributes
+	return o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedUserRequest) GetAttributesOk() (*map[string]interface{}, bool) {
+func (o *PatchedUserRequest) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -278,7 +278,7 @@ func (o *PatchedUserRequest) HasAttributes() bool {
 
 // SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
 func (o *PatchedUserRequest) SetAttributes(v map[string]interface{}) {
-	o.Attributes = &v
+	o.Attributes = v
 }
 
 func (o PatchedUserRequest) MarshalJSON() ([]byte, error) {

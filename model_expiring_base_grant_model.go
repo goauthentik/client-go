@@ -188,11 +188,11 @@ func (o *ExpiringBaseGrantModel) GetScope() []string {
 
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *ExpiringBaseGrantModel) GetScopeOk() (*[]string, bool) {
+func (o *ExpiringBaseGrantModel) GetScopeOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Scope, true
+	return o.Scope, true
 }
 
 // SetScope sets field value

@@ -19,10 +19,10 @@ import (
 type GroupRequest struct {
 	Name string `json:"name"`
 	// Users added to this group will be superusers.
-	IsSuperuser *bool                   `json:"is_superuser,omitempty"`
-	Parent      NullableString          `json:"parent"`
-	Users       []int32                 `json:"users"`
-	Attributes  *map[string]interface{} `json:"attributes,omitempty"`
+	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
+	Parent      NullableString         `json:"parent"`
+	Users       []int32                `json:"users"`
+	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 }
 
 // NewGroupRequest instantiates a new GroupRequest object
@@ -139,11 +139,11 @@ func (o *GroupRequest) GetUsers() []int32 {
 
 // GetUsersOk returns a tuple with the Users field value
 // and a boolean to check if the value has been set.
-func (o *GroupRequest) GetUsersOk() (*[]int32, bool) {
+func (o *GroupRequest) GetUsersOk() ([]int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Users, true
+	return o.Users, true
 }
 
 // SetUsers sets field value
@@ -157,12 +157,12 @@ func (o *GroupRequest) GetAttributes() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Attributes
+	return o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupRequest) GetAttributesOk() (*map[string]interface{}, bool) {
+func (o *GroupRequest) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -180,7 +180,7 @@ func (o *GroupRequest) HasAttributes() bool {
 
 // SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
 func (o *GroupRequest) SetAttributes(v map[string]interface{}) {
-	o.Attributes = &v
+	o.Attributes = v
 }
 
 func (o GroupRequest) MarshalJSON() ([]byte, error) {

@@ -78,11 +78,11 @@ func (o *PolicyTestResult) GetMessages() []string {
 
 // GetMessagesOk returns a tuple with the Messages field value
 // and a boolean to check if the value has been set.
-func (o *PolicyTestResult) GetMessagesOk() (*[]string, bool) {
+func (o *PolicyTestResult) GetMessagesOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Messages, true
+	return o.Messages, true
 }
 
 // SetMessages sets field value
@@ -102,11 +102,11 @@ func (o *PolicyTestResult) GetLogMessages() []map[string]interface{} {
 
 // GetLogMessagesOk returns a tuple with the LogMessages field value
 // and a boolean to check if the value has been set.
-func (o *PolicyTestResult) GetLogMessagesOk() (*[]map[string]interface{}, bool) {
+func (o *PolicyTestResult) GetLogMessagesOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.LogMessages, true
+	return o.LogMessages, true
 }
 
 // SetLogMessages sets field value

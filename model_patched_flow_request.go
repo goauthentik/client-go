@@ -23,8 +23,8 @@ type PatchedFlowRequest struct {
 	// Shown as the Title in Flow pages.
 	Title *string `json:"title,omitempty"`
 	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
-	Designation      *FlowDesignationEnum `json:"designation,omitempty"`
-	PolicyEngineMode *PolicyEngineMode    `json:"policy_engine_mode,omitempty"`
+	Designation      NullableFlowDesignationEnum `json:"designation,omitempty"`
+	PolicyEngineMode *PolicyEngineMode           `json:"policy_engine_mode,omitempty"`
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
 	CompatibilityMode *bool       `json:"compatibility_mode,omitempty"`
 	Layout            *LayoutEnum `json:"layout,omitempty"`
@@ -143,36 +143,47 @@ func (o *PatchedFlowRequest) SetTitle(v string) {
 	o.Title = &v
 }
 
-// GetDesignation returns the Designation field value if set, zero value otherwise.
+// GetDesignation returns the Designation field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedFlowRequest) GetDesignation() FlowDesignationEnum {
-	if o == nil || o.Designation == nil {
+	if o == nil || o.Designation.Get() == nil {
 		var ret FlowDesignationEnum
 		return ret
 	}
-	return *o.Designation
+	return *o.Designation.Get()
 }
 
 // GetDesignationOk returns a tuple with the Designation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedFlowRequest) GetDesignationOk() (*FlowDesignationEnum, bool) {
-	if o == nil || o.Designation == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Designation, true
+	return o.Designation.Get(), o.Designation.IsSet()
 }
 
 // HasDesignation returns a boolean if a field has been set.
 func (o *PatchedFlowRequest) HasDesignation() bool {
-	if o != nil && o.Designation != nil {
+	if o != nil && o.Designation.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDesignation gets a reference to the given FlowDesignationEnum and assigns it to the Designation field.
+// SetDesignation gets a reference to the given NullableFlowDesignationEnum and assigns it to the Designation field.
 func (o *PatchedFlowRequest) SetDesignation(v FlowDesignationEnum) {
-	o.Designation = &v
+	o.Designation.Set(&v)
+}
+
+// SetDesignationNil sets the value for Designation to be an explicit nil
+func (o *PatchedFlowRequest) SetDesignationNil() {
+	o.Designation.Set(nil)
+}
+
+// UnsetDesignation ensures that no value is present for Designation, not even an explicit nil
+func (o *PatchedFlowRequest) UnsetDesignation() {
+	o.Designation.Unset()
 }
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
@@ -282,8 +293,8 @@ func (o PatchedFlowRequest) MarshalJSON() ([]byte, error) {
 	if o.Title != nil {
 		toSerialize["title"] = o.Title
 	}
-	if o.Designation != nil {
-		toSerialize["designation"] = o.Designation
+	if o.Designation.IsSet() {
+		toSerialize["designation"] = o.Designation.Get()
 	}
 	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode

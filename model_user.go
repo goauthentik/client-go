@@ -23,15 +23,15 @@ type User struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive    *bool                   `json:"is_active,omitempty"`
-	LastLogin   NullableTime            `json:"last_login,omitempty"`
-	IsSuperuser bool                    `json:"is_superuser"`
-	Groups      []string                `json:"groups"`
-	GroupsObj   []Group                 `json:"groups_obj"`
-	Email       *string                 `json:"email,omitempty"`
-	Avatar      string                  `json:"avatar"`
-	Attributes  *map[string]interface{} `json:"attributes,omitempty"`
-	Uid         string                  `json:"uid"`
+	IsActive    *bool                  `json:"is_active,omitempty"`
+	LastLogin   NullableTime           `json:"last_login,omitempty"`
+	IsSuperuser bool                   `json:"is_superuser"`
+	Groups      []string               `json:"groups"`
+	GroupsObj   []Group                `json:"groups_obj"`
+	Email       *string                `json:"email,omitempty"`
+	Avatar      string                 `json:"avatar"`
+	Attributes  map[string]interface{} `json:"attributes,omitempty"`
+	Uid         string                 `json:"uid"`
 }
 
 // NewUser instantiates a new User object
@@ -242,11 +242,11 @@ func (o *User) GetGroups() []string {
 
 // GetGroupsOk returns a tuple with the Groups field value
 // and a boolean to check if the value has been set.
-func (o *User) GetGroupsOk() (*[]string, bool) {
+func (o *User) GetGroupsOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Groups, true
+	return o.Groups, true
 }
 
 // SetGroups sets field value
@@ -266,11 +266,11 @@ func (o *User) GetGroupsObj() []Group {
 
 // GetGroupsObjOk returns a tuple with the GroupsObj field value
 // and a boolean to check if the value has been set.
-func (o *User) GetGroupsObjOk() (*[]Group, bool) {
+func (o *User) GetGroupsObjOk() ([]Group, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.GroupsObj, true
+	return o.GroupsObj, true
 }
 
 // SetGroupsObj sets field value
@@ -340,12 +340,12 @@ func (o *User) GetAttributes() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Attributes
+	return o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetAttributesOk() (*map[string]interface{}, bool) {
+func (o *User) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -363,7 +363,7 @@ func (o *User) HasAttributes() bool {
 
 // SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
 func (o *User) SetAttributes(v map[string]interface{}) {
-	o.Attributes = &v
+	o.Attributes = v
 }
 
 // GetUid returns the Uid field value

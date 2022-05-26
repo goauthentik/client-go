@@ -28,7 +28,8 @@ const (
 	USERMATCHINGMODEENUM_USERNAME_DENY UserMatchingModeEnum = "username_deny"
 )
 
-var allowedUserMatchingModeEnumEnumValues = []UserMatchingModeEnum{
+// All allowed values of UserMatchingModeEnum enum
+var AllowedUserMatchingModeEnumEnumValues = []UserMatchingModeEnum{
 	"identifier",
 	"email_link",
 	"email_deny",
@@ -43,7 +44,7 @@ func (v *UserMatchingModeEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := UserMatchingModeEnum(value)
-	for _, existing := range allowedUserMatchingModeEnumEnumValues {
+	for _, existing := range AllowedUserMatchingModeEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -60,13 +61,13 @@ func NewUserMatchingModeEnumFromValue(v string) (*UserMatchingModeEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for UserMatchingModeEnum: valid values are %v", v, allowedUserMatchingModeEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for UserMatchingModeEnum: valid values are %v", v, AllowedUserMatchingModeEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v UserMatchingModeEnum) IsValid() bool {
-	for _, existing := range allowedUserMatchingModeEnumEnumValues {
+	for _, existing := range AllowedUserMatchingModeEnumEnumValues {
 		if existing == v {
 			return true
 		}

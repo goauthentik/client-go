@@ -22,12 +22,12 @@ type ProxyOutpostConfig struct {
 	InternalHost *string `json:"internal_host,omitempty"`
 	ExternalHost string  `json:"external_host"`
 	// Validate SSL Certificates of upstream servers
-	InternalHostSslValidation *bool                      `json:"internal_host_ssl_validation,omitempty"`
-	ClientId                  *string                    `json:"client_id,omitempty"`
-	ClientSecret              *string                    `json:"client_secret,omitempty"`
-	OidcConfiguration         OpenIDConnectConfiguration `json:"oidc_configuration"`
-	CookieSecret              *string                    `json:"cookie_secret,omitempty"`
-	Certificate               NullableString             `json:"certificate,omitempty"`
+	InternalHostSslValidation *bool                               `json:"internal_host_ssl_validation,omitempty"`
+	ClientId                  *string                             `json:"client_id,omitempty"`
+	ClientSecret              *string                             `json:"client_secret,omitempty"`
+	OidcConfiguration         ProxyOutpostConfigOidcConfiguration `json:"oidc_configuration"`
+	CookieSecret              *string                             `json:"cookie_secret,omitempty"`
+	Certificate               NullableString                      `json:"certificate,omitempty"`
 	// Regular expressions for which authentication is not required. Each new line is interpreted as a new Regular Expression.
 	SkipPathRegex *string `json:"skip_path_regex,omitempty"`
 	// Set a custom HTTP-Basic Authentication header based on values from authentik.
@@ -37,10 +37,10 @@ type ProxyOutpostConfig struct {
 	// User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user's Email address is used.
 	BasicAuthUserAttribute *string `json:"basic_auth_user_attribute,omitempty"`
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
-	Mode            *ProxyMode      `json:"mode,omitempty"`
-	CookieDomain    *string         `json:"cookie_domain,omitempty"`
-	TokenValidity   NullableFloat64 `json:"token_validity"`
-	ScopesToRequest []string        `json:"scopes_to_request"`
+	Mode            NullableProxyMode `json:"mode,omitempty"`
+	CookieDomain    *string           `json:"cookie_domain,omitempty"`
+	TokenValidity   NullableFloat64   `json:"token_validity"`
+	ScopesToRequest []string          `json:"scopes_to_request"`
 	// Internal application name, used in URLs.
 	AssignedApplicationSlug string `json:"assigned_application_slug"`
 	// Application's display Name.
@@ -51,7 +51,7 @@ type ProxyOutpostConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration OpenIDConnectConfiguration, tokenValidity NullableFloat64, scopesToRequest []string, assignedApplicationSlug string, assignedApplicationName string) *ProxyOutpostConfig {
+func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration ProxyOutpostConfigOidcConfiguration, tokenValidity NullableFloat64, scopesToRequest []string, assignedApplicationSlug string, assignedApplicationName string) *ProxyOutpostConfig {
 	this := ProxyOutpostConfig{}
 	this.Pk = pk
 	this.Name = name
@@ -273,9 +273,9 @@ func (o *ProxyOutpostConfig) SetClientSecret(v string) {
 }
 
 // GetOidcConfiguration returns the OidcConfiguration field value
-func (o *ProxyOutpostConfig) GetOidcConfiguration() OpenIDConnectConfiguration {
+func (o *ProxyOutpostConfig) GetOidcConfiguration() ProxyOutpostConfigOidcConfiguration {
 	if o == nil {
-		var ret OpenIDConnectConfiguration
+		var ret ProxyOutpostConfigOidcConfiguration
 		return ret
 	}
 
@@ -284,7 +284,7 @@ func (o *ProxyOutpostConfig) GetOidcConfiguration() OpenIDConnectConfiguration {
 
 // GetOidcConfigurationOk returns a tuple with the OidcConfiguration field value
 // and a boolean to check if the value has been set.
-func (o *ProxyOutpostConfig) GetOidcConfigurationOk() (*OpenIDConnectConfiguration, bool) {
+func (o *ProxyOutpostConfig) GetOidcConfigurationOk() (*ProxyOutpostConfigOidcConfiguration, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -292,7 +292,7 @@ func (o *ProxyOutpostConfig) GetOidcConfigurationOk() (*OpenIDConnectConfigurati
 }
 
 // SetOidcConfiguration sets field value
-func (o *ProxyOutpostConfig) SetOidcConfiguration(v OpenIDConnectConfiguration) {
+func (o *ProxyOutpostConfig) SetOidcConfiguration(v ProxyOutpostConfigOidcConfiguration) {
 	o.OidcConfiguration = v
 }
 
@@ -499,36 +499,47 @@ func (o *ProxyOutpostConfig) SetBasicAuthUserAttribute(v string) {
 	o.BasicAuthUserAttribute = &v
 }
 
-// GetMode returns the Mode field value if set, zero value otherwise.
+// GetMode returns the Mode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProxyOutpostConfig) GetMode() ProxyMode {
-	if o == nil || o.Mode == nil {
+	if o == nil || o.Mode.Get() == nil {
 		var ret ProxyMode
 		return ret
 	}
-	return *o.Mode
+	return *o.Mode.Get()
 }
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxyOutpostConfig) GetModeOk() (*ProxyMode, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Mode, true
+	return o.Mode.Get(), o.Mode.IsSet()
 }
 
 // HasMode returns a boolean if a field has been set.
 func (o *ProxyOutpostConfig) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && o.Mode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMode gets a reference to the given ProxyMode and assigns it to the Mode field.
+// SetMode gets a reference to the given NullableProxyMode and assigns it to the Mode field.
 func (o *ProxyOutpostConfig) SetMode(v ProxyMode) {
-	o.Mode = &v
+	o.Mode.Set(&v)
+}
+
+// SetModeNil sets the value for Mode to be an explicit nil
+func (o *ProxyOutpostConfig) SetModeNil() {
+	o.Mode.Set(nil)
+}
+
+// UnsetMode ensures that no value is present for Mode, not even an explicit nil
+func (o *ProxyOutpostConfig) UnsetMode() {
+	o.Mode.Unset()
 }
 
 // GetCookieDomain returns the CookieDomain field value if set, zero value otherwise.
@@ -601,11 +612,11 @@ func (o *ProxyOutpostConfig) GetScopesToRequest() []string {
 
 // GetScopesToRequestOk returns a tuple with the ScopesToRequest field value
 // and a boolean to check if the value has been set.
-func (o *ProxyOutpostConfig) GetScopesToRequestOk() (*[]string, bool) {
+func (o *ProxyOutpostConfig) GetScopesToRequestOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ScopesToRequest, true
+	return o.ScopesToRequest, true
 }
 
 // SetScopesToRequest sets field value
@@ -705,8 +716,8 @@ func (o ProxyOutpostConfig) MarshalJSON() ([]byte, error) {
 	if o.BasicAuthUserAttribute != nil {
 		toSerialize["basic_auth_user_attribute"] = o.BasicAuthUserAttribute
 	}
-	if o.Mode != nil {
-		toSerialize["mode"] = o.Mode
+	if o.Mode.IsSet() {
+		toSerialize["mode"] = o.Mode.Get()
 	}
 	if o.CookieDomain != nil {
 		toSerialize["cookie_domain"] = o.CookieDomain

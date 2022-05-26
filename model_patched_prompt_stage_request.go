@@ -17,10 +17,10 @@ import (
 
 // PatchedPromptStageRequest PromptStage Serializer
 type PatchedPromptStageRequest struct {
-	Name               *string        `json:"name,omitempty"`
-	FlowSet            *[]FlowRequest `json:"flow_set,omitempty"`
-	Fields             *[]string      `json:"fields,omitempty"`
-	ValidationPolicies *[]string      `json:"validation_policies,omitempty"`
+	Name               *string       `json:"name,omitempty"`
+	FlowSet            []FlowRequest `json:"flow_set,omitempty"`
+	Fields             []string      `json:"fields,omitempty"`
+	ValidationPolicies []string      `json:"validation_policies,omitempty"`
 }
 
 // NewPatchedPromptStageRequest instantiates a new PatchedPromptStageRequest object
@@ -78,12 +78,12 @@ func (o *PatchedPromptStageRequest) GetFlowSet() []FlowRequest {
 		var ret []FlowRequest
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedPromptStageRequest) GetFlowSetOk() (*[]FlowRequest, bool) {
+func (o *PatchedPromptStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -101,7 +101,7 @@ func (o *PatchedPromptStageRequest) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
 func (o *PatchedPromptStageRequest) SetFlowSet(v []FlowRequest) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise.
@@ -110,12 +110,12 @@ func (o *PatchedPromptStageRequest) GetFields() []string {
 		var ret []string
 		return ret
 	}
-	return *o.Fields
+	return o.Fields
 }
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedPromptStageRequest) GetFieldsOk() (*[]string, bool) {
+func (o *PatchedPromptStageRequest) GetFieldsOk() ([]string, bool) {
 	if o == nil || o.Fields == nil {
 		return nil, false
 	}
@@ -133,7 +133,7 @@ func (o *PatchedPromptStageRequest) HasFields() bool {
 
 // SetFields gets a reference to the given []string and assigns it to the Fields field.
 func (o *PatchedPromptStageRequest) SetFields(v []string) {
-	o.Fields = &v
+	o.Fields = v
 }
 
 // GetValidationPolicies returns the ValidationPolicies field value if set, zero value otherwise.
@@ -142,12 +142,12 @@ func (o *PatchedPromptStageRequest) GetValidationPolicies() []string {
 		var ret []string
 		return ret
 	}
-	return *o.ValidationPolicies
+	return o.ValidationPolicies
 }
 
 // GetValidationPoliciesOk returns a tuple with the ValidationPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedPromptStageRequest) GetValidationPoliciesOk() (*[]string, bool) {
+func (o *PatchedPromptStageRequest) GetValidationPoliciesOk() ([]string, bool) {
 	if o == nil || o.ValidationPolicies == nil {
 		return nil, false
 	}
@@ -165,7 +165,7 @@ func (o *PatchedPromptStageRequest) HasValidationPolicies() bool {
 
 // SetValidationPolicies gets a reference to the given []string and assigns it to the ValidationPolicies field.
 func (o *PatchedPromptStageRequest) SetValidationPolicies(v []string) {
-	o.ValidationPolicies = &v
+	o.ValidationPolicies = v
 }
 
 func (o PatchedPromptStageRequest) MarshalJSON() ([]byte, error) {

@@ -24,12 +24,12 @@ type GroupMember struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive   *bool                   `json:"is_active,omitempty"`
-	LastLogin  NullableTime            `json:"last_login,omitempty"`
-	Email      *string                 `json:"email,omitempty"`
-	Avatar     string                  `json:"avatar"`
-	Attributes *map[string]interface{} `json:"attributes,omitempty"`
-	Uid        string                  `json:"uid"`
+	IsActive   *bool                  `json:"is_active,omitempty"`
+	LastLogin  NullableTime           `json:"last_login,omitempty"`
+	Email      *string                `json:"email,omitempty"`
+	Avatar     string                 `json:"avatar"`
+	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Uid        string                 `json:"uid"`
 }
 
 // NewGroupMember instantiates a new GroupMember object
@@ -263,12 +263,12 @@ func (o *GroupMember) GetAttributes() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Attributes
+	return o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupMember) GetAttributesOk() (*map[string]interface{}, bool) {
+func (o *GroupMember) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -286,7 +286,7 @@ func (o *GroupMember) HasAttributes() bool {
 
 // SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
 func (o *GroupMember) SetAttributes(v map[string]interface{}) {
-	o.Attributes = &v
+	o.Attributes = v
 }
 
 // GetUid returns the Uid field value

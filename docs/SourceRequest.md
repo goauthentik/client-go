@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
-**UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
+**UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 
 ## Methods
 
@@ -216,6 +216,16 @@ SetUserMatchingMode sets UserMatchingMode field to given value.
 
 HasUserMatchingMode returns a boolean if a field has been set.
 
+### SetUserMatchingModeNil
+
+`func (o *SourceRequest) SetUserMatchingModeNil(b bool)`
+
+ SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
+
+### UnsetUserMatchingMode
+`func (o *SourceRequest) UnsetUserMatchingMode()`
+
+UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

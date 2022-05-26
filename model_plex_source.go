@@ -33,11 +33,11 @@ type PlexSource struct {
 	MetaModelName     string            `json:"meta_model_name"`
 	PolicyEngineMode  *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
-	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
+	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Client identifier used to talk to Plex.
 	ClientId *string `json:"client_id,omitempty"`
 	// Which servers a user has to be a member of to be granted access. Empty list allows every server.
-	AllowedServers *[]string `json:"allowed_servers,omitempty"`
+	AllowedServers []string `json:"allowed_servers,omitempty"`
 	// Allow friends to authenticate, even if you don't share a server.
 	AllowFriends *bool `json:"allow_friends,omitempty"`
 	// Plex token used to check friends
@@ -387,36 +387,47 @@ func (o *PlexSource) SetPolicyEngineMode(v PolicyEngineMode) {
 	o.PolicyEngineMode = &v
 }
 
-// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
+// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PlexSource) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil || o.UserMatchingMode.Get() == nil {
 		var ret UserMatchingModeEnum
 		return ret
 	}
-	return *o.UserMatchingMode
+	return *o.UserMatchingMode.Get()
 }
 
 // GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PlexSource) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.UserMatchingMode, true
+	return o.UserMatchingMode.Get(), o.UserMatchingMode.IsSet()
 }
 
 // HasUserMatchingMode returns a boolean if a field has been set.
 func (o *PlexSource) HasUserMatchingMode() bool {
-	if o != nil && o.UserMatchingMode != nil {
+	if o != nil && o.UserMatchingMode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUserMatchingMode gets a reference to the given UserMatchingModeEnum and assigns it to the UserMatchingMode field.
+// SetUserMatchingMode gets a reference to the given NullableUserMatchingModeEnum and assigns it to the UserMatchingMode field.
 func (o *PlexSource) SetUserMatchingMode(v UserMatchingModeEnum) {
-	o.UserMatchingMode = &v
+	o.UserMatchingMode.Set(&v)
+}
+
+// SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
+func (o *PlexSource) SetUserMatchingModeNil() {
+	o.UserMatchingMode.Set(nil)
+}
+
+// UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
+func (o *PlexSource) UnsetUserMatchingMode() {
+	o.UserMatchingMode.Unset()
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
@@ -457,12 +468,12 @@ func (o *PlexSource) GetAllowedServers() []string {
 		var ret []string
 		return ret
 	}
-	return *o.AllowedServers
+	return o.AllowedServers
 }
 
 // GetAllowedServersOk returns a tuple with the AllowedServers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PlexSource) GetAllowedServersOk() (*[]string, bool) {
+func (o *PlexSource) GetAllowedServersOk() ([]string, bool) {
 	if o == nil || o.AllowedServers == nil {
 		return nil, false
 	}
@@ -480,7 +491,7 @@ func (o *PlexSource) HasAllowedServers() bool {
 
 // SetAllowedServers gets a reference to the given []string and assigns it to the AllowedServers field.
 func (o *PlexSource) SetAllowedServers(v []string) {
-	o.AllowedServers = &v
+	o.AllowedServers = v
 }
 
 // GetAllowFriends returns the AllowFriends field value if set, zero value otherwise.
@@ -574,8 +585,8 @@ func (o PlexSource) MarshalJSON() ([]byte, error) {
 	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if o.UserMatchingMode != nil {
-		toSerialize["user_matching_mode"] = o.UserMatchingMode
+	if o.UserMatchingMode.IsSet() {
+		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
 	}
 	if o.ClientId != nil {
 		toSerialize["client_id"] = o.ClientId

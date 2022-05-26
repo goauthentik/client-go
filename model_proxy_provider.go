@@ -20,9 +20,9 @@ type ProxyProvider struct {
 	Pk   int32  `json:"pk"`
 	Name string `json:"name"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string    `json:"authorization_flow"`
-	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
-	Component         string    `json:"component"`
+	AuthorizationFlow string   `json:"authorization_flow"`
+	PropertyMappings  []string `json:"property_mappings,omitempty"`
+	Component         string   `json:"component"`
 	// Internal application name, used in URLs.
 	AssignedApplicationSlug string `json:"assigned_application_slug"`
 	// Application's display Name.
@@ -44,9 +44,9 @@ type ProxyProvider struct {
 	// User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user's Email address is used.
 	BasicAuthUserAttribute *string `json:"basic_auth_user_attribute,omitempty"`
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
-	Mode         *ProxyMode `json:"mode,omitempty"`
-	RedirectUris string     `json:"redirect_uris"`
-	CookieDomain *string    `json:"cookie_domain,omitempty"`
+	Mode         NullableProxyMode `json:"mode,omitempty"`
+	RedirectUris string            `json:"redirect_uris"`
+	CookieDomain *string           `json:"cookie_domain,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	TokenValidity *string  `json:"token_validity,omitempty"`
 	OutpostSet    []string `json:"outpost_set"`
@@ -159,12 +159,12 @@ func (o *ProxyProvider) GetPropertyMappings() []string {
 		var ret []string
 		return ret
 	}
-	return *o.PropertyMappings
+	return o.PropertyMappings
 }
 
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProxyProvider) GetPropertyMappingsOk() (*[]string, bool) {
+func (o *ProxyProvider) GetPropertyMappingsOk() ([]string, bool) {
 	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
@@ -182,7 +182,7 @@ func (o *ProxyProvider) HasPropertyMappings() bool {
 
 // SetPropertyMappings gets a reference to the given []string and assigns it to the PropertyMappings field.
 func (o *ProxyProvider) SetPropertyMappings(v []string) {
-	o.PropertyMappings = &v
+	o.PropertyMappings = v
 }
 
 // GetComponent returns the Component field value
@@ -588,36 +588,47 @@ func (o *ProxyProvider) SetBasicAuthUserAttribute(v string) {
 	o.BasicAuthUserAttribute = &v
 }
 
-// GetMode returns the Mode field value if set, zero value otherwise.
+// GetMode returns the Mode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProxyProvider) GetMode() ProxyMode {
-	if o == nil || o.Mode == nil {
+	if o == nil || o.Mode.Get() == nil {
 		var ret ProxyMode
 		return ret
 	}
-	return *o.Mode
+	return *o.Mode.Get()
 }
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxyProvider) GetModeOk() (*ProxyMode, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Mode, true
+	return o.Mode.Get(), o.Mode.IsSet()
 }
 
 // HasMode returns a boolean if a field has been set.
 func (o *ProxyProvider) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && o.Mode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMode gets a reference to the given ProxyMode and assigns it to the Mode field.
+// SetMode gets a reference to the given NullableProxyMode and assigns it to the Mode field.
 func (o *ProxyProvider) SetMode(v ProxyMode) {
-	o.Mode = &v
+	o.Mode.Set(&v)
+}
+
+// SetModeNil sets the value for Mode to be an explicit nil
+func (o *ProxyProvider) SetModeNil() {
+	o.Mode.Set(nil)
+}
+
+// UnsetMode ensures that no value is present for Mode, not even an explicit nil
+func (o *ProxyProvider) UnsetMode() {
+	o.Mode.Unset()
 }
 
 // GetRedirectUris returns the RedirectUris field value
@@ -720,11 +731,11 @@ func (o *ProxyProvider) GetOutpostSet() []string {
 
 // GetOutpostSetOk returns a tuple with the OutpostSet field value
 // and a boolean to check if the value has been set.
-func (o *ProxyProvider) GetOutpostSetOk() (*[]string, bool) {
+func (o *ProxyProvider) GetOutpostSetOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.OutpostSet, true
+	return o.OutpostSet, true
 }
 
 // SetOutpostSet sets field value
@@ -788,8 +799,8 @@ func (o ProxyProvider) MarshalJSON() ([]byte, error) {
 	if o.BasicAuthUserAttribute != nil {
 		toSerialize["basic_auth_user_attribute"] = o.BasicAuthUserAttribute
 	}
-	if o.Mode != nil {
-		toSerialize["mode"] = o.Mode
+	if o.Mode.IsSet() {
+		toSerialize["mode"] = o.Mode.Get()
 	}
 	if true {
 		toSerialize["redirect_uris"] = o.RedirectUris

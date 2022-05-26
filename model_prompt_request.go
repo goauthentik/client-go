@@ -18,15 +18,15 @@ import (
 // PromptRequest Prompt Serializer
 type PromptRequest struct {
 	// Name of the form field, also used to store the value
-	FieldKey              string          `json:"field_key"`
-	Label                 string          `json:"label"`
-	Type                  PromptTypeEnum  `json:"type"`
-	Required              *bool           `json:"required,omitempty"`
-	Placeholder           *string         `json:"placeholder,omitempty"`
-	Order                 *int32          `json:"order,omitempty"`
-	PromptstageSet        *[]StageRequest `json:"promptstage_set,omitempty"`
-	SubText               *string         `json:"sub_text,omitempty"`
-	PlaceholderExpression *bool           `json:"placeholder_expression,omitempty"`
+	FieldKey              string         `json:"field_key"`
+	Label                 string         `json:"label"`
+	Type                  PromptTypeEnum `json:"type"`
+	Required              *bool          `json:"required,omitempty"`
+	Placeholder           *string        `json:"placeholder,omitempty"`
+	Order                 *int32         `json:"order,omitempty"`
+	PromptstageSet        []StageRequest `json:"promptstage_set,omitempty"`
+	SubText               *string        `json:"sub_text,omitempty"`
+	PlaceholderExpression *bool          `json:"placeholder_expression,omitempty"`
 }
 
 // NewPromptRequest instantiates a new PromptRequest object
@@ -223,12 +223,12 @@ func (o *PromptRequest) GetPromptstageSet() []StageRequest {
 		var ret []StageRequest
 		return ret
 	}
-	return *o.PromptstageSet
+	return o.PromptstageSet
 }
 
 // GetPromptstageSetOk returns a tuple with the PromptstageSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PromptRequest) GetPromptstageSetOk() (*[]StageRequest, bool) {
+func (o *PromptRequest) GetPromptstageSetOk() ([]StageRequest, bool) {
 	if o == nil || o.PromptstageSet == nil {
 		return nil, false
 	}
@@ -246,7 +246,7 @@ func (o *PromptRequest) HasPromptstageSet() bool {
 
 // SetPromptstageSet gets a reference to the given []StageRequest and assigns it to the PromptstageSet field.
 func (o *PromptRequest) SetPromptstageSet(v []StageRequest) {
-	o.PromptstageSet = &v
+	o.PromptstageSet = v
 }
 
 // GetSubText returns the SubText field value if set, zero value otherwise.

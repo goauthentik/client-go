@@ -231,11 +231,11 @@ func (o *AuthenticatorStaticChallenge) GetCodes() []string {
 
 // GetCodesOk returns a tuple with the Codes field value
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorStaticChallenge) GetCodesOk() (*[]string, bool) {
+func (o *AuthenticatorStaticChallenge) GetCodesOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Codes, true
+	return o.Codes, true
 }
 
 // SetCodes sets field value

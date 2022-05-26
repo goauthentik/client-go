@@ -26,6 +26,7 @@ docs/AppEnum.md
 docs/AppleChallengeResponseRequest.md
 docs/AppleLoginChallenge.md
 docs/Application.md
+docs/ApplicationProviderObj.md
 docs/ApplicationRequest.md
 docs/AuthTypeEnum.md
 docs/AuthenticateWebAuthnStage.md
@@ -129,9 +130,11 @@ docs/FlowDesignationEnum.md
 docs/FlowDiagram.md
 docs/FlowInspection.md
 docs/FlowInspectorPlan.md
+docs/FlowInspectorPlanCurrentStage.md
 docs/FlowRequest.md
 docs/FlowStageBinding.md
 docs/FlowStageBindingRequest.md
+docs/FlowStageBindingStageObj.md
 docs/FlowsApi.md
 docs/FooterLink.md
 docs/GenericError.md
@@ -148,6 +151,7 @@ docs/IdentificationStageRequest.md
 docs/IntentEnum.md
 docs/InvalidResponseActionEnum.md
 docs/Invitation.md
+docs/InvitationCreatedBy.md
 docs/InvitationRequest.md
 docs/InvitationStage.md
 docs/InvitationStageRequest.md
@@ -172,6 +176,7 @@ docs/NotConfiguredActionEnum.md
 docs/Notification.md
 docs/NotificationRequest.md
 docs/NotificationRule.md
+docs/NotificationRuleGroupObj.md
 docs/NotificationRuleRequest.md
 docs/NotificationTransport.md
 docs/NotificationTransportModeEnum.md
@@ -184,12 +189,14 @@ docs/OAuth2ProviderRequest.md
 docs/OAuth2ProviderSetupURLs.md
 docs/OAuthSource.md
 docs/OAuthSourceRequest.md
+docs/OAuthSourceType.md
 docs/Oauth2Api.md
 docs/OpenIDConnectConfiguration.md
 docs/Outpost.md
 docs/OutpostDefaultConfig.md
 docs/OutpostHealth.md
 docs/OutpostRequest.md
+docs/OutpostServiceConnectionObj.md
 docs/OutpostTypeEnum.md
 docs/OutpostsApi.md
 docs/PaginatedApplicationList.md
@@ -347,12 +354,15 @@ docs/PlexAuthenticationChallengeResponseRequest.md
 docs/PlexSource.md
 docs/PlexSourceConnection.md
 docs/PlexSourceConnectionRequest.md
+docs/PlexSourceConnectionSource.md
 docs/PlexSourceRequest.md
 docs/PlexTokenRedeemRequest.md
 docs/PoliciesApi.md
 docs/Policy.md
 docs/PolicyBinding.md
+docs/PolicyBindingPolicyObj.md
 docs/PolicyBindingRequest.md
+docs/PolicyBindingUserObj.md
 docs/PolicyEngineMode.md
 docs/PolicyRequest.md
 docs/PolicyTestRequest.md
@@ -374,6 +384,7 @@ docs/ProviderTypeEnum.md
 docs/ProvidersApi.md
 docs/ProxyMode.md
 docs/ProxyOutpostConfig.md
+docs/ProxyOutpostConfigOidcConfiguration.md
 docs/ProxyProvider.md
 docs/ProxyProviderRequest.md
 docs/RedirectChallenge.md
@@ -470,6 +481,7 @@ model_app_enum.go
 model_apple_challenge_response_request.go
 model_apple_login_challenge.go
 model_application.go
+model_application_provider_obj.go
 model_application_request.go
 model_auth_type_enum.go
 model_authenticate_web_authn_stage.go
@@ -569,9 +581,11 @@ model_flow_designation_enum.go
 model_flow_diagram.go
 model_flow_inspection.go
 model_flow_inspector_plan.go
+model_flow_inspector_plan_current_stage.go
 model_flow_request.go
 model_flow_stage_binding.go
 model_flow_stage_binding_request.go
+model_flow_stage_binding_stage_obj.go
 model_footer_link.go
 model_generic_error.go
 model_group.go
@@ -587,6 +601,7 @@ model_identification_stage_request.go
 model_intent_enum.go
 model_invalid_response_action_enum.go
 model_invitation.go
+model_invitation_created_by.go
 model_invitation_request.go
 model_invitation_stage.go
 model_invitation_stage_request.go
@@ -611,6 +626,7 @@ model_not_configured_action_enum.go
 model_notification.go
 model_notification_request.go
 model_notification_rule.go
+model_notification_rule_group_obj.go
 model_notification_rule_request.go
 model_notification_transport.go
 model_notification_transport_mode_enum.go
@@ -623,11 +639,13 @@ model_o_auth2_provider_request.go
 model_o_auth2_provider_setup_urls.go
 model_o_auth_source.go
 model_o_auth_source_request.go
+model_o_auth_source_type.go
 model_open_id_connect_configuration.go
 model_outpost.go
 model_outpost_default_config.go
 model_outpost_health.go
 model_outpost_request.go
+model_outpost_service_connection_obj.go
 model_outpost_type_enum.go
 model_paginated_application_list.go
 model_paginated_application_list_pagination.go
@@ -784,11 +802,14 @@ model_plex_authentication_challenge_response_request.go
 model_plex_source.go
 model_plex_source_connection.go
 model_plex_source_connection_request.go
+model_plex_source_connection_source.go
 model_plex_source_request.go
 model_plex_token_redeem_request.go
 model_policy.go
 model_policy_binding.go
+model_policy_binding_policy_obj.go
 model_policy_binding_request.go
+model_policy_binding_user_obj.go
 model_policy_engine_mode.go
 model_policy_request.go
 model_policy_test_request.go
@@ -808,6 +829,7 @@ model_provider_request.go
 model_provider_type_enum.go
 model_proxy_mode.go
 model_proxy_outpost_config.go
+model_proxy_outpost_config_oidc_configuration.go
 model_proxy_provider.go
 model_proxy_provider_request.go
 model_redirect_challenge.go

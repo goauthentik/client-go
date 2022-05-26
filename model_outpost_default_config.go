@@ -50,11 +50,11 @@ func (o *OutpostDefaultConfig) GetConfig() map[string]interface{} {
 
 // GetConfigOk returns a tuple with the Config field value
 // and a boolean to check if the value has been set.
-func (o *OutpostDefaultConfig) GetConfigOk() (*map[string]interface{}, bool) {
+func (o *OutpostDefaultConfig) GetConfigOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Config, true
+	return o.Config, true
 }
 
 // SetConfig sets field value

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
-**Severity** | [**SeverityEnum**](SeverityEnum.md) |  | [readonly] 
+**Severity** | [**NullableSeverityEnum**](SeverityEnum.md) |  | [readonly] 
 **Body** | **string** |  | [readonly] 
 **Created** | **time.Time** |  | [readonly] 
 **Event** | Pointer to [**Event**](Event.md) |  | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewNotification
 
-`func NewNotification(pk string, severity SeverityEnum, body string, created time.Time, ) *Notification`
+`func NewNotification(pk string, severity NullableSeverityEnum, body string, created time.Time, ) *Notification`
 
 NewNotification instantiates a new Notification object
 This constructor will assign default values to properties that have it defined,
@@ -70,6 +70,16 @@ and a boolean to check if the value has been set.
 SetSeverity sets Severity field to given value.
 
 
+### SetSeverityNil
+
+`func (o *Notification) SetSeverityNil(b bool)`
+
+ SetSeverityNil sets the value for Severity to be an explicit nil
+
+### UnsetSeverity
+`func (o *Notification) UnsetSeverity()`
+
+UnsetSeverity ensures that no value is present for Severity, not even an explicit nil
 ### GetBody
 
 `func (o *Notification) GetBody() string`

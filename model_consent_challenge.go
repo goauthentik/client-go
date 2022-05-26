@@ -257,11 +257,11 @@ func (o *ConsentChallenge) GetPermissions() []Permission {
 
 // GetPermissionsOk returns a tuple with the Permissions field value
 // and a boolean to check if the value has been set.
-func (o *ConsentChallenge) GetPermissionsOk() (*[]Permission, bool) {
+func (o *ConsentChallenge) GetPermissionsOk() ([]Permission, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Permissions, true
+	return o.Permissions, true
 }
 
 // SetPermissions sets field value

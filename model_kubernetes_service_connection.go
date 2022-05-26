@@ -26,7 +26,7 @@ type KubernetesServiceConnection struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	MetaModelName     string `json:"meta_model_name"`
 	// Paste your kubeconfig here. authentik will automatically use the currently selected context.
-	Kubeconfig *map[string]interface{} `json:"kubeconfig,omitempty"`
+	Kubeconfig map[string]interface{} `json:"kubeconfig,omitempty"`
 }
 
 // NewKubernetesServiceConnection instantiates a new KubernetesServiceConnection object
@@ -234,12 +234,12 @@ func (o *KubernetesServiceConnection) GetKubeconfig() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Kubeconfig
+	return o.Kubeconfig
 }
 
 // GetKubeconfigOk returns a tuple with the Kubeconfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KubernetesServiceConnection) GetKubeconfigOk() (*map[string]interface{}, bool) {
+func (o *KubernetesServiceConnection) GetKubeconfigOk() (map[string]interface{}, bool) {
 	if o == nil || o.Kubeconfig == nil {
 		return nil, false
 	}
@@ -257,7 +257,7 @@ func (o *KubernetesServiceConnection) HasKubeconfig() bool {
 
 // SetKubeconfig gets a reference to the given map[string]interface{} and assigns it to the Kubeconfig field.
 func (o *KubernetesServiceConnection) SetKubeconfig(v map[string]interface{}) {
-	o.Kubeconfig = &v
+	o.Kubeconfig = v
 }
 
 func (o KubernetesServiceConnection) MarshalJSON() ([]byte, error) {

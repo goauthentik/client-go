@@ -67,8 +67,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersAllDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersAllDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersAllDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -139,8 +139,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersAllList(context.Background()).ApplicationIsnull(applicationIsnull).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersAllList(context.Background()).ApplicationIsnull(applicationIsnull).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersAllList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -209,8 +209,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersAllRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersAllRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersAllRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -278,8 +278,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersAllTypesList(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersAllTypesList(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersAllTypesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -340,8 +340,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersAllUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersAllUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersAllUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -410,8 +410,8 @@ func main() {
     lDAPProviderRequest := *openapiclient.NewLDAPProviderRequest("Name_example", "AuthorizationFlow_example") // LDAPProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersLdapCreate(context.Background()).LDAPProviderRequest(lDAPProviderRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersLdapCreate(context.Background()).LDAPProviderRequest(lDAPProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersLdapCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -476,8 +476,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this LDAP Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersLdapDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersLdapDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersLdapDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -544,7 +544,7 @@ func main() {
     applicationIsnull := true // bool |  (optional)
     authorizationFlowSlugIexact := "authorizationFlowSlugIexact_example" // string |  (optional)
     baseDnIexact := "baseDnIexact_example" // string |  (optional)
-    certificateKpUuidIexact := TODO // string |  (optional)
+    certificateKpUuidIexact := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     certificateNameIexact := "certificateNameIexact_example" // string |  (optional)
     gidStartNumberIexact := int32(56) // int32 |  (optional)
     nameIexact := "nameIexact_example" // string |  (optional)
@@ -552,14 +552,14 @@ func main() {
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
-    searchGroupGroupUuidIexact := TODO // string |  (optional)
+    searchGroupGroupUuidIexact := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     searchGroupNameIexact := "searchGroupNameIexact_example" // string |  (optional)
     tlsServerNameIexact := "tlsServerNameIexact_example" // string |  (optional)
     uidStartNumberIexact := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersLdapList(context.Background()).ApplicationIsnull(applicationIsnull).AuthorizationFlowSlugIexact(authorizationFlowSlugIexact).BaseDnIexact(baseDnIexact).CertificateKpUuidIexact(certificateKpUuidIexact).CertificateNameIexact(certificateNameIexact).GidStartNumberIexact(gidStartNumberIexact).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SearchGroupGroupUuidIexact(searchGroupGroupUuidIexact).SearchGroupNameIexact(searchGroupNameIexact).TlsServerNameIexact(tlsServerNameIexact).UidStartNumberIexact(uidStartNumberIexact).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersLdapList(context.Background()).ApplicationIsnull(applicationIsnull).AuthorizationFlowSlugIexact(authorizationFlowSlugIexact).BaseDnIexact(baseDnIexact).CertificateKpUuidIexact(certificateKpUuidIexact).CertificateNameIexact(certificateNameIexact).GidStartNumberIexact(gidStartNumberIexact).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SearchGroupGroupUuidIexact(searchGroupGroupUuidIexact).SearchGroupNameIexact(searchGroupNameIexact).TlsServerNameIexact(tlsServerNameIexact).UidStartNumberIexact(uidStartNumberIexact).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersLdapList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -583,7 +583,7 @@ Name | Type | Description  | Notes
  **applicationIsnull** | **bool** |  | 
  **authorizationFlowSlugIexact** | **string** |  | 
  **baseDnIexact** | **string** |  | 
- **certificateKpUuidIexact** | [**string**](string.md) |  | 
+ **certificateKpUuidIexact** | **string** |  | 
  **certificateNameIexact** | **string** |  | 
  **gidStartNumberIexact** | **int32** |  | 
  **nameIexact** | **string** |  | 
@@ -591,7 +591,7 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
- **searchGroupGroupUuidIexact** | [**string**](string.md) |  | 
+ **searchGroupGroupUuidIexact** | **string** |  | 
  **searchGroupNameIexact** | **string** |  | 
  **tlsServerNameIexact** | **string** |  | 
  **uidStartNumberIexact** | **int32** |  | 
@@ -639,8 +639,8 @@ func main() {
     patchedLDAPProviderRequest := *openapiclient.NewPatchedLDAPProviderRequest() // PatchedLDAPProviderRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersLdapPartialUpdate(context.Background(), id).PatchedLDAPProviderRequest(patchedLDAPProviderRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersLdapPartialUpdate(context.Background(), id).PatchedLDAPProviderRequest(patchedLDAPProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersLdapPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -710,8 +710,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this LDAP Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersLdapRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersLdapRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersLdapRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -781,8 +781,8 @@ func main() {
     lDAPProviderRequest := *openapiclient.NewLDAPProviderRequest("Name_example", "AuthorizationFlow_example") // LDAPProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersLdapUpdate(context.Background(), id).LDAPProviderRequest(lDAPProviderRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersLdapUpdate(context.Background(), id).LDAPProviderRequest(lDAPProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersLdapUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -852,8 +852,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this LDAP Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersLdapUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersLdapUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersLdapUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -922,8 +922,8 @@ func main() {
     oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example") // OAuth2ProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersOauth2Create(context.Background()).OAuth2ProviderRequest(oAuth2ProviderRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersOauth2Create(context.Background()).OAuth2ProviderRequest(oAuth2ProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersOauth2Create``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -988,8 +988,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this OAuth2/OpenID Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersOauth2Destroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersOauth2Destroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersOauth2Destroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1054,8 +1054,8 @@ import (
 
 func main() {
     accessCodeValidity := "accessCodeValidity_example" // string |  (optional)
-    application := TODO // string |  (optional)
-    authorizationFlow := TODO // string |  (optional)
+    application := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     clientId := "clientId_example" // string |  (optional)
     clientType := "clientType_example" // string | Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable. (optional)
     includeClaimsInIdToken := true // bool |  (optional)
@@ -1067,13 +1067,13 @@ func main() {
     propertyMappings := []string{"Inner_example"} // []string |  (optional)
     redirectUris := "redirectUris_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
-    signingKey := TODO // string |  (optional)
+    signingKey := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     subMode := "subMode_example" // string | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. (optional)
     tokenValidity := "tokenValidity_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersOauth2List(context.Background()).AccessCodeValidity(accessCodeValidity).Application(application).AuthorizationFlow(authorizationFlow).ClientId(clientId).ClientType(clientType).IncludeClaimsInIdToken(includeClaimsInIdToken).IssuerMode(issuerMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).RedirectUris(redirectUris).Search(search).SigningKey(signingKey).SubMode(subMode).TokenValidity(tokenValidity).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersOauth2List(context.Background()).AccessCodeValidity(accessCodeValidity).Application(application).AuthorizationFlow(authorizationFlow).ClientId(clientId).ClientType(clientType).IncludeClaimsInIdToken(includeClaimsInIdToken).IssuerMode(issuerMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).RedirectUris(redirectUris).Search(search).SigningKey(signingKey).SubMode(subMode).TokenValidity(tokenValidity).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersOauth2List``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1095,8 +1095,8 @@ Other parameters are passed through a pointer to a apiProvidersOauth2ListRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accessCodeValidity** | **string** |  | 
- **application** | [**string**](string.md) |  | 
- **authorizationFlow** | [**string**](string.md) |  | 
+ **application** | **string** |  | 
+ **authorizationFlow** | **string** |  | 
  **clientId** | **string** |  | 
  **clientType** | **string** | Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable. | 
  **includeClaimsInIdToken** | **bool** |  | 
@@ -1108,7 +1108,7 @@ Name | Type | Description  | Notes
  **propertyMappings** | **[]string** |  | 
  **redirectUris** | **string** |  | 
  **search** | **string** | A search term. | 
- **signingKey** | [**string**](string.md) |  | 
+ **signingKey** | **string** |  | 
  **subMode** | **string** | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | 
  **tokenValidity** | **string** |  | 
 
@@ -1155,8 +1155,8 @@ func main() {
     patchedOAuth2ProviderRequest := *openapiclient.NewPatchedOAuth2ProviderRequest() // PatchedOAuth2ProviderRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersOauth2PartialUpdate(context.Background(), id).PatchedOAuth2ProviderRequest(patchedOAuth2ProviderRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersOauth2PartialUpdate(context.Background(), id).PatchedOAuth2ProviderRequest(patchedOAuth2ProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersOauth2PartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1226,8 +1226,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this OAuth2/OpenID Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersOauth2Retrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersOauth2Retrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersOauth2Retrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1296,8 +1296,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this OAuth2/OpenID Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersOauth2SetupUrlsRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersOauth2SetupUrlsRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersOauth2SetupUrlsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1367,8 +1367,8 @@ func main() {
     oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example") // OAuth2ProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersOauth2Update(context.Background(), id).OAuth2ProviderRequest(oAuth2ProviderRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersOauth2Update(context.Background(), id).OAuth2ProviderRequest(oAuth2ProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersOauth2Update``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1438,8 +1438,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this OAuth2/OpenID Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersOauth2UsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersOauth2UsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersOauth2UsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1508,8 +1508,8 @@ func main() {
     proxyProviderRequest := *openapiclient.NewProxyProviderRequest("Name_example", "AuthorizationFlow_example", "ExternalHost_example") // ProxyProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersProxyCreate(context.Background()).ProxyProviderRequest(proxyProviderRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersProxyCreate(context.Background()).ProxyProviderRequest(proxyProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersProxyCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1574,8 +1574,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this Proxy Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersProxyDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersProxyDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersProxyDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1644,7 +1644,7 @@ func main() {
     basicAuthEnabledIexact := true // bool |  (optional)
     basicAuthPasswordAttributeIexact := "basicAuthPasswordAttributeIexact_example" // string |  (optional)
     basicAuthUserAttributeIexact := "basicAuthUserAttributeIexact_example" // string |  (optional)
-    certificateKpUuidIexact := TODO // string |  (optional)
+    certificateKpUuidIexact := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     certificateNameIexact := "certificateNameIexact_example" // string |  (optional)
     cookieDomainIexact := "cookieDomainIexact_example" // string |  (optional)
     externalHostIexact := "externalHostIexact_example" // string |  (optional)
@@ -1661,8 +1661,8 @@ func main() {
     skipPathRegexIexact := "skipPathRegexIexact_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersProxyList(context.Background()).ApplicationIsnull(applicationIsnull).AuthorizationFlowSlugIexact(authorizationFlowSlugIexact).BasicAuthEnabledIexact(basicAuthEnabledIexact).BasicAuthPasswordAttributeIexact(basicAuthPasswordAttributeIexact).BasicAuthUserAttributeIexact(basicAuthUserAttributeIexact).CertificateKpUuidIexact(certificateKpUuidIexact).CertificateNameIexact(certificateNameIexact).CookieDomainIexact(cookieDomainIexact).ExternalHostIexact(externalHostIexact).InternalHostIexact(internalHostIexact).InternalHostSslValidationIexact(internalHostSslValidationIexact).ModeIexact(modeIexact).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappingsIexact(propertyMappingsIexact).RedirectUrisIexact(redirectUrisIexact).Search(search).SkipPathRegexIexact(skipPathRegexIexact).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersProxyList(context.Background()).ApplicationIsnull(applicationIsnull).AuthorizationFlowSlugIexact(authorizationFlowSlugIexact).BasicAuthEnabledIexact(basicAuthEnabledIexact).BasicAuthPasswordAttributeIexact(basicAuthPasswordAttributeIexact).BasicAuthUserAttributeIexact(basicAuthUserAttributeIexact).CertificateKpUuidIexact(certificateKpUuidIexact).CertificateNameIexact(certificateNameIexact).CookieDomainIexact(cookieDomainIexact).ExternalHostIexact(externalHostIexact).InternalHostIexact(internalHostIexact).InternalHostSslValidationIexact(internalHostSslValidationIexact).ModeIexact(modeIexact).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappingsIexact(propertyMappingsIexact).RedirectUrisIexact(redirectUrisIexact).Search(search).SkipPathRegexIexact(skipPathRegexIexact).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersProxyList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1688,7 +1688,7 @@ Name | Type | Description  | Notes
  **basicAuthEnabledIexact** | **bool** |  | 
  **basicAuthPasswordAttributeIexact** | **string** |  | 
  **basicAuthUserAttributeIexact** | **string** |  | 
- **certificateKpUuidIexact** | [**string**](string.md) |  | 
+ **certificateKpUuidIexact** | **string** |  | 
  **certificateNameIexact** | **string** |  | 
  **cookieDomainIexact** | **string** |  | 
  **externalHostIexact** | **string** |  | 
@@ -1747,8 +1747,8 @@ func main() {
     patchedProxyProviderRequest := *openapiclient.NewPatchedProxyProviderRequest() // PatchedProxyProviderRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersProxyPartialUpdate(context.Background(), id).PatchedProxyProviderRequest(patchedProxyProviderRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersProxyPartialUpdate(context.Background(), id).PatchedProxyProviderRequest(patchedProxyProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersProxyPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1818,8 +1818,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this Proxy Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersProxyRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersProxyRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersProxyRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1889,8 +1889,8 @@ func main() {
     proxyProviderRequest := *openapiclient.NewProxyProviderRequest("Name_example", "AuthorizationFlow_example", "ExternalHost_example") // ProxyProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersProxyUpdate(context.Background(), id).ProxyProviderRequest(proxyProviderRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersProxyUpdate(context.Background(), id).ProxyProviderRequest(proxyProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersProxyUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1960,8 +1960,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this Proxy Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersProxyUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersProxyUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersProxyUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2030,8 +2030,8 @@ func main() {
     sAMLProviderRequest := *openapiclient.NewSAMLProviderRequest("Name_example", "AuthorizationFlow_example", "AcsUrl_example") // SAMLProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersSamlCreate(context.Background()).SAMLProviderRequest(sAMLProviderRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlCreate(context.Background()).SAMLProviderRequest(sAMLProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2096,8 +2096,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this SAML Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersSamlDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2166,8 +2166,8 @@ func main() {
     file := os.NewFile(1234, "some_file") // *os.File | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersSamlImportMetadataCreate(context.Background()).Name(name).AuthorizationFlow(authorizationFlow).File(file).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlImportMetadataCreate(context.Background()).Name(name).AuthorizationFlow(authorizationFlow).File(file).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlImportMetadataCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2233,11 +2233,11 @@ func main() {
     assertionValidNotBefore := "assertionValidNotBefore_example" // string |  (optional)
     assertionValidNotOnOrAfter := "assertionValidNotOnOrAfter_example" // string |  (optional)
     audience := "audience_example" // string |  (optional)
-    authorizationFlow := TODO // string |  (optional)
+    authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     digestAlgorithm := "digestAlgorithm_example" // string |  (optional)
     issuer := "issuer_example" // string |  (optional)
     name := "name_example" // string |  (optional)
-    nameIdMapping := TODO // string |  (optional)
+    nameIdMapping := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -2245,13 +2245,13 @@ func main() {
     search := "search_example" // string | A search term. (optional)
     sessionValidNotOnOrAfter := "sessionValidNotOnOrAfter_example" // string |  (optional)
     signatureAlgorithm := "signatureAlgorithm_example" // string |  (optional)
-    signingKp := TODO // string |  (optional)
+    signingKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     spBinding := "spBinding_example" // string | This determines how authentik sends the response back to the Service Provider. (optional)
-    verificationKp := TODO // string |  (optional)
+    verificationKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersSamlList(context.Background()).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthorizationFlow(authorizationFlow).DigestAlgorithm(digestAlgorithm).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlList(context.Background()).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthorizationFlow(authorizationFlow).DigestAlgorithm(digestAlgorithm).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2276,11 +2276,11 @@ Name | Type | Description  | Notes
  **assertionValidNotBefore** | **string** |  | 
  **assertionValidNotOnOrAfter** | **string** |  | 
  **audience** | **string** |  | 
- **authorizationFlow** | [**string**](string.md) |  | 
+ **authorizationFlow** | **string** |  | 
  **digestAlgorithm** | **string** |  | 
  **issuer** | **string** |  | 
  **name** | **string** |  | 
- **nameIdMapping** | [**string**](string.md) |  | 
+ **nameIdMapping** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
@@ -2288,9 +2288,9 @@ Name | Type | Description  | Notes
  **search** | **string** | A search term. | 
  **sessionValidNotOnOrAfter** | **string** |  | 
  **signatureAlgorithm** | **string** |  | 
- **signingKp** | [**string**](string.md) |  | 
+ **signingKp** | **string** |  | 
  **spBinding** | **string** | This determines how authentik sends the response back to the Service Provider. | 
- **verificationKp** | [**string**](string.md) |  | 
+ **verificationKp** | **string** |  | 
 
 ### Return type
 
@@ -2336,8 +2336,8 @@ func main() {
     forceBinding := "forceBinding_example" // string | Optionally force the metadata to only include one binding. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersSamlMetadataRetrieve(context.Background(), id).Download(download).ForceBinding(forceBinding).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlMetadataRetrieve(context.Background(), id).Download(download).ForceBinding(forceBinding).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlMetadataRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2409,8 +2409,8 @@ func main() {
     patchedSAMLProviderRequest := *openapiclient.NewPatchedSAMLProviderRequest() // PatchedSAMLProviderRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersSamlPartialUpdate(context.Background(), id).PatchedSAMLProviderRequest(patchedSAMLProviderRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlPartialUpdate(context.Background(), id).PatchedSAMLProviderRequest(patchedSAMLProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2480,8 +2480,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this SAML Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersSamlRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2551,8 +2551,8 @@ func main() {
     sAMLProviderRequest := *openapiclient.NewSAMLProviderRequest("Name_example", "AuthorizationFlow_example", "AcsUrl_example") // SAMLProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersSamlUpdate(context.Background(), id).SAMLProviderRequest(sAMLProviderRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlUpdate(context.Background(), id).SAMLProviderRequest(sAMLProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2622,8 +2622,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this SAML Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProvidersApi.ProvidersSamlUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

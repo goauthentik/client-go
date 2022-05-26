@@ -17,17 +17,17 @@ import (
 
 // FlowInspectorPlan Serializer for an active FlowPlan
 type FlowInspectorPlan struct {
-	CurrentStage     FlowStageBinding       `json:"current_stage"`
-	NextPlannedStage FlowStageBinding       `json:"next_planned_stage"`
-	PlanContext      map[string]interface{} `json:"plan_context"`
-	SessionId        string                 `json:"session_id"`
+	CurrentStage     FlowInspectorPlanCurrentStage `json:"current_stage"`
+	NextPlannedStage FlowInspectorPlanCurrentStage `json:"next_planned_stage"`
+	PlanContext      map[string]interface{}        `json:"plan_context"`
+	SessionId        string                        `json:"session_id"`
 }
 
 // NewFlowInspectorPlan instantiates a new FlowInspectorPlan object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFlowInspectorPlan(currentStage FlowStageBinding, nextPlannedStage FlowStageBinding, planContext map[string]interface{}, sessionId string) *FlowInspectorPlan {
+func NewFlowInspectorPlan(currentStage FlowInspectorPlanCurrentStage, nextPlannedStage FlowInspectorPlanCurrentStage, planContext map[string]interface{}, sessionId string) *FlowInspectorPlan {
 	this := FlowInspectorPlan{}
 	this.CurrentStage = currentStage
 	this.NextPlannedStage = nextPlannedStage
@@ -45,9 +45,9 @@ func NewFlowInspectorPlanWithDefaults() *FlowInspectorPlan {
 }
 
 // GetCurrentStage returns the CurrentStage field value
-func (o *FlowInspectorPlan) GetCurrentStage() FlowStageBinding {
+func (o *FlowInspectorPlan) GetCurrentStage() FlowInspectorPlanCurrentStage {
 	if o == nil {
-		var ret FlowStageBinding
+		var ret FlowInspectorPlanCurrentStage
 		return ret
 	}
 
@@ -56,7 +56,7 @@ func (o *FlowInspectorPlan) GetCurrentStage() FlowStageBinding {
 
 // GetCurrentStageOk returns a tuple with the CurrentStage field value
 // and a boolean to check if the value has been set.
-func (o *FlowInspectorPlan) GetCurrentStageOk() (*FlowStageBinding, bool) {
+func (o *FlowInspectorPlan) GetCurrentStageOk() (*FlowInspectorPlanCurrentStage, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -64,14 +64,14 @@ func (o *FlowInspectorPlan) GetCurrentStageOk() (*FlowStageBinding, bool) {
 }
 
 // SetCurrentStage sets field value
-func (o *FlowInspectorPlan) SetCurrentStage(v FlowStageBinding) {
+func (o *FlowInspectorPlan) SetCurrentStage(v FlowInspectorPlanCurrentStage) {
 	o.CurrentStage = v
 }
 
 // GetNextPlannedStage returns the NextPlannedStage field value
-func (o *FlowInspectorPlan) GetNextPlannedStage() FlowStageBinding {
+func (o *FlowInspectorPlan) GetNextPlannedStage() FlowInspectorPlanCurrentStage {
 	if o == nil {
-		var ret FlowStageBinding
+		var ret FlowInspectorPlanCurrentStage
 		return ret
 	}
 
@@ -80,7 +80,7 @@ func (o *FlowInspectorPlan) GetNextPlannedStage() FlowStageBinding {
 
 // GetNextPlannedStageOk returns a tuple with the NextPlannedStage field value
 // and a boolean to check if the value has been set.
-func (o *FlowInspectorPlan) GetNextPlannedStageOk() (*FlowStageBinding, bool) {
+func (o *FlowInspectorPlan) GetNextPlannedStageOk() (*FlowInspectorPlanCurrentStage, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *FlowInspectorPlan) GetNextPlannedStageOk() (*FlowStageBinding, bool) {
 }
 
 // SetNextPlannedStage sets field value
-func (o *FlowInspectorPlan) SetNextPlannedStage(v FlowStageBinding) {
+func (o *FlowInspectorPlan) SetNextPlannedStage(v FlowInspectorPlanCurrentStage) {
 	o.NextPlannedStage = v
 }
 
@@ -104,11 +104,11 @@ func (o *FlowInspectorPlan) GetPlanContext() map[string]interface{} {
 
 // GetPlanContextOk returns a tuple with the PlanContext field value
 // and a boolean to check if the value has been set.
-func (o *FlowInspectorPlan) GetPlanContextOk() (*map[string]interface{}, bool) {
+func (o *FlowInspectorPlan) GetPlanContextOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PlanContext, true
+	return o.PlanContext, true
 }
 
 // SetPlanContext sets field value

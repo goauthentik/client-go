@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **VerboseNamePlural** | **string** |  | [readonly] 
 **MetaModelName** | **string** |  | [readonly] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
-**UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
+**UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **ProviderType** | [**ProviderTypeEnum**](ProviderTypeEnum.md) |  | 
 **RequestTokenUrl** | Pointer to **NullableString** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] 
 **AuthorizationUrl** | Pointer to **NullableString** | URL the user is redirect to to conest the flow. | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **ConsumerKey** | **string** |  | 
 **CallbackUrl** | **string** |  | [readonly] 
 **AdditionalScopes** | Pointer to **string** |  | [optional] 
-**Type** | [**SourceType**](SourceType.md) |  | [readonly] 
+**Type** | [**OAuthSourceType**](OAuthSourceType.md) |  | 
 **OidcWellKnownUrl** | Pointer to **string** |  | [optional] 
 **OidcJwksUrl** | Pointer to **string** |  | [optional] 
 **OidcJwks** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 
 ### NewOAuthSource
 
-`func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ SourceType, ) *OAuthSource`
+`func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ OAuthSourceType, ) *OAuthSource`
 
 NewOAuthSource instantiates a new OAuthSource object
 This constructor will assign default values to properties that have it defined,
@@ -333,6 +333,16 @@ SetUserMatchingMode sets UserMatchingMode field to given value.
 
 HasUserMatchingMode returns a boolean if a field has been set.
 
+### SetUserMatchingModeNil
+
+`func (o *OAuthSource) SetUserMatchingModeNil(b bool)`
+
+ SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
+
+### UnsetUserMatchingMode
+`func (o *OAuthSource) UnsetUserMatchingMode()`
+
+UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
 ### GetProviderType
 
 `func (o *OAuthSource) GetProviderType() ProviderTypeEnum`
@@ -560,20 +570,20 @@ HasAdditionalScopes returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *OAuthSource) GetType() SourceType`
+`func (o *OAuthSource) GetType() OAuthSourceType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *OAuthSource) GetTypeOk() (*SourceType, bool)`
+`func (o *OAuthSource) GetTypeOk() (*OAuthSourceType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *OAuthSource) SetType(v SourceType)`
+`func (o *OAuthSource) SetType(v OAuthSourceType)`
 
 SetType sets Type field to given value.
 

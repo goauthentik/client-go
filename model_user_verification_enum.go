@@ -26,7 +26,8 @@ const (
 	USERVERIFICATIONENUM_DISCOURAGED UserVerificationEnum = "discouraged"
 )
 
-var allowedUserVerificationEnumEnumValues = []UserVerificationEnum{
+// All allowed values of UserVerificationEnum enum
+var AllowedUserVerificationEnumEnumValues = []UserVerificationEnum{
 	"required",
 	"preferred",
 	"discouraged",
@@ -39,7 +40,7 @@ func (v *UserVerificationEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := UserVerificationEnum(value)
-	for _, existing := range allowedUserVerificationEnumEnumValues {
+	for _, existing := range AllowedUserVerificationEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -56,13 +57,13 @@ func NewUserVerificationEnumFromValue(v string) (*UserVerificationEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for UserVerificationEnum: valid values are %v", v, allowedUserVerificationEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for UserVerificationEnum: valid values are %v", v, AllowedUserVerificationEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v UserVerificationEnum) IsValid() bool {
-	for _, existing := range allowedUserVerificationEnumEnumValues {
+	for _, existing := range AllowedUserVerificationEnumEnumValues {
 		if existing == v {
 			return true
 		}

@@ -27,7 +27,8 @@ const (
 	SUBMODEENUM_USER_UPN       SubModeEnum = "user_upn"
 )
 
-var allowedSubModeEnumEnumValues = []SubModeEnum{
+// All allowed values of SubModeEnum enum
+var AllowedSubModeEnumEnumValues = []SubModeEnum{
 	"hashed_user_id",
 	"user_username",
 	"user_email",
@@ -41,7 +42,7 @@ func (v *SubModeEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := SubModeEnum(value)
-	for _, existing := range allowedSubModeEnumEnumValues {
+	for _, existing := range AllowedSubModeEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -58,13 +59,13 @@ func NewSubModeEnumFromValue(v string) (*SubModeEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for SubModeEnum: valid values are %v", v, allowedSubModeEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for SubModeEnum: valid values are %v", v, AllowedSubModeEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v SubModeEnum) IsValid() bool {
-	for _, existing := range allowedSubModeEnumEnumValues {
+	for _, existing := range AllowedSubModeEnumEnumValues {
 		if existing == v {
 			return true
 		}

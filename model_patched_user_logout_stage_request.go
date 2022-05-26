@@ -17,8 +17,8 @@ import (
 
 // PatchedUserLogoutStageRequest UserLogoutStage Serializer
 type PatchedUserLogoutStageRequest struct {
-	Name    *string        `json:"name,omitempty"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
+	Name    *string       `json:"name,omitempty"`
+	FlowSet []FlowRequest `json:"flow_set,omitempty"`
 }
 
 // NewPatchedUserLogoutStageRequest instantiates a new PatchedUserLogoutStageRequest object
@@ -76,12 +76,12 @@ func (o *PatchedUserLogoutStageRequest) GetFlowSet() []FlowRequest {
 		var ret []FlowRequest
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedUserLogoutStageRequest) GetFlowSetOk() (*[]FlowRequest, bool) {
+func (o *PatchedUserLogoutStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -99,7 +99,7 @@ func (o *PatchedUserLogoutStageRequest) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
 func (o *PatchedUserLogoutStageRequest) SetFlowSet(v []FlowRequest) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 func (o PatchedUserLogoutStageRequest) MarshalJSON() ([]byte, error) {

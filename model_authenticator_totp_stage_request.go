@@ -17,18 +17,18 @@ import (
 
 // AuthenticatorTOTPStageRequest AuthenticatorTOTPStage Serializer
 type AuthenticatorTOTPStageRequest struct {
-	Name    string         `json:"name"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
+	Name    string        `json:"name"`
+	FlowSet []FlowRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	Digits        DigitsEnum     `json:"digits"`
+	ConfigureFlow NullableString     `json:"configure_flow,omitempty"`
+	Digits        NullableDigitsEnum `json:"digits"`
 }
 
 // NewAuthenticatorTOTPStageRequest instantiates a new AuthenticatorTOTPStageRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorTOTPStageRequest(name string, digits DigitsEnum) *AuthenticatorTOTPStageRequest {
+func NewAuthenticatorTOTPStageRequest(name string, digits NullableDigitsEnum) *AuthenticatorTOTPStageRequest {
 	this := AuthenticatorTOTPStageRequest{}
 	this.Name = name
 	this.Digits = digits
@@ -73,12 +73,12 @@ func (o *AuthenticatorTOTPStageRequest) GetFlowSet() []FlowRequest {
 		var ret []FlowRequest
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorTOTPStageRequest) GetFlowSetOk() (*[]FlowRequest, bool) {
+func (o *AuthenticatorTOTPStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *AuthenticatorTOTPStageRequest) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
 func (o *AuthenticatorTOTPStageRequest) SetFlowSet(v []FlowRequest) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -143,27 +143,29 @@ func (o *AuthenticatorTOTPStageRequest) UnsetConfigureFlow() {
 }
 
 // GetDigits returns the Digits field value
+// If the value is explicit nil, the zero value for DigitsEnum will be returned
 func (o *AuthenticatorTOTPStageRequest) GetDigits() DigitsEnum {
-	if o == nil {
+	if o == nil || o.Digits.Get() == nil {
 		var ret DigitsEnum
 		return ret
 	}
 
-	return o.Digits
+	return *o.Digits.Get()
 }
 
 // GetDigitsOk returns a tuple with the Digits field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatorTOTPStageRequest) GetDigitsOk() (*DigitsEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Digits, true
+	return o.Digits.Get(), o.Digits.IsSet()
 }
 
 // SetDigits sets field value
 func (o *AuthenticatorTOTPStageRequest) SetDigits(v DigitsEnum) {
-	o.Digits = v
+	o.Digits.Set(&v)
 }
 
 func (o AuthenticatorTOTPStageRequest) MarshalJSON() ([]byte, error) {
@@ -178,7 +180,7 @@ func (o AuthenticatorTOTPStageRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
 	if true {
-		toSerialize["digits"] = o.Digits
+		toSerialize["digits"] = o.Digits.Get()
 	}
 	return json.Marshal(toSerialize)
 }

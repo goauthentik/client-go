@@ -21,23 +21,23 @@ type Application struct {
 	// Application's display Name.
 	Name string `json:"name"`
 	// Internal application name, used in URLs.
-	Slug             string            `json:"slug"`
-	Provider         NullableInt32     `json:"provider,omitempty"`
-	ProviderObj      Provider          `json:"provider_obj"`
-	LaunchUrl        NullableString    `json:"launch_url"`
-	MetaLaunchUrl    *string           `json:"meta_launch_url,omitempty"`
-	MetaIcon         NullableString    `json:"meta_icon"`
-	MetaDescription  *string           `json:"meta_description,omitempty"`
-	MetaPublisher    *string           `json:"meta_publisher,omitempty"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
-	Group            *string           `json:"group,omitempty"`
+	Slug             string                 `json:"slug"`
+	Provider         NullableInt32          `json:"provider,omitempty"`
+	ProviderObj      ApplicationProviderObj `json:"provider_obj"`
+	LaunchUrl        NullableString         `json:"launch_url"`
+	MetaLaunchUrl    *string                `json:"meta_launch_url,omitempty"`
+	MetaIcon         NullableString         `json:"meta_icon"`
+	MetaDescription  *string                `json:"meta_description,omitempty"`
+	MetaPublisher    *string                `json:"meta_publisher,omitempty"`
+	PolicyEngineMode *PolicyEngineMode      `json:"policy_engine_mode,omitempty"`
+	Group            *string                `json:"group,omitempty"`
 }
 
 // NewApplication instantiates a new Application object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplication(pk string, name string, slug string, providerObj Provider, launchUrl NullableString, metaIcon NullableString) *Application {
+func NewApplication(pk string, name string, slug string, providerObj ApplicationProviderObj, launchUrl NullableString, metaIcon NullableString) *Application {
 	this := Application{}
 	this.Pk = pk
 	this.Name = name
@@ -172,9 +172,9 @@ func (o *Application) UnsetProvider() {
 }
 
 // GetProviderObj returns the ProviderObj field value
-func (o *Application) GetProviderObj() Provider {
+func (o *Application) GetProviderObj() ApplicationProviderObj {
 	if o == nil {
-		var ret Provider
+		var ret ApplicationProviderObj
 		return ret
 	}
 
@@ -183,7 +183,7 @@ func (o *Application) GetProviderObj() Provider {
 
 // GetProviderObjOk returns a tuple with the ProviderObj field value
 // and a boolean to check if the value has been set.
-func (o *Application) GetProviderObjOk() (*Provider, bool) {
+func (o *Application) GetProviderObjOk() (*ApplicationProviderObj, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -191,7 +191,7 @@ func (o *Application) GetProviderObjOk() (*Provider, bool) {
 }
 
 // SetProviderObj sets field value
-func (o *Application) SetProviderObj(v Provider) {
+func (o *Application) SetProviderObj(v ApplicationProviderObj) {
 	o.ProviderObj = v
 }
 

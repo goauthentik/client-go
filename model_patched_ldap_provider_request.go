@@ -19,8 +19,8 @@ import (
 type PatchedLDAPProviderRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string   `json:"authorization_flow,omitempty"`
-	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
+	AuthorizationFlow *string  `json:"authorization_flow,omitempty"`
+	PropertyMappings  []string `json:"property_mappings,omitempty"`
 	// DN under which objects are accessible.
 	BaseDn *string `json:"base_dn,omitempty"`
 	// Users in this group can do search queries. If not set, every user can execute search queries.
@@ -122,12 +122,12 @@ func (o *PatchedLDAPProviderRequest) GetPropertyMappings() []string {
 		var ret []string
 		return ret
 	}
-	return *o.PropertyMappings
+	return o.PropertyMappings
 }
 
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedLDAPProviderRequest) GetPropertyMappingsOk() (*[]string, bool) {
+func (o *PatchedLDAPProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
 	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
@@ -145,7 +145,7 @@ func (o *PatchedLDAPProviderRequest) HasPropertyMappings() bool {
 
 // SetPropertyMappings gets a reference to the given []string and assigns it to the PropertyMappings field.
 func (o *PatchedLDAPProviderRequest) SetPropertyMappings(v []string) {
-	o.PropertyMappings = &v
+	o.PropertyMappings = v
 }
 
 // GetBaseDn returns the BaseDn field value if set, zero value otherwise.

@@ -21,12 +21,12 @@ type Group struct {
 	NumPk int32  `json:"num_pk"`
 	Name  string `json:"name"`
 	// Users added to this group will be superusers.
-	IsSuperuser *bool                   `json:"is_superuser,omitempty"`
-	Parent      NullableString          `json:"parent"`
-	ParentName  string                  `json:"parent_name"`
-	Users       []int32                 `json:"users"`
-	Attributes  *map[string]interface{} `json:"attributes,omitempty"`
-	UsersObj    []GroupMember           `json:"users_obj"`
+	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
+	Parent      NullableString         `json:"parent"`
+	ParentName  string                 `json:"parent_name"`
+	Users       []int32                `json:"users"`
+	Attributes  map[string]interface{} `json:"attributes,omitempty"`
+	UsersObj    []GroupMember          `json:"users_obj"`
 }
 
 // NewGroup instantiates a new Group object
@@ -219,11 +219,11 @@ func (o *Group) GetUsers() []int32 {
 
 // GetUsersOk returns a tuple with the Users field value
 // and a boolean to check if the value has been set.
-func (o *Group) GetUsersOk() (*[]int32, bool) {
+func (o *Group) GetUsersOk() ([]int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Users, true
+	return o.Users, true
 }
 
 // SetUsers sets field value
@@ -237,12 +237,12 @@ func (o *Group) GetAttributes() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Attributes
+	return o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Group) GetAttributesOk() (*map[string]interface{}, bool) {
+func (o *Group) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -260,7 +260,7 @@ func (o *Group) HasAttributes() bool {
 
 // SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
 func (o *Group) SetAttributes(v map[string]interface{}) {
-	o.Attributes = &v
+	o.Attributes = v
 }
 
 // GetUsersObj returns the UsersObj field value
@@ -275,11 +275,11 @@ func (o *Group) GetUsersObj() []GroupMember {
 
 // GetUsersObjOk returns a tuple with the UsersObj field value
 // and a boolean to check if the value has been set.
-func (o *Group) GetUsersObjOk() (*[]GroupMember, bool) {
+func (o *Group) GetUsersObjOk() ([]GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.UsersObj, true
+	return o.UsersObj, true
 }
 
 // SetUsersObj sets field value

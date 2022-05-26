@@ -28,7 +28,7 @@ type IdentificationChallenge struct {
 	RecoveryUrl      *string                   `json:"recovery_url,omitempty"`
 	PasswordlessUrl  *string                   `json:"passwordless_url,omitempty"`
 	PrimaryAction    string                    `json:"primary_action"`
-	Sources          *[]LoginSource            `json:"sources,omitempty"`
+	Sources          []LoginSource             `json:"sources,omitempty"`
 	ShowSourceLabels bool                      `json:"show_source_labels"`
 }
 
@@ -192,11 +192,11 @@ func (o *IdentificationChallenge) GetUserFields() []string {
 // GetUserFieldsOk returns a tuple with the UserFields field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IdentificationChallenge) GetUserFieldsOk() (*[]string, bool) {
+func (o *IdentificationChallenge) GetUserFieldsOk() ([]string, bool) {
 	if o == nil || o.UserFields == nil {
 		return nil, false
 	}
-	return &o.UserFields, true
+	return o.UserFields, true
 }
 
 // SetUserFields sets field value
@@ -386,12 +386,12 @@ func (o *IdentificationChallenge) GetSources() []LoginSource {
 		var ret []LoginSource
 		return ret
 	}
-	return *o.Sources
+	return o.Sources
 }
 
 // GetSourcesOk returns a tuple with the Sources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentificationChallenge) GetSourcesOk() (*[]LoginSource, bool) {
+func (o *IdentificationChallenge) GetSourcesOk() ([]LoginSource, bool) {
 	if o == nil || o.Sources == nil {
 		return nil, false
 	}
@@ -409,7 +409,7 @@ func (o *IdentificationChallenge) HasSources() bool {
 
 // SetSources gets a reference to the given []LoginSource and assigns it to the Sources field.
 func (o *IdentificationChallenge) SetSources(v []LoginSource) {
-	o.Sources = &v
+	o.Sources = v
 }
 
 // GetShowSourceLabels returns the ShowSourceLabels field value

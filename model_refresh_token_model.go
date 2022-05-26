@@ -191,11 +191,11 @@ func (o *RefreshTokenModel) GetScope() []string {
 
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *RefreshTokenModel) GetScopeOk() (*[]string, bool) {
+func (o *RefreshTokenModel) GetScopeOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Scope, true
+	return o.Scope, true
 }
 
 // SetScope sets field value

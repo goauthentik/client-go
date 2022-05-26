@@ -19,9 +19,9 @@ import (
 type PatchedNotificationRuleRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Select which transports should be used to notify the user. If none are selected, the notification will only be shown in the authentik UI.
-	Transports *[]string `json:"transports,omitempty"`
+	Transports []string `json:"transports,omitempty"`
 	// Controls which severity level the created notifications will have.
-	Severity *SeverityEnum `json:"severity,omitempty"`
+	Severity NullableSeverityEnum `json:"severity,omitempty"`
 	// Define which group of users this notification should be sent and shown to. If left empty, Notification won't ben sent.
 	Group NullableString `json:"group,omitempty"`
 }
@@ -81,12 +81,12 @@ func (o *PatchedNotificationRuleRequest) GetTransports() []string {
 		var ret []string
 		return ret
 	}
-	return *o.Transports
+	return o.Transports
 }
 
 // GetTransportsOk returns a tuple with the Transports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedNotificationRuleRequest) GetTransportsOk() (*[]string, bool) {
+func (o *PatchedNotificationRuleRequest) GetTransportsOk() ([]string, bool) {
 	if o == nil || o.Transports == nil {
 		return nil, false
 	}
@@ -104,39 +104,50 @@ func (o *PatchedNotificationRuleRequest) HasTransports() bool {
 
 // SetTransports gets a reference to the given []string and assigns it to the Transports field.
 func (o *PatchedNotificationRuleRequest) SetTransports(v []string) {
-	o.Transports = &v
+	o.Transports = v
 }
 
-// GetSeverity returns the Severity field value if set, zero value otherwise.
+// GetSeverity returns the Severity field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedNotificationRuleRequest) GetSeverity() SeverityEnum {
-	if o == nil || o.Severity == nil {
+	if o == nil || o.Severity.Get() == nil {
 		var ret SeverityEnum
 		return ret
 	}
-	return *o.Severity
+	return *o.Severity.Get()
 }
 
 // GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedNotificationRuleRequest) GetSeverityOk() (*SeverityEnum, bool) {
-	if o == nil || o.Severity == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Severity, true
+	return o.Severity.Get(), o.Severity.IsSet()
 }
 
 // HasSeverity returns a boolean if a field has been set.
 func (o *PatchedNotificationRuleRequest) HasSeverity() bool {
-	if o != nil && o.Severity != nil {
+	if o != nil && o.Severity.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSeverity gets a reference to the given SeverityEnum and assigns it to the Severity field.
+// SetSeverity gets a reference to the given NullableSeverityEnum and assigns it to the Severity field.
 func (o *PatchedNotificationRuleRequest) SetSeverity(v SeverityEnum) {
-	o.Severity = &v
+	o.Severity.Set(&v)
+}
+
+// SetSeverityNil sets the value for Severity to be an explicit nil
+func (o *PatchedNotificationRuleRequest) SetSeverityNil() {
+	o.Severity.Set(nil)
+}
+
+// UnsetSeverity ensures that no value is present for Severity, not even an explicit nil
+func (o *PatchedNotificationRuleRequest) UnsetSeverity() {
+	o.Severity.Unset()
 }
 
 // GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -190,8 +201,8 @@ func (o PatchedNotificationRuleRequest) MarshalJSON() ([]byte, error) {
 	if o.Transports != nil {
 		toSerialize["transports"] = o.Transports
 	}
-	if o.Severity != nil {
-		toSerialize["severity"] = o.Severity
+	if o.Severity.IsSet() {
+		toSerialize["severity"] = o.Severity.Get()
 	}
 	if o.Group.IsSet() {
 		toSerialize["group"] = o.Group.Get()

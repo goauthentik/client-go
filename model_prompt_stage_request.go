@@ -17,10 +17,10 @@ import (
 
 // PromptStageRequest PromptStage Serializer
 type PromptStageRequest struct {
-	Name               string         `json:"name"`
-	FlowSet            *[]FlowRequest `json:"flow_set,omitempty"`
-	Fields             []string       `json:"fields"`
-	ValidationPolicies *[]string      `json:"validation_policies,omitempty"`
+	Name               string        `json:"name"`
+	FlowSet            []FlowRequest `json:"flow_set,omitempty"`
+	Fields             []string      `json:"fields"`
+	ValidationPolicies []string      `json:"validation_policies,omitempty"`
 }
 
 // NewPromptStageRequest instantiates a new PromptStageRequest object
@@ -72,12 +72,12 @@ func (o *PromptStageRequest) GetFlowSet() []FlowRequest {
 		var ret []FlowRequest
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PromptStageRequest) GetFlowSetOk() (*[]FlowRequest, bool) {
+func (o *PromptStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -95,7 +95,7 @@ func (o *PromptStageRequest) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
 func (o *PromptStageRequest) SetFlowSet(v []FlowRequest) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetFields returns the Fields field value
@@ -110,11 +110,11 @@ func (o *PromptStageRequest) GetFields() []string {
 
 // GetFieldsOk returns a tuple with the Fields field value
 // and a boolean to check if the value has been set.
-func (o *PromptStageRequest) GetFieldsOk() (*[]string, bool) {
+func (o *PromptStageRequest) GetFieldsOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Fields, true
+	return o.Fields, true
 }
 
 // SetFields sets field value
@@ -128,12 +128,12 @@ func (o *PromptStageRequest) GetValidationPolicies() []string {
 		var ret []string
 		return ret
 	}
-	return *o.ValidationPolicies
+	return o.ValidationPolicies
 }
 
 // GetValidationPoliciesOk returns a tuple with the ValidationPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PromptStageRequest) GetValidationPoliciesOk() (*[]string, bool) {
+func (o *PromptStageRequest) GetValidationPoliciesOk() ([]string, bool) {
 	if o == nil || o.ValidationPolicies == nil {
 		return nil, false
 	}
@@ -151,7 +151,7 @@ func (o *PromptStageRequest) HasValidationPolicies() bool {
 
 // SetValidationPolicies gets a reference to the given []string and assigns it to the ValidationPolicies field.
 func (o *PromptStageRequest) SetValidationPolicies(v []string) {
-	o.ValidationPolicies = &v
+	o.ValidationPolicies = v
 }
 
 func (o PromptStageRequest) MarshalJSON() ([]byte, error) {

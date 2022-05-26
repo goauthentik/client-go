@@ -20,9 +20,9 @@ type LDAPProvider struct {
 	Pk   int32  `json:"pk"`
 	Name string `json:"name"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string    `json:"authorization_flow"`
-	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
-	Component         string    `json:"component"`
+	AuthorizationFlow string   `json:"authorization_flow"`
+	PropertyMappings  []string `json:"property_mappings,omitempty"`
+	Component         string   `json:"component"`
 	// Internal application name, used in URLs.
 	AssignedApplicationSlug string `json:"assigned_application_slug"`
 	// Application's display Name.
@@ -150,12 +150,12 @@ func (o *LDAPProvider) GetPropertyMappings() []string {
 		var ret []string
 		return ret
 	}
-	return *o.PropertyMappings
+	return o.PropertyMappings
 }
 
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LDAPProvider) GetPropertyMappingsOk() (*[]string, bool) {
+func (o *LDAPProvider) GetPropertyMappingsOk() ([]string, bool) {
 	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
@@ -173,7 +173,7 @@ func (o *LDAPProvider) HasPropertyMappings() bool {
 
 // SetPropertyMappings gets a reference to the given []string and assigns it to the PropertyMappings field.
 func (o *LDAPProvider) SetPropertyMappings(v []string) {
-	o.PropertyMappings = &v
+	o.PropertyMappings = v
 }
 
 // GetComponent returns the Component field value
@@ -546,11 +546,11 @@ func (o *LDAPProvider) GetOutpostSet() []string {
 
 // GetOutpostSetOk returns a tuple with the OutpostSet field value
 // and a boolean to check if the value has been set.
-func (o *LDAPProvider) GetOutpostSetOk() (*[]string, bool) {
+func (o *LDAPProvider) GetOutpostSetOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.OutpostSet, true
+	return o.OutpostSet, true
 }
 
 // SetOutpostSet sets field value

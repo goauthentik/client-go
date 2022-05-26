@@ -18,7 +18,7 @@ import (
 // PatchedConsentStageRequest ConsentStage Serializer
 type PatchedConsentStageRequest struct {
 	Name    *string               `json:"name,omitempty"`
-	FlowSet *[]FlowRequest        `json:"flow_set,omitempty"`
+	FlowSet []FlowRequest         `json:"flow_set,omitempty"`
 	Mode    *ConsentStageModeEnum `json:"mode,omitempty"`
 	// Offset after which consent expires. (Format: hours=1;minutes=2;seconds=3).
 	ConsentExpireIn *string `json:"consent_expire_in,omitempty"`
@@ -79,12 +79,12 @@ func (o *PatchedConsentStageRequest) GetFlowSet() []FlowRequest {
 		var ret []FlowRequest
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedConsentStageRequest) GetFlowSetOk() (*[]FlowRequest, bool) {
+func (o *PatchedConsentStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -102,7 +102,7 @@ func (o *PatchedConsentStageRequest) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
 func (o *PatchedConsentStageRequest) SetFlowSet(v []FlowRequest) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.

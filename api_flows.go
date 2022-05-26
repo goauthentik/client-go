@@ -13,25 +13,20 @@ package api
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"os"
 	"reflect"
 	"strings"
-)
-
-// Linger please
-var (
-	_ _context.Context
 )
 
 // FlowsApiService FlowsApi service
 type FlowsApiService service
 
 type ApiFlowsBindingsCreateRequest struct {
-	ctx                     _context.Context
+	ctx                     context.Context
 	ApiService              *FlowsApiService
 	flowStageBindingRequest *FlowStageBindingRequest
 }
@@ -41,7 +36,7 @@ func (r ApiFlowsBindingsCreateRequest) FlowStageBindingRequest(flowStageBindingR
 	return r
 }
 
-func (r ApiFlowsBindingsCreateRequest) Execute() (FlowStageBinding, *_nethttp.Response, error) {
+func (r ApiFlowsBindingsCreateRequest) Execute() (*FlowStageBinding, *http.Response, error) {
 	return r.ApiService.FlowsBindingsCreateExecute(r)
 }
 
@@ -50,10 +45,10 @@ FlowsBindingsCreate Method for FlowsBindingsCreate
 
 FlowStageBinding Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFlowsBindingsCreateRequest
 */
-func (a *FlowsApiService) FlowsBindingsCreate(ctx _context.Context) ApiFlowsBindingsCreateRequest {
+func (a *FlowsApiService) FlowsBindingsCreate(ctx context.Context) ApiFlowsBindingsCreateRequest {
 	return ApiFlowsBindingsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -62,26 +57,24 @@ func (a *FlowsApiService) FlowsBindingsCreate(ctx _context.Context) ApiFlowsBind
 
 // Execute executes the request
 //  @return FlowStageBinding
-func (a *FlowsApiService) FlowsBindingsCreateExecute(r ApiFlowsBindingsCreateRequest) (FlowStageBinding, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsBindingsCreateExecute(r ApiFlowsBindingsCreateRequest) (*FlowStageBinding, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  FlowStageBinding
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FlowStageBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsBindingsCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/bindings/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.flowStageBindingRequest == nil {
 		return localVarReturnValue, nil, reportError("flowStageBindingRequest is required and must be specified")
 	}
@@ -119,7 +112,7 @@ func (a *FlowsApiService) FlowsBindingsCreateExecute(r ApiFlowsBindingsCreateReq
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -129,15 +122,15 @@ func (a *FlowsApiService) FlowsBindingsCreateExecute(r ApiFlowsBindingsCreateReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -146,7 +139,7 @@ func (a *FlowsApiService) FlowsBindingsCreateExecute(r ApiFlowsBindingsCreateReq
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -157,12 +150,12 @@ func (a *FlowsApiService) FlowsBindingsCreateExecute(r ApiFlowsBindingsCreateReq
 }
 
 type ApiFlowsBindingsDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 	fsbUuid    string
 }
 
-func (r ApiFlowsBindingsDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiFlowsBindingsDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.FlowsBindingsDestroyExecute(r)
 }
 
@@ -171,11 +164,11 @@ FlowsBindingsDestroy Method for FlowsBindingsDestroy
 
 FlowStageBinding Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param fsbUuid A UUID string identifying this Flow Stage Binding.
  @return ApiFlowsBindingsDestroyRequest
 */
-func (a *FlowsApiService) FlowsBindingsDestroy(ctx _context.Context, fsbUuid string) ApiFlowsBindingsDestroyRequest {
+func (a *FlowsApiService) FlowsBindingsDestroy(ctx context.Context, fsbUuid string) ApiFlowsBindingsDestroyRequest {
 	return ApiFlowsBindingsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -184,26 +177,24 @@ func (a *FlowsApiService) FlowsBindingsDestroy(ctx _context.Context, fsbUuid str
 }
 
 // Execute executes the request
-func (a *FlowsApiService) FlowsBindingsDestroyExecute(r ApiFlowsBindingsDestroyRequest) (*_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsBindingsDestroyExecute(r ApiFlowsBindingsDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsBindingsDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/bindings/{fsb_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", _neturl.PathEscape(parameterToString(r.fsbUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterToString(r.fsbUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -236,7 +227,7 @@ func (a *FlowsApiService) FlowsBindingsDestroyExecute(r ApiFlowsBindingsDestroyR
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -246,15 +237,15 @@ func (a *FlowsApiService) FlowsBindingsDestroyExecute(r ApiFlowsBindingsDestroyR
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -265,7 +256,7 @@ func (a *FlowsApiService) FlowsBindingsDestroyExecute(r ApiFlowsBindingsDestroyR
 }
 
 type ApiFlowsBindingsListRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *FlowsApiService
 	evaluateOnPlan        *bool
 	fsbUuid               *string
@@ -287,6 +278,7 @@ func (r ApiFlowsBindingsListRequest) EvaluateOnPlan(evaluateOnPlan bool) ApiFlow
 	r.evaluateOnPlan = &evaluateOnPlan
 	return r
 }
+
 func (r ApiFlowsBindingsListRequest) FsbUuid(fsbUuid string) ApiFlowsBindingsListRequest {
 	r.fsbUuid = &fsbUuid
 	return r
@@ -297,6 +289,7 @@ func (r ApiFlowsBindingsListRequest) InvalidResponseAction(invalidResponseAction
 	r.invalidResponseAction = &invalidResponseAction
 	return r
 }
+
 func (r ApiFlowsBindingsListRequest) Order(order int32) ApiFlowsBindingsListRequest {
 	r.order = &order
 	return r
@@ -319,18 +312,22 @@ func (r ApiFlowsBindingsListRequest) PageSize(pageSize int32) ApiFlowsBindingsLi
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiFlowsBindingsListRequest) PbmUuid(pbmUuid string) ApiFlowsBindingsListRequest {
 	r.pbmUuid = &pbmUuid
 	return r
 }
+
 func (r ApiFlowsBindingsListRequest) Policies(policies []string) ApiFlowsBindingsListRequest {
 	r.policies = &policies
 	return r
 }
+
 func (r ApiFlowsBindingsListRequest) PolicyEngineMode(policyEngineMode string) ApiFlowsBindingsListRequest {
 	r.policyEngineMode = &policyEngineMode
 	return r
 }
+
 func (r ApiFlowsBindingsListRequest) ReEvaluatePolicies(reEvaluatePolicies bool) ApiFlowsBindingsListRequest {
 	r.reEvaluatePolicies = &reEvaluatePolicies
 	return r
@@ -341,16 +338,18 @@ func (r ApiFlowsBindingsListRequest) Search(search string) ApiFlowsBindingsListR
 	r.search = &search
 	return r
 }
+
 func (r ApiFlowsBindingsListRequest) Stage(stage string) ApiFlowsBindingsListRequest {
 	r.stage = &stage
 	return r
 }
+
 func (r ApiFlowsBindingsListRequest) Target(target string) ApiFlowsBindingsListRequest {
 	r.target = &target
 	return r
 }
 
-func (r ApiFlowsBindingsListRequest) Execute() (PaginatedFlowStageBindingList, *_nethttp.Response, error) {
+func (r ApiFlowsBindingsListRequest) Execute() (*PaginatedFlowStageBindingList, *http.Response, error) {
 	return r.ApiService.FlowsBindingsListExecute(r)
 }
 
@@ -359,10 +358,10 @@ FlowsBindingsList Method for FlowsBindingsList
 
 FlowStageBinding Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFlowsBindingsListRequest
 */
-func (a *FlowsApiService) FlowsBindingsList(ctx _context.Context) ApiFlowsBindingsListRequest {
+func (a *FlowsApiService) FlowsBindingsList(ctx context.Context) ApiFlowsBindingsListRequest {
 	return ApiFlowsBindingsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -371,26 +370,24 @@ func (a *FlowsApiService) FlowsBindingsList(ctx _context.Context) ApiFlowsBindin
 
 // Execute executes the request
 //  @return PaginatedFlowStageBindingList
-func (a *FlowsApiService) FlowsBindingsListExecute(r ApiFlowsBindingsListRequest) (PaginatedFlowStageBindingList, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsBindingsListExecute(r ApiFlowsBindingsListRequest) (*PaginatedFlowStageBindingList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedFlowStageBindingList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedFlowStageBindingList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsBindingsList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/bindings/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.evaluateOnPlan != nil {
 		localVarQueryParams.Add("evaluate_on_plan", parameterToString(*r.evaluateOnPlan, ""))
@@ -473,7 +470,7 @@ func (a *FlowsApiService) FlowsBindingsListExecute(r ApiFlowsBindingsListRequest
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -483,15 +480,15 @@ func (a *FlowsApiService) FlowsBindingsListExecute(r ApiFlowsBindingsListRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -500,7 +497,7 @@ func (a *FlowsApiService) FlowsBindingsListExecute(r ApiFlowsBindingsListRequest
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -511,7 +508,7 @@ func (a *FlowsApiService) FlowsBindingsListExecute(r ApiFlowsBindingsListRequest
 }
 
 type ApiFlowsBindingsPartialUpdateRequest struct {
-	ctx                            _context.Context
+	ctx                            context.Context
 	ApiService                     *FlowsApiService
 	fsbUuid                        string
 	patchedFlowStageBindingRequest *PatchedFlowStageBindingRequest
@@ -522,7 +519,7 @@ func (r ApiFlowsBindingsPartialUpdateRequest) PatchedFlowStageBindingRequest(pat
 	return r
 }
 
-func (r ApiFlowsBindingsPartialUpdateRequest) Execute() (FlowStageBinding, *_nethttp.Response, error) {
+func (r ApiFlowsBindingsPartialUpdateRequest) Execute() (*FlowStageBinding, *http.Response, error) {
 	return r.ApiService.FlowsBindingsPartialUpdateExecute(r)
 }
 
@@ -531,11 +528,11 @@ FlowsBindingsPartialUpdate Method for FlowsBindingsPartialUpdate
 
 FlowStageBinding Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param fsbUuid A UUID string identifying this Flow Stage Binding.
  @return ApiFlowsBindingsPartialUpdateRequest
 */
-func (a *FlowsApiService) FlowsBindingsPartialUpdate(ctx _context.Context, fsbUuid string) ApiFlowsBindingsPartialUpdateRequest {
+func (a *FlowsApiService) FlowsBindingsPartialUpdate(ctx context.Context, fsbUuid string) ApiFlowsBindingsPartialUpdateRequest {
 	return ApiFlowsBindingsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -545,27 +542,25 @@ func (a *FlowsApiService) FlowsBindingsPartialUpdate(ctx _context.Context, fsbUu
 
 // Execute executes the request
 //  @return FlowStageBinding
-func (a *FlowsApiService) FlowsBindingsPartialUpdateExecute(r ApiFlowsBindingsPartialUpdateRequest) (FlowStageBinding, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsBindingsPartialUpdateExecute(r ApiFlowsBindingsPartialUpdateRequest) (*FlowStageBinding, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  FlowStageBinding
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FlowStageBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsBindingsPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/bindings/{fsb_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", _neturl.PathEscape(parameterToString(r.fsbUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterToString(r.fsbUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -600,7 +595,7 @@ func (a *FlowsApiService) FlowsBindingsPartialUpdateExecute(r ApiFlowsBindingsPa
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -610,15 +605,15 @@ func (a *FlowsApiService) FlowsBindingsPartialUpdateExecute(r ApiFlowsBindingsPa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -627,7 +622,7 @@ func (a *FlowsApiService) FlowsBindingsPartialUpdateExecute(r ApiFlowsBindingsPa
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -638,12 +633,12 @@ func (a *FlowsApiService) FlowsBindingsPartialUpdateExecute(r ApiFlowsBindingsPa
 }
 
 type ApiFlowsBindingsRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 	fsbUuid    string
 }
 
-func (r ApiFlowsBindingsRetrieveRequest) Execute() (FlowStageBinding, *_nethttp.Response, error) {
+func (r ApiFlowsBindingsRetrieveRequest) Execute() (*FlowStageBinding, *http.Response, error) {
 	return r.ApiService.FlowsBindingsRetrieveExecute(r)
 }
 
@@ -652,11 +647,11 @@ FlowsBindingsRetrieve Method for FlowsBindingsRetrieve
 
 FlowStageBinding Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param fsbUuid A UUID string identifying this Flow Stage Binding.
  @return ApiFlowsBindingsRetrieveRequest
 */
-func (a *FlowsApiService) FlowsBindingsRetrieve(ctx _context.Context, fsbUuid string) ApiFlowsBindingsRetrieveRequest {
+func (a *FlowsApiService) FlowsBindingsRetrieve(ctx context.Context, fsbUuid string) ApiFlowsBindingsRetrieveRequest {
 	return ApiFlowsBindingsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -666,27 +661,25 @@ func (a *FlowsApiService) FlowsBindingsRetrieve(ctx _context.Context, fsbUuid st
 
 // Execute executes the request
 //  @return FlowStageBinding
-func (a *FlowsApiService) FlowsBindingsRetrieveExecute(r ApiFlowsBindingsRetrieveRequest) (FlowStageBinding, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsBindingsRetrieveExecute(r ApiFlowsBindingsRetrieveRequest) (*FlowStageBinding, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  FlowStageBinding
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FlowStageBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsBindingsRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/bindings/{fsb_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", _neturl.PathEscape(parameterToString(r.fsbUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterToString(r.fsbUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -719,7 +712,7 @@ func (a *FlowsApiService) FlowsBindingsRetrieveExecute(r ApiFlowsBindingsRetriev
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -729,15 +722,15 @@ func (a *FlowsApiService) FlowsBindingsRetrieveExecute(r ApiFlowsBindingsRetriev
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -746,7 +739,7 @@ func (a *FlowsApiService) FlowsBindingsRetrieveExecute(r ApiFlowsBindingsRetriev
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -757,7 +750,7 @@ func (a *FlowsApiService) FlowsBindingsRetrieveExecute(r ApiFlowsBindingsRetriev
 }
 
 type ApiFlowsBindingsUpdateRequest struct {
-	ctx                     _context.Context
+	ctx                     context.Context
 	ApiService              *FlowsApiService
 	fsbUuid                 string
 	flowStageBindingRequest *FlowStageBindingRequest
@@ -768,7 +761,7 @@ func (r ApiFlowsBindingsUpdateRequest) FlowStageBindingRequest(flowStageBindingR
 	return r
 }
 
-func (r ApiFlowsBindingsUpdateRequest) Execute() (FlowStageBinding, *_nethttp.Response, error) {
+func (r ApiFlowsBindingsUpdateRequest) Execute() (*FlowStageBinding, *http.Response, error) {
 	return r.ApiService.FlowsBindingsUpdateExecute(r)
 }
 
@@ -777,11 +770,11 @@ FlowsBindingsUpdate Method for FlowsBindingsUpdate
 
 FlowStageBinding Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param fsbUuid A UUID string identifying this Flow Stage Binding.
  @return ApiFlowsBindingsUpdateRequest
 */
-func (a *FlowsApiService) FlowsBindingsUpdate(ctx _context.Context, fsbUuid string) ApiFlowsBindingsUpdateRequest {
+func (a *FlowsApiService) FlowsBindingsUpdate(ctx context.Context, fsbUuid string) ApiFlowsBindingsUpdateRequest {
 	return ApiFlowsBindingsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -791,27 +784,25 @@ func (a *FlowsApiService) FlowsBindingsUpdate(ctx _context.Context, fsbUuid stri
 
 // Execute executes the request
 //  @return FlowStageBinding
-func (a *FlowsApiService) FlowsBindingsUpdateExecute(r ApiFlowsBindingsUpdateRequest) (FlowStageBinding, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsBindingsUpdateExecute(r ApiFlowsBindingsUpdateRequest) (*FlowStageBinding, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  FlowStageBinding
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FlowStageBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsBindingsUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/bindings/{fsb_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", _neturl.PathEscape(parameterToString(r.fsbUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterToString(r.fsbUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.flowStageBindingRequest == nil {
 		return localVarReturnValue, nil, reportError("flowStageBindingRequest is required and must be specified")
 	}
@@ -849,7 +840,7 @@ func (a *FlowsApiService) FlowsBindingsUpdateExecute(r ApiFlowsBindingsUpdateReq
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -859,15 +850,15 @@ func (a *FlowsApiService) FlowsBindingsUpdateExecute(r ApiFlowsBindingsUpdateReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -876,7 +867,7 @@ func (a *FlowsApiService) FlowsBindingsUpdateExecute(r ApiFlowsBindingsUpdateReq
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -887,12 +878,12 @@ func (a *FlowsApiService) FlowsBindingsUpdateExecute(r ApiFlowsBindingsUpdateReq
 }
 
 type ApiFlowsBindingsUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 	fsbUuid    string
 }
 
-func (r ApiFlowsBindingsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiFlowsBindingsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.FlowsBindingsUsedByListExecute(r)
 }
 
@@ -901,11 +892,11 @@ FlowsBindingsUsedByList Method for FlowsBindingsUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param fsbUuid A UUID string identifying this Flow Stage Binding.
  @return ApiFlowsBindingsUsedByListRequest
 */
-func (a *FlowsApiService) FlowsBindingsUsedByList(ctx _context.Context, fsbUuid string) ApiFlowsBindingsUsedByListRequest {
+func (a *FlowsApiService) FlowsBindingsUsedByList(ctx context.Context, fsbUuid string) ApiFlowsBindingsUsedByListRequest {
 	return ApiFlowsBindingsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -915,27 +906,25 @@ func (a *FlowsApiService) FlowsBindingsUsedByList(ctx _context.Context, fsbUuid 
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *FlowsApiService) FlowsBindingsUsedByListExecute(r ApiFlowsBindingsUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsBindingsUsedByListExecute(r ApiFlowsBindingsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsBindingsUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/bindings/{fsb_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", _neturl.PathEscape(parameterToString(r.fsbUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterToString(r.fsbUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -968,7 +957,7 @@ func (a *FlowsApiService) FlowsBindingsUsedByListExecute(r ApiFlowsBindingsUsedB
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -978,15 +967,15 @@ func (a *FlowsApiService) FlowsBindingsUsedByListExecute(r ApiFlowsBindingsUsedB
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -995,7 +984,7 @@ func (a *FlowsApiService) FlowsBindingsUsedByListExecute(r ApiFlowsBindingsUsedB
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1006,7 +995,7 @@ func (a *FlowsApiService) FlowsBindingsUsedByListExecute(r ApiFlowsBindingsUsedB
 }
 
 type ApiFlowsExecutorGetRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 	flowSlug   string
 	query      *string
@@ -1018,7 +1007,7 @@ func (r ApiFlowsExecutorGetRequest) Query(query string) ApiFlowsExecutorGetReque
 	return r
 }
 
-func (r ApiFlowsExecutorGetRequest) Execute() (ChallengeTypes, *_nethttp.Response, error) {
+func (r ApiFlowsExecutorGetRequest) Execute() (*ChallengeTypes, *http.Response, error) {
 	return r.ApiService.FlowsExecutorGetExecute(r)
 }
 
@@ -1027,11 +1016,11 @@ FlowsExecutorGet Method for FlowsExecutorGet
 
 Get the next pending challenge from the currently active flow.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param flowSlug
  @return ApiFlowsExecutorGetRequest
 */
-func (a *FlowsApiService) FlowsExecutorGet(ctx _context.Context, flowSlug string) ApiFlowsExecutorGetRequest {
+func (a *FlowsApiService) FlowsExecutorGet(ctx context.Context, flowSlug string) ApiFlowsExecutorGetRequest {
 	return ApiFlowsExecutorGetRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1041,27 +1030,25 @@ func (a *FlowsApiService) FlowsExecutorGet(ctx _context.Context, flowSlug string
 
 // Execute executes the request
 //  @return ChallengeTypes
-func (a *FlowsApiService) FlowsExecutorGetExecute(r ApiFlowsExecutorGetRequest) (ChallengeTypes, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsExecutorGetExecute(r ApiFlowsExecutorGetRequest) (*ChallengeTypes, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ChallengeTypes
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ChallengeTypes
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsExecutorGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/executor/{flow_slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"flow_slug"+"}", _neturl.PathEscape(parameterToString(r.flowSlug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"flow_slug"+"}", url.PathEscape(parameterToString(r.flowSlug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.query == nil {
 		return localVarReturnValue, nil, reportError("query is required and must be specified")
 	}
@@ -1098,7 +1085,7 @@ func (a *FlowsApiService) FlowsExecutorGetExecute(r ApiFlowsExecutorGetRequest) 
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1108,15 +1095,15 @@ func (a *FlowsApiService) FlowsExecutorGetExecute(r ApiFlowsExecutorGetRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1125,7 +1112,7 @@ func (a *FlowsApiService) FlowsExecutorGetExecute(r ApiFlowsExecutorGetRequest) 
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1136,7 +1123,7 @@ func (a *FlowsApiService) FlowsExecutorGetExecute(r ApiFlowsExecutorGetRequest) 
 }
 
 type ApiFlowsExecutorSolveRequest struct {
-	ctx                          _context.Context
+	ctx                          context.Context
 	ApiService                   *FlowsApiService
 	flowSlug                     string
 	query                        *string
@@ -1148,12 +1135,13 @@ func (r ApiFlowsExecutorSolveRequest) Query(query string) ApiFlowsExecutorSolveR
 	r.query = &query
 	return r
 }
+
 func (r ApiFlowsExecutorSolveRequest) FlowChallengeResponseRequest(flowChallengeResponseRequest FlowChallengeResponseRequest) ApiFlowsExecutorSolveRequest {
 	r.flowChallengeResponseRequest = &flowChallengeResponseRequest
 	return r
 }
 
-func (r ApiFlowsExecutorSolveRequest) Execute() (ChallengeTypes, *_nethttp.Response, error) {
+func (r ApiFlowsExecutorSolveRequest) Execute() (*ChallengeTypes, *http.Response, error) {
 	return r.ApiService.FlowsExecutorSolveExecute(r)
 }
 
@@ -1162,11 +1150,11 @@ FlowsExecutorSolve Method for FlowsExecutorSolve
 
 Solve the previously retrieved challenge and advanced to the next stage.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param flowSlug
  @return ApiFlowsExecutorSolveRequest
 */
-func (a *FlowsApiService) FlowsExecutorSolve(ctx _context.Context, flowSlug string) ApiFlowsExecutorSolveRequest {
+func (a *FlowsApiService) FlowsExecutorSolve(ctx context.Context, flowSlug string) ApiFlowsExecutorSolveRequest {
 	return ApiFlowsExecutorSolveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1176,27 +1164,25 @@ func (a *FlowsApiService) FlowsExecutorSolve(ctx _context.Context, flowSlug stri
 
 // Execute executes the request
 //  @return ChallengeTypes
-func (a *FlowsApiService) FlowsExecutorSolveExecute(r ApiFlowsExecutorSolveRequest) (ChallengeTypes, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsExecutorSolveExecute(r ApiFlowsExecutorSolveRequest) (*ChallengeTypes, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ChallengeTypes
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ChallengeTypes
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsExecutorSolve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/executor/{flow_slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"flow_slug"+"}", _neturl.PathEscape(parameterToString(r.flowSlug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"flow_slug"+"}", url.PathEscape(parameterToString(r.flowSlug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.query == nil {
 		return localVarReturnValue, nil, reportError("query is required and must be specified")
 	}
@@ -1235,7 +1221,7 @@ func (a *FlowsApiService) FlowsExecutorSolveExecute(r ApiFlowsExecutorSolveReque
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1245,15 +1231,15 @@ func (a *FlowsApiService) FlowsExecutorSolveExecute(r ApiFlowsExecutorSolveReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1262,7 +1248,7 @@ func (a *FlowsApiService) FlowsExecutorSolveExecute(r ApiFlowsExecutorSolveReque
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1273,12 +1259,12 @@ func (a *FlowsApiService) FlowsExecutorSolveExecute(r ApiFlowsExecutorSolveReque
 }
 
 type ApiFlowsInspectorGetRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 	flowSlug   string
 }
 
-func (r ApiFlowsInspectorGetRequest) Execute() (FlowInspection, *_nethttp.Response, error) {
+func (r ApiFlowsInspectorGetRequest) Execute() (*FlowInspection, *http.Response, error) {
 	return r.ApiService.FlowsInspectorGetExecute(r)
 }
 
@@ -1287,11 +1273,11 @@ FlowsInspectorGet Method for FlowsInspectorGet
 
 Get current flow state and record it
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param flowSlug
  @return ApiFlowsInspectorGetRequest
 */
-func (a *FlowsApiService) FlowsInspectorGet(ctx _context.Context, flowSlug string) ApiFlowsInspectorGetRequest {
+func (a *FlowsApiService) FlowsInspectorGet(ctx context.Context, flowSlug string) ApiFlowsInspectorGetRequest {
 	return ApiFlowsInspectorGetRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1301,27 +1287,25 @@ func (a *FlowsApiService) FlowsInspectorGet(ctx _context.Context, flowSlug strin
 
 // Execute executes the request
 //  @return FlowInspection
-func (a *FlowsApiService) FlowsInspectorGetExecute(r ApiFlowsInspectorGetRequest) (FlowInspection, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInspectorGetExecute(r ApiFlowsInspectorGetRequest) (*FlowInspection, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  FlowInspection
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FlowInspection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInspectorGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/inspector/{flow_slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"flow_slug"+"}", _neturl.PathEscape(parameterToString(r.flowSlug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"flow_slug"+"}", url.PathEscape(parameterToString(r.flowSlug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1354,7 +1338,7 @@ func (a *FlowsApiService) FlowsInspectorGetExecute(r ApiFlowsInspectorGetRequest
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1364,15 +1348,15 @@ func (a *FlowsApiService) FlowsInspectorGetExecute(r ApiFlowsInspectorGetRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1381,7 +1365,7 @@ func (a *FlowsApiService) FlowsInspectorGetExecute(r ApiFlowsInspectorGetRequest
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1392,11 +1376,11 @@ func (a *FlowsApiService) FlowsInspectorGetExecute(r ApiFlowsInspectorGetRequest
 }
 
 type ApiFlowsInstancesCacheClearCreateRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 }
 
-func (r ApiFlowsInstancesCacheClearCreateRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiFlowsInstancesCacheClearCreateRequest) Execute() (*http.Response, error) {
 	return r.ApiService.FlowsInstancesCacheClearCreateExecute(r)
 }
 
@@ -1405,10 +1389,10 @@ FlowsInstancesCacheClearCreate Method for FlowsInstancesCacheClearCreate
 
 Clear flow cache
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFlowsInstancesCacheClearCreateRequest
 */
-func (a *FlowsApiService) FlowsInstancesCacheClearCreate(ctx _context.Context) ApiFlowsInstancesCacheClearCreateRequest {
+func (a *FlowsApiService) FlowsInstancesCacheClearCreate(ctx context.Context) ApiFlowsInstancesCacheClearCreateRequest {
 	return ApiFlowsInstancesCacheClearCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1416,25 +1400,23 @@ func (a *FlowsApiService) FlowsInstancesCacheClearCreate(ctx _context.Context) A
 }
 
 // Execute executes the request
-func (a *FlowsApiService) FlowsInstancesCacheClearCreateExecute(r ApiFlowsInstancesCacheClearCreateRequest) (*_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesCacheClearCreateExecute(r ApiFlowsInstancesCacheClearCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesCacheClearCreate")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/cache_clear/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1467,7 +1449,7 @@ func (a *FlowsApiService) FlowsInstancesCacheClearCreateExecute(r ApiFlowsInstan
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -1477,15 +1459,15 @@ func (a *FlowsApiService) FlowsInstancesCacheClearCreateExecute(r ApiFlowsInstan
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1496,11 +1478,11 @@ func (a *FlowsApiService) FlowsInstancesCacheClearCreateExecute(r ApiFlowsInstan
 }
 
 type ApiFlowsInstancesCacheInfoRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 }
 
-func (r ApiFlowsInstancesCacheInfoRetrieveRequest) Execute() (Cache, *_nethttp.Response, error) {
+func (r ApiFlowsInstancesCacheInfoRetrieveRequest) Execute() (*Cache, *http.Response, error) {
 	return r.ApiService.FlowsInstancesCacheInfoRetrieveExecute(r)
 }
 
@@ -1509,10 +1491,10 @@ FlowsInstancesCacheInfoRetrieve Method for FlowsInstancesCacheInfoRetrieve
 
 Info about cached flows
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFlowsInstancesCacheInfoRetrieveRequest
 */
-func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieve(ctx _context.Context) ApiFlowsInstancesCacheInfoRetrieveRequest {
+func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieve(ctx context.Context) ApiFlowsInstancesCacheInfoRetrieveRequest {
 	return ApiFlowsInstancesCacheInfoRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1521,26 +1503,24 @@ func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieve(ctx _context.Context) 
 
 // Execute executes the request
 //  @return Cache
-func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieveExecute(r ApiFlowsInstancesCacheInfoRetrieveRequest) (Cache, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieveExecute(r ApiFlowsInstancesCacheInfoRetrieveRequest) (*Cache, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Cache
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Cache
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesCacheInfoRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/cache_info/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1573,7 +1553,7 @@ func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieveExecute(r ApiFlowsInsta
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1583,15 +1563,15 @@ func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieveExecute(r ApiFlowsInsta
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1600,7 +1580,7 @@ func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieveExecute(r ApiFlowsInsta
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1611,7 +1591,7 @@ func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieveExecute(r ApiFlowsInsta
 }
 
 type ApiFlowsInstancesCreateRequest struct {
-	ctx         _context.Context
+	ctx         context.Context
 	ApiService  *FlowsApiService
 	flowRequest *FlowRequest
 }
@@ -1621,7 +1601,7 @@ func (r ApiFlowsInstancesCreateRequest) FlowRequest(flowRequest FlowRequest) Api
 	return r
 }
 
-func (r ApiFlowsInstancesCreateRequest) Execute() (Flow, *_nethttp.Response, error) {
+func (r ApiFlowsInstancesCreateRequest) Execute() (*Flow, *http.Response, error) {
 	return r.ApiService.FlowsInstancesCreateExecute(r)
 }
 
@@ -1630,10 +1610,10 @@ FlowsInstancesCreate Method for FlowsInstancesCreate
 
 Flow Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFlowsInstancesCreateRequest
 */
-func (a *FlowsApiService) FlowsInstancesCreate(ctx _context.Context) ApiFlowsInstancesCreateRequest {
+func (a *FlowsApiService) FlowsInstancesCreate(ctx context.Context) ApiFlowsInstancesCreateRequest {
 	return ApiFlowsInstancesCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1642,26 +1622,24 @@ func (a *FlowsApiService) FlowsInstancesCreate(ctx _context.Context) ApiFlowsIns
 
 // Execute executes the request
 //  @return Flow
-func (a *FlowsApiService) FlowsInstancesCreateExecute(r ApiFlowsInstancesCreateRequest) (Flow, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesCreateExecute(r ApiFlowsInstancesCreateRequest) (*Flow, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Flow
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Flow
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.flowRequest == nil {
 		return localVarReturnValue, nil, reportError("flowRequest is required and must be specified")
 	}
@@ -1699,7 +1677,7 @@ func (a *FlowsApiService) FlowsInstancesCreateExecute(r ApiFlowsInstancesCreateR
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1709,15 +1687,15 @@ func (a *FlowsApiService) FlowsInstancesCreateExecute(r ApiFlowsInstancesCreateR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1726,7 +1704,7 @@ func (a *FlowsApiService) FlowsInstancesCreateExecute(r ApiFlowsInstancesCreateR
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1737,12 +1715,12 @@ func (a *FlowsApiService) FlowsInstancesCreateExecute(r ApiFlowsInstancesCreateR
 }
 
 type ApiFlowsInstancesDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 	slug       string
 }
 
-func (r ApiFlowsInstancesDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiFlowsInstancesDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.FlowsInstancesDestroyExecute(r)
 }
 
@@ -1751,11 +1729,11 @@ FlowsInstancesDestroy Method for FlowsInstancesDestroy
 
 Flow Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug
  @return ApiFlowsInstancesDestroyRequest
 */
-func (a *FlowsApiService) FlowsInstancesDestroy(ctx _context.Context, slug string) ApiFlowsInstancesDestroyRequest {
+func (a *FlowsApiService) FlowsInstancesDestroy(ctx context.Context, slug string) ApiFlowsInstancesDestroyRequest {
 	return ApiFlowsInstancesDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1764,26 +1742,24 @@ func (a *FlowsApiService) FlowsInstancesDestroy(ctx _context.Context, slug strin
 }
 
 // Execute executes the request
-func (a *FlowsApiService) FlowsInstancesDestroyExecute(r ApiFlowsInstancesDestroyRequest) (*_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesDestroyExecute(r ApiFlowsInstancesDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", _neturl.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1816,7 +1792,7 @@ func (a *FlowsApiService) FlowsInstancesDestroyExecute(r ApiFlowsInstancesDestro
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -1826,15 +1802,15 @@ func (a *FlowsApiService) FlowsInstancesDestroyExecute(r ApiFlowsInstancesDestro
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1845,12 +1821,12 @@ func (a *FlowsApiService) FlowsInstancesDestroyExecute(r ApiFlowsInstancesDestro
 }
 
 type ApiFlowsInstancesDiagramRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 	slug       string
 }
 
-func (r ApiFlowsInstancesDiagramRetrieveRequest) Execute() (FlowDiagram, *_nethttp.Response, error) {
+func (r ApiFlowsInstancesDiagramRetrieveRequest) Execute() (*FlowDiagram, *http.Response, error) {
 	return r.ApiService.FlowsInstancesDiagramRetrieveExecute(r)
 }
 
@@ -1859,11 +1835,11 @@ FlowsInstancesDiagramRetrieve Method for FlowsInstancesDiagramRetrieve
 
 Return diagram for flow with slug `slug`, in the format used by flowchart.js
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug
  @return ApiFlowsInstancesDiagramRetrieveRequest
 */
-func (a *FlowsApiService) FlowsInstancesDiagramRetrieve(ctx _context.Context, slug string) ApiFlowsInstancesDiagramRetrieveRequest {
+func (a *FlowsApiService) FlowsInstancesDiagramRetrieve(ctx context.Context, slug string) ApiFlowsInstancesDiagramRetrieveRequest {
 	return ApiFlowsInstancesDiagramRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1873,27 +1849,25 @@ func (a *FlowsApiService) FlowsInstancesDiagramRetrieve(ctx _context.Context, sl
 
 // Execute executes the request
 //  @return FlowDiagram
-func (a *FlowsApiService) FlowsInstancesDiagramRetrieveExecute(r ApiFlowsInstancesDiagramRetrieveRequest) (FlowDiagram, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesDiagramRetrieveExecute(r ApiFlowsInstancesDiagramRetrieveRequest) (*FlowDiagram, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  FlowDiagram
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FlowDiagram
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesDiagramRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/diagram/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", _neturl.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1926,7 +1900,7 @@ func (a *FlowsApiService) FlowsInstancesDiagramRetrieveExecute(r ApiFlowsInstanc
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1936,15 +1910,15 @@ func (a *FlowsApiService) FlowsInstancesDiagramRetrieveExecute(r ApiFlowsInstanc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1953,7 +1927,7 @@ func (a *FlowsApiService) FlowsInstancesDiagramRetrieveExecute(r ApiFlowsInstanc
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1964,12 +1938,12 @@ func (a *FlowsApiService) FlowsInstancesDiagramRetrieveExecute(r ApiFlowsInstanc
 }
 
 type ApiFlowsInstancesExecuteRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 	slug       string
 }
 
-func (r ApiFlowsInstancesExecuteRetrieveRequest) Execute() (Link, *_nethttp.Response, error) {
+func (r ApiFlowsInstancesExecuteRetrieveRequest) Execute() (*Link, *http.Response, error) {
 	return r.ApiService.FlowsInstancesExecuteRetrieveExecute(r)
 }
 
@@ -1978,11 +1952,11 @@ FlowsInstancesExecuteRetrieve Method for FlowsInstancesExecuteRetrieve
 
 Execute flow for current user
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug
  @return ApiFlowsInstancesExecuteRetrieveRequest
 */
-func (a *FlowsApiService) FlowsInstancesExecuteRetrieve(ctx _context.Context, slug string) ApiFlowsInstancesExecuteRetrieveRequest {
+func (a *FlowsApiService) FlowsInstancesExecuteRetrieve(ctx context.Context, slug string) ApiFlowsInstancesExecuteRetrieveRequest {
 	return ApiFlowsInstancesExecuteRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1992,27 +1966,25 @@ func (a *FlowsApiService) FlowsInstancesExecuteRetrieve(ctx _context.Context, sl
 
 // Execute executes the request
 //  @return Link
-func (a *FlowsApiService) FlowsInstancesExecuteRetrieveExecute(r ApiFlowsInstancesExecuteRetrieveRequest) (Link, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesExecuteRetrieveExecute(r ApiFlowsInstancesExecuteRetrieveRequest) (*Link, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Link
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Link
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesExecuteRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/execute/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", _neturl.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2045,7 +2017,7 @@ func (a *FlowsApiService) FlowsInstancesExecuteRetrieveExecute(r ApiFlowsInstanc
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2055,15 +2027,15 @@ func (a *FlowsApiService) FlowsInstancesExecuteRetrieveExecute(r ApiFlowsInstanc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2072,7 +2044,7 @@ func (a *FlowsApiService) FlowsInstancesExecuteRetrieveExecute(r ApiFlowsInstanc
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2083,12 +2055,12 @@ func (a *FlowsApiService) FlowsInstancesExecuteRetrieveExecute(r ApiFlowsInstanc
 }
 
 type ApiFlowsInstancesExportRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 	slug       string
 }
 
-func (r ApiFlowsInstancesExportRetrieveRequest) Execute() (*os.File, *_nethttp.Response, error) {
+func (r ApiFlowsInstancesExportRetrieveRequest) Execute() (**os.File, *http.Response, error) {
 	return r.ApiService.FlowsInstancesExportRetrieveExecute(r)
 }
 
@@ -2097,11 +2069,11 @@ FlowsInstancesExportRetrieve Method for FlowsInstancesExportRetrieve
 
 Export flow to .akflow file
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug
  @return ApiFlowsInstancesExportRetrieveRequest
 */
-func (a *FlowsApiService) FlowsInstancesExportRetrieve(ctx _context.Context, slug string) ApiFlowsInstancesExportRetrieveRequest {
+func (a *FlowsApiService) FlowsInstancesExportRetrieve(ctx context.Context, slug string) ApiFlowsInstancesExportRetrieveRequest {
 	return ApiFlowsInstancesExportRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2111,27 +2083,25 @@ func (a *FlowsApiService) FlowsInstancesExportRetrieve(ctx _context.Context, slu
 
 // Execute executes the request
 //  @return *os.File
-func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstancesExportRetrieveRequest) (*os.File, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstancesExportRetrieveRequest) (**os.File, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  *os.File
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue **os.File
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesExportRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/export/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", _neturl.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2164,7 +2134,7 @@ func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstance
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2174,15 +2144,15 @@ func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstance
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2191,7 +2161,7 @@ func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstance
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2202,7 +2172,7 @@ func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstance
 }
 
 type ApiFlowsInstancesImportFlowCreateRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 	file       **os.File
 	clear      *bool
@@ -2212,12 +2182,13 @@ func (r ApiFlowsInstancesImportFlowCreateRequest) File(file *os.File) ApiFlowsIn
 	r.file = &file
 	return r
 }
+
 func (r ApiFlowsInstancesImportFlowCreateRequest) Clear(clear bool) ApiFlowsInstancesImportFlowCreateRequest {
 	r.clear = &clear
 	return r
 }
 
-func (r ApiFlowsInstancesImportFlowCreateRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiFlowsInstancesImportFlowCreateRequest) Execute() (*http.Response, error) {
 	return r.ApiService.FlowsInstancesImportFlowCreateExecute(r)
 }
 
@@ -2226,10 +2197,10 @@ FlowsInstancesImportFlowCreate Method for FlowsInstancesImportFlowCreate
 
 Import flow from .akflow file
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFlowsInstancesImportFlowCreateRequest
 */
-func (a *FlowsApiService) FlowsInstancesImportFlowCreate(ctx _context.Context) ApiFlowsInstancesImportFlowCreateRequest {
+func (a *FlowsApiService) FlowsInstancesImportFlowCreate(ctx context.Context) ApiFlowsInstancesImportFlowCreateRequest {
 	return ApiFlowsInstancesImportFlowCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2237,25 +2208,23 @@ func (a *FlowsApiService) FlowsInstancesImportFlowCreate(ctx _context.Context) A
 }
 
 // Execute executes the request
-func (a *FlowsApiService) FlowsInstancesImportFlowCreateExecute(r ApiFlowsInstancesImportFlowCreateRequest) (*_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesImportFlowCreateExecute(r ApiFlowsInstancesImportFlowCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesImportFlowCreate")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/import_flow/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -2274,17 +2243,23 @@ func (a *FlowsApiService) FlowsInstancesImportFlowCreateExecute(r ApiFlowsInstan
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarFormFileName = "file"
-	var localVarFile *os.File
+	var fileLocalVarFormFileName string
+	var fileLocalVarFileName string
+	var fileLocalVarFileBytes []byte
+
+	fileLocalVarFormFileName = "file"
+
+	var fileLocalVarFile *os.File
 	if r.file != nil {
-		localVarFile = *r.file
+		fileLocalVarFile = *r.file
 	}
-	if localVarFile != nil {
-		fbs, _ := _ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
+	if fileLocalVarFile != nil {
+		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fileLocalVarFileBytes = fbs
+		fileLocalVarFileName = fileLocalVarFile.Name()
+		fileLocalVarFile.Close()
 	}
+	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	if r.clear != nil {
 		localVarFormParams.Add("clear", parameterToString(*r.clear, ""))
 	}
@@ -2302,7 +2277,7 @@ func (a *FlowsApiService) FlowsInstancesImportFlowCreateExecute(r ApiFlowsInstan
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2312,15 +2287,15 @@ func (a *FlowsApiService) FlowsInstancesImportFlowCreateExecute(r ApiFlowsInstan
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2331,7 +2306,7 @@ func (a *FlowsApiService) FlowsInstancesImportFlowCreateExecute(r ApiFlowsInstan
 }
 
 type ApiFlowsInstancesListRequest struct {
-	ctx         _context.Context
+	ctx         context.Context
 	ApiService  *FlowsApiService
 	designation *string
 	flowUuid    *string
@@ -2348,10 +2323,12 @@ func (r ApiFlowsInstancesListRequest) Designation(designation string) ApiFlowsIn
 	r.designation = &designation
 	return r
 }
+
 func (r ApiFlowsInstancesListRequest) FlowUuid(flowUuid string) ApiFlowsInstancesListRequest {
 	r.flowUuid = &flowUuid
 	return r
 }
+
 func (r ApiFlowsInstancesListRequest) Name(name string) ApiFlowsInstancesListRequest {
 	r.name = &name
 	return r
@@ -2380,12 +2357,13 @@ func (r ApiFlowsInstancesListRequest) Search(search string) ApiFlowsInstancesLis
 	r.search = &search
 	return r
 }
+
 func (r ApiFlowsInstancesListRequest) Slug(slug string) ApiFlowsInstancesListRequest {
 	r.slug = &slug
 	return r
 }
 
-func (r ApiFlowsInstancesListRequest) Execute() (PaginatedFlowList, *_nethttp.Response, error) {
+func (r ApiFlowsInstancesListRequest) Execute() (*PaginatedFlowList, *http.Response, error) {
 	return r.ApiService.FlowsInstancesListExecute(r)
 }
 
@@ -2394,10 +2372,10 @@ FlowsInstancesList Method for FlowsInstancesList
 
 Flow Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFlowsInstancesListRequest
 */
-func (a *FlowsApiService) FlowsInstancesList(ctx _context.Context) ApiFlowsInstancesListRequest {
+func (a *FlowsApiService) FlowsInstancesList(ctx context.Context) ApiFlowsInstancesListRequest {
 	return ApiFlowsInstancesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2406,26 +2384,24 @@ func (a *FlowsApiService) FlowsInstancesList(ctx _context.Context) ApiFlowsInsta
 
 // Execute executes the request
 //  @return PaginatedFlowList
-func (a *FlowsApiService) FlowsInstancesListExecute(r ApiFlowsInstancesListRequest) (PaginatedFlowList, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesListExecute(r ApiFlowsInstancesListRequest) (*PaginatedFlowList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedFlowList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedFlowList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.designation != nil {
 		localVarQueryParams.Add("designation", parameterToString(*r.designation, ""))
@@ -2482,7 +2458,7 @@ func (a *FlowsApiService) FlowsInstancesListExecute(r ApiFlowsInstancesListReque
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2492,15 +2468,15 @@ func (a *FlowsApiService) FlowsInstancesListExecute(r ApiFlowsInstancesListReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2509,7 +2485,7 @@ func (a *FlowsApiService) FlowsInstancesListExecute(r ApiFlowsInstancesListReque
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2520,7 +2496,7 @@ func (a *FlowsApiService) FlowsInstancesListExecute(r ApiFlowsInstancesListReque
 }
 
 type ApiFlowsInstancesPartialUpdateRequest struct {
-	ctx                _context.Context
+	ctx                context.Context
 	ApiService         *FlowsApiService
 	slug               string
 	patchedFlowRequest *PatchedFlowRequest
@@ -2531,7 +2507,7 @@ func (r ApiFlowsInstancesPartialUpdateRequest) PatchedFlowRequest(patchedFlowReq
 	return r
 }
 
-func (r ApiFlowsInstancesPartialUpdateRequest) Execute() (Flow, *_nethttp.Response, error) {
+func (r ApiFlowsInstancesPartialUpdateRequest) Execute() (*Flow, *http.Response, error) {
 	return r.ApiService.FlowsInstancesPartialUpdateExecute(r)
 }
 
@@ -2540,11 +2516,11 @@ FlowsInstancesPartialUpdate Method for FlowsInstancesPartialUpdate
 
 Flow Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug
  @return ApiFlowsInstancesPartialUpdateRequest
 */
-func (a *FlowsApiService) FlowsInstancesPartialUpdate(ctx _context.Context, slug string) ApiFlowsInstancesPartialUpdateRequest {
+func (a *FlowsApiService) FlowsInstancesPartialUpdate(ctx context.Context, slug string) ApiFlowsInstancesPartialUpdateRequest {
 	return ApiFlowsInstancesPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2554,27 +2530,25 @@ func (a *FlowsApiService) FlowsInstancesPartialUpdate(ctx _context.Context, slug
 
 // Execute executes the request
 //  @return Flow
-func (a *FlowsApiService) FlowsInstancesPartialUpdateExecute(r ApiFlowsInstancesPartialUpdateRequest) (Flow, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesPartialUpdateExecute(r ApiFlowsInstancesPartialUpdateRequest) (*Flow, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Flow
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Flow
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", _neturl.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2609,7 +2583,7 @@ func (a *FlowsApiService) FlowsInstancesPartialUpdateExecute(r ApiFlowsInstances
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2619,15 +2593,15 @@ func (a *FlowsApiService) FlowsInstancesPartialUpdateExecute(r ApiFlowsInstances
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2636,7 +2610,7 @@ func (a *FlowsApiService) FlowsInstancesPartialUpdateExecute(r ApiFlowsInstances
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2647,12 +2621,12 @@ func (a *FlowsApiService) FlowsInstancesPartialUpdateExecute(r ApiFlowsInstances
 }
 
 type ApiFlowsInstancesRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 	slug       string
 }
 
-func (r ApiFlowsInstancesRetrieveRequest) Execute() (Flow, *_nethttp.Response, error) {
+func (r ApiFlowsInstancesRetrieveRequest) Execute() (*Flow, *http.Response, error) {
 	return r.ApiService.FlowsInstancesRetrieveExecute(r)
 }
 
@@ -2661,11 +2635,11 @@ FlowsInstancesRetrieve Method for FlowsInstancesRetrieve
 
 Flow Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug
  @return ApiFlowsInstancesRetrieveRequest
 */
-func (a *FlowsApiService) FlowsInstancesRetrieve(ctx _context.Context, slug string) ApiFlowsInstancesRetrieveRequest {
+func (a *FlowsApiService) FlowsInstancesRetrieve(ctx context.Context, slug string) ApiFlowsInstancesRetrieveRequest {
 	return ApiFlowsInstancesRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2675,27 +2649,25 @@ func (a *FlowsApiService) FlowsInstancesRetrieve(ctx _context.Context, slug stri
 
 // Execute executes the request
 //  @return Flow
-func (a *FlowsApiService) FlowsInstancesRetrieveExecute(r ApiFlowsInstancesRetrieveRequest) (Flow, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesRetrieveExecute(r ApiFlowsInstancesRetrieveRequest) (*Flow, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Flow
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Flow
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", _neturl.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2728,7 +2700,7 @@ func (a *FlowsApiService) FlowsInstancesRetrieveExecute(r ApiFlowsInstancesRetri
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2738,15 +2710,15 @@ func (a *FlowsApiService) FlowsInstancesRetrieveExecute(r ApiFlowsInstancesRetri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2755,7 +2727,7 @@ func (a *FlowsApiService) FlowsInstancesRetrieveExecute(r ApiFlowsInstancesRetri
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2766,7 +2738,7 @@ func (a *FlowsApiService) FlowsInstancesRetrieveExecute(r ApiFlowsInstancesRetri
 }
 
 type ApiFlowsInstancesSetBackgroundCreateRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 	slug       string
 	file       **os.File
@@ -2777,12 +2749,13 @@ func (r ApiFlowsInstancesSetBackgroundCreateRequest) File(file *os.File) ApiFlow
 	r.file = &file
 	return r
 }
+
 func (r ApiFlowsInstancesSetBackgroundCreateRequest) Clear(clear bool) ApiFlowsInstancesSetBackgroundCreateRequest {
 	r.clear = &clear
 	return r
 }
 
-func (r ApiFlowsInstancesSetBackgroundCreateRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiFlowsInstancesSetBackgroundCreateRequest) Execute() (*http.Response, error) {
 	return r.ApiService.FlowsInstancesSetBackgroundCreateExecute(r)
 }
 
@@ -2791,11 +2764,11 @@ FlowsInstancesSetBackgroundCreate Method for FlowsInstancesSetBackgroundCreate
 
 Set Flow background
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug
  @return ApiFlowsInstancesSetBackgroundCreateRequest
 */
-func (a *FlowsApiService) FlowsInstancesSetBackgroundCreate(ctx _context.Context, slug string) ApiFlowsInstancesSetBackgroundCreateRequest {
+func (a *FlowsApiService) FlowsInstancesSetBackgroundCreate(ctx context.Context, slug string) ApiFlowsInstancesSetBackgroundCreateRequest {
 	return ApiFlowsInstancesSetBackgroundCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2804,26 +2777,24 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundCreate(ctx _context.Context
 }
 
 // Execute executes the request
-func (a *FlowsApiService) FlowsInstancesSetBackgroundCreateExecute(r ApiFlowsInstancesSetBackgroundCreateRequest) (*_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesSetBackgroundCreateExecute(r ApiFlowsInstancesSetBackgroundCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesSetBackgroundCreate")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/set_background/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", _neturl.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -2842,17 +2813,23 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundCreateExecute(r ApiFlowsIns
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarFormFileName = "file"
-	var localVarFile *os.File
+	var fileLocalVarFormFileName string
+	var fileLocalVarFileName string
+	var fileLocalVarFileBytes []byte
+
+	fileLocalVarFormFileName = "file"
+
+	var fileLocalVarFile *os.File
 	if r.file != nil {
-		localVarFile = *r.file
+		fileLocalVarFile = *r.file
 	}
-	if localVarFile != nil {
-		fbs, _ := _ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
+	if fileLocalVarFile != nil {
+		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fileLocalVarFileBytes = fbs
+		fileLocalVarFileName = fileLocalVarFile.Name()
+		fileLocalVarFile.Close()
 	}
+	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	if r.clear != nil {
 		localVarFormParams.Add("clear", parameterToString(*r.clear, ""))
 	}
@@ -2870,7 +2847,7 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundCreateExecute(r ApiFlowsIns
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2880,15 +2857,15 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundCreateExecute(r ApiFlowsIns
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2899,7 +2876,7 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundCreateExecute(r ApiFlowsIns
 }
 
 type ApiFlowsInstancesSetBackgroundUrlCreateRequest struct {
-	ctx             _context.Context
+	ctx             context.Context
 	ApiService      *FlowsApiService
 	slug            string
 	filePathRequest *FilePathRequest
@@ -2910,7 +2887,7 @@ func (r ApiFlowsInstancesSetBackgroundUrlCreateRequest) FilePathRequest(filePath
 	return r
 }
 
-func (r ApiFlowsInstancesSetBackgroundUrlCreateRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiFlowsInstancesSetBackgroundUrlCreateRequest) Execute() (*http.Response, error) {
 	return r.ApiService.FlowsInstancesSetBackgroundUrlCreateExecute(r)
 }
 
@@ -2919,11 +2896,11 @@ FlowsInstancesSetBackgroundUrlCreate Method for FlowsInstancesSetBackgroundUrlCr
 
 Set Flow background (as URL)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug
  @return ApiFlowsInstancesSetBackgroundUrlCreateRequest
 */
-func (a *FlowsApiService) FlowsInstancesSetBackgroundUrlCreate(ctx _context.Context, slug string) ApiFlowsInstancesSetBackgroundUrlCreateRequest {
+func (a *FlowsApiService) FlowsInstancesSetBackgroundUrlCreate(ctx context.Context, slug string) ApiFlowsInstancesSetBackgroundUrlCreateRequest {
 	return ApiFlowsInstancesSetBackgroundUrlCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2932,26 +2909,24 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundUrlCreate(ctx _context.Cont
 }
 
 // Execute executes the request
-func (a *FlowsApiService) FlowsInstancesSetBackgroundUrlCreateExecute(r ApiFlowsInstancesSetBackgroundUrlCreateRequest) (*_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesSetBackgroundUrlCreateExecute(r ApiFlowsInstancesSetBackgroundUrlCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesSetBackgroundUrlCreate")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/set_background_url/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", _neturl.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.filePathRequest == nil {
 		return nil, reportError("filePathRequest is required and must be specified")
 	}
@@ -2989,7 +2964,7 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundUrlCreateExecute(r ApiFlows
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2999,15 +2974,15 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundUrlCreateExecute(r ApiFlows
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3018,7 +2993,7 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundUrlCreateExecute(r ApiFlows
 }
 
 type ApiFlowsInstancesUpdateRequest struct {
-	ctx         _context.Context
+	ctx         context.Context
 	ApiService  *FlowsApiService
 	slug        string
 	flowRequest *FlowRequest
@@ -3029,7 +3004,7 @@ func (r ApiFlowsInstancesUpdateRequest) FlowRequest(flowRequest FlowRequest) Api
 	return r
 }
 
-func (r ApiFlowsInstancesUpdateRequest) Execute() (Flow, *_nethttp.Response, error) {
+func (r ApiFlowsInstancesUpdateRequest) Execute() (*Flow, *http.Response, error) {
 	return r.ApiService.FlowsInstancesUpdateExecute(r)
 }
 
@@ -3038,11 +3013,11 @@ FlowsInstancesUpdate Method for FlowsInstancesUpdate
 
 Flow Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug
  @return ApiFlowsInstancesUpdateRequest
 */
-func (a *FlowsApiService) FlowsInstancesUpdate(ctx _context.Context, slug string) ApiFlowsInstancesUpdateRequest {
+func (a *FlowsApiService) FlowsInstancesUpdate(ctx context.Context, slug string) ApiFlowsInstancesUpdateRequest {
 	return ApiFlowsInstancesUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3052,27 +3027,25 @@ func (a *FlowsApiService) FlowsInstancesUpdate(ctx _context.Context, slug string
 
 // Execute executes the request
 //  @return Flow
-func (a *FlowsApiService) FlowsInstancesUpdateExecute(r ApiFlowsInstancesUpdateRequest) (Flow, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesUpdateExecute(r ApiFlowsInstancesUpdateRequest) (*Flow, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Flow
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Flow
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", _neturl.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.flowRequest == nil {
 		return localVarReturnValue, nil, reportError("flowRequest is required and must be specified")
 	}
@@ -3110,7 +3083,7 @@ func (a *FlowsApiService) FlowsInstancesUpdateExecute(r ApiFlowsInstancesUpdateR
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3120,15 +3093,15 @@ func (a *FlowsApiService) FlowsInstancesUpdateExecute(r ApiFlowsInstancesUpdateR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3137,7 +3110,7 @@ func (a *FlowsApiService) FlowsInstancesUpdateExecute(r ApiFlowsInstancesUpdateR
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3148,12 +3121,12 @@ func (a *FlowsApiService) FlowsInstancesUpdateExecute(r ApiFlowsInstancesUpdateR
 }
 
 type ApiFlowsInstancesUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *FlowsApiService
 	slug       string
 }
 
-func (r ApiFlowsInstancesUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiFlowsInstancesUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.FlowsInstancesUsedByListExecute(r)
 }
 
@@ -3162,11 +3135,11 @@ FlowsInstancesUsedByList Method for FlowsInstancesUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug
  @return ApiFlowsInstancesUsedByListRequest
 */
-func (a *FlowsApiService) FlowsInstancesUsedByList(ctx _context.Context, slug string) ApiFlowsInstancesUsedByListRequest {
+func (a *FlowsApiService) FlowsInstancesUsedByList(ctx context.Context, slug string) ApiFlowsInstancesUsedByListRequest {
 	return ApiFlowsInstancesUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3176,27 +3149,25 @@ func (a *FlowsApiService) FlowsInstancesUsedByList(ctx _context.Context, slug st
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *FlowsApiService) FlowsInstancesUsedByListExecute(r ApiFlowsInstancesUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *FlowsApiService) FlowsInstancesUsedByListExecute(r ApiFlowsInstancesUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", _neturl.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3229,7 +3200,7 @@ func (a *FlowsApiService) FlowsInstancesUsedByListExecute(r ApiFlowsInstancesUse
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3239,15 +3210,15 @@ func (a *FlowsApiService) FlowsInstancesUsedByListExecute(r ApiFlowsInstancesUse
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3256,7 +3227,7 @@ func (a *FlowsApiService) FlowsInstancesUsedByListExecute(r ApiFlowsInstancesUse
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

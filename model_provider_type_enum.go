@@ -34,7 +34,8 @@ const (
 	PROVIDERTYPEENUM_MAILCOW       ProviderTypeEnum = "mailcow"
 )
 
-var allowedProviderTypeEnumEnumValues = []ProviderTypeEnum{
+// All allowed values of ProviderTypeEnum enum
+var AllowedProviderTypeEnumEnumValues = []ProviderTypeEnum{
 	"apple",
 	"azuread",
 	"discord",
@@ -55,7 +56,7 @@ func (v *ProviderTypeEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := ProviderTypeEnum(value)
-	for _, existing := range allowedProviderTypeEnumEnumValues {
+	for _, existing := range AllowedProviderTypeEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -72,13 +73,13 @@ func NewProviderTypeEnumFromValue(v string) (*ProviderTypeEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ProviderTypeEnum: valid values are %v", v, allowedProviderTypeEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for ProviderTypeEnum: valid values are %v", v, AllowedProviderTypeEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v ProviderTypeEnum) IsValid() bool {
-	for _, existing := range allowedProviderTypeEnumEnumValues {
+	for _, existing := range AllowedProviderTypeEnumEnumValues {
 		if existing == v {
 			return true
 		}

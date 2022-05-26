@@ -17,8 +17,8 @@ import (
 
 // DummyStageRequest DummyStage Serializer
 type DummyStageRequest struct {
-	Name    string         `json:"name"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
+	Name    string        `json:"name"`
+	FlowSet []FlowRequest `json:"flow_set,omitempty"`
 }
 
 // NewDummyStageRequest instantiates a new DummyStageRequest object
@@ -69,12 +69,12 @@ func (o *DummyStageRequest) GetFlowSet() []FlowRequest {
 		var ret []FlowRequest
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DummyStageRequest) GetFlowSetOk() (*[]FlowRequest, bool) {
+func (o *DummyStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *DummyStageRequest) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
 func (o *DummyStageRequest) SetFlowSet(v []FlowRequest) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 func (o DummyStageRequest) MarshalJSON() ([]byte, error) {

@@ -25,17 +25,23 @@ type LoginChallengeTypes struct {
 
 // AppleLoginChallengeAsLoginChallengeTypes is a convenience function that returns AppleLoginChallenge wrapped in LoginChallengeTypes
 func AppleLoginChallengeAsLoginChallengeTypes(v *AppleLoginChallenge) LoginChallengeTypes {
-	return LoginChallengeTypes{AppleLoginChallenge: v}
+	return LoginChallengeTypes{
+		AppleLoginChallenge: v,
+	}
 }
 
 // PlexAuthenticationChallengeAsLoginChallengeTypes is a convenience function that returns PlexAuthenticationChallenge wrapped in LoginChallengeTypes
 func PlexAuthenticationChallengeAsLoginChallengeTypes(v *PlexAuthenticationChallenge) LoginChallengeTypes {
-	return LoginChallengeTypes{PlexAuthenticationChallenge: v}
+	return LoginChallengeTypes{
+		PlexAuthenticationChallenge: v,
+	}
 }
 
 // RedirectChallengeAsLoginChallengeTypes is a convenience function that returns RedirectChallenge wrapped in LoginChallengeTypes
 func RedirectChallengeAsLoginChallengeTypes(v *RedirectChallenge) LoginChallengeTypes {
-	return LoginChallengeTypes{RedirectChallenge: v}
+	return LoginChallengeTypes{
+		RedirectChallenge: v,
+	}
 }
 
 // Unmarshal JSON data into one of the pointers in the struct
@@ -43,9 +49,9 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 	var err error
 	// use discriminator value to speed up the lookup
 	var jsonDict map[string]interface{}
-	err = json.Unmarshal(data, &jsonDict)
+	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
-		return fmt.Errorf("Failed to unmarshal JSON into map for the discrimintor lookup.")
+		return fmt.Errorf("Failed to unmarshal JSON into map for the discriminator lookup.")
 	}
 
 	// check if the discriminator value is 'AppleLoginChallenge'
@@ -142,6 +148,9 @@ func (src LoginChallengeTypes) MarshalJSON() ([]byte, error) {
 
 // Get the actual instance
 func (obj *LoginChallengeTypes) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
+	}
 	if obj.AppleLoginChallenge != nil {
 		return obj.AppleLoginChallenge
 	}

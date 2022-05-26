@@ -50,7 +50,8 @@ const (
 	EVENTACTIONS_CUSTOM                     EventActions = "custom_"
 )
 
-var allowedEventActionsEnumValues = []EventActions{
+// All allowed values of EventActions enum
+var AllowedEventActionsEnumValues = []EventActions{
 	"login",
 	"login_failed",
 	"logout",
@@ -87,7 +88,7 @@ func (v *EventActions) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := EventActions(value)
-	for _, existing := range allowedEventActionsEnumValues {
+	for _, existing := range AllowedEventActionsEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -104,13 +105,13 @@ func NewEventActionsFromValue(v string) (*EventActions, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for EventActions: valid values are %v", v, allowedEventActionsEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for EventActions: valid values are %v", v, AllowedEventActionsEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v EventActions) IsValid() bool {
-	for _, existing := range allowedEventActionsEnumValues {
+	for _, existing := range AllowedEventActionsEnumValues {
 		if existing == v {
 			return true
 		}

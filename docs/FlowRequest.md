@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Slug** | **string** | Visible in the URL. | 
 **Title** | **string** | Shown as the Title in Flow pages. | 
-**Designation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. | 
+**Designation** | [**NullableFlowDesignationEnum**](FlowDesignationEnum.md) | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. | 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **CompatibilityMode** | Pointer to **bool** | Enable compatibility mode, increases compatibility with password managers on mobile devices. | [optional] 
 **Layout** | Pointer to [**LayoutEnum**](LayoutEnum.md) |  | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewFlowRequest
 
-`func NewFlowRequest(name string, slug string, title string, designation FlowDesignationEnum, ) *FlowRequest`
+`func NewFlowRequest(name string, slug string, title string, designation NullableFlowDesignationEnum, ) *FlowRequest`
 
 NewFlowRequest instantiates a new FlowRequest object
 This constructor will assign default values to properties that have it defined,
@@ -111,6 +111,16 @@ and a boolean to check if the value has been set.
 SetDesignation sets Designation field to given value.
 
 
+### SetDesignationNil
+
+`func (o *FlowRequest) SetDesignationNil(b bool)`
+
+ SetDesignationNil sets the value for Designation to be an explicit nil
+
+### UnsetDesignation
+`func (o *FlowRequest) UnsetDesignation()`
+
+UnsetDesignation ensures that no value is present for Designation, not even an explicit nil
 ### GetPolicyEngineMode
 
 `func (o *FlowRequest) GetPolicyEngineMode() PolicyEngineMode`

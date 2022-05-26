@@ -26,7 +26,8 @@ const (
 	RESIDENTKEYREQUIREMENTENUM_REQUIRED    ResidentKeyRequirementEnum = "required"
 )
 
-var allowedResidentKeyRequirementEnumEnumValues = []ResidentKeyRequirementEnum{
+// All allowed values of ResidentKeyRequirementEnum enum
+var AllowedResidentKeyRequirementEnumEnumValues = []ResidentKeyRequirementEnum{
 	"discouraged",
 	"preferred",
 	"required",
@@ -39,7 +40,7 @@ func (v *ResidentKeyRequirementEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := ResidentKeyRequirementEnum(value)
-	for _, existing := range allowedResidentKeyRequirementEnumEnumValues {
+	for _, existing := range AllowedResidentKeyRequirementEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -56,13 +57,13 @@ func NewResidentKeyRequirementEnumFromValue(v string) (*ResidentKeyRequirementEn
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ResidentKeyRequirementEnum: valid values are %v", v, allowedResidentKeyRequirementEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for ResidentKeyRequirementEnum: valid values are %v", v, AllowedResidentKeyRequirementEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v ResidentKeyRequirementEnum) IsValid() bool {
-	for _, existing := range allowedResidentKeyRequirementEnumEnumValues {
+	for _, existing := range AllowedResidentKeyRequirementEnumEnumValues {
 		if existing == v {
 			return true
 		}

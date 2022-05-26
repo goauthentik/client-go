@@ -17,11 +17,11 @@ import (
 
 // PatchedAuthenticatorTOTPStageRequest AuthenticatorTOTPStage Serializer
 type PatchedAuthenticatorTOTPStageRequest struct {
-	Name    *string        `json:"name,omitempty"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
+	Name    *string       `json:"name,omitempty"`
+	FlowSet []FlowRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	Digits        *DigitsEnum    `json:"digits,omitempty"`
+	ConfigureFlow NullableString     `json:"configure_flow,omitempty"`
+	Digits        NullableDigitsEnum `json:"digits,omitempty"`
 }
 
 // NewPatchedAuthenticatorTOTPStageRequest instantiates a new PatchedAuthenticatorTOTPStageRequest object
@@ -79,12 +79,12 @@ func (o *PatchedAuthenticatorTOTPStageRequest) GetFlowSet() []FlowRequest {
 		var ret []FlowRequest
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedAuthenticatorTOTPStageRequest) GetFlowSetOk() (*[]FlowRequest, bool) {
+func (o *PatchedAuthenticatorTOTPStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -102,7 +102,7 @@ func (o *PatchedAuthenticatorTOTPStageRequest) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
 func (o *PatchedAuthenticatorTOTPStageRequest) SetFlowSet(v []FlowRequest) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -148,36 +148,47 @@ func (o *PatchedAuthenticatorTOTPStageRequest) UnsetConfigureFlow() {
 	o.ConfigureFlow.Unset()
 }
 
-// GetDigits returns the Digits field value if set, zero value otherwise.
+// GetDigits returns the Digits field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedAuthenticatorTOTPStageRequest) GetDigits() DigitsEnum {
-	if o == nil || o.Digits == nil {
+	if o == nil || o.Digits.Get() == nil {
 		var ret DigitsEnum
 		return ret
 	}
-	return *o.Digits
+	return *o.Digits.Get()
 }
 
 // GetDigitsOk returns a tuple with the Digits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedAuthenticatorTOTPStageRequest) GetDigitsOk() (*DigitsEnum, bool) {
-	if o == nil || o.Digits == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Digits, true
+	return o.Digits.Get(), o.Digits.IsSet()
 }
 
 // HasDigits returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorTOTPStageRequest) HasDigits() bool {
-	if o != nil && o.Digits != nil {
+	if o != nil && o.Digits.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDigits gets a reference to the given DigitsEnum and assigns it to the Digits field.
+// SetDigits gets a reference to the given NullableDigitsEnum and assigns it to the Digits field.
 func (o *PatchedAuthenticatorTOTPStageRequest) SetDigits(v DigitsEnum) {
-	o.Digits = &v
+	o.Digits.Set(&v)
+}
+
+// SetDigitsNil sets the value for Digits to be an explicit nil
+func (o *PatchedAuthenticatorTOTPStageRequest) SetDigitsNil() {
+	o.Digits.Set(nil)
+}
+
+// UnsetDigits ensures that no value is present for Digits, not even an explicit nil
+func (o *PatchedAuthenticatorTOTPStageRequest) UnsetDigits() {
+	o.Digits.Unset()
 }
 
 func (o PatchedAuthenticatorTOTPStageRequest) MarshalJSON() ([]byte, error) {
@@ -191,8 +202,8 @@ func (o PatchedAuthenticatorTOTPStageRequest) MarshalJSON() ([]byte, error) {
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if o.Digits != nil {
-		toSerialize["digits"] = o.Digits
+	if o.Digits.IsSet() {
+		toSerialize["digits"] = o.Digits.Get()
 	}
 	return json.Marshal(toSerialize)
 }

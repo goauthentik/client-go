@@ -21,7 +21,7 @@ type PatchedKubernetesServiceConnectionRequest struct {
 	// If enabled, use the local connection. Required Docker socket/Kubernetes Integration
 	Local *bool `json:"local,omitempty"`
 	// Paste your kubeconfig here. authentik will automatically use the currently selected context.
-	Kubeconfig *map[string]interface{} `json:"kubeconfig,omitempty"`
+	Kubeconfig map[string]interface{} `json:"kubeconfig,omitempty"`
 }
 
 // NewPatchedKubernetesServiceConnectionRequest instantiates a new PatchedKubernetesServiceConnectionRequest object
@@ -111,12 +111,12 @@ func (o *PatchedKubernetesServiceConnectionRequest) GetKubeconfig() map[string]i
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Kubeconfig
+	return o.Kubeconfig
 }
 
 // GetKubeconfigOk returns a tuple with the Kubeconfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedKubernetesServiceConnectionRequest) GetKubeconfigOk() (*map[string]interface{}, bool) {
+func (o *PatchedKubernetesServiceConnectionRequest) GetKubeconfigOk() (map[string]interface{}, bool) {
 	if o == nil || o.Kubeconfig == nil {
 		return nil, false
 	}
@@ -134,7 +134,7 @@ func (o *PatchedKubernetesServiceConnectionRequest) HasKubeconfig() bool {
 
 // SetKubeconfig gets a reference to the given map[string]interface{} and assigns it to the Kubeconfig field.
 func (o *PatchedKubernetesServiceConnectionRequest) SetKubeconfig(v map[string]interface{}) {
-	o.Kubeconfig = &v
+	o.Kubeconfig = v
 }
 
 func (o PatchedKubernetesServiceConnectionRequest) MarshalJSON() ([]byte, error) {

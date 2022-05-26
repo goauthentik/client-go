@@ -98,8 +98,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesAllCacheClearCreate(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesAllCacheClearCreate(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesAllCacheClearCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -157,8 +157,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesAllCacheInfoRetrieve(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesAllCacheInfoRetrieve(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesAllCacheInfoRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -216,11 +216,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesAllDestroy(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesAllDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesAllDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -234,7 +234,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Policy. | 
 
 ### Other Parameters
 
@@ -292,8 +292,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesAllList(context.Background()).BindingsIsnull(bindingsIsnull).Ordering(ordering).Page(page).PageSize(pageSize).PromptstageIsnull(promptstageIsnull).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesAllList(context.Background()).BindingsIsnull(bindingsIsnull).Ordering(ordering).Page(page).PageSize(pageSize).PromptstageIsnull(promptstageIsnull).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesAllList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -360,11 +360,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesAllRetrieve(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesAllRetrieve(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesAllRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -380,7 +380,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Policy. | 
 
 ### Other Parameters
 
@@ -430,12 +430,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Policy.
     policyTestRequest := *openapiclient.NewPolicyTestRequest(int32(123)) // PolicyTestRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesAllTestCreate(context.Background(), policyUuid).PolicyTestRequest(policyTestRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesAllTestCreate(context.Background(), policyUuid).PolicyTestRequest(policyTestRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesAllTestCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -451,7 +451,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Policy. | 
 
 ### Other Parameters
 
@@ -504,8 +504,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesAllTypesList(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesAllTypesList(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesAllTypesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -563,11 +563,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesAllUsedByList(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesAllUsedByList(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesAllUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -583,7 +583,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Policy. | 
 
 ### Other Parameters
 
@@ -636,8 +636,8 @@ func main() {
     policyBindingRequest := *openapiclient.NewPolicyBindingRequest("Target_example", int32(123)) // PolicyBindingRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesBindingsCreate(context.Background()).PolicyBindingRequest(policyBindingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesBindingsCreate(context.Background()).PolicyBindingRequest(policyBindingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesBindingsCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -699,11 +699,11 @@ import (
 )
 
 func main() {
-    policyBindingUuid := TODO // string | A UUID string identifying this Policy Binding.
+    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Policy Binding.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesBindingsDestroy(context.Background(), policyBindingUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesBindingsDestroy(context.Background(), policyBindingUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesBindingsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -717,7 +717,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyBindingUuid** | [**string**](.md) | A UUID string identifying this Policy Binding. | 
+**policyBindingUuid** | **string** | A UUID string identifying this Policy Binding. | 
 
 ### Other Parameters
 
@@ -772,16 +772,16 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    policy := TODO // string |  (optional)
+    policy := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     policyIsnull := true // bool |  (optional)
     search := "search_example" // string | A search term. (optional)
-    target := TODO // string |  (optional)
+    target := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     targetIn := []string{"Inner_example"} // []string |  (optional)
     timeout := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesBindingsList(context.Background()).Enabled(enabled).Order(order).Ordering(ordering).Page(page).PageSize(pageSize).Policy(policy).PolicyIsnull(policyIsnull).Search(search).Target(target).TargetIn(targetIn).Timeout(timeout).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesBindingsList(context.Background()).Enabled(enabled).Order(order).Ordering(ordering).Page(page).PageSize(pageSize).Policy(policy).PolicyIsnull(policyIsnull).Search(search).Target(target).TargetIn(targetIn).Timeout(timeout).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesBindingsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -807,10 +807,10 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **policy** | [**string**](string.md) |  | 
+ **policy** | **string** |  | 
  **policyIsnull** | **bool** |  | 
  **search** | **string** | A search term. | 
- **target** | [**string**](string.md) |  | 
+ **target** | **string** |  | 
  **targetIn** | **[]string** |  | 
  **timeout** | **int32** |  | 
 
@@ -853,12 +853,12 @@ import (
 )
 
 func main() {
-    policyBindingUuid := TODO // string | A UUID string identifying this Policy Binding.
+    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Policy Binding.
     patchedPolicyBindingRequest := *openapiclient.NewPatchedPolicyBindingRequest() // PatchedPolicyBindingRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesBindingsPartialUpdate(context.Background(), policyBindingUuid).PatchedPolicyBindingRequest(patchedPolicyBindingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesBindingsPartialUpdate(context.Background(), policyBindingUuid).PatchedPolicyBindingRequest(patchedPolicyBindingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesBindingsPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -874,7 +874,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyBindingUuid** | [**string**](.md) | A UUID string identifying this Policy Binding. | 
+**policyBindingUuid** | **string** | A UUID string identifying this Policy Binding. | 
 
 ### Other Parameters
 
@@ -925,11 +925,11 @@ import (
 )
 
 func main() {
-    policyBindingUuid := TODO // string | A UUID string identifying this Policy Binding.
+    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Policy Binding.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesBindingsRetrieve(context.Background(), policyBindingUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesBindingsRetrieve(context.Background(), policyBindingUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesBindingsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -945,7 +945,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyBindingUuid** | [**string**](.md) | A UUID string identifying this Policy Binding. | 
+**policyBindingUuid** | **string** | A UUID string identifying this Policy Binding. | 
 
 ### Other Parameters
 
@@ -995,12 +995,12 @@ import (
 )
 
 func main() {
-    policyBindingUuid := TODO // string | A UUID string identifying this Policy Binding.
+    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Policy Binding.
     policyBindingRequest := *openapiclient.NewPolicyBindingRequest("Target_example", int32(123)) // PolicyBindingRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesBindingsUpdate(context.Background(), policyBindingUuid).PolicyBindingRequest(policyBindingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesBindingsUpdate(context.Background(), policyBindingUuid).PolicyBindingRequest(policyBindingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesBindingsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1016,7 +1016,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyBindingUuid** | [**string**](.md) | A UUID string identifying this Policy Binding. | 
+**policyBindingUuid** | **string** | A UUID string identifying this Policy Binding. | 
 
 ### Other Parameters
 
@@ -1067,11 +1067,11 @@ import (
 )
 
 func main() {
-    policyBindingUuid := TODO // string | A UUID string identifying this Policy Binding.
+    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Policy Binding.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesBindingsUsedByList(context.Background(), policyBindingUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesBindingsUsedByList(context.Background(), policyBindingUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesBindingsUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1087,7 +1087,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyBindingUuid** | [**string**](.md) | A UUID string identifying this Policy Binding. | 
+**policyBindingUuid** | **string** | A UUID string identifying this Policy Binding. | 
 
 ### Other Parameters
 
@@ -1140,8 +1140,8 @@ func main() {
     dummyPolicyRequest := *openapiclient.NewDummyPolicyRequest() // DummyPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesDummyCreate(context.Background()).DummyPolicyRequest(dummyPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesDummyCreate(context.Background()).DummyPolicyRequest(dummyPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesDummyCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1203,11 +1203,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Dummy Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesDummyDestroy(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesDummyDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesDummyDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1221,7 +1221,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Dummy Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Dummy Policy. | 
 
 ### Other Parameters
 
@@ -1279,15 +1279,15 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    policyUuid := TODO // string |  (optional)
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     result := true // bool |  (optional)
     search := "search_example" // string | A search term. (optional)
     waitMax := int32(56) // int32 |  (optional)
     waitMin := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesDummyList(context.Background()).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Result(result).Search(search).WaitMax(waitMax).WaitMin(waitMin).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesDummyList(context.Background()).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Result(result).Search(search).WaitMax(waitMax).WaitMin(waitMin).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesDummyList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1315,7 +1315,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **policyUuid** | [**string**](string.md) |  | 
+ **policyUuid** | **string** |  | 
  **result** | **bool** |  | 
  **search** | **string** | A search term. | 
  **waitMax** | **int32** |  | 
@@ -1360,12 +1360,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Dummy Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Policy.
     patchedDummyPolicyRequest := *openapiclient.NewPatchedDummyPolicyRequest() // PatchedDummyPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesDummyPartialUpdate(context.Background(), policyUuid).PatchedDummyPolicyRequest(patchedDummyPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesDummyPartialUpdate(context.Background(), policyUuid).PatchedDummyPolicyRequest(patchedDummyPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesDummyPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1381,7 +1381,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Dummy Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Dummy Policy. | 
 
 ### Other Parameters
 
@@ -1432,11 +1432,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Dummy Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesDummyRetrieve(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesDummyRetrieve(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesDummyRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1452,7 +1452,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Dummy Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Dummy Policy. | 
 
 ### Other Parameters
 
@@ -1502,12 +1502,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Dummy Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Policy.
     dummyPolicyRequest := *openapiclient.NewDummyPolicyRequest() // DummyPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesDummyUpdate(context.Background(), policyUuid).DummyPolicyRequest(dummyPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesDummyUpdate(context.Background(), policyUuid).DummyPolicyRequest(dummyPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesDummyUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1523,7 +1523,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Dummy Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Dummy Policy. | 
 
 ### Other Parameters
 
@@ -1574,11 +1574,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Dummy Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesDummyUsedByList(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesDummyUsedByList(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesDummyUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1594,7 +1594,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Dummy Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Dummy Policy. | 
 
 ### Other Parameters
 
@@ -1647,8 +1647,8 @@ func main() {
     eventMatcherPolicyRequest := *openapiclient.NewEventMatcherPolicyRequest() // EventMatcherPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesEventMatcherCreate(context.Background()).EventMatcherPolicyRequest(eventMatcherPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesEventMatcherCreate(context.Background()).EventMatcherPolicyRequest(eventMatcherPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesEventMatcherCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1710,11 +1710,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Event Matcher Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event Matcher Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesEventMatcherDestroy(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesEventMatcherDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesEventMatcherDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1728,7 +1728,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Event Matcher Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Event Matcher Policy. | 
 
 ### Other Parameters
 
@@ -1789,12 +1789,12 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    policyUuid := TODO // string |  (optional)
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesEventMatcherList(context.Background()).Action(action).App(app).ClientIp(clientIp).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesEventMatcherList(context.Background()).Action(action).App(app).ClientIp(clientIp).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesEventMatcherList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1825,7 +1825,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **policyUuid** | [**string**](string.md) |  | 
+ **policyUuid** | **string** |  | 
  **search** | **string** | A search term. | 
 
 ### Return type
@@ -1867,12 +1867,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Event Matcher Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event Matcher Policy.
     patchedEventMatcherPolicyRequest := *openapiclient.NewPatchedEventMatcherPolicyRequest() // PatchedEventMatcherPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesEventMatcherPartialUpdate(context.Background(), policyUuid).PatchedEventMatcherPolicyRequest(patchedEventMatcherPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesEventMatcherPartialUpdate(context.Background(), policyUuid).PatchedEventMatcherPolicyRequest(patchedEventMatcherPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesEventMatcherPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1888,7 +1888,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Event Matcher Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Event Matcher Policy. | 
 
 ### Other Parameters
 
@@ -1939,11 +1939,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Event Matcher Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event Matcher Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesEventMatcherRetrieve(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesEventMatcherRetrieve(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesEventMatcherRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1959,7 +1959,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Event Matcher Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Event Matcher Policy. | 
 
 ### Other Parameters
 
@@ -2009,12 +2009,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Event Matcher Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event Matcher Policy.
     eventMatcherPolicyRequest := *openapiclient.NewEventMatcherPolicyRequest() // EventMatcherPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesEventMatcherUpdate(context.Background(), policyUuid).EventMatcherPolicyRequest(eventMatcherPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesEventMatcherUpdate(context.Background(), policyUuid).EventMatcherPolicyRequest(eventMatcherPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesEventMatcherUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2030,7 +2030,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Event Matcher Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Event Matcher Policy. | 
 
 ### Other Parameters
 
@@ -2081,11 +2081,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Event Matcher Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event Matcher Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesEventMatcherUsedByList(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesEventMatcherUsedByList(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesEventMatcherUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2101,7 +2101,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Event Matcher Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Event Matcher Policy. | 
 
 ### Other Parameters
 
@@ -2154,8 +2154,8 @@ func main() {
     expressionPolicyRequest := *openapiclient.NewExpressionPolicyRequest("Expression_example") // ExpressionPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesExpressionCreate(context.Background()).ExpressionPolicyRequest(expressionPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesExpressionCreate(context.Background()).ExpressionPolicyRequest(expressionPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesExpressionCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2217,11 +2217,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Expression Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Expression Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesExpressionDestroy(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesExpressionDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesExpressionDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2235,7 +2235,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Expression Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Expression Policy. | 
 
 ### Other Parameters
 
@@ -2294,12 +2294,12 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    policyUuid := TODO // string |  (optional)
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesExpressionList(context.Background()).Created(created).ExecutionLogging(executionLogging).Expression(expression).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesExpressionList(context.Background()).Created(created).ExecutionLogging(executionLogging).Expression(expression).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesExpressionList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2328,7 +2328,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **policyUuid** | [**string**](string.md) |  | 
+ **policyUuid** | **string** |  | 
  **search** | **string** | A search term. | 
 
 ### Return type
@@ -2370,12 +2370,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Expression Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Expression Policy.
     patchedExpressionPolicyRequest := *openapiclient.NewPatchedExpressionPolicyRequest() // PatchedExpressionPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesExpressionPartialUpdate(context.Background(), policyUuid).PatchedExpressionPolicyRequest(patchedExpressionPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesExpressionPartialUpdate(context.Background(), policyUuid).PatchedExpressionPolicyRequest(patchedExpressionPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesExpressionPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2391,7 +2391,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Expression Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Expression Policy. | 
 
 ### Other Parameters
 
@@ -2442,11 +2442,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Expression Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Expression Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesExpressionRetrieve(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesExpressionRetrieve(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesExpressionRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2462,7 +2462,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Expression Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Expression Policy. | 
 
 ### Other Parameters
 
@@ -2512,12 +2512,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Expression Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Expression Policy.
     expressionPolicyRequest := *openapiclient.NewExpressionPolicyRequest("Expression_example") // ExpressionPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesExpressionUpdate(context.Background(), policyUuid).ExpressionPolicyRequest(expressionPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesExpressionUpdate(context.Background(), policyUuid).ExpressionPolicyRequest(expressionPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesExpressionUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2533,7 +2533,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Expression Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Expression Policy. | 
 
 ### Other Parameters
 
@@ -2584,11 +2584,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Expression Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Expression Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesExpressionUsedByList(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesExpressionUsedByList(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesExpressionUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2604,7 +2604,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Expression Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Expression Policy. | 
 
 ### Other Parameters
 
@@ -2657,8 +2657,8 @@ func main() {
     haveIBeenPwendPolicyRequest := *openapiclient.NewHaveIBeenPwendPolicyRequest() // HaveIBeenPwendPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesHaveibeenpwnedCreate(context.Background()).HaveIBeenPwendPolicyRequest(haveIBeenPwendPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesHaveibeenpwnedCreate(context.Background()).HaveIBeenPwendPolicyRequest(haveIBeenPwendPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesHaveibeenpwnedCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2720,11 +2720,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Have I Been Pwned Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Have I Been Pwned Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesHaveibeenpwnedDestroy(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesHaveibeenpwnedDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesHaveibeenpwnedDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2738,7 +2738,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Have I Been Pwned Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Have I Been Pwned Policy. | 
 
 ### Other Parameters
 
@@ -2798,12 +2798,12 @@ func main() {
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     passwordField := "passwordField_example" // string |  (optional)
-    policyUuid := TODO // string |  (optional)
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesHaveibeenpwnedList(context.Background()).AllowedCount(allowedCount).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordField(passwordField).PolicyUuid(policyUuid).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesHaveibeenpwnedList(context.Background()).AllowedCount(allowedCount).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordField(passwordField).PolicyUuid(policyUuid).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesHaveibeenpwnedList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2833,7 +2833,7 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **passwordField** | **string** |  | 
- **policyUuid** | [**string**](string.md) |  | 
+ **policyUuid** | **string** |  | 
  **search** | **string** | A search term. | 
 
 ### Return type
@@ -2875,12 +2875,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Have I Been Pwned Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Have I Been Pwned Policy.
     patchedHaveIBeenPwendPolicyRequest := *openapiclient.NewPatchedHaveIBeenPwendPolicyRequest() // PatchedHaveIBeenPwendPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesHaveibeenpwnedPartialUpdate(context.Background(), policyUuid).PatchedHaveIBeenPwendPolicyRequest(patchedHaveIBeenPwendPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesHaveibeenpwnedPartialUpdate(context.Background(), policyUuid).PatchedHaveIBeenPwendPolicyRequest(patchedHaveIBeenPwendPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesHaveibeenpwnedPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2896,7 +2896,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Have I Been Pwned Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Have I Been Pwned Policy. | 
 
 ### Other Parameters
 
@@ -2947,11 +2947,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Have I Been Pwned Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Have I Been Pwned Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesHaveibeenpwnedRetrieve(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesHaveibeenpwnedRetrieve(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesHaveibeenpwnedRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2967,7 +2967,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Have I Been Pwned Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Have I Been Pwned Policy. | 
 
 ### Other Parameters
 
@@ -3017,12 +3017,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Have I Been Pwned Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Have I Been Pwned Policy.
     haveIBeenPwendPolicyRequest := *openapiclient.NewHaveIBeenPwendPolicyRequest() // HaveIBeenPwendPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesHaveibeenpwnedUpdate(context.Background(), policyUuid).HaveIBeenPwendPolicyRequest(haveIBeenPwendPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesHaveibeenpwnedUpdate(context.Background(), policyUuid).HaveIBeenPwendPolicyRequest(haveIBeenPwendPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesHaveibeenpwnedUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3038,7 +3038,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Have I Been Pwned Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Have I Been Pwned Policy. | 
 
 ### Other Parameters
 
@@ -3089,11 +3089,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Have I Been Pwned Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Have I Been Pwned Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesHaveibeenpwnedUsedByList(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesHaveibeenpwnedUsedByList(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesHaveibeenpwnedUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3109,7 +3109,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Have I Been Pwned Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Have I Been Pwned Policy. | 
 
 ### Other Parameters
 
@@ -3162,8 +3162,8 @@ func main() {
     passwordPolicyRequest := *openapiclient.NewPasswordPolicyRequest("ErrorMessage_example") // PasswordPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordCreate(context.Background()).PasswordPolicyRequest(passwordPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordCreate(context.Background()).PasswordPolicyRequest(passwordPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3225,11 +3225,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Password Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordDestroy(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3243,7 +3243,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Password Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Password Policy. | 
 
 ### Other Parameters
 
@@ -3296,8 +3296,8 @@ func main() {
     passwordExpiryPolicyRequest := *openapiclient.NewPasswordExpiryPolicyRequest(int32(123)) // PasswordExpiryPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordExpiryCreate(context.Background()).PasswordExpiryPolicyRequest(passwordExpiryPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordExpiryCreate(context.Background()).PasswordExpiryPolicyRequest(passwordExpiryPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordExpiryCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3359,11 +3359,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Password Expiry Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Expiry Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordExpiryDestroy(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordExpiryDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordExpiryDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3377,7 +3377,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Password Expiry Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Password Expiry Policy. | 
 
 ### Other Parameters
 
@@ -3437,12 +3437,12 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    policyUuid := TODO // string |  (optional)
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordExpiryList(context.Background()).Created(created).Days(days).DenyOnly(denyOnly).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordExpiryList(context.Background()).Created(created).Days(days).DenyOnly(denyOnly).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordExpiryList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3472,7 +3472,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **policyUuid** | [**string**](string.md) |  | 
+ **policyUuid** | **string** |  | 
  **search** | **string** | A search term. | 
 
 ### Return type
@@ -3514,12 +3514,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Password Expiry Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Expiry Policy.
     patchedPasswordExpiryPolicyRequest := *openapiclient.NewPatchedPasswordExpiryPolicyRequest() // PatchedPasswordExpiryPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordExpiryPartialUpdate(context.Background(), policyUuid).PatchedPasswordExpiryPolicyRequest(patchedPasswordExpiryPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordExpiryPartialUpdate(context.Background(), policyUuid).PatchedPasswordExpiryPolicyRequest(patchedPasswordExpiryPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordExpiryPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3535,7 +3535,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Password Expiry Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Password Expiry Policy. | 
 
 ### Other Parameters
 
@@ -3586,11 +3586,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Password Expiry Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Expiry Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordExpiryRetrieve(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordExpiryRetrieve(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordExpiryRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3606,7 +3606,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Password Expiry Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Password Expiry Policy. | 
 
 ### Other Parameters
 
@@ -3656,12 +3656,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Password Expiry Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Expiry Policy.
     passwordExpiryPolicyRequest := *openapiclient.NewPasswordExpiryPolicyRequest(int32(123)) // PasswordExpiryPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordExpiryUpdate(context.Background(), policyUuid).PasswordExpiryPolicyRequest(passwordExpiryPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordExpiryUpdate(context.Background(), policyUuid).PasswordExpiryPolicyRequest(passwordExpiryPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordExpiryUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3677,7 +3677,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Password Expiry Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Password Expiry Policy. | 
 
 ### Other Parameters
 
@@ -3728,11 +3728,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Password Expiry Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Expiry Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordExpiryUsedByList(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordExpiryUsedByList(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordExpiryUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3748,7 +3748,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Password Expiry Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Password Expiry Policy. | 
 
 ### Other Parameters
 
@@ -3813,13 +3813,13 @@ func main() {
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     passwordField := "passwordField_example" // string |  (optional)
-    policyUuid := TODO // string |  (optional)
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     symbolCharset := "symbolCharset_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordList(context.Background()).AmountDigits(amountDigits).AmountLowercase(amountLowercase).AmountSymbols(amountSymbols).AmountUppercase(amountUppercase).Created(created).ErrorMessage(errorMessage).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).LengthMin(lengthMin).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordField(passwordField).PolicyUuid(policyUuid).Search(search).SymbolCharset(symbolCharset).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordList(context.Background()).AmountDigits(amountDigits).AmountLowercase(amountLowercase).AmountSymbols(amountSymbols).AmountUppercase(amountUppercase).Created(created).ErrorMessage(errorMessage).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).LengthMin(lengthMin).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordField(passwordField).PolicyUuid(policyUuid).Search(search).SymbolCharset(symbolCharset).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3854,7 +3854,7 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **passwordField** | **string** |  | 
- **policyUuid** | [**string**](string.md) |  | 
+ **policyUuid** | **string** |  | 
  **search** | **string** | A search term. | 
  **symbolCharset** | **string** |  | 
 
@@ -3897,12 +3897,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Password Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Policy.
     patchedPasswordPolicyRequest := *openapiclient.NewPatchedPasswordPolicyRequest() // PatchedPasswordPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordPartialUpdate(context.Background(), policyUuid).PatchedPasswordPolicyRequest(patchedPasswordPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordPartialUpdate(context.Background(), policyUuid).PatchedPasswordPolicyRequest(patchedPasswordPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3918,7 +3918,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Password Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Password Policy. | 
 
 ### Other Parameters
 
@@ -3969,11 +3969,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Password Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordRetrieve(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordRetrieve(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3989,7 +3989,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Password Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Password Policy. | 
 
 ### Other Parameters
 
@@ -4039,12 +4039,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Password Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Policy.
     passwordPolicyRequest := *openapiclient.NewPasswordPolicyRequest("ErrorMessage_example") // PasswordPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordUpdate(context.Background(), policyUuid).PasswordPolicyRequest(passwordPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordUpdate(context.Background(), policyUuid).PasswordPolicyRequest(passwordPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4060,7 +4060,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Password Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Password Policy. | 
 
 ### Other Parameters
 
@@ -4111,11 +4111,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Password Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesPasswordUsedByList(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordUsedByList(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4131,7 +4131,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Password Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Password Policy. | 
 
 ### Other Parameters
 
@@ -4184,8 +4184,8 @@ func main() {
     reputationPolicyRequest := *openapiclient.NewReputationPolicyRequest() // ReputationPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationCreate(context.Background()).ReputationPolicyRequest(reputationPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesReputationCreate(context.Background()).ReputationPolicyRequest(reputationPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4247,11 +4247,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Reputation Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Reputation Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationDestroy(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesReputationDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4265,7 +4265,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Reputation Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Reputation Policy. | 
 
 ### Other Parameters
 
@@ -4325,13 +4325,13 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    policyUuid := TODO // string |  (optional)
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     threshold := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationList(context.Background()).CheckIp(checkIp).CheckUsername(checkUsername).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Search(search).Threshold(threshold).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesReputationList(context.Background()).CheckIp(checkIp).CheckUsername(checkUsername).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Search(search).Threshold(threshold).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4361,7 +4361,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **policyUuid** | [**string**](string.md) |  | 
+ **policyUuid** | **string** |  | 
  **search** | **string** | A search term. | 
  **threshold** | **int32** |  | 
 
@@ -4404,12 +4404,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Reputation Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Reputation Policy.
     patchedReputationPolicyRequest := *openapiclient.NewPatchedReputationPolicyRequest() // PatchedReputationPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationPartialUpdate(context.Background(), policyUuid).PatchedReputationPolicyRequest(patchedReputationPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesReputationPartialUpdate(context.Background(), policyUuid).PatchedReputationPolicyRequest(patchedReputationPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4425,7 +4425,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Reputation Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Reputation Policy. | 
 
 ### Other Parameters
 
@@ -4476,11 +4476,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Reputation Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Reputation Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationRetrieve(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesReputationRetrieve(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4496,7 +4496,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Reputation Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Reputation Policy. | 
 
 ### Other Parameters
 
@@ -4546,11 +4546,11 @@ import (
 )
 
 func main() {
-    reputationUuid := TODO // string | A UUID string identifying this reputation.
+    reputationUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this reputation.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationScoresDestroy(context.Background(), reputationUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesReputationScoresDestroy(context.Background(), reputationUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationScoresDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4564,7 +4564,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reputationUuid** | [**string**](.md) | A UUID string identifying this reputation. | 
+**reputationUuid** | **string** | A UUID string identifying this reputation. | 
 
 ### Other Parameters
 
@@ -4623,8 +4623,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationScoresList(context.Background()).Identifier(identifier).Ip(ip).Ordering(ordering).Page(page).PageSize(pageSize).Score(score).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesReputationScoresList(context.Background()).Identifier(identifier).Ip(ip).Ordering(ordering).Page(page).PageSize(pageSize).Score(score).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationScoresList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4692,11 +4692,11 @@ import (
 )
 
 func main() {
-    reputationUuid := TODO // string | A UUID string identifying this reputation.
+    reputationUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this reputation.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationScoresRetrieve(context.Background(), reputationUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesReputationScoresRetrieve(context.Background(), reputationUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationScoresRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4712,7 +4712,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reputationUuid** | [**string**](.md) | A UUID string identifying this reputation. | 
+**reputationUuid** | **string** | A UUID string identifying this reputation. | 
 
 ### Other Parameters
 
@@ -4762,11 +4762,11 @@ import (
 )
 
 func main() {
-    reputationUuid := TODO // string | A UUID string identifying this reputation.
+    reputationUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this reputation.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationScoresUsedByList(context.Background(), reputationUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesReputationScoresUsedByList(context.Background(), reputationUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationScoresUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4782,7 +4782,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reputationUuid** | [**string**](.md) | A UUID string identifying this reputation. | 
+**reputationUuid** | **string** | A UUID string identifying this reputation. | 
 
 ### Other Parameters
 
@@ -4832,12 +4832,12 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Reputation Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Reputation Policy.
     reputationPolicyRequest := *openapiclient.NewReputationPolicyRequest() // ReputationPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationUpdate(context.Background(), policyUuid).ReputationPolicyRequest(reputationPolicyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesReputationUpdate(context.Background(), policyUuid).ReputationPolicyRequest(reputationPolicyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4853,7 +4853,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Reputation Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Reputation Policy. | 
 
 ### Other Parameters
 
@@ -4904,11 +4904,11 @@ import (
 )
 
 func main() {
-    policyUuid := TODO // string | A UUID string identifying this Reputation Policy.
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Reputation Policy.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoliciesApi.PoliciesReputationUsedByList(context.Background(), policyUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesReputationUsedByList(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4924,7 +4924,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyUuid** | [**string**](.md) | A UUID string identifying this Reputation Policy. | 
+**policyUuid** | **string** | A UUID string identifying this Reputation Policy. | 
 
 ### Other Parameters
 

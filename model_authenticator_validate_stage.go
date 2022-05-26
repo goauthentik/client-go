@@ -23,12 +23,12 @@ type AuthenticatorValidateStage struct {
 	VerboseName         string                   `json:"verbose_name"`
 	VerboseNamePlural   string                   `json:"verbose_name_plural"`
 	MetaModelName       string                   `json:"meta_model_name"`
-	FlowSet             *[]Flow                  `json:"flow_set,omitempty"`
+	FlowSet             []Flow                   `json:"flow_set,omitempty"`
 	NotConfiguredAction *NotConfiguredActionEnum `json:"not_configured_action,omitempty"`
 	// Device classes which can be used to authenticate
-	DeviceClasses *[]DeviceClassesEnum `json:"device_classes,omitempty"`
+	DeviceClasses []DeviceClassesEnum `json:"device_classes,omitempty"`
 	// Stages used to configure Authenticator when user doesn't have any compatible devices. After this configuration Stage passes, the user is not prompted again.
-	ConfigurationStages *[]string `json:"configuration_stages,omitempty"`
+	ConfigurationStages []string `json:"configuration_stages,omitempty"`
 	// If any of the user's device has been used within this threshold, this stage will be skipped
 	LastAuthThreshold *string `json:"last_auth_threshold,omitempty"`
 }
@@ -206,12 +206,12 @@ func (o *AuthenticatorValidateStage) GetFlowSet() []Flow {
 		var ret []Flow
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorValidateStage) GetFlowSetOk() (*[]Flow, bool) {
+func (o *AuthenticatorValidateStage) GetFlowSetOk() ([]Flow, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -229,7 +229,7 @@ func (o *AuthenticatorValidateStage) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []Flow and assigns it to the FlowSet field.
 func (o *AuthenticatorValidateStage) SetFlowSet(v []Flow) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetNotConfiguredAction returns the NotConfiguredAction field value if set, zero value otherwise.
@@ -270,12 +270,12 @@ func (o *AuthenticatorValidateStage) GetDeviceClasses() []DeviceClassesEnum {
 		var ret []DeviceClassesEnum
 		return ret
 	}
-	return *o.DeviceClasses
+	return o.DeviceClasses
 }
 
 // GetDeviceClassesOk returns a tuple with the DeviceClasses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorValidateStage) GetDeviceClassesOk() (*[]DeviceClassesEnum, bool) {
+func (o *AuthenticatorValidateStage) GetDeviceClassesOk() ([]DeviceClassesEnum, bool) {
 	if o == nil || o.DeviceClasses == nil {
 		return nil, false
 	}
@@ -293,7 +293,7 @@ func (o *AuthenticatorValidateStage) HasDeviceClasses() bool {
 
 // SetDeviceClasses gets a reference to the given []DeviceClassesEnum and assigns it to the DeviceClasses field.
 func (o *AuthenticatorValidateStage) SetDeviceClasses(v []DeviceClassesEnum) {
-	o.DeviceClasses = &v
+	o.DeviceClasses = v
 }
 
 // GetConfigurationStages returns the ConfigurationStages field value if set, zero value otherwise.
@@ -302,12 +302,12 @@ func (o *AuthenticatorValidateStage) GetConfigurationStages() []string {
 		var ret []string
 		return ret
 	}
-	return *o.ConfigurationStages
+	return o.ConfigurationStages
 }
 
 // GetConfigurationStagesOk returns a tuple with the ConfigurationStages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorValidateStage) GetConfigurationStagesOk() (*[]string, bool) {
+func (o *AuthenticatorValidateStage) GetConfigurationStagesOk() ([]string, bool) {
 	if o == nil || o.ConfigurationStages == nil {
 		return nil, false
 	}
@@ -325,7 +325,7 @@ func (o *AuthenticatorValidateStage) HasConfigurationStages() bool {
 
 // SetConfigurationStages gets a reference to the given []string and assigns it to the ConfigurationStages field.
 func (o *AuthenticatorValidateStage) SetConfigurationStages(v []string) {
-	o.ConfigurationStages = &v
+	o.ConfigurationStages = v
 }
 
 // GetLastAuthThreshold returns the LastAuthThreshold field value if set, zero value otherwise.

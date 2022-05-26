@@ -23,10 +23,10 @@ type GroupMemberRequest struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive   *bool                   `json:"is_active,omitempty"`
-	LastLogin  NullableTime            `json:"last_login,omitempty"`
-	Email      *string                 `json:"email,omitempty"`
-	Attributes *map[string]interface{} `json:"attributes,omitempty"`
+	IsActive   *bool                  `json:"is_active,omitempty"`
+	LastLogin  NullableTime           `json:"last_login,omitempty"`
+	Email      *string                `json:"email,omitempty"`
+	Attributes map[string]interface{} `json:"attributes,omitempty"`
 }
 
 // NewGroupMemberRequest instantiates a new GroupMemberRequest object
@@ -209,12 +209,12 @@ func (o *GroupMemberRequest) GetAttributes() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Attributes
+	return o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupMemberRequest) GetAttributesOk() (*map[string]interface{}, bool) {
+func (o *GroupMemberRequest) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -232,7 +232,7 @@ func (o *GroupMemberRequest) HasAttributes() bool {
 
 // SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
 func (o *GroupMemberRequest) SetAttributes(v map[string]interface{}) {
-	o.Attributes = &v
+	o.Attributes = v
 }
 
 func (o GroupMemberRequest) MarshalJSON() ([]byte, error) {

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
-**UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
+**UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **ServerUri** | **string** |  | 
 **PeerCertificate** | Pointer to **NullableString** | Optionally verify the LDAP Server&#39;s Certificate against the CA Chain in this keypair. | [optional] 
 **BindCn** | Pointer to **string** |  | [optional] 
@@ -234,6 +234,16 @@ SetUserMatchingMode sets UserMatchingMode field to given value.
 
 HasUserMatchingMode returns a boolean if a field has been set.
 
+### SetUserMatchingModeNil
+
+`func (o *LDAPSourceRequest) SetUserMatchingModeNil(b bool)`
+
+ SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
+
+### UnsetUserMatchingMode
+`func (o *LDAPSourceRequest) UnsetUserMatchingMode()`
+
+UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
 ### GetServerUri
 
 `func (o *LDAPSourceRequest) GetServerUri() string`

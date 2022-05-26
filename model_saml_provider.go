@@ -20,9 +20,9 @@ type SAMLProvider struct {
 	Pk   int32  `json:"pk"`
 	Name string `json:"name"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string    `json:"authorization_flow"`
-	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
-	Component         string    `json:"component"`
+	AuthorizationFlow string   `json:"authorization_flow"`
+	PropertyMappings  []string `json:"property_mappings,omitempty"`
+	Component         string   `json:"component"`
 	// Internal application name, used in URLs.
 	AssignedApplicationSlug string `json:"assigned_application_slug"`
 	// Application's display Name.
@@ -50,8 +50,8 @@ type SAMLProvider struct {
 	// When selected, incoming assertion's Signatures will be validated against this certificate. To allow unsigned Requests, leave on default.
 	VerificationKp NullableString `json:"verification_kp,omitempty"`
 	// This determines how authentik sends the response back to the Service Provider.
-	SpBinding           *SpBindingEnum `json:"sp_binding,omitempty"`
-	MetadataDownloadUrl string         `json:"metadata_download_url"`
+	SpBinding           NullableSpBindingEnum `json:"sp_binding,omitempty"`
+	MetadataDownloadUrl string                `json:"metadata_download_url"`
 }
 
 // NewSAMLProvider instantiates a new SAMLProvider object
@@ -160,12 +160,12 @@ func (o *SAMLProvider) GetPropertyMappings() []string {
 		var ret []string
 		return ret
 	}
-	return *o.PropertyMappings
+	return o.PropertyMappings
 }
 
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SAMLProvider) GetPropertyMappingsOk() (*[]string, bool) {
+func (o *SAMLProvider) GetPropertyMappingsOk() ([]string, bool) {
 	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
@@ -183,7 +183,7 @@ func (o *SAMLProvider) HasPropertyMappings() bool {
 
 // SetPropertyMappings gets a reference to the given []string and assigns it to the PropertyMappings field.
 func (o *SAMLProvider) SetPropertyMappings(v []string) {
-	o.PropertyMappings = &v
+	o.PropertyMappings = v
 }
 
 // GetComponent returns the Component field value
@@ -707,36 +707,47 @@ func (o *SAMLProvider) UnsetVerificationKp() {
 	o.VerificationKp.Unset()
 }
 
-// GetSpBinding returns the SpBinding field value if set, zero value otherwise.
+// GetSpBinding returns the SpBinding field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SAMLProvider) GetSpBinding() SpBindingEnum {
-	if o == nil || o.SpBinding == nil {
+	if o == nil || o.SpBinding.Get() == nil {
 		var ret SpBindingEnum
 		return ret
 	}
-	return *o.SpBinding
+	return *o.SpBinding.Get()
 }
 
 // GetSpBindingOk returns a tuple with the SpBinding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SAMLProvider) GetSpBindingOk() (*SpBindingEnum, bool) {
-	if o == nil || o.SpBinding == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.SpBinding, true
+	return o.SpBinding.Get(), o.SpBinding.IsSet()
 }
 
 // HasSpBinding returns a boolean if a field has been set.
 func (o *SAMLProvider) HasSpBinding() bool {
-	if o != nil && o.SpBinding != nil {
+	if o != nil && o.SpBinding.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSpBinding gets a reference to the given SpBindingEnum and assigns it to the SpBinding field.
+// SetSpBinding gets a reference to the given NullableSpBindingEnum and assigns it to the SpBinding field.
 func (o *SAMLProvider) SetSpBinding(v SpBindingEnum) {
-	o.SpBinding = &v
+	o.SpBinding.Set(&v)
+}
+
+// SetSpBindingNil sets the value for SpBinding to be an explicit nil
+func (o *SAMLProvider) SetSpBindingNil() {
+	o.SpBinding.Set(nil)
+}
+
+// UnsetSpBinding ensures that no value is present for SpBinding, not even an explicit nil
+func (o *SAMLProvider) UnsetSpBinding() {
+	o.SpBinding.Unset()
 }
 
 // GetMetadataDownloadUrl returns the MetadataDownloadUrl field value
@@ -828,8 +839,8 @@ func (o SAMLProvider) MarshalJSON() ([]byte, error) {
 	if o.VerificationKp.IsSet() {
 		toSerialize["verification_kp"] = o.VerificationKp.Get()
 	}
-	if o.SpBinding != nil {
-		toSerialize["sp_binding"] = o.SpBinding
+	if o.SpBinding.IsSet() {
+		toSerialize["sp_binding"] = o.SpBinding.Get()
 	}
 	if true {
 		toSerialize["metadata_download_url"] = o.MetadataDownloadUrl

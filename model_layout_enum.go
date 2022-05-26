@@ -28,7 +28,8 @@ const (
 	LAYOUTENUM_SIDEBAR_RIGHT LayoutEnum = "sidebar_right"
 )
 
-var allowedLayoutEnumEnumValues = []LayoutEnum{
+// All allowed values of LayoutEnum enum
+var AllowedLayoutEnumEnumValues = []LayoutEnum{
 	"stacked",
 	"content_left",
 	"content_right",
@@ -43,7 +44,7 @@ func (v *LayoutEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := LayoutEnum(value)
-	for _, existing := range allowedLayoutEnumEnumValues {
+	for _, existing := range AllowedLayoutEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -60,13 +61,13 @@ func NewLayoutEnumFromValue(v string) (*LayoutEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for LayoutEnum: valid values are %v", v, allowedLayoutEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for LayoutEnum: valid values are %v", v, AllowedLayoutEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v LayoutEnum) IsValid() bool {
-	for _, existing := range allowedLayoutEnumEnumValues {
+	for _, existing := range AllowedLayoutEnumEnumValues {
 		if existing == v {
 			return true
 		}

@@ -41,8 +41,8 @@ func main() {
     certificateKeyPairRequest := *openapiclient.NewCertificateKeyPairRequest("Name_example", "CertificateData_example") // CertificateKeyPairRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CryptoApi.CryptoCertificatekeypairsCreate(context.Background()).CertificateKeyPairRequest(certificateKeyPairRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsCreate(context.Background()).CertificateKeyPairRequest(certificateKeyPairRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -104,11 +104,11 @@ import (
 )
 
 func main() {
-    kpUuid := TODO // string | A UUID string identifying this Certificate-Key Pair.
+    kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CryptoApi.CryptoCertificatekeypairsDestroy(context.Background(), kpUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsDestroy(context.Background(), kpUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -122,7 +122,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**kpUuid** | [**string**](.md) | A UUID string identifying this Certificate-Key Pair. | 
+**kpUuid** | **string** | A UUID string identifying this Certificate-Key Pair. | 
 
 ### Other Parameters
 
@@ -175,8 +175,8 @@ func main() {
     certificateGenerationRequest := *openapiclient.NewCertificateGenerationRequest("CommonName_example", int32(123)) // CertificateGenerationRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CryptoApi.CryptoCertificatekeypairsGenerateCreate(context.Background()).CertificateGenerationRequest(certificateGenerationRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsGenerateCreate(context.Background()).CertificateGenerationRequest(certificateGenerationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsGenerateCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -247,8 +247,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CryptoApi.CryptoCertificatekeypairsList(context.Background()).HasKey(hasKey).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsList(context.Background()).HasKey(hasKey).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -316,12 +316,12 @@ import (
 )
 
 func main() {
-    kpUuid := TODO // string | A UUID string identifying this Certificate-Key Pair.
+    kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
     patchedCertificateKeyPairRequest := *openapiclient.NewPatchedCertificateKeyPairRequest() // PatchedCertificateKeyPairRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CryptoApi.CryptoCertificatekeypairsPartialUpdate(context.Background(), kpUuid).PatchedCertificateKeyPairRequest(patchedCertificateKeyPairRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsPartialUpdate(context.Background(), kpUuid).PatchedCertificateKeyPairRequest(patchedCertificateKeyPairRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -337,7 +337,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**kpUuid** | [**string**](.md) | A UUID string identifying this Certificate-Key Pair. | 
+**kpUuid** | **string** | A UUID string identifying this Certificate-Key Pair. | 
 
 ### Other Parameters
 
@@ -388,11 +388,11 @@ import (
 )
 
 func main() {
-    kpUuid := TODO // string | A UUID string identifying this Certificate-Key Pair.
+    kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CryptoApi.CryptoCertificatekeypairsRetrieve(context.Background(), kpUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsRetrieve(context.Background(), kpUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -408,7 +408,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**kpUuid** | [**string**](.md) | A UUID string identifying this Certificate-Key Pair. | 
+**kpUuid** | **string** | A UUID string identifying this Certificate-Key Pair. | 
 
 ### Other Parameters
 
@@ -458,12 +458,12 @@ import (
 )
 
 func main() {
-    kpUuid := TODO // string | A UUID string identifying this Certificate-Key Pair.
+    kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
     certificateKeyPairRequest := *openapiclient.NewCertificateKeyPairRequest("Name_example", "CertificateData_example") // CertificateKeyPairRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CryptoApi.CryptoCertificatekeypairsUpdate(context.Background(), kpUuid).CertificateKeyPairRequest(certificateKeyPairRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsUpdate(context.Background(), kpUuid).CertificateKeyPairRequest(certificateKeyPairRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -479,7 +479,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**kpUuid** | [**string**](.md) | A UUID string identifying this Certificate-Key Pair. | 
+**kpUuid** | **string** | A UUID string identifying this Certificate-Key Pair. | 
 
 ### Other Parameters
 
@@ -530,11 +530,11 @@ import (
 )
 
 func main() {
-    kpUuid := TODO // string | A UUID string identifying this Certificate-Key Pair.
+    kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CryptoApi.CryptoCertificatekeypairsUsedByList(context.Background(), kpUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsUsedByList(context.Background(), kpUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -550,7 +550,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**kpUuid** | [**string**](.md) | A UUID string identifying this Certificate-Key Pair. | 
+**kpUuid** | **string** | A UUID string identifying this Certificate-Key Pair. | 
 
 ### Other Parameters
 
@@ -600,12 +600,12 @@ import (
 )
 
 func main() {
-    kpUuid := TODO // string | A UUID string identifying this Certificate-Key Pair.
+    kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
     download := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CryptoApi.CryptoCertificatekeypairsViewCertificateRetrieve(context.Background(), kpUuid).Download(download).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsViewCertificateRetrieve(context.Background(), kpUuid).Download(download).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsViewCertificateRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -621,7 +621,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**kpUuid** | [**string**](.md) | A UUID string identifying this Certificate-Key Pair. | 
+**kpUuid** | **string** | A UUID string identifying this Certificate-Key Pair. | 
 
 ### Other Parameters
 
@@ -672,12 +672,12 @@ import (
 )
 
 func main() {
-    kpUuid := TODO // string | A UUID string identifying this Certificate-Key Pair.
+    kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
     download := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CryptoApi.CryptoCertificatekeypairsViewPrivateKeyRetrieve(context.Background(), kpUuid).Download(download).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsViewPrivateKeyRetrieve(context.Background(), kpUuid).Download(download).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsViewPrivateKeyRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -693,7 +693,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**kpUuid** | [**string**](.md) | A UUID string identifying this Certificate-Key Pair. | 
+**kpUuid** | **string** | A UUID string identifying this Certificate-Key Pair. | 
 
 ### Other Parameters
 

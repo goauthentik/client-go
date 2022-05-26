@@ -25,7 +25,8 @@ const (
 	OUTPOSTTYPEENUM_LDAP  OutpostTypeEnum = "ldap"
 )
 
-var allowedOutpostTypeEnumEnumValues = []OutpostTypeEnum{
+// All allowed values of OutpostTypeEnum enum
+var AllowedOutpostTypeEnumEnumValues = []OutpostTypeEnum{
 	"proxy",
 	"ldap",
 }
@@ -37,7 +38,7 @@ func (v *OutpostTypeEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := OutpostTypeEnum(value)
-	for _, existing := range allowedOutpostTypeEnumEnumValues {
+	for _, existing := range AllowedOutpostTypeEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +55,13 @@ func NewOutpostTypeEnumFromValue(v string) (*OutpostTypeEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for OutpostTypeEnum: valid values are %v", v, allowedOutpostTypeEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for OutpostTypeEnum: valid values are %v", v, AllowedOutpostTypeEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v OutpostTypeEnum) IsValid() bool {
-	for _, existing := range allowedOutpostTypeEnumEnumValues {
+	for _, existing := range AllowedOutpostTypeEnumEnumValues {
 		if existing == v {
 			return true
 		}

@@ -79,11 +79,11 @@ func (o *StaticDevice) GetTokenSet() []StaticDeviceToken {
 
 // GetTokenSetOk returns a tuple with the TokenSet field value
 // and a boolean to check if the value has been set.
-func (o *StaticDevice) GetTokenSetOk() (*[]StaticDeviceToken, bool) {
+func (o *StaticDevice) GetTokenSetOk() ([]StaticDeviceToken, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.TokenSet, true
+	return o.TokenSet, true
 }
 
 // SetTokenSet sets field value

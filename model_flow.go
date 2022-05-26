@@ -25,12 +25,12 @@ type Flow struct {
 	// Shown as the Title in Flow pages.
 	Title string `json:"title"`
 	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
-	Designation      FlowDesignationEnum `json:"designation"`
-	Background       string              `json:"background"`
-	Stages           []string            `json:"stages"`
-	Policies         []string            `json:"policies"`
-	CacheCount       int32               `json:"cache_count"`
-	PolicyEngineMode *PolicyEngineMode   `json:"policy_engine_mode,omitempty"`
+	Designation      NullableFlowDesignationEnum `json:"designation"`
+	Background       string                      `json:"background"`
+	Stages           []string                    `json:"stages"`
+	Policies         []string                    `json:"policies"`
+	CacheCount       int32                       `json:"cache_count"`
+	PolicyEngineMode *PolicyEngineMode           `json:"policy_engine_mode,omitempty"`
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
 	CompatibilityMode *bool       `json:"compatibility_mode,omitempty"`
 	ExportUrl         string      `json:"export_url"`
@@ -41,7 +41,7 @@ type Flow struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation FlowDesignationEnum, background string, stages []string, policies []string, cacheCount int32, exportUrl string) *Flow {
+func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation NullableFlowDesignationEnum, background string, stages []string, policies []string, cacheCount int32, exportUrl string) *Flow {
 	this := Flow{}
 	this.Pk = pk
 	this.PolicybindingmodelPtrId = policybindingmodelPtrId
@@ -186,27 +186,29 @@ func (o *Flow) SetTitle(v string) {
 }
 
 // GetDesignation returns the Designation field value
+// If the value is explicit nil, the zero value for FlowDesignationEnum will be returned
 func (o *Flow) GetDesignation() FlowDesignationEnum {
-	if o == nil {
+	if o == nil || o.Designation.Get() == nil {
 		var ret FlowDesignationEnum
 		return ret
 	}
 
-	return o.Designation
+	return *o.Designation.Get()
 }
 
 // GetDesignationOk returns a tuple with the Designation field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Flow) GetDesignationOk() (*FlowDesignationEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Designation, true
+	return o.Designation.Get(), o.Designation.IsSet()
 }
 
 // SetDesignation sets field value
 func (o *Flow) SetDesignation(v FlowDesignationEnum) {
-	o.Designation = v
+	o.Designation.Set(&v)
 }
 
 // GetBackground returns the Background field value
@@ -245,11 +247,11 @@ func (o *Flow) GetStages() []string {
 
 // GetStagesOk returns a tuple with the Stages field value
 // and a boolean to check if the value has been set.
-func (o *Flow) GetStagesOk() (*[]string, bool) {
+func (o *Flow) GetStagesOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Stages, true
+	return o.Stages, true
 }
 
 // SetStages sets field value
@@ -269,11 +271,11 @@ func (o *Flow) GetPolicies() []string {
 
 // GetPoliciesOk returns a tuple with the Policies field value
 // and a boolean to check if the value has been set.
-func (o *Flow) GetPoliciesOk() (*[]string, bool) {
+func (o *Flow) GetPoliciesOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Policies, true
+	return o.Policies, true
 }
 
 // SetPolicies sets field value
@@ -443,7 +445,7 @@ func (o Flow) MarshalJSON() ([]byte, error) {
 		toSerialize["title"] = o.Title
 	}
 	if true {
-		toSerialize["designation"] = o.Designation
+		toSerialize["designation"] = o.Designation.Get()
 	}
 	if true {
 		toSerialize["background"] = o.Background

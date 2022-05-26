@@ -13,30 +13,25 @@ package api
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"reflect"
 	"strings"
 	"time"
-)
-
-// Linger please
-var (
-	_ _context.Context
 )
 
 // StagesApiService StagesApi service
 type StagesApiService service
 
 type ApiStagesAllDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAllDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesAllDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesAllDestroyExecute(r)
 }
 
@@ -45,11 +40,11 @@ StagesAllDestroy Method for StagesAllDestroy
 
 Stage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this stage.
  @return ApiStagesAllDestroyRequest
 */
-func (a *StagesApiService) StagesAllDestroy(ctx _context.Context, stageUuid string) ApiStagesAllDestroyRequest {
+func (a *StagesApiService) StagesAllDestroy(ctx context.Context, stageUuid string) ApiStagesAllDestroyRequest {
 	return ApiStagesAllDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -58,26 +53,24 @@ func (a *StagesApiService) StagesAllDestroy(ctx _context.Context, stageUuid stri
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesAllDestroyExecute(r ApiStagesAllDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesAllDestroyExecute(r ApiStagesAllDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAllDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/all/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -110,7 +103,7 @@ func (a *StagesApiService) StagesAllDestroyExecute(r ApiStagesAllDestroyRequest)
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -120,15 +113,15 @@ func (a *StagesApiService) StagesAllDestroyExecute(r ApiStagesAllDestroyRequest)
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -139,7 +132,7 @@ func (a *StagesApiService) StagesAllDestroyExecute(r ApiStagesAllDestroyRequest)
 }
 
 type ApiStagesAllListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	name       *string
 	ordering   *string
@@ -177,7 +170,7 @@ func (r ApiStagesAllListRequest) Search(search string) ApiStagesAllListRequest {
 	return r
 }
 
-func (r ApiStagesAllListRequest) Execute() (PaginatedStageList, *_nethttp.Response, error) {
+func (r ApiStagesAllListRequest) Execute() (*PaginatedStageList, *http.Response, error) {
 	return r.ApiService.StagesAllListExecute(r)
 }
 
@@ -186,10 +179,10 @@ StagesAllList Method for StagesAllList
 
 Stage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAllListRequest
 */
-func (a *StagesApiService) StagesAllList(ctx _context.Context) ApiStagesAllListRequest {
+func (a *StagesApiService) StagesAllList(ctx context.Context) ApiStagesAllListRequest {
 	return ApiStagesAllListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -198,26 +191,24 @@ func (a *StagesApiService) StagesAllList(ctx _context.Context) ApiStagesAllListR
 
 // Execute executes the request
 //  @return PaginatedStageList
-func (a *StagesApiService) StagesAllListExecute(r ApiStagesAllListRequest) (PaginatedStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAllListExecute(r ApiStagesAllListRequest) (*PaginatedStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAllList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/all/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -265,7 +256,7 @@ func (a *StagesApiService) StagesAllListExecute(r ApiStagesAllListRequest) (Pagi
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -275,15 +266,15 @@ func (a *StagesApiService) StagesAllListExecute(r ApiStagesAllListRequest) (Pagi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -292,7 +283,7 @@ func (a *StagesApiService) StagesAllListExecute(r ApiStagesAllListRequest) (Pagi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -303,12 +294,12 @@ func (a *StagesApiService) StagesAllListExecute(r ApiStagesAllListRequest) (Pagi
 }
 
 type ApiStagesAllRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAllRetrieveRequest) Execute() (Stage, *_nethttp.Response, error) {
+func (r ApiStagesAllRetrieveRequest) Execute() (*Stage, *http.Response, error) {
 	return r.ApiService.StagesAllRetrieveExecute(r)
 }
 
@@ -317,11 +308,11 @@ StagesAllRetrieve Method for StagesAllRetrieve
 
 Stage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this stage.
  @return ApiStagesAllRetrieveRequest
 */
-func (a *StagesApiService) StagesAllRetrieve(ctx _context.Context, stageUuid string) ApiStagesAllRetrieveRequest {
+func (a *StagesApiService) StagesAllRetrieve(ctx context.Context, stageUuid string) ApiStagesAllRetrieveRequest {
 	return ApiStagesAllRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -331,27 +322,25 @@ func (a *StagesApiService) StagesAllRetrieve(ctx _context.Context, stageUuid str
 
 // Execute executes the request
 //  @return Stage
-func (a *StagesApiService) StagesAllRetrieveExecute(r ApiStagesAllRetrieveRequest) (Stage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAllRetrieveExecute(r ApiStagesAllRetrieveRequest) (*Stage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Stage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Stage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAllRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/all/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -384,7 +373,7 @@ func (a *StagesApiService) StagesAllRetrieveExecute(r ApiStagesAllRetrieveReques
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -394,15 +383,15 @@ func (a *StagesApiService) StagesAllRetrieveExecute(r ApiStagesAllRetrieveReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -411,7 +400,7 @@ func (a *StagesApiService) StagesAllRetrieveExecute(r ApiStagesAllRetrieveReques
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -422,11 +411,11 @@ func (a *StagesApiService) StagesAllRetrieveExecute(r ApiStagesAllRetrieveReques
 }
 
 type ApiStagesAllTypesListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 }
 
-func (r ApiStagesAllTypesListRequest) Execute() ([]TypeCreate, *_nethttp.Response, error) {
+func (r ApiStagesAllTypesListRequest) Execute() ([]TypeCreate, *http.Response, error) {
 	return r.ApiService.StagesAllTypesListExecute(r)
 }
 
@@ -435,10 +424,10 @@ StagesAllTypesList Method for StagesAllTypesList
 
 Get all creatable stage types
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAllTypesListRequest
 */
-func (a *StagesApiService) StagesAllTypesList(ctx _context.Context) ApiStagesAllTypesListRequest {
+func (a *StagesApiService) StagesAllTypesList(ctx context.Context) ApiStagesAllTypesListRequest {
 	return ApiStagesAllTypesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -447,26 +436,24 @@ func (a *StagesApiService) StagesAllTypesList(ctx _context.Context) ApiStagesAll
 
 // Execute executes the request
 //  @return []TypeCreate
-func (a *StagesApiService) StagesAllTypesListExecute(r ApiStagesAllTypesListRequest) ([]TypeCreate, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAllTypesListExecute(r ApiStagesAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []TypeCreate
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []TypeCreate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAllTypesList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/all/types/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -499,7 +486,7 @@ func (a *StagesApiService) StagesAllTypesListExecute(r ApiStagesAllTypesListRequ
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -509,15 +496,15 @@ func (a *StagesApiService) StagesAllTypesListExecute(r ApiStagesAllTypesListRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -526,7 +513,7 @@ func (a *StagesApiService) StagesAllTypesListExecute(r ApiStagesAllTypesListRequ
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -537,12 +524,12 @@ func (a *StagesApiService) StagesAllTypesListExecute(r ApiStagesAllTypesListRequ
 }
 
 type ApiStagesAllUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAllUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesAllUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesAllUsedByListExecute(r)
 }
 
@@ -551,11 +538,11 @@ StagesAllUsedByList Method for StagesAllUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this stage.
  @return ApiStagesAllUsedByListRequest
 */
-func (a *StagesApiService) StagesAllUsedByList(ctx _context.Context, stageUuid string) ApiStagesAllUsedByListRequest {
+func (a *StagesApiService) StagesAllUsedByList(ctx context.Context, stageUuid string) ApiStagesAllUsedByListRequest {
 	return ApiStagesAllUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -565,27 +552,25 @@ func (a *StagesApiService) StagesAllUsedByList(ctx _context.Context, stageUuid s
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesAllUsedByListExecute(r ApiStagesAllUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAllUsedByListExecute(r ApiStagesAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAllUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/all/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -618,7 +603,7 @@ func (a *StagesApiService) StagesAllUsedByListExecute(r ApiStagesAllUsedByListRe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -628,15 +613,15 @@ func (a *StagesApiService) StagesAllUsedByListExecute(r ApiStagesAllUsedByListRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -645,7 +630,7 @@ func (a *StagesApiService) StagesAllUsedByListExecute(r ApiStagesAllUsedByListRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -656,11 +641,11 @@ func (a *StagesApiService) StagesAllUsedByListExecute(r ApiStagesAllUsedByListRe
 }
 
 type ApiStagesAllUserSettingsListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 }
 
-func (r ApiStagesAllUserSettingsListRequest) Execute() ([]UserSetting, *_nethttp.Response, error) {
+func (r ApiStagesAllUserSettingsListRequest) Execute() ([]UserSetting, *http.Response, error) {
 	return r.ApiService.StagesAllUserSettingsListExecute(r)
 }
 
@@ -669,10 +654,10 @@ StagesAllUserSettingsList Method for StagesAllUserSettingsList
 
 Get all stages the user can configure
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAllUserSettingsListRequest
 */
-func (a *StagesApiService) StagesAllUserSettingsList(ctx _context.Context) ApiStagesAllUserSettingsListRequest {
+func (a *StagesApiService) StagesAllUserSettingsList(ctx context.Context) ApiStagesAllUserSettingsListRequest {
 	return ApiStagesAllUserSettingsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -681,26 +666,24 @@ func (a *StagesApiService) StagesAllUserSettingsList(ctx _context.Context) ApiSt
 
 // Execute executes the request
 //  @return []UserSetting
-func (a *StagesApiService) StagesAllUserSettingsListExecute(r ApiStagesAllUserSettingsListRequest) ([]UserSetting, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAllUserSettingsListExecute(r ApiStagesAllUserSettingsListRequest) ([]UserSetting, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UserSetting
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UserSetting
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAllUserSettingsList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/all/user_settings/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -733,7 +716,7 @@ func (a *StagesApiService) StagesAllUserSettingsListExecute(r ApiStagesAllUserSe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -743,15 +726,15 @@ func (a *StagesApiService) StagesAllUserSettingsListExecute(r ApiStagesAllUserSe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -760,7 +743,7 @@ func (a *StagesApiService) StagesAllUserSettingsListExecute(r ApiStagesAllUserSe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -771,7 +754,7 @@ func (a *StagesApiService) StagesAllUserSettingsListExecute(r ApiStagesAllUserSe
 }
 
 type ApiStagesAuthenticatorDuoCreateRequest struct {
-	ctx                          _context.Context
+	ctx                          context.Context
 	ApiService                   *StagesApiService
 	authenticatorDuoStageRequest *AuthenticatorDuoStageRequest
 }
@@ -781,7 +764,7 @@ func (r ApiStagesAuthenticatorDuoCreateRequest) AuthenticatorDuoStageRequest(aut
 	return r
 }
 
-func (r ApiStagesAuthenticatorDuoCreateRequest) Execute() (AuthenticatorDuoStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorDuoCreateRequest) Execute() (*AuthenticatorDuoStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorDuoCreateExecute(r)
 }
 
@@ -790,10 +773,10 @@ StagesAuthenticatorDuoCreate Method for StagesAuthenticatorDuoCreate
 
 AuthenticatorDuoStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAuthenticatorDuoCreateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorDuoCreate(ctx _context.Context) ApiStagesAuthenticatorDuoCreateRequest {
+func (a *StagesApiService) StagesAuthenticatorDuoCreate(ctx context.Context) ApiStagesAuthenticatorDuoCreateRequest {
 	return ApiStagesAuthenticatorDuoCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -802,26 +785,24 @@ func (a *StagesApiService) StagesAuthenticatorDuoCreate(ctx _context.Context) Ap
 
 // Execute executes the request
 //  @return AuthenticatorDuoStage
-func (a *StagesApiService) StagesAuthenticatorDuoCreateExecute(r ApiStagesAuthenticatorDuoCreateRequest) (AuthenticatorDuoStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorDuoCreateExecute(r ApiStagesAuthenticatorDuoCreateRequest) (*AuthenticatorDuoStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorDuoStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorDuoStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorDuoCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.authenticatorDuoStageRequest == nil {
 		return localVarReturnValue, nil, reportError("authenticatorDuoStageRequest is required and must be specified")
 	}
@@ -859,7 +840,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoCreateExecute(r ApiStagesAuthen
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -869,15 +850,15 @@ func (a *StagesApiService) StagesAuthenticatorDuoCreateExecute(r ApiStagesAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -886,7 +867,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoCreateExecute(r ApiStagesAuthen
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -897,12 +878,12 @@ func (a *StagesApiService) StagesAuthenticatorDuoCreateExecute(r ApiStagesAuthen
 }
 
 type ApiStagesAuthenticatorDuoDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorDuoDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorDuoDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesAuthenticatorDuoDestroyExecute(r)
 }
 
@@ -911,11 +892,11 @@ StagesAuthenticatorDuoDestroy Method for StagesAuthenticatorDuoDestroy
 
 AuthenticatorDuoStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
  @return ApiStagesAuthenticatorDuoDestroyRequest
 */
-func (a *StagesApiService) StagesAuthenticatorDuoDestroy(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorDuoDestroyRequest {
+func (a *StagesApiService) StagesAuthenticatorDuoDestroy(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoDestroyRequest {
 	return ApiStagesAuthenticatorDuoDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -924,26 +905,24 @@ func (a *StagesApiService) StagesAuthenticatorDuoDestroy(ctx _context.Context, s
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesAuthenticatorDuoDestroyExecute(r ApiStagesAuthenticatorDuoDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorDuoDestroyExecute(r ApiStagesAuthenticatorDuoDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorDuoDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -976,7 +955,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoDestroyExecute(r ApiStagesAuthe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -986,15 +965,15 @@ func (a *StagesApiService) StagesAuthenticatorDuoDestroyExecute(r ApiStagesAuthe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1005,12 +984,12 @@ func (a *StagesApiService) StagesAuthenticatorDuoDestroyExecute(r ApiStagesAuthe
 }
 
 type ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesAuthenticatorDuoEnrollmentStatusCreateExecute(r)
 }
 
@@ -1019,11 +998,11 @@ StagesAuthenticatorDuoEnrollmentStatusCreate Method for StagesAuthenticatorDuoEn
 
 Check enrollment status of user details in current session
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
  @return ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest {
+func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest {
 	return ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1032,26 +1011,24 @@ func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreate(ctx _con
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreateExecute(r ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreateExecute(r ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorDuoEnrollmentStatusCreate")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/enrollment_status/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1084,7 +1061,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreateExecute(r
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -1094,15 +1071,15 @@ func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreateExecute(r
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1113,7 +1090,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreateExecute(r
 }
 
 type ApiStagesAuthenticatorDuoImportDevicesCreateRequest struct {
-	ctx                          _context.Context
+	ctx                          context.Context
 	ApiService                   *StagesApiService
 	stageUuid                    string
 	authenticatorDuoStageRequest *AuthenticatorDuoStageRequest
@@ -1125,16 +1102,18 @@ func (r ApiStagesAuthenticatorDuoImportDevicesCreateRequest) AuthenticatorDuoSta
 	r.authenticatorDuoStageRequest = &authenticatorDuoStageRequest
 	return r
 }
+
 func (r ApiStagesAuthenticatorDuoImportDevicesCreateRequest) DuoUserId(duoUserId string) ApiStagesAuthenticatorDuoImportDevicesCreateRequest {
 	r.duoUserId = &duoUserId
 	return r
 }
+
 func (r ApiStagesAuthenticatorDuoImportDevicesCreateRequest) Username(username string) ApiStagesAuthenticatorDuoImportDevicesCreateRequest {
 	r.username = &username
 	return r
 }
 
-func (r ApiStagesAuthenticatorDuoImportDevicesCreateRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorDuoImportDevicesCreateRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesAuthenticatorDuoImportDevicesCreateExecute(r)
 }
 
@@ -1143,11 +1122,11 @@ StagesAuthenticatorDuoImportDevicesCreate Method for StagesAuthenticatorDuoImpor
 
 Import duo devices into authentik
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
  @return ApiStagesAuthenticatorDuoImportDevicesCreateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesCreate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorDuoImportDevicesCreateRequest {
+func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesCreate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoImportDevicesCreateRequest {
 	return ApiStagesAuthenticatorDuoImportDevicesCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1156,26 +1135,24 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesCreate(ctx _contex
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesCreateExecute(r ApiStagesAuthenticatorDuoImportDevicesCreateRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesCreateExecute(r ApiStagesAuthenticatorDuoImportDevicesCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorDuoImportDevicesCreate")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/import_devices/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.authenticatorDuoStageRequest == nil {
 		return nil, reportError("authenticatorDuoStageRequest is required and must be specified")
 	}
@@ -1219,7 +1196,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesCreateExecute(r Ap
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -1229,15 +1206,15 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesCreateExecute(r Ap
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1248,7 +1225,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesCreateExecute(r Ap
 }
 
 type ApiStagesAuthenticatorDuoListRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *StagesApiService
 	apiHostname   *string
 	clientId      *string
@@ -1264,14 +1241,17 @@ func (r ApiStagesAuthenticatorDuoListRequest) ApiHostname(apiHostname string) Ap
 	r.apiHostname = &apiHostname
 	return r
 }
+
 func (r ApiStagesAuthenticatorDuoListRequest) ClientId(clientId string) ApiStagesAuthenticatorDuoListRequest {
 	r.clientId = &clientId
 	return r
 }
+
 func (r ApiStagesAuthenticatorDuoListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorDuoListRequest {
 	r.configureFlow = &configureFlow
 	return r
 }
+
 func (r ApiStagesAuthenticatorDuoListRequest) Name(name string) ApiStagesAuthenticatorDuoListRequest {
 	r.name = &name
 	return r
@@ -1301,7 +1281,7 @@ func (r ApiStagesAuthenticatorDuoListRequest) Search(search string) ApiStagesAut
 	return r
 }
 
-func (r ApiStagesAuthenticatorDuoListRequest) Execute() (PaginatedAuthenticatorDuoStageList, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorDuoListRequest) Execute() (*PaginatedAuthenticatorDuoStageList, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorDuoListExecute(r)
 }
 
@@ -1310,10 +1290,10 @@ StagesAuthenticatorDuoList Method for StagesAuthenticatorDuoList
 
 AuthenticatorDuoStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAuthenticatorDuoListRequest
 */
-func (a *StagesApiService) StagesAuthenticatorDuoList(ctx _context.Context) ApiStagesAuthenticatorDuoListRequest {
+func (a *StagesApiService) StagesAuthenticatorDuoList(ctx context.Context) ApiStagesAuthenticatorDuoListRequest {
 	return ApiStagesAuthenticatorDuoListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1322,26 +1302,24 @@ func (a *StagesApiService) StagesAuthenticatorDuoList(ctx _context.Context) ApiS
 
 // Execute executes the request
 //  @return PaginatedAuthenticatorDuoStageList
-func (a *StagesApiService) StagesAuthenticatorDuoListExecute(r ApiStagesAuthenticatorDuoListRequest) (PaginatedAuthenticatorDuoStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorDuoListExecute(r ApiStagesAuthenticatorDuoListRequest) (*PaginatedAuthenticatorDuoStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedAuthenticatorDuoStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedAuthenticatorDuoStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorDuoList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.apiHostname != nil {
 		localVarQueryParams.Add("api_hostname", parameterToString(*r.apiHostname, ""))
@@ -1398,7 +1376,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoListExecute(r ApiStagesAuthenti
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1408,15 +1386,15 @@ func (a *StagesApiService) StagesAuthenticatorDuoListExecute(r ApiStagesAuthenti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1425,7 +1403,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoListExecute(r ApiStagesAuthenti
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1436,7 +1414,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoListExecute(r ApiStagesAuthenti
 }
 
 type ApiStagesAuthenticatorDuoPartialUpdateRequest struct {
-	ctx                                 _context.Context
+	ctx                                 context.Context
 	ApiService                          *StagesApiService
 	stageUuid                           string
 	patchedAuthenticatorDuoStageRequest *PatchedAuthenticatorDuoStageRequest
@@ -1447,7 +1425,7 @@ func (r ApiStagesAuthenticatorDuoPartialUpdateRequest) PatchedAuthenticatorDuoSt
 	return r
 }
 
-func (r ApiStagesAuthenticatorDuoPartialUpdateRequest) Execute() (AuthenticatorDuoStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorDuoPartialUpdateRequest) Execute() (*AuthenticatorDuoStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorDuoPartialUpdateExecute(r)
 }
 
@@ -1456,11 +1434,11 @@ StagesAuthenticatorDuoPartialUpdate Method for StagesAuthenticatorDuoPartialUpda
 
 AuthenticatorDuoStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
  @return ApiStagesAuthenticatorDuoPartialUpdateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorDuoPartialUpdateRequest {
+func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoPartialUpdateRequest {
 	return ApiStagesAuthenticatorDuoPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1470,27 +1448,25 @@ func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdate(ctx _context.Cont
 
 // Execute executes the request
 //  @return AuthenticatorDuoStage
-func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdateExecute(r ApiStagesAuthenticatorDuoPartialUpdateRequest) (AuthenticatorDuoStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdateExecute(r ApiStagesAuthenticatorDuoPartialUpdateRequest) (*AuthenticatorDuoStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorDuoStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorDuoStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorDuoPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1525,7 +1501,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdateExecute(r ApiStage
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1535,15 +1511,15 @@ func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdateExecute(r ApiStage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1552,7 +1528,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdateExecute(r ApiStage
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1563,12 +1539,12 @@ func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdateExecute(r ApiStage
 }
 
 type ApiStagesAuthenticatorDuoRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorDuoRetrieveRequest) Execute() (AuthenticatorDuoStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorDuoRetrieveRequest) Execute() (*AuthenticatorDuoStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorDuoRetrieveExecute(r)
 }
 
@@ -1577,11 +1553,11 @@ StagesAuthenticatorDuoRetrieve Method for StagesAuthenticatorDuoRetrieve
 
 AuthenticatorDuoStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
  @return ApiStagesAuthenticatorDuoRetrieveRequest
 */
-func (a *StagesApiService) StagesAuthenticatorDuoRetrieve(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorDuoRetrieveRequest {
+func (a *StagesApiService) StagesAuthenticatorDuoRetrieve(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoRetrieveRequest {
 	return ApiStagesAuthenticatorDuoRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1591,27 +1567,25 @@ func (a *StagesApiService) StagesAuthenticatorDuoRetrieve(ctx _context.Context, 
 
 // Execute executes the request
 //  @return AuthenticatorDuoStage
-func (a *StagesApiService) StagesAuthenticatorDuoRetrieveExecute(r ApiStagesAuthenticatorDuoRetrieveRequest) (AuthenticatorDuoStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorDuoRetrieveExecute(r ApiStagesAuthenticatorDuoRetrieveRequest) (*AuthenticatorDuoStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorDuoStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorDuoStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorDuoRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1644,7 +1618,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoRetrieveExecute(r ApiStagesAuth
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1654,15 +1628,15 @@ func (a *StagesApiService) StagesAuthenticatorDuoRetrieveExecute(r ApiStagesAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1671,7 +1645,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoRetrieveExecute(r ApiStagesAuth
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1682,7 +1656,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoRetrieveExecute(r ApiStagesAuth
 }
 
 type ApiStagesAuthenticatorDuoUpdateRequest struct {
-	ctx                          _context.Context
+	ctx                          context.Context
 	ApiService                   *StagesApiService
 	stageUuid                    string
 	authenticatorDuoStageRequest *AuthenticatorDuoStageRequest
@@ -1693,7 +1667,7 @@ func (r ApiStagesAuthenticatorDuoUpdateRequest) AuthenticatorDuoStageRequest(aut
 	return r
 }
 
-func (r ApiStagesAuthenticatorDuoUpdateRequest) Execute() (AuthenticatorDuoStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorDuoUpdateRequest) Execute() (*AuthenticatorDuoStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorDuoUpdateExecute(r)
 }
 
@@ -1702,11 +1676,11 @@ StagesAuthenticatorDuoUpdate Method for StagesAuthenticatorDuoUpdate
 
 AuthenticatorDuoStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
  @return ApiStagesAuthenticatorDuoUpdateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorDuoUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorDuoUpdateRequest {
+func (a *StagesApiService) StagesAuthenticatorDuoUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoUpdateRequest {
 	return ApiStagesAuthenticatorDuoUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1716,27 +1690,25 @@ func (a *StagesApiService) StagesAuthenticatorDuoUpdate(ctx _context.Context, st
 
 // Execute executes the request
 //  @return AuthenticatorDuoStage
-func (a *StagesApiService) StagesAuthenticatorDuoUpdateExecute(r ApiStagesAuthenticatorDuoUpdateRequest) (AuthenticatorDuoStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorDuoUpdateExecute(r ApiStagesAuthenticatorDuoUpdateRequest) (*AuthenticatorDuoStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorDuoStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorDuoStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorDuoUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.authenticatorDuoStageRequest == nil {
 		return localVarReturnValue, nil, reportError("authenticatorDuoStageRequest is required and must be specified")
 	}
@@ -1774,7 +1746,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoUpdateExecute(r ApiStagesAuthen
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1784,15 +1756,15 @@ func (a *StagesApiService) StagesAuthenticatorDuoUpdateExecute(r ApiStagesAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1801,7 +1773,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoUpdateExecute(r ApiStagesAuthen
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1812,12 +1784,12 @@ func (a *StagesApiService) StagesAuthenticatorDuoUpdateExecute(r ApiStagesAuthen
 }
 
 type ApiStagesAuthenticatorDuoUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorDuoUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorDuoUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorDuoUsedByListExecute(r)
 }
 
@@ -1826,11 +1798,11 @@ StagesAuthenticatorDuoUsedByList Method for StagesAuthenticatorDuoUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
  @return ApiStagesAuthenticatorDuoUsedByListRequest
 */
-func (a *StagesApiService) StagesAuthenticatorDuoUsedByList(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorDuoUsedByListRequest {
+func (a *StagesApiService) StagesAuthenticatorDuoUsedByList(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoUsedByListRequest {
 	return ApiStagesAuthenticatorDuoUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1840,27 +1812,25 @@ func (a *StagesApiService) StagesAuthenticatorDuoUsedByList(ctx _context.Context
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesAuthenticatorDuoUsedByListExecute(r ApiStagesAuthenticatorDuoUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorDuoUsedByListExecute(r ApiStagesAuthenticatorDuoUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorDuoUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1893,7 +1863,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoUsedByListExecute(r ApiStagesAu
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1903,15 +1873,15 @@ func (a *StagesApiService) StagesAuthenticatorDuoUsedByListExecute(r ApiStagesAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1920,7 +1890,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoUsedByListExecute(r ApiStagesAu
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1931,7 +1901,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoUsedByListExecute(r ApiStagesAu
 }
 
 type ApiStagesAuthenticatorSmsCreateRequest struct {
-	ctx                          _context.Context
+	ctx                          context.Context
 	ApiService                   *StagesApiService
 	authenticatorSMSStageRequest *AuthenticatorSMSStageRequest
 }
@@ -1941,7 +1911,7 @@ func (r ApiStagesAuthenticatorSmsCreateRequest) AuthenticatorSMSStageRequest(aut
 	return r
 }
 
-func (r ApiStagesAuthenticatorSmsCreateRequest) Execute() (AuthenticatorSMSStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorSmsCreateRequest) Execute() (*AuthenticatorSMSStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorSmsCreateExecute(r)
 }
 
@@ -1950,10 +1920,10 @@ StagesAuthenticatorSmsCreate Method for StagesAuthenticatorSmsCreate
 
 AuthenticatorSMSStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAuthenticatorSmsCreateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorSmsCreate(ctx _context.Context) ApiStagesAuthenticatorSmsCreateRequest {
+func (a *StagesApiService) StagesAuthenticatorSmsCreate(ctx context.Context) ApiStagesAuthenticatorSmsCreateRequest {
 	return ApiStagesAuthenticatorSmsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1962,26 +1932,24 @@ func (a *StagesApiService) StagesAuthenticatorSmsCreate(ctx _context.Context) Ap
 
 // Execute executes the request
 //  @return AuthenticatorSMSStage
-func (a *StagesApiService) StagesAuthenticatorSmsCreateExecute(r ApiStagesAuthenticatorSmsCreateRequest) (AuthenticatorSMSStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorSmsCreateExecute(r ApiStagesAuthenticatorSmsCreateRequest) (*AuthenticatorSMSStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorSMSStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorSMSStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorSmsCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/sms/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.authenticatorSMSStageRequest == nil {
 		return localVarReturnValue, nil, reportError("authenticatorSMSStageRequest is required and must be specified")
 	}
@@ -2019,7 +1987,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsCreateExecute(r ApiStagesAuthen
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2029,15 +1997,15 @@ func (a *StagesApiService) StagesAuthenticatorSmsCreateExecute(r ApiStagesAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2046,7 +2014,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsCreateExecute(r ApiStagesAuthen
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2057,12 +2025,12 @@ func (a *StagesApiService) StagesAuthenticatorSmsCreateExecute(r ApiStagesAuthen
 }
 
 type ApiStagesAuthenticatorSmsDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorSmsDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorSmsDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesAuthenticatorSmsDestroyExecute(r)
 }
 
@@ -2071,11 +2039,11 @@ StagesAuthenticatorSmsDestroy Method for StagesAuthenticatorSmsDestroy
 
 AuthenticatorSMSStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
  @return ApiStagesAuthenticatorSmsDestroyRequest
 */
-func (a *StagesApiService) StagesAuthenticatorSmsDestroy(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorSmsDestroyRequest {
+func (a *StagesApiService) StagesAuthenticatorSmsDestroy(ctx context.Context, stageUuid string) ApiStagesAuthenticatorSmsDestroyRequest {
 	return ApiStagesAuthenticatorSmsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2084,26 +2052,24 @@ func (a *StagesApiService) StagesAuthenticatorSmsDestroy(ctx _context.Context, s
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesAuthenticatorSmsDestroyExecute(r ApiStagesAuthenticatorSmsDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorSmsDestroyExecute(r ApiStagesAuthenticatorSmsDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorSmsDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2136,7 +2102,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsDestroyExecute(r ApiStagesAuthe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2146,15 +2112,15 @@ func (a *StagesApiService) StagesAuthenticatorSmsDestroyExecute(r ApiStagesAuthe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2165,7 +2131,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsDestroyExecute(r ApiStagesAuthe
 }
 
 type ApiStagesAuthenticatorSmsListRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *StagesApiService
 	accountSid    *string
 	auth          *string
@@ -2186,26 +2152,32 @@ func (r ApiStagesAuthenticatorSmsListRequest) AccountSid(accountSid string) ApiS
 	r.accountSid = &accountSid
 	return r
 }
+
 func (r ApiStagesAuthenticatorSmsListRequest) Auth(auth string) ApiStagesAuthenticatorSmsListRequest {
 	r.auth = &auth
 	return r
 }
+
 func (r ApiStagesAuthenticatorSmsListRequest) AuthPassword(authPassword string) ApiStagesAuthenticatorSmsListRequest {
 	r.authPassword = &authPassword
 	return r
 }
+
 func (r ApiStagesAuthenticatorSmsListRequest) AuthType(authType string) ApiStagesAuthenticatorSmsListRequest {
 	r.authType = &authType
 	return r
 }
+
 func (r ApiStagesAuthenticatorSmsListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorSmsListRequest {
 	r.configureFlow = &configureFlow
 	return r
 }
+
 func (r ApiStagesAuthenticatorSmsListRequest) FromNumber(fromNumber string) ApiStagesAuthenticatorSmsListRequest {
 	r.fromNumber = &fromNumber
 	return r
 }
+
 func (r ApiStagesAuthenticatorSmsListRequest) Name(name string) ApiStagesAuthenticatorSmsListRequest {
 	r.name = &name
 	return r
@@ -2228,6 +2200,7 @@ func (r ApiStagesAuthenticatorSmsListRequest) PageSize(pageSize int32) ApiStages
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiStagesAuthenticatorSmsListRequest) Provider(provider string) ApiStagesAuthenticatorSmsListRequest {
 	r.provider = &provider
 	return r
@@ -2238,12 +2211,13 @@ func (r ApiStagesAuthenticatorSmsListRequest) Search(search string) ApiStagesAut
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesAuthenticatorSmsListRequest) StageUuid(stageUuid string) ApiStagesAuthenticatorSmsListRequest {
 	r.stageUuid = &stageUuid
 	return r
 }
 
-func (r ApiStagesAuthenticatorSmsListRequest) Execute() (PaginatedAuthenticatorSMSStageList, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorSmsListRequest) Execute() (*PaginatedAuthenticatorSMSStageList, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorSmsListExecute(r)
 }
 
@@ -2252,10 +2226,10 @@ StagesAuthenticatorSmsList Method for StagesAuthenticatorSmsList
 
 AuthenticatorSMSStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAuthenticatorSmsListRequest
 */
-func (a *StagesApiService) StagesAuthenticatorSmsList(ctx _context.Context) ApiStagesAuthenticatorSmsListRequest {
+func (a *StagesApiService) StagesAuthenticatorSmsList(ctx context.Context) ApiStagesAuthenticatorSmsListRequest {
 	return ApiStagesAuthenticatorSmsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2264,26 +2238,24 @@ func (a *StagesApiService) StagesAuthenticatorSmsList(ctx _context.Context) ApiS
 
 // Execute executes the request
 //  @return PaginatedAuthenticatorSMSStageList
-func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenticatorSmsListRequest) (PaginatedAuthenticatorSMSStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenticatorSmsListRequest) (*PaginatedAuthenticatorSMSStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedAuthenticatorSMSStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedAuthenticatorSMSStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorSmsList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/sms/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.accountSid != nil {
 		localVarQueryParams.Add("account_sid", parameterToString(*r.accountSid, ""))
@@ -2355,7 +2327,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenti
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2365,15 +2337,15 @@ func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2382,7 +2354,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenti
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2393,7 +2365,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenti
 }
 
 type ApiStagesAuthenticatorSmsPartialUpdateRequest struct {
-	ctx                                 _context.Context
+	ctx                                 context.Context
 	ApiService                          *StagesApiService
 	stageUuid                           string
 	patchedAuthenticatorSMSStageRequest *PatchedAuthenticatorSMSStageRequest
@@ -2404,7 +2376,7 @@ func (r ApiStagesAuthenticatorSmsPartialUpdateRequest) PatchedAuthenticatorSMSSt
 	return r
 }
 
-func (r ApiStagesAuthenticatorSmsPartialUpdateRequest) Execute() (AuthenticatorSMSStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorSmsPartialUpdateRequest) Execute() (*AuthenticatorSMSStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorSmsPartialUpdateExecute(r)
 }
 
@@ -2413,11 +2385,11 @@ StagesAuthenticatorSmsPartialUpdate Method for StagesAuthenticatorSmsPartialUpda
 
 AuthenticatorSMSStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
  @return ApiStagesAuthenticatorSmsPartialUpdateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorSmsPartialUpdateRequest {
+func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorSmsPartialUpdateRequest {
 	return ApiStagesAuthenticatorSmsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2427,27 +2399,25 @@ func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdate(ctx _context.Cont
 
 // Execute executes the request
 //  @return AuthenticatorSMSStage
-func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdateExecute(r ApiStagesAuthenticatorSmsPartialUpdateRequest) (AuthenticatorSMSStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdateExecute(r ApiStagesAuthenticatorSmsPartialUpdateRequest) (*AuthenticatorSMSStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorSMSStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorSMSStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorSmsPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2482,7 +2452,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdateExecute(r ApiStage
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2492,15 +2462,15 @@ func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdateExecute(r ApiStage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2509,7 +2479,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdateExecute(r ApiStage
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2520,12 +2490,12 @@ func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdateExecute(r ApiStage
 }
 
 type ApiStagesAuthenticatorSmsRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorSmsRetrieveRequest) Execute() (AuthenticatorSMSStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorSmsRetrieveRequest) Execute() (*AuthenticatorSMSStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorSmsRetrieveExecute(r)
 }
 
@@ -2534,11 +2504,11 @@ StagesAuthenticatorSmsRetrieve Method for StagesAuthenticatorSmsRetrieve
 
 AuthenticatorSMSStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
  @return ApiStagesAuthenticatorSmsRetrieveRequest
 */
-func (a *StagesApiService) StagesAuthenticatorSmsRetrieve(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorSmsRetrieveRequest {
+func (a *StagesApiService) StagesAuthenticatorSmsRetrieve(ctx context.Context, stageUuid string) ApiStagesAuthenticatorSmsRetrieveRequest {
 	return ApiStagesAuthenticatorSmsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2548,27 +2518,25 @@ func (a *StagesApiService) StagesAuthenticatorSmsRetrieve(ctx _context.Context, 
 
 // Execute executes the request
 //  @return AuthenticatorSMSStage
-func (a *StagesApiService) StagesAuthenticatorSmsRetrieveExecute(r ApiStagesAuthenticatorSmsRetrieveRequest) (AuthenticatorSMSStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorSmsRetrieveExecute(r ApiStagesAuthenticatorSmsRetrieveRequest) (*AuthenticatorSMSStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorSMSStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorSMSStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorSmsRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2601,7 +2569,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsRetrieveExecute(r ApiStagesAuth
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2611,15 +2579,15 @@ func (a *StagesApiService) StagesAuthenticatorSmsRetrieveExecute(r ApiStagesAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2628,7 +2596,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsRetrieveExecute(r ApiStagesAuth
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2639,7 +2607,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsRetrieveExecute(r ApiStagesAuth
 }
 
 type ApiStagesAuthenticatorSmsUpdateRequest struct {
-	ctx                          _context.Context
+	ctx                          context.Context
 	ApiService                   *StagesApiService
 	stageUuid                    string
 	authenticatorSMSStageRequest *AuthenticatorSMSStageRequest
@@ -2650,7 +2618,7 @@ func (r ApiStagesAuthenticatorSmsUpdateRequest) AuthenticatorSMSStageRequest(aut
 	return r
 }
 
-func (r ApiStagesAuthenticatorSmsUpdateRequest) Execute() (AuthenticatorSMSStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorSmsUpdateRequest) Execute() (*AuthenticatorSMSStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorSmsUpdateExecute(r)
 }
 
@@ -2659,11 +2627,11 @@ StagesAuthenticatorSmsUpdate Method for StagesAuthenticatorSmsUpdate
 
 AuthenticatorSMSStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
  @return ApiStagesAuthenticatorSmsUpdateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorSmsUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorSmsUpdateRequest {
+func (a *StagesApiService) StagesAuthenticatorSmsUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorSmsUpdateRequest {
 	return ApiStagesAuthenticatorSmsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2673,27 +2641,25 @@ func (a *StagesApiService) StagesAuthenticatorSmsUpdate(ctx _context.Context, st
 
 // Execute executes the request
 //  @return AuthenticatorSMSStage
-func (a *StagesApiService) StagesAuthenticatorSmsUpdateExecute(r ApiStagesAuthenticatorSmsUpdateRequest) (AuthenticatorSMSStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorSmsUpdateExecute(r ApiStagesAuthenticatorSmsUpdateRequest) (*AuthenticatorSMSStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorSMSStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorSMSStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorSmsUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.authenticatorSMSStageRequest == nil {
 		return localVarReturnValue, nil, reportError("authenticatorSMSStageRequest is required and must be specified")
 	}
@@ -2731,7 +2697,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsUpdateExecute(r ApiStagesAuthen
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2741,15 +2707,15 @@ func (a *StagesApiService) StagesAuthenticatorSmsUpdateExecute(r ApiStagesAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2758,7 +2724,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsUpdateExecute(r ApiStagesAuthen
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2769,12 +2735,12 @@ func (a *StagesApiService) StagesAuthenticatorSmsUpdateExecute(r ApiStagesAuthen
 }
 
 type ApiStagesAuthenticatorSmsUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorSmsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorSmsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorSmsUsedByListExecute(r)
 }
 
@@ -2783,11 +2749,11 @@ StagesAuthenticatorSmsUsedByList Method for StagesAuthenticatorSmsUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
  @return ApiStagesAuthenticatorSmsUsedByListRequest
 */
-func (a *StagesApiService) StagesAuthenticatorSmsUsedByList(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorSmsUsedByListRequest {
+func (a *StagesApiService) StagesAuthenticatorSmsUsedByList(ctx context.Context, stageUuid string) ApiStagesAuthenticatorSmsUsedByListRequest {
 	return ApiStagesAuthenticatorSmsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2797,27 +2763,25 @@ func (a *StagesApiService) StagesAuthenticatorSmsUsedByList(ctx _context.Context
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesAuthenticatorSmsUsedByListExecute(r ApiStagesAuthenticatorSmsUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorSmsUsedByListExecute(r ApiStagesAuthenticatorSmsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorSmsUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2850,7 +2814,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsUsedByListExecute(r ApiStagesAu
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2860,15 +2824,15 @@ func (a *StagesApiService) StagesAuthenticatorSmsUsedByListExecute(r ApiStagesAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2877,7 +2841,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsUsedByListExecute(r ApiStagesAu
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2888,7 +2852,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsUsedByListExecute(r ApiStagesAu
 }
 
 type ApiStagesAuthenticatorStaticCreateRequest struct {
-	ctx                             _context.Context
+	ctx                             context.Context
 	ApiService                      *StagesApiService
 	authenticatorStaticStageRequest *AuthenticatorStaticStageRequest
 }
@@ -2898,7 +2862,7 @@ func (r ApiStagesAuthenticatorStaticCreateRequest) AuthenticatorStaticStageReque
 	return r
 }
 
-func (r ApiStagesAuthenticatorStaticCreateRequest) Execute() (AuthenticatorStaticStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorStaticCreateRequest) Execute() (*AuthenticatorStaticStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorStaticCreateExecute(r)
 }
 
@@ -2907,10 +2871,10 @@ StagesAuthenticatorStaticCreate Method for StagesAuthenticatorStaticCreate
 
 AuthenticatorStaticStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAuthenticatorStaticCreateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorStaticCreate(ctx _context.Context) ApiStagesAuthenticatorStaticCreateRequest {
+func (a *StagesApiService) StagesAuthenticatorStaticCreate(ctx context.Context) ApiStagesAuthenticatorStaticCreateRequest {
 	return ApiStagesAuthenticatorStaticCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2919,26 +2883,24 @@ func (a *StagesApiService) StagesAuthenticatorStaticCreate(ctx _context.Context)
 
 // Execute executes the request
 //  @return AuthenticatorStaticStage
-func (a *StagesApiService) StagesAuthenticatorStaticCreateExecute(r ApiStagesAuthenticatorStaticCreateRequest) (AuthenticatorStaticStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorStaticCreateExecute(r ApiStagesAuthenticatorStaticCreateRequest) (*AuthenticatorStaticStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorStaticStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorStaticStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorStaticCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/static/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.authenticatorStaticStageRequest == nil {
 		return localVarReturnValue, nil, reportError("authenticatorStaticStageRequest is required and must be specified")
 	}
@@ -2976,7 +2938,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticCreateExecute(r ApiStagesAut
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2986,15 +2948,15 @@ func (a *StagesApiService) StagesAuthenticatorStaticCreateExecute(r ApiStagesAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3003,7 +2965,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticCreateExecute(r ApiStagesAut
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3014,12 +2976,12 @@ func (a *StagesApiService) StagesAuthenticatorStaticCreateExecute(r ApiStagesAut
 }
 
 type ApiStagesAuthenticatorStaticDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorStaticDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorStaticDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesAuthenticatorStaticDestroyExecute(r)
 }
 
@@ -3028,11 +2990,11 @@ StagesAuthenticatorStaticDestroy Method for StagesAuthenticatorStaticDestroy
 
 AuthenticatorStaticStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Static Authenticator Stage.
  @return ApiStagesAuthenticatorStaticDestroyRequest
 */
-func (a *StagesApiService) StagesAuthenticatorStaticDestroy(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorStaticDestroyRequest {
+func (a *StagesApiService) StagesAuthenticatorStaticDestroy(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticDestroyRequest {
 	return ApiStagesAuthenticatorStaticDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3041,26 +3003,24 @@ func (a *StagesApiService) StagesAuthenticatorStaticDestroy(ctx _context.Context
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesAuthenticatorStaticDestroyExecute(r ApiStagesAuthenticatorStaticDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorStaticDestroyExecute(r ApiStagesAuthenticatorStaticDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorStaticDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/static/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3093,7 +3053,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticDestroyExecute(r ApiStagesAu
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -3103,15 +3063,15 @@ func (a *StagesApiService) StagesAuthenticatorStaticDestroyExecute(r ApiStagesAu
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3122,7 +3082,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticDestroyExecute(r ApiStagesAu
 }
 
 type ApiStagesAuthenticatorStaticListRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *StagesApiService
 	configureFlow *string
 	name          *string
@@ -3138,6 +3098,7 @@ func (r ApiStagesAuthenticatorStaticListRequest) ConfigureFlow(configureFlow str
 	r.configureFlow = &configureFlow
 	return r
 }
+
 func (r ApiStagesAuthenticatorStaticListRequest) Name(name string) ApiStagesAuthenticatorStaticListRequest {
 	r.name = &name
 	return r
@@ -3166,16 +3127,18 @@ func (r ApiStagesAuthenticatorStaticListRequest) Search(search string) ApiStages
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesAuthenticatorStaticListRequest) StageUuid(stageUuid string) ApiStagesAuthenticatorStaticListRequest {
 	r.stageUuid = &stageUuid
 	return r
 }
+
 func (r ApiStagesAuthenticatorStaticListRequest) TokenCount(tokenCount int32) ApiStagesAuthenticatorStaticListRequest {
 	r.tokenCount = &tokenCount
 	return r
 }
 
-func (r ApiStagesAuthenticatorStaticListRequest) Execute() (PaginatedAuthenticatorStaticStageList, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorStaticListRequest) Execute() (*PaginatedAuthenticatorStaticStageList, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorStaticListExecute(r)
 }
 
@@ -3184,10 +3147,10 @@ StagesAuthenticatorStaticList Method for StagesAuthenticatorStaticList
 
 AuthenticatorStaticStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAuthenticatorStaticListRequest
 */
-func (a *StagesApiService) StagesAuthenticatorStaticList(ctx _context.Context) ApiStagesAuthenticatorStaticListRequest {
+func (a *StagesApiService) StagesAuthenticatorStaticList(ctx context.Context) ApiStagesAuthenticatorStaticListRequest {
 	return ApiStagesAuthenticatorStaticListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3196,26 +3159,24 @@ func (a *StagesApiService) StagesAuthenticatorStaticList(ctx _context.Context) A
 
 // Execute executes the request
 //  @return PaginatedAuthenticatorStaticStageList
-func (a *StagesApiService) StagesAuthenticatorStaticListExecute(r ApiStagesAuthenticatorStaticListRequest) (PaginatedAuthenticatorStaticStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorStaticListExecute(r ApiStagesAuthenticatorStaticListRequest) (*PaginatedAuthenticatorStaticStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedAuthenticatorStaticStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedAuthenticatorStaticStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorStaticList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/static/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.configureFlow != nil {
 		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
@@ -3272,7 +3233,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticListExecute(r ApiStagesAuthe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3282,15 +3243,15 @@ func (a *StagesApiService) StagesAuthenticatorStaticListExecute(r ApiStagesAuthe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3299,7 +3260,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticListExecute(r ApiStagesAuthe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3310,7 +3271,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticListExecute(r ApiStagesAuthe
 }
 
 type ApiStagesAuthenticatorStaticPartialUpdateRequest struct {
-	ctx                                    _context.Context
+	ctx                                    context.Context
 	ApiService                             *StagesApiService
 	stageUuid                              string
 	patchedAuthenticatorStaticStageRequest *PatchedAuthenticatorStaticStageRequest
@@ -3321,7 +3282,7 @@ func (r ApiStagesAuthenticatorStaticPartialUpdateRequest) PatchedAuthenticatorSt
 	return r
 }
 
-func (r ApiStagesAuthenticatorStaticPartialUpdateRequest) Execute() (AuthenticatorStaticStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorStaticPartialUpdateRequest) Execute() (*AuthenticatorStaticStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorStaticPartialUpdateExecute(r)
 }
 
@@ -3330,11 +3291,11 @@ StagesAuthenticatorStaticPartialUpdate Method for StagesAuthenticatorStaticParti
 
 AuthenticatorStaticStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Static Authenticator Stage.
  @return ApiStagesAuthenticatorStaticPartialUpdateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorStaticPartialUpdateRequest {
+func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticPartialUpdateRequest {
 	return ApiStagesAuthenticatorStaticPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3344,27 +3305,25 @@ func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdate(ctx _context.C
 
 // Execute executes the request
 //  @return AuthenticatorStaticStage
-func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdateExecute(r ApiStagesAuthenticatorStaticPartialUpdateRequest) (AuthenticatorStaticStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdateExecute(r ApiStagesAuthenticatorStaticPartialUpdateRequest) (*AuthenticatorStaticStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorStaticStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorStaticStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorStaticPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/static/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3399,7 +3358,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdateExecute(r ApiSt
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3409,15 +3368,15 @@ func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdateExecute(r ApiSt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3426,7 +3385,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdateExecute(r ApiSt
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3437,12 +3396,12 @@ func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdateExecute(r ApiSt
 }
 
 type ApiStagesAuthenticatorStaticRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorStaticRetrieveRequest) Execute() (AuthenticatorStaticStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorStaticRetrieveRequest) Execute() (*AuthenticatorStaticStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorStaticRetrieveExecute(r)
 }
 
@@ -3451,11 +3410,11 @@ StagesAuthenticatorStaticRetrieve Method for StagesAuthenticatorStaticRetrieve
 
 AuthenticatorStaticStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Static Authenticator Stage.
  @return ApiStagesAuthenticatorStaticRetrieveRequest
 */
-func (a *StagesApiService) StagesAuthenticatorStaticRetrieve(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorStaticRetrieveRequest {
+func (a *StagesApiService) StagesAuthenticatorStaticRetrieve(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticRetrieveRequest {
 	return ApiStagesAuthenticatorStaticRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3465,27 +3424,25 @@ func (a *StagesApiService) StagesAuthenticatorStaticRetrieve(ctx _context.Contex
 
 // Execute executes the request
 //  @return AuthenticatorStaticStage
-func (a *StagesApiService) StagesAuthenticatorStaticRetrieveExecute(r ApiStagesAuthenticatorStaticRetrieveRequest) (AuthenticatorStaticStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorStaticRetrieveExecute(r ApiStagesAuthenticatorStaticRetrieveRequest) (*AuthenticatorStaticStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorStaticStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorStaticStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorStaticRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/static/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3518,7 +3475,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticRetrieveExecute(r ApiStagesA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3528,15 +3485,15 @@ func (a *StagesApiService) StagesAuthenticatorStaticRetrieveExecute(r ApiStagesA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3545,7 +3502,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticRetrieveExecute(r ApiStagesA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3556,7 +3513,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticRetrieveExecute(r ApiStagesA
 }
 
 type ApiStagesAuthenticatorStaticUpdateRequest struct {
-	ctx                             _context.Context
+	ctx                             context.Context
 	ApiService                      *StagesApiService
 	stageUuid                       string
 	authenticatorStaticStageRequest *AuthenticatorStaticStageRequest
@@ -3567,7 +3524,7 @@ func (r ApiStagesAuthenticatorStaticUpdateRequest) AuthenticatorStaticStageReque
 	return r
 }
 
-func (r ApiStagesAuthenticatorStaticUpdateRequest) Execute() (AuthenticatorStaticStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorStaticUpdateRequest) Execute() (*AuthenticatorStaticStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorStaticUpdateExecute(r)
 }
 
@@ -3576,11 +3533,11 @@ StagesAuthenticatorStaticUpdate Method for StagesAuthenticatorStaticUpdate
 
 AuthenticatorStaticStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Static Authenticator Stage.
  @return ApiStagesAuthenticatorStaticUpdateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorStaticUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorStaticUpdateRequest {
+func (a *StagesApiService) StagesAuthenticatorStaticUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticUpdateRequest {
 	return ApiStagesAuthenticatorStaticUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3590,27 +3547,25 @@ func (a *StagesApiService) StagesAuthenticatorStaticUpdate(ctx _context.Context,
 
 // Execute executes the request
 //  @return AuthenticatorStaticStage
-func (a *StagesApiService) StagesAuthenticatorStaticUpdateExecute(r ApiStagesAuthenticatorStaticUpdateRequest) (AuthenticatorStaticStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorStaticUpdateExecute(r ApiStagesAuthenticatorStaticUpdateRequest) (*AuthenticatorStaticStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorStaticStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorStaticStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorStaticUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/static/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.authenticatorStaticStageRequest == nil {
 		return localVarReturnValue, nil, reportError("authenticatorStaticStageRequest is required and must be specified")
 	}
@@ -3648,7 +3603,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticUpdateExecute(r ApiStagesAut
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3658,15 +3613,15 @@ func (a *StagesApiService) StagesAuthenticatorStaticUpdateExecute(r ApiStagesAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3675,7 +3630,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticUpdateExecute(r ApiStagesAut
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3686,12 +3641,12 @@ func (a *StagesApiService) StagesAuthenticatorStaticUpdateExecute(r ApiStagesAut
 }
 
 type ApiStagesAuthenticatorStaticUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorStaticUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorStaticUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorStaticUsedByListExecute(r)
 }
 
@@ -3700,11 +3655,11 @@ StagesAuthenticatorStaticUsedByList Method for StagesAuthenticatorStaticUsedByLi
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Static Authenticator Stage.
  @return ApiStagesAuthenticatorStaticUsedByListRequest
 */
-func (a *StagesApiService) StagesAuthenticatorStaticUsedByList(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorStaticUsedByListRequest {
+func (a *StagesApiService) StagesAuthenticatorStaticUsedByList(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticUsedByListRequest {
 	return ApiStagesAuthenticatorStaticUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3714,27 +3669,25 @@ func (a *StagesApiService) StagesAuthenticatorStaticUsedByList(ctx _context.Cont
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesAuthenticatorStaticUsedByListExecute(r ApiStagesAuthenticatorStaticUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorStaticUsedByListExecute(r ApiStagesAuthenticatorStaticUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorStaticUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/static/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3767,7 +3720,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticUsedByListExecute(r ApiStage
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3777,15 +3730,15 @@ func (a *StagesApiService) StagesAuthenticatorStaticUsedByListExecute(r ApiStage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3794,7 +3747,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticUsedByListExecute(r ApiStage
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3805,7 +3758,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticUsedByListExecute(r ApiStage
 }
 
 type ApiStagesAuthenticatorTotpCreateRequest struct {
-	ctx                           _context.Context
+	ctx                           context.Context
 	ApiService                    *StagesApiService
 	authenticatorTOTPStageRequest *AuthenticatorTOTPStageRequest
 }
@@ -3815,7 +3768,7 @@ func (r ApiStagesAuthenticatorTotpCreateRequest) AuthenticatorTOTPStageRequest(a
 	return r
 }
 
-func (r ApiStagesAuthenticatorTotpCreateRequest) Execute() (AuthenticatorTOTPStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorTotpCreateRequest) Execute() (*AuthenticatorTOTPStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorTotpCreateExecute(r)
 }
 
@@ -3824,10 +3777,10 @@ StagesAuthenticatorTotpCreate Method for StagesAuthenticatorTotpCreate
 
 AuthenticatorTOTPStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAuthenticatorTotpCreateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorTotpCreate(ctx _context.Context) ApiStagesAuthenticatorTotpCreateRequest {
+func (a *StagesApiService) StagesAuthenticatorTotpCreate(ctx context.Context) ApiStagesAuthenticatorTotpCreateRequest {
 	return ApiStagesAuthenticatorTotpCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3836,26 +3789,24 @@ func (a *StagesApiService) StagesAuthenticatorTotpCreate(ctx _context.Context) A
 
 // Execute executes the request
 //  @return AuthenticatorTOTPStage
-func (a *StagesApiService) StagesAuthenticatorTotpCreateExecute(r ApiStagesAuthenticatorTotpCreateRequest) (AuthenticatorTOTPStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorTotpCreateExecute(r ApiStagesAuthenticatorTotpCreateRequest) (*AuthenticatorTOTPStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorTOTPStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorTOTPStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorTotpCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/totp/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.authenticatorTOTPStageRequest == nil {
 		return localVarReturnValue, nil, reportError("authenticatorTOTPStageRequest is required and must be specified")
 	}
@@ -3893,7 +3844,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpCreateExecute(r ApiStagesAuthe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3903,15 +3854,15 @@ func (a *StagesApiService) StagesAuthenticatorTotpCreateExecute(r ApiStagesAuthe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3920,7 +3871,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpCreateExecute(r ApiStagesAuthe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3931,12 +3882,12 @@ func (a *StagesApiService) StagesAuthenticatorTotpCreateExecute(r ApiStagesAuthe
 }
 
 type ApiStagesAuthenticatorTotpDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorTotpDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorTotpDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesAuthenticatorTotpDestroyExecute(r)
 }
 
@@ -3945,11 +3896,11 @@ StagesAuthenticatorTotpDestroy Method for StagesAuthenticatorTotpDestroy
 
 AuthenticatorTOTPStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
  @return ApiStagesAuthenticatorTotpDestroyRequest
 */
-func (a *StagesApiService) StagesAuthenticatorTotpDestroy(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorTotpDestroyRequest {
+func (a *StagesApiService) StagesAuthenticatorTotpDestroy(ctx context.Context, stageUuid string) ApiStagesAuthenticatorTotpDestroyRequest {
 	return ApiStagesAuthenticatorTotpDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3958,26 +3909,24 @@ func (a *StagesApiService) StagesAuthenticatorTotpDestroy(ctx _context.Context, 
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesAuthenticatorTotpDestroyExecute(r ApiStagesAuthenticatorTotpDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorTotpDestroyExecute(r ApiStagesAuthenticatorTotpDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorTotpDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/totp/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4010,7 +3959,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpDestroyExecute(r ApiStagesAuth
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -4020,15 +3969,15 @@ func (a *StagesApiService) StagesAuthenticatorTotpDestroyExecute(r ApiStagesAuth
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4039,7 +3988,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpDestroyExecute(r ApiStagesAuth
 }
 
 type ApiStagesAuthenticatorTotpListRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *StagesApiService
 	configureFlow *string
 	digits        *int32
@@ -4055,10 +4004,12 @@ func (r ApiStagesAuthenticatorTotpListRequest) ConfigureFlow(configureFlow strin
 	r.configureFlow = &configureFlow
 	return r
 }
+
 func (r ApiStagesAuthenticatorTotpListRequest) Digits(digits int32) ApiStagesAuthenticatorTotpListRequest {
 	r.digits = &digits
 	return r
 }
+
 func (r ApiStagesAuthenticatorTotpListRequest) Name(name string) ApiStagesAuthenticatorTotpListRequest {
 	r.name = &name
 	return r
@@ -4087,12 +4038,13 @@ func (r ApiStagesAuthenticatorTotpListRequest) Search(search string) ApiStagesAu
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesAuthenticatorTotpListRequest) StageUuid(stageUuid string) ApiStagesAuthenticatorTotpListRequest {
 	r.stageUuid = &stageUuid
 	return r
 }
 
-func (r ApiStagesAuthenticatorTotpListRequest) Execute() (PaginatedAuthenticatorTOTPStageList, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorTotpListRequest) Execute() (*PaginatedAuthenticatorTOTPStageList, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorTotpListExecute(r)
 }
 
@@ -4101,10 +4053,10 @@ StagesAuthenticatorTotpList Method for StagesAuthenticatorTotpList
 
 AuthenticatorTOTPStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAuthenticatorTotpListRequest
 */
-func (a *StagesApiService) StagesAuthenticatorTotpList(ctx _context.Context) ApiStagesAuthenticatorTotpListRequest {
+func (a *StagesApiService) StagesAuthenticatorTotpList(ctx context.Context) ApiStagesAuthenticatorTotpListRequest {
 	return ApiStagesAuthenticatorTotpListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4113,26 +4065,24 @@ func (a *StagesApiService) StagesAuthenticatorTotpList(ctx _context.Context) Api
 
 // Execute executes the request
 //  @return PaginatedAuthenticatorTOTPStageList
-func (a *StagesApiService) StagesAuthenticatorTotpListExecute(r ApiStagesAuthenticatorTotpListRequest) (PaginatedAuthenticatorTOTPStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorTotpListExecute(r ApiStagesAuthenticatorTotpListRequest) (*PaginatedAuthenticatorTOTPStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedAuthenticatorTOTPStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedAuthenticatorTOTPStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorTotpList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/totp/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.configureFlow != nil {
 		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
@@ -4189,7 +4139,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpListExecute(r ApiStagesAuthent
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4199,15 +4149,15 @@ func (a *StagesApiService) StagesAuthenticatorTotpListExecute(r ApiStagesAuthent
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4216,7 +4166,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpListExecute(r ApiStagesAuthent
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4227,7 +4177,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpListExecute(r ApiStagesAuthent
 }
 
 type ApiStagesAuthenticatorTotpPartialUpdateRequest struct {
-	ctx                                  _context.Context
+	ctx                                  context.Context
 	ApiService                           *StagesApiService
 	stageUuid                            string
 	patchedAuthenticatorTOTPStageRequest *PatchedAuthenticatorTOTPStageRequest
@@ -4238,7 +4188,7 @@ func (r ApiStagesAuthenticatorTotpPartialUpdateRequest) PatchedAuthenticatorTOTP
 	return r
 }
 
-func (r ApiStagesAuthenticatorTotpPartialUpdateRequest) Execute() (AuthenticatorTOTPStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorTotpPartialUpdateRequest) Execute() (*AuthenticatorTOTPStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorTotpPartialUpdateExecute(r)
 }
 
@@ -4247,11 +4197,11 @@ StagesAuthenticatorTotpPartialUpdate Method for StagesAuthenticatorTotpPartialUp
 
 AuthenticatorTOTPStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
  @return ApiStagesAuthenticatorTotpPartialUpdateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorTotpPartialUpdateRequest {
+func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorTotpPartialUpdateRequest {
 	return ApiStagesAuthenticatorTotpPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4261,27 +4211,25 @@ func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdate(ctx _context.Con
 
 // Execute executes the request
 //  @return AuthenticatorTOTPStage
-func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdateExecute(r ApiStagesAuthenticatorTotpPartialUpdateRequest) (AuthenticatorTOTPStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdateExecute(r ApiStagesAuthenticatorTotpPartialUpdateRequest) (*AuthenticatorTOTPStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorTOTPStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorTOTPStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorTotpPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/totp/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4316,7 +4264,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdateExecute(r ApiStag
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4326,15 +4274,15 @@ func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdateExecute(r ApiStag
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4343,7 +4291,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdateExecute(r ApiStag
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4354,12 +4302,12 @@ func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdateExecute(r ApiStag
 }
 
 type ApiStagesAuthenticatorTotpRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorTotpRetrieveRequest) Execute() (AuthenticatorTOTPStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorTotpRetrieveRequest) Execute() (*AuthenticatorTOTPStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorTotpRetrieveExecute(r)
 }
 
@@ -4368,11 +4316,11 @@ StagesAuthenticatorTotpRetrieve Method for StagesAuthenticatorTotpRetrieve
 
 AuthenticatorTOTPStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
  @return ApiStagesAuthenticatorTotpRetrieveRequest
 */
-func (a *StagesApiService) StagesAuthenticatorTotpRetrieve(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorTotpRetrieveRequest {
+func (a *StagesApiService) StagesAuthenticatorTotpRetrieve(ctx context.Context, stageUuid string) ApiStagesAuthenticatorTotpRetrieveRequest {
 	return ApiStagesAuthenticatorTotpRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4382,27 +4330,25 @@ func (a *StagesApiService) StagesAuthenticatorTotpRetrieve(ctx _context.Context,
 
 // Execute executes the request
 //  @return AuthenticatorTOTPStage
-func (a *StagesApiService) StagesAuthenticatorTotpRetrieveExecute(r ApiStagesAuthenticatorTotpRetrieveRequest) (AuthenticatorTOTPStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorTotpRetrieveExecute(r ApiStagesAuthenticatorTotpRetrieveRequest) (*AuthenticatorTOTPStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorTOTPStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorTOTPStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorTotpRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/totp/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4435,7 +4381,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpRetrieveExecute(r ApiStagesAut
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4445,15 +4391,15 @@ func (a *StagesApiService) StagesAuthenticatorTotpRetrieveExecute(r ApiStagesAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4462,7 +4408,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpRetrieveExecute(r ApiStagesAut
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4473,7 +4419,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpRetrieveExecute(r ApiStagesAut
 }
 
 type ApiStagesAuthenticatorTotpUpdateRequest struct {
-	ctx                           _context.Context
+	ctx                           context.Context
 	ApiService                    *StagesApiService
 	stageUuid                     string
 	authenticatorTOTPStageRequest *AuthenticatorTOTPStageRequest
@@ -4484,7 +4430,7 @@ func (r ApiStagesAuthenticatorTotpUpdateRequest) AuthenticatorTOTPStageRequest(a
 	return r
 }
 
-func (r ApiStagesAuthenticatorTotpUpdateRequest) Execute() (AuthenticatorTOTPStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorTotpUpdateRequest) Execute() (*AuthenticatorTOTPStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorTotpUpdateExecute(r)
 }
 
@@ -4493,11 +4439,11 @@ StagesAuthenticatorTotpUpdate Method for StagesAuthenticatorTotpUpdate
 
 AuthenticatorTOTPStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
  @return ApiStagesAuthenticatorTotpUpdateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorTotpUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorTotpUpdateRequest {
+func (a *StagesApiService) StagesAuthenticatorTotpUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorTotpUpdateRequest {
 	return ApiStagesAuthenticatorTotpUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4507,27 +4453,25 @@ func (a *StagesApiService) StagesAuthenticatorTotpUpdate(ctx _context.Context, s
 
 // Execute executes the request
 //  @return AuthenticatorTOTPStage
-func (a *StagesApiService) StagesAuthenticatorTotpUpdateExecute(r ApiStagesAuthenticatorTotpUpdateRequest) (AuthenticatorTOTPStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorTotpUpdateExecute(r ApiStagesAuthenticatorTotpUpdateRequest) (*AuthenticatorTOTPStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorTOTPStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorTOTPStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorTotpUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/totp/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.authenticatorTOTPStageRequest == nil {
 		return localVarReturnValue, nil, reportError("authenticatorTOTPStageRequest is required and must be specified")
 	}
@@ -4565,7 +4509,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpUpdateExecute(r ApiStagesAuthe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4575,15 +4519,15 @@ func (a *StagesApiService) StagesAuthenticatorTotpUpdateExecute(r ApiStagesAuthe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4592,7 +4536,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpUpdateExecute(r ApiStagesAuthe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4603,12 +4547,12 @@ func (a *StagesApiService) StagesAuthenticatorTotpUpdateExecute(r ApiStagesAuthe
 }
 
 type ApiStagesAuthenticatorTotpUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorTotpUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorTotpUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorTotpUsedByListExecute(r)
 }
 
@@ -4617,11 +4561,11 @@ StagesAuthenticatorTotpUsedByList Method for StagesAuthenticatorTotpUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
  @return ApiStagesAuthenticatorTotpUsedByListRequest
 */
-func (a *StagesApiService) StagesAuthenticatorTotpUsedByList(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorTotpUsedByListRequest {
+func (a *StagesApiService) StagesAuthenticatorTotpUsedByList(ctx context.Context, stageUuid string) ApiStagesAuthenticatorTotpUsedByListRequest {
 	return ApiStagesAuthenticatorTotpUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4631,27 +4575,25 @@ func (a *StagesApiService) StagesAuthenticatorTotpUsedByList(ctx _context.Contex
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesAuthenticatorTotpUsedByListExecute(r ApiStagesAuthenticatorTotpUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorTotpUsedByListExecute(r ApiStagesAuthenticatorTotpUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorTotpUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/totp/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4684,7 +4626,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpUsedByListExecute(r ApiStagesA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4694,15 +4636,15 @@ func (a *StagesApiService) StagesAuthenticatorTotpUsedByListExecute(r ApiStagesA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4711,7 +4653,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpUsedByListExecute(r ApiStagesA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4722,7 +4664,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpUsedByListExecute(r ApiStagesA
 }
 
 type ApiStagesAuthenticatorValidateCreateRequest struct {
-	ctx                               _context.Context
+	ctx                               context.Context
 	ApiService                        *StagesApiService
 	authenticatorValidateStageRequest *AuthenticatorValidateStageRequest
 }
@@ -4732,7 +4674,7 @@ func (r ApiStagesAuthenticatorValidateCreateRequest) AuthenticatorValidateStageR
 	return r
 }
 
-func (r ApiStagesAuthenticatorValidateCreateRequest) Execute() (AuthenticatorValidateStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorValidateCreateRequest) Execute() (*AuthenticatorValidateStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorValidateCreateExecute(r)
 }
 
@@ -4741,10 +4683,10 @@ StagesAuthenticatorValidateCreate Method for StagesAuthenticatorValidateCreate
 
 AuthenticatorValidateStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAuthenticatorValidateCreateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorValidateCreate(ctx _context.Context) ApiStagesAuthenticatorValidateCreateRequest {
+func (a *StagesApiService) StagesAuthenticatorValidateCreate(ctx context.Context) ApiStagesAuthenticatorValidateCreateRequest {
 	return ApiStagesAuthenticatorValidateCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4753,26 +4695,24 @@ func (a *StagesApiService) StagesAuthenticatorValidateCreate(ctx _context.Contex
 
 // Execute executes the request
 //  @return AuthenticatorValidateStage
-func (a *StagesApiService) StagesAuthenticatorValidateCreateExecute(r ApiStagesAuthenticatorValidateCreateRequest) (AuthenticatorValidateStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorValidateCreateExecute(r ApiStagesAuthenticatorValidateCreateRequest) (*AuthenticatorValidateStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorValidateStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorValidateStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorValidateCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/validate/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.authenticatorValidateStageRequest == nil {
 		return localVarReturnValue, nil, reportError("authenticatorValidateStageRequest is required and must be specified")
 	}
@@ -4810,7 +4750,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateCreateExecute(r ApiStagesA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4820,15 +4760,15 @@ func (a *StagesApiService) StagesAuthenticatorValidateCreateExecute(r ApiStagesA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4837,7 +4777,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateCreateExecute(r ApiStagesA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4848,12 +4788,12 @@ func (a *StagesApiService) StagesAuthenticatorValidateCreateExecute(r ApiStagesA
 }
 
 type ApiStagesAuthenticatorValidateDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorValidateDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorValidateDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesAuthenticatorValidateDestroyExecute(r)
 }
 
@@ -4862,11 +4802,11 @@ StagesAuthenticatorValidateDestroy Method for StagesAuthenticatorValidateDestroy
 
 AuthenticatorValidateStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Authenticator Validation Stage.
  @return ApiStagesAuthenticatorValidateDestroyRequest
 */
-func (a *StagesApiService) StagesAuthenticatorValidateDestroy(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorValidateDestroyRequest {
+func (a *StagesApiService) StagesAuthenticatorValidateDestroy(ctx context.Context, stageUuid string) ApiStagesAuthenticatorValidateDestroyRequest {
 	return ApiStagesAuthenticatorValidateDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4875,26 +4815,24 @@ func (a *StagesApiService) StagesAuthenticatorValidateDestroy(ctx _context.Conte
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesAuthenticatorValidateDestroyExecute(r ApiStagesAuthenticatorValidateDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorValidateDestroyExecute(r ApiStagesAuthenticatorValidateDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorValidateDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/validate/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4927,7 +4865,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateDestroyExecute(r ApiStages
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -4937,15 +4875,15 @@ func (a *StagesApiService) StagesAuthenticatorValidateDestroyExecute(r ApiStages
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4956,7 +4894,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateDestroyExecute(r ApiStages
 }
 
 type ApiStagesAuthenticatorValidateListRequest struct {
-	ctx                 _context.Context
+	ctx                 context.Context
 	ApiService          *StagesApiService
 	configurationStages *[]string
 	name                *string
@@ -4971,10 +4909,12 @@ func (r ApiStagesAuthenticatorValidateListRequest) ConfigurationStages(configura
 	r.configurationStages = &configurationStages
 	return r
 }
+
 func (r ApiStagesAuthenticatorValidateListRequest) Name(name string) ApiStagesAuthenticatorValidateListRequest {
 	r.name = &name
 	return r
 }
+
 func (r ApiStagesAuthenticatorValidateListRequest) NotConfiguredAction(notConfiguredAction string) ApiStagesAuthenticatorValidateListRequest {
 	r.notConfiguredAction = &notConfiguredAction
 	return r
@@ -5004,7 +4944,7 @@ func (r ApiStagesAuthenticatorValidateListRequest) Search(search string) ApiStag
 	return r
 }
 
-func (r ApiStagesAuthenticatorValidateListRequest) Execute() (PaginatedAuthenticatorValidateStageList, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorValidateListRequest) Execute() (*PaginatedAuthenticatorValidateStageList, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorValidateListExecute(r)
 }
 
@@ -5013,10 +4953,10 @@ StagesAuthenticatorValidateList Method for StagesAuthenticatorValidateList
 
 AuthenticatorValidateStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAuthenticatorValidateListRequest
 */
-func (a *StagesApiService) StagesAuthenticatorValidateList(ctx _context.Context) ApiStagesAuthenticatorValidateListRequest {
+func (a *StagesApiService) StagesAuthenticatorValidateList(ctx context.Context) ApiStagesAuthenticatorValidateListRequest {
 	return ApiStagesAuthenticatorValidateListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5025,26 +4965,24 @@ func (a *StagesApiService) StagesAuthenticatorValidateList(ctx _context.Context)
 
 // Execute executes the request
 //  @return PaginatedAuthenticatorValidateStageList
-func (a *StagesApiService) StagesAuthenticatorValidateListExecute(r ApiStagesAuthenticatorValidateListRequest) (PaginatedAuthenticatorValidateStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorValidateListExecute(r ApiStagesAuthenticatorValidateListRequest) (*PaginatedAuthenticatorValidateStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedAuthenticatorValidateStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedAuthenticatorValidateStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorValidateList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/validate/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.configurationStages != nil {
 		t := *r.configurationStages
@@ -5106,7 +5044,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateListExecute(r ApiStagesAut
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5116,15 +5054,15 @@ func (a *StagesApiService) StagesAuthenticatorValidateListExecute(r ApiStagesAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5133,7 +5071,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateListExecute(r ApiStagesAut
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5144,7 +5082,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateListExecute(r ApiStagesAut
 }
 
 type ApiStagesAuthenticatorValidatePartialUpdateRequest struct {
-	ctx                                      _context.Context
+	ctx                                      context.Context
 	ApiService                               *StagesApiService
 	stageUuid                                string
 	patchedAuthenticatorValidateStageRequest *PatchedAuthenticatorValidateStageRequest
@@ -5155,7 +5093,7 @@ func (r ApiStagesAuthenticatorValidatePartialUpdateRequest) PatchedAuthenticator
 	return r
 }
 
-func (r ApiStagesAuthenticatorValidatePartialUpdateRequest) Execute() (AuthenticatorValidateStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorValidatePartialUpdateRequest) Execute() (*AuthenticatorValidateStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorValidatePartialUpdateExecute(r)
 }
 
@@ -5164,11 +5102,11 @@ StagesAuthenticatorValidatePartialUpdate Method for StagesAuthenticatorValidateP
 
 AuthenticatorValidateStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Authenticator Validation Stage.
  @return ApiStagesAuthenticatorValidatePartialUpdateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorValidatePartialUpdateRequest {
+func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorValidatePartialUpdateRequest {
 	return ApiStagesAuthenticatorValidatePartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5178,27 +5116,25 @@ func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdate(ctx _context
 
 // Execute executes the request
 //  @return AuthenticatorValidateStage
-func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdateExecute(r ApiStagesAuthenticatorValidatePartialUpdateRequest) (AuthenticatorValidateStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdateExecute(r ApiStagesAuthenticatorValidatePartialUpdateRequest) (*AuthenticatorValidateStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorValidateStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorValidateStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorValidatePartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/validate/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -5233,7 +5169,7 @@ func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdateExecute(r Api
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5243,15 +5179,15 @@ func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5260,7 +5196,7 @@ func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdateExecute(r Api
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5271,12 +5207,12 @@ func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdateExecute(r Api
 }
 
 type ApiStagesAuthenticatorValidateRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorValidateRetrieveRequest) Execute() (AuthenticatorValidateStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorValidateRetrieveRequest) Execute() (*AuthenticatorValidateStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorValidateRetrieveExecute(r)
 }
 
@@ -5285,11 +5221,11 @@ StagesAuthenticatorValidateRetrieve Method for StagesAuthenticatorValidateRetrie
 
 AuthenticatorValidateStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Authenticator Validation Stage.
  @return ApiStagesAuthenticatorValidateRetrieveRequest
 */
-func (a *StagesApiService) StagesAuthenticatorValidateRetrieve(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorValidateRetrieveRequest {
+func (a *StagesApiService) StagesAuthenticatorValidateRetrieve(ctx context.Context, stageUuid string) ApiStagesAuthenticatorValidateRetrieveRequest {
 	return ApiStagesAuthenticatorValidateRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5299,27 +5235,25 @@ func (a *StagesApiService) StagesAuthenticatorValidateRetrieve(ctx _context.Cont
 
 // Execute executes the request
 //  @return AuthenticatorValidateStage
-func (a *StagesApiService) StagesAuthenticatorValidateRetrieveExecute(r ApiStagesAuthenticatorValidateRetrieveRequest) (AuthenticatorValidateStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorValidateRetrieveExecute(r ApiStagesAuthenticatorValidateRetrieveRequest) (*AuthenticatorValidateStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorValidateStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorValidateStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorValidateRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/validate/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5352,7 +5286,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateRetrieveExecute(r ApiStage
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5362,15 +5296,15 @@ func (a *StagesApiService) StagesAuthenticatorValidateRetrieveExecute(r ApiStage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5379,7 +5313,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateRetrieveExecute(r ApiStage
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5390,7 +5324,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateRetrieveExecute(r ApiStage
 }
 
 type ApiStagesAuthenticatorValidateUpdateRequest struct {
-	ctx                               _context.Context
+	ctx                               context.Context
 	ApiService                        *StagesApiService
 	stageUuid                         string
 	authenticatorValidateStageRequest *AuthenticatorValidateStageRequest
@@ -5401,7 +5335,7 @@ func (r ApiStagesAuthenticatorValidateUpdateRequest) AuthenticatorValidateStageR
 	return r
 }
 
-func (r ApiStagesAuthenticatorValidateUpdateRequest) Execute() (AuthenticatorValidateStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorValidateUpdateRequest) Execute() (*AuthenticatorValidateStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorValidateUpdateExecute(r)
 }
 
@@ -5410,11 +5344,11 @@ StagesAuthenticatorValidateUpdate Method for StagesAuthenticatorValidateUpdate
 
 AuthenticatorValidateStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Authenticator Validation Stage.
  @return ApiStagesAuthenticatorValidateUpdateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorValidateUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorValidateUpdateRequest {
+func (a *StagesApiService) StagesAuthenticatorValidateUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorValidateUpdateRequest {
 	return ApiStagesAuthenticatorValidateUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5424,27 +5358,25 @@ func (a *StagesApiService) StagesAuthenticatorValidateUpdate(ctx _context.Contex
 
 // Execute executes the request
 //  @return AuthenticatorValidateStage
-func (a *StagesApiService) StagesAuthenticatorValidateUpdateExecute(r ApiStagesAuthenticatorValidateUpdateRequest) (AuthenticatorValidateStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorValidateUpdateExecute(r ApiStagesAuthenticatorValidateUpdateRequest) (*AuthenticatorValidateStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticatorValidateStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorValidateStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorValidateUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/validate/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.authenticatorValidateStageRequest == nil {
 		return localVarReturnValue, nil, reportError("authenticatorValidateStageRequest is required and must be specified")
 	}
@@ -5482,7 +5414,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateUpdateExecute(r ApiStagesA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5492,15 +5424,15 @@ func (a *StagesApiService) StagesAuthenticatorValidateUpdateExecute(r ApiStagesA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5509,7 +5441,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateUpdateExecute(r ApiStagesA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5520,12 +5452,12 @@ func (a *StagesApiService) StagesAuthenticatorValidateUpdateExecute(r ApiStagesA
 }
 
 type ApiStagesAuthenticatorValidateUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorValidateUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorValidateUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorValidateUsedByListExecute(r)
 }
 
@@ -5534,11 +5466,11 @@ StagesAuthenticatorValidateUsedByList Method for StagesAuthenticatorValidateUsed
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Authenticator Validation Stage.
  @return ApiStagesAuthenticatorValidateUsedByListRequest
 */
-func (a *StagesApiService) StagesAuthenticatorValidateUsedByList(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorValidateUsedByListRequest {
+func (a *StagesApiService) StagesAuthenticatorValidateUsedByList(ctx context.Context, stageUuid string) ApiStagesAuthenticatorValidateUsedByListRequest {
 	return ApiStagesAuthenticatorValidateUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5548,27 +5480,25 @@ func (a *StagesApiService) StagesAuthenticatorValidateUsedByList(ctx _context.Co
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesAuthenticatorValidateUsedByListExecute(r ApiStagesAuthenticatorValidateUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorValidateUsedByListExecute(r ApiStagesAuthenticatorValidateUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorValidateUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/validate/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5601,7 +5531,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateUsedByListExecute(r ApiSta
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5611,15 +5541,15 @@ func (a *StagesApiService) StagesAuthenticatorValidateUsedByListExecute(r ApiSta
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5628,7 +5558,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateUsedByListExecute(r ApiSta
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5639,7 +5569,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateUsedByListExecute(r ApiSta
 }
 
 type ApiStagesAuthenticatorWebauthnCreateRequest struct {
-	ctx                              _context.Context
+	ctx                              context.Context
 	ApiService                       *StagesApiService
 	authenticateWebAuthnStageRequest *AuthenticateWebAuthnStageRequest
 }
@@ -5649,7 +5579,7 @@ func (r ApiStagesAuthenticatorWebauthnCreateRequest) AuthenticateWebAuthnStageRe
 	return r
 }
 
-func (r ApiStagesAuthenticatorWebauthnCreateRequest) Execute() (AuthenticateWebAuthnStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorWebauthnCreateRequest) Execute() (*AuthenticateWebAuthnStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnCreateExecute(r)
 }
 
@@ -5658,10 +5588,10 @@ StagesAuthenticatorWebauthnCreate Method for StagesAuthenticatorWebauthnCreate
 
 AuthenticateWebAuthnStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAuthenticatorWebauthnCreateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorWebauthnCreate(ctx _context.Context) ApiStagesAuthenticatorWebauthnCreateRequest {
+func (a *StagesApiService) StagesAuthenticatorWebauthnCreate(ctx context.Context) ApiStagesAuthenticatorWebauthnCreateRequest {
 	return ApiStagesAuthenticatorWebauthnCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5670,26 +5600,24 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnCreate(ctx _context.Contex
 
 // Execute executes the request
 //  @return AuthenticateWebAuthnStage
-func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesAuthenticatorWebauthnCreateRequest) (AuthenticateWebAuthnStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesAuthenticatorWebauthnCreateRequest) (*AuthenticateWebAuthnStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticateWebAuthnStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticateWebAuthnStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorWebauthnCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/webauthn/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.authenticateWebAuthnStageRequest == nil {
 		return localVarReturnValue, nil, reportError("authenticateWebAuthnStageRequest is required and must be specified")
 	}
@@ -5727,7 +5655,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5737,15 +5665,15 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5754,7 +5682,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5765,12 +5693,12 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesA
 }
 
 type ApiStagesAuthenticatorWebauthnDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorWebauthnDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorWebauthnDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnDestroyExecute(r)
 }
 
@@ -5779,11 +5707,11 @@ StagesAuthenticatorWebauthnDestroy Method for StagesAuthenticatorWebauthnDestroy
 
 AuthenticateWebAuthnStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
  @return ApiStagesAuthenticatorWebauthnDestroyRequest
 */
-func (a *StagesApiService) StagesAuthenticatorWebauthnDestroy(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnDestroyRequest {
+func (a *StagesApiService) StagesAuthenticatorWebauthnDestroy(ctx context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnDestroyRequest {
 	return ApiStagesAuthenticatorWebauthnDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5792,26 +5720,24 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnDestroy(ctx _context.Conte
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesAuthenticatorWebauthnDestroyExecute(r ApiStagesAuthenticatorWebauthnDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorWebauthnDestroyExecute(r ApiStagesAuthenticatorWebauthnDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorWebauthnDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/webauthn/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5844,7 +5770,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnDestroyExecute(r ApiStages
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -5854,15 +5780,15 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnDestroyExecute(r ApiStages
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5873,7 +5799,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnDestroyExecute(r ApiStages
 }
 
 type ApiStagesAuthenticatorWebauthnListRequest struct {
-	ctx                     _context.Context
+	ctx                     context.Context
 	ApiService              *StagesApiService
 	authenticatorAttachment *string
 	configureFlow           *string
@@ -5891,10 +5817,12 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) AuthenticatorAttachment(authe
 	r.authenticatorAttachment = &authenticatorAttachment
 	return r
 }
+
 func (r ApiStagesAuthenticatorWebauthnListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.configureFlow = &configureFlow
 	return r
 }
+
 func (r ApiStagesAuthenticatorWebauthnListRequest) Name(name string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.name = &name
 	return r
@@ -5917,6 +5845,7 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) PageSize(pageSize int32) ApiS
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiStagesAuthenticatorWebauthnListRequest) ResidentKeyRequirement(residentKeyRequirement string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.residentKeyRequirement = &residentKeyRequirement
 	return r
@@ -5927,16 +5856,18 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) Search(search string) ApiStag
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesAuthenticatorWebauthnListRequest) StageUuid(stageUuid string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.stageUuid = &stageUuid
 	return r
 }
+
 func (r ApiStagesAuthenticatorWebauthnListRequest) UserVerification(userVerification string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.userVerification = &userVerification
 	return r
 }
 
-func (r ApiStagesAuthenticatorWebauthnListRequest) Execute() (PaginatedAuthenticateWebAuthnStageList, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorWebauthnListRequest) Execute() (*PaginatedAuthenticateWebAuthnStageList, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnListExecute(r)
 }
 
@@ -5945,10 +5876,10 @@ StagesAuthenticatorWebauthnList Method for StagesAuthenticatorWebauthnList
 
 AuthenticateWebAuthnStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesAuthenticatorWebauthnListRequest
 */
-func (a *StagesApiService) StagesAuthenticatorWebauthnList(ctx _context.Context) ApiStagesAuthenticatorWebauthnListRequest {
+func (a *StagesApiService) StagesAuthenticatorWebauthnList(ctx context.Context) ApiStagesAuthenticatorWebauthnListRequest {
 	return ApiStagesAuthenticatorWebauthnListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5957,26 +5888,24 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnList(ctx _context.Context)
 
 // Execute executes the request
 //  @return PaginatedAuthenticateWebAuthnStageList
-func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAuthenticatorWebauthnListRequest) (PaginatedAuthenticateWebAuthnStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAuthenticatorWebauthnListRequest) (*PaginatedAuthenticateWebAuthnStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedAuthenticateWebAuthnStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedAuthenticateWebAuthnStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorWebauthnList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/webauthn/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.authenticatorAttachment != nil {
 		localVarQueryParams.Add("authenticator_attachment", parameterToString(*r.authenticatorAttachment, ""))
@@ -6039,7 +5968,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -6049,15 +5978,15 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6066,7 +5995,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6077,7 +6006,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 }
 
 type ApiStagesAuthenticatorWebauthnPartialUpdateRequest struct {
-	ctx                                     _context.Context
+	ctx                                     context.Context
 	ApiService                              *StagesApiService
 	stageUuid                               string
 	patchedAuthenticateWebAuthnStageRequest *PatchedAuthenticateWebAuthnStageRequest
@@ -6088,7 +6017,7 @@ func (r ApiStagesAuthenticatorWebauthnPartialUpdateRequest) PatchedAuthenticateW
 	return r
 }
 
-func (r ApiStagesAuthenticatorWebauthnPartialUpdateRequest) Execute() (AuthenticateWebAuthnStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorWebauthnPartialUpdateRequest) Execute() (*AuthenticateWebAuthnStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnPartialUpdateExecute(r)
 }
 
@@ -6097,11 +6026,11 @@ StagesAuthenticatorWebauthnPartialUpdate Method for StagesAuthenticatorWebauthnP
 
 AuthenticateWebAuthnStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
  @return ApiStagesAuthenticatorWebauthnPartialUpdateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnPartialUpdateRequest {
+func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnPartialUpdateRequest {
 	return ApiStagesAuthenticatorWebauthnPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6111,27 +6040,25 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdate(ctx _context
 
 // Execute executes the request
 //  @return AuthenticateWebAuthnStage
-func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r ApiStagesAuthenticatorWebauthnPartialUpdateRequest) (AuthenticateWebAuthnStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r ApiStagesAuthenticatorWebauthnPartialUpdateRequest) (*AuthenticateWebAuthnStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticateWebAuthnStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticateWebAuthnStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorWebauthnPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/webauthn/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -6166,7 +6093,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r Api
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -6176,15 +6103,15 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6193,7 +6120,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r Api
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6204,12 +6131,12 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r Api
 }
 
 type ApiStagesAuthenticatorWebauthnRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorWebauthnRetrieveRequest) Execute() (AuthenticateWebAuthnStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorWebauthnRetrieveRequest) Execute() (*AuthenticateWebAuthnStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnRetrieveExecute(r)
 }
 
@@ -6218,11 +6145,11 @@ StagesAuthenticatorWebauthnRetrieve Method for StagesAuthenticatorWebauthnRetrie
 
 AuthenticateWebAuthnStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
  @return ApiStagesAuthenticatorWebauthnRetrieveRequest
 */
-func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieve(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnRetrieveRequest {
+func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieve(ctx context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnRetrieveRequest {
 	return ApiStagesAuthenticatorWebauthnRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6232,27 +6159,25 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieve(ctx _context.Cont
 
 // Execute executes the request
 //  @return AuthenticateWebAuthnStage
-func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStagesAuthenticatorWebauthnRetrieveRequest) (AuthenticateWebAuthnStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStagesAuthenticatorWebauthnRetrieveRequest) (*AuthenticateWebAuthnStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticateWebAuthnStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticateWebAuthnStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorWebauthnRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/webauthn/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6285,7 +6210,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStage
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -6295,15 +6220,15 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6312,7 +6237,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStage
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6323,7 +6248,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStage
 }
 
 type ApiStagesAuthenticatorWebauthnUpdateRequest struct {
-	ctx                              _context.Context
+	ctx                              context.Context
 	ApiService                       *StagesApiService
 	stageUuid                        string
 	authenticateWebAuthnStageRequest *AuthenticateWebAuthnStageRequest
@@ -6334,7 +6259,7 @@ func (r ApiStagesAuthenticatorWebauthnUpdateRequest) AuthenticateWebAuthnStageRe
 	return r
 }
 
-func (r ApiStagesAuthenticatorWebauthnUpdateRequest) Execute() (AuthenticateWebAuthnStage, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorWebauthnUpdateRequest) Execute() (*AuthenticateWebAuthnStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnUpdateExecute(r)
 }
 
@@ -6343,11 +6268,11 @@ StagesAuthenticatorWebauthnUpdate Method for StagesAuthenticatorWebauthnUpdate
 
 AuthenticateWebAuthnStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
  @return ApiStagesAuthenticatorWebauthnUpdateRequest
 */
-func (a *StagesApiService) StagesAuthenticatorWebauthnUpdate(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnUpdateRequest {
+func (a *StagesApiService) StagesAuthenticatorWebauthnUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnUpdateRequest {
 	return ApiStagesAuthenticatorWebauthnUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6357,27 +6282,25 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUpdate(ctx _context.Contex
 
 // Execute executes the request
 //  @return AuthenticateWebAuthnStage
-func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesAuthenticatorWebauthnUpdateRequest) (AuthenticateWebAuthnStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesAuthenticatorWebauthnUpdateRequest) (*AuthenticateWebAuthnStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AuthenticateWebAuthnStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticateWebAuthnStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorWebauthnUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/webauthn/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.authenticateWebAuthnStageRequest == nil {
 		return localVarReturnValue, nil, reportError("authenticateWebAuthnStageRequest is required and must be specified")
 	}
@@ -6415,7 +6338,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -6425,15 +6348,15 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6442,7 +6365,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6453,12 +6376,12 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesA
 }
 
 type ApiStagesAuthenticatorWebauthnUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorWebauthnUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesAuthenticatorWebauthnUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnUsedByListExecute(r)
 }
 
@@ -6467,11 +6390,11 @@ StagesAuthenticatorWebauthnUsedByList Method for StagesAuthenticatorWebauthnUsed
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
  @return ApiStagesAuthenticatorWebauthnUsedByListRequest
 */
-func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByList(ctx _context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnUsedByListRequest {
+func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByList(ctx context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnUsedByListRequest {
 	return ApiStagesAuthenticatorWebauthnUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6481,27 +6404,25 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByList(ctx _context.Co
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByListExecute(r ApiStagesAuthenticatorWebauthnUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByListExecute(r ApiStagesAuthenticatorWebauthnUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorWebauthnUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/webauthn/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6534,7 +6455,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByListExecute(r ApiSta
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -6544,15 +6465,15 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByListExecute(r ApiSta
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6561,7 +6482,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByListExecute(r ApiSta
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6572,7 +6493,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByListExecute(r ApiSta
 }
 
 type ApiStagesCaptchaCreateRequest struct {
-	ctx                 _context.Context
+	ctx                 context.Context
 	ApiService          *StagesApiService
 	captchaStageRequest *CaptchaStageRequest
 }
@@ -6582,7 +6503,7 @@ func (r ApiStagesCaptchaCreateRequest) CaptchaStageRequest(captchaStageRequest C
 	return r
 }
 
-func (r ApiStagesCaptchaCreateRequest) Execute() (CaptchaStage, *_nethttp.Response, error) {
+func (r ApiStagesCaptchaCreateRequest) Execute() (*CaptchaStage, *http.Response, error) {
 	return r.ApiService.StagesCaptchaCreateExecute(r)
 }
 
@@ -6591,10 +6512,10 @@ StagesCaptchaCreate Method for StagesCaptchaCreate
 
 CaptchaStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesCaptchaCreateRequest
 */
-func (a *StagesApiService) StagesCaptchaCreate(ctx _context.Context) ApiStagesCaptchaCreateRequest {
+func (a *StagesApiService) StagesCaptchaCreate(ctx context.Context) ApiStagesCaptchaCreateRequest {
 	return ApiStagesCaptchaCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6603,26 +6524,24 @@ func (a *StagesApiService) StagesCaptchaCreate(ctx _context.Context) ApiStagesCa
 
 // Execute executes the request
 //  @return CaptchaStage
-func (a *StagesApiService) StagesCaptchaCreateExecute(r ApiStagesCaptchaCreateRequest) (CaptchaStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesCaptchaCreateExecute(r ApiStagesCaptchaCreateRequest) (*CaptchaStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CaptchaStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CaptchaStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesCaptchaCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/captcha/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.captchaStageRequest == nil {
 		return localVarReturnValue, nil, reportError("captchaStageRequest is required and must be specified")
 	}
@@ -6660,7 +6579,7 @@ func (a *StagesApiService) StagesCaptchaCreateExecute(r ApiStagesCaptchaCreateRe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -6670,15 +6589,15 @@ func (a *StagesApiService) StagesCaptchaCreateExecute(r ApiStagesCaptchaCreateRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6687,7 +6606,7 @@ func (a *StagesApiService) StagesCaptchaCreateExecute(r ApiStagesCaptchaCreateRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6698,12 +6617,12 @@ func (a *StagesApiService) StagesCaptchaCreateExecute(r ApiStagesCaptchaCreateRe
 }
 
 type ApiStagesCaptchaDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesCaptchaDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesCaptchaDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesCaptchaDestroyExecute(r)
 }
 
@@ -6712,11 +6631,11 @@ StagesCaptchaDestroy Method for StagesCaptchaDestroy
 
 CaptchaStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Captcha Stage.
  @return ApiStagesCaptchaDestroyRequest
 */
-func (a *StagesApiService) StagesCaptchaDestroy(ctx _context.Context, stageUuid string) ApiStagesCaptchaDestroyRequest {
+func (a *StagesApiService) StagesCaptchaDestroy(ctx context.Context, stageUuid string) ApiStagesCaptchaDestroyRequest {
 	return ApiStagesCaptchaDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6725,26 +6644,24 @@ func (a *StagesApiService) StagesCaptchaDestroy(ctx _context.Context, stageUuid 
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesCaptchaDestroyExecute(r ApiStagesCaptchaDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesCaptchaDestroyExecute(r ApiStagesCaptchaDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesCaptchaDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/captcha/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6777,7 +6694,7 @@ func (a *StagesApiService) StagesCaptchaDestroyExecute(r ApiStagesCaptchaDestroy
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -6787,15 +6704,15 @@ func (a *StagesApiService) StagesCaptchaDestroyExecute(r ApiStagesCaptchaDestroy
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6806,7 +6723,7 @@ func (a *StagesApiService) StagesCaptchaDestroyExecute(r ApiStagesCaptchaDestroy
 }
 
 type ApiStagesCaptchaListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	name       *string
 	ordering   *string
@@ -6838,6 +6755,7 @@ func (r ApiStagesCaptchaListRequest) PageSize(pageSize int32) ApiStagesCaptchaLi
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiStagesCaptchaListRequest) PublicKey(publicKey string) ApiStagesCaptchaListRequest {
 	r.publicKey = &publicKey
 	return r
@@ -6849,7 +6767,7 @@ func (r ApiStagesCaptchaListRequest) Search(search string) ApiStagesCaptchaListR
 	return r
 }
 
-func (r ApiStagesCaptchaListRequest) Execute() (PaginatedCaptchaStageList, *_nethttp.Response, error) {
+func (r ApiStagesCaptchaListRequest) Execute() (*PaginatedCaptchaStageList, *http.Response, error) {
 	return r.ApiService.StagesCaptchaListExecute(r)
 }
 
@@ -6858,10 +6776,10 @@ StagesCaptchaList Method for StagesCaptchaList
 
 CaptchaStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesCaptchaListRequest
 */
-func (a *StagesApiService) StagesCaptchaList(ctx _context.Context) ApiStagesCaptchaListRequest {
+func (a *StagesApiService) StagesCaptchaList(ctx context.Context) ApiStagesCaptchaListRequest {
 	return ApiStagesCaptchaListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6870,26 +6788,24 @@ func (a *StagesApiService) StagesCaptchaList(ctx _context.Context) ApiStagesCapt
 
 // Execute executes the request
 //  @return PaginatedCaptchaStageList
-func (a *StagesApiService) StagesCaptchaListExecute(r ApiStagesCaptchaListRequest) (PaginatedCaptchaStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesCaptchaListExecute(r ApiStagesCaptchaListRequest) (*PaginatedCaptchaStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedCaptchaStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedCaptchaStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesCaptchaList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/captcha/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -6940,7 +6856,7 @@ func (a *StagesApiService) StagesCaptchaListExecute(r ApiStagesCaptchaListReques
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -6950,15 +6866,15 @@ func (a *StagesApiService) StagesCaptchaListExecute(r ApiStagesCaptchaListReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -6967,7 +6883,7 @@ func (a *StagesApiService) StagesCaptchaListExecute(r ApiStagesCaptchaListReques
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -6978,7 +6894,7 @@ func (a *StagesApiService) StagesCaptchaListExecute(r ApiStagesCaptchaListReques
 }
 
 type ApiStagesCaptchaPartialUpdateRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *StagesApiService
 	stageUuid                  string
 	patchedCaptchaStageRequest *PatchedCaptchaStageRequest
@@ -6989,7 +6905,7 @@ func (r ApiStagesCaptchaPartialUpdateRequest) PatchedCaptchaStageRequest(patched
 	return r
 }
 
-func (r ApiStagesCaptchaPartialUpdateRequest) Execute() (CaptchaStage, *_nethttp.Response, error) {
+func (r ApiStagesCaptchaPartialUpdateRequest) Execute() (*CaptchaStage, *http.Response, error) {
 	return r.ApiService.StagesCaptchaPartialUpdateExecute(r)
 }
 
@@ -6998,11 +6914,11 @@ StagesCaptchaPartialUpdate Method for StagesCaptchaPartialUpdate
 
 CaptchaStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Captcha Stage.
  @return ApiStagesCaptchaPartialUpdateRequest
 */
-func (a *StagesApiService) StagesCaptchaPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesCaptchaPartialUpdateRequest {
+func (a *StagesApiService) StagesCaptchaPartialUpdate(ctx context.Context, stageUuid string) ApiStagesCaptchaPartialUpdateRequest {
 	return ApiStagesCaptchaPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7012,27 +6928,25 @@ func (a *StagesApiService) StagesCaptchaPartialUpdate(ctx _context.Context, stag
 
 // Execute executes the request
 //  @return CaptchaStage
-func (a *StagesApiService) StagesCaptchaPartialUpdateExecute(r ApiStagesCaptchaPartialUpdateRequest) (CaptchaStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesCaptchaPartialUpdateExecute(r ApiStagesCaptchaPartialUpdateRequest) (*CaptchaStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CaptchaStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CaptchaStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesCaptchaPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/captcha/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -7067,7 +6981,7 @@ func (a *StagesApiService) StagesCaptchaPartialUpdateExecute(r ApiStagesCaptchaP
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -7077,15 +6991,15 @@ func (a *StagesApiService) StagesCaptchaPartialUpdateExecute(r ApiStagesCaptchaP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7094,7 +7008,7 @@ func (a *StagesApiService) StagesCaptchaPartialUpdateExecute(r ApiStagesCaptchaP
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7105,12 +7019,12 @@ func (a *StagesApiService) StagesCaptchaPartialUpdateExecute(r ApiStagesCaptchaP
 }
 
 type ApiStagesCaptchaRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesCaptchaRetrieveRequest) Execute() (CaptchaStage, *_nethttp.Response, error) {
+func (r ApiStagesCaptchaRetrieveRequest) Execute() (*CaptchaStage, *http.Response, error) {
 	return r.ApiService.StagesCaptchaRetrieveExecute(r)
 }
 
@@ -7119,11 +7033,11 @@ StagesCaptchaRetrieve Method for StagesCaptchaRetrieve
 
 CaptchaStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Captcha Stage.
  @return ApiStagesCaptchaRetrieveRequest
 */
-func (a *StagesApiService) StagesCaptchaRetrieve(ctx _context.Context, stageUuid string) ApiStagesCaptchaRetrieveRequest {
+func (a *StagesApiService) StagesCaptchaRetrieve(ctx context.Context, stageUuid string) ApiStagesCaptchaRetrieveRequest {
 	return ApiStagesCaptchaRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7133,27 +7047,25 @@ func (a *StagesApiService) StagesCaptchaRetrieve(ctx _context.Context, stageUuid
 
 // Execute executes the request
 //  @return CaptchaStage
-func (a *StagesApiService) StagesCaptchaRetrieveExecute(r ApiStagesCaptchaRetrieveRequest) (CaptchaStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesCaptchaRetrieveExecute(r ApiStagesCaptchaRetrieveRequest) (*CaptchaStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CaptchaStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CaptchaStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesCaptchaRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/captcha/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7186,7 +7098,7 @@ func (a *StagesApiService) StagesCaptchaRetrieveExecute(r ApiStagesCaptchaRetrie
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -7196,15 +7108,15 @@ func (a *StagesApiService) StagesCaptchaRetrieveExecute(r ApiStagesCaptchaRetrie
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7213,7 +7125,7 @@ func (a *StagesApiService) StagesCaptchaRetrieveExecute(r ApiStagesCaptchaRetrie
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7224,7 +7136,7 @@ func (a *StagesApiService) StagesCaptchaRetrieveExecute(r ApiStagesCaptchaRetrie
 }
 
 type ApiStagesCaptchaUpdateRequest struct {
-	ctx                 _context.Context
+	ctx                 context.Context
 	ApiService          *StagesApiService
 	stageUuid           string
 	captchaStageRequest *CaptchaStageRequest
@@ -7235,7 +7147,7 @@ func (r ApiStagesCaptchaUpdateRequest) CaptchaStageRequest(captchaStageRequest C
 	return r
 }
 
-func (r ApiStagesCaptchaUpdateRequest) Execute() (CaptchaStage, *_nethttp.Response, error) {
+func (r ApiStagesCaptchaUpdateRequest) Execute() (*CaptchaStage, *http.Response, error) {
 	return r.ApiService.StagesCaptchaUpdateExecute(r)
 }
 
@@ -7244,11 +7156,11 @@ StagesCaptchaUpdate Method for StagesCaptchaUpdate
 
 CaptchaStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Captcha Stage.
  @return ApiStagesCaptchaUpdateRequest
 */
-func (a *StagesApiService) StagesCaptchaUpdate(ctx _context.Context, stageUuid string) ApiStagesCaptchaUpdateRequest {
+func (a *StagesApiService) StagesCaptchaUpdate(ctx context.Context, stageUuid string) ApiStagesCaptchaUpdateRequest {
 	return ApiStagesCaptchaUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7258,27 +7170,25 @@ func (a *StagesApiService) StagesCaptchaUpdate(ctx _context.Context, stageUuid s
 
 // Execute executes the request
 //  @return CaptchaStage
-func (a *StagesApiService) StagesCaptchaUpdateExecute(r ApiStagesCaptchaUpdateRequest) (CaptchaStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesCaptchaUpdateExecute(r ApiStagesCaptchaUpdateRequest) (*CaptchaStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CaptchaStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CaptchaStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesCaptchaUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/captcha/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.captchaStageRequest == nil {
 		return localVarReturnValue, nil, reportError("captchaStageRequest is required and must be specified")
 	}
@@ -7316,7 +7226,7 @@ func (a *StagesApiService) StagesCaptchaUpdateExecute(r ApiStagesCaptchaUpdateRe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -7326,15 +7236,15 @@ func (a *StagesApiService) StagesCaptchaUpdateExecute(r ApiStagesCaptchaUpdateRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7343,7 +7253,7 @@ func (a *StagesApiService) StagesCaptchaUpdateExecute(r ApiStagesCaptchaUpdateRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7354,12 +7264,12 @@ func (a *StagesApiService) StagesCaptchaUpdateExecute(r ApiStagesCaptchaUpdateRe
 }
 
 type ApiStagesCaptchaUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesCaptchaUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesCaptchaUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesCaptchaUsedByListExecute(r)
 }
 
@@ -7368,11 +7278,11 @@ StagesCaptchaUsedByList Method for StagesCaptchaUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Captcha Stage.
  @return ApiStagesCaptchaUsedByListRequest
 */
-func (a *StagesApiService) StagesCaptchaUsedByList(ctx _context.Context, stageUuid string) ApiStagesCaptchaUsedByListRequest {
+func (a *StagesApiService) StagesCaptchaUsedByList(ctx context.Context, stageUuid string) ApiStagesCaptchaUsedByListRequest {
 	return ApiStagesCaptchaUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7382,27 +7292,25 @@ func (a *StagesApiService) StagesCaptchaUsedByList(ctx _context.Context, stageUu
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesCaptchaUsedByListExecute(r ApiStagesCaptchaUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesCaptchaUsedByListExecute(r ApiStagesCaptchaUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesCaptchaUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/captcha/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7435,7 +7343,7 @@ func (a *StagesApiService) StagesCaptchaUsedByListExecute(r ApiStagesCaptchaUsed
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -7445,15 +7353,15 @@ func (a *StagesApiService) StagesCaptchaUsedByListExecute(r ApiStagesCaptchaUsed
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7462,7 +7370,7 @@ func (a *StagesApiService) StagesCaptchaUsedByListExecute(r ApiStagesCaptchaUsed
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7473,7 +7381,7 @@ func (a *StagesApiService) StagesCaptchaUsedByListExecute(r ApiStagesCaptchaUsed
 }
 
 type ApiStagesConsentCreateRequest struct {
-	ctx                 _context.Context
+	ctx                 context.Context
 	ApiService          *StagesApiService
 	consentStageRequest *ConsentStageRequest
 }
@@ -7483,7 +7391,7 @@ func (r ApiStagesConsentCreateRequest) ConsentStageRequest(consentStageRequest C
 	return r
 }
 
-func (r ApiStagesConsentCreateRequest) Execute() (ConsentStage, *_nethttp.Response, error) {
+func (r ApiStagesConsentCreateRequest) Execute() (*ConsentStage, *http.Response, error) {
 	return r.ApiService.StagesConsentCreateExecute(r)
 }
 
@@ -7492,10 +7400,10 @@ StagesConsentCreate Method for StagesConsentCreate
 
 ConsentStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesConsentCreateRequest
 */
-func (a *StagesApiService) StagesConsentCreate(ctx _context.Context) ApiStagesConsentCreateRequest {
+func (a *StagesApiService) StagesConsentCreate(ctx context.Context) ApiStagesConsentCreateRequest {
 	return ApiStagesConsentCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7504,26 +7412,24 @@ func (a *StagesApiService) StagesConsentCreate(ctx _context.Context) ApiStagesCo
 
 // Execute executes the request
 //  @return ConsentStage
-func (a *StagesApiService) StagesConsentCreateExecute(r ApiStagesConsentCreateRequest) (ConsentStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesConsentCreateExecute(r ApiStagesConsentCreateRequest) (*ConsentStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ConsentStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ConsentStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesConsentCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/consent/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.consentStageRequest == nil {
 		return localVarReturnValue, nil, reportError("consentStageRequest is required and must be specified")
 	}
@@ -7561,7 +7467,7 @@ func (a *StagesApiService) StagesConsentCreateExecute(r ApiStagesConsentCreateRe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -7571,15 +7477,15 @@ func (a *StagesApiService) StagesConsentCreateExecute(r ApiStagesConsentCreateRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7588,7 +7494,7 @@ func (a *StagesApiService) StagesConsentCreateExecute(r ApiStagesConsentCreateRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7599,12 +7505,12 @@ func (a *StagesApiService) StagesConsentCreateExecute(r ApiStagesConsentCreateRe
 }
 
 type ApiStagesConsentDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesConsentDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesConsentDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesConsentDestroyExecute(r)
 }
 
@@ -7613,11 +7519,11 @@ StagesConsentDestroy Method for StagesConsentDestroy
 
 ConsentStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Consent Stage.
  @return ApiStagesConsentDestroyRequest
 */
-func (a *StagesApiService) StagesConsentDestroy(ctx _context.Context, stageUuid string) ApiStagesConsentDestroyRequest {
+func (a *StagesApiService) StagesConsentDestroy(ctx context.Context, stageUuid string) ApiStagesConsentDestroyRequest {
 	return ApiStagesConsentDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7626,26 +7532,24 @@ func (a *StagesApiService) StagesConsentDestroy(ctx _context.Context, stageUuid 
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesConsentDestroyExecute(r ApiStagesConsentDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesConsentDestroyExecute(r ApiStagesConsentDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesConsentDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/consent/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7678,7 +7582,7 @@ func (a *StagesApiService) StagesConsentDestroyExecute(r ApiStagesConsentDestroy
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -7688,15 +7592,15 @@ func (a *StagesApiService) StagesConsentDestroyExecute(r ApiStagesConsentDestroy
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7707,7 +7611,7 @@ func (a *StagesApiService) StagesConsentDestroyExecute(r ApiStagesConsentDestroy
 }
 
 type ApiStagesConsentListRequest struct {
-	ctx             _context.Context
+	ctx             context.Context
 	ApiService      *StagesApiService
 	consentExpireIn *string
 	mode            *string
@@ -7723,10 +7627,12 @@ func (r ApiStagesConsentListRequest) ConsentExpireIn(consentExpireIn string) Api
 	r.consentExpireIn = &consentExpireIn
 	return r
 }
+
 func (r ApiStagesConsentListRequest) Mode(mode string) ApiStagesConsentListRequest {
 	r.mode = &mode
 	return r
 }
+
 func (r ApiStagesConsentListRequest) Name(name string) ApiStagesConsentListRequest {
 	r.name = &name
 	return r
@@ -7755,12 +7661,13 @@ func (r ApiStagesConsentListRequest) Search(search string) ApiStagesConsentListR
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesConsentListRequest) StageUuid(stageUuid string) ApiStagesConsentListRequest {
 	r.stageUuid = &stageUuid
 	return r
 }
 
-func (r ApiStagesConsentListRequest) Execute() (PaginatedConsentStageList, *_nethttp.Response, error) {
+func (r ApiStagesConsentListRequest) Execute() (*PaginatedConsentStageList, *http.Response, error) {
 	return r.ApiService.StagesConsentListExecute(r)
 }
 
@@ -7769,10 +7676,10 @@ StagesConsentList Method for StagesConsentList
 
 ConsentStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesConsentListRequest
 */
-func (a *StagesApiService) StagesConsentList(ctx _context.Context) ApiStagesConsentListRequest {
+func (a *StagesApiService) StagesConsentList(ctx context.Context) ApiStagesConsentListRequest {
 	return ApiStagesConsentListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7781,26 +7688,24 @@ func (a *StagesApiService) StagesConsentList(ctx _context.Context) ApiStagesCons
 
 // Execute executes the request
 //  @return PaginatedConsentStageList
-func (a *StagesApiService) StagesConsentListExecute(r ApiStagesConsentListRequest) (PaginatedConsentStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesConsentListExecute(r ApiStagesConsentListRequest) (*PaginatedConsentStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedConsentStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedConsentStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesConsentList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/consent/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.consentExpireIn != nil {
 		localVarQueryParams.Add("consent_expire_in", parameterToString(*r.consentExpireIn, ""))
@@ -7857,7 +7762,7 @@ func (a *StagesApiService) StagesConsentListExecute(r ApiStagesConsentListReques
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -7867,15 +7772,15 @@ func (a *StagesApiService) StagesConsentListExecute(r ApiStagesConsentListReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -7884,7 +7789,7 @@ func (a *StagesApiService) StagesConsentListExecute(r ApiStagesConsentListReques
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -7895,7 +7800,7 @@ func (a *StagesApiService) StagesConsentListExecute(r ApiStagesConsentListReques
 }
 
 type ApiStagesConsentPartialUpdateRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *StagesApiService
 	stageUuid                  string
 	patchedConsentStageRequest *PatchedConsentStageRequest
@@ -7906,7 +7811,7 @@ func (r ApiStagesConsentPartialUpdateRequest) PatchedConsentStageRequest(patched
 	return r
 }
 
-func (r ApiStagesConsentPartialUpdateRequest) Execute() (ConsentStage, *_nethttp.Response, error) {
+func (r ApiStagesConsentPartialUpdateRequest) Execute() (*ConsentStage, *http.Response, error) {
 	return r.ApiService.StagesConsentPartialUpdateExecute(r)
 }
 
@@ -7915,11 +7820,11 @@ StagesConsentPartialUpdate Method for StagesConsentPartialUpdate
 
 ConsentStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Consent Stage.
  @return ApiStagesConsentPartialUpdateRequest
 */
-func (a *StagesApiService) StagesConsentPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesConsentPartialUpdateRequest {
+func (a *StagesApiService) StagesConsentPartialUpdate(ctx context.Context, stageUuid string) ApiStagesConsentPartialUpdateRequest {
 	return ApiStagesConsentPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7929,27 +7834,25 @@ func (a *StagesApiService) StagesConsentPartialUpdate(ctx _context.Context, stag
 
 // Execute executes the request
 //  @return ConsentStage
-func (a *StagesApiService) StagesConsentPartialUpdateExecute(r ApiStagesConsentPartialUpdateRequest) (ConsentStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesConsentPartialUpdateExecute(r ApiStagesConsentPartialUpdateRequest) (*ConsentStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ConsentStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ConsentStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesConsentPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/consent/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -7984,7 +7887,7 @@ func (a *StagesApiService) StagesConsentPartialUpdateExecute(r ApiStagesConsentP
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -7994,15 +7897,15 @@ func (a *StagesApiService) StagesConsentPartialUpdateExecute(r ApiStagesConsentP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8011,7 +7914,7 @@ func (a *StagesApiService) StagesConsentPartialUpdateExecute(r ApiStagesConsentP
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8022,12 +7925,12 @@ func (a *StagesApiService) StagesConsentPartialUpdateExecute(r ApiStagesConsentP
 }
 
 type ApiStagesConsentRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesConsentRetrieveRequest) Execute() (ConsentStage, *_nethttp.Response, error) {
+func (r ApiStagesConsentRetrieveRequest) Execute() (*ConsentStage, *http.Response, error) {
 	return r.ApiService.StagesConsentRetrieveExecute(r)
 }
 
@@ -8036,11 +7939,11 @@ StagesConsentRetrieve Method for StagesConsentRetrieve
 
 ConsentStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Consent Stage.
  @return ApiStagesConsentRetrieveRequest
 */
-func (a *StagesApiService) StagesConsentRetrieve(ctx _context.Context, stageUuid string) ApiStagesConsentRetrieveRequest {
+func (a *StagesApiService) StagesConsentRetrieve(ctx context.Context, stageUuid string) ApiStagesConsentRetrieveRequest {
 	return ApiStagesConsentRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8050,27 +7953,25 @@ func (a *StagesApiService) StagesConsentRetrieve(ctx _context.Context, stageUuid
 
 // Execute executes the request
 //  @return ConsentStage
-func (a *StagesApiService) StagesConsentRetrieveExecute(r ApiStagesConsentRetrieveRequest) (ConsentStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesConsentRetrieveExecute(r ApiStagesConsentRetrieveRequest) (*ConsentStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ConsentStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ConsentStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesConsentRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/consent/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8103,7 +8004,7 @@ func (a *StagesApiService) StagesConsentRetrieveExecute(r ApiStagesConsentRetrie
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -8113,15 +8014,15 @@ func (a *StagesApiService) StagesConsentRetrieveExecute(r ApiStagesConsentRetrie
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8130,7 +8031,7 @@ func (a *StagesApiService) StagesConsentRetrieveExecute(r ApiStagesConsentRetrie
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8141,7 +8042,7 @@ func (a *StagesApiService) StagesConsentRetrieveExecute(r ApiStagesConsentRetrie
 }
 
 type ApiStagesConsentUpdateRequest struct {
-	ctx                 _context.Context
+	ctx                 context.Context
 	ApiService          *StagesApiService
 	stageUuid           string
 	consentStageRequest *ConsentStageRequest
@@ -8152,7 +8053,7 @@ func (r ApiStagesConsentUpdateRequest) ConsentStageRequest(consentStageRequest C
 	return r
 }
 
-func (r ApiStagesConsentUpdateRequest) Execute() (ConsentStage, *_nethttp.Response, error) {
+func (r ApiStagesConsentUpdateRequest) Execute() (*ConsentStage, *http.Response, error) {
 	return r.ApiService.StagesConsentUpdateExecute(r)
 }
 
@@ -8161,11 +8062,11 @@ StagesConsentUpdate Method for StagesConsentUpdate
 
 ConsentStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Consent Stage.
  @return ApiStagesConsentUpdateRequest
 */
-func (a *StagesApiService) StagesConsentUpdate(ctx _context.Context, stageUuid string) ApiStagesConsentUpdateRequest {
+func (a *StagesApiService) StagesConsentUpdate(ctx context.Context, stageUuid string) ApiStagesConsentUpdateRequest {
 	return ApiStagesConsentUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8175,27 +8076,25 @@ func (a *StagesApiService) StagesConsentUpdate(ctx _context.Context, stageUuid s
 
 // Execute executes the request
 //  @return ConsentStage
-func (a *StagesApiService) StagesConsentUpdateExecute(r ApiStagesConsentUpdateRequest) (ConsentStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesConsentUpdateExecute(r ApiStagesConsentUpdateRequest) (*ConsentStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ConsentStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ConsentStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesConsentUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/consent/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.consentStageRequest == nil {
 		return localVarReturnValue, nil, reportError("consentStageRequest is required and must be specified")
 	}
@@ -8233,7 +8132,7 @@ func (a *StagesApiService) StagesConsentUpdateExecute(r ApiStagesConsentUpdateRe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -8243,15 +8142,15 @@ func (a *StagesApiService) StagesConsentUpdateExecute(r ApiStagesConsentUpdateRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8260,7 +8159,7 @@ func (a *StagesApiService) StagesConsentUpdateExecute(r ApiStagesConsentUpdateRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8271,12 +8170,12 @@ func (a *StagesApiService) StagesConsentUpdateExecute(r ApiStagesConsentUpdateRe
 }
 
 type ApiStagesConsentUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesConsentUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesConsentUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesConsentUsedByListExecute(r)
 }
 
@@ -8285,11 +8184,11 @@ StagesConsentUsedByList Method for StagesConsentUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Consent Stage.
  @return ApiStagesConsentUsedByListRequest
 */
-func (a *StagesApiService) StagesConsentUsedByList(ctx _context.Context, stageUuid string) ApiStagesConsentUsedByListRequest {
+func (a *StagesApiService) StagesConsentUsedByList(ctx context.Context, stageUuid string) ApiStagesConsentUsedByListRequest {
 	return ApiStagesConsentUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8299,27 +8198,25 @@ func (a *StagesApiService) StagesConsentUsedByList(ctx _context.Context, stageUu
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesConsentUsedByListExecute(r ApiStagesConsentUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesConsentUsedByListExecute(r ApiStagesConsentUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesConsentUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/consent/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8352,7 +8249,7 @@ func (a *StagesApiService) StagesConsentUsedByListExecute(r ApiStagesConsentUsed
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -8362,15 +8259,15 @@ func (a *StagesApiService) StagesConsentUsedByListExecute(r ApiStagesConsentUsed
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8379,7 +8276,7 @@ func (a *StagesApiService) StagesConsentUsedByListExecute(r ApiStagesConsentUsed
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8390,7 +8287,7 @@ func (a *StagesApiService) StagesConsentUsedByListExecute(r ApiStagesConsentUsed
 }
 
 type ApiStagesDenyCreateRequest struct {
-	ctx              _context.Context
+	ctx              context.Context
 	ApiService       *StagesApiService
 	denyStageRequest *DenyStageRequest
 }
@@ -8400,7 +8297,7 @@ func (r ApiStagesDenyCreateRequest) DenyStageRequest(denyStageRequest DenyStageR
 	return r
 }
 
-func (r ApiStagesDenyCreateRequest) Execute() (DenyStage, *_nethttp.Response, error) {
+func (r ApiStagesDenyCreateRequest) Execute() (*DenyStage, *http.Response, error) {
 	return r.ApiService.StagesDenyCreateExecute(r)
 }
 
@@ -8409,10 +8306,10 @@ StagesDenyCreate Method for StagesDenyCreate
 
 DenyStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesDenyCreateRequest
 */
-func (a *StagesApiService) StagesDenyCreate(ctx _context.Context) ApiStagesDenyCreateRequest {
+func (a *StagesApiService) StagesDenyCreate(ctx context.Context) ApiStagesDenyCreateRequest {
 	return ApiStagesDenyCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8421,26 +8318,24 @@ func (a *StagesApiService) StagesDenyCreate(ctx _context.Context) ApiStagesDenyC
 
 // Execute executes the request
 //  @return DenyStage
-func (a *StagesApiService) StagesDenyCreateExecute(r ApiStagesDenyCreateRequest) (DenyStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesDenyCreateExecute(r ApiStagesDenyCreateRequest) (*DenyStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DenyStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DenyStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesDenyCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/deny/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.denyStageRequest == nil {
 		return localVarReturnValue, nil, reportError("denyStageRequest is required and must be specified")
 	}
@@ -8478,7 +8373,7 @@ func (a *StagesApiService) StagesDenyCreateExecute(r ApiStagesDenyCreateRequest)
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -8488,15 +8383,15 @@ func (a *StagesApiService) StagesDenyCreateExecute(r ApiStagesDenyCreateRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8505,7 +8400,7 @@ func (a *StagesApiService) StagesDenyCreateExecute(r ApiStagesDenyCreateRequest)
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8516,12 +8411,12 @@ func (a *StagesApiService) StagesDenyCreateExecute(r ApiStagesDenyCreateRequest)
 }
 
 type ApiStagesDenyDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesDenyDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesDenyDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesDenyDestroyExecute(r)
 }
 
@@ -8530,11 +8425,11 @@ StagesDenyDestroy Method for StagesDenyDestroy
 
 DenyStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Deny Stage.
  @return ApiStagesDenyDestroyRequest
 */
-func (a *StagesApiService) StagesDenyDestroy(ctx _context.Context, stageUuid string) ApiStagesDenyDestroyRequest {
+func (a *StagesApiService) StagesDenyDestroy(ctx context.Context, stageUuid string) ApiStagesDenyDestroyRequest {
 	return ApiStagesDenyDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8543,26 +8438,24 @@ func (a *StagesApiService) StagesDenyDestroy(ctx _context.Context, stageUuid str
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesDenyDestroyExecute(r ApiStagesDenyDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesDenyDestroyExecute(r ApiStagesDenyDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesDenyDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/deny/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8595,7 +8488,7 @@ func (a *StagesApiService) StagesDenyDestroyExecute(r ApiStagesDenyDestroyReques
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -8605,15 +8498,15 @@ func (a *StagesApiService) StagesDenyDestroyExecute(r ApiStagesDenyDestroyReques
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8624,7 +8517,7 @@ func (a *StagesApiService) StagesDenyDestroyExecute(r ApiStagesDenyDestroyReques
 }
 
 type ApiStagesDenyListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	name       *string
 	ordering   *string
@@ -8662,12 +8555,13 @@ func (r ApiStagesDenyListRequest) Search(search string) ApiStagesDenyListRequest
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesDenyListRequest) StageUuid(stageUuid string) ApiStagesDenyListRequest {
 	r.stageUuid = &stageUuid
 	return r
 }
 
-func (r ApiStagesDenyListRequest) Execute() (PaginatedDenyStageList, *_nethttp.Response, error) {
+func (r ApiStagesDenyListRequest) Execute() (*PaginatedDenyStageList, *http.Response, error) {
 	return r.ApiService.StagesDenyListExecute(r)
 }
 
@@ -8676,10 +8570,10 @@ StagesDenyList Method for StagesDenyList
 
 DenyStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesDenyListRequest
 */
-func (a *StagesApiService) StagesDenyList(ctx _context.Context) ApiStagesDenyListRequest {
+func (a *StagesApiService) StagesDenyList(ctx context.Context) ApiStagesDenyListRequest {
 	return ApiStagesDenyListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8688,26 +8582,24 @@ func (a *StagesApiService) StagesDenyList(ctx _context.Context) ApiStagesDenyLis
 
 // Execute executes the request
 //  @return PaginatedDenyStageList
-func (a *StagesApiService) StagesDenyListExecute(r ApiStagesDenyListRequest) (PaginatedDenyStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesDenyListExecute(r ApiStagesDenyListRequest) (*PaginatedDenyStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedDenyStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedDenyStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesDenyList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/deny/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -8758,7 +8650,7 @@ func (a *StagesApiService) StagesDenyListExecute(r ApiStagesDenyListRequest) (Pa
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -8768,15 +8660,15 @@ func (a *StagesApiService) StagesDenyListExecute(r ApiStagesDenyListRequest) (Pa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8785,7 +8677,7 @@ func (a *StagesApiService) StagesDenyListExecute(r ApiStagesDenyListRequest) (Pa
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8796,7 +8688,7 @@ func (a *StagesApiService) StagesDenyListExecute(r ApiStagesDenyListRequest) (Pa
 }
 
 type ApiStagesDenyPartialUpdateRequest struct {
-	ctx                     _context.Context
+	ctx                     context.Context
 	ApiService              *StagesApiService
 	stageUuid               string
 	patchedDenyStageRequest *PatchedDenyStageRequest
@@ -8807,7 +8699,7 @@ func (r ApiStagesDenyPartialUpdateRequest) PatchedDenyStageRequest(patchedDenySt
 	return r
 }
 
-func (r ApiStagesDenyPartialUpdateRequest) Execute() (DenyStage, *_nethttp.Response, error) {
+func (r ApiStagesDenyPartialUpdateRequest) Execute() (*DenyStage, *http.Response, error) {
 	return r.ApiService.StagesDenyPartialUpdateExecute(r)
 }
 
@@ -8816,11 +8708,11 @@ StagesDenyPartialUpdate Method for StagesDenyPartialUpdate
 
 DenyStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Deny Stage.
  @return ApiStagesDenyPartialUpdateRequest
 */
-func (a *StagesApiService) StagesDenyPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesDenyPartialUpdateRequest {
+func (a *StagesApiService) StagesDenyPartialUpdate(ctx context.Context, stageUuid string) ApiStagesDenyPartialUpdateRequest {
 	return ApiStagesDenyPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8830,27 +8722,25 @@ func (a *StagesApiService) StagesDenyPartialUpdate(ctx _context.Context, stageUu
 
 // Execute executes the request
 //  @return DenyStage
-func (a *StagesApiService) StagesDenyPartialUpdateExecute(r ApiStagesDenyPartialUpdateRequest) (DenyStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesDenyPartialUpdateExecute(r ApiStagesDenyPartialUpdateRequest) (*DenyStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DenyStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DenyStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesDenyPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/deny/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -8885,7 +8775,7 @@ func (a *StagesApiService) StagesDenyPartialUpdateExecute(r ApiStagesDenyPartial
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -8895,15 +8785,15 @@ func (a *StagesApiService) StagesDenyPartialUpdateExecute(r ApiStagesDenyPartial
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -8912,7 +8802,7 @@ func (a *StagesApiService) StagesDenyPartialUpdateExecute(r ApiStagesDenyPartial
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -8923,12 +8813,12 @@ func (a *StagesApiService) StagesDenyPartialUpdateExecute(r ApiStagesDenyPartial
 }
 
 type ApiStagesDenyRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesDenyRetrieveRequest) Execute() (DenyStage, *_nethttp.Response, error) {
+func (r ApiStagesDenyRetrieveRequest) Execute() (*DenyStage, *http.Response, error) {
 	return r.ApiService.StagesDenyRetrieveExecute(r)
 }
 
@@ -8937,11 +8827,11 @@ StagesDenyRetrieve Method for StagesDenyRetrieve
 
 DenyStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Deny Stage.
  @return ApiStagesDenyRetrieveRequest
 */
-func (a *StagesApiService) StagesDenyRetrieve(ctx _context.Context, stageUuid string) ApiStagesDenyRetrieveRequest {
+func (a *StagesApiService) StagesDenyRetrieve(ctx context.Context, stageUuid string) ApiStagesDenyRetrieveRequest {
 	return ApiStagesDenyRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8951,27 +8841,25 @@ func (a *StagesApiService) StagesDenyRetrieve(ctx _context.Context, stageUuid st
 
 // Execute executes the request
 //  @return DenyStage
-func (a *StagesApiService) StagesDenyRetrieveExecute(r ApiStagesDenyRetrieveRequest) (DenyStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesDenyRetrieveExecute(r ApiStagesDenyRetrieveRequest) (*DenyStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DenyStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DenyStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesDenyRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/deny/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -9004,7 +8892,7 @@ func (a *StagesApiService) StagesDenyRetrieveExecute(r ApiStagesDenyRetrieveRequ
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -9014,15 +8902,15 @@ func (a *StagesApiService) StagesDenyRetrieveExecute(r ApiStagesDenyRetrieveRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9031,7 +8919,7 @@ func (a *StagesApiService) StagesDenyRetrieveExecute(r ApiStagesDenyRetrieveRequ
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9042,7 +8930,7 @@ func (a *StagesApiService) StagesDenyRetrieveExecute(r ApiStagesDenyRetrieveRequ
 }
 
 type ApiStagesDenyUpdateRequest struct {
-	ctx              _context.Context
+	ctx              context.Context
 	ApiService       *StagesApiService
 	stageUuid        string
 	denyStageRequest *DenyStageRequest
@@ -9053,7 +8941,7 @@ func (r ApiStagesDenyUpdateRequest) DenyStageRequest(denyStageRequest DenyStageR
 	return r
 }
 
-func (r ApiStagesDenyUpdateRequest) Execute() (DenyStage, *_nethttp.Response, error) {
+func (r ApiStagesDenyUpdateRequest) Execute() (*DenyStage, *http.Response, error) {
 	return r.ApiService.StagesDenyUpdateExecute(r)
 }
 
@@ -9062,11 +8950,11 @@ StagesDenyUpdate Method for StagesDenyUpdate
 
 DenyStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Deny Stage.
  @return ApiStagesDenyUpdateRequest
 */
-func (a *StagesApiService) StagesDenyUpdate(ctx _context.Context, stageUuid string) ApiStagesDenyUpdateRequest {
+func (a *StagesApiService) StagesDenyUpdate(ctx context.Context, stageUuid string) ApiStagesDenyUpdateRequest {
 	return ApiStagesDenyUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9076,27 +8964,25 @@ func (a *StagesApiService) StagesDenyUpdate(ctx _context.Context, stageUuid stri
 
 // Execute executes the request
 //  @return DenyStage
-func (a *StagesApiService) StagesDenyUpdateExecute(r ApiStagesDenyUpdateRequest) (DenyStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesDenyUpdateExecute(r ApiStagesDenyUpdateRequest) (*DenyStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DenyStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DenyStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesDenyUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/deny/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.denyStageRequest == nil {
 		return localVarReturnValue, nil, reportError("denyStageRequest is required and must be specified")
 	}
@@ -9134,7 +9020,7 @@ func (a *StagesApiService) StagesDenyUpdateExecute(r ApiStagesDenyUpdateRequest)
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -9144,15 +9030,15 @@ func (a *StagesApiService) StagesDenyUpdateExecute(r ApiStagesDenyUpdateRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9161,7 +9047,7 @@ func (a *StagesApiService) StagesDenyUpdateExecute(r ApiStagesDenyUpdateRequest)
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9172,12 +9058,12 @@ func (a *StagesApiService) StagesDenyUpdateExecute(r ApiStagesDenyUpdateRequest)
 }
 
 type ApiStagesDenyUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesDenyUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesDenyUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesDenyUsedByListExecute(r)
 }
 
@@ -9186,11 +9072,11 @@ StagesDenyUsedByList Method for StagesDenyUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Deny Stage.
  @return ApiStagesDenyUsedByListRequest
 */
-func (a *StagesApiService) StagesDenyUsedByList(ctx _context.Context, stageUuid string) ApiStagesDenyUsedByListRequest {
+func (a *StagesApiService) StagesDenyUsedByList(ctx context.Context, stageUuid string) ApiStagesDenyUsedByListRequest {
 	return ApiStagesDenyUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9200,27 +9086,25 @@ func (a *StagesApiService) StagesDenyUsedByList(ctx _context.Context, stageUuid 
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesDenyUsedByListExecute(r ApiStagesDenyUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesDenyUsedByListExecute(r ApiStagesDenyUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesDenyUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/deny/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -9253,7 +9137,7 @@ func (a *StagesApiService) StagesDenyUsedByListExecute(r ApiStagesDenyUsedByList
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -9263,15 +9147,15 @@ func (a *StagesApiService) StagesDenyUsedByListExecute(r ApiStagesDenyUsedByList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9280,7 +9164,7 @@ func (a *StagesApiService) StagesDenyUsedByListExecute(r ApiStagesDenyUsedByList
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9291,7 +9175,7 @@ func (a *StagesApiService) StagesDenyUsedByListExecute(r ApiStagesDenyUsedByList
 }
 
 type ApiStagesDummyCreateRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *StagesApiService
 	dummyStageRequest *DummyStageRequest
 }
@@ -9301,7 +9185,7 @@ func (r ApiStagesDummyCreateRequest) DummyStageRequest(dummyStageRequest DummySt
 	return r
 }
 
-func (r ApiStagesDummyCreateRequest) Execute() (DummyStage, *_nethttp.Response, error) {
+func (r ApiStagesDummyCreateRequest) Execute() (*DummyStage, *http.Response, error) {
 	return r.ApiService.StagesDummyCreateExecute(r)
 }
 
@@ -9310,10 +9194,10 @@ StagesDummyCreate Method for StagesDummyCreate
 
 DummyStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesDummyCreateRequest
 */
-func (a *StagesApiService) StagesDummyCreate(ctx _context.Context) ApiStagesDummyCreateRequest {
+func (a *StagesApiService) StagesDummyCreate(ctx context.Context) ApiStagesDummyCreateRequest {
 	return ApiStagesDummyCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9322,26 +9206,24 @@ func (a *StagesApiService) StagesDummyCreate(ctx _context.Context) ApiStagesDumm
 
 // Execute executes the request
 //  @return DummyStage
-func (a *StagesApiService) StagesDummyCreateExecute(r ApiStagesDummyCreateRequest) (DummyStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesDummyCreateExecute(r ApiStagesDummyCreateRequest) (*DummyStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DummyStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DummyStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesDummyCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/dummy/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.dummyStageRequest == nil {
 		return localVarReturnValue, nil, reportError("dummyStageRequest is required and must be specified")
 	}
@@ -9379,7 +9261,7 @@ func (a *StagesApiService) StagesDummyCreateExecute(r ApiStagesDummyCreateReques
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -9389,15 +9271,15 @@ func (a *StagesApiService) StagesDummyCreateExecute(r ApiStagesDummyCreateReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9406,7 +9288,7 @@ func (a *StagesApiService) StagesDummyCreateExecute(r ApiStagesDummyCreateReques
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9417,12 +9299,12 @@ func (a *StagesApiService) StagesDummyCreateExecute(r ApiStagesDummyCreateReques
 }
 
 type ApiStagesDummyDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesDummyDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesDummyDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesDummyDestroyExecute(r)
 }
 
@@ -9431,11 +9313,11 @@ StagesDummyDestroy Method for StagesDummyDestroy
 
 DummyStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Dummy Stage.
  @return ApiStagesDummyDestroyRequest
 */
-func (a *StagesApiService) StagesDummyDestroy(ctx _context.Context, stageUuid string) ApiStagesDummyDestroyRequest {
+func (a *StagesApiService) StagesDummyDestroy(ctx context.Context, stageUuid string) ApiStagesDummyDestroyRequest {
 	return ApiStagesDummyDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9444,26 +9326,24 @@ func (a *StagesApiService) StagesDummyDestroy(ctx _context.Context, stageUuid st
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesDummyDestroyExecute(r ApiStagesDummyDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesDummyDestroyExecute(r ApiStagesDummyDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesDummyDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/dummy/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -9496,7 +9376,7 @@ func (a *StagesApiService) StagesDummyDestroyExecute(r ApiStagesDummyDestroyRequ
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -9506,15 +9386,15 @@ func (a *StagesApiService) StagesDummyDestroyExecute(r ApiStagesDummyDestroyRequ
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9525,7 +9405,7 @@ func (a *StagesApiService) StagesDummyDestroyExecute(r ApiStagesDummyDestroyRequ
 }
 
 type ApiStagesDummyListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	name       *string
 	ordering   *string
@@ -9563,12 +9443,13 @@ func (r ApiStagesDummyListRequest) Search(search string) ApiStagesDummyListReque
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesDummyListRequest) StageUuid(stageUuid string) ApiStagesDummyListRequest {
 	r.stageUuid = &stageUuid
 	return r
 }
 
-func (r ApiStagesDummyListRequest) Execute() (PaginatedDummyStageList, *_nethttp.Response, error) {
+func (r ApiStagesDummyListRequest) Execute() (*PaginatedDummyStageList, *http.Response, error) {
 	return r.ApiService.StagesDummyListExecute(r)
 }
 
@@ -9577,10 +9458,10 @@ StagesDummyList Method for StagesDummyList
 
 DummyStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesDummyListRequest
 */
-func (a *StagesApiService) StagesDummyList(ctx _context.Context) ApiStagesDummyListRequest {
+func (a *StagesApiService) StagesDummyList(ctx context.Context) ApiStagesDummyListRequest {
 	return ApiStagesDummyListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9589,26 +9470,24 @@ func (a *StagesApiService) StagesDummyList(ctx _context.Context) ApiStagesDummyL
 
 // Execute executes the request
 //  @return PaginatedDummyStageList
-func (a *StagesApiService) StagesDummyListExecute(r ApiStagesDummyListRequest) (PaginatedDummyStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesDummyListExecute(r ApiStagesDummyListRequest) (*PaginatedDummyStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedDummyStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedDummyStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesDummyList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/dummy/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -9659,7 +9538,7 @@ func (a *StagesApiService) StagesDummyListExecute(r ApiStagesDummyListRequest) (
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -9669,15 +9548,15 @@ func (a *StagesApiService) StagesDummyListExecute(r ApiStagesDummyListRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9686,7 +9565,7 @@ func (a *StagesApiService) StagesDummyListExecute(r ApiStagesDummyListRequest) (
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9697,7 +9576,7 @@ func (a *StagesApiService) StagesDummyListExecute(r ApiStagesDummyListRequest) (
 }
 
 type ApiStagesDummyPartialUpdateRequest struct {
-	ctx                      _context.Context
+	ctx                      context.Context
 	ApiService               *StagesApiService
 	stageUuid                string
 	patchedDummyStageRequest *PatchedDummyStageRequest
@@ -9708,7 +9587,7 @@ func (r ApiStagesDummyPartialUpdateRequest) PatchedDummyStageRequest(patchedDumm
 	return r
 }
 
-func (r ApiStagesDummyPartialUpdateRequest) Execute() (DummyStage, *_nethttp.Response, error) {
+func (r ApiStagesDummyPartialUpdateRequest) Execute() (*DummyStage, *http.Response, error) {
 	return r.ApiService.StagesDummyPartialUpdateExecute(r)
 }
 
@@ -9717,11 +9596,11 @@ StagesDummyPartialUpdate Method for StagesDummyPartialUpdate
 
 DummyStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Dummy Stage.
  @return ApiStagesDummyPartialUpdateRequest
 */
-func (a *StagesApiService) StagesDummyPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesDummyPartialUpdateRequest {
+func (a *StagesApiService) StagesDummyPartialUpdate(ctx context.Context, stageUuid string) ApiStagesDummyPartialUpdateRequest {
 	return ApiStagesDummyPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9731,27 +9610,25 @@ func (a *StagesApiService) StagesDummyPartialUpdate(ctx _context.Context, stageU
 
 // Execute executes the request
 //  @return DummyStage
-func (a *StagesApiService) StagesDummyPartialUpdateExecute(r ApiStagesDummyPartialUpdateRequest) (DummyStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesDummyPartialUpdateExecute(r ApiStagesDummyPartialUpdateRequest) (*DummyStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DummyStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DummyStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesDummyPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/dummy/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -9786,7 +9663,7 @@ func (a *StagesApiService) StagesDummyPartialUpdateExecute(r ApiStagesDummyParti
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -9796,15 +9673,15 @@ func (a *StagesApiService) StagesDummyPartialUpdateExecute(r ApiStagesDummyParti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9813,7 +9690,7 @@ func (a *StagesApiService) StagesDummyPartialUpdateExecute(r ApiStagesDummyParti
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9824,12 +9701,12 @@ func (a *StagesApiService) StagesDummyPartialUpdateExecute(r ApiStagesDummyParti
 }
 
 type ApiStagesDummyRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesDummyRetrieveRequest) Execute() (DummyStage, *_nethttp.Response, error) {
+func (r ApiStagesDummyRetrieveRequest) Execute() (*DummyStage, *http.Response, error) {
 	return r.ApiService.StagesDummyRetrieveExecute(r)
 }
 
@@ -9838,11 +9715,11 @@ StagesDummyRetrieve Method for StagesDummyRetrieve
 
 DummyStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Dummy Stage.
  @return ApiStagesDummyRetrieveRequest
 */
-func (a *StagesApiService) StagesDummyRetrieve(ctx _context.Context, stageUuid string) ApiStagesDummyRetrieveRequest {
+func (a *StagesApiService) StagesDummyRetrieve(ctx context.Context, stageUuid string) ApiStagesDummyRetrieveRequest {
 	return ApiStagesDummyRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9852,27 +9729,25 @@ func (a *StagesApiService) StagesDummyRetrieve(ctx _context.Context, stageUuid s
 
 // Execute executes the request
 //  @return DummyStage
-func (a *StagesApiService) StagesDummyRetrieveExecute(r ApiStagesDummyRetrieveRequest) (DummyStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesDummyRetrieveExecute(r ApiStagesDummyRetrieveRequest) (*DummyStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DummyStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DummyStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesDummyRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/dummy/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -9905,7 +9780,7 @@ func (a *StagesApiService) StagesDummyRetrieveExecute(r ApiStagesDummyRetrieveRe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -9915,15 +9790,15 @@ func (a *StagesApiService) StagesDummyRetrieveExecute(r ApiStagesDummyRetrieveRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -9932,7 +9807,7 @@ func (a *StagesApiService) StagesDummyRetrieveExecute(r ApiStagesDummyRetrieveRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -9943,7 +9818,7 @@ func (a *StagesApiService) StagesDummyRetrieveExecute(r ApiStagesDummyRetrieveRe
 }
 
 type ApiStagesDummyUpdateRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *StagesApiService
 	stageUuid         string
 	dummyStageRequest *DummyStageRequest
@@ -9954,7 +9829,7 @@ func (r ApiStagesDummyUpdateRequest) DummyStageRequest(dummyStageRequest DummySt
 	return r
 }
 
-func (r ApiStagesDummyUpdateRequest) Execute() (DummyStage, *_nethttp.Response, error) {
+func (r ApiStagesDummyUpdateRequest) Execute() (*DummyStage, *http.Response, error) {
 	return r.ApiService.StagesDummyUpdateExecute(r)
 }
 
@@ -9963,11 +9838,11 @@ StagesDummyUpdate Method for StagesDummyUpdate
 
 DummyStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Dummy Stage.
  @return ApiStagesDummyUpdateRequest
 */
-func (a *StagesApiService) StagesDummyUpdate(ctx _context.Context, stageUuid string) ApiStagesDummyUpdateRequest {
+func (a *StagesApiService) StagesDummyUpdate(ctx context.Context, stageUuid string) ApiStagesDummyUpdateRequest {
 	return ApiStagesDummyUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9977,27 +9852,25 @@ func (a *StagesApiService) StagesDummyUpdate(ctx _context.Context, stageUuid str
 
 // Execute executes the request
 //  @return DummyStage
-func (a *StagesApiService) StagesDummyUpdateExecute(r ApiStagesDummyUpdateRequest) (DummyStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesDummyUpdateExecute(r ApiStagesDummyUpdateRequest) (*DummyStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DummyStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DummyStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesDummyUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/dummy/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.dummyStageRequest == nil {
 		return localVarReturnValue, nil, reportError("dummyStageRequest is required and must be specified")
 	}
@@ -10035,7 +9908,7 @@ func (a *StagesApiService) StagesDummyUpdateExecute(r ApiStagesDummyUpdateReques
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -10045,15 +9918,15 @@ func (a *StagesApiService) StagesDummyUpdateExecute(r ApiStagesDummyUpdateReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -10062,7 +9935,7 @@ func (a *StagesApiService) StagesDummyUpdateExecute(r ApiStagesDummyUpdateReques
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -10073,12 +9946,12 @@ func (a *StagesApiService) StagesDummyUpdateExecute(r ApiStagesDummyUpdateReques
 }
 
 type ApiStagesDummyUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesDummyUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesDummyUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesDummyUsedByListExecute(r)
 }
 
@@ -10087,11 +9960,11 @@ StagesDummyUsedByList Method for StagesDummyUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Dummy Stage.
  @return ApiStagesDummyUsedByListRequest
 */
-func (a *StagesApiService) StagesDummyUsedByList(ctx _context.Context, stageUuid string) ApiStagesDummyUsedByListRequest {
+func (a *StagesApiService) StagesDummyUsedByList(ctx context.Context, stageUuid string) ApiStagesDummyUsedByListRequest {
 	return ApiStagesDummyUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10101,27 +9974,25 @@ func (a *StagesApiService) StagesDummyUsedByList(ctx _context.Context, stageUuid
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesDummyUsedByListExecute(r ApiStagesDummyUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesDummyUsedByListExecute(r ApiStagesDummyUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesDummyUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/dummy/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -10154,7 +10025,7 @@ func (a *StagesApiService) StagesDummyUsedByListExecute(r ApiStagesDummyUsedByLi
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -10164,15 +10035,15 @@ func (a *StagesApiService) StagesDummyUsedByListExecute(r ApiStagesDummyUsedByLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -10181,7 +10052,7 @@ func (a *StagesApiService) StagesDummyUsedByListExecute(r ApiStagesDummyUsedByLi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -10192,7 +10063,7 @@ func (a *StagesApiService) StagesDummyUsedByListExecute(r ApiStagesDummyUsedByLi
 }
 
 type ApiStagesEmailCreateRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *StagesApiService
 	emailStageRequest *EmailStageRequest
 }
@@ -10202,7 +10073,7 @@ func (r ApiStagesEmailCreateRequest) EmailStageRequest(emailStageRequest EmailSt
 	return r
 }
 
-func (r ApiStagesEmailCreateRequest) Execute() (EmailStage, *_nethttp.Response, error) {
+func (r ApiStagesEmailCreateRequest) Execute() (*EmailStage, *http.Response, error) {
 	return r.ApiService.StagesEmailCreateExecute(r)
 }
 
@@ -10211,10 +10082,10 @@ StagesEmailCreate Method for StagesEmailCreate
 
 EmailStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesEmailCreateRequest
 */
-func (a *StagesApiService) StagesEmailCreate(ctx _context.Context) ApiStagesEmailCreateRequest {
+func (a *StagesApiService) StagesEmailCreate(ctx context.Context) ApiStagesEmailCreateRequest {
 	return ApiStagesEmailCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10223,26 +10094,24 @@ func (a *StagesApiService) StagesEmailCreate(ctx _context.Context) ApiStagesEmai
 
 // Execute executes the request
 //  @return EmailStage
-func (a *StagesApiService) StagesEmailCreateExecute(r ApiStagesEmailCreateRequest) (EmailStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesEmailCreateExecute(r ApiStagesEmailCreateRequest) (*EmailStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EmailStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EmailStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesEmailCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/email/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.emailStageRequest == nil {
 		return localVarReturnValue, nil, reportError("emailStageRequest is required and must be specified")
 	}
@@ -10280,7 +10149,7 @@ func (a *StagesApiService) StagesEmailCreateExecute(r ApiStagesEmailCreateReques
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -10290,15 +10159,15 @@ func (a *StagesApiService) StagesEmailCreateExecute(r ApiStagesEmailCreateReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -10307,7 +10176,7 @@ func (a *StagesApiService) StagesEmailCreateExecute(r ApiStagesEmailCreateReques
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -10318,12 +10187,12 @@ func (a *StagesApiService) StagesEmailCreateExecute(r ApiStagesEmailCreateReques
 }
 
 type ApiStagesEmailDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesEmailDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesEmailDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesEmailDestroyExecute(r)
 }
 
@@ -10332,11 +10201,11 @@ StagesEmailDestroy Method for StagesEmailDestroy
 
 EmailStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Email Stage.
  @return ApiStagesEmailDestroyRequest
 */
-func (a *StagesApiService) StagesEmailDestroy(ctx _context.Context, stageUuid string) ApiStagesEmailDestroyRequest {
+func (a *StagesApiService) StagesEmailDestroy(ctx context.Context, stageUuid string) ApiStagesEmailDestroyRequest {
 	return ApiStagesEmailDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10345,26 +10214,24 @@ func (a *StagesApiService) StagesEmailDestroy(ctx _context.Context, stageUuid st
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesEmailDestroyExecute(r ApiStagesEmailDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesEmailDestroyExecute(r ApiStagesEmailDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesEmailDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/email/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -10397,7 +10264,7 @@ func (a *StagesApiService) StagesEmailDestroyExecute(r ApiStagesEmailDestroyRequ
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -10407,15 +10274,15 @@ func (a *StagesApiService) StagesEmailDestroyExecute(r ApiStagesEmailDestroyRequ
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -10426,7 +10293,7 @@ func (a *StagesApiService) StagesEmailDestroyExecute(r ApiStagesEmailDestroyRequ
 }
 
 type ApiStagesEmailListRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *StagesApiService
 	activateUserOnSuccess *bool
 	fromAddress           *string
@@ -10451,14 +10318,17 @@ func (r ApiStagesEmailListRequest) ActivateUserOnSuccess(activateUserOnSuccess b
 	r.activateUserOnSuccess = &activateUserOnSuccess
 	return r
 }
+
 func (r ApiStagesEmailListRequest) FromAddress(fromAddress string) ApiStagesEmailListRequest {
 	r.fromAddress = &fromAddress
 	return r
 }
+
 func (r ApiStagesEmailListRequest) Host(host string) ApiStagesEmailListRequest {
 	r.host = &host
 	return r
 }
+
 func (r ApiStagesEmailListRequest) Name(name string) ApiStagesEmailListRequest {
 	r.name = &name
 	return r
@@ -10481,6 +10351,7 @@ func (r ApiStagesEmailListRequest) PageSize(pageSize int32) ApiStagesEmailListRe
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiStagesEmailListRequest) Port(port int32) ApiStagesEmailListRequest {
 	r.port = &port
 	return r
@@ -10491,40 +10362,48 @@ func (r ApiStagesEmailListRequest) Search(search string) ApiStagesEmailListReque
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesEmailListRequest) Subject(subject string) ApiStagesEmailListRequest {
 	r.subject = &subject
 	return r
 }
+
 func (r ApiStagesEmailListRequest) Template(template string) ApiStagesEmailListRequest {
 	r.template = &template
 	return r
 }
+
 func (r ApiStagesEmailListRequest) Timeout(timeout int32) ApiStagesEmailListRequest {
 	r.timeout = &timeout
 	return r
 }
+
 func (r ApiStagesEmailListRequest) TokenExpiry(tokenExpiry int32) ApiStagesEmailListRequest {
 	r.tokenExpiry = &tokenExpiry
 	return r
 }
+
 func (r ApiStagesEmailListRequest) UseGlobalSettings(useGlobalSettings bool) ApiStagesEmailListRequest {
 	r.useGlobalSettings = &useGlobalSettings
 	return r
 }
+
 func (r ApiStagesEmailListRequest) UseSsl(useSsl bool) ApiStagesEmailListRequest {
 	r.useSsl = &useSsl
 	return r
 }
+
 func (r ApiStagesEmailListRequest) UseTls(useTls bool) ApiStagesEmailListRequest {
 	r.useTls = &useTls
 	return r
 }
+
 func (r ApiStagesEmailListRequest) Username(username string) ApiStagesEmailListRequest {
 	r.username = &username
 	return r
 }
 
-func (r ApiStagesEmailListRequest) Execute() (PaginatedEmailStageList, *_nethttp.Response, error) {
+func (r ApiStagesEmailListRequest) Execute() (*PaginatedEmailStageList, *http.Response, error) {
 	return r.ApiService.StagesEmailListExecute(r)
 }
 
@@ -10533,10 +10412,10 @@ StagesEmailList Method for StagesEmailList
 
 EmailStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesEmailListRequest
 */
-func (a *StagesApiService) StagesEmailList(ctx _context.Context) ApiStagesEmailListRequest {
+func (a *StagesApiService) StagesEmailList(ctx context.Context) ApiStagesEmailListRequest {
 	return ApiStagesEmailListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10545,26 +10424,24 @@ func (a *StagesApiService) StagesEmailList(ctx _context.Context) ApiStagesEmailL
 
 // Execute executes the request
 //  @return PaginatedEmailStageList
-func (a *StagesApiService) StagesEmailListExecute(r ApiStagesEmailListRequest) (PaginatedEmailStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesEmailListExecute(r ApiStagesEmailListRequest) (*PaginatedEmailStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedEmailStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedEmailStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesEmailList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/email/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.activateUserOnSuccess != nil {
 		localVarQueryParams.Add("activate_user_on_success", parameterToString(*r.activateUserOnSuccess, ""))
@@ -10648,7 +10525,7 @@ func (a *StagesApiService) StagesEmailListExecute(r ApiStagesEmailListRequest) (
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -10658,15 +10535,15 @@ func (a *StagesApiService) StagesEmailListExecute(r ApiStagesEmailListRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -10675,7 +10552,7 @@ func (a *StagesApiService) StagesEmailListExecute(r ApiStagesEmailListRequest) (
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -10686,7 +10563,7 @@ func (a *StagesApiService) StagesEmailListExecute(r ApiStagesEmailListRequest) (
 }
 
 type ApiStagesEmailPartialUpdateRequest struct {
-	ctx                      _context.Context
+	ctx                      context.Context
 	ApiService               *StagesApiService
 	stageUuid                string
 	patchedEmailStageRequest *PatchedEmailStageRequest
@@ -10697,7 +10574,7 @@ func (r ApiStagesEmailPartialUpdateRequest) PatchedEmailStageRequest(patchedEmai
 	return r
 }
 
-func (r ApiStagesEmailPartialUpdateRequest) Execute() (EmailStage, *_nethttp.Response, error) {
+func (r ApiStagesEmailPartialUpdateRequest) Execute() (*EmailStage, *http.Response, error) {
 	return r.ApiService.StagesEmailPartialUpdateExecute(r)
 }
 
@@ -10706,11 +10583,11 @@ StagesEmailPartialUpdate Method for StagesEmailPartialUpdate
 
 EmailStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Email Stage.
  @return ApiStagesEmailPartialUpdateRequest
 */
-func (a *StagesApiService) StagesEmailPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesEmailPartialUpdateRequest {
+func (a *StagesApiService) StagesEmailPartialUpdate(ctx context.Context, stageUuid string) ApiStagesEmailPartialUpdateRequest {
 	return ApiStagesEmailPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10720,27 +10597,25 @@ func (a *StagesApiService) StagesEmailPartialUpdate(ctx _context.Context, stageU
 
 // Execute executes the request
 //  @return EmailStage
-func (a *StagesApiService) StagesEmailPartialUpdateExecute(r ApiStagesEmailPartialUpdateRequest) (EmailStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesEmailPartialUpdateExecute(r ApiStagesEmailPartialUpdateRequest) (*EmailStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EmailStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EmailStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesEmailPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/email/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -10775,7 +10650,7 @@ func (a *StagesApiService) StagesEmailPartialUpdateExecute(r ApiStagesEmailParti
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -10785,15 +10660,15 @@ func (a *StagesApiService) StagesEmailPartialUpdateExecute(r ApiStagesEmailParti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -10802,7 +10677,7 @@ func (a *StagesApiService) StagesEmailPartialUpdateExecute(r ApiStagesEmailParti
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -10813,12 +10688,12 @@ func (a *StagesApiService) StagesEmailPartialUpdateExecute(r ApiStagesEmailParti
 }
 
 type ApiStagesEmailRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesEmailRetrieveRequest) Execute() (EmailStage, *_nethttp.Response, error) {
+func (r ApiStagesEmailRetrieveRequest) Execute() (*EmailStage, *http.Response, error) {
 	return r.ApiService.StagesEmailRetrieveExecute(r)
 }
 
@@ -10827,11 +10702,11 @@ StagesEmailRetrieve Method for StagesEmailRetrieve
 
 EmailStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Email Stage.
  @return ApiStagesEmailRetrieveRequest
 */
-func (a *StagesApiService) StagesEmailRetrieve(ctx _context.Context, stageUuid string) ApiStagesEmailRetrieveRequest {
+func (a *StagesApiService) StagesEmailRetrieve(ctx context.Context, stageUuid string) ApiStagesEmailRetrieveRequest {
 	return ApiStagesEmailRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10841,27 +10716,25 @@ func (a *StagesApiService) StagesEmailRetrieve(ctx _context.Context, stageUuid s
 
 // Execute executes the request
 //  @return EmailStage
-func (a *StagesApiService) StagesEmailRetrieveExecute(r ApiStagesEmailRetrieveRequest) (EmailStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesEmailRetrieveExecute(r ApiStagesEmailRetrieveRequest) (*EmailStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EmailStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EmailStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesEmailRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/email/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -10894,7 +10767,7 @@ func (a *StagesApiService) StagesEmailRetrieveExecute(r ApiStagesEmailRetrieveRe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -10904,15 +10777,15 @@ func (a *StagesApiService) StagesEmailRetrieveExecute(r ApiStagesEmailRetrieveRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -10921,7 +10794,7 @@ func (a *StagesApiService) StagesEmailRetrieveExecute(r ApiStagesEmailRetrieveRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -10932,11 +10805,11 @@ func (a *StagesApiService) StagesEmailRetrieveExecute(r ApiStagesEmailRetrieveRe
 }
 
 type ApiStagesEmailTemplatesListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 }
 
-func (r ApiStagesEmailTemplatesListRequest) Execute() ([]TypeCreate, *_nethttp.Response, error) {
+func (r ApiStagesEmailTemplatesListRequest) Execute() ([]TypeCreate, *http.Response, error) {
 	return r.ApiService.StagesEmailTemplatesListExecute(r)
 }
 
@@ -10945,10 +10818,10 @@ StagesEmailTemplatesList Method for StagesEmailTemplatesList
 
 Get all available templates, including custom templates
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesEmailTemplatesListRequest
 */
-func (a *StagesApiService) StagesEmailTemplatesList(ctx _context.Context) ApiStagesEmailTemplatesListRequest {
+func (a *StagesApiService) StagesEmailTemplatesList(ctx context.Context) ApiStagesEmailTemplatesListRequest {
 	return ApiStagesEmailTemplatesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10957,26 +10830,24 @@ func (a *StagesApiService) StagesEmailTemplatesList(ctx _context.Context) ApiSta
 
 // Execute executes the request
 //  @return []TypeCreate
-func (a *StagesApiService) StagesEmailTemplatesListExecute(r ApiStagesEmailTemplatesListRequest) ([]TypeCreate, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesEmailTemplatesListExecute(r ApiStagesEmailTemplatesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []TypeCreate
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []TypeCreate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesEmailTemplatesList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/email/templates/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -11009,7 +10880,7 @@ func (a *StagesApiService) StagesEmailTemplatesListExecute(r ApiStagesEmailTempl
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -11019,15 +10890,15 @@ func (a *StagesApiService) StagesEmailTemplatesListExecute(r ApiStagesEmailTempl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -11036,7 +10907,7 @@ func (a *StagesApiService) StagesEmailTemplatesListExecute(r ApiStagesEmailTempl
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -11047,7 +10918,7 @@ func (a *StagesApiService) StagesEmailTemplatesListExecute(r ApiStagesEmailTempl
 }
 
 type ApiStagesEmailUpdateRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *StagesApiService
 	stageUuid         string
 	emailStageRequest *EmailStageRequest
@@ -11058,7 +10929,7 @@ func (r ApiStagesEmailUpdateRequest) EmailStageRequest(emailStageRequest EmailSt
 	return r
 }
 
-func (r ApiStagesEmailUpdateRequest) Execute() (EmailStage, *_nethttp.Response, error) {
+func (r ApiStagesEmailUpdateRequest) Execute() (*EmailStage, *http.Response, error) {
 	return r.ApiService.StagesEmailUpdateExecute(r)
 }
 
@@ -11067,11 +10938,11 @@ StagesEmailUpdate Method for StagesEmailUpdate
 
 EmailStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Email Stage.
  @return ApiStagesEmailUpdateRequest
 */
-func (a *StagesApiService) StagesEmailUpdate(ctx _context.Context, stageUuid string) ApiStagesEmailUpdateRequest {
+func (a *StagesApiService) StagesEmailUpdate(ctx context.Context, stageUuid string) ApiStagesEmailUpdateRequest {
 	return ApiStagesEmailUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11081,27 +10952,25 @@ func (a *StagesApiService) StagesEmailUpdate(ctx _context.Context, stageUuid str
 
 // Execute executes the request
 //  @return EmailStage
-func (a *StagesApiService) StagesEmailUpdateExecute(r ApiStagesEmailUpdateRequest) (EmailStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesEmailUpdateExecute(r ApiStagesEmailUpdateRequest) (*EmailStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  EmailStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EmailStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesEmailUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/email/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.emailStageRequest == nil {
 		return localVarReturnValue, nil, reportError("emailStageRequest is required and must be specified")
 	}
@@ -11139,7 +11008,7 @@ func (a *StagesApiService) StagesEmailUpdateExecute(r ApiStagesEmailUpdateReques
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -11149,15 +11018,15 @@ func (a *StagesApiService) StagesEmailUpdateExecute(r ApiStagesEmailUpdateReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -11166,7 +11035,7 @@ func (a *StagesApiService) StagesEmailUpdateExecute(r ApiStagesEmailUpdateReques
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -11177,12 +11046,12 @@ func (a *StagesApiService) StagesEmailUpdateExecute(r ApiStagesEmailUpdateReques
 }
 
 type ApiStagesEmailUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesEmailUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesEmailUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesEmailUsedByListExecute(r)
 }
 
@@ -11191,11 +11060,11 @@ StagesEmailUsedByList Method for StagesEmailUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Email Stage.
  @return ApiStagesEmailUsedByListRequest
 */
-func (a *StagesApiService) StagesEmailUsedByList(ctx _context.Context, stageUuid string) ApiStagesEmailUsedByListRequest {
+func (a *StagesApiService) StagesEmailUsedByList(ctx context.Context, stageUuid string) ApiStagesEmailUsedByListRequest {
 	return ApiStagesEmailUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11205,27 +11074,25 @@ func (a *StagesApiService) StagesEmailUsedByList(ctx _context.Context, stageUuid
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesEmailUsedByListExecute(r ApiStagesEmailUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesEmailUsedByListExecute(r ApiStagesEmailUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesEmailUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/email/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -11258,7 +11125,7 @@ func (a *StagesApiService) StagesEmailUsedByListExecute(r ApiStagesEmailUsedByLi
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -11268,15 +11135,15 @@ func (a *StagesApiService) StagesEmailUsedByListExecute(r ApiStagesEmailUsedByLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -11285,7 +11152,7 @@ func (a *StagesApiService) StagesEmailUsedByListExecute(r ApiStagesEmailUsedByLi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -11296,7 +11163,7 @@ func (a *StagesApiService) StagesEmailUsedByListExecute(r ApiStagesEmailUsedByLi
 }
 
 type ApiStagesIdentificationCreateRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *StagesApiService
 	identificationStageRequest *IdentificationStageRequest
 }
@@ -11306,7 +11173,7 @@ func (r ApiStagesIdentificationCreateRequest) IdentificationStageRequest(identif
 	return r
 }
 
-func (r ApiStagesIdentificationCreateRequest) Execute() (IdentificationStage, *_nethttp.Response, error) {
+func (r ApiStagesIdentificationCreateRequest) Execute() (*IdentificationStage, *http.Response, error) {
 	return r.ApiService.StagesIdentificationCreateExecute(r)
 }
 
@@ -11315,10 +11182,10 @@ StagesIdentificationCreate Method for StagesIdentificationCreate
 
 IdentificationStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesIdentificationCreateRequest
 */
-func (a *StagesApiService) StagesIdentificationCreate(ctx _context.Context) ApiStagesIdentificationCreateRequest {
+func (a *StagesApiService) StagesIdentificationCreate(ctx context.Context) ApiStagesIdentificationCreateRequest {
 	return ApiStagesIdentificationCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11327,26 +11194,24 @@ func (a *StagesApiService) StagesIdentificationCreate(ctx _context.Context) ApiS
 
 // Execute executes the request
 //  @return IdentificationStage
-func (a *StagesApiService) StagesIdentificationCreateExecute(r ApiStagesIdentificationCreateRequest) (IdentificationStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesIdentificationCreateExecute(r ApiStagesIdentificationCreateRequest) (*IdentificationStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  IdentificationStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *IdentificationStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesIdentificationCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/identification/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.identificationStageRequest == nil {
 		return localVarReturnValue, nil, reportError("identificationStageRequest is required and must be specified")
 	}
@@ -11384,7 +11249,7 @@ func (a *StagesApiService) StagesIdentificationCreateExecute(r ApiStagesIdentifi
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -11394,15 +11259,15 @@ func (a *StagesApiService) StagesIdentificationCreateExecute(r ApiStagesIdentifi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -11411,7 +11276,7 @@ func (a *StagesApiService) StagesIdentificationCreateExecute(r ApiStagesIdentifi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -11422,12 +11287,12 @@ func (a *StagesApiService) StagesIdentificationCreateExecute(r ApiStagesIdentifi
 }
 
 type ApiStagesIdentificationDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesIdentificationDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesIdentificationDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesIdentificationDestroyExecute(r)
 }
 
@@ -11436,11 +11301,11 @@ StagesIdentificationDestroy Method for StagesIdentificationDestroy
 
 IdentificationStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Identification Stage.
  @return ApiStagesIdentificationDestroyRequest
 */
-func (a *StagesApiService) StagesIdentificationDestroy(ctx _context.Context, stageUuid string) ApiStagesIdentificationDestroyRequest {
+func (a *StagesApiService) StagesIdentificationDestroy(ctx context.Context, stageUuid string) ApiStagesIdentificationDestroyRequest {
 	return ApiStagesIdentificationDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11449,26 +11314,24 @@ func (a *StagesApiService) StagesIdentificationDestroy(ctx _context.Context, sta
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesIdentificationDestroyExecute(r ApiStagesIdentificationDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesIdentificationDestroyExecute(r ApiStagesIdentificationDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesIdentificationDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/identification/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -11501,7 +11364,7 @@ func (a *StagesApiService) StagesIdentificationDestroyExecute(r ApiStagesIdentif
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -11511,15 +11374,15 @@ func (a *StagesApiService) StagesIdentificationDestroyExecute(r ApiStagesIdentif
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -11530,7 +11393,7 @@ func (a *StagesApiService) StagesIdentificationDestroyExecute(r ApiStagesIdentif
 }
 
 type ApiStagesIdentificationListRequest struct {
-	ctx                     _context.Context
+	ctx                     context.Context
 	ApiService              *StagesApiService
 	caseInsensitiveMatching *bool
 	enrollmentFlow          *string
@@ -11550,10 +11413,12 @@ func (r ApiStagesIdentificationListRequest) CaseInsensitiveMatching(caseInsensit
 	r.caseInsensitiveMatching = &caseInsensitiveMatching
 	return r
 }
+
 func (r ApiStagesIdentificationListRequest) EnrollmentFlow(enrollmentFlow string) ApiStagesIdentificationListRequest {
 	r.enrollmentFlow = &enrollmentFlow
 	return r
 }
+
 func (r ApiStagesIdentificationListRequest) Name(name string) ApiStagesIdentificationListRequest {
 	r.name = &name
 	return r
@@ -11576,14 +11441,17 @@ func (r ApiStagesIdentificationListRequest) PageSize(pageSize int32) ApiStagesId
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiStagesIdentificationListRequest) PasswordStage(passwordStage string) ApiStagesIdentificationListRequest {
 	r.passwordStage = &passwordStage
 	return r
 }
+
 func (r ApiStagesIdentificationListRequest) PasswordlessFlow(passwordlessFlow string) ApiStagesIdentificationListRequest {
 	r.passwordlessFlow = &passwordlessFlow
 	return r
 }
+
 func (r ApiStagesIdentificationListRequest) RecoveryFlow(recoveryFlow string) ApiStagesIdentificationListRequest {
 	r.recoveryFlow = &recoveryFlow
 	return r
@@ -11594,16 +11462,18 @@ func (r ApiStagesIdentificationListRequest) Search(search string) ApiStagesIdent
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesIdentificationListRequest) ShowMatchedUser(showMatchedUser bool) ApiStagesIdentificationListRequest {
 	r.showMatchedUser = &showMatchedUser
 	return r
 }
+
 func (r ApiStagesIdentificationListRequest) ShowSourceLabels(showSourceLabels bool) ApiStagesIdentificationListRequest {
 	r.showSourceLabels = &showSourceLabels
 	return r
 }
 
-func (r ApiStagesIdentificationListRequest) Execute() (PaginatedIdentificationStageList, *_nethttp.Response, error) {
+func (r ApiStagesIdentificationListRequest) Execute() (*PaginatedIdentificationStageList, *http.Response, error) {
 	return r.ApiService.StagesIdentificationListExecute(r)
 }
 
@@ -11612,10 +11482,10 @@ StagesIdentificationList Method for StagesIdentificationList
 
 IdentificationStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesIdentificationListRequest
 */
-func (a *StagesApiService) StagesIdentificationList(ctx _context.Context) ApiStagesIdentificationListRequest {
+func (a *StagesApiService) StagesIdentificationList(ctx context.Context) ApiStagesIdentificationListRequest {
 	return ApiStagesIdentificationListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11624,26 +11494,24 @@ func (a *StagesApiService) StagesIdentificationList(ctx _context.Context) ApiSta
 
 // Execute executes the request
 //  @return PaginatedIdentificationStageList
-func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentificationListRequest) (PaginatedIdentificationStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentificationListRequest) (*PaginatedIdentificationStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedIdentificationStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedIdentificationStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesIdentificationList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/identification/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.caseInsensitiveMatching != nil {
 		localVarQueryParams.Add("case_insensitive_matching", parameterToString(*r.caseInsensitiveMatching, ""))
@@ -11712,7 +11580,7 @@ func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentifica
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -11722,15 +11590,15 @@ func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentifica
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -11739,7 +11607,7 @@ func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentifica
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -11750,7 +11618,7 @@ func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentifica
 }
 
 type ApiStagesIdentificationPartialUpdateRequest struct {
-	ctx                               _context.Context
+	ctx                               context.Context
 	ApiService                        *StagesApiService
 	stageUuid                         string
 	patchedIdentificationStageRequest *PatchedIdentificationStageRequest
@@ -11761,7 +11629,7 @@ func (r ApiStagesIdentificationPartialUpdateRequest) PatchedIdentificationStageR
 	return r
 }
 
-func (r ApiStagesIdentificationPartialUpdateRequest) Execute() (IdentificationStage, *_nethttp.Response, error) {
+func (r ApiStagesIdentificationPartialUpdateRequest) Execute() (*IdentificationStage, *http.Response, error) {
 	return r.ApiService.StagesIdentificationPartialUpdateExecute(r)
 }
 
@@ -11770,11 +11638,11 @@ StagesIdentificationPartialUpdate Method for StagesIdentificationPartialUpdate
 
 IdentificationStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Identification Stage.
  @return ApiStagesIdentificationPartialUpdateRequest
 */
-func (a *StagesApiService) StagesIdentificationPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesIdentificationPartialUpdateRequest {
+func (a *StagesApiService) StagesIdentificationPartialUpdate(ctx context.Context, stageUuid string) ApiStagesIdentificationPartialUpdateRequest {
 	return ApiStagesIdentificationPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11784,27 +11652,25 @@ func (a *StagesApiService) StagesIdentificationPartialUpdate(ctx _context.Contex
 
 // Execute executes the request
 //  @return IdentificationStage
-func (a *StagesApiService) StagesIdentificationPartialUpdateExecute(r ApiStagesIdentificationPartialUpdateRequest) (IdentificationStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesIdentificationPartialUpdateExecute(r ApiStagesIdentificationPartialUpdateRequest) (*IdentificationStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  IdentificationStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *IdentificationStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesIdentificationPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/identification/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -11839,7 +11705,7 @@ func (a *StagesApiService) StagesIdentificationPartialUpdateExecute(r ApiStagesI
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -11849,15 +11715,15 @@ func (a *StagesApiService) StagesIdentificationPartialUpdateExecute(r ApiStagesI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -11866,7 +11732,7 @@ func (a *StagesApiService) StagesIdentificationPartialUpdateExecute(r ApiStagesI
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -11877,12 +11743,12 @@ func (a *StagesApiService) StagesIdentificationPartialUpdateExecute(r ApiStagesI
 }
 
 type ApiStagesIdentificationRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesIdentificationRetrieveRequest) Execute() (IdentificationStage, *_nethttp.Response, error) {
+func (r ApiStagesIdentificationRetrieveRequest) Execute() (*IdentificationStage, *http.Response, error) {
 	return r.ApiService.StagesIdentificationRetrieveExecute(r)
 }
 
@@ -11891,11 +11757,11 @@ StagesIdentificationRetrieve Method for StagesIdentificationRetrieve
 
 IdentificationStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Identification Stage.
  @return ApiStagesIdentificationRetrieveRequest
 */
-func (a *StagesApiService) StagesIdentificationRetrieve(ctx _context.Context, stageUuid string) ApiStagesIdentificationRetrieveRequest {
+func (a *StagesApiService) StagesIdentificationRetrieve(ctx context.Context, stageUuid string) ApiStagesIdentificationRetrieveRequest {
 	return ApiStagesIdentificationRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11905,27 +11771,25 @@ func (a *StagesApiService) StagesIdentificationRetrieve(ctx _context.Context, st
 
 // Execute executes the request
 //  @return IdentificationStage
-func (a *StagesApiService) StagesIdentificationRetrieveExecute(r ApiStagesIdentificationRetrieveRequest) (IdentificationStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesIdentificationRetrieveExecute(r ApiStagesIdentificationRetrieveRequest) (*IdentificationStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  IdentificationStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *IdentificationStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesIdentificationRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/identification/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -11958,7 +11822,7 @@ func (a *StagesApiService) StagesIdentificationRetrieveExecute(r ApiStagesIdenti
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -11968,15 +11832,15 @@ func (a *StagesApiService) StagesIdentificationRetrieveExecute(r ApiStagesIdenti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -11985,7 +11849,7 @@ func (a *StagesApiService) StagesIdentificationRetrieveExecute(r ApiStagesIdenti
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -11996,7 +11860,7 @@ func (a *StagesApiService) StagesIdentificationRetrieveExecute(r ApiStagesIdenti
 }
 
 type ApiStagesIdentificationUpdateRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *StagesApiService
 	stageUuid                  string
 	identificationStageRequest *IdentificationStageRequest
@@ -12007,7 +11871,7 @@ func (r ApiStagesIdentificationUpdateRequest) IdentificationStageRequest(identif
 	return r
 }
 
-func (r ApiStagesIdentificationUpdateRequest) Execute() (IdentificationStage, *_nethttp.Response, error) {
+func (r ApiStagesIdentificationUpdateRequest) Execute() (*IdentificationStage, *http.Response, error) {
 	return r.ApiService.StagesIdentificationUpdateExecute(r)
 }
 
@@ -12016,11 +11880,11 @@ StagesIdentificationUpdate Method for StagesIdentificationUpdate
 
 IdentificationStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Identification Stage.
  @return ApiStagesIdentificationUpdateRequest
 */
-func (a *StagesApiService) StagesIdentificationUpdate(ctx _context.Context, stageUuid string) ApiStagesIdentificationUpdateRequest {
+func (a *StagesApiService) StagesIdentificationUpdate(ctx context.Context, stageUuid string) ApiStagesIdentificationUpdateRequest {
 	return ApiStagesIdentificationUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12030,27 +11894,25 @@ func (a *StagesApiService) StagesIdentificationUpdate(ctx _context.Context, stag
 
 // Execute executes the request
 //  @return IdentificationStage
-func (a *StagesApiService) StagesIdentificationUpdateExecute(r ApiStagesIdentificationUpdateRequest) (IdentificationStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesIdentificationUpdateExecute(r ApiStagesIdentificationUpdateRequest) (*IdentificationStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  IdentificationStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *IdentificationStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesIdentificationUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/identification/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.identificationStageRequest == nil {
 		return localVarReturnValue, nil, reportError("identificationStageRequest is required and must be specified")
 	}
@@ -12088,7 +11950,7 @@ func (a *StagesApiService) StagesIdentificationUpdateExecute(r ApiStagesIdentifi
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -12098,15 +11960,15 @@ func (a *StagesApiService) StagesIdentificationUpdateExecute(r ApiStagesIdentifi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -12115,7 +11977,7 @@ func (a *StagesApiService) StagesIdentificationUpdateExecute(r ApiStagesIdentifi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -12126,12 +11988,12 @@ func (a *StagesApiService) StagesIdentificationUpdateExecute(r ApiStagesIdentifi
 }
 
 type ApiStagesIdentificationUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesIdentificationUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesIdentificationUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesIdentificationUsedByListExecute(r)
 }
 
@@ -12140,11 +12002,11 @@ StagesIdentificationUsedByList Method for StagesIdentificationUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Identification Stage.
  @return ApiStagesIdentificationUsedByListRequest
 */
-func (a *StagesApiService) StagesIdentificationUsedByList(ctx _context.Context, stageUuid string) ApiStagesIdentificationUsedByListRequest {
+func (a *StagesApiService) StagesIdentificationUsedByList(ctx context.Context, stageUuid string) ApiStagesIdentificationUsedByListRequest {
 	return ApiStagesIdentificationUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12154,27 +12016,25 @@ func (a *StagesApiService) StagesIdentificationUsedByList(ctx _context.Context, 
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesIdentificationUsedByListExecute(r ApiStagesIdentificationUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesIdentificationUsedByListExecute(r ApiStagesIdentificationUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesIdentificationUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/identification/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -12207,7 +12067,7 @@ func (a *StagesApiService) StagesIdentificationUsedByListExecute(r ApiStagesIden
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -12217,15 +12077,15 @@ func (a *StagesApiService) StagesIdentificationUsedByListExecute(r ApiStagesIden
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -12234,7 +12094,7 @@ func (a *StagesApiService) StagesIdentificationUsedByListExecute(r ApiStagesIden
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -12245,7 +12105,7 @@ func (a *StagesApiService) StagesIdentificationUsedByListExecute(r ApiStagesIden
 }
 
 type ApiStagesInvitationInvitationsCreateRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *StagesApiService
 	invitationRequest *InvitationRequest
 }
@@ -12255,7 +12115,7 @@ func (r ApiStagesInvitationInvitationsCreateRequest) InvitationRequest(invitatio
 	return r
 }
 
-func (r ApiStagesInvitationInvitationsCreateRequest) Execute() (Invitation, *_nethttp.Response, error) {
+func (r ApiStagesInvitationInvitationsCreateRequest) Execute() (*Invitation, *http.Response, error) {
 	return r.ApiService.StagesInvitationInvitationsCreateExecute(r)
 }
 
@@ -12264,10 +12124,10 @@ StagesInvitationInvitationsCreate Method for StagesInvitationInvitationsCreate
 
 Invitation Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesInvitationInvitationsCreateRequest
 */
-func (a *StagesApiService) StagesInvitationInvitationsCreate(ctx _context.Context) ApiStagesInvitationInvitationsCreateRequest {
+func (a *StagesApiService) StagesInvitationInvitationsCreate(ctx context.Context) ApiStagesInvitationInvitationsCreateRequest {
 	return ApiStagesInvitationInvitationsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12276,26 +12136,24 @@ func (a *StagesApiService) StagesInvitationInvitationsCreate(ctx _context.Contex
 
 // Execute executes the request
 //  @return Invitation
-func (a *StagesApiService) StagesInvitationInvitationsCreateExecute(r ApiStagesInvitationInvitationsCreateRequest) (Invitation, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesInvitationInvitationsCreateExecute(r ApiStagesInvitationInvitationsCreateRequest) (*Invitation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Invitation
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Invitation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesInvitationInvitationsCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/invitations/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.invitationRequest == nil {
 		return localVarReturnValue, nil, reportError("invitationRequest is required and must be specified")
 	}
@@ -12333,7 +12191,7 @@ func (a *StagesApiService) StagesInvitationInvitationsCreateExecute(r ApiStagesI
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -12343,15 +12201,15 @@ func (a *StagesApiService) StagesInvitationInvitationsCreateExecute(r ApiStagesI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -12360,7 +12218,7 @@ func (a *StagesApiService) StagesInvitationInvitationsCreateExecute(r ApiStagesI
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -12371,12 +12229,12 @@ func (a *StagesApiService) StagesInvitationInvitationsCreateExecute(r ApiStagesI
 }
 
 type ApiStagesInvitationInvitationsDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	inviteUuid string
 }
 
-func (r ApiStagesInvitationInvitationsDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesInvitationInvitationsDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesInvitationInvitationsDestroyExecute(r)
 }
 
@@ -12385,11 +12243,11 @@ StagesInvitationInvitationsDestroy Method for StagesInvitationInvitationsDestroy
 
 Invitation Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param inviteUuid A UUID string identifying this Invitation.
  @return ApiStagesInvitationInvitationsDestroyRequest
 */
-func (a *StagesApiService) StagesInvitationInvitationsDestroy(ctx _context.Context, inviteUuid string) ApiStagesInvitationInvitationsDestroyRequest {
+func (a *StagesApiService) StagesInvitationInvitationsDestroy(ctx context.Context, inviteUuid string) ApiStagesInvitationInvitationsDestroyRequest {
 	return ApiStagesInvitationInvitationsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12398,26 +12256,24 @@ func (a *StagesApiService) StagesInvitationInvitationsDestroy(ctx _context.Conte
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesInvitationInvitationsDestroyExecute(r ApiStagesInvitationInvitationsDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesInvitationInvitationsDestroyExecute(r ApiStagesInvitationInvitationsDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesInvitationInvitationsDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/invitations/{invite_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", _neturl.PathEscape(parameterToString(r.inviteUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterToString(r.inviteUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -12450,7 +12306,7 @@ func (a *StagesApiService) StagesInvitationInvitationsDestroyExecute(r ApiStages
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -12460,15 +12316,15 @@ func (a *StagesApiService) StagesInvitationInvitationsDestroyExecute(r ApiStages
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -12479,7 +12335,7 @@ func (a *StagesApiService) StagesInvitationInvitationsDestroyExecute(r ApiStages
 }
 
 type ApiStagesInvitationInvitationsListRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *StagesApiService
 	createdByUsername *string
 	expires           *time.Time
@@ -12494,10 +12350,12 @@ func (r ApiStagesInvitationInvitationsListRequest) CreatedByUsername(createdByUs
 	r.createdByUsername = &createdByUsername
 	return r
 }
+
 func (r ApiStagesInvitationInvitationsListRequest) Expires(expires time.Time) ApiStagesInvitationInvitationsListRequest {
 	r.expires = &expires
 	return r
 }
+
 func (r ApiStagesInvitationInvitationsListRequest) Name(name string) ApiStagesInvitationInvitationsListRequest {
 	r.name = &name
 	return r
@@ -12527,7 +12385,7 @@ func (r ApiStagesInvitationInvitationsListRequest) Search(search string) ApiStag
 	return r
 }
 
-func (r ApiStagesInvitationInvitationsListRequest) Execute() (PaginatedInvitationList, *_nethttp.Response, error) {
+func (r ApiStagesInvitationInvitationsListRequest) Execute() (*PaginatedInvitationList, *http.Response, error) {
 	return r.ApiService.StagesInvitationInvitationsListExecute(r)
 }
 
@@ -12536,10 +12394,10 @@ StagesInvitationInvitationsList Method for StagesInvitationInvitationsList
 
 Invitation Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesInvitationInvitationsListRequest
 */
-func (a *StagesApiService) StagesInvitationInvitationsList(ctx _context.Context) ApiStagesInvitationInvitationsListRequest {
+func (a *StagesApiService) StagesInvitationInvitationsList(ctx context.Context) ApiStagesInvitationInvitationsListRequest {
 	return ApiStagesInvitationInvitationsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12548,26 +12406,24 @@ func (a *StagesApiService) StagesInvitationInvitationsList(ctx _context.Context)
 
 // Execute executes the request
 //  @return PaginatedInvitationList
-func (a *StagesApiService) StagesInvitationInvitationsListExecute(r ApiStagesInvitationInvitationsListRequest) (PaginatedInvitationList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesInvitationInvitationsListExecute(r ApiStagesInvitationInvitationsListRequest) (*PaginatedInvitationList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedInvitationList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedInvitationList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesInvitationInvitationsList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/invitations/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.createdByUsername != nil {
 		localVarQueryParams.Add("created_by__username", parameterToString(*r.createdByUsername, ""))
@@ -12621,7 +12477,7 @@ func (a *StagesApiService) StagesInvitationInvitationsListExecute(r ApiStagesInv
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -12631,15 +12487,15 @@ func (a *StagesApiService) StagesInvitationInvitationsListExecute(r ApiStagesInv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -12648,7 +12504,7 @@ func (a *StagesApiService) StagesInvitationInvitationsListExecute(r ApiStagesInv
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -12659,7 +12515,7 @@ func (a *StagesApiService) StagesInvitationInvitationsListExecute(r ApiStagesInv
 }
 
 type ApiStagesInvitationInvitationsPartialUpdateRequest struct {
-	ctx                      _context.Context
+	ctx                      context.Context
 	ApiService               *StagesApiService
 	inviteUuid               string
 	patchedInvitationRequest *PatchedInvitationRequest
@@ -12670,7 +12526,7 @@ func (r ApiStagesInvitationInvitationsPartialUpdateRequest) PatchedInvitationReq
 	return r
 }
 
-func (r ApiStagesInvitationInvitationsPartialUpdateRequest) Execute() (Invitation, *_nethttp.Response, error) {
+func (r ApiStagesInvitationInvitationsPartialUpdateRequest) Execute() (*Invitation, *http.Response, error) {
 	return r.ApiService.StagesInvitationInvitationsPartialUpdateExecute(r)
 }
 
@@ -12679,11 +12535,11 @@ StagesInvitationInvitationsPartialUpdate Method for StagesInvitationInvitationsP
 
 Invitation Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param inviteUuid A UUID string identifying this Invitation.
  @return ApiStagesInvitationInvitationsPartialUpdateRequest
 */
-func (a *StagesApiService) StagesInvitationInvitationsPartialUpdate(ctx _context.Context, inviteUuid string) ApiStagesInvitationInvitationsPartialUpdateRequest {
+func (a *StagesApiService) StagesInvitationInvitationsPartialUpdate(ctx context.Context, inviteUuid string) ApiStagesInvitationInvitationsPartialUpdateRequest {
 	return ApiStagesInvitationInvitationsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12693,27 +12549,25 @@ func (a *StagesApiService) StagesInvitationInvitationsPartialUpdate(ctx _context
 
 // Execute executes the request
 //  @return Invitation
-func (a *StagesApiService) StagesInvitationInvitationsPartialUpdateExecute(r ApiStagesInvitationInvitationsPartialUpdateRequest) (Invitation, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesInvitationInvitationsPartialUpdateExecute(r ApiStagesInvitationInvitationsPartialUpdateRequest) (*Invitation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Invitation
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Invitation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesInvitationInvitationsPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/invitations/{invite_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", _neturl.PathEscape(parameterToString(r.inviteUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterToString(r.inviteUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -12748,7 +12602,7 @@ func (a *StagesApiService) StagesInvitationInvitationsPartialUpdateExecute(r Api
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -12758,15 +12612,15 @@ func (a *StagesApiService) StagesInvitationInvitationsPartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -12775,7 +12629,7 @@ func (a *StagesApiService) StagesInvitationInvitationsPartialUpdateExecute(r Api
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -12786,12 +12640,12 @@ func (a *StagesApiService) StagesInvitationInvitationsPartialUpdateExecute(r Api
 }
 
 type ApiStagesInvitationInvitationsRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	inviteUuid string
 }
 
-func (r ApiStagesInvitationInvitationsRetrieveRequest) Execute() (Invitation, *_nethttp.Response, error) {
+func (r ApiStagesInvitationInvitationsRetrieveRequest) Execute() (*Invitation, *http.Response, error) {
 	return r.ApiService.StagesInvitationInvitationsRetrieveExecute(r)
 }
 
@@ -12800,11 +12654,11 @@ StagesInvitationInvitationsRetrieve Method for StagesInvitationInvitationsRetrie
 
 Invitation Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param inviteUuid A UUID string identifying this Invitation.
  @return ApiStagesInvitationInvitationsRetrieveRequest
 */
-func (a *StagesApiService) StagesInvitationInvitationsRetrieve(ctx _context.Context, inviteUuid string) ApiStagesInvitationInvitationsRetrieveRequest {
+func (a *StagesApiService) StagesInvitationInvitationsRetrieve(ctx context.Context, inviteUuid string) ApiStagesInvitationInvitationsRetrieveRequest {
 	return ApiStagesInvitationInvitationsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12814,27 +12668,25 @@ func (a *StagesApiService) StagesInvitationInvitationsRetrieve(ctx _context.Cont
 
 // Execute executes the request
 //  @return Invitation
-func (a *StagesApiService) StagesInvitationInvitationsRetrieveExecute(r ApiStagesInvitationInvitationsRetrieveRequest) (Invitation, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesInvitationInvitationsRetrieveExecute(r ApiStagesInvitationInvitationsRetrieveRequest) (*Invitation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Invitation
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Invitation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesInvitationInvitationsRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/invitations/{invite_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", _neturl.PathEscape(parameterToString(r.inviteUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterToString(r.inviteUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -12867,7 +12719,7 @@ func (a *StagesApiService) StagesInvitationInvitationsRetrieveExecute(r ApiStage
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -12877,15 +12729,15 @@ func (a *StagesApiService) StagesInvitationInvitationsRetrieveExecute(r ApiStage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -12894,7 +12746,7 @@ func (a *StagesApiService) StagesInvitationInvitationsRetrieveExecute(r ApiStage
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -12905,7 +12757,7 @@ func (a *StagesApiService) StagesInvitationInvitationsRetrieveExecute(r ApiStage
 }
 
 type ApiStagesInvitationInvitationsUpdateRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *StagesApiService
 	inviteUuid        string
 	invitationRequest *InvitationRequest
@@ -12916,7 +12768,7 @@ func (r ApiStagesInvitationInvitationsUpdateRequest) InvitationRequest(invitatio
 	return r
 }
 
-func (r ApiStagesInvitationInvitationsUpdateRequest) Execute() (Invitation, *_nethttp.Response, error) {
+func (r ApiStagesInvitationInvitationsUpdateRequest) Execute() (*Invitation, *http.Response, error) {
 	return r.ApiService.StagesInvitationInvitationsUpdateExecute(r)
 }
 
@@ -12925,11 +12777,11 @@ StagesInvitationInvitationsUpdate Method for StagesInvitationInvitationsUpdate
 
 Invitation Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param inviteUuid A UUID string identifying this Invitation.
  @return ApiStagesInvitationInvitationsUpdateRequest
 */
-func (a *StagesApiService) StagesInvitationInvitationsUpdate(ctx _context.Context, inviteUuid string) ApiStagesInvitationInvitationsUpdateRequest {
+func (a *StagesApiService) StagesInvitationInvitationsUpdate(ctx context.Context, inviteUuid string) ApiStagesInvitationInvitationsUpdateRequest {
 	return ApiStagesInvitationInvitationsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12939,27 +12791,25 @@ func (a *StagesApiService) StagesInvitationInvitationsUpdate(ctx _context.Contex
 
 // Execute executes the request
 //  @return Invitation
-func (a *StagesApiService) StagesInvitationInvitationsUpdateExecute(r ApiStagesInvitationInvitationsUpdateRequest) (Invitation, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesInvitationInvitationsUpdateExecute(r ApiStagesInvitationInvitationsUpdateRequest) (*Invitation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Invitation
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Invitation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesInvitationInvitationsUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/invitations/{invite_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", _neturl.PathEscape(parameterToString(r.inviteUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterToString(r.inviteUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.invitationRequest == nil {
 		return localVarReturnValue, nil, reportError("invitationRequest is required and must be specified")
 	}
@@ -12997,7 +12847,7 @@ func (a *StagesApiService) StagesInvitationInvitationsUpdateExecute(r ApiStagesI
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -13007,15 +12857,15 @@ func (a *StagesApiService) StagesInvitationInvitationsUpdateExecute(r ApiStagesI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -13024,7 +12874,7 @@ func (a *StagesApiService) StagesInvitationInvitationsUpdateExecute(r ApiStagesI
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -13035,12 +12885,12 @@ func (a *StagesApiService) StagesInvitationInvitationsUpdateExecute(r ApiStagesI
 }
 
 type ApiStagesInvitationInvitationsUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	inviteUuid string
 }
 
-func (r ApiStagesInvitationInvitationsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesInvitationInvitationsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesInvitationInvitationsUsedByListExecute(r)
 }
 
@@ -13049,11 +12899,11 @@ StagesInvitationInvitationsUsedByList Method for StagesInvitationInvitationsUsed
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param inviteUuid A UUID string identifying this Invitation.
  @return ApiStagesInvitationInvitationsUsedByListRequest
 */
-func (a *StagesApiService) StagesInvitationInvitationsUsedByList(ctx _context.Context, inviteUuid string) ApiStagesInvitationInvitationsUsedByListRequest {
+func (a *StagesApiService) StagesInvitationInvitationsUsedByList(ctx context.Context, inviteUuid string) ApiStagesInvitationInvitationsUsedByListRequest {
 	return ApiStagesInvitationInvitationsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13063,27 +12913,25 @@ func (a *StagesApiService) StagesInvitationInvitationsUsedByList(ctx _context.Co
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesInvitationInvitationsUsedByListExecute(r ApiStagesInvitationInvitationsUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesInvitationInvitationsUsedByListExecute(r ApiStagesInvitationInvitationsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesInvitationInvitationsUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/invitations/{invite_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", _neturl.PathEscape(parameterToString(r.inviteUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterToString(r.inviteUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -13116,7 +12964,7 @@ func (a *StagesApiService) StagesInvitationInvitationsUsedByListExecute(r ApiSta
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -13126,15 +12974,15 @@ func (a *StagesApiService) StagesInvitationInvitationsUsedByListExecute(r ApiSta
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -13143,7 +12991,7 @@ func (a *StagesApiService) StagesInvitationInvitationsUsedByListExecute(r ApiSta
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -13154,7 +13002,7 @@ func (a *StagesApiService) StagesInvitationInvitationsUsedByListExecute(r ApiSta
 }
 
 type ApiStagesInvitationStagesCreateRequest struct {
-	ctx                    _context.Context
+	ctx                    context.Context
 	ApiService             *StagesApiService
 	invitationStageRequest *InvitationStageRequest
 }
@@ -13164,7 +13012,7 @@ func (r ApiStagesInvitationStagesCreateRequest) InvitationStageRequest(invitatio
 	return r
 }
 
-func (r ApiStagesInvitationStagesCreateRequest) Execute() (InvitationStage, *_nethttp.Response, error) {
+func (r ApiStagesInvitationStagesCreateRequest) Execute() (*InvitationStage, *http.Response, error) {
 	return r.ApiService.StagesInvitationStagesCreateExecute(r)
 }
 
@@ -13173,10 +13021,10 @@ StagesInvitationStagesCreate Method for StagesInvitationStagesCreate
 
 InvitationStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesInvitationStagesCreateRequest
 */
-func (a *StagesApiService) StagesInvitationStagesCreate(ctx _context.Context) ApiStagesInvitationStagesCreateRequest {
+func (a *StagesApiService) StagesInvitationStagesCreate(ctx context.Context) ApiStagesInvitationStagesCreateRequest {
 	return ApiStagesInvitationStagesCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13185,26 +13033,24 @@ func (a *StagesApiService) StagesInvitationStagesCreate(ctx _context.Context) Ap
 
 // Execute executes the request
 //  @return InvitationStage
-func (a *StagesApiService) StagesInvitationStagesCreateExecute(r ApiStagesInvitationStagesCreateRequest) (InvitationStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesInvitationStagesCreateExecute(r ApiStagesInvitationStagesCreateRequest) (*InvitationStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  InvitationStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *InvitationStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesInvitationStagesCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/stages/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.invitationStageRequest == nil {
 		return localVarReturnValue, nil, reportError("invitationStageRequest is required and must be specified")
 	}
@@ -13242,7 +13088,7 @@ func (a *StagesApiService) StagesInvitationStagesCreateExecute(r ApiStagesInvita
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -13252,15 +13098,15 @@ func (a *StagesApiService) StagesInvitationStagesCreateExecute(r ApiStagesInvita
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -13269,7 +13115,7 @@ func (a *StagesApiService) StagesInvitationStagesCreateExecute(r ApiStagesInvita
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -13280,12 +13126,12 @@ func (a *StagesApiService) StagesInvitationStagesCreateExecute(r ApiStagesInvita
 }
 
 type ApiStagesInvitationStagesDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesInvitationStagesDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesInvitationStagesDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesInvitationStagesDestroyExecute(r)
 }
 
@@ -13294,11 +13140,11 @@ StagesInvitationStagesDestroy Method for StagesInvitationStagesDestroy
 
 InvitationStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Invitation Stage.
  @return ApiStagesInvitationStagesDestroyRequest
 */
-func (a *StagesApiService) StagesInvitationStagesDestroy(ctx _context.Context, stageUuid string) ApiStagesInvitationStagesDestroyRequest {
+func (a *StagesApiService) StagesInvitationStagesDestroy(ctx context.Context, stageUuid string) ApiStagesInvitationStagesDestroyRequest {
 	return ApiStagesInvitationStagesDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13307,26 +13153,24 @@ func (a *StagesApiService) StagesInvitationStagesDestroy(ctx _context.Context, s
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesInvitationStagesDestroyExecute(r ApiStagesInvitationStagesDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesInvitationStagesDestroyExecute(r ApiStagesInvitationStagesDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesInvitationStagesDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -13359,7 +13203,7 @@ func (a *StagesApiService) StagesInvitationStagesDestroyExecute(r ApiStagesInvit
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -13369,15 +13213,15 @@ func (a *StagesApiService) StagesInvitationStagesDestroyExecute(r ApiStagesInvit
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -13388,7 +13232,7 @@ func (a *StagesApiService) StagesInvitationStagesDestroyExecute(r ApiStagesInvit
 }
 
 type ApiStagesInvitationStagesListRequest struct {
-	ctx                           _context.Context
+	ctx                           context.Context
 	ApiService                    *StagesApiService
 	continueFlowWithoutInvitation *bool
 	name                          *string
@@ -13404,10 +13248,12 @@ func (r ApiStagesInvitationStagesListRequest) ContinueFlowWithoutInvitation(cont
 	r.continueFlowWithoutInvitation = &continueFlowWithoutInvitation
 	return r
 }
+
 func (r ApiStagesInvitationStagesListRequest) Name(name string) ApiStagesInvitationStagesListRequest {
 	r.name = &name
 	return r
 }
+
 func (r ApiStagesInvitationStagesListRequest) NoFlows(noFlows bool) ApiStagesInvitationStagesListRequest {
 	r.noFlows = &noFlows
 	return r
@@ -13436,12 +13282,13 @@ func (r ApiStagesInvitationStagesListRequest) Search(search string) ApiStagesInv
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesInvitationStagesListRequest) StageUuid(stageUuid string) ApiStagesInvitationStagesListRequest {
 	r.stageUuid = &stageUuid
 	return r
 }
 
-func (r ApiStagesInvitationStagesListRequest) Execute() (PaginatedInvitationStageList, *_nethttp.Response, error) {
+func (r ApiStagesInvitationStagesListRequest) Execute() (*PaginatedInvitationStageList, *http.Response, error) {
 	return r.ApiService.StagesInvitationStagesListExecute(r)
 }
 
@@ -13450,10 +13297,10 @@ StagesInvitationStagesList Method for StagesInvitationStagesList
 
 InvitationStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesInvitationStagesListRequest
 */
-func (a *StagesApiService) StagesInvitationStagesList(ctx _context.Context) ApiStagesInvitationStagesListRequest {
+func (a *StagesApiService) StagesInvitationStagesList(ctx context.Context) ApiStagesInvitationStagesListRequest {
 	return ApiStagesInvitationStagesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13462,26 +13309,24 @@ func (a *StagesApiService) StagesInvitationStagesList(ctx _context.Context) ApiS
 
 // Execute executes the request
 //  @return PaginatedInvitationStageList
-func (a *StagesApiService) StagesInvitationStagesListExecute(r ApiStagesInvitationStagesListRequest) (PaginatedInvitationStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesInvitationStagesListExecute(r ApiStagesInvitationStagesListRequest) (*PaginatedInvitationStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedInvitationStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedInvitationStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesInvitationStagesList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/stages/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.continueFlowWithoutInvitation != nil {
 		localVarQueryParams.Add("continue_flow_without_invitation", parameterToString(*r.continueFlowWithoutInvitation, ""))
@@ -13538,7 +13383,7 @@ func (a *StagesApiService) StagesInvitationStagesListExecute(r ApiStagesInvitati
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -13548,15 +13393,15 @@ func (a *StagesApiService) StagesInvitationStagesListExecute(r ApiStagesInvitati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -13565,7 +13410,7 @@ func (a *StagesApiService) StagesInvitationStagesListExecute(r ApiStagesInvitati
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -13576,7 +13421,7 @@ func (a *StagesApiService) StagesInvitationStagesListExecute(r ApiStagesInvitati
 }
 
 type ApiStagesInvitationStagesPartialUpdateRequest struct {
-	ctx                           _context.Context
+	ctx                           context.Context
 	ApiService                    *StagesApiService
 	stageUuid                     string
 	patchedInvitationStageRequest *PatchedInvitationStageRequest
@@ -13587,7 +13432,7 @@ func (r ApiStagesInvitationStagesPartialUpdateRequest) PatchedInvitationStageReq
 	return r
 }
 
-func (r ApiStagesInvitationStagesPartialUpdateRequest) Execute() (InvitationStage, *_nethttp.Response, error) {
+func (r ApiStagesInvitationStagesPartialUpdateRequest) Execute() (*InvitationStage, *http.Response, error) {
 	return r.ApiService.StagesInvitationStagesPartialUpdateExecute(r)
 }
 
@@ -13596,11 +13441,11 @@ StagesInvitationStagesPartialUpdate Method for StagesInvitationStagesPartialUpda
 
 InvitationStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Invitation Stage.
  @return ApiStagesInvitationStagesPartialUpdateRequest
 */
-func (a *StagesApiService) StagesInvitationStagesPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesInvitationStagesPartialUpdateRequest {
+func (a *StagesApiService) StagesInvitationStagesPartialUpdate(ctx context.Context, stageUuid string) ApiStagesInvitationStagesPartialUpdateRequest {
 	return ApiStagesInvitationStagesPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13610,27 +13455,25 @@ func (a *StagesApiService) StagesInvitationStagesPartialUpdate(ctx _context.Cont
 
 // Execute executes the request
 //  @return InvitationStage
-func (a *StagesApiService) StagesInvitationStagesPartialUpdateExecute(r ApiStagesInvitationStagesPartialUpdateRequest) (InvitationStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesInvitationStagesPartialUpdateExecute(r ApiStagesInvitationStagesPartialUpdateRequest) (*InvitationStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  InvitationStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *InvitationStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesInvitationStagesPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -13665,7 +13508,7 @@ func (a *StagesApiService) StagesInvitationStagesPartialUpdateExecute(r ApiStage
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -13675,15 +13518,15 @@ func (a *StagesApiService) StagesInvitationStagesPartialUpdateExecute(r ApiStage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -13692,7 +13535,7 @@ func (a *StagesApiService) StagesInvitationStagesPartialUpdateExecute(r ApiStage
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -13703,12 +13546,12 @@ func (a *StagesApiService) StagesInvitationStagesPartialUpdateExecute(r ApiStage
 }
 
 type ApiStagesInvitationStagesRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesInvitationStagesRetrieveRequest) Execute() (InvitationStage, *_nethttp.Response, error) {
+func (r ApiStagesInvitationStagesRetrieveRequest) Execute() (*InvitationStage, *http.Response, error) {
 	return r.ApiService.StagesInvitationStagesRetrieveExecute(r)
 }
 
@@ -13717,11 +13560,11 @@ StagesInvitationStagesRetrieve Method for StagesInvitationStagesRetrieve
 
 InvitationStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Invitation Stage.
  @return ApiStagesInvitationStagesRetrieveRequest
 */
-func (a *StagesApiService) StagesInvitationStagesRetrieve(ctx _context.Context, stageUuid string) ApiStagesInvitationStagesRetrieveRequest {
+func (a *StagesApiService) StagesInvitationStagesRetrieve(ctx context.Context, stageUuid string) ApiStagesInvitationStagesRetrieveRequest {
 	return ApiStagesInvitationStagesRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13731,27 +13574,25 @@ func (a *StagesApiService) StagesInvitationStagesRetrieve(ctx _context.Context, 
 
 // Execute executes the request
 //  @return InvitationStage
-func (a *StagesApiService) StagesInvitationStagesRetrieveExecute(r ApiStagesInvitationStagesRetrieveRequest) (InvitationStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesInvitationStagesRetrieveExecute(r ApiStagesInvitationStagesRetrieveRequest) (*InvitationStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  InvitationStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *InvitationStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesInvitationStagesRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -13784,7 +13625,7 @@ func (a *StagesApiService) StagesInvitationStagesRetrieveExecute(r ApiStagesInvi
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -13794,15 +13635,15 @@ func (a *StagesApiService) StagesInvitationStagesRetrieveExecute(r ApiStagesInvi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -13811,7 +13652,7 @@ func (a *StagesApiService) StagesInvitationStagesRetrieveExecute(r ApiStagesInvi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -13822,7 +13663,7 @@ func (a *StagesApiService) StagesInvitationStagesRetrieveExecute(r ApiStagesInvi
 }
 
 type ApiStagesInvitationStagesUpdateRequest struct {
-	ctx                    _context.Context
+	ctx                    context.Context
 	ApiService             *StagesApiService
 	stageUuid              string
 	invitationStageRequest *InvitationStageRequest
@@ -13833,7 +13674,7 @@ func (r ApiStagesInvitationStagesUpdateRequest) InvitationStageRequest(invitatio
 	return r
 }
 
-func (r ApiStagesInvitationStagesUpdateRequest) Execute() (InvitationStage, *_nethttp.Response, error) {
+func (r ApiStagesInvitationStagesUpdateRequest) Execute() (*InvitationStage, *http.Response, error) {
 	return r.ApiService.StagesInvitationStagesUpdateExecute(r)
 }
 
@@ -13842,11 +13683,11 @@ StagesInvitationStagesUpdate Method for StagesInvitationStagesUpdate
 
 InvitationStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Invitation Stage.
  @return ApiStagesInvitationStagesUpdateRequest
 */
-func (a *StagesApiService) StagesInvitationStagesUpdate(ctx _context.Context, stageUuid string) ApiStagesInvitationStagesUpdateRequest {
+func (a *StagesApiService) StagesInvitationStagesUpdate(ctx context.Context, stageUuid string) ApiStagesInvitationStagesUpdateRequest {
 	return ApiStagesInvitationStagesUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13856,27 +13697,25 @@ func (a *StagesApiService) StagesInvitationStagesUpdate(ctx _context.Context, st
 
 // Execute executes the request
 //  @return InvitationStage
-func (a *StagesApiService) StagesInvitationStagesUpdateExecute(r ApiStagesInvitationStagesUpdateRequest) (InvitationStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesInvitationStagesUpdateExecute(r ApiStagesInvitationStagesUpdateRequest) (*InvitationStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  InvitationStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *InvitationStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesInvitationStagesUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.invitationStageRequest == nil {
 		return localVarReturnValue, nil, reportError("invitationStageRequest is required and must be specified")
 	}
@@ -13914,7 +13753,7 @@ func (a *StagesApiService) StagesInvitationStagesUpdateExecute(r ApiStagesInvita
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -13924,15 +13763,15 @@ func (a *StagesApiService) StagesInvitationStagesUpdateExecute(r ApiStagesInvita
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -13941,7 +13780,7 @@ func (a *StagesApiService) StagesInvitationStagesUpdateExecute(r ApiStagesInvita
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -13952,12 +13791,12 @@ func (a *StagesApiService) StagesInvitationStagesUpdateExecute(r ApiStagesInvita
 }
 
 type ApiStagesInvitationStagesUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesInvitationStagesUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesInvitationStagesUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesInvitationStagesUsedByListExecute(r)
 }
 
@@ -13966,11 +13805,11 @@ StagesInvitationStagesUsedByList Method for StagesInvitationStagesUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Invitation Stage.
  @return ApiStagesInvitationStagesUsedByListRequest
 */
-func (a *StagesApiService) StagesInvitationStagesUsedByList(ctx _context.Context, stageUuid string) ApiStagesInvitationStagesUsedByListRequest {
+func (a *StagesApiService) StagesInvitationStagesUsedByList(ctx context.Context, stageUuid string) ApiStagesInvitationStagesUsedByListRequest {
 	return ApiStagesInvitationStagesUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13980,27 +13819,25 @@ func (a *StagesApiService) StagesInvitationStagesUsedByList(ctx _context.Context
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesInvitationStagesUsedByListExecute(r ApiStagesInvitationStagesUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesInvitationStagesUsedByListExecute(r ApiStagesInvitationStagesUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesInvitationStagesUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/stages/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -14033,7 +13870,7 @@ func (a *StagesApiService) StagesInvitationStagesUsedByListExecute(r ApiStagesIn
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -14043,15 +13880,15 @@ func (a *StagesApiService) StagesInvitationStagesUsedByListExecute(r ApiStagesIn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -14060,7 +13897,7 @@ func (a *StagesApiService) StagesInvitationStagesUsedByListExecute(r ApiStagesIn
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -14071,7 +13908,7 @@ func (a *StagesApiService) StagesInvitationStagesUsedByListExecute(r ApiStagesIn
 }
 
 type ApiStagesPasswordCreateRequest struct {
-	ctx                  _context.Context
+	ctx                  context.Context
 	ApiService           *StagesApiService
 	passwordStageRequest *PasswordStageRequest
 }
@@ -14081,7 +13918,7 @@ func (r ApiStagesPasswordCreateRequest) PasswordStageRequest(passwordStageReques
 	return r
 }
 
-func (r ApiStagesPasswordCreateRequest) Execute() (PasswordStage, *_nethttp.Response, error) {
+func (r ApiStagesPasswordCreateRequest) Execute() (*PasswordStage, *http.Response, error) {
 	return r.ApiService.StagesPasswordCreateExecute(r)
 }
 
@@ -14090,10 +13927,10 @@ StagesPasswordCreate Method for StagesPasswordCreate
 
 PasswordStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesPasswordCreateRequest
 */
-func (a *StagesApiService) StagesPasswordCreate(ctx _context.Context) ApiStagesPasswordCreateRequest {
+func (a *StagesApiService) StagesPasswordCreate(ctx context.Context) ApiStagesPasswordCreateRequest {
 	return ApiStagesPasswordCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14102,26 +13939,24 @@ func (a *StagesApiService) StagesPasswordCreate(ctx _context.Context) ApiStagesP
 
 // Execute executes the request
 //  @return PasswordStage
-func (a *StagesApiService) StagesPasswordCreateExecute(r ApiStagesPasswordCreateRequest) (PasswordStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPasswordCreateExecute(r ApiStagesPasswordCreateRequest) (*PasswordStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PasswordStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PasswordStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPasswordCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/password/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.passwordStageRequest == nil {
 		return localVarReturnValue, nil, reportError("passwordStageRequest is required and must be specified")
 	}
@@ -14159,7 +13994,7 @@ func (a *StagesApiService) StagesPasswordCreateExecute(r ApiStagesPasswordCreate
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -14169,15 +14004,15 @@ func (a *StagesApiService) StagesPasswordCreateExecute(r ApiStagesPasswordCreate
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -14186,7 +14021,7 @@ func (a *StagesApiService) StagesPasswordCreateExecute(r ApiStagesPasswordCreate
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -14197,12 +14032,12 @@ func (a *StagesApiService) StagesPasswordCreateExecute(r ApiStagesPasswordCreate
 }
 
 type ApiStagesPasswordDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesPasswordDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesPasswordDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesPasswordDestroyExecute(r)
 }
 
@@ -14211,11 +14046,11 @@ StagesPasswordDestroy Method for StagesPasswordDestroy
 
 PasswordStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Password Stage.
  @return ApiStagesPasswordDestroyRequest
 */
-func (a *StagesApiService) StagesPasswordDestroy(ctx _context.Context, stageUuid string) ApiStagesPasswordDestroyRequest {
+func (a *StagesApiService) StagesPasswordDestroy(ctx context.Context, stageUuid string) ApiStagesPasswordDestroyRequest {
 	return ApiStagesPasswordDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14224,26 +14059,24 @@ func (a *StagesApiService) StagesPasswordDestroy(ctx _context.Context, stageUuid
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesPasswordDestroyExecute(r ApiStagesPasswordDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesPasswordDestroyExecute(r ApiStagesPasswordDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPasswordDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/password/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -14276,7 +14109,7 @@ func (a *StagesApiService) StagesPasswordDestroyExecute(r ApiStagesPasswordDestr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -14286,15 +14119,15 @@ func (a *StagesApiService) StagesPasswordDestroyExecute(r ApiStagesPasswordDestr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -14305,7 +14138,7 @@ func (a *StagesApiService) StagesPasswordDestroyExecute(r ApiStagesPasswordDestr
 }
 
 type ApiStagesPasswordListRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *StagesApiService
 	configureFlow              *string
 	failedAttemptsBeforeCancel *int32
@@ -14320,10 +14153,12 @@ func (r ApiStagesPasswordListRequest) ConfigureFlow(configureFlow string) ApiSta
 	r.configureFlow = &configureFlow
 	return r
 }
+
 func (r ApiStagesPasswordListRequest) FailedAttemptsBeforeCancel(failedAttemptsBeforeCancel int32) ApiStagesPasswordListRequest {
 	r.failedAttemptsBeforeCancel = &failedAttemptsBeforeCancel
 	return r
 }
+
 func (r ApiStagesPasswordListRequest) Name(name string) ApiStagesPasswordListRequest {
 	r.name = &name
 	return r
@@ -14353,7 +14188,7 @@ func (r ApiStagesPasswordListRequest) Search(search string) ApiStagesPasswordLis
 	return r
 }
 
-func (r ApiStagesPasswordListRequest) Execute() (PaginatedPasswordStageList, *_nethttp.Response, error) {
+func (r ApiStagesPasswordListRequest) Execute() (*PaginatedPasswordStageList, *http.Response, error) {
 	return r.ApiService.StagesPasswordListExecute(r)
 }
 
@@ -14362,10 +14197,10 @@ StagesPasswordList Method for StagesPasswordList
 
 PasswordStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesPasswordListRequest
 */
-func (a *StagesApiService) StagesPasswordList(ctx _context.Context) ApiStagesPasswordListRequest {
+func (a *StagesApiService) StagesPasswordList(ctx context.Context) ApiStagesPasswordListRequest {
 	return ApiStagesPasswordListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14374,26 +14209,24 @@ func (a *StagesApiService) StagesPasswordList(ctx _context.Context) ApiStagesPas
 
 // Execute executes the request
 //  @return PaginatedPasswordStageList
-func (a *StagesApiService) StagesPasswordListExecute(r ApiStagesPasswordListRequest) (PaginatedPasswordStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPasswordListExecute(r ApiStagesPasswordListRequest) (*PaginatedPasswordStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedPasswordStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedPasswordStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPasswordList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/password/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.configureFlow != nil {
 		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
@@ -14447,7 +14280,7 @@ func (a *StagesApiService) StagesPasswordListExecute(r ApiStagesPasswordListRequ
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -14457,15 +14290,15 @@ func (a *StagesApiService) StagesPasswordListExecute(r ApiStagesPasswordListRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -14474,7 +14307,7 @@ func (a *StagesApiService) StagesPasswordListExecute(r ApiStagesPasswordListRequ
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -14485,7 +14318,7 @@ func (a *StagesApiService) StagesPasswordListExecute(r ApiStagesPasswordListRequ
 }
 
 type ApiStagesPasswordPartialUpdateRequest struct {
-	ctx                         _context.Context
+	ctx                         context.Context
 	ApiService                  *StagesApiService
 	stageUuid                   string
 	patchedPasswordStageRequest *PatchedPasswordStageRequest
@@ -14496,7 +14329,7 @@ func (r ApiStagesPasswordPartialUpdateRequest) PatchedPasswordStageRequest(patch
 	return r
 }
 
-func (r ApiStagesPasswordPartialUpdateRequest) Execute() (PasswordStage, *_nethttp.Response, error) {
+func (r ApiStagesPasswordPartialUpdateRequest) Execute() (*PasswordStage, *http.Response, error) {
 	return r.ApiService.StagesPasswordPartialUpdateExecute(r)
 }
 
@@ -14505,11 +14338,11 @@ StagesPasswordPartialUpdate Method for StagesPasswordPartialUpdate
 
 PasswordStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Password Stage.
  @return ApiStagesPasswordPartialUpdateRequest
 */
-func (a *StagesApiService) StagesPasswordPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesPasswordPartialUpdateRequest {
+func (a *StagesApiService) StagesPasswordPartialUpdate(ctx context.Context, stageUuid string) ApiStagesPasswordPartialUpdateRequest {
 	return ApiStagesPasswordPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14519,27 +14352,25 @@ func (a *StagesApiService) StagesPasswordPartialUpdate(ctx _context.Context, sta
 
 // Execute executes the request
 //  @return PasswordStage
-func (a *StagesApiService) StagesPasswordPartialUpdateExecute(r ApiStagesPasswordPartialUpdateRequest) (PasswordStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPasswordPartialUpdateExecute(r ApiStagesPasswordPartialUpdateRequest) (*PasswordStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PasswordStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PasswordStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPasswordPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/password/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -14574,7 +14405,7 @@ func (a *StagesApiService) StagesPasswordPartialUpdateExecute(r ApiStagesPasswor
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -14584,15 +14415,15 @@ func (a *StagesApiService) StagesPasswordPartialUpdateExecute(r ApiStagesPasswor
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -14601,7 +14432,7 @@ func (a *StagesApiService) StagesPasswordPartialUpdateExecute(r ApiStagesPasswor
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -14612,12 +14443,12 @@ func (a *StagesApiService) StagesPasswordPartialUpdateExecute(r ApiStagesPasswor
 }
 
 type ApiStagesPasswordRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesPasswordRetrieveRequest) Execute() (PasswordStage, *_nethttp.Response, error) {
+func (r ApiStagesPasswordRetrieveRequest) Execute() (*PasswordStage, *http.Response, error) {
 	return r.ApiService.StagesPasswordRetrieveExecute(r)
 }
 
@@ -14626,11 +14457,11 @@ StagesPasswordRetrieve Method for StagesPasswordRetrieve
 
 PasswordStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Password Stage.
  @return ApiStagesPasswordRetrieveRequest
 */
-func (a *StagesApiService) StagesPasswordRetrieve(ctx _context.Context, stageUuid string) ApiStagesPasswordRetrieveRequest {
+func (a *StagesApiService) StagesPasswordRetrieve(ctx context.Context, stageUuid string) ApiStagesPasswordRetrieveRequest {
 	return ApiStagesPasswordRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14640,27 +14471,25 @@ func (a *StagesApiService) StagesPasswordRetrieve(ctx _context.Context, stageUui
 
 // Execute executes the request
 //  @return PasswordStage
-func (a *StagesApiService) StagesPasswordRetrieveExecute(r ApiStagesPasswordRetrieveRequest) (PasswordStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPasswordRetrieveExecute(r ApiStagesPasswordRetrieveRequest) (*PasswordStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PasswordStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PasswordStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPasswordRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/password/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -14693,7 +14522,7 @@ func (a *StagesApiService) StagesPasswordRetrieveExecute(r ApiStagesPasswordRetr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -14703,15 +14532,15 @@ func (a *StagesApiService) StagesPasswordRetrieveExecute(r ApiStagesPasswordRetr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -14720,7 +14549,7 @@ func (a *StagesApiService) StagesPasswordRetrieveExecute(r ApiStagesPasswordRetr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -14731,7 +14560,7 @@ func (a *StagesApiService) StagesPasswordRetrieveExecute(r ApiStagesPasswordRetr
 }
 
 type ApiStagesPasswordUpdateRequest struct {
-	ctx                  _context.Context
+	ctx                  context.Context
 	ApiService           *StagesApiService
 	stageUuid            string
 	passwordStageRequest *PasswordStageRequest
@@ -14742,7 +14571,7 @@ func (r ApiStagesPasswordUpdateRequest) PasswordStageRequest(passwordStageReques
 	return r
 }
 
-func (r ApiStagesPasswordUpdateRequest) Execute() (PasswordStage, *_nethttp.Response, error) {
+func (r ApiStagesPasswordUpdateRequest) Execute() (*PasswordStage, *http.Response, error) {
 	return r.ApiService.StagesPasswordUpdateExecute(r)
 }
 
@@ -14751,11 +14580,11 @@ StagesPasswordUpdate Method for StagesPasswordUpdate
 
 PasswordStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Password Stage.
  @return ApiStagesPasswordUpdateRequest
 */
-func (a *StagesApiService) StagesPasswordUpdate(ctx _context.Context, stageUuid string) ApiStagesPasswordUpdateRequest {
+func (a *StagesApiService) StagesPasswordUpdate(ctx context.Context, stageUuid string) ApiStagesPasswordUpdateRequest {
 	return ApiStagesPasswordUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14765,27 +14594,25 @@ func (a *StagesApiService) StagesPasswordUpdate(ctx _context.Context, stageUuid 
 
 // Execute executes the request
 //  @return PasswordStage
-func (a *StagesApiService) StagesPasswordUpdateExecute(r ApiStagesPasswordUpdateRequest) (PasswordStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPasswordUpdateExecute(r ApiStagesPasswordUpdateRequest) (*PasswordStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PasswordStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PasswordStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPasswordUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/password/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.passwordStageRequest == nil {
 		return localVarReturnValue, nil, reportError("passwordStageRequest is required and must be specified")
 	}
@@ -14823,7 +14650,7 @@ func (a *StagesApiService) StagesPasswordUpdateExecute(r ApiStagesPasswordUpdate
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -14833,15 +14660,15 @@ func (a *StagesApiService) StagesPasswordUpdateExecute(r ApiStagesPasswordUpdate
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -14850,7 +14677,7 @@ func (a *StagesApiService) StagesPasswordUpdateExecute(r ApiStagesPasswordUpdate
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -14861,12 +14688,12 @@ func (a *StagesApiService) StagesPasswordUpdateExecute(r ApiStagesPasswordUpdate
 }
 
 type ApiStagesPasswordUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesPasswordUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesPasswordUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesPasswordUsedByListExecute(r)
 }
 
@@ -14875,11 +14702,11 @@ StagesPasswordUsedByList Method for StagesPasswordUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Password Stage.
  @return ApiStagesPasswordUsedByListRequest
 */
-func (a *StagesApiService) StagesPasswordUsedByList(ctx _context.Context, stageUuid string) ApiStagesPasswordUsedByListRequest {
+func (a *StagesApiService) StagesPasswordUsedByList(ctx context.Context, stageUuid string) ApiStagesPasswordUsedByListRequest {
 	return ApiStagesPasswordUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14889,27 +14716,25 @@ func (a *StagesApiService) StagesPasswordUsedByList(ctx _context.Context, stageU
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesPasswordUsedByListExecute(r ApiStagesPasswordUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPasswordUsedByListExecute(r ApiStagesPasswordUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPasswordUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/password/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -14942,7 +14767,7 @@ func (a *StagesApiService) StagesPasswordUsedByListExecute(r ApiStagesPasswordUs
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -14952,15 +14777,15 @@ func (a *StagesApiService) StagesPasswordUsedByListExecute(r ApiStagesPasswordUs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -14969,7 +14794,7 @@ func (a *StagesApiService) StagesPasswordUsedByListExecute(r ApiStagesPasswordUs
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -14980,7 +14805,7 @@ func (a *StagesApiService) StagesPasswordUsedByListExecute(r ApiStagesPasswordUs
 }
 
 type ApiStagesPromptPromptsCreateRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *StagesApiService
 	promptRequest *PromptRequest
 }
@@ -14990,7 +14815,7 @@ func (r ApiStagesPromptPromptsCreateRequest) PromptRequest(promptRequest PromptR
 	return r
 }
 
-func (r ApiStagesPromptPromptsCreateRequest) Execute() (Prompt, *_nethttp.Response, error) {
+func (r ApiStagesPromptPromptsCreateRequest) Execute() (*Prompt, *http.Response, error) {
 	return r.ApiService.StagesPromptPromptsCreateExecute(r)
 }
 
@@ -14999,10 +14824,10 @@ StagesPromptPromptsCreate Method for StagesPromptPromptsCreate
 
 Prompt Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesPromptPromptsCreateRequest
 */
-func (a *StagesApiService) StagesPromptPromptsCreate(ctx _context.Context) ApiStagesPromptPromptsCreateRequest {
+func (a *StagesApiService) StagesPromptPromptsCreate(ctx context.Context) ApiStagesPromptPromptsCreateRequest {
 	return ApiStagesPromptPromptsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15011,26 +14836,24 @@ func (a *StagesApiService) StagesPromptPromptsCreate(ctx _context.Context) ApiSt
 
 // Execute executes the request
 //  @return Prompt
-func (a *StagesApiService) StagesPromptPromptsCreateExecute(r ApiStagesPromptPromptsCreateRequest) (Prompt, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPromptPromptsCreateExecute(r ApiStagesPromptPromptsCreateRequest) (*Prompt, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Prompt
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Prompt
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPromptPromptsCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/prompts/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.promptRequest == nil {
 		return localVarReturnValue, nil, reportError("promptRequest is required and must be specified")
 	}
@@ -15068,7 +14891,7 @@ func (a *StagesApiService) StagesPromptPromptsCreateExecute(r ApiStagesPromptPro
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -15078,15 +14901,15 @@ func (a *StagesApiService) StagesPromptPromptsCreateExecute(r ApiStagesPromptPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -15095,7 +14918,7 @@ func (a *StagesApiService) StagesPromptPromptsCreateExecute(r ApiStagesPromptPro
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -15106,12 +14929,12 @@ func (a *StagesApiService) StagesPromptPromptsCreateExecute(r ApiStagesPromptPro
 }
 
 type ApiStagesPromptPromptsDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	promptUuid string
 }
 
-func (r ApiStagesPromptPromptsDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesPromptPromptsDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesPromptPromptsDestroyExecute(r)
 }
 
@@ -15120,11 +14943,11 @@ StagesPromptPromptsDestroy Method for StagesPromptPromptsDestroy
 
 Prompt Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param promptUuid A UUID string identifying this Prompt.
  @return ApiStagesPromptPromptsDestroyRequest
 */
-func (a *StagesApiService) StagesPromptPromptsDestroy(ctx _context.Context, promptUuid string) ApiStagesPromptPromptsDestroyRequest {
+func (a *StagesApiService) StagesPromptPromptsDestroy(ctx context.Context, promptUuid string) ApiStagesPromptPromptsDestroyRequest {
 	return ApiStagesPromptPromptsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15133,26 +14956,24 @@ func (a *StagesApiService) StagesPromptPromptsDestroy(ctx _context.Context, prom
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesPromptPromptsDestroyExecute(r ApiStagesPromptPromptsDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesPromptPromptsDestroyExecute(r ApiStagesPromptPromptsDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPromptPromptsDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/prompts/{prompt_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", _neturl.PathEscape(parameterToString(r.promptUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterToString(r.promptUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -15185,7 +15006,7 @@ func (a *StagesApiService) StagesPromptPromptsDestroyExecute(r ApiStagesPromptPr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -15195,15 +15016,15 @@ func (a *StagesApiService) StagesPromptPromptsDestroyExecute(r ApiStagesPromptPr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -15214,7 +15035,7 @@ func (a *StagesApiService) StagesPromptPromptsDestroyExecute(r ApiStagesPromptPr
 }
 
 type ApiStagesPromptPromptsListRequest struct {
-	ctx         _context.Context
+	ctx         context.Context
 	ApiService  *StagesApiService
 	fieldKey    *string
 	label       *string
@@ -15230,6 +15051,7 @@ func (r ApiStagesPromptPromptsListRequest) FieldKey(fieldKey string) ApiStagesPr
 	r.fieldKey = &fieldKey
 	return r
 }
+
 func (r ApiStagesPromptPromptsListRequest) Label(label string) ApiStagesPromptPromptsListRequest {
 	r.label = &label
 	return r
@@ -15252,6 +15074,7 @@ func (r ApiStagesPromptPromptsListRequest) PageSize(pageSize int32) ApiStagesPro
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiStagesPromptPromptsListRequest) Placeholder(placeholder string) ApiStagesPromptPromptsListRequest {
 	r.placeholder = &placeholder
 	return r
@@ -15262,12 +15085,13 @@ func (r ApiStagesPromptPromptsListRequest) Search(search string) ApiStagesPrompt
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesPromptPromptsListRequest) Type_(type_ string) ApiStagesPromptPromptsListRequest {
 	r.type_ = &type_
 	return r
 }
 
-func (r ApiStagesPromptPromptsListRequest) Execute() (PaginatedPromptList, *_nethttp.Response, error) {
+func (r ApiStagesPromptPromptsListRequest) Execute() (*PaginatedPromptList, *http.Response, error) {
 	return r.ApiService.StagesPromptPromptsListExecute(r)
 }
 
@@ -15276,10 +15100,10 @@ StagesPromptPromptsList Method for StagesPromptPromptsList
 
 Prompt Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesPromptPromptsListRequest
 */
-func (a *StagesApiService) StagesPromptPromptsList(ctx _context.Context) ApiStagesPromptPromptsListRequest {
+func (a *StagesApiService) StagesPromptPromptsList(ctx context.Context) ApiStagesPromptPromptsListRequest {
 	return ApiStagesPromptPromptsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15288,26 +15112,24 @@ func (a *StagesApiService) StagesPromptPromptsList(ctx _context.Context) ApiStag
 
 // Execute executes the request
 //  @return PaginatedPromptList
-func (a *StagesApiService) StagesPromptPromptsListExecute(r ApiStagesPromptPromptsListRequest) (PaginatedPromptList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPromptPromptsListExecute(r ApiStagesPromptPromptsListRequest) (*PaginatedPromptList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedPromptList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedPromptList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPromptPromptsList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/prompts/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.fieldKey != nil {
 		localVarQueryParams.Add("field_key", parameterToString(*r.fieldKey, ""))
@@ -15364,7 +15186,7 @@ func (a *StagesApiService) StagesPromptPromptsListExecute(r ApiStagesPromptPromp
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -15374,15 +15196,15 @@ func (a *StagesApiService) StagesPromptPromptsListExecute(r ApiStagesPromptPromp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -15391,7 +15213,7 @@ func (a *StagesApiService) StagesPromptPromptsListExecute(r ApiStagesPromptPromp
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -15402,7 +15224,7 @@ func (a *StagesApiService) StagesPromptPromptsListExecute(r ApiStagesPromptPromp
 }
 
 type ApiStagesPromptPromptsPartialUpdateRequest struct {
-	ctx                  _context.Context
+	ctx                  context.Context
 	ApiService           *StagesApiService
 	promptUuid           string
 	patchedPromptRequest *PatchedPromptRequest
@@ -15413,7 +15235,7 @@ func (r ApiStagesPromptPromptsPartialUpdateRequest) PatchedPromptRequest(patched
 	return r
 }
 
-func (r ApiStagesPromptPromptsPartialUpdateRequest) Execute() (Prompt, *_nethttp.Response, error) {
+func (r ApiStagesPromptPromptsPartialUpdateRequest) Execute() (*Prompt, *http.Response, error) {
 	return r.ApiService.StagesPromptPromptsPartialUpdateExecute(r)
 }
 
@@ -15422,11 +15244,11 @@ StagesPromptPromptsPartialUpdate Method for StagesPromptPromptsPartialUpdate
 
 Prompt Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param promptUuid A UUID string identifying this Prompt.
  @return ApiStagesPromptPromptsPartialUpdateRequest
 */
-func (a *StagesApiService) StagesPromptPromptsPartialUpdate(ctx _context.Context, promptUuid string) ApiStagesPromptPromptsPartialUpdateRequest {
+func (a *StagesApiService) StagesPromptPromptsPartialUpdate(ctx context.Context, promptUuid string) ApiStagesPromptPromptsPartialUpdateRequest {
 	return ApiStagesPromptPromptsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15436,27 +15258,25 @@ func (a *StagesApiService) StagesPromptPromptsPartialUpdate(ctx _context.Context
 
 // Execute executes the request
 //  @return Prompt
-func (a *StagesApiService) StagesPromptPromptsPartialUpdateExecute(r ApiStagesPromptPromptsPartialUpdateRequest) (Prompt, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPromptPromptsPartialUpdateExecute(r ApiStagesPromptPromptsPartialUpdateRequest) (*Prompt, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Prompt
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Prompt
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPromptPromptsPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/prompts/{prompt_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", _neturl.PathEscape(parameterToString(r.promptUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterToString(r.promptUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -15491,7 +15311,7 @@ func (a *StagesApiService) StagesPromptPromptsPartialUpdateExecute(r ApiStagesPr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -15501,15 +15321,15 @@ func (a *StagesApiService) StagesPromptPromptsPartialUpdateExecute(r ApiStagesPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -15518,7 +15338,7 @@ func (a *StagesApiService) StagesPromptPromptsPartialUpdateExecute(r ApiStagesPr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -15529,12 +15349,12 @@ func (a *StagesApiService) StagesPromptPromptsPartialUpdateExecute(r ApiStagesPr
 }
 
 type ApiStagesPromptPromptsRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	promptUuid string
 }
 
-func (r ApiStagesPromptPromptsRetrieveRequest) Execute() (Prompt, *_nethttp.Response, error) {
+func (r ApiStagesPromptPromptsRetrieveRequest) Execute() (*Prompt, *http.Response, error) {
 	return r.ApiService.StagesPromptPromptsRetrieveExecute(r)
 }
 
@@ -15543,11 +15363,11 @@ StagesPromptPromptsRetrieve Method for StagesPromptPromptsRetrieve
 
 Prompt Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param promptUuid A UUID string identifying this Prompt.
  @return ApiStagesPromptPromptsRetrieveRequest
 */
-func (a *StagesApiService) StagesPromptPromptsRetrieve(ctx _context.Context, promptUuid string) ApiStagesPromptPromptsRetrieveRequest {
+func (a *StagesApiService) StagesPromptPromptsRetrieve(ctx context.Context, promptUuid string) ApiStagesPromptPromptsRetrieveRequest {
 	return ApiStagesPromptPromptsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15557,27 +15377,25 @@ func (a *StagesApiService) StagesPromptPromptsRetrieve(ctx _context.Context, pro
 
 // Execute executes the request
 //  @return Prompt
-func (a *StagesApiService) StagesPromptPromptsRetrieveExecute(r ApiStagesPromptPromptsRetrieveRequest) (Prompt, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPromptPromptsRetrieveExecute(r ApiStagesPromptPromptsRetrieveRequest) (*Prompt, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Prompt
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Prompt
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPromptPromptsRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/prompts/{prompt_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", _neturl.PathEscape(parameterToString(r.promptUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterToString(r.promptUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -15610,7 +15428,7 @@ func (a *StagesApiService) StagesPromptPromptsRetrieveExecute(r ApiStagesPromptP
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -15620,15 +15438,15 @@ func (a *StagesApiService) StagesPromptPromptsRetrieveExecute(r ApiStagesPromptP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -15637,7 +15455,7 @@ func (a *StagesApiService) StagesPromptPromptsRetrieveExecute(r ApiStagesPromptP
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -15648,7 +15466,7 @@ func (a *StagesApiService) StagesPromptPromptsRetrieveExecute(r ApiStagesPromptP
 }
 
 type ApiStagesPromptPromptsUpdateRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *StagesApiService
 	promptUuid    string
 	promptRequest *PromptRequest
@@ -15659,7 +15477,7 @@ func (r ApiStagesPromptPromptsUpdateRequest) PromptRequest(promptRequest PromptR
 	return r
 }
 
-func (r ApiStagesPromptPromptsUpdateRequest) Execute() (Prompt, *_nethttp.Response, error) {
+func (r ApiStagesPromptPromptsUpdateRequest) Execute() (*Prompt, *http.Response, error) {
 	return r.ApiService.StagesPromptPromptsUpdateExecute(r)
 }
 
@@ -15668,11 +15486,11 @@ StagesPromptPromptsUpdate Method for StagesPromptPromptsUpdate
 
 Prompt Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param promptUuid A UUID string identifying this Prompt.
  @return ApiStagesPromptPromptsUpdateRequest
 */
-func (a *StagesApiService) StagesPromptPromptsUpdate(ctx _context.Context, promptUuid string) ApiStagesPromptPromptsUpdateRequest {
+func (a *StagesApiService) StagesPromptPromptsUpdate(ctx context.Context, promptUuid string) ApiStagesPromptPromptsUpdateRequest {
 	return ApiStagesPromptPromptsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15682,27 +15500,25 @@ func (a *StagesApiService) StagesPromptPromptsUpdate(ctx _context.Context, promp
 
 // Execute executes the request
 //  @return Prompt
-func (a *StagesApiService) StagesPromptPromptsUpdateExecute(r ApiStagesPromptPromptsUpdateRequest) (Prompt, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPromptPromptsUpdateExecute(r ApiStagesPromptPromptsUpdateRequest) (*Prompt, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Prompt
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Prompt
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPromptPromptsUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/prompts/{prompt_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", _neturl.PathEscape(parameterToString(r.promptUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterToString(r.promptUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.promptRequest == nil {
 		return localVarReturnValue, nil, reportError("promptRequest is required and must be specified")
 	}
@@ -15740,7 +15556,7 @@ func (a *StagesApiService) StagesPromptPromptsUpdateExecute(r ApiStagesPromptPro
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -15750,15 +15566,15 @@ func (a *StagesApiService) StagesPromptPromptsUpdateExecute(r ApiStagesPromptPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -15767,7 +15583,7 @@ func (a *StagesApiService) StagesPromptPromptsUpdateExecute(r ApiStagesPromptPro
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -15778,12 +15594,12 @@ func (a *StagesApiService) StagesPromptPromptsUpdateExecute(r ApiStagesPromptPro
 }
 
 type ApiStagesPromptPromptsUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	promptUuid string
 }
 
-func (r ApiStagesPromptPromptsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesPromptPromptsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesPromptPromptsUsedByListExecute(r)
 }
 
@@ -15792,11 +15608,11 @@ StagesPromptPromptsUsedByList Method for StagesPromptPromptsUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param promptUuid A UUID string identifying this Prompt.
  @return ApiStagesPromptPromptsUsedByListRequest
 */
-func (a *StagesApiService) StagesPromptPromptsUsedByList(ctx _context.Context, promptUuid string) ApiStagesPromptPromptsUsedByListRequest {
+func (a *StagesApiService) StagesPromptPromptsUsedByList(ctx context.Context, promptUuid string) ApiStagesPromptPromptsUsedByListRequest {
 	return ApiStagesPromptPromptsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15806,27 +15622,25 @@ func (a *StagesApiService) StagesPromptPromptsUsedByList(ctx _context.Context, p
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesPromptPromptsUsedByListExecute(r ApiStagesPromptPromptsUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPromptPromptsUsedByListExecute(r ApiStagesPromptPromptsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPromptPromptsUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/prompts/{prompt_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", _neturl.PathEscape(parameterToString(r.promptUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterToString(r.promptUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -15859,7 +15673,7 @@ func (a *StagesApiService) StagesPromptPromptsUsedByListExecute(r ApiStagesPromp
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -15869,15 +15683,15 @@ func (a *StagesApiService) StagesPromptPromptsUsedByListExecute(r ApiStagesPromp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -15886,7 +15700,7 @@ func (a *StagesApiService) StagesPromptPromptsUsedByListExecute(r ApiStagesPromp
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -15897,7 +15711,7 @@ func (a *StagesApiService) StagesPromptPromptsUsedByListExecute(r ApiStagesPromp
 }
 
 type ApiStagesPromptStagesCreateRequest struct {
-	ctx                _context.Context
+	ctx                context.Context
 	ApiService         *StagesApiService
 	promptStageRequest *PromptStageRequest
 }
@@ -15907,7 +15721,7 @@ func (r ApiStagesPromptStagesCreateRequest) PromptStageRequest(promptStageReques
 	return r
 }
 
-func (r ApiStagesPromptStagesCreateRequest) Execute() (PromptStage, *_nethttp.Response, error) {
+func (r ApiStagesPromptStagesCreateRequest) Execute() (*PromptStage, *http.Response, error) {
 	return r.ApiService.StagesPromptStagesCreateExecute(r)
 }
 
@@ -15916,10 +15730,10 @@ StagesPromptStagesCreate Method for StagesPromptStagesCreate
 
 PromptStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesPromptStagesCreateRequest
 */
-func (a *StagesApiService) StagesPromptStagesCreate(ctx _context.Context) ApiStagesPromptStagesCreateRequest {
+func (a *StagesApiService) StagesPromptStagesCreate(ctx context.Context) ApiStagesPromptStagesCreateRequest {
 	return ApiStagesPromptStagesCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15928,26 +15742,24 @@ func (a *StagesApiService) StagesPromptStagesCreate(ctx _context.Context) ApiSta
 
 // Execute executes the request
 //  @return PromptStage
-func (a *StagesApiService) StagesPromptStagesCreateExecute(r ApiStagesPromptStagesCreateRequest) (PromptStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPromptStagesCreateExecute(r ApiStagesPromptStagesCreateRequest) (*PromptStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PromptStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PromptStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPromptStagesCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/stages/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.promptStageRequest == nil {
 		return localVarReturnValue, nil, reportError("promptStageRequest is required and must be specified")
 	}
@@ -15985,7 +15797,7 @@ func (a *StagesApiService) StagesPromptStagesCreateExecute(r ApiStagesPromptStag
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -15995,15 +15807,15 @@ func (a *StagesApiService) StagesPromptStagesCreateExecute(r ApiStagesPromptStag
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -16012,7 +15824,7 @@ func (a *StagesApiService) StagesPromptStagesCreateExecute(r ApiStagesPromptStag
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -16023,12 +15835,12 @@ func (a *StagesApiService) StagesPromptStagesCreateExecute(r ApiStagesPromptStag
 }
 
 type ApiStagesPromptStagesDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesPromptStagesDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesPromptStagesDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesPromptStagesDestroyExecute(r)
 }
 
@@ -16037,11 +15849,11 @@ StagesPromptStagesDestroy Method for StagesPromptStagesDestroy
 
 PromptStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Prompt Stage.
  @return ApiStagesPromptStagesDestroyRequest
 */
-func (a *StagesApiService) StagesPromptStagesDestroy(ctx _context.Context, stageUuid string) ApiStagesPromptStagesDestroyRequest {
+func (a *StagesApiService) StagesPromptStagesDestroy(ctx context.Context, stageUuid string) ApiStagesPromptStagesDestroyRequest {
 	return ApiStagesPromptStagesDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16050,26 +15862,24 @@ func (a *StagesApiService) StagesPromptStagesDestroy(ctx _context.Context, stage
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesPromptStagesDestroyExecute(r ApiStagesPromptStagesDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesPromptStagesDestroyExecute(r ApiStagesPromptStagesDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPromptStagesDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -16102,7 +15912,7 @@ func (a *StagesApiService) StagesPromptStagesDestroyExecute(r ApiStagesPromptSta
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -16112,15 +15922,15 @@ func (a *StagesApiService) StagesPromptStagesDestroyExecute(r ApiStagesPromptSta
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -16131,7 +15941,7 @@ func (a *StagesApiService) StagesPromptStagesDestroyExecute(r ApiStagesPromptSta
 }
 
 type ApiStagesPromptStagesListRequest struct {
-	ctx                _context.Context
+	ctx                context.Context
 	ApiService         *StagesApiService
 	fields             *[]string
 	name               *string
@@ -16147,6 +15957,7 @@ func (r ApiStagesPromptStagesListRequest) Fields(fields []string) ApiStagesPromp
 	r.fields = &fields
 	return r
 }
+
 func (r ApiStagesPromptStagesListRequest) Name(name string) ApiStagesPromptStagesListRequest {
 	r.name = &name
 	return r
@@ -16175,16 +15986,18 @@ func (r ApiStagesPromptStagesListRequest) Search(search string) ApiStagesPromptS
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesPromptStagesListRequest) StageUuid(stageUuid string) ApiStagesPromptStagesListRequest {
 	r.stageUuid = &stageUuid
 	return r
 }
+
 func (r ApiStagesPromptStagesListRequest) ValidationPolicies(validationPolicies []string) ApiStagesPromptStagesListRequest {
 	r.validationPolicies = &validationPolicies
 	return r
 }
 
-func (r ApiStagesPromptStagesListRequest) Execute() (PaginatedPromptStageList, *_nethttp.Response, error) {
+func (r ApiStagesPromptStagesListRequest) Execute() (*PaginatedPromptStageList, *http.Response, error) {
 	return r.ApiService.StagesPromptStagesListExecute(r)
 }
 
@@ -16193,10 +16006,10 @@ StagesPromptStagesList Method for StagesPromptStagesList
 
 PromptStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesPromptStagesListRequest
 */
-func (a *StagesApiService) StagesPromptStagesList(ctx _context.Context) ApiStagesPromptStagesListRequest {
+func (a *StagesApiService) StagesPromptStagesList(ctx context.Context) ApiStagesPromptStagesListRequest {
 	return ApiStagesPromptStagesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16205,26 +16018,24 @@ func (a *StagesApiService) StagesPromptStagesList(ctx _context.Context) ApiStage
 
 // Execute executes the request
 //  @return PaginatedPromptStageList
-func (a *StagesApiService) StagesPromptStagesListExecute(r ApiStagesPromptStagesListRequest) (PaginatedPromptStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPromptStagesListExecute(r ApiStagesPromptStagesListRequest) (*PaginatedPromptStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedPromptStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedPromptStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPromptStagesList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/stages/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.fields != nil {
 		t := *r.fields
@@ -16297,7 +16108,7 @@ func (a *StagesApiService) StagesPromptStagesListExecute(r ApiStagesPromptStages
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -16307,15 +16118,15 @@ func (a *StagesApiService) StagesPromptStagesListExecute(r ApiStagesPromptStages
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -16324,7 +16135,7 @@ func (a *StagesApiService) StagesPromptStagesListExecute(r ApiStagesPromptStages
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -16335,7 +16146,7 @@ func (a *StagesApiService) StagesPromptStagesListExecute(r ApiStagesPromptStages
 }
 
 type ApiStagesPromptStagesPartialUpdateRequest struct {
-	ctx                       _context.Context
+	ctx                       context.Context
 	ApiService                *StagesApiService
 	stageUuid                 string
 	patchedPromptStageRequest *PatchedPromptStageRequest
@@ -16346,7 +16157,7 @@ func (r ApiStagesPromptStagesPartialUpdateRequest) PatchedPromptStageRequest(pat
 	return r
 }
 
-func (r ApiStagesPromptStagesPartialUpdateRequest) Execute() (PromptStage, *_nethttp.Response, error) {
+func (r ApiStagesPromptStagesPartialUpdateRequest) Execute() (*PromptStage, *http.Response, error) {
 	return r.ApiService.StagesPromptStagesPartialUpdateExecute(r)
 }
 
@@ -16355,11 +16166,11 @@ StagesPromptStagesPartialUpdate Method for StagesPromptStagesPartialUpdate
 
 PromptStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Prompt Stage.
  @return ApiStagesPromptStagesPartialUpdateRequest
 */
-func (a *StagesApiService) StagesPromptStagesPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesPromptStagesPartialUpdateRequest {
+func (a *StagesApiService) StagesPromptStagesPartialUpdate(ctx context.Context, stageUuid string) ApiStagesPromptStagesPartialUpdateRequest {
 	return ApiStagesPromptStagesPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16369,27 +16180,25 @@ func (a *StagesApiService) StagesPromptStagesPartialUpdate(ctx _context.Context,
 
 // Execute executes the request
 //  @return PromptStage
-func (a *StagesApiService) StagesPromptStagesPartialUpdateExecute(r ApiStagesPromptStagesPartialUpdateRequest) (PromptStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPromptStagesPartialUpdateExecute(r ApiStagesPromptStagesPartialUpdateRequest) (*PromptStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PromptStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PromptStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPromptStagesPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -16424,7 +16233,7 @@ func (a *StagesApiService) StagesPromptStagesPartialUpdateExecute(r ApiStagesPro
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -16434,15 +16243,15 @@ func (a *StagesApiService) StagesPromptStagesPartialUpdateExecute(r ApiStagesPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -16451,7 +16260,7 @@ func (a *StagesApiService) StagesPromptStagesPartialUpdateExecute(r ApiStagesPro
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -16462,12 +16271,12 @@ func (a *StagesApiService) StagesPromptStagesPartialUpdateExecute(r ApiStagesPro
 }
 
 type ApiStagesPromptStagesRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesPromptStagesRetrieveRequest) Execute() (PromptStage, *_nethttp.Response, error) {
+func (r ApiStagesPromptStagesRetrieveRequest) Execute() (*PromptStage, *http.Response, error) {
 	return r.ApiService.StagesPromptStagesRetrieveExecute(r)
 }
 
@@ -16476,11 +16285,11 @@ StagesPromptStagesRetrieve Method for StagesPromptStagesRetrieve
 
 PromptStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Prompt Stage.
  @return ApiStagesPromptStagesRetrieveRequest
 */
-func (a *StagesApiService) StagesPromptStagesRetrieve(ctx _context.Context, stageUuid string) ApiStagesPromptStagesRetrieveRequest {
+func (a *StagesApiService) StagesPromptStagesRetrieve(ctx context.Context, stageUuid string) ApiStagesPromptStagesRetrieveRequest {
 	return ApiStagesPromptStagesRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16490,27 +16299,25 @@ func (a *StagesApiService) StagesPromptStagesRetrieve(ctx _context.Context, stag
 
 // Execute executes the request
 //  @return PromptStage
-func (a *StagesApiService) StagesPromptStagesRetrieveExecute(r ApiStagesPromptStagesRetrieveRequest) (PromptStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPromptStagesRetrieveExecute(r ApiStagesPromptStagesRetrieveRequest) (*PromptStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PromptStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PromptStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPromptStagesRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -16543,7 +16350,7 @@ func (a *StagesApiService) StagesPromptStagesRetrieveExecute(r ApiStagesPromptSt
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -16553,15 +16360,15 @@ func (a *StagesApiService) StagesPromptStagesRetrieveExecute(r ApiStagesPromptSt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -16570,7 +16377,7 @@ func (a *StagesApiService) StagesPromptStagesRetrieveExecute(r ApiStagesPromptSt
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -16581,7 +16388,7 @@ func (a *StagesApiService) StagesPromptStagesRetrieveExecute(r ApiStagesPromptSt
 }
 
 type ApiStagesPromptStagesUpdateRequest struct {
-	ctx                _context.Context
+	ctx                context.Context
 	ApiService         *StagesApiService
 	stageUuid          string
 	promptStageRequest *PromptStageRequest
@@ -16592,7 +16399,7 @@ func (r ApiStagesPromptStagesUpdateRequest) PromptStageRequest(promptStageReques
 	return r
 }
 
-func (r ApiStagesPromptStagesUpdateRequest) Execute() (PromptStage, *_nethttp.Response, error) {
+func (r ApiStagesPromptStagesUpdateRequest) Execute() (*PromptStage, *http.Response, error) {
 	return r.ApiService.StagesPromptStagesUpdateExecute(r)
 }
 
@@ -16601,11 +16408,11 @@ StagesPromptStagesUpdate Method for StagesPromptStagesUpdate
 
 PromptStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Prompt Stage.
  @return ApiStagesPromptStagesUpdateRequest
 */
-func (a *StagesApiService) StagesPromptStagesUpdate(ctx _context.Context, stageUuid string) ApiStagesPromptStagesUpdateRequest {
+func (a *StagesApiService) StagesPromptStagesUpdate(ctx context.Context, stageUuid string) ApiStagesPromptStagesUpdateRequest {
 	return ApiStagesPromptStagesUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16615,27 +16422,25 @@ func (a *StagesApiService) StagesPromptStagesUpdate(ctx _context.Context, stageU
 
 // Execute executes the request
 //  @return PromptStage
-func (a *StagesApiService) StagesPromptStagesUpdateExecute(r ApiStagesPromptStagesUpdateRequest) (PromptStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPromptStagesUpdateExecute(r ApiStagesPromptStagesUpdateRequest) (*PromptStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PromptStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PromptStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPromptStagesUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.promptStageRequest == nil {
 		return localVarReturnValue, nil, reportError("promptStageRequest is required and must be specified")
 	}
@@ -16673,7 +16478,7 @@ func (a *StagesApiService) StagesPromptStagesUpdateExecute(r ApiStagesPromptStag
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -16683,15 +16488,15 @@ func (a *StagesApiService) StagesPromptStagesUpdateExecute(r ApiStagesPromptStag
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -16700,7 +16505,7 @@ func (a *StagesApiService) StagesPromptStagesUpdateExecute(r ApiStagesPromptStag
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -16711,12 +16516,12 @@ func (a *StagesApiService) StagesPromptStagesUpdateExecute(r ApiStagesPromptStag
 }
 
 type ApiStagesPromptStagesUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesPromptStagesUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesPromptStagesUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesPromptStagesUsedByListExecute(r)
 }
 
@@ -16725,11 +16530,11 @@ StagesPromptStagesUsedByList Method for StagesPromptStagesUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this Prompt Stage.
  @return ApiStagesPromptStagesUsedByListRequest
 */
-func (a *StagesApiService) StagesPromptStagesUsedByList(ctx _context.Context, stageUuid string) ApiStagesPromptStagesUsedByListRequest {
+func (a *StagesApiService) StagesPromptStagesUsedByList(ctx context.Context, stageUuid string) ApiStagesPromptStagesUsedByListRequest {
 	return ApiStagesPromptStagesUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16739,27 +16544,25 @@ func (a *StagesApiService) StagesPromptStagesUsedByList(ctx _context.Context, st
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesPromptStagesUsedByListExecute(r ApiStagesPromptStagesUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesPromptStagesUsedByListExecute(r ApiStagesPromptStagesUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesPromptStagesUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/stages/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -16792,7 +16595,7 @@ func (a *StagesApiService) StagesPromptStagesUsedByListExecute(r ApiStagesPrompt
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -16802,15 +16605,15 @@ func (a *StagesApiService) StagesPromptStagesUsedByListExecute(r ApiStagesPrompt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -16819,7 +16622,7 @@ func (a *StagesApiService) StagesPromptStagesUsedByListExecute(r ApiStagesPrompt
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -16830,7 +16633,7 @@ func (a *StagesApiService) StagesPromptStagesUsedByListExecute(r ApiStagesPrompt
 }
 
 type ApiStagesUserDeleteCreateRequest struct {
-	ctx                    _context.Context
+	ctx                    context.Context
 	ApiService             *StagesApiService
 	userDeleteStageRequest *UserDeleteStageRequest
 }
@@ -16840,7 +16643,7 @@ func (r ApiStagesUserDeleteCreateRequest) UserDeleteStageRequest(userDeleteStage
 	return r
 }
 
-func (r ApiStagesUserDeleteCreateRequest) Execute() (UserDeleteStage, *_nethttp.Response, error) {
+func (r ApiStagesUserDeleteCreateRequest) Execute() (*UserDeleteStage, *http.Response, error) {
 	return r.ApiService.StagesUserDeleteCreateExecute(r)
 }
 
@@ -16849,10 +16652,10 @@ StagesUserDeleteCreate Method for StagesUserDeleteCreate
 
 UserDeleteStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesUserDeleteCreateRequest
 */
-func (a *StagesApiService) StagesUserDeleteCreate(ctx _context.Context) ApiStagesUserDeleteCreateRequest {
+func (a *StagesApiService) StagesUserDeleteCreate(ctx context.Context) ApiStagesUserDeleteCreateRequest {
 	return ApiStagesUserDeleteCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16861,26 +16664,24 @@ func (a *StagesApiService) StagesUserDeleteCreate(ctx _context.Context) ApiStage
 
 // Execute executes the request
 //  @return UserDeleteStage
-func (a *StagesApiService) StagesUserDeleteCreateExecute(r ApiStagesUserDeleteCreateRequest) (UserDeleteStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserDeleteCreateExecute(r ApiStagesUserDeleteCreateRequest) (*UserDeleteStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserDeleteStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserDeleteStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserDeleteCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_delete/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.userDeleteStageRequest == nil {
 		return localVarReturnValue, nil, reportError("userDeleteStageRequest is required and must be specified")
 	}
@@ -16918,7 +16719,7 @@ func (a *StagesApiService) StagesUserDeleteCreateExecute(r ApiStagesUserDeleteCr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -16928,15 +16729,15 @@ func (a *StagesApiService) StagesUserDeleteCreateExecute(r ApiStagesUserDeleteCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -16945,7 +16746,7 @@ func (a *StagesApiService) StagesUserDeleteCreateExecute(r ApiStagesUserDeleteCr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -16956,12 +16757,12 @@ func (a *StagesApiService) StagesUserDeleteCreateExecute(r ApiStagesUserDeleteCr
 }
 
 type ApiStagesUserDeleteDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesUserDeleteDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesUserDeleteDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesUserDeleteDestroyExecute(r)
 }
 
@@ -16970,11 +16771,11 @@ StagesUserDeleteDestroy Method for StagesUserDeleteDestroy
 
 UserDeleteStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Delete Stage.
  @return ApiStagesUserDeleteDestroyRequest
 */
-func (a *StagesApiService) StagesUserDeleteDestroy(ctx _context.Context, stageUuid string) ApiStagesUserDeleteDestroyRequest {
+func (a *StagesApiService) StagesUserDeleteDestroy(ctx context.Context, stageUuid string) ApiStagesUserDeleteDestroyRequest {
 	return ApiStagesUserDeleteDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16983,26 +16784,24 @@ func (a *StagesApiService) StagesUserDeleteDestroy(ctx _context.Context, stageUu
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesUserDeleteDestroyExecute(r ApiStagesUserDeleteDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserDeleteDestroyExecute(r ApiStagesUserDeleteDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserDeleteDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_delete/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -17035,7 +16834,7 @@ func (a *StagesApiService) StagesUserDeleteDestroyExecute(r ApiStagesUserDeleteD
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -17045,15 +16844,15 @@ func (a *StagesApiService) StagesUserDeleteDestroyExecute(r ApiStagesUserDeleteD
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -17064,7 +16863,7 @@ func (a *StagesApiService) StagesUserDeleteDestroyExecute(r ApiStagesUserDeleteD
 }
 
 type ApiStagesUserDeleteListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	name       *string
 	ordering   *string
@@ -17102,12 +16901,13 @@ func (r ApiStagesUserDeleteListRequest) Search(search string) ApiStagesUserDelet
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesUserDeleteListRequest) StageUuid(stageUuid string) ApiStagesUserDeleteListRequest {
 	r.stageUuid = &stageUuid
 	return r
 }
 
-func (r ApiStagesUserDeleteListRequest) Execute() (PaginatedUserDeleteStageList, *_nethttp.Response, error) {
+func (r ApiStagesUserDeleteListRequest) Execute() (*PaginatedUserDeleteStageList, *http.Response, error) {
 	return r.ApiService.StagesUserDeleteListExecute(r)
 }
 
@@ -17116,10 +16916,10 @@ StagesUserDeleteList Method for StagesUserDeleteList
 
 UserDeleteStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesUserDeleteListRequest
 */
-func (a *StagesApiService) StagesUserDeleteList(ctx _context.Context) ApiStagesUserDeleteListRequest {
+func (a *StagesApiService) StagesUserDeleteList(ctx context.Context) ApiStagesUserDeleteListRequest {
 	return ApiStagesUserDeleteListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17128,26 +16928,24 @@ func (a *StagesApiService) StagesUserDeleteList(ctx _context.Context) ApiStagesU
 
 // Execute executes the request
 //  @return PaginatedUserDeleteStageList
-func (a *StagesApiService) StagesUserDeleteListExecute(r ApiStagesUserDeleteListRequest) (PaginatedUserDeleteStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserDeleteListExecute(r ApiStagesUserDeleteListRequest) (*PaginatedUserDeleteStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedUserDeleteStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedUserDeleteStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserDeleteList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_delete/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -17198,7 +16996,7 @@ func (a *StagesApiService) StagesUserDeleteListExecute(r ApiStagesUserDeleteList
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -17208,15 +17006,15 @@ func (a *StagesApiService) StagesUserDeleteListExecute(r ApiStagesUserDeleteList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -17225,7 +17023,7 @@ func (a *StagesApiService) StagesUserDeleteListExecute(r ApiStagesUserDeleteList
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -17236,7 +17034,7 @@ func (a *StagesApiService) StagesUserDeleteListExecute(r ApiStagesUserDeleteList
 }
 
 type ApiStagesUserDeletePartialUpdateRequest struct {
-	ctx                           _context.Context
+	ctx                           context.Context
 	ApiService                    *StagesApiService
 	stageUuid                     string
 	patchedUserDeleteStageRequest *PatchedUserDeleteStageRequest
@@ -17247,7 +17045,7 @@ func (r ApiStagesUserDeletePartialUpdateRequest) PatchedUserDeleteStageRequest(p
 	return r
 }
 
-func (r ApiStagesUserDeletePartialUpdateRequest) Execute() (UserDeleteStage, *_nethttp.Response, error) {
+func (r ApiStagesUserDeletePartialUpdateRequest) Execute() (*UserDeleteStage, *http.Response, error) {
 	return r.ApiService.StagesUserDeletePartialUpdateExecute(r)
 }
 
@@ -17256,11 +17054,11 @@ StagesUserDeletePartialUpdate Method for StagesUserDeletePartialUpdate
 
 UserDeleteStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Delete Stage.
  @return ApiStagesUserDeletePartialUpdateRequest
 */
-func (a *StagesApiService) StagesUserDeletePartialUpdate(ctx _context.Context, stageUuid string) ApiStagesUserDeletePartialUpdateRequest {
+func (a *StagesApiService) StagesUserDeletePartialUpdate(ctx context.Context, stageUuid string) ApiStagesUserDeletePartialUpdateRequest {
 	return ApiStagesUserDeletePartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17270,27 +17068,25 @@ func (a *StagesApiService) StagesUserDeletePartialUpdate(ctx _context.Context, s
 
 // Execute executes the request
 //  @return UserDeleteStage
-func (a *StagesApiService) StagesUserDeletePartialUpdateExecute(r ApiStagesUserDeletePartialUpdateRequest) (UserDeleteStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserDeletePartialUpdateExecute(r ApiStagesUserDeletePartialUpdateRequest) (*UserDeleteStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserDeleteStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserDeleteStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserDeletePartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_delete/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -17325,7 +17121,7 @@ func (a *StagesApiService) StagesUserDeletePartialUpdateExecute(r ApiStagesUserD
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -17335,15 +17131,15 @@ func (a *StagesApiService) StagesUserDeletePartialUpdateExecute(r ApiStagesUserD
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -17352,7 +17148,7 @@ func (a *StagesApiService) StagesUserDeletePartialUpdateExecute(r ApiStagesUserD
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -17363,12 +17159,12 @@ func (a *StagesApiService) StagesUserDeletePartialUpdateExecute(r ApiStagesUserD
 }
 
 type ApiStagesUserDeleteRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesUserDeleteRetrieveRequest) Execute() (UserDeleteStage, *_nethttp.Response, error) {
+func (r ApiStagesUserDeleteRetrieveRequest) Execute() (*UserDeleteStage, *http.Response, error) {
 	return r.ApiService.StagesUserDeleteRetrieveExecute(r)
 }
 
@@ -17377,11 +17173,11 @@ StagesUserDeleteRetrieve Method for StagesUserDeleteRetrieve
 
 UserDeleteStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Delete Stage.
  @return ApiStagesUserDeleteRetrieveRequest
 */
-func (a *StagesApiService) StagesUserDeleteRetrieve(ctx _context.Context, stageUuid string) ApiStagesUserDeleteRetrieveRequest {
+func (a *StagesApiService) StagesUserDeleteRetrieve(ctx context.Context, stageUuid string) ApiStagesUserDeleteRetrieveRequest {
 	return ApiStagesUserDeleteRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17391,27 +17187,25 @@ func (a *StagesApiService) StagesUserDeleteRetrieve(ctx _context.Context, stageU
 
 // Execute executes the request
 //  @return UserDeleteStage
-func (a *StagesApiService) StagesUserDeleteRetrieveExecute(r ApiStagesUserDeleteRetrieveRequest) (UserDeleteStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserDeleteRetrieveExecute(r ApiStagesUserDeleteRetrieveRequest) (*UserDeleteStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserDeleteStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserDeleteStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserDeleteRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_delete/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -17444,7 +17238,7 @@ func (a *StagesApiService) StagesUserDeleteRetrieveExecute(r ApiStagesUserDelete
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -17454,15 +17248,15 @@ func (a *StagesApiService) StagesUserDeleteRetrieveExecute(r ApiStagesUserDelete
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -17471,7 +17265,7 @@ func (a *StagesApiService) StagesUserDeleteRetrieveExecute(r ApiStagesUserDelete
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -17482,7 +17276,7 @@ func (a *StagesApiService) StagesUserDeleteRetrieveExecute(r ApiStagesUserDelete
 }
 
 type ApiStagesUserDeleteUpdateRequest struct {
-	ctx                    _context.Context
+	ctx                    context.Context
 	ApiService             *StagesApiService
 	stageUuid              string
 	userDeleteStageRequest *UserDeleteStageRequest
@@ -17493,7 +17287,7 @@ func (r ApiStagesUserDeleteUpdateRequest) UserDeleteStageRequest(userDeleteStage
 	return r
 }
 
-func (r ApiStagesUserDeleteUpdateRequest) Execute() (UserDeleteStage, *_nethttp.Response, error) {
+func (r ApiStagesUserDeleteUpdateRequest) Execute() (*UserDeleteStage, *http.Response, error) {
 	return r.ApiService.StagesUserDeleteUpdateExecute(r)
 }
 
@@ -17502,11 +17296,11 @@ StagesUserDeleteUpdate Method for StagesUserDeleteUpdate
 
 UserDeleteStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Delete Stage.
  @return ApiStagesUserDeleteUpdateRequest
 */
-func (a *StagesApiService) StagesUserDeleteUpdate(ctx _context.Context, stageUuid string) ApiStagesUserDeleteUpdateRequest {
+func (a *StagesApiService) StagesUserDeleteUpdate(ctx context.Context, stageUuid string) ApiStagesUserDeleteUpdateRequest {
 	return ApiStagesUserDeleteUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17516,27 +17310,25 @@ func (a *StagesApiService) StagesUserDeleteUpdate(ctx _context.Context, stageUui
 
 // Execute executes the request
 //  @return UserDeleteStage
-func (a *StagesApiService) StagesUserDeleteUpdateExecute(r ApiStagesUserDeleteUpdateRequest) (UserDeleteStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserDeleteUpdateExecute(r ApiStagesUserDeleteUpdateRequest) (*UserDeleteStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserDeleteStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserDeleteStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserDeleteUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_delete/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.userDeleteStageRequest == nil {
 		return localVarReturnValue, nil, reportError("userDeleteStageRequest is required and must be specified")
 	}
@@ -17574,7 +17366,7 @@ func (a *StagesApiService) StagesUserDeleteUpdateExecute(r ApiStagesUserDeleteUp
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -17584,15 +17376,15 @@ func (a *StagesApiService) StagesUserDeleteUpdateExecute(r ApiStagesUserDeleteUp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -17601,7 +17393,7 @@ func (a *StagesApiService) StagesUserDeleteUpdateExecute(r ApiStagesUserDeleteUp
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -17612,12 +17404,12 @@ func (a *StagesApiService) StagesUserDeleteUpdateExecute(r ApiStagesUserDeleteUp
 }
 
 type ApiStagesUserDeleteUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesUserDeleteUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesUserDeleteUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesUserDeleteUsedByListExecute(r)
 }
 
@@ -17626,11 +17418,11 @@ StagesUserDeleteUsedByList Method for StagesUserDeleteUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Delete Stage.
  @return ApiStagesUserDeleteUsedByListRequest
 */
-func (a *StagesApiService) StagesUserDeleteUsedByList(ctx _context.Context, stageUuid string) ApiStagesUserDeleteUsedByListRequest {
+func (a *StagesApiService) StagesUserDeleteUsedByList(ctx context.Context, stageUuid string) ApiStagesUserDeleteUsedByListRequest {
 	return ApiStagesUserDeleteUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17640,27 +17432,25 @@ func (a *StagesApiService) StagesUserDeleteUsedByList(ctx _context.Context, stag
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesUserDeleteUsedByListExecute(r ApiStagesUserDeleteUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserDeleteUsedByListExecute(r ApiStagesUserDeleteUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserDeleteUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_delete/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -17693,7 +17483,7 @@ func (a *StagesApiService) StagesUserDeleteUsedByListExecute(r ApiStagesUserDele
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -17703,15 +17493,15 @@ func (a *StagesApiService) StagesUserDeleteUsedByListExecute(r ApiStagesUserDele
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -17720,7 +17510,7 @@ func (a *StagesApiService) StagesUserDeleteUsedByListExecute(r ApiStagesUserDele
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -17731,7 +17521,7 @@ func (a *StagesApiService) StagesUserDeleteUsedByListExecute(r ApiStagesUserDele
 }
 
 type ApiStagesUserLoginCreateRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *StagesApiService
 	userLoginStageRequest *UserLoginStageRequest
 }
@@ -17741,7 +17531,7 @@ func (r ApiStagesUserLoginCreateRequest) UserLoginStageRequest(userLoginStageReq
 	return r
 }
 
-func (r ApiStagesUserLoginCreateRequest) Execute() (UserLoginStage, *_nethttp.Response, error) {
+func (r ApiStagesUserLoginCreateRequest) Execute() (*UserLoginStage, *http.Response, error) {
 	return r.ApiService.StagesUserLoginCreateExecute(r)
 }
 
@@ -17750,10 +17540,10 @@ StagesUserLoginCreate Method for StagesUserLoginCreate
 
 UserLoginStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesUserLoginCreateRequest
 */
-func (a *StagesApiService) StagesUserLoginCreate(ctx _context.Context) ApiStagesUserLoginCreateRequest {
+func (a *StagesApiService) StagesUserLoginCreate(ctx context.Context) ApiStagesUserLoginCreateRequest {
 	return ApiStagesUserLoginCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17762,26 +17552,24 @@ func (a *StagesApiService) StagesUserLoginCreate(ctx _context.Context) ApiStages
 
 // Execute executes the request
 //  @return UserLoginStage
-func (a *StagesApiService) StagesUserLoginCreateExecute(r ApiStagesUserLoginCreateRequest) (UserLoginStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserLoginCreateExecute(r ApiStagesUserLoginCreateRequest) (*UserLoginStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserLoginStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserLoginStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserLoginCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_login/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.userLoginStageRequest == nil {
 		return localVarReturnValue, nil, reportError("userLoginStageRequest is required and must be specified")
 	}
@@ -17819,7 +17607,7 @@ func (a *StagesApiService) StagesUserLoginCreateExecute(r ApiStagesUserLoginCrea
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -17829,15 +17617,15 @@ func (a *StagesApiService) StagesUserLoginCreateExecute(r ApiStagesUserLoginCrea
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -17846,7 +17634,7 @@ func (a *StagesApiService) StagesUserLoginCreateExecute(r ApiStagesUserLoginCrea
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -17857,12 +17645,12 @@ func (a *StagesApiService) StagesUserLoginCreateExecute(r ApiStagesUserLoginCrea
 }
 
 type ApiStagesUserLoginDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesUserLoginDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesUserLoginDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesUserLoginDestroyExecute(r)
 }
 
@@ -17871,11 +17659,11 @@ StagesUserLoginDestroy Method for StagesUserLoginDestroy
 
 UserLoginStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Login Stage.
  @return ApiStagesUserLoginDestroyRequest
 */
-func (a *StagesApiService) StagesUserLoginDestroy(ctx _context.Context, stageUuid string) ApiStagesUserLoginDestroyRequest {
+func (a *StagesApiService) StagesUserLoginDestroy(ctx context.Context, stageUuid string) ApiStagesUserLoginDestroyRequest {
 	return ApiStagesUserLoginDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17884,26 +17672,24 @@ func (a *StagesApiService) StagesUserLoginDestroy(ctx _context.Context, stageUui
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesUserLoginDestroyExecute(r ApiStagesUserLoginDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserLoginDestroyExecute(r ApiStagesUserLoginDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserLoginDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_login/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -17936,7 +17722,7 @@ func (a *StagesApiService) StagesUserLoginDestroyExecute(r ApiStagesUserLoginDes
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -17946,15 +17732,15 @@ func (a *StagesApiService) StagesUserLoginDestroyExecute(r ApiStagesUserLoginDes
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -17965,7 +17751,7 @@ func (a *StagesApiService) StagesUserLoginDestroyExecute(r ApiStagesUserLoginDes
 }
 
 type ApiStagesUserLoginListRequest struct {
-	ctx             _context.Context
+	ctx             context.Context
 	ApiService      *StagesApiService
 	name            *string
 	ordering        *string
@@ -18004,16 +17790,18 @@ func (r ApiStagesUserLoginListRequest) Search(search string) ApiStagesUserLoginL
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesUserLoginListRequest) SessionDuration(sessionDuration string) ApiStagesUserLoginListRequest {
 	r.sessionDuration = &sessionDuration
 	return r
 }
+
 func (r ApiStagesUserLoginListRequest) StageUuid(stageUuid string) ApiStagesUserLoginListRequest {
 	r.stageUuid = &stageUuid
 	return r
 }
 
-func (r ApiStagesUserLoginListRequest) Execute() (PaginatedUserLoginStageList, *_nethttp.Response, error) {
+func (r ApiStagesUserLoginListRequest) Execute() (*PaginatedUserLoginStageList, *http.Response, error) {
 	return r.ApiService.StagesUserLoginListExecute(r)
 }
 
@@ -18022,10 +17810,10 @@ StagesUserLoginList Method for StagesUserLoginList
 
 UserLoginStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesUserLoginListRequest
 */
-func (a *StagesApiService) StagesUserLoginList(ctx _context.Context) ApiStagesUserLoginListRequest {
+func (a *StagesApiService) StagesUserLoginList(ctx context.Context) ApiStagesUserLoginListRequest {
 	return ApiStagesUserLoginListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18034,26 +17822,24 @@ func (a *StagesApiService) StagesUserLoginList(ctx _context.Context) ApiStagesUs
 
 // Execute executes the request
 //  @return PaginatedUserLoginStageList
-func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRequest) (PaginatedUserLoginStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRequest) (*PaginatedUserLoginStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedUserLoginStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedUserLoginStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserLoginList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_login/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -18107,7 +17893,7 @@ func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -18117,15 +17903,15 @@ func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -18134,7 +17920,7 @@ func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -18145,7 +17931,7 @@ func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRe
 }
 
 type ApiStagesUserLoginPartialUpdateRequest struct {
-	ctx                          _context.Context
+	ctx                          context.Context
 	ApiService                   *StagesApiService
 	stageUuid                    string
 	patchedUserLoginStageRequest *PatchedUserLoginStageRequest
@@ -18156,7 +17942,7 @@ func (r ApiStagesUserLoginPartialUpdateRequest) PatchedUserLoginStageRequest(pat
 	return r
 }
 
-func (r ApiStagesUserLoginPartialUpdateRequest) Execute() (UserLoginStage, *_nethttp.Response, error) {
+func (r ApiStagesUserLoginPartialUpdateRequest) Execute() (*UserLoginStage, *http.Response, error) {
 	return r.ApiService.StagesUserLoginPartialUpdateExecute(r)
 }
 
@@ -18165,11 +17951,11 @@ StagesUserLoginPartialUpdate Method for StagesUserLoginPartialUpdate
 
 UserLoginStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Login Stage.
  @return ApiStagesUserLoginPartialUpdateRequest
 */
-func (a *StagesApiService) StagesUserLoginPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesUserLoginPartialUpdateRequest {
+func (a *StagesApiService) StagesUserLoginPartialUpdate(ctx context.Context, stageUuid string) ApiStagesUserLoginPartialUpdateRequest {
 	return ApiStagesUserLoginPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18179,27 +17965,25 @@ func (a *StagesApiService) StagesUserLoginPartialUpdate(ctx _context.Context, st
 
 // Execute executes the request
 //  @return UserLoginStage
-func (a *StagesApiService) StagesUserLoginPartialUpdateExecute(r ApiStagesUserLoginPartialUpdateRequest) (UserLoginStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserLoginPartialUpdateExecute(r ApiStagesUserLoginPartialUpdateRequest) (*UserLoginStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserLoginStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserLoginStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserLoginPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_login/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -18234,7 +18018,7 @@ func (a *StagesApiService) StagesUserLoginPartialUpdateExecute(r ApiStagesUserLo
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -18244,15 +18028,15 @@ func (a *StagesApiService) StagesUserLoginPartialUpdateExecute(r ApiStagesUserLo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -18261,7 +18045,7 @@ func (a *StagesApiService) StagesUserLoginPartialUpdateExecute(r ApiStagesUserLo
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -18272,12 +18056,12 @@ func (a *StagesApiService) StagesUserLoginPartialUpdateExecute(r ApiStagesUserLo
 }
 
 type ApiStagesUserLoginRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesUserLoginRetrieveRequest) Execute() (UserLoginStage, *_nethttp.Response, error) {
+func (r ApiStagesUserLoginRetrieveRequest) Execute() (*UserLoginStage, *http.Response, error) {
 	return r.ApiService.StagesUserLoginRetrieveExecute(r)
 }
 
@@ -18286,11 +18070,11 @@ StagesUserLoginRetrieve Method for StagesUserLoginRetrieve
 
 UserLoginStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Login Stage.
  @return ApiStagesUserLoginRetrieveRequest
 */
-func (a *StagesApiService) StagesUserLoginRetrieve(ctx _context.Context, stageUuid string) ApiStagesUserLoginRetrieveRequest {
+func (a *StagesApiService) StagesUserLoginRetrieve(ctx context.Context, stageUuid string) ApiStagesUserLoginRetrieveRequest {
 	return ApiStagesUserLoginRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18300,27 +18084,25 @@ func (a *StagesApiService) StagesUserLoginRetrieve(ctx _context.Context, stageUu
 
 // Execute executes the request
 //  @return UserLoginStage
-func (a *StagesApiService) StagesUserLoginRetrieveExecute(r ApiStagesUserLoginRetrieveRequest) (UserLoginStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserLoginRetrieveExecute(r ApiStagesUserLoginRetrieveRequest) (*UserLoginStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserLoginStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserLoginStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserLoginRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_login/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -18353,7 +18135,7 @@ func (a *StagesApiService) StagesUserLoginRetrieveExecute(r ApiStagesUserLoginRe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -18363,15 +18145,15 @@ func (a *StagesApiService) StagesUserLoginRetrieveExecute(r ApiStagesUserLoginRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -18380,7 +18162,7 @@ func (a *StagesApiService) StagesUserLoginRetrieveExecute(r ApiStagesUserLoginRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -18391,7 +18173,7 @@ func (a *StagesApiService) StagesUserLoginRetrieveExecute(r ApiStagesUserLoginRe
 }
 
 type ApiStagesUserLoginUpdateRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *StagesApiService
 	stageUuid             string
 	userLoginStageRequest *UserLoginStageRequest
@@ -18402,7 +18184,7 @@ func (r ApiStagesUserLoginUpdateRequest) UserLoginStageRequest(userLoginStageReq
 	return r
 }
 
-func (r ApiStagesUserLoginUpdateRequest) Execute() (UserLoginStage, *_nethttp.Response, error) {
+func (r ApiStagesUserLoginUpdateRequest) Execute() (*UserLoginStage, *http.Response, error) {
 	return r.ApiService.StagesUserLoginUpdateExecute(r)
 }
 
@@ -18411,11 +18193,11 @@ StagesUserLoginUpdate Method for StagesUserLoginUpdate
 
 UserLoginStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Login Stage.
  @return ApiStagesUserLoginUpdateRequest
 */
-func (a *StagesApiService) StagesUserLoginUpdate(ctx _context.Context, stageUuid string) ApiStagesUserLoginUpdateRequest {
+func (a *StagesApiService) StagesUserLoginUpdate(ctx context.Context, stageUuid string) ApiStagesUserLoginUpdateRequest {
 	return ApiStagesUserLoginUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18425,27 +18207,25 @@ func (a *StagesApiService) StagesUserLoginUpdate(ctx _context.Context, stageUuid
 
 // Execute executes the request
 //  @return UserLoginStage
-func (a *StagesApiService) StagesUserLoginUpdateExecute(r ApiStagesUserLoginUpdateRequest) (UserLoginStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserLoginUpdateExecute(r ApiStagesUserLoginUpdateRequest) (*UserLoginStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserLoginStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserLoginStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserLoginUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_login/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.userLoginStageRequest == nil {
 		return localVarReturnValue, nil, reportError("userLoginStageRequest is required and must be specified")
 	}
@@ -18483,7 +18263,7 @@ func (a *StagesApiService) StagesUserLoginUpdateExecute(r ApiStagesUserLoginUpda
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -18493,15 +18273,15 @@ func (a *StagesApiService) StagesUserLoginUpdateExecute(r ApiStagesUserLoginUpda
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -18510,7 +18290,7 @@ func (a *StagesApiService) StagesUserLoginUpdateExecute(r ApiStagesUserLoginUpda
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -18521,12 +18301,12 @@ func (a *StagesApiService) StagesUserLoginUpdateExecute(r ApiStagesUserLoginUpda
 }
 
 type ApiStagesUserLoginUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesUserLoginUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesUserLoginUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesUserLoginUsedByListExecute(r)
 }
 
@@ -18535,11 +18315,11 @@ StagesUserLoginUsedByList Method for StagesUserLoginUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Login Stage.
  @return ApiStagesUserLoginUsedByListRequest
 */
-func (a *StagesApiService) StagesUserLoginUsedByList(ctx _context.Context, stageUuid string) ApiStagesUserLoginUsedByListRequest {
+func (a *StagesApiService) StagesUserLoginUsedByList(ctx context.Context, stageUuid string) ApiStagesUserLoginUsedByListRequest {
 	return ApiStagesUserLoginUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18549,27 +18329,25 @@ func (a *StagesApiService) StagesUserLoginUsedByList(ctx _context.Context, stage
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesUserLoginUsedByListExecute(r ApiStagesUserLoginUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserLoginUsedByListExecute(r ApiStagesUserLoginUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserLoginUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_login/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -18602,7 +18380,7 @@ func (a *StagesApiService) StagesUserLoginUsedByListExecute(r ApiStagesUserLogin
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -18612,15 +18390,15 @@ func (a *StagesApiService) StagesUserLoginUsedByListExecute(r ApiStagesUserLogin
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -18629,7 +18407,7 @@ func (a *StagesApiService) StagesUserLoginUsedByListExecute(r ApiStagesUserLogin
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -18640,7 +18418,7 @@ func (a *StagesApiService) StagesUserLoginUsedByListExecute(r ApiStagesUserLogin
 }
 
 type ApiStagesUserLogoutCreateRequest struct {
-	ctx                    _context.Context
+	ctx                    context.Context
 	ApiService             *StagesApiService
 	userLogoutStageRequest *UserLogoutStageRequest
 }
@@ -18650,7 +18428,7 @@ func (r ApiStagesUserLogoutCreateRequest) UserLogoutStageRequest(userLogoutStage
 	return r
 }
 
-func (r ApiStagesUserLogoutCreateRequest) Execute() (UserLogoutStage, *_nethttp.Response, error) {
+func (r ApiStagesUserLogoutCreateRequest) Execute() (*UserLogoutStage, *http.Response, error) {
 	return r.ApiService.StagesUserLogoutCreateExecute(r)
 }
 
@@ -18659,10 +18437,10 @@ StagesUserLogoutCreate Method for StagesUserLogoutCreate
 
 UserLogoutStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesUserLogoutCreateRequest
 */
-func (a *StagesApiService) StagesUserLogoutCreate(ctx _context.Context) ApiStagesUserLogoutCreateRequest {
+func (a *StagesApiService) StagesUserLogoutCreate(ctx context.Context) ApiStagesUserLogoutCreateRequest {
 	return ApiStagesUserLogoutCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18671,26 +18449,24 @@ func (a *StagesApiService) StagesUserLogoutCreate(ctx _context.Context) ApiStage
 
 // Execute executes the request
 //  @return UserLogoutStage
-func (a *StagesApiService) StagesUserLogoutCreateExecute(r ApiStagesUserLogoutCreateRequest) (UserLogoutStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserLogoutCreateExecute(r ApiStagesUserLogoutCreateRequest) (*UserLogoutStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserLogoutStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserLogoutStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserLogoutCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_logout/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.userLogoutStageRequest == nil {
 		return localVarReturnValue, nil, reportError("userLogoutStageRequest is required and must be specified")
 	}
@@ -18728,7 +18504,7 @@ func (a *StagesApiService) StagesUserLogoutCreateExecute(r ApiStagesUserLogoutCr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -18738,15 +18514,15 @@ func (a *StagesApiService) StagesUserLogoutCreateExecute(r ApiStagesUserLogoutCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -18755,7 +18531,7 @@ func (a *StagesApiService) StagesUserLogoutCreateExecute(r ApiStagesUserLogoutCr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -18766,12 +18542,12 @@ func (a *StagesApiService) StagesUserLogoutCreateExecute(r ApiStagesUserLogoutCr
 }
 
 type ApiStagesUserLogoutDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesUserLogoutDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesUserLogoutDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesUserLogoutDestroyExecute(r)
 }
 
@@ -18780,11 +18556,11 @@ StagesUserLogoutDestroy Method for StagesUserLogoutDestroy
 
 UserLogoutStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Logout Stage.
  @return ApiStagesUserLogoutDestroyRequest
 */
-func (a *StagesApiService) StagesUserLogoutDestroy(ctx _context.Context, stageUuid string) ApiStagesUserLogoutDestroyRequest {
+func (a *StagesApiService) StagesUserLogoutDestroy(ctx context.Context, stageUuid string) ApiStagesUserLogoutDestroyRequest {
 	return ApiStagesUserLogoutDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18793,26 +18569,24 @@ func (a *StagesApiService) StagesUserLogoutDestroy(ctx _context.Context, stageUu
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesUserLogoutDestroyExecute(r ApiStagesUserLogoutDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserLogoutDestroyExecute(r ApiStagesUserLogoutDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserLogoutDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_logout/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -18845,7 +18619,7 @@ func (a *StagesApiService) StagesUserLogoutDestroyExecute(r ApiStagesUserLogoutD
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -18855,15 +18629,15 @@ func (a *StagesApiService) StagesUserLogoutDestroyExecute(r ApiStagesUserLogoutD
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -18874,7 +18648,7 @@ func (a *StagesApiService) StagesUserLogoutDestroyExecute(r ApiStagesUserLogoutD
 }
 
 type ApiStagesUserLogoutListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	name       *string
 	ordering   *string
@@ -18912,12 +18686,13 @@ func (r ApiStagesUserLogoutListRequest) Search(search string) ApiStagesUserLogou
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesUserLogoutListRequest) StageUuid(stageUuid string) ApiStagesUserLogoutListRequest {
 	r.stageUuid = &stageUuid
 	return r
 }
 
-func (r ApiStagesUserLogoutListRequest) Execute() (PaginatedUserLogoutStageList, *_nethttp.Response, error) {
+func (r ApiStagesUserLogoutListRequest) Execute() (*PaginatedUserLogoutStageList, *http.Response, error) {
 	return r.ApiService.StagesUserLogoutListExecute(r)
 }
 
@@ -18926,10 +18701,10 @@ StagesUserLogoutList Method for StagesUserLogoutList
 
 UserLogoutStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesUserLogoutListRequest
 */
-func (a *StagesApiService) StagesUserLogoutList(ctx _context.Context) ApiStagesUserLogoutListRequest {
+func (a *StagesApiService) StagesUserLogoutList(ctx context.Context) ApiStagesUserLogoutListRequest {
 	return ApiStagesUserLogoutListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18938,26 +18713,24 @@ func (a *StagesApiService) StagesUserLogoutList(ctx _context.Context) ApiStagesU
 
 // Execute executes the request
 //  @return PaginatedUserLogoutStageList
-func (a *StagesApiService) StagesUserLogoutListExecute(r ApiStagesUserLogoutListRequest) (PaginatedUserLogoutStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserLogoutListExecute(r ApiStagesUserLogoutListRequest) (*PaginatedUserLogoutStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedUserLogoutStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedUserLogoutStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserLogoutList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_logout/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -19008,7 +18781,7 @@ func (a *StagesApiService) StagesUserLogoutListExecute(r ApiStagesUserLogoutList
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -19018,15 +18791,15 @@ func (a *StagesApiService) StagesUserLogoutListExecute(r ApiStagesUserLogoutList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -19035,7 +18808,7 @@ func (a *StagesApiService) StagesUserLogoutListExecute(r ApiStagesUserLogoutList
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -19046,7 +18819,7 @@ func (a *StagesApiService) StagesUserLogoutListExecute(r ApiStagesUserLogoutList
 }
 
 type ApiStagesUserLogoutPartialUpdateRequest struct {
-	ctx                           _context.Context
+	ctx                           context.Context
 	ApiService                    *StagesApiService
 	stageUuid                     string
 	patchedUserLogoutStageRequest *PatchedUserLogoutStageRequest
@@ -19057,7 +18830,7 @@ func (r ApiStagesUserLogoutPartialUpdateRequest) PatchedUserLogoutStageRequest(p
 	return r
 }
 
-func (r ApiStagesUserLogoutPartialUpdateRequest) Execute() (UserLogoutStage, *_nethttp.Response, error) {
+func (r ApiStagesUserLogoutPartialUpdateRequest) Execute() (*UserLogoutStage, *http.Response, error) {
 	return r.ApiService.StagesUserLogoutPartialUpdateExecute(r)
 }
 
@@ -19066,11 +18839,11 @@ StagesUserLogoutPartialUpdate Method for StagesUserLogoutPartialUpdate
 
 UserLogoutStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Logout Stage.
  @return ApiStagesUserLogoutPartialUpdateRequest
 */
-func (a *StagesApiService) StagesUserLogoutPartialUpdate(ctx _context.Context, stageUuid string) ApiStagesUserLogoutPartialUpdateRequest {
+func (a *StagesApiService) StagesUserLogoutPartialUpdate(ctx context.Context, stageUuid string) ApiStagesUserLogoutPartialUpdateRequest {
 	return ApiStagesUserLogoutPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19080,27 +18853,25 @@ func (a *StagesApiService) StagesUserLogoutPartialUpdate(ctx _context.Context, s
 
 // Execute executes the request
 //  @return UserLogoutStage
-func (a *StagesApiService) StagesUserLogoutPartialUpdateExecute(r ApiStagesUserLogoutPartialUpdateRequest) (UserLogoutStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserLogoutPartialUpdateExecute(r ApiStagesUserLogoutPartialUpdateRequest) (*UserLogoutStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserLogoutStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserLogoutStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserLogoutPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_logout/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -19135,7 +18906,7 @@ func (a *StagesApiService) StagesUserLogoutPartialUpdateExecute(r ApiStagesUserL
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -19145,15 +18916,15 @@ func (a *StagesApiService) StagesUserLogoutPartialUpdateExecute(r ApiStagesUserL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -19162,7 +18933,7 @@ func (a *StagesApiService) StagesUserLogoutPartialUpdateExecute(r ApiStagesUserL
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -19173,12 +18944,12 @@ func (a *StagesApiService) StagesUserLogoutPartialUpdateExecute(r ApiStagesUserL
 }
 
 type ApiStagesUserLogoutRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesUserLogoutRetrieveRequest) Execute() (UserLogoutStage, *_nethttp.Response, error) {
+func (r ApiStagesUserLogoutRetrieveRequest) Execute() (*UserLogoutStage, *http.Response, error) {
 	return r.ApiService.StagesUserLogoutRetrieveExecute(r)
 }
 
@@ -19187,11 +18958,11 @@ StagesUserLogoutRetrieve Method for StagesUserLogoutRetrieve
 
 UserLogoutStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Logout Stage.
  @return ApiStagesUserLogoutRetrieveRequest
 */
-func (a *StagesApiService) StagesUserLogoutRetrieve(ctx _context.Context, stageUuid string) ApiStagesUserLogoutRetrieveRequest {
+func (a *StagesApiService) StagesUserLogoutRetrieve(ctx context.Context, stageUuid string) ApiStagesUserLogoutRetrieveRequest {
 	return ApiStagesUserLogoutRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19201,27 +18972,25 @@ func (a *StagesApiService) StagesUserLogoutRetrieve(ctx _context.Context, stageU
 
 // Execute executes the request
 //  @return UserLogoutStage
-func (a *StagesApiService) StagesUserLogoutRetrieveExecute(r ApiStagesUserLogoutRetrieveRequest) (UserLogoutStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserLogoutRetrieveExecute(r ApiStagesUserLogoutRetrieveRequest) (*UserLogoutStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserLogoutStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserLogoutStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserLogoutRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_logout/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -19254,7 +19023,7 @@ func (a *StagesApiService) StagesUserLogoutRetrieveExecute(r ApiStagesUserLogout
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -19264,15 +19033,15 @@ func (a *StagesApiService) StagesUserLogoutRetrieveExecute(r ApiStagesUserLogout
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -19281,7 +19050,7 @@ func (a *StagesApiService) StagesUserLogoutRetrieveExecute(r ApiStagesUserLogout
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -19292,7 +19061,7 @@ func (a *StagesApiService) StagesUserLogoutRetrieveExecute(r ApiStagesUserLogout
 }
 
 type ApiStagesUserLogoutUpdateRequest struct {
-	ctx                    _context.Context
+	ctx                    context.Context
 	ApiService             *StagesApiService
 	stageUuid              string
 	userLogoutStageRequest *UserLogoutStageRequest
@@ -19303,7 +19072,7 @@ func (r ApiStagesUserLogoutUpdateRequest) UserLogoutStageRequest(userLogoutStage
 	return r
 }
 
-func (r ApiStagesUserLogoutUpdateRequest) Execute() (UserLogoutStage, *_nethttp.Response, error) {
+func (r ApiStagesUserLogoutUpdateRequest) Execute() (*UserLogoutStage, *http.Response, error) {
 	return r.ApiService.StagesUserLogoutUpdateExecute(r)
 }
 
@@ -19312,11 +19081,11 @@ StagesUserLogoutUpdate Method for StagesUserLogoutUpdate
 
 UserLogoutStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Logout Stage.
  @return ApiStagesUserLogoutUpdateRequest
 */
-func (a *StagesApiService) StagesUserLogoutUpdate(ctx _context.Context, stageUuid string) ApiStagesUserLogoutUpdateRequest {
+func (a *StagesApiService) StagesUserLogoutUpdate(ctx context.Context, stageUuid string) ApiStagesUserLogoutUpdateRequest {
 	return ApiStagesUserLogoutUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19326,27 +19095,25 @@ func (a *StagesApiService) StagesUserLogoutUpdate(ctx _context.Context, stageUui
 
 // Execute executes the request
 //  @return UserLogoutStage
-func (a *StagesApiService) StagesUserLogoutUpdateExecute(r ApiStagesUserLogoutUpdateRequest) (UserLogoutStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserLogoutUpdateExecute(r ApiStagesUserLogoutUpdateRequest) (*UserLogoutStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserLogoutStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserLogoutStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserLogoutUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_logout/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.userLogoutStageRequest == nil {
 		return localVarReturnValue, nil, reportError("userLogoutStageRequest is required and must be specified")
 	}
@@ -19384,7 +19151,7 @@ func (a *StagesApiService) StagesUserLogoutUpdateExecute(r ApiStagesUserLogoutUp
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -19394,15 +19161,15 @@ func (a *StagesApiService) StagesUserLogoutUpdateExecute(r ApiStagesUserLogoutUp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -19411,7 +19178,7 @@ func (a *StagesApiService) StagesUserLogoutUpdateExecute(r ApiStagesUserLogoutUp
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -19422,12 +19189,12 @@ func (a *StagesApiService) StagesUserLogoutUpdateExecute(r ApiStagesUserLogoutUp
 }
 
 type ApiStagesUserLogoutUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesUserLogoutUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesUserLogoutUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesUserLogoutUsedByListExecute(r)
 }
 
@@ -19436,11 +19203,11 @@ StagesUserLogoutUsedByList Method for StagesUserLogoutUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Logout Stage.
  @return ApiStagesUserLogoutUsedByListRequest
 */
-func (a *StagesApiService) StagesUserLogoutUsedByList(ctx _context.Context, stageUuid string) ApiStagesUserLogoutUsedByListRequest {
+func (a *StagesApiService) StagesUserLogoutUsedByList(ctx context.Context, stageUuid string) ApiStagesUserLogoutUsedByListRequest {
 	return ApiStagesUserLogoutUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19450,27 +19217,25 @@ func (a *StagesApiService) StagesUserLogoutUsedByList(ctx _context.Context, stag
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesUserLogoutUsedByListExecute(r ApiStagesUserLogoutUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserLogoutUsedByListExecute(r ApiStagesUserLogoutUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserLogoutUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_logout/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -19503,7 +19268,7 @@ func (a *StagesApiService) StagesUserLogoutUsedByListExecute(r ApiStagesUserLogo
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -19513,15 +19278,15 @@ func (a *StagesApiService) StagesUserLogoutUsedByListExecute(r ApiStagesUserLogo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -19530,7 +19295,7 @@ func (a *StagesApiService) StagesUserLogoutUsedByListExecute(r ApiStagesUserLogo
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -19541,7 +19306,7 @@ func (a *StagesApiService) StagesUserLogoutUsedByListExecute(r ApiStagesUserLogo
 }
 
 type ApiStagesUserWriteCreateRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *StagesApiService
 	userWriteStageRequest *UserWriteStageRequest
 }
@@ -19551,7 +19316,7 @@ func (r ApiStagesUserWriteCreateRequest) UserWriteStageRequest(userWriteStageReq
 	return r
 }
 
-func (r ApiStagesUserWriteCreateRequest) Execute() (UserWriteStage, *_nethttp.Response, error) {
+func (r ApiStagesUserWriteCreateRequest) Execute() (*UserWriteStage, *http.Response, error) {
 	return r.ApiService.StagesUserWriteCreateExecute(r)
 }
 
@@ -19560,10 +19325,10 @@ StagesUserWriteCreate Method for StagesUserWriteCreate
 
 UserWriteStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesUserWriteCreateRequest
 */
-func (a *StagesApiService) StagesUserWriteCreate(ctx _context.Context) ApiStagesUserWriteCreateRequest {
+func (a *StagesApiService) StagesUserWriteCreate(ctx context.Context) ApiStagesUserWriteCreateRequest {
 	return ApiStagesUserWriteCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19572,26 +19337,24 @@ func (a *StagesApiService) StagesUserWriteCreate(ctx _context.Context) ApiStages
 
 // Execute executes the request
 //  @return UserWriteStage
-func (a *StagesApiService) StagesUserWriteCreateExecute(r ApiStagesUserWriteCreateRequest) (UserWriteStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserWriteCreateExecute(r ApiStagesUserWriteCreateRequest) (*UserWriteStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserWriteStage
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserWriteStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserWriteCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_write/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.userWriteStageRequest == nil {
 		return localVarReturnValue, nil, reportError("userWriteStageRequest is required and must be specified")
 	}
@@ -19629,7 +19392,7 @@ func (a *StagesApiService) StagesUserWriteCreateExecute(r ApiStagesUserWriteCrea
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -19639,15 +19402,15 @@ func (a *StagesApiService) StagesUserWriteCreateExecute(r ApiStagesUserWriteCrea
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -19656,7 +19419,7 @@ func (a *StagesApiService) StagesUserWriteCreateExecute(r ApiStagesUserWriteCrea
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -19667,12 +19430,12 @@ func (a *StagesApiService) StagesUserWriteCreateExecute(r ApiStagesUserWriteCrea
 }
 
 type ApiStagesUserWriteDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesUserWriteDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiStagesUserWriteDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StagesUserWriteDestroyExecute(r)
 }
 
@@ -19681,11 +19444,11 @@ StagesUserWriteDestroy Method for StagesUserWriteDestroy
 
 UserWriteStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Write Stage.
  @return ApiStagesUserWriteDestroyRequest
 */
-func (a *StagesApiService) StagesUserWriteDestroy(ctx _context.Context, stageUuid string) ApiStagesUserWriteDestroyRequest {
+func (a *StagesApiService) StagesUserWriteDestroy(ctx context.Context, stageUuid string) ApiStagesUserWriteDestroyRequest {
 	return ApiStagesUserWriteDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19694,26 +19457,24 @@ func (a *StagesApiService) StagesUserWriteDestroy(ctx _context.Context, stageUui
 }
 
 // Execute executes the request
-func (a *StagesApiService) StagesUserWriteDestroyExecute(r ApiStagesUserWriteDestroyRequest) (*_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserWriteDestroyExecute(r ApiStagesUserWriteDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserWriteDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_write/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -19746,7 +19507,7 @@ func (a *StagesApiService) StagesUserWriteDestroyExecute(r ApiStagesUserWriteDes
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -19756,15 +19517,15 @@ func (a *StagesApiService) StagesUserWriteDestroyExecute(r ApiStagesUserWriteDes
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -19775,7 +19536,7 @@ func (a *StagesApiService) StagesUserWriteDestroyExecute(r ApiStagesUserWriteDes
 }
 
 type ApiStagesUserWriteListRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *StagesApiService
 	createUsersAsInactive *bool
 	createUsersGroup      *string
@@ -19791,10 +19552,12 @@ func (r ApiStagesUserWriteListRequest) CreateUsersAsInactive(createUsersAsInacti
 	r.createUsersAsInactive = &createUsersAsInactive
 	return r
 }
+
 func (r ApiStagesUserWriteListRequest) CreateUsersGroup(createUsersGroup string) ApiStagesUserWriteListRequest {
 	r.createUsersGroup = &createUsersGroup
 	return r
 }
+
 func (r ApiStagesUserWriteListRequest) Name(name string) ApiStagesUserWriteListRequest {
 	r.name = &name
 	return r
@@ -19823,12 +19586,13 @@ func (r ApiStagesUserWriteListRequest) Search(search string) ApiStagesUserWriteL
 	r.search = &search
 	return r
 }
+
 func (r ApiStagesUserWriteListRequest) StageUuid(stageUuid string) ApiStagesUserWriteListRequest {
 	r.stageUuid = &stageUuid
 	return r
 }
 
-func (r ApiStagesUserWriteListRequest) Execute() (PaginatedUserWriteStageList, *_nethttp.Response, error) {
+func (r ApiStagesUserWriteListRequest) Execute() (*PaginatedUserWriteStageList, *http.Response, error) {
 	return r.ApiService.StagesUserWriteListExecute(r)
 }
 
@@ -19837,10 +19601,10 @@ StagesUserWriteList Method for StagesUserWriteList
 
 UserWriteStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStagesUserWriteListRequest
 */
-func (a *StagesApiService) StagesUserWriteList(ctx _context.Context) ApiStagesUserWriteListRequest {
+func (a *StagesApiService) StagesUserWriteList(ctx context.Context) ApiStagesUserWriteListRequest {
 	return ApiStagesUserWriteListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19849,26 +19613,24 @@ func (a *StagesApiService) StagesUserWriteList(ctx _context.Context) ApiStagesUs
 
 // Execute executes the request
 //  @return PaginatedUserWriteStageList
-func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRequest) (PaginatedUserWriteStageList, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRequest) (*PaginatedUserWriteStageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedUserWriteStageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedUserWriteStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserWriteList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_write/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.createUsersAsInactive != nil {
 		localVarQueryParams.Add("create_users_as_inactive", parameterToString(*r.createUsersAsInactive, ""))
@@ -19925,7 +19687,7 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -19935,15 +19697,15 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -19952,7 +19714,7 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -19963,7 +19725,7 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 }
 
 type ApiStagesUserWritePartialUpdateRequest struct {
-	ctx                          _context.Context
+	ctx                          context.Context
 	ApiService                   *StagesApiService
 	stageUuid                    string
 	patchedUserWriteStageRequest *PatchedUserWriteStageRequest
@@ -19974,7 +19736,7 @@ func (r ApiStagesUserWritePartialUpdateRequest) PatchedUserWriteStageRequest(pat
 	return r
 }
 
-func (r ApiStagesUserWritePartialUpdateRequest) Execute() (UserWriteStage, *_nethttp.Response, error) {
+func (r ApiStagesUserWritePartialUpdateRequest) Execute() (*UserWriteStage, *http.Response, error) {
 	return r.ApiService.StagesUserWritePartialUpdateExecute(r)
 }
 
@@ -19983,11 +19745,11 @@ StagesUserWritePartialUpdate Method for StagesUserWritePartialUpdate
 
 UserWriteStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Write Stage.
  @return ApiStagesUserWritePartialUpdateRequest
 */
-func (a *StagesApiService) StagesUserWritePartialUpdate(ctx _context.Context, stageUuid string) ApiStagesUserWritePartialUpdateRequest {
+func (a *StagesApiService) StagesUserWritePartialUpdate(ctx context.Context, stageUuid string) ApiStagesUserWritePartialUpdateRequest {
 	return ApiStagesUserWritePartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19997,27 +19759,25 @@ func (a *StagesApiService) StagesUserWritePartialUpdate(ctx _context.Context, st
 
 // Execute executes the request
 //  @return UserWriteStage
-func (a *StagesApiService) StagesUserWritePartialUpdateExecute(r ApiStagesUserWritePartialUpdateRequest) (UserWriteStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserWritePartialUpdateExecute(r ApiStagesUserWritePartialUpdateRequest) (*UserWriteStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserWriteStage
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserWriteStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserWritePartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_write/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -20052,7 +19812,7 @@ func (a *StagesApiService) StagesUserWritePartialUpdateExecute(r ApiStagesUserWr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -20062,15 +19822,15 @@ func (a *StagesApiService) StagesUserWritePartialUpdateExecute(r ApiStagesUserWr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -20079,7 +19839,7 @@ func (a *StagesApiService) StagesUserWritePartialUpdateExecute(r ApiStagesUserWr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -20090,12 +19850,12 @@ func (a *StagesApiService) StagesUserWritePartialUpdateExecute(r ApiStagesUserWr
 }
 
 type ApiStagesUserWriteRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesUserWriteRetrieveRequest) Execute() (UserWriteStage, *_nethttp.Response, error) {
+func (r ApiStagesUserWriteRetrieveRequest) Execute() (*UserWriteStage, *http.Response, error) {
 	return r.ApiService.StagesUserWriteRetrieveExecute(r)
 }
 
@@ -20104,11 +19864,11 @@ StagesUserWriteRetrieve Method for StagesUserWriteRetrieve
 
 UserWriteStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Write Stage.
  @return ApiStagesUserWriteRetrieveRequest
 */
-func (a *StagesApiService) StagesUserWriteRetrieve(ctx _context.Context, stageUuid string) ApiStagesUserWriteRetrieveRequest {
+func (a *StagesApiService) StagesUserWriteRetrieve(ctx context.Context, stageUuid string) ApiStagesUserWriteRetrieveRequest {
 	return ApiStagesUserWriteRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -20118,27 +19878,25 @@ func (a *StagesApiService) StagesUserWriteRetrieve(ctx _context.Context, stageUu
 
 // Execute executes the request
 //  @return UserWriteStage
-func (a *StagesApiService) StagesUserWriteRetrieveExecute(r ApiStagesUserWriteRetrieveRequest) (UserWriteStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserWriteRetrieveExecute(r ApiStagesUserWriteRetrieveRequest) (*UserWriteStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserWriteStage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserWriteStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserWriteRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_write/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -20171,7 +19929,7 @@ func (a *StagesApiService) StagesUserWriteRetrieveExecute(r ApiStagesUserWriteRe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -20181,15 +19939,15 @@ func (a *StagesApiService) StagesUserWriteRetrieveExecute(r ApiStagesUserWriteRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -20198,7 +19956,7 @@ func (a *StagesApiService) StagesUserWriteRetrieveExecute(r ApiStagesUserWriteRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -20209,7 +19967,7 @@ func (a *StagesApiService) StagesUserWriteRetrieveExecute(r ApiStagesUserWriteRe
 }
 
 type ApiStagesUserWriteUpdateRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *StagesApiService
 	stageUuid             string
 	userWriteStageRequest *UserWriteStageRequest
@@ -20220,7 +19978,7 @@ func (r ApiStagesUserWriteUpdateRequest) UserWriteStageRequest(userWriteStageReq
 	return r
 }
 
-func (r ApiStagesUserWriteUpdateRequest) Execute() (UserWriteStage, *_nethttp.Response, error) {
+func (r ApiStagesUserWriteUpdateRequest) Execute() (*UserWriteStage, *http.Response, error) {
 	return r.ApiService.StagesUserWriteUpdateExecute(r)
 }
 
@@ -20229,11 +19987,11 @@ StagesUserWriteUpdate Method for StagesUserWriteUpdate
 
 UserWriteStage Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Write Stage.
  @return ApiStagesUserWriteUpdateRequest
 */
-func (a *StagesApiService) StagesUserWriteUpdate(ctx _context.Context, stageUuid string) ApiStagesUserWriteUpdateRequest {
+func (a *StagesApiService) StagesUserWriteUpdate(ctx context.Context, stageUuid string) ApiStagesUserWriteUpdateRequest {
 	return ApiStagesUserWriteUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -20243,27 +20001,25 @@ func (a *StagesApiService) StagesUserWriteUpdate(ctx _context.Context, stageUuid
 
 // Execute executes the request
 //  @return UserWriteStage
-func (a *StagesApiService) StagesUserWriteUpdateExecute(r ApiStagesUserWriteUpdateRequest) (UserWriteStage, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserWriteUpdateExecute(r ApiStagesUserWriteUpdateRequest) (*UserWriteStage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  UserWriteStage
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserWriteStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserWriteUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_write/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.userWriteStageRequest == nil {
 		return localVarReturnValue, nil, reportError("userWriteStageRequest is required and must be specified")
 	}
@@ -20301,7 +20057,7 @@ func (a *StagesApiService) StagesUserWriteUpdateExecute(r ApiStagesUserWriteUpda
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -20311,15 +20067,15 @@ func (a *StagesApiService) StagesUserWriteUpdateExecute(r ApiStagesUserWriteUpda
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -20328,7 +20084,7 @@ func (a *StagesApiService) StagesUserWriteUpdateExecute(r ApiStagesUserWriteUpda
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -20339,12 +20095,12 @@ func (a *StagesApiService) StagesUserWriteUpdateExecute(r ApiStagesUserWriteUpda
 }
 
 type ApiStagesUserWriteUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *StagesApiService
 	stageUuid  string
 }
 
-func (r ApiStagesUserWriteUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiStagesUserWriteUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.StagesUserWriteUsedByListExecute(r)
 }
 
@@ -20353,11 +20109,11 @@ StagesUserWriteUsedByList Method for StagesUserWriteUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param stageUuid A UUID string identifying this User Write Stage.
  @return ApiStagesUserWriteUsedByListRequest
 */
-func (a *StagesApiService) StagesUserWriteUsedByList(ctx _context.Context, stageUuid string) ApiStagesUserWriteUsedByListRequest {
+func (a *StagesApiService) StagesUserWriteUsedByList(ctx context.Context, stageUuid string) ApiStagesUserWriteUsedByListRequest {
 	return ApiStagesUserWriteUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -20367,27 +20123,25 @@ func (a *StagesApiService) StagesUserWriteUsedByList(ctx _context.Context, stage
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *StagesApiService) StagesUserWriteUsedByListExecute(r ApiStagesUserWriteUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *StagesApiService) StagesUserWriteUsedByListExecute(r ApiStagesUserWriteUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesUserWriteUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/stages/user_write/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", _neturl.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -20420,7 +20174,7 @@ func (a *StagesApiService) StagesUserWriteUsedByListExecute(r ApiStagesUserWrite
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -20430,15 +20184,15 @@ func (a *StagesApiService) StagesUserWriteUsedByListExecute(r ApiStagesUserWrite
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -20447,7 +20201,7 @@ func (a *StagesApiService) StagesUserWriteUsedByListExecute(r ApiStagesUserWrite
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

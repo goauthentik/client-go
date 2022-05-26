@@ -233,11 +233,11 @@ func (o *AuthenticatorValidationChallenge) GetDeviceChallenges() []DeviceChallen
 
 // GetDeviceChallengesOk returns a tuple with the DeviceChallenges field value
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorValidationChallenge) GetDeviceChallengesOk() (*[]DeviceChallenge, bool) {
+func (o *AuthenticatorValidationChallenge) GetDeviceChallengesOk() ([]DeviceChallenge, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.DeviceChallenges, true
+	return o.DeviceChallenges, true
 }
 
 // SetDeviceChallenges sets field value
@@ -257,11 +257,11 @@ func (o *AuthenticatorValidationChallenge) GetConfigurationStages() []Selectable
 
 // GetConfigurationStagesOk returns a tuple with the ConfigurationStages field value
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorValidationChallenge) GetConfigurationStagesOk() (*[]SelectableStage, bool) {
+func (o *AuthenticatorValidationChallenge) GetConfigurationStagesOk() ([]SelectableStage, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ConfigurationStages, true
+	return o.ConfigurationStages, true
 }
 
 // SetConfigurationStages sets field value

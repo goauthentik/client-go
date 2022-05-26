@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
-**UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
+**UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **ClientId** | Pointer to **string** | Client identifier used to talk to Plex. | [optional] 
 **AllowedServers** | Pointer to **[]string** | Which servers a user has to be a member of to be granted access. Empty list allows every server. | [optional] 
 **AllowFriends** | Pointer to **bool** | Allow friends to authenticate, even if you don&#39;t share a server. | [optional] 
@@ -220,6 +220,16 @@ SetUserMatchingMode sets UserMatchingMode field to given value.
 
 HasUserMatchingMode returns a boolean if a field has been set.
 
+### SetUserMatchingModeNil
+
+`func (o *PlexSourceRequest) SetUserMatchingModeNil(b bool)`
+
+ SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
+
+### UnsetUserMatchingMode
+`func (o *PlexSourceRequest) UnsetUserMatchingMode()`
+
+UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
 ### GetClientId
 
 `func (o *PlexSourceRequest) GetClientId() string`

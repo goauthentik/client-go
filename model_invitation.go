@@ -18,11 +18,11 @@ import (
 
 // Invitation Invitation Serializer
 type Invitation struct {
-	Pk        string                  `json:"pk"`
-	Name      string                  `json:"name"`
-	Expires   *time.Time              `json:"expires,omitempty"`
-	FixedData *map[string]interface{} `json:"fixed_data,omitempty"`
-	CreatedBy GroupMember             `json:"created_by"`
+	Pk        string                 `json:"pk"`
+	Name      string                 `json:"name"`
+	Expires   *time.Time             `json:"expires,omitempty"`
+	FixedData map[string]interface{} `json:"fixed_data,omitempty"`
+	CreatedBy InvitationCreatedBy    `json:"created_by"`
 	// When enabled, the invitation will be deleted after usage.
 	SingleUse *bool `json:"single_use,omitempty"`
 }
@@ -31,7 +31,7 @@ type Invitation struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvitation(pk string, name string, createdBy GroupMember) *Invitation {
+func NewInvitation(pk string, name string, createdBy InvitationCreatedBy) *Invitation {
 	this := Invitation{}
 	this.Pk = pk
 	this.Name = name
@@ -133,12 +133,12 @@ func (o *Invitation) GetFixedData() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.FixedData
+	return o.FixedData
 }
 
 // GetFixedDataOk returns a tuple with the FixedData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Invitation) GetFixedDataOk() (*map[string]interface{}, bool) {
+func (o *Invitation) GetFixedDataOk() (map[string]interface{}, bool) {
 	if o == nil || o.FixedData == nil {
 		return nil, false
 	}
@@ -156,13 +156,13 @@ func (o *Invitation) HasFixedData() bool {
 
 // SetFixedData gets a reference to the given map[string]interface{} and assigns it to the FixedData field.
 func (o *Invitation) SetFixedData(v map[string]interface{}) {
-	o.FixedData = &v
+	o.FixedData = v
 }
 
 // GetCreatedBy returns the CreatedBy field value
-func (o *Invitation) GetCreatedBy() GroupMember {
+func (o *Invitation) GetCreatedBy() InvitationCreatedBy {
 	if o == nil {
-		var ret GroupMember
+		var ret InvitationCreatedBy
 		return ret
 	}
 
@@ -171,7 +171,7 @@ func (o *Invitation) GetCreatedBy() GroupMember {
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-func (o *Invitation) GetCreatedByOk() (*GroupMember, bool) {
+func (o *Invitation) GetCreatedByOk() (*InvitationCreatedBy, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -179,7 +179,7 @@ func (o *Invitation) GetCreatedByOk() (*GroupMember, bool) {
 }
 
 // SetCreatedBy sets field value
-func (o *Invitation) SetCreatedBy(v GroupMember) {
+func (o *Invitation) SetCreatedBy(v InvitationCreatedBy) {
 	o.CreatedBy = v
 }
 

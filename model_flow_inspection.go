@@ -53,11 +53,11 @@ func (o *FlowInspection) GetPlans() []FlowInspectorPlan {
 
 // GetPlansOk returns a tuple with the Plans field value
 // and a boolean to check if the value has been set.
-func (o *FlowInspection) GetPlansOk() (*[]FlowInspectorPlan, bool) {
+func (o *FlowInspection) GetPlansOk() ([]FlowInspectorPlan, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Plans, true
+	return o.Plans, true
 }
 
 // SetPlans sets field value

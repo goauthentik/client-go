@@ -17,8 +17,8 @@ import (
 
 // AuthenticatorStaticStageRequest AuthenticatorStaticStage Serializer
 type AuthenticatorStaticStageRequest struct {
-	Name    string         `json:"name"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
+	Name    string        `json:"name"`
+	FlowSet []FlowRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
 	TokenCount    *int32         `json:"token_count,omitempty"`
@@ -72,12 +72,12 @@ func (o *AuthenticatorStaticStageRequest) GetFlowSet() []FlowRequest {
 		var ret []FlowRequest
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorStaticStageRequest) GetFlowSetOk() (*[]FlowRequest, bool) {
+func (o *AuthenticatorStaticStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -95,7 +95,7 @@ func (o *AuthenticatorStaticStageRequest) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
 func (o *AuthenticatorStaticStageRequest) SetFlowSet(v []FlowRequest) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).

@@ -25,7 +25,8 @@ const (
 	PROVIDERENUM_GENERIC ProviderEnum = "generic"
 )
 
-var allowedProviderEnumEnumValues = []ProviderEnum{
+// All allowed values of ProviderEnum enum
+var AllowedProviderEnumEnumValues = []ProviderEnum{
 	"twilio",
 	"generic",
 }
@@ -37,7 +38,7 @@ func (v *ProviderEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := ProviderEnum(value)
-	for _, existing := range allowedProviderEnumEnumValues {
+	for _, existing := range AllowedProviderEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +55,13 @@ func NewProviderEnumFromValue(v string) (*ProviderEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ProviderEnum: valid values are %v", v, allowedProviderEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for ProviderEnum: valid values are %v", v, AllowedProviderEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v ProviderEnum) IsValid() bool {
-	for _, existing := range allowedProviderEnumEnumValues {
+	for _, existing := range AllowedProviderEnumEnumValues {
 		if existing == v {
 			return true
 		}

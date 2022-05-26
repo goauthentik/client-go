@@ -20,21 +20,21 @@ import (
 type Token struct {
 	Pk string `json:"pk"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed     NullableString `json:"managed,omitempty"`
-	Identifier  string         `json:"identifier"`
-	Intent      *IntentEnum    `json:"intent,omitempty"`
-	User        *int32         `json:"user,omitempty"`
-	UserObj     User           `json:"user_obj"`
-	Description *string        `json:"description,omitempty"`
-	Expires     *time.Time     `json:"expires,omitempty"`
-	Expiring    *bool          `json:"expiring,omitempty"`
+	Managed     NullableString       `json:"managed,omitempty"`
+	Identifier  string               `json:"identifier"`
+	Intent      *IntentEnum          `json:"intent,omitempty"`
+	User        *int32               `json:"user,omitempty"`
+	UserObj     PolicyBindingUserObj `json:"user_obj"`
+	Description *string              `json:"description,omitempty"`
+	Expires     *time.Time           `json:"expires,omitempty"`
+	Expiring    *bool                `json:"expiring,omitempty"`
 }
 
 // NewToken instantiates a new Token object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewToken(pk string, identifier string, userObj User) *Token {
+func NewToken(pk string, identifier string, userObj PolicyBindingUserObj) *Token {
 	this := Token{}
 	this.Pk = pk
 	this.Identifier = identifier
@@ -206,9 +206,9 @@ func (o *Token) SetUser(v int32) {
 }
 
 // GetUserObj returns the UserObj field value
-func (o *Token) GetUserObj() User {
+func (o *Token) GetUserObj() PolicyBindingUserObj {
 	if o == nil {
-		var ret User
+		var ret PolicyBindingUserObj
 		return ret
 	}
 
@@ -217,7 +217,7 @@ func (o *Token) GetUserObj() User {
 
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
-func (o *Token) GetUserObjOk() (*User, bool) {
+func (o *Token) GetUserObjOk() (*PolicyBindingUserObj, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -225,7 +225,7 @@ func (o *Token) GetUserObjOk() (*User, bool) {
 }
 
 // SetUserObj sets field value
-func (o *Token) SetUserObj(v User) {
+func (o *Token) SetUserObj(v PolicyBindingUserObj) {
 	o.UserObj = v
 }
 

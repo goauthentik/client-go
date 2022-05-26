@@ -27,7 +27,8 @@ const (
 	INTENTENUM_APP_PASSWORD IntentEnum = "app_password"
 )
 
-var allowedIntentEnumEnumValues = []IntentEnum{
+// All allowed values of IntentEnum enum
+var AllowedIntentEnumEnumValues = []IntentEnum{
 	"verification",
 	"api",
 	"recovery",
@@ -41,7 +42,7 @@ func (v *IntentEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := IntentEnum(value)
-	for _, existing := range allowedIntentEnumEnumValues {
+	for _, existing := range AllowedIntentEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -58,13 +59,13 @@ func NewIntentEnumFromValue(v string) (*IntentEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for IntentEnum: valid values are %v", v, allowedIntentEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for IntentEnum: valid values are %v", v, AllowedIntentEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v IntentEnum) IsValid() bool {
-	for _, existing := range allowedIntentEnumEnumValues {
+	for _, existing := range AllowedIntentEnumEnumValues {
 		if existing == v {
 			return true
 		}

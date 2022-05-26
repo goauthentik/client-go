@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **NullableString** |  | [optional] 
 **ExecutionLogging** | Pointer to **bool** | When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged. | [optional] 
-**Action** | Pointer to [**EventActions**](EventActions.md) | Match created events with this action type. When left empty, all action types will be matched. | [optional] 
+**Action** | Pointer to [**NullableEventActions**](EventActions.md) | Match created events with this action type. When left empty, all action types will be matched. | [optional] 
 **ClientIp** | Pointer to **string** | Matches Event&#39;s Client IP (strict matching, for network matching use an Expression Policy) | [optional] 
-**App** | Pointer to [**AppEnum**](AppEnum.md) | Match events created by selected application. When left empty, all applications are matched. | [optional] 
+**App** | Pointer to [**NullableAppEnum**](AppEnum.md) | Match events created by selected application. When left empty, all applications are matched. | [optional] 
 
 ## Methods
 
@@ -114,6 +114,16 @@ SetAction sets Action field to given value.
 
 HasAction returns a boolean if a field has been set.
 
+### SetActionNil
+
+`func (o *PatchedEventMatcherPolicyRequest) SetActionNil(b bool)`
+
+ SetActionNil sets the value for Action to be an explicit nil
+
+### UnsetAction
+`func (o *PatchedEventMatcherPolicyRequest) UnsetAction()`
+
+UnsetAction ensures that no value is present for Action, not even an explicit nil
 ### GetClientIp
 
 `func (o *PatchedEventMatcherPolicyRequest) GetClientIp() string`
@@ -164,6 +174,16 @@ SetApp sets App field to given value.
 
 HasApp returns a boolean if a field has been set.
 
+### SetAppNil
+
+`func (o *PatchedEventMatcherPolicyRequest) SetAppNil(b bool)`
+
+ SetAppNil sets the value for App to be an explicit nil
+
+### UnsetApp
+`func (o *PatchedEventMatcherPolicyRequest) UnsetApp()`
+
+UnsetApp ensures that no value is present for App, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

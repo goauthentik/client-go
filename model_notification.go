@@ -18,19 +18,19 @@ import (
 
 // Notification Notification Serializer
 type Notification struct {
-	Pk       string       `json:"pk"`
-	Severity SeverityEnum `json:"severity"`
-	Body     string       `json:"body"`
-	Created  time.Time    `json:"created"`
-	Event    *Event       `json:"event,omitempty"`
-	Seen     *bool        `json:"seen,omitempty"`
+	Pk       string               `json:"pk"`
+	Severity NullableSeverityEnum `json:"severity"`
+	Body     string               `json:"body"`
+	Created  time.Time            `json:"created"`
+	Event    *Event               `json:"event,omitempty"`
+	Seen     *bool                `json:"seen,omitempty"`
 }
 
 // NewNotification instantiates a new Notification object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotification(pk string, severity SeverityEnum, body string, created time.Time) *Notification {
+func NewNotification(pk string, severity NullableSeverityEnum, body string, created time.Time) *Notification {
 	this := Notification{}
 	this.Pk = pk
 	this.Severity = severity
@@ -72,27 +72,29 @@ func (o *Notification) SetPk(v string) {
 }
 
 // GetSeverity returns the Severity field value
+// If the value is explicit nil, the zero value for SeverityEnum will be returned
 func (o *Notification) GetSeverity() SeverityEnum {
-	if o == nil {
+	if o == nil || o.Severity.Get() == nil {
 		var ret SeverityEnum
 		return ret
 	}
 
-	return o.Severity
+	return *o.Severity.Get()
 }
 
 // GetSeverityOk returns a tuple with the Severity field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Notification) GetSeverityOk() (*SeverityEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Severity, true
+	return o.Severity.Get(), o.Severity.IsSet()
 }
 
 // SetSeverity sets field value
 func (o *Notification) SetSeverity(v SeverityEnum) {
-	o.Severity = v
+	o.Severity.Set(&v)
 }
 
 // GetBody returns the Body field value
@@ -213,7 +215,7 @@ func (o Notification) MarshalJSON() ([]byte, error) {
 		toSerialize["pk"] = o.Pk
 	}
 	if true {
-		toSerialize["severity"] = o.Severity
+		toSerialize["severity"] = o.Severity.Get()
 	}
 	if true {
 		toSerialize["body"] = o.Body

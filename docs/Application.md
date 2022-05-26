@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Application&#39;s display Name. | 
 **Slug** | **string** | Internal application name, used in URLs. | 
 **Provider** | Pointer to **NullableInt32** |  | [optional] 
-**ProviderObj** | [**Provider**](Provider.md) |  | [readonly] 
+**ProviderObj** | [**ApplicationProviderObj**](ApplicationProviderObj.md) |  | 
 **LaunchUrl** | **NullableString** |  | [readonly] 
 **MetaLaunchUrl** | Pointer to **string** |  | [optional] 
 **MetaIcon** | **NullableString** |  | [readonly] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewApplication
 
-`func NewApplication(pk string, name string, slug string, providerObj Provider, launchUrl NullableString, metaIcon NullableString, ) *Application`
+`func NewApplication(pk string, name string, slug string, providerObj ApplicationProviderObj, launchUrl NullableString, metaIcon NullableString, ) *Application`
 
 NewApplication instantiates a new Application object
 This constructor will assign default values to properties that have it defined,
@@ -133,20 +133,20 @@ HasProvider returns a boolean if a field has been set.
 UnsetProvider ensures that no value is present for Provider, not even an explicit nil
 ### GetProviderObj
 
-`func (o *Application) GetProviderObj() Provider`
+`func (o *Application) GetProviderObj() ApplicationProviderObj`
 
 GetProviderObj returns the ProviderObj field if non-nil, zero value otherwise.
 
 ### GetProviderObjOk
 
-`func (o *Application) GetProviderObjOk() (*Provider, bool)`
+`func (o *Application) GetProviderObjOk() (*ApplicationProviderObj, bool)`
 
 GetProviderObjOk returns a tuple with the ProviderObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProviderObj
 
-`func (o *Application) SetProviderObj(v Provider)`
+`func (o *Application) SetProviderObj(v ApplicationProviderObj)`
 
 SetProviderObj sets ProviderObj field to given value.
 

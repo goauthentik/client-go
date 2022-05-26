@@ -13,29 +13,24 @@ package api
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"reflect"
 	"strings"
-)
-
-// Linger please
-var (
-	_ _context.Context
 )
 
 // PropertymappingsApiService PropertymappingsApi service
 type PropertymappingsApiService service
 
 type ApiPropertymappingsAllDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsAllDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPropertymappingsAllDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PropertymappingsAllDestroyExecute(r)
 }
 
@@ -44,11 +39,11 @@ PropertymappingsAllDestroy Method for PropertymappingsAllDestroy
 
 PropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this Property Mapping.
  @return ApiPropertymappingsAllDestroyRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsAllDestroy(ctx _context.Context, pmUuid string) ApiPropertymappingsAllDestroyRequest {
+func (a *PropertymappingsApiService) PropertymappingsAllDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsAllDestroyRequest {
 	return ApiPropertymappingsAllDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -57,26 +52,24 @@ func (a *PropertymappingsApiService) PropertymappingsAllDestroy(ctx _context.Con
 }
 
 // Execute executes the request
-func (a *PropertymappingsApiService) PropertymappingsAllDestroyExecute(r ApiPropertymappingsAllDestroyRequest) (*_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsAllDestroyExecute(r ApiPropertymappingsAllDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsAllDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/all/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -109,7 +102,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllDestroyExecute(r ApiProp
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -119,15 +112,15 @@ func (a *PropertymappingsApiService) PropertymappingsAllDestroyExecute(r ApiProp
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -138,7 +131,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllDestroyExecute(r ApiProp
 }
 
 type ApiPropertymappingsAllListRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *PropertymappingsApiService
 	managedIsnull *bool
 	ordering      *string
@@ -176,7 +169,7 @@ func (r ApiPropertymappingsAllListRequest) Search(search string) ApiPropertymapp
 	return r
 }
 
-func (r ApiPropertymappingsAllListRequest) Execute() (PaginatedPropertyMappingList, *_nethttp.Response, error) {
+func (r ApiPropertymappingsAllListRequest) Execute() (*PaginatedPropertyMappingList, *http.Response, error) {
 	return r.ApiService.PropertymappingsAllListExecute(r)
 }
 
@@ -185,10 +178,10 @@ PropertymappingsAllList Method for PropertymappingsAllList
 
 PropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPropertymappingsAllListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsAllList(ctx _context.Context) ApiPropertymappingsAllListRequest {
+func (a *PropertymappingsApiService) PropertymappingsAllList(ctx context.Context) ApiPropertymappingsAllListRequest {
 	return ApiPropertymappingsAllListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -197,26 +190,24 @@ func (a *PropertymappingsApiService) PropertymappingsAllList(ctx _context.Contex
 
 // Execute executes the request
 //  @return PaginatedPropertyMappingList
-func (a *PropertymappingsApiService) PropertymappingsAllListExecute(r ApiPropertymappingsAllListRequest) (PaginatedPropertyMappingList, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsAllListExecute(r ApiPropertymappingsAllListRequest) (*PaginatedPropertyMappingList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedPropertyMappingList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedPropertyMappingList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsAllList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/all/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.managedIsnull != nil {
 		localVarQueryParams.Add("managed__isnull", parameterToString(*r.managedIsnull, ""))
@@ -264,7 +255,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllListExecute(r ApiPropert
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -274,15 +265,15 @@ func (a *PropertymappingsApiService) PropertymappingsAllListExecute(r ApiPropert
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -291,7 +282,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllListExecute(r ApiPropert
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -302,12 +293,12 @@ func (a *PropertymappingsApiService) PropertymappingsAllListExecute(r ApiPropert
 }
 
 type ApiPropertymappingsAllRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsAllRetrieveRequest) Execute() (PropertyMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsAllRetrieveRequest) Execute() (*PropertyMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsAllRetrieveExecute(r)
 }
 
@@ -316,11 +307,11 @@ PropertymappingsAllRetrieve Method for PropertymappingsAllRetrieve
 
 PropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this Property Mapping.
  @return ApiPropertymappingsAllRetrieveRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsAllRetrieve(ctx _context.Context, pmUuid string) ApiPropertymappingsAllRetrieveRequest {
+func (a *PropertymappingsApiService) PropertymappingsAllRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsAllRetrieveRequest {
 	return ApiPropertymappingsAllRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -330,27 +321,25 @@ func (a *PropertymappingsApiService) PropertymappingsAllRetrieve(ctx _context.Co
 
 // Execute executes the request
 //  @return PropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsAllRetrieveExecute(r ApiPropertymappingsAllRetrieveRequest) (PropertyMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsAllRetrieveExecute(r ApiPropertymappingsAllRetrieveRequest) (*PropertyMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PropertyMapping
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PropertyMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsAllRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/all/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -383,7 +372,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllRetrieveExecute(r ApiPro
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -393,15 +382,15 @@ func (a *PropertymappingsApiService) PropertymappingsAllRetrieveExecute(r ApiPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -410,7 +399,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllRetrieveExecute(r ApiPro
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -421,7 +410,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllRetrieveExecute(r ApiPro
 }
 
 type ApiPropertymappingsAllTestCreateRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *PropertymappingsApiService
 	pmUuid            string
 	policyTestRequest *PolicyTestRequest
@@ -432,12 +421,13 @@ func (r ApiPropertymappingsAllTestCreateRequest) PolicyTestRequest(policyTestReq
 	r.policyTestRequest = &policyTestRequest
 	return r
 }
+
 func (r ApiPropertymappingsAllTestCreateRequest) FormatResult(formatResult bool) ApiPropertymappingsAllTestCreateRequest {
 	r.formatResult = &formatResult
 	return r
 }
 
-func (r ApiPropertymappingsAllTestCreateRequest) Execute() (PropertyMappingTestResult, *_nethttp.Response, error) {
+func (r ApiPropertymappingsAllTestCreateRequest) Execute() (*PropertyMappingTestResult, *http.Response, error) {
 	return r.ApiService.PropertymappingsAllTestCreateExecute(r)
 }
 
@@ -446,11 +436,11 @@ PropertymappingsAllTestCreate Method for PropertymappingsAllTestCreate
 
 Test Property Mapping
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this Property Mapping.
  @return ApiPropertymappingsAllTestCreateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsAllTestCreate(ctx _context.Context, pmUuid string) ApiPropertymappingsAllTestCreateRequest {
+func (a *PropertymappingsApiService) PropertymappingsAllTestCreate(ctx context.Context, pmUuid string) ApiPropertymappingsAllTestCreateRequest {
 	return ApiPropertymappingsAllTestCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -460,27 +450,25 @@ func (a *PropertymappingsApiService) PropertymappingsAllTestCreate(ctx _context.
 
 // Execute executes the request
 //  @return PropertyMappingTestResult
-func (a *PropertymappingsApiService) PropertymappingsAllTestCreateExecute(r ApiPropertymappingsAllTestCreateRequest) (PropertyMappingTestResult, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsAllTestCreateExecute(r ApiPropertymappingsAllTestCreateRequest) (*PropertyMappingTestResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PropertyMappingTestResult
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PropertyMappingTestResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsAllTestCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/all/{pm_uuid}/test/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.policyTestRequest == nil {
 		return localVarReturnValue, nil, reportError("policyTestRequest is required and must be specified")
 	}
@@ -521,7 +509,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllTestCreateExecute(r ApiP
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -531,15 +519,15 @@ func (a *PropertymappingsApiService) PropertymappingsAllTestCreateExecute(r ApiP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -548,7 +536,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllTestCreateExecute(r ApiP
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -559,11 +547,11 @@ func (a *PropertymappingsApiService) PropertymappingsAllTestCreateExecute(r ApiP
 }
 
 type ApiPropertymappingsAllTypesListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 }
 
-func (r ApiPropertymappingsAllTypesListRequest) Execute() ([]TypeCreate, *_nethttp.Response, error) {
+func (r ApiPropertymappingsAllTypesListRequest) Execute() ([]TypeCreate, *http.Response, error) {
 	return r.ApiService.PropertymappingsAllTypesListExecute(r)
 }
 
@@ -572,10 +560,10 @@ PropertymappingsAllTypesList Method for PropertymappingsAllTypesList
 
 Get all creatable property-mapping types
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPropertymappingsAllTypesListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsAllTypesList(ctx _context.Context) ApiPropertymappingsAllTypesListRequest {
+func (a *PropertymappingsApiService) PropertymappingsAllTypesList(ctx context.Context) ApiPropertymappingsAllTypesListRequest {
 	return ApiPropertymappingsAllTypesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -584,26 +572,24 @@ func (a *PropertymappingsApiService) PropertymappingsAllTypesList(ctx _context.C
 
 // Execute executes the request
 //  @return []TypeCreate
-func (a *PropertymappingsApiService) PropertymappingsAllTypesListExecute(r ApiPropertymappingsAllTypesListRequest) ([]TypeCreate, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsAllTypesListExecute(r ApiPropertymappingsAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []TypeCreate
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []TypeCreate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsAllTypesList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/all/types/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -636,7 +622,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllTypesListExecute(r ApiPr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -646,15 +632,15 @@ func (a *PropertymappingsApiService) PropertymappingsAllTypesListExecute(r ApiPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -663,7 +649,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllTypesListExecute(r ApiPr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -674,12 +660,12 @@ func (a *PropertymappingsApiService) PropertymappingsAllTypesListExecute(r ApiPr
 }
 
 type ApiPropertymappingsAllUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsAllUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPropertymappingsAllUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PropertymappingsAllUsedByListExecute(r)
 }
 
@@ -688,11 +674,11 @@ PropertymappingsAllUsedByList Method for PropertymappingsAllUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this Property Mapping.
  @return ApiPropertymappingsAllUsedByListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsAllUsedByList(ctx _context.Context, pmUuid string) ApiPropertymappingsAllUsedByListRequest {
+func (a *PropertymappingsApiService) PropertymappingsAllUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsAllUsedByListRequest {
 	return ApiPropertymappingsAllUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -702,27 +688,25 @@ func (a *PropertymappingsApiService) PropertymappingsAllUsedByList(ctx _context.
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PropertymappingsApiService) PropertymappingsAllUsedByListExecute(r ApiPropertymappingsAllUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsAllUsedByListExecute(r ApiPropertymappingsAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsAllUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/all/{pm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -755,7 +739,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllUsedByListExecute(r ApiP
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -765,15 +749,15 @@ func (a *PropertymappingsApiService) PropertymappingsAllUsedByListExecute(r ApiP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -782,7 +766,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllUsedByListExecute(r ApiP
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -793,7 +777,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllUsedByListExecute(r ApiP
 }
 
 type ApiPropertymappingsLdapCreateRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *PropertymappingsApiService
 	lDAPPropertyMappingRequest *LDAPPropertyMappingRequest
 }
@@ -803,7 +787,7 @@ func (r ApiPropertymappingsLdapCreateRequest) LDAPPropertyMappingRequest(lDAPPro
 	return r
 }
 
-func (r ApiPropertymappingsLdapCreateRequest) Execute() (LDAPPropertyMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsLdapCreateRequest) Execute() (*LDAPPropertyMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsLdapCreateExecute(r)
 }
 
@@ -812,10 +796,10 @@ PropertymappingsLdapCreate Method for PropertymappingsLdapCreate
 
 LDAP PropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPropertymappingsLdapCreateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsLdapCreate(ctx _context.Context) ApiPropertymappingsLdapCreateRequest {
+func (a *PropertymappingsApiService) PropertymappingsLdapCreate(ctx context.Context) ApiPropertymappingsLdapCreateRequest {
 	return ApiPropertymappingsLdapCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -824,26 +808,24 @@ func (a *PropertymappingsApiService) PropertymappingsLdapCreate(ctx _context.Con
 
 // Execute executes the request
 //  @return LDAPPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsLdapCreateExecute(r ApiPropertymappingsLdapCreateRequest) (LDAPPropertyMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsLdapCreateExecute(r ApiPropertymappingsLdapCreateRequest) (*LDAPPropertyMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  LDAPPropertyMapping
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LDAPPropertyMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsLdapCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/ldap/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.lDAPPropertyMappingRequest == nil {
 		return localVarReturnValue, nil, reportError("lDAPPropertyMappingRequest is required and must be specified")
 	}
@@ -881,7 +863,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapCreateExecute(r ApiProp
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -891,15 +873,15 @@ func (a *PropertymappingsApiService) PropertymappingsLdapCreateExecute(r ApiProp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -908,7 +890,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapCreateExecute(r ApiProp
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -919,12 +901,12 @@ func (a *PropertymappingsApiService) PropertymappingsLdapCreateExecute(r ApiProp
 }
 
 type ApiPropertymappingsLdapDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsLdapDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPropertymappingsLdapDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PropertymappingsLdapDestroyExecute(r)
 }
 
@@ -933,11 +915,11 @@ PropertymappingsLdapDestroy Method for PropertymappingsLdapDestroy
 
 LDAP PropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this LDAP Property Mapping.
  @return ApiPropertymappingsLdapDestroyRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsLdapDestroy(ctx _context.Context, pmUuid string) ApiPropertymappingsLdapDestroyRequest {
+func (a *PropertymappingsApiService) PropertymappingsLdapDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsLdapDestroyRequest {
 	return ApiPropertymappingsLdapDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -946,26 +928,24 @@ func (a *PropertymappingsApiService) PropertymappingsLdapDestroy(ctx _context.Co
 }
 
 // Execute executes the request
-func (a *PropertymappingsApiService) PropertymappingsLdapDestroyExecute(r ApiPropertymappingsLdapDestroyRequest) (*_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsLdapDestroyExecute(r ApiPropertymappingsLdapDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsLdapDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/ldap/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -998,7 +978,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapDestroyExecute(r ApiPro
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -1008,15 +988,15 @@ func (a *PropertymappingsApiService) PropertymappingsLdapDestroyExecute(r ApiPro
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1027,7 +1007,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapDestroyExecute(r ApiPro
 }
 
 type ApiPropertymappingsLdapListRequest struct {
-	ctx         _context.Context
+	ctx         context.Context
 	ApiService  *PropertymappingsApiService
 	expression  *string
 	managed     *[]string
@@ -1044,14 +1024,17 @@ func (r ApiPropertymappingsLdapListRequest) Expression(expression string) ApiPro
 	r.expression = &expression
 	return r
 }
+
 func (r ApiPropertymappingsLdapListRequest) Managed(managed []string) ApiPropertymappingsLdapListRequest {
 	r.managed = &managed
 	return r
 }
+
 func (r ApiPropertymappingsLdapListRequest) Name(name string) ApiPropertymappingsLdapListRequest {
 	r.name = &name
 	return r
 }
+
 func (r ApiPropertymappingsLdapListRequest) ObjectField(objectField string) ApiPropertymappingsLdapListRequest {
 	r.objectField = &objectField
 	return r
@@ -1074,6 +1057,7 @@ func (r ApiPropertymappingsLdapListRequest) PageSize(pageSize int32) ApiProperty
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiPropertymappingsLdapListRequest) PmUuid(pmUuid string) ApiPropertymappingsLdapListRequest {
 	r.pmUuid = &pmUuid
 	return r
@@ -1085,7 +1069,7 @@ func (r ApiPropertymappingsLdapListRequest) Search(search string) ApiPropertymap
 	return r
 }
 
-func (r ApiPropertymappingsLdapListRequest) Execute() (PaginatedLDAPPropertyMappingList, *_nethttp.Response, error) {
+func (r ApiPropertymappingsLdapListRequest) Execute() (*PaginatedLDAPPropertyMappingList, *http.Response, error) {
 	return r.ApiService.PropertymappingsLdapListExecute(r)
 }
 
@@ -1094,10 +1078,10 @@ PropertymappingsLdapList Method for PropertymappingsLdapList
 
 LDAP PropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPropertymappingsLdapListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsLdapList(ctx _context.Context) ApiPropertymappingsLdapListRequest {
+func (a *PropertymappingsApiService) PropertymappingsLdapList(ctx context.Context) ApiPropertymappingsLdapListRequest {
 	return ApiPropertymappingsLdapListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1106,26 +1090,24 @@ func (a *PropertymappingsApiService) PropertymappingsLdapList(ctx _context.Conte
 
 // Execute executes the request
 //  @return PaginatedLDAPPropertyMappingList
-func (a *PropertymappingsApiService) PropertymappingsLdapListExecute(r ApiPropertymappingsLdapListRequest) (PaginatedLDAPPropertyMappingList, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsLdapListExecute(r ApiPropertymappingsLdapListRequest) (*PaginatedLDAPPropertyMappingList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedLDAPPropertyMappingList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedLDAPPropertyMappingList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsLdapList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/ldap/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.expression != nil {
 		localVarQueryParams.Add("expression", parameterToString(*r.expression, ""))
@@ -1193,7 +1175,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapListExecute(r ApiProper
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1203,15 +1185,15 @@ func (a *PropertymappingsApiService) PropertymappingsLdapListExecute(r ApiProper
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1220,7 +1202,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapListExecute(r ApiProper
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1231,7 +1213,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapListExecute(r ApiProper
 }
 
 type ApiPropertymappingsLdapPartialUpdateRequest struct {
-	ctx                               _context.Context
+	ctx                               context.Context
 	ApiService                        *PropertymappingsApiService
 	pmUuid                            string
 	patchedLDAPPropertyMappingRequest *PatchedLDAPPropertyMappingRequest
@@ -1242,7 +1224,7 @@ func (r ApiPropertymappingsLdapPartialUpdateRequest) PatchedLDAPPropertyMappingR
 	return r
 }
 
-func (r ApiPropertymappingsLdapPartialUpdateRequest) Execute() (LDAPPropertyMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsLdapPartialUpdateRequest) Execute() (*LDAPPropertyMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsLdapPartialUpdateExecute(r)
 }
 
@@ -1251,11 +1233,11 @@ PropertymappingsLdapPartialUpdate Method for PropertymappingsLdapPartialUpdate
 
 LDAP PropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this LDAP Property Mapping.
  @return ApiPropertymappingsLdapPartialUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsLdapPartialUpdateRequest {
+func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsLdapPartialUpdateRequest {
 	return ApiPropertymappingsLdapPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1265,27 +1247,25 @@ func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdate(ctx _cont
 
 // Execute executes the request
 //  @return LDAPPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdateExecute(r ApiPropertymappingsLdapPartialUpdateRequest) (LDAPPropertyMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdateExecute(r ApiPropertymappingsLdapPartialUpdateRequest) (*LDAPPropertyMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  LDAPPropertyMapping
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LDAPPropertyMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsLdapPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/ldap/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1320,7 +1300,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdateExecute(r 
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1330,15 +1310,15 @@ func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdateExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1347,7 +1327,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdateExecute(r 
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1358,12 +1338,12 @@ func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdateExecute(r 
 }
 
 type ApiPropertymappingsLdapRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsLdapRetrieveRequest) Execute() (LDAPPropertyMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsLdapRetrieveRequest) Execute() (*LDAPPropertyMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsLdapRetrieveExecute(r)
 }
 
@@ -1372,11 +1352,11 @@ PropertymappingsLdapRetrieve Method for PropertymappingsLdapRetrieve
 
 LDAP PropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this LDAP Property Mapping.
  @return ApiPropertymappingsLdapRetrieveRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsLdapRetrieve(ctx _context.Context, pmUuid string) ApiPropertymappingsLdapRetrieveRequest {
+func (a *PropertymappingsApiService) PropertymappingsLdapRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsLdapRetrieveRequest {
 	return ApiPropertymappingsLdapRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1386,27 +1366,25 @@ func (a *PropertymappingsApiService) PropertymappingsLdapRetrieve(ctx _context.C
 
 // Execute executes the request
 //  @return LDAPPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsLdapRetrieveExecute(r ApiPropertymappingsLdapRetrieveRequest) (LDAPPropertyMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsLdapRetrieveExecute(r ApiPropertymappingsLdapRetrieveRequest) (*LDAPPropertyMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  LDAPPropertyMapping
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LDAPPropertyMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsLdapRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/ldap/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1439,7 +1417,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapRetrieveExecute(r ApiPr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1449,15 +1427,15 @@ func (a *PropertymappingsApiService) PropertymappingsLdapRetrieveExecute(r ApiPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1466,7 +1444,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapRetrieveExecute(r ApiPr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1477,7 +1455,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapRetrieveExecute(r ApiPr
 }
 
 type ApiPropertymappingsLdapUpdateRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *PropertymappingsApiService
 	pmUuid                     string
 	lDAPPropertyMappingRequest *LDAPPropertyMappingRequest
@@ -1488,7 +1466,7 @@ func (r ApiPropertymappingsLdapUpdateRequest) LDAPPropertyMappingRequest(lDAPPro
 	return r
 }
 
-func (r ApiPropertymappingsLdapUpdateRequest) Execute() (LDAPPropertyMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsLdapUpdateRequest) Execute() (*LDAPPropertyMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsLdapUpdateExecute(r)
 }
 
@@ -1497,11 +1475,11 @@ PropertymappingsLdapUpdate Method for PropertymappingsLdapUpdate
 
 LDAP PropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this LDAP Property Mapping.
  @return ApiPropertymappingsLdapUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsLdapUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsLdapUpdateRequest {
+func (a *PropertymappingsApiService) PropertymappingsLdapUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsLdapUpdateRequest {
 	return ApiPropertymappingsLdapUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1511,27 +1489,25 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUpdate(ctx _context.Con
 
 // Execute executes the request
 //  @return LDAPPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsLdapUpdateExecute(r ApiPropertymappingsLdapUpdateRequest) (LDAPPropertyMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsLdapUpdateExecute(r ApiPropertymappingsLdapUpdateRequest) (*LDAPPropertyMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  LDAPPropertyMapping
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LDAPPropertyMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsLdapUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/ldap/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.lDAPPropertyMappingRequest == nil {
 		return localVarReturnValue, nil, reportError("lDAPPropertyMappingRequest is required and must be specified")
 	}
@@ -1569,7 +1545,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUpdateExecute(r ApiProp
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1579,15 +1555,15 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUpdateExecute(r ApiProp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1596,7 +1572,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUpdateExecute(r ApiProp
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1607,12 +1583,12 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUpdateExecute(r ApiProp
 }
 
 type ApiPropertymappingsLdapUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsLdapUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPropertymappingsLdapUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PropertymappingsLdapUsedByListExecute(r)
 }
 
@@ -1621,11 +1597,11 @@ PropertymappingsLdapUsedByList Method for PropertymappingsLdapUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this LDAP Property Mapping.
  @return ApiPropertymappingsLdapUsedByListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsLdapUsedByList(ctx _context.Context, pmUuid string) ApiPropertymappingsLdapUsedByListRequest {
+func (a *PropertymappingsApiService) PropertymappingsLdapUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsLdapUsedByListRequest {
 	return ApiPropertymappingsLdapUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1635,27 +1611,25 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUsedByList(ctx _context
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PropertymappingsApiService) PropertymappingsLdapUsedByListExecute(r ApiPropertymappingsLdapUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsLdapUsedByListExecute(r ApiPropertymappingsLdapUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsLdapUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/ldap/{pm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1688,7 +1662,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUsedByListExecute(r Api
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1698,15 +1672,15 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUsedByListExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1715,7 +1689,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUsedByListExecute(r Api
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1726,7 +1700,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUsedByListExecute(r Api
 }
 
 type ApiPropertymappingsNotificationCreateRequest struct {
-	ctx                               _context.Context
+	ctx                               context.Context
 	ApiService                        *PropertymappingsApiService
 	notificationWebhookMappingRequest *NotificationWebhookMappingRequest
 }
@@ -1736,7 +1710,7 @@ func (r ApiPropertymappingsNotificationCreateRequest) NotificationWebhookMapping
 	return r
 }
 
-func (r ApiPropertymappingsNotificationCreateRequest) Execute() (NotificationWebhookMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsNotificationCreateRequest) Execute() (*NotificationWebhookMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsNotificationCreateExecute(r)
 }
 
@@ -1745,10 +1719,10 @@ PropertymappingsNotificationCreate Method for PropertymappingsNotificationCreate
 
 NotificationWebhookMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPropertymappingsNotificationCreateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsNotificationCreate(ctx _context.Context) ApiPropertymappingsNotificationCreateRequest {
+func (a *PropertymappingsApiService) PropertymappingsNotificationCreate(ctx context.Context) ApiPropertymappingsNotificationCreateRequest {
 	return ApiPropertymappingsNotificationCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1757,26 +1731,24 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationCreate(ctx _con
 
 // Execute executes the request
 //  @return NotificationWebhookMapping
-func (a *PropertymappingsApiService) PropertymappingsNotificationCreateExecute(r ApiPropertymappingsNotificationCreateRequest) (NotificationWebhookMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsNotificationCreateExecute(r ApiPropertymappingsNotificationCreateRequest) (*NotificationWebhookMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  NotificationWebhookMapping
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *NotificationWebhookMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsNotificationCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/notification/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.notificationWebhookMappingRequest == nil {
 		return localVarReturnValue, nil, reportError("notificationWebhookMappingRequest is required and must be specified")
 	}
@@ -1814,7 +1786,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationCreateExecute(r
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1824,15 +1796,15 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationCreateExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1841,7 +1813,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationCreateExecute(r
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1852,12 +1824,12 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationCreateExecute(r
 }
 
 type ApiPropertymappingsNotificationDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsNotificationDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPropertymappingsNotificationDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PropertymappingsNotificationDestroyExecute(r)
 }
 
@@ -1866,11 +1838,11 @@ PropertymappingsNotificationDestroy Method for PropertymappingsNotificationDestr
 
 NotificationWebhookMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this Notification Webhook Mapping.
  @return ApiPropertymappingsNotificationDestroyRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsNotificationDestroy(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationDestroyRequest {
+func (a *PropertymappingsApiService) PropertymappingsNotificationDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationDestroyRequest {
 	return ApiPropertymappingsNotificationDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1879,26 +1851,24 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationDestroy(ctx _co
 }
 
 // Execute executes the request
-func (a *PropertymappingsApiService) PropertymappingsNotificationDestroyExecute(r ApiPropertymappingsNotificationDestroyRequest) (*_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsNotificationDestroyExecute(r ApiPropertymappingsNotificationDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsNotificationDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1931,7 +1901,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationDestroyExecute(
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -1941,15 +1911,15 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationDestroyExecute(
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1960,7 +1930,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationDestroyExecute(
 }
 
 type ApiPropertymappingsNotificationListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	name       *string
 	ordering   *string
@@ -1998,7 +1968,7 @@ func (r ApiPropertymappingsNotificationListRequest) Search(search string) ApiPro
 	return r
 }
 
-func (r ApiPropertymappingsNotificationListRequest) Execute() (PaginatedNotificationWebhookMappingList, *_nethttp.Response, error) {
+func (r ApiPropertymappingsNotificationListRequest) Execute() (*PaginatedNotificationWebhookMappingList, *http.Response, error) {
 	return r.ApiService.PropertymappingsNotificationListExecute(r)
 }
 
@@ -2007,10 +1977,10 @@ PropertymappingsNotificationList Method for PropertymappingsNotificationList
 
 NotificationWebhookMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPropertymappingsNotificationListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsNotificationList(ctx _context.Context) ApiPropertymappingsNotificationListRequest {
+func (a *PropertymappingsApiService) PropertymappingsNotificationList(ctx context.Context) ApiPropertymappingsNotificationListRequest {
 	return ApiPropertymappingsNotificationListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2019,26 +1989,24 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationList(ctx _conte
 
 // Execute executes the request
 //  @return PaginatedNotificationWebhookMappingList
-func (a *PropertymappingsApiService) PropertymappingsNotificationListExecute(r ApiPropertymappingsNotificationListRequest) (PaginatedNotificationWebhookMappingList, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsNotificationListExecute(r ApiPropertymappingsNotificationListRequest) (*PaginatedNotificationWebhookMappingList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedNotificationWebhookMappingList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedNotificationWebhookMappingList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsNotificationList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/notification/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -2086,7 +2054,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationListExecute(r A
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2096,15 +2064,15 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationListExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2113,7 +2081,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationListExecute(r A
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2124,7 +2092,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationListExecute(r A
 }
 
 type ApiPropertymappingsNotificationPartialUpdateRequest struct {
-	ctx                                      _context.Context
+	ctx                                      context.Context
 	ApiService                               *PropertymappingsApiService
 	pmUuid                                   string
 	patchedNotificationWebhookMappingRequest *PatchedNotificationWebhookMappingRequest
@@ -2135,7 +2103,7 @@ func (r ApiPropertymappingsNotificationPartialUpdateRequest) PatchedNotification
 	return r
 }
 
-func (r ApiPropertymappingsNotificationPartialUpdateRequest) Execute() (NotificationWebhookMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsNotificationPartialUpdateRequest) Execute() (*NotificationWebhookMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsNotificationPartialUpdateExecute(r)
 }
 
@@ -2144,11 +2112,11 @@ PropertymappingsNotificationPartialUpdate Method for PropertymappingsNotificatio
 
 NotificationWebhookMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this Notification Webhook Mapping.
  @return ApiPropertymappingsNotificationPartialUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationPartialUpdateRequest {
+func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationPartialUpdateRequest {
 	return ApiPropertymappingsNotificationPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2158,27 +2126,25 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdate(c
 
 // Execute executes the request
 //  @return NotificationWebhookMapping
-func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdateExecute(r ApiPropertymappingsNotificationPartialUpdateRequest) (NotificationWebhookMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdateExecute(r ApiPropertymappingsNotificationPartialUpdateRequest) (*NotificationWebhookMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  NotificationWebhookMapping
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *NotificationWebhookMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsNotificationPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2213,7 +2179,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdateEx
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2223,15 +2189,15 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdateEx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2240,7 +2206,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdateEx
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2251,12 +2217,12 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdateEx
 }
 
 type ApiPropertymappingsNotificationRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsNotificationRetrieveRequest) Execute() (NotificationWebhookMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsNotificationRetrieveRequest) Execute() (*NotificationWebhookMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsNotificationRetrieveExecute(r)
 }
 
@@ -2265,11 +2231,11 @@ PropertymappingsNotificationRetrieve Method for PropertymappingsNotificationRetr
 
 NotificationWebhookMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this Notification Webhook Mapping.
  @return ApiPropertymappingsNotificationRetrieveRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieve(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationRetrieveRequest {
+func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationRetrieveRequest {
 	return ApiPropertymappingsNotificationRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2279,27 +2245,25 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieve(ctx _c
 
 // Execute executes the request
 //  @return NotificationWebhookMapping
-func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieveExecute(r ApiPropertymappingsNotificationRetrieveRequest) (NotificationWebhookMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieveExecute(r ApiPropertymappingsNotificationRetrieveRequest) (*NotificationWebhookMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  NotificationWebhookMapping
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *NotificationWebhookMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsNotificationRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2332,7 +2296,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieveExecute
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2342,15 +2306,15 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieveExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2359,7 +2323,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieveExecute
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2370,7 +2334,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieveExecute
 }
 
 type ApiPropertymappingsNotificationUpdateRequest struct {
-	ctx                               _context.Context
+	ctx                               context.Context
 	ApiService                        *PropertymappingsApiService
 	pmUuid                            string
 	notificationWebhookMappingRequest *NotificationWebhookMappingRequest
@@ -2381,7 +2345,7 @@ func (r ApiPropertymappingsNotificationUpdateRequest) NotificationWebhookMapping
 	return r
 }
 
-func (r ApiPropertymappingsNotificationUpdateRequest) Execute() (NotificationWebhookMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsNotificationUpdateRequest) Execute() (*NotificationWebhookMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsNotificationUpdateExecute(r)
 }
 
@@ -2390,11 +2354,11 @@ PropertymappingsNotificationUpdate Method for PropertymappingsNotificationUpdate
 
 NotificationWebhookMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this Notification Webhook Mapping.
  @return ApiPropertymappingsNotificationUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsNotificationUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationUpdateRequest {
+func (a *PropertymappingsApiService) PropertymappingsNotificationUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationUpdateRequest {
 	return ApiPropertymappingsNotificationUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2404,27 +2368,25 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUpdate(ctx _con
 
 // Execute executes the request
 //  @return NotificationWebhookMapping
-func (a *PropertymappingsApiService) PropertymappingsNotificationUpdateExecute(r ApiPropertymappingsNotificationUpdateRequest) (NotificationWebhookMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsNotificationUpdateExecute(r ApiPropertymappingsNotificationUpdateRequest) (*NotificationWebhookMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  NotificationWebhookMapping
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *NotificationWebhookMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsNotificationUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.notificationWebhookMappingRequest == nil {
 		return localVarReturnValue, nil, reportError("notificationWebhookMappingRequest is required and must be specified")
 	}
@@ -2462,7 +2424,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUpdateExecute(r
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2472,15 +2434,15 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUpdateExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2489,7 +2451,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUpdateExecute(r
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2500,12 +2462,12 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUpdateExecute(r
 }
 
 type ApiPropertymappingsNotificationUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsNotificationUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPropertymappingsNotificationUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PropertymappingsNotificationUsedByListExecute(r)
 }
 
@@ -2514,11 +2476,11 @@ PropertymappingsNotificationUsedByList Method for PropertymappingsNotificationUs
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this Notification Webhook Mapping.
  @return ApiPropertymappingsNotificationUsedByListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByList(ctx _context.Context, pmUuid string) ApiPropertymappingsNotificationUsedByListRequest {
+func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationUsedByListRequest {
 	return ApiPropertymappingsNotificationUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2528,27 +2490,25 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByList(ctx 
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecute(r ApiPropertymappingsNotificationUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecute(r ApiPropertymappingsNotificationUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsNotificationUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2581,7 +2541,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecu
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2591,15 +2551,15 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2608,7 +2568,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecu
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2619,7 +2579,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecu
 }
 
 type ApiPropertymappingsSamlCreateRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *PropertymappingsApiService
 	sAMLPropertyMappingRequest *SAMLPropertyMappingRequest
 }
@@ -2629,7 +2589,7 @@ func (r ApiPropertymappingsSamlCreateRequest) SAMLPropertyMappingRequest(sAMLPro
 	return r
 }
 
-func (r ApiPropertymappingsSamlCreateRequest) Execute() (SAMLPropertyMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsSamlCreateRequest) Execute() (*SAMLPropertyMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsSamlCreateExecute(r)
 }
 
@@ -2638,10 +2598,10 @@ PropertymappingsSamlCreate Method for PropertymappingsSamlCreate
 
 SAMLPropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPropertymappingsSamlCreateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsSamlCreate(ctx _context.Context) ApiPropertymappingsSamlCreateRequest {
+func (a *PropertymappingsApiService) PropertymappingsSamlCreate(ctx context.Context) ApiPropertymappingsSamlCreateRequest {
 	return ApiPropertymappingsSamlCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2650,26 +2610,24 @@ func (a *PropertymappingsApiService) PropertymappingsSamlCreate(ctx _context.Con
 
 // Execute executes the request
 //  @return SAMLPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsSamlCreateExecute(r ApiPropertymappingsSamlCreateRequest) (SAMLPropertyMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsSamlCreateExecute(r ApiPropertymappingsSamlCreateRequest) (*SAMLPropertyMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SAMLPropertyMapping
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SAMLPropertyMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSamlCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/saml/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.sAMLPropertyMappingRequest == nil {
 		return localVarReturnValue, nil, reportError("sAMLPropertyMappingRequest is required and must be specified")
 	}
@@ -2707,7 +2665,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlCreateExecute(r ApiProp
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2717,15 +2675,15 @@ func (a *PropertymappingsApiService) PropertymappingsSamlCreateExecute(r ApiProp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2734,7 +2692,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlCreateExecute(r ApiProp
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2745,12 +2703,12 @@ func (a *PropertymappingsApiService) PropertymappingsSamlCreateExecute(r ApiProp
 }
 
 type ApiPropertymappingsSamlDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsSamlDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPropertymappingsSamlDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PropertymappingsSamlDestroyExecute(r)
 }
 
@@ -2759,11 +2717,11 @@ PropertymappingsSamlDestroy Method for PropertymappingsSamlDestroy
 
 SAMLPropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this SAML Property Mapping.
  @return ApiPropertymappingsSamlDestroyRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsSamlDestroy(ctx _context.Context, pmUuid string) ApiPropertymappingsSamlDestroyRequest {
+func (a *PropertymappingsApiService) PropertymappingsSamlDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsSamlDestroyRequest {
 	return ApiPropertymappingsSamlDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2772,26 +2730,24 @@ func (a *PropertymappingsApiService) PropertymappingsSamlDestroy(ctx _context.Co
 }
 
 // Execute executes the request
-func (a *PropertymappingsApiService) PropertymappingsSamlDestroyExecute(r ApiPropertymappingsSamlDestroyRequest) (*_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsSamlDestroyExecute(r ApiPropertymappingsSamlDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSamlDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2824,7 +2780,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlDestroyExecute(r ApiPro
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2834,15 +2790,15 @@ func (a *PropertymappingsApiService) PropertymappingsSamlDestroyExecute(r ApiPro
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2853,7 +2809,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlDestroyExecute(r ApiPro
 }
 
 type ApiPropertymappingsSamlListRequest struct {
-	ctx          _context.Context
+	ctx          context.Context
 	ApiService   *PropertymappingsApiService
 	expression   *string
 	friendlyName *string
@@ -2871,14 +2827,17 @@ func (r ApiPropertymappingsSamlListRequest) Expression(expression string) ApiPro
 	r.expression = &expression
 	return r
 }
+
 func (r ApiPropertymappingsSamlListRequest) FriendlyName(friendlyName string) ApiPropertymappingsSamlListRequest {
 	r.friendlyName = &friendlyName
 	return r
 }
+
 func (r ApiPropertymappingsSamlListRequest) Managed(managed []string) ApiPropertymappingsSamlListRequest {
 	r.managed = &managed
 	return r
 }
+
 func (r ApiPropertymappingsSamlListRequest) Name(name string) ApiPropertymappingsSamlListRequest {
 	r.name = &name
 	return r
@@ -2901,10 +2860,12 @@ func (r ApiPropertymappingsSamlListRequest) PageSize(pageSize int32) ApiProperty
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiPropertymappingsSamlListRequest) PmUuid(pmUuid string) ApiPropertymappingsSamlListRequest {
 	r.pmUuid = &pmUuid
 	return r
 }
+
 func (r ApiPropertymappingsSamlListRequest) SamlName(samlName string) ApiPropertymappingsSamlListRequest {
 	r.samlName = &samlName
 	return r
@@ -2916,7 +2877,7 @@ func (r ApiPropertymappingsSamlListRequest) Search(search string) ApiPropertymap
 	return r
 }
 
-func (r ApiPropertymappingsSamlListRequest) Execute() (PaginatedSAMLPropertyMappingList, *_nethttp.Response, error) {
+func (r ApiPropertymappingsSamlListRequest) Execute() (*PaginatedSAMLPropertyMappingList, *http.Response, error) {
 	return r.ApiService.PropertymappingsSamlListExecute(r)
 }
 
@@ -2925,10 +2886,10 @@ PropertymappingsSamlList Method for PropertymappingsSamlList
 
 SAMLPropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPropertymappingsSamlListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsSamlList(ctx _context.Context) ApiPropertymappingsSamlListRequest {
+func (a *PropertymappingsApiService) PropertymappingsSamlList(ctx context.Context) ApiPropertymappingsSamlListRequest {
 	return ApiPropertymappingsSamlListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2937,26 +2898,24 @@ func (a *PropertymappingsApiService) PropertymappingsSamlList(ctx _context.Conte
 
 // Execute executes the request
 //  @return PaginatedSAMLPropertyMappingList
-func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiPropertymappingsSamlListRequest) (PaginatedSAMLPropertyMappingList, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiPropertymappingsSamlListRequest) (*PaginatedSAMLPropertyMappingList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedSAMLPropertyMappingList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedSAMLPropertyMappingList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSamlList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/saml/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.expression != nil {
 		localVarQueryParams.Add("expression", parameterToString(*r.expression, ""))
@@ -3027,7 +2986,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiProper
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3037,15 +2996,15 @@ func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiProper
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3054,7 +3013,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiProper
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3065,7 +3024,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiProper
 }
 
 type ApiPropertymappingsSamlPartialUpdateRequest struct {
-	ctx                               _context.Context
+	ctx                               context.Context
 	ApiService                        *PropertymappingsApiService
 	pmUuid                            string
 	patchedSAMLPropertyMappingRequest *PatchedSAMLPropertyMappingRequest
@@ -3076,7 +3035,7 @@ func (r ApiPropertymappingsSamlPartialUpdateRequest) PatchedSAMLPropertyMappingR
 	return r
 }
 
-func (r ApiPropertymappingsSamlPartialUpdateRequest) Execute() (SAMLPropertyMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsSamlPartialUpdateRequest) Execute() (*SAMLPropertyMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsSamlPartialUpdateExecute(r)
 }
 
@@ -3085,11 +3044,11 @@ PropertymappingsSamlPartialUpdate Method for PropertymappingsSamlPartialUpdate
 
 SAMLPropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this SAML Property Mapping.
  @return ApiPropertymappingsSamlPartialUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsSamlPartialUpdateRequest {
+func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsSamlPartialUpdateRequest {
 	return ApiPropertymappingsSamlPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3099,27 +3058,25 @@ func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdate(ctx _cont
 
 // Execute executes the request
 //  @return SAMLPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r ApiPropertymappingsSamlPartialUpdateRequest) (SAMLPropertyMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r ApiPropertymappingsSamlPartialUpdateRequest) (*SAMLPropertyMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SAMLPropertyMapping
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SAMLPropertyMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSamlPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3154,7 +3111,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r 
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3164,15 +3121,15 @@ func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3181,7 +3138,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r 
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3192,12 +3149,12 @@ func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r 
 }
 
 type ApiPropertymappingsSamlRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsSamlRetrieveRequest) Execute() (SAMLPropertyMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsSamlRetrieveRequest) Execute() (*SAMLPropertyMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsSamlRetrieveExecute(r)
 }
 
@@ -3206,11 +3163,11 @@ PropertymappingsSamlRetrieve Method for PropertymappingsSamlRetrieve
 
 SAMLPropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this SAML Property Mapping.
  @return ApiPropertymappingsSamlRetrieveRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsSamlRetrieve(ctx _context.Context, pmUuid string) ApiPropertymappingsSamlRetrieveRequest {
+func (a *PropertymappingsApiService) PropertymappingsSamlRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsSamlRetrieveRequest {
 	return ApiPropertymappingsSamlRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3220,27 +3177,25 @@ func (a *PropertymappingsApiService) PropertymappingsSamlRetrieve(ctx _context.C
 
 // Execute executes the request
 //  @return SAMLPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPropertymappingsSamlRetrieveRequest) (SAMLPropertyMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPropertymappingsSamlRetrieveRequest) (*SAMLPropertyMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SAMLPropertyMapping
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SAMLPropertyMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSamlRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3273,7 +3228,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3283,15 +3238,15 @@ func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3300,7 +3255,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3311,7 +3266,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPr
 }
 
 type ApiPropertymappingsSamlUpdateRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *PropertymappingsApiService
 	pmUuid                     string
 	sAMLPropertyMappingRequest *SAMLPropertyMappingRequest
@@ -3322,7 +3277,7 @@ func (r ApiPropertymappingsSamlUpdateRequest) SAMLPropertyMappingRequest(sAMLPro
 	return r
 }
 
-func (r ApiPropertymappingsSamlUpdateRequest) Execute() (SAMLPropertyMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsSamlUpdateRequest) Execute() (*SAMLPropertyMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsSamlUpdateExecute(r)
 }
 
@@ -3331,11 +3286,11 @@ PropertymappingsSamlUpdate Method for PropertymappingsSamlUpdate
 
 SAMLPropertyMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this SAML Property Mapping.
  @return ApiPropertymappingsSamlUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsSamlUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsSamlUpdateRequest {
+func (a *PropertymappingsApiService) PropertymappingsSamlUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsSamlUpdateRequest {
 	return ApiPropertymappingsSamlUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3345,27 +3300,25 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUpdate(ctx _context.Con
 
 // Execute executes the request
 //  @return SAMLPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiPropertymappingsSamlUpdateRequest) (SAMLPropertyMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiPropertymappingsSamlUpdateRequest) (*SAMLPropertyMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SAMLPropertyMapping
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SAMLPropertyMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSamlUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.sAMLPropertyMappingRequest == nil {
 		return localVarReturnValue, nil, reportError("sAMLPropertyMappingRequest is required and must be specified")
 	}
@@ -3403,7 +3356,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiProp
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3413,15 +3366,15 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiProp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3430,7 +3383,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiProp
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3441,12 +3394,12 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiProp
 }
 
 type ApiPropertymappingsSamlUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsSamlUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPropertymappingsSamlUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PropertymappingsSamlUsedByListExecute(r)
 }
 
@@ -3455,11 +3408,11 @@ PropertymappingsSamlUsedByList Method for PropertymappingsSamlUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this SAML Property Mapping.
  @return ApiPropertymappingsSamlUsedByListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsSamlUsedByList(ctx _context.Context, pmUuid string) ApiPropertymappingsSamlUsedByListRequest {
+func (a *PropertymappingsApiService) PropertymappingsSamlUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsSamlUsedByListRequest {
 	return ApiPropertymappingsSamlUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3469,27 +3422,25 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUsedByList(ctx _context
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r ApiPropertymappingsSamlUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r ApiPropertymappingsSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSamlUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3522,7 +3473,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r Api
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3532,15 +3483,15 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3549,7 +3500,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r Api
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3560,7 +3511,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r Api
 }
 
 type ApiPropertymappingsScopeCreateRequest struct {
-	ctx                 _context.Context
+	ctx                 context.Context
 	ApiService          *PropertymappingsApiService
 	scopeMappingRequest *ScopeMappingRequest
 }
@@ -3570,7 +3521,7 @@ func (r ApiPropertymappingsScopeCreateRequest) ScopeMappingRequest(scopeMappingR
 	return r
 }
 
-func (r ApiPropertymappingsScopeCreateRequest) Execute() (ScopeMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsScopeCreateRequest) Execute() (*ScopeMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsScopeCreateExecute(r)
 }
 
@@ -3579,10 +3530,10 @@ PropertymappingsScopeCreate Method for PropertymappingsScopeCreate
 
 ScopeMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPropertymappingsScopeCreateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScopeCreate(ctx _context.Context) ApiPropertymappingsScopeCreateRequest {
+func (a *PropertymappingsApiService) PropertymappingsScopeCreate(ctx context.Context) ApiPropertymappingsScopeCreateRequest {
 	return ApiPropertymappingsScopeCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3591,26 +3542,24 @@ func (a *PropertymappingsApiService) PropertymappingsScopeCreate(ctx _context.Co
 
 // Execute executes the request
 //  @return ScopeMapping
-func (a *PropertymappingsApiService) PropertymappingsScopeCreateExecute(r ApiPropertymappingsScopeCreateRequest) (ScopeMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsScopeCreateExecute(r ApiPropertymappingsScopeCreateRequest) (*ScopeMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ScopeMapping
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ScopeMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScopeCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scope/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.scopeMappingRequest == nil {
 		return localVarReturnValue, nil, reportError("scopeMappingRequest is required and must be specified")
 	}
@@ -3648,7 +3597,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeCreateExecute(r ApiPro
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3658,15 +3607,15 @@ func (a *PropertymappingsApiService) PropertymappingsScopeCreateExecute(r ApiPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3675,7 +3624,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeCreateExecute(r ApiPro
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3686,12 +3635,12 @@ func (a *PropertymappingsApiService) PropertymappingsScopeCreateExecute(r ApiPro
 }
 
 type ApiPropertymappingsScopeDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsScopeDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPropertymappingsScopeDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PropertymappingsScopeDestroyExecute(r)
 }
 
@@ -3700,11 +3649,11 @@ PropertymappingsScopeDestroy Method for PropertymappingsScopeDestroy
 
 ScopeMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this Scope Mapping.
  @return ApiPropertymappingsScopeDestroyRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScopeDestroy(ctx _context.Context, pmUuid string) ApiPropertymappingsScopeDestroyRequest {
+func (a *PropertymappingsApiService) PropertymappingsScopeDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsScopeDestroyRequest {
 	return ApiPropertymappingsScopeDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3713,26 +3662,24 @@ func (a *PropertymappingsApiService) PropertymappingsScopeDestroy(ctx _context.C
 }
 
 // Execute executes the request
-func (a *PropertymappingsApiService) PropertymappingsScopeDestroyExecute(r ApiPropertymappingsScopeDestroyRequest) (*_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsScopeDestroyExecute(r ApiPropertymappingsScopeDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScopeDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3765,7 +3712,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeDestroyExecute(r ApiPr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -3775,15 +3722,15 @@ func (a *PropertymappingsApiService) PropertymappingsScopeDestroyExecute(r ApiPr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3794,7 +3741,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeDestroyExecute(r ApiPr
 }
 
 type ApiPropertymappingsScopeListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	managed    *[]string
 	name       *string
@@ -3809,6 +3756,7 @@ func (r ApiPropertymappingsScopeListRequest) Managed(managed []string) ApiProper
 	r.managed = &managed
 	return r
 }
+
 func (r ApiPropertymappingsScopeListRequest) Name(name string) ApiPropertymappingsScopeListRequest {
 	r.name = &name
 	return r
@@ -3831,6 +3779,7 @@ func (r ApiPropertymappingsScopeListRequest) PageSize(pageSize int32) ApiPropert
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiPropertymappingsScopeListRequest) ScopeName(scopeName string) ApiPropertymappingsScopeListRequest {
 	r.scopeName = &scopeName
 	return r
@@ -3842,7 +3791,7 @@ func (r ApiPropertymappingsScopeListRequest) Search(search string) ApiPropertyma
 	return r
 }
 
-func (r ApiPropertymappingsScopeListRequest) Execute() (PaginatedScopeMappingList, *_nethttp.Response, error) {
+func (r ApiPropertymappingsScopeListRequest) Execute() (*PaginatedScopeMappingList, *http.Response, error) {
 	return r.ApiService.PropertymappingsScopeListExecute(r)
 }
 
@@ -3851,10 +3800,10 @@ PropertymappingsScopeList Method for PropertymappingsScopeList
 
 ScopeMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPropertymappingsScopeListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScopeList(ctx _context.Context) ApiPropertymappingsScopeListRequest {
+func (a *PropertymappingsApiService) PropertymappingsScopeList(ctx context.Context) ApiPropertymappingsScopeListRequest {
 	return ApiPropertymappingsScopeListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3863,26 +3812,24 @@ func (a *PropertymappingsApiService) PropertymappingsScopeList(ctx _context.Cont
 
 // Execute executes the request
 //  @return PaginatedScopeMappingList
-func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPropertymappingsScopeListRequest) (PaginatedScopeMappingList, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPropertymappingsScopeListRequest) (*PaginatedScopeMappingList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedScopeMappingList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedScopeMappingList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScopeList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scope/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.managed != nil {
 		t := *r.managed
@@ -3944,7 +3891,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPrope
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3954,15 +3901,15 @@ func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPrope
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3971,7 +3918,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPrope
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3982,7 +3929,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPrope
 }
 
 type ApiPropertymappingsScopePartialUpdateRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *PropertymappingsApiService
 	pmUuid                     string
 	patchedScopeMappingRequest *PatchedScopeMappingRequest
@@ -3993,7 +3940,7 @@ func (r ApiPropertymappingsScopePartialUpdateRequest) PatchedScopeMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsScopePartialUpdateRequest) Execute() (ScopeMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsScopePartialUpdateRequest) Execute() (*ScopeMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsScopePartialUpdateExecute(r)
 }
 
@@ -4002,11 +3949,11 @@ PropertymappingsScopePartialUpdate Method for PropertymappingsScopePartialUpdate
 
 ScopeMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this Scope Mapping.
  @return ApiPropertymappingsScopePartialUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsScopePartialUpdateRequest {
+func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsScopePartialUpdateRequest {
 	return ApiPropertymappingsScopePartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4016,27 +3963,25 @@ func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdate(ctx _con
 
 // Execute executes the request
 //  @return ScopeMapping
-func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r ApiPropertymappingsScopePartialUpdateRequest) (ScopeMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r ApiPropertymappingsScopePartialUpdateRequest) (*ScopeMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ScopeMapping
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ScopeMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScopePartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4071,7 +4016,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4081,15 +4026,15 @@ func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4098,7 +4043,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4109,12 +4054,12 @@ func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r
 }
 
 type ApiPropertymappingsScopeRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsScopeRetrieveRequest) Execute() (ScopeMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsScopeRetrieveRequest) Execute() (*ScopeMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsScopeRetrieveExecute(r)
 }
 
@@ -4123,11 +4068,11 @@ PropertymappingsScopeRetrieve Method for PropertymappingsScopeRetrieve
 
 ScopeMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this Scope Mapping.
  @return ApiPropertymappingsScopeRetrieveRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScopeRetrieve(ctx _context.Context, pmUuid string) ApiPropertymappingsScopeRetrieveRequest {
+func (a *PropertymappingsApiService) PropertymappingsScopeRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsScopeRetrieveRequest {
 	return ApiPropertymappingsScopeRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4137,27 +4082,25 @@ func (a *PropertymappingsApiService) PropertymappingsScopeRetrieve(ctx _context.
 
 // Execute executes the request
 //  @return ScopeMapping
-func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiPropertymappingsScopeRetrieveRequest) (ScopeMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiPropertymappingsScopeRetrieveRequest) (*ScopeMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ScopeMapping
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ScopeMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScopeRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4190,7 +4133,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiP
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4200,15 +4143,15 @@ func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4217,7 +4160,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiP
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4228,7 +4171,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiP
 }
 
 type ApiPropertymappingsScopeUpdateRequest struct {
-	ctx                 _context.Context
+	ctx                 context.Context
 	ApiService          *PropertymappingsApiService
 	pmUuid              string
 	scopeMappingRequest *ScopeMappingRequest
@@ -4239,7 +4182,7 @@ func (r ApiPropertymappingsScopeUpdateRequest) ScopeMappingRequest(scopeMappingR
 	return r
 }
 
-func (r ApiPropertymappingsScopeUpdateRequest) Execute() (ScopeMapping, *_nethttp.Response, error) {
+func (r ApiPropertymappingsScopeUpdateRequest) Execute() (*ScopeMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsScopeUpdateExecute(r)
 }
 
@@ -4248,11 +4191,11 @@ PropertymappingsScopeUpdate Method for PropertymappingsScopeUpdate
 
 ScopeMapping Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this Scope Mapping.
  @return ApiPropertymappingsScopeUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScopeUpdate(ctx _context.Context, pmUuid string) ApiPropertymappingsScopeUpdateRequest {
+func (a *PropertymappingsApiService) PropertymappingsScopeUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsScopeUpdateRequest {
 	return ApiPropertymappingsScopeUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4262,27 +4205,25 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUpdate(ctx _context.Co
 
 // Execute executes the request
 //  @return ScopeMapping
-func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPropertymappingsScopeUpdateRequest) (ScopeMapping, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPropertymappingsScopeUpdateRequest) (*ScopeMapping, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ScopeMapping
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ScopeMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScopeUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.scopeMappingRequest == nil {
 		return localVarReturnValue, nil, reportError("scopeMappingRequest is required and must be specified")
 	}
@@ -4320,7 +4261,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPro
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4330,15 +4271,15 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4347,7 +4288,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPro
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4358,12 +4299,12 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPro
 }
 
 type ApiPropertymappingsScopeUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsScopeUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiPropertymappingsScopeUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.PropertymappingsScopeUsedByListExecute(r)
 }
 
@@ -4372,11 +4313,11 @@ PropertymappingsScopeUsedByList Method for PropertymappingsScopeUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pmUuid A UUID string identifying this Scope Mapping.
  @return ApiPropertymappingsScopeUsedByListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScopeUsedByList(ctx _context.Context, pmUuid string) ApiPropertymappingsScopeUsedByListRequest {
+func (a *PropertymappingsApiService) PropertymappingsScopeUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsScopeUsedByListRequest {
 	return ApiPropertymappingsScopeUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4386,27 +4327,25 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUsedByList(ctx _contex
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *PropertymappingsApiService) PropertymappingsScopeUsedByListExecute(r ApiPropertymappingsScopeUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsScopeUsedByListExecute(r ApiPropertymappingsScopeUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScopeUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", _neturl.PathEscape(parameterToString(r.pmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4439,7 +4378,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUsedByListExecute(r Ap
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4449,15 +4388,15 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUsedByListExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4466,7 +4405,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUsedByListExecute(r Ap
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

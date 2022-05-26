@@ -76,11 +76,11 @@ func (o *PaginatedUserWriteStageList) GetResults() []UserWriteStage {
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedUserWriteStageList) GetResultsOk() (*[]UserWriteStage, bool) {
+func (o *PaginatedUserWriteStageList) GetResultsOk() ([]UserWriteStage, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Results, true
+	return o.Results, true
 }
 
 // SetResults sets field value

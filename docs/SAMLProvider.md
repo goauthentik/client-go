@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **SignatureAlgorithm** | Pointer to [**SignatureAlgorithmEnum**](SignatureAlgorithmEnum.md) |  | [optional] 
 **SigningKp** | Pointer to **NullableString** | Keypair used to sign outgoing Responses going to the Service Provider. | [optional] 
 **VerificationKp** | Pointer to **NullableString** | When selected, incoming assertion&#39;s Signatures will be validated against this certificate. To allow unsigned Requests, leave on default. | [optional] 
-**SpBinding** | Pointer to [**SpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
+**SpBinding** | Pointer to [**NullableSpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
 **MetadataDownloadUrl** | **string** |  | [readonly] 
 
 ## Methods
@@ -577,6 +577,16 @@ SetSpBinding sets SpBinding field to given value.
 
 HasSpBinding returns a boolean if a field has been set.
 
+### SetSpBindingNil
+
+`func (o *SAMLProvider) SetSpBindingNil(b bool)`
+
+ SetSpBindingNil sets the value for SpBinding to be an explicit nil
+
+### UnsetSpBinding
+`func (o *SAMLProvider) UnsetSpBinding()`
+
+UnsetSpBinding ensures that no value is present for SpBinding, not even an explicit nil
 ### GetMetadataDownloadUrl
 
 `func (o *SAMLProvider) GetMetadataDownloadUrl() string`

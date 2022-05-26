@@ -84,11 +84,11 @@ func (o *Config) GetCapabilities() []CapabilitiesEnum {
 
 // GetCapabilitiesOk returns a tuple with the Capabilities field value
 // and a boolean to check if the value has been set.
-func (o *Config) GetCapabilitiesOk() (*[]CapabilitiesEnum, bool) {
+func (o *Config) GetCapabilitiesOk() ([]CapabilitiesEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Capabilities, true
+	return o.Capabilities, true
 }
 
 // SetCapabilities sets field value

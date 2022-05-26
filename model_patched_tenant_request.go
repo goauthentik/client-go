@@ -31,8 +31,8 @@ type PatchedTenantRequest struct {
 	// Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2).
 	EventRetention *string `json:"event_retention,omitempty"`
 	// Web Certificate used by the authentik Core webserver.
-	WebCertificate NullableString          `json:"web_certificate,omitempty"`
-	Attributes     *map[string]interface{} `json:"attributes,omitempty"`
+	WebCertificate NullableString         `json:"web_certificate,omitempty"`
+	Attributes     map[string]interface{} `json:"attributes,omitempty"`
 }
 
 // NewPatchedTenantRequest instantiates a new PatchedTenantRequest object
@@ -508,12 +508,12 @@ func (o *PatchedTenantRequest) GetAttributes() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Attributes
+	return o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedTenantRequest) GetAttributesOk() (*map[string]interface{}, bool) {
+func (o *PatchedTenantRequest) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -531,7 +531,7 @@ func (o *PatchedTenantRequest) HasAttributes() bool {
 
 // SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
 func (o *PatchedTenantRequest) SetAttributes(v map[string]interface{}) {
-	o.Attributes = &v
+	o.Attributes = v
 }
 
 func (o PatchedTenantRequest) MarshalJSON() ([]byte, error) {

@@ -18,12 +18,12 @@ import (
 // AuthenticatorValidateStageRequest AuthenticatorValidateStage Serializer
 type AuthenticatorValidateStageRequest struct {
 	Name                string                   `json:"name"`
-	FlowSet             *[]FlowRequest           `json:"flow_set,omitempty"`
+	FlowSet             []FlowRequest            `json:"flow_set,omitempty"`
 	NotConfiguredAction *NotConfiguredActionEnum `json:"not_configured_action,omitempty"`
 	// Device classes which can be used to authenticate
-	DeviceClasses *[]DeviceClassesEnum `json:"device_classes,omitempty"`
+	DeviceClasses []DeviceClassesEnum `json:"device_classes,omitempty"`
 	// Stages used to configure Authenticator when user doesn't have any compatible devices. After this configuration Stage passes, the user is not prompted again.
-	ConfigurationStages *[]string `json:"configuration_stages,omitempty"`
+	ConfigurationStages []string `json:"configuration_stages,omitempty"`
 	// If any of the user's device has been used within this threshold, this stage will be skipped
 	LastAuthThreshold *string `json:"last_auth_threshold,omitempty"`
 }
@@ -76,12 +76,12 @@ func (o *AuthenticatorValidateStageRequest) GetFlowSet() []FlowRequest {
 		var ret []FlowRequest
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorValidateStageRequest) GetFlowSetOk() (*[]FlowRequest, bool) {
+func (o *AuthenticatorValidateStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -99,7 +99,7 @@ func (o *AuthenticatorValidateStageRequest) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
 func (o *AuthenticatorValidateStageRequest) SetFlowSet(v []FlowRequest) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetNotConfiguredAction returns the NotConfiguredAction field value if set, zero value otherwise.
@@ -140,12 +140,12 @@ func (o *AuthenticatorValidateStageRequest) GetDeviceClasses() []DeviceClassesEn
 		var ret []DeviceClassesEnum
 		return ret
 	}
-	return *o.DeviceClasses
+	return o.DeviceClasses
 }
 
 // GetDeviceClassesOk returns a tuple with the DeviceClasses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorValidateStageRequest) GetDeviceClassesOk() (*[]DeviceClassesEnum, bool) {
+func (o *AuthenticatorValidateStageRequest) GetDeviceClassesOk() ([]DeviceClassesEnum, bool) {
 	if o == nil || o.DeviceClasses == nil {
 		return nil, false
 	}
@@ -163,7 +163,7 @@ func (o *AuthenticatorValidateStageRequest) HasDeviceClasses() bool {
 
 // SetDeviceClasses gets a reference to the given []DeviceClassesEnum and assigns it to the DeviceClasses field.
 func (o *AuthenticatorValidateStageRequest) SetDeviceClasses(v []DeviceClassesEnum) {
-	o.DeviceClasses = &v
+	o.DeviceClasses = v
 }
 
 // GetConfigurationStages returns the ConfigurationStages field value if set, zero value otherwise.
@@ -172,12 +172,12 @@ func (o *AuthenticatorValidateStageRequest) GetConfigurationStages() []string {
 		var ret []string
 		return ret
 	}
-	return *o.ConfigurationStages
+	return o.ConfigurationStages
 }
 
 // GetConfigurationStagesOk returns a tuple with the ConfigurationStages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorValidateStageRequest) GetConfigurationStagesOk() (*[]string, bool) {
+func (o *AuthenticatorValidateStageRequest) GetConfigurationStagesOk() ([]string, bool) {
 	if o == nil || o.ConfigurationStages == nil {
 		return nil, false
 	}
@@ -195,7 +195,7 @@ func (o *AuthenticatorValidateStageRequest) HasConfigurationStages() bool {
 
 // SetConfigurationStages gets a reference to the given []string and assigns it to the ConfigurationStages field.
 func (o *AuthenticatorValidateStageRequest) SetConfigurationStages(v []string) {
-	o.ConfigurationStages = &v
+	o.ConfigurationStages = v
 }
 
 // GetLastAuthThreshold returns the LastAuthThreshold field value if set, zero value otherwise.

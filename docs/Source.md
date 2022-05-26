@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **VerboseNamePlural** | **string** |  | [readonly] 
 **MetaModelName** | **string** |  | [readonly] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
-**UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
+**UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 
 ## Methods
 
@@ -321,6 +321,16 @@ SetUserMatchingMode sets UserMatchingMode field to given value.
 
 HasUserMatchingMode returns a boolean if a field has been set.
 
+### SetUserMatchingModeNil
+
+`func (o *Source) SetUserMatchingModeNil(b bool)`
+
+ SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
+
+### UnsetUserMatchingMode
+`func (o *Source) UnsetUserMatchingMode()`
+
+UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -27,7 +27,8 @@ const (
 	USEDBYACTIONENUM_SET_DEFAULT  UsedByActionEnum = "SET_DEFAULT"
 )
 
-var allowedUsedByActionEnumEnumValues = []UsedByActionEnum{
+// All allowed values of UsedByActionEnum enum
+var AllowedUsedByActionEnumEnumValues = []UsedByActionEnum{
 	"CASCADE",
 	"CASCADE_MANY",
 	"SET_NULL",
@@ -41,7 +42,7 @@ func (v *UsedByActionEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := UsedByActionEnum(value)
-	for _, existing := range allowedUsedByActionEnumEnumValues {
+	for _, existing := range AllowedUsedByActionEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -58,13 +59,13 @@ func NewUsedByActionEnumFromValue(v string) (*UsedByActionEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for UsedByActionEnum: valid values are %v", v, allowedUsedByActionEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for UsedByActionEnum: valid values are %v", v, AllowedUsedByActionEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v UsedByActionEnum) IsValid() bool {
-	for _, existing := range allowedUsedByActionEnumEnumValues {
+	for _, existing := range AllowedUsedByActionEnumEnumValues {
 		if existing == v {
 			return true
 		}

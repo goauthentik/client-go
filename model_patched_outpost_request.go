@@ -19,10 +19,10 @@ import (
 type PatchedOutpostRequest struct {
 	Name      *string          `json:"name,omitempty"`
 	Type      *OutpostTypeEnum `json:"type,omitempty"`
-	Providers *[]int32         `json:"providers,omitempty"`
+	Providers []int32          `json:"providers,omitempty"`
 	// Select Service-Connection authentik should use to manage this outpost. Leave empty if authentik should not handle the deployment.
-	ServiceConnection NullableString          `json:"service_connection,omitempty"`
-	Config            *map[string]interface{} `json:"config,omitempty"`
+	ServiceConnection NullableString         `json:"service_connection,omitempty"`
+	Config            map[string]interface{} `json:"config,omitempty"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed NullableString `json:"managed,omitempty"`
 }
@@ -114,12 +114,12 @@ func (o *PatchedOutpostRequest) GetProviders() []int32 {
 		var ret []int32
 		return ret
 	}
-	return *o.Providers
+	return o.Providers
 }
 
 // GetProvidersOk returns a tuple with the Providers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedOutpostRequest) GetProvidersOk() (*[]int32, bool) {
+func (o *PatchedOutpostRequest) GetProvidersOk() ([]int32, bool) {
 	if o == nil || o.Providers == nil {
 		return nil, false
 	}
@@ -137,7 +137,7 @@ func (o *PatchedOutpostRequest) HasProviders() bool {
 
 // SetProviders gets a reference to the given []int32 and assigns it to the Providers field.
 func (o *PatchedOutpostRequest) SetProviders(v []int32) {
-	o.Providers = &v
+	o.Providers = v
 }
 
 // GetServiceConnection returns the ServiceConnection field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -189,12 +189,12 @@ func (o *PatchedOutpostRequest) GetConfig() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Config
+	return o.Config
 }
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedOutpostRequest) GetConfigOk() (*map[string]interface{}, bool) {
+func (o *PatchedOutpostRequest) GetConfigOk() (map[string]interface{}, bool) {
 	if o == nil || o.Config == nil {
 		return nil, false
 	}
@@ -212,7 +212,7 @@ func (o *PatchedOutpostRequest) HasConfig() bool {
 
 // SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
 func (o *PatchedOutpostRequest) SetConfig(v map[string]interface{}) {
-	o.Config = &v
+	o.Config = v
 }
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).

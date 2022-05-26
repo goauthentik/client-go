@@ -21,11 +21,11 @@ type PatchedEventMatcherPolicyRequest struct {
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
 	ExecutionLogging *bool `json:"execution_logging,omitempty"`
 	// Match created events with this action type. When left empty, all action types will be matched.
-	Action *EventActions `json:"action,omitempty"`
+	Action NullableEventActions `json:"action,omitempty"`
 	// Matches Event's Client IP (strict matching, for network matching use an Expression Policy)
 	ClientIp *string `json:"client_ip,omitempty"`
 	// Match events created by selected application. When left empty, all applications are matched.
-	App *AppEnum `json:"app,omitempty"`
+	App NullableAppEnum `json:"app,omitempty"`
 }
 
 // NewPatchedEventMatcherPolicyRequest instantiates a new PatchedEventMatcherPolicyRequest object
@@ -120,36 +120,47 @@ func (o *PatchedEventMatcherPolicyRequest) SetExecutionLogging(v bool) {
 	o.ExecutionLogging = &v
 }
 
-// GetAction returns the Action field value if set, zero value otherwise.
+// GetAction returns the Action field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedEventMatcherPolicyRequest) GetAction() EventActions {
-	if o == nil || o.Action == nil {
+	if o == nil || o.Action.Get() == nil {
 		var ret EventActions
 		return ret
 	}
-	return *o.Action
+	return *o.Action.Get()
 }
 
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedEventMatcherPolicyRequest) GetActionOk() (*EventActions, bool) {
-	if o == nil || o.Action == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Action, true
+	return o.Action.Get(), o.Action.IsSet()
 }
 
 // HasAction returns a boolean if a field has been set.
 func (o *PatchedEventMatcherPolicyRequest) HasAction() bool {
-	if o != nil && o.Action != nil {
+	if o != nil && o.Action.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAction gets a reference to the given EventActions and assigns it to the Action field.
+// SetAction gets a reference to the given NullableEventActions and assigns it to the Action field.
 func (o *PatchedEventMatcherPolicyRequest) SetAction(v EventActions) {
-	o.Action = &v
+	o.Action.Set(&v)
+}
+
+// SetActionNil sets the value for Action to be an explicit nil
+func (o *PatchedEventMatcherPolicyRequest) SetActionNil() {
+	o.Action.Set(nil)
+}
+
+// UnsetAction ensures that no value is present for Action, not even an explicit nil
+func (o *PatchedEventMatcherPolicyRequest) UnsetAction() {
+	o.Action.Unset()
 }
 
 // GetClientIp returns the ClientIp field value if set, zero value otherwise.
@@ -184,36 +195,47 @@ func (o *PatchedEventMatcherPolicyRequest) SetClientIp(v string) {
 	o.ClientIp = &v
 }
 
-// GetApp returns the App field value if set, zero value otherwise.
+// GetApp returns the App field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedEventMatcherPolicyRequest) GetApp() AppEnum {
-	if o == nil || o.App == nil {
+	if o == nil || o.App.Get() == nil {
 		var ret AppEnum
 		return ret
 	}
-	return *o.App
+	return *o.App.Get()
 }
 
 // GetAppOk returns a tuple with the App field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedEventMatcherPolicyRequest) GetAppOk() (*AppEnum, bool) {
-	if o == nil || o.App == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.App, true
+	return o.App.Get(), o.App.IsSet()
 }
 
 // HasApp returns a boolean if a field has been set.
 func (o *PatchedEventMatcherPolicyRequest) HasApp() bool {
-	if o != nil && o.App != nil {
+	if o != nil && o.App.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetApp gets a reference to the given AppEnum and assigns it to the App field.
+// SetApp gets a reference to the given NullableAppEnum and assigns it to the App field.
 func (o *PatchedEventMatcherPolicyRequest) SetApp(v AppEnum) {
-	o.App = &v
+	o.App.Set(&v)
+}
+
+// SetAppNil sets the value for App to be an explicit nil
+func (o *PatchedEventMatcherPolicyRequest) SetAppNil() {
+	o.App.Set(nil)
+}
+
+// UnsetApp ensures that no value is present for App, not even an explicit nil
+func (o *PatchedEventMatcherPolicyRequest) UnsetApp() {
+	o.App.Unset()
 }
 
 func (o PatchedEventMatcherPolicyRequest) MarshalJSON() ([]byte, error) {
@@ -224,14 +246,14 @@ func (o PatchedEventMatcherPolicyRequest) MarshalJSON() ([]byte, error) {
 	if o.ExecutionLogging != nil {
 		toSerialize["execution_logging"] = o.ExecutionLogging
 	}
-	if o.Action != nil {
-		toSerialize["action"] = o.Action
+	if o.Action.IsSet() {
+		toSerialize["action"] = o.Action.Get()
 	}
 	if o.ClientIp != nil {
 		toSerialize["client_ip"] = o.ClientIp
 	}
-	if o.App != nil {
-		toSerialize["app"] = o.App
+	if o.App.IsSet() {
+		toSerialize["app"] = o.App.Get()
 	}
 	return json.Marshal(toSerialize)
 }

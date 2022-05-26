@@ -19,8 +19,8 @@ import (
 type ProviderRequest struct {
 	Name string `json:"name"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string    `json:"authorization_flow"`
-	PropertyMappings  *[]string `json:"property_mappings,omitempty"`
+	AuthorizationFlow string   `json:"authorization_flow"`
+	PropertyMappings  []string `json:"property_mappings,omitempty"`
 }
 
 // NewProviderRequest instantiates a new ProviderRequest object
@@ -96,12 +96,12 @@ func (o *ProviderRequest) GetPropertyMappings() []string {
 		var ret []string
 		return ret
 	}
-	return *o.PropertyMappings
+	return o.PropertyMappings
 }
 
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProviderRequest) GetPropertyMappingsOk() (*[]string, bool) {
+func (o *ProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
 	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
@@ -119,7 +119,7 @@ func (o *ProviderRequest) HasPropertyMappings() bool {
 
 // SetPropertyMappings gets a reference to the given []string and assigns it to the PropertyMappings field.
 func (o *ProviderRequest) SetPropertyMappings(v []string) {
-	o.PropertyMappings = &v
+	o.PropertyMappings = v
 }
 
 func (o ProviderRequest) MarshalJSON() ([]byte, error) {

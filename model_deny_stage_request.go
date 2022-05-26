@@ -17,8 +17,8 @@ import (
 
 // DenyStageRequest DenyStage Serializer
 type DenyStageRequest struct {
-	Name    string         `json:"name"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
+	Name    string        `json:"name"`
+	FlowSet []FlowRequest `json:"flow_set,omitempty"`
 }
 
 // NewDenyStageRequest instantiates a new DenyStageRequest object
@@ -69,12 +69,12 @@ func (o *DenyStageRequest) GetFlowSet() []FlowRequest {
 		var ret []FlowRequest
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DenyStageRequest) GetFlowSetOk() (*[]FlowRequest, bool) {
+func (o *DenyStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *DenyStageRequest) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
 func (o *DenyStageRequest) SetFlowSet(v []FlowRequest) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 func (o DenyStageRequest) MarshalJSON() ([]byte, error) {

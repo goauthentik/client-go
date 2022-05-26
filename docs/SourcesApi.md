@@ -90,8 +90,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesAllDestroy(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesAllDestroy(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -161,8 +161,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesAllList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesAllList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -230,8 +230,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesAllRetrieve(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesAllRetrieve(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -299,8 +299,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesAllTypesList(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesAllTypesList(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllTypesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -361,8 +361,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesAllUsedByList(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesAllUsedByList(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -430,8 +430,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesAllUserSettingsList(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesAllUserSettingsList(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllUserSettingsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -492,8 +492,8 @@ func main() {
     lDAPSourceRequest := *openapiclient.NewLDAPSourceRequest("Name_example", "Slug_example", "ServerUri_example", "BaseDn_example") // LDAPSourceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesLdapCreate(context.Background()).LDAPSourceRequest(lDAPSourceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapCreate(context.Background()).LDAPSourceRequest(lDAPSourceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -558,8 +558,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesLdapDestroy(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapDestroy(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -635,7 +635,7 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    peerCertificate := TODO // string |  (optional)
+    peerCertificate := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     propertyMappings := []string{"Inner_example"} // []string |  (optional)
     propertyMappingsGroup := []string{"Inner_example"} // []string |  (optional)
     search := "search_example" // string | A search term. (optional)
@@ -643,14 +643,14 @@ func main() {
     slug := "slug_example" // string |  (optional)
     startTls := true // bool |  (optional)
     syncGroups := true // bool |  (optional)
-    syncParentGroup := TODO // string |  (optional)
+    syncParentGroup := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     syncUsers := true // bool |  (optional)
     syncUsersPassword := true // bool |  (optional)
     userObjectFilter := "userObjectFilter_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesLdapList(context.Background()).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PeerCertificate(peerCertificate).PropertyMappings(propertyMappings).PropertyMappingsGroup(propertyMappingsGroup).Search(search).ServerUri(serverUri).Slug(slug).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapList(context.Background()).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PeerCertificate(peerCertificate).PropertyMappings(propertyMappings).PropertyMappingsGroup(propertyMappingsGroup).Search(search).ServerUri(serverUri).Slug(slug).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -683,7 +683,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **peerCertificate** | [**string**](string.md) |  | 
+ **peerCertificate** | **string** |  | 
  **propertyMappings** | **[]string** |  | 
  **propertyMappingsGroup** | **[]string** |  | 
  **search** | **string** | A search term. | 
@@ -691,7 +691,7 @@ Name | Type | Description  | Notes
  **slug** | **string** |  | 
  **startTls** | **bool** |  | 
  **syncGroups** | **bool** |  | 
- **syncParentGroup** | [**string**](string.md) |  | 
+ **syncParentGroup** | **string** |  | 
  **syncUsers** | **bool** |  | 
  **syncUsersPassword** | **bool** |  | 
  **userObjectFilter** | **string** |  | 
@@ -739,8 +739,8 @@ func main() {
     patchedLDAPSourceRequest := *openapiclient.NewPatchedLDAPSourceRequest() // PatchedLDAPSourceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesLdapPartialUpdate(context.Background(), slug).PatchedLDAPSourceRequest(patchedLDAPSourceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapPartialUpdate(context.Background(), slug).PatchedLDAPSourceRequest(patchedLDAPSourceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -810,8 +810,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesLdapRetrieve(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapRetrieve(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -880,8 +880,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesLdapSyncStatusList(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapSyncStatusList(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapSyncStatusList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -951,8 +951,8 @@ func main() {
     lDAPSourceRequest := *openapiclient.NewLDAPSourceRequest("Name_example", "Slug_example", "ServerUri_example", "BaseDn_example") // LDAPSourceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesLdapUpdate(context.Background(), slug).LDAPSourceRequest(lDAPSourceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapUpdate(context.Background(), slug).LDAPSourceRequest(lDAPSourceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1022,8 +1022,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesLdapUsedByList(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapUsedByList(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1092,8 +1092,8 @@ func main() {
     oAuthSourceRequest := *openapiclient.NewOAuthSourceRequest("Name_example", "Slug_example", openapiclient.ProviderTypeEnum("apple"), "ConsumerKey_example", "ConsumerSecret_example") // OAuthSourceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesOauthCreate(context.Background()).OAuthSourceRequest(oAuthSourceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthCreate(context.Background()).OAuthSourceRequest(oAuthSourceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1158,8 +1158,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesOauthDestroy(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthDestroy(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1225,11 +1225,11 @@ import (
 func main() {
     accessTokenUrl := "accessTokenUrl_example" // string |  (optional)
     additionalScopes := "additionalScopes_example" // string |  (optional)
-    authenticationFlow := TODO // string |  (optional)
+    authenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     authorizationUrl := "authorizationUrl_example" // string |  (optional)
     consumerKey := "consumerKey_example" // string |  (optional)
     enabled := true // bool |  (optional)
-    enrollmentFlow := TODO // string |  (optional)
+    enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -1243,8 +1243,8 @@ func main() {
     userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesOauthList(context.Background()).AccessTokenUrl(accessTokenUrl).AdditionalScopes(additionalScopes).AuthenticationFlow(authenticationFlow).AuthorizationUrl(authorizationUrl).ConsumerKey(consumerKey).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).ProfileUrl(profileUrl).ProviderType(providerType).RequestTokenUrl(requestTokenUrl).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthList(context.Background()).AccessTokenUrl(accessTokenUrl).AdditionalScopes(additionalScopes).AuthenticationFlow(authenticationFlow).AuthorizationUrl(authorizationUrl).ConsumerKey(consumerKey).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).ProfileUrl(profileUrl).ProviderType(providerType).RequestTokenUrl(requestTokenUrl).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1267,11 +1267,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accessTokenUrl** | **string** |  | 
  **additionalScopes** | **string** |  | 
- **authenticationFlow** | [**string**](string.md) |  | 
+ **authenticationFlow** | **string** |  | 
  **authorizationUrl** | **string** |  | 
  **consumerKey** | **string** |  | 
  **enabled** | **bool** |  | 
- **enrollmentFlow** | [**string**](string.md) |  | 
+ **enrollmentFlow** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -1327,8 +1327,8 @@ func main() {
     patchedOAuthSourceRequest := *openapiclient.NewPatchedOAuthSourceRequest() // PatchedOAuthSourceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesOauthPartialUpdate(context.Background(), slug).PatchedOAuthSourceRequest(patchedOAuthSourceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthPartialUpdate(context.Background(), slug).PatchedOAuthSourceRequest(patchedOAuthSourceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1398,8 +1398,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesOauthRetrieve(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthRetrieve(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1468,8 +1468,8 @@ func main() {
     name := "name_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesOauthSourceTypesList(context.Background()).Name(name).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthSourceTypesList(context.Background()).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthSourceTypesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1535,8 +1535,8 @@ func main() {
     oAuthSourceRequest := *openapiclient.NewOAuthSourceRequest("Name_example", "Slug_example", openapiclient.ProviderTypeEnum("apple"), "ConsumerKey_example", "ConsumerSecret_example") // OAuthSourceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesOauthUpdate(context.Background(), slug).OAuthSourceRequest(oAuthSourceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthUpdate(context.Background(), slug).OAuthSourceRequest(oAuthSourceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1606,8 +1606,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesOauthUsedByList(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthUsedByList(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1676,8 +1676,8 @@ func main() {
     plexSourceRequest := *openapiclient.NewPlexSourceRequest("Name_example", "Slug_example", "PlexToken_example") // PlexSourceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesPlexCreate(context.Background()).PlexSourceRequest(plexSourceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexCreate(context.Background()).PlexSourceRequest(plexSourceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1742,8 +1742,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesPlexDestroy(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexDestroy(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1808,10 +1808,10 @@ import (
 
 func main() {
     allowFriends := true // bool |  (optional)
-    authenticationFlow := TODO // string |  (optional)
+    authenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     clientId := "clientId_example" // string |  (optional)
     enabled := true // bool |  (optional)
-    enrollmentFlow := TODO // string |  (optional)
+    enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -1822,8 +1822,8 @@ func main() {
     userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesPlexList(context.Background()).AllowFriends(allowFriends).AuthenticationFlow(authenticationFlow).ClientId(clientId).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexList(context.Background()).AllowFriends(allowFriends).AuthenticationFlow(authenticationFlow).ClientId(clientId).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1845,10 +1845,10 @@ Other parameters are passed through a pointer to a apiSourcesPlexListRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **allowFriends** | **bool** |  | 
- **authenticationFlow** | [**string**](string.md) |  | 
+ **authenticationFlow** | **string** |  | 
  **clientId** | **string** |  | 
  **enabled** | **bool** |  | 
- **enrollmentFlow** | [**string**](string.md) |  | 
+ **enrollmentFlow** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -1901,8 +1901,8 @@ func main() {
     patchedPlexSourceRequest := *openapiclient.NewPatchedPlexSourceRequest() // PatchedPlexSourceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesPlexPartialUpdate(context.Background(), slug).PatchedPlexSourceRequest(patchedPlexSourceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexPartialUpdate(context.Background(), slug).PatchedPlexSourceRequest(patchedPlexSourceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1973,8 +1973,8 @@ func main() {
     slug := "slug_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesPlexRedeemTokenAuthenticatedCreate(context.Background()).PlexTokenRedeemRequest(plexTokenRedeemRequest).Slug(slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexRedeemTokenAuthenticatedCreate(context.Background()).PlexTokenRedeemRequest(plexTokenRedeemRequest).Slug(slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexRedeemTokenAuthenticatedCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2039,8 +2039,8 @@ func main() {
     slug := "slug_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesPlexRedeemTokenCreate(context.Background()).PlexTokenRedeemRequest(plexTokenRedeemRequest).Slug(slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexRedeemTokenCreate(context.Background()).PlexTokenRedeemRequest(plexTokenRedeemRequest).Slug(slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexRedeemTokenCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2106,8 +2106,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesPlexRetrieve(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexRetrieve(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2177,8 +2177,8 @@ func main() {
     plexSourceRequest := *openapiclient.NewPlexSourceRequest("Name_example", "Slug_example", "PlexToken_example") // PlexSourceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesPlexUpdate(context.Background(), slug).PlexSourceRequest(plexSourceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexUpdate(context.Background(), slug).PlexSourceRequest(plexSourceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2248,8 +2248,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesPlexUsedByList(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexUsedByList(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2318,8 +2318,8 @@ func main() {
     sAMLSourceRequest := *openapiclient.NewSAMLSourceRequest("Name_example", "Slug_example", "PreAuthenticationFlow_example", "SsoUrl_example") // SAMLSourceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesSamlCreate(context.Background()).SAMLSourceRequest(sAMLSourceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlCreate(context.Background()).SAMLSourceRequest(sAMLSourceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2384,8 +2384,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesSamlDestroy(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlDestroy(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2450,11 +2450,11 @@ import (
 
 func main() {
     allowIdpInitiated := true // bool |  (optional)
-    authenticationFlow := TODO // string |  (optional)
+    authenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     bindingType := "bindingType_example" // string |  (optional)
     digestAlgorithm := "digestAlgorithm_example" // string |  (optional)
     enabled := true // bool |  (optional)
-    enrollmentFlow := TODO // string |  (optional)
+    enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     issuer := "issuer_example" // string |  (optional)
     managed := "managed_example" // string |  (optional)
     name := "name_example" // string |  (optional)
@@ -2462,14 +2462,14 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    pbmUuid := TODO // string |  (optional)
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     policies := []string{"Inner_example"} // []string |  (optional)
     policyEngineMode := "policyEngineMode_example" // string |  (optional)
-    preAuthenticationFlow := TODO // string |  (optional)
+    preAuthenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     propertyMappings := []string{"Inner_example"} // []string |  (optional)
     search := "search_example" // string | A search term. (optional)
     signatureAlgorithm := "signatureAlgorithm_example" // string |  (optional)
-    signingKp := TODO // string |  (optional)
+    signingKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     sloUrl := "sloUrl_example" // string |  (optional)
     slug := "slug_example" // string |  (optional)
     ssoUrl := "ssoUrl_example" // string |  (optional)
@@ -2477,8 +2477,8 @@ func main() {
     userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesSamlList(context.Background()).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Policies(policies).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).PropertyMappings(propertyMappings).Search(search).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlList(context.Background()).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Policies(policies).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).PropertyMappings(propertyMappings).Search(search).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2500,11 +2500,11 @@ Other parameters are passed through a pointer to a apiSourcesSamlListRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **allowIdpInitiated** | **bool** |  | 
- **authenticationFlow** | [**string**](string.md) |  | 
+ **authenticationFlow** | **string** |  | 
  **bindingType** | **string** |  | 
  **digestAlgorithm** | **string** |  | 
  **enabled** | **bool** |  | 
- **enrollmentFlow** | [**string**](string.md) |  | 
+ **enrollmentFlow** | **string** |  | 
  **issuer** | **string** |  | 
  **managed** | **string** |  | 
  **name** | **string** |  | 
@@ -2512,14 +2512,14 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **pbmUuid** | [**string**](string.md) |  | 
+ **pbmUuid** | **string** |  | 
  **policies** | **[]string** |  | 
  **policyEngineMode** | **string** |  | 
- **preAuthenticationFlow** | [**string**](string.md) |  | 
+ **preAuthenticationFlow** | **string** |  | 
  **propertyMappings** | **[]string** |  | 
  **search** | **string** | A search term. | 
  **signatureAlgorithm** | **string** |  | 
- **signingKp** | [**string**](string.md) |  | 
+ **signingKp** | **string** |  | 
  **sloUrl** | **string** |  | 
  **slug** | **string** |  | 
  **ssoUrl** | **string** |  | 
@@ -2568,8 +2568,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesSamlMetadataRetrieve(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlMetadataRetrieve(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlMetadataRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2639,8 +2639,8 @@ func main() {
     patchedSAMLSourceRequest := *openapiclient.NewPatchedSAMLSourceRequest() // PatchedSAMLSourceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesSamlPartialUpdate(context.Background(), slug).PatchedSAMLSourceRequest(patchedSAMLSourceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlPartialUpdate(context.Background(), slug).PatchedSAMLSourceRequest(patchedSAMLSourceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2710,8 +2710,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesSamlRetrieve(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlRetrieve(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2781,8 +2781,8 @@ func main() {
     sAMLSourceRequest := *openapiclient.NewSAMLSourceRequest("Name_example", "Slug_example", "PreAuthenticationFlow_example", "SsoUrl_example") // SAMLSourceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesSamlUpdate(context.Background(), slug).SAMLSourceRequest(sAMLSourceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlUpdate(context.Background(), slug).SAMLSourceRequest(sAMLSourceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2852,8 +2852,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesSamlUsedByList(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlUsedByList(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2922,8 +2922,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this user source connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2993,8 +2993,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3062,8 +3062,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this user source connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllPartialUpdate(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllPartialUpdate(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3132,8 +3132,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this user source connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3202,8 +3202,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this user source connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllUpdate(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllUpdate(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3272,8 +3272,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this user source connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsAllUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3342,8 +3342,8 @@ func main() {
     userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest(int32(123), "Identifier_example") // UserOAuthSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsOauthCreate(context.Background()).UserOAuthSourceConnectionRequest(userOAuthSourceConnectionRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsOauthCreate(context.Background()).UserOAuthSourceConnectionRequest(userOAuthSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3408,8 +3408,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsOauthDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsOauthDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3480,8 +3480,8 @@ func main() {
     sourceSlug := "sourceSlug_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsOauthList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsOauthList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3551,8 +3551,8 @@ func main() {
     patchedUserOAuthSourceConnectionRequest := *openapiclient.NewPatchedUserOAuthSourceConnectionRequest() // PatchedUserOAuthSourceConnectionRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsOauthPartialUpdate(context.Background(), id).PatchedUserOAuthSourceConnectionRequest(patchedUserOAuthSourceConnectionRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsOauthPartialUpdate(context.Background(), id).PatchedUserOAuthSourceConnectionRequest(patchedUserOAuthSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3622,8 +3622,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsOauthRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsOauthRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3693,8 +3693,8 @@ func main() {
     userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest(int32(123), "Identifier_example") // UserOAuthSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsOauthUpdate(context.Background(), id).UserOAuthSourceConnectionRequest(userOAuthSourceConnectionRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsOauthUpdate(context.Background(), id).UserOAuthSourceConnectionRequest(userOAuthSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3764,8 +3764,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsOauthUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsOauthUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3834,8 +3834,8 @@ func main() {
     plexSourceConnectionRequest := *openapiclient.NewPlexSourceConnectionRequest("Identifier_example", "PlexToken_example") // PlexSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsPlexCreate(context.Background()).PlexSourceConnectionRequest(plexSourceConnectionRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexCreate(context.Background()).PlexSourceConnectionRequest(plexSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3900,8 +3900,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsPlexDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3972,8 +3972,8 @@ func main() {
     sourceSlug := "sourceSlug_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsPlexList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4043,8 +4043,8 @@ func main() {
     patchedPlexSourceConnectionRequest := *openapiclient.NewPatchedPlexSourceConnectionRequest() // PatchedPlexSourceConnectionRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsPlexPartialUpdate(context.Background(), id).PatchedPlexSourceConnectionRequest(patchedPlexSourceConnectionRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexPartialUpdate(context.Background(), id).PatchedPlexSourceConnectionRequest(patchedPlexSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4114,8 +4114,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsPlexRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4185,8 +4185,8 @@ func main() {
     plexSourceConnectionRequest := *openapiclient.NewPlexSourceConnectionRequest("Identifier_example", "PlexToken_example") // PlexSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsPlexUpdate(context.Background(), id).PlexSourceConnectionRequest(plexSourceConnectionRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexUpdate(context.Background(), id).PlexSourceConnectionRequest(plexSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4256,8 +4256,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SourcesApi.SourcesUserConnectionsPlexUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

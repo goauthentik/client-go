@@ -64,8 +64,8 @@ func main() {
     outpostRequest := *openapiclient.NewOutpostRequest("Name_example", openapiclient.OutpostTypeEnum("proxy"), []int32{int32(123)}, map[string]interface{}{"key": interface{}(123)}) // OutpostRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsInstancesCreate(context.Background()).OutpostRequest(outpostRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesCreate(context.Background()).OutpostRequest(outpostRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -129,8 +129,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsInstancesDefaultSettingsRetrieve(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesDefaultSettingsRetrieve(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesDefaultSettingsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -188,11 +188,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this outpost.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsInstancesDestroy(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesDestroy(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -206,7 +206,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this outpost. | 
+**uuid** | **string** | A UUID string identifying this outpost. | 
 
 ### Other Parameters
 
@@ -256,7 +256,7 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this outpost.
     managedIcontains := "managedIcontains_example" // string |  (optional)
     managedIexact := "managedIexact_example" // string |  (optional)
     nameIcontains := "nameIcontains_example" // string |  (optional)
@@ -269,8 +269,8 @@ func main() {
     serviceConnectionNameIexact := "serviceConnectionNameIexact_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsInstancesHealthList(context.Background(), uuid).ManagedIcontains(managedIcontains).ManagedIexact(managedIexact).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesHealthList(context.Background(), uuid).ManagedIcontains(managedIcontains).ManagedIexact(managedIexact).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesHealthList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -286,7 +286,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this outpost. | 
+**uuid** | **string** | A UUID string identifying this outpost. | 
 
 ### Other Parameters
 
@@ -360,8 +360,8 @@ func main() {
     serviceConnectionNameIexact := "serviceConnectionNameIexact_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsInstancesList(context.Background()).ManagedIcontains(managedIcontains).ManagedIexact(managedIexact).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesList(context.Background()).ManagedIcontains(managedIcontains).ManagedIexact(managedIexact).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -434,12 +434,12 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this outpost.
     patchedOutpostRequest := *openapiclient.NewPatchedOutpostRequest() // PatchedOutpostRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsInstancesPartialUpdate(context.Background(), uuid).PatchedOutpostRequest(patchedOutpostRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesPartialUpdate(context.Background(), uuid).PatchedOutpostRequest(patchedOutpostRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -455,7 +455,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this outpost. | 
+**uuid** | **string** | A UUID string identifying this outpost. | 
 
 ### Other Parameters
 
@@ -506,11 +506,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this outpost.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsInstancesRetrieve(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesRetrieve(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -526,7 +526,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this outpost. | 
+**uuid** | **string** | A UUID string identifying this outpost. | 
 
 ### Other Parameters
 
@@ -576,12 +576,12 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this outpost.
     outpostRequest := *openapiclient.NewOutpostRequest("Name_example", openapiclient.OutpostTypeEnum("proxy"), []int32{int32(123)}, map[string]interface{}{"key": interface{}(123)}) // OutpostRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsInstancesUpdate(context.Background(), uuid).OutpostRequest(outpostRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesUpdate(context.Background(), uuid).OutpostRequest(outpostRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -597,7 +597,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this outpost. | 
+**uuid** | **string** | A UUID string identifying this outpost. | 
 
 ### Other Parameters
 
@@ -648,11 +648,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this outpost.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsInstancesUsedByList(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesUsedByList(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -668,7 +668,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this outpost. | 
+**uuid** | **string** | A UUID string identifying this outpost. | 
 
 ### Other Parameters
 
@@ -725,8 +725,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsLdapList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsLdapList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsLdapList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -795,8 +795,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this LDAP Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsLdapRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsLdapRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsLdapRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -869,8 +869,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsProxyList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsProxyList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsProxyList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -939,8 +939,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this Proxy Provider.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsProxyRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsProxyRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsProxyRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1006,11 +1006,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Outpost Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost Service-Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsAllDestroy(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsAllDestroy(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsAllDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1024,7 +1024,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Outpost Service-Connection. | 
+**uuid** | **string** | A UUID string identifying this Outpost Service-Connection. | 
 
 ### Other Parameters
 
@@ -1081,8 +1081,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsAllList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsAllList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsAllList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1148,11 +1148,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Outpost Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost Service-Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsAllRetrieve(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsAllRetrieve(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsAllRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1168,7 +1168,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Outpost Service-Connection. | 
+**uuid** | **string** | A UUID string identifying this Outpost Service-Connection. | 
 
 ### Other Parameters
 
@@ -1218,11 +1218,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Outpost Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost Service-Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsAllStateRetrieve(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsAllStateRetrieve(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsAllStateRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1238,7 +1238,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Outpost Service-Connection. | 
+**uuid** | **string** | A UUID string identifying this Outpost Service-Connection. | 
 
 ### Other Parameters
 
@@ -1290,8 +1290,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsAllTypesList(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsAllTypesList(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsAllTypesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1349,11 +1349,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Outpost Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost Service-Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsAllUsedByList(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsAllUsedByList(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsAllUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1369,7 +1369,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Outpost Service-Connection. | 
+**uuid** | **string** | A UUID string identifying this Outpost Service-Connection. | 
 
 ### Other Parameters
 
@@ -1422,8 +1422,8 @@ func main() {
     dockerServiceConnectionRequest := *openapiclient.NewDockerServiceConnectionRequest("Name_example", "Url_example") // DockerServiceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsDockerCreate(context.Background()).DockerServiceConnectionRequest(dockerServiceConnectionRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsDockerCreate(context.Background()).DockerServiceConnectionRequest(dockerServiceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsDockerCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1485,11 +1485,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Docker Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsDockerDestroy(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsDockerDestroy(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsDockerDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1503,7 +1503,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Docker Service-Connection. | 
+**uuid** | **string** | A UUID string identifying this Docker Service-Connection. | 
 
 ### Other Parameters
 
@@ -1559,13 +1559,13 @@ func main() {
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
-    tlsAuthentication := TODO // string |  (optional)
-    tlsVerification := TODO // string |  (optional)
+    tlsAuthentication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    tlsVerification := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     url := "url_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsDockerList(context.Background()).Local(local).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TlsAuthentication(tlsAuthentication).TlsVerification(tlsVerification).Url(url).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsDockerList(context.Background()).Local(local).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TlsAuthentication(tlsAuthentication).TlsVerification(tlsVerification).Url(url).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsDockerList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1592,8 +1592,8 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
- **tlsAuthentication** | [**string**](string.md) |  | 
- **tlsVerification** | [**string**](string.md) |  | 
+ **tlsAuthentication** | **string** |  | 
+ **tlsVerification** | **string** |  | 
  **url** | **string** |  | 
 
 ### Return type
@@ -1635,12 +1635,12 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Docker Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
     patchedDockerServiceConnectionRequest := *openapiclient.NewPatchedDockerServiceConnectionRequest() // PatchedDockerServiceConnectionRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsDockerPartialUpdate(context.Background(), uuid).PatchedDockerServiceConnectionRequest(patchedDockerServiceConnectionRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsDockerPartialUpdate(context.Background(), uuid).PatchedDockerServiceConnectionRequest(patchedDockerServiceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsDockerPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1656,7 +1656,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Docker Service-Connection. | 
+**uuid** | **string** | A UUID string identifying this Docker Service-Connection. | 
 
 ### Other Parameters
 
@@ -1707,11 +1707,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Docker Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsDockerRetrieve(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsDockerRetrieve(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsDockerRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1727,7 +1727,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Docker Service-Connection. | 
+**uuid** | **string** | A UUID string identifying this Docker Service-Connection. | 
 
 ### Other Parameters
 
@@ -1777,12 +1777,12 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Docker Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
     dockerServiceConnectionRequest := *openapiclient.NewDockerServiceConnectionRequest("Name_example", "Url_example") // DockerServiceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsDockerUpdate(context.Background(), uuid).DockerServiceConnectionRequest(dockerServiceConnectionRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsDockerUpdate(context.Background(), uuid).DockerServiceConnectionRequest(dockerServiceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsDockerUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1798,7 +1798,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Docker Service-Connection. | 
+**uuid** | **string** | A UUID string identifying this Docker Service-Connection. | 
 
 ### Other Parameters
 
@@ -1849,11 +1849,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Docker Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsDockerUsedByList(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsDockerUsedByList(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsDockerUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1869,7 +1869,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Docker Service-Connection. | 
+**uuid** | **string** | A UUID string identifying this Docker Service-Connection. | 
 
 ### Other Parameters
 
@@ -1922,8 +1922,8 @@ func main() {
     kubernetesServiceConnectionRequest := *openapiclient.NewKubernetesServiceConnectionRequest("Name_example") // KubernetesServiceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsKubernetesCreate(context.Background()).KubernetesServiceConnectionRequest(kubernetesServiceConnectionRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsKubernetesCreate(context.Background()).KubernetesServiceConnectionRequest(kubernetesServiceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsKubernetesCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1985,11 +1985,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Kubernetes Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsKubernetesDestroy(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsKubernetesDestroy(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsKubernetesDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2003,7 +2003,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Kubernetes Service-Connection. | 
+**uuid** | **string** | A UUID string identifying this Kubernetes Service-Connection. | 
 
 ### Other Parameters
 
@@ -2061,8 +2061,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsKubernetesList(context.Background()).Local(local).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsKubernetesList(context.Background()).Local(local).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsKubernetesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2129,12 +2129,12 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Kubernetes Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
     patchedKubernetesServiceConnectionRequest := *openapiclient.NewPatchedKubernetesServiceConnectionRequest() // PatchedKubernetesServiceConnectionRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsKubernetesPartialUpdate(context.Background(), uuid).PatchedKubernetesServiceConnectionRequest(patchedKubernetesServiceConnectionRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsKubernetesPartialUpdate(context.Background(), uuid).PatchedKubernetesServiceConnectionRequest(patchedKubernetesServiceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsKubernetesPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2150,7 +2150,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Kubernetes Service-Connection. | 
+**uuid** | **string** | A UUID string identifying this Kubernetes Service-Connection. | 
 
 ### Other Parameters
 
@@ -2201,11 +2201,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Kubernetes Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsKubernetesRetrieve(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsKubernetesRetrieve(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsKubernetesRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2221,7 +2221,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Kubernetes Service-Connection. | 
+**uuid** | **string** | A UUID string identifying this Kubernetes Service-Connection. | 
 
 ### Other Parameters
 
@@ -2271,12 +2271,12 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Kubernetes Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
     kubernetesServiceConnectionRequest := *openapiclient.NewKubernetesServiceConnectionRequest("Name_example") // KubernetesServiceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsKubernetesUpdate(context.Background(), uuid).KubernetesServiceConnectionRequest(kubernetesServiceConnectionRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsKubernetesUpdate(context.Background(), uuid).KubernetesServiceConnectionRequest(kubernetesServiceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsKubernetesUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2292,7 +2292,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Kubernetes Service-Connection. | 
+**uuid** | **string** | A UUID string identifying this Kubernetes Service-Connection. | 
 
 ### Other Parameters
 
@@ -2343,11 +2343,11 @@ import (
 )
 
 func main() {
-    uuid := TODO // string | A UUID string identifying this Kubernetes Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OutpostsApi.OutpostsServiceConnectionsKubernetesUsedByList(context.Background(), uuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsKubernetesUsedByList(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsKubernetesUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2363,7 +2363,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | [**string**](.md) | A UUID string identifying this Kubernetes Service-Connection. | 
+**uuid** | **string** | A UUID string identifying this Kubernetes Service-Connection. | 
 
 ### Other Parameters
 

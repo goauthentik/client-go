@@ -23,10 +23,10 @@ type Outpost struct {
 	Providers    []int32         `json:"providers"`
 	ProvidersObj []Provider      `json:"providers_obj"`
 	// Select Service-Connection authentik should use to manage this outpost. Leave empty if authentik should not handle the deployment.
-	ServiceConnection    NullableString         `json:"service_connection,omitempty"`
-	ServiceConnectionObj ServiceConnection      `json:"service_connection_obj"`
-	TokenIdentifier      string                 `json:"token_identifier"`
-	Config               map[string]interface{} `json:"config"`
+	ServiceConnection    NullableString              `json:"service_connection,omitempty"`
+	ServiceConnectionObj OutpostServiceConnectionObj `json:"service_connection_obj"`
+	TokenIdentifier      string                      `json:"token_identifier"`
+	Config               map[string]interface{}      `json:"config"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed NullableString `json:"managed,omitempty"`
 }
@@ -35,7 +35,7 @@ type Outpost struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32, providersObj []Provider, serviceConnectionObj ServiceConnection, tokenIdentifier string, config map[string]interface{}) *Outpost {
+func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32, providersObj []Provider, serviceConnectionObj OutpostServiceConnectionObj, tokenIdentifier string, config map[string]interface{}) *Outpost {
 	this := Outpost{}
 	this.Pk = pk
 	this.Name = name
@@ -140,11 +140,11 @@ func (o *Outpost) GetProviders() []int32 {
 
 // GetProvidersOk returns a tuple with the Providers field value
 // and a boolean to check if the value has been set.
-func (o *Outpost) GetProvidersOk() (*[]int32, bool) {
+func (o *Outpost) GetProvidersOk() ([]int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Providers, true
+	return o.Providers, true
 }
 
 // SetProviders sets field value
@@ -164,11 +164,11 @@ func (o *Outpost) GetProvidersObj() []Provider {
 
 // GetProvidersObjOk returns a tuple with the ProvidersObj field value
 // and a boolean to check if the value has been set.
-func (o *Outpost) GetProvidersObjOk() (*[]Provider, bool) {
+func (o *Outpost) GetProvidersObjOk() ([]Provider, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProvidersObj, true
+	return o.ProvidersObj, true
 }
 
 // SetProvidersObj sets field value
@@ -220,9 +220,9 @@ func (o *Outpost) UnsetServiceConnection() {
 }
 
 // GetServiceConnectionObj returns the ServiceConnectionObj field value
-func (o *Outpost) GetServiceConnectionObj() ServiceConnection {
+func (o *Outpost) GetServiceConnectionObj() OutpostServiceConnectionObj {
 	if o == nil {
-		var ret ServiceConnection
+		var ret OutpostServiceConnectionObj
 		return ret
 	}
 
@@ -231,7 +231,7 @@ func (o *Outpost) GetServiceConnectionObj() ServiceConnection {
 
 // GetServiceConnectionObjOk returns a tuple with the ServiceConnectionObj field value
 // and a boolean to check if the value has been set.
-func (o *Outpost) GetServiceConnectionObjOk() (*ServiceConnection, bool) {
+func (o *Outpost) GetServiceConnectionObjOk() (*OutpostServiceConnectionObj, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -239,7 +239,7 @@ func (o *Outpost) GetServiceConnectionObjOk() (*ServiceConnection, bool) {
 }
 
 // SetServiceConnectionObj sets field value
-func (o *Outpost) SetServiceConnectionObj(v ServiceConnection) {
+func (o *Outpost) SetServiceConnectionObj(v OutpostServiceConnectionObj) {
 	o.ServiceConnectionObj = v
 }
 
@@ -279,11 +279,11 @@ func (o *Outpost) GetConfig() map[string]interface{} {
 
 // GetConfigOk returns a tuple with the Config field value
 // and a boolean to check if the value has been set.
-func (o *Outpost) GetConfigOk() (*map[string]interface{}, bool) {
+func (o *Outpost) GetConfigOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Config, true
+	return o.Config, true
 }
 
 // SetConfig sets field value

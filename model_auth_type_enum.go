@@ -25,7 +25,8 @@ const (
 	AUTHTYPEENUM_BEARER AuthTypeEnum = "bearer"
 )
 
-var allowedAuthTypeEnumEnumValues = []AuthTypeEnum{
+// All allowed values of AuthTypeEnum enum
+var AllowedAuthTypeEnumEnumValues = []AuthTypeEnum{
 	"basic",
 	"bearer",
 }
@@ -37,7 +38,7 @@ func (v *AuthTypeEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := AuthTypeEnum(value)
-	for _, existing := range allowedAuthTypeEnumEnumValues {
+	for _, existing := range AllowedAuthTypeEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +55,13 @@ func NewAuthTypeEnumFromValue(v string) (*AuthTypeEnum, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for AuthTypeEnum: valid values are %v", v, allowedAuthTypeEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for AuthTypeEnum: valid values are %v", v, AllowedAuthTypeEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v AuthTypeEnum) IsValid() bool {
-	for _, existing := range allowedAuthTypeEnumEnumValues {
+	for _, existing := range AllowedAuthTypeEnumEnumValues {
 		if existing == v {
 			return true
 		}

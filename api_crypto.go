@@ -13,23 +13,18 @@ package api
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
-)
-
-// Linger please
-var (
-	_ _context.Context
 )
 
 // CryptoApiService CryptoApi service
 type CryptoApiService service
 
 type ApiCryptoCertificatekeypairsCreateRequest struct {
-	ctx                       _context.Context
+	ctx                       context.Context
 	ApiService                *CryptoApiService
 	certificateKeyPairRequest *CertificateKeyPairRequest
 }
@@ -39,7 +34,7 @@ func (r ApiCryptoCertificatekeypairsCreateRequest) CertificateKeyPairRequest(cer
 	return r
 }
 
-func (r ApiCryptoCertificatekeypairsCreateRequest) Execute() (CertificateKeyPair, *_nethttp.Response, error) {
+func (r ApiCryptoCertificatekeypairsCreateRequest) Execute() (*CertificateKeyPair, *http.Response, error) {
 	return r.ApiService.CryptoCertificatekeypairsCreateExecute(r)
 }
 
@@ -48,10 +43,10 @@ CryptoCertificatekeypairsCreate Method for CryptoCertificatekeypairsCreate
 
 CertificateKeyPair Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCryptoCertificatekeypairsCreateRequest
 */
-func (a *CryptoApiService) CryptoCertificatekeypairsCreate(ctx _context.Context) ApiCryptoCertificatekeypairsCreateRequest {
+func (a *CryptoApiService) CryptoCertificatekeypairsCreate(ctx context.Context) ApiCryptoCertificatekeypairsCreateRequest {
 	return ApiCryptoCertificatekeypairsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -60,26 +55,24 @@ func (a *CryptoApiService) CryptoCertificatekeypairsCreate(ctx _context.Context)
 
 // Execute executes the request
 //  @return CertificateKeyPair
-func (a *CryptoApiService) CryptoCertificatekeypairsCreateExecute(r ApiCryptoCertificatekeypairsCreateRequest) (CertificateKeyPair, *_nethttp.Response, error) {
+func (a *CryptoApiService) CryptoCertificatekeypairsCreateExecute(r ApiCryptoCertificatekeypairsCreateRequest) (*CertificateKeyPair, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CertificateKeyPair
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CertificateKeyPair
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CryptoApiService.CryptoCertificatekeypairsCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/crypto/certificatekeypairs/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.certificateKeyPairRequest == nil {
 		return localVarReturnValue, nil, reportError("certificateKeyPairRequest is required and must be specified")
 	}
@@ -117,7 +110,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsCreateExecute(r ApiCryptoCer
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -127,15 +120,15 @@ func (a *CryptoApiService) CryptoCertificatekeypairsCreateExecute(r ApiCryptoCer
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -144,7 +137,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsCreateExecute(r ApiCryptoCer
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -155,12 +148,12 @@ func (a *CryptoApiService) CryptoCertificatekeypairsCreateExecute(r ApiCryptoCer
 }
 
 type ApiCryptoCertificatekeypairsDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *CryptoApiService
 	kpUuid     string
 }
 
-func (r ApiCryptoCertificatekeypairsDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiCryptoCertificatekeypairsDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.CryptoCertificatekeypairsDestroyExecute(r)
 }
 
@@ -169,11 +162,11 @@ CryptoCertificatekeypairsDestroy Method for CryptoCertificatekeypairsDestroy
 
 CertificateKeyPair Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param kpUuid A UUID string identifying this Certificate-Key Pair.
  @return ApiCryptoCertificatekeypairsDestroyRequest
 */
-func (a *CryptoApiService) CryptoCertificatekeypairsDestroy(ctx _context.Context, kpUuid string) ApiCryptoCertificatekeypairsDestroyRequest {
+func (a *CryptoApiService) CryptoCertificatekeypairsDestroy(ctx context.Context, kpUuid string) ApiCryptoCertificatekeypairsDestroyRequest {
 	return ApiCryptoCertificatekeypairsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -182,26 +175,24 @@ func (a *CryptoApiService) CryptoCertificatekeypairsDestroy(ctx _context.Context
 }
 
 // Execute executes the request
-func (a *CryptoApiService) CryptoCertificatekeypairsDestroyExecute(r ApiCryptoCertificatekeypairsDestroyRequest) (*_nethttp.Response, error) {
+func (a *CryptoApiService) CryptoCertificatekeypairsDestroyExecute(r ApiCryptoCertificatekeypairsDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CryptoApiService.CryptoCertificatekeypairsDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/crypto/certificatekeypairs/{kp_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"kp_uuid"+"}", _neturl.PathEscape(parameterToString(r.kpUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"kp_uuid"+"}", url.PathEscape(parameterToString(r.kpUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -234,7 +225,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsDestroyExecute(r ApiCryptoCe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -244,15 +235,15 @@ func (a *CryptoApiService) CryptoCertificatekeypairsDestroyExecute(r ApiCryptoCe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -263,7 +254,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsDestroyExecute(r ApiCryptoCe
 }
 
 type ApiCryptoCertificatekeypairsGenerateCreateRequest struct {
-	ctx                          _context.Context
+	ctx                          context.Context
 	ApiService                   *CryptoApiService
 	certificateGenerationRequest *CertificateGenerationRequest
 }
@@ -273,7 +264,7 @@ func (r ApiCryptoCertificatekeypairsGenerateCreateRequest) CertificateGeneration
 	return r
 }
 
-func (r ApiCryptoCertificatekeypairsGenerateCreateRequest) Execute() (CertificateKeyPair, *_nethttp.Response, error) {
+func (r ApiCryptoCertificatekeypairsGenerateCreateRequest) Execute() (*CertificateKeyPair, *http.Response, error) {
 	return r.ApiService.CryptoCertificatekeypairsGenerateCreateExecute(r)
 }
 
@@ -282,10 +273,10 @@ CryptoCertificatekeypairsGenerateCreate Method for CryptoCertificatekeypairsGene
 
 Generate a new, self-signed certificate-key pair
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCryptoCertificatekeypairsGenerateCreateRequest
 */
-func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreate(ctx _context.Context) ApiCryptoCertificatekeypairsGenerateCreateRequest {
+func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreate(ctx context.Context) ApiCryptoCertificatekeypairsGenerateCreateRequest {
 	return ApiCryptoCertificatekeypairsGenerateCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -294,26 +285,24 @@ func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreate(ctx _context.
 
 // Execute executes the request
 //  @return CertificateKeyPair
-func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreateExecute(r ApiCryptoCertificatekeypairsGenerateCreateRequest) (CertificateKeyPair, *_nethttp.Response, error) {
+func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreateExecute(r ApiCryptoCertificatekeypairsGenerateCreateRequest) (*CertificateKeyPair, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CertificateKeyPair
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CertificateKeyPair
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CryptoApiService.CryptoCertificatekeypairsGenerateCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/crypto/certificatekeypairs/generate/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.certificateGenerationRequest == nil {
 		return localVarReturnValue, nil, reportError("certificateGenerationRequest is required and must be specified")
 	}
@@ -351,7 +340,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreateExecute(r ApiC
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -361,15 +350,15 @@ func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreateExecute(r ApiC
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -378,7 +367,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreateExecute(r ApiC
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -389,7 +378,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreateExecute(r ApiC
 }
 
 type ApiCryptoCertificatekeypairsListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *CryptoApiService
 	hasKey     *bool
 	managed    *string
@@ -405,10 +394,12 @@ func (r ApiCryptoCertificatekeypairsListRequest) HasKey(hasKey bool) ApiCryptoCe
 	r.hasKey = &hasKey
 	return r
 }
+
 func (r ApiCryptoCertificatekeypairsListRequest) Managed(managed string) ApiCryptoCertificatekeypairsListRequest {
 	r.managed = &managed
 	return r
 }
+
 func (r ApiCryptoCertificatekeypairsListRequest) Name(name string) ApiCryptoCertificatekeypairsListRequest {
 	r.name = &name
 	return r
@@ -438,7 +429,7 @@ func (r ApiCryptoCertificatekeypairsListRequest) Search(search string) ApiCrypto
 	return r
 }
 
-func (r ApiCryptoCertificatekeypairsListRequest) Execute() (PaginatedCertificateKeyPairList, *_nethttp.Response, error) {
+func (r ApiCryptoCertificatekeypairsListRequest) Execute() (*PaginatedCertificateKeyPairList, *http.Response, error) {
 	return r.ApiService.CryptoCertificatekeypairsListExecute(r)
 }
 
@@ -447,10 +438,10 @@ CryptoCertificatekeypairsList Method for CryptoCertificatekeypairsList
 
 CertificateKeyPair Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCryptoCertificatekeypairsListRequest
 */
-func (a *CryptoApiService) CryptoCertificatekeypairsList(ctx _context.Context) ApiCryptoCertificatekeypairsListRequest {
+func (a *CryptoApiService) CryptoCertificatekeypairsList(ctx context.Context) ApiCryptoCertificatekeypairsListRequest {
 	return ApiCryptoCertificatekeypairsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -459,26 +450,24 @@ func (a *CryptoApiService) CryptoCertificatekeypairsList(ctx _context.Context) A
 
 // Execute executes the request
 //  @return PaginatedCertificateKeyPairList
-func (a *CryptoApiService) CryptoCertificatekeypairsListExecute(r ApiCryptoCertificatekeypairsListRequest) (PaginatedCertificateKeyPairList, *_nethttp.Response, error) {
+func (a *CryptoApiService) CryptoCertificatekeypairsListExecute(r ApiCryptoCertificatekeypairsListRequest) (*PaginatedCertificateKeyPairList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedCertificateKeyPairList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedCertificateKeyPairList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CryptoApiService.CryptoCertificatekeypairsList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/crypto/certificatekeypairs/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.hasKey != nil {
 		localVarQueryParams.Add("has_key", parameterToString(*r.hasKey, ""))
@@ -532,7 +521,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsListExecute(r ApiCryptoCerti
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -542,15 +531,15 @@ func (a *CryptoApiService) CryptoCertificatekeypairsListExecute(r ApiCryptoCerti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -559,7 +548,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsListExecute(r ApiCryptoCerti
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -570,7 +559,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsListExecute(r ApiCryptoCerti
 }
 
 type ApiCryptoCertificatekeypairsPartialUpdateRequest struct {
-	ctx                              _context.Context
+	ctx                              context.Context
 	ApiService                       *CryptoApiService
 	kpUuid                           string
 	patchedCertificateKeyPairRequest *PatchedCertificateKeyPairRequest
@@ -581,7 +570,7 @@ func (r ApiCryptoCertificatekeypairsPartialUpdateRequest) PatchedCertificateKeyP
 	return r
 }
 
-func (r ApiCryptoCertificatekeypairsPartialUpdateRequest) Execute() (CertificateKeyPair, *_nethttp.Response, error) {
+func (r ApiCryptoCertificatekeypairsPartialUpdateRequest) Execute() (*CertificateKeyPair, *http.Response, error) {
 	return r.ApiService.CryptoCertificatekeypairsPartialUpdateExecute(r)
 }
 
@@ -590,11 +579,11 @@ CryptoCertificatekeypairsPartialUpdate Method for CryptoCertificatekeypairsParti
 
 CertificateKeyPair Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param kpUuid A UUID string identifying this Certificate-Key Pair.
  @return ApiCryptoCertificatekeypairsPartialUpdateRequest
 */
-func (a *CryptoApiService) CryptoCertificatekeypairsPartialUpdate(ctx _context.Context, kpUuid string) ApiCryptoCertificatekeypairsPartialUpdateRequest {
+func (a *CryptoApiService) CryptoCertificatekeypairsPartialUpdate(ctx context.Context, kpUuid string) ApiCryptoCertificatekeypairsPartialUpdateRequest {
 	return ApiCryptoCertificatekeypairsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -604,27 +593,25 @@ func (a *CryptoApiService) CryptoCertificatekeypairsPartialUpdate(ctx _context.C
 
 // Execute executes the request
 //  @return CertificateKeyPair
-func (a *CryptoApiService) CryptoCertificatekeypairsPartialUpdateExecute(r ApiCryptoCertificatekeypairsPartialUpdateRequest) (CertificateKeyPair, *_nethttp.Response, error) {
+func (a *CryptoApiService) CryptoCertificatekeypairsPartialUpdateExecute(r ApiCryptoCertificatekeypairsPartialUpdateRequest) (*CertificateKeyPair, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CertificateKeyPair
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CertificateKeyPair
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CryptoApiService.CryptoCertificatekeypairsPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/crypto/certificatekeypairs/{kp_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"kp_uuid"+"}", _neturl.PathEscape(parameterToString(r.kpUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"kp_uuid"+"}", url.PathEscape(parameterToString(r.kpUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -659,7 +646,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsPartialUpdateExecute(r ApiCr
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -669,15 +656,15 @@ func (a *CryptoApiService) CryptoCertificatekeypairsPartialUpdateExecute(r ApiCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -686,7 +673,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsPartialUpdateExecute(r ApiCr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -697,12 +684,12 @@ func (a *CryptoApiService) CryptoCertificatekeypairsPartialUpdateExecute(r ApiCr
 }
 
 type ApiCryptoCertificatekeypairsRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *CryptoApiService
 	kpUuid     string
 }
 
-func (r ApiCryptoCertificatekeypairsRetrieveRequest) Execute() (CertificateKeyPair, *_nethttp.Response, error) {
+func (r ApiCryptoCertificatekeypairsRetrieveRequest) Execute() (*CertificateKeyPair, *http.Response, error) {
 	return r.ApiService.CryptoCertificatekeypairsRetrieveExecute(r)
 }
 
@@ -711,11 +698,11 @@ CryptoCertificatekeypairsRetrieve Method for CryptoCertificatekeypairsRetrieve
 
 CertificateKeyPair Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param kpUuid A UUID string identifying this Certificate-Key Pair.
  @return ApiCryptoCertificatekeypairsRetrieveRequest
 */
-func (a *CryptoApiService) CryptoCertificatekeypairsRetrieve(ctx _context.Context, kpUuid string) ApiCryptoCertificatekeypairsRetrieveRequest {
+func (a *CryptoApiService) CryptoCertificatekeypairsRetrieve(ctx context.Context, kpUuid string) ApiCryptoCertificatekeypairsRetrieveRequest {
 	return ApiCryptoCertificatekeypairsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -725,27 +712,25 @@ func (a *CryptoApiService) CryptoCertificatekeypairsRetrieve(ctx _context.Contex
 
 // Execute executes the request
 //  @return CertificateKeyPair
-func (a *CryptoApiService) CryptoCertificatekeypairsRetrieveExecute(r ApiCryptoCertificatekeypairsRetrieveRequest) (CertificateKeyPair, *_nethttp.Response, error) {
+func (a *CryptoApiService) CryptoCertificatekeypairsRetrieveExecute(r ApiCryptoCertificatekeypairsRetrieveRequest) (*CertificateKeyPair, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CertificateKeyPair
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CertificateKeyPair
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CryptoApiService.CryptoCertificatekeypairsRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/crypto/certificatekeypairs/{kp_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"kp_uuid"+"}", _neturl.PathEscape(parameterToString(r.kpUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"kp_uuid"+"}", url.PathEscape(parameterToString(r.kpUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -778,7 +763,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsRetrieveExecute(r ApiCryptoC
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -788,15 +773,15 @@ func (a *CryptoApiService) CryptoCertificatekeypairsRetrieveExecute(r ApiCryptoC
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -805,7 +790,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsRetrieveExecute(r ApiCryptoC
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -816,7 +801,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsRetrieveExecute(r ApiCryptoC
 }
 
 type ApiCryptoCertificatekeypairsUpdateRequest struct {
-	ctx                       _context.Context
+	ctx                       context.Context
 	ApiService                *CryptoApiService
 	kpUuid                    string
 	certificateKeyPairRequest *CertificateKeyPairRequest
@@ -827,7 +812,7 @@ func (r ApiCryptoCertificatekeypairsUpdateRequest) CertificateKeyPairRequest(cer
 	return r
 }
 
-func (r ApiCryptoCertificatekeypairsUpdateRequest) Execute() (CertificateKeyPair, *_nethttp.Response, error) {
+func (r ApiCryptoCertificatekeypairsUpdateRequest) Execute() (*CertificateKeyPair, *http.Response, error) {
 	return r.ApiService.CryptoCertificatekeypairsUpdateExecute(r)
 }
 
@@ -836,11 +821,11 @@ CryptoCertificatekeypairsUpdate Method for CryptoCertificatekeypairsUpdate
 
 CertificateKeyPair Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param kpUuid A UUID string identifying this Certificate-Key Pair.
  @return ApiCryptoCertificatekeypairsUpdateRequest
 */
-func (a *CryptoApiService) CryptoCertificatekeypairsUpdate(ctx _context.Context, kpUuid string) ApiCryptoCertificatekeypairsUpdateRequest {
+func (a *CryptoApiService) CryptoCertificatekeypairsUpdate(ctx context.Context, kpUuid string) ApiCryptoCertificatekeypairsUpdateRequest {
 	return ApiCryptoCertificatekeypairsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -850,27 +835,25 @@ func (a *CryptoApiService) CryptoCertificatekeypairsUpdate(ctx _context.Context,
 
 // Execute executes the request
 //  @return CertificateKeyPair
-func (a *CryptoApiService) CryptoCertificatekeypairsUpdateExecute(r ApiCryptoCertificatekeypairsUpdateRequest) (CertificateKeyPair, *_nethttp.Response, error) {
+func (a *CryptoApiService) CryptoCertificatekeypairsUpdateExecute(r ApiCryptoCertificatekeypairsUpdateRequest) (*CertificateKeyPair, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CertificateKeyPair
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CertificateKeyPair
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CryptoApiService.CryptoCertificatekeypairsUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/crypto/certificatekeypairs/{kp_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"kp_uuid"+"}", _neturl.PathEscape(parameterToString(r.kpUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"kp_uuid"+"}", url.PathEscape(parameterToString(r.kpUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.certificateKeyPairRequest == nil {
 		return localVarReturnValue, nil, reportError("certificateKeyPairRequest is required and must be specified")
 	}
@@ -908,7 +891,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsUpdateExecute(r ApiCryptoCer
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -918,15 +901,15 @@ func (a *CryptoApiService) CryptoCertificatekeypairsUpdateExecute(r ApiCryptoCer
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -935,7 +918,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsUpdateExecute(r ApiCryptoCer
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -946,12 +929,12 @@ func (a *CryptoApiService) CryptoCertificatekeypairsUpdateExecute(r ApiCryptoCer
 }
 
 type ApiCryptoCertificatekeypairsUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *CryptoApiService
 	kpUuid     string
 }
 
-func (r ApiCryptoCertificatekeypairsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiCryptoCertificatekeypairsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.CryptoCertificatekeypairsUsedByListExecute(r)
 }
 
@@ -960,11 +943,11 @@ CryptoCertificatekeypairsUsedByList Method for CryptoCertificatekeypairsUsedByLi
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param kpUuid A UUID string identifying this Certificate-Key Pair.
  @return ApiCryptoCertificatekeypairsUsedByListRequest
 */
-func (a *CryptoApiService) CryptoCertificatekeypairsUsedByList(ctx _context.Context, kpUuid string) ApiCryptoCertificatekeypairsUsedByListRequest {
+func (a *CryptoApiService) CryptoCertificatekeypairsUsedByList(ctx context.Context, kpUuid string) ApiCryptoCertificatekeypairsUsedByListRequest {
 	return ApiCryptoCertificatekeypairsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -974,27 +957,25 @@ func (a *CryptoApiService) CryptoCertificatekeypairsUsedByList(ctx _context.Cont
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *CryptoApiService) CryptoCertificatekeypairsUsedByListExecute(r ApiCryptoCertificatekeypairsUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *CryptoApiService) CryptoCertificatekeypairsUsedByListExecute(r ApiCryptoCertificatekeypairsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CryptoApiService.CryptoCertificatekeypairsUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/crypto/certificatekeypairs/{kp_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"kp_uuid"+"}", _neturl.PathEscape(parameterToString(r.kpUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"kp_uuid"+"}", url.PathEscape(parameterToString(r.kpUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1027,7 +1008,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsUsedByListExecute(r ApiCrypt
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1037,15 +1018,15 @@ func (a *CryptoApiService) CryptoCertificatekeypairsUsedByListExecute(r ApiCrypt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1054,7 +1035,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsUsedByListExecute(r ApiCrypt
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1065,7 +1046,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsUsedByListExecute(r ApiCrypt
 }
 
 type ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *CryptoApiService
 	kpUuid     string
 	download   *bool
@@ -1076,7 +1057,7 @@ func (r ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest) Download(dow
 	return r
 }
 
-func (r ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest) Execute() (CertificateData, *_nethttp.Response, error) {
+func (r ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest) Execute() (*CertificateData, *http.Response, error) {
 	return r.ApiService.CryptoCertificatekeypairsViewCertificateRetrieveExecute(r)
 }
 
@@ -1085,11 +1066,11 @@ CryptoCertificatekeypairsViewCertificateRetrieve Method for CryptoCertificatekey
 
 Return certificate-key pairs certificate and log access
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param kpUuid A UUID string identifying this Certificate-Key Pair.
  @return ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest
 */
-func (a *CryptoApiService) CryptoCertificatekeypairsViewCertificateRetrieve(ctx _context.Context, kpUuid string) ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest {
+func (a *CryptoApiService) CryptoCertificatekeypairsViewCertificateRetrieve(ctx context.Context, kpUuid string) ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest {
 	return ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1099,27 +1080,25 @@ func (a *CryptoApiService) CryptoCertificatekeypairsViewCertificateRetrieve(ctx 
 
 // Execute executes the request
 //  @return CertificateData
-func (a *CryptoApiService) CryptoCertificatekeypairsViewCertificateRetrieveExecute(r ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest) (CertificateData, *_nethttp.Response, error) {
+func (a *CryptoApiService) CryptoCertificatekeypairsViewCertificateRetrieveExecute(r ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest) (*CertificateData, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CertificateData
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CertificateData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CryptoApiService.CryptoCertificatekeypairsViewCertificateRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/crypto/certificatekeypairs/{kp_uuid}/view_certificate/"
-	localVarPath = strings.Replace(localVarPath, "{"+"kp_uuid"+"}", _neturl.PathEscape(parameterToString(r.kpUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"kp_uuid"+"}", url.PathEscape(parameterToString(r.kpUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.download != nil {
 		localVarQueryParams.Add("download", parameterToString(*r.download, ""))
@@ -1155,7 +1134,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsViewCertificateRetrieveExecu
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1165,15 +1144,15 @@ func (a *CryptoApiService) CryptoCertificatekeypairsViewCertificateRetrieveExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1182,7 +1161,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsViewCertificateRetrieveExecu
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1193,7 +1172,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsViewCertificateRetrieveExecu
 }
 
 type ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *CryptoApiService
 	kpUuid     string
 	download   *bool
@@ -1204,7 +1183,7 @@ func (r ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest) Download(down
 	return r
 }
 
-func (r ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest) Execute() (CertificateData, *_nethttp.Response, error) {
+func (r ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest) Execute() (*CertificateData, *http.Response, error) {
 	return r.ApiService.CryptoCertificatekeypairsViewPrivateKeyRetrieveExecute(r)
 }
 
@@ -1213,11 +1192,11 @@ CryptoCertificatekeypairsViewPrivateKeyRetrieve Method for CryptoCertificatekeyp
 
 Return certificate-key pairs private key and log access
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param kpUuid A UUID string identifying this Certificate-Key Pair.
  @return ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest
 */
-func (a *CryptoApiService) CryptoCertificatekeypairsViewPrivateKeyRetrieve(ctx _context.Context, kpUuid string) ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest {
+func (a *CryptoApiService) CryptoCertificatekeypairsViewPrivateKeyRetrieve(ctx context.Context, kpUuid string) ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest {
 	return ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1227,27 +1206,25 @@ func (a *CryptoApiService) CryptoCertificatekeypairsViewPrivateKeyRetrieve(ctx _
 
 // Execute executes the request
 //  @return CertificateData
-func (a *CryptoApiService) CryptoCertificatekeypairsViewPrivateKeyRetrieveExecute(r ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest) (CertificateData, *_nethttp.Response, error) {
+func (a *CryptoApiService) CryptoCertificatekeypairsViewPrivateKeyRetrieveExecute(r ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest) (*CertificateData, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CertificateData
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CertificateData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CryptoApiService.CryptoCertificatekeypairsViewPrivateKeyRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/crypto/certificatekeypairs/{kp_uuid}/view_private_key/"
-	localVarPath = strings.Replace(localVarPath, "{"+"kp_uuid"+"}", _neturl.PathEscape(parameterToString(r.kpUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"kp_uuid"+"}", url.PathEscape(parameterToString(r.kpUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.download != nil {
 		localVarQueryParams.Add("download", parameterToString(*r.download, ""))
@@ -1283,7 +1260,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsViewPrivateKeyRetrieveExecut
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1293,15 +1270,15 @@ func (a *CryptoApiService) CryptoCertificatekeypairsViewPrivateKeyRetrieveExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1310,7 +1287,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsViewPrivateKeyRetrieveExecut
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

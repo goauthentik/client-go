@@ -17,8 +17,8 @@ import (
 
 // PasswordStageRequest PasswordStage Serializer
 type PasswordStageRequest struct {
-	Name    string         `json:"name"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
+	Name    string        `json:"name"`
+	FlowSet []FlowRequest `json:"flow_set,omitempty"`
 	// Selection of backends to test the password against.
 	Backends []BackendsEnum `json:"backends"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
@@ -76,12 +76,12 @@ func (o *PasswordStageRequest) GetFlowSet() []FlowRequest {
 		var ret []FlowRequest
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PasswordStageRequest) GetFlowSetOk() (*[]FlowRequest, bool) {
+func (o *PasswordStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -99,7 +99,7 @@ func (o *PasswordStageRequest) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
 func (o *PasswordStageRequest) SetFlowSet(v []FlowRequest) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetBackends returns the Backends field value
@@ -114,11 +114,11 @@ func (o *PasswordStageRequest) GetBackends() []BackendsEnum {
 
 // GetBackendsOk returns a tuple with the Backends field value
 // and a boolean to check if the value has been set.
-func (o *PasswordStageRequest) GetBackendsOk() (*[]BackendsEnum, bool) {
+func (o *PasswordStageRequest) GetBackendsOk() ([]BackendsEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Backends, true
+	return o.Backends, true
 }
 
 // SetBackends sets field value

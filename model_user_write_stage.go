@@ -17,13 +17,13 @@ import (
 
 // UserWriteStage UserWriteStage Serializer
 type UserWriteStage struct {
-	Pk                string  `json:"pk"`
-	Name              string  `json:"name"`
-	Component         string  `json:"component"`
-	VerboseName       string  `json:"verbose_name"`
-	VerboseNamePlural string  `json:"verbose_name_plural"`
-	MetaModelName     string  `json:"meta_model_name"`
-	FlowSet           *[]Flow `json:"flow_set,omitempty"`
+	Pk                string `json:"pk"`
+	Name              string `json:"name"`
+	Component         string `json:"component"`
+	VerboseName       string `json:"verbose_name"`
+	VerboseNamePlural string `json:"verbose_name_plural"`
+	MetaModelName     string `json:"meta_model_name"`
+	FlowSet           []Flow `json:"flow_set,omitempty"`
 	// When set, newly created users are inactive and cannot login.
 	CreateUsersAsInactive *bool `json:"create_users_as_inactive,omitempty"`
 	// Optionally add newly created users to this group.
@@ -203,12 +203,12 @@ func (o *UserWriteStage) GetFlowSet() []Flow {
 		var ret []Flow
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserWriteStage) GetFlowSetOk() (*[]Flow, bool) {
+func (o *UserWriteStage) GetFlowSetOk() ([]Flow, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -226,7 +226,7 @@ func (o *UserWriteStage) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []Flow and assigns it to the FlowSet field.
 func (o *UserWriteStage) SetFlowSet(v []Flow) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetCreateUsersAsInactive returns the CreateUsersAsInactive field value if set, zero value otherwise.

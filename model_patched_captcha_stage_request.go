@@ -17,8 +17,8 @@ import (
 
 // PatchedCaptchaStageRequest CaptchaStage Serializer
 type PatchedCaptchaStageRequest struct {
-	Name    *string        `json:"name,omitempty"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
+	Name    *string       `json:"name,omitempty"`
+	FlowSet []FlowRequest `json:"flow_set,omitempty"`
 	// Public key, acquired from https://www.google.com/recaptcha/intro/v3.html
 	PublicKey *string `json:"public_key,omitempty"`
 	// Private key, acquired from https://www.google.com/recaptcha/intro/v3.html
@@ -80,12 +80,12 @@ func (o *PatchedCaptchaStageRequest) GetFlowSet() []FlowRequest {
 		var ret []FlowRequest
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedCaptchaStageRequest) GetFlowSetOk() (*[]FlowRequest, bool) {
+func (o *PatchedCaptchaStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -103,7 +103,7 @@ func (o *PatchedCaptchaStageRequest) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
 func (o *PatchedCaptchaStageRequest) SetFlowSet(v []FlowRequest) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetPublicKey returns the PublicKey field value if set, zero value otherwise.

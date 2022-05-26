@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
-**UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
+**UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **ProviderType** | Pointer to [**ProviderTypeEnum**](ProviderTypeEnum.md) |  | [optional] 
 **RequestTokenUrl** | Pointer to **NullableString** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] 
 **AuthorizationUrl** | Pointer to **NullableString** | URL the user is redirect to to conest the flow. | [optional] 
@@ -237,6 +237,16 @@ SetUserMatchingMode sets UserMatchingMode field to given value.
 
 HasUserMatchingMode returns a boolean if a field has been set.
 
+### SetUserMatchingModeNil
+
+`func (o *PatchedOAuthSourceRequest) SetUserMatchingModeNil(b bool)`
+
+ SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
+
+### UnsetUserMatchingMode
+`func (o *PatchedOAuthSourceRequest) UnsetUserMatchingMode()`
+
+UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
 ### GetProviderType
 
 `func (o *PatchedOAuthSourceRequest) GetProviderType() ProviderTypeEnum`

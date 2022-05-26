@@ -39,8 +39,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this Authorization Code.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Oauth2Api.Oauth2AuthorizationCodesDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.Oauth2Api.Oauth2AuthorizationCodesDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Oauth2Api.Oauth2AuthorizationCodesDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -112,8 +112,8 @@ func main() {
     user := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Oauth2Api.Oauth2AuthorizationCodesList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).User(user).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.Oauth2Api.Oauth2AuthorizationCodesList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).User(user).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Oauth2Api.Oauth2AuthorizationCodesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -183,8 +183,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this Authorization Code.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Oauth2Api.Oauth2AuthorizationCodesRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.Oauth2Api.Oauth2AuthorizationCodesRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Oauth2Api.Oauth2AuthorizationCodesRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -253,8 +253,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this Authorization Code.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Oauth2Api.Oauth2AuthorizationCodesUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.Oauth2Api.Oauth2AuthorizationCodesUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Oauth2Api.Oauth2AuthorizationCodesUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -323,8 +323,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this OAuth2 Token.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Oauth2Api.Oauth2RefreshTokensDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.Oauth2Api.Oauth2RefreshTokensDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Oauth2Api.Oauth2RefreshTokensDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -396,8 +396,8 @@ func main() {
     user := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Oauth2Api.Oauth2RefreshTokensList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).User(user).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.Oauth2Api.Oauth2RefreshTokensList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).User(user).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Oauth2Api.Oauth2RefreshTokensList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -467,8 +467,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this OAuth2 Token.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Oauth2Api.Oauth2RefreshTokensRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.Oauth2Api.Oauth2RefreshTokensRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Oauth2Api.Oauth2RefreshTokensRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -537,8 +537,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this OAuth2 Token.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.Oauth2Api.Oauth2RefreshTokensUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.Oauth2Api.Oauth2RefreshTokensUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `Oauth2Api.Oauth2RefreshTokensUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

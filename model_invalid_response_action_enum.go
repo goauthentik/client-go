@@ -26,7 +26,8 @@ const (
 	INVALIDRESPONSEACTIONENUM_RESTART_WITH_CONTEXT InvalidResponseActionEnum = "restart_with_context"
 )
 
-var allowedInvalidResponseActionEnumEnumValues = []InvalidResponseActionEnum{
+// All allowed values of InvalidResponseActionEnum enum
+var AllowedInvalidResponseActionEnumEnumValues = []InvalidResponseActionEnum{
 	"retry",
 	"restart",
 	"restart_with_context",
@@ -39,7 +40,7 @@ func (v *InvalidResponseActionEnum) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := InvalidResponseActionEnum(value)
-	for _, existing := range allowedInvalidResponseActionEnumEnumValues {
+	for _, existing := range AllowedInvalidResponseActionEnumEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -56,13 +57,13 @@ func NewInvalidResponseActionEnumFromValue(v string) (*InvalidResponseActionEnum
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for InvalidResponseActionEnum: valid values are %v", v, allowedInvalidResponseActionEnumEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for InvalidResponseActionEnum: valid values are %v", v, AllowedInvalidResponseActionEnumEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v InvalidResponseActionEnum) IsValid() bool {
-	for _, existing := range allowedInvalidResponseActionEnumEnumValues {
+	for _, existing := range AllowedInvalidResponseActionEnumEnumValues {
 		if existing == v {
 			return true
 		}

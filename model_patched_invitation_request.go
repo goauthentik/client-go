@@ -18,9 +18,9 @@ import (
 
 // PatchedInvitationRequest Invitation Serializer
 type PatchedInvitationRequest struct {
-	Name      *string                 `json:"name,omitempty"`
-	Expires   *time.Time              `json:"expires,omitempty"`
-	FixedData *map[string]interface{} `json:"fixed_data,omitempty"`
+	Name      *string                `json:"name,omitempty"`
+	Expires   *time.Time             `json:"expires,omitempty"`
+	FixedData map[string]interface{} `json:"fixed_data,omitempty"`
 	// When enabled, the invitation will be deleted after usage.
 	SingleUse *bool `json:"single_use,omitempty"`
 }
@@ -112,12 +112,12 @@ func (o *PatchedInvitationRequest) GetFixedData() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.FixedData
+	return o.FixedData
 }
 
 // GetFixedDataOk returns a tuple with the FixedData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedInvitationRequest) GetFixedDataOk() (*map[string]interface{}, bool) {
+func (o *PatchedInvitationRequest) GetFixedDataOk() (map[string]interface{}, bool) {
 	if o == nil || o.FixedData == nil {
 		return nil, false
 	}
@@ -135,7 +135,7 @@ func (o *PatchedInvitationRequest) HasFixedData() bool {
 
 // SetFixedData gets a reference to the given map[string]interface{} and assigns it to the FixedData field.
 func (o *PatchedInvitationRequest) SetFixedData(v map[string]interface{}) {
-	o.FixedData = &v
+	o.FixedData = v
 }
 
 // GetSingleUse returns the SingleUse field value if set, zero value otherwise.

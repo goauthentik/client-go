@@ -10,13 +10,13 @@ Name | Type | Description | Notes
 **AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
-**UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
+**UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **PreAuthenticationFlow** | Pointer to **string** | Flow used before authentication. | [optional] 
 **Issuer** | Pointer to **string** | Also known as Entity ID. Defaults the Metadata URL. | [optional] 
 **SsoUrl** | Pointer to **string** | URL that the initial Login request is sent to. | [optional] 
 **SloUrl** | Pointer to **NullableString** | Optional URL if your IDP supports Single-Logout. | [optional] 
 **AllowIdpInitiated** | Pointer to **bool** | Allows authentication flows initiated by the IdP. This can be a security risk, as no validation of the request ID is done. | [optional] 
-**NameIdPolicy** | Pointer to [**NameIdPolicyEnum**](NameIdPolicyEnum.md) | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent. | [optional] 
+**NameIdPolicy** | Pointer to [**NullableNameIdPolicyEnum**](NameIdPolicyEnum.md) | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent. | [optional] 
 **BindingType** | Pointer to [**BindingTypeEnum**](BindingTypeEnum.md) |  | [optional] 
 **SigningKp** | Pointer to **NullableString** | Keypair which is used to sign outgoing requests. Leave empty to disable signing. | [optional] 
 **DigestAlgorithm** | Pointer to [**DigestAlgorithmEnum**](DigestAlgorithmEnum.md) |  | [optional] 
@@ -237,6 +237,16 @@ SetUserMatchingMode sets UserMatchingMode field to given value.
 
 HasUserMatchingMode returns a boolean if a field has been set.
 
+### SetUserMatchingModeNil
+
+`func (o *PatchedSAMLSourceRequest) SetUserMatchingModeNil(b bool)`
+
+ SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
+
+### UnsetUserMatchingMode
+`func (o *PatchedSAMLSourceRequest) UnsetUserMatchingMode()`
+
+UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
 ### GetPreAuthenticationFlow
 
 `func (o *PatchedSAMLSourceRequest) GetPreAuthenticationFlow() string`
@@ -397,6 +407,16 @@ SetNameIdPolicy sets NameIdPolicy field to given value.
 
 HasNameIdPolicy returns a boolean if a field has been set.
 
+### SetNameIdPolicyNil
+
+`func (o *PatchedSAMLSourceRequest) SetNameIdPolicyNil(b bool)`
+
+ SetNameIdPolicyNil sets the value for NameIdPolicy to be an explicit nil
+
+### UnsetNameIdPolicy
+`func (o *PatchedSAMLSourceRequest) UnsetNameIdPolicy()`
+
+UnsetNameIdPolicy ensures that no value is present for NameIdPolicy, not even an explicit nil
 ### GetBindingType
 
 `func (o *PatchedSAMLSourceRequest) GetBindingType() BindingTypeEnum`

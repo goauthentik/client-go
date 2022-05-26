@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CurrentStage** | [**FlowStageBinding**](FlowStageBinding.md) |  | [readonly] 
-**NextPlannedStage** | [**FlowStageBinding**](FlowStageBinding.md) |  | [readonly] 
+**CurrentStage** | [**FlowInspectorPlanCurrentStage**](FlowInspectorPlanCurrentStage.md) |  | 
+**NextPlannedStage** | [**FlowInspectorPlanCurrentStage**](FlowInspectorPlanCurrentStage.md) |  | 
 **PlanContext** | **map[string]interface{}** |  | [readonly] 
 **SessionId** | **string** |  | [readonly] 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewFlowInspectorPlan
 
-`func NewFlowInspectorPlan(currentStage FlowStageBinding, nextPlannedStage FlowStageBinding, planContext map[string]interface{}, sessionId string, ) *FlowInspectorPlan`
+`func NewFlowInspectorPlan(currentStage FlowInspectorPlanCurrentStage, nextPlannedStage FlowInspectorPlanCurrentStage, planContext map[string]interface{}, sessionId string, ) *FlowInspectorPlan`
 
 NewFlowInspectorPlan instantiates a new FlowInspectorPlan object
 This constructor will assign default values to properties that have it defined,
@@ -30,40 +30,40 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCurrentStage
 
-`func (o *FlowInspectorPlan) GetCurrentStage() FlowStageBinding`
+`func (o *FlowInspectorPlan) GetCurrentStage() FlowInspectorPlanCurrentStage`
 
 GetCurrentStage returns the CurrentStage field if non-nil, zero value otherwise.
 
 ### GetCurrentStageOk
 
-`func (o *FlowInspectorPlan) GetCurrentStageOk() (*FlowStageBinding, bool)`
+`func (o *FlowInspectorPlan) GetCurrentStageOk() (*FlowInspectorPlanCurrentStage, bool)`
 
 GetCurrentStageOk returns a tuple with the CurrentStage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrentStage
 
-`func (o *FlowInspectorPlan) SetCurrentStage(v FlowStageBinding)`
+`func (o *FlowInspectorPlan) SetCurrentStage(v FlowInspectorPlanCurrentStage)`
 
 SetCurrentStage sets CurrentStage field to given value.
 
 
 ### GetNextPlannedStage
 
-`func (o *FlowInspectorPlan) GetNextPlannedStage() FlowStageBinding`
+`func (o *FlowInspectorPlan) GetNextPlannedStage() FlowInspectorPlanCurrentStage`
 
 GetNextPlannedStage returns the NextPlannedStage field if non-nil, zero value otherwise.
 
 ### GetNextPlannedStageOk
 
-`func (o *FlowInspectorPlan) GetNextPlannedStageOk() (*FlowStageBinding, bool)`
+`func (o *FlowInspectorPlan) GetNextPlannedStageOk() (*FlowInspectorPlanCurrentStage, bool)`
 
 GetNextPlannedStageOk returns a tuple with the NextPlannedStage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNextPlannedStage
 
-`func (o *FlowInspectorPlan) SetNextPlannedStage(v FlowStageBinding)`
+`func (o *FlowInspectorPlan) SetNextPlannedStage(v FlowInspectorPlanCurrentStage)`
 
 SetNextPlannedStage sets NextPlannedStage field to given value.
 

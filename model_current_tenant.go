@@ -159,11 +159,11 @@ func (o *CurrentTenant) GetUiFooterLinks() []FooterLink {
 
 // GetUiFooterLinksOk returns a tuple with the UiFooterLinks field value
 // and a boolean to check if the value has been set.
-func (o *CurrentTenant) GetUiFooterLinksOk() (*[]FooterLink, bool) {
+func (o *CurrentTenant) GetUiFooterLinksOk() ([]FooterLink, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.UiFooterLinks, true
+	return o.UiFooterLinks, true
 }
 
 // SetUiFooterLinks sets field value

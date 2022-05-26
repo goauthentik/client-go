@@ -17,14 +17,14 @@ import (
 
 // PolicyBinding PolicyBinding Serializer
 type PolicyBinding struct {
-	Pk        string         `json:"pk"`
-	Policy    NullableString `json:"policy,omitempty"`
-	Group     NullableString `json:"group,omitempty"`
-	User      NullableInt32  `json:"user,omitempty"`
-	PolicyObj Policy         `json:"policy_obj"`
-	GroupObj  Group          `json:"group_obj"`
-	UserObj   User           `json:"user_obj"`
-	Target    string         `json:"target"`
+	Pk        string                   `json:"pk"`
+	Policy    NullableString           `json:"policy,omitempty"`
+	Group     NullableString           `json:"group,omitempty"`
+	User      NullableInt32            `json:"user,omitempty"`
+	PolicyObj PolicyBindingPolicyObj   `json:"policy_obj"`
+	GroupObj  NotificationRuleGroupObj `json:"group_obj"`
+	UserObj   PolicyBindingUserObj     `json:"user_obj"`
+	Target    string                   `json:"target"`
 	// Negates the outcome of the policy. Messages are unaffected.
 	Negate  *bool `json:"negate,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
@@ -37,7 +37,7 @@ type PolicyBinding struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPolicyBinding(pk string, policyObj Policy, groupObj Group, userObj User, target string, order int32) *PolicyBinding {
+func NewPolicyBinding(pk string, policyObj PolicyBindingPolicyObj, groupObj NotificationRuleGroupObj, userObj PolicyBindingUserObj, target string, order int32) *PolicyBinding {
 	this := PolicyBinding{}
 	this.Pk = pk
 	this.PolicyObj = policyObj
@@ -210,9 +210,9 @@ func (o *PolicyBinding) UnsetUser() {
 }
 
 // GetPolicyObj returns the PolicyObj field value
-func (o *PolicyBinding) GetPolicyObj() Policy {
+func (o *PolicyBinding) GetPolicyObj() PolicyBindingPolicyObj {
 	if o == nil {
-		var ret Policy
+		var ret PolicyBindingPolicyObj
 		return ret
 	}
 
@@ -221,7 +221,7 @@ func (o *PolicyBinding) GetPolicyObj() Policy {
 
 // GetPolicyObjOk returns a tuple with the PolicyObj field value
 // and a boolean to check if the value has been set.
-func (o *PolicyBinding) GetPolicyObjOk() (*Policy, bool) {
+func (o *PolicyBinding) GetPolicyObjOk() (*PolicyBindingPolicyObj, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -229,14 +229,14 @@ func (o *PolicyBinding) GetPolicyObjOk() (*Policy, bool) {
 }
 
 // SetPolicyObj sets field value
-func (o *PolicyBinding) SetPolicyObj(v Policy) {
+func (o *PolicyBinding) SetPolicyObj(v PolicyBindingPolicyObj) {
 	o.PolicyObj = v
 }
 
 // GetGroupObj returns the GroupObj field value
-func (o *PolicyBinding) GetGroupObj() Group {
+func (o *PolicyBinding) GetGroupObj() NotificationRuleGroupObj {
 	if o == nil {
-		var ret Group
+		var ret NotificationRuleGroupObj
 		return ret
 	}
 
@@ -245,7 +245,7 @@ func (o *PolicyBinding) GetGroupObj() Group {
 
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *PolicyBinding) GetGroupObjOk() (*Group, bool) {
+func (o *PolicyBinding) GetGroupObjOk() (*NotificationRuleGroupObj, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -253,14 +253,14 @@ func (o *PolicyBinding) GetGroupObjOk() (*Group, bool) {
 }
 
 // SetGroupObj sets field value
-func (o *PolicyBinding) SetGroupObj(v Group) {
+func (o *PolicyBinding) SetGroupObj(v NotificationRuleGroupObj) {
 	o.GroupObj = v
 }
 
 // GetUserObj returns the UserObj field value
-func (o *PolicyBinding) GetUserObj() User {
+func (o *PolicyBinding) GetUserObj() PolicyBindingUserObj {
 	if o == nil {
-		var ret User
+		var ret PolicyBindingUserObj
 		return ret
 	}
 
@@ -269,7 +269,7 @@ func (o *PolicyBinding) GetUserObj() User {
 
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
-func (o *PolicyBinding) GetUserObjOk() (*User, bool) {
+func (o *PolicyBinding) GetUserObjOk() (*PolicyBindingUserObj, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -277,7 +277,7 @@ func (o *PolicyBinding) GetUserObjOk() (*User, bool) {
 }
 
 // SetUserObj sets field value
-func (o *PolicyBinding) SetUserObj(v User) {
+func (o *PolicyBinding) SetUserObj(v PolicyBindingUserObj) {
 	o.UserObj = v
 }
 

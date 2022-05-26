@@ -13,23 +13,18 @@ package api
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
-)
-
-// Linger please
-var (
-	_ _context.Context
 )
 
 // AuthenticatorsApiService AuthenticatorsApi service
 type AuthenticatorsApiService service
 
 type ApiAuthenticatorsAdminDuoCreateRequest struct {
-	ctx              _context.Context
+	ctx              context.Context
 	ApiService       *AuthenticatorsApiService
 	duoDeviceRequest *DuoDeviceRequest
 }
@@ -39,7 +34,7 @@ func (r ApiAuthenticatorsAdminDuoCreateRequest) DuoDeviceRequest(duoDeviceReques
 	return r
 }
 
-func (r ApiAuthenticatorsAdminDuoCreateRequest) Execute() (DuoDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsAdminDuoCreateRequest) Execute() (*DuoDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminDuoCreateExecute(r)
 }
 
@@ -48,10 +43,10 @@ AuthenticatorsAdminDuoCreate Method for AuthenticatorsAdminDuoCreate
 
 Viewset for Duo authenticator devices (for admins)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthenticatorsAdminDuoCreateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreate(ctx _context.Context) ApiAuthenticatorsAdminDuoCreateRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreate(ctx context.Context) ApiAuthenticatorsAdminDuoCreateRequest {
 	return ApiAuthenticatorsAdminDuoCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -60,26 +55,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreate(ctx _context.Con
 
 // Execute executes the request
 //  @return DuoDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreateExecute(r ApiAuthenticatorsAdminDuoCreateRequest) (DuoDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreateExecute(r ApiAuthenticatorsAdminDuoCreateRequest) (*DuoDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DuoDevice
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DuoDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminDuoCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/duo/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.duoDeviceRequest == nil {
 		return localVarReturnValue, nil, reportError("duoDeviceRequest is required and must be specified")
 	}
@@ -117,7 +110,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreateExecute(r ApiAuth
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -127,15 +120,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreateExecute(r ApiAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -144,7 +137,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreateExecute(r ApiAuth
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -155,12 +148,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreateExecute(r ApiAuth
 }
 
 type ApiAuthenticatorsAdminDuoDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsAdminDuoDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiAuthenticatorsAdminDuoDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminDuoDestroyExecute(r)
 }
 
@@ -169,11 +162,11 @@ AuthenticatorsAdminDuoDestroy Method for AuthenticatorsAdminDuoDestroy
 
 Viewset for Duo authenticator devices (for admins)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this Duo Device.
  @return ApiAuthenticatorsAdminDuoDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroy(ctx _context.Context, id int32) ApiAuthenticatorsAdminDuoDestroyRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoDestroyRequest {
 	return ApiAuthenticatorsAdminDuoDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -182,26 +175,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroy(ctx _context.Co
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroyExecute(r ApiAuthenticatorsAdminDuoDestroyRequest) (*_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroyExecute(r ApiAuthenticatorsAdminDuoDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminDuoDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -234,7 +225,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroyExecute(r ApiAut
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -244,15 +235,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroyExecute(r ApiAut
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -263,7 +254,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroyExecute(r ApiAut
 }
 
 type ApiAuthenticatorsAdminDuoListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	name       *string
 	ordering   *string
@@ -301,7 +292,7 @@ func (r ApiAuthenticatorsAdminDuoListRequest) Search(search string) ApiAuthentic
 	return r
 }
 
-func (r ApiAuthenticatorsAdminDuoListRequest) Execute() (PaginatedDuoDeviceList, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsAdminDuoListRequest) Execute() (*PaginatedDuoDeviceList, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminDuoListExecute(r)
 }
 
@@ -310,10 +301,10 @@ AuthenticatorsAdminDuoList Method for AuthenticatorsAdminDuoList
 
 Viewset for Duo authenticator devices (for admins)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthenticatorsAdminDuoListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoList(ctx _context.Context) ApiAuthenticatorsAdminDuoListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoList(ctx context.Context) ApiAuthenticatorsAdminDuoListRequest {
 	return ApiAuthenticatorsAdminDuoListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -322,26 +313,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoList(ctx _context.Conte
 
 // Execute executes the request
 //  @return PaginatedDuoDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthenticatorsAdminDuoListRequest) (PaginatedDuoDeviceList, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthenticatorsAdminDuoListRequest) (*PaginatedDuoDeviceList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedDuoDeviceList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedDuoDeviceList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminDuoList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/duo/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -389,7 +378,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthen
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -399,15 +388,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -416,7 +405,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthen
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -427,7 +416,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthen
 }
 
 type ApiAuthenticatorsAdminDuoPartialUpdateRequest struct {
-	ctx                     _context.Context
+	ctx                     context.Context
 	ApiService              *AuthenticatorsApiService
 	id                      int32
 	patchedDuoDeviceRequest *PatchedDuoDeviceRequest
@@ -438,7 +427,7 @@ func (r ApiAuthenticatorsAdminDuoPartialUpdateRequest) PatchedDuoDeviceRequest(p
 	return r
 }
 
-func (r ApiAuthenticatorsAdminDuoPartialUpdateRequest) Execute() (DuoDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsAdminDuoPartialUpdateRequest) Execute() (*DuoDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminDuoPartialUpdateExecute(r)
 }
 
@@ -447,11 +436,11 @@ AuthenticatorsAdminDuoPartialUpdate Method for AuthenticatorsAdminDuoPartialUpda
 
 Viewset for Duo authenticator devices (for admins)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this Duo Device.
  @return ApiAuthenticatorsAdminDuoPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdate(ctx _context.Context, id int32) ApiAuthenticatorsAdminDuoPartialUpdateRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoPartialUpdateRequest {
 	return ApiAuthenticatorsAdminDuoPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -461,27 +450,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdate(ctx _cont
 
 // Execute executes the request
 //  @return DuoDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdateExecute(r ApiAuthenticatorsAdminDuoPartialUpdateRequest) (DuoDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdateExecute(r ApiAuthenticatorsAdminDuoPartialUpdateRequest) (*DuoDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DuoDevice
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DuoDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminDuoPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -516,7 +503,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdateExecute(r 
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -526,15 +513,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdateExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -543,7 +530,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdateExecute(r 
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -554,12 +541,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdateExecute(r 
 }
 
 type ApiAuthenticatorsAdminDuoRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsAdminDuoRetrieveRequest) Execute() (DuoDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsAdminDuoRetrieveRequest) Execute() (*DuoDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminDuoRetrieveExecute(r)
 }
 
@@ -568,11 +555,11 @@ AuthenticatorsAdminDuoRetrieve Method for AuthenticatorsAdminDuoRetrieve
 
 Viewset for Duo authenticator devices (for admins)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this Duo Device.
  @return ApiAuthenticatorsAdminDuoRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsAdminDuoRetrieveRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoRetrieveRequest {
 	return ApiAuthenticatorsAdminDuoRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -582,27 +569,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieve(ctx _context.C
 
 // Execute executes the request
 //  @return DuoDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAuthenticatorsAdminDuoRetrieveRequest) (DuoDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAuthenticatorsAdminDuoRetrieveRequest) (*DuoDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DuoDevice
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DuoDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminDuoRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -635,7 +620,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAu
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -645,15 +630,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -662,7 +647,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAu
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -673,7 +658,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAu
 }
 
 type ApiAuthenticatorsAdminDuoUpdateRequest struct {
-	ctx              _context.Context
+	ctx              context.Context
 	ApiService       *AuthenticatorsApiService
 	id               int32
 	duoDeviceRequest *DuoDeviceRequest
@@ -684,7 +669,7 @@ func (r ApiAuthenticatorsAdminDuoUpdateRequest) DuoDeviceRequest(duoDeviceReques
 	return r
 }
 
-func (r ApiAuthenticatorsAdminDuoUpdateRequest) Execute() (DuoDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsAdminDuoUpdateRequest) Execute() (*DuoDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminDuoUpdateExecute(r)
 }
 
@@ -693,11 +678,11 @@ AuthenticatorsAdminDuoUpdate Method for AuthenticatorsAdminDuoUpdate
 
 Viewset for Duo authenticator devices (for admins)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this Duo Device.
  @return ApiAuthenticatorsAdminDuoUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdate(ctx _context.Context, id int32) ApiAuthenticatorsAdminDuoUpdateRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoUpdateRequest {
 	return ApiAuthenticatorsAdminDuoUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -707,27 +692,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdate(ctx _context.Con
 
 // Execute executes the request
 //  @return DuoDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuthenticatorsAdminDuoUpdateRequest) (DuoDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuthenticatorsAdminDuoUpdateRequest) (*DuoDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DuoDevice
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DuoDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminDuoUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.duoDeviceRequest == nil {
 		return localVarReturnValue, nil, reportError("duoDeviceRequest is required and must be specified")
 	}
@@ -765,7 +748,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuth
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -775,15 +758,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -792,7 +775,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuth
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -803,7 +786,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuth
 }
 
 type ApiAuthenticatorsAdminSmsListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	name       *string
 	ordering   *string
@@ -841,7 +824,7 @@ func (r ApiAuthenticatorsAdminSmsListRequest) Search(search string) ApiAuthentic
 	return r
 }
 
-func (r ApiAuthenticatorsAdminSmsListRequest) Execute() (PaginatedSMSDeviceList, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsAdminSmsListRequest) Execute() (*PaginatedSMSDeviceList, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminSmsListExecute(r)
 }
 
@@ -850,10 +833,10 @@ AuthenticatorsAdminSmsList Method for AuthenticatorsAdminSmsList
 
 Viewset for sms authenticator devices (for admins)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthenticatorsAdminSmsListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsList(ctx _context.Context) ApiAuthenticatorsAdminSmsListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsList(ctx context.Context) ApiAuthenticatorsAdminSmsListRequest {
 	return ApiAuthenticatorsAdminSmsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -862,26 +845,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsList(ctx _context.Conte
 
 // Execute executes the request
 //  @return PaginatedSMSDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsListExecute(r ApiAuthenticatorsAdminSmsListRequest) (PaginatedSMSDeviceList, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsListExecute(r ApiAuthenticatorsAdminSmsListRequest) (*PaginatedSMSDeviceList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedSMSDeviceList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedSMSDeviceList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminSmsList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/sms/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -929,7 +910,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsListExecute(r ApiAuthen
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -939,15 +920,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsListExecute(r ApiAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -956,7 +937,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsListExecute(r ApiAuthen
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -967,12 +948,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsListExecute(r ApiAuthen
 }
 
 type ApiAuthenticatorsAdminSmsRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsAdminSmsRetrieveRequest) Execute() (SMSDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsAdminSmsRetrieveRequest) Execute() (*SMSDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminSmsRetrieveExecute(r)
 }
 
@@ -981,11 +962,11 @@ AuthenticatorsAdminSmsRetrieve Method for AuthenticatorsAdminSmsRetrieve
 
 Viewset for sms authenticator devices (for admins)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this SMS Device.
  @return ApiAuthenticatorsAdminSmsRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsAdminSmsRetrieveRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminSmsRetrieveRequest {
 	return ApiAuthenticatorsAdminSmsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -995,27 +976,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieve(ctx _context.C
 
 // Execute executes the request
 //  @return SMSDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieveExecute(r ApiAuthenticatorsAdminSmsRetrieveRequest) (SMSDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieveExecute(r ApiAuthenticatorsAdminSmsRetrieveRequest) (*SMSDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SMSDevice
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SMSDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminSmsRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/sms/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1048,7 +1027,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieveExecute(r ApiAu
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1058,15 +1037,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieveExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1075,7 +1054,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieveExecute(r ApiAu
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1086,7 +1065,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieveExecute(r ApiAu
 }
 
 type ApiAuthenticatorsAdminStaticListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	name       *string
 	ordering   *string
@@ -1124,7 +1103,7 @@ func (r ApiAuthenticatorsAdminStaticListRequest) Search(search string) ApiAuthen
 	return r
 }
 
-func (r ApiAuthenticatorsAdminStaticListRequest) Execute() (PaginatedStaticDeviceList, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsAdminStaticListRequest) Execute() (*PaginatedStaticDeviceList, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminStaticListExecute(r)
 }
 
@@ -1133,10 +1112,10 @@ AuthenticatorsAdminStaticList Method for AuthenticatorsAdminStaticList
 
 Viewset for static authenticator devices (for admins)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthenticatorsAdminStaticListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticList(ctx _context.Context) ApiAuthenticatorsAdminStaticListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticList(ctx context.Context) ApiAuthenticatorsAdminStaticListRequest {
 	return ApiAuthenticatorsAdminStaticListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1145,26 +1124,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticList(ctx _context.Co
 
 // Execute executes the request
 //  @return PaginatedStaticDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAuthenticatorsAdminStaticListRequest) (PaginatedStaticDeviceList, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAuthenticatorsAdminStaticListRequest) (*PaginatedStaticDeviceList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedStaticDeviceList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedStaticDeviceList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminStaticList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/static/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -1212,7 +1189,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAut
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1222,15 +1199,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1239,7 +1216,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAut
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1250,12 +1227,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAut
 }
 
 type ApiAuthenticatorsAdminStaticRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsAdminStaticRetrieveRequest) Execute() (StaticDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsAdminStaticRetrieveRequest) Execute() (*StaticDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminStaticRetrieveExecute(r)
 }
 
@@ -1264,11 +1241,11 @@ AuthenticatorsAdminStaticRetrieve Method for AuthenticatorsAdminStaticRetrieve
 
 Viewset for static authenticator devices (for admins)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this static device.
  @return ApiAuthenticatorsAdminStaticRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsAdminStaticRetrieveRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticRetrieveRequest {
 	return ApiAuthenticatorsAdminStaticRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1278,27 +1255,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieve(ctx _contex
 
 // Execute executes the request
 //  @return StaticDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieveExecute(r ApiAuthenticatorsAdminStaticRetrieveRequest) (StaticDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieveExecute(r ApiAuthenticatorsAdminStaticRetrieveRequest) (*StaticDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  StaticDevice
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StaticDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminStaticRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/static/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1331,7 +1306,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieveExecute(r Ap
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1341,15 +1316,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieveExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1358,7 +1333,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieveExecute(r Ap
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1369,7 +1344,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieveExecute(r Ap
 }
 
 type ApiAuthenticatorsAdminTotpListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	name       *string
 	ordering   *string
@@ -1407,7 +1382,7 @@ func (r ApiAuthenticatorsAdminTotpListRequest) Search(search string) ApiAuthenti
 	return r
 }
 
-func (r ApiAuthenticatorsAdminTotpListRequest) Execute() (PaginatedTOTPDeviceList, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsAdminTotpListRequest) Execute() (*PaginatedTOTPDeviceList, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminTotpListExecute(r)
 }
 
@@ -1416,10 +1391,10 @@ AuthenticatorsAdminTotpList Method for AuthenticatorsAdminTotpList
 
 Viewset for totp authenticator devices (for admins)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthenticatorsAdminTotpListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpList(ctx _context.Context) ApiAuthenticatorsAdminTotpListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpList(ctx context.Context) ApiAuthenticatorsAdminTotpListRequest {
 	return ApiAuthenticatorsAdminTotpListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1428,26 +1403,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpList(ctx _context.Cont
 
 // Execute executes the request
 //  @return PaginatedTOTPDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthenticatorsAdminTotpListRequest) (PaginatedTOTPDeviceList, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthenticatorsAdminTotpListRequest) (*PaginatedTOTPDeviceList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedTOTPDeviceList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedTOTPDeviceList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminTotpList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/totp/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -1495,7 +1468,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1505,15 +1478,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1522,7 +1495,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1533,12 +1506,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthe
 }
 
 type ApiAuthenticatorsAdminTotpRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsAdminTotpRetrieveRequest) Execute() (TOTPDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsAdminTotpRetrieveRequest) Execute() (*TOTPDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminTotpRetrieveExecute(r)
 }
 
@@ -1547,11 +1520,11 @@ AuthenticatorsAdminTotpRetrieve Method for AuthenticatorsAdminTotpRetrieve
 
 Viewset for totp authenticator devices (for admins)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this TOTP device.
  @return ApiAuthenticatorsAdminTotpRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsAdminTotpRetrieveRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminTotpRetrieveRequest {
 	return ApiAuthenticatorsAdminTotpRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1561,27 +1534,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieve(ctx _context.
 
 // Execute executes the request
 //  @return TOTPDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieveExecute(r ApiAuthenticatorsAdminTotpRetrieveRequest) (TOTPDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieveExecute(r ApiAuthenticatorsAdminTotpRetrieveRequest) (*TOTPDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  TOTPDevice
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TOTPDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminTotpRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/totp/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1614,7 +1585,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieveExecute(r ApiA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1624,15 +1595,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieveExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1641,7 +1612,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieveExecute(r ApiA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1652,7 +1623,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieveExecute(r ApiA
 }
 
 type ApiAuthenticatorsAdminWebauthnListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	name       *string
 	ordering   *string
@@ -1690,7 +1661,7 @@ func (r ApiAuthenticatorsAdminWebauthnListRequest) Search(search string) ApiAuth
 	return r
 }
 
-func (r ApiAuthenticatorsAdminWebauthnListRequest) Execute() (PaginatedWebAuthnDeviceList, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsAdminWebauthnListRequest) Execute() (*PaginatedWebAuthnDeviceList, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminWebauthnListExecute(r)
 }
 
@@ -1699,10 +1670,10 @@ AuthenticatorsAdminWebauthnList Method for AuthenticatorsAdminWebauthnList
 
 Viewset for WebAuthn authenticator devices (for admins)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthenticatorsAdminWebauthnListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnList(ctx _context.Context) ApiAuthenticatorsAdminWebauthnListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnList(ctx context.Context) ApiAuthenticatorsAdminWebauthnListRequest {
 	return ApiAuthenticatorsAdminWebauthnListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1711,26 +1682,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnList(ctx _context.
 
 // Execute executes the request
 //  @return PaginatedWebAuthnDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiAuthenticatorsAdminWebauthnListRequest) (PaginatedWebAuthnDeviceList, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiAuthenticatorsAdminWebauthnListRequest) (*PaginatedWebAuthnDeviceList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedWebAuthnDeviceList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedWebAuthnDeviceList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminWebauthnList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/webauthn/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -1778,7 +1747,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1788,15 +1757,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1805,7 +1774,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1816,12 +1785,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiA
 }
 
 type ApiAuthenticatorsAdminWebauthnRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsAdminWebauthnRetrieveRequest) Execute() (WebAuthnDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsAdminWebauthnRetrieveRequest) Execute() (*WebAuthnDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminWebauthnRetrieveExecute(r)
 }
 
@@ -1830,11 +1799,11 @@ AuthenticatorsAdminWebauthnRetrieve Method for AuthenticatorsAdminWebauthnRetrie
 
 Viewset for WebAuthn authenticator devices (for admins)
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this WebAuthn Device.
  @return ApiAuthenticatorsAdminWebauthnRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsAdminWebauthnRetrieveRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminWebauthnRetrieveRequest {
 	return ApiAuthenticatorsAdminWebauthnRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1844,27 +1813,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieve(ctx _cont
 
 // Execute executes the request
 //  @return WebAuthnDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieveExecute(r ApiAuthenticatorsAdminWebauthnRetrieveRequest) (WebAuthnDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieveExecute(r ApiAuthenticatorsAdminWebauthnRetrieveRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  WebAuthnDevice
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WebAuthnDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminWebauthnRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/webauthn/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1897,7 +1864,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieveExecute(r 
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1907,15 +1874,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieveExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1924,7 +1891,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieveExecute(r 
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1935,11 +1902,11 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieveExecute(r 
 }
 
 type ApiAuthenticatorsAllListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 }
 
-func (r ApiAuthenticatorsAllListRequest) Execute() ([]Device, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsAllListRequest) Execute() ([]Device, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAllListExecute(r)
 }
 
@@ -1948,10 +1915,10 @@ AuthenticatorsAllList Method for AuthenticatorsAllList
 
 Get all devices for current user
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthenticatorsAllListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAllList(ctx _context.Context) ApiAuthenticatorsAllListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsAllList(ctx context.Context) ApiAuthenticatorsAllListRequest {
 	return ApiAuthenticatorsAllListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1960,26 +1927,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsAllList(ctx _context.Context) A
 
 // Execute executes the request
 //  @return []Device
-func (a *AuthenticatorsApiService) AuthenticatorsAllListExecute(r ApiAuthenticatorsAllListRequest) ([]Device, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsAllListExecute(r ApiAuthenticatorsAllListRequest) ([]Device, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []Device
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Device
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAllList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/all/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2012,7 +1977,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAllListExecute(r ApiAuthenticat
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2022,15 +1987,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsAllListExecute(r ApiAuthenticat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2039,7 +2004,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAllListExecute(r ApiAuthenticat
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2050,12 +2015,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsAllListExecute(r ApiAuthenticat
 }
 
 type ApiAuthenticatorsDuoDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsDuoDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiAuthenticatorsDuoDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AuthenticatorsDuoDestroyExecute(r)
 }
 
@@ -2064,11 +2029,11 @@ AuthenticatorsDuoDestroy Method for AuthenticatorsDuoDestroy
 
 Viewset for Duo authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this Duo Device.
  @return ApiAuthenticatorsDuoDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroy(ctx _context.Context, id int32) ApiAuthenticatorsDuoDestroyRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroy(ctx context.Context, id int32) ApiAuthenticatorsDuoDestroyRequest {
 	return ApiAuthenticatorsDuoDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2077,26 +2042,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroy(ctx _context.Context
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroyExecute(r ApiAuthenticatorsDuoDestroyRequest) (*_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroyExecute(r ApiAuthenticatorsDuoDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsDuoDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2129,7 +2092,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroyExecute(r ApiAuthenti
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2139,15 +2102,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroyExecute(r ApiAuthenti
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2158,7 +2121,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroyExecute(r ApiAuthenti
 }
 
 type ApiAuthenticatorsDuoListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	name       *string
 	ordering   *string
@@ -2196,7 +2159,7 @@ func (r ApiAuthenticatorsDuoListRequest) Search(search string) ApiAuthenticators
 	return r
 }
 
-func (r ApiAuthenticatorsDuoListRequest) Execute() (PaginatedDuoDeviceList, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsDuoListRequest) Execute() (*PaginatedDuoDeviceList, *http.Response, error) {
 	return r.ApiService.AuthenticatorsDuoListExecute(r)
 }
 
@@ -2205,10 +2168,10 @@ AuthenticatorsDuoList Method for AuthenticatorsDuoList
 
 Viewset for Duo authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthenticatorsDuoListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsDuoList(ctx _context.Context) ApiAuthenticatorsDuoListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsDuoList(ctx context.Context) ApiAuthenticatorsDuoListRequest {
 	return ApiAuthenticatorsDuoListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2217,26 +2180,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoList(ctx _context.Context) A
 
 // Execute executes the request
 //  @return PaginatedDuoDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticatorsDuoListRequest) (PaginatedDuoDeviceList, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticatorsDuoListRequest) (*PaginatedDuoDeviceList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedDuoDeviceList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedDuoDeviceList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsDuoList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/duo/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -2284,7 +2245,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticat
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2294,15 +2255,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2311,7 +2272,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticat
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2322,7 +2283,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticat
 }
 
 type ApiAuthenticatorsDuoPartialUpdateRequest struct {
-	ctx                     _context.Context
+	ctx                     context.Context
 	ApiService              *AuthenticatorsApiService
 	id                      int32
 	patchedDuoDeviceRequest *PatchedDuoDeviceRequest
@@ -2333,7 +2294,7 @@ func (r ApiAuthenticatorsDuoPartialUpdateRequest) PatchedDuoDeviceRequest(patche
 	return r
 }
 
-func (r ApiAuthenticatorsDuoPartialUpdateRequest) Execute() (DuoDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsDuoPartialUpdateRequest) Execute() (*DuoDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsDuoPartialUpdateExecute(r)
 }
 
@@ -2342,11 +2303,11 @@ AuthenticatorsDuoPartialUpdate Method for AuthenticatorsDuoPartialUpdate
 
 Viewset for Duo authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this Duo Device.
  @return ApiAuthenticatorsDuoPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdate(ctx _context.Context, id int32) ApiAuthenticatorsDuoPartialUpdateRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsDuoPartialUpdateRequest {
 	return ApiAuthenticatorsDuoPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2356,27 +2317,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdate(ctx _context.C
 
 // Execute executes the request
 //  @return DuoDevice
-func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdateExecute(r ApiAuthenticatorsDuoPartialUpdateRequest) (DuoDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdateExecute(r ApiAuthenticatorsDuoPartialUpdateRequest) (*DuoDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DuoDevice
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DuoDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsDuoPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2411,7 +2370,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdateExecute(r ApiAu
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2421,15 +2380,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdateExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2438,7 +2397,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdateExecute(r ApiAu
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2449,12 +2408,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdateExecute(r ApiAu
 }
 
 type ApiAuthenticatorsDuoRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsDuoRetrieveRequest) Execute() (DuoDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsDuoRetrieveRequest) Execute() (*DuoDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsDuoRetrieveExecute(r)
 }
 
@@ -2463,11 +2422,11 @@ AuthenticatorsDuoRetrieve Method for AuthenticatorsDuoRetrieve
 
 Viewset for Duo authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this Duo Device.
  @return ApiAuthenticatorsDuoRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsDuoRetrieveRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieve(ctx context.Context, id int32) ApiAuthenticatorsDuoRetrieveRequest {
 	return ApiAuthenticatorsDuoRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2477,27 +2436,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieve(ctx _context.Contex
 
 // Execute executes the request
 //  @return DuoDevice
-func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieveExecute(r ApiAuthenticatorsDuoRetrieveRequest) (DuoDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieveExecute(r ApiAuthenticatorsDuoRetrieveRequest) (*DuoDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DuoDevice
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DuoDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsDuoRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2530,7 +2487,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieveExecute(r ApiAuthent
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2540,15 +2497,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieveExecute(r ApiAuthent
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2557,7 +2514,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieveExecute(r ApiAuthent
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2568,7 +2525,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieveExecute(r ApiAuthent
 }
 
 type ApiAuthenticatorsDuoUpdateRequest struct {
-	ctx              _context.Context
+	ctx              context.Context
 	ApiService       *AuthenticatorsApiService
 	id               int32
 	duoDeviceRequest *DuoDeviceRequest
@@ -2579,7 +2536,7 @@ func (r ApiAuthenticatorsDuoUpdateRequest) DuoDeviceRequest(duoDeviceRequest Duo
 	return r
 }
 
-func (r ApiAuthenticatorsDuoUpdateRequest) Execute() (DuoDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsDuoUpdateRequest) Execute() (*DuoDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsDuoUpdateExecute(r)
 }
 
@@ -2588,11 +2545,11 @@ AuthenticatorsDuoUpdate Method for AuthenticatorsDuoUpdate
 
 Viewset for Duo authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this Duo Device.
  @return ApiAuthenticatorsDuoUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdate(ctx _context.Context, id int32) ApiAuthenticatorsDuoUpdateRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdate(ctx context.Context, id int32) ApiAuthenticatorsDuoUpdateRequest {
 	return ApiAuthenticatorsDuoUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2602,27 +2559,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdate(ctx _context.Context,
 
 // Execute executes the request
 //  @return DuoDevice
-func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdateExecute(r ApiAuthenticatorsDuoUpdateRequest) (DuoDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdateExecute(r ApiAuthenticatorsDuoUpdateRequest) (*DuoDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DuoDevice
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DuoDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsDuoUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.duoDeviceRequest == nil {
 		return localVarReturnValue, nil, reportError("duoDeviceRequest is required and must be specified")
 	}
@@ -2660,7 +2615,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdateExecute(r ApiAuthentic
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2670,15 +2625,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdateExecute(r ApiAuthentic
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2687,7 +2642,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdateExecute(r ApiAuthentic
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2698,12 +2653,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdateExecute(r ApiAuthentic
 }
 
 type ApiAuthenticatorsDuoUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsDuoUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsDuoUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.AuthenticatorsDuoUsedByListExecute(r)
 }
 
@@ -2712,11 +2667,11 @@ AuthenticatorsDuoUsedByList Method for AuthenticatorsDuoUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this Duo Device.
  @return ApiAuthenticatorsDuoUsedByListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByList(ctx _context.Context, id int32) ApiAuthenticatorsDuoUsedByListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByList(ctx context.Context, id int32) ApiAuthenticatorsDuoUsedByListRequest {
 	return ApiAuthenticatorsDuoUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2726,27 +2681,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByList(ctx _context.Cont
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByListExecute(r ApiAuthenticatorsDuoUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByListExecute(r ApiAuthenticatorsDuoUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsDuoUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/duo/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2779,7 +2732,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByListExecute(r ApiAuthe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2789,15 +2742,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByListExecute(r ApiAuthe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2806,7 +2759,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByListExecute(r ApiAuthe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2817,12 +2770,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByListExecute(r ApiAuthe
 }
 
 type ApiAuthenticatorsSmsDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsSmsDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiAuthenticatorsSmsDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AuthenticatorsSmsDestroyExecute(r)
 }
 
@@ -2831,11 +2784,11 @@ AuthenticatorsSmsDestroy Method for AuthenticatorsSmsDestroy
 
 Viewset for sms authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this SMS Device.
  @return ApiAuthenticatorsSmsDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroy(ctx _context.Context, id int32) ApiAuthenticatorsSmsDestroyRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroy(ctx context.Context, id int32) ApiAuthenticatorsSmsDestroyRequest {
 	return ApiAuthenticatorsSmsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2844,26 +2797,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroy(ctx _context.Context
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroyExecute(r ApiAuthenticatorsSmsDestroyRequest) (*_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroyExecute(r ApiAuthenticatorsSmsDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsSmsDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/sms/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2896,7 +2847,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroyExecute(r ApiAuthenti
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2906,15 +2857,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroyExecute(r ApiAuthenti
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2925,7 +2876,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroyExecute(r ApiAuthenti
 }
 
 type ApiAuthenticatorsSmsListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	name       *string
 	ordering   *string
@@ -2963,7 +2914,7 @@ func (r ApiAuthenticatorsSmsListRequest) Search(search string) ApiAuthenticators
 	return r
 }
 
-func (r ApiAuthenticatorsSmsListRequest) Execute() (PaginatedSMSDeviceList, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsSmsListRequest) Execute() (*PaginatedSMSDeviceList, *http.Response, error) {
 	return r.ApiService.AuthenticatorsSmsListExecute(r)
 }
 
@@ -2972,10 +2923,10 @@ AuthenticatorsSmsList Method for AuthenticatorsSmsList
 
 Viewset for sms authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthenticatorsSmsListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsSmsList(ctx _context.Context) ApiAuthenticatorsSmsListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsSmsList(ctx context.Context) ApiAuthenticatorsSmsListRequest {
 	return ApiAuthenticatorsSmsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2984,26 +2935,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsList(ctx _context.Context) A
 
 // Execute executes the request
 //  @return PaginatedSMSDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsSmsListExecute(r ApiAuthenticatorsSmsListRequest) (PaginatedSMSDeviceList, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsSmsListExecute(r ApiAuthenticatorsSmsListRequest) (*PaginatedSMSDeviceList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedSMSDeviceList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedSMSDeviceList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsSmsList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/sms/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -3051,7 +3000,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsListExecute(r ApiAuthenticat
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3061,15 +3010,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsListExecute(r ApiAuthenticat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3078,7 +3027,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsListExecute(r ApiAuthenticat
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3089,7 +3038,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsListExecute(r ApiAuthenticat
 }
 
 type ApiAuthenticatorsSmsPartialUpdateRequest struct {
-	ctx                     _context.Context
+	ctx                     context.Context
 	ApiService              *AuthenticatorsApiService
 	id                      int32
 	patchedSMSDeviceRequest *PatchedSMSDeviceRequest
@@ -3100,7 +3049,7 @@ func (r ApiAuthenticatorsSmsPartialUpdateRequest) PatchedSMSDeviceRequest(patche
 	return r
 }
 
-func (r ApiAuthenticatorsSmsPartialUpdateRequest) Execute() (SMSDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsSmsPartialUpdateRequest) Execute() (*SMSDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsSmsPartialUpdateExecute(r)
 }
 
@@ -3109,11 +3058,11 @@ AuthenticatorsSmsPartialUpdate Method for AuthenticatorsSmsPartialUpdate
 
 Viewset for sms authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this SMS Device.
  @return ApiAuthenticatorsSmsPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdate(ctx _context.Context, id int32) ApiAuthenticatorsSmsPartialUpdateRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsSmsPartialUpdateRequest {
 	return ApiAuthenticatorsSmsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3123,27 +3072,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdate(ctx _context.C
 
 // Execute executes the request
 //  @return SMSDevice
-func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdateExecute(r ApiAuthenticatorsSmsPartialUpdateRequest) (SMSDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdateExecute(r ApiAuthenticatorsSmsPartialUpdateRequest) (*SMSDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SMSDevice
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SMSDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsSmsPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/sms/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3178,7 +3125,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdateExecute(r ApiAu
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3188,15 +3135,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdateExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3205,7 +3152,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdateExecute(r ApiAu
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3216,12 +3163,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdateExecute(r ApiAu
 }
 
 type ApiAuthenticatorsSmsRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsSmsRetrieveRequest) Execute() (SMSDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsSmsRetrieveRequest) Execute() (*SMSDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsSmsRetrieveExecute(r)
 }
 
@@ -3230,11 +3177,11 @@ AuthenticatorsSmsRetrieve Method for AuthenticatorsSmsRetrieve
 
 Viewset for sms authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this SMS Device.
  @return ApiAuthenticatorsSmsRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsSmsRetrieveRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieve(ctx context.Context, id int32) ApiAuthenticatorsSmsRetrieveRequest {
 	return ApiAuthenticatorsSmsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3244,27 +3191,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieve(ctx _context.Contex
 
 // Execute executes the request
 //  @return SMSDevice
-func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieveExecute(r ApiAuthenticatorsSmsRetrieveRequest) (SMSDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieveExecute(r ApiAuthenticatorsSmsRetrieveRequest) (*SMSDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SMSDevice
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SMSDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsSmsRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/sms/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3297,7 +3242,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieveExecute(r ApiAuthent
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3307,15 +3252,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieveExecute(r ApiAuthent
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3324,7 +3269,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieveExecute(r ApiAuthent
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3335,7 +3280,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieveExecute(r ApiAuthent
 }
 
 type ApiAuthenticatorsSmsUpdateRequest struct {
-	ctx              _context.Context
+	ctx              context.Context
 	ApiService       *AuthenticatorsApiService
 	id               int32
 	sMSDeviceRequest *SMSDeviceRequest
@@ -3346,7 +3291,7 @@ func (r ApiAuthenticatorsSmsUpdateRequest) SMSDeviceRequest(sMSDeviceRequest SMS
 	return r
 }
 
-func (r ApiAuthenticatorsSmsUpdateRequest) Execute() (SMSDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsSmsUpdateRequest) Execute() (*SMSDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsSmsUpdateExecute(r)
 }
 
@@ -3355,11 +3300,11 @@ AuthenticatorsSmsUpdate Method for AuthenticatorsSmsUpdate
 
 Viewset for sms authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this SMS Device.
  @return ApiAuthenticatorsSmsUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdate(ctx _context.Context, id int32) ApiAuthenticatorsSmsUpdateRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdate(ctx context.Context, id int32) ApiAuthenticatorsSmsUpdateRequest {
 	return ApiAuthenticatorsSmsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3369,27 +3314,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdate(ctx _context.Context,
 
 // Execute executes the request
 //  @return SMSDevice
-func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdateExecute(r ApiAuthenticatorsSmsUpdateRequest) (SMSDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdateExecute(r ApiAuthenticatorsSmsUpdateRequest) (*SMSDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SMSDevice
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SMSDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsSmsUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/sms/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.sMSDeviceRequest == nil {
 		return localVarReturnValue, nil, reportError("sMSDeviceRequest is required and must be specified")
 	}
@@ -3427,7 +3370,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdateExecute(r ApiAuthentic
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3437,15 +3380,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdateExecute(r ApiAuthentic
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3454,7 +3397,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdateExecute(r ApiAuthentic
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3465,12 +3408,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdateExecute(r ApiAuthentic
 }
 
 type ApiAuthenticatorsSmsUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsSmsUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsSmsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.AuthenticatorsSmsUsedByListExecute(r)
 }
 
@@ -3479,11 +3422,11 @@ AuthenticatorsSmsUsedByList Method for AuthenticatorsSmsUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this SMS Device.
  @return ApiAuthenticatorsSmsUsedByListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByList(ctx _context.Context, id int32) ApiAuthenticatorsSmsUsedByListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByList(ctx context.Context, id int32) ApiAuthenticatorsSmsUsedByListRequest {
 	return ApiAuthenticatorsSmsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3493,27 +3436,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByList(ctx _context.Cont
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByListExecute(r ApiAuthenticatorsSmsUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByListExecute(r ApiAuthenticatorsSmsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsSmsUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/sms/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3546,7 +3487,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByListExecute(r ApiAuthe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3556,15 +3497,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByListExecute(r ApiAuthe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3573,7 +3514,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByListExecute(r ApiAuthe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3584,12 +3525,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByListExecute(r ApiAuthe
 }
 
 type ApiAuthenticatorsStaticDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsStaticDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiAuthenticatorsStaticDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AuthenticatorsStaticDestroyExecute(r)
 }
 
@@ -3598,11 +3539,11 @@ AuthenticatorsStaticDestroy Method for AuthenticatorsStaticDestroy
 
 Viewset for static authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this static device.
  @return ApiAuthenticatorsStaticDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroy(ctx _context.Context, id int32) ApiAuthenticatorsStaticDestroyRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroy(ctx context.Context, id int32) ApiAuthenticatorsStaticDestroyRequest {
 	return ApiAuthenticatorsStaticDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3611,26 +3552,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroy(ctx _context.Cont
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroyExecute(r ApiAuthenticatorsStaticDestroyRequest) (*_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroyExecute(r ApiAuthenticatorsStaticDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsStaticDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/static/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3663,7 +3602,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroyExecute(r ApiAuthe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -3673,15 +3612,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroyExecute(r ApiAuthe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3692,7 +3631,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroyExecute(r ApiAuthe
 }
 
 type ApiAuthenticatorsStaticListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	name       *string
 	ordering   *string
@@ -3730,7 +3669,7 @@ func (r ApiAuthenticatorsStaticListRequest) Search(search string) ApiAuthenticat
 	return r
 }
 
-func (r ApiAuthenticatorsStaticListRequest) Execute() (PaginatedStaticDeviceList, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsStaticListRequest) Execute() (*PaginatedStaticDeviceList, *http.Response, error) {
 	return r.ApiService.AuthenticatorsStaticListExecute(r)
 }
 
@@ -3739,10 +3678,10 @@ AuthenticatorsStaticList Method for AuthenticatorsStaticList
 
 Viewset for static authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthenticatorsStaticListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsStaticList(ctx _context.Context) ApiAuthenticatorsStaticListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsStaticList(ctx context.Context) ApiAuthenticatorsStaticListRequest {
 	return ApiAuthenticatorsStaticListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3751,26 +3690,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticList(ctx _context.Context
 
 // Execute executes the request
 //  @return PaginatedStaticDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenticatorsStaticListRequest) (PaginatedStaticDeviceList, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenticatorsStaticListRequest) (*PaginatedStaticDeviceList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedStaticDeviceList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedStaticDeviceList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsStaticList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/static/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -3818,7 +3755,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenti
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3828,15 +3765,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3845,7 +3782,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenti
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3856,7 +3793,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenti
 }
 
 type ApiAuthenticatorsStaticPartialUpdateRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *AuthenticatorsApiService
 	id                         int32
 	patchedStaticDeviceRequest *PatchedStaticDeviceRequest
@@ -3867,7 +3804,7 @@ func (r ApiAuthenticatorsStaticPartialUpdateRequest) PatchedStaticDeviceRequest(
 	return r
 }
 
-func (r ApiAuthenticatorsStaticPartialUpdateRequest) Execute() (StaticDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsStaticPartialUpdateRequest) Execute() (*StaticDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsStaticPartialUpdateExecute(r)
 }
 
@@ -3876,11 +3813,11 @@ AuthenticatorsStaticPartialUpdate Method for AuthenticatorsStaticPartialUpdate
 
 Viewset for static authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this static device.
  @return ApiAuthenticatorsStaticPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdate(ctx _context.Context, id int32) ApiAuthenticatorsStaticPartialUpdateRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsStaticPartialUpdateRequest {
 	return ApiAuthenticatorsStaticPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3890,27 +3827,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdate(ctx _contex
 
 // Execute executes the request
 //  @return StaticDevice
-func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdateExecute(r ApiAuthenticatorsStaticPartialUpdateRequest) (StaticDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdateExecute(r ApiAuthenticatorsStaticPartialUpdateRequest) (*StaticDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  StaticDevice
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StaticDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsStaticPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/static/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3945,7 +3880,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdateExecute(r Ap
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3955,15 +3890,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdateExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3972,7 +3907,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdateExecute(r Ap
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3983,12 +3918,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdateExecute(r Ap
 }
 
 type ApiAuthenticatorsStaticRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsStaticRetrieveRequest) Execute() (StaticDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsStaticRetrieveRequest) Execute() (*StaticDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsStaticRetrieveExecute(r)
 }
 
@@ -3997,11 +3932,11 @@ AuthenticatorsStaticRetrieve Method for AuthenticatorsStaticRetrieve
 
 Viewset for static authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this static device.
  @return ApiAuthenticatorsStaticRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsStaticRetrieveRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieve(ctx context.Context, id int32) ApiAuthenticatorsStaticRetrieveRequest {
 	return ApiAuthenticatorsStaticRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4011,27 +3946,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieve(ctx _context.Con
 
 // Execute executes the request
 //  @return StaticDevice
-func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieveExecute(r ApiAuthenticatorsStaticRetrieveRequest) (StaticDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieveExecute(r ApiAuthenticatorsStaticRetrieveRequest) (*StaticDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  StaticDevice
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StaticDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsStaticRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/static/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4064,7 +3997,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieveExecute(r ApiAuth
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4074,15 +4007,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieveExecute(r ApiAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4091,7 +4024,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieveExecute(r ApiAuth
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4102,7 +4035,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieveExecute(r ApiAuth
 }
 
 type ApiAuthenticatorsStaticUpdateRequest struct {
-	ctx                 _context.Context
+	ctx                 context.Context
 	ApiService          *AuthenticatorsApiService
 	id                  int32
 	staticDeviceRequest *StaticDeviceRequest
@@ -4113,7 +4046,7 @@ func (r ApiAuthenticatorsStaticUpdateRequest) StaticDeviceRequest(staticDeviceRe
 	return r
 }
 
-func (r ApiAuthenticatorsStaticUpdateRequest) Execute() (StaticDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsStaticUpdateRequest) Execute() (*StaticDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsStaticUpdateExecute(r)
 }
 
@@ -4122,11 +4055,11 @@ AuthenticatorsStaticUpdate Method for AuthenticatorsStaticUpdate
 
 Viewset for static authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this static device.
  @return ApiAuthenticatorsStaticUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdate(ctx _context.Context, id int32) ApiAuthenticatorsStaticUpdateRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdate(ctx context.Context, id int32) ApiAuthenticatorsStaticUpdateRequest {
 	return ApiAuthenticatorsStaticUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4136,27 +4069,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdate(ctx _context.Conte
 
 // Execute executes the request
 //  @return StaticDevice
-func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdateExecute(r ApiAuthenticatorsStaticUpdateRequest) (StaticDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdateExecute(r ApiAuthenticatorsStaticUpdateRequest) (*StaticDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  StaticDevice
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StaticDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsStaticUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/static/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.staticDeviceRequest == nil {
 		return localVarReturnValue, nil, reportError("staticDeviceRequest is required and must be specified")
 	}
@@ -4194,7 +4125,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdateExecute(r ApiAuthen
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4204,15 +4135,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdateExecute(r ApiAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4221,7 +4152,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdateExecute(r ApiAuthen
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4232,12 +4163,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdateExecute(r ApiAuthen
 }
 
 type ApiAuthenticatorsStaticUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsStaticUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsStaticUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.AuthenticatorsStaticUsedByListExecute(r)
 }
 
@@ -4246,11 +4177,11 @@ AuthenticatorsStaticUsedByList Method for AuthenticatorsStaticUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this static device.
  @return ApiAuthenticatorsStaticUsedByListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByList(ctx _context.Context, id int32) ApiAuthenticatorsStaticUsedByListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByList(ctx context.Context, id int32) ApiAuthenticatorsStaticUsedByListRequest {
 	return ApiAuthenticatorsStaticUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4260,27 +4191,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByList(ctx _context.C
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByListExecute(r ApiAuthenticatorsStaticUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByListExecute(r ApiAuthenticatorsStaticUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsStaticUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/static/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4313,7 +4242,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByListExecute(r ApiAu
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4323,15 +4252,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByListExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4340,7 +4269,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByListExecute(r ApiAu
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4351,12 +4280,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByListExecute(r ApiAu
 }
 
 type ApiAuthenticatorsTotpDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsTotpDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiAuthenticatorsTotpDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AuthenticatorsTotpDestroyExecute(r)
 }
 
@@ -4365,11 +4294,11 @@ AuthenticatorsTotpDestroy Method for AuthenticatorsTotpDestroy
 
 Viewset for totp authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this TOTP device.
  @return ApiAuthenticatorsTotpDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroy(ctx _context.Context, id int32) ApiAuthenticatorsTotpDestroyRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroy(ctx context.Context, id int32) ApiAuthenticatorsTotpDestroyRequest {
 	return ApiAuthenticatorsTotpDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4378,26 +4307,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroy(ctx _context.Contex
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroyExecute(r ApiAuthenticatorsTotpDestroyRequest) (*_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroyExecute(r ApiAuthenticatorsTotpDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsTotpDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/totp/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4430,7 +4357,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroyExecute(r ApiAuthent
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -4440,15 +4367,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroyExecute(r ApiAuthent
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4459,7 +4386,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroyExecute(r ApiAuthent
 }
 
 type ApiAuthenticatorsTotpListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	name       *string
 	ordering   *string
@@ -4497,7 +4424,7 @@ func (r ApiAuthenticatorsTotpListRequest) Search(search string) ApiAuthenticator
 	return r
 }
 
-func (r ApiAuthenticatorsTotpListRequest) Execute() (PaginatedTOTPDeviceList, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsTotpListRequest) Execute() (*PaginatedTOTPDeviceList, *http.Response, error) {
 	return r.ApiService.AuthenticatorsTotpListExecute(r)
 }
 
@@ -4506,10 +4433,10 @@ AuthenticatorsTotpList Method for AuthenticatorsTotpList
 
 Viewset for totp authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthenticatorsTotpListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsTotpList(ctx _context.Context) ApiAuthenticatorsTotpListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsTotpList(ctx context.Context) ApiAuthenticatorsTotpListRequest {
 	return ApiAuthenticatorsTotpListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4518,26 +4445,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpList(ctx _context.Context) 
 
 // Execute executes the request
 //  @return PaginatedTOTPDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthenticatorsTotpListRequest) (PaginatedTOTPDeviceList, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthenticatorsTotpListRequest) (*PaginatedTOTPDeviceList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedTOTPDeviceList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedTOTPDeviceList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsTotpList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/totp/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -4585,7 +4510,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthentica
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4595,15 +4520,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthentica
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4612,7 +4537,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthentica
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4623,7 +4548,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthentica
 }
 
 type ApiAuthenticatorsTotpPartialUpdateRequest struct {
-	ctx                      _context.Context
+	ctx                      context.Context
 	ApiService               *AuthenticatorsApiService
 	id                       int32
 	patchedTOTPDeviceRequest *PatchedTOTPDeviceRequest
@@ -4634,7 +4559,7 @@ func (r ApiAuthenticatorsTotpPartialUpdateRequest) PatchedTOTPDeviceRequest(patc
 	return r
 }
 
-func (r ApiAuthenticatorsTotpPartialUpdateRequest) Execute() (TOTPDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsTotpPartialUpdateRequest) Execute() (*TOTPDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsTotpPartialUpdateExecute(r)
 }
 
@@ -4643,11 +4568,11 @@ AuthenticatorsTotpPartialUpdate Method for AuthenticatorsTotpPartialUpdate
 
 Viewset for totp authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this TOTP device.
  @return ApiAuthenticatorsTotpPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdate(ctx _context.Context, id int32) ApiAuthenticatorsTotpPartialUpdateRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsTotpPartialUpdateRequest {
 	return ApiAuthenticatorsTotpPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4657,27 +4582,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdate(ctx _context.
 
 // Execute executes the request
 //  @return TOTPDevice
-func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdateExecute(r ApiAuthenticatorsTotpPartialUpdateRequest) (TOTPDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdateExecute(r ApiAuthenticatorsTotpPartialUpdateRequest) (*TOTPDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  TOTPDevice
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TOTPDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsTotpPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/totp/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4712,7 +4635,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdateExecute(r ApiA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4722,15 +4645,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdateExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4739,7 +4662,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdateExecute(r ApiA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4750,12 +4673,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdateExecute(r ApiA
 }
 
 type ApiAuthenticatorsTotpRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsTotpRetrieveRequest) Execute() (TOTPDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsTotpRetrieveRequest) Execute() (*TOTPDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsTotpRetrieveExecute(r)
 }
 
@@ -4764,11 +4687,11 @@ AuthenticatorsTotpRetrieve Method for AuthenticatorsTotpRetrieve
 
 Viewset for totp authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this TOTP device.
  @return ApiAuthenticatorsTotpRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsTotpRetrieveRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieve(ctx context.Context, id int32) ApiAuthenticatorsTotpRetrieveRequest {
 	return ApiAuthenticatorsTotpRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4778,27 +4701,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieve(ctx _context.Conte
 
 // Execute executes the request
 //  @return TOTPDevice
-func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieveExecute(r ApiAuthenticatorsTotpRetrieveRequest) (TOTPDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieveExecute(r ApiAuthenticatorsTotpRetrieveRequest) (*TOTPDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  TOTPDevice
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TOTPDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsTotpRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/totp/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4831,7 +4752,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieveExecute(r ApiAuthen
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4841,15 +4762,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieveExecute(r ApiAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4858,7 +4779,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieveExecute(r ApiAuthen
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4869,7 +4790,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieveExecute(r ApiAuthen
 }
 
 type ApiAuthenticatorsTotpUpdateRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *AuthenticatorsApiService
 	id                int32
 	tOTPDeviceRequest *TOTPDeviceRequest
@@ -4880,7 +4801,7 @@ func (r ApiAuthenticatorsTotpUpdateRequest) TOTPDeviceRequest(tOTPDeviceRequest 
 	return r
 }
 
-func (r ApiAuthenticatorsTotpUpdateRequest) Execute() (TOTPDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsTotpUpdateRequest) Execute() (*TOTPDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsTotpUpdateExecute(r)
 }
 
@@ -4889,11 +4810,11 @@ AuthenticatorsTotpUpdate Method for AuthenticatorsTotpUpdate
 
 Viewset for totp authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this TOTP device.
  @return ApiAuthenticatorsTotpUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdate(ctx _context.Context, id int32) ApiAuthenticatorsTotpUpdateRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdate(ctx context.Context, id int32) ApiAuthenticatorsTotpUpdateRequest {
 	return ApiAuthenticatorsTotpUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4903,27 +4824,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdate(ctx _context.Context
 
 // Execute executes the request
 //  @return TOTPDevice
-func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdateExecute(r ApiAuthenticatorsTotpUpdateRequest) (TOTPDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdateExecute(r ApiAuthenticatorsTotpUpdateRequest) (*TOTPDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  TOTPDevice
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TOTPDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsTotpUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/totp/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.tOTPDeviceRequest == nil {
 		return localVarReturnValue, nil, reportError("tOTPDeviceRequest is required and must be specified")
 	}
@@ -4961,7 +4880,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdateExecute(r ApiAuthenti
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4971,15 +4890,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdateExecute(r ApiAuthenti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4988,7 +4907,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdateExecute(r ApiAuthenti
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4999,12 +4918,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdateExecute(r ApiAuthenti
 }
 
 type ApiAuthenticatorsTotpUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsTotpUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsTotpUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.AuthenticatorsTotpUsedByListExecute(r)
 }
 
@@ -5013,11 +4932,11 @@ AuthenticatorsTotpUsedByList Method for AuthenticatorsTotpUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this TOTP device.
  @return ApiAuthenticatorsTotpUsedByListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByList(ctx _context.Context, id int32) ApiAuthenticatorsTotpUsedByListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByList(ctx context.Context, id int32) ApiAuthenticatorsTotpUsedByListRequest {
 	return ApiAuthenticatorsTotpUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5027,27 +4946,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByList(ctx _context.Con
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByListExecute(r ApiAuthenticatorsTotpUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByListExecute(r ApiAuthenticatorsTotpUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsTotpUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/totp/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5080,7 +4997,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByListExecute(r ApiAuth
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5090,15 +5007,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByListExecute(r ApiAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5107,7 +5024,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByListExecute(r ApiAuth
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5118,12 +5035,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByListExecute(r ApiAuth
 }
 
 type ApiAuthenticatorsWebauthnDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsWebauthnDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiAuthenticatorsWebauthnDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AuthenticatorsWebauthnDestroyExecute(r)
 }
 
@@ -5132,11 +5049,11 @@ AuthenticatorsWebauthnDestroy Method for AuthenticatorsWebauthnDestroy
 
 Viewset for WebAuthn authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this WebAuthn Device.
  @return ApiAuthenticatorsWebauthnDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroy(ctx _context.Context, id int32) ApiAuthenticatorsWebauthnDestroyRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroy(ctx context.Context, id int32) ApiAuthenticatorsWebauthnDestroyRequest {
 	return ApiAuthenticatorsWebauthnDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5145,26 +5062,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroy(ctx _context.Co
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroyExecute(r ApiAuthenticatorsWebauthnDestroyRequest) (*_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroyExecute(r ApiAuthenticatorsWebauthnDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsWebauthnDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/webauthn/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5197,7 +5112,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroyExecute(r ApiAut
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -5207,15 +5122,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroyExecute(r ApiAut
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5226,7 +5141,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroyExecute(r ApiAut
 }
 
 type ApiAuthenticatorsWebauthnListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	name       *string
 	ordering   *string
@@ -5264,7 +5179,7 @@ func (r ApiAuthenticatorsWebauthnListRequest) Search(search string) ApiAuthentic
 	return r
 }
 
-func (r ApiAuthenticatorsWebauthnListRequest) Execute() (PaginatedWebAuthnDeviceList, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsWebauthnListRequest) Execute() (*PaginatedWebAuthnDeviceList, *http.Response, error) {
 	return r.ApiService.AuthenticatorsWebauthnListExecute(r)
 }
 
@@ -5273,10 +5188,10 @@ AuthenticatorsWebauthnList Method for AuthenticatorsWebauthnList
 
 Viewset for WebAuthn authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthenticatorsWebauthnListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnList(ctx _context.Context) ApiAuthenticatorsWebauthnListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsWebauthnList(ctx context.Context) ApiAuthenticatorsWebauthnListRequest {
 	return ApiAuthenticatorsWebauthnListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5285,26 +5200,24 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnList(ctx _context.Conte
 
 // Execute executes the request
 //  @return PaginatedWebAuthnDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthenticatorsWebauthnListRequest) (PaginatedWebAuthnDeviceList, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthenticatorsWebauthnListRequest) (*PaginatedWebAuthnDeviceList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedWebAuthnDeviceList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedWebAuthnDeviceList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsWebauthnList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/webauthn/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -5352,7 +5265,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthen
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5362,15 +5275,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5379,7 +5292,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthen
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5390,7 +5303,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthen
 }
 
 type ApiAuthenticatorsWebauthnPartialUpdateRequest struct {
-	ctx                          _context.Context
+	ctx                          context.Context
 	ApiService                   *AuthenticatorsApiService
 	id                           int32
 	patchedWebAuthnDeviceRequest *PatchedWebAuthnDeviceRequest
@@ -5401,7 +5314,7 @@ func (r ApiAuthenticatorsWebauthnPartialUpdateRequest) PatchedWebAuthnDeviceRequ
 	return r
 }
 
-func (r ApiAuthenticatorsWebauthnPartialUpdateRequest) Execute() (WebAuthnDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsWebauthnPartialUpdateRequest) Execute() (*WebAuthnDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsWebauthnPartialUpdateExecute(r)
 }
 
@@ -5410,11 +5323,11 @@ AuthenticatorsWebauthnPartialUpdate Method for AuthenticatorsWebauthnPartialUpda
 
 Viewset for WebAuthn authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this WebAuthn Device.
  @return ApiAuthenticatorsWebauthnPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdate(ctx _context.Context, id int32) ApiAuthenticatorsWebauthnPartialUpdateRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsWebauthnPartialUpdateRequest {
 	return ApiAuthenticatorsWebauthnPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5424,27 +5337,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdate(ctx _cont
 
 // Execute executes the request
 //  @return WebAuthnDevice
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdateExecute(r ApiAuthenticatorsWebauthnPartialUpdateRequest) (WebAuthnDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdateExecute(r ApiAuthenticatorsWebauthnPartialUpdateRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  WebAuthnDevice
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WebAuthnDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsWebauthnPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/webauthn/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -5479,7 +5390,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdateExecute(r 
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5489,15 +5400,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdateExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5506,7 +5417,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdateExecute(r 
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5517,12 +5428,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdateExecute(r 
 }
 
 type ApiAuthenticatorsWebauthnRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsWebauthnRetrieveRequest) Execute() (WebAuthnDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsWebauthnRetrieveRequest) Execute() (*WebAuthnDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsWebauthnRetrieveExecute(r)
 }
 
@@ -5531,11 +5442,11 @@ AuthenticatorsWebauthnRetrieve Method for AuthenticatorsWebauthnRetrieve
 
 Viewset for WebAuthn authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this WebAuthn Device.
  @return ApiAuthenticatorsWebauthnRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieve(ctx _context.Context, id int32) ApiAuthenticatorsWebauthnRetrieveRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieve(ctx context.Context, id int32) ApiAuthenticatorsWebauthnRetrieveRequest {
 	return ApiAuthenticatorsWebauthnRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5545,27 +5456,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieve(ctx _context.C
 
 // Execute executes the request
 //  @return WebAuthnDevice
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieveExecute(r ApiAuthenticatorsWebauthnRetrieveRequest) (WebAuthnDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieveExecute(r ApiAuthenticatorsWebauthnRetrieveRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  WebAuthnDevice
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WebAuthnDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsWebauthnRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/webauthn/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5598,7 +5507,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieveExecute(r ApiAu
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5608,15 +5517,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieveExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5625,7 +5534,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieveExecute(r ApiAu
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5636,7 +5545,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieveExecute(r ApiAu
 }
 
 type ApiAuthenticatorsWebauthnUpdateRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *AuthenticatorsApiService
 	id                    int32
 	webAuthnDeviceRequest *WebAuthnDeviceRequest
@@ -5647,7 +5556,7 @@ func (r ApiAuthenticatorsWebauthnUpdateRequest) WebAuthnDeviceRequest(webAuthnDe
 	return r
 }
 
-func (r ApiAuthenticatorsWebauthnUpdateRequest) Execute() (WebAuthnDevice, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsWebauthnUpdateRequest) Execute() (*WebAuthnDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsWebauthnUpdateExecute(r)
 }
 
@@ -5656,11 +5565,11 @@ AuthenticatorsWebauthnUpdate Method for AuthenticatorsWebauthnUpdate
 
 Viewset for WebAuthn authenticator devices
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this WebAuthn Device.
  @return ApiAuthenticatorsWebauthnUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdate(ctx _context.Context, id int32) ApiAuthenticatorsWebauthnUpdateRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdate(ctx context.Context, id int32) ApiAuthenticatorsWebauthnUpdateRequest {
 	return ApiAuthenticatorsWebauthnUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5670,27 +5579,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdate(ctx _context.Con
 
 // Execute executes the request
 //  @return WebAuthnDevice
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdateExecute(r ApiAuthenticatorsWebauthnUpdateRequest) (WebAuthnDevice, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdateExecute(r ApiAuthenticatorsWebauthnUpdateRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  WebAuthnDevice
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WebAuthnDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsWebauthnUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/webauthn/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.webAuthnDeviceRequest == nil {
 		return localVarReturnValue, nil, reportError("webAuthnDeviceRequest is required and must be specified")
 	}
@@ -5728,7 +5635,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdateExecute(r ApiAuth
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5738,15 +5645,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdateExecute(r ApiAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5755,7 +5662,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdateExecute(r ApiAuth
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -5766,12 +5673,12 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdateExecute(r ApiAuth
 }
 
 type ApiAuthenticatorsWebauthnUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *AuthenticatorsApiService
 	id         int32
 }
 
-func (r ApiAuthenticatorsWebauthnUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiAuthenticatorsWebauthnUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.AuthenticatorsWebauthnUsedByListExecute(r)
 }
 
@@ -5780,11 +5687,11 @@ AuthenticatorsWebauthnUsedByList Method for AuthenticatorsWebauthnUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this WebAuthn Device.
  @return ApiAuthenticatorsWebauthnUsedByListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByList(ctx _context.Context, id int32) ApiAuthenticatorsWebauthnUsedByListRequest {
+func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByList(ctx context.Context, id int32) ApiAuthenticatorsWebauthnUsedByListRequest {
 	return ApiAuthenticatorsWebauthnUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5794,27 +5701,25 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByList(ctx _context
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByListExecute(r ApiAuthenticatorsWebauthnUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByListExecute(r ApiAuthenticatorsWebauthnUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsWebauthnUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/webauthn/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5847,7 +5752,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByListExecute(r Api
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5857,15 +5762,15 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByListExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5874,7 +5779,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByListExecute(r Api
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

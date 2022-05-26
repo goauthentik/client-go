@@ -17,8 +17,8 @@ import (
 
 // ValidationError Validation Error
 type ValidationError struct {
-	NonFieldErrors *[]string `json:"non_field_errors,omitempty"`
-	Code           *string   `json:"code,omitempty"`
+	NonFieldErrors []string `json:"non_field_errors,omitempty"`
+	Code           *string  `json:"code,omitempty"`
 }
 
 // NewValidationError instantiates a new ValidationError object
@@ -44,12 +44,12 @@ func (o *ValidationError) GetNonFieldErrors() []string {
 		var ret []string
 		return ret
 	}
-	return *o.NonFieldErrors
+	return o.NonFieldErrors
 }
 
 // GetNonFieldErrorsOk returns a tuple with the NonFieldErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ValidationError) GetNonFieldErrorsOk() (*[]string, bool) {
+func (o *ValidationError) GetNonFieldErrorsOk() ([]string, bool) {
 	if o == nil || o.NonFieldErrors == nil {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *ValidationError) HasNonFieldErrors() bool {
 
 // SetNonFieldErrors gets a reference to the given []string and assigns it to the NonFieldErrors field.
 func (o *ValidationError) SetNonFieldErrors(v []string) {
-	o.NonFieldErrors = &v
+	o.NonFieldErrors = v
 }
 
 // GetCode returns the Code field value if set, zero value otherwise.

@@ -18,12 +18,12 @@ import (
 
 // Reputation Reputation Serializer
 type Reputation struct {
-	Pk         *string                 `json:"pk,omitempty"`
-	Identifier string                  `json:"identifier"`
-	Ip         string                  `json:"ip"`
-	IpGeoData  *map[string]interface{} `json:"ip_geo_data,omitempty"`
-	Score      *int64                  `json:"score,omitempty"`
-	Updated    time.Time               `json:"updated"`
+	Pk         *string                `json:"pk,omitempty"`
+	Identifier string                 `json:"identifier"`
+	Ip         string                 `json:"ip"`
+	IpGeoData  map[string]interface{} `json:"ip_geo_data,omitempty"`
+	Score      *int64                 `json:"score,omitempty"`
+	Updated    time.Time              `json:"updated"`
 }
 
 // NewReputation instantiates a new Reputation object
@@ -132,12 +132,12 @@ func (o *Reputation) GetIpGeoData() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return *o.IpGeoData
+	return o.IpGeoData
 }
 
 // GetIpGeoDataOk returns a tuple with the IpGeoData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Reputation) GetIpGeoDataOk() (*map[string]interface{}, bool) {
+func (o *Reputation) GetIpGeoDataOk() (map[string]interface{}, bool) {
 	if o == nil || o.IpGeoData == nil {
 		return nil, false
 	}
@@ -155,7 +155,7 @@ func (o *Reputation) HasIpGeoData() bool {
 
 // SetIpGeoData gets a reference to the given map[string]interface{} and assigns it to the IpGeoData field.
 func (o *Reputation) SetIpGeoData(v map[string]interface{}) {
-	o.IpGeoData = &v
+	o.IpGeoData = v
 }
 
 // GetScore returns the Score field value if set, zero value otherwise.

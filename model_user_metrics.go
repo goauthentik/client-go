@@ -54,11 +54,11 @@ func (o *UserMetrics) GetLoginsPer1h() []Coordinate {
 
 // GetLoginsPer1hOk returns a tuple with the LoginsPer1h field value
 // and a boolean to check if the value has been set.
-func (o *UserMetrics) GetLoginsPer1hOk() (*[]Coordinate, bool) {
+func (o *UserMetrics) GetLoginsPer1hOk() ([]Coordinate, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.LoginsPer1h, true
+	return o.LoginsPer1h, true
 }
 
 // SetLoginsPer1h sets field value
@@ -78,11 +78,11 @@ func (o *UserMetrics) GetLoginsFailedPer1h() []Coordinate {
 
 // GetLoginsFailedPer1hOk returns a tuple with the LoginsFailedPer1h field value
 // and a boolean to check if the value has been set.
-func (o *UserMetrics) GetLoginsFailedPer1hOk() (*[]Coordinate, bool) {
+func (o *UserMetrics) GetLoginsFailedPer1hOk() ([]Coordinate, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.LoginsFailedPer1h, true
+	return o.LoginsFailedPer1h, true
 }
 
 // SetLoginsFailedPer1h sets field value
@@ -102,11 +102,11 @@ func (o *UserMetrics) GetAuthorizationsPer1h() []Coordinate {
 
 // GetAuthorizationsPer1hOk returns a tuple with the AuthorizationsPer1h field value
 // and a boolean to check if the value has been set.
-func (o *UserMetrics) GetAuthorizationsPer1hOk() (*[]Coordinate, bool) {
+func (o *UserMetrics) GetAuthorizationsPer1hOk() ([]Coordinate, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AuthorizationsPer1h, true
+	return o.AuthorizationsPer1h, true
 }
 
 // SetAuthorizationsPer1h sets field value

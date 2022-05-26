@@ -87,11 +87,11 @@ func (o *AuthenticatorWebAuthnChallengeResponseRequest) GetResponse() map[string
 
 // GetResponseOk returns a tuple with the Response field value
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorWebAuthnChallengeResponseRequest) GetResponseOk() (*map[string]interface{}, bool) {
+func (o *AuthenticatorWebAuthnChallengeResponseRequest) GetResponseOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Response, true
+	return o.Response, true
 }
 
 // SetResponse sets field value

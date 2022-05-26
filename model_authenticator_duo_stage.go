@@ -17,13 +17,13 @@ import (
 
 // AuthenticatorDuoStage AuthenticatorDuoStage Serializer
 type AuthenticatorDuoStage struct {
-	Pk                string  `json:"pk"`
-	Name              string  `json:"name"`
-	Component         string  `json:"component"`
-	VerboseName       string  `json:"verbose_name"`
-	VerboseNamePlural string  `json:"verbose_name_plural"`
-	MetaModelName     string  `json:"meta_model_name"`
-	FlowSet           *[]Flow `json:"flow_set,omitempty"`
+	Pk                string `json:"pk"`
+	Name              string `json:"name"`
+	Component         string `json:"component"`
+	VerboseName       string `json:"verbose_name"`
+	VerboseNamePlural string `json:"verbose_name_plural"`
+	MetaModelName     string `json:"meta_model_name"`
+	FlowSet           []Flow `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
 	ClientId      string         `json:"client_id"`
@@ -205,12 +205,12 @@ func (o *AuthenticatorDuoStage) GetFlowSet() []Flow {
 		var ret []Flow
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorDuoStage) GetFlowSetOk() (*[]Flow, bool) {
+func (o *AuthenticatorDuoStage) GetFlowSetOk() ([]Flow, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -228,7 +228,7 @@ func (o *AuthenticatorDuoStage) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []Flow and assigns it to the FlowSet field.
 func (o *AuthenticatorDuoStage) SetFlowSet(v []Flow) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).

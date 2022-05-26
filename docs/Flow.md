@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Slug** | **string** | Visible in the URL. | 
 **Title** | **string** | Shown as the Title in Flow pages. | 
-**Designation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. | 
+**Designation** | [**NullableFlowDesignationEnum**](FlowDesignationEnum.md) | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. | 
 **Background** | **string** |  | [readonly] 
 **Stages** | **[]string** |  | [readonly] 
 **Policies** | **[]string** |  | [readonly] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewFlow
 
-`func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation FlowDesignationEnum, background string, stages []string, policies []string, cacheCount int32, exportUrl string, ) *Flow`
+`func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation NullableFlowDesignationEnum, background string, stages []string, policies []string, cacheCount int32, exportUrl string, ) *Flow`
 
 NewFlow instantiates a new Flow object
 This constructor will assign default values to properties that have it defined,
@@ -158,6 +158,16 @@ and a boolean to check if the value has been set.
 SetDesignation sets Designation field to given value.
 
 
+### SetDesignationNil
+
+`func (o *Flow) SetDesignationNil(b bool)`
+
+ SetDesignationNil sets the value for Designation to be an explicit nil
+
+### UnsetDesignation
+`func (o *Flow) UnsetDesignation()`
+
+UnsetDesignation ensures that no value is present for Designation, not even an explicit nil
 ### GetBackground
 
 `func (o *Flow) GetBackground() string`

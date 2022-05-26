@@ -17,15 +17,15 @@ import (
 
 // IdentificationStage IdentificationStage Serializer
 type IdentificationStage struct {
-	Pk                string  `json:"pk"`
-	Name              string  `json:"name"`
-	Component         string  `json:"component"`
-	VerboseName       string  `json:"verbose_name"`
-	VerboseNamePlural string  `json:"verbose_name_plural"`
-	MetaModelName     string  `json:"meta_model_name"`
-	FlowSet           *[]Flow `json:"flow_set,omitempty"`
+	Pk                string `json:"pk"`
+	Name              string `json:"name"`
+	Component         string `json:"component"`
+	VerboseName       string `json:"verbose_name"`
+	VerboseNamePlural string `json:"verbose_name_plural"`
+	MetaModelName     string `json:"meta_model_name"`
+	FlowSet           []Flow `json:"flow_set,omitempty"`
 	// Fields of the user object to match against. (Hold shift to select multiple options)
-	UserFields *[]UserFieldsEnum `json:"user_fields,omitempty"`
+	UserFields []UserFieldsEnum `json:"user_fields,omitempty"`
 	// When set, shows a password field, instead of showing the password field as seaprate step.
 	PasswordStage NullableString `json:"password_stage,omitempty"`
 	// When enabled, user fields are matched regardless of their casing.
@@ -39,8 +39,8 @@ type IdentificationStage struct {
 	// Optional passwordless flow, which is linked at the bottom of the page.
 	PasswordlessFlow NullableString `json:"passwordless_flow,omitempty"`
 	// Specify which sources should be shown.
-	Sources          *[]string `json:"sources,omitempty"`
-	ShowSourceLabels *bool     `json:"show_source_labels,omitempty"`
+	Sources          []string `json:"sources,omitempty"`
+	ShowSourceLabels *bool    `json:"show_source_labels,omitempty"`
 }
 
 // NewIdentificationStage instantiates a new IdentificationStage object
@@ -216,12 +216,12 @@ func (o *IdentificationStage) GetFlowSet() []Flow {
 		var ret []Flow
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentificationStage) GetFlowSetOk() (*[]Flow, bool) {
+func (o *IdentificationStage) GetFlowSetOk() ([]Flow, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -239,7 +239,7 @@ func (o *IdentificationStage) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []Flow and assigns it to the FlowSet field.
 func (o *IdentificationStage) SetFlowSet(v []Flow) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetUserFields returns the UserFields field value if set, zero value otherwise.
@@ -248,12 +248,12 @@ func (o *IdentificationStage) GetUserFields() []UserFieldsEnum {
 		var ret []UserFieldsEnum
 		return ret
 	}
-	return *o.UserFields
+	return o.UserFields
 }
 
 // GetUserFieldsOk returns a tuple with the UserFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentificationStage) GetUserFieldsOk() (*[]UserFieldsEnum, bool) {
+func (o *IdentificationStage) GetUserFieldsOk() ([]UserFieldsEnum, bool) {
 	if o == nil || o.UserFields == nil {
 		return nil, false
 	}
@@ -271,7 +271,7 @@ func (o *IdentificationStage) HasUserFields() bool {
 
 // SetUserFields gets a reference to the given []UserFieldsEnum and assigns it to the UserFields field.
 func (o *IdentificationStage) SetUserFields(v []UserFieldsEnum) {
-	o.UserFields = &v
+	o.UserFields = v
 }
 
 // GetPasswordStage returns the PasswordStage field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -516,12 +516,12 @@ func (o *IdentificationStage) GetSources() []string {
 		var ret []string
 		return ret
 	}
-	return *o.Sources
+	return o.Sources
 }
 
 // GetSourcesOk returns a tuple with the Sources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentificationStage) GetSourcesOk() (*[]string, bool) {
+func (o *IdentificationStage) GetSourcesOk() ([]string, bool) {
 	if o == nil || o.Sources == nil {
 		return nil, false
 	}
@@ -539,7 +539,7 @@ func (o *IdentificationStage) HasSources() bool {
 
 // SetSources gets a reference to the given []string and assigns it to the Sources field.
 func (o *IdentificationStage) SetSources(v []string) {
-	o.Sources = &v
+	o.Sources = v
 }
 
 // GetShowSourceLabels returns the ShowSourceLabels field value if set, zero value otherwise.

@@ -13,30 +13,25 @@ package api
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"os"
 	"reflect"
 	"strings"
-)
-
-// Linger please
-var (
-	_ _context.Context
 )
 
 // ProvidersApiService ProvidersApi service
 type ProvidersApiService service
 
 type ApiProvidersAllDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersAllDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiProvidersAllDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ProvidersAllDestroyExecute(r)
 }
 
@@ -45,11 +40,11 @@ ProvidersAllDestroy Method for ProvidersAllDestroy
 
 Provider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this provider.
  @return ApiProvidersAllDestroyRequest
 */
-func (a *ProvidersApiService) ProvidersAllDestroy(ctx _context.Context, id int32) ApiProvidersAllDestroyRequest {
+func (a *ProvidersApiService) ProvidersAllDestroy(ctx context.Context, id int32) ApiProvidersAllDestroyRequest {
 	return ApiProvidersAllDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -58,26 +53,24 @@ func (a *ProvidersApiService) ProvidersAllDestroy(ctx _context.Context, id int32
 }
 
 // Execute executes the request
-func (a *ProvidersApiService) ProvidersAllDestroyExecute(r ApiProvidersAllDestroyRequest) (*_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersAllDestroyExecute(r ApiProvidersAllDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersAllDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -110,7 +103,7 @@ func (a *ProvidersApiService) ProvidersAllDestroyExecute(r ApiProvidersAllDestro
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -120,15 +113,15 @@ func (a *ProvidersApiService) ProvidersAllDestroyExecute(r ApiProvidersAllDestro
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -139,7 +132,7 @@ func (a *ProvidersApiService) ProvidersAllDestroyExecute(r ApiProvidersAllDestro
 }
 
 type ApiProvidersAllListRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *ProvidersApiService
 	applicationIsnull *bool
 	ordering          *string
@@ -177,7 +170,7 @@ func (r ApiProvidersAllListRequest) Search(search string) ApiProvidersAllListReq
 	return r
 }
 
-func (r ApiProvidersAllListRequest) Execute() (PaginatedProviderList, *_nethttp.Response, error) {
+func (r ApiProvidersAllListRequest) Execute() (*PaginatedProviderList, *http.Response, error) {
 	return r.ApiService.ProvidersAllListExecute(r)
 }
 
@@ -186,10 +179,10 @@ ProvidersAllList Method for ProvidersAllList
 
 Provider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProvidersAllListRequest
 */
-func (a *ProvidersApiService) ProvidersAllList(ctx _context.Context) ApiProvidersAllListRequest {
+func (a *ProvidersApiService) ProvidersAllList(ctx context.Context) ApiProvidersAllListRequest {
 	return ApiProvidersAllListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -198,26 +191,24 @@ func (a *ProvidersApiService) ProvidersAllList(ctx _context.Context) ApiProvider
 
 // Execute executes the request
 //  @return PaginatedProviderList
-func (a *ProvidersApiService) ProvidersAllListExecute(r ApiProvidersAllListRequest) (PaginatedProviderList, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersAllListExecute(r ApiProvidersAllListRequest) (*PaginatedProviderList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedProviderList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedProviderList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersAllList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/all/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.applicationIsnull != nil {
 		localVarQueryParams.Add("application__isnull", parameterToString(*r.applicationIsnull, ""))
@@ -265,7 +256,7 @@ func (a *ProvidersApiService) ProvidersAllListExecute(r ApiProvidersAllListReque
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -275,15 +266,15 @@ func (a *ProvidersApiService) ProvidersAllListExecute(r ApiProvidersAllListReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -292,7 +283,7 @@ func (a *ProvidersApiService) ProvidersAllListExecute(r ApiProvidersAllListReque
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -303,12 +294,12 @@ func (a *ProvidersApiService) ProvidersAllListExecute(r ApiProvidersAllListReque
 }
 
 type ApiProvidersAllRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersAllRetrieveRequest) Execute() (Provider, *_nethttp.Response, error) {
+func (r ApiProvidersAllRetrieveRequest) Execute() (*Provider, *http.Response, error) {
 	return r.ApiService.ProvidersAllRetrieveExecute(r)
 }
 
@@ -317,11 +308,11 @@ ProvidersAllRetrieve Method for ProvidersAllRetrieve
 
 Provider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this provider.
  @return ApiProvidersAllRetrieveRequest
 */
-func (a *ProvidersApiService) ProvidersAllRetrieve(ctx _context.Context, id int32) ApiProvidersAllRetrieveRequest {
+func (a *ProvidersApiService) ProvidersAllRetrieve(ctx context.Context, id int32) ApiProvidersAllRetrieveRequest {
 	return ApiProvidersAllRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -331,27 +322,25 @@ func (a *ProvidersApiService) ProvidersAllRetrieve(ctx _context.Context, id int3
 
 // Execute executes the request
 //  @return Provider
-func (a *ProvidersApiService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetrieveRequest) (Provider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetrieveRequest) (*Provider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Provider
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Provider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersAllRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -384,7 +373,7 @@ func (a *ProvidersApiService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetri
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -394,15 +383,15 @@ func (a *ProvidersApiService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -411,7 +400,7 @@ func (a *ProvidersApiService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetri
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -422,11 +411,11 @@ func (a *ProvidersApiService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetri
 }
 
 type ApiProvidersAllTypesListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 }
 
-func (r ApiProvidersAllTypesListRequest) Execute() ([]TypeCreate, *_nethttp.Response, error) {
+func (r ApiProvidersAllTypesListRequest) Execute() ([]TypeCreate, *http.Response, error) {
 	return r.ApiService.ProvidersAllTypesListExecute(r)
 }
 
@@ -435,10 +424,10 @@ ProvidersAllTypesList Method for ProvidersAllTypesList
 
 Get all creatable provider types
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProvidersAllTypesListRequest
 */
-func (a *ProvidersApiService) ProvidersAllTypesList(ctx _context.Context) ApiProvidersAllTypesListRequest {
+func (a *ProvidersApiService) ProvidersAllTypesList(ctx context.Context) ApiProvidersAllTypesListRequest {
 	return ApiProvidersAllTypesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -447,26 +436,24 @@ func (a *ProvidersApiService) ProvidersAllTypesList(ctx _context.Context) ApiPro
 
 // Execute executes the request
 //  @return []TypeCreate
-func (a *ProvidersApiService) ProvidersAllTypesListExecute(r ApiProvidersAllTypesListRequest) ([]TypeCreate, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersAllTypesListExecute(r ApiProvidersAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []TypeCreate
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []TypeCreate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersAllTypesList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/all/types/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -499,7 +486,7 @@ func (a *ProvidersApiService) ProvidersAllTypesListExecute(r ApiProvidersAllType
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -509,15 +496,15 @@ func (a *ProvidersApiService) ProvidersAllTypesListExecute(r ApiProvidersAllType
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -526,7 +513,7 @@ func (a *ProvidersApiService) ProvidersAllTypesListExecute(r ApiProvidersAllType
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -537,12 +524,12 @@ func (a *ProvidersApiService) ProvidersAllTypesListExecute(r ApiProvidersAllType
 }
 
 type ApiProvidersAllUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersAllUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiProvidersAllUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.ProvidersAllUsedByListExecute(r)
 }
 
@@ -551,11 +538,11 @@ ProvidersAllUsedByList Method for ProvidersAllUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this provider.
  @return ApiProvidersAllUsedByListRequest
 */
-func (a *ProvidersApiService) ProvidersAllUsedByList(ctx _context.Context, id int32) ApiProvidersAllUsedByListRequest {
+func (a *ProvidersApiService) ProvidersAllUsedByList(ctx context.Context, id int32) ApiProvidersAllUsedByListRequest {
 	return ApiProvidersAllUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -565,27 +552,25 @@ func (a *ProvidersApiService) ProvidersAllUsedByList(ctx _context.Context, id in
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *ProvidersApiService) ProvidersAllUsedByListExecute(r ApiProvidersAllUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersAllUsedByListExecute(r ApiProvidersAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersAllUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/all/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -618,7 +603,7 @@ func (a *ProvidersApiService) ProvidersAllUsedByListExecute(r ApiProvidersAllUse
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -628,15 +613,15 @@ func (a *ProvidersApiService) ProvidersAllUsedByListExecute(r ApiProvidersAllUse
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -645,7 +630,7 @@ func (a *ProvidersApiService) ProvidersAllUsedByListExecute(r ApiProvidersAllUse
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -656,7 +641,7 @@ func (a *ProvidersApiService) ProvidersAllUsedByListExecute(r ApiProvidersAllUse
 }
 
 type ApiProvidersLdapCreateRequest struct {
-	ctx                 _context.Context
+	ctx                 context.Context
 	ApiService          *ProvidersApiService
 	lDAPProviderRequest *LDAPProviderRequest
 }
@@ -666,7 +651,7 @@ func (r ApiProvidersLdapCreateRequest) LDAPProviderRequest(lDAPProviderRequest L
 	return r
 }
 
-func (r ApiProvidersLdapCreateRequest) Execute() (LDAPProvider, *_nethttp.Response, error) {
+func (r ApiProvidersLdapCreateRequest) Execute() (*LDAPProvider, *http.Response, error) {
 	return r.ApiService.ProvidersLdapCreateExecute(r)
 }
 
@@ -675,10 +660,10 @@ ProvidersLdapCreate Method for ProvidersLdapCreate
 
 LDAPProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProvidersLdapCreateRequest
 */
-func (a *ProvidersApiService) ProvidersLdapCreate(ctx _context.Context) ApiProvidersLdapCreateRequest {
+func (a *ProvidersApiService) ProvidersLdapCreate(ctx context.Context) ApiProvidersLdapCreateRequest {
 	return ApiProvidersLdapCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -687,26 +672,24 @@ func (a *ProvidersApiService) ProvidersLdapCreate(ctx _context.Context) ApiProvi
 
 // Execute executes the request
 //  @return LDAPProvider
-func (a *ProvidersApiService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreateRequest) (LDAPProvider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreateRequest) (*LDAPProvider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  LDAPProvider
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LDAPProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersLdapCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/ldap/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.lDAPProviderRequest == nil {
 		return localVarReturnValue, nil, reportError("lDAPProviderRequest is required and must be specified")
 	}
@@ -744,7 +727,7 @@ func (a *ProvidersApiService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreat
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -754,15 +737,15 @@ func (a *ProvidersApiService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -771,7 +754,7 @@ func (a *ProvidersApiService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreat
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -782,12 +765,12 @@ func (a *ProvidersApiService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreat
 }
 
 type ApiProvidersLdapDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersLdapDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiProvidersLdapDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ProvidersLdapDestroyExecute(r)
 }
 
@@ -796,11 +779,11 @@ ProvidersLdapDestroy Method for ProvidersLdapDestroy
 
 LDAPProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this LDAP Provider.
  @return ApiProvidersLdapDestroyRequest
 */
-func (a *ProvidersApiService) ProvidersLdapDestroy(ctx _context.Context, id int32) ApiProvidersLdapDestroyRequest {
+func (a *ProvidersApiService) ProvidersLdapDestroy(ctx context.Context, id int32) ApiProvidersLdapDestroyRequest {
 	return ApiProvidersLdapDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -809,26 +792,24 @@ func (a *ProvidersApiService) ProvidersLdapDestroy(ctx _context.Context, id int3
 }
 
 // Execute executes the request
-func (a *ProvidersApiService) ProvidersLdapDestroyExecute(r ApiProvidersLdapDestroyRequest) (*_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersLdapDestroyExecute(r ApiProvidersLdapDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersLdapDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -861,7 +842,7 @@ func (a *ProvidersApiService) ProvidersLdapDestroyExecute(r ApiProvidersLdapDest
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -871,15 +852,15 @@ func (a *ProvidersApiService) ProvidersLdapDestroyExecute(r ApiProvidersLdapDest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -890,7 +871,7 @@ func (a *ProvidersApiService) ProvidersLdapDestroyExecute(r ApiProvidersLdapDest
 }
 
 type ApiProvidersLdapListRequest struct {
-	ctx                         _context.Context
+	ctx                         context.Context
 	ApiService                  *ProvidersApiService
 	applicationIsnull           *bool
 	authorizationFlowSlugIexact *string
@@ -913,26 +894,32 @@ func (r ApiProvidersLdapListRequest) ApplicationIsnull(applicationIsnull bool) A
 	r.applicationIsnull = &applicationIsnull
 	return r
 }
+
 func (r ApiProvidersLdapListRequest) AuthorizationFlowSlugIexact(authorizationFlowSlugIexact string) ApiProvidersLdapListRequest {
 	r.authorizationFlowSlugIexact = &authorizationFlowSlugIexact
 	return r
 }
+
 func (r ApiProvidersLdapListRequest) BaseDnIexact(baseDnIexact string) ApiProvidersLdapListRequest {
 	r.baseDnIexact = &baseDnIexact
 	return r
 }
+
 func (r ApiProvidersLdapListRequest) CertificateKpUuidIexact(certificateKpUuidIexact string) ApiProvidersLdapListRequest {
 	r.certificateKpUuidIexact = &certificateKpUuidIexact
 	return r
 }
+
 func (r ApiProvidersLdapListRequest) CertificateNameIexact(certificateNameIexact string) ApiProvidersLdapListRequest {
 	r.certificateNameIexact = &certificateNameIexact
 	return r
 }
+
 func (r ApiProvidersLdapListRequest) GidStartNumberIexact(gidStartNumberIexact int32) ApiProvidersLdapListRequest {
 	r.gidStartNumberIexact = &gidStartNumberIexact
 	return r
 }
+
 func (r ApiProvidersLdapListRequest) NameIexact(nameIexact string) ApiProvidersLdapListRequest {
 	r.nameIexact = &nameIexact
 	return r
@@ -961,24 +948,28 @@ func (r ApiProvidersLdapListRequest) Search(search string) ApiProvidersLdapListR
 	r.search = &search
 	return r
 }
+
 func (r ApiProvidersLdapListRequest) SearchGroupGroupUuidIexact(searchGroupGroupUuidIexact string) ApiProvidersLdapListRequest {
 	r.searchGroupGroupUuidIexact = &searchGroupGroupUuidIexact
 	return r
 }
+
 func (r ApiProvidersLdapListRequest) SearchGroupNameIexact(searchGroupNameIexact string) ApiProvidersLdapListRequest {
 	r.searchGroupNameIexact = &searchGroupNameIexact
 	return r
 }
+
 func (r ApiProvidersLdapListRequest) TlsServerNameIexact(tlsServerNameIexact string) ApiProvidersLdapListRequest {
 	r.tlsServerNameIexact = &tlsServerNameIexact
 	return r
 }
+
 func (r ApiProvidersLdapListRequest) UidStartNumberIexact(uidStartNumberIexact int32) ApiProvidersLdapListRequest {
 	r.uidStartNumberIexact = &uidStartNumberIexact
 	return r
 }
 
-func (r ApiProvidersLdapListRequest) Execute() (PaginatedLDAPProviderList, *_nethttp.Response, error) {
+func (r ApiProvidersLdapListRequest) Execute() (*PaginatedLDAPProviderList, *http.Response, error) {
 	return r.ApiService.ProvidersLdapListExecute(r)
 }
 
@@ -987,10 +978,10 @@ ProvidersLdapList Method for ProvidersLdapList
 
 LDAPProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProvidersLdapListRequest
 */
-func (a *ProvidersApiService) ProvidersLdapList(ctx _context.Context) ApiProvidersLdapListRequest {
+func (a *ProvidersApiService) ProvidersLdapList(ctx context.Context) ApiProvidersLdapListRequest {
 	return ApiProvidersLdapListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -999,26 +990,24 @@ func (a *ProvidersApiService) ProvidersLdapList(ctx _context.Context) ApiProvide
 
 // Execute executes the request
 //  @return PaginatedLDAPProviderList
-func (a *ProvidersApiService) ProvidersLdapListExecute(r ApiProvidersLdapListRequest) (PaginatedLDAPProviderList, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersLdapListExecute(r ApiProvidersLdapListRequest) (*PaginatedLDAPProviderList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedLDAPProviderList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedLDAPProviderList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersLdapList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/ldap/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.applicationIsnull != nil {
 		localVarQueryParams.Add("application__isnull", parameterToString(*r.applicationIsnull, ""))
@@ -1096,7 +1085,7 @@ func (a *ProvidersApiService) ProvidersLdapListExecute(r ApiProvidersLdapListReq
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1106,15 +1095,15 @@ func (a *ProvidersApiService) ProvidersLdapListExecute(r ApiProvidersLdapListReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1123,7 +1112,7 @@ func (a *ProvidersApiService) ProvidersLdapListExecute(r ApiProvidersLdapListReq
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1134,7 +1123,7 @@ func (a *ProvidersApiService) ProvidersLdapListExecute(r ApiProvidersLdapListReq
 }
 
 type ApiProvidersLdapPartialUpdateRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *ProvidersApiService
 	id                         int32
 	patchedLDAPProviderRequest *PatchedLDAPProviderRequest
@@ -1145,7 +1134,7 @@ func (r ApiProvidersLdapPartialUpdateRequest) PatchedLDAPProviderRequest(patched
 	return r
 }
 
-func (r ApiProvidersLdapPartialUpdateRequest) Execute() (LDAPProvider, *_nethttp.Response, error) {
+func (r ApiProvidersLdapPartialUpdateRequest) Execute() (*LDAPProvider, *http.Response, error) {
 	return r.ApiService.ProvidersLdapPartialUpdateExecute(r)
 }
 
@@ -1154,11 +1143,11 @@ ProvidersLdapPartialUpdate Method for ProvidersLdapPartialUpdate
 
 LDAPProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this LDAP Provider.
  @return ApiProvidersLdapPartialUpdateRequest
 */
-func (a *ProvidersApiService) ProvidersLdapPartialUpdate(ctx _context.Context, id int32) ApiProvidersLdapPartialUpdateRequest {
+func (a *ProvidersApiService) ProvidersLdapPartialUpdate(ctx context.Context, id int32) ApiProvidersLdapPartialUpdateRequest {
 	return ApiProvidersLdapPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1168,27 +1157,25 @@ func (a *ProvidersApiService) ProvidersLdapPartialUpdate(ctx _context.Context, i
 
 // Execute executes the request
 //  @return LDAPProvider
-func (a *ProvidersApiService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLdapPartialUpdateRequest) (LDAPProvider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLdapPartialUpdateRequest) (*LDAPProvider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  LDAPProvider
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LDAPProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersLdapPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1223,7 +1210,7 @@ func (a *ProvidersApiService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLd
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1233,15 +1220,15 @@ func (a *ProvidersApiService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1250,7 +1237,7 @@ func (a *ProvidersApiService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLd
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1261,12 +1248,12 @@ func (a *ProvidersApiService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLd
 }
 
 type ApiProvidersLdapRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersLdapRetrieveRequest) Execute() (LDAPProvider, *_nethttp.Response, error) {
+func (r ApiProvidersLdapRetrieveRequest) Execute() (*LDAPProvider, *http.Response, error) {
 	return r.ApiService.ProvidersLdapRetrieveExecute(r)
 }
 
@@ -1275,11 +1262,11 @@ ProvidersLdapRetrieve Method for ProvidersLdapRetrieve
 
 LDAPProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this LDAP Provider.
  @return ApiProvidersLdapRetrieveRequest
 */
-func (a *ProvidersApiService) ProvidersLdapRetrieve(ctx _context.Context, id int32) ApiProvidersLdapRetrieveRequest {
+func (a *ProvidersApiService) ProvidersLdapRetrieve(ctx context.Context, id int32) ApiProvidersLdapRetrieveRequest {
 	return ApiProvidersLdapRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1289,27 +1276,25 @@ func (a *ProvidersApiService) ProvidersLdapRetrieve(ctx _context.Context, id int
 
 // Execute executes the request
 //  @return LDAPProvider
-func (a *ProvidersApiService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRetrieveRequest) (LDAPProvider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRetrieveRequest) (*LDAPProvider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  LDAPProvider
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LDAPProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersLdapRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1342,7 +1327,7 @@ func (a *ProvidersApiService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRet
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1352,15 +1337,15 @@ func (a *ProvidersApiService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1369,7 +1354,7 @@ func (a *ProvidersApiService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRet
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1380,7 +1365,7 @@ func (a *ProvidersApiService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRet
 }
 
 type ApiProvidersLdapUpdateRequest struct {
-	ctx                 _context.Context
+	ctx                 context.Context
 	ApiService          *ProvidersApiService
 	id                  int32
 	lDAPProviderRequest *LDAPProviderRequest
@@ -1391,7 +1376,7 @@ func (r ApiProvidersLdapUpdateRequest) LDAPProviderRequest(lDAPProviderRequest L
 	return r
 }
 
-func (r ApiProvidersLdapUpdateRequest) Execute() (LDAPProvider, *_nethttp.Response, error) {
+func (r ApiProvidersLdapUpdateRequest) Execute() (*LDAPProvider, *http.Response, error) {
 	return r.ApiService.ProvidersLdapUpdateExecute(r)
 }
 
@@ -1400,11 +1385,11 @@ ProvidersLdapUpdate Method for ProvidersLdapUpdate
 
 LDAPProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this LDAP Provider.
  @return ApiProvidersLdapUpdateRequest
 */
-func (a *ProvidersApiService) ProvidersLdapUpdate(ctx _context.Context, id int32) ApiProvidersLdapUpdateRequest {
+func (a *ProvidersApiService) ProvidersLdapUpdate(ctx context.Context, id int32) ApiProvidersLdapUpdateRequest {
 	return ApiProvidersLdapUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1414,27 +1399,25 @@ func (a *ProvidersApiService) ProvidersLdapUpdate(ctx _context.Context, id int32
 
 // Execute executes the request
 //  @return LDAPProvider
-func (a *ProvidersApiService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdateRequest) (LDAPProvider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdateRequest) (*LDAPProvider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  LDAPProvider
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LDAPProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersLdapUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.lDAPProviderRequest == nil {
 		return localVarReturnValue, nil, reportError("lDAPProviderRequest is required and must be specified")
 	}
@@ -1472,7 +1455,7 @@ func (a *ProvidersApiService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdat
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1482,15 +1465,15 @@ func (a *ProvidersApiService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1499,7 +1482,7 @@ func (a *ProvidersApiService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdat
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1510,12 +1493,12 @@ func (a *ProvidersApiService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdat
 }
 
 type ApiProvidersLdapUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersLdapUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiProvidersLdapUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.ProvidersLdapUsedByListExecute(r)
 }
 
@@ -1524,11 +1507,11 @@ ProvidersLdapUsedByList Method for ProvidersLdapUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this LDAP Provider.
  @return ApiProvidersLdapUsedByListRequest
 */
-func (a *ProvidersApiService) ProvidersLdapUsedByList(ctx _context.Context, id int32) ApiProvidersLdapUsedByListRequest {
+func (a *ProvidersApiService) ProvidersLdapUsedByList(ctx context.Context, id int32) ApiProvidersLdapUsedByListRequest {
 	return ApiProvidersLdapUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1538,27 +1521,25 @@ func (a *ProvidersApiService) ProvidersLdapUsedByList(ctx _context.Context, id i
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *ProvidersApiService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersLdapUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/ldap/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1591,7 +1572,7 @@ func (a *ProvidersApiService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapU
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1601,15 +1582,15 @@ func (a *ProvidersApiService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapU
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1618,7 +1599,7 @@ func (a *ProvidersApiService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapU
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1629,7 +1610,7 @@ func (a *ProvidersApiService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapU
 }
 
 type ApiProvidersOauth2CreateRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *ProvidersApiService
 	oAuth2ProviderRequest *OAuth2ProviderRequest
 }
@@ -1639,7 +1620,7 @@ func (r ApiProvidersOauth2CreateRequest) OAuth2ProviderRequest(oAuth2ProviderReq
 	return r
 }
 
-func (r ApiProvidersOauth2CreateRequest) Execute() (OAuth2Provider, *_nethttp.Response, error) {
+func (r ApiProvidersOauth2CreateRequest) Execute() (*OAuth2Provider, *http.Response, error) {
 	return r.ApiService.ProvidersOauth2CreateExecute(r)
 }
 
@@ -1648,10 +1629,10 @@ ProvidersOauth2Create Method for ProvidersOauth2Create
 
 OAuth2Provider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProvidersOauth2CreateRequest
 */
-func (a *ProvidersApiService) ProvidersOauth2Create(ctx _context.Context) ApiProvidersOauth2CreateRequest {
+func (a *ProvidersApiService) ProvidersOauth2Create(ctx context.Context) ApiProvidersOauth2CreateRequest {
 	return ApiProvidersOauth2CreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1660,26 +1641,24 @@ func (a *ProvidersApiService) ProvidersOauth2Create(ctx _context.Context) ApiPro
 
 // Execute executes the request
 //  @return OAuth2Provider
-func (a *ProvidersApiService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2CreateRequest) (OAuth2Provider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2CreateRequest) (*OAuth2Provider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  OAuth2Provider
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *OAuth2Provider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2Create")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.oAuth2ProviderRequest == nil {
 		return localVarReturnValue, nil, reportError("oAuth2ProviderRequest is required and must be specified")
 	}
@@ -1717,7 +1696,7 @@ func (a *ProvidersApiService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2C
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1727,15 +1706,15 @@ func (a *ProvidersApiService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2C
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1744,7 +1723,7 @@ func (a *ProvidersApiService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2C
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1755,12 +1734,12 @@ func (a *ProvidersApiService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2C
 }
 
 type ApiProvidersOauth2DestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersOauth2DestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiProvidersOauth2DestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ProvidersOauth2DestroyExecute(r)
 }
 
@@ -1769,11 +1748,11 @@ ProvidersOauth2Destroy Method for ProvidersOauth2Destroy
 
 OAuth2Provider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this OAuth2/OpenID Provider.
  @return ApiProvidersOauth2DestroyRequest
 */
-func (a *ProvidersApiService) ProvidersOauth2Destroy(ctx _context.Context, id int32) ApiProvidersOauth2DestroyRequest {
+func (a *ProvidersApiService) ProvidersOauth2Destroy(ctx context.Context, id int32) ApiProvidersOauth2DestroyRequest {
 	return ApiProvidersOauth2DestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1782,26 +1761,24 @@ func (a *ProvidersApiService) ProvidersOauth2Destroy(ctx _context.Context, id in
 }
 
 // Execute executes the request
-func (a *ProvidersApiService) ProvidersOauth2DestroyExecute(r ApiProvidersOauth2DestroyRequest) (*_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2DestroyExecute(r ApiProvidersOauth2DestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2Destroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1834,7 +1811,7 @@ func (a *ProvidersApiService) ProvidersOauth2DestroyExecute(r ApiProvidersOauth2
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -1844,15 +1821,15 @@ func (a *ProvidersApiService) ProvidersOauth2DestroyExecute(r ApiProvidersOauth2
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1863,7 +1840,7 @@ func (a *ProvidersApiService) ProvidersOauth2DestroyExecute(r ApiProvidersOauth2
 }
 
 type ApiProvidersOauth2ListRequest struct {
-	ctx                    _context.Context
+	ctx                    context.Context
 	ApiService             *ProvidersApiService
 	accessCodeValidity     *string
 	application            *string
@@ -1888,14 +1865,17 @@ func (r ApiProvidersOauth2ListRequest) AccessCodeValidity(accessCodeValidity str
 	r.accessCodeValidity = &accessCodeValidity
 	return r
 }
+
 func (r ApiProvidersOauth2ListRequest) Application(application string) ApiProvidersOauth2ListRequest {
 	r.application = &application
 	return r
 }
+
 func (r ApiProvidersOauth2ListRequest) AuthorizationFlow(authorizationFlow string) ApiProvidersOauth2ListRequest {
 	r.authorizationFlow = &authorizationFlow
 	return r
 }
+
 func (r ApiProvidersOauth2ListRequest) ClientId(clientId string) ApiProvidersOauth2ListRequest {
 	r.clientId = &clientId
 	return r
@@ -1906,6 +1886,7 @@ func (r ApiProvidersOauth2ListRequest) ClientType(clientType string) ApiProvider
 	r.clientType = &clientType
 	return r
 }
+
 func (r ApiProvidersOauth2ListRequest) IncludeClaimsInIdToken(includeClaimsInIdToken bool) ApiProvidersOauth2ListRequest {
 	r.includeClaimsInIdToken = &includeClaimsInIdToken
 	return r
@@ -1916,6 +1897,7 @@ func (r ApiProvidersOauth2ListRequest) IssuerMode(issuerMode string) ApiProvider
 	r.issuerMode = &issuerMode
 	return r
 }
+
 func (r ApiProvidersOauth2ListRequest) Name(name string) ApiProvidersOauth2ListRequest {
 	r.name = &name
 	return r
@@ -1938,10 +1920,12 @@ func (r ApiProvidersOauth2ListRequest) PageSize(pageSize int32) ApiProvidersOaut
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiProvidersOauth2ListRequest) PropertyMappings(propertyMappings []string) ApiProvidersOauth2ListRequest {
 	r.propertyMappings = &propertyMappings
 	return r
 }
+
 func (r ApiProvidersOauth2ListRequest) RedirectUris(redirectUris string) ApiProvidersOauth2ListRequest {
 	r.redirectUris = &redirectUris
 	return r
@@ -1952,6 +1936,7 @@ func (r ApiProvidersOauth2ListRequest) Search(search string) ApiProvidersOauth2L
 	r.search = &search
 	return r
 }
+
 func (r ApiProvidersOauth2ListRequest) SigningKey(signingKey string) ApiProvidersOauth2ListRequest {
 	r.signingKey = &signingKey
 	return r
@@ -1962,12 +1947,13 @@ func (r ApiProvidersOauth2ListRequest) SubMode(subMode string) ApiProvidersOauth
 	r.subMode = &subMode
 	return r
 }
+
 func (r ApiProvidersOauth2ListRequest) TokenValidity(tokenValidity string) ApiProvidersOauth2ListRequest {
 	r.tokenValidity = &tokenValidity
 	return r
 }
 
-func (r ApiProvidersOauth2ListRequest) Execute() (PaginatedOAuth2ProviderList, *_nethttp.Response, error) {
+func (r ApiProvidersOauth2ListRequest) Execute() (*PaginatedOAuth2ProviderList, *http.Response, error) {
 	return r.ApiService.ProvidersOauth2ListExecute(r)
 }
 
@@ -1976,10 +1962,10 @@ ProvidersOauth2List Method for ProvidersOauth2List
 
 OAuth2Provider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProvidersOauth2ListRequest
 */
-func (a *ProvidersApiService) ProvidersOauth2List(ctx _context.Context) ApiProvidersOauth2ListRequest {
+func (a *ProvidersApiService) ProvidersOauth2List(ctx context.Context) ApiProvidersOauth2ListRequest {
 	return ApiProvidersOauth2ListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1988,26 +1974,24 @@ func (a *ProvidersApiService) ProvidersOauth2List(ctx _context.Context) ApiProvi
 
 // Execute executes the request
 //  @return PaginatedOAuth2ProviderList
-func (a *ProvidersApiService) ProvidersOauth2ListExecute(r ApiProvidersOauth2ListRequest) (PaginatedOAuth2ProviderList, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2ListExecute(r ApiProvidersOauth2ListRequest) (*PaginatedOAuth2ProviderList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedOAuth2ProviderList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedOAuth2ProviderList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2List")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.accessCodeValidity != nil {
 		localVarQueryParams.Add("access_code_validity", parameterToString(*r.accessCodeValidity, ""))
@@ -2099,7 +2083,7 @@ func (a *ProvidersApiService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2109,15 +2093,15 @@ func (a *ProvidersApiService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2126,7 +2110,7 @@ func (a *ProvidersApiService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2137,7 +2121,7 @@ func (a *ProvidersApiService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 }
 
 type ApiProvidersOauth2PartialUpdateRequest struct {
-	ctx                          _context.Context
+	ctx                          context.Context
 	ApiService                   *ProvidersApiService
 	id                           int32
 	patchedOAuth2ProviderRequest *PatchedOAuth2ProviderRequest
@@ -2148,7 +2132,7 @@ func (r ApiProvidersOauth2PartialUpdateRequest) PatchedOAuth2ProviderRequest(pat
 	return r
 }
 
-func (r ApiProvidersOauth2PartialUpdateRequest) Execute() (OAuth2Provider, *_nethttp.Response, error) {
+func (r ApiProvidersOauth2PartialUpdateRequest) Execute() (*OAuth2Provider, *http.Response, error) {
 	return r.ApiService.ProvidersOauth2PartialUpdateExecute(r)
 }
 
@@ -2157,11 +2141,11 @@ ProvidersOauth2PartialUpdate Method for ProvidersOauth2PartialUpdate
 
 OAuth2Provider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this OAuth2/OpenID Provider.
  @return ApiProvidersOauth2PartialUpdateRequest
 */
-func (a *ProvidersApiService) ProvidersOauth2PartialUpdate(ctx _context.Context, id int32) ApiProvidersOauth2PartialUpdateRequest {
+func (a *ProvidersApiService) ProvidersOauth2PartialUpdate(ctx context.Context, id int32) ApiProvidersOauth2PartialUpdateRequest {
 	return ApiProvidersOauth2PartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2171,27 +2155,25 @@ func (a *ProvidersApiService) ProvidersOauth2PartialUpdate(ctx _context.Context,
 
 // Execute executes the request
 //  @return OAuth2Provider
-func (a *ProvidersApiService) ProvidersOauth2PartialUpdateExecute(r ApiProvidersOauth2PartialUpdateRequest) (OAuth2Provider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2PartialUpdateExecute(r ApiProvidersOauth2PartialUpdateRequest) (*OAuth2Provider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  OAuth2Provider
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *OAuth2Provider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2PartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2226,7 +2208,7 @@ func (a *ProvidersApiService) ProvidersOauth2PartialUpdateExecute(r ApiProviders
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2236,15 +2218,15 @@ func (a *ProvidersApiService) ProvidersOauth2PartialUpdateExecute(r ApiProviders
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2253,7 +2235,7 @@ func (a *ProvidersApiService) ProvidersOauth2PartialUpdateExecute(r ApiProviders
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2264,12 +2246,12 @@ func (a *ProvidersApiService) ProvidersOauth2PartialUpdateExecute(r ApiProviders
 }
 
 type ApiProvidersOauth2RetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersOauth2RetrieveRequest) Execute() (OAuth2Provider, *_nethttp.Response, error) {
+func (r ApiProvidersOauth2RetrieveRequest) Execute() (*OAuth2Provider, *http.Response, error) {
 	return r.ApiService.ProvidersOauth2RetrieveExecute(r)
 }
 
@@ -2278,11 +2260,11 @@ ProvidersOauth2Retrieve Method for ProvidersOauth2Retrieve
 
 OAuth2Provider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this OAuth2/OpenID Provider.
  @return ApiProvidersOauth2RetrieveRequest
 */
-func (a *ProvidersApiService) ProvidersOauth2Retrieve(ctx _context.Context, id int32) ApiProvidersOauth2RetrieveRequest {
+func (a *ProvidersApiService) ProvidersOauth2Retrieve(ctx context.Context, id int32) ApiProvidersOauth2RetrieveRequest {
 	return ApiProvidersOauth2RetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2292,27 +2274,25 @@ func (a *ProvidersApiService) ProvidersOauth2Retrieve(ctx _context.Context, id i
 
 // Execute executes the request
 //  @return OAuth2Provider
-func (a *ProvidersApiService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth2RetrieveRequest) (OAuth2Provider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth2RetrieveRequest) (*OAuth2Provider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  OAuth2Provider
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *OAuth2Provider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2Retrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2345,7 +2325,7 @@ func (a *ProvidersApiService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2355,15 +2335,15 @@ func (a *ProvidersApiService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2372,7 +2352,7 @@ func (a *ProvidersApiService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2383,12 +2363,12 @@ func (a *ProvidersApiService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth
 }
 
 type ApiProvidersOauth2SetupUrlsRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersOauth2SetupUrlsRetrieveRequest) Execute() (OAuth2ProviderSetupURLs, *_nethttp.Response, error) {
+func (r ApiProvidersOauth2SetupUrlsRetrieveRequest) Execute() (*OAuth2ProviderSetupURLs, *http.Response, error) {
 	return r.ApiService.ProvidersOauth2SetupUrlsRetrieveExecute(r)
 }
 
@@ -2397,11 +2377,11 @@ ProvidersOauth2SetupUrlsRetrieve Method for ProvidersOauth2SetupUrlsRetrieve
 
 Get Providers setup URLs
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this OAuth2/OpenID Provider.
  @return ApiProvidersOauth2SetupUrlsRetrieveRequest
 */
-func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieve(ctx _context.Context, id int32) ApiProvidersOauth2SetupUrlsRetrieveRequest {
+func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieve(ctx context.Context, id int32) ApiProvidersOauth2SetupUrlsRetrieveRequest {
 	return ApiProvidersOauth2SetupUrlsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2411,27 +2391,25 @@ func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieve(ctx _context.Cont
 
 // Execute executes the request
 //  @return OAuth2ProviderSetupURLs
-func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvidersOauth2SetupUrlsRetrieveRequest) (OAuth2ProviderSetupURLs, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvidersOauth2SetupUrlsRetrieveRequest) (*OAuth2ProviderSetupURLs, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  OAuth2ProviderSetupURLs
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *OAuth2ProviderSetupURLs
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2SetupUrlsRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/{id}/setup_urls/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2464,7 +2442,7 @@ func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvi
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2474,15 +2452,15 @@ func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2491,7 +2469,7 @@ func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2502,7 +2480,7 @@ func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvi
 }
 
 type ApiProvidersOauth2UpdateRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *ProvidersApiService
 	id                    int32
 	oAuth2ProviderRequest *OAuth2ProviderRequest
@@ -2513,7 +2491,7 @@ func (r ApiProvidersOauth2UpdateRequest) OAuth2ProviderRequest(oAuth2ProviderReq
 	return r
 }
 
-func (r ApiProvidersOauth2UpdateRequest) Execute() (OAuth2Provider, *_nethttp.Response, error) {
+func (r ApiProvidersOauth2UpdateRequest) Execute() (*OAuth2Provider, *http.Response, error) {
 	return r.ApiService.ProvidersOauth2UpdateExecute(r)
 }
 
@@ -2522,11 +2500,11 @@ ProvidersOauth2Update Method for ProvidersOauth2Update
 
 OAuth2Provider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this OAuth2/OpenID Provider.
  @return ApiProvidersOauth2UpdateRequest
 */
-func (a *ProvidersApiService) ProvidersOauth2Update(ctx _context.Context, id int32) ApiProvidersOauth2UpdateRequest {
+func (a *ProvidersApiService) ProvidersOauth2Update(ctx context.Context, id int32) ApiProvidersOauth2UpdateRequest {
 	return ApiProvidersOauth2UpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2536,27 +2514,25 @@ func (a *ProvidersApiService) ProvidersOauth2Update(ctx _context.Context, id int
 
 // Execute executes the request
 //  @return OAuth2Provider
-func (a *ProvidersApiService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2UpdateRequest) (OAuth2Provider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2UpdateRequest) (*OAuth2Provider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  OAuth2Provider
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *OAuth2Provider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2Update")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.oAuth2ProviderRequest == nil {
 		return localVarReturnValue, nil, reportError("oAuth2ProviderRequest is required and must be specified")
 	}
@@ -2594,7 +2570,7 @@ func (a *ProvidersApiService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2U
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2604,15 +2580,15 @@ func (a *ProvidersApiService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2U
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2621,7 +2597,7 @@ func (a *ProvidersApiService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2U
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2632,12 +2608,12 @@ func (a *ProvidersApiService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2U
 }
 
 type ApiProvidersOauth2UsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersOauth2UsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiProvidersOauth2UsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.ProvidersOauth2UsedByListExecute(r)
 }
 
@@ -2646,11 +2622,11 @@ ProvidersOauth2UsedByList Method for ProvidersOauth2UsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this OAuth2/OpenID Provider.
  @return ApiProvidersOauth2UsedByListRequest
 */
-func (a *ProvidersApiService) ProvidersOauth2UsedByList(ctx _context.Context, id int32) ApiProvidersOauth2UsedByListRequest {
+func (a *ProvidersApiService) ProvidersOauth2UsedByList(ctx context.Context, id int32) ApiProvidersOauth2UsedByListRequest {
 	return ApiProvidersOauth2UsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2660,27 +2636,25 @@ func (a *ProvidersApiService) ProvidersOauth2UsedByList(ctx _context.Context, id
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *ProvidersApiService) ProvidersOauth2UsedByListExecute(r ApiProvidersOauth2UsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2UsedByListExecute(r ApiProvidersOauth2UsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2UsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2713,7 +2687,7 @@ func (a *ProvidersApiService) ProvidersOauth2UsedByListExecute(r ApiProvidersOau
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2723,15 +2697,15 @@ func (a *ProvidersApiService) ProvidersOauth2UsedByListExecute(r ApiProvidersOau
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2740,7 +2714,7 @@ func (a *ProvidersApiService) ProvidersOauth2UsedByListExecute(r ApiProvidersOau
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2751,7 +2725,7 @@ func (a *ProvidersApiService) ProvidersOauth2UsedByListExecute(r ApiProvidersOau
 }
 
 type ApiProvidersProxyCreateRequest struct {
-	ctx                  _context.Context
+	ctx                  context.Context
 	ApiService           *ProvidersApiService
 	proxyProviderRequest *ProxyProviderRequest
 }
@@ -2761,7 +2735,7 @@ func (r ApiProvidersProxyCreateRequest) ProxyProviderRequest(proxyProviderReques
 	return r
 }
 
-func (r ApiProvidersProxyCreateRequest) Execute() (ProxyProvider, *_nethttp.Response, error) {
+func (r ApiProvidersProxyCreateRequest) Execute() (*ProxyProvider, *http.Response, error) {
 	return r.ApiService.ProvidersProxyCreateExecute(r)
 }
 
@@ -2770,10 +2744,10 @@ ProvidersProxyCreate Method for ProvidersProxyCreate
 
 ProxyProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProvidersProxyCreateRequest
 */
-func (a *ProvidersApiService) ProvidersProxyCreate(ctx _context.Context) ApiProvidersProxyCreateRequest {
+func (a *ProvidersApiService) ProvidersProxyCreate(ctx context.Context) ApiProvidersProxyCreateRequest {
 	return ApiProvidersProxyCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2782,26 +2756,24 @@ func (a *ProvidersApiService) ProvidersProxyCreate(ctx _context.Context) ApiProv
 
 // Execute executes the request
 //  @return ProxyProvider
-func (a *ProvidersApiService) ProvidersProxyCreateExecute(r ApiProvidersProxyCreateRequest) (ProxyProvider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersProxyCreateExecute(r ApiProvidersProxyCreateRequest) (*ProxyProvider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ProxyProvider
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProxyProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersProxyCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/proxy/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.proxyProviderRequest == nil {
 		return localVarReturnValue, nil, reportError("proxyProviderRequest is required and must be specified")
 	}
@@ -2839,7 +2811,7 @@ func (a *ProvidersApiService) ProvidersProxyCreateExecute(r ApiProvidersProxyCre
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2849,15 +2821,15 @@ func (a *ProvidersApiService) ProvidersProxyCreateExecute(r ApiProvidersProxyCre
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2866,7 +2838,7 @@ func (a *ProvidersApiService) ProvidersProxyCreateExecute(r ApiProvidersProxyCre
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2877,12 +2849,12 @@ func (a *ProvidersApiService) ProvidersProxyCreateExecute(r ApiProvidersProxyCre
 }
 
 type ApiProvidersProxyDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersProxyDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiProvidersProxyDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ProvidersProxyDestroyExecute(r)
 }
 
@@ -2891,11 +2863,11 @@ ProvidersProxyDestroy Method for ProvidersProxyDestroy
 
 ProxyProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this Proxy Provider.
  @return ApiProvidersProxyDestroyRequest
 */
-func (a *ProvidersApiService) ProvidersProxyDestroy(ctx _context.Context, id int32) ApiProvidersProxyDestroyRequest {
+func (a *ProvidersApiService) ProvidersProxyDestroy(ctx context.Context, id int32) ApiProvidersProxyDestroyRequest {
 	return ApiProvidersProxyDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2904,26 +2876,24 @@ func (a *ProvidersApiService) ProvidersProxyDestroy(ctx _context.Context, id int
 }
 
 // Execute executes the request
-func (a *ProvidersApiService) ProvidersProxyDestroyExecute(r ApiProvidersProxyDestroyRequest) (*_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersProxyDestroyExecute(r ApiProvidersProxyDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersProxyDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/proxy/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2956,7 +2926,7 @@ func (a *ProvidersApiService) ProvidersProxyDestroyExecute(r ApiProvidersProxyDe
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -2966,15 +2936,15 @@ func (a *ProvidersApiService) ProvidersProxyDestroyExecute(r ApiProvidersProxyDe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -2985,7 +2955,7 @@ func (a *ProvidersApiService) ProvidersProxyDestroyExecute(r ApiProvidersProxyDe
 }
 
 type ApiProvidersProxyListRequest struct {
-	ctx                              _context.Context
+	ctx                              context.Context
 	ApiService                       *ProvidersApiService
 	applicationIsnull                *bool
 	authorizationFlowSlugIexact      *string
@@ -3013,50 +2983,62 @@ func (r ApiProvidersProxyListRequest) ApplicationIsnull(applicationIsnull bool) 
 	r.applicationIsnull = &applicationIsnull
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) AuthorizationFlowSlugIexact(authorizationFlowSlugIexact string) ApiProvidersProxyListRequest {
 	r.authorizationFlowSlugIexact = &authorizationFlowSlugIexact
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) BasicAuthEnabledIexact(basicAuthEnabledIexact bool) ApiProvidersProxyListRequest {
 	r.basicAuthEnabledIexact = &basicAuthEnabledIexact
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) BasicAuthPasswordAttributeIexact(basicAuthPasswordAttributeIexact string) ApiProvidersProxyListRequest {
 	r.basicAuthPasswordAttributeIexact = &basicAuthPasswordAttributeIexact
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) BasicAuthUserAttributeIexact(basicAuthUserAttributeIexact string) ApiProvidersProxyListRequest {
 	r.basicAuthUserAttributeIexact = &basicAuthUserAttributeIexact
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) CertificateKpUuidIexact(certificateKpUuidIexact string) ApiProvidersProxyListRequest {
 	r.certificateKpUuidIexact = &certificateKpUuidIexact
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) CertificateNameIexact(certificateNameIexact string) ApiProvidersProxyListRequest {
 	r.certificateNameIexact = &certificateNameIexact
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) CookieDomainIexact(cookieDomainIexact string) ApiProvidersProxyListRequest {
 	r.cookieDomainIexact = &cookieDomainIexact
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) ExternalHostIexact(externalHostIexact string) ApiProvidersProxyListRequest {
 	r.externalHostIexact = &externalHostIexact
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) InternalHostIexact(internalHostIexact string) ApiProvidersProxyListRequest {
 	r.internalHostIexact = &internalHostIexact
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) InternalHostSslValidationIexact(internalHostSslValidationIexact bool) ApiProvidersProxyListRequest {
 	r.internalHostSslValidationIexact = &internalHostSslValidationIexact
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) ModeIexact(modeIexact string) ApiProvidersProxyListRequest {
 	r.modeIexact = &modeIexact
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) NameIexact(nameIexact string) ApiProvidersProxyListRequest {
 	r.nameIexact = &nameIexact
 	return r
@@ -3079,10 +3061,12 @@ func (r ApiProvidersProxyListRequest) PageSize(pageSize int32) ApiProvidersProxy
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) PropertyMappingsIexact(propertyMappingsIexact []string) ApiProvidersProxyListRequest {
 	r.propertyMappingsIexact = &propertyMappingsIexact
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) RedirectUrisIexact(redirectUrisIexact string) ApiProvidersProxyListRequest {
 	r.redirectUrisIexact = &redirectUrisIexact
 	return r
@@ -3093,12 +3077,13 @@ func (r ApiProvidersProxyListRequest) Search(search string) ApiProvidersProxyLis
 	r.search = &search
 	return r
 }
+
 func (r ApiProvidersProxyListRequest) SkipPathRegexIexact(skipPathRegexIexact string) ApiProvidersProxyListRequest {
 	r.skipPathRegexIexact = &skipPathRegexIexact
 	return r
 }
 
-func (r ApiProvidersProxyListRequest) Execute() (PaginatedProxyProviderList, *_nethttp.Response, error) {
+func (r ApiProvidersProxyListRequest) Execute() (*PaginatedProxyProviderList, *http.Response, error) {
 	return r.ApiService.ProvidersProxyListExecute(r)
 }
 
@@ -3107,10 +3092,10 @@ ProvidersProxyList Method for ProvidersProxyList
 
 ProxyProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProvidersProxyListRequest
 */
-func (a *ProvidersApiService) ProvidersProxyList(ctx _context.Context) ApiProvidersProxyListRequest {
+func (a *ProvidersApiService) ProvidersProxyList(ctx context.Context) ApiProvidersProxyListRequest {
 	return ApiProvidersProxyListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3119,26 +3104,24 @@ func (a *ProvidersApiService) ProvidersProxyList(ctx _context.Context) ApiProvid
 
 // Execute executes the request
 //  @return PaginatedProxyProviderList
-func (a *ProvidersApiService) ProvidersProxyListExecute(r ApiProvidersProxyListRequest) (PaginatedProxyProviderList, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersProxyListExecute(r ApiProvidersProxyListRequest) (*PaginatedProxyProviderList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedProxyProviderList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedProxyProviderList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersProxyList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/proxy/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.applicationIsnull != nil {
 		localVarQueryParams.Add("application__isnull", parameterToString(*r.applicationIsnull, ""))
@@ -3239,7 +3222,7 @@ func (a *ProvidersApiService) ProvidersProxyListExecute(r ApiProvidersProxyListR
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3249,15 +3232,15 @@ func (a *ProvidersApiService) ProvidersProxyListExecute(r ApiProvidersProxyListR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3266,7 +3249,7 @@ func (a *ProvidersApiService) ProvidersProxyListExecute(r ApiProvidersProxyListR
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3277,7 +3260,7 @@ func (a *ProvidersApiService) ProvidersProxyListExecute(r ApiProvidersProxyListR
 }
 
 type ApiProvidersProxyPartialUpdateRequest struct {
-	ctx                         _context.Context
+	ctx                         context.Context
 	ApiService                  *ProvidersApiService
 	id                          int32
 	patchedProxyProviderRequest *PatchedProxyProviderRequest
@@ -3288,7 +3271,7 @@ func (r ApiProvidersProxyPartialUpdateRequest) PatchedProxyProviderRequest(patch
 	return r
 }
 
-func (r ApiProvidersProxyPartialUpdateRequest) Execute() (ProxyProvider, *_nethttp.Response, error) {
+func (r ApiProvidersProxyPartialUpdateRequest) Execute() (*ProxyProvider, *http.Response, error) {
 	return r.ApiService.ProvidersProxyPartialUpdateExecute(r)
 }
 
@@ -3297,11 +3280,11 @@ ProvidersProxyPartialUpdate Method for ProvidersProxyPartialUpdate
 
 ProxyProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this Proxy Provider.
  @return ApiProvidersProxyPartialUpdateRequest
 */
-func (a *ProvidersApiService) ProvidersProxyPartialUpdate(ctx _context.Context, id int32) ApiProvidersProxyPartialUpdateRequest {
+func (a *ProvidersApiService) ProvidersProxyPartialUpdate(ctx context.Context, id int32) ApiProvidersProxyPartialUpdateRequest {
 	return ApiProvidersProxyPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3311,27 +3294,25 @@ func (a *ProvidersApiService) ProvidersProxyPartialUpdate(ctx _context.Context, 
 
 // Execute executes the request
 //  @return ProxyProvider
-func (a *ProvidersApiService) ProvidersProxyPartialUpdateExecute(r ApiProvidersProxyPartialUpdateRequest) (ProxyProvider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersProxyPartialUpdateExecute(r ApiProvidersProxyPartialUpdateRequest) (*ProxyProvider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ProxyProvider
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProxyProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersProxyPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/proxy/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3366,7 +3347,7 @@ func (a *ProvidersApiService) ProvidersProxyPartialUpdateExecute(r ApiProvidersP
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3376,15 +3357,15 @@ func (a *ProvidersApiService) ProvidersProxyPartialUpdateExecute(r ApiProvidersP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3393,7 +3374,7 @@ func (a *ProvidersApiService) ProvidersProxyPartialUpdateExecute(r ApiProvidersP
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3404,12 +3385,12 @@ func (a *ProvidersApiService) ProvidersProxyPartialUpdateExecute(r ApiProvidersP
 }
 
 type ApiProvidersProxyRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersProxyRetrieveRequest) Execute() (ProxyProvider, *_nethttp.Response, error) {
+func (r ApiProvidersProxyRetrieveRequest) Execute() (*ProxyProvider, *http.Response, error) {
 	return r.ApiService.ProvidersProxyRetrieveExecute(r)
 }
 
@@ -3418,11 +3399,11 @@ ProvidersProxyRetrieve Method for ProvidersProxyRetrieve
 
 ProxyProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this Proxy Provider.
  @return ApiProvidersProxyRetrieveRequest
 */
-func (a *ProvidersApiService) ProvidersProxyRetrieve(ctx _context.Context, id int32) ApiProvidersProxyRetrieveRequest {
+func (a *ProvidersApiService) ProvidersProxyRetrieve(ctx context.Context, id int32) ApiProvidersProxyRetrieveRequest {
 	return ApiProvidersProxyRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3432,27 +3413,25 @@ func (a *ProvidersApiService) ProvidersProxyRetrieve(ctx _context.Context, id in
 
 // Execute executes the request
 //  @return ProxyProvider
-func (a *ProvidersApiService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyRetrieveRequest) (ProxyProvider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyRetrieveRequest) (*ProxyProvider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ProxyProvider
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProxyProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersProxyRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/proxy/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3485,7 +3464,7 @@ func (a *ProvidersApiService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyR
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3495,15 +3474,15 @@ func (a *ProvidersApiService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3512,7 +3491,7 @@ func (a *ProvidersApiService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyR
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3523,7 +3502,7 @@ func (a *ProvidersApiService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyR
 }
 
 type ApiProvidersProxyUpdateRequest struct {
-	ctx                  _context.Context
+	ctx                  context.Context
 	ApiService           *ProvidersApiService
 	id                   int32
 	proxyProviderRequest *ProxyProviderRequest
@@ -3534,7 +3513,7 @@ func (r ApiProvidersProxyUpdateRequest) ProxyProviderRequest(proxyProviderReques
 	return r
 }
 
-func (r ApiProvidersProxyUpdateRequest) Execute() (ProxyProvider, *_nethttp.Response, error) {
+func (r ApiProvidersProxyUpdateRequest) Execute() (*ProxyProvider, *http.Response, error) {
 	return r.ApiService.ProvidersProxyUpdateExecute(r)
 }
 
@@ -3543,11 +3522,11 @@ ProvidersProxyUpdate Method for ProvidersProxyUpdate
 
 ProxyProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this Proxy Provider.
  @return ApiProvidersProxyUpdateRequest
 */
-func (a *ProvidersApiService) ProvidersProxyUpdate(ctx _context.Context, id int32) ApiProvidersProxyUpdateRequest {
+func (a *ProvidersApiService) ProvidersProxyUpdate(ctx context.Context, id int32) ApiProvidersProxyUpdateRequest {
 	return ApiProvidersProxyUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3557,27 +3536,25 @@ func (a *ProvidersApiService) ProvidersProxyUpdate(ctx _context.Context, id int3
 
 // Execute executes the request
 //  @return ProxyProvider
-func (a *ProvidersApiService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpdateRequest) (ProxyProvider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpdateRequest) (*ProxyProvider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ProxyProvider
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProxyProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersProxyUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/proxy/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.proxyProviderRequest == nil {
 		return localVarReturnValue, nil, reportError("proxyProviderRequest is required and must be specified")
 	}
@@ -3615,7 +3592,7 @@ func (a *ProvidersApiService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpd
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3625,15 +3602,15 @@ func (a *ProvidersApiService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3642,7 +3619,7 @@ func (a *ProvidersApiService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpd
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3653,12 +3630,12 @@ func (a *ProvidersApiService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpd
 }
 
 type ApiProvidersProxyUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersProxyUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiProvidersProxyUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.ProvidersProxyUsedByListExecute(r)
 }
 
@@ -3667,11 +3644,11 @@ ProvidersProxyUsedByList Method for ProvidersProxyUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this Proxy Provider.
  @return ApiProvidersProxyUsedByListRequest
 */
-func (a *ProvidersApiService) ProvidersProxyUsedByList(ctx _context.Context, id int32) ApiProvidersProxyUsedByListRequest {
+func (a *ProvidersApiService) ProvidersProxyUsedByList(ctx context.Context, id int32) ApiProvidersProxyUsedByListRequest {
 	return ApiProvidersProxyUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3681,27 +3658,25 @@ func (a *ProvidersApiService) ProvidersProxyUsedByList(ctx _context.Context, id 
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *ProvidersApiService) ProvidersProxyUsedByListExecute(r ApiProvidersProxyUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersProxyUsedByListExecute(r ApiProvidersProxyUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersProxyUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/proxy/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3734,7 +3709,7 @@ func (a *ProvidersApiService) ProvidersProxyUsedByListExecute(r ApiProvidersProx
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3744,15 +3719,15 @@ func (a *ProvidersApiService) ProvidersProxyUsedByListExecute(r ApiProvidersProx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3761,7 +3736,7 @@ func (a *ProvidersApiService) ProvidersProxyUsedByListExecute(r ApiProvidersProx
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3772,7 +3747,7 @@ func (a *ProvidersApiService) ProvidersProxyUsedByListExecute(r ApiProvidersProx
 }
 
 type ApiProvidersSamlCreateRequest struct {
-	ctx                 _context.Context
+	ctx                 context.Context
 	ApiService          *ProvidersApiService
 	sAMLProviderRequest *SAMLProviderRequest
 }
@@ -3782,7 +3757,7 @@ func (r ApiProvidersSamlCreateRequest) SAMLProviderRequest(sAMLProviderRequest S
 	return r
 }
 
-func (r ApiProvidersSamlCreateRequest) Execute() (SAMLProvider, *_nethttp.Response, error) {
+func (r ApiProvidersSamlCreateRequest) Execute() (*SAMLProvider, *http.Response, error) {
 	return r.ApiService.ProvidersSamlCreateExecute(r)
 }
 
@@ -3791,10 +3766,10 @@ ProvidersSamlCreate Method for ProvidersSamlCreate
 
 SAMLProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProvidersSamlCreateRequest
 */
-func (a *ProvidersApiService) ProvidersSamlCreate(ctx _context.Context) ApiProvidersSamlCreateRequest {
+func (a *ProvidersApiService) ProvidersSamlCreate(ctx context.Context) ApiProvidersSamlCreateRequest {
 	return ApiProvidersSamlCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3803,26 +3778,24 @@ func (a *ProvidersApiService) ProvidersSamlCreate(ctx _context.Context) ApiProvi
 
 // Execute executes the request
 //  @return SAMLProvider
-func (a *ProvidersApiService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreateRequest) (SAMLProvider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreateRequest) (*SAMLProvider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SAMLProvider
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SAMLProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlCreate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.sAMLProviderRequest == nil {
 		return localVarReturnValue, nil, reportError("sAMLProviderRequest is required and must be specified")
 	}
@@ -3860,7 +3833,7 @@ func (a *ProvidersApiService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreat
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -3870,15 +3843,15 @@ func (a *ProvidersApiService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -3887,7 +3860,7 @@ func (a *ProvidersApiService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreat
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -3898,12 +3871,12 @@ func (a *ProvidersApiService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreat
 }
 
 type ApiProvidersSamlDestroyRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersSamlDestroyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiProvidersSamlDestroyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ProvidersSamlDestroyExecute(r)
 }
 
@@ -3912,11 +3885,11 @@ ProvidersSamlDestroy Method for ProvidersSamlDestroy
 
 SAMLProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this SAML Provider.
  @return ApiProvidersSamlDestroyRequest
 */
-func (a *ProvidersApiService) ProvidersSamlDestroy(ctx _context.Context, id int32) ApiProvidersSamlDestroyRequest {
+func (a *ProvidersApiService) ProvidersSamlDestroy(ctx context.Context, id int32) ApiProvidersSamlDestroyRequest {
 	return ApiProvidersSamlDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3925,26 +3898,24 @@ func (a *ProvidersApiService) ProvidersSamlDestroy(ctx _context.Context, id int3
 }
 
 // Execute executes the request
-func (a *ProvidersApiService) ProvidersSamlDestroyExecute(r ApiProvidersSamlDestroyRequest) (*_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlDestroyExecute(r ApiProvidersSamlDestroyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlDestroy")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3977,7 +3948,7 @@ func (a *ProvidersApiService) ProvidersSamlDestroyExecute(r ApiProvidersSamlDest
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -3987,15 +3958,15 @@ func (a *ProvidersApiService) ProvidersSamlDestroyExecute(r ApiProvidersSamlDest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4006,7 +3977,7 @@ func (a *ProvidersApiService) ProvidersSamlDestroyExecute(r ApiProvidersSamlDest
 }
 
 type ApiProvidersSamlImportMetadataCreateRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *ProvidersApiService
 	name              *string
 	authorizationFlow *string
@@ -4017,16 +3988,18 @@ func (r ApiProvidersSamlImportMetadataCreateRequest) Name(name string) ApiProvid
 	r.name = &name
 	return r
 }
+
 func (r ApiProvidersSamlImportMetadataCreateRequest) AuthorizationFlow(authorizationFlow string) ApiProvidersSamlImportMetadataCreateRequest {
 	r.authorizationFlow = &authorizationFlow
 	return r
 }
+
 func (r ApiProvidersSamlImportMetadataCreateRequest) File(file *os.File) ApiProvidersSamlImportMetadataCreateRequest {
 	r.file = &file
 	return r
 }
 
-func (r ApiProvidersSamlImportMetadataCreateRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiProvidersSamlImportMetadataCreateRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ProvidersSamlImportMetadataCreateExecute(r)
 }
 
@@ -4035,10 +4008,10 @@ ProvidersSamlImportMetadataCreate Method for ProvidersSamlImportMetadataCreate
 
 Create provider from SAML Metadata
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProvidersSamlImportMetadataCreateRequest
 */
-func (a *ProvidersApiService) ProvidersSamlImportMetadataCreate(ctx _context.Context) ApiProvidersSamlImportMetadataCreateRequest {
+func (a *ProvidersApiService) ProvidersSamlImportMetadataCreate(ctx context.Context) ApiProvidersSamlImportMetadataCreateRequest {
 	return ApiProvidersSamlImportMetadataCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4046,25 +4019,23 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreate(ctx _context.Con
 }
 
 // Execute executes the request
-func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProvidersSamlImportMetadataCreateRequest) (*_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProvidersSamlImportMetadataCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlImportMetadataCreate")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/import_metadata/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.name == nil {
 		return nil, reportError("name is required and must be specified")
 	}
@@ -4097,14 +4068,20 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 	}
 	localVarFormParams.Add("name", parameterToString(*r.name, ""))
 	localVarFormParams.Add("authorization_flow", parameterToString(*r.authorizationFlow, ""))
-	localVarFormFileName = "file"
-	localVarFile := *r.file
-	if localVarFile != nil {
-		fbs, _ := _ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
+	var fileLocalVarFormFileName string
+	var fileLocalVarFileName string
+	var fileLocalVarFileBytes []byte
+
+	fileLocalVarFormFileName = "file"
+
+	fileLocalVarFile := *r.file
+	if fileLocalVarFile != nil {
+		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fileLocalVarFileBytes = fbs
+		fileLocalVarFileName = fileLocalVarFile.Name()
+		fileLocalVarFile.Close()
 	}
+	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -4119,7 +4096,7 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -4129,15 +4106,15 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4148,7 +4125,7 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 }
 
 type ApiProvidersSamlListRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *ProvidersApiService
 	acsUrl                     *string
 	assertionValidNotBefore    *string
@@ -4175,34 +4152,42 @@ func (r ApiProvidersSamlListRequest) AcsUrl(acsUrl string) ApiProvidersSamlListR
 	r.acsUrl = &acsUrl
 	return r
 }
+
 func (r ApiProvidersSamlListRequest) AssertionValidNotBefore(assertionValidNotBefore string) ApiProvidersSamlListRequest {
 	r.assertionValidNotBefore = &assertionValidNotBefore
 	return r
 }
+
 func (r ApiProvidersSamlListRequest) AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter string) ApiProvidersSamlListRequest {
 	r.assertionValidNotOnOrAfter = &assertionValidNotOnOrAfter
 	return r
 }
+
 func (r ApiProvidersSamlListRequest) Audience(audience string) ApiProvidersSamlListRequest {
 	r.audience = &audience
 	return r
 }
+
 func (r ApiProvidersSamlListRequest) AuthorizationFlow(authorizationFlow string) ApiProvidersSamlListRequest {
 	r.authorizationFlow = &authorizationFlow
 	return r
 }
+
 func (r ApiProvidersSamlListRequest) DigestAlgorithm(digestAlgorithm string) ApiProvidersSamlListRequest {
 	r.digestAlgorithm = &digestAlgorithm
 	return r
 }
+
 func (r ApiProvidersSamlListRequest) Issuer(issuer string) ApiProvidersSamlListRequest {
 	r.issuer = &issuer
 	return r
 }
+
 func (r ApiProvidersSamlListRequest) Name(name string) ApiProvidersSamlListRequest {
 	r.name = &name
 	return r
 }
+
 func (r ApiProvidersSamlListRequest) NameIdMapping(nameIdMapping string) ApiProvidersSamlListRequest {
 	r.nameIdMapping = &nameIdMapping
 	return r
@@ -4225,6 +4210,7 @@ func (r ApiProvidersSamlListRequest) PageSize(pageSize int32) ApiProvidersSamlLi
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiProvidersSamlListRequest) PropertyMappings(propertyMappings []string) ApiProvidersSamlListRequest {
 	r.propertyMappings = &propertyMappings
 	return r
@@ -4235,14 +4221,17 @@ func (r ApiProvidersSamlListRequest) Search(search string) ApiProvidersSamlListR
 	r.search = &search
 	return r
 }
+
 func (r ApiProvidersSamlListRequest) SessionValidNotOnOrAfter(sessionValidNotOnOrAfter string) ApiProvidersSamlListRequest {
 	r.sessionValidNotOnOrAfter = &sessionValidNotOnOrAfter
 	return r
 }
+
 func (r ApiProvidersSamlListRequest) SignatureAlgorithm(signatureAlgorithm string) ApiProvidersSamlListRequest {
 	r.signatureAlgorithm = &signatureAlgorithm
 	return r
 }
+
 func (r ApiProvidersSamlListRequest) SigningKp(signingKp string) ApiProvidersSamlListRequest {
 	r.signingKp = &signingKp
 	return r
@@ -4253,12 +4242,13 @@ func (r ApiProvidersSamlListRequest) SpBinding(spBinding string) ApiProvidersSam
 	r.spBinding = &spBinding
 	return r
 }
+
 func (r ApiProvidersSamlListRequest) VerificationKp(verificationKp string) ApiProvidersSamlListRequest {
 	r.verificationKp = &verificationKp
 	return r
 }
 
-func (r ApiProvidersSamlListRequest) Execute() (PaginatedSAMLProviderList, *_nethttp.Response, error) {
+func (r ApiProvidersSamlListRequest) Execute() (*PaginatedSAMLProviderList, *http.Response, error) {
 	return r.ApiService.ProvidersSamlListExecute(r)
 }
 
@@ -4267,10 +4257,10 @@ ProvidersSamlList Method for ProvidersSamlList
 
 SAMLProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProvidersSamlListRequest
 */
-func (a *ProvidersApiService) ProvidersSamlList(ctx _context.Context) ApiProvidersSamlListRequest {
+func (a *ProvidersApiService) ProvidersSamlList(ctx context.Context) ApiProvidersSamlListRequest {
 	return ApiProvidersSamlListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4279,26 +4269,24 @@ func (a *ProvidersApiService) ProvidersSamlList(ctx _context.Context) ApiProvide
 
 // Execute executes the request
 //  @return PaginatedSAMLProviderList
-func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListRequest) (PaginatedSAMLProviderList, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListRequest) (*PaginatedSAMLProviderList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PaginatedSAMLProviderList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedSAMLProviderList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.acsUrl != nil {
 		localVarQueryParams.Add("acs_url", parameterToString(*r.acsUrl, ""))
@@ -4396,7 +4384,7 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4406,15 +4394,15 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4423,7 +4411,7 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4434,7 +4422,7 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 }
 
 type ApiProvidersSamlMetadataRetrieveRequest struct {
-	ctx          _context.Context
+	ctx          context.Context
 	ApiService   *ProvidersApiService
 	id           int32
 	download     *bool
@@ -4452,7 +4440,7 @@ func (r ApiProvidersSamlMetadataRetrieveRequest) ForceBinding(forceBinding strin
 	return r
 }
 
-func (r ApiProvidersSamlMetadataRetrieveRequest) Execute() (SAMLMetadata, *_nethttp.Response, error) {
+func (r ApiProvidersSamlMetadataRetrieveRequest) Execute() (*SAMLMetadata, *http.Response, error) {
 	return r.ApiService.ProvidersSamlMetadataRetrieveExecute(r)
 }
 
@@ -4461,11 +4449,11 @@ ProvidersSamlMetadataRetrieve Method for ProvidersSamlMetadataRetrieve
 
 Return metadata as XML string
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this SAML Provider.
  @return ApiProvidersSamlMetadataRetrieveRequest
 */
-func (a *ProvidersApiService) ProvidersSamlMetadataRetrieve(ctx _context.Context, id int32) ApiProvidersSamlMetadataRetrieveRequest {
+func (a *ProvidersApiService) ProvidersSamlMetadataRetrieve(ctx context.Context, id int32) ApiProvidersSamlMetadataRetrieveRequest {
 	return ApiProvidersSamlMetadataRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4475,27 +4463,25 @@ func (a *ProvidersApiService) ProvidersSamlMetadataRetrieve(ctx _context.Context
 
 // Execute executes the request
 //  @return SAMLMetadata
-func (a *ProvidersApiService) ProvidersSamlMetadataRetrieveExecute(r ApiProvidersSamlMetadataRetrieveRequest) (SAMLMetadata, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlMetadataRetrieveExecute(r ApiProvidersSamlMetadataRetrieveRequest) (*SAMLMetadata, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SAMLMetadata
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SAMLMetadata
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlMetadataRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/{id}/metadata/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.download != nil {
 		localVarQueryParams.Add("download", parameterToString(*r.download, ""))
@@ -4534,7 +4520,7 @@ func (a *ProvidersApiService) ProvidersSamlMetadataRetrieveExecute(r ApiProvider
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4544,15 +4530,15 @@ func (a *ProvidersApiService) ProvidersSamlMetadataRetrieveExecute(r ApiProvider
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4561,7 +4547,7 @@ func (a *ProvidersApiService) ProvidersSamlMetadataRetrieveExecute(r ApiProvider
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4572,7 +4558,7 @@ func (a *ProvidersApiService) ProvidersSamlMetadataRetrieveExecute(r ApiProvider
 }
 
 type ApiProvidersSamlPartialUpdateRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *ProvidersApiService
 	id                         int32
 	patchedSAMLProviderRequest *PatchedSAMLProviderRequest
@@ -4583,7 +4569,7 @@ func (r ApiProvidersSamlPartialUpdateRequest) PatchedSAMLProviderRequest(patched
 	return r
 }
 
-func (r ApiProvidersSamlPartialUpdateRequest) Execute() (SAMLProvider, *_nethttp.Response, error) {
+func (r ApiProvidersSamlPartialUpdateRequest) Execute() (*SAMLProvider, *http.Response, error) {
 	return r.ApiService.ProvidersSamlPartialUpdateExecute(r)
 }
 
@@ -4592,11 +4578,11 @@ ProvidersSamlPartialUpdate Method for ProvidersSamlPartialUpdate
 
 SAMLProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this SAML Provider.
  @return ApiProvidersSamlPartialUpdateRequest
 */
-func (a *ProvidersApiService) ProvidersSamlPartialUpdate(ctx _context.Context, id int32) ApiProvidersSamlPartialUpdateRequest {
+func (a *ProvidersApiService) ProvidersSamlPartialUpdate(ctx context.Context, id int32) ApiProvidersSamlPartialUpdateRequest {
 	return ApiProvidersSamlPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4606,27 +4592,25 @@ func (a *ProvidersApiService) ProvidersSamlPartialUpdate(ctx _context.Context, i
 
 // Execute executes the request
 //  @return SAMLProvider
-func (a *ProvidersApiService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSamlPartialUpdateRequest) (SAMLProvider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSamlPartialUpdateRequest) (*SAMLProvider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SAMLProvider
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SAMLProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlPartialUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4661,7 +4645,7 @@ func (a *ProvidersApiService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSa
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4671,15 +4655,15 @@ func (a *ProvidersApiService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4688,7 +4672,7 @@ func (a *ProvidersApiService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSa
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4699,12 +4683,12 @@ func (a *ProvidersApiService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSa
 }
 
 type ApiProvidersSamlRetrieveRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersSamlRetrieveRequest) Execute() (SAMLProvider, *_nethttp.Response, error) {
+func (r ApiProvidersSamlRetrieveRequest) Execute() (*SAMLProvider, *http.Response, error) {
 	return r.ApiService.ProvidersSamlRetrieveExecute(r)
 }
 
@@ -4713,11 +4697,11 @@ ProvidersSamlRetrieve Method for ProvidersSamlRetrieve
 
 SAMLProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this SAML Provider.
  @return ApiProvidersSamlRetrieveRequest
 */
-func (a *ProvidersApiService) ProvidersSamlRetrieve(ctx _context.Context, id int32) ApiProvidersSamlRetrieveRequest {
+func (a *ProvidersApiService) ProvidersSamlRetrieve(ctx context.Context, id int32) ApiProvidersSamlRetrieveRequest {
 	return ApiProvidersSamlRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4727,27 +4711,25 @@ func (a *ProvidersApiService) ProvidersSamlRetrieve(ctx _context.Context, id int
 
 // Execute executes the request
 //  @return SAMLProvider
-func (a *ProvidersApiService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRetrieveRequest) (SAMLProvider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRetrieveRequest) (*SAMLProvider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SAMLProvider
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SAMLProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4780,7 +4762,7 @@ func (a *ProvidersApiService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRet
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4790,15 +4772,15 @@ func (a *ProvidersApiService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4807,7 +4789,7 @@ func (a *ProvidersApiService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRet
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4818,7 +4800,7 @@ func (a *ProvidersApiService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRet
 }
 
 type ApiProvidersSamlUpdateRequest struct {
-	ctx                 _context.Context
+	ctx                 context.Context
 	ApiService          *ProvidersApiService
 	id                  int32
 	sAMLProviderRequest *SAMLProviderRequest
@@ -4829,7 +4811,7 @@ func (r ApiProvidersSamlUpdateRequest) SAMLProviderRequest(sAMLProviderRequest S
 	return r
 }
 
-func (r ApiProvidersSamlUpdateRequest) Execute() (SAMLProvider, *_nethttp.Response, error) {
+func (r ApiProvidersSamlUpdateRequest) Execute() (*SAMLProvider, *http.Response, error) {
 	return r.ApiService.ProvidersSamlUpdateExecute(r)
 }
 
@@ -4838,11 +4820,11 @@ ProvidersSamlUpdate Method for ProvidersSamlUpdate
 
 SAMLProvider Viewset
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this SAML Provider.
  @return ApiProvidersSamlUpdateRequest
 */
-func (a *ProvidersApiService) ProvidersSamlUpdate(ctx _context.Context, id int32) ApiProvidersSamlUpdateRequest {
+func (a *ProvidersApiService) ProvidersSamlUpdate(ctx context.Context, id int32) ApiProvidersSamlUpdateRequest {
 	return ApiProvidersSamlUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4852,27 +4834,25 @@ func (a *ProvidersApiService) ProvidersSamlUpdate(ctx _context.Context, id int32
 
 // Execute executes the request
 //  @return SAMLProvider
-func (a *ProvidersApiService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdateRequest) (SAMLProvider, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdateRequest) (*SAMLProvider, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SAMLProvider
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SAMLProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.sAMLProviderRequest == nil {
 		return localVarReturnValue, nil, reportError("sAMLProviderRequest is required and must be specified")
 	}
@@ -4910,7 +4890,7 @@ func (a *ProvidersApiService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdat
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -4920,15 +4900,15 @@ func (a *ProvidersApiService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -4937,7 +4917,7 @@ func (a *ProvidersApiService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdat
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -4948,12 +4928,12 @@ func (a *ProvidersApiService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdat
 }
 
 type ApiProvidersSamlUsedByListRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
 }
 
-func (r ApiProvidersSamlUsedByListRequest) Execute() ([]UsedBy, *_nethttp.Response, error) {
+func (r ApiProvidersSamlUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
 	return r.ApiService.ProvidersSamlUsedByListExecute(r)
 }
 
@@ -4962,11 +4942,11 @@ ProvidersSamlUsedByList Method for ProvidersSamlUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id A unique integer value identifying this SAML Provider.
  @return ApiProvidersSamlUsedByListRequest
 */
-func (a *ProvidersApiService) ProvidersSamlUsedByList(ctx _context.Context, id int32) ApiProvidersSamlUsedByListRequest {
+func (a *ProvidersApiService) ProvidersSamlUsedByList(ctx context.Context, id int32) ApiProvidersSamlUsedByListRequest {
 	return ApiProvidersSamlUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4976,27 +4956,25 @@ func (a *ProvidersApiService) ProvidersSamlUsedByList(ctx _context.Context, id i
 
 // Execute executes the request
 //  @return []UsedBy
-func (a *ProvidersApiService) ProvidersSamlUsedByListExecute(r ApiProvidersSamlUsedByListRequest) ([]UsedBy, *_nethttp.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlUsedByListExecute(r ApiProvidersSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  []UsedBy
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlUsedByList")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5029,7 +5007,7 @@ func (a *ProvidersApiService) ProvidersSamlUsedByListExecute(r ApiProvidersSamlU
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -5039,15 +5017,15 @@ func (a *ProvidersApiService) ProvidersSamlUsedByListExecute(r ApiProvidersSamlU
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -5056,7 +5034,7 @@ func (a *ProvidersApiService) ProvidersSamlUsedByListExecute(r ApiProvidersSamlU
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

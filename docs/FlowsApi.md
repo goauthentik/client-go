@@ -56,8 +56,8 @@ func main() {
     flowStageBindingRequest := *openapiclient.NewFlowStageBindingRequest("Target_example", "Stage_example", int32(123)) // FlowStageBindingRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsBindingsCreate(context.Background()).FlowStageBindingRequest(flowStageBindingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsBindingsCreate(context.Background()).FlowStageBindingRequest(flowStageBindingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsBindingsCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -119,11 +119,11 @@ import (
 )
 
 func main() {
-    fsbUuid := TODO // string | A UUID string identifying this Flow Stage Binding.
+    fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsBindingsDestroy(context.Background(), fsbUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsBindingsDestroy(context.Background(), fsbUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsBindingsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,7 +137,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fsbUuid** | [**string**](.md) | A UUID string identifying this Flow Stage Binding. | 
+**fsbUuid** | **string** | A UUID string identifying this Flow Stage Binding. | 
 
 ### Other Parameters
 
@@ -188,23 +188,23 @@ import (
 
 func main() {
     evaluateOnPlan := true // bool |  (optional)
-    fsbUuid := TODO // string |  (optional)
+    fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     invalidResponseAction := "invalidResponseAction_example" // string | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context. (optional)
     order := int32(56) // int32 |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    pbmUuid := TODO // string |  (optional)
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     policies := []string{"Inner_example"} // []string |  (optional)
     policyEngineMode := "policyEngineMode_example" // string |  (optional)
     reEvaluatePolicies := true // bool |  (optional)
     search := "search_example" // string | A search term. (optional)
-    stage := TODO // string |  (optional)
-    target := TODO // string |  (optional)
+    stage := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    target := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsBindingsList(context.Background()).EvaluateOnPlan(evaluateOnPlan).FsbUuid(fsbUuid).InvalidResponseAction(invalidResponseAction).Order(order).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Policies(policies).PolicyEngineMode(policyEngineMode).ReEvaluatePolicies(reEvaluatePolicies).Search(search).Stage(stage).Target(target).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsBindingsList(context.Background()).EvaluateOnPlan(evaluateOnPlan).FsbUuid(fsbUuid).InvalidResponseAction(invalidResponseAction).Order(order).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Policies(policies).PolicyEngineMode(policyEngineMode).ReEvaluatePolicies(reEvaluatePolicies).Search(search).Stage(stage).Target(target).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsBindingsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -226,19 +226,19 @@ Other parameters are passed through a pointer to a apiFlowsBindingsListRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **evaluateOnPlan** | **bool** |  | 
- **fsbUuid** | [**string**](string.md) |  | 
+ **fsbUuid** | **string** |  | 
  **invalidResponseAction** | **string** | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context. | 
  **order** | **int32** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **pbmUuid** | [**string**](string.md) |  | 
+ **pbmUuid** | **string** |  | 
  **policies** | **[]string** |  | 
  **policyEngineMode** | **string** |  | 
  **reEvaluatePolicies** | **bool** |  | 
  **search** | **string** | A search term. | 
- **stage** | [**string**](string.md) |  | 
- **target** | [**string**](string.md) |  | 
+ **stage** | **string** |  | 
+ **target** | **string** |  | 
 
 ### Return type
 
@@ -279,12 +279,12 @@ import (
 )
 
 func main() {
-    fsbUuid := TODO // string | A UUID string identifying this Flow Stage Binding.
+    fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
     patchedFlowStageBindingRequest := *openapiclient.NewPatchedFlowStageBindingRequest() // PatchedFlowStageBindingRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsBindingsPartialUpdate(context.Background(), fsbUuid).PatchedFlowStageBindingRequest(patchedFlowStageBindingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsBindingsPartialUpdate(context.Background(), fsbUuid).PatchedFlowStageBindingRequest(patchedFlowStageBindingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsBindingsPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -300,7 +300,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fsbUuid** | [**string**](.md) | A UUID string identifying this Flow Stage Binding. | 
+**fsbUuid** | **string** | A UUID string identifying this Flow Stage Binding. | 
 
 ### Other Parameters
 
@@ -351,11 +351,11 @@ import (
 )
 
 func main() {
-    fsbUuid := TODO // string | A UUID string identifying this Flow Stage Binding.
+    fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsBindingsRetrieve(context.Background(), fsbUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsBindingsRetrieve(context.Background(), fsbUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsBindingsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -371,7 +371,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fsbUuid** | [**string**](.md) | A UUID string identifying this Flow Stage Binding. | 
+**fsbUuid** | **string** | A UUID string identifying this Flow Stage Binding. | 
 
 ### Other Parameters
 
@@ -421,12 +421,12 @@ import (
 )
 
 func main() {
-    fsbUuid := TODO // string | A UUID string identifying this Flow Stage Binding.
+    fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
     flowStageBindingRequest := *openapiclient.NewFlowStageBindingRequest("Target_example", "Stage_example", int32(123)) // FlowStageBindingRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsBindingsUpdate(context.Background(), fsbUuid).FlowStageBindingRequest(flowStageBindingRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsBindingsUpdate(context.Background(), fsbUuid).FlowStageBindingRequest(flowStageBindingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsBindingsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -442,7 +442,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fsbUuid** | [**string**](.md) | A UUID string identifying this Flow Stage Binding. | 
+**fsbUuid** | **string** | A UUID string identifying this Flow Stage Binding. | 
 
 ### Other Parameters
 
@@ -493,11 +493,11 @@ import (
 )
 
 func main() {
-    fsbUuid := TODO // string | A UUID string identifying this Flow Stage Binding.
+    fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsBindingsUsedByList(context.Background(), fsbUuid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsBindingsUsedByList(context.Background(), fsbUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsBindingsUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -513,7 +513,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fsbUuid** | [**string**](.md) | A UUID string identifying this Flow Stage Binding. | 
+**fsbUuid** | **string** | A UUID string identifying this Flow Stage Binding. | 
 
 ### Other Parameters
 
@@ -567,8 +567,8 @@ func main() {
     query := "query_example" // string | Querystring as received
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsExecutorGet(context.Background(), flowSlug).Query(query).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsExecutorGet(context.Background(), flowSlug).Query(query).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsExecutorGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -640,8 +640,8 @@ func main() {
     flowChallengeResponseRequest := openapiclient.FlowChallengeResponseRequest{AppleChallengeResponseRequest: openapiclient.NewAppleChallengeResponseRequest()} // FlowChallengeResponseRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsExecutorSolve(context.Background(), flowSlug).Query(query).FlowChallengeResponseRequest(flowChallengeResponseRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsExecutorSolve(context.Background(), flowSlug).Query(query).FlowChallengeResponseRequest(flowChallengeResponseRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsExecutorSolve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -712,8 +712,8 @@ func main() {
     flowSlug := "flowSlug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInspectorGet(context.Background(), flowSlug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInspectorGet(context.Background(), flowSlug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInspectorGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -781,8 +781,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesCacheClearCreate(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesCacheClearCreate(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesCacheClearCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -840,8 +840,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesCacheInfoRetrieve(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesCacheInfoRetrieve(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesCacheInfoRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -899,11 +899,11 @@ import (
 )
 
 func main() {
-    flowRequest := *openapiclient.NewFlowRequest("Name_example", "Slug_example", "Title_example", openapiclient.FlowDesignationEnum("authentication")) // FlowRequest | 
+    flowRequest := *openapiclient.NewFlowRequest("Name_example", "Slug_example", "Title_example", "TODO") // FlowRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesCreate(context.Background()).FlowRequest(flowRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesCreate(context.Background()).FlowRequest(flowRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -968,8 +968,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesDestroy(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesDestroy(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1036,8 +1036,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesDiagramRetrieve(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesDiagramRetrieve(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesDiagramRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1106,8 +1106,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesExecuteRetrieve(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesExecuteRetrieve(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesExecuteRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1176,8 +1176,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesExportRetrieve(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesExportRetrieve(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesExportRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1247,8 +1247,8 @@ func main() {
     clear := true // bool |  (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesImportFlowCreate(context.Background()).File(file).Clear(clear).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesImportFlowCreate(context.Background()).File(file).Clear(clear).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesImportFlowCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1310,7 +1310,7 @@ import (
 
 func main() {
     designation := "designation_example" // string | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. (optional)
-    flowUuid := TODO // string |  (optional)
+    flowUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -1319,8 +1319,8 @@ func main() {
     slug := "slug_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesList(context.Background()).Designation(designation).FlowUuid(flowUuid).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesList(context.Background()).Designation(designation).FlowUuid(flowUuid).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1342,7 +1342,7 @@ Other parameters are passed through a pointer to a apiFlowsInstancesListRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **designation** | **string** | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. | 
- **flowUuid** | [**string**](string.md) |  | 
+ **flowUuid** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -1393,8 +1393,8 @@ func main() {
     patchedFlowRequest := *openapiclient.NewPatchedFlowRequest() // PatchedFlowRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesPartialUpdate(context.Background(), slug).PatchedFlowRequest(patchedFlowRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesPartialUpdate(context.Background(), slug).PatchedFlowRequest(patchedFlowRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1464,8 +1464,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesRetrieve(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesRetrieve(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1536,8 +1536,8 @@ func main() {
     clear := true // bool |  (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesSetBackgroundCreate(context.Background(), slug).File(file).Clear(clear).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesSetBackgroundCreate(context.Background(), slug).File(file).Clear(clear).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesSetBackgroundCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1607,8 +1607,8 @@ func main() {
     filePathRequest := *openapiclient.NewFilePathRequest("Url_example") // FilePathRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesSetBackgroundUrlCreate(context.Background(), slug).FilePathRequest(filePathRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesSetBackgroundUrlCreate(context.Background(), slug).FilePathRequest(filePathRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesSetBackgroundUrlCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1674,11 +1674,11 @@ import (
 
 func main() {
     slug := "slug_example" // string | 
-    flowRequest := *openapiclient.NewFlowRequest("Name_example", "Slug_example", "Title_example", openapiclient.FlowDesignationEnum("authentication")) // FlowRequest | 
+    flowRequest := *openapiclient.NewFlowRequest("Name_example", "Slug_example", "Title_example", "TODO") // FlowRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesUpdate(context.Background(), slug).FlowRequest(flowRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesUpdate(context.Background(), slug).FlowRequest(flowRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1748,8 +1748,8 @@ func main() {
     slug := "slug_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FlowsApi.FlowsInstancesUsedByList(context.Background(), slug).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesUsedByList(context.Background(), slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

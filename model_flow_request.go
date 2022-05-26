@@ -23,8 +23,8 @@ type FlowRequest struct {
 	// Shown as the Title in Flow pages.
 	Title string `json:"title"`
 	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
-	Designation      FlowDesignationEnum `json:"designation"`
-	PolicyEngineMode *PolicyEngineMode   `json:"policy_engine_mode,omitempty"`
+	Designation      NullableFlowDesignationEnum `json:"designation"`
+	PolicyEngineMode *PolicyEngineMode           `json:"policy_engine_mode,omitempty"`
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
 	CompatibilityMode *bool       `json:"compatibility_mode,omitempty"`
 	Layout            *LayoutEnum `json:"layout,omitempty"`
@@ -34,7 +34,7 @@ type FlowRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFlowRequest(name string, slug string, title string, designation FlowDesignationEnum) *FlowRequest {
+func NewFlowRequest(name string, slug string, title string, designation NullableFlowDesignationEnum) *FlowRequest {
 	this := FlowRequest{}
 	this.Name = name
 	this.Slug = slug
@@ -124,27 +124,29 @@ func (o *FlowRequest) SetTitle(v string) {
 }
 
 // GetDesignation returns the Designation field value
+// If the value is explicit nil, the zero value for FlowDesignationEnum will be returned
 func (o *FlowRequest) GetDesignation() FlowDesignationEnum {
-	if o == nil {
+	if o == nil || o.Designation.Get() == nil {
 		var ret FlowDesignationEnum
 		return ret
 	}
 
-	return o.Designation
+	return *o.Designation.Get()
 }
 
 // GetDesignationOk returns a tuple with the Designation field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FlowRequest) GetDesignationOk() (*FlowDesignationEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Designation, true
+	return o.Designation.Get(), o.Designation.IsSet()
 }
 
 // SetDesignation sets field value
 func (o *FlowRequest) SetDesignation(v FlowDesignationEnum) {
-	o.Designation = v
+	o.Designation.Set(&v)
 }
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
@@ -255,7 +257,7 @@ func (o FlowRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["title"] = o.Title
 	}
 	if true {
-		toSerialize["designation"] = o.Designation
+		toSerialize["designation"] = o.Designation.Get()
 	}
 	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode

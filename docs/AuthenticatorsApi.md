@@ -76,8 +76,8 @@ func main() {
     duoDeviceRequest := *openapiclient.NewDuoDeviceRequest("Name_example") // DuoDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminDuoCreate(context.Background()).DuoDeviceRequest(duoDeviceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminDuoCreate(context.Background()).DuoDeviceRequest(duoDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminDuoCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -142,8 +142,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this Duo Device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminDuoDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminDuoDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminDuoDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -214,8 +214,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminDuoList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminDuoList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminDuoList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -285,8 +285,8 @@ func main() {
     patchedDuoDeviceRequest := *openapiclient.NewPatchedDuoDeviceRequest() // PatchedDuoDeviceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminDuoPartialUpdate(context.Background(), id).PatchedDuoDeviceRequest(patchedDuoDeviceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminDuoPartialUpdate(context.Background(), id).PatchedDuoDeviceRequest(patchedDuoDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminDuoPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -356,8 +356,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this Duo Device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminDuoRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminDuoRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminDuoRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -427,8 +427,8 @@ func main() {
     duoDeviceRequest := *openapiclient.NewDuoDeviceRequest("Name_example") // DuoDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminDuoUpdate(context.Background(), id).DuoDeviceRequest(duoDeviceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminDuoUpdate(context.Background(), id).DuoDeviceRequest(duoDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminDuoUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -502,8 +502,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminSmsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminSmsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminSmsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -572,8 +572,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this SMS Device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminSmsRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminSmsRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminSmsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -646,8 +646,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminStaticList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminStaticList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminStaticList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -716,8 +716,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this static device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminStaticRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminStaticRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminStaticRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -790,8 +790,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminTotpList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminTotpList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminTotpList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -860,8 +860,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this TOTP device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminTotpRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminTotpRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminTotpRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -934,8 +934,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminWebauthnList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminWebauthnList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminWebauthnList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1004,8 +1004,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAdminWebauthnRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminWebauthnRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminWebauthnRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1073,8 +1073,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsAllList(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAllList(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAllList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1135,8 +1135,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this Duo Device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsDuoDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsDuoDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsDuoDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1207,8 +1207,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsDuoList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsDuoList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsDuoList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1278,8 +1278,8 @@ func main() {
     patchedDuoDeviceRequest := *openapiclient.NewPatchedDuoDeviceRequest() // PatchedDuoDeviceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsDuoPartialUpdate(context.Background(), id).PatchedDuoDeviceRequest(patchedDuoDeviceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsDuoPartialUpdate(context.Background(), id).PatchedDuoDeviceRequest(patchedDuoDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsDuoPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1349,8 +1349,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this Duo Device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsDuoRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsDuoRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsDuoRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1420,8 +1420,8 @@ func main() {
     duoDeviceRequest := *openapiclient.NewDuoDeviceRequest("Name_example") // DuoDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsDuoUpdate(context.Background(), id).DuoDeviceRequest(duoDeviceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsDuoUpdate(context.Background(), id).DuoDeviceRequest(duoDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsDuoUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1491,8 +1491,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this Duo Device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsDuoUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsDuoUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsDuoUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1561,8 +1561,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this SMS Device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsSmsDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsSmsDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1633,8 +1633,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsSmsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsSmsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1704,8 +1704,8 @@ func main() {
     patchedSMSDeviceRequest := *openapiclient.NewPatchedSMSDeviceRequest() // PatchedSMSDeviceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsSmsPartialUpdate(context.Background(), id).PatchedSMSDeviceRequest(patchedSMSDeviceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsSmsPartialUpdate(context.Background(), id).PatchedSMSDeviceRequest(patchedSMSDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1775,8 +1775,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this SMS Device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsSmsRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsSmsRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1846,8 +1846,8 @@ func main() {
     sMSDeviceRequest := *openapiclient.NewSMSDeviceRequest("Name_example") // SMSDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsSmsUpdate(context.Background(), id).SMSDeviceRequest(sMSDeviceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsSmsUpdate(context.Background(), id).SMSDeviceRequest(sMSDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1917,8 +1917,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this SMS Device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsSmsUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsSmsUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1987,8 +1987,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this static device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsStaticDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsStaticDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsStaticDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2059,8 +2059,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsStaticList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsStaticList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsStaticList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2130,8 +2130,8 @@ func main() {
     patchedStaticDeviceRequest := *openapiclient.NewPatchedStaticDeviceRequest() // PatchedStaticDeviceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsStaticPartialUpdate(context.Background(), id).PatchedStaticDeviceRequest(patchedStaticDeviceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsStaticPartialUpdate(context.Background(), id).PatchedStaticDeviceRequest(patchedStaticDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsStaticPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2201,8 +2201,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this static device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsStaticRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsStaticRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsStaticRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2272,8 +2272,8 @@ func main() {
     staticDeviceRequest := *openapiclient.NewStaticDeviceRequest("Name_example") // StaticDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsStaticUpdate(context.Background(), id).StaticDeviceRequest(staticDeviceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsStaticUpdate(context.Background(), id).StaticDeviceRequest(staticDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsStaticUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2343,8 +2343,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this static device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsStaticUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsStaticUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsStaticUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2413,8 +2413,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this TOTP device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsTotpDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsTotpDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsTotpDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2485,8 +2485,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsTotpList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsTotpList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsTotpList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2556,8 +2556,8 @@ func main() {
     patchedTOTPDeviceRequest := *openapiclient.NewPatchedTOTPDeviceRequest() // PatchedTOTPDeviceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsTotpPartialUpdate(context.Background(), id).PatchedTOTPDeviceRequest(patchedTOTPDeviceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsTotpPartialUpdate(context.Background(), id).PatchedTOTPDeviceRequest(patchedTOTPDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsTotpPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2627,8 +2627,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this TOTP device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsTotpRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsTotpRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsTotpRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2698,8 +2698,8 @@ func main() {
     tOTPDeviceRequest := *openapiclient.NewTOTPDeviceRequest("Name_example") // TOTPDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsTotpUpdate(context.Background(), id).TOTPDeviceRequest(tOTPDeviceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsTotpUpdate(context.Background(), id).TOTPDeviceRequest(tOTPDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsTotpUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2769,8 +2769,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this TOTP device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsTotpUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsTotpUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsTotpUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2839,8 +2839,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsWebauthnDestroy(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsWebauthnDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsWebauthnDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2911,8 +2911,8 @@ func main() {
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsWebauthnList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsWebauthnList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsWebauthnList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2982,8 +2982,8 @@ func main() {
     patchedWebAuthnDeviceRequest := *openapiclient.NewPatchedWebAuthnDeviceRequest() // PatchedWebAuthnDeviceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsWebauthnPartialUpdate(context.Background(), id).PatchedWebAuthnDeviceRequest(patchedWebAuthnDeviceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsWebauthnPartialUpdate(context.Background(), id).PatchedWebAuthnDeviceRequest(patchedWebAuthnDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsWebauthnPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3053,8 +3053,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsWebauthnRetrieve(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsWebauthnRetrieve(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsWebauthnRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3124,8 +3124,8 @@ func main() {
     webAuthnDeviceRequest := *openapiclient.NewWebAuthnDeviceRequest("Name_example") // WebAuthnDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsWebauthnUpdate(context.Background(), id).WebAuthnDeviceRequest(webAuthnDeviceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsWebauthnUpdate(context.Background(), id).WebAuthnDeviceRequest(webAuthnDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsWebauthnUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3195,8 +3195,8 @@ func main() {
     id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthenticatorsApi.AuthenticatorsWebauthnUsedByList(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsWebauthnUsedByList(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsWebauthnUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

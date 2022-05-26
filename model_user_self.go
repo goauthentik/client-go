@@ -190,11 +190,11 @@ func (o *UserSelf) GetGroups() []UserSelfGroups {
 
 // GetGroupsOk returns a tuple with the Groups field value
 // and a boolean to check if the value has been set.
-func (o *UserSelf) GetGroupsOk() (*[]UserSelfGroups, bool) {
+func (o *UserSelf) GetGroupsOk() ([]UserSelfGroups, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Groups, true
+	return o.Groups, true
 }
 
 // SetGroups sets field value
@@ -294,11 +294,11 @@ func (o *UserSelf) GetSettings() map[string]interface{} {
 
 // GetSettingsOk returns a tuple with the Settings field value
 // and a boolean to check if the value has been set.
-func (o *UserSelf) GetSettingsOk() (*map[string]interface{}, bool) {
+func (o *UserSelf) GetSettingsOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Settings, true
+	return o.Settings, true
 }
 
 // SetSettings sets field value

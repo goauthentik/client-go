@@ -23,7 +23,7 @@ type ConsentStage struct {
 	VerboseName       string                `json:"verbose_name"`
 	VerboseNamePlural string                `json:"verbose_name_plural"`
 	MetaModelName     string                `json:"meta_model_name"`
-	FlowSet           *[]Flow               `json:"flow_set,omitempty"`
+	FlowSet           []Flow                `json:"flow_set,omitempty"`
 	Mode              *ConsentStageModeEnum `json:"mode,omitempty"`
 	// Offset after which consent expires. (Format: hours=1;minutes=2;seconds=3).
 	ConsentExpireIn *string `json:"consent_expire_in,omitempty"`
@@ -202,12 +202,12 @@ func (o *ConsentStage) GetFlowSet() []Flow {
 		var ret []Flow
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConsentStage) GetFlowSetOk() (*[]Flow, bool) {
+func (o *ConsentStage) GetFlowSetOk() ([]Flow, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -225,7 +225,7 @@ func (o *ConsentStage) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []Flow and assigns it to the FlowSet field.
 func (o *ConsentStage) SetFlowSet(v []Flow) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.

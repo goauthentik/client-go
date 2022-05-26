@@ -17,10 +17,10 @@ import (
 
 // PatchedPasswordStageRequest PasswordStage Serializer
 type PatchedPasswordStageRequest struct {
-	Name    *string        `json:"name,omitempty"`
-	FlowSet *[]FlowRequest `json:"flow_set,omitempty"`
+	Name    *string       `json:"name,omitempty"`
+	FlowSet []FlowRequest `json:"flow_set,omitempty"`
 	// Selection of backends to test the password against.
-	Backends *[]BackendsEnum `json:"backends,omitempty"`
+	Backends []BackendsEnum `json:"backends,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
 	// How many attempts a user has before the flow is canceled. To lock the user out, use a reputation policy and a user_write stage.
@@ -82,12 +82,12 @@ func (o *PatchedPasswordStageRequest) GetFlowSet() []FlowRequest {
 		var ret []FlowRequest
 		return ret
 	}
-	return *o.FlowSet
+	return o.FlowSet
 }
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedPasswordStageRequest) GetFlowSetOk() (*[]FlowRequest, bool) {
+func (o *PatchedPasswordStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -105,7 +105,7 @@ func (o *PatchedPasswordStageRequest) HasFlowSet() bool {
 
 // SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
 func (o *PatchedPasswordStageRequest) SetFlowSet(v []FlowRequest) {
-	o.FlowSet = &v
+	o.FlowSet = v
 }
 
 // GetBackends returns the Backends field value if set, zero value otherwise.
@@ -114,12 +114,12 @@ func (o *PatchedPasswordStageRequest) GetBackends() []BackendsEnum {
 		var ret []BackendsEnum
 		return ret
 	}
-	return *o.Backends
+	return o.Backends
 }
 
 // GetBackendsOk returns a tuple with the Backends field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedPasswordStageRequest) GetBackendsOk() (*[]BackendsEnum, bool) {
+func (o *PatchedPasswordStageRequest) GetBackendsOk() ([]BackendsEnum, bool) {
 	if o == nil || o.Backends == nil {
 		return nil, false
 	}
@@ -137,7 +137,7 @@ func (o *PatchedPasswordStageRequest) HasBackends() bool {
 
 // SetBackends gets a reference to the given []BackendsEnum and assigns it to the Backends field.
 func (o *PatchedPasswordStageRequest) SetBackends(v []BackendsEnum) {
-	o.Backends = &v
+	o.Backends = v
 }
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).

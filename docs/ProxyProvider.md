@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **BasicAuthEnabled** | Pointer to **bool** | Set a custom HTTP-Basic Authentication header based on values from authentik. | [optional] 
 **BasicAuthPasswordAttribute** | Pointer to **string** | User/Group Attribute used for the password part of the HTTP-Basic Header. | [optional] 
 **BasicAuthUserAttribute** | Pointer to **string** | User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user&#39;s Email address is used. | [optional] 
-**Mode** | Pointer to [**ProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
+**Mode** | Pointer to [**NullableProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
 **RedirectUris** | **string** |  | [readonly] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
 **TokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
@@ -482,6 +482,16 @@ SetMode sets Mode field to given value.
 
 HasMode returns a boolean if a field has been set.
 
+### SetModeNil
+
+`func (o *ProxyProvider) SetModeNil(b bool)`
+
+ SetModeNil sets the value for Mode to be an explicit nil
+
+### UnsetMode
+`func (o *ProxyProvider) UnsetMode()`
+
+UnsetMode ensures that no value is present for Mode, not even an explicit nil
 ### GetRedirectUris
 
 `func (o *ProxyProvider) GetRedirectUris() string`
