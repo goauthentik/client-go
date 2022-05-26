@@ -3,7 +3,13 @@ PWD = $(shell pwd)
 UID = $(shell id -u)
 GID = $(shell id -g)
 
-default:
+all: clean build
+
+clean:
+	rm -f *.go
+	rm -rf docs/
+
+build:
 	wget -O schema.yml https://raw.githubusercontent.com/goauthentik/authentik/master/schema.yml
 	docker run \
 		--rm -v ${PWD}:/local \
@@ -16,3 +22,4 @@ default:
 	go get
 	go fmt .
 	go mod tidy
+	rm -f .travis.yml
