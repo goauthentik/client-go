@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   contact:
-    email: hello@beryju.org
+    email: hello@goauthentik.io
   description: Making authentication simple.
   license:
     name: GNU GPLv3
