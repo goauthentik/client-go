@@ -21,6 +21,7 @@ type NotificationTransportModeEnum string
 
 // List of NotificationTransportModeEnum
 const (
+	NOTIFICATIONTRANSPORTMODEENUM_LOCAL         NotificationTransportModeEnum = "local"
 	NOTIFICATIONTRANSPORTMODEENUM_WEBHOOK       NotificationTransportModeEnum = "webhook"
 	NOTIFICATIONTRANSPORTMODEENUM_WEBHOOK_SLACK NotificationTransportModeEnum = "webhook_slack"
 	NOTIFICATIONTRANSPORTMODEENUM_EMAIL         NotificationTransportModeEnum = "email"
@@ -28,6 +29,7 @@ const (
 
 // All allowed values of NotificationTransportModeEnum enum
 var AllowedNotificationTransportModeEnumEnumValues = []NotificationTransportModeEnum{
+	"local",
 	"webhook",
 	"webhook_slack",
 	"email",

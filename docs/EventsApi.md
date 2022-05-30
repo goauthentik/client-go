@@ -1684,7 +1684,7 @@ import (
 )
 
 func main() {
-    notificationTransportRequest := *openapiclient.NewNotificationTransportRequest("Name_example", openapiclient.NotificationTransportModeEnum("webhook")) // NotificationTransportRequest | 
+    notificationTransportRequest := *openapiclient.NewNotificationTransportRequest("Name_example", openapiclient.NotificationTransportModeEnum("local")) // NotificationTransportRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2111,7 +2111,7 @@ import (
 
 func main() {
     uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
-    notificationTransportRequest := *openapiclient.NewNotificationTransportRequest("Name_example", openapiclient.NotificationTransportModeEnum("webhook")) // NotificationTransportRequest | 
+    notificationTransportRequest := *openapiclient.NewNotificationTransportRequest("Name_example", openapiclient.NotificationTransportModeEnum("local")) // NotificationTransportRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

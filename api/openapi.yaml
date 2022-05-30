@@ -5086,6 +5086,7 @@ paths:
         schema:
           enum:
           - email
+          - local
           - webhook
           - webhook_slack
           type: string
@@ -27307,6 +27308,7 @@ components:
       type: object
     NotificationTransportModeEnum:
       enum:
+      - local
       - webhook
       - webhook_slack
       - email
