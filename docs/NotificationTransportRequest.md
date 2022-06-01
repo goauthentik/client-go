@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Mode** | [**NotificationTransportModeEnum**](NotificationTransportModeEnum.md) |  | 
+**Mode** | Pointer to [**NotificationTransportModeEnum**](NotificationTransportModeEnum.md) |  | [optional] 
 **WebhookUrl** | Pointer to **string** |  | [optional] 
 **WebhookMapping** | Pointer to **NullableString** |  | [optional] 
 **SendOnce** | Pointer to **bool** | Only send notification once, for example when sending a webhook into a chat channel. | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewNotificationTransportRequest
 
-`func NewNotificationTransportRequest(name string, mode NotificationTransportModeEnum, ) *NotificationTransportRequest`
+`func NewNotificationTransportRequest(name string, ) *NotificationTransportRequest`
 
 NewNotificationTransportRequest instantiates a new NotificationTransportRequest object
 This constructor will assign default values to properties that have it defined,
@@ -68,6 +68,11 @@ and a boolean to check if the value has been set.
 
 SetMode sets Mode field to given value.
 
+### HasMode
+
+`func (o *NotificationTransportRequest) HasMode() bool`
+
+HasMode returns a boolean if a field has been set.
 
 ### GetWebhookUrl
 

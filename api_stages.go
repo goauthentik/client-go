@@ -2146,6 +2146,7 @@ type ApiStagesAuthenticatorSmsListRequest struct {
 	provider      *string
 	search        *string
 	stageUuid     *string
+	verifyOnly    *bool
 }
 
 func (r ApiStagesAuthenticatorSmsListRequest) AccountSid(accountSid string) ApiStagesAuthenticatorSmsListRequest {
@@ -2214,6 +2215,11 @@ func (r ApiStagesAuthenticatorSmsListRequest) Search(search string) ApiStagesAut
 
 func (r ApiStagesAuthenticatorSmsListRequest) StageUuid(stageUuid string) ApiStagesAuthenticatorSmsListRequest {
 	r.stageUuid = &stageUuid
+	return r
+}
+
+func (r ApiStagesAuthenticatorSmsListRequest) VerifyOnly(verifyOnly bool) ApiStagesAuthenticatorSmsListRequest {
+	r.verifyOnly = &verifyOnly
 	return r
 }
 
@@ -2295,6 +2301,9 @@ func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenti
 	}
 	if r.stageUuid != nil {
 		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+	}
+	if r.verifyOnly != nil {
+		localVarQueryParams.Add("verify_only", parameterToString(*r.verifyOnly, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

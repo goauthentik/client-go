@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Auth** | **string** |  | 
 **AuthPassword** | Pointer to **string** |  | [optional] 
 **AuthType** | Pointer to [**AuthTypeEnum**](AuthTypeEnum.md) |  | [optional] 
+**VerifyOnly** | Pointer to **bool** | When enabled, the Phone number is only used during enrollment to verify the users authenticity. Only a hash of the phone number is saved to ensure it is not re-used in the future. | [optional] 
 
 ## Methods
 
@@ -242,6 +243,31 @@ SetAuthType sets AuthType field to given value.
 `func (o *AuthenticatorSMSStageRequest) HasAuthType() bool`
 
 HasAuthType returns a boolean if a field has been set.
+
+### GetVerifyOnly
+
+`func (o *AuthenticatorSMSStageRequest) GetVerifyOnly() bool`
+
+GetVerifyOnly returns the VerifyOnly field if non-nil, zero value otherwise.
+
+### GetVerifyOnlyOk
+
+`func (o *AuthenticatorSMSStageRequest) GetVerifyOnlyOk() (*bool, bool)`
+
+GetVerifyOnlyOk returns a tuple with the VerifyOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerifyOnly
+
+`func (o *AuthenticatorSMSStageRequest) SetVerifyOnly(v bool)`
+
+SetVerifyOnly sets VerifyOnly field to given value.
+
+### HasVerifyOnly
+
+`func (o *AuthenticatorSMSStageRequest) HasVerifyOnly() bool`
+
+HasVerifyOnly returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -16578,6 +16578,13 @@ paths:
           format: uuid
           type: string
         style: form
+      - explode: true
+        in: query
+        name: verify_only
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -22435,6 +22442,7 @@ components:
           designation: ""
           cache_count: 0
           slug: slug
+        verify_only: true
         component: component
         verbose_name: verbose_name
         meta_model_name: meta_model_name
@@ -22485,6 +22493,11 @@ components:
           type: string
         auth_type:
           $ref: '#/components/schemas/AuthTypeEnum'
+        verify_only:
+          description: "When enabled, the Phone number is only used during enrollment\
+            \ to verify the users authenticity. Only a hash of the phone number is\
+            \ saved to ensure it is not re-used in the future."
+          type: boolean
       required:
       - account_sid
       - auth
@@ -22523,6 +22536,7 @@ components:
           designation: ""
           title: title
           slug: slug
+        verify_only: true
       properties:
         name:
           minLength: 1
@@ -22552,6 +22566,11 @@ components:
           type: string
         auth_type:
           $ref: '#/components/schemas/AuthTypeEnum'
+        verify_only:
+          description: "When enabled, the Phone number is only used during enrollment\
+            \ to verify the users authenticity. Only a hash of the phone number is\
+            \ saved to ensure it is not re-used in the future."
+          type: boolean
       required:
       - account_sid
       - auth
@@ -27301,7 +27320,6 @@ components:
             \ into a chat channel."
           type: boolean
       required:
-      - mode
       - mode_verbose
       - name
       - pk
@@ -27339,7 +27357,6 @@ components:
             \ into a chat channel."
           type: boolean
       required:
-      - mode
       - name
       type: object
     NotificationTransportTest:
@@ -28547,6 +28564,7 @@ components:
             designation: ""
             cache_count: 0
             slug: slug
+          verify_only: true
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
@@ -28597,6 +28615,7 @@ components:
             designation: ""
             cache_count: 0
             slug: slug
+          verify_only: true
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
@@ -34632,6 +34651,7 @@ components:
           designation: ""
           title: title
           slug: slug
+        verify_only: true
       properties:
         name:
           minLength: 1
@@ -34661,6 +34681,11 @@ components:
           type: string
         auth_type:
           $ref: '#/components/schemas/AuthTypeEnum'
+        verify_only:
+          description: "When enabled, the Phone number is only used during enrollment\
+            \ to verify the users authenticity. Only a hash of the phone number is\
+            \ saved to ensure it is not re-used in the future."
+          type: boolean
       type: object
     PatchedAuthenticatorStaticStageRequest:
       description: AuthenticatorStaticStage Serializer

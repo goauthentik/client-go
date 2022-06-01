@@ -17,12 +17,12 @@ import (
 
 // NotificationTransport NotificationTransport Serializer
 type NotificationTransport struct {
-	Pk             string                        `json:"pk"`
-	Name           string                        `json:"name"`
-	Mode           NotificationTransportModeEnum `json:"mode"`
-	ModeVerbose    string                        `json:"mode_verbose"`
-	WebhookUrl     *string                       `json:"webhook_url,omitempty"`
-	WebhookMapping NullableString                `json:"webhook_mapping,omitempty"`
+	Pk             string                         `json:"pk"`
+	Name           string                         `json:"name"`
+	Mode           *NotificationTransportModeEnum `json:"mode,omitempty"`
+	ModeVerbose    string                         `json:"mode_verbose"`
+	WebhookUrl     *string                        `json:"webhook_url,omitempty"`
+	WebhookMapping NullableString                 `json:"webhook_mapping,omitempty"`
 	// Only send notification once, for example when sending a webhook into a chat channel.
 	SendOnce *bool `json:"send_once,omitempty"`
 }
@@ -31,11 +31,10 @@ type NotificationTransport struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationTransport(pk string, name string, mode NotificationTransportModeEnum, modeVerbose string) *NotificationTransport {
+func NewNotificationTransport(pk string, name string, modeVerbose string) *NotificationTransport {
 	this := NotificationTransport{}
 	this.Pk = pk
 	this.Name = name
-	this.Mode = mode
 	this.ModeVerbose = modeVerbose
 	return &this
 }
@@ -96,28 +95,36 @@ func (o *NotificationTransport) SetName(v string) {
 	o.Name = v
 }
 
-// GetMode returns the Mode field value
+// GetMode returns the Mode field value if set, zero value otherwise.
 func (o *NotificationTransport) GetMode() NotificationTransportModeEnum {
-	if o == nil {
+	if o == nil || o.Mode == nil {
 		var ret NotificationTransportModeEnum
 		return ret
 	}
-
-	return o.Mode
+	return *o.Mode
 }
 
-// GetModeOk returns a tuple with the Mode field value
+// GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationTransport) GetModeOk() (*NotificationTransportModeEnum, bool) {
-	if o == nil {
+	if o == nil || o.Mode == nil {
 		return nil, false
 	}
-	return &o.Mode, true
+	return o.Mode, true
 }
 
-// SetMode sets field value
+// HasMode returns a boolean if a field has been set.
+func (o *NotificationTransport) HasMode() bool {
+	if o != nil && o.Mode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMode gets a reference to the given NotificationTransportModeEnum and assigns it to the Mode field.
 func (o *NotificationTransport) SetMode(v NotificationTransportModeEnum) {
-	o.Mode = v
+	o.Mode = &v
 }
 
 // GetModeVerbose returns the ModeVerbose field value
@@ -259,7 +266,7 @@ func (o NotificationTransport) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if true {
+	if o.Mode != nil {
 		toSerialize["mode"] = o.Mode
 	}
 	if true {

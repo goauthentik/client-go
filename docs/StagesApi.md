@@ -1343,7 +1343,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorSmsList
 
-> PaginatedAuthenticatorSMSStageList StagesAuthenticatorSmsList(ctx).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FromNumber(fromNumber).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).Execute()
+> PaginatedAuthenticatorSMSStageList StagesAuthenticatorSmsList(ctx).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FromNumber(fromNumber).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).VerifyOnly(verifyOnly).Execute()
 
 
 
@@ -1375,10 +1375,11 @@ func main() {
     provider := "provider_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    verifyOnly := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorSmsList(context.Background()).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FromNumber(fromNumber).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).Execute()
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorSmsList(context.Background()).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FromNumber(fromNumber).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).VerifyOnly(verifyOnly).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1412,6 +1413,7 @@ Name | Type | Description  | Notes
  **provider** | **string** |  | 
  **search** | **string** | A search term. | 
  **stageUuid** | **string** |  | 
+ **verifyOnly** | **bool** |  | 
 
 ### Return type
 

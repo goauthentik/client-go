@@ -32,6 +32,8 @@ type AuthenticatorSMSStage struct {
 	Auth          string         `json:"auth"`
 	AuthPassword  *string        `json:"auth_password,omitempty"`
 	AuthType      *AuthTypeEnum  `json:"auth_type,omitempty"`
+	// When enabled, the Phone number is only used during enrollment to verify the users authenticity. Only a hash of the phone number is saved to ensure it is not re-used in the future.
+	VerifyOnly *bool `json:"verify_only,omitempty"`
 }
 
 // NewAuthenticatorSMSStage instantiates a new AuthenticatorSMSStage object
@@ -440,6 +442,38 @@ func (o *AuthenticatorSMSStage) SetAuthType(v AuthTypeEnum) {
 	o.AuthType = &v
 }
 
+// GetVerifyOnly returns the VerifyOnly field value if set, zero value otherwise.
+func (o *AuthenticatorSMSStage) GetVerifyOnly() bool {
+	if o == nil || o.VerifyOnly == nil {
+		var ret bool
+		return ret
+	}
+	return *o.VerifyOnly
+}
+
+// GetVerifyOnlyOk returns a tuple with the VerifyOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorSMSStage) GetVerifyOnlyOk() (*bool, bool) {
+	if o == nil || o.VerifyOnly == nil {
+		return nil, false
+	}
+	return o.VerifyOnly, true
+}
+
+// HasVerifyOnly returns a boolean if a field has been set.
+func (o *AuthenticatorSMSStage) HasVerifyOnly() bool {
+	if o != nil && o.VerifyOnly != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVerifyOnly gets a reference to the given bool and assigns it to the VerifyOnly field.
+func (o *AuthenticatorSMSStage) SetVerifyOnly(v bool) {
+	o.VerifyOnly = &v
+}
+
 func (o AuthenticatorSMSStage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -483,6 +517,9 @@ func (o AuthenticatorSMSStage) MarshalJSON() ([]byte, error) {
 	}
 	if o.AuthType != nil {
 		toSerialize["auth_type"] = o.AuthType
+	}
+	if o.VerifyOnly != nil {
+		toSerialize["verify_only"] = o.VerifyOnly
 	}
 	return json.Marshal(toSerialize)
 }

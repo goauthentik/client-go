@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
 **Name** | **string** |  | 
-**Mode** | [**NotificationTransportModeEnum**](NotificationTransportModeEnum.md) |  | 
+**Mode** | Pointer to [**NotificationTransportModeEnum**](NotificationTransportModeEnum.md) |  | [optional] 
 **ModeVerbose** | **string** |  | [readonly] 
 **WebhookUrl** | Pointer to **string** |  | [optional] 
 **WebhookMapping** | Pointer to **NullableString** |  | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewNotificationTransport
 
-`func NewNotificationTransport(pk string, name string, mode NotificationTransportModeEnum, modeVerbose string, ) *NotificationTransport`
+`func NewNotificationTransport(pk string, name string, modeVerbose string, ) *NotificationTransport`
 
 NewNotificationTransport instantiates a new NotificationTransport object
 This constructor will assign default values to properties that have it defined,
@@ -90,6 +90,11 @@ and a boolean to check if the value has been set.
 
 SetMode sets Mode field to given value.
 
+### HasMode
+
+`func (o *NotificationTransport) HasMode() bool`
+
+HasMode returns a boolean if a field has been set.
 
 ### GetModeVerbose
 
