@@ -34,7 +34,9 @@ type OAuthSource struct {
 	PolicyEngineMode  *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
-	ProviderType     ProviderTypeEnum             `json:"provider_type"`
+	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
+	Managed      NullableString   `json:"managed"`
+	ProviderType ProviderTypeEnum `json:"provider_type"`
 	// URL used to request the initial token. This URL is only required for OAuth 1.
 	RequestTokenUrl NullableString `json:"request_token_url,omitempty"`
 	// URL the user is redirect to to conest the flow.
@@ -56,7 +58,7 @@ type OAuthSource struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ OAuthSourceType) *OAuthSource {
+func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ OAuthSourceType) *OAuthSource {
 	this := OAuthSource{}
 	this.Pk = pk
 	this.Name = name
@@ -65,6 +67,7 @@ func NewOAuthSource(pk string, name string, slug string, component string, verbo
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
+	this.Managed = managed
 	this.ProviderType = providerType
 	this.ConsumerKey = consumerKey
 	this.CallbackUrl = callbackUrl
@@ -439,6 +442,32 @@ func (o *OAuthSource) SetUserMatchingModeNil() {
 // UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
 func (o *OAuthSource) UnsetUserMatchingMode() {
 	o.UserMatchingMode.Unset()
+}
+
+// GetManaged returns the Managed field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *OAuthSource) GetManaged() string {
+	if o == nil || o.Managed.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Managed.Get()
+}
+
+// GetManagedOk returns a tuple with the Managed field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OAuthSource) GetManagedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Managed.Get(), o.Managed.IsSet()
+}
+
+// SetManaged sets field value
+func (o *OAuthSource) SetManaged(v string) {
+	o.Managed.Set(&v)
 }
 
 // GetProviderType returns the ProviderType field value
@@ -874,6 +903,9 @@ func (o OAuthSource) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserMatchingMode.IsSet() {
 		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
+	}
+	if true {
+		toSerialize["managed"] = o.Managed.Get()
 	}
 	if true {
 		toSerialize["provider_type"] = o.ProviderType

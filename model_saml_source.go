@@ -34,6 +34,8 @@ type SAMLSource struct {
 	PolicyEngineMode  *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
+	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
+	Managed NullableString `json:"managed"`
 	// Flow used before authentication.
 	PreAuthenticationFlow string `json:"pre_authentication_flow"`
 	// Also known as Entity ID. Defaults the Metadata URL.
@@ -59,7 +61,7 @@ type SAMLSource struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSAMLSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, preAuthenticationFlow string, ssoUrl string) *SAMLSource {
+func NewSAMLSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, preAuthenticationFlow string, ssoUrl string) *SAMLSource {
 	this := SAMLSource{}
 	this.Pk = pk
 	this.Name = name
@@ -68,6 +70,7 @@ func NewSAMLSource(pk string, name string, slug string, component string, verbos
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
+	this.Managed = managed
 	this.PreAuthenticationFlow = preAuthenticationFlow
 	this.SsoUrl = ssoUrl
 	return &this
@@ -440,6 +443,32 @@ func (o *SAMLSource) SetUserMatchingModeNil() {
 // UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
 func (o *SAMLSource) UnsetUserMatchingMode() {
 	o.UserMatchingMode.Unset()
+}
+
+// GetManaged returns the Managed field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *SAMLSource) GetManaged() string {
+	if o == nil || o.Managed.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Managed.Get()
+}
+
+// GetManagedOk returns a tuple with the Managed field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SAMLSource) GetManagedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Managed.Get(), o.Managed.IsSet()
+}
+
+// SetManaged sets field value
+func (o *SAMLSource) SetManaged(v string) {
+	o.Managed.Set(&v)
 }
 
 // GetPreAuthenticationFlow returns the PreAuthenticationFlow field value
@@ -848,6 +877,9 @@ func (o SAMLSource) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserMatchingMode.IsSet() {
 		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
+	}
+	if true {
+		toSerialize["managed"] = o.Managed.Get()
 	}
 	if true {
 		toSerialize["pre_authentication_flow"] = o.PreAuthenticationFlow

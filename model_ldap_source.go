@@ -34,7 +34,9 @@ type LDAPSource struct {
 	PolicyEngineMode  *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
-	ServerUri        string                       `json:"server_uri"`
+	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
+	Managed   NullableString `json:"managed"`
+	ServerUri string         `json:"server_uri"`
 	// Optionally verify the LDAP Server's Certificate against the CA Chain in this keypair.
 	PeerCertificate NullableString `json:"peer_certificate,omitempty"`
 	BindCn          *string        `json:"bind_cn,omitempty"`
@@ -66,7 +68,7 @@ type LDAPSource struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLDAPSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, serverUri string, baseDn string) *LDAPSource {
+func NewLDAPSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, serverUri string, baseDn string) *LDAPSource {
 	this := LDAPSource{}
 	this.Pk = pk
 	this.Name = name
@@ -75,6 +77,7 @@ func NewLDAPSource(pk string, name string, slug string, component string, verbos
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
+	this.Managed = managed
 	this.ServerUri = serverUri
 	this.BaseDn = baseDn
 	return &this
@@ -447,6 +450,32 @@ func (o *LDAPSource) SetUserMatchingModeNil() {
 // UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
 func (o *LDAPSource) UnsetUserMatchingMode() {
 	o.UserMatchingMode.Unset()
+}
+
+// GetManaged returns the Managed field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *LDAPSource) GetManaged() string {
+	if o == nil || o.Managed.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Managed.Get()
+}
+
+// GetManagedOk returns a tuple with the Managed field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *LDAPSource) GetManagedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Managed.Get(), o.Managed.IsSet()
+}
+
+// SetManaged sets field value
+func (o *LDAPSource) SetManaged(v string) {
+	o.Managed.Set(&v)
 }
 
 // GetServerUri returns the ServerUri field value
@@ -1036,6 +1065,9 @@ func (o LDAPSource) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserMatchingMode.IsSet() {
 		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
+	}
+	if true {
+		toSerialize["managed"] = o.Managed.Get()
 	}
 	if true {
 		toSerialize["server_uri"] = o.ServerUri

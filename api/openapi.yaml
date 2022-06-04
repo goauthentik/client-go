@@ -13568,6 +13568,20 @@ paths:
       description: Source Viewset
       operationId: sources_all_list
       parameters:
+      - explode: true
+        in: query
+        name: managed
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
       - description: Which field to use when ordering the results.
         explode: true
         in: query
@@ -13596,6 +13610,13 @@ paths:
         explode: true
         in: query
         name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: slug
         required: false
         schema:
           type: string
@@ -26778,6 +26799,7 @@ components:
         sync_users: true
         enabled: true
         base_dn: base_dn
+        managed: managed
         additional_group_dn: additional_group_dn
         sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         property_mappings:
@@ -26845,6 +26867,16 @@ components:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
+        managed:
+          description: "Objects which are managed by authentik. These objects are\
+            \ created and updated automatically. This is flag only indicates that\
+            \ an object can be overwritten by migrations. You can still modify the\
+            \ objects via the API, but expect changes to be overwritten in a later\
+            \ update."
+          nullable: true
+          readOnly: true
+          title: Managed by authentik
+          type: string
         server_uri:
           format: uri
           type: string
@@ -26907,6 +26939,7 @@ components:
       required:
       - base_dn
       - component
+      - managed
       - meta_model_name
       - name
       - pk
@@ -27691,29 +27724,30 @@ components:
       example:
         provider_type: null
         user_matching_mode: ""
-        oidc_jwks_url: oidc_jwks_url
         verbose_name_plural: verbose_name_plural
         request_token_url: request_token_url
         profile_url: profile_url
-        authorization_url: authorization_url
         oidc_jwks:
           key: ""
         type: null
         additional_scopes: additional_scopes
         enabled: true
+        callback_url: callback_url
+        managed: managed
+        access_token_url: access_token_url
+        slug: slug
+        oidc_jwks_url: oidc_jwks_url
+        authorization_url: authorization_url
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
         consumer_key: consumer_key
-        callback_url: callback_url
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         oidc_well_known_url: oidc_well_known_url
         component: component
         verbose_name: verbose_name
         meta_model_name: meta_model_name
         name: name
-        access_token_url: access_token_url
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        slug: slug
       properties:
         pk:
           format: uuid
@@ -27759,6 +27793,16 @@ components:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
+        managed:
+          description: "Objects which are managed by authentik. These objects are\
+            \ created and updated automatically. This is flag only indicates that\
+            \ an object can be overwritten by migrations. You can still modify the\
+            \ objects via the API, but expect changes to be overwritten in a later\
+            \ update."
+          nullable: true
+          readOnly: true
+          title: Managed by authentik
+          type: string
         provider_type:
           $ref: '#/components/schemas/ProviderTypeEnum'
         request_token_url:
@@ -27802,6 +27846,7 @@ components:
       - callback_url
       - component
       - consumer_key
+      - managed
       - meta_model_name
       - name
       - pk
@@ -30815,6 +30860,7 @@ components:
           sync_users: true
           enabled: true
           base_dn: base_dn
+          managed: managed
           additional_group_dn: additional_group_dn
           sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           property_mappings:
@@ -30848,6 +30894,7 @@ components:
           sync_users: true
           enabled: true
           base_dn: base_dn
+          managed: managed
           additional_group_dn: additional_group_dn
           sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           property_mappings:
@@ -31132,54 +31179,56 @@ components:
         results:
         - provider_type: null
           user_matching_mode: ""
-          oidc_jwks_url: oidc_jwks_url
           verbose_name_plural: verbose_name_plural
           request_token_url: request_token_url
           profile_url: profile_url
-          authorization_url: authorization_url
           oidc_jwks:
             key: ""
           type: null
           additional_scopes: additional_scopes
           enabled: true
+          callback_url: callback_url
+          managed: managed
+          access_token_url: access_token_url
+          slug: slug
+          oidc_jwks_url: oidc_jwks_url
+          authorization_url: authorization_url
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
           consumer_key: consumer_key
-          callback_url: callback_url
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           oidc_well_known_url: oidc_well_known_url
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
           name: name
-          access_token_url: access_token_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          slug: slug
         - provider_type: null
           user_matching_mode: ""
-          oidc_jwks_url: oidc_jwks_url
           verbose_name_plural: verbose_name_plural
           request_token_url: request_token_url
           profile_url: profile_url
-          authorization_url: authorization_url
           oidc_jwks:
             key: ""
           type: null
           additional_scopes: additional_scopes
           enabled: true
+          callback_url: callback_url
+          managed: managed
+          access_token_url: access_token_url
+          slug: slug
+          oidc_jwks_url: oidc_jwks_url
+          authorization_url: authorization_url
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
           consumer_key: consumer_key
-          callback_url: callback_url
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           oidc_well_known_url: oidc_well_known_url
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
           name: name
-          access_token_url: access_token_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          slug: slug
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -31557,6 +31606,7 @@ components:
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
+          managed: managed
           name: name
           allow_friends: true
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -31575,6 +31625,7 @@ components:
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
+          managed: managed
           name: name
           allow_friends: true
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -32712,6 +32763,7 @@ components:
           digest_algorithm: null
           meta_model_name: meta_model_name
           pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          managed: managed
           name_id_policy: ""
           name: name
           signature_algorithm: null
@@ -32735,6 +32787,7 @@ components:
           digest_algorithm: null
           meta_model_name: meta_model_name
           pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          managed: managed
           name_id_policy: ""
           name: name
           signature_algorithm: null
@@ -32870,30 +32923,32 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - user_matching_mode: ""
+          verbose_name_plural: verbose_name_plural
+          enabled: true
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
-          user_matching_mode: ""
-          verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          managed: managed
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
+        - user_matching_mode: ""
+          verbose_name_plural: verbose_name_plural
           enabled: true
-        - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
-          user_matching_mode: ""
-          verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          managed: managed
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
-          enabled: true
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -37203,6 +37258,7 @@ components:
         component: component
         verbose_name: verbose_name
         meta_model_name: meta_model_name
+        managed: managed
         name: name
         allow_friends: true
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -37253,6 +37309,16 @@ components:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
+        managed:
+          description: "Objects which are managed by authentik. These objects are\
+            \ created and updated automatically. This is flag only indicates that\
+            \ an object can be overwritten by migrations. You can still modify the\
+            \ objects via the API, but expect changes to be overwritten in a later\
+            \ update."
+          nullable: true
+          readOnly: true
+          title: Managed by authentik
+          type: string
         client_id:
           description: Client identifier used to talk to Plex.
           type: string
@@ -37270,6 +37336,7 @@ components:
           type: string
       required:
       - component
+      - managed
       - meta_model_name
       - name
       - pk
@@ -39204,6 +39271,7 @@ components:
         digest_algorithm: null
         meta_model_name: meta_model_name
         pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        managed: managed
         name_id_policy: ""
         name: name
         signature_algorithm: null
@@ -39256,6 +39324,16 @@ components:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
+        managed:
+          description: "Objects which are managed by authentik. These objects are\
+            \ created and updated automatically. This is flag only indicates that\
+            \ an object can be overwritten by migrations. You can still modify the\
+            \ objects via the API, but expect changes to be overwritten in a later\
+            \ update."
+          nullable: true
+          readOnly: true
+          title: Managed by authentik
+          type: string
         pre_authentication_flow:
           description: Flow used before authentication.
           format: uuid
@@ -39304,6 +39382,7 @@ components:
           type: string
       required:
       - component
+      - managed
       - meta_model_name
       - name
       - pk
@@ -39726,18 +39805,19 @@ components:
     Source:
       description: Source Serializer
       example:
+        user_matching_mode: ""
+        verbose_name_plural: verbose_name_plural
+        enabled: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         component: component
         verbose_name: verbose_name
-        user_matching_mode: ""
-        verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
+        managed: managed
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         slug: slug
-        enabled: true
       properties:
         pk:
           format: uuid
@@ -39783,8 +39863,19 @@ components:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
+        managed:
+          description: "Objects which are managed by authentik. These objects are\
+            \ created and updated automatically. This is flag only indicates that\
+            \ an object can be overwritten by migrations. You can still modify the\
+            \ objects via the API, but expect changes to be overwritten in a later\
+            \ update."
+          nullable: true
+          readOnly: true
+          title: Managed by authentik
+          type: string
       required:
       - component
+      - managed
       - meta_model_name
       - name
       - pk

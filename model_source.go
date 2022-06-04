@@ -34,13 +34,15 @@ type Source struct {
 	PolicyEngineMode  *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
+	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
+	Managed NullableString `json:"managed"`
 }
 
 // NewSource instantiates a new Source object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string) *Source {
+func NewSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString) *Source {
 	this := Source{}
 	this.Pk = pk
 	this.Name = name
@@ -49,6 +51,7 @@ func NewSource(pk string, name string, slug string, component string, verboseNam
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
+	this.Managed = managed
 	return &this
 }
 
@@ -421,6 +424,32 @@ func (o *Source) UnsetUserMatchingMode() {
 	o.UserMatchingMode.Unset()
 }
 
+// GetManaged returns the Managed field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *Source) GetManaged() string {
+	if o == nil || o.Managed.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Managed.Get()
+}
+
+// GetManagedOk returns a tuple with the Managed field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Source) GetManagedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Managed.Get(), o.Managed.IsSet()
+}
+
+// SetManaged sets field value
+func (o *Source) SetManaged(v string) {
+	o.Managed.Set(&v)
+}
+
 func (o Source) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -458,6 +487,9 @@ func (o Source) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserMatchingMode.IsSet() {
 		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
+	}
+	if true {
+		toSerialize["managed"] = o.Managed.Get()
 	}
 	return json.Marshal(toSerialize)
 }

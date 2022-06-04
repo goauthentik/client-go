@@ -133,10 +133,23 @@ func (a *SourcesApiService) SourcesAllDestroyExecute(r ApiSourcesAllDestroyReque
 type ApiSourcesAllListRequest struct {
 	ctx        context.Context
 	ApiService *SourcesApiService
+	managed    *string
+	name       *string
 	ordering   *string
 	page       *int32
 	pageSize   *int32
 	search     *string
+	slug       *string
+}
+
+func (r ApiSourcesAllListRequest) Managed(managed string) ApiSourcesAllListRequest {
+	r.managed = &managed
+	return r
+}
+
+func (r ApiSourcesAllListRequest) Name(name string) ApiSourcesAllListRequest {
+	r.name = &name
+	return r
 }
 
 // Which field to use when ordering the results.
@@ -160,6 +173,11 @@ func (r ApiSourcesAllListRequest) PageSize(pageSize int32) ApiSourcesAllListRequ
 // A search term.
 func (r ApiSourcesAllListRequest) Search(search string) ApiSourcesAllListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiSourcesAllListRequest) Slug(slug string) ApiSourcesAllListRequest {
+	r.slug = &slug
 	return r
 }
 
@@ -203,6 +221,12 @@ func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.managed != nil {
+		localVarQueryParams.Add("managed", parameterToString(*r.managed, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
@@ -214,6 +238,9 @@ func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.slug != nil {
+		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

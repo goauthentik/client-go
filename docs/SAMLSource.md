@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **MetaModelName** | **string** |  | [readonly] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
+**Managed** | **NullableString** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **PreAuthenticationFlow** | **string** | Flow used before authentication. | 
 **Issuer** | Pointer to **string** | Also known as Entity ID. Defaults the Metadata URL. | [optional] 
 **SsoUrl** | **string** | URL that the initial Login request is sent to. | 
@@ -32,7 +33,7 @@ Name | Type | Description | Notes
 
 ### NewSAMLSource
 
-`func NewSAMLSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, preAuthenticationFlow string, ssoUrl string, ) *SAMLSource`
+`func NewSAMLSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, preAuthenticationFlow string, ssoUrl string, ) *SAMLSource`
 
 NewSAMLSource instantiates a new SAMLSource object
 This constructor will assign default values to properties that have it defined,
@@ -342,6 +343,36 @@ HasUserMatchingMode returns a boolean if a field has been set.
 `func (o *SAMLSource) UnsetUserMatchingMode()`
 
 UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
+### GetManaged
+
+`func (o *SAMLSource) GetManaged() string`
+
+GetManaged returns the Managed field if non-nil, zero value otherwise.
+
+### GetManagedOk
+
+`func (o *SAMLSource) GetManagedOk() (*string, bool)`
+
+GetManagedOk returns a tuple with the Managed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManaged
+
+`func (o *SAMLSource) SetManaged(v string)`
+
+SetManaged sets Managed field to given value.
+
+
+### SetManagedNil
+
+`func (o *SAMLSource) SetManagedNil(b bool)`
+
+ SetManagedNil sets the value for Managed to be an explicit nil
+
+### UnsetManaged
+`func (o *SAMLSource) UnsetManaged()`
+
+UnsetManaged ensures that no value is present for Managed, not even an explicit nil
 ### GetPreAuthenticationFlow
 
 `func (o *SAMLSource) GetPreAuthenticationFlow() string`

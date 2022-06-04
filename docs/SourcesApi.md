@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 ## SourcesAllList
 
-> PaginatedSourceList SourcesAllList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedSourceList SourcesAllList(ctx).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
 
 
 
@@ -155,14 +155,17 @@ import (
 )
 
 func main() {
+    managed := "managed_example" // string |  (optional)
+    name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
+    slug := "slug_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesAllList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesAllList(context.Background()).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -183,10 +186,13 @@ Other parameters are passed through a pointer to a apiSourcesAllListRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **managed** | **string** |  | 
+ **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
+ **slug** | **string** |  | 
 
 ### Return type
 

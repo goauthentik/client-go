@@ -34,6 +34,8 @@ type PlexSource struct {
 	PolicyEngineMode  *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
+	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
+	Managed NullableString `json:"managed"`
 	// Client identifier used to talk to Plex.
 	ClientId *string `json:"client_id,omitempty"`
 	// Which servers a user has to be a member of to be granted access. Empty list allows every server.
@@ -48,7 +50,7 @@ type PlexSource struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlexSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, plexToken string) *PlexSource {
+func NewPlexSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, plexToken string) *PlexSource {
 	this := PlexSource{}
 	this.Pk = pk
 	this.Name = name
@@ -57,6 +59,7 @@ func NewPlexSource(pk string, name string, slug string, component string, verbos
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
+	this.Managed = managed
 	this.PlexToken = plexToken
 	return &this
 }
@@ -430,6 +433,32 @@ func (o *PlexSource) UnsetUserMatchingMode() {
 	o.UserMatchingMode.Unset()
 }
 
+// GetManaged returns the Managed field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *PlexSource) GetManaged() string {
+	if o == nil || o.Managed.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Managed.Get()
+}
+
+// GetManagedOk returns a tuple with the Managed field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PlexSource) GetManagedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Managed.Get(), o.Managed.IsSet()
+}
+
+// SetManaged sets field value
+func (o *PlexSource) SetManaged(v string) {
+	o.Managed.Set(&v)
+}
+
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *PlexSource) GetClientId() string {
 	if o == nil || o.ClientId == nil {
@@ -587,6 +616,9 @@ func (o PlexSource) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserMatchingMode.IsSet() {
 		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
+	}
+	if true {
+		toSerialize["managed"] = o.Managed.Get()
 	}
 	if o.ClientId != nil {
 		toSerialize["client_id"] = o.ClientId
