@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Provider** | Pointer to **NullableInt32** |  | [optional] 
 **ProviderObj** | [**ApplicationProviderObj**](ApplicationProviderObj.md) |  | 
 **LaunchUrl** | **NullableString** |  | [readonly] 
+**OpenInNewTab** | Pointer to **bool** | Open launch URL in a new browser tab or window. | [optional] 
 **MetaLaunchUrl** | Pointer to **string** |  | [optional] 
 **MetaIcon** | **NullableString** |  | [readonly] 
 **MetaDescription** | Pointer to **string** |  | [optional] 
@@ -181,6 +182,31 @@ SetLaunchUrl sets LaunchUrl field to given value.
 `func (o *Application) UnsetLaunchUrl()`
 
 UnsetLaunchUrl ensures that no value is present for LaunchUrl, not even an explicit nil
+### GetOpenInNewTab
+
+`func (o *Application) GetOpenInNewTab() bool`
+
+GetOpenInNewTab returns the OpenInNewTab field if non-nil, zero value otherwise.
+
+### GetOpenInNewTabOk
+
+`func (o *Application) GetOpenInNewTabOk() (*bool, bool)`
+
+GetOpenInNewTabOk returns a tuple with the OpenInNewTab field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpenInNewTab
+
+`func (o *Application) SetOpenInNewTab(v bool)`
+
+SetOpenInNewTab sets OpenInNewTab field to given value.
+
+### HasOpenInNewTab
+
+`func (o *Application) HasOpenInNewTab() bool`
+
+HasOpenInNewTab returns a boolean if a field has been set.
+
 ### GetMetaLaunchUrl
 
 `func (o *Application) GetMetaLaunchUrl() string`

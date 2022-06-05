@@ -21,16 +21,18 @@ type Application struct {
 	// Application's display Name.
 	Name string `json:"name"`
 	// Internal application name, used in URLs.
-	Slug             string                 `json:"slug"`
-	Provider         NullableInt32          `json:"provider,omitempty"`
-	ProviderObj      ApplicationProviderObj `json:"provider_obj"`
-	LaunchUrl        NullableString         `json:"launch_url"`
-	MetaLaunchUrl    *string                `json:"meta_launch_url,omitempty"`
-	MetaIcon         NullableString         `json:"meta_icon"`
-	MetaDescription  *string                `json:"meta_description,omitempty"`
-	MetaPublisher    *string                `json:"meta_publisher,omitempty"`
-	PolicyEngineMode *PolicyEngineMode      `json:"policy_engine_mode,omitempty"`
-	Group            *string                `json:"group,omitempty"`
+	Slug        string                 `json:"slug"`
+	Provider    NullableInt32          `json:"provider,omitempty"`
+	ProviderObj ApplicationProviderObj `json:"provider_obj"`
+	LaunchUrl   NullableString         `json:"launch_url"`
+	// Open launch URL in a new browser tab or window.
+	OpenInNewTab     *bool             `json:"open_in_new_tab,omitempty"`
+	MetaLaunchUrl    *string           `json:"meta_launch_url,omitempty"`
+	MetaIcon         NullableString    `json:"meta_icon"`
+	MetaDescription  *string           `json:"meta_description,omitempty"`
+	MetaPublisher    *string           `json:"meta_publisher,omitempty"`
+	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	Group            *string           `json:"group,omitempty"`
 }
 
 // NewApplication instantiates a new Application object
@@ -219,6 +221,38 @@ func (o *Application) GetLaunchUrlOk() (*string, bool) {
 // SetLaunchUrl sets field value
 func (o *Application) SetLaunchUrl(v string) {
 	o.LaunchUrl.Set(&v)
+}
+
+// GetOpenInNewTab returns the OpenInNewTab field value if set, zero value otherwise.
+func (o *Application) GetOpenInNewTab() bool {
+	if o == nil || o.OpenInNewTab == nil {
+		var ret bool
+		return ret
+	}
+	return *o.OpenInNewTab
+}
+
+// GetOpenInNewTabOk returns a tuple with the OpenInNewTab field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Application) GetOpenInNewTabOk() (*bool, bool) {
+	if o == nil || o.OpenInNewTab == nil {
+		return nil, false
+	}
+	return o.OpenInNewTab, true
+}
+
+// HasOpenInNewTab returns a boolean if a field has been set.
+func (o *Application) HasOpenInNewTab() bool {
+	if o != nil && o.OpenInNewTab != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenInNewTab gets a reference to the given bool and assigns it to the OpenInNewTab field.
+func (o *Application) SetOpenInNewTab(v bool) {
+	o.OpenInNewTab = &v
 }
 
 // GetMetaLaunchUrl returns the MetaLaunchUrl field value if set, zero value otherwise.
@@ -426,6 +460,9 @@ func (o Application) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["launch_url"] = o.LaunchUrl.Get()
+	}
+	if o.OpenInNewTab != nil {
+		toSerialize["open_in_new_tab"] = o.OpenInNewTab
 	}
 	if o.MetaLaunchUrl != nil {
 		toSerialize["meta_launch_url"] = o.MetaLaunchUrl

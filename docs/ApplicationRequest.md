@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Application&#39;s display Name. | 
 **Slug** | **string** | Internal application name, used in URLs. | 
 **Provider** | Pointer to **NullableInt32** |  | [optional] 
+**OpenInNewTab** | Pointer to **bool** | Open launch URL in a new browser tab or window. | [optional] 
 **MetaLaunchUrl** | Pointer to **string** |  | [optional] 
 **MetaDescription** | Pointer to **string** |  | [optional] 
 **MetaPublisher** | Pointer to **string** |  | [optional] 
@@ -107,6 +108,31 @@ HasProvider returns a boolean if a field has been set.
 `func (o *ApplicationRequest) UnsetProvider()`
 
 UnsetProvider ensures that no value is present for Provider, not even an explicit nil
+### GetOpenInNewTab
+
+`func (o *ApplicationRequest) GetOpenInNewTab() bool`
+
+GetOpenInNewTab returns the OpenInNewTab field if non-nil, zero value otherwise.
+
+### GetOpenInNewTabOk
+
+`func (o *ApplicationRequest) GetOpenInNewTabOk() (*bool, bool)`
+
+GetOpenInNewTabOk returns a tuple with the OpenInNewTab field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpenInNewTab
+
+`func (o *ApplicationRequest) SetOpenInNewTab(v bool)`
+
+SetOpenInNewTab sets OpenInNewTab field to given value.
+
+### HasOpenInNewTab
+
+`func (o *ApplicationRequest) HasOpenInNewTab() bool`
+
+HasOpenInNewTab returns a boolean if a field has been set.
+
 ### GetMetaLaunchUrl
 
 `func (o *ApplicationRequest) GetMetaLaunchUrl() string`

@@ -21872,17 +21872,18 @@ components:
     Application:
       description: Application Serializer
       example:
-        policy_engine_mode: null
-        meta_description: meta_description
         provider_obj: null
-        launch_url: launch_url
-        provider: 0
-        name: name
-        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         meta_launch_url: https://openapi-generator.tech
         meta_icon: meta_icon
-        slug: slug
         meta_publisher: meta_publisher
+        policy_engine_mode: null
+        meta_description: meta_description
+        launch_url: launch_url
+        provider: 0
+        open_in_new_tab: true
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        slug: slug
         group: group
       properties:
         pk:
@@ -21907,6 +21908,9 @@ components:
           nullable: true
           readOnly: true
           type: string
+        open_in_new_tab:
+          description: Open launch URL in a new browser tab or window.
+          type: boolean
         meta_launch_url:
           format: uri
           type: string
@@ -21936,6 +21940,7 @@ components:
         policy_engine_mode: null
         meta_description: meta_description
         provider: 0
+        open_in_new_tab: true
         name: name
         meta_launch_url: https://openapi-generator.tech
         slug: slug
@@ -21955,6 +21960,9 @@ components:
         provider:
           nullable: true
           type: integer
+        open_in_new_tab:
+          description: Open launch URL in a new browser tab or window.
+          type: boolean
         meta_launch_url:
           format: uri
           type: string
@@ -28209,29 +28217,31 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - policy_engine_mode: null
-          meta_description: meta_description
-          provider_obj: null
-          launch_url: launch_url
-          provider: 0
-          name: name
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - provider_obj: null
           meta_launch_url: https://openapi-generator.tech
           meta_icon: meta_icon
-          slug: slug
           meta_publisher: meta_publisher
+          policy_engine_mode: null
+          meta_description: meta_description
+          launch_url: launch_url
+          provider: 0
+          open_in_new_tab: true
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          slug: slug
           group: group
-        - policy_engine_mode: null
-          meta_description: meta_description
-          provider_obj: null
-          launch_url: launch_url
-          provider: 0
-          name: name
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - provider_obj: null
           meta_launch_url: https://openapi-generator.tech
           meta_icon: meta_icon
-          slug: slug
           meta_publisher: meta_publisher
+          policy_engine_mode: null
+          meta_description: meta_description
+          launch_url: launch_url
+          provider: 0
+          open_in_new_tab: true
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          slug: slug
           group: group
       properties:
         pagination:
@@ -33231,17 +33241,18 @@ components:
         results:
         - expires: 2000-01-23T04:56:07.000+00:00
           application:
-            policy_engine_mode: null
-            meta_description: meta_description
             provider_obj: null
-            launch_url: launch_url
-            provider: 0
-            name: name
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             meta_launch_url: https://openapi-generator.tech
             meta_icon: meta_icon
-            slug: slug
             meta_publisher: meta_publisher
+            policy_engine_mode: null
+            meta_description: meta_description
+            launch_url: launch_url
+            provider: 0
+            open_in_new_tab: true
+            name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            slug: slug
             group: group
           pk: 0
           user:
@@ -33326,17 +33337,18 @@ components:
             username: username
         - expires: 2000-01-23T04:56:07.000+00:00
           application:
-            policy_engine_mode: null
-            meta_description: meta_description
             provider_obj: null
-            launch_url: launch_url
-            provider: 0
-            name: name
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             meta_launch_url: https://openapi-generator.tech
             meta_icon: meta_icon
-            slug: slug
             meta_publisher: meta_publisher
+            policy_engine_mode: null
+            meta_description: meta_description
+            launch_url: launch_url
+            provider: 0
+            open_in_new_tab: true
+            name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            slug: slug
             group: group
           pk: 0
           user:
@@ -34555,6 +34567,7 @@ components:
         policy_engine_mode: null
         meta_description: meta_description
         provider: 0
+        open_in_new_tab: true
         name: name
         meta_launch_url: https://openapi-generator.tech
         slug: slug
@@ -34574,6 +34587,9 @@ components:
         provider:
           nullable: true
           type: integer
+        open_in_new_tab:
+          description: Open launch URL in a new browser tab or window.
+          type: boolean
         meta_launch_url:
           format: uri
           type: string
@@ -40742,17 +40758,18 @@ components:
       example:
         expires: 2000-01-23T04:56:07.000+00:00
         application:
-          policy_engine_mode: null
-          meta_description: meta_description
           provider_obj: null
-          launch_url: launch_url
-          provider: 0
-          name: name
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           meta_launch_url: https://openapi-generator.tech
           meta_icon: meta_icon
-          slug: slug
           meta_publisher: meta_publisher
+          policy_engine_mode: null
+          meta_description: meta_description
+          launch_url: launch_url
+          provider: 0
+          open_in_new_tab: true
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          slug: slug
           group: group
         pk: 0
         user:

@@ -20,8 +20,10 @@ type PatchedApplicationRequest struct {
 	// Application's display Name.
 	Name *string `json:"name,omitempty"`
 	// Internal application name, used in URLs.
-	Slug             *string           `json:"slug,omitempty"`
-	Provider         NullableInt32     `json:"provider,omitempty"`
+	Slug     *string       `json:"slug,omitempty"`
+	Provider NullableInt32 `json:"provider,omitempty"`
+	// Open launch URL in a new browser tab or window.
+	OpenInNewTab     *bool             `json:"open_in_new_tab,omitempty"`
 	MetaLaunchUrl    *string           `json:"meta_launch_url,omitempty"`
 	MetaDescription  *string           `json:"meta_description,omitempty"`
 	MetaPublisher    *string           `json:"meta_publisher,omitempty"`
@@ -151,6 +153,38 @@ func (o *PatchedApplicationRequest) SetProviderNil() {
 // UnsetProvider ensures that no value is present for Provider, not even an explicit nil
 func (o *PatchedApplicationRequest) UnsetProvider() {
 	o.Provider.Unset()
+}
+
+// GetOpenInNewTab returns the OpenInNewTab field value if set, zero value otherwise.
+func (o *PatchedApplicationRequest) GetOpenInNewTab() bool {
+	if o == nil || o.OpenInNewTab == nil {
+		var ret bool
+		return ret
+	}
+	return *o.OpenInNewTab
+}
+
+// GetOpenInNewTabOk returns a tuple with the OpenInNewTab field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedApplicationRequest) GetOpenInNewTabOk() (*bool, bool) {
+	if o == nil || o.OpenInNewTab == nil {
+		return nil, false
+	}
+	return o.OpenInNewTab, true
+}
+
+// HasOpenInNewTab returns a boolean if a field has been set.
+func (o *PatchedApplicationRequest) HasOpenInNewTab() bool {
+	if o != nil && o.OpenInNewTab != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenInNewTab gets a reference to the given bool and assigns it to the OpenInNewTab field.
+func (o *PatchedApplicationRequest) SetOpenInNewTab(v bool) {
+	o.OpenInNewTab = &v
 }
 
 // GetMetaLaunchUrl returns the MetaLaunchUrl field value if set, zero value otherwise.
@@ -323,6 +357,9 @@ func (o PatchedApplicationRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Provider.IsSet() {
 		toSerialize["provider"] = o.Provider.Get()
+	}
+	if o.OpenInNewTab != nil {
+		toSerialize["open_in_new_tab"] = o.OpenInNewTab
 	}
 	if o.MetaLaunchUrl != nil {
 		toSerialize["meta_launch_url"] = o.MetaLaunchUrl
