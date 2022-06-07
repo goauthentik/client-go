@@ -27695,6 +27695,7 @@ components:
       description: OAuth2 Provider Metadata serializer
       example:
         logout: logout
+        jwks: jwks
         user_info: user_info
         authorize: authorize
         issuer: issuer
@@ -27719,9 +27720,13 @@ components:
         logout:
           readOnly: true
           type: string
+        jwks:
+          readOnly: true
+          type: string
       required:
       - authorize
       - issuer
+      - jwks
       - logout
       - provider_info
       - token

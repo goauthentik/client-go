@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **UserInfo** | **string** |  | [readonly] 
 **ProviderInfo** | **string** |  | [readonly] 
 **Logout** | **string** |  | [readonly] 
+**Jwks** | **string** |  | [readonly] 
 
 ## Methods
 
 ### NewOAuth2ProviderSetupURLs
 
-`func NewOAuth2ProviderSetupURLs(issuer string, authorize string, token string, userInfo string, providerInfo string, logout string, ) *OAuth2ProviderSetupURLs`
+`func NewOAuth2ProviderSetupURLs(issuer string, authorize string, token string, userInfo string, providerInfo string, logout string, jwks string, ) *OAuth2ProviderSetupURLs`
 
 NewOAuth2ProviderSetupURLs instantiates a new OAuth2ProviderSetupURLs object
 This constructor will assign default values to properties that have it defined,
@@ -148,6 +149,26 @@ and a boolean to check if the value has been set.
 `func (o *OAuth2ProviderSetupURLs) SetLogout(v string)`
 
 SetLogout sets Logout field to given value.
+
+
+### GetJwks
+
+`func (o *OAuth2ProviderSetupURLs) GetJwks() string`
+
+GetJwks returns the Jwks field if non-nil, zero value otherwise.
+
+### GetJwksOk
+
+`func (o *OAuth2ProviderSetupURLs) GetJwksOk() (*string, bool)`
+
+GetJwksOk returns a tuple with the Jwks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwks
+
+`func (o *OAuth2ProviderSetupURLs) SetJwks(v string)`
+
+SetJwks sets Jwks field to given value.
 
 
 

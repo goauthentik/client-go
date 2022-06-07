@@ -23,13 +23,14 @@ type OAuth2ProviderSetupURLs struct {
 	UserInfo     string `json:"user_info"`
 	ProviderInfo string `json:"provider_info"`
 	Logout       string `json:"logout"`
+	Jwks         string `json:"jwks"`
 }
 
 // NewOAuth2ProviderSetupURLs instantiates a new OAuth2ProviderSetupURLs object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuth2ProviderSetupURLs(issuer string, authorize string, token string, userInfo string, providerInfo string, logout string) *OAuth2ProviderSetupURLs {
+func NewOAuth2ProviderSetupURLs(issuer string, authorize string, token string, userInfo string, providerInfo string, logout string, jwks string) *OAuth2ProviderSetupURLs {
 	this := OAuth2ProviderSetupURLs{}
 	this.Issuer = issuer
 	this.Authorize = authorize
@@ -37,6 +38,7 @@ func NewOAuth2ProviderSetupURLs(issuer string, authorize string, token string, u
 	this.UserInfo = userInfo
 	this.ProviderInfo = providerInfo
 	this.Logout = logout
+	this.Jwks = jwks
 	return &this
 }
 
@@ -192,6 +194,30 @@ func (o *OAuth2ProviderSetupURLs) SetLogout(v string) {
 	o.Logout = v
 }
 
+// GetJwks returns the Jwks field value
+func (o *OAuth2ProviderSetupURLs) GetJwks() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Jwks
+}
+
+// GetJwksOk returns a tuple with the Jwks field value
+// and a boolean to check if the value has been set.
+func (o *OAuth2ProviderSetupURLs) GetJwksOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Jwks, true
+}
+
+// SetJwks sets field value
+func (o *OAuth2ProviderSetupURLs) SetJwks(v string) {
+	o.Jwks = v
+}
+
 func (o OAuth2ProviderSetupURLs) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -211,6 +237,9 @@ func (o OAuth2ProviderSetupURLs) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["logout"] = o.Logout
+	}
+	if true {
+		toSerialize["jwks"] = o.Jwks
 	}
 	return json.Marshal(toSerialize)
 }
