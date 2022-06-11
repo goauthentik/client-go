@@ -25014,9 +25014,6 @@ components:
           include_claims_in_id_token: true
           assigned_application_name: assigned_application_name
           issuer_mode: ""
-          verification_keys:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -27469,9 +27466,6 @@ components:
         include_claims_in_id_token: true
         assigned_application_name: assigned_application_name
         issuer_mode: ""
-        verification_keys:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         jwks_sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -27560,15 +27554,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/IssuerModeEnum'
           description: Configure how the issuer field of the ID Token should be filled.
-        verification_keys:
-          description: DEPRECATED. JWTs created with the configured certificates can
-            authenticate with this provider.
-          items:
-            format: uuid
-            title: Allowed certificates for JWT-based client_credentials
-            type: string
-          title: Allowed certificates for JWT-based client_credentials
-          type: array
         jwks_sources:
           items:
             format: uuid
@@ -27600,9 +27585,6 @@ components:
         access_code_validity: access_code_validity
         include_claims_in_id_token: true
         issuer_mode: ""
-        verification_keys:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         jwks_sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -27670,15 +27652,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/IssuerModeEnum'
           description: Configure how the issuer field of the ID Token should be filled.
-        verification_keys:
-          description: DEPRECATED. JWTs created with the configured certificates can
-            authenticate with this provider.
-          items:
-            format: uuid
-            title: Allowed certificates for JWT-based client_credentials
-            type: string
-          title: Allowed certificates for JWT-based client_credentials
-          type: array
         jwks_sources:
           items:
             format: uuid
@@ -29888,9 +29861,6 @@ components:
             include_claims_in_id_token: true
             assigned_application_name: assigned_application_name
             issuer_mode: ""
-            verification_keys:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             jwks_sources:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -30003,9 +29973,6 @@ components:
             include_claims_in_id_token: true
             assigned_application_name: assigned_application_name
             issuer_mode: ""
-            verification_keys:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             jwks_sources:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -31129,9 +31096,6 @@ components:
           include_claims_in_id_token: true
           assigned_application_name: assigned_application_name
           issuer_mode: ""
-          verification_keys:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -31157,9 +31121,6 @@ components:
           include_claims_in_id_token: true
           assigned_application_name: assigned_application_name
           issuer_mode: ""
-          verification_keys:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -32330,9 +32291,6 @@ components:
             include_claims_in_id_token: true
             assigned_application_name: assigned_application_name
             issuer_mode: ""
-            verification_keys:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             jwks_sources:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -32447,9 +32405,6 @@ components:
             include_claims_in_id_token: true
             assigned_application_name: assigned_application_name
             issuer_mode: ""
-            verification_keys:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             jwks_sources:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35934,9 +35889,6 @@ components:
         access_code_validity: access_code_validity
         include_claims_in_id_token: true
         issuer_mode: ""
-        verification_keys:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         jwks_sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36004,15 +35956,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/IssuerModeEnum'
           description: Configure how the issuer field of the ID Token should be filled.
-        verification_keys:
-          description: DEPRECATED. JWTs created with the configured certificates can
-            authenticate with this provider.
-          items:
-            format: uuid
-            title: Allowed certificates for JWT-based client_credentials
-            type: string
-          title: Allowed certificates for JWT-based client_credentials
-          type: array
         jwks_sources:
           items:
             format: uuid
@@ -38659,9 +38602,6 @@ components:
           include_claims_in_id_token: true
           assigned_application_name: assigned_application_name
           issuer_mode: ""
-          verification_keys:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91

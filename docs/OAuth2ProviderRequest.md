@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **RedirectUris** | Pointer to **string** | Enter each URI on a new line. | [optional] 
 **SubMode** | Pointer to [**NullableSubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
 **IssuerMode** | Pointer to [**NullableIssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled. | [optional] 
-**VerificationKeys** | Pointer to **[]string** | DEPRECATED. JWTs created with the configured certificates can authenticate with this provider. | [optional] 
 **JwksSources** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -394,31 +393,6 @@ HasIssuerMode returns a boolean if a field has been set.
 `func (o *OAuth2ProviderRequest) UnsetIssuerMode()`
 
 UnsetIssuerMode ensures that no value is present for IssuerMode, not even an explicit nil
-### GetVerificationKeys
-
-`func (o *OAuth2ProviderRequest) GetVerificationKeys() []string`
-
-GetVerificationKeys returns the VerificationKeys field if non-nil, zero value otherwise.
-
-### GetVerificationKeysOk
-
-`func (o *OAuth2ProviderRequest) GetVerificationKeysOk() (*[]string, bool)`
-
-GetVerificationKeysOk returns a tuple with the VerificationKeys field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVerificationKeys
-
-`func (o *OAuth2ProviderRequest) SetVerificationKeys(v []string)`
-
-SetVerificationKeys sets VerificationKeys field to given value.
-
-### HasVerificationKeys
-
-`func (o *OAuth2ProviderRequest) HasVerificationKeys() bool`
-
-HasVerificationKeys returns a boolean if a field has been set.
-
 ### GetJwksSources
 
 `func (o *OAuth2ProviderRequest) GetJwksSources() []string`

@@ -38,10 +38,8 @@ type PatchedOAuth2ProviderRequest struct {
 	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
 	SubMode NullableSubModeEnum `json:"sub_mode,omitempty"`
 	// Configure how the issuer field of the ID Token should be filled.
-	IssuerMode NullableIssuerModeEnum `json:"issuer_mode,omitempty"`
-	// DEPRECATED. JWTs created with the configured certificates can authenticate with this provider.
-	VerificationKeys []string `json:"verification_keys,omitempty"`
-	JwksSources      []string `json:"jwks_sources,omitempty"`
+	IssuerMode  NullableIssuerModeEnum `json:"issuer_mode,omitempty"`
+	JwksSources []string               `json:"jwks_sources,omitempty"`
 }
 
 // NewPatchedOAuth2ProviderRequest instantiates a new PatchedOAuth2ProviderRequest object
@@ -521,38 +519,6 @@ func (o *PatchedOAuth2ProviderRequest) UnsetIssuerMode() {
 	o.IssuerMode.Unset()
 }
 
-// GetVerificationKeys returns the VerificationKeys field value if set, zero value otherwise.
-func (o *PatchedOAuth2ProviderRequest) GetVerificationKeys() []string {
-	if o == nil || o.VerificationKeys == nil {
-		var ret []string
-		return ret
-	}
-	return o.VerificationKeys
-}
-
-// GetVerificationKeysOk returns a tuple with the VerificationKeys field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedOAuth2ProviderRequest) GetVerificationKeysOk() ([]string, bool) {
-	if o == nil || o.VerificationKeys == nil {
-		return nil, false
-	}
-	return o.VerificationKeys, true
-}
-
-// HasVerificationKeys returns a boolean if a field has been set.
-func (o *PatchedOAuth2ProviderRequest) HasVerificationKeys() bool {
-	if o != nil && o.VerificationKeys != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVerificationKeys gets a reference to the given []string and assigns it to the VerificationKeys field.
-func (o *PatchedOAuth2ProviderRequest) SetVerificationKeys(v []string) {
-	o.VerificationKeys = v
-}
-
 // GetJwksSources returns the JwksSources field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetJwksSources() []string {
 	if o == nil || o.JwksSources == nil {
@@ -625,9 +591,6 @@ func (o PatchedOAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.IssuerMode.IsSet() {
 		toSerialize["issuer_mode"] = o.IssuerMode.Get()
-	}
-	if o.VerificationKeys != nil {
-		toSerialize["verification_keys"] = o.VerificationKeys
 	}
 	if o.JwksSources != nil {
 		toSerialize["jwks_sources"] = o.JwksSources
