@@ -457,6 +457,7 @@ docs/UserMetrics.md
 docs/UserOAuthSourceConnection.md
 docs/UserOAuthSourceConnectionRequest.md
 docs/UserPasswordSetRequest.md
+docs/UserPath.md
 docs/UserRequest.md
 docs/UserSelf.md
 docs/UserSelfGroups.md
@@ -898,6 +899,7 @@ model_user_metrics.go
 model_user_o_auth_source_connection.go
 model_user_o_auth_source_connection_request.go
 model_user_password_set_request.go
+model_user_path.go
 model_user_request.go
 model_user_self.go
 model_user_self_groups.go

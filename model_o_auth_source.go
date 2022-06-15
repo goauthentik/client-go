@@ -35,8 +35,9 @@ type OAuthSource struct {
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed      NullableString   `json:"managed"`
-	ProviderType ProviderTypeEnum `json:"provider_type"`
+	Managed          NullableString   `json:"managed"`
+	UserPathTemplate *string          `json:"user_path_template,omitempty"`
+	ProviderType     ProviderTypeEnum `json:"provider_type"`
 	// URL used to request the initial token. This URL is only required for OAuth 1.
 	RequestTokenUrl NullableString `json:"request_token_url,omitempty"`
 	// URL the user is redirect to to conest the flow.
@@ -468,6 +469,38 @@ func (o *OAuthSource) GetManagedOk() (*string, bool) {
 // SetManaged sets field value
 func (o *OAuthSource) SetManaged(v string) {
 	o.Managed.Set(&v)
+}
+
+// GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
+func (o *OAuthSource) GetUserPathTemplate() string {
+	if o == nil || o.UserPathTemplate == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserPathTemplate
+}
+
+// GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthSource) GetUserPathTemplateOk() (*string, bool) {
+	if o == nil || o.UserPathTemplate == nil {
+		return nil, false
+	}
+	return o.UserPathTemplate, true
+}
+
+// HasUserPathTemplate returns a boolean if a field has been set.
+func (o *OAuthSource) HasUserPathTemplate() bool {
+	if o != nil && o.UserPathTemplate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPathTemplate gets a reference to the given string and assigns it to the UserPathTemplate field.
+func (o *OAuthSource) SetUserPathTemplate(v string) {
+	o.UserPathTemplate = &v
 }
 
 // GetProviderType returns the ProviderType field value
@@ -906,6 +939,9 @@ func (o OAuthSource) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["managed"] = o.Managed.Get()
+	}
+	if o.UserPathTemplate != nil {
+		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
 	if true {
 		toSerialize["provider_type"] = o.ProviderType

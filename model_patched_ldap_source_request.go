@@ -29,6 +29,7 @@ type PatchedLDAPSourceRequest struct {
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
+	UserPathTemplate *string                      `json:"user_path_template,omitempty"`
 	ServerUri        *string                      `json:"server_uri,omitempty"`
 	// Optionally verify the LDAP Server's Certificate against the CA Chain in this keypair.
 	PeerCertificate NullableString `json:"peer_certificate,omitempty"`
@@ -330,6 +331,38 @@ func (o *PatchedLDAPSourceRequest) SetUserMatchingModeNil() {
 // UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
 func (o *PatchedLDAPSourceRequest) UnsetUserMatchingMode() {
 	o.UserMatchingMode.Unset()
+}
+
+// GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
+func (o *PatchedLDAPSourceRequest) GetUserPathTemplate() string {
+	if o == nil || o.UserPathTemplate == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserPathTemplate
+}
+
+// GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedLDAPSourceRequest) GetUserPathTemplateOk() (*string, bool) {
+	if o == nil || o.UserPathTemplate == nil {
+		return nil, false
+	}
+	return o.UserPathTemplate, true
+}
+
+// HasUserPathTemplate returns a boolean if a field has been set.
+func (o *PatchedLDAPSourceRequest) HasUserPathTemplate() bool {
+	if o != nil && o.UserPathTemplate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPathTemplate gets a reference to the given string and assigns it to the UserPathTemplate field.
+func (o *PatchedLDAPSourceRequest) SetUserPathTemplate(v string) {
+	o.UserPathTemplate = &v
 }
 
 // GetServerUri returns the ServerUri field value if set, zero value otherwise.
@@ -952,6 +985,9 @@ func (o PatchedLDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserMatchingMode.IsSet() {
 		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
+	}
+	if o.UserPathTemplate != nil {
+		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
 	if o.ServerUri != nil {
 		toSerialize["server_uri"] = o.ServerUri

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
+**UserPathTemplate** | Pointer to **string** |  | [optional] 
 **ClientId** | Pointer to **string** | Client identifier used to talk to Plex. | [optional] 
 **AllowedServers** | Pointer to **[]string** | Which servers a user has to be a member of to be granted access. Empty list allows every server. | [optional] 
 **AllowFriends** | Pointer to **bool** | Allow friends to authenticate, even if you don&#39;t share a server. | [optional] 
@@ -240,6 +241,31 @@ HasUserMatchingMode returns a boolean if a field has been set.
 `func (o *PatchedPlexSourceRequest) UnsetUserMatchingMode()`
 
 UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
+### GetUserPathTemplate
+
+`func (o *PatchedPlexSourceRequest) GetUserPathTemplate() string`
+
+GetUserPathTemplate returns the UserPathTemplate field if non-nil, zero value otherwise.
+
+### GetUserPathTemplateOk
+
+`func (o *PatchedPlexSourceRequest) GetUserPathTemplateOk() (*string, bool)`
+
+GetUserPathTemplateOk returns a tuple with the UserPathTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserPathTemplate
+
+`func (o *PatchedPlexSourceRequest) SetUserPathTemplate(v string)`
+
+SetUserPathTemplate sets UserPathTemplate field to given value.
+
+### HasUserPathTemplate
+
+`func (o *PatchedPlexSourceRequest) HasUserPathTemplate() bool`
+
+HasUserPathTemplate returns a boolean if a field has been set.
+
 ### GetClientId
 
 `func (o *PatchedPlexSourceRequest) GetClientId() string`

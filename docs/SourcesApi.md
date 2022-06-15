@@ -2436,7 +2436,7 @@ Name | Type | Description  | Notes
 
 ## SourcesSamlList
 
-> PaginatedSAMLSourceList SourcesSamlList(ctx).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Policies(policies).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).PropertyMappings(propertyMappings).Search(search).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).Execute()
+> PaginatedSAMLSourceList SourcesSamlList(ctx).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Policies(policies).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).PropertyMappings(propertyMappings).Search(search).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).UserPathTemplate(userPathTemplate).Execute()
 
 
 
@@ -2481,10 +2481,11 @@ func main() {
     ssoUrl := "ssoUrl_example" // string |  (optional)
     temporaryUserDeleteAfter := "temporaryUserDeleteAfter_example" // string |  (optional)
     userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled. (optional)
+    userPathTemplate := "userPathTemplate_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesSamlList(context.Background()).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Policies(policies).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).PropertyMappings(propertyMappings).Search(search).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesSamlList(context.Background()).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Policies(policies).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).PropertyMappings(propertyMappings).Search(search).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).UserPathTemplate(userPathTemplate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2531,6 +2532,7 @@ Name | Type | Description  | Notes
  **ssoUrl** | **string** |  | 
  **temporaryUserDeleteAfter** | **string** |  | 
  **userMatchingMode** | **string** | How the source determines if an existing user should be authenticated or a new user enrolled. | 
+ **userPathTemplate** | **string** |  | 
 
 ### Return type
 

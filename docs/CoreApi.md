@@ -53,6 +53,7 @@ Method | HTTP request | Description
 [**CoreUsersMeRetrieve**](CoreApi.md#CoreUsersMeRetrieve) | **Get** /core/users/me/ | 
 [**CoreUsersMetricsRetrieve**](CoreApi.md#CoreUsersMetricsRetrieve) | **Get** /core/users/{id}/metrics/ | 
 [**CoreUsersPartialUpdate**](CoreApi.md#CoreUsersPartialUpdate) | **Patch** /core/users/{id}/ | 
+[**CoreUsersPathsRetrieve**](CoreApi.md#CoreUsersPathsRetrieve) | **Get** /core/users/paths/ | 
 [**CoreUsersRecoveryEmailRetrieve**](CoreApi.md#CoreUsersRecoveryEmailRetrieve) | **Get** /core/users/{id}/recovery_email/ | 
 [**CoreUsersRecoveryRetrieve**](CoreApi.md#CoreUsersRecoveryRetrieve) | **Get** /core/users/{id}/recovery/ | 
 [**CoreUsersRetrieve**](CoreApi.md#CoreUsersRetrieve) | **Get** /core/users/{id}/ | 
@@ -3271,7 +3272,7 @@ Name | Type | Description  | Notes
 
 ## CoreUsersList
 
-> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Username(username).Uuid(uuid).Execute()
+> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Username(username).Uuid(uuid).Execute()
 
 
 
@@ -3300,13 +3301,15 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    path := "path_example" // string |  (optional)
+    pathStartswith := "pathStartswith_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     username := "username_example" // string |  (optional)
     uuid := "uuid_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreUsersList(context.Background()).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Username(username).Uuid(uuid).Execute()
+    resp, r, err := apiClient.CoreApi.CoreUsersList(context.Background()).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Username(username).Uuid(uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3337,6 +3340,8 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
+ **path** | **string** |  | 
+ **pathStartswith** | **string** |  | 
  **search** | **string** | A search term. | 
  **username** | **string** |  | 
  **uuid** | **string** |  | 
@@ -3555,6 +3560,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreUsersPathsRetrieve
+
+> UserPath CoreUsersPathsRetrieve(ctx).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    search := "search_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersPathsRetrieve(context.Background()).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersPathsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreUsersPathsRetrieve`: UserPath
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreUsersPathsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreUsersPathsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **search** | **string** |  | 
+
+### Return type
+
+[**UserPath**](UserPath.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -139,6 +139,7 @@ Class | Method | HTTP request | Description
 *CoreApi* | [**CoreUsersMeRetrieve**](docs/CoreApi.md#coreusersmeretrieve) | **Get** /core/users/me/ | 
 *CoreApi* | [**CoreUsersMetricsRetrieve**](docs/CoreApi.md#coreusersmetricsretrieve) | **Get** /core/users/{id}/metrics/ | 
 *CoreApi* | [**CoreUsersPartialUpdate**](docs/CoreApi.md#coreuserspartialupdate) | **Patch** /core/users/{id}/ | 
+*CoreApi* | [**CoreUsersPathsRetrieve**](docs/CoreApi.md#coreuserspathsretrieve) | **Get** /core/users/paths/ | 
 *CoreApi* | [**CoreUsersRecoveryEmailRetrieve**](docs/CoreApi.md#coreusersrecoveryemailretrieve) | **Get** /core/users/{id}/recovery_email/ | 
 *CoreApi* | [**CoreUsersRecoveryRetrieve**](docs/CoreApi.md#coreusersrecoveryretrieve) | **Get** /core/users/{id}/recovery/ | 
 *CoreApi* | [**CoreUsersRetrieve**](docs/CoreApi.md#coreusersretrieve) | **Get** /core/users/{id}/ | 
@@ -1035,6 +1036,7 @@ Class | Method | HTTP request | Description
  - [UserOAuthSourceConnection](docs/UserOAuthSourceConnection.md)
  - [UserOAuthSourceConnectionRequest](docs/UserOAuthSourceConnectionRequest.md)
  - [UserPasswordSetRequest](docs/UserPasswordSetRequest.md)
+ - [UserPath](docs/UserPath.md)
  - [UserRequest](docs/UserRequest.md)
  - [UserSelf](docs/UserSelf.md)
  - [UserSelfGroups](docs/UserSelfGroups.md)

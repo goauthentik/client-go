@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
+**UserPathTemplate** | Pointer to **string** |  | [optional] 
 **ProviderType** | Pointer to [**ProviderTypeEnum**](ProviderTypeEnum.md) |  | [optional] 
 **RequestTokenUrl** | Pointer to **NullableString** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] 
 **AuthorizationUrl** | Pointer to **NullableString** | URL the user is redirect to to conest the flow. | [optional] 
@@ -247,6 +248,31 @@ HasUserMatchingMode returns a boolean if a field has been set.
 `func (o *PatchedOAuthSourceRequest) UnsetUserMatchingMode()`
 
 UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
+### GetUserPathTemplate
+
+`func (o *PatchedOAuthSourceRequest) GetUserPathTemplate() string`
+
+GetUserPathTemplate returns the UserPathTemplate field if non-nil, zero value otherwise.
+
+### GetUserPathTemplateOk
+
+`func (o *PatchedOAuthSourceRequest) GetUserPathTemplateOk() (*string, bool)`
+
+GetUserPathTemplateOk returns a tuple with the UserPathTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserPathTemplate
+
+`func (o *PatchedOAuthSourceRequest) SetUserPathTemplate(v string)`
+
+SetUserPathTemplate sets UserPathTemplate field to given value.
+
+### HasUserPathTemplate
+
+`func (o *PatchedOAuthSourceRequest) HasUserPathTemplate() bool`
+
+HasUserPathTemplate returns a boolean if a field has been set.
+
 ### GetProviderType
 
 `func (o *PatchedOAuthSourceRequest) GetProviderType() ProviderTypeEnum`

@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **Managed** | **NullableString** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
+**UserPathTemplate** | Pointer to **string** |  | [optional] 
 **ProviderType** | [**ProviderTypeEnum**](ProviderTypeEnum.md) |  | 
 **RequestTokenUrl** | Pointer to **NullableString** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] 
 **AuthorizationUrl** | Pointer to **NullableString** | URL the user is redirect to to conest the flow. | [optional] 
@@ -374,6 +375,31 @@ SetManaged sets Managed field to given value.
 `func (o *OAuthSource) UnsetManaged()`
 
 UnsetManaged ensures that no value is present for Managed, not even an explicit nil
+### GetUserPathTemplate
+
+`func (o *OAuthSource) GetUserPathTemplate() string`
+
+GetUserPathTemplate returns the UserPathTemplate field if non-nil, zero value otherwise.
+
+### GetUserPathTemplateOk
+
+`func (o *OAuthSource) GetUserPathTemplateOk() (*string, bool)`
+
+GetUserPathTemplateOk returns a tuple with the UserPathTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserPathTemplate
+
+`func (o *OAuthSource) SetUserPathTemplate(v string)`
+
+SetUserPathTemplate sets UserPathTemplate field to given value.
+
+### HasUserPathTemplate
+
+`func (o *OAuthSource) HasUserPathTemplate() bool`
+
+HasUserPathTemplate returns a boolean if a field has been set.
+
 ### GetProviderType
 
 `func (o *OAuthSource) GetProviderType() ProviderTypeEnum`

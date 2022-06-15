@@ -28,6 +28,7 @@ type UserWriteStage struct {
 	CreateUsersAsInactive *bool `json:"create_users_as_inactive,omitempty"`
 	// Optionally add newly created users to this group.
 	CreateUsersGroup NullableString `json:"create_users_group,omitempty"`
+	UserPathTemplate *string        `json:"user_path_template,omitempty"`
 }
 
 // NewUserWriteStage instantiates a new UserWriteStage object
@@ -304,6 +305,38 @@ func (o *UserWriteStage) UnsetCreateUsersGroup() {
 	o.CreateUsersGroup.Unset()
 }
 
+// GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
+func (o *UserWriteStage) GetUserPathTemplate() string {
+	if o == nil || o.UserPathTemplate == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserPathTemplate
+}
+
+// GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserWriteStage) GetUserPathTemplateOk() (*string, bool) {
+	if o == nil || o.UserPathTemplate == nil {
+		return nil, false
+	}
+	return o.UserPathTemplate, true
+}
+
+// HasUserPathTemplate returns a boolean if a field has been set.
+func (o *UserWriteStage) HasUserPathTemplate() bool {
+	if o != nil && o.UserPathTemplate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPathTemplate gets a reference to the given string and assigns it to the UserPathTemplate field.
+func (o *UserWriteStage) SetUserPathTemplate(v string) {
+	o.UserPathTemplate = &v
+}
+
 func (o UserWriteStage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -332,6 +365,9 @@ func (o UserWriteStage) MarshalJSON() ([]byte, error) {
 	}
 	if o.CreateUsersGroup.IsSet() {
 		toSerialize["create_users_group"] = o.CreateUsersGroup.Get()
+	}
+	if o.UserPathTemplate != nil {
+		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
 	return json.Marshal(toSerialize)
 }

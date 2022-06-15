@@ -35,7 +35,8 @@ type PlexSource struct {
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed NullableString `json:"managed"`
+	Managed          NullableString `json:"managed"`
+	UserPathTemplate *string        `json:"user_path_template,omitempty"`
 	// Client identifier used to talk to Plex.
 	ClientId *string `json:"client_id,omitempty"`
 	// Which servers a user has to be a member of to be granted access. Empty list allows every server.
@@ -459,6 +460,38 @@ func (o *PlexSource) SetManaged(v string) {
 	o.Managed.Set(&v)
 }
 
+// GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
+func (o *PlexSource) GetUserPathTemplate() string {
+	if o == nil || o.UserPathTemplate == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserPathTemplate
+}
+
+// GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlexSource) GetUserPathTemplateOk() (*string, bool) {
+	if o == nil || o.UserPathTemplate == nil {
+		return nil, false
+	}
+	return o.UserPathTemplate, true
+}
+
+// HasUserPathTemplate returns a boolean if a field has been set.
+func (o *PlexSource) HasUserPathTemplate() bool {
+	if o != nil && o.UserPathTemplate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPathTemplate gets a reference to the given string and assigns it to the UserPathTemplate field.
+func (o *PlexSource) SetUserPathTemplate(v string) {
+	o.UserPathTemplate = &v
+}
+
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *PlexSource) GetClientId() string {
 	if o == nil || o.ClientId == nil {
@@ -619,6 +652,9 @@ func (o PlexSource) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["managed"] = o.Managed.Get()
+	}
+	if o.UserPathTemplate != nil {
+		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
 	if o.ClientId != nil {
 		toSerialize["client_id"] = o.ClientId

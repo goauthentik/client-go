@@ -27,6 +27,7 @@ type UserRequest struct {
 	Groups     []string               `json:"groups"`
 	Email      *string                `json:"email,omitempty"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Path       *string                `json:"path,omitempty"`
 }
 
 // NewUserRequest instantiates a new UserRequest object
@@ -260,6 +261,38 @@ func (o *UserRequest) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 
+// GetPath returns the Path field value if set, zero value otherwise.
+func (o *UserRequest) GetPath() string {
+	if o == nil || o.Path == nil {
+		var ret string
+		return ret
+	}
+	return *o.Path
+}
+
+// GetPathOk returns a tuple with the Path field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserRequest) GetPathOk() (*string, bool) {
+	if o == nil || o.Path == nil {
+		return nil, false
+	}
+	return o.Path, true
+}
+
+// HasPath returns a boolean if a field has been set.
+func (o *UserRequest) HasPath() bool {
+	if o != nil && o.Path != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPath gets a reference to the given string and assigns it to the Path field.
+func (o *UserRequest) SetPath(v string) {
+	o.Path = &v
+}
+
 func (o UserRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -282,6 +315,9 @@ func (o UserRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
+	}
+	if o.Path != nil {
+		toSerialize["path"] = o.Path
 	}
 	return json.Marshal(toSerialize)
 }

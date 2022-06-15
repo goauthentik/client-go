@@ -19555,6 +19555,7 @@ type ApiStagesUserWriteListRequest struct {
 	pageSize              *int32
 	search                *string
 	stageUuid             *string
+	userPathTemplate      *string
 }
 
 func (r ApiStagesUserWriteListRequest) CreateUsersAsInactive(createUsersAsInactive bool) ApiStagesUserWriteListRequest {
@@ -19598,6 +19599,11 @@ func (r ApiStagesUserWriteListRequest) Search(search string) ApiStagesUserWriteL
 
 func (r ApiStagesUserWriteListRequest) StageUuid(stageUuid string) ApiStagesUserWriteListRequest {
 	r.stageUuid = &stageUuid
+	return r
+}
+
+func (r ApiStagesUserWriteListRequest) UserPathTemplate(userPathTemplate string) ApiStagesUserWriteListRequest {
+	r.userPathTemplate = &userPathTemplate
 	return r
 }
 
@@ -19664,6 +19670,9 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 	}
 	if r.stageUuid != nil {
 		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+	}
+	if r.userPathTemplate != nil {
+		localVarQueryParams.Add("user_path_template", parameterToString(*r.userPathTemplate, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -29,6 +29,7 @@ type PatchedPlexSourceRequest struct {
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
+	UserPathTemplate *string                      `json:"user_path_template,omitempty"`
 	// Client identifier used to talk to Plex.
 	ClientId *string `json:"client_id,omitempty"`
 	// Which servers a user has to be a member of to be granted access. Empty list allows every server.
@@ -313,6 +314,38 @@ func (o *PatchedPlexSourceRequest) UnsetUserMatchingMode() {
 	o.UserMatchingMode.Unset()
 }
 
+// GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
+func (o *PatchedPlexSourceRequest) GetUserPathTemplate() string {
+	if o == nil || o.UserPathTemplate == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserPathTemplate
+}
+
+// GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedPlexSourceRequest) GetUserPathTemplateOk() (*string, bool) {
+	if o == nil || o.UserPathTemplate == nil {
+		return nil, false
+	}
+	return o.UserPathTemplate, true
+}
+
+// HasUserPathTemplate returns a boolean if a field has been set.
+func (o *PatchedPlexSourceRequest) HasUserPathTemplate() bool {
+	if o != nil && o.UserPathTemplate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPathTemplate gets a reference to the given string and assigns it to the UserPathTemplate field.
+func (o *PatchedPlexSourceRequest) SetUserPathTemplate(v string) {
+	o.UserPathTemplate = &v
+}
+
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *PatchedPlexSourceRequest) GetClientId() string {
 	if o == nil || o.ClientId == nil {
@@ -463,6 +496,9 @@ func (o PatchedPlexSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserMatchingMode.IsSet() {
 		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
+	}
+	if o.UserPathTemplate != nil {
+		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
 	if o.ClientId != nil {
 		toSerialize["client_id"] = o.ClientId

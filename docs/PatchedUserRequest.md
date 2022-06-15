@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Groups** | Pointer to **[]string** |  | [optional] 
 **Email** | Pointer to **string** |  | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
+**Path** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -215,6 +216,31 @@ SetAttributes sets Attributes field to given value.
 `func (o *PatchedUserRequest) HasAttributes() bool`
 
 HasAttributes returns a boolean if a field has been set.
+
+### GetPath
+
+`func (o *PatchedUserRequest) GetPath() string`
+
+GetPath returns the Path field if non-nil, zero value otherwise.
+
+### GetPathOk
+
+`func (o *PatchedUserRequest) GetPathOk() (*string, bool)`
+
+GetPathOk returns a tuple with the Path field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPath
+
+`func (o *PatchedUserRequest) SetPath(v string)`
+
+SetPath sets Path field to given value.
+
+### HasPath
+
+`func (o *PatchedUserRequest) HasPath() bool`
+
+HasPath returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

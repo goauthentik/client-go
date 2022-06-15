@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
+**UserPathTemplate** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -226,6 +227,31 @@ HasUserMatchingMode returns a boolean if a field has been set.
 `func (o *SourceRequest) UnsetUserMatchingMode()`
 
 UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
+### GetUserPathTemplate
+
+`func (o *SourceRequest) GetUserPathTemplate() string`
+
+GetUserPathTemplate returns the UserPathTemplate field if non-nil, zero value otherwise.
+
+### GetUserPathTemplateOk
+
+`func (o *SourceRequest) GetUserPathTemplateOk() (*string, bool)`
+
+GetUserPathTemplateOk returns a tuple with the UserPathTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserPathTemplate
+
+`func (o *SourceRequest) SetUserPathTemplate(v string)`
+
+SetUserPathTemplate sets UserPathTemplate field to given value.
+
+### HasUserPathTemplate
+
+`func (o *SourceRequest) HasUserPathTemplate() bool`
+
+HasUserPathTemplate returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

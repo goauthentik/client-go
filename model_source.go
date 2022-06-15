@@ -35,7 +35,8 @@ type Source struct {
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed NullableString `json:"managed"`
+	Managed          NullableString `json:"managed"`
+	UserPathTemplate *string        `json:"user_path_template,omitempty"`
 }
 
 // NewSource instantiates a new Source object
@@ -450,6 +451,38 @@ func (o *Source) SetManaged(v string) {
 	o.Managed.Set(&v)
 }
 
+// GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
+func (o *Source) GetUserPathTemplate() string {
+	if o == nil || o.UserPathTemplate == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserPathTemplate
+}
+
+// GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Source) GetUserPathTemplateOk() (*string, bool) {
+	if o == nil || o.UserPathTemplate == nil {
+		return nil, false
+	}
+	return o.UserPathTemplate, true
+}
+
+// HasUserPathTemplate returns a boolean if a field has been set.
+func (o *Source) HasUserPathTemplate() bool {
+	if o != nil && o.UserPathTemplate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPathTemplate gets a reference to the given string and assigns it to the UserPathTemplate field.
+func (o *Source) SetUserPathTemplate(v string) {
+	o.UserPathTemplate = &v
+}
+
 func (o Source) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -490,6 +523,9 @@ func (o Source) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["managed"] = o.Managed.Get()
+	}
+	if o.UserPathTemplate != nil {
+		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
 	return json.Marshal(toSerialize)
 }

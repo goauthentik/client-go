@@ -5883,21 +5883,23 @@ func (a *CoreApiService) CoreUsersDestroyExecute(r ApiCoreUsersDestroyRequest) (
 }
 
 type ApiCoreUsersListRequest struct {
-	ctx          context.Context
-	ApiService   *CoreApiService
-	attributes   *string
-	email        *string
-	groupsByName *[]string
-	groupsByPk   *[]string
-	isActive     *bool
-	isSuperuser  *bool
-	name         *string
-	ordering     *string
-	page         *int32
-	pageSize     *int32
-	search       *string
-	username     *string
-	uuid         *string
+	ctx            context.Context
+	ApiService     *CoreApiService
+	attributes     *string
+	email          *string
+	groupsByName   *[]string
+	groupsByPk     *[]string
+	isActive       *bool
+	isSuperuser    *bool
+	name           *string
+	ordering       *string
+	page           *int32
+	pageSize       *int32
+	path           *string
+	pathStartswith *string
+	search         *string
+	username       *string
+	uuid           *string
 }
 
 // Attributes
@@ -5951,6 +5953,16 @@ func (r ApiCoreUsersListRequest) Page(page int32) ApiCoreUsersListRequest {
 // Number of results to return per page.
 func (r ApiCoreUsersListRequest) PageSize(pageSize int32) ApiCoreUsersListRequest {
 	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiCoreUsersListRequest) Path(path string) ApiCoreUsersListRequest {
+	r.path = &path
+	return r
+}
+
+func (r ApiCoreUsersListRequest) PathStartswith(pathStartswith string) ApiCoreUsersListRequest {
+	r.pathStartswith = &pathStartswith
 	return r
 }
 
@@ -6055,6 +6067,12 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 	}
 	if r.pageSize != nil {
 		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.path != nil {
+		localVarQueryParams.Add("path", parameterToString(*r.path, ""))
+	}
+	if r.pathStartswith != nil {
+		localVarQueryParams.Add("path_startswith", parameterToString(*r.pathStartswith, ""))
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
@@ -6437,6 +6455,128 @@ func (a *CoreApiService) CoreUsersPartialUpdateExecute(r ApiCoreUsersPartialUpda
 	}
 	// body params
 	localVarPostBody = r.patchedUserRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCoreUsersPathsRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *CoreApiService
+	search     *string
+}
+
+func (r ApiCoreUsersPathsRetrieveRequest) Search(search string) ApiCoreUsersPathsRetrieveRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiCoreUsersPathsRetrieveRequest) Execute() (*UserPath, *http.Response, error) {
+	return r.ApiService.CoreUsersPathsRetrieveExecute(r)
+}
+
+/*
+CoreUsersPathsRetrieve Method for CoreUsersPathsRetrieve
+
+Get all user paths
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreUsersPathsRetrieveRequest
+*/
+func (a *CoreApiService) CoreUsersPathsRetrieve(ctx context.Context) ApiCoreUsersPathsRetrieveRequest {
+	return ApiCoreUsersPathsRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//  @return UserPath
+func (a *CoreApiService) CoreUsersPathsRetrieveExecute(r ApiCoreUsersPathsRetrieveRequest) (*UserPath, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserPath
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersPathsRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/users/paths/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

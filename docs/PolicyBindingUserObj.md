@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Avatar** | **string** |  | [readonly] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 **Uid** | **string** |  | [readonly] 
+**Path** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -305,6 +306,31 @@ and a boolean to check if the value has been set.
 
 SetUid sets Uid field to given value.
 
+
+### GetPath
+
+`func (o *PolicyBindingUserObj) GetPath() string`
+
+GetPath returns the Path field if non-nil, zero value otherwise.
+
+### GetPathOk
+
+`func (o *PolicyBindingUserObj) GetPathOk() (*string, bool)`
+
+GetPathOk returns a tuple with the Path field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPath
+
+`func (o *PolicyBindingUserObj) SetPath(v string)`
+
+SetPath sets Path field to given value.
+
+### HasPath
+
+`func (o *PolicyBindingUserObj) HasPath() bool`
+
+HasPath returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

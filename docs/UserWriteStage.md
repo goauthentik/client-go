@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
 **CreateUsersAsInactive** | Pointer to **bool** | When set, newly created users are inactive and cannot login. | [optional] 
 **CreateUsersGroup** | Pointer to **NullableString** | Optionally add newly created users to this group. | [optional] 
+**UserPathTemplate** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -238,6 +239,31 @@ HasCreateUsersGroup returns a boolean if a field has been set.
 `func (o *UserWriteStage) UnsetCreateUsersGroup()`
 
 UnsetCreateUsersGroup ensures that no value is present for CreateUsersGroup, not even an explicit nil
+### GetUserPathTemplate
+
+`func (o *UserWriteStage) GetUserPathTemplate() string`
+
+GetUserPathTemplate returns the UserPathTemplate field if non-nil, zero value otherwise.
+
+### GetUserPathTemplateOk
+
+`func (o *UserWriteStage) GetUserPathTemplateOk() (*string, bool)`
+
+GetUserPathTemplateOk returns a tuple with the UserPathTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserPathTemplate
+
+`func (o *UserWriteStage) SetUserPathTemplate(v string)`
+
+SetUserPathTemplate sets UserPathTemplate field to given value.
+
+### HasUserPathTemplate
+
+`func (o *UserWriteStage) HasUserPathTemplate() bool`
+
+HasUserPathTemplate returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
+**UserPathTemplate** | Pointer to **string** |  | [optional] 
 **PreAuthenticationFlow** | **string** | Flow used before authentication. | 
 **Issuer** | Pointer to **string** | Also known as Entity ID. Defaults the Metadata URL. | [optional] 
 **SsoUrl** | **string** | URL that the initial Login request is sent to. | 
@@ -237,6 +238,31 @@ HasUserMatchingMode returns a boolean if a field has been set.
 `func (o *SAMLSourceRequest) UnsetUserMatchingMode()`
 
 UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
+### GetUserPathTemplate
+
+`func (o *SAMLSourceRequest) GetUserPathTemplate() string`
+
+GetUserPathTemplate returns the UserPathTemplate field if non-nil, zero value otherwise.
+
+### GetUserPathTemplateOk
+
+`func (o *SAMLSourceRequest) GetUserPathTemplateOk() (*string, bool)`
+
+GetUserPathTemplateOk returns a tuple with the UserPathTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserPathTemplate
+
+`func (o *SAMLSourceRequest) SetUserPathTemplate(v string)`
+
+SetUserPathTemplate sets UserPathTemplate field to given value.
+
+### HasUserPathTemplate
+
+`func (o *SAMLSourceRequest) HasUserPathTemplate() bool`
+
+HasUserPathTemplate returns a boolean if a field has been set.
+
 ### GetPreAuthenticationFlow
 
 `func (o *SAMLSourceRequest) GetPreAuthenticationFlow() string`

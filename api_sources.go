@@ -4540,6 +4540,7 @@ type ApiSourcesSamlListRequest struct {
 	ssoUrl                   *string
 	temporaryUserDeleteAfter *string
 	userMatchingMode         *string
+	userPathTemplate         *string
 }
 
 func (r ApiSourcesSamlListRequest) AllowIdpInitiated(allowIdpInitiated bool) ApiSourcesSamlListRequest {
@@ -4678,6 +4679,11 @@ func (r ApiSourcesSamlListRequest) UserMatchingMode(userMatchingMode string) Api
 	return r
 }
 
+func (r ApiSourcesSamlListRequest) UserPathTemplate(userPathTemplate string) ApiSourcesSamlListRequest {
+	r.userPathTemplate = &userPathTemplate
+	return r
+}
+
 func (r ApiSourcesSamlListRequest) Execute() (*PaginatedSAMLSourceList, *http.Response, error) {
 	return r.ApiService.SourcesSamlListExecute(r)
 }
@@ -4811,6 +4817,9 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 	}
 	if r.userMatchingMode != nil {
 		localVarQueryParams.Add("user_matching_mode", parameterToString(*r.userMatchingMode, ""))
+	}
+	if r.userPathTemplate != nil {
+		localVarQueryParams.Add("user_path_template", parameterToString(*r.userPathTemplate, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

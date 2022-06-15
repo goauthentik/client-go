@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **Managed** | **NullableString** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
+**UserPathTemplate** | Pointer to **string** |  | [optional] 
 **ServerUri** | **string** |  | 
 **PeerCertificate** | Pointer to **NullableString** | Optionally verify the LDAP Server&#39;s Certificate against the CA Chain in this keypair. | [optional] 
 **BindCn** | Pointer to **string** |  | [optional] 
@@ -379,6 +380,31 @@ SetManaged sets Managed field to given value.
 `func (o *LDAPSource) UnsetManaged()`
 
 UnsetManaged ensures that no value is present for Managed, not even an explicit nil
+### GetUserPathTemplate
+
+`func (o *LDAPSource) GetUserPathTemplate() string`
+
+GetUserPathTemplate returns the UserPathTemplate field if non-nil, zero value otherwise.
+
+### GetUserPathTemplateOk
+
+`func (o *LDAPSource) GetUserPathTemplateOk() (*string, bool)`
+
+GetUserPathTemplateOk returns a tuple with the UserPathTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserPathTemplate
+
+`func (o *LDAPSource) SetUserPathTemplate(v string)`
+
+SetUserPathTemplate sets UserPathTemplate field to given value.
+
+### HasUserPathTemplate
+
+`func (o *LDAPSource) HasUserPathTemplate() bool`
+
+HasUserPathTemplate returns a boolean if a field has been set.
+
 ### GetServerUri
 
 `func (o *LDAPSource) GetServerUri() string`

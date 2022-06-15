@@ -3482,6 +3482,20 @@ paths:
         schema:
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: path
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: path_startswith
+        required: false
+        schema:
+          type: string
+        style: form
       - description: A search term.
         explode: true
         in: query
@@ -3824,6 +3838,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SessionUser'
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - core
+  /core/users/paths/:
+    get:
+      description: Get all user paths
+      operationId: core_users_paths_retrieve
+      parameters:
+      - explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPath'
           description: ""
         "400":
           $ref: '#/components/schemas/ValidationError'
@@ -15120,6 +15161,13 @@ paths:
           - username_link
           type: string
         style: form
+      - explode: true
+        in: query
+        name: user_path_template
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -21547,6 +21595,13 @@ paths:
           format: uuid
           type: string
         style: form
+      - explode: true
+        in: query
+        name: user_path_template
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -25029,17 +25084,12 @@ components:
         - scope
         pk: 0
         user:
-          uid: uid
           is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
-          name: name
           groups:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attributes:
-            key: ""
-          pk: 6
           avatar: avatar
           groups_obj:
           - parent_name: parent_name
@@ -25106,6 +25156,12 @@ components:
             users:
             - 6
             - 6
+          uid: uid
+          path: path
+          name: name
+          attributes:
+            key: ""
+          pk: 6
           email: email
           username: username
       properties:
@@ -26814,6 +26870,7 @@ components:
         group_membership_field: group_membership_field
         server_uri: https://openapi-generator.tech
         bind_cn: bind_cn
+        user_path_template: user_path_template
         sync_groups: true
         group_object_filter: group_object_filter
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -26881,6 +26938,8 @@ components:
           nullable: true
           readOnly: true
           title: Managed by authentik
+          type: string
+        user_path_template:
           type: string
         server_uri:
           format: uri
@@ -26975,6 +27034,7 @@ components:
         group_membership_field: group_membership_field
         server_uri: https://openapi-generator.tech
         bind_cn: bind_cn
+        user_path_template: user_path_template
         sync_groups: true
         group_object_filter: group_object_filter
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -27015,6 +27075,9 @@ components:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
         server_uri:
           format: uri
           minLength: 1
@@ -27723,6 +27786,7 @@ components:
         access_token_url: access_token_url
         slug: slug
         oidc_jwks_url: oidc_jwks_url
+        user_path_template: user_path_template
         authorization_url: authorization_url
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
@@ -27789,6 +27853,8 @@ components:
           readOnly: true
           title: Managed by authentik
           type: string
+        user_path_template:
+          type: string
         provider_type:
           $ref: '#/components/schemas/ProviderTypeEnum'
         request_token_url:
@@ -27849,6 +27915,7 @@ components:
         user_matching_mode: ""
         consumer_secret: consumer_secret
         oidc_jwks_url: oidc_jwks_url
+        user_path_template: user_path_template
         request_token_url: request_token_url
         profile_url: profile_url
         authorization_url: authorization_url
@@ -27894,6 +27961,9 @@ components:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
         provider_type:
           $ref: '#/components/schemas/ProviderTypeEnum'
         request_token_url:
@@ -29876,17 +29946,12 @@ components:
           - scope
           pk: 0
           user:
-            uid: uid
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
-            name: name
             groups:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            attributes:
-              key: ""
-            pk: 6
             avatar: avatar
             groups_obj:
             - parent_name: parent_name
@@ -29953,6 +30018,12 @@ components:
               users:
               - 6
               - 6
+            uid: uid
+            path: path
+            name: name
+            attributes:
+              key: ""
+            pk: 6
             email: email
             username: username
         - expires: 2000-01-23T04:56:07.000+00:00
@@ -29988,17 +30059,12 @@ components:
           - scope
           pk: 0
           user:
-            uid: uid
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
-            name: name
             groups:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            attributes:
-              key: ""
-            pk: 6
             avatar: avatar
             groups_obj:
             - parent_name: parent_name
@@ -30065,6 +30131,12 @@ components:
               users:
               - 6
               - 6
+            uid: uid
+            path: path
+            name: name
+            attributes:
+              key: ""
+            pk: 6
             email: email
             username: username
       properties:
@@ -30852,6 +30924,7 @@ components:
           group_membership_field: group_membership_field
           server_uri: https://openapi-generator.tech
           bind_cn: bind_cn
+          user_path_template: user_path_template
           sync_groups: true
           group_object_filter: group_object_filter
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -30886,6 +30959,7 @@ components:
           group_membership_field: group_membership_field
           server_uri: https://openapi-generator.tech
           bind_cn: bind_cn
+          user_path_template: user_path_template
           sync_groups: true
           group_object_filter: group_object_filter
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -31168,6 +31242,7 @@ components:
           access_token_url: access_token_url
           slug: slug
           oidc_jwks_url: oidc_jwks_url
+          user_path_template: user_path_template
           authorization_url: authorization_url
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
@@ -31194,6 +31269,7 @@ components:
           access_token_url: access_token_url
           slug: slug
           oidc_jwks_url: oidc_jwks_url
+          user_path_template: user_path_template
           authorization_url: authorization_url
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
@@ -31574,6 +31650,7 @@ components:
           - allowed_servers
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
+          user_path_template: user_path_template
           enabled: true
           client_id: client_id
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -31593,6 +31670,7 @@ components:
           - allowed_servers
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
+          user_path_template: user_path_template
           enabled: true
           client_id: client_id
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -32308,17 +32386,12 @@ components:
           pk: 0
           revoked: true
           user:
-            uid: uid
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
-            name: name
             groups:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            attributes:
-              key: ""
-            pk: 6
             avatar: avatar
             groups_obj:
             - parent_name: parent_name
@@ -32385,6 +32458,12 @@ components:
               users:
               - 6
               - 6
+            uid: uid
+            path: path
+            name: name
+            attributes:
+              key: ""
+            pk: 6
             email: email
             username: username
         - expires: 2000-01-23T04:56:07.000+00:00
@@ -32422,17 +32501,12 @@ components:
           pk: 0
           revoked: true
           user:
-            uid: uid
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
-            name: name
             groups:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            attributes:
-              key: ""
-            pk: 6
             avatar: avatar
             groups_obj:
             - parent_name: parent_name
@@ -32499,6 +32573,12 @@ components:
               users:
               - 6
               - 6
+            uid: uid
+            path: path
+            name: name
+            attributes:
+              key: ""
+            pk: 6
             email: email
             username: username
       properties:
@@ -32717,14 +32797,20 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - binding_type: null
-          allow_idp_initiated: true
+        - allow_idp_initiated: true
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
-          slo_url: https://openapi-generator.tech
           sso_url: https://openapi-generator.tech
           enabled: true
           issuer: issuer
+          managed: managed
+          name_id_policy: ""
+          signature_algorithm: null
+          slug: slug
+          signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          binding_type: null
+          user_path_template: user_path_template
+          slo_url: https://openapi-generator.tech
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -32733,22 +32819,23 @@ components:
           digest_algorithm: null
           meta_model_name: meta_model_name
           pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          managed: managed
-          name_id_policy: ""
           name: name
-          signature_algorithm: null
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          slug: slug
-          signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           temporary_user_delete_after: temporary_user_delete_after
-        - binding_type: null
-          allow_idp_initiated: true
+        - allow_idp_initiated: true
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
-          slo_url: https://openapi-generator.tech
           sso_url: https://openapi-generator.tech
           enabled: true
           issuer: issuer
+          managed: managed
+          name_id_policy: ""
+          signature_algorithm: null
+          slug: slug
+          signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          binding_type: null
+          user_path_template: user_path_template
+          slo_url: https://openapi-generator.tech
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -32757,13 +32844,8 @@ components:
           digest_algorithm: null
           meta_model_name: meta_model_name
           pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          managed: managed
-          name_id_policy: ""
           name: name
-          signature_algorithm: null
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          slug: slug
-          signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           temporary_user_delete_after: temporary_user_delete_after
       properties:
         pagination:
@@ -32895,6 +32977,7 @@ components:
         results:
         - user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
+          user_path_template: user_path_template
           enabled: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
@@ -32908,6 +32991,7 @@ components:
           slug: slug
         - user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
+          user_path_template: user_path_template
           enabled: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
@@ -33216,17 +33300,12 @@ components:
             group: group
           pk: 0
           user:
-            uid: uid
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
-            name: name
             groups:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            attributes:
-              key: ""
-            pk: 6
             avatar: avatar
             groups_obj:
             - parent_name: parent_name
@@ -33293,6 +33372,12 @@ components:
               users:
               - 6
               - 6
+            uid: uid
+            path: path
+            name: name
+            attributes:
+              key: ""
+            pk: 6
             email: email
             username: username
         - expires: 2000-01-23T04:56:07.000+00:00
@@ -33312,17 +33397,12 @@ components:
             group: group
           pk: 0
           user:
-            uid: uid
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
-            name: name
             groups:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            attributes:
-              key: ""
-            pk: 6
             avatar: avatar
             groups_obj:
             - parent_name: parent_name
@@ -33389,6 +33469,12 @@ components:
               users:
               - 6
               - 6
+            uid: uid
+            path: path
+            name: name
+            attributes:
+              key: ""
+            pk: 6
             email: email
             username: username
       properties:
@@ -33521,17 +33607,12 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - uid: uid
-          is_active: true
+        - is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
-          name: name
           groups:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attributes:
-            key: ""
-          pk: 6
           avatar: avatar
           groups_obj:
           - parent_name: parent_name
@@ -33598,19 +33679,20 @@ components:
             users:
             - 6
             - 6
+          uid: uid
+          path: path
+          name: name
+          attributes:
+            key: ""
+          pk: 6
           email: email
           username: username
-        - uid: uid
-          is_active: true
+        - is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
-          name: name
           groups:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attributes:
-            key: ""
-          pk: 6
           avatar: avatar
           groups_obj:
           - parent_name: parent_name
@@ -33677,6 +33759,12 @@ components:
             users:
             - 6
             - 6
+          uid: uid
+          path: path
+          name: name
+          attributes:
+            key: ""
+          pk: 6
           email: email
           username: username
       properties:
@@ -33983,6 +34071,7 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          user_path_template: user_path_template
           name: name
           create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -34028,6 +34117,7 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          user_path_template: user_path_template
           name: name
           create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35675,6 +35765,7 @@ components:
         group_membership_field: group_membership_field
         server_uri: https://openapi-generator.tech
         bind_cn: bind_cn
+        user_path_template: user_path_template
         sync_groups: true
         group_object_filter: group_object_filter
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35715,6 +35806,9 @@ components:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
         server_uri:
           format: uri
           minLength: 1
@@ -35972,6 +36066,7 @@ components:
         user_matching_mode: ""
         consumer_secret: consumer_secret
         oidc_jwks_url: oidc_jwks_url
+        user_path_template: user_path_template
         request_token_url: request_token_url
         profile_url: profile_url
         authorization_url: authorization_url
@@ -36017,6 +36112,9 @@ components:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
         provider_type:
           $ref: '#/components/schemas/ProviderTypeEnum'
         request_token_url:
@@ -36251,6 +36349,7 @@ components:
         - allowed_servers
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user_matching_mode: ""
+        user_path_template: user_path_template
         name: name
         allow_friends: true
         plex_token: plex_token
@@ -36287,6 +36386,9 @@ components:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
         client_id:
           description: Client identifier used to talk to Plex.
           minLength: 1
@@ -36696,6 +36798,7 @@ components:
         binding_type: null
         allow_idp_initiated: true
         user_matching_mode: ""
+        user_path_template: user_path_template
         slo_url: https://openapi-generator.tech
         sso_url: https://openapi-generator.tech
         enabled: true
@@ -36741,6 +36844,9 @@ components:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
         pre_authentication_flow:
           description: Flow used before authentication.
           format: uuid
@@ -37073,6 +37179,7 @@ components:
     PatchedUserRequest:
       description: User Serializer
       example:
+        path: path
         is_active: true
         last_login: 2000-01-23T04:56:07.000+00:00
         name: name
@@ -37113,10 +37220,14 @@ components:
         attributes:
           additionalProperties: {}
           type: object
+        path:
+          minLength: 1
+          type: string
       type: object
     PatchedUserWriteStageRequest:
       description: UserWriteStage Serializer
       example:
+        user_path_template: user_path_template
         name: name
         create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
@@ -37150,6 +37261,8 @@ components:
           description: Optionally add newly created users to this group.
           format: uuid
           nullable: true
+          type: string
+        user_path_template:
           type: string
       type: object
     PatchedWebAuthnDeviceRequest:
@@ -37214,6 +37327,7 @@ components:
         - allowed_servers
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
+        user_path_template: user_path_template
         enabled: true
         client_id: client_id
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -37282,6 +37396,8 @@ components:
           nullable: true
           readOnly: true
           title: Managed by authentik
+          type: string
+        user_path_template:
           type: string
         client_id:
           description: Client identifier used to talk to Plex.
@@ -37364,6 +37480,7 @@ components:
         - allowed_servers
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user_matching_mode: ""
+        user_path_template: user_path_template
         name: name
         allow_friends: true
         plex_token: plex_token
@@ -37400,6 +37517,9 @@ components:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
         client_id:
           description: Client identifier used to talk to Plex.
           minLength: 1
@@ -38619,17 +38739,12 @@ components:
         pk: 0
         revoked: true
         user:
-          uid: uid
           is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
-          name: name
           groups:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attributes:
-            key: ""
-          pk: 6
           avatar: avatar
           groups_obj:
           - parent_name: parent_name
@@ -38696,6 +38811,12 @@ components:
             users:
             - 6
             - 6
+          uid: uid
+          path: path
+          name: name
+          attributes:
+            key: ""
+          pk: 6
           email: email
           username: username
       properties:
@@ -39216,14 +39337,20 @@ components:
     SAMLSource:
       description: SAMLSource Serializer
       example:
-        binding_type: null
         allow_idp_initiated: true
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
-        slo_url: https://openapi-generator.tech
         sso_url: https://openapi-generator.tech
         enabled: true
         issuer: issuer
+        managed: managed
+        name_id_policy: ""
+        signature_algorithm: null
+        slug: slug
+        signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        binding_type: null
+        user_path_template: user_path_template
+        slo_url: https://openapi-generator.tech
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -39232,13 +39359,8 @@ components:
         digest_algorithm: null
         meta_model_name: meta_model_name
         pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        managed: managed
-        name_id_policy: ""
         name: name
-        signature_algorithm: null
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        slug: slug
-        signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         temporary_user_delete_after: temporary_user_delete_after
       properties:
         pk:
@@ -39294,6 +39416,8 @@ components:
           nullable: true
           readOnly: true
           title: Managed by authentik
+          type: string
+        user_path_template:
           type: string
         pre_authentication_flow:
           description: Flow used before authentication.
@@ -39359,6 +39483,7 @@ components:
         binding_type: null
         allow_idp_initiated: true
         user_matching_mode: ""
+        user_path_template: user_path_template
         slo_url: https://openapi-generator.tech
         sso_url: https://openapi-generator.tech
         enabled: true
@@ -39404,6 +39529,9 @@ components:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
         pre_authentication_flow:
           description: Flow used before authentication.
           format: uuid
@@ -39768,6 +39896,7 @@ components:
       example:
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
+        user_path_template: user_path_template
         enabled: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
@@ -39834,6 +39963,8 @@ components:
           readOnly: true
           title: Managed by authentik
           type: string
+        user_path_template:
+          type: string
       required:
       - component
       - managed
@@ -39876,6 +40007,9 @@ components:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
           description: How the source determines if an existing user should be authenticated
             or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
       required:
       - name
       - slug
@@ -40562,17 +40696,12 @@ components:
     User:
       description: User Serializer
       example:
-        uid: uid
         is_active: true
         is_superuser: true
         last_login: 2000-01-23T04:56:07.000+00:00
-        name: name
         groups:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        attributes:
-          key: ""
-        pk: 6
         avatar: avatar
         groups_obj:
         - parent_name: parent_name
@@ -40639,6 +40768,12 @@ components:
           users:
           - 6
           - 6
+        uid: uid
+        path: path
+        name: name
+        attributes:
+          key: ""
+        pk: 6
         email: email
         username: username
       properties:
@@ -40688,6 +40823,8 @@ components:
         uid:
           readOnly: true
           type: string
+        path:
+          type: string
       required:
       - avatar
       - groups
@@ -40718,17 +40855,12 @@ components:
           group: group
         pk: 0
         user:
-          uid: uid
           is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
-          name: name
           groups:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attributes:
-            key: ""
-          pk: 6
           avatar: avatar
           groups_obj:
           - parent_name: parent_name
@@ -40795,6 +40927,12 @@ components:
             users:
             - 6
             - 6
+          uid: uid
+          path: path
+          name: name
+          attributes:
+            key: ""
+          pk: 6
           email: email
           username: username
       properties:
@@ -41258,9 +41396,24 @@ components:
       required:
       - password
       type: object
+    UserPath:
+      example:
+        paths:
+        - paths
+        - paths
+      properties:
+        paths:
+          items:
+            type: string
+          readOnly: true
+          type: array
+      required:
+      - paths
+      type: object
     UserRequest:
       description: User Serializer
       example:
+        path: path
         is_active: true
         last_login: 2000-01-23T04:56:07.000+00:00
         name: name
@@ -41301,6 +41454,9 @@ components:
         attributes:
           additionalProperties: {}
           type: object
+        path:
+          minLength: 1
+          type: string
       required:
       - groups
       - name
@@ -41484,6 +41640,7 @@ components:
         verbose_name: verbose_name
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
+        user_path_template: user_path_template
         name: name
         create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -41557,6 +41714,8 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_path_template:
+          type: string
       required:
       - component
       - meta_model_name
@@ -41568,6 +41727,7 @@ components:
     UserWriteStageRequest:
       description: UserWriteStage Serializer
       example:
+        user_path_template: user_path_template
         name: name
         create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
@@ -41601,6 +41761,8 @@ components:
           description: Optionally add newly created users to this group.
           format: uuid
           nullable: true
+          type: string
+        user_path_template:
           type: string
       required:
       - name

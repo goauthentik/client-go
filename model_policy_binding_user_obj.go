@@ -32,6 +32,7 @@ type PolicyBindingUserObj struct {
 	Avatar      string                 `json:"avatar"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 	Uid         string                 `json:"uid"`
+	Path        *string                `json:"path,omitempty"`
 }
 
 // NewPolicyBindingUserObj instantiates a new PolicyBindingUserObj object
@@ -390,6 +391,38 @@ func (o *PolicyBindingUserObj) SetUid(v string) {
 	o.Uid = v
 }
 
+// GetPath returns the Path field value if set, zero value otherwise.
+func (o *PolicyBindingUserObj) GetPath() string {
+	if o == nil || o.Path == nil {
+		var ret string
+		return ret
+	}
+	return *o.Path
+}
+
+// GetPathOk returns a tuple with the Path field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PolicyBindingUserObj) GetPathOk() (*string, bool) {
+	if o == nil || o.Path == nil {
+		return nil, false
+	}
+	return o.Path, true
+}
+
+// HasPath returns a boolean if a field has been set.
+func (o *PolicyBindingUserObj) HasPath() bool {
+	if o != nil && o.Path != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPath gets a reference to the given string and assigns it to the Path field.
+func (o *PolicyBindingUserObj) SetPath(v string) {
+	o.Path = &v
+}
+
 func (o PolicyBindingUserObj) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -427,6 +460,9 @@ func (o PolicyBindingUserObj) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["uid"] = o.Uid
+	}
+	if o.Path != nil {
+		toSerialize["path"] = o.Path
 	}
 	return json.Marshal(toSerialize)
 }
