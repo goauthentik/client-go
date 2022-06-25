@@ -6,12 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Username** | **string** |  | 
 **Token** | **string** |  | 
+**UserUid** | **string** |  | 
+**UserPk** | **int32** |  | 
+**GroupPk** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewUserServiceAccountResponse
 
-`func NewUserServiceAccountResponse(username string, token string, ) *UserServiceAccountResponse`
+`func NewUserServiceAccountResponse(username string, token string, userUid string, userPk int32, ) *UserServiceAccountResponse`
 
 NewUserServiceAccountResponse instantiates a new UserServiceAccountResponse object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +68,71 @@ and a boolean to check if the value has been set.
 
 SetToken sets Token field to given value.
 
+
+### GetUserUid
+
+`func (o *UserServiceAccountResponse) GetUserUid() string`
+
+GetUserUid returns the UserUid field if non-nil, zero value otherwise.
+
+### GetUserUidOk
+
+`func (o *UserServiceAccountResponse) GetUserUidOk() (*string, bool)`
+
+GetUserUidOk returns a tuple with the UserUid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserUid
+
+`func (o *UserServiceAccountResponse) SetUserUid(v string)`
+
+SetUserUid sets UserUid field to given value.
+
+
+### GetUserPk
+
+`func (o *UserServiceAccountResponse) GetUserPk() int32`
+
+GetUserPk returns the UserPk field if non-nil, zero value otherwise.
+
+### GetUserPkOk
+
+`func (o *UserServiceAccountResponse) GetUserPkOk() (*int32, bool)`
+
+GetUserPkOk returns a tuple with the UserPk field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserPk
+
+`func (o *UserServiceAccountResponse) SetUserPk(v int32)`
+
+SetUserPk sets UserPk field to given value.
+
+
+### GetGroupPk
+
+`func (o *UserServiceAccountResponse) GetGroupPk() string`
+
+GetGroupPk returns the GroupPk field if non-nil, zero value otherwise.
+
+### GetGroupPkOk
+
+`func (o *UserServiceAccountResponse) GetGroupPkOk() (*string, bool)`
+
+GetGroupPkOk returns a tuple with the GroupPk field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupPk
+
+`func (o *UserServiceAccountResponse) SetGroupPk(v string)`
+
+SetGroupPk sets GroupPk field to given value.
+
+### HasGroupPk
+
+`func (o *UserServiceAccountResponse) HasGroupPk() bool`
+
+HasGroupPk returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

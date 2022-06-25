@@ -41565,15 +41565,26 @@ components:
       type: object
     UserServiceAccountResponse:
       example:
+        user_pk: 0
+        group_pk: group_pk
         username: username
         token: token
+        user_uid: user_uid
       properties:
         username:
           type: string
         token:
           type: string
+        user_uid:
+          type: string
+        user_pk:
+          type: integer
+        group_pk:
+          type: string
       required:
       - token
+      - user_pk
+      - user_uid
       - username
       type: object
     UserSetting:
