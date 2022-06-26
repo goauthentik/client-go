@@ -10,14 +10,15 @@ Name | Type | Description | Notes
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **PendingUser** | **string** |  | 
 **PendingUserAvatar** | **string** |  | 
-**HeaderText** | **string** |  | 
+**HeaderText** | Pointer to **string** |  | [optional] 
 **Permissions** | [**[]Permission**](Permission.md) |  | 
+**AdditionalPermissions** | [**[]Permission**](Permission.md) |  | 
 
 ## Methods
 
 ### NewConsentChallenge
 
-`func NewConsentChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, headerText string, permissions []Permission, ) *ConsentChallenge`
+`func NewConsentChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, permissions []Permission, additionalPermissions []Permission, ) *ConsentChallenge`
 
 NewConsentChallenge instantiates a new ConsentChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -186,6 +187,11 @@ and a boolean to check if the value has been set.
 
 SetHeaderText sets HeaderText field to given value.
 
+### HasHeaderText
+
+`func (o *ConsentChallenge) HasHeaderText() bool`
+
+HasHeaderText returns a boolean if a field has been set.
 
 ### GetPermissions
 
@@ -205,6 +211,26 @@ and a boolean to check if the value has been set.
 `func (o *ConsentChallenge) SetPermissions(v []Permission)`
 
 SetPermissions sets Permissions field to given value.
+
+
+### GetAdditionalPermissions
+
+`func (o *ConsentChallenge) GetAdditionalPermissions() []Permission`
+
+GetAdditionalPermissions returns the AdditionalPermissions field if non-nil, zero value otherwise.
+
+### GetAdditionalPermissionsOk
+
+`func (o *ConsentChallenge) GetAdditionalPermissionsOk() (*[]Permission, bool)`
+
+GetAdditionalPermissionsOk returns a tuple with the AdditionalPermissions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalPermissions
+
+`func (o *ConsentChallenge) SetAdditionalPermissions(v []Permission)`
+
+SetAdditionalPermissions sets AdditionalPermissions field to given value.
 
 
 

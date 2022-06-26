@@ -17,29 +17,30 @@ import (
 
 // ConsentChallenge Challenge info for consent screens
 type ConsentChallenge struct {
-	Type              ChallengeChoices          `json:"type"`
-	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component         *string                   `json:"component,omitempty"`
-	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser       string                    `json:"pending_user"`
-	PendingUserAvatar string                    `json:"pending_user_avatar"`
-	HeaderText        string                    `json:"header_text"`
-	Permissions       []Permission              `json:"permissions"`
+	Type                  ChallengeChoices          `json:"type"`
+	FlowInfo              *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component             *string                   `json:"component,omitempty"`
+	ResponseErrors        *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser           string                    `json:"pending_user"`
+	PendingUserAvatar     string                    `json:"pending_user_avatar"`
+	HeaderText            *string                   `json:"header_text,omitempty"`
+	Permissions           []Permission              `json:"permissions"`
+	AdditionalPermissions []Permission              `json:"additional_permissions"`
 }
 
 // NewConsentChallenge instantiates a new ConsentChallenge object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConsentChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, headerText string, permissions []Permission) *ConsentChallenge {
+func NewConsentChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, permissions []Permission, additionalPermissions []Permission) *ConsentChallenge {
 	this := ConsentChallenge{}
 	this.Type = type_
 	var component string = "ak-stage-consent"
 	this.Component = &component
 	this.PendingUser = pendingUser
 	this.PendingUserAvatar = pendingUserAvatar
-	this.HeaderText = headerText
 	this.Permissions = permissions
+	this.AdditionalPermissions = additionalPermissions
 	return &this
 }
 
@@ -221,28 +222,36 @@ func (o *ConsentChallenge) SetPendingUserAvatar(v string) {
 	o.PendingUserAvatar = v
 }
 
-// GetHeaderText returns the HeaderText field value
+// GetHeaderText returns the HeaderText field value if set, zero value otherwise.
 func (o *ConsentChallenge) GetHeaderText() string {
-	if o == nil {
+	if o == nil || o.HeaderText == nil {
 		var ret string
 		return ret
 	}
-
-	return o.HeaderText
+	return *o.HeaderText
 }
 
-// GetHeaderTextOk returns a tuple with the HeaderText field value
+// GetHeaderTextOk returns a tuple with the HeaderText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConsentChallenge) GetHeaderTextOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.HeaderText == nil {
 		return nil, false
 	}
-	return &o.HeaderText, true
+	return o.HeaderText, true
 }
 
-// SetHeaderText sets field value
+// HasHeaderText returns a boolean if a field has been set.
+func (o *ConsentChallenge) HasHeaderText() bool {
+	if o != nil && o.HeaderText != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHeaderText gets a reference to the given string and assigns it to the HeaderText field.
 func (o *ConsentChallenge) SetHeaderText(v string) {
-	o.HeaderText = v
+	o.HeaderText = &v
 }
 
 // GetPermissions returns the Permissions field value
@@ -269,6 +278,30 @@ func (o *ConsentChallenge) SetPermissions(v []Permission) {
 	o.Permissions = v
 }
 
+// GetAdditionalPermissions returns the AdditionalPermissions field value
+func (o *ConsentChallenge) GetAdditionalPermissions() []Permission {
+	if o == nil {
+		var ret []Permission
+		return ret
+	}
+
+	return o.AdditionalPermissions
+}
+
+// GetAdditionalPermissionsOk returns a tuple with the AdditionalPermissions field value
+// and a boolean to check if the value has been set.
+func (o *ConsentChallenge) GetAdditionalPermissionsOk() ([]Permission, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdditionalPermissions, true
+}
+
+// SetAdditionalPermissions sets field value
+func (o *ConsentChallenge) SetAdditionalPermissions(v []Permission) {
+	o.AdditionalPermissions = v
+}
+
 func (o ConsentChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -289,11 +322,14 @@ func (o ConsentChallenge) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["pending_user_avatar"] = o.PendingUserAvatar
 	}
-	if true {
+	if o.HeaderText != nil {
 		toSerialize["header_text"] = o.HeaderText
 	}
 	if true {
 		toSerialize["permissions"] = o.Permissions
+	}
+	if true {
+		toSerialize["additional_permissions"] = o.AdditionalPermissions
 	}
 	return json.Marshal(toSerialize)
 }

@@ -22,6 +22,7 @@ type UserConsent struct {
 	Expires     *time.Time  `json:"expires,omitempty"`
 	User        User        `json:"user"`
 	Application Application `json:"application"`
+	Permissions *string     `json:"permissions,omitempty"`
 }
 
 // NewUserConsent instantiates a new UserConsent object
@@ -33,6 +34,8 @@ func NewUserConsent(pk int32, user User, application Application) *UserConsent {
 	this.Pk = pk
 	this.User = user
 	this.Application = application
+	var permissions string = ""
+	this.Permissions = &permissions
 	return &this
 }
 
@@ -41,6 +44,8 @@ func NewUserConsent(pk int32, user User, application Application) *UserConsent {
 // but it doesn't guarantee that properties required by API are set
 func NewUserConsentWithDefaults() *UserConsent {
 	this := UserConsent{}
+	var permissions string = ""
+	this.Permissions = &permissions
 	return &this
 }
 
@@ -148,6 +153,38 @@ func (o *UserConsent) SetApplication(v Application) {
 	o.Application = v
 }
 
+// GetPermissions returns the Permissions field value if set, zero value otherwise.
+func (o *UserConsent) GetPermissions() string {
+	if o == nil || o.Permissions == nil {
+		var ret string
+		return ret
+	}
+	return *o.Permissions
+}
+
+// GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserConsent) GetPermissionsOk() (*string, bool) {
+	if o == nil || o.Permissions == nil {
+		return nil, false
+	}
+	return o.Permissions, true
+}
+
+// HasPermissions returns a boolean if a field has been set.
+func (o *UserConsent) HasPermissions() bool {
+	if o != nil && o.Permissions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPermissions gets a reference to the given string and assigns it to the Permissions field.
+func (o *UserConsent) SetPermissions(v string) {
+	o.Permissions = &v
+}
+
 func (o UserConsent) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -161,6 +198,9 @@ func (o UserConsent) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["application"] = o.Application
+	}
+	if o.Permissions != nil {
+		toSerialize["permissions"] = o.Permissions
 	}
 	return json.Marshal(toSerialize)
 }

@@ -23753,8 +23753,12 @@ components:
           items:
             $ref: '#/components/schemas/Permission'
           type: array
+        additional_permissions:
+          items:
+            $ref: '#/components/schemas/Permission'
+          type: array
       required:
-      - header_text
+      - additional_permissions
       - pending_user
       - pending_user_avatar
       - permissions
@@ -33298,6 +33302,7 @@ components:
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             slug: slug
             group: group
+          permissions: permissions
           pk: 0
           user:
             is_active: true
@@ -33395,6 +33400,7 @@ components:
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             slug: slug
             group: group
+          permissions: permissions
           pk: 0
           user:
             is_active: true
@@ -40853,6 +40859,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
           group: group
+        permissions: permissions
         pk: 0
         user:
           is_active: true
@@ -40947,6 +40954,9 @@ components:
           $ref: '#/components/schemas/User'
         application:
           $ref: '#/components/schemas/Application'
+        permissions:
+          default: ""
+          type: string
       required:
       - application
       - pk

@@ -28,8 +28,9 @@ Name | Type | Description | Notes
 **Attrs** | **map[string]string** |  | 
 **Title** | Pointer to **string** |  | [optional] 
 **SiteKey** | **string** |  | 
-**HeaderText** | **string** |  | 
+**HeaderText** | Pointer to **string** |  | [optional] 
 **Permissions** | [**[]Permission**](Permission.md) |  | 
+**AdditionalPermissions** | [**[]Permission**](Permission.md) |  | 
 **UserFields** | **[]string** |  | 
 **PasswordFields** | **bool** |  | 
 **ApplicationPre** | Pointer to **string** |  | [optional] 
@@ -48,7 +49,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, headerText string, permissions []Permission, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
+`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, permissions []Permission, additionalPermissions []Permission, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -592,6 +593,11 @@ and a boolean to check if the value has been set.
 
 SetHeaderText sets HeaderText field to given value.
 
+### HasHeaderText
+
+`func (o *ChallengeTypes) HasHeaderText() bool`
+
+HasHeaderText returns a boolean if a field has been set.
 
 ### GetPermissions
 
@@ -611,6 +617,26 @@ and a boolean to check if the value has been set.
 `func (o *ChallengeTypes) SetPermissions(v []Permission)`
 
 SetPermissions sets Permissions field to given value.
+
+
+### GetAdditionalPermissions
+
+`func (o *ChallengeTypes) GetAdditionalPermissions() []Permission`
+
+GetAdditionalPermissions returns the AdditionalPermissions field if non-nil, zero value otherwise.
+
+### GetAdditionalPermissionsOk
+
+`func (o *ChallengeTypes) GetAdditionalPermissionsOk() (*[]Permission, bool)`
+
+GetAdditionalPermissionsOk returns a tuple with the AdditionalPermissions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalPermissions
+
+`func (o *ChallengeTypes) SetAdditionalPermissions(v []Permission)`
+
+SetAdditionalPermissions sets AdditionalPermissions field to given value.
 
 
 ### GetUserFields
