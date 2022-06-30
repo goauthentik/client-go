@@ -51,14 +51,17 @@ type SAMLProvider struct {
 	VerificationKp NullableString `json:"verification_kp,omitempty"`
 	// This determines how authentik sends the response back to the Service Provider.
 	SpBinding           NullableSpBindingEnum `json:"sp_binding,omitempty"`
-	MetadataDownloadUrl string                `json:"metadata_download_url"`
+	UrlDownloadMetadata string                `json:"url_download_metadata"`
+	UrlSsoPost          string                `json:"url_sso_post"`
+	UrlSsoRedirect      string                `json:"url_sso_redirect"`
+	UrlSsoInit          string                `json:"url_sso_init"`
 }
 
 // NewSAMLProvider instantiates a new SAMLProvider object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSAMLProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, metadataDownloadUrl string) *SAMLProvider {
+func NewSAMLProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, urlDownloadMetadata string, urlSsoPost string, urlSsoRedirect string, urlSsoInit string) *SAMLProvider {
 	this := SAMLProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -70,7 +73,10 @@ func NewSAMLProvider(pk int32, name string, authorizationFlow string, component 
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
 	this.AcsUrl = acsUrl
-	this.MetadataDownloadUrl = metadataDownloadUrl
+	this.UrlDownloadMetadata = urlDownloadMetadata
+	this.UrlSsoPost = urlSsoPost
+	this.UrlSsoRedirect = urlSsoRedirect
+	this.UrlSsoInit = urlSsoInit
 	return &this
 }
 
@@ -750,28 +756,100 @@ func (o *SAMLProvider) UnsetSpBinding() {
 	o.SpBinding.Unset()
 }
 
-// GetMetadataDownloadUrl returns the MetadataDownloadUrl field value
-func (o *SAMLProvider) GetMetadataDownloadUrl() string {
+// GetUrlDownloadMetadata returns the UrlDownloadMetadata field value
+func (o *SAMLProvider) GetUrlDownloadMetadata() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.MetadataDownloadUrl
+	return o.UrlDownloadMetadata
 }
 
-// GetMetadataDownloadUrlOk returns a tuple with the MetadataDownloadUrl field value
+// GetUrlDownloadMetadataOk returns a tuple with the UrlDownloadMetadata field value
 // and a boolean to check if the value has been set.
-func (o *SAMLProvider) GetMetadataDownloadUrlOk() (*string, bool) {
+func (o *SAMLProvider) GetUrlDownloadMetadataOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.MetadataDownloadUrl, true
+	return &o.UrlDownloadMetadata, true
 }
 
-// SetMetadataDownloadUrl sets field value
-func (o *SAMLProvider) SetMetadataDownloadUrl(v string) {
-	o.MetadataDownloadUrl = v
+// SetUrlDownloadMetadata sets field value
+func (o *SAMLProvider) SetUrlDownloadMetadata(v string) {
+	o.UrlDownloadMetadata = v
+}
+
+// GetUrlSsoPost returns the UrlSsoPost field value
+func (o *SAMLProvider) GetUrlSsoPost() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UrlSsoPost
+}
+
+// GetUrlSsoPostOk returns a tuple with the UrlSsoPost field value
+// and a boolean to check if the value has been set.
+func (o *SAMLProvider) GetUrlSsoPostOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UrlSsoPost, true
+}
+
+// SetUrlSsoPost sets field value
+func (o *SAMLProvider) SetUrlSsoPost(v string) {
+	o.UrlSsoPost = v
+}
+
+// GetUrlSsoRedirect returns the UrlSsoRedirect field value
+func (o *SAMLProvider) GetUrlSsoRedirect() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UrlSsoRedirect
+}
+
+// GetUrlSsoRedirectOk returns a tuple with the UrlSsoRedirect field value
+// and a boolean to check if the value has been set.
+func (o *SAMLProvider) GetUrlSsoRedirectOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UrlSsoRedirect, true
+}
+
+// SetUrlSsoRedirect sets field value
+func (o *SAMLProvider) SetUrlSsoRedirect(v string) {
+	o.UrlSsoRedirect = v
+}
+
+// GetUrlSsoInit returns the UrlSsoInit field value
+func (o *SAMLProvider) GetUrlSsoInit() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UrlSsoInit
+}
+
+// GetUrlSsoInitOk returns a tuple with the UrlSsoInit field value
+// and a boolean to check if the value has been set.
+func (o *SAMLProvider) GetUrlSsoInitOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UrlSsoInit, true
+}
+
+// SetUrlSsoInit sets field value
+func (o *SAMLProvider) SetUrlSsoInit(v string) {
+	o.UrlSsoInit = v
 }
 
 func (o SAMLProvider) MarshalJSON() ([]byte, error) {
@@ -843,7 +921,16 @@ func (o SAMLProvider) MarshalJSON() ([]byte, error) {
 		toSerialize["sp_binding"] = o.SpBinding.Get()
 	}
 	if true {
-		toSerialize["metadata_download_url"] = o.MetadataDownloadUrl
+		toSerialize["url_download_metadata"] = o.UrlDownloadMetadata
+	}
+	if true {
+		toSerialize["url_sso_post"] = o.UrlSsoPost
+	}
+	if true {
+		toSerialize["url_sso_redirect"] = o.UrlSsoRedirect
+	}
+	if true {
+		toSerialize["url_sso_init"] = o.UrlSsoInit
 	}
 	return json.Marshal(toSerialize)
 }

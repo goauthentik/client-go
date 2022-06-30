@@ -26,13 +26,16 @@ Name | Type | Description | Notes
 **SigningKp** | Pointer to **NullableString** | Keypair used to sign outgoing Responses going to the Service Provider. | [optional] 
 **VerificationKp** | Pointer to **NullableString** | When selected, incoming assertion&#39;s Signatures will be validated against this certificate. To allow unsigned Requests, leave on default. | [optional] 
 **SpBinding** | Pointer to [**NullableSpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
-**MetadataDownloadUrl** | **string** |  | [readonly] 
+**UrlDownloadMetadata** | **string** |  | [readonly] 
+**UrlSsoPost** | **string** |  | [readonly] 
+**UrlSsoRedirect** | **string** |  | [readonly] 
+**UrlSsoInit** | **string** |  | [readonly] 
 
 ## Methods
 
 ### NewSAMLProvider
 
-`func NewSAMLProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, metadataDownloadUrl string, ) *SAMLProvider`
+`func NewSAMLProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, urlDownloadMetadata string, urlSsoPost string, urlSsoRedirect string, urlSsoInit string, ) *SAMLProvider`
 
 NewSAMLProvider instantiates a new SAMLProvider object
 This constructor will assign default values to properties that have it defined,
@@ -587,24 +590,84 @@ HasSpBinding returns a boolean if a field has been set.
 `func (o *SAMLProvider) UnsetSpBinding()`
 
 UnsetSpBinding ensures that no value is present for SpBinding, not even an explicit nil
-### GetMetadataDownloadUrl
+### GetUrlDownloadMetadata
 
-`func (o *SAMLProvider) GetMetadataDownloadUrl() string`
+`func (o *SAMLProvider) GetUrlDownloadMetadata() string`
 
-GetMetadataDownloadUrl returns the MetadataDownloadUrl field if non-nil, zero value otherwise.
+GetUrlDownloadMetadata returns the UrlDownloadMetadata field if non-nil, zero value otherwise.
 
-### GetMetadataDownloadUrlOk
+### GetUrlDownloadMetadataOk
 
-`func (o *SAMLProvider) GetMetadataDownloadUrlOk() (*string, bool)`
+`func (o *SAMLProvider) GetUrlDownloadMetadataOk() (*string, bool)`
 
-GetMetadataDownloadUrlOk returns a tuple with the MetadataDownloadUrl field if it's non-nil, zero value otherwise
+GetUrlDownloadMetadataOk returns a tuple with the UrlDownloadMetadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMetadataDownloadUrl
+### SetUrlDownloadMetadata
 
-`func (o *SAMLProvider) SetMetadataDownloadUrl(v string)`
+`func (o *SAMLProvider) SetUrlDownloadMetadata(v string)`
 
-SetMetadataDownloadUrl sets MetadataDownloadUrl field to given value.
+SetUrlDownloadMetadata sets UrlDownloadMetadata field to given value.
+
+
+### GetUrlSsoPost
+
+`func (o *SAMLProvider) GetUrlSsoPost() string`
+
+GetUrlSsoPost returns the UrlSsoPost field if non-nil, zero value otherwise.
+
+### GetUrlSsoPostOk
+
+`func (o *SAMLProvider) GetUrlSsoPostOk() (*string, bool)`
+
+GetUrlSsoPostOk returns a tuple with the UrlSsoPost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrlSsoPost
+
+`func (o *SAMLProvider) SetUrlSsoPost(v string)`
+
+SetUrlSsoPost sets UrlSsoPost field to given value.
+
+
+### GetUrlSsoRedirect
+
+`func (o *SAMLProvider) GetUrlSsoRedirect() string`
+
+GetUrlSsoRedirect returns the UrlSsoRedirect field if non-nil, zero value otherwise.
+
+### GetUrlSsoRedirectOk
+
+`func (o *SAMLProvider) GetUrlSsoRedirectOk() (*string, bool)`
+
+GetUrlSsoRedirectOk returns a tuple with the UrlSsoRedirect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrlSsoRedirect
+
+`func (o *SAMLProvider) SetUrlSsoRedirect(v string)`
+
+SetUrlSsoRedirect sets UrlSsoRedirect field to given value.
+
+
+### GetUrlSsoInit
+
+`func (o *SAMLProvider) GetUrlSsoInit() string`
+
+GetUrlSsoInit returns the UrlSsoInit field if non-nil, zero value otherwise.
+
+### GetUrlSsoInitOk
+
+`func (o *SAMLProvider) GetUrlSsoInitOk() (*string, bool)`
+
+GetUrlSsoInitOk returns a tuple with the UrlSsoInit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrlSsoInit
+
+`func (o *SAMLProvider) SetUrlSsoInit(v string)`
+
+SetUrlSsoInit sets UrlSsoInit field to given value.
 
 
 

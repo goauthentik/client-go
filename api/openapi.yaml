@@ -32729,56 +32729,62 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - audience: audience
-          metadata_download_url: metadata_download_url
+        - url_sso_init: url_sso_init
           verbose_name_plural: verbose_name_plural
           session_valid_not_on_or_after: session_valid_not_on_or_after
-          sp_binding: ""
           assigned_application_slug: assigned_application_slug
-          acs_url: https://openapi-generator.tech
           issuer: issuer
-          assertion_valid_not_before: assertion_valid_not_before
-          component: component
-          verbose_name: verbose_name
-          digest_algorithm: null
+          url_sso_redirect: url_sso_redirect
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          meta_model_name: meta_model_name
           assigned_application_name: assigned_application_name
-          name: name
-          assertion_valid_not_on_or_after: assertion_valid_not_on_or_after
           signature_algorithm: null
-          verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          pk: 0
-          name_id_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - audience: audience
-          metadata_download_url: metadata_download_url
-          verbose_name_plural: verbose_name_plural
-          session_valid_not_on_or_after: session_valid_not_on_or_after
+          audience: audience
           sp_binding: ""
-          assigned_application_slug: assigned_application_slug
           acs_url: https://openapi-generator.tech
-          issuer: issuer
+          url_download_metadata: url_download_metadata
           assertion_valid_not_before: assertion_valid_not_before
           component: component
           verbose_name: verbose_name
           digest_algorithm: null
-          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           meta_model_name: meta_model_name
-          assigned_application_name: assigned_application_name
+          url_sso_post: url_sso_post
           name: name
           assertion_valid_not_on_or_after: assertion_valid_not_on_or_after
-          signature_algorithm: null
           verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 0
           name_id_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - url_sso_init: url_sso_init
+          verbose_name_plural: verbose_name_plural
+          session_valid_not_on_or_after: session_valid_not_on_or_after
+          assigned_application_slug: assigned_application_slug
+          issuer: issuer
+          url_sso_redirect: url_sso_redirect
+          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          assigned_application_name: assigned_application_name
+          signature_algorithm: null
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          audience: audience
+          sp_binding: ""
+          acs_url: https://openapi-generator.tech
+          url_download_metadata: url_download_metadata
+          assertion_valid_not_before: assertion_valid_not_before
+          component: component
+          verbose_name: verbose_name
+          digest_algorithm: null
+          meta_model_name: meta_model_name
+          url_sso_post: url_sso_post
+          name: name
+          assertion_valid_not_on_or_after: assertion_valid_not_on_or_after
+          verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          pk: 0
+          name_id_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -39096,31 +39102,34 @@ components:
     SAMLProvider:
       description: SAMLProvider Serializer
       example:
-        audience: audience
-        metadata_download_url: metadata_download_url
+        url_sso_init: url_sso_init
         verbose_name_plural: verbose_name_plural
         session_valid_not_on_or_after: session_valid_not_on_or_after
-        sp_binding: ""
         assigned_application_slug: assigned_application_slug
-        acs_url: https://openapi-generator.tech
         issuer: issuer
-        assertion_valid_not_before: assertion_valid_not_before
-        component: component
-        verbose_name: verbose_name
-        digest_algorithm: null
+        url_sso_redirect: url_sso_redirect
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        meta_model_name: meta_model_name
         assigned_application_name: assigned_application_name
-        name: name
-        assertion_valid_not_on_or_after: assertion_valid_not_on_or_after
         signature_algorithm: null
-        verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        pk: 0
-        name_id_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        audience: audience
+        sp_binding: ""
+        acs_url: https://openapi-generator.tech
+        url_download_metadata: url_download_metadata
+        assertion_valid_not_before: assertion_valid_not_before
+        component: component
+        verbose_name: verbose_name
+        digest_algorithm: null
+        meta_model_name: meta_model_name
+        url_sso_post: url_sso_post
+        name: name
+        assertion_valid_not_on_or_after: assertion_valid_not_on_or_after
+        verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        pk: 0
+        name_id_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
           readOnly: true
@@ -39211,7 +39220,16 @@ components:
           description: This determines how authentik sends the response back to the
             Service Provider.
           title: Service Provider Binding
-        metadata_download_url:
+        url_download_metadata:
+          readOnly: true
+          type: string
+        url_sso_post:
+          readOnly: true
+          type: string
+        url_sso_redirect:
+          readOnly: true
+          type: string
+        url_sso_init:
           readOnly: true
           type: string
       required:
@@ -39221,9 +39239,12 @@ components:
       - authorization_flow
       - component
       - meta_model_name
-      - metadata_download_url
       - name
       - pk
+      - url_download_metadata
+      - url_sso_init
+      - url_sso_post
+      - url_sso_redirect
       - verbose_name
       - verbose_name_plural
       type: object
