@@ -89,6 +89,7 @@ docs/Coordinate.md
 docs/CoreApi.md
 docs/CryptoApi.md
 docs/CurrentTenant.md
+docs/DeniedActionEnum.md
 docs/DenyStage.md
 docs/DenyStageRequest.md
 docs/Device.md
@@ -542,6 +543,7 @@ model_consent_stage_request.go
 model_contextual_flow_info.go
 model_coordinate.go
 model_current_tenant.go
+model_denied_action_enum.go
 model_deny_stage.go
 model_deny_stage_request.go
 model_device.go

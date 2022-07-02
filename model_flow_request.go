@@ -28,6 +28,8 @@ type FlowRequest struct {
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
 	CompatibilityMode *bool       `json:"compatibility_mode,omitempty"`
 	Layout            *LayoutEnum `json:"layout,omitempty"`
+	// Configure what should happen when a flow denies access to a user.
+	DeniedAction NullableDeniedActionEnum `json:"denied_action,omitempty"`
 }
 
 // NewFlowRequest instantiates a new FlowRequest object
@@ -245,6 +247,49 @@ func (o *FlowRequest) SetLayout(v LayoutEnum) {
 	o.Layout = &v
 }
 
+// GetDeniedAction returns the DeniedAction field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *FlowRequest) GetDeniedAction() DeniedActionEnum {
+	if o == nil || o.DeniedAction.Get() == nil {
+		var ret DeniedActionEnum
+		return ret
+	}
+	return *o.DeniedAction.Get()
+}
+
+// GetDeniedActionOk returns a tuple with the DeniedAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *FlowRequest) GetDeniedActionOk() (*DeniedActionEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DeniedAction.Get(), o.DeniedAction.IsSet()
+}
+
+// HasDeniedAction returns a boolean if a field has been set.
+func (o *FlowRequest) HasDeniedAction() bool {
+	if o != nil && o.DeniedAction.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDeniedAction gets a reference to the given NullableDeniedActionEnum and assigns it to the DeniedAction field.
+func (o *FlowRequest) SetDeniedAction(v DeniedActionEnum) {
+	o.DeniedAction.Set(&v)
+}
+
+// SetDeniedActionNil sets the value for DeniedAction to be an explicit nil
+func (o *FlowRequest) SetDeniedActionNil() {
+	o.DeniedAction.Set(nil)
+}
+
+// UnsetDeniedAction ensures that no value is present for DeniedAction, not even an explicit nil
+func (o *FlowRequest) UnsetDeniedAction() {
+	o.DeniedAction.Unset()
+}
+
 func (o FlowRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -267,6 +312,9 @@ func (o FlowRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Layout != nil {
 		toSerialize["layout"] = o.Layout
+	}
+	if o.DeniedAction.IsSet() {
+		toSerialize["denied_action"] = o.DeniedAction.Get()
 	}
 	return json.Marshal(toSerialize)
 }

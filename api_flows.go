@@ -2306,16 +2306,23 @@ func (a *FlowsApiService) FlowsInstancesImportFlowCreateExecute(r ApiFlowsInstan
 }
 
 type ApiFlowsInstancesListRequest struct {
-	ctx         context.Context
-	ApiService  *FlowsApiService
-	designation *string
-	flowUuid    *string
-	name        *string
-	ordering    *string
-	page        *int32
-	pageSize    *int32
-	search      *string
-	slug        *string
+	ctx          context.Context
+	ApiService   *FlowsApiService
+	deniedAction *string
+	designation  *string
+	flowUuid     *string
+	name         *string
+	ordering     *string
+	page         *int32
+	pageSize     *int32
+	search       *string
+	slug         *string
+}
+
+// Configure what should happen when a flow denies access to a user.
+func (r ApiFlowsInstancesListRequest) DeniedAction(deniedAction string) ApiFlowsInstancesListRequest {
+	r.deniedAction = &deniedAction
+	return r
 }
 
 // Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
@@ -2403,6 +2410,9 @@ func (a *FlowsApiService) FlowsInstancesListExecute(r ApiFlowsInstancesListReque
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.deniedAction != nil {
+		localVarQueryParams.Add("denied_action", parameterToString(*r.deniedAction, ""))
+	}
 	if r.designation != nil {
 		localVarQueryParams.Add("designation", parameterToString(*r.designation, ""))
 	}

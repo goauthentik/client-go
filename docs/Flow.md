@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **CompatibilityMode** | Pointer to **bool** | Enable compatibility mode, increases compatibility with password managers on mobile devices. | [optional] 
 **ExportUrl** | **string** |  | [readonly] 
 **Layout** | Pointer to [**LayoutEnum**](LayoutEnum.md) |  | [optional] 
+**DeniedAction** | Pointer to [**NullableDeniedActionEnum**](DeniedActionEnum.md) | Configure what should happen when a flow denies access to a user. | [optional] 
 
 ## Methods
 
@@ -343,6 +344,41 @@ SetLayout sets Layout field to given value.
 
 HasLayout returns a boolean if a field has been set.
 
+### GetDeniedAction
+
+`func (o *Flow) GetDeniedAction() DeniedActionEnum`
+
+GetDeniedAction returns the DeniedAction field if non-nil, zero value otherwise.
+
+### GetDeniedActionOk
+
+`func (o *Flow) GetDeniedActionOk() (*DeniedActionEnum, bool)`
+
+GetDeniedActionOk returns a tuple with the DeniedAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeniedAction
+
+`func (o *Flow) SetDeniedAction(v DeniedActionEnum)`
+
+SetDeniedAction sets DeniedAction field to given value.
+
+### HasDeniedAction
+
+`func (o *Flow) HasDeniedAction() bool`
+
+HasDeniedAction returns a boolean if a field has been set.
+
+### SetDeniedActionNil
+
+`func (o *Flow) SetDeniedActionNil(b bool)`
+
+ SetDeniedActionNil sets the value for DeniedAction to be an explicit nil
+
+### UnsetDeniedAction
+`func (o *Flow) UnsetDeniedAction()`
+
+UnsetDeniedAction ensures that no value is present for DeniedAction, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

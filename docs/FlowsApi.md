@@ -1290,7 +1290,7 @@ Name | Type | Description  | Notes
 
 ## FlowsInstancesList
 
-> PaginatedFlowList FlowsInstancesList(ctx).Designation(designation).FlowUuid(flowUuid).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
+> PaginatedFlowList FlowsInstancesList(ctx).DeniedAction(deniedAction).Designation(designation).FlowUuid(flowUuid).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
 
 
 
@@ -1309,6 +1309,7 @@ import (
 )
 
 func main() {
+    deniedAction := "deniedAction_example" // string | Configure what should happen when a flow denies access to a user. (optional)
     designation := "designation_example" // string | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. (optional)
     flowUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     name := "name_example" // string |  (optional)
@@ -1320,7 +1321,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FlowsApi.FlowsInstancesList(context.Background()).Designation(designation).FlowUuid(flowUuid).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesList(context.Background()).DeniedAction(deniedAction).Designation(designation).FlowUuid(flowUuid).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1341,6 +1342,7 @@ Other parameters are passed through a pointer to a apiFlowsInstancesListRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **deniedAction** | **string** | Configure what should happen when a flow denies access to a user. | 
  **designation** | **string** | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. | 
  **flowUuid** | **string** |  | 
  **name** | **string** |  | 
