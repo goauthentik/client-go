@@ -1881,7 +1881,7 @@ func (r ApiProvidersOauth2ListRequest) ClientId(clientId string) ApiProvidersOau
 	return r
 }
 
-// Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable.
+// Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable
 func (r ApiProvidersOauth2ListRequest) ClientType(clientType string) ApiProvidersOauth2ListRequest {
 	r.clientType = &clientType
 	return r

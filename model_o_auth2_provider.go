@@ -30,7 +30,7 @@ type OAuth2Provider struct {
 	VerboseName             string `json:"verbose_name"`
 	VerboseNamePlural       string `json:"verbose_name_plural"`
 	MetaModelName           string `json:"meta_model_name"`
-	// Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable.
+	// Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable
 	ClientType   NullableClientTypeEnum `json:"client_type,omitempty"`
 	ClientId     *string                `json:"client_id,omitempty"`
 	ClientSecret *string                `json:"client_secret,omitempty"`

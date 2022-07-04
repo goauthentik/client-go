@@ -21,7 +21,7 @@ type PatchedOAuth2ProviderRequest struct {
 	// Flow used when authorizing this provider.
 	AuthorizationFlow *string  `json:"authorization_flow,omitempty"`
 	PropertyMappings  []string `json:"property_mappings,omitempty"`
-	// Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable.
+	// Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable
 	ClientType   NullableClientTypeEnum `json:"client_type,omitempty"`
 	ClientId     *string                `json:"client_id,omitempty"`
 	ClientSecret *string                `json:"client_secret,omitempty"`

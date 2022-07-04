@@ -12356,9 +12356,8 @@ paths:
         schema:
           type: string
         style: form
-      - description: |-
-          Confidential clients are capable of maintaining the confidentiality
-              of their credentials. Public clients are incapable.
+      - description: Confidential clients are capable of maintaining the confidentiality
+          of their credentials. Public clients are incapable
         explode: true
         in: query
         name: client_type
@@ -27664,9 +27663,8 @@ components:
         client_type:
           allOf:
           - $ref: '#/components/schemas/ClientTypeEnum'
-          description: |-
-            Confidential clients are capable of maintaining the confidentiality
-                of their credentials. Public clients are incapable.
+          description: Confidential clients are capable of maintaining the confidentiality
+            of their credentials. Public clients are incapable
         client_id:
           maxLength: 255
           type: string
@@ -27759,9 +27757,8 @@ components:
         client_type:
           allOf:
           - $ref: '#/components/schemas/ClientTypeEnum'
-          description: |-
-            Confidential clients are capable of maintaining the confidentiality
-                of their credentials. Public clients are incapable.
+          description: Confidential clients are capable of maintaining the confidentiality
+            of their credentials. Public clients are incapable
         client_id:
           maxLength: 255
           minLength: 1
@@ -36228,9 +36225,8 @@ components:
         client_type:
           allOf:
           - $ref: '#/components/schemas/ClientTypeEnum'
-          description: |-
-            Confidential clients are capable of maintaining the confidentiality
-                of their credentials. Public clients are incapable.
+          description: Confidential clients are capable of maintaining the confidentiality
+            of their credentials. Public clients are incapable
         client_id:
           maxLength: 255
           minLength: 1

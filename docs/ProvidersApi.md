@@ -1057,7 +1057,7 @@ func main() {
     application := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     clientId := "clientId_example" // string |  (optional)
-    clientType := "clientType_example" // string | Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable. (optional)
+    clientType := "clientType_example" // string | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable (optional)
     includeClaimsInIdToken := true // bool |  (optional)
     issuerMode := "issuerMode_example" // string | Configure how the issuer field of the ID Token should be filled. (optional)
     name := "name_example" // string |  (optional)
@@ -1098,7 +1098,7 @@ Name | Type | Description  | Notes
  **application** | **string** |  | 
  **authorizationFlow** | **string** |  | 
  **clientId** | **string** |  | 
- **clientType** | **string** | Confidential clients are capable of maintaining the confidentiality     of their credentials. Public clients are incapable. | 
+ **clientType** | **string** | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable | 
  **includeClaimsInIdToken** | **bool** |  | 
  **issuerMode** | **string** | Configure how the issuer field of the ID Token should be filled. | 
  **name** | **string** |  | 
