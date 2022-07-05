@@ -17741,6 +17741,7 @@ paths:
           - date
           - date-time
           - email
+          - file
           - hidden
           - number
           - password
@@ -20658,10 +20659,14 @@ components:
           type: string
         flow_user_settings:
           type: string
+        default_locale:
+          type: string
+          readOnly: true
       required:
       - branding_favicon
       - branding_logo
       - branding_title
+      - default_locale
       - matched_domain
       - ui_footer_links
     DeniedActionEnum:
@@ -29238,6 +29243,7 @@ components:
       - checkbox
       - date
       - date-time
+      - file
       - separator
       - hidden
       - static

@@ -27,19 +27,21 @@ type CurrentTenant struct {
 	FlowRecovery       *string      `json:"flow_recovery,omitempty"`
 	FlowUnenrollment   *string      `json:"flow_unenrollment,omitempty"`
 	FlowUserSettings   *string      `json:"flow_user_settings,omitempty"`
+	DefaultLocale      string       `json:"default_locale"`
 }
 
 // NewCurrentTenant instantiates a new CurrentTenant object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCurrentTenant(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, uiFooterLinks []FooterLink) *CurrentTenant {
+func NewCurrentTenant(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, uiFooterLinks []FooterLink, defaultLocale string) *CurrentTenant {
 	this := CurrentTenant{}
 	this.MatchedDomain = matchedDomain
 	this.BrandingTitle = brandingTitle
 	this.BrandingLogo = brandingLogo
 	this.BrandingFavicon = brandingFavicon
 	this.UiFooterLinks = uiFooterLinks
+	this.DefaultLocale = defaultLocale
 	return &this
 }
 
@@ -331,6 +333,30 @@ func (o *CurrentTenant) SetFlowUserSettings(v string) {
 	o.FlowUserSettings = &v
 }
 
+// GetDefaultLocale returns the DefaultLocale field value
+func (o *CurrentTenant) GetDefaultLocale() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.DefaultLocale
+}
+
+// GetDefaultLocaleOk returns a tuple with the DefaultLocale field value
+// and a boolean to check if the value has been set.
+func (o *CurrentTenant) GetDefaultLocaleOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DefaultLocale, true
+}
+
+// SetDefaultLocale sets field value
+func (o *CurrentTenant) SetDefaultLocale(v string) {
+	o.DefaultLocale = v
+}
+
 func (o CurrentTenant) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -362,6 +388,9 @@ func (o CurrentTenant) MarshalJSON() ([]byte, error) {
 	}
 	if o.FlowUserSettings != nil {
 		toSerialize["flow_user_settings"] = o.FlowUserSettings
+	}
+	if true {
+		toSerialize["default_locale"] = o.DefaultLocale
 	}
 	return json.Marshal(toSerialize)
 }

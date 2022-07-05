@@ -21,6 +21,8 @@
 
 * `DATE_TIME` (value: `"date-time"`)
 
+* `FILE` (value: `"file"`)
+
 * `SEPARATOR` (value: `"separator"`)
 
 * `HIDDEN` (value: `"hidden"`)

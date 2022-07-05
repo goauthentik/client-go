@@ -20344,6 +20344,7 @@ paths:
           - date
           - date-time
           - email
+          - file
           - hidden
           - number
           - password
@@ -23994,6 +23995,7 @@ components:
           href: href
         - name: name
           href: href
+        default_locale: default_locale
         flow_unenrollment: flow_unenrollment
         matched_domain: matched_domain
         branding_title: branding_title
@@ -24024,10 +24026,14 @@ components:
           type: string
         flow_user_settings:
           type: string
+        default_locale:
+          readOnly: true
+          type: string
       required:
       - branding_favicon
       - branding_logo
       - branding_title
+      - default_locale
       - matched_domain
       - ui_footer_links
       type: object
@@ -38408,6 +38414,7 @@ components:
       - checkbox
       - date
       - date-time
+      - file
       - separator
       - hidden
       - static

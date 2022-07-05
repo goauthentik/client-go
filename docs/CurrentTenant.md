@@ -14,12 +14,13 @@ Name | Type | Description | Notes
 **FlowRecovery** | Pointer to **string** |  | [optional] 
 **FlowUnenrollment** | Pointer to **string** |  | [optional] 
 **FlowUserSettings** | Pointer to **string** |  | [optional] 
+**DefaultLocale** | **string** |  | [readonly] 
 
 ## Methods
 
 ### NewCurrentTenant
 
-`func NewCurrentTenant(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, uiFooterLinks []FooterLink, ) *CurrentTenant`
+`func NewCurrentTenant(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, uiFooterLinks []FooterLink, defaultLocale string, ) *CurrentTenant`
 
 NewCurrentTenant instantiates a new CurrentTenant object
 This constructor will assign default values to properties that have it defined,
@@ -258,6 +259,26 @@ SetFlowUserSettings sets FlowUserSettings field to given value.
 `func (o *CurrentTenant) HasFlowUserSettings() bool`
 
 HasFlowUserSettings returns a boolean if a field has been set.
+
+### GetDefaultLocale
+
+`func (o *CurrentTenant) GetDefaultLocale() string`
+
+GetDefaultLocale returns the DefaultLocale field if non-nil, zero value otherwise.
+
+### GetDefaultLocaleOk
+
+`func (o *CurrentTenant) GetDefaultLocaleOk() (*string, bool)`
+
+GetDefaultLocaleOk returns a tuple with the DefaultLocale field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultLocale
+
+`func (o *CurrentTenant) SetDefaultLocale(v string)`
+
+SetDefaultLocale sets DefaultLocale field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

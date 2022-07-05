@@ -30,6 +30,7 @@ const (
 	PROMPTTYPEENUM_CHECKBOX       PromptTypeEnum = "checkbox"
 	PROMPTTYPEENUM_DATE           PromptTypeEnum = "date"
 	PROMPTTYPEENUM_DATE_TIME      PromptTypeEnum = "date-time"
+	PROMPTTYPEENUM_FILE           PromptTypeEnum = "file"
 	PROMPTTYPEENUM_SEPARATOR      PromptTypeEnum = "separator"
 	PROMPTTYPEENUM_HIDDEN         PromptTypeEnum = "hidden"
 	PROMPTTYPEENUM_STATIC         PromptTypeEnum = "static"
@@ -47,6 +48,7 @@ var AllowedPromptTypeEnumEnumValues = []PromptTypeEnum{
 	"checkbox",
 	"date",
 	"date-time",
+	"file",
 	"separator",
 	"hidden",
 	"static",
