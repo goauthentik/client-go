@@ -185,6 +185,35 @@ paths:
       - authentik: []
       tags:
       - admin
+  /authenticators/admin/all/:
+    get:
+      description: Get all devices for current user
+      operationId: authenticators_admin_all_list
+      parameters:
+      - explode: true
+        in: query
+        name: user
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Device'
+                type: array
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
   /authenticators/admin/duo/:
     get:
       description: Viewset for Duo authenticator devices (for admins)
@@ -443,7 +472,54 @@ paths:
       - authentik: []
       tags:
       - authenticators
+    post:
+      description: Viewset for sms authenticator devices (for admins)
+      operationId: authenticators_admin_sms_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SMSDeviceRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMSDevice'
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
   /authenticators/admin/sms/{id}/:
+    delete:
+      description: Viewset for sms authenticator devices (for admins)
+      operationId: authenticators_admin_sms_destroy
+      parameters:
+      - description: A unique integer value identifying this SMS Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
     get:
       description: Viewset for sms authenticator devices (for admins)
       operationId: authenticators_admin_sms_retrieve
@@ -456,6 +532,71 @@ paths:
         schema:
           type: integer
         style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMSDevice'
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    patch:
+      description: Viewset for sms authenticator devices (for admins)
+      operationId: authenticators_admin_sms_partial_update
+      parameters:
+      - description: A unique integer value identifying this SMS Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSMSDeviceRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMSDevice'
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    put:
+      description: Viewset for sms authenticator devices (for admins)
+      operationId: authenticators_admin_sms_update
+      parameters:
+      - description: A unique integer value identifying this SMS Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SMSDeviceRequest'
+        required: true
       responses:
         "200":
           content:
@@ -530,7 +671,54 @@ paths:
       - authentik: []
       tags:
       - authenticators
+    post:
+      description: Viewset for static authenticator devices (for admins)
+      operationId: authenticators_admin_static_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StaticDeviceRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaticDevice'
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
   /authenticators/admin/static/{id}/:
+    delete:
+      description: Viewset for static authenticator devices (for admins)
+      operationId: authenticators_admin_static_destroy
+      parameters:
+      - description: A unique integer value identifying this static device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
     get:
       description: Viewset for static authenticator devices (for admins)
       operationId: authenticators_admin_static_retrieve
@@ -543,6 +731,71 @@ paths:
         schema:
           type: integer
         style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaticDevice'
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    patch:
+      description: Viewset for static authenticator devices (for admins)
+      operationId: authenticators_admin_static_partial_update
+      parameters:
+      - description: A unique integer value identifying this static device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedStaticDeviceRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaticDevice'
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    put:
+      description: Viewset for static authenticator devices (for admins)
+      operationId: authenticators_admin_static_update
+      parameters:
+      - description: A unique integer value identifying this static device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StaticDeviceRequest'
+        required: true
       responses:
         "200":
           content:
@@ -617,7 +870,54 @@ paths:
       - authentik: []
       tags:
       - authenticators
+    post:
+      description: Viewset for totp authenticator devices (for admins)
+      operationId: authenticators_admin_totp_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TOTPDeviceRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TOTPDevice'
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
   /authenticators/admin/totp/{id}/:
+    delete:
+      description: Viewset for totp authenticator devices (for admins)
+      operationId: authenticators_admin_totp_destroy
+      parameters:
+      - description: A unique integer value identifying this TOTP device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
     get:
       description: Viewset for totp authenticator devices (for admins)
       operationId: authenticators_admin_totp_retrieve
@@ -630,6 +930,71 @@ paths:
         schema:
           type: integer
         style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TOTPDevice'
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    patch:
+      description: Viewset for totp authenticator devices (for admins)
+      operationId: authenticators_admin_totp_partial_update
+      parameters:
+      - description: A unique integer value identifying this TOTP device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTOTPDeviceRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TOTPDevice'
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    put:
+      description: Viewset for totp authenticator devices (for admins)
+      operationId: authenticators_admin_totp_update
+      parameters:
+      - description: A unique integer value identifying this TOTP device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TOTPDeviceRequest'
+        required: true
       responses:
         "200":
           content:
@@ -704,7 +1069,54 @@ paths:
       - authentik: []
       tags:
       - authenticators
+    post:
+      description: Viewset for WebAuthn authenticator devices (for admins)
+      operationId: authenticators_admin_webauthn_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebAuthnDeviceRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebAuthnDevice'
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
   /authenticators/admin/webauthn/{id}/:
+    delete:
+      description: Viewset for WebAuthn authenticator devices (for admins)
+      operationId: authenticators_admin_webauthn_destroy
+      parameters:
+      - description: A unique integer value identifying this WebAuthn Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
     get:
       description: Viewset for WebAuthn authenticator devices (for admins)
       operationId: authenticators_admin_webauthn_retrieve
@@ -717,6 +1129,71 @@ paths:
         schema:
           type: integer
         style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebAuthnDevice'
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    patch:
+      description: Viewset for WebAuthn authenticator devices (for admins)
+      operationId: authenticators_admin_webauthn_partial_update
+      parameters:
+      - description: A unique integer value identifying this WebAuthn Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWebAuthnDeviceRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebAuthnDevice'
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    put:
+      description: Viewset for WebAuthn authenticator devices (for admins)
+      operationId: authenticators_admin_webauthn_update
+      parameters:
+      - description: A unique integer value identifying this WebAuthn Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebAuthnDeviceRequest'
+        required: true
       responses:
         "200":
           content:
@@ -1783,6 +2260,34 @@ paths:
       description: Custom list method that checks Policy based access instead of guardian
       operationId: core_applications_list
       parameters:
+      - explode: true
+        in: query
+        name: group
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: meta_description
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: meta_launch_url
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: meta_publisher
+        required: false
+        schema:
+          type: string
+        style: form
       - explode: true
         in: query
         name: name
@@ -24164,6 +24669,7 @@ components:
         name: name
         pk: 0
         type: type
+        confirmed: true
       properties:
         verbose_name:
           readOnly: true
@@ -24181,7 +24687,10 @@ components:
         type:
           readOnly: true
           type: string
+        confirmed:
+          type: boolean
       required:
+      - confirmed
       - meta_model_name
       - name
       - pk

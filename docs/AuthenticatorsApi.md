@@ -4,20 +4,37 @@ All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AuthenticatorsAdminAllList**](AuthenticatorsApi.md#AuthenticatorsAdminAllList) | **Get** /authenticators/admin/all/ | 
 [**AuthenticatorsAdminDuoCreate**](AuthenticatorsApi.md#AuthenticatorsAdminDuoCreate) | **Post** /authenticators/admin/duo/ | 
 [**AuthenticatorsAdminDuoDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminDuoDestroy) | **Delete** /authenticators/admin/duo/{id}/ | 
 [**AuthenticatorsAdminDuoList**](AuthenticatorsApi.md#AuthenticatorsAdminDuoList) | **Get** /authenticators/admin/duo/ | 
 [**AuthenticatorsAdminDuoPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminDuoPartialUpdate) | **Patch** /authenticators/admin/duo/{id}/ | 
 [**AuthenticatorsAdminDuoRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminDuoRetrieve) | **Get** /authenticators/admin/duo/{id}/ | 
 [**AuthenticatorsAdminDuoUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminDuoUpdate) | **Put** /authenticators/admin/duo/{id}/ | 
+[**AuthenticatorsAdminSmsCreate**](AuthenticatorsApi.md#AuthenticatorsAdminSmsCreate) | **Post** /authenticators/admin/sms/ | 
+[**AuthenticatorsAdminSmsDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminSmsDestroy) | **Delete** /authenticators/admin/sms/{id}/ | 
 [**AuthenticatorsAdminSmsList**](AuthenticatorsApi.md#AuthenticatorsAdminSmsList) | **Get** /authenticators/admin/sms/ | 
+[**AuthenticatorsAdminSmsPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminSmsPartialUpdate) | **Patch** /authenticators/admin/sms/{id}/ | 
 [**AuthenticatorsAdminSmsRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminSmsRetrieve) | **Get** /authenticators/admin/sms/{id}/ | 
+[**AuthenticatorsAdminSmsUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminSmsUpdate) | **Put** /authenticators/admin/sms/{id}/ | 
+[**AuthenticatorsAdminStaticCreate**](AuthenticatorsApi.md#AuthenticatorsAdminStaticCreate) | **Post** /authenticators/admin/static/ | 
+[**AuthenticatorsAdminStaticDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminStaticDestroy) | **Delete** /authenticators/admin/static/{id}/ | 
 [**AuthenticatorsAdminStaticList**](AuthenticatorsApi.md#AuthenticatorsAdminStaticList) | **Get** /authenticators/admin/static/ | 
+[**AuthenticatorsAdminStaticPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminStaticPartialUpdate) | **Patch** /authenticators/admin/static/{id}/ | 
 [**AuthenticatorsAdminStaticRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminStaticRetrieve) | **Get** /authenticators/admin/static/{id}/ | 
+[**AuthenticatorsAdminStaticUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminStaticUpdate) | **Put** /authenticators/admin/static/{id}/ | 
+[**AuthenticatorsAdminTotpCreate**](AuthenticatorsApi.md#AuthenticatorsAdminTotpCreate) | **Post** /authenticators/admin/totp/ | 
+[**AuthenticatorsAdminTotpDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminTotpDestroy) | **Delete** /authenticators/admin/totp/{id}/ | 
 [**AuthenticatorsAdminTotpList**](AuthenticatorsApi.md#AuthenticatorsAdminTotpList) | **Get** /authenticators/admin/totp/ | 
+[**AuthenticatorsAdminTotpPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminTotpPartialUpdate) | **Patch** /authenticators/admin/totp/{id}/ | 
 [**AuthenticatorsAdminTotpRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminTotpRetrieve) | **Get** /authenticators/admin/totp/{id}/ | 
+[**AuthenticatorsAdminTotpUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminTotpUpdate) | **Put** /authenticators/admin/totp/{id}/ | 
+[**AuthenticatorsAdminWebauthnCreate**](AuthenticatorsApi.md#AuthenticatorsAdminWebauthnCreate) | **Post** /authenticators/admin/webauthn/ | 
+[**AuthenticatorsAdminWebauthnDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminWebauthnDestroy) | **Delete** /authenticators/admin/webauthn/{id}/ | 
 [**AuthenticatorsAdminWebauthnList**](AuthenticatorsApi.md#AuthenticatorsAdminWebauthnList) | **Get** /authenticators/admin/webauthn/ | 
+[**AuthenticatorsAdminWebauthnPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminWebauthnPartialUpdate) | **Patch** /authenticators/admin/webauthn/{id}/ | 
 [**AuthenticatorsAdminWebauthnRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminWebauthnRetrieve) | **Get** /authenticators/admin/webauthn/{id}/ | 
+[**AuthenticatorsAdminWebauthnUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminWebauthnUpdate) | **Put** /authenticators/admin/webauthn/{id}/ | 
 [**AuthenticatorsAllList**](AuthenticatorsApi.md#AuthenticatorsAllList) | **Get** /authenticators/all/ | 
 [**AuthenticatorsDuoDestroy**](AuthenticatorsApi.md#AuthenticatorsDuoDestroy) | **Delete** /authenticators/duo/{id}/ | 
 [**AuthenticatorsDuoList**](AuthenticatorsApi.md#AuthenticatorsDuoList) | **Get** /authenticators/duo/ | 
@@ -50,6 +67,72 @@ Method | HTTP request | Description
 [**AuthenticatorsWebauthnUpdate**](AuthenticatorsApi.md#AuthenticatorsWebauthnUpdate) | **Put** /authenticators/webauthn/{id}/ | 
 [**AuthenticatorsWebauthnUsedByList**](AuthenticatorsApi.md#AuthenticatorsWebauthnUsedByList) | **Get** /authenticators/webauthn/{id}/used_by/ | 
 
+
+
+## AuthenticatorsAdminAllList
+
+> []Device AuthenticatorsAdminAllList(ctx).User(user).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    user := int32(56) // int32 |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminAllList(context.Background()).User(user).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminAllList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminAllList`: []Device
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminAllList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminAllListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | **int32** |  | 
+
+### Return type
+
+[**[]Device**](Device.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## AuthenticatorsAdminDuoCreate
@@ -474,6 +557,140 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## AuthenticatorsAdminSmsCreate
+
+> SMSDevice AuthenticatorsAdminSmsCreate(ctx).SMSDeviceRequest(sMSDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sMSDeviceRequest := *openapiclient.NewSMSDeviceRequest("Name_example") // SMSDeviceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminSmsCreate(context.Background()).SMSDeviceRequest(sMSDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminSmsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminSmsCreate`: SMSDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminSmsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminSmsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sMSDeviceRequest** | [**SMSDeviceRequest**](SMSDeviceRequest.md) |  | 
+
+### Return type
+
+[**SMSDevice**](SMSDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminSmsDestroy
+
+> AuthenticatorsAdminSmsDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminSmsDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminSmsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SMS Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminSmsDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## AuthenticatorsAdminSmsList
 
 > PaginatedSMSDeviceList AuthenticatorsAdminSmsList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
@@ -548,6 +765,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## AuthenticatorsAdminSmsPartialUpdate
+
+> SMSDevice AuthenticatorsAdminSmsPartialUpdate(ctx, id).PatchedSMSDeviceRequest(patchedSMSDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+    patchedSMSDeviceRequest := *openapiclient.NewPatchedSMSDeviceRequest() // PatchedSMSDeviceRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminSmsPartialUpdate(context.Background(), id).PatchedSMSDeviceRequest(patchedSMSDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminSmsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminSmsPartialUpdate`: SMSDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminSmsPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SMS Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminSmsPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedSMSDeviceRequest** | [**PatchedSMSDeviceRequest**](PatchedSMSDeviceRequest.md) |  | 
+
+### Return type
+
+[**SMSDevice**](SMSDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## AuthenticatorsAdminSmsRetrieve
 
 > SMSDevice AuthenticatorsAdminSmsRetrieve(ctx, id).Execute()
@@ -612,6 +901,212 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminSmsUpdate
+
+> SMSDevice AuthenticatorsAdminSmsUpdate(ctx, id).SMSDeviceRequest(sMSDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+    sMSDeviceRequest := *openapiclient.NewSMSDeviceRequest("Name_example") // SMSDeviceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminSmsUpdate(context.Background(), id).SMSDeviceRequest(sMSDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminSmsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminSmsUpdate`: SMSDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminSmsUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SMS Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminSmsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **sMSDeviceRequest** | [**SMSDeviceRequest**](SMSDeviceRequest.md) |  | 
+
+### Return type
+
+[**SMSDevice**](SMSDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminStaticCreate
+
+> StaticDevice AuthenticatorsAdminStaticCreate(ctx).StaticDeviceRequest(staticDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    staticDeviceRequest := *openapiclient.NewStaticDeviceRequest("Name_example") // StaticDeviceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminStaticCreate(context.Background()).StaticDeviceRequest(staticDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminStaticCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminStaticCreate`: StaticDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminStaticCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminStaticCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **staticDeviceRequest** | [**StaticDeviceRequest**](StaticDeviceRequest.md) |  | 
+
+### Return type
+
+[**StaticDevice**](StaticDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminStaticDestroy
+
+> AuthenticatorsAdminStaticDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this static device.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminStaticDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminStaticDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this static device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminStaticDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -692,6 +1187,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## AuthenticatorsAdminStaticPartialUpdate
+
+> StaticDevice AuthenticatorsAdminStaticPartialUpdate(ctx, id).PatchedStaticDeviceRequest(patchedStaticDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this static device.
+    patchedStaticDeviceRequest := *openapiclient.NewPatchedStaticDeviceRequest() // PatchedStaticDeviceRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminStaticPartialUpdate(context.Background(), id).PatchedStaticDeviceRequest(patchedStaticDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminStaticPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminStaticPartialUpdate`: StaticDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminStaticPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this static device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminStaticPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedStaticDeviceRequest** | [**PatchedStaticDeviceRequest**](PatchedStaticDeviceRequest.md) |  | 
+
+### Return type
+
+[**StaticDevice**](StaticDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## AuthenticatorsAdminStaticRetrieve
 
 > StaticDevice AuthenticatorsAdminStaticRetrieve(ctx, id).Execute()
@@ -756,6 +1323,212 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminStaticUpdate
+
+> StaticDevice AuthenticatorsAdminStaticUpdate(ctx, id).StaticDeviceRequest(staticDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this static device.
+    staticDeviceRequest := *openapiclient.NewStaticDeviceRequest("Name_example") // StaticDeviceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminStaticUpdate(context.Background(), id).StaticDeviceRequest(staticDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminStaticUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminStaticUpdate`: StaticDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminStaticUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this static device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminStaticUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **staticDeviceRequest** | [**StaticDeviceRequest**](StaticDeviceRequest.md) |  | 
+
+### Return type
+
+[**StaticDevice**](StaticDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminTotpCreate
+
+> TOTPDevice AuthenticatorsAdminTotpCreate(ctx).TOTPDeviceRequest(tOTPDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tOTPDeviceRequest := *openapiclient.NewTOTPDeviceRequest("Name_example") // TOTPDeviceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminTotpCreate(context.Background()).TOTPDeviceRequest(tOTPDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminTotpCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminTotpCreate`: TOTPDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminTotpCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminTotpCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tOTPDeviceRequest** | [**TOTPDeviceRequest**](TOTPDeviceRequest.md) |  | 
+
+### Return type
+
+[**TOTPDevice**](TOTPDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminTotpDestroy
+
+> AuthenticatorsAdminTotpDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this TOTP device.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminTotpDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminTotpDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this TOTP device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminTotpDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -836,6 +1609,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## AuthenticatorsAdminTotpPartialUpdate
+
+> TOTPDevice AuthenticatorsAdminTotpPartialUpdate(ctx, id).PatchedTOTPDeviceRequest(patchedTOTPDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this TOTP device.
+    patchedTOTPDeviceRequest := *openapiclient.NewPatchedTOTPDeviceRequest() // PatchedTOTPDeviceRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminTotpPartialUpdate(context.Background(), id).PatchedTOTPDeviceRequest(patchedTOTPDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminTotpPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminTotpPartialUpdate`: TOTPDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminTotpPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this TOTP device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminTotpPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedTOTPDeviceRequest** | [**PatchedTOTPDeviceRequest**](PatchedTOTPDeviceRequest.md) |  | 
+
+### Return type
+
+[**TOTPDevice**](TOTPDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## AuthenticatorsAdminTotpRetrieve
 
 > TOTPDevice AuthenticatorsAdminTotpRetrieve(ctx, id).Execute()
@@ -900,6 +1745,212 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminTotpUpdate
+
+> TOTPDevice AuthenticatorsAdminTotpUpdate(ctx, id).TOTPDeviceRequest(tOTPDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this TOTP device.
+    tOTPDeviceRequest := *openapiclient.NewTOTPDeviceRequest("Name_example") // TOTPDeviceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminTotpUpdate(context.Background(), id).TOTPDeviceRequest(tOTPDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminTotpUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminTotpUpdate`: TOTPDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminTotpUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this TOTP device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminTotpUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **tOTPDeviceRequest** | [**TOTPDeviceRequest**](TOTPDeviceRequest.md) |  | 
+
+### Return type
+
+[**TOTPDevice**](TOTPDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminWebauthnCreate
+
+> WebAuthnDevice AuthenticatorsAdminWebauthnCreate(ctx).WebAuthnDeviceRequest(webAuthnDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    webAuthnDeviceRequest := *openapiclient.NewWebAuthnDeviceRequest("Name_example") // WebAuthnDeviceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminWebauthnCreate(context.Background()).WebAuthnDeviceRequest(webAuthnDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminWebauthnCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminWebauthnCreate`: WebAuthnDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminWebauthnCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminWebauthnCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webAuthnDeviceRequest** | [**WebAuthnDeviceRequest**](WebAuthnDeviceRequest.md) |  | 
+
+### Return type
+
+[**WebAuthnDevice**](WebAuthnDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminWebauthnDestroy
+
+> AuthenticatorsAdminWebauthnDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminWebauthnDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminWebauthnDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this WebAuthn Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminWebauthnDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -980,6 +2031,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## AuthenticatorsAdminWebauthnPartialUpdate
+
+> WebAuthnDevice AuthenticatorsAdminWebauthnPartialUpdate(ctx, id).PatchedWebAuthnDeviceRequest(patchedWebAuthnDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
+    patchedWebAuthnDeviceRequest := *openapiclient.NewPatchedWebAuthnDeviceRequest() // PatchedWebAuthnDeviceRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminWebauthnPartialUpdate(context.Background(), id).PatchedWebAuthnDeviceRequest(patchedWebAuthnDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminWebauthnPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminWebauthnPartialUpdate`: WebAuthnDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminWebauthnPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this WebAuthn Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminWebauthnPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedWebAuthnDeviceRequest** | [**PatchedWebAuthnDeviceRequest**](PatchedWebAuthnDeviceRequest.md) |  | 
+
+### Return type
+
+[**WebAuthnDevice**](WebAuthnDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## AuthenticatorsAdminWebauthnRetrieve
 
 > WebAuthnDevice AuthenticatorsAdminWebauthnRetrieve(ctx, id).Execute()
@@ -1043,6 +2166,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminWebauthnUpdate
+
+> WebAuthnDevice AuthenticatorsAdminWebauthnUpdate(ctx, id).WebAuthnDeviceRequest(webAuthnDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
+    webAuthnDeviceRequest := *openapiclient.NewWebAuthnDeviceRequest("Name_example") // WebAuthnDeviceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminWebauthnUpdate(context.Background(), id).WebAuthnDeviceRequest(webAuthnDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminWebauthnUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminWebauthnUpdate`: WebAuthnDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminWebauthnUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this WebAuthn Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminWebauthnUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **webAuthnDeviceRequest** | [**WebAuthnDeviceRequest**](WebAuthnDeviceRequest.md) |  | 
+
+### Return type
+
+[**WebAuthnDevice**](WebAuthnDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

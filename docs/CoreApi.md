@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ## CoreApplicationsList
 
-> PaginatedApplicationList CoreApplicationsList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
+> PaginatedApplicationList CoreApplicationsList(ctx).Group(group).MetaDescription(metaDescription).MetaLaunchUrl(metaLaunchUrl).MetaPublisher(metaPublisher).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
 
 
 
@@ -291,6 +291,10 @@ import (
 )
 
 func main() {
+    group := "group_example" // string |  (optional)
+    metaDescription := "metaDescription_example" // string |  (optional)
+    metaLaunchUrl := "metaLaunchUrl_example" // string |  (optional)
+    metaPublisher := "metaPublisher_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -301,7 +305,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreApplicationsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
+    resp, r, err := apiClient.CoreApi.CoreApplicationsList(context.Background()).Group(group).MetaDescription(metaDescription).MetaLaunchUrl(metaLaunchUrl).MetaPublisher(metaPublisher).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -322,6 +326,10 @@ Other parameters are passed through a pointer to a apiCoreApplicationsListReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **group** | **string** |  | 
+ **metaDescription** | **string** |  | 
+ **metaLaunchUrl** | **string** |  | 
+ **metaPublisher** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 

@@ -385,6 +385,10 @@ func (a *CoreApiService) CoreApplicationsDestroyExecute(r ApiCoreApplicationsDes
 type ApiCoreApplicationsListRequest struct {
 	ctx               context.Context
 	ApiService        *CoreApiService
+	group             *string
+	metaDescription   *string
+	metaLaunchUrl     *string
+	metaPublisher     *string
 	name              *string
 	ordering          *string
 	page              *int32
@@ -392,6 +396,26 @@ type ApiCoreApplicationsListRequest struct {
 	search            *string
 	slug              *string
 	superuserFullList *bool
+}
+
+func (r ApiCoreApplicationsListRequest) Group(group string) ApiCoreApplicationsListRequest {
+	r.group = &group
+	return r
+}
+
+func (r ApiCoreApplicationsListRequest) MetaDescription(metaDescription string) ApiCoreApplicationsListRequest {
+	r.metaDescription = &metaDescription
+	return r
+}
+
+func (r ApiCoreApplicationsListRequest) MetaLaunchUrl(metaLaunchUrl string) ApiCoreApplicationsListRequest {
+	r.metaLaunchUrl = &metaLaunchUrl
+	return r
+}
+
+func (r ApiCoreApplicationsListRequest) MetaPublisher(metaPublisher string) ApiCoreApplicationsListRequest {
+	r.metaPublisher = &metaPublisher
+	return r
 }
 
 func (r ApiCoreApplicationsListRequest) Name(name string) ApiCoreApplicationsListRequest {
@@ -473,6 +497,18 @@ func (a *CoreApiService) CoreApplicationsListExecute(r ApiCoreApplicationsListRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.group != nil {
+		localVarQueryParams.Add("group", parameterToString(*r.group, ""))
+	}
+	if r.metaDescription != nil {
+		localVarQueryParams.Add("meta_description", parameterToString(*r.metaDescription, ""))
+	}
+	if r.metaLaunchUrl != nil {
+		localVarQueryParams.Add("meta_launch_url", parameterToString(*r.metaLaunchUrl, ""))
+	}
+	if r.metaPublisher != nil {
+		localVarQueryParams.Add("meta_publisher", parameterToString(*r.metaPublisher, ""))
+	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}

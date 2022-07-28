@@ -23,13 +23,14 @@ type Device struct {
 	Pk                int32  `json:"pk"`
 	Name              string `json:"name"`
 	Type              string `json:"type"`
+	Confirmed         bool   `json:"confirmed"`
 }
 
 // NewDevice instantiates a new Device object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string) *Device {
+func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string, confirmed bool) *Device {
 	this := Device{}
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
@@ -37,6 +38,7 @@ func NewDevice(verboseName string, verboseNamePlural string, metaModelName strin
 	this.Pk = pk
 	this.Name = name
 	this.Type = type_
+	this.Confirmed = confirmed
 	return &this
 }
 
@@ -192,6 +194,30 @@ func (o *Device) SetType(v string) {
 	o.Type = v
 }
 
+// GetConfirmed returns the Confirmed field value
+func (o *Device) GetConfirmed() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Confirmed
+}
+
+// GetConfirmedOk returns a tuple with the Confirmed field value
+// and a boolean to check if the value has been set.
+func (o *Device) GetConfirmedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Confirmed, true
+}
+
+// SetConfirmed sets field value
+func (o *Device) SetConfirmed(v bool) {
+	o.Confirmed = v
+}
+
 func (o Device) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -211,6 +237,9 @@ func (o Device) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["type"] = o.Type
+	}
+	if true {
+		toSerialize["confirmed"] = o.Confirmed
 	}
 	return json.Marshal(toSerialize)
 }

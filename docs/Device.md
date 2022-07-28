@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **Pk** | **int32** |  | 
 **Name** | **string** |  | 
 **Type** | **string** |  | [readonly] 
+**Confirmed** | **bool** |  | 
 
 ## Methods
 
 ### NewDevice
 
-`func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string, ) *Device`
+`func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string, confirmed bool, ) *Device`
 
 NewDevice instantiates a new Device object
 This constructor will assign default values to properties that have it defined,
@@ -148,6 +149,26 @@ and a boolean to check if the value has been set.
 `func (o *Device) SetType(v string)`
 
 SetType sets Type field to given value.
+
+
+### GetConfirmed
+
+`func (o *Device) GetConfirmed() bool`
+
+GetConfirmed returns the Confirmed field if non-nil, zero value otherwise.
+
+### GetConfirmedOk
+
+`func (o *Device) GetConfirmedOk() (*bool, bool)`
+
+GetConfirmedOk returns a tuple with the Confirmed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfirmed
+
+`func (o *Device) SetConfirmed(v bool)`
+
+SetConfirmed sets Confirmed field to given value.
 
 
 
