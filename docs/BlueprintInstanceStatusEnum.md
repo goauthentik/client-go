@@ -1,15 +1,15 @@
-# StatusEnum
+# BlueprintInstanceStatusEnum
 
 ## Enum
 
 
-* `SUCCESSFUL` (value: `"SUCCESSFUL"`)
+* `SUCCESSFUL` (value: `"successful"`)
 
-* `WARNING` (value: `"WARNING"`)
+* `WARNING` (value: `"warning"`)
 
-* `ERROR` (value: `"ERROR"`)
+* `ERROR` (value: `"error"`)
 
-* `UNKNOWN` (value: `"UNKNOWN"`)
+* `UNKNOWN` (value: `"unknown"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

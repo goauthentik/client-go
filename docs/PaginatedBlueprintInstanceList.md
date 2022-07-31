@@ -1,0 +1,72 @@
+# PaginatedBlueprintInstanceList
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Results** | [**[]BlueprintInstance**](BlueprintInstance.md) |  | 
+
+## Methods
+
+### NewPaginatedBlueprintInstanceList
+
+`func NewPaginatedBlueprintInstanceList(pagination PaginatedApplicationListPagination, results []BlueprintInstance, ) *PaginatedBlueprintInstanceList`
+
+NewPaginatedBlueprintInstanceList instantiates a new PaginatedBlueprintInstanceList object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewPaginatedBlueprintInstanceListWithDefaults
+
+`func NewPaginatedBlueprintInstanceListWithDefaults() *PaginatedBlueprintInstanceList`
+
+NewPaginatedBlueprintInstanceListWithDefaults instantiates a new PaginatedBlueprintInstanceList object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetPagination
+
+`func (o *PaginatedBlueprintInstanceList) GetPagination() PaginatedApplicationListPagination`
+
+GetPagination returns the Pagination field if non-nil, zero value otherwise.
+
+### GetPaginationOk
+
+`func (o *PaginatedBlueprintInstanceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+
+GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPagination
+
+`func (o *PaginatedBlueprintInstanceList) SetPagination(v PaginatedApplicationListPagination)`
+
+SetPagination sets Pagination field to given value.
+
+
+### GetResults
+
+`func (o *PaginatedBlueprintInstanceList) GetResults() []BlueprintInstance`
+
+GetResults returns the Results field if non-nil, zero value otherwise.
+
+### GetResultsOk
+
+`func (o *PaginatedBlueprintInstanceList) GetResultsOk() (*[]BlueprintInstance, bool)`
+
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResults
+
+`func (o *PaginatedBlueprintInstanceList) SetResults(v []BlueprintInstance)`
+
+SetResults sets Results field to given value.
+
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

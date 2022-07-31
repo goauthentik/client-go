@@ -91,7 +91,7 @@
 
 * `TENANTS` (value: `"authentik.tenants"`)
 
-* `MANAGED` (value: `"authentik.managed"`)
+* `BLUEPRINTS` (value: `"authentik.blueprints"`)
 
 * `CORE` (value: `"authentik.core"`)
 

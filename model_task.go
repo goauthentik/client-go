@@ -18,18 +18,18 @@ import (
 
 // Task Serialize TaskInfo and TaskResult
 type Task struct {
-	TaskName            string        `json:"task_name"`
-	TaskDescription     string        `json:"task_description"`
-	TaskFinishTimestamp time.Time     `json:"task_finish_timestamp"`
-	Status              StatusEnum    `json:"status"`
-	Messages            []interface{} `json:"messages"`
+	TaskName            string         `json:"task_name"`
+	TaskDescription     string         `json:"task_description"`
+	TaskFinishTimestamp time.Time      `json:"task_finish_timestamp"`
+	Status              TaskStatusEnum `json:"status"`
+	Messages            []interface{}  `json:"messages"`
 }
 
 // NewTask instantiates a new Task object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTask(taskName string, taskDescription string, taskFinishTimestamp time.Time, status StatusEnum, messages []interface{}) *Task {
+func NewTask(taskName string, taskDescription string, taskFinishTimestamp time.Time, status TaskStatusEnum, messages []interface{}) *Task {
 	this := Task{}
 	this.TaskName = taskName
 	this.TaskDescription = taskDescription
@@ -120,9 +120,9 @@ func (o *Task) SetTaskFinishTimestamp(v time.Time) {
 }
 
 // GetStatus returns the Status field value
-func (o *Task) GetStatus() StatusEnum {
+func (o *Task) GetStatus() TaskStatusEnum {
 	if o == nil {
-		var ret StatusEnum
+		var ret TaskStatusEnum
 		return ret
 	}
 
@@ -131,7 +131,7 @@ func (o *Task) GetStatus() StatusEnum {
 
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *Task) GetStatusOk() (*StatusEnum, bool) {
+func (o *Task) GetStatusOk() (*TaskStatusEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -139,7 +139,7 @@ func (o *Task) GetStatusOk() (*StatusEnum, bool) {
 }
 
 // SetStatus sets field value
-func (o *Task) SetStatus(v StatusEnum) {
+func (o *Task) SetStatus(v TaskStatusEnum) {
 	o.Status = v
 }
 

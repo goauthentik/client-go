@@ -8,6 +8,7 @@ api_core.go
 api_crypto.go
 api_events.go
 api_flows.go
+api_managed.go
 api_oauth2.go
 api_outposts.go
 api_policies.go
@@ -65,6 +66,9 @@ docs/AutoSubmitChallengeResponseRequest.md
 docs/AutosubmitChallenge.md
 docs/BackendsEnum.md
 docs/BindingTypeEnum.md
+docs/BlueprintInstance.md
+docs/BlueprintInstanceRequest.md
+docs/BlueprintInstanceStatusEnum.md
 docs/Cache.md
 docs/CapabilitiesEnum.md
 docs/CaptchaChallenge.md
@@ -172,6 +176,7 @@ docs/Link.md
 docs/LoginChallengeTypes.md
 docs/LoginMetrics.md
 docs/LoginSource.md
+docs/ManagedApi.md
 docs/NameIdPolicyEnum.md
 docs/NotConfiguredActionEnum.md
 docs/Notification.md
@@ -209,6 +214,7 @@ docs/PaginatedAuthenticatorSMSStageList.md
 docs/PaginatedAuthenticatorStaticStageList.md
 docs/PaginatedAuthenticatorTOTPStageList.md
 docs/PaginatedAuthenticatorValidateStageList.md
+docs/PaginatedBlueprintInstanceList.md
 docs/PaginatedCaptchaStageList.md
 docs/PaginatedCertificateKeyPairList.md
 docs/PaginatedConsentStageList.md
@@ -293,6 +299,7 @@ docs/PatchedAuthenticatorSMSStageRequest.md
 docs/PatchedAuthenticatorStaticStageRequest.md
 docs/PatchedAuthenticatorTOTPStageRequest.md
 docs/PatchedAuthenticatorValidateStageRequest.md
+docs/PatchedBlueprintInstanceRequest.md
 docs/PatchedCaptchaStageRequest.md
 docs/PatchedCertificateKeyPairRequest.md
 docs/PatchedConsentStageRequest.md
@@ -428,13 +435,13 @@ docs/StaticDevice.md
 docs/StaticDeviceRequest.md
 docs/StaticDeviceToken.md
 docs/StaticDeviceTokenRequest.md
-docs/StatusEnum.md
 docs/SubModeEnum.md
 docs/System.md
 docs/SystemRuntime.md
 docs/TOTPDevice.md
 docs/TOTPDeviceRequest.md
 docs/Task.md
+docs/TaskStatusEnum.md
 docs/Tenant.md
 docs/TenantRequest.md
 docs/Token.md
@@ -521,6 +528,9 @@ model_auto_submit_challenge_response_request.go
 model_autosubmit_challenge.go
 model_backends_enum.go
 model_binding_type_enum.go
+model_blueprint_instance.go
+model_blueprint_instance_request.go
+model_blueprint_instance_status_enum.go
 model_cache.go
 model_capabilities_enum.go
 model_captcha_challenge.go
@@ -659,6 +669,7 @@ model_paginated_authenticator_sms_stage_list.go
 model_paginated_authenticator_static_stage_list.go
 model_paginated_authenticator_totp_stage_list.go
 model_paginated_authenticator_validate_stage_list.go
+model_paginated_blueprint_instance_list.go
 model_paginated_captcha_stage_list.go
 model_paginated_certificate_key_pair_list.go
 model_paginated_consent_stage_list.go
@@ -743,6 +754,7 @@ model_patched_authenticator_sms_stage_request.go
 model_patched_authenticator_static_stage_request.go
 model_patched_authenticator_totp_stage_request.go
 model_patched_authenticator_validate_stage_request.go
+model_patched_blueprint_instance_request.go
 model_patched_captcha_stage_request.go
 model_patched_certificate_key_pair_request.go
 model_patched_consent_stage_request.go
@@ -871,11 +883,11 @@ model_static_device.go
 model_static_device_request.go
 model_static_device_token.go
 model_static_device_token_request.go
-model_status_enum.go
 model_sub_mode_enum.go
 model_system.go
 model_system_runtime.go
 model_task.go
+model_task_status_enum.go
 model_tenant.go
 model_tenant_request.go
 model_token.go

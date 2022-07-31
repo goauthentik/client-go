@@ -65,7 +65,7 @@ const (
 	APPENUM_STAGES_USER_LOGOUT            AppEnum = "authentik.stages.user_logout"
 	APPENUM_STAGES_USER_WRITE             AppEnum = "authentik.stages.user_write"
 	APPENUM_TENANTS                       AppEnum = "authentik.tenants"
-	APPENUM_MANAGED                       AppEnum = "authentik.managed"
+	APPENUM_BLUEPRINTS                    AppEnum = "authentik.blueprints"
 	APPENUM_CORE                          AppEnum = "authentik.core"
 )
 
@@ -115,7 +115,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.stages.user_logout",
 	"authentik.stages.user_write",
 	"authentik.tenants",
-	"authentik.managed",
+	"authentik.blueprints",
 	"authentik.core",
 }
 

@@ -2067,7 +2067,7 @@ func (r ApiFlowsInstancesExportRetrieveRequest) Execute() (**os.File, *http.Resp
 /*
 FlowsInstancesExportRetrieve Method for FlowsInstancesExportRetrieve
 
-Export flow to .akflow file
+Export flow to .yaml file
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug
@@ -2195,7 +2195,7 @@ func (r ApiFlowsInstancesImportFlowCreateRequest) Execute() (*http.Response, err
 /*
 FlowsInstancesImportFlowCreate Method for FlowsInstancesImportFlowCreate
 
-Import flow from .akflow file
+Import flow from .yaml file
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFlowsInstancesImportFlowCreateRequest

@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **TaskName** | **string** |  | 
 **TaskDescription** | **string** |  | 
 **TaskFinishTimestamp** | **time.Time** |  | 
-**Status** | [**StatusEnum**](StatusEnum.md) |  | 
+**Status** | [**TaskStatusEnum**](TaskStatusEnum.md) |  | 
 **Messages** | **[]interface{}** |  | 
 
 ## Methods
 
 ### NewTask
 
-`func NewTask(taskName string, taskDescription string, taskFinishTimestamp time.Time, status StatusEnum, messages []interface{}, ) *Task`
+`func NewTask(taskName string, taskDescription string, taskFinishTimestamp time.Time, status TaskStatusEnum, messages []interface{}, ) *Task`
 
 NewTask instantiates a new Task object
 This constructor will assign default values to properties that have it defined,
@@ -91,20 +91,20 @@ SetTaskFinishTimestamp sets TaskFinishTimestamp field to given value.
 
 ### GetStatus
 
-`func (o *Task) GetStatus() StatusEnum`
+`func (o *Task) GetStatus() TaskStatusEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *Task) GetStatusOk() (*StatusEnum, bool)`
+`func (o *Task) GetStatusOk() (*TaskStatusEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *Task) SetStatus(v StatusEnum)`
+`func (o *Task) SetStatus(v TaskStatusEnum)`
 
 SetStatus sets Status field to given value.
 
