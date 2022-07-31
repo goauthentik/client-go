@@ -13,12 +13,13 @@ Name | Type | Description | Notes
 **HeaderText** | Pointer to **string** |  | [optional] 
 **Permissions** | [**[]Permission**](Permission.md) |  | 
 **AdditionalPermissions** | [**[]Permission**](Permission.md) |  | 
+**Token** | **string** |  | 
 
 ## Methods
 
 ### NewConsentChallenge
 
-`func NewConsentChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, permissions []Permission, additionalPermissions []Permission, ) *ConsentChallenge`
+`func NewConsentChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, permissions []Permission, additionalPermissions []Permission, token string, ) *ConsentChallenge`
 
 NewConsentChallenge instantiates a new ConsentChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -231,6 +232,26 @@ and a boolean to check if the value has been set.
 `func (o *ConsentChallenge) SetAdditionalPermissions(v []Permission)`
 
 SetAdditionalPermissions sets AdditionalPermissions field to given value.
+
+
+### GetToken
+
+`func (o *ConsentChallenge) GetToken() string`
+
+GetToken returns the Token field if non-nil, zero value otherwise.
+
+### GetTokenOk
+
+`func (o *ConsentChallenge) GetTokenOk() (*string, bool)`
+
+GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetToken
+
+`func (o *ConsentChallenge) SetToken(v string)`
+
+SetToken sets Token field to given value.
 
 
 

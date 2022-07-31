@@ -5,12 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Component** | Pointer to **string** |  | [optional] [default to "ak-stage-consent"]
+**Token** | **string** |  | 
 
 ## Methods
 
 ### NewConsentChallengeResponseRequest
 
-`func NewConsentChallengeResponseRequest() *ConsentChallengeResponseRequest`
+`func NewConsentChallengeResponseRequest(token string, ) *ConsentChallengeResponseRequest`
 
 NewConsentChallengeResponseRequest instantiates a new ConsentChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +50,26 @@ SetComponent sets Component field to given value.
 `func (o *ConsentChallengeResponseRequest) HasComponent() bool`
 
 HasComponent returns a boolean if a field has been set.
+
+### GetToken
+
+`func (o *ConsentChallengeResponseRequest) GetToken() string`
+
+GetToken returns the Token field if non-nil, zero value otherwise.
+
+### GetTokenOk
+
+`func (o *ConsentChallengeResponseRequest) GetTokenOk() (*string, bool)`
+
+GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetToken
+
+`func (o *ConsentChallengeResponseRequest) SetToken(v string)`
+
+SetToken sets Token field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -18,16 +18,18 @@ import (
 // ConsentChallengeResponseRequest Consent challenge response, any valid response request is valid
 type ConsentChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
+	Token     string  `json:"token"`
 }
 
 // NewConsentChallengeResponseRequest instantiates a new ConsentChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConsentChallengeResponseRequest() *ConsentChallengeResponseRequest {
+func NewConsentChallengeResponseRequest(token string) *ConsentChallengeResponseRequest {
 	this := ConsentChallengeResponseRequest{}
 	var component string = "ak-stage-consent"
 	this.Component = &component
+	this.Token = token
 	return &this
 }
 
@@ -73,10 +75,37 @@ func (o *ConsentChallengeResponseRequest) SetComponent(v string) {
 	o.Component = &v
 }
 
+// GetToken returns the Token field value
+func (o *ConsentChallengeResponseRequest) GetToken() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Token
+}
+
+// GetTokenOk returns a tuple with the Token field value
+// and a boolean to check if the value has been set.
+func (o *ConsentChallengeResponseRequest) GetTokenOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Token, true
+}
+
+// SetToken sets field value
+func (o *ConsentChallengeResponseRequest) SetToken(v string) {
+	o.Token = v
+}
+
 func (o ConsentChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Component != nil {
 		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["token"] = o.Token
 	}
 	return json.Marshal(toSerialize)
 }

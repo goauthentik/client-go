@@ -26,13 +26,14 @@ type ConsentChallenge struct {
 	HeaderText            *string                   `json:"header_text,omitempty"`
 	Permissions           []Permission              `json:"permissions"`
 	AdditionalPermissions []Permission              `json:"additional_permissions"`
+	Token                 string                    `json:"token"`
 }
 
 // NewConsentChallenge instantiates a new ConsentChallenge object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConsentChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, permissions []Permission, additionalPermissions []Permission) *ConsentChallenge {
+func NewConsentChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, permissions []Permission, additionalPermissions []Permission, token string) *ConsentChallenge {
 	this := ConsentChallenge{}
 	this.Type = type_
 	var component string = "ak-stage-consent"
@@ -41,6 +42,7 @@ func NewConsentChallenge(type_ ChallengeChoices, pendingUser string, pendingUser
 	this.PendingUserAvatar = pendingUserAvatar
 	this.Permissions = permissions
 	this.AdditionalPermissions = additionalPermissions
+	this.Token = token
 	return &this
 }
 
@@ -302,6 +304,30 @@ func (o *ConsentChallenge) SetAdditionalPermissions(v []Permission) {
 	o.AdditionalPermissions = v
 }
 
+// GetToken returns the Token field value
+func (o *ConsentChallenge) GetToken() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Token
+}
+
+// GetTokenOk returns a tuple with the Token field value
+// and a boolean to check if the value has been set.
+func (o *ConsentChallenge) GetTokenOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Token, true
+}
+
+// SetToken sets field value
+func (o *ConsentChallenge) SetToken(v string) {
+	o.Token = v
+}
+
 func (o ConsentChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -330,6 +356,9 @@ func (o ConsentChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["additional_permissions"] = o.AdditionalPermissions
+	}
+	if true {
+		toSerialize["token"] = o.Token
 	}
 	return json.Marshal(toSerialize)
 }
