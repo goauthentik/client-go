@@ -4,18 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Pk** | **string** |  | [readonly] 
 **Name** | **string** |  | 
 **Path** | **string** |  | 
 **Context** | **map[string]interface{}** |  | 
 **LastApplied** | **time.Time** |  | [readonly] 
+**LastAppliedHash** | **string** |  | [readonly] 
 **Status** | [**BlueprintInstanceStatusEnum**](BlueprintInstanceStatusEnum.md) |  | 
 **Enabled** | Pointer to **bool** |  | [optional] 
+**ManagedModels** | **[]string** |  | [readonly] 
 
 ## Methods
 
 ### NewBlueprintInstance
 
-`func NewBlueprintInstance(name string, path string, context map[string]interface{}, lastApplied time.Time, status BlueprintInstanceStatusEnum, ) *BlueprintInstance`
+`func NewBlueprintInstance(pk string, name string, path string, context map[string]interface{}, lastApplied time.Time, lastAppliedHash string, status BlueprintInstanceStatusEnum, managedModels []string, ) *BlueprintInstance`
 
 NewBlueprintInstance instantiates a new BlueprintInstance object
 This constructor will assign default values to properties that have it defined,
@@ -29,6 +32,26 @@ will change when the set of required properties is changed
 NewBlueprintInstanceWithDefaults instantiates a new BlueprintInstance object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetPk
+
+`func (o *BlueprintInstance) GetPk() string`
+
+GetPk returns the Pk field if non-nil, zero value otherwise.
+
+### GetPkOk
+
+`func (o *BlueprintInstance) GetPkOk() (*string, bool)`
+
+GetPkOk returns a tuple with the Pk field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPk
+
+`func (o *BlueprintInstance) SetPk(v string)`
+
+SetPk sets Pk field to given value.
+
 
 ### GetName
 
@@ -110,6 +133,26 @@ and a boolean to check if the value has been set.
 SetLastApplied sets LastApplied field to given value.
 
 
+### GetLastAppliedHash
+
+`func (o *BlueprintInstance) GetLastAppliedHash() string`
+
+GetLastAppliedHash returns the LastAppliedHash field if non-nil, zero value otherwise.
+
+### GetLastAppliedHashOk
+
+`func (o *BlueprintInstance) GetLastAppliedHashOk() (*string, bool)`
+
+GetLastAppliedHashOk returns a tuple with the LastAppliedHash field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastAppliedHash
+
+`func (o *BlueprintInstance) SetLastAppliedHash(v string)`
+
+SetLastAppliedHash sets LastAppliedHash field to given value.
+
+
 ### GetStatus
 
 `func (o *BlueprintInstance) GetStatus() BlueprintInstanceStatusEnum`
@@ -154,6 +197,26 @@ SetEnabled sets Enabled field to given value.
 `func (o *BlueprintInstance) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### GetManagedModels
+
+`func (o *BlueprintInstance) GetManagedModels() []string`
+
+GetManagedModels returns the ManagedModels field if non-nil, zero value otherwise.
+
+### GetManagedModelsOk
+
+`func (o *BlueprintInstance) GetManagedModelsOk() (*[]string, bool)`
+
+GetManagedModelsOk returns a tuple with the ManagedModels field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedModels
+
+`func (o *BlueprintInstance) SetManagedModels(v []string)`
+
+SetManagedModels sets ManagedModels field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -24,6 +24,7 @@ const (
 	BLUEPRINTINSTANCESTATUSENUM_SUCCESSFUL BlueprintInstanceStatusEnum = "successful"
 	BLUEPRINTINSTANCESTATUSENUM_WARNING    BlueprintInstanceStatusEnum = "warning"
 	BLUEPRINTINSTANCESTATUSENUM_ERROR      BlueprintInstanceStatusEnum = "error"
+	BLUEPRINTINSTANCESTATUSENUM_ORPHANED   BlueprintInstanceStatusEnum = "orphaned"
 	BLUEPRINTINSTANCESTATUSENUM_UNKNOWN    BlueprintInstanceStatusEnum = "unknown"
 )
 
@@ -32,6 +33,7 @@ var AllowedBlueprintInstanceStatusEnumEnumValues = []BlueprintInstanceStatusEnum
 	"successful",
 	"warning",
 	"error",
+	"orphaned",
 	"unknown",
 }
 

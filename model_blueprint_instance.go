@@ -18,25 +18,31 @@ import (
 
 // BlueprintInstance Info about a single blueprint instance file
 type BlueprintInstance struct {
-	Name        string                      `json:"name"`
-	Path        string                      `json:"path"`
-	Context     map[string]interface{}      `json:"context"`
-	LastApplied time.Time                   `json:"last_applied"`
-	Status      BlueprintInstanceStatusEnum `json:"status"`
-	Enabled     *bool                       `json:"enabled,omitempty"`
+	Pk              string                      `json:"pk"`
+	Name            string                      `json:"name"`
+	Path            string                      `json:"path"`
+	Context         map[string]interface{}      `json:"context"`
+	LastApplied     time.Time                   `json:"last_applied"`
+	LastAppliedHash string                      `json:"last_applied_hash"`
+	Status          BlueprintInstanceStatusEnum `json:"status"`
+	Enabled         *bool                       `json:"enabled,omitempty"`
+	ManagedModels   []string                    `json:"managed_models"`
 }
 
 // NewBlueprintInstance instantiates a new BlueprintInstance object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlueprintInstance(name string, path string, context map[string]interface{}, lastApplied time.Time, status BlueprintInstanceStatusEnum) *BlueprintInstance {
+func NewBlueprintInstance(pk string, name string, path string, context map[string]interface{}, lastApplied time.Time, lastAppliedHash string, status BlueprintInstanceStatusEnum, managedModels []string) *BlueprintInstance {
 	this := BlueprintInstance{}
+	this.Pk = pk
 	this.Name = name
 	this.Path = path
 	this.Context = context
 	this.LastApplied = lastApplied
+	this.LastAppliedHash = lastAppliedHash
 	this.Status = status
+	this.ManagedModels = managedModels
 	return &this
 }
 
@@ -46,6 +52,30 @@ func NewBlueprintInstance(name string, path string, context map[string]interface
 func NewBlueprintInstanceWithDefaults() *BlueprintInstance {
 	this := BlueprintInstance{}
 	return &this
+}
+
+// GetPk returns the Pk field value
+func (o *BlueprintInstance) GetPk() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Pk
+}
+
+// GetPkOk returns a tuple with the Pk field value
+// and a boolean to check if the value has been set.
+func (o *BlueprintInstance) GetPkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Pk, true
+}
+
+// SetPk sets field value
+func (o *BlueprintInstance) SetPk(v string) {
+	o.Pk = v
 }
 
 // GetName returns the Name field value
@@ -144,6 +174,30 @@ func (o *BlueprintInstance) SetLastApplied(v time.Time) {
 	o.LastApplied = v
 }
 
+// GetLastAppliedHash returns the LastAppliedHash field value
+func (o *BlueprintInstance) GetLastAppliedHash() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.LastAppliedHash
+}
+
+// GetLastAppliedHashOk returns a tuple with the LastAppliedHash field value
+// and a boolean to check if the value has been set.
+func (o *BlueprintInstance) GetLastAppliedHashOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastAppliedHash, true
+}
+
+// SetLastAppliedHash sets field value
+func (o *BlueprintInstance) SetLastAppliedHash(v string) {
+	o.LastAppliedHash = v
+}
+
 // GetStatus returns the Status field value
 func (o *BlueprintInstance) GetStatus() BlueprintInstanceStatusEnum {
 	if o == nil {
@@ -200,8 +254,35 @@ func (o *BlueprintInstance) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
+// GetManagedModels returns the ManagedModels field value
+func (o *BlueprintInstance) GetManagedModels() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.ManagedModels
+}
+
+// GetManagedModelsOk returns a tuple with the ManagedModels field value
+// and a boolean to check if the value has been set.
+func (o *BlueprintInstance) GetManagedModelsOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ManagedModels, true
+}
+
+// SetManagedModels sets field value
+func (o *BlueprintInstance) SetManagedModels(v []string) {
+	o.ManagedModels = v
+}
+
 func (o BlueprintInstance) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
@@ -215,10 +296,16 @@ func (o BlueprintInstance) MarshalJSON() ([]byte, error) {
 		toSerialize["last_applied"] = o.LastApplied
 	}
 	if true {
+		toSerialize["last_applied_hash"] = o.LastAppliedHash
+	}
+	if true {
 		toSerialize["status"] = o.Status
 	}
 	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
+	}
+	if true {
+		toSerialize["managed_models"] = o.ManagedModels
 	}
 	return json.Marshal(toSerialize)
 }

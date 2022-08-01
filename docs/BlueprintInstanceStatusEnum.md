@@ -9,6 +9,8 @@
 
 * `ERROR` (value: `"error"`)
 
+* `ORPHANED` (value: `"orphaned"`)
+
 * `UNKNOWN` (value: `"unknown"`)
 
 

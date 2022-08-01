@@ -24094,13 +24094,23 @@ components:
       description: Info about a single blueprint instance file
       example:
         path: path
+        last_applied_hash: last_applied_hash
+        managed_models:
+        - managed_models
+        - managed_models
         last_applied: 2000-01-23T04:56:07.000+00:00
         name: name
         context:
           key: ""
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enabled: true
         status: null
       properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Instance uuid
+          type: string
         name:
           type: string
         path:
@@ -24112,15 +24122,26 @@ components:
           format: date-time
           readOnly: true
           type: string
+        last_applied_hash:
+          readOnly: true
+          type: string
         status:
           $ref: '#/components/schemas/BlueprintInstanceStatusEnum'
         enabled:
           type: boolean
+        managed_models:
+          items:
+            type: string
+          readOnly: true
+          type: array
       required:
       - context
       - last_applied
+      - last_applied_hash
+      - managed_models
       - name
       - path
+      - pk
       - status
       type: object
     BlueprintInstanceRequest:
@@ -24157,6 +24178,7 @@ components:
       - successful
       - warning
       - error
+      - orphaned
       - unknown
       type: string
     Cache:
@@ -30028,17 +30050,27 @@ components:
           total_pages: 5.637376656633329
         results:
         - path: path
+          last_applied_hash: last_applied_hash
+          managed_models:
+          - managed_models
+          - managed_models
           last_applied: 2000-01-23T04:56:07.000+00:00
           name: name
           context:
             key: ""
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
           status: null
         - path: path
+          last_applied_hash: last_applied_hash
+          managed_models:
+          - managed_models
+          - managed_models
           last_applied: 2000-01-23T04:56:07.000+00:00
           name: name
           context:
             key: ""
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
           status: null
       properties:
