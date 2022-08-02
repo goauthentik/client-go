@@ -17,23 +17,20 @@ import (
 
 // BlueprintInstanceRequest Info about a single blueprint instance file
 type BlueprintInstanceRequest struct {
-	Name    string                      `json:"name"`
-	Path    string                      `json:"path"`
-	Context map[string]interface{}      `json:"context"`
-	Status  BlueprintInstanceStatusEnum `json:"status"`
-	Enabled *bool                       `json:"enabled,omitempty"`
+	Name    string                 `json:"name"`
+	Path    string                 `json:"path"`
+	Context map[string]interface{} `json:"context,omitempty"`
+	Enabled *bool                  `json:"enabled,omitempty"`
 }
 
 // NewBlueprintInstanceRequest instantiates a new BlueprintInstanceRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlueprintInstanceRequest(name string, path string, context map[string]interface{}, status BlueprintInstanceStatusEnum) *BlueprintInstanceRequest {
+func NewBlueprintInstanceRequest(name string, path string) *BlueprintInstanceRequest {
 	this := BlueprintInstanceRequest{}
 	this.Name = name
 	this.Path = path
-	this.Context = context
-	this.Status = status
 	return &this
 }
 
@@ -93,52 +90,36 @@ func (o *BlueprintInstanceRequest) SetPath(v string) {
 	o.Path = v
 }
 
-// GetContext returns the Context field value
+// GetContext returns the Context field value if set, zero value otherwise.
 func (o *BlueprintInstanceRequest) GetContext() map[string]interface{} {
-	if o == nil {
+	if o == nil || o.Context == nil {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.Context
 }
 
-// GetContextOk returns a tuple with the Context field value
+// GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BlueprintInstanceRequest) GetContextOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || o.Context == nil {
 		return nil, false
 	}
 	return o.Context, true
 }
 
-// SetContext sets field value
+// HasContext returns a boolean if a field has been set.
+func (o *BlueprintInstanceRequest) HasContext() bool {
+	if o != nil && o.Context != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetContext gets a reference to the given map[string]interface{} and assigns it to the Context field.
 func (o *BlueprintInstanceRequest) SetContext(v map[string]interface{}) {
 	o.Context = v
-}
-
-// GetStatus returns the Status field value
-func (o *BlueprintInstanceRequest) GetStatus() BlueprintInstanceStatusEnum {
-	if o == nil {
-		var ret BlueprintInstanceStatusEnum
-		return ret
-	}
-
-	return o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value
-// and a boolean to check if the value has been set.
-func (o *BlueprintInstanceRequest) GetStatusOk() (*BlueprintInstanceStatusEnum, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Status, true
-}
-
-// SetStatus sets field value
-func (o *BlueprintInstanceRequest) SetStatus(v BlueprintInstanceStatusEnum) {
-	o.Status = v
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
@@ -181,11 +162,8 @@ func (o BlueprintInstanceRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["path"] = o.Path
 	}
-	if true {
+	if o.Context != nil {
 		toSerialize["context"] = o.Context
-	}
-	if true {
-		toSerialize["status"] = o.Status
 	}
 	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled

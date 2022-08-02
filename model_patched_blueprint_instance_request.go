@@ -17,11 +17,10 @@ import (
 
 // PatchedBlueprintInstanceRequest Info about a single blueprint instance file
 type PatchedBlueprintInstanceRequest struct {
-	Name    *string                      `json:"name,omitempty"`
-	Path    *string                      `json:"path,omitempty"`
-	Context map[string]interface{}       `json:"context,omitempty"`
-	Status  *BlueprintInstanceStatusEnum `json:"status,omitempty"`
-	Enabled *bool                        `json:"enabled,omitempty"`
+	Name    *string                `json:"name,omitempty"`
+	Path    *string                `json:"path,omitempty"`
+	Context map[string]interface{} `json:"context,omitempty"`
+	Enabled *bool                  `json:"enabled,omitempty"`
 }
 
 // NewPatchedBlueprintInstanceRequest instantiates a new PatchedBlueprintInstanceRequest object
@@ -137,38 +136,6 @@ func (o *PatchedBlueprintInstanceRequest) SetContext(v map[string]interface{}) {
 	o.Context = v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *PatchedBlueprintInstanceRequest) GetStatus() BlueprintInstanceStatusEnum {
-	if o == nil || o.Status == nil {
-		var ret BlueprintInstanceStatusEnum
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedBlueprintInstanceRequest) GetStatusOk() (*BlueprintInstanceStatusEnum, bool) {
-	if o == nil || o.Status == nil {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *PatchedBlueprintInstanceRequest) HasStatus() bool {
-	if o != nil && o.Status != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given BlueprintInstanceStatusEnum and assigns it to the Status field.
-func (o *PatchedBlueprintInstanceRequest) SetStatus(v BlueprintInstanceStatusEnum) {
-	o.Status = &v
-}
-
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *PatchedBlueprintInstanceRequest) GetEnabled() bool {
 	if o == nil || o.Enabled == nil {
@@ -211,9 +178,6 @@ func (o PatchedBlueprintInstanceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Context != nil {
 		toSerialize["context"] = o.Context
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
 	}
 	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled

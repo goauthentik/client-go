@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
 **Context** | Pointer to **map[string]interface{}** |  | [optional] 
-**Status** | Pointer to [**BlueprintInstanceStatusEnum**](BlueprintInstanceStatusEnum.md) |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -103,31 +102,6 @@ SetContext sets Context field to given value.
 `func (o *PatchedBlueprintInstanceRequest) HasContext() bool`
 
 HasContext returns a boolean if a field has been set.
-
-### GetStatus
-
-`func (o *PatchedBlueprintInstanceRequest) GetStatus() BlueprintInstanceStatusEnum`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *PatchedBlueprintInstanceRequest) GetStatusOk() (*BlueprintInstanceStatusEnum, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *PatchedBlueprintInstanceRequest) SetStatus(v BlueprintInstanceStatusEnum)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *PatchedBlueprintInstanceRequest) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 ### GetEnabled
 

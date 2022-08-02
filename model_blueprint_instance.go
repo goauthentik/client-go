@@ -18,31 +18,32 @@ import (
 
 // BlueprintInstance Info about a single blueprint instance file
 type BlueprintInstance struct {
-	Pk              string                      `json:"pk"`
-	Name            string                      `json:"name"`
-	Path            string                      `json:"path"`
-	Context         map[string]interface{}      `json:"context"`
-	LastApplied     time.Time                   `json:"last_applied"`
-	LastAppliedHash string                      `json:"last_applied_hash"`
-	Status          BlueprintInstanceStatusEnum `json:"status"`
-	Enabled         *bool                       `json:"enabled,omitempty"`
-	ManagedModels   []string                    `json:"managed_models"`
+	Pk              string                              `json:"pk"`
+	Name            string                              `json:"name"`
+	Path            string                              `json:"path"`
+	Context         map[string]interface{}              `json:"context,omitempty"`
+	LastApplied     time.Time                           `json:"last_applied"`
+	LastAppliedHash string                              `json:"last_applied_hash"`
+	Status          NullableBlueprintInstanceStatusEnum `json:"status"`
+	Enabled         *bool                               `json:"enabled,omitempty"`
+	ManagedModels   []string                            `json:"managed_models"`
+	Metadata        map[string]interface{}              `json:"metadata"`
 }
 
 // NewBlueprintInstance instantiates a new BlueprintInstance object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlueprintInstance(pk string, name string, path string, context map[string]interface{}, lastApplied time.Time, lastAppliedHash string, status BlueprintInstanceStatusEnum, managedModels []string) *BlueprintInstance {
+func NewBlueprintInstance(pk string, name string, path string, lastApplied time.Time, lastAppliedHash string, status NullableBlueprintInstanceStatusEnum, managedModels []string, metadata map[string]interface{}) *BlueprintInstance {
 	this := BlueprintInstance{}
 	this.Pk = pk
 	this.Name = name
 	this.Path = path
-	this.Context = context
 	this.LastApplied = lastApplied
 	this.LastAppliedHash = lastAppliedHash
 	this.Status = status
 	this.ManagedModels = managedModels
+	this.Metadata = metadata
 	return &this
 }
 
@@ -126,26 +127,34 @@ func (o *BlueprintInstance) SetPath(v string) {
 	o.Path = v
 }
 
-// GetContext returns the Context field value
+// GetContext returns the Context field value if set, zero value otherwise.
 func (o *BlueprintInstance) GetContext() map[string]interface{} {
-	if o == nil {
+	if o == nil || o.Context == nil {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.Context
 }
 
-// GetContextOk returns a tuple with the Context field value
+// GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BlueprintInstance) GetContextOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || o.Context == nil {
 		return nil, false
 	}
 	return o.Context, true
 }
 
-// SetContext sets field value
+// HasContext returns a boolean if a field has been set.
+func (o *BlueprintInstance) HasContext() bool {
+	if o != nil && o.Context != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetContext gets a reference to the given map[string]interface{} and assigns it to the Context field.
 func (o *BlueprintInstance) SetContext(v map[string]interface{}) {
 	o.Context = v
 }
@@ -199,27 +208,29 @@ func (o *BlueprintInstance) SetLastAppliedHash(v string) {
 }
 
 // GetStatus returns the Status field value
+// If the value is explicit nil, the zero value for BlueprintInstanceStatusEnum will be returned
 func (o *BlueprintInstance) GetStatus() BlueprintInstanceStatusEnum {
-	if o == nil {
+	if o == nil || o.Status.Get() == nil {
 		var ret BlueprintInstanceStatusEnum
 		return ret
 	}
 
-	return o.Status
+	return *o.Status.Get()
 }
 
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BlueprintInstance) GetStatusOk() (*BlueprintInstanceStatusEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Status, true
+	return o.Status.Get(), o.Status.IsSet()
 }
 
 // SetStatus sets field value
 func (o *BlueprintInstance) SetStatus(v BlueprintInstanceStatusEnum) {
-	o.Status = v
+	o.Status.Set(&v)
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
@@ -278,6 +289,30 @@ func (o *BlueprintInstance) SetManagedModels(v []string) {
 	o.ManagedModels = v
 }
 
+// GetMetadata returns the Metadata field value
+func (o *BlueprintInstance) GetMetadata() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value
+// and a boolean to check if the value has been set.
+func (o *BlueprintInstance) GetMetadataOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// SetMetadata sets field value
+func (o *BlueprintInstance) SetMetadata(v map[string]interface{}) {
+	o.Metadata = v
+}
+
 func (o BlueprintInstance) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -289,7 +324,7 @@ func (o BlueprintInstance) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["path"] = o.Path
 	}
-	if true {
+	if o.Context != nil {
 		toSerialize["context"] = o.Context
 	}
 	if true {
@@ -299,13 +334,16 @@ func (o BlueprintInstance) MarshalJSON() ([]byte, error) {
 		toSerialize["last_applied_hash"] = o.LastAppliedHash
 	}
 	if true {
-		toSerialize["status"] = o.Status
+		toSerialize["status"] = o.Status.Get()
 	}
 	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if true {
 		toSerialize["managed_models"] = o.ManagedModels
+	}
+	if true {
+		toSerialize["metadata"] = o.Metadata
 	}
 	return json.Marshal(toSerialize)
 }

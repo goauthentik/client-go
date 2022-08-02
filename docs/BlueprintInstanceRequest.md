@@ -6,15 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **Path** | **string** |  | 
-**Context** | **map[string]interface{}** |  | 
-**Status** | [**BlueprintInstanceStatusEnum**](BlueprintInstanceStatusEnum.md) |  | 
+**Context** | Pointer to **map[string]interface{}** |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
 ### NewBlueprintInstanceRequest
 
-`func NewBlueprintInstanceRequest(name string, path string, context map[string]interface{}, status BlueprintInstanceStatusEnum, ) *BlueprintInstanceRequest`
+`func NewBlueprintInstanceRequest(name string, path string, ) *BlueprintInstanceRequest`
 
 NewBlueprintInstanceRequest instantiates a new BlueprintInstanceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -88,26 +87,11 @@ and a boolean to check if the value has been set.
 
 SetContext sets Context field to given value.
 
+### HasContext
 
-### GetStatus
+`func (o *BlueprintInstanceRequest) HasContext() bool`
 
-`func (o *BlueprintInstanceRequest) GetStatus() BlueprintInstanceStatusEnum`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *BlueprintInstanceRequest) GetStatusOk() (*BlueprintInstanceStatusEnum, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *BlueprintInstanceRequest) SetStatus(v BlueprintInstanceStatusEnum)`
-
-SetStatus sets Status field to given value.
-
+HasContext returns a boolean if a field has been set.
 
 ### GetEnabled
 

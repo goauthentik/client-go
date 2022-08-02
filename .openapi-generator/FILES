@@ -66,6 +66,8 @@ docs/AutoSubmitChallengeResponseRequest.md
 docs/AutosubmitChallenge.md
 docs/BackendsEnum.md
 docs/BindingTypeEnum.md
+docs/BlueprintFile.md
+docs/BlueprintFileMeta.md
 docs/BlueprintInstance.md
 docs/BlueprintInstanceRequest.md
 docs/BlueprintInstanceStatusEnum.md
@@ -177,6 +179,7 @@ docs/LoginChallengeTypes.md
 docs/LoginMetrics.md
 docs/LoginSource.md
 docs/ManagedApi.md
+docs/Metadata.md
 docs/NameIdPolicyEnum.md
 docs/NotConfiguredActionEnum.md
 docs/Notification.md
@@ -528,6 +531,8 @@ model_auto_submit_challenge_response_request.go
 model_autosubmit_challenge.go
 model_backends_enum.go
 model_binding_type_enum.go
+model_blueprint_file.go
+model_blueprint_file_meta.go
 model_blueprint_instance.go
 model_blueprint_instance_request.go
 model_blueprint_instance_status_enum.go
@@ -634,6 +639,7 @@ model_link.go
 model_login_challenge_types.go
 model_login_metrics.go
 model_login_source.go
+model_metadata.go
 model_name_id_policy_enum.go
 model_not_configured_action_enum.go
 model_notification.go

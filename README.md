@@ -230,6 +230,7 @@ Class | Method | HTTP request | Description
 *FlowsApi* | [**FlowsInstancesSetBackgroundUrlCreate**](docs/FlowsApi.md#flowsinstancessetbackgroundurlcreate) | **Post** /flows/instances/{slug}/set_background_url/ | 
 *FlowsApi* | [**FlowsInstancesUpdate**](docs/FlowsApi.md#flowsinstancesupdate) | **Put** /flows/instances/{slug}/ | 
 *FlowsApi* | [**FlowsInstancesUsedByList**](docs/FlowsApi.md#flowsinstancesusedbylist) | **Get** /flows/instances/{slug}/used_by/ | 
+*ManagedApi* | [**ManagedBlueprintsApplyCreate**](docs/ManagedApi.md#managedblueprintsapplycreate) | **Post** /managed/blueprints/{instance_uuid}/apply/ | 
 *ManagedApi* | [**ManagedBlueprintsAvailableList**](docs/ManagedApi.md#managedblueprintsavailablelist) | **Get** /managed/blueprints/available/ | 
 *ManagedApi* | [**ManagedBlueprintsCreate**](docs/ManagedApi.md#managedblueprintscreate) | **Post** /managed/blueprints/ | 
 *ManagedApi* | [**ManagedBlueprintsDestroy**](docs/ManagedApi.md#managedblueprintsdestroy) | **Delete** /managed/blueprints/{instance_uuid}/ | 
@@ -237,6 +238,7 @@ Class | Method | HTTP request | Description
 *ManagedApi* | [**ManagedBlueprintsPartialUpdate**](docs/ManagedApi.md#managedblueprintspartialupdate) | **Patch** /managed/blueprints/{instance_uuid}/ | 
 *ManagedApi* | [**ManagedBlueprintsRetrieve**](docs/ManagedApi.md#managedblueprintsretrieve) | **Get** /managed/blueprints/{instance_uuid}/ | 
 *ManagedApi* | [**ManagedBlueprintsUpdate**](docs/ManagedApi.md#managedblueprintsupdate) | **Put** /managed/blueprints/{instance_uuid}/ | 
+*ManagedApi* | [**ManagedBlueprintsUsedByList**](docs/ManagedApi.md#managedblueprintsusedbylist) | **Get** /managed/blueprints/{instance_uuid}/used_by/ | 
 *Oauth2Api* | [**Oauth2AuthorizationCodesDestroy**](docs/Oauth2Api.md#oauth2authorizationcodesdestroy) | **Delete** /oauth2/authorization_codes/{id}/ | 
 *Oauth2Api* | [**Oauth2AuthorizationCodesList**](docs/Oauth2Api.md#oauth2authorizationcodeslist) | **Get** /oauth2/authorization_codes/ | 
 *Oauth2Api* | [**Oauth2AuthorizationCodesRetrieve**](docs/Oauth2Api.md#oauth2authorizationcodesretrieve) | **Get** /oauth2/authorization_codes/{id}/ | 
@@ -681,6 +683,8 @@ Class | Method | HTTP request | Description
  - [AutosubmitChallenge](docs/AutosubmitChallenge.md)
  - [BackendsEnum](docs/BackendsEnum.md)
  - [BindingTypeEnum](docs/BindingTypeEnum.md)
+ - [BlueprintFile](docs/BlueprintFile.md)
+ - [BlueprintFileMeta](docs/BlueprintFileMeta.md)
  - [BlueprintInstance](docs/BlueprintInstance.md)
  - [BlueprintInstanceRequest](docs/BlueprintInstanceRequest.md)
  - [BlueprintInstanceStatusEnum](docs/BlueprintInstanceStatusEnum.md)
@@ -787,6 +791,7 @@ Class | Method | HTTP request | Description
  - [LoginChallengeTypes](docs/LoginChallengeTypes.md)
  - [LoginMetrics](docs/LoginMetrics.md)
  - [LoginSource](docs/LoginSource.md)
+ - [Metadata](docs/Metadata.md)
  - [NameIdPolicyEnum](docs/NameIdPolicyEnum.md)
  - [NotConfiguredActionEnum](docs/NotConfiguredActionEnum.md)
  - [Notification](docs/Notification.md)

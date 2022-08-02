@@ -7014,6 +7014,66 @@ paths:
       - authentik: []
       tags:
       - managed
+  /managed/blueprints/{instance_uuid}/apply/:
+    post:
+      description: Apply a blueprint
+      operationId: managed_blueprints_apply_create
+      parameters:
+      - description: A UUID string identifying this Blueprint Instance.
+        explode: false
+        in: path
+        name: instance_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlueprintInstance'
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - managed
+  /managed/blueprints/{instance_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: managed_blueprints_used_by_list
+      parameters:
+      - description: A UUID string identifying this Blueprint Instance.
+        explode: false
+        in: path
+        name: instance_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          $ref: '#/components/schemas/ValidationError'
+        "403":
+          $ref: '#/components/schemas/GenericError'
+      security:
+      - authentik: []
+      tags:
+      - managed
   /managed/blueprints/available/:
     get:
       description: Get blueprints
@@ -7024,7 +7084,7 @@ paths:
             application/json:
               schema:
                 items:
-                  type: string
+                  $ref: '#/components/schemas/BlueprintFile'
                 type: array
           description: ""
         "400":
@@ -24090,10 +24150,34 @@ components:
       - POST
       - POST_AUTO
       type: string
+    BlueprintFile:
+      example:
+        path: path
+        meta: null
+        last_m: 2000-01-23T04:56:07.000+00:00
+        hash: hash
+      properties:
+        path:
+          type: string
+        last_m:
+          format: date-time
+          type: string
+        hash:
+          type: string
+        meta:
+          $ref: '#/components/schemas/BlueprintFile_meta'
+      required:
+      - hash
+      - last_m
+      - meta
+      - path
+      type: object
     BlueprintInstance:
       description: Info about a single blueprint instance file
       example:
         path: path
+        metadata:
+          key: ""
         last_applied_hash: last_applied_hash
         managed_models:
         - managed_models
@@ -24104,7 +24188,7 @@ components:
           key: ""
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enabled: true
-        status: null
+        status: ""
       properties:
         pk:
           format: uuid
@@ -24126,7 +24210,9 @@ components:
           readOnly: true
           type: string
         status:
-          $ref: '#/components/schemas/BlueprintInstanceStatusEnum'
+          allOf:
+          - $ref: '#/components/schemas/BlueprintInstanceStatusEnum'
+          readOnly: true
         enabled:
           type: boolean
         managed_models:
@@ -24134,11 +24220,15 @@ components:
             type: string
           readOnly: true
           type: array
+        metadata:
+          additionalProperties: {}
+          readOnly: true
+          type: object
       required:
-      - context
       - last_applied
       - last_applied_hash
       - managed_models
+      - metadata
       - name
       - path
       - pk
@@ -24152,7 +24242,6 @@ components:
         context:
           key: ""
         enabled: true
-        status: null
       properties:
         name:
           minLength: 1
@@ -24163,15 +24252,11 @@ components:
         context:
           additionalProperties: {}
           type: object
-        status:
-          $ref: '#/components/schemas/BlueprintInstanceStatusEnum'
         enabled:
           type: boolean
       required:
-      - context
       - name
       - path
-      - status
       type: object
     BlueprintInstanceStatusEnum:
       enum:
@@ -28153,6 +28238,18 @@ components:
       - challenge
       - name
       type: object
+    Metadata:
+      description: Serializer for blueprint metadata
+      properties:
+        name:
+          type: string
+        labels:
+          additionalProperties: {}
+          type: object
+      required:
+      - labels
+      - name
+      type: object
     NameIdPolicyEnum:
       enum:
       - urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
@@ -30050,6 +30147,8 @@ components:
           total_pages: 5.637376656633329
         results:
         - path: path
+          metadata:
+            key: ""
           last_applied_hash: last_applied_hash
           managed_models:
           - managed_models
@@ -30060,8 +30159,10 @@ components:
             key: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
-          status: null
+          status: ""
         - path: path
+          metadata:
+            key: ""
           last_applied_hash: last_applied_hash
           managed_models:
           - managed_models
@@ -30072,7 +30173,7 @@ components:
             key: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
-          status: null
+          status: ""
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -36041,7 +36142,6 @@ components:
         context:
           key: ""
         enabled: true
-        status: null
       properties:
         name:
           minLength: 1
@@ -36052,8 +36152,6 @@ components:
         context:
           additionalProperties: {}
           type: object
-        status:
-          $ref: '#/components/schemas/BlueprintInstanceStatusEnum'
         enabled:
           type: boolean
       type: object
@@ -43193,6 +43291,10 @@ components:
       - lat
       - long
       type: object
+    BlueprintFile_meta:
+      allOf:
+      - $ref: '#/components/schemas/Metadata'
+      readOnly: true
     FlowInspectorPlan_current_stage:
       allOf:
       - $ref: '#/components/schemas/FlowStageBinding'

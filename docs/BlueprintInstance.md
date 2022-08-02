@@ -7,18 +7,19 @@ Name | Type | Description | Notes
 **Pk** | **string** |  | [readonly] 
 **Name** | **string** |  | 
 **Path** | **string** |  | 
-**Context** | **map[string]interface{}** |  | 
+**Context** | Pointer to **map[string]interface{}** |  | [optional] 
 **LastApplied** | **time.Time** |  | [readonly] 
 **LastAppliedHash** | **string** |  | [readonly] 
-**Status** | [**BlueprintInstanceStatusEnum**](BlueprintInstanceStatusEnum.md) |  | 
+**Status** | [**NullableBlueprintInstanceStatusEnum**](BlueprintInstanceStatusEnum.md) |  | [readonly] 
 **Enabled** | Pointer to **bool** |  | [optional] 
 **ManagedModels** | **[]string** |  | [readonly] 
+**Metadata** | **map[string]interface{}** |  | [readonly] 
 
 ## Methods
 
 ### NewBlueprintInstance
 
-`func NewBlueprintInstance(pk string, name string, path string, context map[string]interface{}, lastApplied time.Time, lastAppliedHash string, status BlueprintInstanceStatusEnum, managedModels []string, ) *BlueprintInstance`
+`func NewBlueprintInstance(pk string, name string, path string, lastApplied time.Time, lastAppliedHash string, status NullableBlueprintInstanceStatusEnum, managedModels []string, metadata map[string]interface{}, ) *BlueprintInstance`
 
 NewBlueprintInstance instantiates a new BlueprintInstance object
 This constructor will assign default values to properties that have it defined,
@@ -112,6 +113,11 @@ and a boolean to check if the value has been set.
 
 SetContext sets Context field to given value.
 
+### HasContext
+
+`func (o *BlueprintInstance) HasContext() bool`
+
+HasContext returns a boolean if a field has been set.
 
 ### GetLastApplied
 
@@ -173,6 +179,16 @@ and a boolean to check if the value has been set.
 SetStatus sets Status field to given value.
 
 
+### SetStatusNil
+
+`func (o *BlueprintInstance) SetStatusNil(b bool)`
+
+ SetStatusNil sets the value for Status to be an explicit nil
+
+### UnsetStatus
+`func (o *BlueprintInstance) UnsetStatus()`
+
+UnsetStatus ensures that no value is present for Status, not even an explicit nil
 ### GetEnabled
 
 `func (o *BlueprintInstance) GetEnabled() bool`
@@ -216,6 +232,26 @@ and a boolean to check if the value has been set.
 `func (o *BlueprintInstance) SetManagedModels(v []string)`
 
 SetManagedModels sets ManagedModels field to given value.
+
+
+### GetMetadata
+
+`func (o *BlueprintInstance) GetMetadata() map[string]interface{}`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *BlueprintInstance) GetMetadataOk() (*map[string]interface{}, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *BlueprintInstance) SetMetadata(v map[string]interface{})`
+
+SetMetadata sets Metadata field to given value.
 
 
 

@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**ManagedBlueprintsApplyCreate**](ManagedApi.md#ManagedBlueprintsApplyCreate) | **Post** /managed/blueprints/{instance_uuid}/apply/ | 
 [**ManagedBlueprintsAvailableList**](ManagedApi.md#ManagedBlueprintsAvailableList) | **Get** /managed/blueprints/available/ | 
 [**ManagedBlueprintsCreate**](ManagedApi.md#ManagedBlueprintsCreate) | **Post** /managed/blueprints/ | 
 [**ManagedBlueprintsDestroy**](ManagedApi.md#ManagedBlueprintsDestroy) | **Delete** /managed/blueprints/{instance_uuid}/ | 
@@ -11,12 +12,83 @@ Method | HTTP request | Description
 [**ManagedBlueprintsPartialUpdate**](ManagedApi.md#ManagedBlueprintsPartialUpdate) | **Patch** /managed/blueprints/{instance_uuid}/ | 
 [**ManagedBlueprintsRetrieve**](ManagedApi.md#ManagedBlueprintsRetrieve) | **Get** /managed/blueprints/{instance_uuid}/ | 
 [**ManagedBlueprintsUpdate**](ManagedApi.md#ManagedBlueprintsUpdate) | **Put** /managed/blueprints/{instance_uuid}/ | 
+[**ManagedBlueprintsUsedByList**](ManagedApi.md#ManagedBlueprintsUsedByList) | **Get** /managed/blueprints/{instance_uuid}/used_by/ | 
 
+
+
+## ManagedBlueprintsApplyCreate
+
+> BlueprintInstance ManagedBlueprintsApplyCreate(ctx, instanceUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagedApi.ManagedBlueprintsApplyCreate(context.Background(), instanceUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedApi.ManagedBlueprintsApplyCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ManagedBlueprintsApplyCreate`: BlueprintInstance
+    fmt.Fprintf(os.Stdout, "Response from `ManagedApi.ManagedBlueprintsApplyCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**instanceUuid** | **string** | A UUID string identifying this Blueprint Instance. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiManagedBlueprintsApplyCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**BlueprintInstance**](BlueprintInstance.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## ManagedBlueprintsAvailableList
 
-> []string ManagedBlueprintsAvailableList(ctx).Execute()
+> []BlueprintFile ManagedBlueprintsAvailableList(ctx).Execute()
 
 
 
@@ -43,7 +115,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagedApi.ManagedBlueprintsAvailableList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ManagedBlueprintsAvailableList`: []string
+    // response from `ManagedBlueprintsAvailableList`: []BlueprintFile
     fmt.Fprintf(os.Stdout, "Response from `ManagedApi.ManagedBlueprintsAvailableList`: %v\n", resp)
 }
 ```
@@ -59,7 +131,7 @@ Other parameters are passed through a pointer to a apiManagedBlueprintsAvailable
 
 ### Return type
 
-**[]string**
+[**[]BlueprintFile**](BlueprintFile.md)
 
 ### Authorization
 
@@ -96,7 +168,7 @@ import (
 )
 
 func main() {
-    blueprintInstanceRequest := *openapiclient.NewBlueprintInstanceRequest("Name_example", "Path_example", map[string]interface{}{"key": interface{}(123)}, openapiclient.BlueprintInstanceStatusEnum("successful")) // BlueprintInstanceRequest | 
+    blueprintInstanceRequest := *openapiclient.NewBlueprintInstanceRequest("Name_example", "Path_example") // BlueprintInstanceRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -449,7 +521,7 @@ import (
 
 func main() {
     instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
-    blueprintInstanceRequest := *openapiclient.NewBlueprintInstanceRequest("Name_example", "Path_example", map[string]interface{}{"key": interface{}(123)}, openapiclient.BlueprintInstanceStatusEnum("successful")) // BlueprintInstanceRequest | 
+    blueprintInstanceRequest := *openapiclient.NewBlueprintInstanceRequest("Name_example", "Path_example") // BlueprintInstanceRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -492,6 +564,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ManagedBlueprintsUsedByList
+
+> []UsedBy ManagedBlueprintsUsedByList(ctx, instanceUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagedApi.ManagedBlueprintsUsedByList(context.Background(), instanceUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedApi.ManagedBlueprintsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ManagedBlueprintsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `ManagedApi.ManagedBlueprintsUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**instanceUuid** | **string** | A UUID string identifying this Blueprint Instance. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiManagedBlueprintsUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

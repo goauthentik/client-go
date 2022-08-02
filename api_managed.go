@@ -23,12 +23,129 @@ import (
 // ManagedApiService ManagedApi service
 type ManagedApiService service
 
+type ApiManagedBlueprintsApplyCreateRequest struct {
+	ctx          context.Context
+	ApiService   *ManagedApiService
+	instanceUuid string
+}
+
+func (r ApiManagedBlueprintsApplyCreateRequest) Execute() (*BlueprintInstance, *http.Response, error) {
+	return r.ApiService.ManagedBlueprintsApplyCreateExecute(r)
+}
+
+/*
+ManagedBlueprintsApplyCreate Method for ManagedBlueprintsApplyCreate
+
+Apply a blueprint
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param instanceUuid A UUID string identifying this Blueprint Instance.
+ @return ApiManagedBlueprintsApplyCreateRequest
+*/
+func (a *ManagedApiService) ManagedBlueprintsApplyCreate(ctx context.Context, instanceUuid string) ApiManagedBlueprintsApplyCreateRequest {
+	return ApiManagedBlueprintsApplyCreateRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		instanceUuid: instanceUuid,
+	}
+}
+
+// Execute executes the request
+//  @return BlueprintInstance
+func (a *ManagedApiService) ManagedBlueprintsApplyCreateExecute(r ApiManagedBlueprintsApplyCreateRequest) (*BlueprintInstance, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BlueprintInstance
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedApiService.ManagedBlueprintsApplyCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/managed/blueprints/{instance_uuid}/apply/"
+	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterToString(r.instanceUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiManagedBlueprintsAvailableListRequest struct {
 	ctx        context.Context
 	ApiService *ManagedApiService
 }
 
-func (r ApiManagedBlueprintsAvailableListRequest) Execute() ([]string, *http.Response, error) {
+func (r ApiManagedBlueprintsAvailableListRequest) Execute() ([]BlueprintFile, *http.Response, error) {
 	return r.ApiService.ManagedBlueprintsAvailableListExecute(r)
 }
 
@@ -48,13 +165,13 @@ func (a *ManagedApiService) ManagedBlueprintsAvailableList(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return []string
-func (a *ManagedApiService) ManagedBlueprintsAvailableListExecute(r ApiManagedBlueprintsAvailableListRequest) ([]string, *http.Response, error) {
+//  @return []BlueprintFile
+func (a *ManagedApiService) ManagedBlueprintsAvailableListExecute(r ApiManagedBlueprintsAvailableListRequest) ([]BlueprintFile, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []string
+		localVarReturnValue []BlueprintFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedApiService.ManagedBlueprintsAvailableList")
@@ -856,6 +973,123 @@ func (a *ManagedApiService) ManagedBlueprintsUpdateExecute(r ApiManagedBlueprint
 	}
 	// body params
 	localVarPostBody = r.blueprintInstanceRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiManagedBlueprintsUsedByListRequest struct {
+	ctx          context.Context
+	ApiService   *ManagedApiService
+	instanceUuid string
+}
+
+func (r ApiManagedBlueprintsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.ManagedBlueprintsUsedByListExecute(r)
+}
+
+/*
+ManagedBlueprintsUsedByList Method for ManagedBlueprintsUsedByList
+
+Get a list of all objects that use this object
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param instanceUuid A UUID string identifying this Blueprint Instance.
+ @return ApiManagedBlueprintsUsedByListRequest
+*/
+func (a *ManagedApiService) ManagedBlueprintsUsedByList(ctx context.Context, instanceUuid string) ApiManagedBlueprintsUsedByListRequest {
+	return ApiManagedBlueprintsUsedByListRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		instanceUuid: instanceUuid,
+	}
+}
+
+// Execute executes the request
+//  @return []UsedBy
+func (a *ManagedApiService) ManagedBlueprintsUsedByListExecute(r ApiManagedBlueprintsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedApiService.ManagedBlueprintsUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/managed/blueprints/{instance_uuid}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterToString(r.instanceUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
