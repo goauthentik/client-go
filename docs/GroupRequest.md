@@ -6,15 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **IsSuperuser** | Pointer to **bool** | Users added to this group will be superusers. | [optional] 
-**Parent** | **NullableString** |  | 
-**Users** | **[]int32** |  | 
+**Parent** | Pointer to **NullableString** |  | [optional] 
+**Users** | Pointer to **[]int32** |  | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
 ### NewGroupRequest
 
-`func NewGroupRequest(name string, parent NullableString, users []int32, ) *GroupRequest`
+`func NewGroupRequest(name string, ) *GroupRequest`
 
 NewGroupRequest instantiates a new GroupRequest object
 This constructor will assign default values to properties that have it defined,
@@ -93,6 +93,11 @@ and a boolean to check if the value has been set.
 
 SetParent sets Parent field to given value.
 
+### HasParent
+
+`func (o *GroupRequest) HasParent() bool`
+
+HasParent returns a boolean if a field has been set.
 
 ### SetParentNil
 
@@ -123,6 +128,11 @@ and a boolean to check if the value has been set.
 
 SetUsers sets Users field to given value.
 
+### HasUsers
+
+`func (o *GroupRequest) HasUsers() bool`
+
+HasUsers returns a boolean if a field has been set.
 
 ### GetAttributes
 

@@ -20,8 +20,8 @@ type GroupRequest struct {
 	Name string `json:"name"`
 	// Users added to this group will be superusers.
 	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
-	Parent      NullableString         `json:"parent"`
-	Users       []int32                `json:"users"`
+	Parent      NullableString         `json:"parent,omitempty"`
+	Users       []int32                `json:"users,omitempty"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 }
 
@@ -29,11 +29,9 @@ type GroupRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupRequest(name string, parent NullableString, users []int32) *GroupRequest {
+func NewGroupRequest(name string) *GroupRequest {
 	this := GroupRequest{}
 	this.Name = name
-	this.Parent = parent
-	this.Users = users
 	return &this
 }
 
@@ -101,18 +99,16 @@ func (o *GroupRequest) SetIsSuperuser(v bool) {
 	o.IsSuperuser = &v
 }
 
-// GetParent returns the Parent field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GroupRequest) GetParent() string {
 	if o == nil || o.Parent.Get() == nil {
 		var ret string
 		return ret
 	}
-
 	return *o.Parent.Get()
 }
 
-// GetParentOk returns a tuple with the Parent field value
+// GetParentOk returns a tuple with the Parent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GroupRequest) GetParentOk() (*string, bool) {
@@ -122,31 +118,58 @@ func (o *GroupRequest) GetParentOk() (*string, bool) {
 	return o.Parent.Get(), o.Parent.IsSet()
 }
 
-// SetParent sets field value
+// HasParent returns a boolean if a field has been set.
+func (o *GroupRequest) HasParent() bool {
+	if o != nil && o.Parent.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetParent gets a reference to the given NullableString and assigns it to the Parent field.
 func (o *GroupRequest) SetParent(v string) {
 	o.Parent.Set(&v)
 }
 
-// GetUsers returns the Users field value
+// SetParentNil sets the value for Parent to be an explicit nil
+func (o *GroupRequest) SetParentNil() {
+	o.Parent.Set(nil)
+}
+
+// UnsetParent ensures that no value is present for Parent, not even an explicit nil
+func (o *GroupRequest) UnsetParent() {
+	o.Parent.Unset()
+}
+
+// GetUsers returns the Users field value if set, zero value otherwise.
 func (o *GroupRequest) GetUsers() []int32 {
-	if o == nil {
+	if o == nil || o.Users == nil {
 		var ret []int32
 		return ret
 	}
-
 	return o.Users
 }
 
-// GetUsersOk returns a tuple with the Users field value
+// GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupRequest) GetUsersOk() ([]int32, bool) {
-	if o == nil {
+	if o == nil || o.Users == nil {
 		return nil, false
 	}
 	return o.Users, true
 }
 
-// SetUsers sets field value
+// HasUsers returns a boolean if a field has been set.
+func (o *GroupRequest) HasUsers() bool {
+	if o != nil && o.Users != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsers gets a reference to the given []int32 and assigns it to the Users field.
 func (o *GroupRequest) SetUsers(v []int32) {
 	o.Users = v
 }
@@ -191,10 +214,10 @@ func (o GroupRequest) MarshalJSON() ([]byte, error) {
 	if o.IsSuperuser != nil {
 		toSerialize["is_superuser"] = o.IsSuperuser
 	}
-	if true {
+	if o.Parent.IsSet() {
 		toSerialize["parent"] = o.Parent.Get()
 	}
-	if true {
+	if o.Users != nil {
 		toSerialize["users"] = o.Users
 	}
 	if o.Attributes != nil {

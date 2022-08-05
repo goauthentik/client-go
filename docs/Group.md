@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **NumPk** | **int32** |  | [readonly] 
 **Name** | **string** |  | 
 **IsSuperuser** | Pointer to **bool** | Users added to this group will be superusers. | [optional] 
-**Parent** | **NullableString** |  | 
+**Parent** | Pointer to **NullableString** |  | [optional] 
 **ParentName** | **string** |  | [readonly] 
-**Users** | **[]int32** |  | 
+**Users** | Pointer to **[]int32** |  | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 **UsersObj** | [**[]GroupMember**](GroupMember.md) |  | [readonly] 
 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewGroup
 
-`func NewGroup(pk string, numPk int32, name string, parent NullableString, parentName string, users []int32, usersObj []GroupMember, ) *Group`
+`func NewGroup(pk string, numPk int32, name string, parentName string, usersObj []GroupMember, ) *Group`
 
 NewGroup instantiates a new Group object
 This constructor will assign default values to properties that have it defined,
@@ -137,6 +137,11 @@ and a boolean to check if the value has been set.
 
 SetParent sets Parent field to given value.
 
+### HasParent
+
+`func (o *Group) HasParent() bool`
+
+HasParent returns a boolean if a field has been set.
 
 ### SetParentNil
 
@@ -187,6 +192,11 @@ and a boolean to check if the value has been set.
 
 SetUsers sets Users field to given value.
 
+### HasUsers
+
+`func (o *Group) HasUsers() bool`
+
+HasUsers returns a boolean if a field has been set.
 
 ### GetAttributes
 

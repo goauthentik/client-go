@@ -1159,7 +1159,7 @@ import (
 )
 
 func main() {
-    groupRequest := *openapiclient.NewGroupRequest("Name_example", "Parent_example", []int32{int32(123)}) // GroupRequest | 
+    groupRequest := *openapiclient.NewGroupRequest("Name_example") // GroupRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1518,7 +1518,7 @@ import (
 
 func main() {
     groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
-    groupRequest := *openapiclient.NewGroupRequest("Name_example", "Parent_example", []int32{int32(123)}) // GroupRequest | 
+    groupRequest := *openapiclient.NewGroupRequest("Name_example") // GroupRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

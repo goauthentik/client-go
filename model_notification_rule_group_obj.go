@@ -22,9 +22,9 @@ type NotificationRuleGroupObj struct {
 	Name  string `json:"name"`
 	// Users added to this group will be superusers.
 	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
-	Parent      NullableString         `json:"parent"`
+	Parent      NullableString         `json:"parent,omitempty"`
 	ParentName  string                 `json:"parent_name"`
-	Users       []int32                `json:"users"`
+	Users       []int32                `json:"users,omitempty"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 	UsersObj    []GroupMember          `json:"users_obj"`
 }
@@ -33,14 +33,12 @@ type NotificationRuleGroupObj struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationRuleGroupObj(pk string, numPk int32, name string, parent NullableString, parentName string, users []int32, usersObj []GroupMember) *NotificationRuleGroupObj {
+func NewNotificationRuleGroupObj(pk string, numPk int32, name string, parentName string, usersObj []GroupMember) *NotificationRuleGroupObj {
 	this := NotificationRuleGroupObj{}
 	this.Pk = pk
 	this.NumPk = numPk
 	this.Name = name
-	this.Parent = parent
 	this.ParentName = parentName
-	this.Users = users
 	this.UsersObj = usersObj
 	return &this
 }
@@ -157,18 +155,16 @@ func (o *NotificationRuleGroupObj) SetIsSuperuser(v bool) {
 	o.IsSuperuser = &v
 }
 
-// GetParent returns the Parent field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NotificationRuleGroupObj) GetParent() string {
 	if o == nil || o.Parent.Get() == nil {
 		var ret string
 		return ret
 	}
-
 	return *o.Parent.Get()
 }
 
-// GetParentOk returns a tuple with the Parent field value
+// GetParentOk returns a tuple with the Parent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NotificationRuleGroupObj) GetParentOk() (*string, bool) {
@@ -178,9 +174,28 @@ func (o *NotificationRuleGroupObj) GetParentOk() (*string, bool) {
 	return o.Parent.Get(), o.Parent.IsSet()
 }
 
-// SetParent sets field value
+// HasParent returns a boolean if a field has been set.
+func (o *NotificationRuleGroupObj) HasParent() bool {
+	if o != nil && o.Parent.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetParent gets a reference to the given NullableString and assigns it to the Parent field.
 func (o *NotificationRuleGroupObj) SetParent(v string) {
 	o.Parent.Set(&v)
+}
+
+// SetParentNil sets the value for Parent to be an explicit nil
+func (o *NotificationRuleGroupObj) SetParentNil() {
+	o.Parent.Set(nil)
+}
+
+// UnsetParent ensures that no value is present for Parent, not even an explicit nil
+func (o *NotificationRuleGroupObj) UnsetParent() {
+	o.Parent.Unset()
 }
 
 // GetParentName returns the ParentName field value
@@ -207,26 +222,34 @@ func (o *NotificationRuleGroupObj) SetParentName(v string) {
 	o.ParentName = v
 }
 
-// GetUsers returns the Users field value
+// GetUsers returns the Users field value if set, zero value otherwise.
 func (o *NotificationRuleGroupObj) GetUsers() []int32 {
-	if o == nil {
+	if o == nil || o.Users == nil {
 		var ret []int32
 		return ret
 	}
-
 	return o.Users
 }
 
-// GetUsersOk returns a tuple with the Users field value
+// GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationRuleGroupObj) GetUsersOk() ([]int32, bool) {
-	if o == nil {
+	if o == nil || o.Users == nil {
 		return nil, false
 	}
 	return o.Users, true
 }
 
-// SetUsers sets field value
+// HasUsers returns a boolean if a field has been set.
+func (o *NotificationRuleGroupObj) HasUsers() bool {
+	if o != nil && o.Users != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsers gets a reference to the given []int32 and assigns it to the Users field.
 func (o *NotificationRuleGroupObj) SetUsers(v []int32) {
 	o.Users = v
 }
@@ -301,13 +324,13 @@ func (o NotificationRuleGroupObj) MarshalJSON() ([]byte, error) {
 	if o.IsSuperuser != nil {
 		toSerialize["is_superuser"] = o.IsSuperuser
 	}
-	if true {
+	if o.Parent.IsSet() {
 		toSerialize["parent"] = o.Parent.Get()
 	}
 	if true {
 		toSerialize["parent_name"] = o.ParentName
 	}
-	if true {
+	if o.Users != nil {
 		toSerialize["users"] = o.Users
 	}
 	if o.Attributes != nil {
