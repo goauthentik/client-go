@@ -17258,10 +17258,12 @@ paths:
           type: string
         style: simple
       responses:
-        "204":
-          description: Enrollment successful
-        "420":
-          description: Enrollment pending/failed
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DuoDeviceEnrollmentStatus'
+          description: ""
         "400":
           $ref: '#/components/schemas/ValidationError'
         "403":
@@ -25510,6 +25512,15 @@ components:
       - name
       - pk
       type: object
+    DuoDeviceEnrollmentStatus:
+      example:
+        duo_response: null
+      properties:
+        duo_response:
+          $ref: '#/components/schemas/DuoResponseEnum'
+      required:
+      - duo_response
+      type: object
     DuoDeviceRequest:
       description: Serializer for Duo authenticator devices
       example:
@@ -25523,6 +25534,12 @@ components:
       required:
       - name
       type: object
+    DuoResponseEnum:
+      enum:
+      - success
+      - waiting
+      - invalid
+      type: string
     EmailChallenge:
       description: Email challenge
       properties:

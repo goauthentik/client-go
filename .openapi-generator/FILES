@@ -113,7 +113,9 @@ docs/DummyPolicyRequest.md
 docs/DummyStage.md
 docs/DummyStageRequest.md
 docs/DuoDevice.md
+docs/DuoDeviceEnrollmentStatus.md
 docs/DuoDeviceRequest.md
+docs/DuoResponseEnum.md
 docs/EmailChallenge.md
 docs/EmailChallengeResponseRequest.md
 docs/EmailStage.md
@@ -576,7 +578,9 @@ model_dummy_policy_request.go
 model_dummy_stage.go
 model_dummy_stage_request.go
 model_duo_device.go
+model_duo_device_enrollment_status.go
 model_duo_device_request.go
+model_duo_response_enum.go
 model_email_challenge.go
 model_email_challenge_response_request.go
 model_email_stage.go
