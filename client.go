@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2022.7.3
+API version: 2022.8.1
 Contact: hello@goauthentik.io
 */
 
@@ -42,7 +42,7 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the authentik API v2022.7.3
+// APIClient manages communication with the authentik API v2022.8.1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
