@@ -17300,12 +17300,6 @@ paths:
         schema:
           type: string
         style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AuthenticatorDuoStageRequest'
-        required: true
       responses:
         "204":
           description: Enrollment successful

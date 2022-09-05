@@ -773,7 +773,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorDuoImportDevicesCreate
 
-> StagesAuthenticatorDuoImportDevicesCreate(ctx, stageUuid).AuthenticatorDuoStageRequest(authenticatorDuoStageRequest).DuoUserId(duoUserId).Username(username).Execute()
+> StagesAuthenticatorDuoImportDevicesCreate(ctx, stageUuid).DuoUserId(duoUserId).Username(username).Execute()
 
 
 
@@ -793,13 +793,12 @@ import (
 
 func main() {
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
-    authenticatorDuoStageRequest := *openapiclient.NewAuthenticatorDuoStageRequest("Name_example", "ClientId_example", "ClientSecret_example", "ApiHostname_example") // AuthenticatorDuoStageRequest | 
     duoUserId := "duoUserId_example" // string |  (optional)
     username := "username_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoImportDevicesCreate(context.Background(), stageUuid).AuthenticatorDuoStageRequest(authenticatorDuoStageRequest).DuoUserId(duoUserId).Username(username).Execute()
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoImportDevicesCreate(context.Background(), stageUuid).DuoUserId(duoUserId).Username(username).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorDuoImportDevicesCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -823,7 +822,6 @@ Other parameters are passed through a pointer to a apiStagesAuthenticatorDuoImpo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authenticatorDuoStageRequest** | [**AuthenticatorDuoStageRequest**](AuthenticatorDuoStageRequest.md) |  | 
  **duoUserId** | **string** |  | 
  **username** | **string** |  | 
 
@@ -837,7 +835,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

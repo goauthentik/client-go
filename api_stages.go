@@ -1101,17 +1101,11 @@ func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreateExecute(r
 }
 
 type ApiStagesAuthenticatorDuoImportDevicesCreateRequest struct {
-	ctx                          context.Context
-	ApiService                   *StagesApiService
-	stageUuid                    string
-	authenticatorDuoStageRequest *AuthenticatorDuoStageRequest
-	duoUserId                    *string
-	username                     *string
-}
-
-func (r ApiStagesAuthenticatorDuoImportDevicesCreateRequest) AuthenticatorDuoStageRequest(authenticatorDuoStageRequest AuthenticatorDuoStageRequest) ApiStagesAuthenticatorDuoImportDevicesCreateRequest {
-	r.authenticatorDuoStageRequest = &authenticatorDuoStageRequest
-	return r
+	ctx        context.Context
+	ApiService *StagesApiService
+	stageUuid  string
+	duoUserId  *string
+	username   *string
 }
 
 func (r ApiStagesAuthenticatorDuoImportDevicesCreateRequest) DuoUserId(duoUserId string) ApiStagesAuthenticatorDuoImportDevicesCreateRequest {
@@ -1164,9 +1158,6 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesCreateExecute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authenticatorDuoStageRequest == nil {
-		return nil, reportError("authenticatorDuoStageRequest is required and must be specified")
-	}
 
 	if r.duoUserId != nil {
 		localVarQueryParams.Add("duo_user_id", parameterToString(*r.duoUserId, ""))
@@ -1175,7 +1166,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesCreateExecute(r Ap
 		localVarQueryParams.Add("username", parameterToString(*r.username, ""))
 	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1191,8 +1182,6 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesCreateExecute(r Ap
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.authenticatorDuoStageRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
