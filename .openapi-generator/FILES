@@ -137,6 +137,7 @@ docs/Flow.md
 docs/FlowChallengeResponseRequest.md
 docs/FlowDesignationEnum.md
 docs/FlowDiagram.md
+docs/FlowErrorChallenge.md
 docs/FlowInspection.md
 docs/FlowInspectorPlan.md
 docs/FlowInspectorPlanCurrentStage.md
@@ -601,6 +602,7 @@ model_flow.go
 model_flow_challenge_response_request.go
 model_flow_designation_enum.go
 model_flow_diagram.go
+model_flow_error_challenge.go
 model_flow_inspection.go
 model_flow_inspector_plan.go
 model_flow_inspector_plan_current_stage.go

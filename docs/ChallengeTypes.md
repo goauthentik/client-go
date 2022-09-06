@@ -32,6 +32,9 @@ Name | Type | Description | Notes
 **Permissions** | [**[]Permission**](Permission.md) |  | 
 **AdditionalPermissions** | [**[]Permission**](Permission.md) |  | 
 **Token** | **string** |  | 
+**RequestId** | **string** |  | 
+**Error** | Pointer to **string** |  | [optional] 
+**Traceback** | Pointer to **string** |  | [optional] 
 **UserFields** | **[]string** |  | 
 **PasswordFields** | **bool** |  | 
 **ApplicationPre** | Pointer to **string** |  | [optional] 
@@ -50,7 +53,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, permissions []Permission, additionalPermissions []Permission, token string, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
+`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, permissions []Permission, additionalPermissions []Permission, token string, requestId string, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -659,6 +662,76 @@ and a boolean to check if the value has been set.
 
 SetToken sets Token field to given value.
 
+
+### GetRequestId
+
+`func (o *ChallengeTypes) GetRequestId() string`
+
+GetRequestId returns the RequestId field if non-nil, zero value otherwise.
+
+### GetRequestIdOk
+
+`func (o *ChallengeTypes) GetRequestIdOk() (*string, bool)`
+
+GetRequestIdOk returns a tuple with the RequestId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestId
+
+`func (o *ChallengeTypes) SetRequestId(v string)`
+
+SetRequestId sets RequestId field to given value.
+
+
+### GetError
+
+`func (o *ChallengeTypes) GetError() string`
+
+GetError returns the Error field if non-nil, zero value otherwise.
+
+### GetErrorOk
+
+`func (o *ChallengeTypes) GetErrorOk() (*string, bool)`
+
+GetErrorOk returns a tuple with the Error field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetError
+
+`func (o *ChallengeTypes) SetError(v string)`
+
+SetError sets Error field to given value.
+
+### HasError
+
+`func (o *ChallengeTypes) HasError() bool`
+
+HasError returns a boolean if a field has been set.
+
+### GetTraceback
+
+`func (o *ChallengeTypes) GetTraceback() string`
+
+GetTraceback returns the Traceback field if non-nil, zero value otherwise.
+
+### GetTracebackOk
+
+`func (o *ChallengeTypes) GetTracebackOk() (*string, bool)`
+
+GetTracebackOk returns a tuple with the Traceback field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTraceback
+
+`func (o *ChallengeTypes) SetTraceback(v string)`
+
+SetTraceback sets Traceback field to given value.
+
+### HasTraceback
+
+`func (o *ChallengeTypes) HasTraceback() bool`
+
+HasTraceback returns a boolean if a field has been set.
 
 ### GetUserFields
 

@@ -24605,6 +24605,7 @@ components:
           ak-stage-consent: '#/components/schemas/ConsentChallenge'
           ak-stage-dummy: '#/components/schemas/DummyChallenge'
           ak-stage-email: '#/components/schemas/EmailChallenge'
+          xak-flow-error: '#/components/schemas/FlowErrorChallenge'
           ak-stage-identification: '#/components/schemas/IdentificationChallenge'
           ak-stage-password: '#/components/schemas/PasswordChallenge'
           ak-flow-sources-plex: '#/components/schemas/PlexAuthenticationChallenge'
@@ -24626,6 +24627,7 @@ components:
       - $ref: '#/components/schemas/ConsentChallenge'
       - $ref: '#/components/schemas/DummyChallenge'
       - $ref: '#/components/schemas/EmailChallenge'
+      - $ref: '#/components/schemas/FlowErrorChallenge'
       - $ref: '#/components/schemas/IdentificationChallenge'
       - $ref: '#/components/schemas/PasswordChallenge'
       - $ref: '#/components/schemas/PlexAuthenticationChallenge'
@@ -26439,6 +26441,39 @@ components:
           type: string
       required:
       - diagram
+      type: object
+    FlowErrorChallenge:
+      description: "Challenge class when an unhandled error occurs during a stage.\
+        \ Normal users\nare shown an error message, superusers are shown a full stacktrace."
+      properties:
+        type:
+          $ref: '#/components/schemas/ChallengeChoices'
+        flow_info:
+          $ref: '#/components/schemas/ContextualFlowInfo'
+        component:
+          default: xak-flow-error
+          type: string
+        response_errors:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/ErrorDetail'
+            type: array
+          type: object
+        pending_user:
+          type: string
+        pending_user_avatar:
+          type: string
+        request_id:
+          type: string
+        error:
+          type: string
+        traceback:
+          type: string
+      required:
+      - pending_user
+      - pending_user_avatar
+      - request_id
+      - type
       type: object
     FlowInspection:
       description: Serializer for inspect endpoint

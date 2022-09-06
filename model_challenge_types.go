@@ -31,6 +31,7 @@ type ChallengeTypes struct {
 	ConsentChallenge                 *ConsentChallenge
 	DummyChallenge                   *DummyChallenge
 	EmailChallenge                   *EmailChallenge
+	FlowErrorChallenge               *FlowErrorChallenge
 	IdentificationChallenge          *IdentificationChallenge
 	PasswordChallenge                *PasswordChallenge
 	PlexAuthenticationChallenge      *PlexAuthenticationChallenge
@@ -127,6 +128,13 @@ func DummyChallengeAsChallengeTypes(v *DummyChallenge) ChallengeTypes {
 func EmailChallengeAsChallengeTypes(v *EmailChallenge) ChallengeTypes {
 	return ChallengeTypes{
 		EmailChallenge: v,
+	}
+}
+
+// FlowErrorChallengeAsChallengeTypes is a convenience function that returns FlowErrorChallenge wrapped in ChallengeTypes
+func FlowErrorChallengeAsChallengeTypes(v *FlowErrorChallenge) ChallengeTypes {
+	return ChallengeTypes{
+		FlowErrorChallenge: v,
 	}
 }
 
@@ -335,6 +343,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.EmailChallenge = nil
 			return fmt.Errorf("Failed to unmarshal ChallengeTypes as EmailChallenge: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'FlowErrorChallenge'
+	if jsonDict["component"] == "FlowErrorChallenge" {
+		// try to unmarshal JSON data into FlowErrorChallenge
+		err = json.Unmarshal(data, &dst.FlowErrorChallenge)
+		if err == nil {
+			return nil // data stored in dst.FlowErrorChallenge, return on the first match
+		} else {
+			dst.FlowErrorChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as FlowErrorChallenge: %s", err.Error())
 		}
 	}
 
@@ -614,6 +634,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'xak-flow-error'
+	if jsonDict["component"] == "xak-flow-error" {
+		// try to unmarshal JSON data into FlowErrorChallenge
+		err = json.Unmarshal(data, &dst.FlowErrorChallenge)
+		if err == nil {
+			return nil // data stored in dst.FlowErrorChallenge, return on the first match
+		} else {
+			dst.FlowErrorChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as FlowErrorChallenge: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'xak-flow-redirect'
 	if jsonDict["component"] == "xak-flow-redirect" {
 		// try to unmarshal JSON data into RedirectChallenge
@@ -693,6 +725,10 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 
 	if src.EmailChallenge != nil {
 		return json.Marshal(&src.EmailChallenge)
+	}
+
+	if src.FlowErrorChallenge != nil {
+		return json.Marshal(&src.FlowErrorChallenge)
 	}
 
 	if src.IdentificationChallenge != nil {
@@ -777,6 +813,10 @@ func (obj *ChallengeTypes) GetActualInstance() interface{} {
 
 	if obj.EmailChallenge != nil {
 		return obj.EmailChallenge
+	}
+
+	if obj.FlowErrorChallenge != nil {
+		return obj.FlowErrorChallenge
 	}
 
 	if obj.IdentificationChallenge != nil {

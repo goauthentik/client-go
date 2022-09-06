@@ -751,6 +751,7 @@ Class | Method | HTTP request | Description
  - [FlowChallengeResponseRequest](docs/FlowChallengeResponseRequest.md)
  - [FlowDesignationEnum](docs/FlowDesignationEnum.md)
  - [FlowDiagram](docs/FlowDiagram.md)
+ - [FlowErrorChallenge](docs/FlowErrorChallenge.md)
  - [FlowInspection](docs/FlowInspection.md)
  - [FlowInspectorPlan](docs/FlowInspectorPlan.md)
  - [FlowInspectorPlanCurrentStage](docs/FlowInspectorPlanCurrentStage.md)
