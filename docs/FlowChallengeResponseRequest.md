@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-prompt"]
+**Component** | **string** |  | [default to "ak-stage-prompt"]
 **Code** | **string** |  | 
 **PhoneNumber** | Pointer to **string** |  | [optional] 
 **SelectedChallenge** | Pointer to [**DeviceChallengeRequest**](DeviceChallengeRequest.md) |  | [optional] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewFlowChallengeResponseRequest
 
-`func NewFlowChallengeResponseRequest(code string, response map[string]interface{}, token string, uidField string, password string, ) *FlowChallengeResponseRequest`
+`func NewFlowChallengeResponseRequest(component string, code string, response map[string]interface{}, token string, uidField string, password string, ) *FlowChallengeResponseRequest`
 
 NewFlowChallengeResponseRequest instantiates a new FlowChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -54,11 +54,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *FlowChallengeResponseRequest) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 ### GetCode
 

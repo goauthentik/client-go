@@ -19,7 +19,7 @@ import (
 type IdentificationChallenge struct {
 	Type             ChallengeChoices          `json:"type"`
 	FlowInfo         *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component        *string                   `json:"component,omitempty"`
+	Component        string                    `json:"component"`
 	ResponseErrors   *map[string][]ErrorDetail `json:"response_errors,omitempty"`
 	UserFields       []string                  `json:"user_fields"`
 	PasswordFields   bool                      `json:"password_fields"`
@@ -36,11 +36,10 @@ type IdentificationChallenge struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentificationChallenge(type_ ChallengeChoices, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool) *IdentificationChallenge {
+func NewIdentificationChallenge(type_ ChallengeChoices, component string, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool) *IdentificationChallenge {
 	this := IdentificationChallenge{}
 	this.Type = type_
-	var component string = "ak-stage-identification"
-	this.Component = &component
+	this.Component = component
 	this.UserFields = userFields
 	this.PasswordFields = passwordFields
 	this.PrimaryAction = primaryAction
@@ -54,7 +53,7 @@ func NewIdentificationChallenge(type_ ChallengeChoices, userFields []string, pas
 func NewIdentificationChallengeWithDefaults() *IdentificationChallenge {
 	this := IdentificationChallenge{}
 	var component string = "ak-stage-identification"
-	this.Component = &component
+	this.Component = component
 	return &this
 }
 
@@ -114,36 +113,28 @@ func (o *IdentificationChallenge) SetFlowInfo(v ContextualFlowInfo) {
 	o.FlowInfo = &v
 }
 
-// GetComponent returns the Component field value if set, zero value otherwise.
+// GetComponent returns the Component field value
 func (o *IdentificationChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Component
+
+	return o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
+// GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Component, true
+	return &o.Component, true
 }
 
-// HasComponent returns a boolean if a field has been set.
-func (o *IdentificationChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetComponent gets a reference to the given string and assigns it to the Component field.
+// SetComponent sets field value
 func (o *IdentificationChallenge) SetComponent(v string) {
-	o.Component = &v
+	o.Component = v
 }
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
@@ -444,7 +435,7 @@ func (o IdentificationChallenge) MarshalJSON() ([]byte, error) {
 	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}
-	if o.Component != nil {
+	if true {
 		toSerialize["component"] = o.Component
 	}
 	if o.ResponseErrors != nil {

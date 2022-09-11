@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-authenticator-webauthn"]
+**Component** | **string** |  | [default to "ak-stage-authenticator-webauthn"]
 **Response** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewAuthenticatorWebAuthnChallengeResponseRequest
 
-`func NewAuthenticatorWebAuthnChallengeResponseRequest(response map[string]interface{}, ) *AuthenticatorWebAuthnChallengeResponseRequest`
+`func NewAuthenticatorWebAuthnChallengeResponseRequest(component string, response map[string]interface{}, ) *AuthenticatorWebAuthnChallengeResponseRequest`
 
 NewAuthenticatorWebAuthnChallengeResponseRequest instantiates a new AuthenticatorWebAuthnChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *AuthenticatorWebAuthnChallengeResponseRequest) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 ### GetResponse
 

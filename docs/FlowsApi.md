@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -637,7 +637,7 @@ import (
 func main() {
     flowSlug := "flowSlug_example" // string | 
     query := "query_example" // string | Querystring as received
-    flowChallengeResponseRequest := openapiclient.FlowChallengeResponseRequest{AppleChallengeResponseRequest: openapiclient.NewAppleChallengeResponseRequest()} // FlowChallengeResponseRequest |  (optional)
+    flowChallengeResponseRequest := openapiclient.FlowChallengeResponseRequest{AppleChallengeResponseRequest: openapiclient.NewAppleChallengeResponseRequest("Component_example")} // FlowChallengeResponseRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -810,7 +810,7 @@ Other parameters are passed through a pointer to a apiFlowsInstancesCacheClearCr
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1005,7 +1005,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1281,7 +1281,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1577,7 +1577,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1647,7 +1647,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | Pointer to **string** |  | [optional] [default to "xak-flow-shell"]
+**Component** | **string** |  | [default to "xak-flow-shell"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **Body** | **string** |  | 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewShellChallenge
 
-`func NewShellChallenge(type_ ChallengeChoices, body string, ) *ShellChallenge`
+`func NewShellChallenge(type_ ChallengeChoices, component string, body string, ) *ShellChallenge`
 
 NewShellChallenge instantiates a new ShellChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -93,11 +93,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *ShellChallenge) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

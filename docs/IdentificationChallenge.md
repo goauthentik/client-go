@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-identification"]
+**Component** | **string** |  | [default to "ak-stage-identification"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **UserFields** | **[]string** |  | 
 **PasswordFields** | **bool** |  | 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewIdentificationChallenge
 
-`func NewIdentificationChallenge(type_ ChallengeChoices, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, ) *IdentificationChallenge`
+`func NewIdentificationChallenge(type_ ChallengeChoices, component string, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, ) *IdentificationChallenge`
 
 NewIdentificationChallenge instantiates a new IdentificationChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -101,11 +101,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *IdentificationChallenge) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

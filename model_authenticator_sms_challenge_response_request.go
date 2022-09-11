@@ -17,7 +17,7 @@ import (
 
 // AuthenticatorSMSChallengeResponseRequest SMS Challenge response, device is set by get_response_instance
 type AuthenticatorSMSChallengeResponseRequest struct {
-	Component   *string `json:"component,omitempty"`
+	Component   string  `json:"component"`
 	Code        *int32  `json:"code,omitempty"`
 	PhoneNumber *string `json:"phone_number,omitempty"`
 }
@@ -26,10 +26,9 @@ type AuthenticatorSMSChallengeResponseRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorSMSChallengeResponseRequest() *AuthenticatorSMSChallengeResponseRequest {
+func NewAuthenticatorSMSChallengeResponseRequest(component string) *AuthenticatorSMSChallengeResponseRequest {
 	this := AuthenticatorSMSChallengeResponseRequest{}
-	var component string = "ak-stage-authenticator-sms"
-	this.Component = &component
+	this.Component = component
 	return &this
 }
 
@@ -39,40 +38,32 @@ func NewAuthenticatorSMSChallengeResponseRequest() *AuthenticatorSMSChallengeRes
 func NewAuthenticatorSMSChallengeResponseRequestWithDefaults() *AuthenticatorSMSChallengeResponseRequest {
 	this := AuthenticatorSMSChallengeResponseRequest{}
 	var component string = "ak-stage-authenticator-sms"
-	this.Component = &component
+	this.Component = component
 	return &this
 }
 
-// GetComponent returns the Component field value if set, zero value otherwise.
+// GetComponent returns the Component field value
 func (o *AuthenticatorSMSChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Component
+
+	return o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
+// GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorSMSChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Component, true
+	return &o.Component, true
 }
 
-// HasComponent returns a boolean if a field has been set.
-func (o *AuthenticatorSMSChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetComponent gets a reference to the given string and assigns it to the Component field.
+// SetComponent sets field value
 func (o *AuthenticatorSMSChallengeResponseRequest) SetComponent(v string) {
-	o.Component = &v
+	o.Component = v
 }
 
 // GetCode returns the Code field value if set, zero value otherwise.
@@ -141,7 +132,7 @@ func (o *AuthenticatorSMSChallengeResponseRequest) SetPhoneNumber(v string) {
 
 func (o AuthenticatorSMSChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
+	if true {
 		toSerialize["component"] = o.Component
 	}
 	if o.Code != nil {

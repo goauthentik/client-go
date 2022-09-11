@@ -17,17 +17,16 @@ import (
 
 // AutoSubmitChallengeResponseRequest Pseudo class for autosubmit response
 type AutoSubmitChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
+	Component string `json:"component"`
 }
 
 // NewAutoSubmitChallengeResponseRequest instantiates a new AutoSubmitChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAutoSubmitChallengeResponseRequest() *AutoSubmitChallengeResponseRequest {
+func NewAutoSubmitChallengeResponseRequest(component string) *AutoSubmitChallengeResponseRequest {
 	this := AutoSubmitChallengeResponseRequest{}
-	var component string = "ak-stage-autosubmit"
-	this.Component = &component
+	this.Component = component
 	return &this
 }
 
@@ -37,45 +36,37 @@ func NewAutoSubmitChallengeResponseRequest() *AutoSubmitChallengeResponseRequest
 func NewAutoSubmitChallengeResponseRequestWithDefaults() *AutoSubmitChallengeResponseRequest {
 	this := AutoSubmitChallengeResponseRequest{}
 	var component string = "ak-stage-autosubmit"
-	this.Component = &component
+	this.Component = component
 	return &this
 }
 
-// GetComponent returns the Component field value if set, zero value otherwise.
+// GetComponent returns the Component field value
 func (o *AutoSubmitChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Component
+
+	return o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
+// GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *AutoSubmitChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Component, true
+	return &o.Component, true
 }
 
-// HasComponent returns a boolean if a field has been set.
-func (o *AutoSubmitChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetComponent gets a reference to the given string and assigns it to the Component field.
+// SetComponent sets field value
 func (o *AutoSubmitChallengeResponseRequest) SetComponent(v string) {
-	o.Component = &v
+	o.Component = v
 }
 
 func (o AutoSubmitChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
+	if true {
 		toSerialize["component"] = o.Component
 	}
 	return json.Marshal(toSerialize)

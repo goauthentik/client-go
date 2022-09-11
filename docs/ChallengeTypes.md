@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | Pointer to **string** |  | [optional] [default to "xak-flow-shell"]
+**Component** | **string** |  | [default to "xak-flow-shell"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **PendingUser** | **string** |  | 
 **PendingUserAvatar** | **string** |  | 
@@ -53,7 +53,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, permissions []Permission, additionalPermissions []Permission, token string, requestId string, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
+`func NewChallengeTypes(type_ ChallengeChoices, component string, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, permissions []Permission, additionalPermissions []Permission, token string, requestId string, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -132,11 +132,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *ChallengeTypes) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

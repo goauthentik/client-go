@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-password"]
+**Component** | **string** |  | [default to "ak-stage-password"]
 **Password** | **string** |  | 
 
 ## Methods
 
 ### NewPasswordChallengeResponseRequest
 
-`func NewPasswordChallengeResponseRequest(password string, ) *PasswordChallengeResponseRequest`
+`func NewPasswordChallengeResponseRequest(component string, password string, ) *PasswordChallengeResponseRequest`
 
 NewPasswordChallengeResponseRequest instantiates a new PasswordChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *PasswordChallengeResponseRequest) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 ### GetPassword
 

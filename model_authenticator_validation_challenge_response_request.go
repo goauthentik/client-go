@@ -17,7 +17,7 @@ import (
 
 // AuthenticatorValidationChallengeResponseRequest Challenge used for Code-based and WebAuthn authenticators
 type AuthenticatorValidationChallengeResponseRequest struct {
-	Component         *string                 `json:"component,omitempty"`
+	Component         string                  `json:"component"`
 	SelectedChallenge *DeviceChallengeRequest `json:"selected_challenge,omitempty"`
 	SelectedStage     *string                 `json:"selected_stage,omitempty"`
 	Code              *string                 `json:"code,omitempty"`
@@ -29,10 +29,9 @@ type AuthenticatorValidationChallengeResponseRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorValidationChallengeResponseRequest() *AuthenticatorValidationChallengeResponseRequest {
+func NewAuthenticatorValidationChallengeResponseRequest(component string) *AuthenticatorValidationChallengeResponseRequest {
 	this := AuthenticatorValidationChallengeResponseRequest{}
-	var component string = "ak-stage-authenticator-validate"
-	this.Component = &component
+	this.Component = component
 	return &this
 }
 
@@ -42,40 +41,32 @@ func NewAuthenticatorValidationChallengeResponseRequest() *AuthenticatorValidati
 func NewAuthenticatorValidationChallengeResponseRequestWithDefaults() *AuthenticatorValidationChallengeResponseRequest {
 	this := AuthenticatorValidationChallengeResponseRequest{}
 	var component string = "ak-stage-authenticator-validate"
-	this.Component = &component
+	this.Component = component
 	return &this
 }
 
-// GetComponent returns the Component field value if set, zero value otherwise.
+// GetComponent returns the Component field value
 func (o *AuthenticatorValidationChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Component
+
+	return o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
+// GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidationChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Component, true
+	return &o.Component, true
 }
 
-// HasComponent returns a boolean if a field has been set.
-func (o *AuthenticatorValidationChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetComponent gets a reference to the given string and assigns it to the Component field.
+// SetComponent sets field value
 func (o *AuthenticatorValidationChallengeResponseRequest) SetComponent(v string) {
-	o.Component = &v
+	o.Component = v
 }
 
 // GetSelectedChallenge returns the SelectedChallenge field value if set, zero value otherwise.
@@ -240,7 +231,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) SetDuo(v int32) {
 
 func (o AuthenticatorValidationChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
+	if true {
 		toSerialize["component"] = o.Component
 	}
 	if o.SelectedChallenge != nil {

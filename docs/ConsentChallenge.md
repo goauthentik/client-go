@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-consent"]
+**Component** | **string** |  | [default to "ak-stage-consent"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **PendingUser** | **string** |  | 
 **PendingUserAvatar** | **string** |  | 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewConsentChallenge
 
-`func NewConsentChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, permissions []Permission, additionalPermissions []Permission, token string, ) *ConsentChallenge`
+`func NewConsentChallenge(type_ ChallengeChoices, component string, pendingUser string, pendingUserAvatar string, permissions []Permission, additionalPermissions []Permission, token string, ) *ConsentChallenge`
 
 NewConsentChallenge instantiates a new ConsentChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -98,11 +98,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *ConsentChallenge) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

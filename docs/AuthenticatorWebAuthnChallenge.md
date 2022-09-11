@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-authenticator-webauthn"]
+**Component** | **string** |  | [default to "ak-stage-authenticator-webauthn"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **PendingUser** | **string** |  | 
 **PendingUserAvatar** | **string** |  | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatorWebAuthnChallenge
 
-`func NewAuthenticatorWebAuthnChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, registration map[string]interface{}, ) *AuthenticatorWebAuthnChallenge`
+`func NewAuthenticatorWebAuthnChallenge(type_ ChallengeChoices, component string, pendingUser string, pendingUserAvatar string, registration map[string]interface{}, ) *AuthenticatorWebAuthnChallenge`
 
 NewAuthenticatorWebAuthnChallenge instantiates a new AuthenticatorWebAuthnChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -95,11 +95,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *AuthenticatorWebAuthnChallenge) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-dummy"]
+**Component** | **string** |  | [default to "ak-stage-dummy"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 
 ## Methods
 
 ### NewDummyChallenge
 
-`func NewDummyChallenge(type_ ChallengeChoices, ) *DummyChallenge`
+`func NewDummyChallenge(type_ ChallengeChoices, component string, ) *DummyChallenge`
 
 NewDummyChallenge instantiates a new DummyChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -92,11 +92,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *DummyChallenge) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

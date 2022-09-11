@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-authenticator-validate"]
+**Component** | **string** |  | [default to "ak-stage-authenticator-validate"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **PendingUser** | **string** |  | 
 **PendingUserAvatar** | **string** |  | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatorValidationChallenge
 
-`func NewAuthenticatorValidationChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, ) *AuthenticatorValidationChallenge`
+`func NewAuthenticatorValidationChallenge(type_ ChallengeChoices, component string, pendingUser string, pendingUserAvatar string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, ) *AuthenticatorValidationChallenge`
 
 NewAuthenticatorValidationChallenge instantiates a new AuthenticatorValidationChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -96,11 +96,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *AuthenticatorValidationChallenge) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

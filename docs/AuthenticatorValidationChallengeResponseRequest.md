@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-authenticator-validate"]
+**Component** | **string** |  | [default to "ak-stage-authenticator-validate"]
 **SelectedChallenge** | Pointer to [**DeviceChallengeRequest**](DeviceChallengeRequest.md) |  | [optional] 
 **SelectedStage** | Pointer to **string** |  | [optional] 
 **Code** | Pointer to **string** |  | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatorValidationChallengeResponseRequest
 
-`func NewAuthenticatorValidationChallengeResponseRequest() *AuthenticatorValidationChallengeResponseRequest`
+`func NewAuthenticatorValidationChallengeResponseRequest(component string, ) *AuthenticatorValidationChallengeResponseRequest`
 
 NewAuthenticatorValidationChallengeResponseRequest instantiates a new AuthenticatorValidationChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -49,11 +49,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *AuthenticatorValidationChallengeResponseRequest) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 ### GetSelectedChallenge
 

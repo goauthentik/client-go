@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | Pointer to **string** |  | [optional] [default to "ak-flow-sources-plex"]
+**Component** | **string** |  | [default to "ak-flow-sources-plex"]
 
 ## Methods
 
 ### NewPlexAuthenticationChallengeResponseRequest
 
-`func NewPlexAuthenticationChallengeResponseRequest() *PlexAuthenticationChallengeResponseRequest`
+`func NewPlexAuthenticationChallengeResponseRequest(component string, ) *PlexAuthenticationChallengeResponseRequest`
 
 NewPlexAuthenticationChallengeResponseRequest instantiates a new PlexAuthenticationChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *PlexAuthenticationChallengeResponseRequest) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

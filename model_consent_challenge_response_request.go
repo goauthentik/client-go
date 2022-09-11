@@ -17,18 +17,17 @@ import (
 
 // ConsentChallengeResponseRequest Consent challenge response, any valid response request is valid
 type ConsentChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
-	Token     string  `json:"token"`
+	Component string `json:"component"`
+	Token     string `json:"token"`
 }
 
 // NewConsentChallengeResponseRequest instantiates a new ConsentChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConsentChallengeResponseRequest(token string) *ConsentChallengeResponseRequest {
+func NewConsentChallengeResponseRequest(component string, token string) *ConsentChallengeResponseRequest {
 	this := ConsentChallengeResponseRequest{}
-	var component string = "ak-stage-consent"
-	this.Component = &component
+	this.Component = component
 	this.Token = token
 	return &this
 }
@@ -39,40 +38,32 @@ func NewConsentChallengeResponseRequest(token string) *ConsentChallengeResponseR
 func NewConsentChallengeResponseRequestWithDefaults() *ConsentChallengeResponseRequest {
 	this := ConsentChallengeResponseRequest{}
 	var component string = "ak-stage-consent"
-	this.Component = &component
+	this.Component = component
 	return &this
 }
 
-// GetComponent returns the Component field value if set, zero value otherwise.
+// GetComponent returns the Component field value
 func (o *ConsentChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Component
+
+	return o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
+// GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *ConsentChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Component, true
+	return &o.Component, true
 }
 
-// HasComponent returns a boolean if a field has been set.
-func (o *ConsentChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetComponent gets a reference to the given string and assigns it to the Component field.
+// SetComponent sets field value
 func (o *ConsentChallengeResponseRequest) SetComponent(v string) {
-	o.Component = &v
+	o.Component = v
 }
 
 // GetToken returns the Token field value
@@ -101,7 +92,7 @@ func (o *ConsentChallengeResponseRequest) SetToken(v string) {
 
 func (o ConsentChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
+	if true {
 		toSerialize["component"] = o.Component
 	}
 	if true {

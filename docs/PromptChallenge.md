@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-prompt"]
+**Component** | **string** |  | [default to "ak-stage-prompt"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **Fields** | [**[]StagePrompt**](StagePrompt.md) |  | 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewPromptChallenge
 
-`func NewPromptChallenge(type_ ChallengeChoices, fields []StagePrompt, ) *PromptChallenge`
+`func NewPromptChallenge(type_ ChallengeChoices, component string, fields []StagePrompt, ) *PromptChallenge`
 
 NewPromptChallenge instantiates a new PromptChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -93,11 +93,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *PromptChallenge) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

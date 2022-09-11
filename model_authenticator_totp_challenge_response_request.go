@@ -17,18 +17,17 @@ import (
 
 // AuthenticatorTOTPChallengeResponseRequest TOTP Challenge response, device is set by get_response_instance
 type AuthenticatorTOTPChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
-	Code      int32   `json:"code"`
+	Component string `json:"component"`
+	Code      int32  `json:"code"`
 }
 
 // NewAuthenticatorTOTPChallengeResponseRequest instantiates a new AuthenticatorTOTPChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorTOTPChallengeResponseRequest(code int32) *AuthenticatorTOTPChallengeResponseRequest {
+func NewAuthenticatorTOTPChallengeResponseRequest(component string, code int32) *AuthenticatorTOTPChallengeResponseRequest {
 	this := AuthenticatorTOTPChallengeResponseRequest{}
-	var component string = "ak-stage-authenticator-totp"
-	this.Component = &component
+	this.Component = component
 	this.Code = code
 	return &this
 }
@@ -39,40 +38,32 @@ func NewAuthenticatorTOTPChallengeResponseRequest(code int32) *AuthenticatorTOTP
 func NewAuthenticatorTOTPChallengeResponseRequestWithDefaults() *AuthenticatorTOTPChallengeResponseRequest {
 	this := AuthenticatorTOTPChallengeResponseRequest{}
 	var component string = "ak-stage-authenticator-totp"
-	this.Component = &component
+	this.Component = component
 	return &this
 }
 
-// GetComponent returns the Component field value if set, zero value otherwise.
+// GetComponent returns the Component field value
 func (o *AuthenticatorTOTPChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Component
+
+	return o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
+// GetComponentOk returns a tuple with the Component field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorTOTPChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Component, true
+	return &o.Component, true
 }
 
-// HasComponent returns a boolean if a field has been set.
-func (o *AuthenticatorTOTPChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetComponent gets a reference to the given string and assigns it to the Component field.
+// SetComponent sets field value
 func (o *AuthenticatorTOTPChallengeResponseRequest) SetComponent(v string) {
-	o.Component = &v
+	o.Component = v
 }
 
 // GetCode returns the Code field value
@@ -101,7 +92,7 @@ func (o *AuthenticatorTOTPChallengeResponseRequest) SetCode(v int32) {
 
 func (o AuthenticatorTOTPChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
+	if true {
 		toSerialize["component"] = o.Component
 	}
 	if true {

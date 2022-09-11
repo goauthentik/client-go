@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-authenticator-sms"]
+**Component** | **string** |  | [default to "ak-stage-authenticator-sms"]
 **Code** | Pointer to **int32** |  | [optional] 
 **PhoneNumber** | Pointer to **string** |  | [optional] 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatorSMSChallengeResponseRequest
 
-`func NewAuthenticatorSMSChallengeResponseRequest() *AuthenticatorSMSChallengeResponseRequest`
+`func NewAuthenticatorSMSChallengeResponseRequest(component string, ) *AuthenticatorSMSChallengeResponseRequest`
 
 NewAuthenticatorSMSChallengeResponseRequest instantiates a new AuthenticatorSMSChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *AuthenticatorSMSChallengeResponseRequest) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 ### GetCode
 

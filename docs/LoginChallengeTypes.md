@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | Pointer to **string** |  | [optional] [default to "ak-flow-sources-oauth-apple"]
+**Component** | **string** |  | [default to "ak-flow-sources-oauth-apple"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **To** | **string** |  | 
 **ClientId** | **string** |  | 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewLoginChallengeTypes
 
-`func NewLoginChallengeTypes(type_ ChallengeChoices, to string, clientId string, slug string, scope string, redirectUri string, state string, ) *LoginChallengeTypes`
+`func NewLoginChallengeTypes(type_ ChallengeChoices, component string, to string, clientId string, slug string, scope string, redirectUri string, state string, ) *LoginChallengeTypes`
 
 NewLoginChallengeTypes instantiates a new LoginChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -98,11 +98,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *LoginChallengeTypes) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

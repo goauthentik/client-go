@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-authenticator-duo"]
+**Component** | **string** |  | [default to "ak-stage-authenticator-duo"]
 
 ## Methods
 
 ### NewAuthenticatorDuoChallengeResponseRequest
 
-`func NewAuthenticatorDuoChallengeResponseRequest() *AuthenticatorDuoChallengeResponseRequest`
+`func NewAuthenticatorDuoChallengeResponseRequest(component string, ) *AuthenticatorDuoChallengeResponseRequest`
 
 NewAuthenticatorDuoChallengeResponseRequest instantiates a new AuthenticatorDuoChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
-### HasComponent
-
-`func (o *AuthenticatorDuoChallengeResponseRequest) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
