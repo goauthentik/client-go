@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | **string** |  | [default to "ak-flow-sources-plex"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-flow-sources-plex"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **ClientId** | **string** |  | 
 **Slug** | **string** |  | 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewPlexAuthenticationChallenge
 
-`func NewPlexAuthenticationChallenge(type_ ChallengeChoices, component string, clientId string, slug string, ) *PlexAuthenticationChallenge`
+`func NewPlexAuthenticationChallenge(type_ ChallengeChoices, clientId string, slug string, ) *PlexAuthenticationChallenge`
 
 NewPlexAuthenticationChallenge instantiates a new PlexAuthenticationChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -94,6 +94,11 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
+### HasComponent
+
+`func (o *PlexAuthenticationChallenge) HasComponent() bool`
+
+HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

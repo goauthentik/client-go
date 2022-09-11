@@ -17,17 +17,18 @@ import (
 
 // CaptchaChallengeResponseRequest Validate captcha token
 type CaptchaChallengeResponseRequest struct {
-	Component string `json:"component"`
-	Token     string `json:"token"`
+	Component *string `json:"component,omitempty"`
+	Token     string  `json:"token"`
 }
 
 // NewCaptchaChallengeResponseRequest instantiates a new CaptchaChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCaptchaChallengeResponseRequest(component string, token string) *CaptchaChallengeResponseRequest {
+func NewCaptchaChallengeResponseRequest(token string) *CaptchaChallengeResponseRequest {
 	this := CaptchaChallengeResponseRequest{}
-	this.Component = component
+	var component string = "ak-stage-captcha"
+	this.Component = &component
 	this.Token = token
 	return &this
 }
@@ -38,32 +39,40 @@ func NewCaptchaChallengeResponseRequest(component string, token string) *Captcha
 func NewCaptchaChallengeResponseRequestWithDefaults() *CaptchaChallengeResponseRequest {
 	this := CaptchaChallengeResponseRequest{}
 	var component string = "ak-stage-captcha"
-	this.Component = component
+	this.Component = &component
 	return &this
 }
 
-// GetComponent returns the Component field value
+// GetComponent returns the Component field value if set, zero value otherwise.
 func (o *CaptchaChallengeResponseRequest) GetComponent() string {
-	if o == nil {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Component
+	return *o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value
+// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
-	return &o.Component, true
+	return o.Component, true
 }
 
-// SetComponent sets field value
+// HasComponent returns a boolean if a field has been set.
+func (o *CaptchaChallengeResponseRequest) HasComponent() bool {
+	if o != nil && o.Component != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetComponent gets a reference to the given string and assigns it to the Component field.
 func (o *CaptchaChallengeResponseRequest) SetComponent(v string) {
-	o.Component = v
+	o.Component = &v
 }
 
 // GetToken returns the Token field value
@@ -92,7 +101,7 @@ func (o *CaptchaChallengeResponseRequest) SetToken(v string) {
 
 func (o CaptchaChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
 	if true {

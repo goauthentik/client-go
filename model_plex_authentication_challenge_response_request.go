@@ -17,16 +17,17 @@ import (
 
 // PlexAuthenticationChallengeResponseRequest Pseudo class for plex response
 type PlexAuthenticationChallengeResponseRequest struct {
-	Component string `json:"component"`
+	Component *string `json:"component,omitempty"`
 }
 
 // NewPlexAuthenticationChallengeResponseRequest instantiates a new PlexAuthenticationChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlexAuthenticationChallengeResponseRequest(component string) *PlexAuthenticationChallengeResponseRequest {
+func NewPlexAuthenticationChallengeResponseRequest() *PlexAuthenticationChallengeResponseRequest {
 	this := PlexAuthenticationChallengeResponseRequest{}
-	this.Component = component
+	var component string = "ak-flow-sources-plex"
+	this.Component = &component
 	return &this
 }
 
@@ -36,37 +37,45 @@ func NewPlexAuthenticationChallengeResponseRequest(component string) *PlexAuthen
 func NewPlexAuthenticationChallengeResponseRequestWithDefaults() *PlexAuthenticationChallengeResponseRequest {
 	this := PlexAuthenticationChallengeResponseRequest{}
 	var component string = "ak-flow-sources-plex"
-	this.Component = component
+	this.Component = &component
 	return &this
 }
 
-// GetComponent returns the Component field value
+// GetComponent returns the Component field value if set, zero value otherwise.
 func (o *PlexAuthenticationChallengeResponseRequest) GetComponent() string {
-	if o == nil {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Component
+	return *o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value
+// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PlexAuthenticationChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
-	return &o.Component, true
+	return o.Component, true
 }
 
-// SetComponent sets field value
+// HasComponent returns a boolean if a field has been set.
+func (o *PlexAuthenticationChallengeResponseRequest) HasComponent() bool {
+	if o != nil && o.Component != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetComponent gets a reference to the given string and assigns it to the Component field.
 func (o *PlexAuthenticationChallengeResponseRequest) SetComponent(v string) {
-	o.Component = v
+	o.Component = &v
 }
 
 func (o PlexAuthenticationChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
 	return json.Marshal(toSerialize)

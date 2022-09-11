@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | **string** |  | [default to "ak-stage-identification"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-identification"]
 **UidField** | **string** |  | 
 **Password** | Pointer to **NullableString** |  | [optional] 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewIdentificationChallengeResponseRequest
 
-`func NewIdentificationChallengeResponseRequest(component string, uidField string, ) *IdentificationChallengeResponseRequest`
+`func NewIdentificationChallengeResponseRequest(uidField string, ) *IdentificationChallengeResponseRequest`
 
 NewIdentificationChallengeResponseRequest instantiates a new IdentificationChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +46,11 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
+### HasComponent
+
+`func (o *IdentificationChallengeResponseRequest) HasComponent() bool`
+
+HasComponent returns a boolean if a field has been set.
 
 ### GetUidField
 

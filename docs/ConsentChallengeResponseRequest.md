@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | **string** |  | [default to "ak-stage-consent"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-consent"]
 **Token** | **string** |  | 
 
 ## Methods
 
 ### NewConsentChallengeResponseRequest
 
-`func NewConsentChallengeResponseRequest(component string, token string, ) *ConsentChallengeResponseRequest`
+`func NewConsentChallengeResponseRequest(token string, ) *ConsentChallengeResponseRequest`
 
 NewConsentChallengeResponseRequest instantiates a new ConsentChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
+### HasComponent
+
+`func (o *ConsentChallengeResponseRequest) HasComponent() bool`
+
+HasComponent returns a boolean if a field has been set.
 
 ### GetToken
 

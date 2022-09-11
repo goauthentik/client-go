@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | **string** |  | [default to "ak-stage-captcha"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-captcha"]
 **Token** | **string** |  | 
 
 ## Methods
 
 ### NewCaptchaChallengeResponseRequest
 
-`func NewCaptchaChallengeResponseRequest(component string, token string, ) *CaptchaChallengeResponseRequest`
+`func NewCaptchaChallengeResponseRequest(token string, ) *CaptchaChallengeResponseRequest`
 
 NewCaptchaChallengeResponseRequest instantiates a new CaptchaChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
+### HasComponent
+
+`func (o *CaptchaChallengeResponseRequest) HasComponent() bool`
+
+HasComponent returns a boolean if a field has been set.
 
 ### GetToken
 

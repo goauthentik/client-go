@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | **string** |  | [default to "ak-stage-autosubmit"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-autosubmit"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **Url** | **string** |  | 
 **Attrs** | **map[string]string** |  | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewAutosubmitChallenge
 
-`func NewAutosubmitChallenge(type_ ChallengeChoices, component string, url string, attrs map[string]string, ) *AutosubmitChallenge`
+`func NewAutosubmitChallenge(type_ ChallengeChoices, url string, attrs map[string]string, ) *AutosubmitChallenge`
 
 NewAutosubmitChallenge instantiates a new AutosubmitChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -95,6 +95,11 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
+### HasComponent
+
+`func (o *AutosubmitChallenge) HasComponent() bool`
+
+HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

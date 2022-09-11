@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | **string** |  | [default to "xak-flow-redirect"]
+**Component** | Pointer to **string** |  | [optional] [default to "xak-flow-redirect"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **To** | **string** |  | 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewRedirectChallenge
 
-`func NewRedirectChallenge(type_ ChallengeChoices, component string, to string, ) *RedirectChallenge`
+`func NewRedirectChallenge(type_ ChallengeChoices, to string, ) *RedirectChallenge`
 
 NewRedirectChallenge instantiates a new RedirectChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -93,6 +93,11 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
+### HasComponent
+
+`func (o *RedirectChallenge) HasComponent() bool`
+
+HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

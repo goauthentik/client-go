@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | **string** |  | [default to "ak-stage-email"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-email"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 
 ## Methods
 
 ### NewEmailChallenge
 
-`func NewEmailChallenge(type_ ChallengeChoices, component string, ) *EmailChallenge`
+`func NewEmailChallenge(type_ ChallengeChoices, ) *EmailChallenge`
 
 NewEmailChallenge instantiates a new EmailChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -92,6 +92,11 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
+### HasComponent
+
+`func (o *EmailChallenge) HasComponent() bool`
+
+HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

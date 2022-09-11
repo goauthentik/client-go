@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | **string** |  | [default to "xak-flow-error"]
+**Component** | Pointer to **string** |  | [optional] [default to "xak-flow-error"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **PendingUser** | **string** |  | 
 **PendingUserAvatar** | **string** |  | 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewFlowErrorChallenge
 
-`func NewFlowErrorChallenge(type_ ChallengeChoices, component string, pendingUser string, pendingUserAvatar string, requestId string, ) *FlowErrorChallenge`
+`func NewFlowErrorChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, requestId string, ) *FlowErrorChallenge`
 
 NewFlowErrorChallenge instantiates a new FlowErrorChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -97,6 +97,11 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
+### HasComponent
+
+`func (o *FlowErrorChallenge) HasComponent() bool`
+
+HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

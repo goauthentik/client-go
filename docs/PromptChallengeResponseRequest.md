@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | **string** |  | [default to "ak-stage-prompt"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-prompt"]
 
 ## Methods
 
 ### NewPromptChallengeResponseRequest
 
-`func NewPromptChallengeResponseRequest(component string, ) *PromptChallengeResponseRequest`
+`func NewPromptChallengeResponseRequest() *PromptChallengeResponseRequest`
 
 NewPromptChallengeResponseRequest instantiates a new PromptChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -44,6 +44,11 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
+### HasComponent
+
+`func (o *PromptChallengeResponseRequest) HasComponent() bool`
+
+HasComponent returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

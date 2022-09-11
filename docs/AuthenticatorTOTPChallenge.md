@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | **string** |  | [default to "ak-stage-authenticator-totp"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-authenticator-totp"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **PendingUser** | **string** |  | 
 **PendingUserAvatar** | **string** |  | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatorTOTPChallenge
 
-`func NewAuthenticatorTOTPChallenge(type_ ChallengeChoices, component string, pendingUser string, pendingUserAvatar string, configUrl string, ) *AuthenticatorTOTPChallenge`
+`func NewAuthenticatorTOTPChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, configUrl string, ) *AuthenticatorTOTPChallenge`
 
 NewAuthenticatorTOTPChallenge instantiates a new AuthenticatorTOTPChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -95,6 +95,11 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
+### HasComponent
+
+`func (o *AuthenticatorTOTPChallenge) HasComponent() bool`
+
+HasComponent returns a boolean if a field has been set.
 
 ### GetResponseErrors
 

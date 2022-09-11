@@ -17,16 +17,17 @@ import (
 
 // PromptChallengeResponseRequest Validate response, fields are dynamically created based on the stage
 type PromptChallengeResponseRequest struct {
-	Component string `json:"component"`
+	Component *string `json:"component,omitempty"`
 }
 
 // NewPromptChallengeResponseRequest instantiates a new PromptChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPromptChallengeResponseRequest(component string) *PromptChallengeResponseRequest {
+func NewPromptChallengeResponseRequest() *PromptChallengeResponseRequest {
 	this := PromptChallengeResponseRequest{}
-	this.Component = component
+	var component string = "ak-stage-prompt"
+	this.Component = &component
 	return &this
 }
 
@@ -36,37 +37,45 @@ func NewPromptChallengeResponseRequest(component string) *PromptChallengeRespons
 func NewPromptChallengeResponseRequestWithDefaults() *PromptChallengeResponseRequest {
 	this := PromptChallengeResponseRequest{}
 	var component string = "ak-stage-prompt"
-	this.Component = component
+	this.Component = &component
 	return &this
 }
 
-// GetComponent returns the Component field value
+// GetComponent returns the Component field value if set, zero value otherwise.
 func (o *PromptChallengeResponseRequest) GetComponent() string {
-	if o == nil {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Component
+	return *o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value
+// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PromptChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
-	return &o.Component, true
+	return o.Component, true
 }
 
-// SetComponent sets field value
+// HasComponent returns a boolean if a field has been set.
+func (o *PromptChallengeResponseRequest) HasComponent() bool {
+	if o != nil && o.Component != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetComponent gets a reference to the given string and assigns it to the Component field.
 func (o *PromptChallengeResponseRequest) SetComponent(v string) {
-	o.Component = v
+	o.Component = &v
 }
 
 func (o PromptChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
 	return json.Marshal(toSerialize)

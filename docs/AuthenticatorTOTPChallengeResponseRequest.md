@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | **string** |  | [default to "ak-stage-authenticator-totp"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-authenticator-totp"]
 **Code** | **int32** |  | 
 
 ## Methods
 
 ### NewAuthenticatorTOTPChallengeResponseRequest
 
-`func NewAuthenticatorTOTPChallengeResponseRequest(component string, code int32, ) *AuthenticatorTOTPChallengeResponseRequest`
+`func NewAuthenticatorTOTPChallengeResponseRequest(code int32, ) *AuthenticatorTOTPChallengeResponseRequest`
 
 NewAuthenticatorTOTPChallengeResponseRequest instantiates a new AuthenticatorTOTPChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
+### HasComponent
+
+`func (o *AuthenticatorTOTPChallengeResponseRequest) HasComponent() bool`
+
+HasComponent returns a boolean if a field has been set.
 
 ### GetCode
 

@@ -19,7 +19,7 @@ import (
 type AppleLoginChallenge struct {
 	Type           ChallengeChoices          `json:"type"`
 	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      string                    `json:"component"`
+	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
 	ClientId       string                    `json:"client_id"`
 	Scope          string                    `json:"scope"`
@@ -31,10 +31,11 @@ type AppleLoginChallenge struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAppleLoginChallenge(type_ ChallengeChoices, component string, clientId string, scope string, redirectUri string, state string) *AppleLoginChallenge {
+func NewAppleLoginChallenge(type_ ChallengeChoices, clientId string, scope string, redirectUri string, state string) *AppleLoginChallenge {
 	this := AppleLoginChallenge{}
 	this.Type = type_
-	this.Component = component
+	var component string = "ak-flow-sources-oauth-apple"
+	this.Component = &component
 	this.ClientId = clientId
 	this.Scope = scope
 	this.RedirectUri = redirectUri
@@ -48,7 +49,7 @@ func NewAppleLoginChallenge(type_ ChallengeChoices, component string, clientId s
 func NewAppleLoginChallengeWithDefaults() *AppleLoginChallenge {
 	this := AppleLoginChallenge{}
 	var component string = "ak-flow-sources-oauth-apple"
-	this.Component = component
+	this.Component = &component
 	return &this
 }
 
@@ -108,28 +109,36 @@ func (o *AppleLoginChallenge) SetFlowInfo(v ContextualFlowInfo) {
 	o.FlowInfo = &v
 }
 
-// GetComponent returns the Component field value
+// GetComponent returns the Component field value if set, zero value otherwise.
 func (o *AppleLoginChallenge) GetComponent() string {
-	if o == nil {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Component
+	return *o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value
+// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AppleLoginChallenge) GetComponentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
-	return &o.Component, true
+	return o.Component, true
 }
 
-// SetComponent sets field value
+// HasComponent returns a boolean if a field has been set.
+func (o *AppleLoginChallenge) HasComponent() bool {
+	if o != nil && o.Component != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetComponent gets a reference to the given string and assigns it to the Component field.
 func (o *AppleLoginChallenge) SetComponent(v string) {
-	o.Component = v
+	o.Component = &v
 }
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
@@ -268,7 +277,7 @@ func (o AppleLoginChallenge) MarshalJSON() ([]byte, error) {
 	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}
-	if true {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
 	if o.ResponseErrors != nil {

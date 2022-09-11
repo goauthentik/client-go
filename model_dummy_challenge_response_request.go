@@ -17,16 +17,17 @@ import (
 
 // DummyChallengeResponseRequest Dummy challenge response
 type DummyChallengeResponseRequest struct {
-	Component string `json:"component"`
+	Component *string `json:"component,omitempty"`
 }
 
 // NewDummyChallengeResponseRequest instantiates a new DummyChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDummyChallengeResponseRequest(component string) *DummyChallengeResponseRequest {
+func NewDummyChallengeResponseRequest() *DummyChallengeResponseRequest {
 	this := DummyChallengeResponseRequest{}
-	this.Component = component
+	var component string = "ak-stage-dummy"
+	this.Component = &component
 	return &this
 }
 
@@ -36,37 +37,45 @@ func NewDummyChallengeResponseRequest(component string) *DummyChallengeResponseR
 func NewDummyChallengeResponseRequestWithDefaults() *DummyChallengeResponseRequest {
 	this := DummyChallengeResponseRequest{}
 	var component string = "ak-stage-dummy"
-	this.Component = component
+	this.Component = &component
 	return &this
 }
 
-// GetComponent returns the Component field value
+// GetComponent returns the Component field value if set, zero value otherwise.
 func (o *DummyChallengeResponseRequest) GetComponent() string {
-	if o == nil {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Component
+	return *o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value
+// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DummyChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
-	return &o.Component, true
+	return o.Component, true
 }
 
-// SetComponent sets field value
+// HasComponent returns a boolean if a field has been set.
+func (o *DummyChallengeResponseRequest) HasComponent() bool {
+	if o != nil && o.Component != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetComponent gets a reference to the given string and assigns it to the Component field.
 func (o *DummyChallengeResponseRequest) SetComponent(v string) {
-	o.Component = v
+	o.Component = &v
 }
 
 func (o DummyChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
 	return json.Marshal(toSerialize)

@@ -17,7 +17,7 @@ import (
 
 // IdentificationChallengeResponseRequest Identification challenge
 type IdentificationChallengeResponseRequest struct {
-	Component string         `json:"component"`
+	Component *string        `json:"component,omitempty"`
 	UidField  string         `json:"uid_field"`
 	Password  NullableString `json:"password,omitempty"`
 }
@@ -26,9 +26,10 @@ type IdentificationChallengeResponseRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentificationChallengeResponseRequest(component string, uidField string) *IdentificationChallengeResponseRequest {
+func NewIdentificationChallengeResponseRequest(uidField string) *IdentificationChallengeResponseRequest {
 	this := IdentificationChallengeResponseRequest{}
-	this.Component = component
+	var component string = "ak-stage-identification"
+	this.Component = &component
 	this.UidField = uidField
 	return &this
 }
@@ -39,32 +40,40 @@ func NewIdentificationChallengeResponseRequest(component string, uidField string
 func NewIdentificationChallengeResponseRequestWithDefaults() *IdentificationChallengeResponseRequest {
 	this := IdentificationChallengeResponseRequest{}
 	var component string = "ak-stage-identification"
-	this.Component = component
+	this.Component = &component
 	return &this
 }
 
-// GetComponent returns the Component field value
+// GetComponent returns the Component field value if set, zero value otherwise.
 func (o *IdentificationChallengeResponseRequest) GetComponent() string {
-	if o == nil {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Component
+	return *o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value
+// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
-	return &o.Component, true
+	return o.Component, true
 }
 
-// SetComponent sets field value
+// HasComponent returns a boolean if a field has been set.
+func (o *IdentificationChallengeResponseRequest) HasComponent() bool {
+	if o != nil && o.Component != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetComponent gets a reference to the given string and assigns it to the Component field.
 func (o *IdentificationChallengeResponseRequest) SetComponent(v string) {
-	o.Component = v
+	o.Component = &v
 }
 
 // GetUidField returns the UidField field value
@@ -136,7 +145,7 @@ func (o *IdentificationChallengeResponseRequest) UnsetPassword() {
 
 func (o IdentificationChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
 	if true {

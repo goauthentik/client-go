@@ -17,7 +17,7 @@ import (
 
 // AuthenticatorWebAuthnChallengeResponseRequest WebAuthn Challenge response
 type AuthenticatorWebAuthnChallengeResponseRequest struct {
-	Component string                 `json:"component"`
+	Component *string                `json:"component,omitempty"`
 	Response  map[string]interface{} `json:"response"`
 }
 
@@ -25,9 +25,10 @@ type AuthenticatorWebAuthnChallengeResponseRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorWebAuthnChallengeResponseRequest(component string, response map[string]interface{}) *AuthenticatorWebAuthnChallengeResponseRequest {
+func NewAuthenticatorWebAuthnChallengeResponseRequest(response map[string]interface{}) *AuthenticatorWebAuthnChallengeResponseRequest {
 	this := AuthenticatorWebAuthnChallengeResponseRequest{}
-	this.Component = component
+	var component string = "ak-stage-authenticator-webauthn"
+	this.Component = &component
 	this.Response = response
 	return &this
 }
@@ -38,32 +39,40 @@ func NewAuthenticatorWebAuthnChallengeResponseRequest(component string, response
 func NewAuthenticatorWebAuthnChallengeResponseRequestWithDefaults() *AuthenticatorWebAuthnChallengeResponseRequest {
 	this := AuthenticatorWebAuthnChallengeResponseRequest{}
 	var component string = "ak-stage-authenticator-webauthn"
-	this.Component = component
+	this.Component = &component
 	return &this
 }
 
-// GetComponent returns the Component field value
+// GetComponent returns the Component field value if set, zero value otherwise.
 func (o *AuthenticatorWebAuthnChallengeResponseRequest) GetComponent() string {
-	if o == nil {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Component
+	return *o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value
+// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorWebAuthnChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
-	return &o.Component, true
+	return o.Component, true
 }
 
-// SetComponent sets field value
+// HasComponent returns a boolean if a field has been set.
+func (o *AuthenticatorWebAuthnChallengeResponseRequest) HasComponent() bool {
+	if o != nil && o.Component != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetComponent gets a reference to the given string and assigns it to the Component field.
 func (o *AuthenticatorWebAuthnChallengeResponseRequest) SetComponent(v string) {
-	o.Component = v
+	o.Component = &v
 }
 
 // GetResponse returns the Response field value
@@ -92,7 +101,7 @@ func (o *AuthenticatorWebAuthnChallengeResponseRequest) SetResponse(v map[string
 
 func (o AuthenticatorWebAuthnChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
 	if true {

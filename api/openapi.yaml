@@ -27325,7 +27325,6 @@ components:
         error_message:
           type: string
       required:
-      - component
       - pending_user
       - pending_user_avatar
       - type
@@ -27400,8 +27399,6 @@ components:
           default: ak-flow-sources-oauth-apple
           minLength: 1
           type: string
-      required:
-      - component
       type: object
     AppleLoginChallenge:
       description: "Special challenge for apple-native authentication flow, which\
@@ -27430,7 +27427,6 @@ components:
           type: string
       required:
       - client_id
-      - component
       - redirect_uri
       - scope
       - state
@@ -27797,7 +27793,6 @@ components:
       required:
       - activation_barcode
       - activation_code
-      - component
       - pending_user
       - pending_user_avatar
       - stage_uuid
@@ -27810,8 +27805,6 @@ components:
           default: ak-stage-authenticator-duo
           minLength: 1
           type: string
-      required:
-      - component
       type: object
     AuthenticatorDuoStage:
       description: AuthenticatorDuoStage Serializer
@@ -27987,7 +27980,6 @@ components:
           default: true
           type: boolean
       required:
-      - component
       - pending_user
       - pending_user_avatar
       - type
@@ -28004,8 +27996,6 @@ components:
         phone_number:
           minLength: 1
           type: string
-      required:
-      - component
       type: object
     AuthenticatorSMSStage:
       description: AuthenticatorSMSStage Serializer
@@ -28218,7 +28208,6 @@ components:
           type: array
       required:
       - codes
-      - component
       - pending_user
       - pending_user_avatar
       - type
@@ -28230,8 +28219,6 @@ components:
           default: ak-stage-authenticator-static
           minLength: 1
           type: string
-      required:
-      - component
       type: object
     AuthenticatorStaticStage:
       description: AuthenticatorStaticStage Serializer
@@ -28392,7 +28379,6 @@ components:
         config_url:
           type: string
       required:
-      - component
       - config_url
       - pending_user
       - pending_user_avatar
@@ -28409,7 +28395,6 @@ components:
           type: integer
       required:
       - code
-      - component
       type: object
     AuthenticatorTOTPStage:
       description: AuthenticatorTOTPStage Serializer
@@ -28747,7 +28732,6 @@ components:
             $ref: '#/components/schemas/SelectableStage'
           type: array
       required:
-      - component
       - configuration_stages
       - device_challenges
       - pending_user
@@ -28774,8 +28758,6 @@ components:
           type: object
         duo:
           type: integer
-      required:
-      - component
       type: object
     AuthenticatorWebAuthnChallenge:
       description: WebAuthn Challenge
@@ -28801,7 +28783,6 @@ components:
           additionalProperties: {}
           type: object
       required:
-      - component
       - pending_user
       - pending_user_avatar
       - registration
@@ -28818,7 +28799,6 @@ components:
           additionalProperties: {}
           type: object
       required:
-      - component
       - response
       type: object
     AutoSubmitChallengeResponseRequest:
@@ -28828,8 +28808,6 @@ components:
           default: ak-stage-autosubmit
           minLength: 1
           type: string
-      required:
-      - component
       type: object
     AutosubmitChallenge:
       description: Autosubmit challenge used to send and navigate a POST request
@@ -28857,7 +28835,6 @@ components:
           type: string
       required:
       - attrs
-      - component
       - type
       - url
       type: object
@@ -29029,7 +29006,6 @@ components:
         site_key:
           type: string
       required:
-      - component
       - pending_user
       - pending_user_avatar
       - site_key
@@ -29046,7 +29022,6 @@ components:
           minLength: 1
           type: string
       required:
-      - component
       - token
       type: object
     CaptchaStage:
@@ -29440,7 +29415,6 @@ components:
           type: string
       required:
       - additional_permissions
-      - component
       - pending_user
       - pending_user_avatar
       - permissions
@@ -29458,7 +29432,6 @@ components:
           minLength: 1
           type: string
       required:
-      - component
       - token
       type: object
     ConsentStage:
@@ -30012,7 +29985,6 @@ components:
             type: array
           type: object
       required:
-      - component
       - type
       type: object
     DummyChallengeResponseRequest:
@@ -30022,8 +29994,6 @@ components:
           default: ak-stage-dummy
           minLength: 1
           type: string
-      required:
-      - component
       type: object
     DummyPolicy:
       description: Dummy Policy Serializer
@@ -30287,7 +30257,6 @@ components:
             type: array
           type: object
       required:
-      - component
       - type
       type: object
     EmailChallengeResponseRequest:
@@ -30299,8 +30268,6 @@ components:
           default: ak-stage-email
           minLength: 1
           type: string
-      required:
-      - component
       type: object
     EmailStage:
       description: EmailStage Serializer
@@ -31207,7 +31174,6 @@ components:
         traceback:
           type: string
       required:
-      - component
       - pending_user
       - pending_user_avatar
       - request_id
@@ -31772,7 +31738,6 @@ components:
         show_source_labels:
           type: boolean
       required:
-      - component
       - password_fields
       - primary_action
       - show_source_labels
@@ -31793,7 +31758,6 @@ components:
           nullable: true
           type: string
       required:
-      - component
       - uid_field
       type: object
     IdentificationStage:
@@ -40176,7 +40140,6 @@ components:
         recovery_url:
           type: string
       required:
-      - component
       - pending_user
       - pending_user_avatar
       - type
@@ -40192,7 +40155,6 @@ components:
           minLength: 1
           type: string
       required:
-      - component
       - password
       type: object
     PasswordExpiryPolicy:
@@ -43337,7 +43299,6 @@ components:
           type: string
       required:
       - client_id
-      - component
       - slug
       - type
       type: object
@@ -43348,8 +43309,6 @@ components:
           default: ak-flow-sources-plex
           minLength: 1
           type: string
-      required:
-      - component
       type: object
     PlexSource:
       description: Plex Source Serializer
@@ -43959,7 +43918,6 @@ components:
             $ref: '#/components/schemas/StagePrompt'
           type: array
       required:
-      - component
       - fields
       - type
       type: object
@@ -43972,8 +43930,6 @@ components:
           default: ak-stage-prompt
           minLength: 1
           type: string
-      required:
-      - component
       type: object
     PromptRequest:
       description: Prompt Serializer
@@ -44746,7 +44702,6 @@ components:
         to:
           type: string
       required:
-      - component
       - to
       - type
       type: object
@@ -45945,7 +45900,6 @@ components:
           type: string
       required:
       - body
-      - component
       - type
       type: object
     SignatureAlgorithmEnum:

@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | **string** |  | [default to "ak-stage-email"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-email"]
 
 ## Methods
 
 ### NewEmailChallengeResponseRequest
 
-`func NewEmailChallengeResponseRequest(component string, ) *EmailChallengeResponseRequest`
+`func NewEmailChallengeResponseRequest() *EmailChallengeResponseRequest`
 
 NewEmailChallengeResponseRequest instantiates a new EmailChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -44,6 +44,11 @@ and a boolean to check if the value has been set.
 
 SetComponent sets Component field to given value.
 
+### HasComponent
+
+`func (o *EmailChallengeResponseRequest) HasComponent() bool`
+
+HasComponent returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
