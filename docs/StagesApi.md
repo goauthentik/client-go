@@ -13,7 +13,8 @@ Method | HTTP request | Description
 [**StagesAuthenticatorDuoCreate**](StagesApi.md#StagesAuthenticatorDuoCreate) | **Post** /stages/authenticator/duo/ | 
 [**StagesAuthenticatorDuoDestroy**](StagesApi.md#StagesAuthenticatorDuoDestroy) | **Delete** /stages/authenticator/duo/{stage_uuid}/ | 
 [**StagesAuthenticatorDuoEnrollmentStatusCreate**](StagesApi.md#StagesAuthenticatorDuoEnrollmentStatusCreate) | **Post** /stages/authenticator/duo/{stage_uuid}/enrollment_status/ | 
-[**StagesAuthenticatorDuoImportDevicesCreate**](StagesApi.md#StagesAuthenticatorDuoImportDevicesCreate) | **Post** /stages/authenticator/duo/{stage_uuid}/import_devices/ | 
+[**StagesAuthenticatorDuoImportDeviceManualCreate**](StagesApi.md#StagesAuthenticatorDuoImportDeviceManualCreate) | **Post** /stages/authenticator/duo/{stage_uuid}/import_device_manual/ | 
+[**StagesAuthenticatorDuoImportDevicesAutomaticCreate**](StagesApi.md#StagesAuthenticatorDuoImportDevicesAutomaticCreate) | **Post** /stages/authenticator/duo/{stage_uuid}/import_devices_automatic/ | 
 [**StagesAuthenticatorDuoList**](StagesApi.md#StagesAuthenticatorDuoList) | **Get** /stages/authenticator/duo/ | 
 [**StagesAuthenticatorDuoPartialUpdate**](StagesApi.md#StagesAuthenticatorDuoPartialUpdate) | **Patch** /stages/authenticator/duo/{stage_uuid}/ | 
 [**StagesAuthenticatorDuoRetrieve**](StagesApi.md#StagesAuthenticatorDuoRetrieve) | **Get** /stages/authenticator/duo/{stage_uuid}/ | 
@@ -771,9 +772,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## StagesAuthenticatorDuoImportDevicesCreate
+## StagesAuthenticatorDuoImportDeviceManualCreate
 
-> StagesAuthenticatorDuoImportDevicesCreate(ctx, stageUuid).DuoUserId(duoUserId).Username(username).Execute()
+> StagesAuthenticatorDuoImportDeviceManualCreate(ctx, stageUuid).AuthenticatorDuoStageManualDeviceImportRequest(authenticatorDuoStageManualDeviceImportRequest).Execute()
 
 
 
@@ -793,14 +794,13 @@ import (
 
 func main() {
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
-    duoUserId := "duoUserId_example" // string |  (optional)
-    username := "username_example" // string |  (optional)
+    authenticatorDuoStageManualDeviceImportRequest := *openapiclient.NewAuthenticatorDuoStageManualDeviceImportRequest("DuoUserId_example", "Username_example") // AuthenticatorDuoStageManualDeviceImportRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoImportDevicesCreate(context.Background(), stageUuid).DuoUserId(duoUserId).Username(username).Execute()
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoImportDeviceManualCreate(context.Background(), stageUuid).AuthenticatorDuoStageManualDeviceImportRequest(authenticatorDuoStageManualDeviceImportRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorDuoImportDevicesCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorDuoImportDeviceManualCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -816,18 +816,87 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiStagesAuthenticatorDuoImportDevicesCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiStagesAuthenticatorDuoImportDeviceManualCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **duoUserId** | **string** |  | 
- **username** | **string** |  | 
+ **authenticatorDuoStageManualDeviceImportRequest** | [**AuthenticatorDuoStageManualDeviceImportRequest**](AuthenticatorDuoStageManualDeviceImportRequest.md) |  | 
 
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorDuoImportDevicesAutomaticCreate
+
+> AuthenticatorDuoStageDeviceImportResponse StagesAuthenticatorDuoImportDevicesAutomaticCreate(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoImportDevicesAutomaticCreate(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorDuoImportDevicesAutomaticCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorDuoImportDevicesAutomaticCreate`: AuthenticatorDuoStageDeviceImportResponse
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorDuoImportDevicesAutomaticCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Duo Authenticator Setup Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorDuoImportDevicesAutomaticCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**AuthenticatorDuoStageDeviceImportResponse**](AuthenticatorDuoStageDeviceImportResponse.md)
 
 ### Authorization
 

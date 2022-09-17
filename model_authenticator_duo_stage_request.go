@@ -20,10 +20,12 @@ type AuthenticatorDuoStageRequest struct {
 	Name    string        `json:"name"`
 	FlowSet []FlowRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	ClientId      string         `json:"client_id"`
-	ClientSecret  string         `json:"client_secret"`
-	ApiHostname   string         `json:"api_hostname"`
+	ConfigureFlow       NullableString `json:"configure_flow,omitempty"`
+	ClientId            string         `json:"client_id"`
+	ClientSecret        string         `json:"client_secret"`
+	ApiHostname         string         `json:"api_hostname"`
+	AdminIntegrationKey *string        `json:"admin_integration_key,omitempty"`
+	AdminSecretKey      *string        `json:"admin_secret_key,omitempty"`
 }
 
 // NewAuthenticatorDuoStageRequest instantiates a new AuthenticatorDuoStageRequest object
@@ -218,6 +220,70 @@ func (o *AuthenticatorDuoStageRequest) SetApiHostname(v string) {
 	o.ApiHostname = v
 }
 
+// GetAdminIntegrationKey returns the AdminIntegrationKey field value if set, zero value otherwise.
+func (o *AuthenticatorDuoStageRequest) GetAdminIntegrationKey() string {
+	if o == nil || o.AdminIntegrationKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdminIntegrationKey
+}
+
+// GetAdminIntegrationKeyOk returns a tuple with the AdminIntegrationKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorDuoStageRequest) GetAdminIntegrationKeyOk() (*string, bool) {
+	if o == nil || o.AdminIntegrationKey == nil {
+		return nil, false
+	}
+	return o.AdminIntegrationKey, true
+}
+
+// HasAdminIntegrationKey returns a boolean if a field has been set.
+func (o *AuthenticatorDuoStageRequest) HasAdminIntegrationKey() bool {
+	if o != nil && o.AdminIntegrationKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdminIntegrationKey gets a reference to the given string and assigns it to the AdminIntegrationKey field.
+func (o *AuthenticatorDuoStageRequest) SetAdminIntegrationKey(v string) {
+	o.AdminIntegrationKey = &v
+}
+
+// GetAdminSecretKey returns the AdminSecretKey field value if set, zero value otherwise.
+func (o *AuthenticatorDuoStageRequest) GetAdminSecretKey() string {
+	if o == nil || o.AdminSecretKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.AdminSecretKey
+}
+
+// GetAdminSecretKeyOk returns a tuple with the AdminSecretKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorDuoStageRequest) GetAdminSecretKeyOk() (*string, bool) {
+	if o == nil || o.AdminSecretKey == nil {
+		return nil, false
+	}
+	return o.AdminSecretKey, true
+}
+
+// HasAdminSecretKey returns a boolean if a field has been set.
+func (o *AuthenticatorDuoStageRequest) HasAdminSecretKey() bool {
+	if o != nil && o.AdminSecretKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdminSecretKey gets a reference to the given string and assigns it to the AdminSecretKey field.
+func (o *AuthenticatorDuoStageRequest) SetAdminSecretKey(v string) {
+	o.AdminSecretKey = &v
+}
+
 func (o AuthenticatorDuoStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -237,6 +303,12 @@ func (o AuthenticatorDuoStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["api_hostname"] = o.ApiHostname
+	}
+	if o.AdminIntegrationKey != nil {
+		toSerialize["admin_integration_key"] = o.AdminIntegrationKey
+	}
+	if o.AdminSecretKey != nil {
+		toSerialize["admin_secret_key"] = o.AdminSecretKey
 	}
 	return json.Marshal(toSerialize)
 }

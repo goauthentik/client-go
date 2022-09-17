@@ -488,7 +488,8 @@ Class | Method | HTTP request | Description
 *StagesApi* | [**StagesAuthenticatorDuoCreate**](docs/StagesApi.md#stagesauthenticatorduocreate) | **Post** /stages/authenticator/duo/ | 
 *StagesApi* | [**StagesAuthenticatorDuoDestroy**](docs/StagesApi.md#stagesauthenticatorduodestroy) | **Delete** /stages/authenticator/duo/{stage_uuid}/ | 
 *StagesApi* | [**StagesAuthenticatorDuoEnrollmentStatusCreate**](docs/StagesApi.md#stagesauthenticatorduoenrollmentstatuscreate) | **Post** /stages/authenticator/duo/{stage_uuid}/enrollment_status/ | 
-*StagesApi* | [**StagesAuthenticatorDuoImportDevicesCreate**](docs/StagesApi.md#stagesauthenticatorduoimportdevicescreate) | **Post** /stages/authenticator/duo/{stage_uuid}/import_devices/ | 
+*StagesApi* | [**StagesAuthenticatorDuoImportDeviceManualCreate**](docs/StagesApi.md#stagesauthenticatorduoimportdevicemanualcreate) | **Post** /stages/authenticator/duo/{stage_uuid}/import_device_manual/ | 
+*StagesApi* | [**StagesAuthenticatorDuoImportDevicesAutomaticCreate**](docs/StagesApi.md#stagesauthenticatorduoimportdevicesautomaticcreate) | **Post** /stages/authenticator/duo/{stage_uuid}/import_devices_automatic/ | 
 *StagesApi* | [**StagesAuthenticatorDuoList**](docs/StagesApi.md#stagesauthenticatorduolist) | **Get** /stages/authenticator/duo/ | 
 *StagesApi* | [**StagesAuthenticatorDuoPartialUpdate**](docs/StagesApi.md#stagesauthenticatorduopartialupdate) | **Patch** /stages/authenticator/duo/{stage_uuid}/ | 
 *StagesApi* | [**StagesAuthenticatorDuoRetrieve**](docs/StagesApi.md#stagesauthenticatorduoretrieve) | **Get** /stages/authenticator/duo/{stage_uuid}/ | 
@@ -660,6 +661,8 @@ Class | Method | HTTP request | Description
  - [AuthenticatorDuoChallenge](docs/AuthenticatorDuoChallenge.md)
  - [AuthenticatorDuoChallengeResponseRequest](docs/AuthenticatorDuoChallengeResponseRequest.md)
  - [AuthenticatorDuoStage](docs/AuthenticatorDuoStage.md)
+ - [AuthenticatorDuoStageDeviceImportResponse](docs/AuthenticatorDuoStageDeviceImportResponse.md)
+ - [AuthenticatorDuoStageManualDeviceImportRequest](docs/AuthenticatorDuoStageManualDeviceImportRequest.md)
  - [AuthenticatorDuoStageRequest](docs/AuthenticatorDuoStageRequest.md)
  - [AuthenticatorSMSChallenge](docs/AuthenticatorSMSChallenge.md)
  - [AuthenticatorSMSChallengeResponseRequest](docs/AuthenticatorSMSChallengeResponseRequest.md)

@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **ClientId** | **string** |  | 
 **ClientSecret** | **string** |  | 
 **ApiHostname** | **string** |  | 
+**AdminIntegrationKey** | Pointer to **string** |  | [optional] 
+**AdminSecretKey** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -169,6 +171,56 @@ and a boolean to check if the value has been set.
 
 SetApiHostname sets ApiHostname field to given value.
 
+
+### GetAdminIntegrationKey
+
+`func (o *AuthenticatorDuoStageRequest) GetAdminIntegrationKey() string`
+
+GetAdminIntegrationKey returns the AdminIntegrationKey field if non-nil, zero value otherwise.
+
+### GetAdminIntegrationKeyOk
+
+`func (o *AuthenticatorDuoStageRequest) GetAdminIntegrationKeyOk() (*string, bool)`
+
+GetAdminIntegrationKeyOk returns a tuple with the AdminIntegrationKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdminIntegrationKey
+
+`func (o *AuthenticatorDuoStageRequest) SetAdminIntegrationKey(v string)`
+
+SetAdminIntegrationKey sets AdminIntegrationKey field to given value.
+
+### HasAdminIntegrationKey
+
+`func (o *AuthenticatorDuoStageRequest) HasAdminIntegrationKey() bool`
+
+HasAdminIntegrationKey returns a boolean if a field has been set.
+
+### GetAdminSecretKey
+
+`func (o *AuthenticatorDuoStageRequest) GetAdminSecretKey() string`
+
+GetAdminSecretKey returns the AdminSecretKey field if non-nil, zero value otherwise.
+
+### GetAdminSecretKeyOk
+
+`func (o *AuthenticatorDuoStageRequest) GetAdminSecretKeyOk() (*string, bool)`
+
+GetAdminSecretKeyOk returns a tuple with the AdminSecretKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdminSecretKey
+
+`func (o *AuthenticatorDuoStageRequest) SetAdminSecretKey(v string)`
+
+SetAdminSecretKey sets AdminSecretKey field to given value.
+
+### HasAdminSecretKey
+
+`func (o *AuthenticatorDuoStageRequest) HasAdminSecretKey() bool`
+
+HasAdminSecretKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

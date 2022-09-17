@@ -20836,18 +20836,11 @@ paths:
       - authentik: []
       tags:
       - stages
-  /stages/authenticator/duo/{stage_uuid}/import_devices/:
+  /stages/authenticator/duo/{stage_uuid}/import_device_manual/:
     post:
       description: Import duo devices into authentik
-      operationId: stages_authenticator_duo_import_devices_create
+      operationId: stages_authenticator_duo_import_device_manual_create
       parameters:
-      - explode: true
-        in: query
-        name: duo_user_id
-        required: false
-        schema:
-          type: string
-        style: form
       - description: A UUID string identifying this Duo Authenticator Setup Stage.
         explode: false
         in: path
@@ -20857,18 +20850,50 @@ paths:
           format: uuid
           type: string
         style: simple
-      - explode: true
-        in: query
-        name: username
-        required: false
-        schema:
-          type: string
-        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticatorDuoStageManualDeviceImportRequest'
+        required: true
       responses:
         "204":
           description: Enrollment successful
         "400":
-          description: Device exists already
+          description: Bad request
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/authenticator/duo/{stage_uuid}/import_devices_automatic/:
+    post:
+      description: Import duo devices into authentik
+      operationId: stages_authenticator_duo_import_devices_automatic_create
+      parameters:
+      - description: A UUID string identifying this Duo Authenticator Setup Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorDuoStageDeviceImportResponse'
+          description: ""
+        "400":
+          description: Bad request
         "403":
           content:
             application/json:
@@ -27817,6 +27842,7 @@ components:
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         api_hostname: api_hostname
+        admin_integration_key: admin_integration_key
         flow_set:
         - compatibility_mode: true
           denied_action: ""
@@ -27891,6 +27917,8 @@ components:
           type: string
         api_hostname:
           type: string
+        admin_integration_key:
+          type: string
       required:
       - api_hostname
       - client_id
@@ -27901,6 +27929,36 @@ components:
       - verbose_name
       - verbose_name_plural
       type: object
+    AuthenticatorDuoStageDeviceImportResponse:
+      example:
+        count: 0
+        error: error
+      properties:
+        count:
+          readOnly: true
+          type: integer
+        error:
+          readOnly: true
+          type: string
+      required:
+      - count
+      - error
+      type: object
+    AuthenticatorDuoStageManualDeviceImportRequest:
+      example:
+        duo_user_id: duo_user_id
+        username: username
+      properties:
+        duo_user_id:
+          minLength: 1
+          type: string
+        username:
+          minLength: 1
+          type: string
+      required:
+      - duo_user_id
+      - username
+      type: object
     AuthenticatorDuoStageRequest:
       description: AuthenticatorDuoStage Serializer
       example:
@@ -27908,6 +27966,8 @@ components:
         name: name
         client_secret: client_secret
         api_hostname: api_hostname
+        admin_integration_key: admin_integration_key
+        admin_secret_key: admin_secret_key
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -27950,6 +28010,11 @@ components:
         api_hostname:
           minLength: 1
           type: string
+        admin_integration_key:
+          type: string
+        admin_secret_key:
+          type: string
+          writeOnly: true
       required:
       - api_hostname
       - client_id
@@ -34294,6 +34359,7 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           api_hostname: api_hostname
+          admin_integration_key: admin_integration_key
           flow_set:
           - compatibility_mode: true
             denied_action: ""
@@ -34342,6 +34408,7 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           api_hostname: api_hostname
+          admin_integration_key: admin_integration_key
           flow_set:
           - compatibility_mode: true
             denied_action: ""
@@ -40630,6 +40697,8 @@ components:
         name: name
         client_secret: client_secret
         api_hostname: api_hostname
+        admin_integration_key: admin_integration_key
+        admin_secret_key: admin_secret_key
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -40672,6 +40741,11 @@ components:
         api_hostname:
           minLength: 1
           type: string
+        admin_integration_key:
+          type: string
+        admin_secret_key:
+          type: string
+          writeOnly: true
       type: object
     PatchedAuthenticatorSMSStageRequest:
       description: AuthenticatorSMSStage Serializer

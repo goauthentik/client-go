@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
 **ClientId** | **string** |  | 
 **ApiHostname** | **string** |  | 
+**AdminIntegrationKey** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -253,6 +254,31 @@ and a boolean to check if the value has been set.
 
 SetApiHostname sets ApiHostname field to given value.
 
+
+### GetAdminIntegrationKey
+
+`func (o *AuthenticatorDuoStage) GetAdminIntegrationKey() string`
+
+GetAdminIntegrationKey returns the AdminIntegrationKey field if non-nil, zero value otherwise.
+
+### GetAdminIntegrationKeyOk
+
+`func (o *AuthenticatorDuoStage) GetAdminIntegrationKeyOk() (*string, bool)`
+
+GetAdminIntegrationKeyOk returns a tuple with the AdminIntegrationKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdminIntegrationKey
+
+`func (o *AuthenticatorDuoStage) SetAdminIntegrationKey(v string)`
+
+SetAdminIntegrationKey sets AdminIntegrationKey field to given value.
+
+### HasAdminIntegrationKey
+
+`func (o *AuthenticatorDuoStage) HasAdminIntegrationKey() bool`
+
+HasAdminIntegrationKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
