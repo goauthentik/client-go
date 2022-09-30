@@ -5419,6 +5419,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: include_details
+        required: false
+        schema:
+          default: true
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: managed
         required: false
         schema:
@@ -29271,16 +29279,20 @@ components:
         name:
           type: string
         fingerprint_sha256:
+          nullable: true
           readOnly: true
           type: string
         fingerprint_sha1:
+          nullable: true
           readOnly: true
           type: string
         cert_expiry:
           format: date-time
+          nullable: true
           readOnly: true
           type: string
         cert_subject:
+          nullable: true
           readOnly: true
           type: string
         private_key_available:

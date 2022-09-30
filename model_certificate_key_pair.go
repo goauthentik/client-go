@@ -20,10 +20,10 @@ import (
 type CertificateKeyPair struct {
 	Pk                     string         `json:"pk"`
 	Name                   string         `json:"name"`
-	FingerprintSha256      string         `json:"fingerprint_sha256"`
-	FingerprintSha1        string         `json:"fingerprint_sha1"`
-	CertExpiry             time.Time      `json:"cert_expiry"`
-	CertSubject            string         `json:"cert_subject"`
+	FingerprintSha256      NullableString `json:"fingerprint_sha256"`
+	FingerprintSha1        NullableString `json:"fingerprint_sha1"`
+	CertExpiry             NullableTime   `json:"cert_expiry"`
+	CertSubject            NullableString `json:"cert_subject"`
 	PrivateKeyAvailable    bool           `json:"private_key_available"`
 	PrivateKeyType         NullableString `json:"private_key_type"`
 	CertificateDownloadUrl string         `json:"certificate_download_url"`
@@ -36,7 +36,7 @@ type CertificateKeyPair struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificateKeyPair(pk string, name string, fingerprintSha256 string, fingerprintSha1 string, certExpiry time.Time, certSubject string, privateKeyAvailable bool, privateKeyType NullableString, certificateDownloadUrl string, privateKeyDownloadUrl string) *CertificateKeyPair {
+func NewCertificateKeyPair(pk string, name string, fingerprintSha256 NullableString, fingerprintSha1 NullableString, certExpiry NullableTime, certSubject NullableString, privateKeyAvailable bool, privateKeyType NullableString, certificateDownloadUrl string, privateKeyDownloadUrl string) *CertificateKeyPair {
 	this := CertificateKeyPair{}
 	this.Pk = pk
 	this.Name = name
@@ -108,99 +108,107 @@ func (o *CertificateKeyPair) SetName(v string) {
 }
 
 // GetFingerprintSha256 returns the FingerprintSha256 field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CertificateKeyPair) GetFingerprintSha256() string {
-	if o == nil {
+	if o == nil || o.FingerprintSha256.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.FingerprintSha256
+	return *o.FingerprintSha256.Get()
 }
 
 // GetFingerprintSha256Ok returns a tuple with the FingerprintSha256 field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CertificateKeyPair) GetFingerprintSha256Ok() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.FingerprintSha256, true
+	return o.FingerprintSha256.Get(), o.FingerprintSha256.IsSet()
 }
 
 // SetFingerprintSha256 sets field value
 func (o *CertificateKeyPair) SetFingerprintSha256(v string) {
-	o.FingerprintSha256 = v
+	o.FingerprintSha256.Set(&v)
 }
 
 // GetFingerprintSha1 returns the FingerprintSha1 field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CertificateKeyPair) GetFingerprintSha1() string {
-	if o == nil {
+	if o == nil || o.FingerprintSha1.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.FingerprintSha1
+	return *o.FingerprintSha1.Get()
 }
 
 // GetFingerprintSha1Ok returns a tuple with the FingerprintSha1 field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CertificateKeyPair) GetFingerprintSha1Ok() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.FingerprintSha1, true
+	return o.FingerprintSha1.Get(), o.FingerprintSha1.IsSet()
 }
 
 // SetFingerprintSha1 sets field value
 func (o *CertificateKeyPair) SetFingerprintSha1(v string) {
-	o.FingerprintSha1 = v
+	o.FingerprintSha1.Set(&v)
 }
 
 // GetCertExpiry returns the CertExpiry field value
+// If the value is explicit nil, the zero value for time.Time will be returned
 func (o *CertificateKeyPair) GetCertExpiry() time.Time {
-	if o == nil {
+	if o == nil || o.CertExpiry.Get() == nil {
 		var ret time.Time
 		return ret
 	}
 
-	return o.CertExpiry
+	return *o.CertExpiry.Get()
 }
 
 // GetCertExpiryOk returns a tuple with the CertExpiry field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CertificateKeyPair) GetCertExpiryOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CertExpiry, true
+	return o.CertExpiry.Get(), o.CertExpiry.IsSet()
 }
 
 // SetCertExpiry sets field value
 func (o *CertificateKeyPair) SetCertExpiry(v time.Time) {
-	o.CertExpiry = v
+	o.CertExpiry.Set(&v)
 }
 
 // GetCertSubject returns the CertSubject field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CertificateKeyPair) GetCertSubject() string {
-	if o == nil {
+	if o == nil || o.CertSubject.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.CertSubject
+	return *o.CertSubject.Get()
 }
 
 // GetCertSubjectOk returns a tuple with the CertSubject field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CertificateKeyPair) GetCertSubjectOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CertSubject, true
+	return o.CertSubject.Get(), o.CertSubject.IsSet()
 }
 
 // SetCertSubject sets field value
 func (o *CertificateKeyPair) SetCertSubject(v string) {
-	o.CertSubject = v
+	o.CertSubject.Set(&v)
 }
 
 // GetPrivateKeyAvailable returns the PrivateKeyAvailable field value
@@ -353,16 +361,16 @@ func (o CertificateKeyPair) MarshalJSON() ([]byte, error) {
 		toSerialize["name"] = o.Name
 	}
 	if true {
-		toSerialize["fingerprint_sha256"] = o.FingerprintSha256
+		toSerialize["fingerprint_sha256"] = o.FingerprintSha256.Get()
 	}
 	if true {
-		toSerialize["fingerprint_sha1"] = o.FingerprintSha1
+		toSerialize["fingerprint_sha1"] = o.FingerprintSha1.Get()
 	}
 	if true {
-		toSerialize["cert_expiry"] = o.CertExpiry
+		toSerialize["cert_expiry"] = o.CertExpiry.Get()
 	}
 	if true {
-		toSerialize["cert_subject"] = o.CertSubject
+		toSerialize["cert_subject"] = o.CertSubject.Get()
 	}
 	if true {
 		toSerialize["private_key_available"] = o.PrivateKeyAvailable

@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
 **Name** | **string** |  | 
-**FingerprintSha256** | **string** |  | [readonly] 
-**FingerprintSha1** | **string** |  | [readonly] 
-**CertExpiry** | **time.Time** |  | [readonly] 
-**CertSubject** | **string** |  | [readonly] 
+**FingerprintSha256** | **NullableString** |  | [readonly] 
+**FingerprintSha1** | **NullableString** |  | [readonly] 
+**CertExpiry** | **NullableTime** |  | [readonly] 
+**CertSubject** | **NullableString** |  | [readonly] 
 **PrivateKeyAvailable** | **bool** |  | [readonly] 
 **PrivateKeyType** | **NullableString** |  | [readonly] 
 **CertificateDownloadUrl** | **string** |  | [readonly] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewCertificateKeyPair
 
-`func NewCertificateKeyPair(pk string, name string, fingerprintSha256 string, fingerprintSha1 string, certExpiry time.Time, certSubject string, privateKeyAvailable bool, privateKeyType NullableString, certificateDownloadUrl string, privateKeyDownloadUrl string, ) *CertificateKeyPair`
+`func NewCertificateKeyPair(pk string, name string, fingerprintSha256 NullableString, fingerprintSha1 NullableString, certExpiry NullableTime, certSubject NullableString, privateKeyAvailable bool, privateKeyType NullableString, certificateDownloadUrl string, privateKeyDownloadUrl string, ) *CertificateKeyPair`
 
 NewCertificateKeyPair instantiates a new CertificateKeyPair object
 This constructor will assign default values to properties that have it defined,
@@ -95,6 +95,16 @@ and a boolean to check if the value has been set.
 SetFingerprintSha256 sets FingerprintSha256 field to given value.
 
 
+### SetFingerprintSha256Nil
+
+`func (o *CertificateKeyPair) SetFingerprintSha256Nil(b bool)`
+
+ SetFingerprintSha256Nil sets the value for FingerprintSha256 to be an explicit nil
+
+### UnsetFingerprintSha256
+`func (o *CertificateKeyPair) UnsetFingerprintSha256()`
+
+UnsetFingerprintSha256 ensures that no value is present for FingerprintSha256, not even an explicit nil
 ### GetFingerprintSha1
 
 `func (o *CertificateKeyPair) GetFingerprintSha1() string`
@@ -115,6 +125,16 @@ and a boolean to check if the value has been set.
 SetFingerprintSha1 sets FingerprintSha1 field to given value.
 
 
+### SetFingerprintSha1Nil
+
+`func (o *CertificateKeyPair) SetFingerprintSha1Nil(b bool)`
+
+ SetFingerprintSha1Nil sets the value for FingerprintSha1 to be an explicit nil
+
+### UnsetFingerprintSha1
+`func (o *CertificateKeyPair) UnsetFingerprintSha1()`
+
+UnsetFingerprintSha1 ensures that no value is present for FingerprintSha1, not even an explicit nil
 ### GetCertExpiry
 
 `func (o *CertificateKeyPair) GetCertExpiry() time.Time`
@@ -135,6 +155,16 @@ and a boolean to check if the value has been set.
 SetCertExpiry sets CertExpiry field to given value.
 
 
+### SetCertExpiryNil
+
+`func (o *CertificateKeyPair) SetCertExpiryNil(b bool)`
+
+ SetCertExpiryNil sets the value for CertExpiry to be an explicit nil
+
+### UnsetCertExpiry
+`func (o *CertificateKeyPair) UnsetCertExpiry()`
+
+UnsetCertExpiry ensures that no value is present for CertExpiry, not even an explicit nil
 ### GetCertSubject
 
 `func (o *CertificateKeyPair) GetCertSubject() string`
@@ -155,6 +185,16 @@ and a boolean to check if the value has been set.
 SetCertSubject sets CertSubject field to given value.
 
 
+### SetCertSubjectNil
+
+`func (o *CertificateKeyPair) SetCertSubjectNil(b bool)`
+
+ SetCertSubjectNil sets the value for CertSubject to be an explicit nil
+
+### UnsetCertSubject
+`func (o *CertificateKeyPair) UnsetCertSubject()`
+
+UnsetCertSubject ensures that no value is present for CertSubject, not even an explicit nil
 ### GetPrivateKeyAvailable
 
 `func (o *CertificateKeyPair) GetPrivateKeyAvailable() bool`

@@ -425,20 +425,26 @@ func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreateExecute(r ApiC
 }
 
 type ApiCryptoCertificatekeypairsListRequest struct {
-	ctx        context.Context
-	ApiService *CryptoApiService
-	hasKey     *bool
-	managed    *string
-	name       *string
-	ordering   *string
-	page       *int32
-	pageSize   *int32
-	search     *string
+	ctx            context.Context
+	ApiService     *CryptoApiService
+	hasKey         *bool
+	includeDetails *bool
+	managed        *string
+	name           *string
+	ordering       *string
+	page           *int32
+	pageSize       *int32
+	search         *string
 }
 
 // Only return certificate-key pairs with keys
 func (r ApiCryptoCertificatekeypairsListRequest) HasKey(hasKey bool) ApiCryptoCertificatekeypairsListRequest {
 	r.hasKey = &hasKey
+	return r
+}
+
+func (r ApiCryptoCertificatekeypairsListRequest) IncludeDetails(includeDetails bool) ApiCryptoCertificatekeypairsListRequest {
+	r.includeDetails = &includeDetails
 	return r
 }
 
@@ -518,6 +524,9 @@ func (a *CryptoApiService) CryptoCertificatekeypairsListExecute(r ApiCryptoCerti
 
 	if r.hasKey != nil {
 		localVarQueryParams.Add("has_key", parameterToString(*r.hasKey, ""))
+	}
+	if r.includeDetails != nil {
+		localVarQueryParams.Add("include_details", parameterToString(*r.includeDetails, ""))
 	}
 	if r.managed != nil {
 		localVarQueryParams.Add("managed", parameterToString(*r.managed, ""))

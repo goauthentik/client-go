@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ## CryptoCertificatekeypairsList
 
-> PaginatedCertificateKeyPairList CryptoCertificatekeypairsList(ctx).HasKey(hasKey).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedCertificateKeyPairList CryptoCertificatekeypairsList(ctx).HasKey(hasKey).IncludeDetails(includeDetails).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -239,6 +239,7 @@ import (
 
 func main() {
     hasKey := true // bool | Only return certificate-key pairs with keys (optional)
+    includeDetails := true // bool |  (optional) (default to true)
     managed := "managed_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
@@ -248,7 +249,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsList(context.Background()).HasKey(hasKey).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsList(context.Background()).HasKey(hasKey).IncludeDetails(includeDetails).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -270,6 +271,7 @@ Other parameters are passed through a pointer to a apiCryptoCertificatekeypairsL
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **hasKey** | **bool** | Only return certificate-key pairs with keys | 
+ **includeDetails** | **bool** |  | [default to true]
  **managed** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
