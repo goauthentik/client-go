@@ -32,6 +32,7 @@ const (
 	PROVIDERTYPEENUM_REDDIT        ProviderTypeEnum = "reddit"
 	PROVIDERTYPEENUM_TWITTER       ProviderTypeEnum = "twitter"
 	PROVIDERTYPEENUM_MAILCOW       ProviderTypeEnum = "mailcow"
+	PROVIDERTYPEENUM_TWITCH        ProviderTypeEnum = "twitch"
 )
 
 // All allowed values of ProviderTypeEnum enum
@@ -47,6 +48,7 @@ var AllowedProviderTypeEnumEnumValues = []ProviderTypeEnum{
 	"reddit",
 	"twitter",
 	"mailcow",
+	"twitch",
 }
 
 func (v *ProviderTypeEnum) UnmarshalJSON(src []byte) error {

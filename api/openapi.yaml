@@ -44425,6 +44425,7 @@ components:
       - reddit
       - twitter
       - mailcow
+      - twitch
       type: string
     ProxyMode:
       enum:
