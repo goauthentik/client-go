@@ -34,7 +34,7 @@ type AppleLoginChallenge struct {
 func NewAppleLoginChallenge(type_ ChallengeChoices, clientId string, scope string, redirectUri string, state string) *AppleLoginChallenge {
 	this := AppleLoginChallenge{}
 	this.Type = type_
-	var component string = "ak-flow-sources-oauth-apple"
+	var component string = "ak-source-oauth-apple"
 	this.Component = &component
 	this.ClientId = clientId
 	this.Scope = scope
@@ -48,7 +48,7 @@ func NewAppleLoginChallenge(type_ ChallengeChoices, clientId string, scope strin
 // but it doesn't guarantee that properties required by API are set
 func NewAppleLoginChallengeWithDefaults() *AppleLoginChallenge {
 	this := AppleLoginChallenge{}
-	var component string = "ak-flow-sources-oauth-apple"
+	var component string = "ak-source-oauth-apple"
 	this.Component = &component
 	return &this
 }

@@ -201,6 +201,10 @@ docs/NotificationWebhookMappingRequest.md
 docs/OAuth2Provider.md
 docs/OAuth2ProviderRequest.md
 docs/OAuth2ProviderSetupURLs.md
+docs/OAuthDeviceCodeChallenge.md
+docs/OAuthDeviceCodeChallengeResponseRequest.md
+docs/OAuthDeviceCodeFinishChallenge.md
+docs/OAuthDeviceCodeFinishChallengeResponseRequest.md
 docs/OAuthSource.md
 docs/OAuthSourceRequest.md
 docs/OAuthSourceType.md
@@ -666,6 +670,10 @@ model_notification_webhook_mapping_request.go
 model_o_auth2_provider.go
 model_o_auth2_provider_request.go
 model_o_auth2_provider_setup_urls.go
+model_o_auth_device_code_challenge.go
+model_o_auth_device_code_challenge_response_request.go
+model_o_auth_device_code_finish_challenge.go
+model_o_auth_device_code_finish_challenge_response_request.go
 model_o_auth_source.go
 model_o_auth_source_request.go
 model_o_auth_source_type.go

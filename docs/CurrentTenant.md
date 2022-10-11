@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **FlowRecovery** | Pointer to **string** |  | [optional] 
 **FlowUnenrollment** | Pointer to **string** |  | [optional] 
 **FlowUserSettings** | Pointer to **string** |  | [optional] 
+**FlowDeviceCode** | Pointer to **string** |  | [optional] 
 **DefaultLocale** | **string** |  | [readonly] 
 
 ## Methods
@@ -259,6 +260,31 @@ SetFlowUserSettings sets FlowUserSettings field to given value.
 `func (o *CurrentTenant) HasFlowUserSettings() bool`
 
 HasFlowUserSettings returns a boolean if a field has been set.
+
+### GetFlowDeviceCode
+
+`func (o *CurrentTenant) GetFlowDeviceCode() string`
+
+GetFlowDeviceCode returns the FlowDeviceCode field if non-nil, zero value otherwise.
+
+### GetFlowDeviceCodeOk
+
+`func (o *CurrentTenant) GetFlowDeviceCodeOk() (*string, bool)`
+
+GetFlowDeviceCodeOk returns a tuple with the FlowDeviceCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowDeviceCode
+
+`func (o *CurrentTenant) SetFlowDeviceCode(v string)`
+
+SetFlowDeviceCode sets FlowDeviceCode field to given value.
+
+### HasFlowDeviceCode
+
+`func (o *CurrentTenant) HasFlowDeviceCode() bool`
+
+HasFlowDeviceCode returns a boolean if a field has been set.
 
 ### GetDefaultLocale
 

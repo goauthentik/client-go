@@ -3718,6 +3718,7 @@ type ApiCoreTenantsListRequest struct {
 	domain             *string
 	eventRetention     *string
 	flowAuthentication *string
+	flowDeviceCode     *string
 	flowInvalidation   *string
 	flowRecovery       *string
 	flowUnenrollment   *string
@@ -3762,6 +3763,11 @@ func (r ApiCoreTenantsListRequest) EventRetention(eventRetention string) ApiCore
 
 func (r ApiCoreTenantsListRequest) FlowAuthentication(flowAuthentication string) ApiCoreTenantsListRequest {
 	r.flowAuthentication = &flowAuthentication
+	return r
+}
+
+func (r ApiCoreTenantsListRequest) FlowDeviceCode(flowDeviceCode string) ApiCoreTenantsListRequest {
+	r.flowDeviceCode = &flowDeviceCode
 	return r
 }
 
@@ -3879,6 +3885,9 @@ func (a *CoreApiService) CoreTenantsListExecute(r ApiCoreTenantsListRequest) (*P
 	}
 	if r.flowAuthentication != nil {
 		localVarQueryParams.Add("flow_authentication", parameterToString(*r.flowAuthentication, ""))
+	}
+	if r.flowDeviceCode != nil {
+		localVarQueryParams.Add("flow_device_code", parameterToString(*r.flowDeviceCode, ""))
 	}
 	if r.flowInvalidation != nil {
 		localVarQueryParams.Add("flow_invalidation", parameterToString(*r.flowInvalidation, ""))

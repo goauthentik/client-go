@@ -31,6 +31,8 @@ type FlowChallengeResponseRequest struct {
 	DummyChallengeResponseRequest                   *DummyChallengeResponseRequest
 	EmailChallengeResponseRequest                   *EmailChallengeResponseRequest
 	IdentificationChallengeResponseRequest          *IdentificationChallengeResponseRequest
+	OAuthDeviceCodeChallengeResponseRequest         *OAuthDeviceCodeChallengeResponseRequest
+	OAuthDeviceCodeFinishChallengeResponseRequest   *OAuthDeviceCodeFinishChallengeResponseRequest
 	PasswordChallengeResponseRequest                *PasswordChallengeResponseRequest
 	PlexAuthenticationChallengeResponseRequest      *PlexAuthenticationChallengeResponseRequest
 	PromptChallengeResponseRequest                  *PromptChallengeResponseRequest
@@ -124,6 +126,20 @@ func EmailChallengeResponseRequestAsFlowChallengeResponseRequest(v *EmailChallen
 func IdentificationChallengeResponseRequestAsFlowChallengeResponseRequest(v *IdentificationChallengeResponseRequest) FlowChallengeResponseRequest {
 	return FlowChallengeResponseRequest{
 		IdentificationChallengeResponseRequest: v,
+	}
+}
+
+// OAuthDeviceCodeChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns OAuthDeviceCodeChallengeResponseRequest wrapped in FlowChallengeResponseRequest
+func OAuthDeviceCodeChallengeResponseRequestAsFlowChallengeResponseRequest(v *OAuthDeviceCodeChallengeResponseRequest) FlowChallengeResponseRequest {
+	return FlowChallengeResponseRequest{
+		OAuthDeviceCodeChallengeResponseRequest: v,
+	}
+}
+
+// OAuthDeviceCodeFinishChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns OAuthDeviceCodeFinishChallengeResponseRequest wrapped in FlowChallengeResponseRequest
+func OAuthDeviceCodeFinishChallengeResponseRequestAsFlowChallengeResponseRequest(v *OAuthDeviceCodeFinishChallengeResponseRequest) FlowChallengeResponseRequest {
+	return FlowChallengeResponseRequest{
+		OAuthDeviceCodeFinishChallengeResponseRequest: v,
 	}
 }
 
@@ -314,6 +330,30 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'OAuthDeviceCodeChallengeResponseRequest'
+	if jsonDict["component"] == "OAuthDeviceCodeChallengeResponseRequest" {
+		// try to unmarshal JSON data into OAuthDeviceCodeChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.OAuthDeviceCodeChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.OAuthDeviceCodeChallengeResponseRequest, return on the first match
+		} else {
+			dst.OAuthDeviceCodeChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as OAuthDeviceCodeChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'OAuthDeviceCodeFinishChallengeResponseRequest'
+	if jsonDict["component"] == "OAuthDeviceCodeFinishChallengeResponseRequest" {
+		// try to unmarshal JSON data into OAuthDeviceCodeFinishChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.OAuthDeviceCodeFinishChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.OAuthDeviceCodeFinishChallengeResponseRequest, return on the first match
+		} else {
+			dst.OAuthDeviceCodeFinishChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as OAuthDeviceCodeFinishChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'PasswordChallengeResponseRequest'
 	if jsonDict["component"] == "PasswordChallengeResponseRequest" {
 		// try to unmarshal JSON data into PasswordChallengeResponseRequest
@@ -350,8 +390,32 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
-	// check if the discriminator value is 'ak-flow-sources-oauth-apple'
-	if jsonDict["component"] == "ak-flow-sources-oauth-apple" {
+	// check if the discriminator value is 'ak-provider-oauth2-device-code'
+	if jsonDict["component"] == "ak-provider-oauth2-device-code" {
+		// try to unmarshal JSON data into OAuthDeviceCodeChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.OAuthDeviceCodeChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.OAuthDeviceCodeChallengeResponseRequest, return on the first match
+		} else {
+			dst.OAuthDeviceCodeChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as OAuthDeviceCodeChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-provider-oauth2-device-code-finish'
+	if jsonDict["component"] == "ak-provider-oauth2-device-code-finish" {
+		// try to unmarshal JSON data into OAuthDeviceCodeFinishChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.OAuthDeviceCodeFinishChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.OAuthDeviceCodeFinishChallengeResponseRequest, return on the first match
+		} else {
+			dst.OAuthDeviceCodeFinishChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as OAuthDeviceCodeFinishChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-source-oauth-apple'
+	if jsonDict["component"] == "ak-source-oauth-apple" {
 		// try to unmarshal JSON data into AppleChallengeResponseRequest
 		err = json.Unmarshal(data, &dst.AppleChallengeResponseRequest)
 		if err == nil {
@@ -362,8 +426,8 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
-	// check if the discriminator value is 'ak-flow-sources-plex'
-	if jsonDict["component"] == "ak-flow-sources-plex" {
+	// check if the discriminator value is 'ak-source-plex'
+	if jsonDict["component"] == "ak-source-plex" {
 		// try to unmarshal JSON data into PlexAuthenticationChallengeResponseRequest
 		err = json.Unmarshal(data, &dst.PlexAuthenticationChallengeResponseRequest)
 		if err == nil {
@@ -599,6 +663,14 @@ func (src FlowChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.IdentificationChallengeResponseRequest)
 	}
 
+	if src.OAuthDeviceCodeChallengeResponseRequest != nil {
+		return json.Marshal(&src.OAuthDeviceCodeChallengeResponseRequest)
+	}
+
+	if src.OAuthDeviceCodeFinishChallengeResponseRequest != nil {
+		return json.Marshal(&src.OAuthDeviceCodeFinishChallengeResponseRequest)
+	}
+
 	if src.PasswordChallengeResponseRequest != nil {
 		return json.Marshal(&src.PasswordChallengeResponseRequest)
 	}
@@ -669,6 +741,14 @@ func (obj *FlowChallengeResponseRequest) GetActualInstance() interface{} {
 
 	if obj.IdentificationChallengeResponseRequest != nil {
 		return obj.IdentificationChallengeResponseRequest
+	}
+
+	if obj.OAuthDeviceCodeChallengeResponseRequest != nil {
+		return obj.OAuthDeviceCodeChallengeResponseRequest
+	}
+
+	if obj.OAuthDeviceCodeFinishChallengeResponseRequest != nil {
+		return obj.OAuthDeviceCodeFinishChallengeResponseRequest
 	}
 
 	if obj.PasswordChallengeResponseRequest != nil {

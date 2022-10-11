@@ -28,6 +28,7 @@ type TenantRequest struct {
 	FlowRecovery       NullableString `json:"flow_recovery,omitempty"`
 	FlowUnenrollment   NullableString `json:"flow_unenrollment,omitempty"`
 	FlowUserSettings   NullableString `json:"flow_user_settings,omitempty"`
+	FlowDeviceCode     NullableString `json:"flow_device_code,omitempty"`
 	// Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2).
 	EventRetention *string `json:"event_retention,omitempty"`
 	// Web Certificate used by the authentik Core webserver.
@@ -420,6 +421,49 @@ func (o *TenantRequest) UnsetFlowUserSettings() {
 	o.FlowUserSettings.Unset()
 }
 
+// GetFlowDeviceCode returns the FlowDeviceCode field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TenantRequest) GetFlowDeviceCode() string {
+	if o == nil || o.FlowDeviceCode.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.FlowDeviceCode.Get()
+}
+
+// GetFlowDeviceCodeOk returns a tuple with the FlowDeviceCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TenantRequest) GetFlowDeviceCodeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FlowDeviceCode.Get(), o.FlowDeviceCode.IsSet()
+}
+
+// HasFlowDeviceCode returns a boolean if a field has been set.
+func (o *TenantRequest) HasFlowDeviceCode() bool {
+	if o != nil && o.FlowDeviceCode.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowDeviceCode gets a reference to the given NullableString and assigns it to the FlowDeviceCode field.
+func (o *TenantRequest) SetFlowDeviceCode(v string) {
+	o.FlowDeviceCode.Set(&v)
+}
+
+// SetFlowDeviceCodeNil sets the value for FlowDeviceCode to be an explicit nil
+func (o *TenantRequest) SetFlowDeviceCodeNil() {
+	o.FlowDeviceCode.Set(nil)
+}
+
+// UnsetFlowDeviceCode ensures that no value is present for FlowDeviceCode, not even an explicit nil
+func (o *TenantRequest) UnsetFlowDeviceCode() {
+	o.FlowDeviceCode.Unset()
+}
+
 // GetEventRetention returns the EventRetention field value if set, zero value otherwise.
 func (o *TenantRequest) GetEventRetention() string {
 	if o == nil || o.EventRetention == nil {
@@ -558,6 +602,9 @@ func (o TenantRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.FlowUserSettings.IsSet() {
 		toSerialize["flow_user_settings"] = o.FlowUserSettings.Get()
+	}
+	if o.FlowDeviceCode.IsSet() {
+		toSerialize["flow_device_code"] = o.FlowDeviceCode.Get()
 	}
 	if o.EventRetention != nil {
 		toSerialize["event_retention"] = o.EventRetention

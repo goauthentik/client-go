@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **FlowRecovery** | Pointer to **NullableString** |  | [optional] 
 **FlowUnenrollment** | Pointer to **NullableString** |  | [optional] 
 **FlowUserSettings** | Pointer to **NullableString** |  | [optional] 
+**FlowDeviceCode** | Pointer to **NullableString** |  | [optional] 
 **EventRetention** | Pointer to **string** | Events will be deleted after this duration.(Format: weeks&#x3D;3;days&#x3D;2;hours&#x3D;3,seconds&#x3D;2). | [optional] 
 **WebCertificate** | Pointer to **NullableString** | Web Certificate used by the authentik Core webserver. | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -332,6 +333,41 @@ HasFlowUserSettings returns a boolean if a field has been set.
 `func (o *TenantRequest) UnsetFlowUserSettings()`
 
 UnsetFlowUserSettings ensures that no value is present for FlowUserSettings, not even an explicit nil
+### GetFlowDeviceCode
+
+`func (o *TenantRequest) GetFlowDeviceCode() string`
+
+GetFlowDeviceCode returns the FlowDeviceCode field if non-nil, zero value otherwise.
+
+### GetFlowDeviceCodeOk
+
+`func (o *TenantRequest) GetFlowDeviceCodeOk() (*string, bool)`
+
+GetFlowDeviceCodeOk returns a tuple with the FlowDeviceCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowDeviceCode
+
+`func (o *TenantRequest) SetFlowDeviceCode(v string)`
+
+SetFlowDeviceCode sets FlowDeviceCode field to given value.
+
+### HasFlowDeviceCode
+
+`func (o *TenantRequest) HasFlowDeviceCode() bool`
+
+HasFlowDeviceCode returns a boolean if a field has been set.
+
+### SetFlowDeviceCodeNil
+
+`func (o *TenantRequest) SetFlowDeviceCodeNil(b bool)`
+
+ SetFlowDeviceCodeNil sets the value for FlowDeviceCode to be an explicit nil
+
+### UnsetFlowDeviceCode
+`func (o *TenantRequest) UnsetFlowDeviceCode()`
+
+UnsetFlowDeviceCode ensures that no value is present for FlowDeviceCode, not even an explicit nil
 ### GetEventRetention
 
 `func (o *TenantRequest) GetEventRetention() string`

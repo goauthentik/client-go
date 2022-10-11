@@ -26,7 +26,7 @@ type AppleChallengeResponseRequest struct {
 // will change when the set of required properties is changed
 func NewAppleChallengeResponseRequest() *AppleChallengeResponseRequest {
 	this := AppleChallengeResponseRequest{}
-	var component string = "ak-flow-sources-oauth-apple"
+	var component string = "ak-source-oauth-apple"
 	this.Component = &component
 	return &this
 }
@@ -36,7 +36,7 @@ func NewAppleChallengeResponseRequest() *AppleChallengeResponseRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewAppleChallengeResponseRequestWithDefaults() *AppleChallengeResponseRequest {
 	this := AppleChallengeResponseRequest{}
-	var component string = "ak-flow-sources-oauth-apple"
+	var component string = "ak-source-oauth-apple"
 	this.Component = &component
 	return &this
 }

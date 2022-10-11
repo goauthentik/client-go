@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | Pointer to **string** |  | [optional] [default to "ak-flow-sources-plex"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-source-plex"]
 
 ## Methods
 

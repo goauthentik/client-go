@@ -1835,7 +1835,7 @@ Name | Type | Description  | Notes
 
 ## CoreTenantsList
 
-> PaginatedTenantList CoreTenantsList(ctx).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).EventRetention(eventRetention).FlowAuthentication(flowAuthentication).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantUuid(tenantUuid).WebCertificate(webCertificate).Execute()
+> PaginatedTenantList CoreTenantsList(ctx).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).EventRetention(eventRetention).FlowAuthentication(flowAuthentication).FlowDeviceCode(flowDeviceCode).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantUuid(tenantUuid).WebCertificate(webCertificate).Execute()
 
 
 
@@ -1861,6 +1861,7 @@ func main() {
     domain := "domain_example" // string |  (optional)
     eventRetention := "eventRetention_example" // string |  (optional)
     flowAuthentication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    flowDeviceCode := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     flowInvalidation := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     flowRecovery := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     flowUnenrollment := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
@@ -1874,7 +1875,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreTenantsList(context.Background()).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).EventRetention(eventRetention).FlowAuthentication(flowAuthentication).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantUuid(tenantUuid).WebCertificate(webCertificate).Execute()
+    resp, r, err := apiClient.CoreApi.CoreTenantsList(context.Background()).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).EventRetention(eventRetention).FlowAuthentication(flowAuthentication).FlowDeviceCode(flowDeviceCode).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantUuid(tenantUuid).WebCertificate(webCertificate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1902,6 +1903,7 @@ Name | Type | Description  | Notes
  **domain** | **string** |  | 
  **eventRetention** | **string** |  | 
  **flowAuthentication** | **string** |  | 
+ **flowDeviceCode** | **string** |  | 
  **flowInvalidation** | **string** |  | 
  **flowRecovery** | **string** |  | 
  **flowUnenrollment** | **string** |  | 

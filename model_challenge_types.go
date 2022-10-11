@@ -33,6 +33,8 @@ type ChallengeTypes struct {
 	EmailChallenge                   *EmailChallenge
 	FlowErrorChallenge               *FlowErrorChallenge
 	IdentificationChallenge          *IdentificationChallenge
+	OAuthDeviceCodeChallenge         *OAuthDeviceCodeChallenge
+	OAuthDeviceCodeFinishChallenge   *OAuthDeviceCodeFinishChallenge
 	PasswordChallenge                *PasswordChallenge
 	PlexAuthenticationChallenge      *PlexAuthenticationChallenge
 	PromptChallenge                  *PromptChallenge
@@ -142,6 +144,20 @@ func FlowErrorChallengeAsChallengeTypes(v *FlowErrorChallenge) ChallengeTypes {
 func IdentificationChallengeAsChallengeTypes(v *IdentificationChallenge) ChallengeTypes {
 	return ChallengeTypes{
 		IdentificationChallenge: v,
+	}
+}
+
+// OAuthDeviceCodeChallengeAsChallengeTypes is a convenience function that returns OAuthDeviceCodeChallenge wrapped in ChallengeTypes
+func OAuthDeviceCodeChallengeAsChallengeTypes(v *OAuthDeviceCodeChallenge) ChallengeTypes {
+	return ChallengeTypes{
+		OAuthDeviceCodeChallenge: v,
+	}
+}
+
+// OAuthDeviceCodeFinishChallengeAsChallengeTypes is a convenience function that returns OAuthDeviceCodeFinishChallenge wrapped in ChallengeTypes
+func OAuthDeviceCodeFinishChallengeAsChallengeTypes(v *OAuthDeviceCodeFinishChallenge) ChallengeTypes {
+	return ChallengeTypes{
+		OAuthDeviceCodeFinishChallenge: v,
 	}
 }
 
@@ -370,6 +386,30 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'OAuthDeviceCodeChallenge'
+	if jsonDict["component"] == "OAuthDeviceCodeChallenge" {
+		// try to unmarshal JSON data into OAuthDeviceCodeChallenge
+		err = json.Unmarshal(data, &dst.OAuthDeviceCodeChallenge)
+		if err == nil {
+			return nil // data stored in dst.OAuthDeviceCodeChallenge, return on the first match
+		} else {
+			dst.OAuthDeviceCodeChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as OAuthDeviceCodeChallenge: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'OAuthDeviceCodeFinishChallenge'
+	if jsonDict["component"] == "OAuthDeviceCodeFinishChallenge" {
+		// try to unmarshal JSON data into OAuthDeviceCodeFinishChallenge
+		err = json.Unmarshal(data, &dst.OAuthDeviceCodeFinishChallenge)
+		if err == nil {
+			return nil // data stored in dst.OAuthDeviceCodeFinishChallenge, return on the first match
+		} else {
+			dst.OAuthDeviceCodeFinishChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as OAuthDeviceCodeFinishChallenge: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'PasswordChallenge'
 	if jsonDict["component"] == "PasswordChallenge" {
 		// try to unmarshal JSON data into PasswordChallenge
@@ -430,8 +470,32 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
-	// check if the discriminator value is 'ak-flow-sources-oauth-apple'
-	if jsonDict["component"] == "ak-flow-sources-oauth-apple" {
+	// check if the discriminator value is 'ak-provider-oauth2-device-code'
+	if jsonDict["component"] == "ak-provider-oauth2-device-code" {
+		// try to unmarshal JSON data into OAuthDeviceCodeChallenge
+		err = json.Unmarshal(data, &dst.OAuthDeviceCodeChallenge)
+		if err == nil {
+			return nil // data stored in dst.OAuthDeviceCodeChallenge, return on the first match
+		} else {
+			dst.OAuthDeviceCodeChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as OAuthDeviceCodeChallenge: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-provider-oauth2-device-code-finish'
+	if jsonDict["component"] == "ak-provider-oauth2-device-code-finish" {
+		// try to unmarshal JSON data into OAuthDeviceCodeFinishChallenge
+		err = json.Unmarshal(data, &dst.OAuthDeviceCodeFinishChallenge)
+		if err == nil {
+			return nil // data stored in dst.OAuthDeviceCodeFinishChallenge, return on the first match
+		} else {
+			dst.OAuthDeviceCodeFinishChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as OAuthDeviceCodeFinishChallenge: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-source-oauth-apple'
+	if jsonDict["component"] == "ak-source-oauth-apple" {
 		// try to unmarshal JSON data into AppleLoginChallenge
 		err = json.Unmarshal(data, &dst.AppleLoginChallenge)
 		if err == nil {
@@ -442,8 +506,8 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
-	// check if the discriminator value is 'ak-flow-sources-plex'
-	if jsonDict["component"] == "ak-flow-sources-plex" {
+	// check if the discriminator value is 'ak-source-plex'
+	if jsonDict["component"] == "ak-source-plex" {
 		// try to unmarshal JSON data into PlexAuthenticationChallenge
 		err = json.Unmarshal(data, &dst.PlexAuthenticationChallenge)
 		if err == nil {
@@ -735,6 +799,14 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.IdentificationChallenge)
 	}
 
+	if src.OAuthDeviceCodeChallenge != nil {
+		return json.Marshal(&src.OAuthDeviceCodeChallenge)
+	}
+
+	if src.OAuthDeviceCodeFinishChallenge != nil {
+		return json.Marshal(&src.OAuthDeviceCodeFinishChallenge)
+	}
+
 	if src.PasswordChallenge != nil {
 		return json.Marshal(&src.PasswordChallenge)
 	}
@@ -821,6 +893,14 @@ func (obj *ChallengeTypes) GetActualInstance() interface{} {
 
 	if obj.IdentificationChallenge != nil {
 		return obj.IdentificationChallenge
+	}
+
+	if obj.OAuthDeviceCodeChallenge != nil {
+		return obj.OAuthDeviceCodeChallenge
+	}
+
+	if obj.OAuthDeviceCodeFinishChallenge != nil {
+		return obj.OAuthDeviceCodeFinishChallenge
 	}
 
 	if obj.PasswordChallenge != nil {

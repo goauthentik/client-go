@@ -90,8 +90,8 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
-	// check if the discriminator value is 'ak-flow-sources-oauth-apple'
-	if jsonDict["component"] == "ak-flow-sources-oauth-apple" {
+	// check if the discriminator value is 'ak-source-oauth-apple'
+	if jsonDict["component"] == "ak-source-oauth-apple" {
 		// try to unmarshal JSON data into AppleLoginChallenge
 		err = json.Unmarshal(data, &dst.AppleLoginChallenge)
 		if err == nil {
@@ -102,8 +102,8 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
-	// check if the discriminator value is 'ak-flow-sources-plex'
-	if jsonDict["component"] == "ak-flow-sources-plex" {
+	// check if the discriminator value is 'ak-source-plex'
+	if jsonDict["component"] == "ak-source-plex" {
 		// try to unmarshal JSON data into PlexAuthenticationChallenge
 		err = json.Unmarshal(data, &dst.PlexAuthenticationChallenge)
 		if err == nil {

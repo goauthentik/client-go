@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | Pointer to **string** |  | [optional] [default to "ak-flow-sources-oauth-apple"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-source-oauth-apple"]
 
 ## Methods
 

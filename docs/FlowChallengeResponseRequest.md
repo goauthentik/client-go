@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Component** | Pointer to **string** |  | [optional] [default to "ak-stage-prompt"]
-**Code** | **string** |  | 
+**Code** | **int32** |  | 
 **PhoneNumber** | Pointer to **string** |  | [optional] 
 **SelectedChallenge** | Pointer to [**DeviceChallengeRequest**](DeviceChallengeRequest.md) |  | [optional] 
 **SelectedStage** | Pointer to **string** |  | [optional] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewFlowChallengeResponseRequest
 
-`func NewFlowChallengeResponseRequest(code string, response map[string]interface{}, token string, uidField string, password string, ) *FlowChallengeResponseRequest`
+`func NewFlowChallengeResponseRequest(code int32, response map[string]interface{}, token string, uidField string, password string, ) *FlowChallengeResponseRequest`
 
 NewFlowChallengeResponseRequest instantiates a new FlowChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -62,20 +62,20 @@ HasComponent returns a boolean if a field has been set.
 
 ### GetCode
 
-`func (o *FlowChallengeResponseRequest) GetCode() string`
+`func (o *FlowChallengeResponseRequest) GetCode() int32`
 
 GetCode returns the Code field if non-nil, zero value otherwise.
 
 ### GetCodeOk
 
-`func (o *FlowChallengeResponseRequest) GetCodeOk() (*string, bool)`
+`func (o *FlowChallengeResponseRequest) GetCodeOk() (*int32, bool)`
 
 GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCode
 
-`func (o *FlowChallengeResponseRequest) SetCode(v string)`
+`func (o *FlowChallengeResponseRequest) SetCode(v int32)`
 
 SetCode sets Code field to given value.
 

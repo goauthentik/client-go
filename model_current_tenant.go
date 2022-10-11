@@ -27,6 +27,7 @@ type CurrentTenant struct {
 	FlowRecovery       *string      `json:"flow_recovery,omitempty"`
 	FlowUnenrollment   *string      `json:"flow_unenrollment,omitempty"`
 	FlowUserSettings   *string      `json:"flow_user_settings,omitempty"`
+	FlowDeviceCode     *string      `json:"flow_device_code,omitempty"`
 	DefaultLocale      string       `json:"default_locale"`
 }
 
@@ -333,6 +334,38 @@ func (o *CurrentTenant) SetFlowUserSettings(v string) {
 	o.FlowUserSettings = &v
 }
 
+// GetFlowDeviceCode returns the FlowDeviceCode field value if set, zero value otherwise.
+func (o *CurrentTenant) GetFlowDeviceCode() string {
+	if o == nil || o.FlowDeviceCode == nil {
+		var ret string
+		return ret
+	}
+	return *o.FlowDeviceCode
+}
+
+// GetFlowDeviceCodeOk returns a tuple with the FlowDeviceCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CurrentTenant) GetFlowDeviceCodeOk() (*string, bool) {
+	if o == nil || o.FlowDeviceCode == nil {
+		return nil, false
+	}
+	return o.FlowDeviceCode, true
+}
+
+// HasFlowDeviceCode returns a boolean if a field has been set.
+func (o *CurrentTenant) HasFlowDeviceCode() bool {
+	if o != nil && o.FlowDeviceCode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowDeviceCode gets a reference to the given string and assigns it to the FlowDeviceCode field.
+func (o *CurrentTenant) SetFlowDeviceCode(v string) {
+	o.FlowDeviceCode = &v
+}
+
 // GetDefaultLocale returns the DefaultLocale field value
 func (o *CurrentTenant) GetDefaultLocale() string {
 	if o == nil {
@@ -388,6 +421,9 @@ func (o CurrentTenant) MarshalJSON() ([]byte, error) {
 	}
 	if o.FlowUserSettings != nil {
 		toSerialize["flow_user_settings"] = o.FlowUserSettings
+	}
+	if o.FlowDeviceCode != nil {
+		toSerialize["flow_device_code"] = o.FlowDeviceCode
 	}
 	if true {
 		toSerialize["default_locale"] = o.DefaultLocale

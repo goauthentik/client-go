@@ -15,42 +15,38 @@ import (
 	"encoding/json"
 )
 
-// PlexAuthenticationChallenge Challenge shown to the user in identification stage
-type PlexAuthenticationChallenge struct {
+// OAuthDeviceCodeChallenge OAuth Device code challenge
+type OAuthDeviceCodeChallenge struct {
 	Type           ChallengeChoices          `json:"type"`
 	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
 	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	ClientId       string                    `json:"client_id"`
-	Slug           string                    `json:"slug"`
 }
 
-// NewPlexAuthenticationChallenge instantiates a new PlexAuthenticationChallenge object
+// NewOAuthDeviceCodeChallenge instantiates a new OAuthDeviceCodeChallenge object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlexAuthenticationChallenge(type_ ChallengeChoices, clientId string, slug string) *PlexAuthenticationChallenge {
-	this := PlexAuthenticationChallenge{}
+func NewOAuthDeviceCodeChallenge(type_ ChallengeChoices) *OAuthDeviceCodeChallenge {
+	this := OAuthDeviceCodeChallenge{}
 	this.Type = type_
-	var component string = "ak-source-plex"
+	var component string = "ak-provider-oauth2-device-code"
 	this.Component = &component
-	this.ClientId = clientId
-	this.Slug = slug
 	return &this
 }
 
-// NewPlexAuthenticationChallengeWithDefaults instantiates a new PlexAuthenticationChallenge object
+// NewOAuthDeviceCodeChallengeWithDefaults instantiates a new OAuthDeviceCodeChallenge object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPlexAuthenticationChallengeWithDefaults() *PlexAuthenticationChallenge {
-	this := PlexAuthenticationChallenge{}
-	var component string = "ak-source-plex"
+func NewOAuthDeviceCodeChallengeWithDefaults() *OAuthDeviceCodeChallenge {
+	this := OAuthDeviceCodeChallenge{}
+	var component string = "ak-provider-oauth2-device-code"
 	this.Component = &component
 	return &this
 }
 
 // GetType returns the Type field value
-func (o *PlexAuthenticationChallenge) GetType() ChallengeChoices {
+func (o *OAuthDeviceCodeChallenge) GetType() ChallengeChoices {
 	if o == nil {
 		var ret ChallengeChoices
 		return ret
@@ -61,7 +57,7 @@ func (o *PlexAuthenticationChallenge) GetType() ChallengeChoices {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *PlexAuthenticationChallenge) GetTypeOk() (*ChallengeChoices, bool) {
+func (o *OAuthDeviceCodeChallenge) GetTypeOk() (*ChallengeChoices, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,12 +65,12 @@ func (o *PlexAuthenticationChallenge) GetTypeOk() (*ChallengeChoices, bool) {
 }
 
 // SetType sets field value
-func (o *PlexAuthenticationChallenge) SetType(v ChallengeChoices) {
+func (o *OAuthDeviceCodeChallenge) SetType(v ChallengeChoices) {
 	o.Type = v
 }
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
-func (o *PlexAuthenticationChallenge) GetFlowInfo() ContextualFlowInfo {
+func (o *OAuthDeviceCodeChallenge) GetFlowInfo() ContextualFlowInfo {
 	if o == nil || o.FlowInfo == nil {
 		var ret ContextualFlowInfo
 		return ret
@@ -84,7 +80,7 @@ func (o *PlexAuthenticationChallenge) GetFlowInfo() ContextualFlowInfo {
 
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PlexAuthenticationChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
+func (o *OAuthDeviceCodeChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 	if o == nil || o.FlowInfo == nil {
 		return nil, false
 	}
@@ -92,7 +88,7 @@ func (o *PlexAuthenticationChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool
 }
 
 // HasFlowInfo returns a boolean if a field has been set.
-func (o *PlexAuthenticationChallenge) HasFlowInfo() bool {
+func (o *OAuthDeviceCodeChallenge) HasFlowInfo() bool {
 	if o != nil && o.FlowInfo != nil {
 		return true
 	}
@@ -101,12 +97,12 @@ func (o *PlexAuthenticationChallenge) HasFlowInfo() bool {
 }
 
 // SetFlowInfo gets a reference to the given ContextualFlowInfo and assigns it to the FlowInfo field.
-func (o *PlexAuthenticationChallenge) SetFlowInfo(v ContextualFlowInfo) {
+func (o *OAuthDeviceCodeChallenge) SetFlowInfo(v ContextualFlowInfo) {
 	o.FlowInfo = &v
 }
 
 // GetComponent returns the Component field value if set, zero value otherwise.
-func (o *PlexAuthenticationChallenge) GetComponent() string {
+func (o *OAuthDeviceCodeChallenge) GetComponent() string {
 	if o == nil || o.Component == nil {
 		var ret string
 		return ret
@@ -116,7 +112,7 @@ func (o *PlexAuthenticationChallenge) GetComponent() string {
 
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PlexAuthenticationChallenge) GetComponentOk() (*string, bool) {
+func (o *OAuthDeviceCodeChallenge) GetComponentOk() (*string, bool) {
 	if o == nil || o.Component == nil {
 		return nil, false
 	}
@@ -124,7 +120,7 @@ func (o *PlexAuthenticationChallenge) GetComponentOk() (*string, bool) {
 }
 
 // HasComponent returns a boolean if a field has been set.
-func (o *PlexAuthenticationChallenge) HasComponent() bool {
+func (o *OAuthDeviceCodeChallenge) HasComponent() bool {
 	if o != nil && o.Component != nil {
 		return true
 	}
@@ -133,12 +129,12 @@ func (o *PlexAuthenticationChallenge) HasComponent() bool {
 }
 
 // SetComponent gets a reference to the given string and assigns it to the Component field.
-func (o *PlexAuthenticationChallenge) SetComponent(v string) {
+func (o *OAuthDeviceCodeChallenge) SetComponent(v string) {
 	o.Component = &v
 }
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
-func (o *PlexAuthenticationChallenge) GetResponseErrors() map[string][]ErrorDetail {
+func (o *OAuthDeviceCodeChallenge) GetResponseErrors() map[string][]ErrorDetail {
 	if o == nil || o.ResponseErrors == nil {
 		var ret map[string][]ErrorDetail
 		return ret
@@ -148,7 +144,7 @@ func (o *PlexAuthenticationChallenge) GetResponseErrors() map[string][]ErrorDeta
 
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PlexAuthenticationChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
+func (o *OAuthDeviceCodeChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
 	if o == nil || o.ResponseErrors == nil {
 		return nil, false
 	}
@@ -156,7 +152,7 @@ func (o *PlexAuthenticationChallenge) GetResponseErrorsOk() (*map[string][]Error
 }
 
 // HasResponseErrors returns a boolean if a field has been set.
-func (o *PlexAuthenticationChallenge) HasResponseErrors() bool {
+func (o *OAuthDeviceCodeChallenge) HasResponseErrors() bool {
 	if o != nil && o.ResponseErrors != nil {
 		return true
 	}
@@ -165,59 +161,11 @@ func (o *PlexAuthenticationChallenge) HasResponseErrors() bool {
 }
 
 // SetResponseErrors gets a reference to the given map[string][]ErrorDetail and assigns it to the ResponseErrors field.
-func (o *PlexAuthenticationChallenge) SetResponseErrors(v map[string][]ErrorDetail) {
+func (o *OAuthDeviceCodeChallenge) SetResponseErrors(v map[string][]ErrorDetail) {
 	o.ResponseErrors = &v
 }
 
-// GetClientId returns the ClientId field value
-func (o *PlexAuthenticationChallenge) GetClientId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ClientId
-}
-
-// GetClientIdOk returns a tuple with the ClientId field value
-// and a boolean to check if the value has been set.
-func (o *PlexAuthenticationChallenge) GetClientIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ClientId, true
-}
-
-// SetClientId sets field value
-func (o *PlexAuthenticationChallenge) SetClientId(v string) {
-	o.ClientId = v
-}
-
-// GetSlug returns the Slug field value
-func (o *PlexAuthenticationChallenge) GetSlug() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Slug
-}
-
-// GetSlugOk returns a tuple with the Slug field value
-// and a boolean to check if the value has been set.
-func (o *PlexAuthenticationChallenge) GetSlugOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Slug, true
-}
-
-// SetSlug sets field value
-func (o *PlexAuthenticationChallenge) SetSlug(v string) {
-	o.Slug = v
-}
-
-func (o PlexAuthenticationChallenge) MarshalJSON() ([]byte, error) {
+func (o OAuthDeviceCodeChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["type"] = o.Type
@@ -231,47 +179,41 @@ func (o PlexAuthenticationChallenge) MarshalJSON() ([]byte, error) {
 	if o.ResponseErrors != nil {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
-	if true {
-		toSerialize["client_id"] = o.ClientId
-	}
-	if true {
-		toSerialize["slug"] = o.Slug
-	}
 	return json.Marshal(toSerialize)
 }
 
-type NullablePlexAuthenticationChallenge struct {
-	value *PlexAuthenticationChallenge
+type NullableOAuthDeviceCodeChallenge struct {
+	value *OAuthDeviceCodeChallenge
 	isSet bool
 }
 
-func (v NullablePlexAuthenticationChallenge) Get() *PlexAuthenticationChallenge {
+func (v NullableOAuthDeviceCodeChallenge) Get() *OAuthDeviceCodeChallenge {
 	return v.value
 }
 
-func (v *NullablePlexAuthenticationChallenge) Set(val *PlexAuthenticationChallenge) {
+func (v *NullableOAuthDeviceCodeChallenge) Set(val *OAuthDeviceCodeChallenge) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePlexAuthenticationChallenge) IsSet() bool {
+func (v NullableOAuthDeviceCodeChallenge) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePlexAuthenticationChallenge) Unset() {
+func (v *NullableOAuthDeviceCodeChallenge) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePlexAuthenticationChallenge(val *PlexAuthenticationChallenge) *NullablePlexAuthenticationChallenge {
-	return &NullablePlexAuthenticationChallenge{value: val, isSet: true}
+func NewNullableOAuthDeviceCodeChallenge(val *OAuthDeviceCodeChallenge) *NullableOAuthDeviceCodeChallenge {
+	return &NullableOAuthDeviceCodeChallenge{value: val, isSet: true}
 }
 
-func (v NullablePlexAuthenticationChallenge) MarshalJSON() ([]byte, error) {
+func (v NullableOAuthDeviceCodeChallenge) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePlexAuthenticationChallenge) UnmarshalJSON(src []byte) error {
+func (v *NullableOAuthDeviceCodeChallenge) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

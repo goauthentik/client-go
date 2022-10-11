@@ -26,7 +26,7 @@ type PlexAuthenticationChallengeResponseRequest struct {
 // will change when the set of required properties is changed
 func NewPlexAuthenticationChallengeResponseRequest() *PlexAuthenticationChallengeResponseRequest {
 	this := PlexAuthenticationChallengeResponseRequest{}
-	var component string = "ak-flow-sources-plex"
+	var component string = "ak-source-plex"
 	this.Component = &component
 	return &this
 }
@@ -36,7 +36,7 @@ func NewPlexAuthenticationChallengeResponseRequest() *PlexAuthenticationChalleng
 // but it doesn't guarantee that properties required by API are set
 func NewPlexAuthenticationChallengeResponseRequestWithDefaults() *PlexAuthenticationChallengeResponseRequest {
 	this := PlexAuthenticationChallengeResponseRequest{}
-	var component string = "ak-flow-sources-plex"
+	var component string = "ak-source-plex"
 	this.Component = &component
 	return &this
 }
