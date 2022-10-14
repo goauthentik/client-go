@@ -29083,6 +29083,7 @@ components:
       - can_save_media
       - can_geo_ip
       - can_impersonate
+      - can_debug
       type: string
     CaptchaChallenge:
       description: Site public key
