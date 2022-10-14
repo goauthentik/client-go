@@ -293,6 +293,7 @@ docs/PaginatedUserList.md
 docs/PaginatedUserLoginStageList.md
 docs/PaginatedUserLogoutStageList.md
 docs/PaginatedUserOAuthSourceConnectionList.md
+docs/PaginatedUserSAMLSourceConnectionList.md
 docs/PaginatedUserSourceConnectionList.md
 docs/PaginatedUserWriteStageList.md
 docs/PaginatedWebAuthnDeviceList.md
@@ -366,6 +367,7 @@ docs/PatchedUserLoginStageRequest.md
 docs/PatchedUserLogoutStageRequest.md
 docs/PatchedUserOAuthSourceConnectionRequest.md
 docs/PatchedUserRequest.md
+docs/PatchedUserSAMLSourceConnectionRequest.md
 docs/PatchedUserWriteStageRequest.md
 docs/PatchedWebAuthnDeviceRequest.md
 docs/Permission.md
@@ -479,6 +481,8 @@ docs/UserOAuthSourceConnectionRequest.md
 docs/UserPasswordSetRequest.md
 docs/UserPath.md
 docs/UserRequest.md
+docs/UserSAMLSourceConnection.md
+docs/UserSAMLSourceConnectionRequest.md
 docs/UserSelf.md
 docs/UserSelfGroups.md
 docs/UserServiceAccountRequest.md
@@ -760,6 +764,7 @@ model_paginated_user_list.go
 model_paginated_user_login_stage_list.go
 model_paginated_user_logout_stage_list.go
 model_paginated_user_o_auth_source_connection_list.go
+model_paginated_user_saml_source_connection_list.go
 model_paginated_user_source_connection_list.go
 model_paginated_user_write_stage_list.go
 model_paginated_web_authn_device_list.go
@@ -833,6 +838,7 @@ model_patched_user_login_stage_request.go
 model_patched_user_logout_stage_request.go
 model_patched_user_o_auth_source_connection_request.go
 model_patched_user_request.go
+model_patched_user_saml_source_connection_request.go
 model_patched_user_write_stage_request.go
 model_patched_web_authn_device_request.go
 model_permission.go
@@ -939,6 +945,8 @@ model_user_o_auth_source_connection_request.go
 model_user_password_set_request.go
 model_user_path.go
 model_user_request.go
+model_user_saml_source_connection.go
+model_user_saml_source_connection_request.go
 model_user_self.go
 model_user_self_groups.go
 model_user_service_account_request.go

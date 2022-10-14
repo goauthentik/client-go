@@ -479,6 +479,13 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesUserConnectionsPlexRetrieve**](docs/SourcesApi.md#sourcesuserconnectionsplexretrieve) | **Get** /sources/user_connections/plex/{id}/ | 
 *SourcesApi* | [**SourcesUserConnectionsPlexUpdate**](docs/SourcesApi.md#sourcesuserconnectionsplexupdate) | **Put** /sources/user_connections/plex/{id}/ | 
 *SourcesApi* | [**SourcesUserConnectionsPlexUsedByList**](docs/SourcesApi.md#sourcesuserconnectionsplexusedbylist) | **Get** /sources/user_connections/plex/{id}/used_by/ | 
+*SourcesApi* | [**SourcesUserConnectionsSamlCreate**](docs/SourcesApi.md#sourcesuserconnectionssamlcreate) | **Post** /sources/user_connections/saml/ | 
+*SourcesApi* | [**SourcesUserConnectionsSamlDestroy**](docs/SourcesApi.md#sourcesuserconnectionssamldestroy) | **Delete** /sources/user_connections/saml/{id}/ | 
+*SourcesApi* | [**SourcesUserConnectionsSamlList**](docs/SourcesApi.md#sourcesuserconnectionssamllist) | **Get** /sources/user_connections/saml/ | 
+*SourcesApi* | [**SourcesUserConnectionsSamlPartialUpdate**](docs/SourcesApi.md#sourcesuserconnectionssamlpartialupdate) | **Patch** /sources/user_connections/saml/{id}/ | 
+*SourcesApi* | [**SourcesUserConnectionsSamlRetrieve**](docs/SourcesApi.md#sourcesuserconnectionssamlretrieve) | **Get** /sources/user_connections/saml/{id}/ | 
+*SourcesApi* | [**SourcesUserConnectionsSamlUpdate**](docs/SourcesApi.md#sourcesuserconnectionssamlupdate) | **Put** /sources/user_connections/saml/{id}/ | 
+*SourcesApi* | [**SourcesUserConnectionsSamlUsedByList**](docs/SourcesApi.md#sourcesuserconnectionssamlusedbylist) | **Get** /sources/user_connections/saml/{id}/used_by/ | 
 *StagesApi* | [**StagesAllDestroy**](docs/StagesApi.md#stagesalldestroy) | **Delete** /stages/all/{stage_uuid}/ | 
 *StagesApi* | [**StagesAllList**](docs/StagesApi.md#stagesalllist) | **Get** /stages/all/ | 
 *StagesApi* | [**StagesAllRetrieve**](docs/StagesApi.md#stagesallretrieve) | **Get** /stages/all/{stage_uuid}/ | 
@@ -904,6 +911,7 @@ Class | Method | HTTP request | Description
  - [PaginatedUserLoginStageList](docs/PaginatedUserLoginStageList.md)
  - [PaginatedUserLogoutStageList](docs/PaginatedUserLogoutStageList.md)
  - [PaginatedUserOAuthSourceConnectionList](docs/PaginatedUserOAuthSourceConnectionList.md)
+ - [PaginatedUserSAMLSourceConnectionList](docs/PaginatedUserSAMLSourceConnectionList.md)
  - [PaginatedUserSourceConnectionList](docs/PaginatedUserSourceConnectionList.md)
  - [PaginatedUserWriteStageList](docs/PaginatedUserWriteStageList.md)
  - [PaginatedWebAuthnDeviceList](docs/PaginatedWebAuthnDeviceList.md)
@@ -977,6 +985,7 @@ Class | Method | HTTP request | Description
  - [PatchedUserLogoutStageRequest](docs/PatchedUserLogoutStageRequest.md)
  - [PatchedUserOAuthSourceConnectionRequest](docs/PatchedUserOAuthSourceConnectionRequest.md)
  - [PatchedUserRequest](docs/PatchedUserRequest.md)
+ - [PatchedUserSAMLSourceConnectionRequest](docs/PatchedUserSAMLSourceConnectionRequest.md)
  - [PatchedUserWriteStageRequest](docs/PatchedUserWriteStageRequest.md)
  - [PatchedWebAuthnDeviceRequest](docs/PatchedWebAuthnDeviceRequest.md)
  - [Permission](docs/Permission.md)
@@ -1083,6 +1092,8 @@ Class | Method | HTTP request | Description
  - [UserPasswordSetRequest](docs/UserPasswordSetRequest.md)
  - [UserPath](docs/UserPath.md)
  - [UserRequest](docs/UserRequest.md)
+ - [UserSAMLSourceConnection](docs/UserSAMLSourceConnection.md)
+ - [UserSAMLSourceConnectionRequest](docs/UserSAMLSourceConnectionRequest.md)
  - [UserSelf](docs/UserSelf.md)
  - [UserSelfGroups](docs/UserSelfGroups.md)
  - [UserServiceAccountRequest](docs/UserServiceAccountRequest.md)

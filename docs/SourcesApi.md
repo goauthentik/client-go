@@ -63,6 +63,13 @@ Method | HTTP request | Description
 [**SourcesUserConnectionsPlexRetrieve**](SourcesApi.md#SourcesUserConnectionsPlexRetrieve) | **Get** /sources/user_connections/plex/{id}/ | 
 [**SourcesUserConnectionsPlexUpdate**](SourcesApi.md#SourcesUserConnectionsPlexUpdate) | **Put** /sources/user_connections/plex/{id}/ | 
 [**SourcesUserConnectionsPlexUsedByList**](SourcesApi.md#SourcesUserConnectionsPlexUsedByList) | **Get** /sources/user_connections/plex/{id}/used_by/ | 
+[**SourcesUserConnectionsSamlCreate**](SourcesApi.md#SourcesUserConnectionsSamlCreate) | **Post** /sources/user_connections/saml/ | 
+[**SourcesUserConnectionsSamlDestroy**](SourcesApi.md#SourcesUserConnectionsSamlDestroy) | **Delete** /sources/user_connections/saml/{id}/ | 
+[**SourcesUserConnectionsSamlList**](SourcesApi.md#SourcesUserConnectionsSamlList) | **Get** /sources/user_connections/saml/ | 
+[**SourcesUserConnectionsSamlPartialUpdate**](SourcesApi.md#SourcesUserConnectionsSamlPartialUpdate) | **Patch** /sources/user_connections/saml/{id}/ | 
+[**SourcesUserConnectionsSamlRetrieve**](SourcesApi.md#SourcesUserConnectionsSamlRetrieve) | **Get** /sources/user_connections/saml/{id}/ | 
+[**SourcesUserConnectionsSamlUpdate**](SourcesApi.md#SourcesUserConnectionsSamlUpdate) | **Put** /sources/user_connections/saml/{id}/ | 
+[**SourcesUserConnectionsSamlUsedByList**](SourcesApi.md#SourcesUserConnectionsSamlUsedByList) | **Get** /sources/user_connections/saml/{id}/used_by/ | 
 
 
 
@@ -4286,6 +4293,498 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSourcesUserConnectionsPlexUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsSamlCreate
+
+> UserSAMLSourceConnection SourcesUserConnectionsSamlCreate(ctx).UserSAMLSourceConnectionRequest(userSAMLSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userSAMLSourceConnectionRequest := *openapiclient.NewUserSAMLSourceConnectionRequest(int32(123), "Identifier_example") // UserSAMLSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsSamlCreate(context.Background()).UserSAMLSourceConnectionRequest(userSAMLSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsSamlCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsSamlCreate`: UserSAMLSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsSamlCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsSamlCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userSAMLSourceConnectionRequest** | [**UserSAMLSourceConnectionRequest**](UserSAMLSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserSAMLSourceConnection**](UserSAMLSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsSamlDestroy
+
+> SourcesUserConnectionsSamlDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsSamlDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsSamlDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User SAML Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsSamlDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsSamlList
+
+> PaginatedUserSAMLSourceConnectionList SourcesUserConnectionsSamlList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsSamlList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsSamlList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsSamlList`: PaginatedUserSAMLSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsSamlList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsSamlListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **sourceSlug** | **string** |  | 
+
+### Return type
+
+[**PaginatedUserSAMLSourceConnectionList**](PaginatedUserSAMLSourceConnectionList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsSamlPartialUpdate
+
+> UserSAMLSourceConnection SourcesUserConnectionsSamlPartialUpdate(ctx, id).PatchedUserSAMLSourceConnectionRequest(patchedUserSAMLSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
+    patchedUserSAMLSourceConnectionRequest := *openapiclient.NewPatchedUserSAMLSourceConnectionRequest() // PatchedUserSAMLSourceConnectionRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsSamlPartialUpdate(context.Background(), id).PatchedUserSAMLSourceConnectionRequest(patchedUserSAMLSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsSamlPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsSamlPartialUpdate`: UserSAMLSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsSamlPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User SAML Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsSamlPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedUserSAMLSourceConnectionRequest** | [**PatchedUserSAMLSourceConnectionRequest**](PatchedUserSAMLSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserSAMLSourceConnection**](UserSAMLSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsSamlRetrieve
+
+> UserSAMLSourceConnection SourcesUserConnectionsSamlRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsSamlRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsSamlRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsSamlRetrieve`: UserSAMLSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsSamlRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User SAML Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsSamlRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**UserSAMLSourceConnection**](UserSAMLSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsSamlUpdate
+
+> UserSAMLSourceConnection SourcesUserConnectionsSamlUpdate(ctx, id).UserSAMLSourceConnectionRequest(userSAMLSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
+    userSAMLSourceConnectionRequest := *openapiclient.NewUserSAMLSourceConnectionRequest(int32(123), "Identifier_example") // UserSAMLSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsSamlUpdate(context.Background(), id).UserSAMLSourceConnectionRequest(userSAMLSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsSamlUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsSamlUpdate`: UserSAMLSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsSamlUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User SAML Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsSamlUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **userSAMLSourceConnectionRequest** | [**UserSAMLSourceConnectionRequest**](UserSAMLSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserSAMLSourceConnection**](UserSAMLSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsSamlUsedByList
+
+> []UsedBy SourcesUserConnectionsSamlUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsSamlUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsSamlUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsSamlUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsSamlUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User SAML Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsSamlUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
