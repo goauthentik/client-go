@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **AuthPassword** | Pointer to **string** |  | [optional] 
 **AuthType** | Pointer to [**AuthTypeEnum**](AuthTypeEnum.md) |  | [optional] 
 **VerifyOnly** | Pointer to **bool** | When enabled, the Phone number is only used during enrollment to verify the users authenticity. Only a hash of the phone number is saved to ensure it is not re-used in the future. | [optional] 
+**Mapping** | Pointer to **NullableString** | Optionally modify the payload being sent to custom providers. | [optional] 
 
 ## Methods
 
@@ -269,6 +270,41 @@ SetVerifyOnly sets VerifyOnly field to given value.
 
 HasVerifyOnly returns a boolean if a field has been set.
 
+### GetMapping
+
+`func (o *AuthenticatorSMSStageRequest) GetMapping() string`
+
+GetMapping returns the Mapping field if non-nil, zero value otherwise.
+
+### GetMappingOk
+
+`func (o *AuthenticatorSMSStageRequest) GetMappingOk() (*string, bool)`
+
+GetMappingOk returns a tuple with the Mapping field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMapping
+
+`func (o *AuthenticatorSMSStageRequest) SetMapping(v string)`
+
+SetMapping sets Mapping field to given value.
+
+### HasMapping
+
+`func (o *AuthenticatorSMSStageRequest) HasMapping() bool`
+
+HasMapping returns a boolean if a field has been set.
+
+### SetMappingNil
+
+`func (o *AuthenticatorSMSStageRequest) SetMappingNil(b bool)`
+
+ SetMappingNil sets the value for Mapping to be an explicit nil
+
+### UnsetMapping
+`func (o *AuthenticatorSMSStageRequest) UnsetMapping()`
+
+UnsetMapping ensures that no value is present for Mapping, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

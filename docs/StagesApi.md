@@ -1412,7 +1412,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorSmsList
 
-> PaginatedAuthenticatorSMSStageList StagesAuthenticatorSmsList(ctx).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FromNumber(fromNumber).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).VerifyOnly(verifyOnly).Execute()
+> PaginatedAuthenticatorSMSStageList StagesAuthenticatorSmsList(ctx).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FromNumber(fromNumber).Mapping(mapping).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).VerifyOnly(verifyOnly).Execute()
 
 
 
@@ -1437,6 +1437,7 @@ func main() {
     authType := "authType_example" // string |  (optional)
     configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     fromNumber := "fromNumber_example" // string |  (optional)
+    mapping := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -1448,7 +1449,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorSmsList(context.Background()).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FromNumber(fromNumber).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).VerifyOnly(verifyOnly).Execute()
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorSmsList(context.Background()).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FromNumber(fromNumber).Mapping(mapping).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).VerifyOnly(verifyOnly).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1475,6 +1476,7 @@ Name | Type | Description  | Notes
  **authType** | **string** |  | 
  **configureFlow** | **string** |  | 
  **fromNumber** | **string** |  | 
+ **mapping** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 

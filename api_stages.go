@@ -2571,6 +2571,7 @@ type ApiStagesAuthenticatorSmsListRequest struct {
 	authType      *string
 	configureFlow *string
 	fromNumber    *string
+	mapping       *string
 	name          *string
 	ordering      *string
 	page          *int32
@@ -2608,6 +2609,11 @@ func (r ApiStagesAuthenticatorSmsListRequest) ConfigureFlow(configureFlow string
 
 func (r ApiStagesAuthenticatorSmsListRequest) FromNumber(fromNumber string) ApiStagesAuthenticatorSmsListRequest {
 	r.fromNumber = &fromNumber
+	return r
+}
+
+func (r ApiStagesAuthenticatorSmsListRequest) Mapping(mapping string) ApiStagesAuthenticatorSmsListRequest {
+	r.mapping = &mapping
 	return r
 }
 
@@ -2712,6 +2718,9 @@ func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenti
 	}
 	if r.fromNumber != nil {
 		localVarQueryParams.Add("from_number", parameterToString(*r.fromNumber, ""))
+	}
+	if r.mapping != nil {
+		localVarQueryParams.Add("mapping", parameterToString(*r.mapping, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))

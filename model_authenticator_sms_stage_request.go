@@ -29,6 +29,8 @@ type AuthenticatorSMSStageRequest struct {
 	AuthType      *AuthTypeEnum  `json:"auth_type,omitempty"`
 	// When enabled, the Phone number is only used during enrollment to verify the users authenticity. Only a hash of the phone number is saved to ensure it is not re-used in the future.
 	VerifyOnly *bool `json:"verify_only,omitempty"`
+	// Optionally modify the payload being sent to custom providers.
+	Mapping NullableString `json:"mapping,omitempty"`
 }
 
 // NewAuthenticatorSMSStageRequest instantiates a new AuthenticatorSMSStageRequest object
@@ -344,6 +346,49 @@ func (o *AuthenticatorSMSStageRequest) SetVerifyOnly(v bool) {
 	o.VerifyOnly = &v
 }
 
+// GetMapping returns the Mapping field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AuthenticatorSMSStageRequest) GetMapping() string {
+	if o == nil || o.Mapping.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.Mapping.Get()
+}
+
+// GetMappingOk returns a tuple with the Mapping field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AuthenticatorSMSStageRequest) GetMappingOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Mapping.Get(), o.Mapping.IsSet()
+}
+
+// HasMapping returns a boolean if a field has been set.
+func (o *AuthenticatorSMSStageRequest) HasMapping() bool {
+	if o != nil && o.Mapping.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMapping gets a reference to the given NullableString and assigns it to the Mapping field.
+func (o *AuthenticatorSMSStageRequest) SetMapping(v string) {
+	o.Mapping.Set(&v)
+}
+
+// SetMappingNil sets the value for Mapping to be an explicit nil
+func (o *AuthenticatorSMSStageRequest) SetMappingNil() {
+	o.Mapping.Set(nil)
+}
+
+// UnsetMapping ensures that no value is present for Mapping, not even an explicit nil
+func (o *AuthenticatorSMSStageRequest) UnsetMapping() {
+	o.Mapping.Unset()
+}
+
 func (o AuthenticatorSMSStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -375,6 +420,9 @@ func (o AuthenticatorSMSStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.VerifyOnly != nil {
 		toSerialize["verify_only"] = o.VerifyOnly
+	}
+	if o.Mapping.IsSet() {
+		toSerialize["mapping"] = o.Mapping.Get()
 	}
 	return json.Marshal(toSerialize)
 }

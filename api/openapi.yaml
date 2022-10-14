@@ -14555,7 +14555,7 @@ paths:
       description: NotificationWebhookMapping Viewset
       operationId: propertymappings_notification_destroy
       parameters:
-      - description: A UUID string identifying this Notification Webhook Mapping.
+      - description: A UUID string identifying this Webhook Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -14587,7 +14587,7 @@ paths:
       description: NotificationWebhookMapping Viewset
       operationId: propertymappings_notification_retrieve
       parameters:
-      - description: A UUID string identifying this Notification Webhook Mapping.
+      - description: A UUID string identifying this Webhook Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -14623,7 +14623,7 @@ paths:
       description: NotificationWebhookMapping Viewset
       operationId: propertymappings_notification_partial_update
       parameters:
-      - description: A UUID string identifying this Notification Webhook Mapping.
+      - description: A UUID string identifying this Webhook Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -14664,7 +14664,7 @@ paths:
       description: NotificationWebhookMapping Viewset
       operationId: propertymappings_notification_update
       parameters:
-      - description: A UUID string identifying this Notification Webhook Mapping.
+      - description: A UUID string identifying this Webhook Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -14707,7 +14707,7 @@ paths:
       description: Get a list of all objects that use this object
       operationId: propertymappings_notification_used_by_list
       parameters:
-      - description: A UUID string identifying this Notification Webhook Mapping.
+      - description: A UUID string identifying this Webhook Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -21008,6 +21008,14 @@ paths:
         name: from_number
         required: false
         schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: mapping
+        required: false
+        schema:
+          format: uuid
           type: string
         style: form
       - explode: true
@@ -28083,6 +28091,7 @@ components:
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         auth_type: null
+        mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verbose_name_plural: verbose_name_plural
         auth: auth
         auth_password: auth_password
@@ -28181,6 +28190,11 @@ components:
             \ to verify the users authenticity. Only a hash of the phone number is\
             \ saved to ensure it is not re-used in the future."
           type: boolean
+        mapping:
+          description: Optionally modify the payload being sent to custom providers.
+          format: uuid
+          nullable: true
+          type: string
       required:
       - account_sid
       - auth
@@ -28198,6 +28212,7 @@ components:
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         auth_type: null
+        mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         provider: null
         auth: auth
         from_number: from_number
@@ -28256,6 +28271,11 @@ components:
             \ to verify the users authenticity. Only a hash of the phone number is\
             \ saved to ensure it is not re-used in the future."
           type: boolean
+        mapping:
+          description: Optionally modify the payload being sent to custom providers.
+          format: uuid
+          nullable: true
+          type: string
       required:
       - account_sid
       - auth
@@ -34562,6 +34582,7 @@ components:
         results:
         - configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           auth_type: null
+          mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
           auth: auth
           auth_password: auth_password
@@ -34615,6 +34636,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           auth_type: null
+          mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
           auth: auth
           auth_password: auth_password
@@ -40843,6 +40865,7 @@ components:
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         auth_type: null
+        mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         provider: null
         auth: auth
         from_number: from_number
@@ -40901,6 +40924,11 @@ components:
             \ to verify the users authenticity. Only a hash of the phone number is\
             \ saved to ensure it is not re-used in the future."
           type: boolean
+        mapping:
+          description: Optionally modify the payload being sent to custom providers.
+          format: uuid
+          nullable: true
+          type: string
       type: object
     PatchedAuthenticatorStaticStageRequest:
       description: AuthenticatorStaticStage Serializer

@@ -1045,7 +1045,7 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Webhook Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1063,7 +1063,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this Notification Webhook Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Webhook Mapping. | 
 
 ### Other Parameters
 
@@ -1187,7 +1187,7 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Webhook Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
     patchedNotificationWebhookMappingRequest := *openapiclient.NewPatchedNotificationWebhookMappingRequest() // PatchedNotificationWebhookMappingRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -1208,7 +1208,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this Notification Webhook Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Webhook Mapping. | 
 
 ### Other Parameters
 
@@ -1259,7 +1259,7 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Webhook Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1279,7 +1279,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this Notification Webhook Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Webhook Mapping. | 
 
 ### Other Parameters
 
@@ -1329,7 +1329,7 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Webhook Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
     notificationWebhookMappingRequest := *openapiclient.NewNotificationWebhookMappingRequest("Name_example", "Expression_example") // NotificationWebhookMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -1350,7 +1350,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this Notification Webhook Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Webhook Mapping. | 
 
 ### Other Parameters
 
@@ -1401,7 +1401,7 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Webhook Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1421,7 +1421,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this Notification Webhook Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Webhook Mapping. | 
 
 ### Other Parameters
 

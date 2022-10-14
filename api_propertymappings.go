@@ -2095,7 +2095,7 @@ PropertymappingsNotificationDestroy Method for PropertymappingsNotificationDestr
 NotificationWebhookMapping Viewset
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param pmUuid A UUID string identifying this Notification Webhook Mapping.
+ @param pmUuid A UUID string identifying this Webhook Mapping.
  @return ApiPropertymappingsNotificationDestroyRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsNotificationDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationDestroyRequest {
@@ -2407,7 +2407,7 @@ PropertymappingsNotificationPartialUpdate Method for PropertymappingsNotificatio
 NotificationWebhookMapping Viewset
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param pmUuid A UUID string identifying this Notification Webhook Mapping.
+ @param pmUuid A UUID string identifying this Webhook Mapping.
  @return ApiPropertymappingsNotificationPartialUpdateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationPartialUpdateRequest {
@@ -2545,7 +2545,7 @@ PropertymappingsNotificationRetrieve Method for PropertymappingsNotificationRetr
 NotificationWebhookMapping Viewset
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param pmUuid A UUID string identifying this Notification Webhook Mapping.
+ @param pmUuid A UUID string identifying this Webhook Mapping.
  @return ApiPropertymappingsNotificationRetrieveRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationRetrieveRequest {
@@ -2687,7 +2687,7 @@ PropertymappingsNotificationUpdate Method for PropertymappingsNotificationUpdate
 NotificationWebhookMapping Viewset
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param pmUuid A UUID string identifying this Notification Webhook Mapping.
+ @param pmUuid A UUID string identifying this Webhook Mapping.
  @return ApiPropertymappingsNotificationUpdateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsNotificationUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationUpdateRequest {
@@ -2828,7 +2828,7 @@ PropertymappingsNotificationUsedByList Method for PropertymappingsNotificationUs
 Get a list of all objects that use this object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param pmUuid A UUID string identifying this Notification Webhook Mapping.
+ @param pmUuid A UUID string identifying this Webhook Mapping.
  @return ApiPropertymappingsNotificationUsedByListRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationUsedByListRequest {
