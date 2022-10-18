@@ -8296,10 +8296,10 @@ paths:
       - authentik: []
       tags:
       - flows
-  /flows/instances/import_flow/:
+  /flows/instances/import/:
     post:
       description: Import flow from .yaml file
-      operationId: flows_instances_import_flow_create
+      operationId: flows_instances_import_create
       requestBody:
         content:
           multipart/form-data:
@@ -8307,9 +8307,17 @@ paths:
               $ref: '#/components/schemas/FileUploadRequest'
       responses:
         "204":
-          description: Successfully imported flow
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowImportResult'
+          description: ""
         "400":
-          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowImportResult'
+          description: ""
         "403":
           content:
             application/json:
@@ -31580,6 +31588,27 @@ components:
       - pending_user_avatar
       - request_id
       - type
+      type: object
+    FlowImportResult:
+      description: Logs of an attempted flow import
+      example:
+        success: true
+        logs:
+        - key: ""
+        - key: ""
+      properties:
+        logs:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+        success:
+          readOnly: true
+          type: boolean
+      required:
+      - logs
+      - success
       type: object
     FlowInspection:
       description: Serializer for inspect endpoint

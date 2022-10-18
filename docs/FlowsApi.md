@@ -21,7 +21,7 @@ Method | HTTP request | Description
 [**FlowsInstancesDiagramRetrieve**](FlowsApi.md#FlowsInstancesDiagramRetrieve) | **Get** /flows/instances/{slug}/diagram/ | 
 [**FlowsInstancesExecuteRetrieve**](FlowsApi.md#FlowsInstancesExecuteRetrieve) | **Get** /flows/instances/{slug}/execute/ | 
 [**FlowsInstancesExportRetrieve**](FlowsApi.md#FlowsInstancesExportRetrieve) | **Get** /flows/instances/{slug}/export/ | 
-[**FlowsInstancesImportFlowCreate**](FlowsApi.md#FlowsInstancesImportFlowCreate) | **Post** /flows/instances/import_flow/ | 
+[**FlowsInstancesImportCreate**](FlowsApi.md#FlowsInstancesImportCreate) | **Post** /flows/instances/import/ | 
 [**FlowsInstancesList**](FlowsApi.md#FlowsInstancesList) | **Get** /flows/instances/ | 
 [**FlowsInstancesPartialUpdate**](FlowsApi.md#FlowsInstancesPartialUpdate) | **Patch** /flows/instances/{slug}/ | 
 [**FlowsInstancesRetrieve**](FlowsApi.md#FlowsInstancesRetrieve) | **Get** /flows/instances/{slug}/ | 
@@ -1222,9 +1222,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## FlowsInstancesImportFlowCreate
+## FlowsInstancesImportCreate
 
-> FlowsInstancesImportFlowCreate(ctx).File(file).Clear(clear).Execute()
+> FlowImportResult FlowsInstancesImportCreate(ctx).File(file).Clear(clear).Execute()
 
 
 
@@ -1248,11 +1248,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FlowsApi.FlowsInstancesImportFlowCreate(context.Background()).File(file).Clear(clear).Execute()
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesImportCreate(context.Background()).File(file).Clear(clear).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesImportFlowCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesImportCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `FlowsInstancesImportCreate`: FlowImportResult
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsInstancesImportCreate`: %v\n", resp)
 }
 ```
 
@@ -1262,7 +1264,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiFlowsInstancesImportFlowCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiFlowsInstancesImportCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1272,7 +1274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**FlowImportResult**](FlowImportResult.md)
 
 ### Authorization
 

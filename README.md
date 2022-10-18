@@ -222,7 +222,7 @@ Class | Method | HTTP request | Description
 *FlowsApi* | [**FlowsInstancesDiagramRetrieve**](docs/FlowsApi.md#flowsinstancesdiagramretrieve) | **Get** /flows/instances/{slug}/diagram/ | 
 *FlowsApi* | [**FlowsInstancesExecuteRetrieve**](docs/FlowsApi.md#flowsinstancesexecuteretrieve) | **Get** /flows/instances/{slug}/execute/ | 
 *FlowsApi* | [**FlowsInstancesExportRetrieve**](docs/FlowsApi.md#flowsinstancesexportretrieve) | **Get** /flows/instances/{slug}/export/ | 
-*FlowsApi* | [**FlowsInstancesImportFlowCreate**](docs/FlowsApi.md#flowsinstancesimportflowcreate) | **Post** /flows/instances/import_flow/ | 
+*FlowsApi* | [**FlowsInstancesImportCreate**](docs/FlowsApi.md#flowsinstancesimportcreate) | **Post** /flows/instances/import/ | 
 *FlowsApi* | [**FlowsInstancesList**](docs/FlowsApi.md#flowsinstanceslist) | **Get** /flows/instances/ | 
 *FlowsApi* | [**FlowsInstancesPartialUpdate**](docs/FlowsApi.md#flowsinstancespartialupdate) | **Patch** /flows/instances/{slug}/ | 
 *FlowsApi* | [**FlowsInstancesRetrieve**](docs/FlowsApi.md#flowsinstancesretrieve) | **Get** /flows/instances/{slug}/ | 
@@ -762,6 +762,7 @@ Class | Method | HTTP request | Description
  - [FlowDesignationEnum](docs/FlowDesignationEnum.md)
  - [FlowDiagram](docs/FlowDiagram.md)
  - [FlowErrorChallenge](docs/FlowErrorChallenge.md)
+ - [FlowImportResult](docs/FlowImportResult.md)
  - [FlowInspection](docs/FlowInspection.md)
  - [FlowInspectorPlan](docs/FlowInspectorPlan.md)
  - [FlowInspectorPlanCurrentStage](docs/FlowInspectorPlanCurrentStage.md)
