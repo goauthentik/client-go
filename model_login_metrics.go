@@ -17,18 +17,20 @@ import (
 
 // LoginMetrics Login Metrics per 1h
 type LoginMetrics struct {
-	LoginsPer1h       []Coordinate `json:"logins_per_1h"`
-	LoginsFailedPer1h []Coordinate `json:"logins_failed_per_1h"`
+	LoginsPer1h         []Coordinate `json:"logins_per_1h"`
+	LoginsFailedPer1h   []Coordinate `json:"logins_failed_per_1h"`
+	AuthorizationsPer1h []Coordinate `json:"authorizations_per_1h"`
 }
 
 // NewLoginMetrics instantiates a new LoginMetrics object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLoginMetrics(loginsPer1h []Coordinate, loginsFailedPer1h []Coordinate) *LoginMetrics {
+func NewLoginMetrics(loginsPer1h []Coordinate, loginsFailedPer1h []Coordinate, authorizationsPer1h []Coordinate) *LoginMetrics {
 	this := LoginMetrics{}
 	this.LoginsPer1h = loginsPer1h
 	this.LoginsFailedPer1h = loginsFailedPer1h
+	this.AuthorizationsPer1h = authorizationsPer1h
 	return &this
 }
 
@@ -88,6 +90,30 @@ func (o *LoginMetrics) SetLoginsFailedPer1h(v []Coordinate) {
 	o.LoginsFailedPer1h = v
 }
 
+// GetAuthorizationsPer1h returns the AuthorizationsPer1h field value
+func (o *LoginMetrics) GetAuthorizationsPer1h() []Coordinate {
+	if o == nil {
+		var ret []Coordinate
+		return ret
+	}
+
+	return o.AuthorizationsPer1h
+}
+
+// GetAuthorizationsPer1hOk returns a tuple with the AuthorizationsPer1h field value
+// and a boolean to check if the value has been set.
+func (o *LoginMetrics) GetAuthorizationsPer1hOk() ([]Coordinate, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthorizationsPer1h, true
+}
+
+// SetAuthorizationsPer1h sets field value
+func (o *LoginMetrics) SetAuthorizationsPer1h(v []Coordinate) {
+	o.AuthorizationsPer1h = v
+}
+
 func (o LoginMetrics) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +121,9 @@ func (o LoginMetrics) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["logins_failed_per_1h"] = o.LoginsFailedPer1h
+	}
+	if true {
+		toSerialize["authorizations_per_1h"] = o.AuthorizationsPer1h
 	}
 	return json.Marshal(toSerialize)
 }

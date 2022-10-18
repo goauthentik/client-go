@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **LoginsPer1h** | [**[]Coordinate**](Coordinate.md) |  | [readonly] 
 **LoginsFailedPer1h** | [**[]Coordinate**](Coordinate.md) |  | [readonly] 
+**AuthorizationsPer1h** | [**[]Coordinate**](Coordinate.md) |  | [readonly] 
 
 ## Methods
 
 ### NewLoginMetrics
 
-`func NewLoginMetrics(loginsPer1h []Coordinate, loginsFailedPer1h []Coordinate, ) *LoginMetrics`
+`func NewLoginMetrics(loginsPer1h []Coordinate, loginsFailedPer1h []Coordinate, authorizationsPer1h []Coordinate, ) *LoginMetrics`
 
 NewLoginMetrics instantiates a new LoginMetrics object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *LoginMetrics) SetLoginsFailedPer1h(v []Coordinate)`
 
 SetLoginsFailedPer1h sets LoginsFailedPer1h field to given value.
+
+
+### GetAuthorizationsPer1h
+
+`func (o *LoginMetrics) GetAuthorizationsPer1h() []Coordinate`
+
+GetAuthorizationsPer1h returns the AuthorizationsPer1h field if non-nil, zero value otherwise.
+
+### GetAuthorizationsPer1hOk
+
+`func (o *LoginMetrics) GetAuthorizationsPer1hOk() (*[]Coordinate, bool)`
+
+GetAuthorizationsPer1hOk returns a tuple with the AuthorizationsPer1h field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthorizationsPer1h
+
+`func (o *LoginMetrics) SetAuthorizationsPer1h(v []Coordinate)`
+
+SetAuthorizationsPer1h sets AuthorizationsPer1h field to given value.
 
 
 

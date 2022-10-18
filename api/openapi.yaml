@@ -33381,6 +33381,11 @@ components:
           x_cord: 0
         - y_cord: 6
           x_cord: 0
+        authorizations_per_1h:
+        - y_cord: 6
+          x_cord: 0
+        - y_cord: 6
+          x_cord: 0
         logins_per_1h:
         - y_cord: 6
           x_cord: 0
@@ -33397,7 +33402,13 @@ components:
             $ref: '#/components/schemas/Coordinate'
           readOnly: true
           type: array
+        authorizations_per_1h:
+          items:
+            $ref: '#/components/schemas/Coordinate'
+          readOnly: true
+          type: array
       required:
+      - authorizations_per_1h
       - logins_failed_per_1h
       - logins_per_1h
       type: object
