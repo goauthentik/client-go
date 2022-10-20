@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**FlowSet** | Pointer to [**[]FlowRequest**](FlowRequest.md) |  | [optional] 
+**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -48,20 +48,20 @@ SetName sets Name field to given value.
 
 ### GetFlowSet
 
-`func (o *UserLogoutStageRequest) GetFlowSet() []FlowRequest`
+`func (o *UserLogoutStageRequest) GetFlowSet() []FlowSetRequest`
 
 GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
 
 ### GetFlowSetOk
 
-`func (o *UserLogoutStageRequest) GetFlowSetOk() (*[]FlowRequest, bool)`
+`func (o *UserLogoutStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
 
 GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlowSet
 
-`func (o *UserLogoutStageRequest) SetFlowSet(v []FlowRequest)`
+`func (o *UserLogoutStageRequest) SetFlowSet(v []FlowSetRequest)`
 
 SetFlowSet sets FlowSet field to given value.
 

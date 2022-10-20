@@ -767,6 +767,8 @@ Class | Method | HTTP request | Description
  - [FlowInspectorPlan](docs/FlowInspectorPlan.md)
  - [FlowInspectorPlanCurrentStage](docs/FlowInspectorPlanCurrentStage.md)
  - [FlowRequest](docs/FlowRequest.md)
+ - [FlowSet](docs/FlowSet.md)
+ - [FlowSetRequest](docs/FlowSetRequest.md)
  - [FlowStageBinding](docs/FlowStageBinding.md)
  - [FlowStageBindingRequest](docs/FlowStageBindingRequest.md)
  - [FlowStageBindingStageObj](docs/FlowStageBindingStageObj.md)

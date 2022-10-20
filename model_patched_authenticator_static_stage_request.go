@@ -17,8 +17,8 @@ import (
 
 // PatchedAuthenticatorStaticStageRequest AuthenticatorStaticStage Serializer
 type PatchedAuthenticatorStaticStageRequest struct {
-	Name    *string       `json:"name,omitempty"`
-	FlowSet []FlowRequest `json:"flow_set,omitempty"`
+	Name    *string          `json:"name,omitempty"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
 	TokenCount    *int32         `json:"token_count,omitempty"`
@@ -74,9 +74,9 @@ func (o *PatchedAuthenticatorStaticStageRequest) SetName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *PatchedAuthenticatorStaticStageRequest) GetFlowSet() []FlowRequest {
+func (o *PatchedAuthenticatorStaticStageRequest) GetFlowSet() []FlowSetRequest {
 	if o == nil || o.FlowSet == nil {
-		var ret []FlowRequest
+		var ret []FlowSetRequest
 		return ret
 	}
 	return o.FlowSet
@@ -84,7 +84,7 @@ func (o *PatchedAuthenticatorStaticStageRequest) GetFlowSet() []FlowRequest {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedAuthenticatorStaticStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
+func (o *PatchedAuthenticatorStaticStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *PatchedAuthenticatorStaticStageRequest) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
-func (o *PatchedAuthenticatorStaticStageRequest) SetFlowSet(v []FlowRequest) {
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *PatchedAuthenticatorStaticStageRequest) SetFlowSet(v []FlowSetRequest) {
 	o.FlowSet = v
 }
 

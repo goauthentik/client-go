@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
 **MetaModelName** | **string** |  | [readonly] 
-**FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
+**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **CreateUsersAsInactive** | Pointer to **bool** | When set, newly created users are inactive and cannot login. | [optional] 
 **CreateUsersGroup** | Pointer to **NullableString** | Optionally add newly created users to this group. | [optional] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
@@ -156,20 +156,20 @@ SetMetaModelName sets MetaModelName field to given value.
 
 ### GetFlowSet
 
-`func (o *UserWriteStage) GetFlowSet() []Flow`
+`func (o *UserWriteStage) GetFlowSet() []FlowSet`
 
 GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
 
 ### GetFlowSetOk
 
-`func (o *UserWriteStage) GetFlowSetOk() (*[]Flow, bool)`
+`func (o *UserWriteStage) GetFlowSetOk() (*[]FlowSet, bool)`
 
 GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlowSet
 
-`func (o *UserWriteStage) SetFlowSet(v []Flow)`
+`func (o *UserWriteStage) SetFlowSet(v []FlowSet)`
 
 SetFlowSet sets FlowSet field to given value.
 

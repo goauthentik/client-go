@@ -17,8 +17,8 @@ import (
 
 // UserLoginStageRequest UserLoginStage Serializer
 type UserLoginStageRequest struct {
-	Name    string        `json:"name"`
-	FlowSet []FlowRequest `json:"flow_set,omitempty"`
+	Name    string           `json:"name"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)
 	SessionDuration *string `json:"session_duration,omitempty"`
 }
@@ -66,9 +66,9 @@ func (o *UserLoginStageRequest) SetName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *UserLoginStageRequest) GetFlowSet() []FlowRequest {
+func (o *UserLoginStageRequest) GetFlowSet() []FlowSetRequest {
 	if o == nil || o.FlowSet == nil {
-		var ret []FlowRequest
+		var ret []FlowSetRequest
 		return ret
 	}
 	return o.FlowSet
@@ -76,7 +76,7 @@ func (o *UserLoginStageRequest) GetFlowSet() []FlowRequest {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserLoginStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
+func (o *UserLoginStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -92,8 +92,8 @@ func (o *UserLoginStageRequest) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
-func (o *UserLoginStageRequest) SetFlowSet(v []FlowRequest) {
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *UserLoginStageRequest) SetFlowSet(v []FlowSetRequest) {
 	o.FlowSet = v
 }
 

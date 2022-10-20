@@ -17,13 +17,13 @@ import (
 
 // UserLoginStage UserLoginStage Serializer
 type UserLoginStage struct {
-	Pk                string `json:"pk"`
-	Name              string `json:"name"`
-	Component         string `json:"component"`
-	VerboseName       string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
-	MetaModelName     string `json:"meta_model_name"`
-	FlowSet           []Flow `json:"flow_set,omitempty"`
+	Pk                string    `json:"pk"`
+	Name              string    `json:"name"`
+	Component         string    `json:"component"`
+	VerboseName       string    `json:"verbose_name"`
+	VerboseNamePlural string    `json:"verbose_name_plural"`
+	MetaModelName     string    `json:"meta_model_name"`
+	FlowSet           []FlowSet `json:"flow_set,omitempty"`
 	// Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)
 	SessionDuration *string `json:"session_duration,omitempty"`
 }
@@ -196,9 +196,9 @@ func (o *UserLoginStage) SetMetaModelName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *UserLoginStage) GetFlowSet() []Flow {
+func (o *UserLoginStage) GetFlowSet() []FlowSet {
 	if o == nil || o.FlowSet == nil {
-		var ret []Flow
+		var ret []FlowSet
 		return ret
 	}
 	return o.FlowSet
@@ -206,7 +206,7 @@ func (o *UserLoginStage) GetFlowSet() []Flow {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserLoginStage) GetFlowSetOk() ([]Flow, bool) {
+func (o *UserLoginStage) GetFlowSetOk() ([]FlowSet, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -222,8 +222,8 @@ func (o *UserLoginStage) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []Flow and assigns it to the FlowSet field.
-func (o *UserLoginStage) SetFlowSet(v []Flow) {
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
+func (o *UserLoginStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
 

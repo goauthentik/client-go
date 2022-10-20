@@ -17,13 +17,13 @@ import (
 
 // IdentificationStage IdentificationStage Serializer
 type IdentificationStage struct {
-	Pk                string `json:"pk"`
-	Name              string `json:"name"`
-	Component         string `json:"component"`
-	VerboseName       string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
-	MetaModelName     string `json:"meta_model_name"`
-	FlowSet           []Flow `json:"flow_set,omitempty"`
+	Pk                string    `json:"pk"`
+	Name              string    `json:"name"`
+	Component         string    `json:"component"`
+	VerboseName       string    `json:"verbose_name"`
+	VerboseNamePlural string    `json:"verbose_name_plural"`
+	MetaModelName     string    `json:"meta_model_name"`
+	FlowSet           []FlowSet `json:"flow_set,omitempty"`
 	// Fields of the user object to match against. (Hold shift to select multiple options)
 	UserFields []UserFieldsEnum `json:"user_fields,omitempty"`
 	// When set, shows a password field, instead of showing the password field as seaprate step.
@@ -211,9 +211,9 @@ func (o *IdentificationStage) SetMetaModelName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *IdentificationStage) GetFlowSet() []Flow {
+func (o *IdentificationStage) GetFlowSet() []FlowSet {
 	if o == nil || o.FlowSet == nil {
-		var ret []Flow
+		var ret []FlowSet
 		return ret
 	}
 	return o.FlowSet
@@ -221,7 +221,7 @@ func (o *IdentificationStage) GetFlowSet() []Flow {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentificationStage) GetFlowSetOk() ([]Flow, bool) {
+func (o *IdentificationStage) GetFlowSetOk() ([]FlowSet, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -237,8 +237,8 @@ func (o *IdentificationStage) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []Flow and assigns it to the FlowSet field.
-func (o *IdentificationStage) SetFlowSet(v []Flow) {
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
+func (o *IdentificationStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
 

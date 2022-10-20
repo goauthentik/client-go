@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
 **MetaModelName** | **string** |  | [readonly] 
-**FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
+**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **Backends** | [**[]BackendsEnum**](BackendsEnum.md) | Selection of backends to test the password against. | 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
 **FailedAttemptsBeforeCancel** | Pointer to **int32** | How many attempts a user has before the flow is canceled. To lock the user out, use a reputation policy and a user_write stage. | [optional] 
@@ -156,20 +156,20 @@ SetMetaModelName sets MetaModelName field to given value.
 
 ### GetFlowSet
 
-`func (o *PasswordStage) GetFlowSet() []Flow`
+`func (o *PasswordStage) GetFlowSet() []FlowSet`
 
 GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
 
 ### GetFlowSetOk
 
-`func (o *PasswordStage) GetFlowSetOk() (*[]Flow, bool)`
+`func (o *PasswordStage) GetFlowSetOk() (*[]FlowSet, bool)`
 
 GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlowSet
 
-`func (o *PasswordStage) SetFlowSet(v []Flow)`
+`func (o *PasswordStage) SetFlowSet(v []FlowSet)`
 
 SetFlowSet sets FlowSet field to given value.
 

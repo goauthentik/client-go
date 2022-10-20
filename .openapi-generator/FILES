@@ -145,6 +145,8 @@ docs/FlowInspection.md
 docs/FlowInspectorPlan.md
 docs/FlowInspectorPlanCurrentStage.md
 docs/FlowRequest.md
+docs/FlowSet.md
+docs/FlowSetRequest.md
 docs/FlowStageBinding.md
 docs/FlowStageBindingRequest.md
 docs/FlowStageBindingStageObj.md
@@ -621,6 +623,8 @@ model_flow_inspection.go
 model_flow_inspector_plan.go
 model_flow_inspector_plan_current_stage.go
 model_flow_request.go
+model_flow_set.go
+model_flow_set_request.go
 model_flow_stage_binding.go
 model_flow_stage_binding_request.go
 model_flow_stage_binding_stage_obj.go

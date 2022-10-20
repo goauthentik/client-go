@@ -17,13 +17,13 @@ import (
 
 // Stage Stage Serializer
 type Stage struct {
-	Pk                string `json:"pk"`
-	Name              string `json:"name"`
-	Component         string `json:"component"`
-	VerboseName       string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
-	MetaModelName     string `json:"meta_model_name"`
-	FlowSet           []Flow `json:"flow_set,omitempty"`
+	Pk                string    `json:"pk"`
+	Name              string    `json:"name"`
+	Component         string    `json:"component"`
+	VerboseName       string    `json:"verbose_name"`
+	VerboseNamePlural string    `json:"verbose_name_plural"`
+	MetaModelName     string    `json:"meta_model_name"`
+	FlowSet           []FlowSet `json:"flow_set,omitempty"`
 }
 
 // NewStage instantiates a new Stage object
@@ -194,9 +194,9 @@ func (o *Stage) SetMetaModelName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *Stage) GetFlowSet() []Flow {
+func (o *Stage) GetFlowSet() []FlowSet {
 	if o == nil || o.FlowSet == nil {
-		var ret []Flow
+		var ret []FlowSet
 		return ret
 	}
 	return o.FlowSet
@@ -204,7 +204,7 @@ func (o *Stage) GetFlowSet() []Flow {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Stage) GetFlowSetOk() ([]Flow, bool) {
+func (o *Stage) GetFlowSetOk() ([]FlowSet, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -220,8 +220,8 @@ func (o *Stage) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []Flow and assigns it to the FlowSet field.
-func (o *Stage) SetFlowSet(v []Flow) {
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
+func (o *Stage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
 

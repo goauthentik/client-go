@@ -17,10 +17,10 @@ import (
 
 // PromptStageRequest PromptStage Serializer
 type PromptStageRequest struct {
-	Name               string        `json:"name"`
-	FlowSet            []FlowRequest `json:"flow_set,omitempty"`
-	Fields             []string      `json:"fields"`
-	ValidationPolicies []string      `json:"validation_policies,omitempty"`
+	Name               string           `json:"name"`
+	FlowSet            []FlowSetRequest `json:"flow_set,omitempty"`
+	Fields             []string         `json:"fields"`
+	ValidationPolicies []string         `json:"validation_policies,omitempty"`
 }
 
 // NewPromptStageRequest instantiates a new PromptStageRequest object
@@ -67,9 +67,9 @@ func (o *PromptStageRequest) SetName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *PromptStageRequest) GetFlowSet() []FlowRequest {
+func (o *PromptStageRequest) GetFlowSet() []FlowSetRequest {
 	if o == nil || o.FlowSet == nil {
-		var ret []FlowRequest
+		var ret []FlowSetRequest
 		return ret
 	}
 	return o.FlowSet
@@ -77,7 +77,7 @@ func (o *PromptStageRequest) GetFlowSet() []FlowRequest {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PromptStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
+func (o *PromptStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -93,8 +93,8 @@ func (o *PromptStageRequest) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
-func (o *PromptStageRequest) SetFlowSet(v []FlowRequest) {
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *PromptStageRequest) SetFlowSet(v []FlowSetRequest) {
 	o.FlowSet = v
 }
 

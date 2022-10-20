@@ -17,13 +17,13 @@ import (
 
 // AuthenticatorDuoStage AuthenticatorDuoStage Serializer
 type AuthenticatorDuoStage struct {
-	Pk                string `json:"pk"`
-	Name              string `json:"name"`
-	Component         string `json:"component"`
-	VerboseName       string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
-	MetaModelName     string `json:"meta_model_name"`
-	FlowSet           []Flow `json:"flow_set,omitempty"`
+	Pk                string    `json:"pk"`
+	Name              string    `json:"name"`
+	Component         string    `json:"component"`
+	VerboseName       string    `json:"verbose_name"`
+	VerboseNamePlural string    `json:"verbose_name_plural"`
+	MetaModelName     string    `json:"meta_model_name"`
+	FlowSet           []FlowSet `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow       NullableString `json:"configure_flow,omitempty"`
 	ClientId            string         `json:"client_id"`
@@ -201,9 +201,9 @@ func (o *AuthenticatorDuoStage) SetMetaModelName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *AuthenticatorDuoStage) GetFlowSet() []Flow {
+func (o *AuthenticatorDuoStage) GetFlowSet() []FlowSet {
 	if o == nil || o.FlowSet == nil {
-		var ret []Flow
+		var ret []FlowSet
 		return ret
 	}
 	return o.FlowSet
@@ -211,7 +211,7 @@ func (o *AuthenticatorDuoStage) GetFlowSet() []Flow {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorDuoStage) GetFlowSetOk() ([]Flow, bool) {
+func (o *AuthenticatorDuoStage) GetFlowSetOk() ([]FlowSet, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -227,8 +227,8 @@ func (o *AuthenticatorDuoStage) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []Flow and assigns it to the FlowSet field.
-func (o *AuthenticatorDuoStage) SetFlowSet(v []Flow) {
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
+func (o *AuthenticatorDuoStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
 

@@ -17,8 +17,8 @@ import (
 
 // InvitationStageRequest InvitationStage Serializer
 type InvitationStageRequest struct {
-	Name    string        `json:"name"`
-	FlowSet []FlowRequest `json:"flow_set,omitempty"`
+	Name    string           `json:"name"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// If this flag is set, this Stage will jump to the next Stage when no Invitation is given. By default this Stage will cancel the Flow when no invitation is given.
 	ContinueFlowWithoutInvitation *bool `json:"continue_flow_without_invitation,omitempty"`
 }
@@ -66,9 +66,9 @@ func (o *InvitationStageRequest) SetName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *InvitationStageRequest) GetFlowSet() []FlowRequest {
+func (o *InvitationStageRequest) GetFlowSet() []FlowSetRequest {
 	if o == nil || o.FlowSet == nil {
-		var ret []FlowRequest
+		var ret []FlowSetRequest
 		return ret
 	}
 	return o.FlowSet
@@ -76,7 +76,7 @@ func (o *InvitationStageRequest) GetFlowSet() []FlowRequest {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InvitationStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
+func (o *InvitationStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -92,8 +92,8 @@ func (o *InvitationStageRequest) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
-func (o *InvitationStageRequest) SetFlowSet(v []FlowRequest) {
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *InvitationStageRequest) SetFlowSet(v []FlowSetRequest) {
 	o.FlowSet = v
 }
 

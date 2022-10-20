@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**FlowSet** | Pointer to [**[]FlowRequest**](FlowRequest.md) |  | [optional] 
+**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
 **Provider** | Pointer to [**ProviderEnum**](ProviderEnum.md) |  | [optional] 
 **FromNumber** | Pointer to **string** |  | [optional] 
@@ -62,20 +62,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetFlowSet
 
-`func (o *PatchedAuthenticatorSMSStageRequest) GetFlowSet() []FlowRequest`
+`func (o *PatchedAuthenticatorSMSStageRequest) GetFlowSet() []FlowSetRequest`
 
 GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
 
 ### GetFlowSetOk
 
-`func (o *PatchedAuthenticatorSMSStageRequest) GetFlowSetOk() (*[]FlowRequest, bool)`
+`func (o *PatchedAuthenticatorSMSStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
 
 GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlowSet
 
-`func (o *PatchedAuthenticatorSMSStageRequest) SetFlowSet(v []FlowRequest)`
+`func (o *PatchedAuthenticatorSMSStageRequest) SetFlowSet(v []FlowSetRequest)`
 
 SetFlowSet sets FlowSet field to given value.
 

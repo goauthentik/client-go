@@ -27901,43 +27901,29 @@ components:
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user_verification: null
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
         authenticator_attachment: ""
       properties:
@@ -27962,7 +27948,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -28017,7 +28003,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -28161,43 +28147,29 @@ components:
         api_hostname: api_hostname
         admin_integration_key: admin_integration_key
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
         client_id: client_id
       properties:
@@ -28222,7 +28194,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -28309,7 +28281,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -28389,43 +28361,29 @@ components:
         auth: auth
         auth_password: auth_password
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
         verify_only: true
         component: component
@@ -28458,7 +28416,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -28536,7 +28494,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -28626,43 +28584,29 @@ components:
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
       properties:
         pk:
@@ -28686,7 +28630,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -28735,7 +28679,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -28802,43 +28746,29 @@ components:
         digits: ""
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
       properties:
         pk:
@@ -28862,7 +28792,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -28913,7 +28843,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -28945,43 +28875,29 @@ components:
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         last_auth_threshold: last_auth_threshold
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
         configuration_stages:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -29008,7 +28924,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         not_configured_action:
           $ref: '#/components/schemas/NotConfiguredActionEnum'
@@ -29072,7 +28988,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         not_configured_action:
           $ref: '#/components/schemas/NotConfiguredActionEnum'
@@ -29430,43 +29346,29 @@ components:
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
       properties:
         pk:
@@ -29490,7 +29392,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         public_key:
           description: "Public key, acquired from https://www.google.com/recaptcha/intro/v3.html"
@@ -29533,7 +29435,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         public_key:
           description: "Public key, acquired from https://www.google.com/recaptcha/intro/v3.html"
@@ -29849,43 +29751,29 @@ components:
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         consent_expire_in: consent_expire_in
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
       properties:
         pk:
@@ -29909,7 +29797,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         mode:
           $ref: '#/components/schemas/ConsentStageModeEnum'
@@ -29960,7 +29848,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         mode:
           $ref: '#/components/schemas/ConsentStageModeEnum'
@@ -30081,43 +29969,29 @@ components:
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
       properties:
         pk:
@@ -30141,7 +30015,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
       required:
       - component
@@ -30178,7 +30052,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
       required:
       - name
@@ -30498,43 +30372,29 @@ components:
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
       properties:
         pk:
@@ -30558,7 +30418,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
       required:
       - component
@@ -30595,7 +30455,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
       required:
       - name
@@ -30684,43 +30544,29 @@ components:
         use_ssl: true
         subject: subject
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
         token_expiry: -1517921766
         timeout: 441289069
@@ -30757,7 +30603,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         use_global_settings:
           description: "When enabled, global Email connection settings will be used\
@@ -30843,7 +30689,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         use_global_settings:
           description: "When enabled, global Email connection settings will be used\
@@ -31719,6 +31565,124 @@ components:
       - slug
       - title
       type: object
+    FlowSet:
+      description: Stripped down flow serializer
+      example:
+        policy_engine_mode: null
+        compatibility_mode: true
+        layout: null
+        policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        background: background
+        denied_action: ""
+        name: name
+        export_url: export_url
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        designation: ""
+        title: title
+        slug: slug
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Flow uuid
+          type: string
+        policybindingmodel_ptr_id:
+          format: uuid
+          readOnly: true
+          type: string
+        name:
+          type: string
+        slug:
+          description: Visible in the URL.
+          maxLength: 50
+          pattern: "^[-a-zA-Z0-9_]+$"
+          type: string
+        title:
+          description: Shown as the Title in Flow pages.
+          type: string
+        designation:
+          allOf:
+          - $ref: '#/components/schemas/FlowDesignationEnum'
+          description: "Decides what this Flow is used for. For example, the Authentication\
+            \ flow is redirect to when an un-authenticated user visits authentik."
+        background:
+          readOnly: true
+          type: string
+        policy_engine_mode:
+          $ref: '#/components/schemas/PolicyEngineMode'
+        compatibility_mode:
+          description: "Enable compatibility mode, increases compatibility with password\
+            \ managers on mobile devices."
+          type: boolean
+        export_url:
+          readOnly: true
+          type: string
+        layout:
+          $ref: '#/components/schemas/LayoutEnum'
+        denied_action:
+          allOf:
+          - $ref: '#/components/schemas/DeniedActionEnum'
+          description: Configure what should happen when a flow denies access to a
+            user.
+      required:
+      - background
+      - designation
+      - export_url
+      - name
+      - pk
+      - policybindingmodel_ptr_id
+      - slug
+      - title
+      type: object
+    FlowSetRequest:
+      description: Stripped down flow serializer
+      example:
+        policy_engine_mode: null
+        compatibility_mode: true
+        layout: null
+        denied_action: ""
+        name: name
+        designation: ""
+        title: title
+        slug: slug
+      properties:
+        name:
+          minLength: 1
+          type: string
+        slug:
+          description: Visible in the URL.
+          maxLength: 50
+          minLength: 1
+          pattern: "^[-a-zA-Z0-9_]+$"
+          type: string
+        title:
+          description: Shown as the Title in Flow pages.
+          minLength: 1
+          type: string
+        designation:
+          allOf:
+          - $ref: '#/components/schemas/FlowDesignationEnum'
+          description: "Decides what this Flow is used for. For example, the Authentication\
+            \ flow is redirect to when an un-authenticated user visits authentik."
+        policy_engine_mode:
+          $ref: '#/components/schemas/PolicyEngineMode'
+        compatibility_mode:
+          description: "Enable compatibility mode, increases compatibility with password\
+            \ managers on mobile devices."
+          type: boolean
+        layout:
+          $ref: '#/components/schemas/LayoutEnum'
+        denied_action:
+          allOf:
+          - $ref: '#/components/schemas/DeniedActionEnum'
+          description: Configure what should happen when a flow denies access to a
+            user.
+      required:
+      - designation
+      - name
+      - slug
+      - title
+      type: object
     FlowStageBinding:
       description: FlowStageBinding Serializer
       example:
@@ -32200,43 +32164,29 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
         passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -32274,7 +32224,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         user_fields:
           description: Fields of the user object to match against. (Hold shift to
@@ -32371,7 +32321,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         user_fields:
           description: Fields of the user object to match against. (Hold shift to
@@ -32509,43 +32459,29 @@ components:
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
       properties:
         pk:
@@ -32569,7 +32505,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         continue_flow_without_invitation:
           description: "If this flag is set, this Stage will jump to the next Stage\
@@ -32612,7 +32548,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         continue_flow_without_invitation:
           description: "If this flag is set, this Stage will jump to the next Stage\
@@ -34594,43 +34530,29 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user_verification: null
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           authenticator_attachment: ""
         - resident_key_requirement: null
@@ -34643,43 +34565,29 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user_verification: null
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           authenticator_attachment: ""
       properties:
@@ -34796,43 +34704,29 @@ components:
           api_hostname: api_hostname
           admin_integration_key: admin_integration_key
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           client_id: client_id
         - component: component
@@ -34845,43 +34739,29 @@ components:
           api_hostname: api_hostname
           admin_integration_key: admin_integration_key
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           client_id: client_id
       properties:
@@ -34913,43 +34793,29 @@ components:
           auth: auth
           auth_password: auth_password
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           verify_only: true
           component: component
@@ -34967,43 +34833,29 @@ components:
           auth: auth
           auth_password: auth_password
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           verify_only: true
           component: component
@@ -35045,43 +34897,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
         - component: component
           verbose_name: verbose_name
@@ -35092,43 +34930,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
       properties:
         pagination:
@@ -35161,43 +34985,29 @@ components:
           digits: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
         - component: component
           verbose_name: verbose_name
@@ -35208,43 +35018,29 @@ components:
           digits: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
       properties:
         pagination:
@@ -35280,43 +35076,29 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           last_auth_threshold: last_auth_threshold
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           configuration_stages:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35333,43 +35115,29 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           last_auth_threshold: last_auth_threshold
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           configuration_stages:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35454,43 +35222,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
         - public_key: public_key
           component: component
@@ -35500,43 +35254,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
       properties:
         pagination:
@@ -35613,43 +35353,29 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           consent_expire_in: consent_expire_in
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
         - mode: null
           component: component
@@ -35660,43 +35386,29 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           consent_expire_in: consent_expire_in
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
       properties:
         pagination:
@@ -35727,43 +35439,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
         - component: component
           verbose_name: verbose_name
@@ -35772,43 +35470,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
       properties:
         pagination:
@@ -35925,43 +35609,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
         - component: component
           verbose_name: verbose_name
@@ -35970,43 +35640,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
       properties:
         pagination:
@@ -36062,43 +35718,29 @@ components:
           use_ssl: true
           subject: subject
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           token_expiry: -1517921766
           timeout: 441289069
@@ -36119,43 +35761,29 @@ components:
           use_ssl: true
           subject: subject
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           token_expiry: -1517921766
           timeout: 441289069
@@ -36806,43 +36434,29 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36864,43 +36478,29 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36982,43 +36582,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
         - continue_flow_without_invitation: true
           component: component
@@ -37028,43 +36614,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
       properties:
         pagination:
@@ -37883,43 +37455,29 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           failed_attempts_before_cancel: -1803530559
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           backends:
           - null
@@ -37933,43 +37491,29 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           failed_attempts_before_cancel: -1803530559
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           backends:
           - null
@@ -38183,43 +37727,29 @@ components:
             name: name
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             flow_set:
-            - compatibility_mode: true
-              denied_action: ""
-              policies:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              title: title
-              policy_engine_mode: null
+            - policy_engine_mode: null
+              compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               background: background
+              denied_action: ""
               name: name
-              stages:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               export_url: export_url
               pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               designation: ""
-              cache_count: 0
+              title: title
               slug: slug
-            - compatibility_mode: true
-              denied_action: ""
-              policies:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              title: title
-              policy_engine_mode: null
+            - policy_engine_mode: null
+              compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               background: background
+              denied_action: ""
               name: name
-              stages:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               export_url: export_url
               pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               designation: ""
-              cache_count: 0
+              title: title
               slug: slug
           - component: component
             verbose_name: verbose_name
@@ -38228,43 +37758,29 @@ components:
             name: name
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             flow_set:
-            - compatibility_mode: true
-              denied_action: ""
-              policies:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              title: title
-              policy_engine_mode: null
+            - policy_engine_mode: null
+              compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               background: background
+              denied_action: ""
               name: name
-              stages:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               export_url: export_url
               pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               designation: ""
-              cache_count: 0
+              title: title
               slug: slug
-            - compatibility_mode: true
-              denied_action: ""
-              policies:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              title: title
-              policy_engine_mode: null
+            - policy_engine_mode: null
+              compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               background: background
+              denied_action: ""
               name: name
-              stages:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               export_url: export_url
               pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               designation: ""
-              cache_count: 0
+              title: title
               slug: slug
           field_key: field_key
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -38283,43 +37799,29 @@ components:
             name: name
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             flow_set:
-            - compatibility_mode: true
-              denied_action: ""
-              policies:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              title: title
-              policy_engine_mode: null
+            - policy_engine_mode: null
+              compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               background: background
+              denied_action: ""
               name: name
-              stages:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               export_url: export_url
               pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               designation: ""
-              cache_count: 0
+              title: title
               slug: slug
-            - compatibility_mode: true
-              denied_action: ""
-              policies:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              title: title
-              policy_engine_mode: null
+            - policy_engine_mode: null
+              compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               background: background
+              denied_action: ""
               name: name
-              stages:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               export_url: export_url
               pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               designation: ""
-              cache_count: 0
+              title: title
               slug: slug
           - component: component
             verbose_name: verbose_name
@@ -38328,43 +37830,29 @@ components:
             name: name
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             flow_set:
-            - compatibility_mode: true
-              denied_action: ""
-              policies:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              title: title
-              policy_engine_mode: null
+            - policy_engine_mode: null
+              compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               background: background
+              denied_action: ""
               name: name
-              stages:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               export_url: export_url
               pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               designation: ""
-              cache_count: 0
+              title: title
               slug: slug
-            - compatibility_mode: true
-              denied_action: ""
-              policies:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              title: title
-              policy_engine_mode: null
+            - policy_engine_mode: null
+              compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               background: background
+              denied_action: ""
               name: name
-              stages:
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               export_url: export_url
               pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               designation: ""
-              cache_count: 0
+              title: title
               slug: slug
           field_key: field_key
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -38409,43 +37897,29 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
         - component: component
           verbose_name: verbose_name
@@ -38460,43 +37934,29 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
       properties:
         pagination:
@@ -39433,43 +38893,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
         - component: component
           verbose_name: verbose_name
@@ -39478,43 +38924,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
       properties:
         pagination:
@@ -39915,43 +39347,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
         - component: component
           verbose_name: verbose_name
@@ -39960,43 +39378,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
       properties:
         pagination:
@@ -40209,43 +39613,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           session_duration: session_duration
         - component: component
@@ -40255,43 +39645,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           session_duration: session_duration
       properties:
@@ -40323,43 +39699,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
         - component: component
           verbose_name: verbose_name
@@ -40368,43 +39730,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
       properties:
         pagination:
@@ -40527,43 +39875,29 @@ components:
           create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           create_users_as_inactive: true
         - component: component
@@ -40575,43 +39909,29 @@ components:
           create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
           create_users_as_inactive: true
       properties:
@@ -40924,43 +40244,29 @@ components:
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         failed_attempts_before_cancel: -1803530559
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
         backends:
         - null
@@ -40987,7 +40293,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         backends:
           description: Selection of backends to test the password against.
@@ -41047,7 +40353,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         backends:
           description: Selection of backends to test the password against.
@@ -41142,7 +40448,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -41192,7 +40498,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -41252,7 +40558,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -41315,7 +40621,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -41357,7 +40663,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -41406,7 +40712,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         not_configured_action:
           $ref: '#/components/schemas/NotConfiguredActionEnum'
@@ -41479,7 +40785,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         public_key:
           description: "Public key, acquired from https://www.google.com/recaptcha/intro/v3.html"
@@ -41552,7 +40858,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         mode:
           $ref: '#/components/schemas/ConsentStageModeEnum'
@@ -41589,7 +40895,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
       type: object
     PatchedDockerServiceConnectionRequest:
@@ -41681,7 +40987,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
       type: object
     PatchedDuoDeviceRequest:
@@ -41735,7 +41041,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         use_global_settings:
           description: "When enabled, global Email connection settings will be used\
@@ -42044,7 +41350,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         user_fields:
           description: Fields of the user object to match against. (Hold shift to
@@ -42146,7 +41452,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         continue_flow_without_invitation:
           description: "If this flag is set, this Stage will jump to the next Stage\
@@ -42832,7 +42138,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         backends:
           description: Selection of backends to test the password against.
@@ -43083,7 +42389,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         fields:
           items:
@@ -43632,7 +42938,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
       type: object
     PatchedUserLoginStageRequest:
@@ -43663,7 +42969,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         session_duration:
           description: "Determines how long a session lasts. Default of 0 means that\
@@ -43698,7 +43004,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
       type: object
     PatchedUserOAuthSourceConnectionRequest:
@@ -43809,7 +43115,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         create_users_as_inactive:
           description: "When set, newly created users are inactive and cannot login."
@@ -44337,43 +43643,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
         - component: component
           verbose_name: verbose_name
@@ -44382,43 +43674,29 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
-          - compatibility_mode: true
-            denied_action: ""
-            policies:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            title: title
-            policy_engine_mode: null
+          - policy_engine_mode: null
+            compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             background: background
+            denied_action: ""
             name: name
-            stages:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             export_url: export_url
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             designation: ""
-            cache_count: 0
+            title: title
             slug: slug
         field_key: field_key
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -44592,43 +43870,29 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
       properties:
         pk:
@@ -44652,7 +43916,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         fields:
           items:
@@ -44706,7 +43970,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         fields:
           items:
@@ -46657,43 +45921,29 @@ components:
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
       properties:
         pk:
@@ -46717,7 +45967,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
       required:
       - component
@@ -46780,7 +46030,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
       required:
       - name
@@ -47566,43 +46816,29 @@ components:
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
       properties:
         pk:
@@ -47626,7 +46862,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
       required:
       - component
@@ -47663,7 +46899,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
       required:
       - name
@@ -47684,43 +46920,29 @@ components:
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
         session_duration: session_duration
       properties:
@@ -47745,7 +46967,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         session_duration:
           description: "Determines how long a session lasts. Default of 0 means that\
@@ -47787,7 +47009,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         session_duration:
           description: "Determines how long a session lasts. Default of 0 means that\
@@ -47807,43 +47029,29 @@ components:
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
       properties:
         pk:
@@ -47867,7 +47075,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
       required:
       - component
@@ -47904,7 +47112,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
       required:
       - name
@@ -48311,43 +47519,29 @@ components:
         create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
-        - compatibility_mode: true
-          denied_action: ""
-          policies:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          title: title
-          policy_engine_mode: null
+        - policy_engine_mode: null
+          compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           background: background
+          denied_action: ""
           name: name
-          stages:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           export_url: export_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           designation: ""
-          cache_count: 0
+          title: title
           slug: slug
         create_users_as_inactive: true
       properties:
@@ -48372,7 +47566,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/Flow'
+            $ref: '#/components/schemas/FlowSet'
           type: array
         create_users_as_inactive:
           description: "When set, newly created users are inactive and cannot login."
@@ -48422,7 +47616,7 @@ components:
           type: string
         flow_set:
           items:
-            $ref: '#/components/schemas/FlowRequest'
+            $ref: '#/components/schemas/FlowSetRequest'
           type: array
         create_users_as_inactive:
           description: "When set, newly created users are inactive and cannot login."

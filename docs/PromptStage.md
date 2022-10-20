@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
 **MetaModelName** | **string** |  | [readonly] 
-**FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
+**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **Fields** | **[]string** |  | 
 **ValidationPolicies** | Pointer to **[]string** |  | [optional] 
 
@@ -155,20 +155,20 @@ SetMetaModelName sets MetaModelName field to given value.
 
 ### GetFlowSet
 
-`func (o *PromptStage) GetFlowSet() []Flow`
+`func (o *PromptStage) GetFlowSet() []FlowSet`
 
 GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
 
 ### GetFlowSetOk
 
-`func (o *PromptStage) GetFlowSetOk() (*[]Flow, bool)`
+`func (o *PromptStage) GetFlowSetOk() (*[]FlowSet, bool)`
 
 GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlowSet
 
-`func (o *PromptStage) SetFlowSet(v []Flow)`
+`func (o *PromptStage) SetFlowSet(v []FlowSet)`
 
 SetFlowSet sets FlowSet field to given value.
 

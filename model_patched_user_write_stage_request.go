@@ -17,8 +17,8 @@ import (
 
 // PatchedUserWriteStageRequest UserWriteStage Serializer
 type PatchedUserWriteStageRequest struct {
-	Name    *string       `json:"name,omitempty"`
-	FlowSet []FlowRequest `json:"flow_set,omitempty"`
+	Name    *string          `json:"name,omitempty"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// When set, newly created users are inactive and cannot login.
 	CreateUsersAsInactive *bool `json:"create_users_as_inactive,omitempty"`
 	// Optionally add newly created users to this group.
@@ -76,9 +76,9 @@ func (o *PatchedUserWriteStageRequest) SetName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *PatchedUserWriteStageRequest) GetFlowSet() []FlowRequest {
+func (o *PatchedUserWriteStageRequest) GetFlowSet() []FlowSetRequest {
 	if o == nil || o.FlowSet == nil {
-		var ret []FlowRequest
+		var ret []FlowSetRequest
 		return ret
 	}
 	return o.FlowSet
@@ -86,7 +86,7 @@ func (o *PatchedUserWriteStageRequest) GetFlowSet() []FlowRequest {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedUserWriteStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
+func (o *PatchedUserWriteStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *PatchedUserWriteStageRequest) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
-func (o *PatchedUserWriteStageRequest) SetFlowSet(v []FlowRequest) {
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *PatchedUserWriteStageRequest) SetFlowSet(v []FlowSetRequest) {
 	o.FlowSet = v
 }
 

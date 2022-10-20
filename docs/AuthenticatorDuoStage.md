@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
 **MetaModelName** | **string** |  | [readonly] 
-**FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
+**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
 **ClientId** | **string** |  | 
 **ApiHostname** | **string** |  | 
@@ -157,20 +157,20 @@ SetMetaModelName sets MetaModelName field to given value.
 
 ### GetFlowSet
 
-`func (o *AuthenticatorDuoStage) GetFlowSet() []Flow`
+`func (o *AuthenticatorDuoStage) GetFlowSet() []FlowSet`
 
 GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
 
 ### GetFlowSetOk
 
-`func (o *AuthenticatorDuoStage) GetFlowSetOk() (*[]Flow, bool)`
+`func (o *AuthenticatorDuoStage) GetFlowSetOk() (*[]FlowSet, bool)`
 
 GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlowSet
 
-`func (o *AuthenticatorDuoStage) SetFlowSet(v []Flow)`
+`func (o *AuthenticatorDuoStage) SetFlowSet(v []FlowSet)`
 
 SetFlowSet sets FlowSet field to given value.
 

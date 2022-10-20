@@ -17,8 +17,8 @@ import (
 
 // PatchedDummyStageRequest DummyStage Serializer
 type PatchedDummyStageRequest struct {
-	Name    *string       `json:"name,omitempty"`
-	FlowSet []FlowRequest `json:"flow_set,omitempty"`
+	Name    *string          `json:"name,omitempty"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 }
 
 // NewPatchedDummyStageRequest instantiates a new PatchedDummyStageRequest object
@@ -71,9 +71,9 @@ func (o *PatchedDummyStageRequest) SetName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *PatchedDummyStageRequest) GetFlowSet() []FlowRequest {
+func (o *PatchedDummyStageRequest) GetFlowSet() []FlowSetRequest {
 	if o == nil || o.FlowSet == nil {
-		var ret []FlowRequest
+		var ret []FlowSetRequest
 		return ret
 	}
 	return o.FlowSet
@@ -81,7 +81,7 @@ func (o *PatchedDummyStageRequest) GetFlowSet() []FlowRequest {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedDummyStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
+func (o *PatchedDummyStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *PatchedDummyStageRequest) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
-func (o *PatchedDummyStageRequest) SetFlowSet(v []FlowRequest) {
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *PatchedDummyStageRequest) SetFlowSet(v []FlowSetRequest) {
 	o.FlowSet = v
 }
 

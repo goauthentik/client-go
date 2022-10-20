@@ -17,8 +17,8 @@ import (
 
 // IdentificationStageRequest IdentificationStage Serializer
 type IdentificationStageRequest struct {
-	Name    string        `json:"name"`
-	FlowSet []FlowRequest `json:"flow_set,omitempty"`
+	Name    string           `json:"name"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// Fields of the user object to match against. (Hold shift to select multiple options)
 	UserFields []UserFieldsEnum `json:"user_fields,omitempty"`
 	// When set, shows a password field, instead of showing the password field as seaprate step.
@@ -81,9 +81,9 @@ func (o *IdentificationStageRequest) SetName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *IdentificationStageRequest) GetFlowSet() []FlowRequest {
+func (o *IdentificationStageRequest) GetFlowSet() []FlowSetRequest {
 	if o == nil || o.FlowSet == nil {
-		var ret []FlowRequest
+		var ret []FlowSetRequest
 		return ret
 	}
 	return o.FlowSet
@@ -91,7 +91,7 @@ func (o *IdentificationStageRequest) GetFlowSet() []FlowRequest {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentificationStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
+func (o *IdentificationStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -107,8 +107,8 @@ func (o *IdentificationStageRequest) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
-func (o *IdentificationStageRequest) SetFlowSet(v []FlowRequest) {
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *IdentificationStageRequest) SetFlowSet(v []FlowSetRequest) {
 	o.FlowSet = v
 }
 

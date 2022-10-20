@@ -23,7 +23,7 @@ type AuthenticatorValidateStage struct {
 	VerboseName         string                   `json:"verbose_name"`
 	VerboseNamePlural   string                   `json:"verbose_name_plural"`
 	MetaModelName       string                   `json:"meta_model_name"`
-	FlowSet             []Flow                   `json:"flow_set,omitempty"`
+	FlowSet             []FlowSet                `json:"flow_set,omitempty"`
 	NotConfiguredAction *NotConfiguredActionEnum `json:"not_configured_action,omitempty"`
 	// Device classes which can be used to authenticate
 	DeviceClasses []DeviceClassesEnum `json:"device_classes,omitempty"`
@@ -201,9 +201,9 @@ func (o *AuthenticatorValidateStage) SetMetaModelName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *AuthenticatorValidateStage) GetFlowSet() []Flow {
+func (o *AuthenticatorValidateStage) GetFlowSet() []FlowSet {
 	if o == nil || o.FlowSet == nil {
-		var ret []Flow
+		var ret []FlowSet
 		return ret
 	}
 	return o.FlowSet
@@ -211,7 +211,7 @@ func (o *AuthenticatorValidateStage) GetFlowSet() []Flow {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorValidateStage) GetFlowSetOk() ([]Flow, bool) {
+func (o *AuthenticatorValidateStage) GetFlowSetOk() ([]FlowSet, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -227,8 +227,8 @@ func (o *AuthenticatorValidateStage) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []Flow and assigns it to the FlowSet field.
-func (o *AuthenticatorValidateStage) SetFlowSet(v []Flow) {
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
+func (o *AuthenticatorValidateStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
 

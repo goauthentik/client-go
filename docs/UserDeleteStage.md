@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
 **MetaModelName** | **string** |  | [readonly] 
-**FlowSet** | Pointer to [**[]Flow**](Flow.md) |  | [optional] 
+**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 
 ## Methods
 
@@ -153,20 +153,20 @@ SetMetaModelName sets MetaModelName field to given value.
 
 ### GetFlowSet
 
-`func (o *UserDeleteStage) GetFlowSet() []Flow`
+`func (o *UserDeleteStage) GetFlowSet() []FlowSet`
 
 GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
 
 ### GetFlowSetOk
 
-`func (o *UserDeleteStage) GetFlowSetOk() (*[]Flow, bool)`
+`func (o *UserDeleteStage) GetFlowSetOk() (*[]FlowSet, bool)`
 
 GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlowSet
 
-`func (o *UserDeleteStage) SetFlowSet(v []Flow)`
+`func (o *UserDeleteStage) SetFlowSet(v []FlowSet)`
 
 SetFlowSet sets FlowSet field to given value.
 

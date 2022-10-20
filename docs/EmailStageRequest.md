@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**FlowSet** | Pointer to [**[]FlowRequest**](FlowRequest.md) |  | [optional] 
+**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **UseGlobalSettings** | Pointer to **bool** | When enabled, global Email connection settings will be used and connection settings below will be ignored. | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
@@ -61,20 +61,20 @@ SetName sets Name field to given value.
 
 ### GetFlowSet
 
-`func (o *EmailStageRequest) GetFlowSet() []FlowRequest`
+`func (o *EmailStageRequest) GetFlowSet() []FlowSetRequest`
 
 GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
 
 ### GetFlowSetOk
 
-`func (o *EmailStageRequest) GetFlowSetOk() (*[]FlowRequest, bool)`
+`func (o *EmailStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
 
 GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlowSet
 
-`func (o *EmailStageRequest) SetFlowSet(v []FlowRequest)`
+`func (o *EmailStageRequest) SetFlowSet(v []FlowSetRequest)`
 
 SetFlowSet sets FlowSet field to given value.
 

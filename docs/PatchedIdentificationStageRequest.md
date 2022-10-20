@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**FlowSet** | Pointer to [**[]FlowRequest**](FlowRequest.md) |  | [optional] 
+**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **UserFields** | Pointer to [**[]UserFieldsEnum**](UserFieldsEnum.md) | Fields of the user object to match against. (Hold shift to select multiple options) | [optional] 
 **PasswordStage** | Pointer to **NullableString** | When set, shows a password field, instead of showing the password field as seaprate step. | [optional] 
 **CaseInsensitiveMatching** | Pointer to **bool** | When enabled, user fields are matched regardless of their casing. | [optional] 
@@ -62,20 +62,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetFlowSet
 
-`func (o *PatchedIdentificationStageRequest) GetFlowSet() []FlowRequest`
+`func (o *PatchedIdentificationStageRequest) GetFlowSet() []FlowSetRequest`
 
 GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
 
 ### GetFlowSetOk
 
-`func (o *PatchedIdentificationStageRequest) GetFlowSetOk() (*[]FlowRequest, bool)`
+`func (o *PatchedIdentificationStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
 
 GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlowSet
 
-`func (o *PatchedIdentificationStageRequest) SetFlowSet(v []FlowRequest)`
+`func (o *PatchedIdentificationStageRequest) SetFlowSet(v []FlowSetRequest)`
 
 SetFlowSet sets FlowSet field to given value.
 

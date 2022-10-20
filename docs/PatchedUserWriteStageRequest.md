@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**FlowSet** | Pointer to [**[]FlowRequest**](FlowRequest.md) |  | [optional] 
+**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **CreateUsersAsInactive** | Pointer to **bool** | When set, newly created users are inactive and cannot login. | [optional] 
 **CreateUsersGroup** | Pointer to **NullableString** | Optionally add newly created users to this group. | [optional] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
@@ -56,20 +56,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetFlowSet
 
-`func (o *PatchedUserWriteStageRequest) GetFlowSet() []FlowRequest`
+`func (o *PatchedUserWriteStageRequest) GetFlowSet() []FlowSetRequest`
 
 GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
 
 ### GetFlowSetOk
 
-`func (o *PatchedUserWriteStageRequest) GetFlowSetOk() (*[]FlowRequest, bool)`
+`func (o *PatchedUserWriteStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
 
 GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlowSet
 
-`func (o *PatchedUserWriteStageRequest) SetFlowSet(v []FlowRequest)`
+`func (o *PatchedUserWriteStageRequest) SetFlowSet(v []FlowSetRequest)`
 
 SetFlowSet sets FlowSet field to given value.
 

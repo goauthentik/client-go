@@ -17,8 +17,8 @@ import (
 
 // StageRequest Stage Serializer
 type StageRequest struct {
-	Name    string        `json:"name"`
-	FlowSet []FlowRequest `json:"flow_set,omitempty"`
+	Name    string           `json:"name"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 }
 
 // NewStageRequest instantiates a new StageRequest object
@@ -64,9 +64,9 @@ func (o *StageRequest) SetName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *StageRequest) GetFlowSet() []FlowRequest {
+func (o *StageRequest) GetFlowSet() []FlowSetRequest {
 	if o == nil || o.FlowSet == nil {
-		var ret []FlowRequest
+		var ret []FlowSetRequest
 		return ret
 	}
 	return o.FlowSet
@@ -74,7 +74,7 @@ func (o *StageRequest) GetFlowSet() []FlowRequest {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
+func (o *StageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -90,8 +90,8 @@ func (o *StageRequest) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
-func (o *StageRequest) SetFlowSet(v []FlowRequest) {
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *StageRequest) SetFlowSet(v []FlowSetRequest) {
 	o.FlowSet = v
 }
 

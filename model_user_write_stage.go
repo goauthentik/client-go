@@ -17,13 +17,13 @@ import (
 
 // UserWriteStage UserWriteStage Serializer
 type UserWriteStage struct {
-	Pk                string `json:"pk"`
-	Name              string `json:"name"`
-	Component         string `json:"component"`
-	VerboseName       string `json:"verbose_name"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
-	MetaModelName     string `json:"meta_model_name"`
-	FlowSet           []Flow `json:"flow_set,omitempty"`
+	Pk                string    `json:"pk"`
+	Name              string    `json:"name"`
+	Component         string    `json:"component"`
+	VerboseName       string    `json:"verbose_name"`
+	VerboseNamePlural string    `json:"verbose_name_plural"`
+	MetaModelName     string    `json:"meta_model_name"`
+	FlowSet           []FlowSet `json:"flow_set,omitempty"`
 	// When set, newly created users are inactive and cannot login.
 	CreateUsersAsInactive *bool `json:"create_users_as_inactive,omitempty"`
 	// Optionally add newly created users to this group.
@@ -199,9 +199,9 @@ func (o *UserWriteStage) SetMetaModelName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *UserWriteStage) GetFlowSet() []Flow {
+func (o *UserWriteStage) GetFlowSet() []FlowSet {
 	if o == nil || o.FlowSet == nil {
-		var ret []Flow
+		var ret []FlowSet
 		return ret
 	}
 	return o.FlowSet
@@ -209,7 +209,7 @@ func (o *UserWriteStage) GetFlowSet() []Flow {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserWriteStage) GetFlowSetOk() ([]Flow, bool) {
+func (o *UserWriteStage) GetFlowSetOk() ([]FlowSet, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -225,8 +225,8 @@ func (o *UserWriteStage) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []Flow and assigns it to the FlowSet field.
-func (o *UserWriteStage) SetFlowSet(v []Flow) {
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
+func (o *UserWriteStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
 

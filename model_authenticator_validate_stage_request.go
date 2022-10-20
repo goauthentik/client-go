@@ -18,7 +18,7 @@ import (
 // AuthenticatorValidateStageRequest AuthenticatorValidateStage Serializer
 type AuthenticatorValidateStageRequest struct {
 	Name                string                   `json:"name"`
-	FlowSet             []FlowRequest            `json:"flow_set,omitempty"`
+	FlowSet             []FlowSetRequest         `json:"flow_set,omitempty"`
 	NotConfiguredAction *NotConfiguredActionEnum `json:"not_configured_action,omitempty"`
 	// Device classes which can be used to authenticate
 	DeviceClasses []DeviceClassesEnum `json:"device_classes,omitempty"`
@@ -71,9 +71,9 @@ func (o *AuthenticatorValidateStageRequest) SetName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *AuthenticatorValidateStageRequest) GetFlowSet() []FlowRequest {
+func (o *AuthenticatorValidateStageRequest) GetFlowSet() []FlowSetRequest {
 	if o == nil || o.FlowSet == nil {
-		var ret []FlowRequest
+		var ret []FlowSetRequest
 		return ret
 	}
 	return o.FlowSet
@@ -81,7 +81,7 @@ func (o *AuthenticatorValidateStageRequest) GetFlowSet() []FlowRequest {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorValidateStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
+func (o *AuthenticatorValidateStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *AuthenticatorValidateStageRequest) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
-func (o *AuthenticatorValidateStageRequest) SetFlowSet(v []FlowRequest) {
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *AuthenticatorValidateStageRequest) SetFlowSet(v []FlowSetRequest) {
 	o.FlowSet = v
 }
 

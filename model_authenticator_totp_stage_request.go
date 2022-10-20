@@ -17,8 +17,8 @@ import (
 
 // AuthenticatorTOTPStageRequest AuthenticatorTOTPStage Serializer
 type AuthenticatorTOTPStageRequest struct {
-	Name    string        `json:"name"`
-	FlowSet []FlowRequest `json:"flow_set,omitempty"`
+	Name    string           `json:"name"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString     `json:"configure_flow,omitempty"`
 	Digits        NullableDigitsEnum `json:"digits"`
@@ -68,9 +68,9 @@ func (o *AuthenticatorTOTPStageRequest) SetName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *AuthenticatorTOTPStageRequest) GetFlowSet() []FlowRequest {
+func (o *AuthenticatorTOTPStageRequest) GetFlowSet() []FlowSetRequest {
 	if o == nil || o.FlowSet == nil {
-		var ret []FlowRequest
+		var ret []FlowSetRequest
 		return ret
 	}
 	return o.FlowSet
@@ -78,7 +78,7 @@ func (o *AuthenticatorTOTPStageRequest) GetFlowSet() []FlowRequest {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorTOTPStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
+func (o *AuthenticatorTOTPStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -94,8 +94,8 @@ func (o *AuthenticatorTOTPStageRequest) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
-func (o *AuthenticatorTOTPStageRequest) SetFlowSet(v []FlowRequest) {
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *AuthenticatorTOTPStageRequest) SetFlowSet(v []FlowSetRequest) {
 	o.FlowSet = v
 }
 

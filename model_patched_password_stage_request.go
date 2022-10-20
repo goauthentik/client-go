@@ -17,8 +17,8 @@ import (
 
 // PatchedPasswordStageRequest PasswordStage Serializer
 type PatchedPasswordStageRequest struct {
-	Name    *string       `json:"name,omitempty"`
-	FlowSet []FlowRequest `json:"flow_set,omitempty"`
+	Name    *string          `json:"name,omitempty"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// Selection of backends to test the password against.
 	Backends []BackendsEnum `json:"backends,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
@@ -77,9 +77,9 @@ func (o *PatchedPasswordStageRequest) SetName(v string) {
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *PatchedPasswordStageRequest) GetFlowSet() []FlowRequest {
+func (o *PatchedPasswordStageRequest) GetFlowSet() []FlowSetRequest {
 	if o == nil || o.FlowSet == nil {
-		var ret []FlowRequest
+		var ret []FlowSetRequest
 		return ret
 	}
 	return o.FlowSet
@@ -87,7 +87,7 @@ func (o *PatchedPasswordStageRequest) GetFlowSet() []FlowRequest {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedPasswordStageRequest) GetFlowSetOk() ([]FlowRequest, bool) {
+func (o *PatchedPasswordStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -103,8 +103,8 @@ func (o *PatchedPasswordStageRequest) HasFlowSet() bool {
 	return false
 }
 
-// SetFlowSet gets a reference to the given []FlowRequest and assigns it to the FlowSet field.
-func (o *PatchedPasswordStageRequest) SetFlowSet(v []FlowRequest) {
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *PatchedPasswordStageRequest) SetFlowSet(v []FlowSetRequest) {
 	o.FlowSet = v
 }
 
