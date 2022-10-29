@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: authentik
-  version: 2022.10.0
+  version: 2022.10.1
   description: Making authentication simple.
   contact:
     email: hello@goauthentik.io
@@ -38128,5 +38128,6 @@ components:
       type: apiKey
       in: header
       name: Authorization
+      scheme: bearer
 servers:
 - url: /api/v3/
