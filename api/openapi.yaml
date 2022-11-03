@@ -4,7 +4,7 @@ info:
     email: hello@goauthentik.io
   description: Making authentication simple.
   license:
-    name: GNU GPLv3
+    name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
   version: 2022.10.1
