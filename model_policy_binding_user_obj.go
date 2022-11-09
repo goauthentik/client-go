@@ -27,7 +27,7 @@ type PolicyBindingUserObj struct {
 	LastLogin   NullableTime           `json:"last_login,omitempty"`
 	IsSuperuser bool                   `json:"is_superuser"`
 	Groups      []string               `json:"groups"`
-	GroupsObj   []Group                `json:"groups_obj"`
+	GroupsObj   []UserGroup            `json:"groups_obj"`
 	Email       *string                `json:"email,omitempty"`
 	Avatar      string                 `json:"avatar"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
@@ -39,7 +39,7 @@ type PolicyBindingUserObj struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPolicyBindingUserObj(pk int32, username string, name string, isSuperuser bool, groups []string, groupsObj []Group, avatar string, uid string) *PolicyBindingUserObj {
+func NewPolicyBindingUserObj(pk int32, username string, name string, isSuperuser bool, groups []string, groupsObj []UserGroup, avatar string, uid string) *PolicyBindingUserObj {
 	this := PolicyBindingUserObj{}
 	this.Pk = pk
 	this.Username = username
@@ -256,9 +256,9 @@ func (o *PolicyBindingUserObj) SetGroups(v []string) {
 }
 
 // GetGroupsObj returns the GroupsObj field value
-func (o *PolicyBindingUserObj) GetGroupsObj() []Group {
+func (o *PolicyBindingUserObj) GetGroupsObj() []UserGroup {
 	if o == nil {
-		var ret []Group
+		var ret []UserGroup
 		return ret
 	}
 
@@ -267,7 +267,7 @@ func (o *PolicyBindingUserObj) GetGroupsObj() []Group {
 
 // GetGroupsObjOk returns a tuple with the GroupsObj field value
 // and a boolean to check if the value has been set.
-func (o *PolicyBindingUserObj) GetGroupsObjOk() ([]Group, bool) {
+func (o *PolicyBindingUserObj) GetGroupsObjOk() ([]UserGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -275,7 +275,7 @@ func (o *PolicyBindingUserObj) GetGroupsObjOk() ([]Group, bool) {
 }
 
 // SetGroupsObj sets field value
-func (o *PolicyBindingUserObj) SetGroupsObj(v []Group) {
+func (o *PolicyBindingUserObj) SetGroupsObj(v []UserGroup) {
 	o.GroupsObj = v
 }
 

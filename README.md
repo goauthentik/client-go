@@ -1084,6 +1084,8 @@ Class | Method | HTTP request | Description
  - [UserDeleteStage](docs/UserDeleteStage.md)
  - [UserDeleteStageRequest](docs/UserDeleteStageRequest.md)
  - [UserFieldsEnum](docs/UserFieldsEnum.md)
+ - [UserGroup](docs/UserGroup.md)
+ - [UserGroupRequest](docs/UserGroupRequest.md)
  - [UserLoginStage](docs/UserLoginStage.md)
  - [UserLoginStageRequest](docs/UserLoginStageRequest.md)
  - [UserLogoutStage](docs/UserLogoutStage.md)

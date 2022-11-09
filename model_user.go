@@ -27,7 +27,7 @@ type User struct {
 	LastLogin   NullableTime           `json:"last_login,omitempty"`
 	IsSuperuser bool                   `json:"is_superuser"`
 	Groups      []string               `json:"groups"`
-	GroupsObj   []Group                `json:"groups_obj"`
+	GroupsObj   []UserGroup            `json:"groups_obj"`
 	Email       *string                `json:"email,omitempty"`
 	Avatar      string                 `json:"avatar"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
@@ -39,7 +39,7 @@ type User struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUser(pk int32, username string, name string, isSuperuser bool, groups []string, groupsObj []Group, avatar string, uid string) *User {
+func NewUser(pk int32, username string, name string, isSuperuser bool, groups []string, groupsObj []UserGroup, avatar string, uid string) *User {
 	this := User{}
 	this.Pk = pk
 	this.Username = username
@@ -256,9 +256,9 @@ func (o *User) SetGroups(v []string) {
 }
 
 // GetGroupsObj returns the GroupsObj field value
-func (o *User) GetGroupsObj() []Group {
+func (o *User) GetGroupsObj() []UserGroup {
 	if o == nil {
-		var ret []Group
+		var ret []UserGroup
 		return ret
 	}
 
@@ -267,7 +267,7 @@ func (o *User) GetGroupsObj() []Group {
 
 // GetGroupsObjOk returns a tuple with the GroupsObj field value
 // and a boolean to check if the value has been set.
-func (o *User) GetGroupsObjOk() ([]Group, bool) {
+func (o *User) GetGroupsObjOk() ([]UserGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -275,7 +275,7 @@ func (o *User) GetGroupsObjOk() ([]Group, bool) {
 }
 
 // SetGroupsObj sets field value
-func (o *User) SetGroupsObj(v []Group) {
+func (o *User) SetGroupsObj(v []UserGroup) {
 	o.GroupsObj = v
 }
 

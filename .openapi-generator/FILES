@@ -473,6 +473,8 @@ docs/UserConsent.md
 docs/UserDeleteStage.md
 docs/UserDeleteStageRequest.md
 docs/UserFieldsEnum.md
+docs/UserGroup.md
+docs/UserGroupRequest.md
 docs/UserLoginStage.md
 docs/UserLoginStageRequest.md
 docs/UserLogoutStage.md
@@ -940,6 +942,8 @@ model_user_consent.go
 model_user_delete_stage.go
 model_user_delete_stage_request.go
 model_user_fields_enum.go
+model_user_group.go
+model_user_group_request.go
 model_user_login_stage.go
 model_user_login_stage_request.go
 model_user_logout_stage.go

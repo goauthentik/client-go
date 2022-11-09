@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **LastLogin** | Pointer to **NullableTime** |  | [optional] 
 **IsSuperuser** | **bool** |  | [readonly] 
 **Groups** | **[]string** |  | 
-**GroupsObj** | [**[]Group**](Group.md) |  | [readonly] 
+**GroupsObj** | [**[]UserGroup**](UserGroup.md) |  | [readonly] 
 **Email** | Pointer to **string** |  | [optional] 
 **Avatar** | **string** |  | [readonly] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewPolicyBindingUserObj
 
-`func NewPolicyBindingUserObj(pk int32, username string, name string, isSuperuser bool, groups []string, groupsObj []Group, avatar string, uid string, ) *PolicyBindingUserObj`
+`func NewPolicyBindingUserObj(pk int32, username string, name string, isSuperuser bool, groups []string, groupsObj []UserGroup, avatar string, uid string, ) *PolicyBindingUserObj`
 
 NewPolicyBindingUserObj instantiates a new PolicyBindingUserObj object
 This constructor will assign default values to properties that have it defined,
@@ -199,20 +199,20 @@ SetGroups sets Groups field to given value.
 
 ### GetGroupsObj
 
-`func (o *PolicyBindingUserObj) GetGroupsObj() []Group`
+`func (o *PolicyBindingUserObj) GetGroupsObj() []UserGroup`
 
 GetGroupsObj returns the GroupsObj field if non-nil, zero value otherwise.
 
 ### GetGroupsObjOk
 
-`func (o *PolicyBindingUserObj) GetGroupsObjOk() (*[]Group, bool)`
+`func (o *PolicyBindingUserObj) GetGroupsObjOk() (*[]UserGroup, bool)`
 
 GetGroupsObjOk returns a tuple with the GroupsObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupsObj
 
-`func (o *PolicyBindingUserObj) SetGroupsObj(v []Group)`
+`func (o *PolicyBindingUserObj) SetGroupsObj(v []UserGroup)`
 
 SetGroupsObj sets GroupsObj field to given value.
 
