@@ -27,6 +27,8 @@ type KubernetesServiceConnection struct {
 	MetaModelName     string `json:"meta_model_name"`
 	// Paste your kubeconfig here. authentik will automatically use the currently selected context.
 	Kubeconfig map[string]interface{} `json:"kubeconfig,omitempty"`
+	// Verify SSL Certificates of the Kubernetes API endpoint
+	VerifySsl *bool `json:"verify_ssl,omitempty"`
 }
 
 // NewKubernetesServiceConnection instantiates a new KubernetesServiceConnection object
@@ -260,6 +262,38 @@ func (o *KubernetesServiceConnection) SetKubeconfig(v map[string]interface{}) {
 	o.Kubeconfig = v
 }
 
+// GetVerifySsl returns the VerifySsl field value if set, zero value otherwise.
+func (o *KubernetesServiceConnection) GetVerifySsl() bool {
+	if o == nil || o.VerifySsl == nil {
+		var ret bool
+		return ret
+	}
+	return *o.VerifySsl
+}
+
+// GetVerifySslOk returns a tuple with the VerifySsl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KubernetesServiceConnection) GetVerifySslOk() (*bool, bool) {
+	if o == nil || o.VerifySsl == nil {
+		return nil, false
+	}
+	return o.VerifySsl, true
+}
+
+// HasVerifySsl returns a boolean if a field has been set.
+func (o *KubernetesServiceConnection) HasVerifySsl() bool {
+	if o != nil && o.VerifySsl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVerifySsl gets a reference to the given bool and assigns it to the VerifySsl field.
+func (o *KubernetesServiceConnection) SetVerifySsl(v bool) {
+	o.VerifySsl = &v
+}
+
 func (o KubernetesServiceConnection) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -285,6 +319,9 @@ func (o KubernetesServiceConnection) MarshalJSON() ([]byte, error) {
 	}
 	if o.Kubeconfig != nil {
 		toSerialize["kubeconfig"] = o.Kubeconfig
+	}
+	if o.VerifySsl != nil {
+		toSerialize["verify_ssl"] = o.VerifySsl
 	}
 	return json.Marshal(toSerialize)
 }

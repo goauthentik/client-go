@@ -32522,6 +32522,7 @@ components:
         verbose_name: verbose_name
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
+        verify_ssl: true
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         local: true
@@ -32556,6 +32557,9 @@ components:
           description: Paste your kubeconfig here. authentik will automatically use
             the currently selected context.
           type: object
+        verify_ssl:
+          description: Verify SSL Certificates of the Kubernetes API endpoint
+          type: boolean
       required:
       - component
       - meta_model_name
@@ -32567,6 +32571,7 @@ components:
     KubernetesServiceConnectionRequest:
       description: KubernetesServiceConnection Serializer
       example:
+        verify_ssl: true
         name: name
         local: true
         kubeconfig:
@@ -32584,6 +32589,9 @@ components:
           description: Paste your kubeconfig here. authentik will automatically use
             the currently selected context.
           type: object
+        verify_ssl:
+          description: Verify SSL Certificates of the Kubernetes API endpoint
+          type: boolean
       required:
       - name
       type: object
@@ -36520,6 +36528,7 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          verify_ssl: true
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           local: true
@@ -36529,6 +36538,7 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          verify_ssl: true
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           local: true
@@ -41031,6 +41041,7 @@ components:
     PatchedKubernetesServiceConnectionRequest:
       description: KubernetesServiceConnection Serializer
       example:
+        verify_ssl: true
         name: name
         local: true
         kubeconfig:
@@ -41048,6 +41059,9 @@ components:
           description: Paste your kubeconfig here. authentik will automatically use
             the currently selected context.
           type: object
+        verify_ssl:
+          description: Verify SSL Certificates of the Kubernetes API endpoint
+          type: boolean
       type: object
     PatchedLDAPPropertyMappingRequest:
       description: LDAP PropertyMapping Serializer

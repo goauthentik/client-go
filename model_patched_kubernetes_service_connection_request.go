@@ -22,6 +22,8 @@ type PatchedKubernetesServiceConnectionRequest struct {
 	Local *bool `json:"local,omitempty"`
 	// Paste your kubeconfig here. authentik will automatically use the currently selected context.
 	Kubeconfig map[string]interface{} `json:"kubeconfig,omitempty"`
+	// Verify SSL Certificates of the Kubernetes API endpoint
+	VerifySsl *bool `json:"verify_ssl,omitempty"`
 }
 
 // NewPatchedKubernetesServiceConnectionRequest instantiates a new PatchedKubernetesServiceConnectionRequest object
@@ -137,6 +139,38 @@ func (o *PatchedKubernetesServiceConnectionRequest) SetKubeconfig(v map[string]i
 	o.Kubeconfig = v
 }
 
+// GetVerifySsl returns the VerifySsl field value if set, zero value otherwise.
+func (o *PatchedKubernetesServiceConnectionRequest) GetVerifySsl() bool {
+	if o == nil || o.VerifySsl == nil {
+		var ret bool
+		return ret
+	}
+	return *o.VerifySsl
+}
+
+// GetVerifySslOk returns a tuple with the VerifySsl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedKubernetesServiceConnectionRequest) GetVerifySslOk() (*bool, bool) {
+	if o == nil || o.VerifySsl == nil {
+		return nil, false
+	}
+	return o.VerifySsl, true
+}
+
+// HasVerifySsl returns a boolean if a field has been set.
+func (o *PatchedKubernetesServiceConnectionRequest) HasVerifySsl() bool {
+	if o != nil && o.VerifySsl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVerifySsl gets a reference to the given bool and assigns it to the VerifySsl field.
+func (o *PatchedKubernetesServiceConnectionRequest) SetVerifySsl(v bool) {
+	o.VerifySsl = &v
+}
+
 func (o PatchedKubernetesServiceConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -147,6 +181,9 @@ func (o PatchedKubernetesServiceConnectionRequest) MarshalJSON() ([]byte, error)
 	}
 	if o.Kubeconfig != nil {
 		toSerialize["kubeconfig"] = o.Kubeconfig
+	}
+	if o.VerifySsl != nil {
+		toSerialize["verify_ssl"] = o.VerifySsl
 	}
 	return json.Marshal(toSerialize)
 }
