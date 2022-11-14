@@ -7790,25 +7790,30 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByListExecute(r ApiPolici
 }
 
 type ApiPoliciesPasswordListRequest struct {
-	ctx              context.Context
-	ApiService       *PoliciesApiService
-	amountDigits     *int32
-	amountLowercase  *int32
-	amountSymbols    *int32
-	amountUppercase  *int32
-	created          *time.Time
-	errorMessage     *string
-	executionLogging *bool
-	lastUpdated      *time.Time
-	lengthMin        *int32
-	name             *string
-	ordering         *string
-	page             *int32
-	pageSize         *int32
-	passwordField    *string
-	policyUuid       *string
-	search           *string
-	symbolCharset    *string
+	ctx                  context.Context
+	ApiService           *PoliciesApiService
+	amountDigits         *int32
+	amountLowercase      *int32
+	amountSymbols        *int32
+	amountUppercase      *int32
+	checkHaveIBeenPwned  *bool
+	checkStaticRules     *bool
+	checkZxcvbn          *bool
+	created              *time.Time
+	errorMessage         *string
+	executionLogging     *bool
+	hibpAllowedCount     *int32
+	lastUpdated          *time.Time
+	lengthMin            *int32
+	name                 *string
+	ordering             *string
+	page                 *int32
+	pageSize             *int32
+	passwordField        *string
+	policyUuid           *string
+	search               *string
+	symbolCharset        *string
+	zxcvbnScoreThreshold *int32
 }
 
 func (r ApiPoliciesPasswordListRequest) AmountDigits(amountDigits int32) ApiPoliciesPasswordListRequest {
@@ -7831,6 +7836,21 @@ func (r ApiPoliciesPasswordListRequest) AmountUppercase(amountUppercase int32) A
 	return r
 }
 
+func (r ApiPoliciesPasswordListRequest) CheckHaveIBeenPwned(checkHaveIBeenPwned bool) ApiPoliciesPasswordListRequest {
+	r.checkHaveIBeenPwned = &checkHaveIBeenPwned
+	return r
+}
+
+func (r ApiPoliciesPasswordListRequest) CheckStaticRules(checkStaticRules bool) ApiPoliciesPasswordListRequest {
+	r.checkStaticRules = &checkStaticRules
+	return r
+}
+
+func (r ApiPoliciesPasswordListRequest) CheckZxcvbn(checkZxcvbn bool) ApiPoliciesPasswordListRequest {
+	r.checkZxcvbn = &checkZxcvbn
+	return r
+}
+
 func (r ApiPoliciesPasswordListRequest) Created(created time.Time) ApiPoliciesPasswordListRequest {
 	r.created = &created
 	return r
@@ -7843,6 +7863,11 @@ func (r ApiPoliciesPasswordListRequest) ErrorMessage(errorMessage string) ApiPol
 
 func (r ApiPoliciesPasswordListRequest) ExecutionLogging(executionLogging bool) ApiPoliciesPasswordListRequest {
 	r.executionLogging = &executionLogging
+	return r
+}
+
+func (r ApiPoliciesPasswordListRequest) HibpAllowedCount(hibpAllowedCount int32) ApiPoliciesPasswordListRequest {
+	r.hibpAllowedCount = &hibpAllowedCount
 	return r
 }
 
@@ -7900,6 +7925,11 @@ func (r ApiPoliciesPasswordListRequest) SymbolCharset(symbolCharset string) ApiP
 	return r
 }
 
+func (r ApiPoliciesPasswordListRequest) ZxcvbnScoreThreshold(zxcvbnScoreThreshold int32) ApiPoliciesPasswordListRequest {
+	r.zxcvbnScoreThreshold = &zxcvbnScoreThreshold
+	return r
+}
+
 func (r ApiPoliciesPasswordListRequest) Execute() (*PaginatedPasswordPolicyList, *http.Response, error) {
 	return r.ApiService.PoliciesPasswordListExecute(r)
 }
@@ -7952,6 +7982,15 @@ func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordLi
 	if r.amountUppercase != nil {
 		localVarQueryParams.Add("amount_uppercase", parameterToString(*r.amountUppercase, ""))
 	}
+	if r.checkHaveIBeenPwned != nil {
+		localVarQueryParams.Add("check_have_i_been_pwned", parameterToString(*r.checkHaveIBeenPwned, ""))
+	}
+	if r.checkStaticRules != nil {
+		localVarQueryParams.Add("check_static_rules", parameterToString(*r.checkStaticRules, ""))
+	}
+	if r.checkZxcvbn != nil {
+		localVarQueryParams.Add("check_zxcvbn", parameterToString(*r.checkZxcvbn, ""))
+	}
 	if r.created != nil {
 		localVarQueryParams.Add("created", parameterToString(*r.created, ""))
 	}
@@ -7960,6 +7999,9 @@ func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordLi
 	}
 	if r.executionLogging != nil {
 		localVarQueryParams.Add("execution_logging", parameterToString(*r.executionLogging, ""))
+	}
+	if r.hibpAllowedCount != nil {
+		localVarQueryParams.Add("hibp_allowed_count", parameterToString(*r.hibpAllowedCount, ""))
 	}
 	if r.lastUpdated != nil {
 		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
@@ -7990,6 +8032,9 @@ func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordLi
 	}
 	if r.symbolCharset != nil {
 		localVarQueryParams.Add("symbol_charset", parameterToString(*r.symbolCharset, ""))
+	}
+	if r.zxcvbnScoreThreshold != nil {
+		localVarQueryParams.Add("zxcvbn_score_threshold", parameterToString(*r.zxcvbnScoreThreshold, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

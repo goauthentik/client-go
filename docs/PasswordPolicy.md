@@ -20,6 +20,11 @@ Name | Type | Description | Notes
 **LengthMin** | Pointer to **int32** |  | [optional] 
 **SymbolCharset** | Pointer to **string** |  | [optional] 
 **ErrorMessage** | **string** |  | 
+**CheckStaticRules** | Pointer to **bool** |  | [optional] 
+**CheckHaveIBeenPwned** | Pointer to **bool** |  | [optional] 
+**CheckZxcvbn** | Pointer to **bool** |  | [optional] 
+**HibpAllowedCount** | Pointer to **int32** | How many times the password hash is allowed to be on haveibeenpwned | [optional] 
+**ZxcvbnScoreThreshold** | Pointer to **int32** | If the zxcvbn score is equal or less than this value, the policy will fail. | [optional] 
 
 ## Methods
 
@@ -414,6 +419,131 @@ and a boolean to check if the value has been set.
 
 SetErrorMessage sets ErrorMessage field to given value.
 
+
+### GetCheckStaticRules
+
+`func (o *PasswordPolicy) GetCheckStaticRules() bool`
+
+GetCheckStaticRules returns the CheckStaticRules field if non-nil, zero value otherwise.
+
+### GetCheckStaticRulesOk
+
+`func (o *PasswordPolicy) GetCheckStaticRulesOk() (*bool, bool)`
+
+GetCheckStaticRulesOk returns a tuple with the CheckStaticRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCheckStaticRules
+
+`func (o *PasswordPolicy) SetCheckStaticRules(v bool)`
+
+SetCheckStaticRules sets CheckStaticRules field to given value.
+
+### HasCheckStaticRules
+
+`func (o *PasswordPolicy) HasCheckStaticRules() bool`
+
+HasCheckStaticRules returns a boolean if a field has been set.
+
+### GetCheckHaveIBeenPwned
+
+`func (o *PasswordPolicy) GetCheckHaveIBeenPwned() bool`
+
+GetCheckHaveIBeenPwned returns the CheckHaveIBeenPwned field if non-nil, zero value otherwise.
+
+### GetCheckHaveIBeenPwnedOk
+
+`func (o *PasswordPolicy) GetCheckHaveIBeenPwnedOk() (*bool, bool)`
+
+GetCheckHaveIBeenPwnedOk returns a tuple with the CheckHaveIBeenPwned field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCheckHaveIBeenPwned
+
+`func (o *PasswordPolicy) SetCheckHaveIBeenPwned(v bool)`
+
+SetCheckHaveIBeenPwned sets CheckHaveIBeenPwned field to given value.
+
+### HasCheckHaveIBeenPwned
+
+`func (o *PasswordPolicy) HasCheckHaveIBeenPwned() bool`
+
+HasCheckHaveIBeenPwned returns a boolean if a field has been set.
+
+### GetCheckZxcvbn
+
+`func (o *PasswordPolicy) GetCheckZxcvbn() bool`
+
+GetCheckZxcvbn returns the CheckZxcvbn field if non-nil, zero value otherwise.
+
+### GetCheckZxcvbnOk
+
+`func (o *PasswordPolicy) GetCheckZxcvbnOk() (*bool, bool)`
+
+GetCheckZxcvbnOk returns a tuple with the CheckZxcvbn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCheckZxcvbn
+
+`func (o *PasswordPolicy) SetCheckZxcvbn(v bool)`
+
+SetCheckZxcvbn sets CheckZxcvbn field to given value.
+
+### HasCheckZxcvbn
+
+`func (o *PasswordPolicy) HasCheckZxcvbn() bool`
+
+HasCheckZxcvbn returns a boolean if a field has been set.
+
+### GetHibpAllowedCount
+
+`func (o *PasswordPolicy) GetHibpAllowedCount() int32`
+
+GetHibpAllowedCount returns the HibpAllowedCount field if non-nil, zero value otherwise.
+
+### GetHibpAllowedCountOk
+
+`func (o *PasswordPolicy) GetHibpAllowedCountOk() (*int32, bool)`
+
+GetHibpAllowedCountOk returns a tuple with the HibpAllowedCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHibpAllowedCount
+
+`func (o *PasswordPolicy) SetHibpAllowedCount(v int32)`
+
+SetHibpAllowedCount sets HibpAllowedCount field to given value.
+
+### HasHibpAllowedCount
+
+`func (o *PasswordPolicy) HasHibpAllowedCount() bool`
+
+HasHibpAllowedCount returns a boolean if a field has been set.
+
+### GetZxcvbnScoreThreshold
+
+`func (o *PasswordPolicy) GetZxcvbnScoreThreshold() int32`
+
+GetZxcvbnScoreThreshold returns the ZxcvbnScoreThreshold field if non-nil, zero value otherwise.
+
+### GetZxcvbnScoreThresholdOk
+
+`func (o *PasswordPolicy) GetZxcvbnScoreThresholdOk() (*int32, bool)`
+
+GetZxcvbnScoreThresholdOk returns a tuple with the ZxcvbnScoreThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetZxcvbnScoreThreshold
+
+`func (o *PasswordPolicy) SetZxcvbnScoreThreshold(v int32)`
+
+SetZxcvbnScoreThreshold sets ZxcvbnScoreThreshold field to given value.
+
+### HasZxcvbnScoreThreshold
+
+`func (o *PasswordPolicy) HasZxcvbnScoreThreshold() bool`
+
+HasZxcvbnScoreThreshold returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

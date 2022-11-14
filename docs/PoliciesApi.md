@@ -3779,7 +3779,7 @@ Name | Type | Description  | Notes
 
 ## PoliciesPasswordList
 
-> PaginatedPasswordPolicyList PoliciesPasswordList(ctx).AmountDigits(amountDigits).AmountLowercase(amountLowercase).AmountSymbols(amountSymbols).AmountUppercase(amountUppercase).Created(created).ErrorMessage(errorMessage).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).LengthMin(lengthMin).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordField(passwordField).PolicyUuid(policyUuid).Search(search).SymbolCharset(symbolCharset).Execute()
+> PaginatedPasswordPolicyList PoliciesPasswordList(ctx).AmountDigits(amountDigits).AmountLowercase(amountLowercase).AmountSymbols(amountSymbols).AmountUppercase(amountUppercase).CheckHaveIBeenPwned(checkHaveIBeenPwned).CheckStaticRules(checkStaticRules).CheckZxcvbn(checkZxcvbn).Created(created).ErrorMessage(errorMessage).ExecutionLogging(executionLogging).HibpAllowedCount(hibpAllowedCount).LastUpdated(lastUpdated).LengthMin(lengthMin).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordField(passwordField).PolicyUuid(policyUuid).Search(search).SymbolCharset(symbolCharset).ZxcvbnScoreThreshold(zxcvbnScoreThreshold).Execute()
 
 
 
@@ -3803,9 +3803,13 @@ func main() {
     amountLowercase := int32(56) // int32 |  (optional)
     amountSymbols := int32(56) // int32 |  (optional)
     amountUppercase := int32(56) // int32 |  (optional)
+    checkHaveIBeenPwned := true // bool |  (optional)
+    checkStaticRules := true // bool |  (optional)
+    checkZxcvbn := true // bool |  (optional)
     created := time.Now() // time.Time |  (optional)
     errorMessage := "errorMessage_example" // string |  (optional)
     executionLogging := true // bool |  (optional)
+    hibpAllowedCount := int32(56) // int32 |  (optional)
     lastUpdated := time.Now() // time.Time |  (optional)
     lengthMin := int32(56) // int32 |  (optional)
     name := "name_example" // string |  (optional)
@@ -3816,10 +3820,11 @@ func main() {
     policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     symbolCharset := "symbolCharset_example" // string |  (optional)
+    zxcvbnScoreThreshold := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordList(context.Background()).AmountDigits(amountDigits).AmountLowercase(amountLowercase).AmountSymbols(amountSymbols).AmountUppercase(amountUppercase).Created(created).ErrorMessage(errorMessage).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).LengthMin(lengthMin).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordField(passwordField).PolicyUuid(policyUuid).Search(search).SymbolCharset(symbolCharset).Execute()
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordList(context.Background()).AmountDigits(amountDigits).AmountLowercase(amountLowercase).AmountSymbols(amountSymbols).AmountUppercase(amountUppercase).CheckHaveIBeenPwned(checkHaveIBeenPwned).CheckStaticRules(checkStaticRules).CheckZxcvbn(checkZxcvbn).Created(created).ErrorMessage(errorMessage).ExecutionLogging(executionLogging).HibpAllowedCount(hibpAllowedCount).LastUpdated(lastUpdated).LengthMin(lengthMin).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordField(passwordField).PolicyUuid(policyUuid).Search(search).SymbolCharset(symbolCharset).ZxcvbnScoreThreshold(zxcvbnScoreThreshold).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3844,9 +3849,13 @@ Name | Type | Description  | Notes
  **amountLowercase** | **int32** |  | 
  **amountSymbols** | **int32** |  | 
  **amountUppercase** | **int32** |  | 
+ **checkHaveIBeenPwned** | **bool** |  | 
+ **checkStaticRules** | **bool** |  | 
+ **checkZxcvbn** | **bool** |  | 
  **created** | **time.Time** |  | 
  **errorMessage** | **string** |  | 
  **executionLogging** | **bool** |  | 
+ **hibpAllowedCount** | **int32** |  | 
  **lastUpdated** | **time.Time** |  | 
  **lengthMin** | **int32** |  | 
  **name** | **string** |  | 
@@ -3857,6 +3866,7 @@ Name | Type | Description  | Notes
  **policyUuid** | **string** |  | 
  **search** | **string** | A search term. | 
  **symbolCharset** | **string** |  | 
+ **zxcvbnScoreThreshold** | **int32** |  | 
 
 ### Return type
 

@@ -21,14 +21,21 @@ type PatchedPasswordPolicyRequest struct {
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
 	ExecutionLogging *bool `json:"execution_logging,omitempty"`
 	// Field key to check, field keys defined in Prompt stages are available.
-	PasswordField   *string `json:"password_field,omitempty"`
-	AmountDigits    *int32  `json:"amount_digits,omitempty"`
-	AmountUppercase *int32  `json:"amount_uppercase,omitempty"`
-	AmountLowercase *int32  `json:"amount_lowercase,omitempty"`
-	AmountSymbols   *int32  `json:"amount_symbols,omitempty"`
-	LengthMin       *int32  `json:"length_min,omitempty"`
-	SymbolCharset   *string `json:"symbol_charset,omitempty"`
-	ErrorMessage    *string `json:"error_message,omitempty"`
+	PasswordField       *string `json:"password_field,omitempty"`
+	AmountDigits        *int32  `json:"amount_digits,omitempty"`
+	AmountUppercase     *int32  `json:"amount_uppercase,omitempty"`
+	AmountLowercase     *int32  `json:"amount_lowercase,omitempty"`
+	AmountSymbols       *int32  `json:"amount_symbols,omitempty"`
+	LengthMin           *int32  `json:"length_min,omitempty"`
+	SymbolCharset       *string `json:"symbol_charset,omitempty"`
+	ErrorMessage        *string `json:"error_message,omitempty"`
+	CheckStaticRules    *bool   `json:"check_static_rules,omitempty"`
+	CheckHaveIBeenPwned *bool   `json:"check_have_i_been_pwned,omitempty"`
+	CheckZxcvbn         *bool   `json:"check_zxcvbn,omitempty"`
+	// How many times the password hash is allowed to be on haveibeenpwned
+	HibpAllowedCount *int32 `json:"hibp_allowed_count,omitempty"`
+	// If the zxcvbn score is equal or less than this value, the policy will fail.
+	ZxcvbnScoreThreshold *int32 `json:"zxcvbn_score_threshold,omitempty"`
 }
 
 // NewPatchedPasswordPolicyRequest instantiates a new PatchedPasswordPolicyRequest object
@@ -379,6 +386,166 @@ func (o *PatchedPasswordPolicyRequest) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
 }
 
+// GetCheckStaticRules returns the CheckStaticRules field value if set, zero value otherwise.
+func (o *PatchedPasswordPolicyRequest) GetCheckStaticRules() bool {
+	if o == nil || o.CheckStaticRules == nil {
+		var ret bool
+		return ret
+	}
+	return *o.CheckStaticRules
+}
+
+// GetCheckStaticRulesOk returns a tuple with the CheckStaticRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedPasswordPolicyRequest) GetCheckStaticRulesOk() (*bool, bool) {
+	if o == nil || o.CheckStaticRules == nil {
+		return nil, false
+	}
+	return o.CheckStaticRules, true
+}
+
+// HasCheckStaticRules returns a boolean if a field has been set.
+func (o *PatchedPasswordPolicyRequest) HasCheckStaticRules() bool {
+	if o != nil && o.CheckStaticRules != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCheckStaticRules gets a reference to the given bool and assigns it to the CheckStaticRules field.
+func (o *PatchedPasswordPolicyRequest) SetCheckStaticRules(v bool) {
+	o.CheckStaticRules = &v
+}
+
+// GetCheckHaveIBeenPwned returns the CheckHaveIBeenPwned field value if set, zero value otherwise.
+func (o *PatchedPasswordPolicyRequest) GetCheckHaveIBeenPwned() bool {
+	if o == nil || o.CheckHaveIBeenPwned == nil {
+		var ret bool
+		return ret
+	}
+	return *o.CheckHaveIBeenPwned
+}
+
+// GetCheckHaveIBeenPwnedOk returns a tuple with the CheckHaveIBeenPwned field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedPasswordPolicyRequest) GetCheckHaveIBeenPwnedOk() (*bool, bool) {
+	if o == nil || o.CheckHaveIBeenPwned == nil {
+		return nil, false
+	}
+	return o.CheckHaveIBeenPwned, true
+}
+
+// HasCheckHaveIBeenPwned returns a boolean if a field has been set.
+func (o *PatchedPasswordPolicyRequest) HasCheckHaveIBeenPwned() bool {
+	if o != nil && o.CheckHaveIBeenPwned != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCheckHaveIBeenPwned gets a reference to the given bool and assigns it to the CheckHaveIBeenPwned field.
+func (o *PatchedPasswordPolicyRequest) SetCheckHaveIBeenPwned(v bool) {
+	o.CheckHaveIBeenPwned = &v
+}
+
+// GetCheckZxcvbn returns the CheckZxcvbn field value if set, zero value otherwise.
+func (o *PatchedPasswordPolicyRequest) GetCheckZxcvbn() bool {
+	if o == nil || o.CheckZxcvbn == nil {
+		var ret bool
+		return ret
+	}
+	return *o.CheckZxcvbn
+}
+
+// GetCheckZxcvbnOk returns a tuple with the CheckZxcvbn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedPasswordPolicyRequest) GetCheckZxcvbnOk() (*bool, bool) {
+	if o == nil || o.CheckZxcvbn == nil {
+		return nil, false
+	}
+	return o.CheckZxcvbn, true
+}
+
+// HasCheckZxcvbn returns a boolean if a field has been set.
+func (o *PatchedPasswordPolicyRequest) HasCheckZxcvbn() bool {
+	if o != nil && o.CheckZxcvbn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCheckZxcvbn gets a reference to the given bool and assigns it to the CheckZxcvbn field.
+func (o *PatchedPasswordPolicyRequest) SetCheckZxcvbn(v bool) {
+	o.CheckZxcvbn = &v
+}
+
+// GetHibpAllowedCount returns the HibpAllowedCount field value if set, zero value otherwise.
+func (o *PatchedPasswordPolicyRequest) GetHibpAllowedCount() int32 {
+	if o == nil || o.HibpAllowedCount == nil {
+		var ret int32
+		return ret
+	}
+	return *o.HibpAllowedCount
+}
+
+// GetHibpAllowedCountOk returns a tuple with the HibpAllowedCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedPasswordPolicyRequest) GetHibpAllowedCountOk() (*int32, bool) {
+	if o == nil || o.HibpAllowedCount == nil {
+		return nil, false
+	}
+	return o.HibpAllowedCount, true
+}
+
+// HasHibpAllowedCount returns a boolean if a field has been set.
+func (o *PatchedPasswordPolicyRequest) HasHibpAllowedCount() bool {
+	if o != nil && o.HibpAllowedCount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHibpAllowedCount gets a reference to the given int32 and assigns it to the HibpAllowedCount field.
+func (o *PatchedPasswordPolicyRequest) SetHibpAllowedCount(v int32) {
+	o.HibpAllowedCount = &v
+}
+
+// GetZxcvbnScoreThreshold returns the ZxcvbnScoreThreshold field value if set, zero value otherwise.
+func (o *PatchedPasswordPolicyRequest) GetZxcvbnScoreThreshold() int32 {
+	if o == nil || o.ZxcvbnScoreThreshold == nil {
+		var ret int32
+		return ret
+	}
+	return *o.ZxcvbnScoreThreshold
+}
+
+// GetZxcvbnScoreThresholdOk returns a tuple with the ZxcvbnScoreThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedPasswordPolicyRequest) GetZxcvbnScoreThresholdOk() (*int32, bool) {
+	if o == nil || o.ZxcvbnScoreThreshold == nil {
+		return nil, false
+	}
+	return o.ZxcvbnScoreThreshold, true
+}
+
+// HasZxcvbnScoreThreshold returns a boolean if a field has been set.
+func (o *PatchedPasswordPolicyRequest) HasZxcvbnScoreThreshold() bool {
+	if o != nil && o.ZxcvbnScoreThreshold != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetZxcvbnScoreThreshold gets a reference to the given int32 and assigns it to the ZxcvbnScoreThreshold field.
+func (o *PatchedPasswordPolicyRequest) SetZxcvbnScoreThreshold(v int32) {
+	o.ZxcvbnScoreThreshold = &v
+}
+
 func (o PatchedPasswordPolicyRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name.IsSet() {
@@ -410,6 +577,21 @@ func (o PatchedPasswordPolicyRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.ErrorMessage != nil {
 		toSerialize["error_message"] = o.ErrorMessage
+	}
+	if o.CheckStaticRules != nil {
+		toSerialize["check_static_rules"] = o.CheckStaticRules
+	}
+	if o.CheckHaveIBeenPwned != nil {
+		toSerialize["check_have_i_been_pwned"] = o.CheckHaveIBeenPwned
+	}
+	if o.CheckZxcvbn != nil {
+		toSerialize["check_zxcvbn"] = o.CheckZxcvbn
+	}
+	if o.HibpAllowedCount != nil {
+		toSerialize["hibp_allowed_count"] = o.HibpAllowedCount
+	}
+	if o.ZxcvbnScoreThreshold != nil {
+		toSerialize["zxcvbn_score_threshold"] = o.ZxcvbnScoreThreshold
 	}
 	return json.Marshal(toSerialize)
 }

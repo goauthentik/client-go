@@ -12682,6 +12682,27 @@ paths:
         style: form
       - explode: true
         in: query
+        name: check_have_i_been_pwned
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: check_static_rules
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: check_zxcvbn
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: created
         required: false
         schema:
@@ -12701,6 +12722,13 @@ paths:
         required: false
         schema:
           type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: hibp_allowed_count
+        required: false
+        schema:
+          type: integer
         style: form
       - explode: true
         in: query
@@ -12777,6 +12805,13 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: zxcvbn_score_threshold
+        required: false
+        schema:
+          type: integer
         style: form
       responses:
         "200":
@@ -37263,6 +37298,8 @@ components:
           amount_lowercase: 1280358508
           verbose_name_plural: verbose_name_plural
           execution_logging: true
+          check_have_i_been_pwned: true
+          check_zxcvbn: true
           amount_uppercase: 314780940
           length_min: 494379917
           password_field: password_field
@@ -37270,15 +37307,20 @@ components:
           verbose_name: verbose_name
           amount_digits: 1294386358
           meta_model_name: meta_model_name
+          check_static_rules: true
           bound_to: 0
           symbol_charset: symbol_charset
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          zxcvbn_score_threshold: 1997469940
+          hibp_allowed_count: 1516424369
         - error_message: error_message
           amount_symbols: 1210617418
           amount_lowercase: 1280358508
           verbose_name_plural: verbose_name_plural
           execution_logging: true
+          check_have_i_been_pwned: true
+          check_zxcvbn: true
           amount_uppercase: 314780940
           length_min: 494379917
           password_field: password_field
@@ -37286,10 +37328,13 @@ components:
           verbose_name: verbose_name
           amount_digits: 1294386358
           meta_model_name: meta_model_name
+          check_static_rules: true
           bound_to: 0
           symbol_charset: symbol_charset
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          zxcvbn_score_threshold: 1997469940
+          hibp_allowed_count: 1516424369
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -39679,6 +39724,8 @@ components:
         amount_lowercase: 1280358508
         verbose_name_plural: verbose_name_plural
         execution_logging: true
+        check_have_i_been_pwned: true
+        check_zxcvbn: true
         amount_uppercase: 314780940
         length_min: 494379917
         password_field: password_field
@@ -39686,10 +39733,13 @@ components:
         verbose_name: verbose_name
         amount_digits: 1294386358
         meta_model_name: meta_model_name
+        check_static_rules: true
         bound_to: 0
         symbol_charset: symbol_charset
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        zxcvbn_score_threshold: 1997469940
+        hibp_allowed_count: 1516424369
       properties:
         pk:
           format: uuid
@@ -39746,6 +39796,23 @@ components:
           type: string
         error_message:
           type: string
+        check_static_rules:
+          type: boolean
+        check_have_i_been_pwned:
+          type: boolean
+        check_zxcvbn:
+          type: boolean
+        hibp_allowed_count:
+          description: How many times the password hash is allowed to be on haveibeenpwned
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        zxcvbn_score_threshold:
+          description: "If the zxcvbn score is equal or less than this value, the\
+            \ policy will fail."
+          maximum: 2147483647
+          minimum: 0
+          type: integer
       required:
       - bound_to
       - component
@@ -39759,15 +39826,20 @@ components:
       description: Password Policy Serializer
       example:
         error_message: error_message
-        password_field: password_field
         amount_symbols: 1280358508
-        amount_digits: 171976544
         amount_lowercase: 314780940
         execution_logging: true
-        symbol_charset: symbol_charset
-        name: name
+        check_have_i_been_pwned: true
+        check_zxcvbn: true
         amount_uppercase: 1294386358
         length_min: 1210617418
+        password_field: password_field
+        amount_digits: 171976544
+        check_static_rules: true
+        symbol_charset: symbol_charset
+        name: name
+        zxcvbn_score_threshold: 1516424369
+        hibp_allowed_count: 494379917
       properties:
         name:
           nullable: true
@@ -39807,6 +39879,23 @@ components:
         error_message:
           minLength: 1
           type: string
+        check_static_rules:
+          type: boolean
+        check_have_i_been_pwned:
+          type: boolean
+        check_zxcvbn:
+          type: boolean
+        hibp_allowed_count:
+          description: How many times the password hash is allowed to be on haveibeenpwned
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        zxcvbn_score_threshold:
+          description: "If the zxcvbn score is equal or less than this value, the\
+            \ policy will fail."
+          maximum: 2147483647
+          minimum: 0
+          type: integer
       required:
       - error_message
       type: object
@@ -41639,15 +41728,20 @@ components:
       description: Password Policy Serializer
       example:
         error_message: error_message
-        password_field: password_field
         amount_symbols: 1280358508
-        amount_digits: 171976544
         amount_lowercase: 314780940
         execution_logging: true
-        symbol_charset: symbol_charset
-        name: name
+        check_have_i_been_pwned: true
+        check_zxcvbn: true
         amount_uppercase: 1294386358
         length_min: 1210617418
+        password_field: password_field
+        amount_digits: 171976544
+        check_static_rules: true
+        symbol_charset: symbol_charset
+        name: name
+        zxcvbn_score_threshold: 1516424369
+        hibp_allowed_count: 494379917
       properties:
         name:
           nullable: true
@@ -41687,6 +41781,23 @@ components:
         error_message:
           minLength: 1
           type: string
+        check_static_rules:
+          type: boolean
+        check_have_i_been_pwned:
+          type: boolean
+        check_zxcvbn:
+          type: boolean
+        hibp_allowed_count:
+          description: How many times the password hash is allowed to be on haveibeenpwned
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        zxcvbn_score_threshold:
+          description: "If the zxcvbn score is equal or less than this value, the\
+            \ policy will fail."
+          maximum: 2147483647
+          minimum: 0
+          type: integer
       type: object
     PatchedPasswordStageRequest:
       description: PasswordStage Serializer
