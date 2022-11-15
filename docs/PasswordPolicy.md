@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **AmountSymbols** | Pointer to **int32** |  | [optional] 
 **LengthMin** | Pointer to **int32** |  | [optional] 
 **SymbolCharset** | Pointer to **string** |  | [optional] 
-**ErrorMessage** | **string** |  | 
+**ErrorMessage** | Pointer to **string** |  | [optional] 
 **CheckStaticRules** | Pointer to **bool** |  | [optional] 
 **CheckHaveIBeenPwned** | Pointer to **bool** |  | [optional] 
 **CheckZxcvbn** | Pointer to **bool** |  | [optional] 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewPasswordPolicy
 
-`func NewPasswordPolicy(pk string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, errorMessage string, ) *PasswordPolicy`
+`func NewPasswordPolicy(pk string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, ) *PasswordPolicy`
 
 NewPasswordPolicy instantiates a new PasswordPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -419,6 +419,11 @@ and a boolean to check if the value has been set.
 
 SetErrorMessage sets ErrorMessage field to given value.
 
+### HasErrorMessage
+
+`func (o *PasswordPolicy) HasErrorMessage() bool`
+
+HasErrorMessage returns a boolean if a field has been set.
 
 ### GetCheckStaticRules
 

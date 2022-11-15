@@ -12844,7 +12844,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PasswordPolicyRequest'
-        required: true
       responses:
         "201":
           content:
@@ -12996,7 +12995,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PasswordPolicyRequest'
-        required: true
       responses:
         "200":
           content:
@@ -39816,7 +39814,6 @@ components:
       required:
       - bound_to
       - component
-      - error_message
       - meta_model_name
       - pk
       - verbose_name
@@ -39877,7 +39874,6 @@ components:
           minLength: 1
           type: string
         error_message:
-          minLength: 1
           type: string
         check_static_rules:
           type: boolean
@@ -39896,8 +39892,6 @@ components:
           maximum: 2147483647
           minimum: 0
           type: integer
-      required:
-      - error_message
       type: object
     PasswordStage:
       description: PasswordStage Serializer
@@ -41779,7 +41773,6 @@ components:
           minLength: 1
           type: string
         error_message:
-          minLength: 1
           type: string
         check_static_rules:
           type: boolean

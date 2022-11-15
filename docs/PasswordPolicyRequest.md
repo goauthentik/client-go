@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **AmountSymbols** | Pointer to **int32** |  | [optional] 
 **LengthMin** | Pointer to **int32** |  | [optional] 
 **SymbolCharset** | Pointer to **string** |  | [optional] 
-**ErrorMessage** | **string** |  | 
+**ErrorMessage** | Pointer to **string** |  | [optional] 
 **CheckStaticRules** | Pointer to **bool** |  | [optional] 
 **CheckHaveIBeenPwned** | Pointer to **bool** |  | [optional] 
 **CheckZxcvbn** | Pointer to **bool** |  | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewPasswordPolicyRequest
 
-`func NewPasswordPolicyRequest(errorMessage string, ) *PasswordPolicyRequest`
+`func NewPasswordPolicyRequest() *PasswordPolicyRequest`
 
 NewPasswordPolicyRequest instantiates a new PasswordPolicyRequest object
 This constructor will assign default values to properties that have it defined,
@@ -293,6 +293,11 @@ and a boolean to check if the value has been set.
 
 SetErrorMessage sets ErrorMessage field to given value.
 
+### HasErrorMessage
+
+`func (o *PasswordPolicyRequest) HasErrorMessage() bool`
+
+HasErrorMessage returns a boolean if a field has been set.
 
 ### GetCheckStaticRules
 

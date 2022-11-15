@@ -34,7 +34,7 @@ type PasswordPolicy struct {
 	AmountSymbols       *int32  `json:"amount_symbols,omitempty"`
 	LengthMin           *int32  `json:"length_min,omitempty"`
 	SymbolCharset       *string `json:"symbol_charset,omitempty"`
-	ErrorMessage        string  `json:"error_message"`
+	ErrorMessage        *string `json:"error_message,omitempty"`
 	CheckStaticRules    *bool   `json:"check_static_rules,omitempty"`
 	CheckHaveIBeenPwned *bool   `json:"check_have_i_been_pwned,omitempty"`
 	CheckZxcvbn         *bool   `json:"check_zxcvbn,omitempty"`
@@ -48,7 +48,7 @@ type PasswordPolicy struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPasswordPolicy(pk string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, errorMessage string) *PasswordPolicy {
+func NewPasswordPolicy(pk string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32) *PasswordPolicy {
 	this := PasswordPolicy{}
 	this.Pk = pk
 	this.Component = component
@@ -56,7 +56,6 @@ func NewPasswordPolicy(pk string, component string, verboseName string, verboseN
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
 	this.BoundTo = boundTo
-	this.ErrorMessage = errorMessage
 	return &this
 }
 
@@ -511,28 +510,36 @@ func (o *PasswordPolicy) SetSymbolCharset(v string) {
 	o.SymbolCharset = &v
 }
 
-// GetErrorMessage returns the ErrorMessage field value
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetErrorMessage() string {
-	if o == nil {
+	if o == nil || o.ErrorMessage == nil {
 		var ret string
 		return ret
 	}
-
-	return o.ErrorMessage
+	return *o.ErrorMessage
 }
 
-// GetErrorMessageOk returns a tuple with the ErrorMessage field value
+// GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetErrorMessageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.ErrorMessage == nil {
 		return nil, false
 	}
-	return &o.ErrorMessage, true
+	return o.ErrorMessage, true
 }
 
-// SetErrorMessage sets field value
+// HasErrorMessage returns a boolean if a field has been set.
+func (o *PasswordPolicy) HasErrorMessage() bool {
+	if o != nil && o.ErrorMessage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *PasswordPolicy) SetErrorMessage(v string) {
-	o.ErrorMessage = v
+	o.ErrorMessage = &v
 }
 
 // GetCheckStaticRules returns the CheckStaticRules field value if set, zero value otherwise.
@@ -742,7 +749,7 @@ func (o PasswordPolicy) MarshalJSON() ([]byte, error) {
 	if o.SymbolCharset != nil {
 		toSerialize["symbol_charset"] = o.SymbolCharset
 	}
-	if true {
+	if o.ErrorMessage != nil {
 		toSerialize["error_message"] = o.ErrorMessage
 	}
 	if o.CheckStaticRules != nil {

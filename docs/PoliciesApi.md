@@ -3159,7 +3159,7 @@ import (
 )
 
 func main() {
-    passwordPolicyRequest := *openapiclient.NewPasswordPolicyRequest("ErrorMessage_example") // PasswordPolicyRequest | 
+    passwordPolicyRequest := *openapiclient.NewPasswordPolicyRequest() // PasswordPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -4050,7 +4050,7 @@ import (
 
 func main() {
     policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Policy.
-    passwordPolicyRequest := *openapiclient.NewPasswordPolicyRequest("ErrorMessage_example") // PasswordPolicyRequest | 
+    passwordPolicyRequest := *openapiclient.NewPasswordPolicyRequest() // PasswordPolicyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
