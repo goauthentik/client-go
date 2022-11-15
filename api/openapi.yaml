@@ -29695,6 +29695,7 @@ components:
           send_pii: true
           traces_sample_rate: 0.8008281904610115
           enabled: true
+          sentry_dsn: sentry_dsn
         cache_timeout_flows: 1
       properties:
         error_reporting:
@@ -30791,10 +30792,14 @@ components:
         send_pii: true
         traces_sample_rate: 0.8008281904610115
         enabled: true
+        sentry_dsn: sentry_dsn
       properties:
         enabled:
           readOnly: true
           type: boolean
+        sentry_dsn:
+          readOnly: true
+          type: string
         environment:
           readOnly: true
           type: string
@@ -30809,6 +30814,7 @@ components:
       - enabled
       - environment
       - send_pii
+      - sentry_dsn
       - traces_sample_rate
       type: object
     Event:

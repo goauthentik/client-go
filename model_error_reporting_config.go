@@ -18,6 +18,7 @@ import (
 // ErrorReportingConfig Config for error reporting
 type ErrorReportingConfig struct {
 	Enabled          bool    `json:"enabled"`
+	SentryDsn        string  `json:"sentry_dsn"`
 	Environment      string  `json:"environment"`
 	SendPii          bool    `json:"send_pii"`
 	TracesSampleRate float64 `json:"traces_sample_rate"`
@@ -27,9 +28,10 @@ type ErrorReportingConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewErrorReportingConfig(enabled bool, environment string, sendPii bool, tracesSampleRate float64) *ErrorReportingConfig {
+func NewErrorReportingConfig(enabled bool, sentryDsn string, environment string, sendPii bool, tracesSampleRate float64) *ErrorReportingConfig {
 	this := ErrorReportingConfig{}
 	this.Enabled = enabled
+	this.SentryDsn = sentryDsn
 	this.Environment = environment
 	this.SendPii = sendPii
 	this.TracesSampleRate = tracesSampleRate
@@ -66,6 +68,30 @@ func (o *ErrorReportingConfig) GetEnabledOk() (*bool, bool) {
 // SetEnabled sets field value
 func (o *ErrorReportingConfig) SetEnabled(v bool) {
 	o.Enabled = v
+}
+
+// GetSentryDsn returns the SentryDsn field value
+func (o *ErrorReportingConfig) GetSentryDsn() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SentryDsn
+}
+
+// GetSentryDsnOk returns a tuple with the SentryDsn field value
+// and a boolean to check if the value has been set.
+func (o *ErrorReportingConfig) GetSentryDsnOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SentryDsn, true
+}
+
+// SetSentryDsn sets field value
+func (o *ErrorReportingConfig) SetSentryDsn(v string) {
+	o.SentryDsn = v
 }
 
 // GetEnvironment returns the Environment field value
@@ -144,6 +170,9 @@ func (o ErrorReportingConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["enabled"] = o.Enabled
+	}
+	if true {
+		toSerialize["sentry_dsn"] = o.SentryDsn
 	}
 	if true {
 		toSerialize["environment"] = o.Environment

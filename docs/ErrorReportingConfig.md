@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | **bool** |  | [readonly] 
+**SentryDsn** | **string** |  | [readonly] 
 **Environment** | **string** |  | [readonly] 
 **SendPii** | **bool** |  | [readonly] 
 **TracesSampleRate** | **float64** |  | [readonly] 
@@ -13,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewErrorReportingConfig
 
-`func NewErrorReportingConfig(enabled bool, environment string, sendPii bool, tracesSampleRate float64, ) *ErrorReportingConfig`
+`func NewErrorReportingConfig(enabled bool, sentryDsn string, environment string, sendPii bool, tracesSampleRate float64, ) *ErrorReportingConfig`
 
 NewErrorReportingConfig instantiates a new ErrorReportingConfig object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +47,26 @@ and a boolean to check if the value has been set.
 `func (o *ErrorReportingConfig) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
+
+
+### GetSentryDsn
+
+`func (o *ErrorReportingConfig) GetSentryDsn() string`
+
+GetSentryDsn returns the SentryDsn field if non-nil, zero value otherwise.
+
+### GetSentryDsnOk
+
+`func (o *ErrorReportingConfig) GetSentryDsnOk() (*string, bool)`
+
+GetSentryDsnOk returns a tuple with the SentryDsn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSentryDsn
+
+`func (o *ErrorReportingConfig) SetSentryDsn(v string)`
+
+SetSentryDsn sets SentryDsn field to given value.
 
 
 ### GetEnvironment
