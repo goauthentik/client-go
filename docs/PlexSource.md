@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **Managed** | **NullableString** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
+**Icon** | **NullableString** |  | [readonly] 
 **ClientId** | Pointer to **string** | Client identifier used to talk to Plex. | [optional] 
 **AllowedServers** | Pointer to **[]string** | Which servers a user has to be a member of to be granted access. Empty list allows every server. | [optional] 
 **AllowFriends** | Pointer to **bool** | Allow friends to authenticate, even if you don&#39;t share a server. | [optional] 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewPlexSource
 
-`func NewPlexSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, plexToken string, ) *PlexSource`
+`func NewPlexSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, plexToken string, ) *PlexSource`
 
 NewPlexSource instantiates a new PlexSource object
 This constructor will assign default values to properties that have it defined,
@@ -392,6 +393,36 @@ SetUserPathTemplate sets UserPathTemplate field to given value.
 
 HasUserPathTemplate returns a boolean if a field has been set.
 
+### GetIcon
+
+`func (o *PlexSource) GetIcon() string`
+
+GetIcon returns the Icon field if non-nil, zero value otherwise.
+
+### GetIconOk
+
+`func (o *PlexSource) GetIconOk() (*string, bool)`
+
+GetIconOk returns a tuple with the Icon field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIcon
+
+`func (o *PlexSource) SetIcon(v string)`
+
+SetIcon sets Icon field to given value.
+
+
+### SetIconNil
+
+`func (o *PlexSource) SetIconNil(b bool)`
+
+ SetIconNil sets the value for Icon to be an explicit nil
+
+### UnsetIcon
+`func (o *PlexSource) UnsetIcon()`
+
+UnsetIcon ensures that no value is present for Icon, not even an explicit nil
 ### GetClientId
 
 `func (o *PlexSource) GetClientId() string`

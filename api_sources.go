@@ -17,6 +17,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"os"
 	"reflect"
 	"strings"
 )
@@ -482,6 +483,279 @@ func (a *SourcesApiService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveReq
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSourcesAllSetIconCreateRequest struct {
+	ctx        context.Context
+	ApiService *SourcesApiService
+	slug       string
+	file       **os.File
+	clear      *bool
+}
+
+func (r ApiSourcesAllSetIconCreateRequest) File(file *os.File) ApiSourcesAllSetIconCreateRequest {
+	r.file = &file
+	return r
+}
+
+func (r ApiSourcesAllSetIconCreateRequest) Clear(clear bool) ApiSourcesAllSetIconCreateRequest {
+	r.clear = &clear
+	return r
+}
+
+func (r ApiSourcesAllSetIconCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.SourcesAllSetIconCreateExecute(r)
+}
+
+/*
+SourcesAllSetIconCreate Method for SourcesAllSetIconCreate
+
+Set source icon
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param slug
+ @return ApiSourcesAllSetIconCreateRequest
+*/
+func (a *SourcesApiService) SourcesAllSetIconCreate(ctx context.Context, slug string) ApiSourcesAllSetIconCreateRequest {
+	return ApiSourcesAllSetIconCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		slug:       slug,
+	}
+}
+
+// Execute executes the request
+func (a *SourcesApiService) SourcesAllSetIconCreateExecute(r ApiSourcesAllSetIconCreateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesAllSetIconCreate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/all/{slug}/set_icon/"
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	var fileLocalVarFormFileName string
+	var fileLocalVarFileName string
+	var fileLocalVarFileBytes []byte
+
+	fileLocalVarFormFileName = "file"
+
+	var fileLocalVarFile *os.File
+	if r.file != nil {
+		fileLocalVarFile = *r.file
+	}
+	if fileLocalVarFile != nil {
+		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fileLocalVarFileBytes = fbs
+		fileLocalVarFileName = fileLocalVarFile.Name()
+		fileLocalVarFile.Close()
+	}
+	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
+	if r.clear != nil {
+		localVarFormParams.Add("clear", parameterToString(*r.clear, ""))
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSourcesAllSetIconUrlCreateRequest struct {
+	ctx             context.Context
+	ApiService      *SourcesApiService
+	slug            string
+	filePathRequest *FilePathRequest
+}
+
+func (r ApiSourcesAllSetIconUrlCreateRequest) FilePathRequest(filePathRequest FilePathRequest) ApiSourcesAllSetIconUrlCreateRequest {
+	r.filePathRequest = &filePathRequest
+	return r
+}
+
+func (r ApiSourcesAllSetIconUrlCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.SourcesAllSetIconUrlCreateExecute(r)
+}
+
+/*
+SourcesAllSetIconUrlCreate Method for SourcesAllSetIconUrlCreate
+
+Set source icon (as URL)
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param slug
+ @return ApiSourcesAllSetIconUrlCreateRequest
+*/
+func (a *SourcesApiService) SourcesAllSetIconUrlCreate(ctx context.Context, slug string) ApiSourcesAllSetIconUrlCreateRequest {
+	return ApiSourcesAllSetIconUrlCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		slug:       slug,
+	}
+}
+
+// Execute executes the request
+func (a *SourcesApiService) SourcesAllSetIconUrlCreateExecute(r ApiSourcesAllSetIconUrlCreateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesAllSetIconUrlCreate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/all/{slug}/set_icon_url/"
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.filePathRequest == nil {
+		return nil, reportError("filePathRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.filePathRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
 
 type ApiSourcesAllTypesListRequest struct {
@@ -5116,11 +5390,8 @@ type ApiSourcesSamlListRequest struct {
 	ordering                 *string
 	page                     *int32
 	pageSize                 *int32
-	pbmUuid                  *string
-	policies                 *[]string
 	policyEngineMode         *string
 	preAuthenticationFlow    *string
-	propertyMappings         *[]string
 	search                   *string
 	signatureAlgorithm       *string
 	signingKp                *string
@@ -5129,7 +5400,6 @@ type ApiSourcesSamlListRequest struct {
 	ssoUrl                   *string
 	temporaryUserDeleteAfter *string
 	userMatchingMode         *string
-	userPathTemplate         *string
 }
 
 func (r ApiSourcesSamlListRequest) AllowIdpInitiated(allowIdpInitiated bool) ApiSourcesSamlListRequest {
@@ -5201,16 +5471,6 @@ func (r ApiSourcesSamlListRequest) PageSize(pageSize int32) ApiSourcesSamlListRe
 	return r
 }
 
-func (r ApiSourcesSamlListRequest) PbmUuid(pbmUuid string) ApiSourcesSamlListRequest {
-	r.pbmUuid = &pbmUuid
-	return r
-}
-
-func (r ApiSourcesSamlListRequest) Policies(policies []string) ApiSourcesSamlListRequest {
-	r.policies = &policies
-	return r
-}
-
 func (r ApiSourcesSamlListRequest) PolicyEngineMode(policyEngineMode string) ApiSourcesSamlListRequest {
 	r.policyEngineMode = &policyEngineMode
 	return r
@@ -5218,11 +5478,6 @@ func (r ApiSourcesSamlListRequest) PolicyEngineMode(policyEngineMode string) Api
 
 func (r ApiSourcesSamlListRequest) PreAuthenticationFlow(preAuthenticationFlow string) ApiSourcesSamlListRequest {
 	r.preAuthenticationFlow = &preAuthenticationFlow
-	return r
-}
-
-func (r ApiSourcesSamlListRequest) PropertyMappings(propertyMappings []string) ApiSourcesSamlListRequest {
-	r.propertyMappings = &propertyMappings
 	return r
 }
 
@@ -5265,11 +5520,6 @@ func (r ApiSourcesSamlListRequest) TemporaryUserDeleteAfter(temporaryUserDeleteA
 // How the source determines if an existing user should be authenticated or a new user enrolled.
 func (r ApiSourcesSamlListRequest) UserMatchingMode(userMatchingMode string) ApiSourcesSamlListRequest {
 	r.userMatchingMode = &userMatchingMode
-	return r
-}
-
-func (r ApiSourcesSamlListRequest) UserPathTemplate(userPathTemplate string) ApiSourcesSamlListRequest {
-	r.userPathTemplate = &userPathTemplate
 	return r
 }
 
@@ -5352,36 +5602,11 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 	if r.pageSize != nil {
 		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
-	if r.pbmUuid != nil {
-		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
-	}
-	if r.policies != nil {
-		t := *r.policies
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("policies", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("policies", parameterToString(t, "multi"))
-		}
-	}
 	if r.policyEngineMode != nil {
 		localVarQueryParams.Add("policy_engine_mode", parameterToString(*r.policyEngineMode, ""))
 	}
 	if r.preAuthenticationFlow != nil {
 		localVarQueryParams.Add("pre_authentication_flow", parameterToString(*r.preAuthenticationFlow, ""))
-	}
-	if r.propertyMappings != nil {
-		t := *r.propertyMappings
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("property_mappings", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("property_mappings", parameterToString(t, "multi"))
-		}
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
@@ -5406,9 +5631,6 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 	}
 	if r.userMatchingMode != nil {
 		localVarQueryParams.Add("user_matching_mode", parameterToString(*r.userMatchingMode, ""))
-	}
-	if r.userPathTemplate != nil {
-		localVarQueryParams.Add("user_path_template", parameterToString(*r.userPathTemplate, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

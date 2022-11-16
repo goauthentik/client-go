@@ -17620,6 +17620,73 @@ paths:
       - authentik: []
       tags:
       - sources
+  /sources/all/{slug}/set_icon/:
+    post:
+      description: Set source icon
+      operationId: sources_all_set_icon_create
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FileUploadRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad request
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/all/{slug}/set_icon_url/:
+    post:
+      description: Set source icon (as URL)
+      operationId: sources_all_set_icon_url_create
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilePathRequest'
+        required: true
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad request
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
   /sources/all/{slug}/used_by/:
     get:
       description: Get a list of all objects that use this object
@@ -19145,24 +19212,6 @@ paths:
         style: form
       - explode: true
         in: query
-        name: pbm_uuid
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: policies
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      - explode: true
-        in: query
         name: policy_engine_mode
         required: false
         schema:
@@ -19178,16 +19227,6 @@ paths:
         schema:
           format: uuid
           type: string
-        style: form
-      - explode: true
-        in: query
-        name: property_mappings
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
         style: form
       - description: A search term.
         explode: true
@@ -19259,13 +19298,6 @@ paths:
           - identifier
           - username_deny
           - username_link
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: user_path_template
-        required: false
-        schema:
           type: string
         style: form
       responses:
@@ -32985,6 +33017,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         additional_user_dn: additional_user_dn
         sync_users: true
+        icon: icon
         enabled: true
         base_dn: base_dn
         managed: managed
@@ -33068,6 +33101,10 @@ components:
           type: string
         user_path_template:
           type: string
+        icon:
+          nullable: true
+          readOnly: true
+          type: string
         server_uri:
           format: uri
           type: string
@@ -33130,6 +33167,7 @@ components:
       required:
       - base_dn
       - component
+      - icon
       - managed
       - meta_model_name
       - name
@@ -33982,6 +34020,7 @@ components:
         verbose_name_plural: verbose_name_plural
         request_token_url: request_token_url
         profile_url: profile_url
+        icon: icon
         oidc_jwks:
           key: ""
         type: null
@@ -34061,6 +34100,10 @@ components:
           type: string
         user_path_template:
           type: string
+        icon:
+          nullable: true
+          readOnly: true
+          type: string
         provider_type:
           $ref: '#/components/schemas/ProviderTypeEnum'
         request_token_url:
@@ -34104,6 +34147,7 @@ components:
       - callback_url
       - component
       - consumer_key
+      - icon
       - managed
       - meta_model_name
       - name
@@ -36768,6 +36812,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           additional_user_dn: additional_user_dn
           sync_users: true
+          icon: icon
           enabled: true
           base_dn: base_dn
           managed: managed
@@ -36803,6 +36848,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           additional_user_dn: additional_user_dn
           sync_users: true
+          icon: icon
           enabled: true
           base_dn: base_dn
           managed: managed
@@ -37088,6 +37134,7 @@ components:
           verbose_name_plural: verbose_name_plural
           request_token_url: request_token_url
           profile_url: profile_url
+          icon: icon
           oidc_jwks:
             key: ""
           type: null
@@ -37115,6 +37162,7 @@ components:
           verbose_name_plural: verbose_name_plural
           request_token_url: request_token_url
           profile_url: profile_url
+          icon: icon
           oidc_jwks:
             key: ""
           type: null
@@ -37493,6 +37541,7 @@ components:
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           user_path_template: user_path_template
+          icon: icon
           enabled: true
           client_id: client_id
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -37513,6 +37562,7 @@ components:
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           user_path_template: user_path_template
+          icon: icon
           enabled: true
           client_id: client_id
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -38480,6 +38530,7 @@ components:
         - allow_idp_initiated: true
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
+          icon: icon
           sso_url: https://openapi-generator.tech
           enabled: true
           issuer: issuer
@@ -38505,6 +38556,7 @@ components:
         - allow_idp_initiated: true
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
+          icon: icon
           sso_url: https://openapi-generator.tech
           enabled: true
           issuer: issuer
@@ -38658,6 +38710,7 @@ components:
         - user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           user_path_template: user_path_template
+          icon: icon
           enabled: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
@@ -38672,6 +38725,7 @@ components:
         - user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           user_path_template: user_path_template
+          icon: icon
           enabled: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
@@ -42883,6 +42937,7 @@ components:
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
         user_path_template: user_path_template
+        icon: icon
         enabled: true
         client_id: client_id
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -42954,6 +43009,10 @@ components:
           type: string
         user_path_template:
           type: string
+        icon:
+          nullable: true
+          readOnly: true
+          type: string
         client_id:
           description: Client identifier used to talk to Plex.
           type: string
@@ -42971,6 +43030,7 @@ components:
           type: string
       required:
       - component
+      - icon
       - managed
       - meta_model_name
       - name
@@ -44834,6 +44894,7 @@ components:
         allow_idp_initiated: true
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
+        icon: icon
         sso_url: https://openapi-generator.tech
         enabled: true
         issuer: issuer
@@ -44913,6 +44974,10 @@ components:
           type: string
         user_path_template:
           type: string
+        icon:
+          nullable: true
+          readOnly: true
+          type: string
         pre_authentication_flow:
           description: Flow used before authentication.
           format: uuid
@@ -44961,6 +45026,7 @@ components:
           type: string
       required:
       - component
+      - icon
       - managed
       - meta_model_name
       - name
@@ -45391,6 +45457,7 @@ components:
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
         user_path_template: user_path_template
+        icon: icon
         enabled: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
@@ -45459,8 +45526,13 @@ components:
           type: string
         user_path_template:
           type: string
+        icon:
+          nullable: true
+          readOnly: true
+          type: string
       required:
       - component
+      - icon
       - managed
       - meta_model_name
       - name

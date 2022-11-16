@@ -423,6 +423,8 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesAllDestroy**](docs/SourcesApi.md#sourcesalldestroy) | **Delete** /sources/all/{slug}/ | 
 *SourcesApi* | [**SourcesAllList**](docs/SourcesApi.md#sourcesalllist) | **Get** /sources/all/ | 
 *SourcesApi* | [**SourcesAllRetrieve**](docs/SourcesApi.md#sourcesallretrieve) | **Get** /sources/all/{slug}/ | 
+*SourcesApi* | [**SourcesAllSetIconCreate**](docs/SourcesApi.md#sourcesallseticoncreate) | **Post** /sources/all/{slug}/set_icon/ | 
+*SourcesApi* | [**SourcesAllSetIconUrlCreate**](docs/SourcesApi.md#sourcesallseticonurlcreate) | **Post** /sources/all/{slug}/set_icon_url/ | 
 *SourcesApi* | [**SourcesAllTypesList**](docs/SourcesApi.md#sourcesalltypeslist) | **Get** /sources/all/types/ | 
 *SourcesApi* | [**SourcesAllUsedByList**](docs/SourcesApi.md#sourcesallusedbylist) | **Get** /sources/all/{slug}/used_by/ | 
 *SourcesApi* | [**SourcesAllUserSettingsList**](docs/SourcesApi.md#sourcesallusersettingslist) | **Get** /sources/all/user_settings/ | 

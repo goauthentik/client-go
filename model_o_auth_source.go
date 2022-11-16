@@ -37,6 +37,7 @@ type OAuthSource struct {
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed          NullableString   `json:"managed"`
 	UserPathTemplate *string          `json:"user_path_template,omitempty"`
+	Icon             NullableString   `json:"icon"`
 	ProviderType     ProviderTypeEnum `json:"provider_type"`
 	// URL used to request the initial token. This URL is only required for OAuth 1.
 	RequestTokenUrl NullableString `json:"request_token_url,omitempty"`
@@ -59,7 +60,7 @@ type OAuthSource struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ OAuthSourceType) *OAuthSource {
+func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ OAuthSourceType) *OAuthSource {
 	this := OAuthSource{}
 	this.Pk = pk
 	this.Name = name
@@ -69,6 +70,7 @@ func NewOAuthSource(pk string, name string, slug string, component string, verbo
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
 	this.Managed = managed
+	this.Icon = icon
 	this.ProviderType = providerType
 	this.ConsumerKey = consumerKey
 	this.CallbackUrl = callbackUrl
@@ -501,6 +503,32 @@ func (o *OAuthSource) HasUserPathTemplate() bool {
 // SetUserPathTemplate gets a reference to the given string and assigns it to the UserPathTemplate field.
 func (o *OAuthSource) SetUserPathTemplate(v string) {
 	o.UserPathTemplate = &v
+}
+
+// GetIcon returns the Icon field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *OAuthSource) GetIcon() string {
+	if o == nil || o.Icon.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Icon.Get()
+}
+
+// GetIconOk returns a tuple with the Icon field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OAuthSource) GetIconOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Icon.Get(), o.Icon.IsSet()
+}
+
+// SetIcon sets field value
+func (o *OAuthSource) SetIcon(v string) {
+	o.Icon.Set(&v)
 }
 
 // GetProviderType returns the ProviderType field value
@@ -942,6 +970,9 @@ func (o OAuthSource) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserPathTemplate != nil {
 		toSerialize["user_path_template"] = o.UserPathTemplate
+	}
+	if true {
+		toSerialize["icon"] = o.Icon.Get()
 	}
 	if true {
 		toSerialize["provider_type"] = o.ProviderType
