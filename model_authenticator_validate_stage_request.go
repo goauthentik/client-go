@@ -26,6 +26,8 @@ type AuthenticatorValidateStageRequest struct {
 	ConfigurationStages []string `json:"configuration_stages,omitempty"`
 	// If any of the user's device has been used within this threshold, this stage will be skipped
 	LastAuthThreshold *string `json:"last_auth_threshold,omitempty"`
+	// Enforce user verification for WebAuthn devices.
+	WebauthnUserVerification NullableUserVerificationEnum `json:"webauthn_user_verification,omitempty"`
 }
 
 // NewAuthenticatorValidateStageRequest instantiates a new AuthenticatorValidateStageRequest object
@@ -230,6 +232,49 @@ func (o *AuthenticatorValidateStageRequest) SetLastAuthThreshold(v string) {
 	o.LastAuthThreshold = &v
 }
 
+// GetWebauthnUserVerification returns the WebauthnUserVerification field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AuthenticatorValidateStageRequest) GetWebauthnUserVerification() UserVerificationEnum {
+	if o == nil || o.WebauthnUserVerification.Get() == nil {
+		var ret UserVerificationEnum
+		return ret
+	}
+	return *o.WebauthnUserVerification.Get()
+}
+
+// GetWebauthnUserVerificationOk returns a tuple with the WebauthnUserVerification field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AuthenticatorValidateStageRequest) GetWebauthnUserVerificationOk() (*UserVerificationEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.WebauthnUserVerification.Get(), o.WebauthnUserVerification.IsSet()
+}
+
+// HasWebauthnUserVerification returns a boolean if a field has been set.
+func (o *AuthenticatorValidateStageRequest) HasWebauthnUserVerification() bool {
+	if o != nil && o.WebauthnUserVerification.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetWebauthnUserVerification gets a reference to the given NullableUserVerificationEnum and assigns it to the WebauthnUserVerification field.
+func (o *AuthenticatorValidateStageRequest) SetWebauthnUserVerification(v UserVerificationEnum) {
+	o.WebauthnUserVerification.Set(&v)
+}
+
+// SetWebauthnUserVerificationNil sets the value for WebauthnUserVerification to be an explicit nil
+func (o *AuthenticatorValidateStageRequest) SetWebauthnUserVerificationNil() {
+	o.WebauthnUserVerification.Set(nil)
+}
+
+// UnsetWebauthnUserVerification ensures that no value is present for WebauthnUserVerification, not even an explicit nil
+func (o *AuthenticatorValidateStageRequest) UnsetWebauthnUserVerification() {
+	o.WebauthnUserVerification.Unset()
+}
+
 func (o AuthenticatorValidateStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -249,6 +294,9 @@ func (o AuthenticatorValidateStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.LastAuthThreshold != nil {
 		toSerialize["last_auth_threshold"] = o.LastAuthThreshold
+	}
+	if o.WebauthnUserVerification.IsSet() {
+		toSerialize["webauthn_user_verification"] = o.WebauthnUserVerification.Get()
 	}
 	return json.Marshal(toSerialize)
 }

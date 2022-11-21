@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **DeviceClasses** | Pointer to [**[]DeviceClassesEnum**](DeviceClassesEnum.md) | Device classes which can be used to authenticate | [optional] 
 **ConfigurationStages** | Pointer to **[]string** | Stages used to configure Authenticator when user doesn&#39;t have any compatible devices. After this configuration Stage passes, the user is not prompted again. | [optional] 
 **LastAuthThreshold** | Pointer to **string** | If any of the user&#39;s device has been used within this threshold, this stage will be skipped | [optional] 
+**WebauthnUserVerification** | Pointer to [**NullableUserVerificationEnum**](UserVerificationEnum.md) | Enforce user verification for WebAuthn devices. | [optional] 
 
 ## Methods
 
@@ -180,6 +181,41 @@ SetLastAuthThreshold sets LastAuthThreshold field to given value.
 
 HasLastAuthThreshold returns a boolean if a field has been set.
 
+### GetWebauthnUserVerification
+
+`func (o *PatchedAuthenticatorValidateStageRequest) GetWebauthnUserVerification() UserVerificationEnum`
+
+GetWebauthnUserVerification returns the WebauthnUserVerification field if non-nil, zero value otherwise.
+
+### GetWebauthnUserVerificationOk
+
+`func (o *PatchedAuthenticatorValidateStageRequest) GetWebauthnUserVerificationOk() (*UserVerificationEnum, bool)`
+
+GetWebauthnUserVerificationOk returns a tuple with the WebauthnUserVerification field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebauthnUserVerification
+
+`func (o *PatchedAuthenticatorValidateStageRequest) SetWebauthnUserVerification(v UserVerificationEnum)`
+
+SetWebauthnUserVerification sets WebauthnUserVerification field to given value.
+
+### HasWebauthnUserVerification
+
+`func (o *PatchedAuthenticatorValidateStageRequest) HasWebauthnUserVerification() bool`
+
+HasWebauthnUserVerification returns a boolean if a field has been set.
+
+### SetWebauthnUserVerificationNil
+
+`func (o *PatchedAuthenticatorValidateStageRequest) SetWebauthnUserVerificationNil(b bool)`
+
+ SetWebauthnUserVerificationNil sets the value for WebauthnUserVerification to be an explicit nil
+
+### UnsetWebauthnUserVerification
+`func (o *PatchedAuthenticatorValidateStageRequest) UnsetWebauthnUserVerification()`
+
+UnsetWebauthnUserVerification ensures that no value is present for WebauthnUserVerification, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

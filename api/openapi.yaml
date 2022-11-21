@@ -28930,6 +28930,7 @@ components:
       example:
         component: component
         verbose_name: verbose_name
+        webauthn_user_verification: ""
         not_configured_action: null
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
@@ -29010,6 +29011,10 @@ components:
           description: "If any of the user's device has been used within this threshold,\
             \ this stage will be skipped"
           type: string
+        webauthn_user_verification:
+          allOf:
+          - $ref: '#/components/schemas/UserVerificationEnum'
+          description: Enforce user verification for WebAuthn devices.
       required:
       - component
       - meta_model_name
@@ -29021,6 +29026,7 @@ components:
     AuthenticatorValidateStageRequest:
       description: AuthenticatorValidateStage Serializer
       example:
+        webauthn_user_verification: ""
         not_configured_action: null
         device_classes:
         - null
@@ -29075,6 +29081,10 @@ components:
             \ this stage will be skipped"
           minLength: 1
           type: string
+        webauthn_user_verification:
+          allOf:
+          - $ref: '#/components/schemas/UserVerificationEnum'
+          description: Enforce user verification for WebAuthn devices.
       required:
       - name
       type: object
@@ -35109,6 +35119,7 @@ components:
         results:
         - component: component
           verbose_name: verbose_name
+          webauthn_user_verification: ""
           not_configured_action: null
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
@@ -35148,6 +35159,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - component: component
           verbose_name: verbose_name
+          webauthn_user_verification: ""
           not_configured_action: null
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
@@ -40401,6 +40413,7 @@ components:
     PatchedAuthenticatorValidateStageRequest:
       description: AuthenticatorValidateStage Serializer
       example:
+        webauthn_user_verification: ""
         not_configured_action: null
         device_classes:
         - null
@@ -40455,6 +40468,10 @@ components:
             \ this stage will be skipped"
           minLength: 1
           type: string
+        webauthn_user_verification:
+          allOf:
+          - $ref: '#/components/schemas/UserVerificationEnum'
+          description: Enforce user verification for WebAuthn devices.
       type: object
     PatchedBlueprintInstanceRequest:
       description: Info about a single blueprint instance file
