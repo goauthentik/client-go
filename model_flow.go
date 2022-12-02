@@ -37,6 +37,8 @@ type Flow struct {
 	Layout            *LayoutEnum `json:"layout,omitempty"`
 	// Configure what should happen when a flow denies access to a user.
 	DeniedAction NullableDeniedActionEnum `json:"denied_action,omitempty"`
+	// Required level of authentication and authorization to access a flow.
+	Authentication NullableAuthenticationEnum `json:"authentication,omitempty"`
 }
 
 // NewFlow instantiates a new Flow object
@@ -472,6 +474,49 @@ func (o *Flow) UnsetDeniedAction() {
 	o.DeniedAction.Unset()
 }
 
+// GetAuthentication returns the Authentication field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Flow) GetAuthentication() AuthenticationEnum {
+	if o == nil || o.Authentication.Get() == nil {
+		var ret AuthenticationEnum
+		return ret
+	}
+	return *o.Authentication.Get()
+}
+
+// GetAuthenticationOk returns a tuple with the Authentication field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Flow) GetAuthenticationOk() (*AuthenticationEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Authentication.Get(), o.Authentication.IsSet()
+}
+
+// HasAuthentication returns a boolean if a field has been set.
+func (o *Flow) HasAuthentication() bool {
+	if o != nil && o.Authentication.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthentication gets a reference to the given NullableAuthenticationEnum and assigns it to the Authentication field.
+func (o *Flow) SetAuthentication(v AuthenticationEnum) {
+	o.Authentication.Set(&v)
+}
+
+// SetAuthenticationNil sets the value for Authentication to be an explicit nil
+func (o *Flow) SetAuthenticationNil() {
+	o.Authentication.Set(nil)
+}
+
+// UnsetAuthentication ensures that no value is present for Authentication, not even an explicit nil
+func (o *Flow) UnsetAuthentication() {
+	o.Authentication.Unset()
+}
+
 func (o Flow) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -518,6 +563,9 @@ func (o Flow) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeniedAction.IsSet() {
 		toSerialize["denied_action"] = o.DeniedAction.Get()
+	}
+	if o.Authentication.IsSet() {
+		toSerialize["authentication"] = o.Authentication.Get()
 	}
 	return json.Marshal(toSerialize)
 }

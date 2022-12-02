@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **ExportUrl** | **string** |  | [readonly] 
 **Layout** | Pointer to [**LayoutEnum**](LayoutEnum.md) |  | [optional] 
 **DeniedAction** | Pointer to [**NullableDeniedActionEnum**](DeniedActionEnum.md) | Configure what should happen when a flow denies access to a user. | [optional] 
+**Authentication** | Pointer to [**NullableAuthenticationEnum**](AuthenticationEnum.md) | Required level of authentication and authorization to access a flow. | [optional] 
 
 ## Methods
 
@@ -379,6 +380,41 @@ HasDeniedAction returns a boolean if a field has been set.
 `func (o *Flow) UnsetDeniedAction()`
 
 UnsetDeniedAction ensures that no value is present for DeniedAction, not even an explicit nil
+### GetAuthentication
+
+`func (o *Flow) GetAuthentication() AuthenticationEnum`
+
+GetAuthentication returns the Authentication field if non-nil, zero value otherwise.
+
+### GetAuthenticationOk
+
+`func (o *Flow) GetAuthenticationOk() (*AuthenticationEnum, bool)`
+
+GetAuthenticationOk returns a tuple with the Authentication field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthentication
+
+`func (o *Flow) SetAuthentication(v AuthenticationEnum)`
+
+SetAuthentication sets Authentication field to given value.
+
+### HasAuthentication
+
+`func (o *Flow) HasAuthentication() bool`
+
+HasAuthentication returns a boolean if a field has been set.
+
+### SetAuthenticationNil
+
+`func (o *Flow) SetAuthenticationNil(b bool)`
+
+ SetAuthenticationNil sets the value for Authentication to be an explicit nil
+
+### UnsetAuthentication
+`func (o *Flow) UnsetAuthentication()`
+
+UnsetAuthentication ensures that no value is present for Authentication, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

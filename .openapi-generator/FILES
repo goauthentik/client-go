@@ -38,6 +38,7 @@ docs/AuthenticatedSessionUserAgent.md
 docs/AuthenticatedSessionUserAgentDevice.md
 docs/AuthenticatedSessionUserAgentOs.md
 docs/AuthenticatedSessionUserAgentUserAgent.md
+docs/AuthenticationEnum.md
 docs/AuthenticatorAttachmentEnum.md
 docs/AuthenticatorDuoChallenge.md
 docs/AuthenticatorDuoChallengeResponseRequest.md
@@ -522,6 +523,7 @@ model_authenticated_session_user_agent.go
 model_authenticated_session_user_agent_device.go
 model_authenticated_session_user_agent_os.go
 model_authenticated_session_user_agent_user_agent.go
+model_authentication_enum.go
 model_authenticator_attachment_enum.go
 model_authenticator_duo_challenge.go
 model_authenticator_duo_challenge_response_request.go

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **CompatibilityMode** | Pointer to **bool** | Enable compatibility mode, increases compatibility with password managers on mobile devices. | [optional] 
 **Layout** | Pointer to [**LayoutEnum**](LayoutEnum.md) |  | [optional] 
 **DeniedAction** | Pointer to [**NullableDeniedActionEnum**](DeniedActionEnum.md) | Configure what should happen when a flow denies access to a user. | [optional] 
+**Authentication** | Pointer to [**NullableAuthenticationEnum**](AuthenticationEnum.md) | Required level of authentication and authorization to access a flow. | [optional] 
 
 ## Methods
 
@@ -232,6 +233,41 @@ HasDeniedAction returns a boolean if a field has been set.
 `func (o *FlowRequest) UnsetDeniedAction()`
 
 UnsetDeniedAction ensures that no value is present for DeniedAction, not even an explicit nil
+### GetAuthentication
+
+`func (o *FlowRequest) GetAuthentication() AuthenticationEnum`
+
+GetAuthentication returns the Authentication field if non-nil, zero value otherwise.
+
+### GetAuthenticationOk
+
+`func (o *FlowRequest) GetAuthenticationOk() (*AuthenticationEnum, bool)`
+
+GetAuthenticationOk returns a tuple with the Authentication field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthentication
+
+`func (o *FlowRequest) SetAuthentication(v AuthenticationEnum)`
+
+SetAuthentication sets Authentication field to given value.
+
+### HasAuthentication
+
+`func (o *FlowRequest) HasAuthentication() bool`
+
+HasAuthentication returns a boolean if a field has been set.
+
+### SetAuthenticationNil
+
+`func (o *FlowRequest) SetAuthenticationNil(b bool)`
+
+ SetAuthenticationNil sets the value for Authentication to be an explicit nil
+
+### UnsetAuthentication
+`func (o *FlowRequest) UnsetAuthentication()`
+
+UnsetAuthentication ensures that no value is present for Authentication, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -666,6 +666,7 @@ Class | Method | HTTP request | Description
  - [AuthenticatedSessionUserAgentDevice](docs/AuthenticatedSessionUserAgentDevice.md)
  - [AuthenticatedSessionUserAgentOs](docs/AuthenticatedSessionUserAgentOs.md)
  - [AuthenticatedSessionUserAgentUserAgent](docs/AuthenticatedSessionUserAgentUserAgent.md)
+ - [AuthenticationEnum](docs/AuthenticationEnum.md)
  - [AuthenticatorAttachmentEnum](docs/AuthenticatorAttachmentEnum.md)
  - [AuthenticatorDuoChallenge](docs/AuthenticatorDuoChallenge.md)
  - [AuthenticatorDuoChallengeResponseRequest](docs/AuthenticatorDuoChallengeResponseRequest.md)

@@ -28152,6 +28152,13 @@ components:
       - user
       - user_agent
       type: object
+    AuthenticationEnum:
+      enum:
+      - none
+      - require_authenticated
+      - require_unauthenticated
+      - require_superuser
+      type: string
     AuthenticatorAttachmentEnum:
       enum:
       - platform
@@ -31301,6 +31308,7 @@ components:
         designation: ""
         cache_count: 0
         slug: slug
+        authentication: ""
       properties:
         pk:
           format: uuid
@@ -31360,6 +31368,11 @@ components:
           - $ref: '#/components/schemas/DeniedActionEnum'
           description: Configure what should happen when a flow denies access to a
             user.
+        authentication:
+          allOf:
+          - $ref: '#/components/schemas/AuthenticationEnum'
+          description: Required level of authentication and authorization to access
+            a flow.
       required:
       - background
       - cache_count
@@ -31560,6 +31573,7 @@ components:
         designation: ""
         title: title
         slug: slug
+        authentication: ""
       properties:
         name:
           minLength: 1
@@ -31592,6 +31606,11 @@ components:
           - $ref: '#/components/schemas/DeniedActionEnum'
           description: Configure what should happen when a flow denies access to a
             user.
+        authentication:
+          allOf:
+          - $ref: '#/components/schemas/AuthenticationEnum'
+          description: Required level of authentication and authorization to access
+            a flow.
       required:
       - designation
       - name
@@ -36176,6 +36195,7 @@ components:
           designation: ""
           cache_count: 0
           slug: slug
+          authentication: ""
         - compatibility_mode: true
           denied_action: ""
           policies:
@@ -36195,6 +36215,7 @@ components:
           designation: ""
           cache_count: 0
           slug: slug
+          authentication: ""
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -40921,6 +40942,7 @@ components:
         designation: ""
         title: title
         slug: slug
+        authentication: ""
       properties:
         name:
           minLength: 1
@@ -40953,6 +40975,11 @@ components:
           - $ref: '#/components/schemas/DeniedActionEnum'
           description: Configure what should happen when a flow denies access to a
             user.
+        authentication:
+          allOf:
+          - $ref: '#/components/schemas/AuthenticationEnum'
+          description: Required level of authentication and authorization to access
+            a flow.
       type: object
     PatchedFlowStageBindingRequest:
       description: FlowStageBinding Serializer
