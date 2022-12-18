@@ -11,12 +11,13 @@ Name | Type | Description | Notes
 **PendingUser** | **string** |  | 
 **PendingUserAvatar** | **string** |  | 
 **SiteKey** | **string** |  | 
+**JsUrl** | **string** |  | [readonly] 
 
 ## Methods
 
 ### NewCaptchaChallenge
 
-`func NewCaptchaChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, siteKey string, ) *CaptchaChallenge`
+`func NewCaptchaChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, siteKey string, jsUrl string, ) *CaptchaChallenge`
 
 NewCaptchaChallenge instantiates a new CaptchaChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -184,6 +185,26 @@ and a boolean to check if the value has been set.
 `func (o *CaptchaChallenge) SetSiteKey(v string)`
 
 SetSiteKey sets SiteKey field to given value.
+
+
+### GetJsUrl
+
+`func (o *CaptchaChallenge) GetJsUrl() string`
+
+GetJsUrl returns the JsUrl field if non-nil, zero value otherwise.
+
+### GetJsUrlOk
+
+`func (o *CaptchaChallenge) GetJsUrlOk() (*string, bool)`
+
+GetJsUrlOk returns a tuple with the JsUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJsUrl
+
+`func (o *CaptchaChallenge) SetJsUrl(v string)`
+
+SetJsUrl sets JsUrl field to given value.
 
 
 

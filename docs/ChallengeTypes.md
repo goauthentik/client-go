@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **Attrs** | **map[string]string** |  | 
 **Title** | Pointer to **string** |  | [optional] 
 **SiteKey** | **string** |  | 
+**JsUrl** | **string** |  | [readonly] 
 **HeaderText** | Pointer to **string** |  | [optional] 
 **Permissions** | [**[]Permission**](Permission.md) |  | 
 **AdditionalPermissions** | [**[]Permission**](Permission.md) |  | 
@@ -53,7 +54,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, permissions []Permission, additionalPermissions []Permission, token string, requestId string, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
+`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, permissions []Permission, additionalPermissions []Permission, token string, requestId string, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -576,6 +577,26 @@ and a boolean to check if the value has been set.
 `func (o *ChallengeTypes) SetSiteKey(v string)`
 
 SetSiteKey sets SiteKey field to given value.
+
+
+### GetJsUrl
+
+`func (o *ChallengeTypes) GetJsUrl() string`
+
+GetJsUrl returns the JsUrl field if non-nil, zero value otherwise.
+
+### GetJsUrlOk
+
+`func (o *ChallengeTypes) GetJsUrlOk() (*string, bool)`
+
+GetJsUrlOk returns a tuple with the JsUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJsUrl
+
+`func (o *ChallengeTypes) SetJsUrl(v string)`
+
+SetJsUrl sets JsUrl field to given value.
 
 
 ### GetHeaderText

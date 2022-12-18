@@ -24,8 +24,10 @@ type CaptchaStage struct {
 	VerboseNamePlural string    `json:"verbose_name_plural"`
 	MetaModelName     string    `json:"meta_model_name"`
 	FlowSet           []FlowSet `json:"flow_set,omitempty"`
-	// Public key, acquired from https://www.google.com/recaptcha/intro/v3.html
-	PublicKey string `json:"public_key"`
+	// Public key, acquired your captcha Provider.
+	PublicKey string  `json:"public_key"`
+	JsUrl     *string `json:"js_url,omitempty"`
+	ApiUrl    *string `json:"api_url,omitempty"`
 }
 
 // NewCaptchaStage instantiates a new CaptchaStage object
@@ -252,6 +254,70 @@ func (o *CaptchaStage) SetPublicKey(v string) {
 	o.PublicKey = v
 }
 
+// GetJsUrl returns the JsUrl field value if set, zero value otherwise.
+func (o *CaptchaStage) GetJsUrl() string {
+	if o == nil || o.JsUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.JsUrl
+}
+
+// GetJsUrlOk returns a tuple with the JsUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CaptchaStage) GetJsUrlOk() (*string, bool) {
+	if o == nil || o.JsUrl == nil {
+		return nil, false
+	}
+	return o.JsUrl, true
+}
+
+// HasJsUrl returns a boolean if a field has been set.
+func (o *CaptchaStage) HasJsUrl() bool {
+	if o != nil && o.JsUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJsUrl gets a reference to the given string and assigns it to the JsUrl field.
+func (o *CaptchaStage) SetJsUrl(v string) {
+	o.JsUrl = &v
+}
+
+// GetApiUrl returns the ApiUrl field value if set, zero value otherwise.
+func (o *CaptchaStage) GetApiUrl() string {
+	if o == nil || o.ApiUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.ApiUrl
+}
+
+// GetApiUrlOk returns a tuple with the ApiUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CaptchaStage) GetApiUrlOk() (*string, bool) {
+	if o == nil || o.ApiUrl == nil {
+		return nil, false
+	}
+	return o.ApiUrl, true
+}
+
+// HasApiUrl returns a boolean if a field has been set.
+func (o *CaptchaStage) HasApiUrl() bool {
+	if o != nil && o.ApiUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetApiUrl gets a reference to the given string and assigns it to the ApiUrl field.
+func (o *CaptchaStage) SetApiUrl(v string) {
+	o.ApiUrl = &v
+}
+
 func (o CaptchaStage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -277,6 +343,12 @@ func (o CaptchaStage) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["public_key"] = o.PublicKey
+	}
+	if o.JsUrl != nil {
+		toSerialize["js_url"] = o.JsUrl
+	}
+	if o.ApiUrl != nil {
+		toSerialize["api_url"] = o.ApiUrl
 	}
 	return json.Marshal(toSerialize)
 }

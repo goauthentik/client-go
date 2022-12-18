@@ -29398,7 +29398,11 @@ components:
           type: string
         site_key:
           type: string
+        js_url:
+          readOnly: true
+          type: string
       required:
+      - js_url
       - pending_user
       - pending_user_avatar
       - site_key
@@ -29425,7 +29429,9 @@ components:
         verbose_name: verbose_name
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
+        api_url: api_url
         name: name
+        js_url: js_url
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
         - policy_engine_mode: null
@@ -29477,7 +29483,11 @@ components:
             $ref: '#/components/schemas/FlowSet'
           type: array
         public_key:
-          description: "Public key, acquired from https://www.google.com/recaptcha/intro/v3.html"
+          description: "Public key, acquired your captcha Provider."
+          type: string
+        js_url:
+          type: string
+        api_url:
           type: string
       required:
       - component
@@ -29492,8 +29502,10 @@ components:
       description: CaptchaStage Serializer
       example:
         public_key: public_key
+        api_url: api_url
         name: name
         private_key: private_key
+        js_url: js_url
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -29520,14 +29532,20 @@ components:
             $ref: '#/components/schemas/FlowSetRequest'
           type: array
         public_key:
-          description: "Public key, acquired from https://www.google.com/recaptcha/intro/v3.html"
+          description: "Public key, acquired your captcha Provider."
           minLength: 1
           type: string
         private_key:
-          description: "Private key, acquired from https://www.google.com/recaptcha/intro/v3.html"
+          description: "Private key, acquired your captcha Provider."
           minLength: 1
           type: string
           writeOnly: true
+        js_url:
+          minLength: 1
+          type: string
+        api_url:
+          minLength: 1
+          type: string
       required:
       - name
       - private_key
@@ -35293,7 +35311,9 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          api_url: api_url
           name: name
+          js_url: js_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
           - policy_engine_mode: null
@@ -35325,7 +35345,9 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          api_url: api_url
           name: name
+          js_url: js_url
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
           - policy_engine_mode: null
@@ -40519,8 +40541,10 @@ components:
       description: CaptchaStage Serializer
       example:
         public_key: public_key
+        api_url: api_url
         name: name
         private_key: private_key
+        js_url: js_url
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -40547,14 +40571,20 @@ components:
             $ref: '#/components/schemas/FlowSetRequest'
           type: array
         public_key:
-          description: "Public key, acquired from https://www.google.com/recaptcha/intro/v3.html"
+          description: "Public key, acquired your captcha Provider."
           minLength: 1
           type: string
         private_key:
-          description: "Private key, acquired from https://www.google.com/recaptcha/intro/v3.html"
+          description: "Private key, acquired your captcha Provider."
           minLength: 1
           type: string
           writeOnly: true
+        js_url:
+          minLength: 1
+          type: string
+        api_url:
+          minLength: 1
+          type: string
       type: object
     PatchedCertificateKeyPairRequest:
       description: CertificateKeyPair Serializer

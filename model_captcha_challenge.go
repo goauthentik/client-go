@@ -24,13 +24,14 @@ type CaptchaChallenge struct {
 	PendingUser       string                    `json:"pending_user"`
 	PendingUserAvatar string                    `json:"pending_user_avatar"`
 	SiteKey           string                    `json:"site_key"`
+	JsUrl             string                    `json:"js_url"`
 }
 
 // NewCaptchaChallenge instantiates a new CaptchaChallenge object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCaptchaChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, siteKey string) *CaptchaChallenge {
+func NewCaptchaChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, siteKey string, jsUrl string) *CaptchaChallenge {
 	this := CaptchaChallenge{}
 	this.Type = type_
 	var component string = "ak-stage-captcha"
@@ -38,6 +39,7 @@ func NewCaptchaChallenge(type_ ChallengeChoices, pendingUser string, pendingUser
 	this.PendingUser = pendingUser
 	this.PendingUserAvatar = pendingUserAvatar
 	this.SiteKey = siteKey
+	this.JsUrl = jsUrl
 	return &this
 }
 
@@ -243,6 +245,30 @@ func (o *CaptchaChallenge) SetSiteKey(v string) {
 	o.SiteKey = v
 }
 
+// GetJsUrl returns the JsUrl field value
+func (o *CaptchaChallenge) GetJsUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.JsUrl
+}
+
+// GetJsUrlOk returns a tuple with the JsUrl field value
+// and a boolean to check if the value has been set.
+func (o *CaptchaChallenge) GetJsUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.JsUrl, true
+}
+
+// SetJsUrl sets field value
+func (o *CaptchaChallenge) SetJsUrl(v string) {
+	o.JsUrl = v
+}
+
 func (o CaptchaChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -265,6 +291,9 @@ func (o CaptchaChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["site_key"] = o.SiteKey
+	}
+	if true {
+		toSerialize["js_url"] = o.JsUrl
 	}
 	return json.Marshal(toSerialize)
 }

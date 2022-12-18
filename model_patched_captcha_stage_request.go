@@ -19,10 +19,12 @@ import (
 type PatchedCaptchaStageRequest struct {
 	Name    *string          `json:"name,omitempty"`
 	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
-	// Public key, acquired from https://www.google.com/recaptcha/intro/v3.html
+	// Public key, acquired your captcha Provider.
 	PublicKey *string `json:"public_key,omitempty"`
-	// Private key, acquired from https://www.google.com/recaptcha/intro/v3.html
+	// Private key, acquired your captcha Provider.
 	PrivateKey *string `json:"private_key,omitempty"`
+	JsUrl      *string `json:"js_url,omitempty"`
+	ApiUrl     *string `json:"api_url,omitempty"`
 }
 
 // NewPatchedCaptchaStageRequest instantiates a new PatchedCaptchaStageRequest object
@@ -170,6 +172,70 @@ func (o *PatchedCaptchaStageRequest) SetPrivateKey(v string) {
 	o.PrivateKey = &v
 }
 
+// GetJsUrl returns the JsUrl field value if set, zero value otherwise.
+func (o *PatchedCaptchaStageRequest) GetJsUrl() string {
+	if o == nil || o.JsUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.JsUrl
+}
+
+// GetJsUrlOk returns a tuple with the JsUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedCaptchaStageRequest) GetJsUrlOk() (*string, bool) {
+	if o == nil || o.JsUrl == nil {
+		return nil, false
+	}
+	return o.JsUrl, true
+}
+
+// HasJsUrl returns a boolean if a field has been set.
+func (o *PatchedCaptchaStageRequest) HasJsUrl() bool {
+	if o != nil && o.JsUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJsUrl gets a reference to the given string and assigns it to the JsUrl field.
+func (o *PatchedCaptchaStageRequest) SetJsUrl(v string) {
+	o.JsUrl = &v
+}
+
+// GetApiUrl returns the ApiUrl field value if set, zero value otherwise.
+func (o *PatchedCaptchaStageRequest) GetApiUrl() string {
+	if o == nil || o.ApiUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.ApiUrl
+}
+
+// GetApiUrlOk returns a tuple with the ApiUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedCaptchaStageRequest) GetApiUrlOk() (*string, bool) {
+	if o == nil || o.ApiUrl == nil {
+		return nil, false
+	}
+	return o.ApiUrl, true
+}
+
+// HasApiUrl returns a boolean if a field has been set.
+func (o *PatchedCaptchaStageRequest) HasApiUrl() bool {
+	if o != nil && o.ApiUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetApiUrl gets a reference to the given string and assigns it to the ApiUrl field.
+func (o *PatchedCaptchaStageRequest) SetApiUrl(v string) {
+	o.ApiUrl = &v
+}
+
 func (o PatchedCaptchaStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -183,6 +249,12 @@ func (o PatchedCaptchaStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.PrivateKey != nil {
 		toSerialize["private_key"] = o.PrivateKey
+	}
+	if o.JsUrl != nil {
+		toSerialize["js_url"] = o.JsUrl
+	}
+	if o.ApiUrl != nil {
+		toSerialize["api_url"] = o.ApiUrl
 	}
 	return json.Marshal(toSerialize)
 }

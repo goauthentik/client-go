@@ -11,7 +11,9 @@ Name | Type | Description | Notes
 **VerboseNamePlural** | **string** |  | [readonly] 
 **MetaModelName** | **string** |  | [readonly] 
 **FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
-**PublicKey** | **string** | Public key, acquired from https://www.google.com/recaptcha/intro/v3.html | 
+**PublicKey** | **string** | Public key, acquired your captcha Provider. | 
+**JsUrl** | Pointer to **string** |  | [optional] 
+**ApiUrl** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -196,6 +198,56 @@ and a boolean to check if the value has been set.
 
 SetPublicKey sets PublicKey field to given value.
 
+
+### GetJsUrl
+
+`func (o *CaptchaStage) GetJsUrl() string`
+
+GetJsUrl returns the JsUrl field if non-nil, zero value otherwise.
+
+### GetJsUrlOk
+
+`func (o *CaptchaStage) GetJsUrlOk() (*string, bool)`
+
+GetJsUrlOk returns a tuple with the JsUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJsUrl
+
+`func (o *CaptchaStage) SetJsUrl(v string)`
+
+SetJsUrl sets JsUrl field to given value.
+
+### HasJsUrl
+
+`func (o *CaptchaStage) HasJsUrl() bool`
+
+HasJsUrl returns a boolean if a field has been set.
+
+### GetApiUrl
+
+`func (o *CaptchaStage) GetApiUrl() string`
+
+GetApiUrl returns the ApiUrl field if non-nil, zero value otherwise.
+
+### GetApiUrlOk
+
+`func (o *CaptchaStage) GetApiUrlOk() (*string, bool)`
+
+GetApiUrlOk returns a tuple with the ApiUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiUrl
+
+`func (o *CaptchaStage) SetApiUrl(v string)`
+
+SetApiUrl sets ApiUrl field to given value.
+
+### HasApiUrl
+
+`func (o *CaptchaStage) HasApiUrl() bool`
+
+HasApiUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

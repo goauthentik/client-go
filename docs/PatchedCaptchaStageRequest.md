@@ -6,8 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
-**PublicKey** | Pointer to **string** | Public key, acquired from https://www.google.com/recaptcha/intro/v3.html | [optional] 
-**PrivateKey** | Pointer to **string** | Private key, acquired from https://www.google.com/recaptcha/intro/v3.html | [optional] 
+**PublicKey** | Pointer to **string** | Public key, acquired your captcha Provider. | [optional] 
+**PrivateKey** | Pointer to **string** | Private key, acquired your captcha Provider. | [optional] 
+**JsUrl** | Pointer to **string** |  | [optional] 
+**ApiUrl** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +129,56 @@ SetPrivateKey sets PrivateKey field to given value.
 `func (o *PatchedCaptchaStageRequest) HasPrivateKey() bool`
 
 HasPrivateKey returns a boolean if a field has been set.
+
+### GetJsUrl
+
+`func (o *PatchedCaptchaStageRequest) GetJsUrl() string`
+
+GetJsUrl returns the JsUrl field if non-nil, zero value otherwise.
+
+### GetJsUrlOk
+
+`func (o *PatchedCaptchaStageRequest) GetJsUrlOk() (*string, bool)`
+
+GetJsUrlOk returns a tuple with the JsUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJsUrl
+
+`func (o *PatchedCaptchaStageRequest) SetJsUrl(v string)`
+
+SetJsUrl sets JsUrl field to given value.
+
+### HasJsUrl
+
+`func (o *PatchedCaptchaStageRequest) HasJsUrl() bool`
+
+HasJsUrl returns a boolean if a field has been set.
+
+### GetApiUrl
+
+`func (o *PatchedCaptchaStageRequest) GetApiUrl() string`
+
+GetApiUrl returns the ApiUrl field if non-nil, zero value otherwise.
+
+### GetApiUrlOk
+
+`func (o *PatchedCaptchaStageRequest) GetApiUrlOk() (*string, bool)`
+
+GetApiUrlOk returns a tuple with the ApiUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiUrl
+
+`func (o *PatchedCaptchaStageRequest) SetApiUrl(v string)`
+
+SetApiUrl sets ApiUrl field to given value.
+
+### HasApiUrl
+
+`func (o *PatchedCaptchaStageRequest) HasApiUrl() bool`
+
+HasApiUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
