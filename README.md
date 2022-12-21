@@ -398,6 +398,7 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersOauth2Destroy**](docs/ProvidersApi.md#providersoauth2destroy) | **Delete** /providers/oauth2/{id}/ | 
 *ProvidersApi* | [**ProvidersOauth2List**](docs/ProvidersApi.md#providersoauth2list) | **Get** /providers/oauth2/ | 
 *ProvidersApi* | [**ProvidersOauth2PartialUpdate**](docs/ProvidersApi.md#providersoauth2partialupdate) | **Patch** /providers/oauth2/{id}/ | 
+*ProvidersApi* | [**ProvidersOauth2PreviewUserRetrieve**](docs/ProvidersApi.md#providersoauth2previewuserretrieve) | **Get** /providers/oauth2/{id}/preview_user/ | 
 *ProvidersApi* | [**ProvidersOauth2Retrieve**](docs/ProvidersApi.md#providersoauth2retrieve) | **Get** /providers/oauth2/{id}/ | 
 *ProvidersApi* | [**ProvidersOauth2SetupUrlsRetrieve**](docs/ProvidersApi.md#providersoauth2setupurlsretrieve) | **Get** /providers/oauth2/{id}/setup_urls/ | 
 *ProvidersApi* | [**ProvidersOauth2Update**](docs/ProvidersApi.md#providersoauth2update) | **Put** /providers/oauth2/{id}/ | 
@@ -415,6 +416,7 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersSamlList**](docs/ProvidersApi.md#providerssamllist) | **Get** /providers/saml/ | 
 *ProvidersApi* | [**ProvidersSamlMetadataRetrieve**](docs/ProvidersApi.md#providerssamlmetadataretrieve) | **Get** /providers/saml/{id}/metadata/ | 
 *ProvidersApi* | [**ProvidersSamlPartialUpdate**](docs/ProvidersApi.md#providerssamlpartialupdate) | **Patch** /providers/saml/{id}/ | 
+*ProvidersApi* | [**ProvidersSamlPreviewUserRetrieve**](docs/ProvidersApi.md#providerssamlpreviewuserretrieve) | **Get** /providers/saml/{id}/preview_user/ | 
 *ProvidersApi* | [**ProvidersSamlRetrieve**](docs/ProvidersApi.md#providerssamlretrieve) | **Get** /providers/saml/{id}/ | 
 *ProvidersApi* | [**ProvidersSamlUpdate**](docs/ProvidersApi.md#providerssamlupdate) | **Put** /providers/saml/{id}/ | 
 *ProvidersApi* | [**ProvidersSamlUsedByList**](docs/ProvidersApi.md#providerssamlusedbylist) | **Get** /providers/saml/{id}/used_by/ | 
@@ -1020,6 +1022,7 @@ Class | Method | HTTP request | Description
  - [PromptStageRequest](docs/PromptStageRequest.md)
  - [PromptTypeEnum](docs/PromptTypeEnum.md)
  - [PropertyMapping](docs/PropertyMapping.md)
+ - [PropertyMappingPreview](docs/PropertyMappingPreview.md)
  - [PropertyMappingTestResult](docs/PropertyMappingTestResult.md)
  - [Provider](docs/Provider.md)
  - [ProviderEnum](docs/ProviderEnum.md)

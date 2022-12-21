@@ -16327,6 +16327,38 @@ paths:
       - authentik: []
       tags:
       - providers
+  /providers/oauth2/{id}/preview_user/:
+    get:
+      description: Preview user data for provider
+      operationId: providers_oauth2_preview_user_retrieve
+      parameters:
+      - description: A unique integer value identifying this OAuth2/OpenID Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PropertyMappingPreview'
+          description: ""
+        "400":
+          description: Bad request
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
   /providers/oauth2/{id}/setup_urls/:
     get:
       description: Get Providers setup URLs
@@ -17221,6 +17253,38 @@ paths:
       security:
       - authentik: []
       - {}
+      tags:
+      - providers
+  /providers/saml/{id}/preview_user/:
+    get:
+      description: Preview user data for provider
+      operationId: providers_saml_preview_user_retrieve
+      parameters:
+      - description: A unique integer value identifying this SAML Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PropertyMappingPreview'
+          description: ""
+        "400":
+          description: Bad request
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
       tags:
       - providers
   /providers/saml/{id}/used_by/:
@@ -43880,6 +43944,20 @@ components:
       - verbose_name
       - verbose_name_plural
       type: object
+    PropertyMappingPreview:
+      description: Preview how the current user is mapped via the property mappings
+        selected in a provider
+      example:
+        preview:
+          key: ""
+      properties:
+        preview:
+          additionalProperties: {}
+          readOnly: true
+          type: object
+      required:
+      - preview
+      type: object
     PropertyMappingTestResult:
       description: Result of a Property-mapping test
       example:
@@ -44856,6 +44934,8 @@ components:
           minLength: 1
           type: string
         authorization_flow:
+          description: Visible in the URL.
+          minLength: 1
           type: string
         file:
           format: binary

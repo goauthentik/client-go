@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**ProvidersOauth2Destroy**](ProvidersApi.md#ProvidersOauth2Destroy) | **Delete** /providers/oauth2/{id}/ | 
 [**ProvidersOauth2List**](ProvidersApi.md#ProvidersOauth2List) | **Get** /providers/oauth2/ | 
 [**ProvidersOauth2PartialUpdate**](ProvidersApi.md#ProvidersOauth2PartialUpdate) | **Patch** /providers/oauth2/{id}/ | 
+[**ProvidersOauth2PreviewUserRetrieve**](ProvidersApi.md#ProvidersOauth2PreviewUserRetrieve) | **Get** /providers/oauth2/{id}/preview_user/ | 
 [**ProvidersOauth2Retrieve**](ProvidersApi.md#ProvidersOauth2Retrieve) | **Get** /providers/oauth2/{id}/ | 
 [**ProvidersOauth2SetupUrlsRetrieve**](ProvidersApi.md#ProvidersOauth2SetupUrlsRetrieve) | **Get** /providers/oauth2/{id}/setup_urls/ | 
 [**ProvidersOauth2Update**](ProvidersApi.md#ProvidersOauth2Update) | **Put** /providers/oauth2/{id}/ | 
@@ -37,6 +38,7 @@ Method | HTTP request | Description
 [**ProvidersSamlList**](ProvidersApi.md#ProvidersSamlList) | **Get** /providers/saml/ | 
 [**ProvidersSamlMetadataRetrieve**](ProvidersApi.md#ProvidersSamlMetadataRetrieve) | **Get** /providers/saml/{id}/metadata/ | 
 [**ProvidersSamlPartialUpdate**](ProvidersApi.md#ProvidersSamlPartialUpdate) | **Patch** /providers/saml/{id}/ | 
+[**ProvidersSamlPreviewUserRetrieve**](ProvidersApi.md#ProvidersSamlPreviewUserRetrieve) | **Get** /providers/saml/{id}/preview_user/ | 
 [**ProvidersSamlRetrieve**](ProvidersApi.md#ProvidersSamlRetrieve) | **Get** /providers/saml/{id}/ | 
 [**ProvidersSamlUpdate**](ProvidersApi.md#ProvidersSamlUpdate) | **Put** /providers/saml/{id}/ | 
 [**ProvidersSamlUsedByList**](ProvidersApi.md#ProvidersSamlUsedByList) | **Get** /providers/saml/{id}/used_by/ | 
@@ -1202,6 +1204,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ProvidersOauth2PreviewUserRetrieve
+
+> PropertyMappingPreview ProvidersOauth2PreviewUserRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this OAuth2/OpenID Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersOauth2PreviewUserRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersOauth2PreviewUserRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersOauth2PreviewUserRetrieve`: PropertyMappingPreview
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersOauth2PreviewUserRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this OAuth2/OpenID Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersOauth2PreviewUserRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**PropertyMappingPreview**](PropertyMappingPreview.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ProvidersOauth2Retrieve
 
 > OAuth2Provider ProvidersOauth2Retrieve(ctx, id).Execute()
@@ -2162,7 +2234,7 @@ import (
 
 func main() {
     name := "name_example" // string | 
-    authorizationFlow := "authorizationFlow_example" // string | 
+    authorizationFlow := "authorizationFlow_example" // string | Visible in the URL.
     file := os.NewFile(1234, "some_file") // *os.File | 
 
     configuration := openapiclient.NewConfiguration()
@@ -2187,7 +2259,7 @@ Other parameters are passed through a pointer to a apiProvidersSamlImportMetadat
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string** |  | 
- **authorizationFlow** | **string** |  | 
+ **authorizationFlow** | **string** | Visible in the URL. | 
  **file** | ***os.File** |  | 
 
 ### Return type
@@ -2449,6 +2521,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersSamlPreviewUserRetrieve
+
+> PropertyMappingPreview ProvidersSamlPreviewUserRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SAML Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlPreviewUserRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlPreviewUserRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersSamlPreviewUserRetrieve`: PropertyMappingPreview
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersSamlPreviewUserRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SAML Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersSamlPreviewUserRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**PropertyMappingPreview**](PropertyMappingPreview.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
