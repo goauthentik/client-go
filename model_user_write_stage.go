@@ -28,7 +28,9 @@ type UserWriteStage struct {
 	CreateUsersAsInactive *bool `json:"create_users_as_inactive,omitempty"`
 	// Optionally add newly created users to this group.
 	CreateUsersGroup NullableString `json:"create_users_group,omitempty"`
-	UserPathTemplate *string        `json:"user_path_template,omitempty"`
+	// When set, this stage can create users. If not enabled and no user is available, stage will fail.
+	CanCreateUsers   *bool   `json:"can_create_users,omitempty"`
+	UserPathTemplate *string `json:"user_path_template,omitempty"`
 }
 
 // NewUserWriteStage instantiates a new UserWriteStage object
@@ -305,6 +307,38 @@ func (o *UserWriteStage) UnsetCreateUsersGroup() {
 	o.CreateUsersGroup.Unset()
 }
 
+// GetCanCreateUsers returns the CanCreateUsers field value if set, zero value otherwise.
+func (o *UserWriteStage) GetCanCreateUsers() bool {
+	if o == nil || o.CanCreateUsers == nil {
+		var ret bool
+		return ret
+	}
+	return *o.CanCreateUsers
+}
+
+// GetCanCreateUsersOk returns a tuple with the CanCreateUsers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserWriteStage) GetCanCreateUsersOk() (*bool, bool) {
+	if o == nil || o.CanCreateUsers == nil {
+		return nil, false
+	}
+	return o.CanCreateUsers, true
+}
+
+// HasCanCreateUsers returns a boolean if a field has been set.
+func (o *UserWriteStage) HasCanCreateUsers() bool {
+	if o != nil && o.CanCreateUsers != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCanCreateUsers gets a reference to the given bool and assigns it to the CanCreateUsers field.
+func (o *UserWriteStage) SetCanCreateUsers(v bool) {
+	o.CanCreateUsers = &v
+}
+
 // GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
 func (o *UserWriteStage) GetUserPathTemplate() string {
 	if o == nil || o.UserPathTemplate == nil {
@@ -365,6 +399,9 @@ func (o UserWriteStage) MarshalJSON() ([]byte, error) {
 	}
 	if o.CreateUsersGroup.IsSet() {
 		toSerialize["create_users_group"] = o.CreateUsersGroup.Get()
+	}
+	if o.CanCreateUsers != nil {
+		toSerialize["can_create_users"] = o.CanCreateUsers
 	}
 	if o.UserPathTemplate != nil {
 		toSerialize["user_path_template"] = o.UserPathTemplate

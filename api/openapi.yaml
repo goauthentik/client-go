@@ -25006,6 +25006,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: flow__slug
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: name
         required: false
         schema:
@@ -27456,6 +27463,13 @@ paths:
       description: UserWriteStage Viewset
       operationId: stages_user_write_list
       parameters:
+      - explode: true
+        in: query
+        name: can_create_users
+        required: false
+        schema:
+          type: boolean
+        style: form
       - explode: true
         in: query
         name: create_users_as_inactive
@@ -32528,8 +32542,10 @@ components:
         expires: 2000-01-23T04:56:07.000+00:00
         name: name
         single_use: true
+        flow_obj: null
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         created_by: null
+        flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
           format: uuid
@@ -32551,8 +32567,16 @@ components:
         single_use:
           description: "When enabled, the invitation will be deleted after usage."
           type: boolean
+        flow:
+          description: "When set, only the configured flow can use this invitation."
+          format: uuid
+          nullable: true
+          type: string
+        flow_obj:
+          $ref: '#/components/schemas/Invitation_flow_obj'
       required:
       - created_by
+      - flow_obj
       - name
       - pk
       type: object
@@ -32564,6 +32588,7 @@ components:
         expires: 2000-01-23T04:56:07.000+00:00
         name: name
         single_use: true
+        flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         name:
           maxLength: 50
@@ -32579,6 +32604,11 @@ components:
         single_use:
           description: "When enabled, the invitation will be deleted after usage."
           type: boolean
+        flow:
+          description: "When set, only the configured flow can use this invitation."
+          format: uuid
+          nullable: true
+          type: string
       required:
       - name
       type: object
@@ -36609,15 +36639,19 @@ components:
           expires: 2000-01-23T04:56:07.000+00:00
           name: name
           single_use: true
+          flow_obj: null
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           created_by: null
+          flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - fixed_data:
             key: ""
           expires: 2000-01-23T04:56:07.000+00:00
           name: name
           single_use: true
+          flow_obj: null
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           created_by: null
+          flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -39700,6 +39734,7 @@ components:
             title: title
             slug: slug
           create_users_as_inactive: true
+          can_create_users: true
         - component: component
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
@@ -39734,6 +39769,7 @@ components:
             title: title
             slug: slug
           create_users_as_inactive: true
+          can_create_users: true
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -41267,6 +41303,7 @@ components:
         expires: 2000-01-23T04:56:07.000+00:00
         name: name
         single_use: true
+        flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         name:
           maxLength: 50
@@ -41282,6 +41319,11 @@ components:
         single_use:
           description: "When enabled, the invitation will be deleted after usage."
           type: boolean
+        flow:
+          description: "When set, only the configured flow can use this invitation."
+          format: uuid
+          nullable: true
+          type: string
       type: object
     PatchedInvitationStageRequest:
       description: InvitationStage Serializer
@@ -42993,6 +43035,7 @@ components:
           title: title
           slug: slug
         create_users_as_inactive: true
+        can_create_users: true
       properties:
         name:
           minLength: 1
@@ -43009,6 +43052,10 @@ components:
           format: uuid
           nullable: true
           type: string
+        can_create_users:
+          description: "When set, this stage can create users. If not enabled and\
+            \ no user is available, stage will fail."
+          type: boolean
         user_path_template:
           type: string
       type: object
@@ -47380,6 +47427,7 @@ components:
           title: title
           slug: slug
         create_users_as_inactive: true
+        can_create_users: true
       properties:
         pk:
           format: uuid
@@ -47412,6 +47460,10 @@ components:
           format: uuid
           nullable: true
           type: string
+        can_create_users:
+          description: "When set, this stage can create users. If not enabled and\
+            \ no user is available, stage will fail."
+          type: boolean
         user_path_template:
           type: string
       required:
@@ -47446,6 +47498,7 @@ components:
           title: title
           slug: slug
         create_users_as_inactive: true
+        can_create_users: true
       properties:
         name:
           minLength: 1
@@ -47462,6 +47515,10 @@ components:
           format: uuid
           nullable: true
           type: string
+        can_create_users:
+          description: "When set, this stage can create users. If not enabled and\
+            \ no user is available, stage will fail."
+          type: boolean
         user_path_template:
           type: string
       required:
@@ -47698,6 +47755,10 @@ components:
     Invitation_created_by:
       allOf:
       - $ref: '#/components/schemas/GroupMember'
+      readOnly: true
+    Invitation_flow_obj:
+      allOf:
+      - $ref: '#/components/schemas/Flow'
       readOnly: true
     NotificationRule_group_obj:
       allOf:

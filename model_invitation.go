@@ -25,17 +25,21 @@ type Invitation struct {
 	CreatedBy InvitationCreatedBy    `json:"created_by"`
 	// When enabled, the invitation will be deleted after usage.
 	SingleUse *bool `json:"single_use,omitempty"`
+	// When set, only the configured flow can use this invitation.
+	Flow    NullableString    `json:"flow,omitempty"`
+	FlowObj InvitationFlowObj `json:"flow_obj"`
 }
 
 // NewInvitation instantiates a new Invitation object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvitation(pk string, name string, createdBy InvitationCreatedBy) *Invitation {
+func NewInvitation(pk string, name string, createdBy InvitationCreatedBy, flowObj InvitationFlowObj) *Invitation {
 	this := Invitation{}
 	this.Pk = pk
 	this.Name = name
 	this.CreatedBy = createdBy
+	this.FlowObj = flowObj
 	return &this
 }
 
@@ -215,6 +219,73 @@ func (o *Invitation) SetSingleUse(v bool) {
 	o.SingleUse = &v
 }
 
+// GetFlow returns the Flow field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Invitation) GetFlow() string {
+	if o == nil || o.Flow.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.Flow.Get()
+}
+
+// GetFlowOk returns a tuple with the Flow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Invitation) GetFlowOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Flow.Get(), o.Flow.IsSet()
+}
+
+// HasFlow returns a boolean if a field has been set.
+func (o *Invitation) HasFlow() bool {
+	if o != nil && o.Flow.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFlow gets a reference to the given NullableString and assigns it to the Flow field.
+func (o *Invitation) SetFlow(v string) {
+	o.Flow.Set(&v)
+}
+
+// SetFlowNil sets the value for Flow to be an explicit nil
+func (o *Invitation) SetFlowNil() {
+	o.Flow.Set(nil)
+}
+
+// UnsetFlow ensures that no value is present for Flow, not even an explicit nil
+func (o *Invitation) UnsetFlow() {
+	o.Flow.Unset()
+}
+
+// GetFlowObj returns the FlowObj field value
+func (o *Invitation) GetFlowObj() InvitationFlowObj {
+	if o == nil {
+		var ret InvitationFlowObj
+		return ret
+	}
+
+	return o.FlowObj
+}
+
+// GetFlowObjOk returns a tuple with the FlowObj field value
+// and a boolean to check if the value has been set.
+func (o *Invitation) GetFlowObjOk() (*InvitationFlowObj, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FlowObj, true
+}
+
+// SetFlowObj sets field value
+func (o *Invitation) SetFlowObj(v InvitationFlowObj) {
+	o.FlowObj = v
+}
+
 func (o Invitation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -234,6 +305,12 @@ func (o Invitation) MarshalJSON() ([]byte, error) {
 	}
 	if o.SingleUse != nil {
 		toSerialize["single_use"] = o.SingleUse
+	}
+	if o.Flow.IsSet() {
+		toSerialize["flow"] = o.Flow.Get()
+	}
+	if true {
+		toSerialize["flow_obj"] = o.FlowObj
 	}
 	return json.Marshal(toSerialize)
 }

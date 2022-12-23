@@ -10,12 +10,14 @@ Name | Type | Description | Notes
 **FixedData** | Pointer to **map[string]interface{}** |  | [optional] 
 **CreatedBy** | [**InvitationCreatedBy**](InvitationCreatedBy.md) |  | 
 **SingleUse** | Pointer to **bool** | When enabled, the invitation will be deleted after usage. | [optional] 
+**Flow** | Pointer to **NullableString** | When set, only the configured flow can use this invitation. | [optional] 
+**FlowObj** | [**InvitationFlowObj**](InvitationFlowObj.md) |  | 
 
 ## Methods
 
 ### NewInvitation
 
-`func NewInvitation(pk string, name string, createdBy InvitationCreatedBy, ) *Invitation`
+`func NewInvitation(pk string, name string, createdBy InvitationCreatedBy, flowObj InvitationFlowObj, ) *Invitation`
 
 NewInvitation instantiates a new Invitation object
 This constructor will assign default values to properties that have it defined,
@@ -164,6 +166,61 @@ SetSingleUse sets SingleUse field to given value.
 `func (o *Invitation) HasSingleUse() bool`
 
 HasSingleUse returns a boolean if a field has been set.
+
+### GetFlow
+
+`func (o *Invitation) GetFlow() string`
+
+GetFlow returns the Flow field if non-nil, zero value otherwise.
+
+### GetFlowOk
+
+`func (o *Invitation) GetFlowOk() (*string, bool)`
+
+GetFlowOk returns a tuple with the Flow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlow
+
+`func (o *Invitation) SetFlow(v string)`
+
+SetFlow sets Flow field to given value.
+
+### HasFlow
+
+`func (o *Invitation) HasFlow() bool`
+
+HasFlow returns a boolean if a field has been set.
+
+### SetFlowNil
+
+`func (o *Invitation) SetFlowNil(b bool)`
+
+ SetFlowNil sets the value for Flow to be an explicit nil
+
+### UnsetFlow
+`func (o *Invitation) UnsetFlow()`
+
+UnsetFlow ensures that no value is present for Flow, not even an explicit nil
+### GetFlowObj
+
+`func (o *Invitation) GetFlowObj() InvitationFlowObj`
+
+GetFlowObj returns the FlowObj field if non-nil, zero value otherwise.
+
+### GetFlowObjOk
+
+`func (o *Invitation) GetFlowObjOk() (*InvitationFlowObj, bool)`
+
+GetFlowObjOk returns a tuple with the FlowObj field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowObj
+
+`func (o *Invitation) SetFlowObj(v InvitationFlowObj)`
+
+SetFlowObj sets FlowObj field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

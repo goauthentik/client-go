@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Expires** | Pointer to **time.Time** |  | [optional] 
 **FixedData** | Pointer to **map[string]interface{}** |  | [optional] 
 **SingleUse** | Pointer to **bool** | When enabled, the invitation will be deleted after usage. | [optional] 
+**Flow** | Pointer to **NullableString** | When set, only the configured flow can use this invitation. | [optional] 
 
 ## Methods
 
@@ -128,6 +129,41 @@ SetSingleUse sets SingleUse field to given value.
 
 HasSingleUse returns a boolean if a field has been set.
 
+### GetFlow
+
+`func (o *PatchedInvitationRequest) GetFlow() string`
+
+GetFlow returns the Flow field if non-nil, zero value otherwise.
+
+### GetFlowOk
+
+`func (o *PatchedInvitationRequest) GetFlowOk() (*string, bool)`
+
+GetFlowOk returns a tuple with the Flow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlow
+
+`func (o *PatchedInvitationRequest) SetFlow(v string)`
+
+SetFlow sets Flow field to given value.
+
+### HasFlow
+
+`func (o *PatchedInvitationRequest) HasFlow() bool`
+
+HasFlow returns a boolean if a field has been set.
+
+### SetFlowNil
+
+`func (o *PatchedInvitationRequest) SetFlowNil(b bool)`
+
+ SetFlowNil sets the value for Flow to be an explicit nil
+
+### UnsetFlow
+`func (o *PatchedInvitationRequest) UnsetFlow()`
+
+UnsetFlow ensures that no value is present for Flow, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

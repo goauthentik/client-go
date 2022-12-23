@@ -14271,6 +14271,7 @@ type ApiStagesInvitationInvitationsListRequest struct {
 	ApiService        *StagesApiService
 	createdByUsername *string
 	expires           *time.Time
+	flowSlug          *string
 	name              *string
 	ordering          *string
 	page              *int32
@@ -14285,6 +14286,11 @@ func (r ApiStagesInvitationInvitationsListRequest) CreatedByUsername(createdByUs
 
 func (r ApiStagesInvitationInvitationsListRequest) Expires(expires time.Time) ApiStagesInvitationInvitationsListRequest {
 	r.expires = &expires
+	return r
+}
+
+func (r ApiStagesInvitationInvitationsListRequest) FlowSlug(flowSlug string) ApiStagesInvitationInvitationsListRequest {
+	r.flowSlug = &flowSlug
 	return r
 }
 
@@ -14362,6 +14368,9 @@ func (a *StagesApiService) StagesInvitationInvitationsListExecute(r ApiStagesInv
 	}
 	if r.expires != nil {
 		localVarQueryParams.Add("expires", parameterToString(*r.expires, ""))
+	}
+	if r.flowSlug != nil {
+		localVarQueryParams.Add("flow__slug", parameterToString(*r.flowSlug, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -22534,6 +22543,7 @@ func (a *StagesApiService) StagesUserWriteDestroyExecute(r ApiStagesUserWriteDes
 type ApiStagesUserWriteListRequest struct {
 	ctx                   context.Context
 	ApiService            *StagesApiService
+	canCreateUsers        *bool
 	createUsersAsInactive *bool
 	createUsersGroup      *string
 	name                  *string
@@ -22543,6 +22553,11 @@ type ApiStagesUserWriteListRequest struct {
 	search                *string
 	stageUuid             *string
 	userPathTemplate      *string
+}
+
+func (r ApiStagesUserWriteListRequest) CanCreateUsers(canCreateUsers bool) ApiStagesUserWriteListRequest {
+	r.canCreateUsers = &canCreateUsers
+	return r
 }
 
 func (r ApiStagesUserWriteListRequest) CreateUsersAsInactive(createUsersAsInactive bool) ApiStagesUserWriteListRequest {
@@ -22634,6 +22649,9 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.canCreateUsers != nil {
+		localVarQueryParams.Add("can_create_users", parameterToString(*r.canCreateUsers, ""))
+	}
 	if r.createUsersAsInactive != nil {
 		localVarQueryParams.Add("create_users_as_inactive", parameterToString(*r.createUsersAsInactive, ""))
 	}

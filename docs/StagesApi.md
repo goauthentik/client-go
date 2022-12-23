@@ -6981,7 +6981,7 @@ Name | Type | Description  | Notes
 
 ## StagesInvitationInvitationsList
 
-> PaginatedInvitationList StagesInvitationInvitationsList(ctx).CreatedByUsername(createdByUsername).Expires(expires).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedInvitationList StagesInvitationInvitationsList(ctx).CreatedByUsername(createdByUsername).Expires(expires).FlowSlug(flowSlug).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -7003,6 +7003,7 @@ import (
 func main() {
     createdByUsername := "createdByUsername_example" // string |  (optional)
     expires := time.Now() // time.Time |  (optional)
+    flowSlug := "flowSlug_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -7011,7 +7012,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationInvitationsList(context.Background()).CreatedByUsername(createdByUsername).Expires(expires).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := apiClient.StagesApi.StagesInvitationInvitationsList(context.Background()).CreatedByUsername(createdByUsername).Expires(expires).FlowSlug(flowSlug).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationInvitationsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7034,6 +7035,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createdByUsername** | **string** |  | 
  **expires** | **time.Time** |  | 
+ **flowSlug** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -10952,7 +10954,7 @@ Name | Type | Description  | Notes
 
 ## StagesUserWriteList
 
-> PaginatedUserWriteStageList StagesUserWriteList(ctx).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserPathTemplate(userPathTemplate).Execute()
+> PaginatedUserWriteStageList StagesUserWriteList(ctx).CanCreateUsers(canCreateUsers).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserPathTemplate(userPathTemplate).Execute()
 
 
 
@@ -10971,6 +10973,7 @@ import (
 )
 
 func main() {
+    canCreateUsers := true // bool |  (optional)
     createUsersAsInactive := true // bool |  (optional)
     createUsersGroup := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     name := "name_example" // string |  (optional)
@@ -10983,7 +10986,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserWriteList(context.Background()).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserPathTemplate(userPathTemplate).Execute()
+    resp, r, err := apiClient.StagesApi.StagesUserWriteList(context.Background()).CanCreateUsers(canCreateUsers).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserPathTemplate(userPathTemplate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserWriteList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11004,6 +11007,7 @@ Other parameters are passed through a pointer to a apiStagesUserWriteListRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **canCreateUsers** | **bool** |  | 
  **createUsersAsInactive** | **bool** |  | 
  **createUsersGroup** | **string** |  | 
  **name** | **string** |  | 

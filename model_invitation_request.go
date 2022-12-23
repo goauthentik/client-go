@@ -23,6 +23,8 @@ type InvitationRequest struct {
 	FixedData map[string]interface{} `json:"fixed_data,omitempty"`
 	// When enabled, the invitation will be deleted after usage.
 	SingleUse *bool `json:"single_use,omitempty"`
+	// When set, only the configured flow can use this invitation.
+	Flow NullableString `json:"flow,omitempty"`
 }
 
 // NewInvitationRequest instantiates a new InvitationRequest object
@@ -163,6 +165,49 @@ func (o *InvitationRequest) SetSingleUse(v bool) {
 	o.SingleUse = &v
 }
 
+// GetFlow returns the Flow field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InvitationRequest) GetFlow() string {
+	if o == nil || o.Flow.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.Flow.Get()
+}
+
+// GetFlowOk returns a tuple with the Flow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InvitationRequest) GetFlowOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Flow.Get(), o.Flow.IsSet()
+}
+
+// HasFlow returns a boolean if a field has been set.
+func (o *InvitationRequest) HasFlow() bool {
+	if o != nil && o.Flow.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFlow gets a reference to the given NullableString and assigns it to the Flow field.
+func (o *InvitationRequest) SetFlow(v string) {
+	o.Flow.Set(&v)
+}
+
+// SetFlowNil sets the value for Flow to be an explicit nil
+func (o *InvitationRequest) SetFlowNil() {
+	o.Flow.Set(nil)
+}
+
+// UnsetFlow ensures that no value is present for Flow, not even an explicit nil
+func (o *InvitationRequest) UnsetFlow() {
+	o.Flow.Unset()
+}
+
 func (o InvitationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -176,6 +221,9 @@ func (o InvitationRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.SingleUse != nil {
 		toSerialize["single_use"] = o.SingleUse
+	}
+	if o.Flow.IsSet() {
+		toSerialize["flow"] = o.Flow.Get()
 	}
 	return json.Marshal(toSerialize)
 }

@@ -22392,6 +22392,10 @@ paths:
           type: string
           format: date-time
       - in: query
+        name: flow__slug
+        schema:
+          type: string
+      - in: query
         name: name
         schema:
           type: string
@@ -24634,6 +24638,10 @@ paths:
       operationId: stages_user_write_list
       description: UserWriteStage Viewset
       parameters:
+      - in: query
+        name: can_create_users
+        schema:
+          type: boolean
       - in: query
         name: create_users_as_inactive
         schema:
@@ -28527,8 +28535,18 @@ components:
         single_use:
           type: boolean
           description: When enabled, the invitation will be deleted after usage.
+        flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: When set, only the configured flow can use this invitation.
+        flow_obj:
+          allOf:
+          - $ref: '#/components/schemas/Flow'
+          readOnly: true
       required:
       - created_by
+      - flow_obj
       - name
       - pk
     InvitationRequest:
@@ -28549,6 +28567,11 @@ components:
         single_use:
           type: boolean
           description: When enabled, the invitation will be deleted after usage.
+        flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: When set, only the configured flow can use this invitation.
       required:
       - name
     InvitationStage:
@@ -33900,6 +33923,11 @@ components:
         single_use:
           type: boolean
           description: When enabled, the invitation will be deleted after usage.
+        flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: When set, only the configured flow can use this invitation.
     PatchedInvitationStageRequest:
       type: object
       description: InvitationStage Serializer
@@ -35122,6 +35150,10 @@ components:
           format: uuid
           nullable: true
           description: Optionally add newly created users to this group.
+        can_create_users:
+          type: boolean
+          description: When set, this stage can create users. If not enabled and no
+            user is available, stage will fail.
         user_path_template:
           type: string
     PatchedWebAuthnDeviceRequest:
@@ -38341,6 +38373,10 @@ components:
           format: uuid
           nullable: true
           description: Optionally add newly created users to this group.
+        can_create_users:
+          type: boolean
+          description: When set, this stage can create users. If not enabled and no
+            user is available, stage will fail.
         user_path_template:
           type: string
       required:
@@ -38369,6 +38405,10 @@ components:
           format: uuid
           nullable: true
           description: Optionally add newly created users to this group.
+        can_create_users:
+          type: boolean
+          description: When set, this stage can create users. If not enabled and no
+            user is available, stage will fail.
         user_path_template:
           type: string
       required:

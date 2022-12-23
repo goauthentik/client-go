@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **CreateUsersAsInactive** | Pointer to **bool** | When set, newly created users are inactive and cannot login. | [optional] 
 **CreateUsersGroup** | Pointer to **NullableString** | Optionally add newly created users to this group. | [optional] 
+**CanCreateUsers** | Pointer to **bool** | When set, this stage can create users. If not enabled and no user is available, stage will fail. | [optional] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -139,6 +140,31 @@ HasCreateUsersGroup returns a boolean if a field has been set.
 `func (o *PatchedUserWriteStageRequest) UnsetCreateUsersGroup()`
 
 UnsetCreateUsersGroup ensures that no value is present for CreateUsersGroup, not even an explicit nil
+### GetCanCreateUsers
+
+`func (o *PatchedUserWriteStageRequest) GetCanCreateUsers() bool`
+
+GetCanCreateUsers returns the CanCreateUsers field if non-nil, zero value otherwise.
+
+### GetCanCreateUsersOk
+
+`func (o *PatchedUserWriteStageRequest) GetCanCreateUsersOk() (*bool, bool)`
+
+GetCanCreateUsersOk returns a tuple with the CanCreateUsers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCanCreateUsers
+
+`func (o *PatchedUserWriteStageRequest) SetCanCreateUsers(v bool)`
+
+SetCanCreateUsers sets CanCreateUsers field to given value.
+
+### HasCanCreateUsers
+
+`func (o *PatchedUserWriteStageRequest) HasCanCreateUsers() bool`
+
+HasCanCreateUsers returns a boolean if a field has been set.
+
 ### GetUserPathTemplate
 
 `func (o *PatchedUserWriteStageRequest) GetUserPathTemplate() string`

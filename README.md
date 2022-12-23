@@ -793,6 +793,7 @@ Class | Method | HTTP request | Description
  - [InvalidResponseActionEnum](docs/InvalidResponseActionEnum.md)
  - [Invitation](docs/Invitation.md)
  - [InvitationCreatedBy](docs/InvitationCreatedBy.md)
+ - [InvitationFlowObj](docs/InvitationFlowObj.md)
  - [InvitationRequest](docs/InvitationRequest.md)
  - [InvitationStage](docs/InvitationStage.md)
  - [InvitationStageRequest](docs/InvitationStageRequest.md)

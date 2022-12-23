@@ -168,6 +168,7 @@ docs/IntentEnum.md
 docs/InvalidResponseActionEnum.md
 docs/Invitation.md
 docs/InvitationCreatedBy.md
+docs/InvitationFlowObj.md
 docs/InvitationRequest.md
 docs/InvitationStage.md
 docs/InvitationStageRequest.md
@@ -649,6 +650,7 @@ model_intent_enum.go
 model_invalid_response_action_enum.go
 model_invitation.go
 model_invitation_created_by.go
+model_invitation_flow_obj.go
 model_invitation_request.go
 model_invitation_stage.go
 model_invitation_stage_request.go
