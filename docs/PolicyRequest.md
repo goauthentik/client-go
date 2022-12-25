@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **NullableString** |  | [optional] 
+**Name** | **string** |  | 
 **ExecutionLogging** | Pointer to **bool** | When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged. | [optional] 
 
 ## Methods
 
 ### NewPolicyRequest
 
-`func NewPolicyRequest() *PolicyRequest`
+`func NewPolicyRequest(name string, ) *PolicyRequest`
 
 NewPolicyRequest instantiates a new PolicyRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,22 +45,7 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
 
-`func (o *PolicyRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
-### SetNameNil
-
-`func (o *PolicyRequest) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *PolicyRequest) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetExecutionLogging
 
 `func (o *PolicyRequest) GetExecutionLogging() bool`

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **NullableString** |  | [optional] 
+**Name** | **string** |  | 
 **ExecutionLogging** | Pointer to **bool** | When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged. | [optional] 
 **Action** | Pointer to [**NullableEventActions**](EventActions.md) | Match created events with this action type. When left empty, all action types will be matched. | [optional] 
 **ClientIp** | Pointer to **string** | Matches Event&#39;s Client IP (strict matching, for network matching use an Expression Policy) | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewEventMatcherPolicyRequest
 
-`func NewEventMatcherPolicyRequest() *EventMatcherPolicyRequest`
+`func NewEventMatcherPolicyRequest(name string, ) *EventMatcherPolicyRequest`
 
 NewEventMatcherPolicyRequest instantiates a new EventMatcherPolicyRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,22 +48,7 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
 
-`func (o *EventMatcherPolicyRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
-### SetNameNil
-
-`func (o *EventMatcherPolicyRequest) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *EventMatcherPolicyRequest) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetExecutionLogging
 
 `func (o *EventMatcherPolicyRequest) GetExecutionLogging() bool`

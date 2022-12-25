@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **NullableString** |  | [optional] 
+**Name** | **string** |  | 
 **ExecutionLogging** | Pointer to **bool** | When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged. | [optional] 
 **PasswordField** | Pointer to **string** | Field key to check, field keys defined in Prompt stages are available. | [optional] 
 **AllowedCount** | Pointer to **int32** |  | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewHaveIBeenPwendPolicyRequest
 
-`func NewHaveIBeenPwendPolicyRequest() *HaveIBeenPwendPolicyRequest`
+`func NewHaveIBeenPwendPolicyRequest(name string, ) *HaveIBeenPwendPolicyRequest`
 
 NewHaveIBeenPwendPolicyRequest instantiates a new HaveIBeenPwendPolicyRequest object
 This constructor will assign default values to properties that have it defined,
@@ -47,22 +47,7 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
 
-`func (o *HaveIBeenPwendPolicyRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
-### SetNameNil
-
-`func (o *HaveIBeenPwendPolicyRequest) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *HaveIBeenPwendPolicyRequest) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetExecutionLogging
 
 `func (o *HaveIBeenPwendPolicyRequest) GetExecutionLogging() bool`

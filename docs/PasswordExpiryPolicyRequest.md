@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **NullableString** |  | [optional] 
+**Name** | **string** |  | 
 **ExecutionLogging** | Pointer to **bool** | When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged. | [optional] 
 **Days** | **int32** |  | 
 **DenyOnly** | Pointer to **bool** |  | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewPasswordExpiryPolicyRequest
 
-`func NewPasswordExpiryPolicyRequest(days int32, ) *PasswordExpiryPolicyRequest`
+`func NewPasswordExpiryPolicyRequest(name string, days int32, ) *PasswordExpiryPolicyRequest`
 
 NewPasswordExpiryPolicyRequest instantiates a new PasswordExpiryPolicyRequest object
 This constructor will assign default values to properties that have it defined,
@@ -47,22 +47,7 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
 
-`func (o *PasswordExpiryPolicyRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
-### SetNameNil
-
-`func (o *PasswordExpiryPolicyRequest) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *PasswordExpiryPolicyRequest) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetExecutionLogging
 
 `func (o *PasswordExpiryPolicyRequest) GetExecutionLogging() bool`

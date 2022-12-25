@@ -11354,6 +11354,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DummyPolicyRequest'
+        required: true
       responses:
         "201":
           content:
@@ -11505,6 +11506,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DummyPolicyRequest'
+        required: true
       responses:
         "200":
           content:
@@ -11773,6 +11775,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/EventMatcherPolicyRequest'
+        required: true
       responses:
         "201":
           content:
@@ -11924,6 +11927,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/EventMatcherPolicyRequest'
+        required: true
       responses:
         "200":
           content:
@@ -12434,6 +12438,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/HaveIBeenPwendPolicyRequest'
+        required: true
       responses:
         "201":
           content:
@@ -12585,6 +12590,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/HaveIBeenPwendPolicyRequest'
+        required: true
       responses:
         "200":
           content:
@@ -12844,6 +12850,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PasswordPolicyRequest'
+        required: true
       responses:
         "201":
           content:
@@ -12995,6 +13002,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PasswordPolicyRequest'
+        required: true
       responses:
         "200":
           content:
@@ -13519,6 +13527,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ReputationPolicyRequest'
+        required: true
       responses:
         "201":
           content:
@@ -13670,6 +13679,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ReputationPolicyRequest'
+        required: true
       responses:
         "200":
           content:
@@ -30475,7 +30485,6 @@ components:
           title: Policy uuid
           type: string
         name:
-          nullable: true
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -30510,6 +30519,7 @@ components:
       - bound_to
       - component
       - meta_model_name
+      - name
       - pk
       - verbose_name
       - verbose_name_plural
@@ -30524,7 +30534,7 @@ components:
         wait_max: 441289069
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -30540,6 +30550,8 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
+      required:
+      - name
       type: object
     DummyStage:
       description: DummyStage Serializer
@@ -31063,7 +31075,6 @@ components:
           title: Policy uuid
           type: string
         name:
-          nullable: true
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -31102,6 +31113,7 @@ components:
       - bound_to
       - component
       - meta_model_name
+      - name
       - pk
       - verbose_name
       - verbose_name_plural
@@ -31116,7 +31128,7 @@ components:
         client_ip: client_ip
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -31136,6 +31148,8 @@ components:
           - $ref: '#/components/schemas/AppEnum'
           description: "Match events created by selected application. When left empty,\
             \ all applications are matched."
+      required:
+      - name
       type: object
     EventRequest:
       description: Event Serializer
@@ -31309,7 +31323,6 @@ components:
           title: Policy uuid
           type: string
         name:
-          nullable: true
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -31337,6 +31350,7 @@ components:
       - component
       - expression
       - meta_model_name
+      - name
       - pk
       - verbose_name
       - verbose_name_plural
@@ -31349,7 +31363,7 @@ components:
         name: name
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -31360,6 +31374,7 @@ components:
           type: string
       required:
       - expression
+      - name
       type: object
     FilePathRequest:
       description: Serializer to upload file
@@ -32179,7 +32194,6 @@ components:
           title: Policy uuid
           type: string
         name:
-          nullable: true
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -32212,6 +32226,7 @@ components:
       - bound_to
       - component
       - meta_model_name
+      - name
       - pk
       - verbose_name
       - verbose_name_plural
@@ -32225,7 +32240,7 @@ components:
         allowed_count: -1803530559
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -32240,6 +32255,8 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
+      required:
+      - name
       type: object
     IdentificationChallenge:
       description: Identification challenges with all UI elements
@@ -39869,7 +39886,6 @@ components:
           title: Policy uuid
           type: string
         name:
-          nullable: true
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -39901,6 +39917,7 @@ components:
       - component
       - days
       - meta_model_name
+      - name
       - pk
       - verbose_name
       - verbose_name_plural
@@ -39914,7 +39931,7 @@ components:
         days: -1803530559
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -39928,6 +39945,7 @@ components:
           type: boolean
       required:
       - days
+      - name
       type: object
     PasswordPolicy:
       description: Password Policy Serializer
@@ -39960,7 +39978,6 @@ components:
           title: Policy uuid
           type: string
         name:
-          nullable: true
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -40030,6 +40047,7 @@ components:
       - bound_to
       - component
       - meta_model_name
+      - name
       - pk
       - verbose_name
       - verbose_name_plural
@@ -40054,7 +40072,7 @@ components:
         hibp_allowed_count: 494379917
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -40107,6 +40125,8 @@ components:
           maximum: 2147483647
           minimum: 0
           type: integer
+      required:
+      - name
       type: object
     PasswordStage:
       description: PasswordStage Serializer
@@ -40832,7 +40852,7 @@ components:
         wait_max: 441289069
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -40986,7 +41006,7 @@ components:
         client_ip: client_ip
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -41051,7 +41071,7 @@ components:
         name: name
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -41189,7 +41209,7 @@ components:
         allowed_count: -1803530559
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -41945,7 +41965,7 @@ components:
         days: -1803530559
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -41978,7 +41998,7 @@ components:
         hibp_allowed_count: 494379917
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -42416,7 +42436,7 @@ components:
         threshold: -1803530559
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -43372,7 +43392,6 @@ components:
           title: Policy uuid
           type: string
         name:
-          nullable: true
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -43397,6 +43416,7 @@ components:
       - bound_to
       - component
       - meta_model_name
+      - name
       - pk
       - verbose_name
       - verbose_name_plural
@@ -43517,12 +43537,14 @@ components:
       description: Policy Serializer
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
             \ will be logged. By default, only execution errors are logged."
           type: boolean
+      required:
+      - name
       type: object
     PolicyTestRequest:
       description: Test policy execution for a user with context
@@ -44646,7 +44668,6 @@ components:
           title: Policy uuid
           type: string
         name:
-          nullable: true
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -44679,6 +44700,7 @@ components:
       - bound_to
       - component
       - meta_model_name
+      - name
       - pk
       - verbose_name
       - verbose_name_plural
@@ -44693,7 +44715,7 @@ components:
         threshold: -1803530559
       properties:
         name:
-          nullable: true
+          minLength: 1
           type: string
         execution_logging:
           description: "When this option is enabled, all executions of this policy\
@@ -44707,6 +44729,8 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
+      required:
+      - name
       type: object
     ResidentKeyRequirementEnum:
       enum:

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
-**Name** | Pointer to **NullableString** |  | [optional] 
+**Name** | **string** |  | 
 **ExecutionLogging** | Pointer to **bool** | When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged. | [optional] 
 **Component** | **string** |  | [readonly] 
 **VerboseName** | **string** |  | [readonly] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewExpressionPolicy
 
-`func NewExpressionPolicy(pk string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, expression string, ) *ExpressionPolicy`
+`func NewExpressionPolicy(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, expression string, ) *ExpressionPolicy`
 
 NewExpressionPolicy instantiates a new ExpressionPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -72,22 +72,7 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
 
-`func (o *ExpressionPolicy) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
-### SetNameNil
-
-`func (o *ExpressionPolicy) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *ExpressionPolicy) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetExecutionLogging
 
 `func (o *ExpressionPolicy) GetExecutionLogging() bool`

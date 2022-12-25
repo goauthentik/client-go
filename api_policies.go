@@ -2248,6 +2248,9 @@ func (a *PoliciesApiService) PoliciesDummyCreateExecute(r ApiPoliciesDummyCreate
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.dummyPolicyRequest == nil {
+		return localVarReturnValue, nil, reportError("dummyPolicyRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3041,6 +3044,9 @@ func (a *PoliciesApiService) PoliciesDummyUpdateExecute(r ApiPoliciesDummyUpdate
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.dummyPolicyRequest == nil {
+		return localVarReturnValue, nil, reportError("dummyPolicyRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3317,6 +3323,9 @@ func (a *PoliciesApiService) PoliciesEventMatcherCreateExecute(r ApiPoliciesEven
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.eventMatcherPolicyRequest == nil {
+		return localVarReturnValue, nil, reportError("eventMatcherPolicyRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4112,6 +4121,9 @@ func (a *PoliciesApiService) PoliciesEventMatcherUpdateExecute(r ApiPoliciesEven
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.eventMatcherPolicyRequest == nil {
+		return localVarReturnValue, nil, reportError("eventMatcherPolicyRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -5445,6 +5457,9 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedCreateExecute(r ApiPoliciesHa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.haveIBeenPwendPolicyRequest == nil {
+		return localVarReturnValue, nil, reportError("haveIBeenPwendPolicyRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -6229,6 +6244,9 @@ func (a *PoliciesApiService) PoliciesHaveibeenpwnedUpdateExecute(r ApiPoliciesHa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.haveIBeenPwendPolicyRequest == nil {
+		return localVarReturnValue, nil, reportError("haveIBeenPwendPolicyRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -6505,6 +6523,9 @@ func (a *PoliciesApiService) PoliciesPasswordCreateExecute(r ApiPoliciesPassword
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.passwordPolicyRequest == nil {
+		return localVarReturnValue, nil, reportError("passwordPolicyRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -8454,6 +8475,9 @@ func (a *PoliciesApiService) PoliciesPasswordUpdateExecute(r ApiPoliciesPassword
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.passwordPolicyRequest == nil {
+		return localVarReturnValue, nil, reportError("passwordPolicyRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -8730,6 +8754,9 @@ func (a *PoliciesApiService) PoliciesReputationCreateExecute(r ApiPoliciesReputa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.reputationPolicyRequest == nil {
+		return localVarReturnValue, nil, reportError("reputationPolicyRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -10119,6 +10146,9 @@ func (a *PoliciesApiService) PoliciesReputationUpdateExecute(r ApiPoliciesReputa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.reputationPolicyRequest == nil {
+		return localVarReturnValue, nil, reportError("reputationPolicyRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

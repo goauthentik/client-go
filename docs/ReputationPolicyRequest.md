@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **NullableString** |  | [optional] 
+**Name** | **string** |  | 
 **ExecutionLogging** | Pointer to **bool** | When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged. | [optional] 
 **CheckIp** | Pointer to **bool** |  | [optional] 
 **CheckUsername** | Pointer to **bool** |  | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewReputationPolicyRequest
 
-`func NewReputationPolicyRequest() *ReputationPolicyRequest`
+`func NewReputationPolicyRequest(name string, ) *ReputationPolicyRequest`
 
 NewReputationPolicyRequest instantiates a new ReputationPolicyRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,22 +48,7 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
 
-`func (o *ReputationPolicyRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
-### SetNameNil
-
-`func (o *ReputationPolicyRequest) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *ReputationPolicyRequest) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetExecutionLogging
 
 `func (o *ReputationPolicyRequest) GetExecutionLogging() bool`

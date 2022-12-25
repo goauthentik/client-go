@@ -17,8 +17,8 @@ import (
 
 // Policy Policy Serializer
 type Policy struct {
-	Pk   string         `json:"pk"`
-	Name NullableString `json:"name,omitempty"`
+	Pk   string `json:"pk"`
+	Name string `json:"name"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
 	ExecutionLogging  *bool  `json:"execution_logging,omitempty"`
 	Component         string `json:"component"`
@@ -32,9 +32,10 @@ type Policy struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPolicy(pk string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32) *Policy {
+func NewPolicy(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32) *Policy {
 	this := Policy{}
 	this.Pk = pk
+	this.Name = name
 	this.Component = component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
@@ -75,47 +76,28 @@ func (o *Policy) SetPk(v string) {
 	o.Pk = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *Policy) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Policy) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *Policy) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *Policy) SetName(v string) {
-	o.Name.Set(&v)
-}
-
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *Policy) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *Policy) UnsetName() {
-	o.Name.Unset()
+	o.Name = v
 }
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
@@ -275,8 +257,8 @@ func (o Policy) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["pk"] = o.Pk
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if true {
+		toSerialize["name"] = o.Name
 	}
 	if o.ExecutionLogging != nil {
 		toSerialize["execution_logging"] = o.ExecutionLogging

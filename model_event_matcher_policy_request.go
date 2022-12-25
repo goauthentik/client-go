@@ -17,7 +17,7 @@ import (
 
 // EventMatcherPolicyRequest Event Matcher Policy Serializer
 type EventMatcherPolicyRequest struct {
-	Name NullableString `json:"name,omitempty"`
+	Name string `json:"name"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
 	ExecutionLogging *bool `json:"execution_logging,omitempty"`
 	// Match created events with this action type. When left empty, all action types will be matched.
@@ -32,8 +32,9 @@ type EventMatcherPolicyRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEventMatcherPolicyRequest() *EventMatcherPolicyRequest {
+func NewEventMatcherPolicyRequest(name string) *EventMatcherPolicyRequest {
 	this := EventMatcherPolicyRequest{}
+	this.Name = name
 	return &this
 }
 
@@ -45,47 +46,28 @@ func NewEventMatcherPolicyRequestWithDefaults() *EventMatcherPolicyRequest {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *EventMatcherPolicyRequest) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EventMatcherPolicyRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *EventMatcherPolicyRequest) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *EventMatcherPolicyRequest) SetName(v string) {
-	o.Name.Set(&v)
-}
-
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *EventMatcherPolicyRequest) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *EventMatcherPolicyRequest) UnsetName() {
-	o.Name.Unset()
+	o.Name = v
 }
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
@@ -240,8 +222,8 @@ func (o *EventMatcherPolicyRequest) UnsetApp() {
 
 func (o EventMatcherPolicyRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if true {
+		toSerialize["name"] = o.Name
 	}
 	if o.ExecutionLogging != nil {
 		toSerialize["execution_logging"] = o.ExecutionLogging

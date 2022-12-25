@@ -1137,7 +1137,7 @@ import (
 )
 
 func main() {
-    dummyPolicyRequest := *openapiclient.NewDummyPolicyRequest() // DummyPolicyRequest |  (optional)
+    dummyPolicyRequest := *openapiclient.NewDummyPolicyRequest("Name_example") // DummyPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1503,7 +1503,7 @@ import (
 
 func main() {
     policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Policy.
-    dummyPolicyRequest := *openapiclient.NewDummyPolicyRequest() // DummyPolicyRequest |  (optional)
+    dummyPolicyRequest := *openapiclient.NewDummyPolicyRequest("Name_example") // DummyPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1644,7 +1644,7 @@ import (
 )
 
 func main() {
-    eventMatcherPolicyRequest := *openapiclient.NewEventMatcherPolicyRequest() // EventMatcherPolicyRequest |  (optional)
+    eventMatcherPolicyRequest := *openapiclient.NewEventMatcherPolicyRequest("Name_example") // EventMatcherPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2010,7 +2010,7 @@ import (
 
 func main() {
     policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event Matcher Policy.
-    eventMatcherPolicyRequest := *openapiclient.NewEventMatcherPolicyRequest() // EventMatcherPolicyRequest |  (optional)
+    eventMatcherPolicyRequest := *openapiclient.NewEventMatcherPolicyRequest("Name_example") // EventMatcherPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2151,7 +2151,7 @@ import (
 )
 
 func main() {
-    expressionPolicyRequest := *openapiclient.NewExpressionPolicyRequest("Expression_example") // ExpressionPolicyRequest | 
+    expressionPolicyRequest := *openapiclient.NewExpressionPolicyRequest("Name_example", "Expression_example") // ExpressionPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2513,7 +2513,7 @@ import (
 
 func main() {
     policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Expression Policy.
-    expressionPolicyRequest := *openapiclient.NewExpressionPolicyRequest("Expression_example") // ExpressionPolicyRequest | 
+    expressionPolicyRequest := *openapiclient.NewExpressionPolicyRequest("Name_example", "Expression_example") // ExpressionPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2654,7 +2654,7 @@ import (
 )
 
 func main() {
-    haveIBeenPwendPolicyRequest := *openapiclient.NewHaveIBeenPwendPolicyRequest() // HaveIBeenPwendPolicyRequest |  (optional)
+    haveIBeenPwendPolicyRequest := *openapiclient.NewHaveIBeenPwendPolicyRequest("Name_example") // HaveIBeenPwendPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3018,7 +3018,7 @@ import (
 
 func main() {
     policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Have I Been Pwned Policy.
-    haveIBeenPwendPolicyRequest := *openapiclient.NewHaveIBeenPwendPolicyRequest() // HaveIBeenPwendPolicyRequest |  (optional)
+    haveIBeenPwendPolicyRequest := *openapiclient.NewHaveIBeenPwendPolicyRequest("Name_example") // HaveIBeenPwendPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3159,7 +3159,7 @@ import (
 )
 
 func main() {
-    passwordPolicyRequest := *openapiclient.NewPasswordPolicyRequest() // PasswordPolicyRequest |  (optional)
+    passwordPolicyRequest := *openapiclient.NewPasswordPolicyRequest("Name_example") // PasswordPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3293,7 +3293,7 @@ import (
 )
 
 func main() {
-    passwordExpiryPolicyRequest := *openapiclient.NewPasswordExpiryPolicyRequest(int32(123)) // PasswordExpiryPolicyRequest | 
+    passwordExpiryPolicyRequest := *openapiclient.NewPasswordExpiryPolicyRequest("Name_example", int32(123)) // PasswordExpiryPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3657,7 +3657,7 @@ import (
 
 func main() {
     policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Expiry Policy.
-    passwordExpiryPolicyRequest := *openapiclient.NewPasswordExpiryPolicyRequest(int32(123)) // PasswordExpiryPolicyRequest | 
+    passwordExpiryPolicyRequest := *openapiclient.NewPasswordExpiryPolicyRequest("Name_example", int32(123)) // PasswordExpiryPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -4050,7 +4050,7 @@ import (
 
 func main() {
     policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Policy.
-    passwordPolicyRequest := *openapiclient.NewPasswordPolicyRequest() // PasswordPolicyRequest |  (optional)
+    passwordPolicyRequest := *openapiclient.NewPasswordPolicyRequest("Name_example") // PasswordPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -4191,7 +4191,7 @@ import (
 )
 
 func main() {
-    reputationPolicyRequest := *openapiclient.NewReputationPolicyRequest() // ReputationPolicyRequest |  (optional)
+    reputationPolicyRequest := *openapiclient.NewReputationPolicyRequest("Name_example") // ReputationPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -4843,7 +4843,7 @@ import (
 
 func main() {
     policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Reputation Policy.
-    reputationPolicyRequest := *openapiclient.NewReputationPolicyRequest() // ReputationPolicyRequest |  (optional)
+    reputationPolicyRequest := *openapiclient.NewReputationPolicyRequest("Name_example") // ReputationPolicyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

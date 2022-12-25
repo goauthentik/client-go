@@ -17,7 +17,7 @@ import (
 
 // PatchedReputationPolicyRequest Reputation Policy Serializer
 type PatchedReputationPolicyRequest struct {
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
 	ExecutionLogging *bool  `json:"execution_logging,omitempty"`
 	CheckIp          *bool  `json:"check_ip,omitempty"`
@@ -42,47 +42,36 @@ func NewPatchedReputationPolicyRequestWithDefaults() *PatchedReputationPolicyReq
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedReputationPolicyRequest) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedReputationPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedReputationPolicyRequest) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PatchedReputationPolicyRequest) SetName(v string) {
-	o.Name.Set(&v)
-}
-
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *PatchedReputationPolicyRequest) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *PatchedReputationPolicyRequest) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
@@ -215,8 +204,8 @@ func (o *PatchedReputationPolicyRequest) SetThreshold(v int32) {
 
 func (o PatchedReputationPolicyRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
 	}
 	if o.ExecutionLogging != nil {
 		toSerialize["execution_logging"] = o.ExecutionLogging
