@@ -2242,6 +2242,142 @@ func (a *CoreApiService) CoreAuthenticatedSessionsUsedByListExecute(r ApiCoreAut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCoreGroupsAddUserCreateRequest struct {
+	ctx                context.Context
+	ApiService         *CoreApiService
+	groupUuid          string
+	userAccountRequest *UserAccountRequest
+}
+
+func (r ApiCoreGroupsAddUserCreateRequest) UserAccountRequest(userAccountRequest UserAccountRequest) ApiCoreGroupsAddUserCreateRequest {
+	r.userAccountRequest = &userAccountRequest
+	return r
+}
+
+func (r ApiCoreGroupsAddUserCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CoreGroupsAddUserCreateExecute(r)
+}
+
+/*
+CoreGroupsAddUserCreate Method for CoreGroupsAddUserCreate
+
+Add user to group
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupUuid A UUID string identifying this group.
+ @return ApiCoreGroupsAddUserCreateRequest
+*/
+func (a *CoreApiService) CoreGroupsAddUserCreate(ctx context.Context, groupUuid string) ApiCoreGroupsAddUserCreateRequest {
+	return ApiCoreGroupsAddUserCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupUuid:  groupUuid,
+	}
+}
+
+// Execute executes the request
+func (a *CoreApiService) CoreGroupsAddUserCreateExecute(r ApiCoreGroupsAddUserCreateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreGroupsAddUserCreate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/groups/{group_uuid}/add_user/"
+	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterToString(r.groupUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.userAccountRequest == nil {
+		return nil, reportError("userAccountRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.userAccountRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiCoreGroupsCreateRequest struct {
 	ctx          context.Context
 	ApiService   *CoreApiService
@@ -2887,6 +3023,142 @@ func (a *CoreApiService) CoreGroupsPartialUpdateExecute(r ApiCoreGroupsPartialUp
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCoreGroupsRemoveUserCreateRequest struct {
+	ctx                context.Context
+	ApiService         *CoreApiService
+	groupUuid          string
+	userAccountRequest *UserAccountRequest
+}
+
+func (r ApiCoreGroupsRemoveUserCreateRequest) UserAccountRequest(userAccountRequest UserAccountRequest) ApiCoreGroupsRemoveUserCreateRequest {
+	r.userAccountRequest = &userAccountRequest
+	return r
+}
+
+func (r ApiCoreGroupsRemoveUserCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CoreGroupsRemoveUserCreateExecute(r)
+}
+
+/*
+CoreGroupsRemoveUserCreate Method for CoreGroupsRemoveUserCreate
+
+Add user to group
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupUuid A UUID string identifying this group.
+ @return ApiCoreGroupsRemoveUserCreateRequest
+*/
+func (a *CoreApiService) CoreGroupsRemoveUserCreate(ctx context.Context, groupUuid string) ApiCoreGroupsRemoveUserCreateRequest {
+	return ApiCoreGroupsRemoveUserCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupUuid:  groupUuid,
+	}
+}
+
+// Execute executes the request
+func (a *CoreApiService) CoreGroupsRemoveUserCreateExecute(r ApiCoreGroupsRemoveUserCreateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreGroupsRemoveUserCreate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/groups/{group_uuid}/remove_user/"
+	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterToString(r.groupUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.userAccountRequest == nil {
+		return nil, reportError("userAccountRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.userAccountRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
 
 type ApiCoreGroupsRetrieveRequest struct {

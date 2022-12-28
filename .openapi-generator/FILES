@@ -472,6 +472,7 @@ docs/TypeCreate.md
 docs/UsedBy.md
 docs/UsedByActionEnum.md
 docs/User.md
+docs/UserAccountRequest.md
 docs/UserConsent.md
 docs/UserDeleteStage.md
 docs/UserDeleteStageRequest.md
@@ -944,6 +945,7 @@ model_type_create.go
 model_used_by.go
 model_used_by_action_enum.go
 model_user.go
+model_user_account_request.go
 model_user_consent.go
 model_user_delete_stage.go
 model_user_delete_stage_request.go

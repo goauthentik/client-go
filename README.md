@@ -122,10 +122,12 @@ Class | Method | HTTP request | Description
 *CoreApi* | [**CoreAuthenticatedSessionsList**](docs/CoreApi.md#coreauthenticatedsessionslist) | **Get** /core/authenticated_sessions/ | 
 *CoreApi* | [**CoreAuthenticatedSessionsRetrieve**](docs/CoreApi.md#coreauthenticatedsessionsretrieve) | **Get** /core/authenticated_sessions/{uuid}/ | 
 *CoreApi* | [**CoreAuthenticatedSessionsUsedByList**](docs/CoreApi.md#coreauthenticatedsessionsusedbylist) | **Get** /core/authenticated_sessions/{uuid}/used_by/ | 
+*CoreApi* | [**CoreGroupsAddUserCreate**](docs/CoreApi.md#coregroupsaddusercreate) | **Post** /core/groups/{group_uuid}/add_user/ | 
 *CoreApi* | [**CoreGroupsCreate**](docs/CoreApi.md#coregroupscreate) | **Post** /core/groups/ | 
 *CoreApi* | [**CoreGroupsDestroy**](docs/CoreApi.md#coregroupsdestroy) | **Delete** /core/groups/{group_uuid}/ | 
 *CoreApi* | [**CoreGroupsList**](docs/CoreApi.md#coregroupslist) | **Get** /core/groups/ | 
 *CoreApi* | [**CoreGroupsPartialUpdate**](docs/CoreApi.md#coregroupspartialupdate) | **Patch** /core/groups/{group_uuid}/ | 
+*CoreApi* | [**CoreGroupsRemoveUserCreate**](docs/CoreApi.md#coregroupsremoveusercreate) | **Post** /core/groups/{group_uuid}/remove_user/ | 
 *CoreApi* | [**CoreGroupsRetrieve**](docs/CoreApi.md#coregroupsretrieve) | **Get** /core/groups/{group_uuid}/ | 
 *CoreApi* | [**CoreGroupsUpdate**](docs/CoreApi.md#coregroupsupdate) | **Put** /core/groups/{group_uuid}/ | 
 *CoreApi* | [**CoreGroupsUsedByList**](docs/CoreApi.md#coregroupsusedbylist) | **Get** /core/groups/{group_uuid}/used_by/ | 
@@ -1087,6 +1089,7 @@ Class | Method | HTTP request | Description
  - [UsedBy](docs/UsedBy.md)
  - [UsedByActionEnum](docs/UsedByActionEnum.md)
  - [User](docs/User.md)
+ - [UserAccountRequest](docs/UserAccountRequest.md)
  - [UserConsent](docs/UserConsent.md)
  - [UserDeleteStage](docs/UserDeleteStage.md)
  - [UserDeleteStageRequest](docs/UserDeleteStageRequest.md)

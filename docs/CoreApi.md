@@ -19,10 +19,12 @@ Method | HTTP request | Description
 [**CoreAuthenticatedSessionsList**](CoreApi.md#CoreAuthenticatedSessionsList) | **Get** /core/authenticated_sessions/ | 
 [**CoreAuthenticatedSessionsRetrieve**](CoreApi.md#CoreAuthenticatedSessionsRetrieve) | **Get** /core/authenticated_sessions/{uuid}/ | 
 [**CoreAuthenticatedSessionsUsedByList**](CoreApi.md#CoreAuthenticatedSessionsUsedByList) | **Get** /core/authenticated_sessions/{uuid}/used_by/ | 
+[**CoreGroupsAddUserCreate**](CoreApi.md#CoreGroupsAddUserCreate) | **Post** /core/groups/{group_uuid}/add_user/ | 
 [**CoreGroupsCreate**](CoreApi.md#CoreGroupsCreate) | **Post** /core/groups/ | 
 [**CoreGroupsDestroy**](CoreApi.md#CoreGroupsDestroy) | **Delete** /core/groups/{group_uuid}/ | 
 [**CoreGroupsList**](CoreApi.md#CoreGroupsList) | **Get** /core/groups/ | 
 [**CoreGroupsPartialUpdate**](CoreApi.md#CoreGroupsPartialUpdate) | **Patch** /core/groups/{group_uuid}/ | 
+[**CoreGroupsRemoveUserCreate**](CoreApi.md#CoreGroupsRemoveUserCreate) | **Post** /core/groups/{group_uuid}/remove_user/ | 
 [**CoreGroupsRetrieve**](CoreApi.md#CoreGroupsRetrieve) | **Get** /core/groups/{group_uuid}/ | 
 [**CoreGroupsUpdate**](CoreApi.md#CoreGroupsUpdate) | **Put** /core/groups/{group_uuid}/ | 
 [**CoreGroupsUsedByList**](CoreApi.md#CoreGroupsUsedByList) | **Get** /core/groups/{group_uuid}/used_by/ | 
@@ -1138,6 +1140,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CoreGroupsAddUserCreate
+
+> CoreGroupsAddUserCreate(ctx, groupUuid).UserAccountRequest(userAccountRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
+    userAccountRequest := *openapiclient.NewUserAccountRequest(int32(123)) // UserAccountRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreGroupsAddUserCreate(context.Background(), groupUuid).UserAccountRequest(userAccountRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsAddUserCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupUuid** | **string** | A UUID string identifying this group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreGroupsAddUserCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **userAccountRequest** | [**UserAccountRequest**](UserAccountRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CoreGroupsCreate
 
 > Group CoreGroupsCreate(ctx).GroupRequest(groupRequest).Execute()
@@ -1411,6 +1483,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Group**](Group.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreGroupsRemoveUserCreate
+
+> CoreGroupsRemoveUserCreate(ctx, groupUuid).UserAccountRequest(userAccountRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
+    userAccountRequest := *openapiclient.NewUserAccountRequest(int32(123)) // UserAccountRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreGroupsRemoveUserCreate(context.Background(), groupUuid).UserAccountRequest(userAccountRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsRemoveUserCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupUuid** | **string** | A UUID string identifying this group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreGroupsRemoveUserCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **userAccountRequest** | [**UserAccountRequest**](UserAccountRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 

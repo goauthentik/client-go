@@ -3767,6 +3767,88 @@ paths:
       - authentik: []
       tags:
       - core
+  /core/groups/{group_uuid}/add_user/:
+    post:
+      description: Add user to group
+      operationId: core_groups_add_user_create
+      parameters:
+      - description: A UUID string identifying this group.
+        explode: false
+        in: path
+        name: group_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAccountRequest'
+        required: true
+      responses:
+        "204":
+          description: User added
+        "404":
+          description: User not found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+  /core/groups/{group_uuid}/remove_user/:
+    post:
+      description: Add user to group
+      operationId: core_groups_remove_user_create
+      parameters:
+      - description: A UUID string identifying this group.
+        explode: false
+        in: path
+        name: group_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAccountRequest'
+        required: true
+      responses:
+        "204":
+          description: User added
+        "404":
+          description: User not found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
   /core/groups/{group_uuid}/used_by/:
     get:
       description: Get a list of all objects that use this object
@@ -46577,6 +46659,15 @@ components:
       - pk
       - uid
       - username
+      type: object
+    UserAccountRequest:
+      example:
+        pk: 0
+      properties:
+        pk:
+          type: integer
+      required:
+      - pk
       type: object
     UserConsent:
       description: UserConsent Serializer
