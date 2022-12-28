@@ -4,18 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Uid** | **string** |  | [readonly] 
 **LastSeen** | **time.Time** |  | [readonly] 
 **Version** | **string** |  | [readonly] 
 **VersionShould** | **string** |  | [readonly] 
 **VersionOutdated** | **bool** |  | [readonly] 
 **BuildHash** | **string** |  | [readonly] 
 **BuildHashShould** | **string** |  | [readonly] 
+**Hostname** | **string** |  | [readonly] 
 
 ## Methods
 
 ### NewOutpostHealth
 
-`func NewOutpostHealth(lastSeen time.Time, version string, versionShould string, versionOutdated bool, buildHash string, buildHashShould string, ) *OutpostHealth`
+`func NewOutpostHealth(uid string, lastSeen time.Time, version string, versionShould string, versionOutdated bool, buildHash string, buildHashShould string, hostname string, ) *OutpostHealth`
 
 NewOutpostHealth instantiates a new OutpostHealth object
 This constructor will assign default values to properties that have it defined,
@@ -29,6 +31,26 @@ will change when the set of required properties is changed
 NewOutpostHealthWithDefaults instantiates a new OutpostHealth object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetUid
+
+`func (o *OutpostHealth) GetUid() string`
+
+GetUid returns the Uid field if non-nil, zero value otherwise.
+
+### GetUidOk
+
+`func (o *OutpostHealth) GetUidOk() (*string, bool)`
+
+GetUidOk returns a tuple with the Uid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUid
+
+`func (o *OutpostHealth) SetUid(v string)`
+
+SetUid sets Uid field to given value.
+
 
 ### GetLastSeen
 
@@ -148,6 +170,26 @@ and a boolean to check if the value has been set.
 `func (o *OutpostHealth) SetBuildHashShould(v string)`
 
 SetBuildHashShould sets BuildHashShould field to given value.
+
+
+### GetHostname
+
+`func (o *OutpostHealth) GetHostname() string`
+
+GetHostname returns the Hostname field if non-nil, zero value otherwise.
+
+### GetHostnameOk
+
+`func (o *OutpostHealth) GetHostnameOk() (*string, bool)`
+
+GetHostnameOk returns a tuple with the Hostname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostname
+
+`func (o *OutpostHealth) SetHostname(v string)`
+
+SetHostname sets Hostname field to given value.
 
 
 

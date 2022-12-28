@@ -34658,6 +34658,8 @@ components:
     OutpostHealth:
       description: Outpost health status
       example:
+        uid: uid
+        hostname: hostname
         last_seen: 2000-01-23T04:56:07.000+00:00
         version_should: version_should
         build_hash_should: build_hash_should
@@ -34665,6 +34667,9 @@ components:
         version: version
         build_hash: build_hash
       properties:
+        uid:
+          readOnly: true
+          type: string
         last_seen:
           format: date-time
           readOnly: true
@@ -34684,10 +34689,15 @@ components:
         build_hash_should:
           readOnly: true
           type: string
+        hostname:
+          readOnly: true
+          type: string
       required:
       - build_hash
       - build_hash_should
+      - hostname
       - last_seen
+      - uid
       - version
       - version_outdated
       - version_should

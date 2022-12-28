@@ -18,26 +18,30 @@ import (
 
 // OutpostHealth Outpost health status
 type OutpostHealth struct {
+	Uid             string    `json:"uid"`
 	LastSeen        time.Time `json:"last_seen"`
 	Version         string    `json:"version"`
 	VersionShould   string    `json:"version_should"`
 	VersionOutdated bool      `json:"version_outdated"`
 	BuildHash       string    `json:"build_hash"`
 	BuildHashShould string    `json:"build_hash_should"`
+	Hostname        string    `json:"hostname"`
 }
 
 // NewOutpostHealth instantiates a new OutpostHealth object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOutpostHealth(lastSeen time.Time, version string, versionShould string, versionOutdated bool, buildHash string, buildHashShould string) *OutpostHealth {
+func NewOutpostHealth(uid string, lastSeen time.Time, version string, versionShould string, versionOutdated bool, buildHash string, buildHashShould string, hostname string) *OutpostHealth {
 	this := OutpostHealth{}
+	this.Uid = uid
 	this.LastSeen = lastSeen
 	this.Version = version
 	this.VersionShould = versionShould
 	this.VersionOutdated = versionOutdated
 	this.BuildHash = buildHash
 	this.BuildHashShould = buildHashShould
+	this.Hostname = hostname
 	return &this
 }
 
@@ -47,6 +51,30 @@ func NewOutpostHealth(lastSeen time.Time, version string, versionShould string, 
 func NewOutpostHealthWithDefaults() *OutpostHealth {
 	this := OutpostHealth{}
 	return &this
+}
+
+// GetUid returns the Uid field value
+func (o *OutpostHealth) GetUid() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Uid
+}
+
+// GetUidOk returns a tuple with the Uid field value
+// and a boolean to check if the value has been set.
+func (o *OutpostHealth) GetUidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Uid, true
+}
+
+// SetUid sets field value
+func (o *OutpostHealth) SetUid(v string) {
+	o.Uid = v
 }
 
 // GetLastSeen returns the LastSeen field value
@@ -193,8 +221,35 @@ func (o *OutpostHealth) SetBuildHashShould(v string) {
 	o.BuildHashShould = v
 }
 
+// GetHostname returns the Hostname field value
+func (o *OutpostHealth) GetHostname() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Hostname
+}
+
+// GetHostnameOk returns a tuple with the Hostname field value
+// and a boolean to check if the value has been set.
+func (o *OutpostHealth) GetHostnameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Hostname, true
+}
+
+// SetHostname sets field value
+func (o *OutpostHealth) SetHostname(v string) {
+	o.Hostname = v
+}
+
 func (o OutpostHealth) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["uid"] = o.Uid
+	}
 	if true {
 		toSerialize["last_seen"] = o.LastSeen
 	}
@@ -212,6 +267,9 @@ func (o OutpostHealth) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["build_hash_should"] = o.BuildHashShould
+	}
+	if true {
+		toSerialize["hostname"] = o.Hostname
 	}
 	return json.Marshal(toSerialize)
 }
