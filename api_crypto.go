@@ -427,7 +427,7 @@ func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreateExecute(r ApiC
 type ApiCryptoCertificatekeypairsListRequest struct {
 	ctx            context.Context
 	ApiService     *CryptoApiService
-	hasKey         *bool
+	hasKey         *string
 	includeDetails *bool
 	managed        *string
 	name           *string
@@ -438,7 +438,7 @@ type ApiCryptoCertificatekeypairsListRequest struct {
 }
 
 // Only return certificate-key pairs with keys
-func (r ApiCryptoCertificatekeypairsListRequest) HasKey(hasKey bool) ApiCryptoCertificatekeypairsListRequest {
+func (r ApiCryptoCertificatekeypairsListRequest) HasKey(hasKey string) ApiCryptoCertificatekeypairsListRequest {
 	r.hasKey = &hasKey
 	return r
 }
@@ -448,11 +448,13 @@ func (r ApiCryptoCertificatekeypairsListRequest) IncludeDetails(includeDetails b
 	return r
 }
 
+// managed
 func (r ApiCryptoCertificatekeypairsListRequest) Managed(managed string) ApiCryptoCertificatekeypairsListRequest {
 	r.managed = &managed
 	return r
 }
 
+// name
 func (r ApiCryptoCertificatekeypairsListRequest) Name(name string) ApiCryptoCertificatekeypairsListRequest {
 	r.name = &name
 	return r

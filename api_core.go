@@ -3986,7 +3986,7 @@ type ApiCoreTenantsListRequest struct {
 	brandingFavicon    *string
 	brandingLogo       *string
 	brandingTitle      *string
-	default_           *bool
+	default_           *string
 	domain             *string
 	eventRetention     *string
 	flowAuthentication *string
@@ -4003,61 +4003,73 @@ type ApiCoreTenantsListRequest struct {
 	webCertificate     *string
 }
 
+// branding_favicon
 func (r ApiCoreTenantsListRequest) BrandingFavicon(brandingFavicon string) ApiCoreTenantsListRequest {
 	r.brandingFavicon = &brandingFavicon
 	return r
 }
 
+// branding_logo
 func (r ApiCoreTenantsListRequest) BrandingLogo(brandingLogo string) ApiCoreTenantsListRequest {
 	r.brandingLogo = &brandingLogo
 	return r
 }
 
+// branding_title
 func (r ApiCoreTenantsListRequest) BrandingTitle(brandingTitle string) ApiCoreTenantsListRequest {
 	r.brandingTitle = &brandingTitle
 	return r
 }
 
-func (r ApiCoreTenantsListRequest) Default_(default_ bool) ApiCoreTenantsListRequest {
+// default
+func (r ApiCoreTenantsListRequest) Default_(default_ string) ApiCoreTenantsListRequest {
 	r.default_ = &default_
 	return r
 }
 
+// domain
 func (r ApiCoreTenantsListRequest) Domain(domain string) ApiCoreTenantsListRequest {
 	r.domain = &domain
 	return r
 }
 
+// event_retention
 func (r ApiCoreTenantsListRequest) EventRetention(eventRetention string) ApiCoreTenantsListRequest {
 	r.eventRetention = &eventRetention
 	return r
 }
 
+// flow_authentication
 func (r ApiCoreTenantsListRequest) FlowAuthentication(flowAuthentication string) ApiCoreTenantsListRequest {
 	r.flowAuthentication = &flowAuthentication
 	return r
 }
 
+// flow_device_code
 func (r ApiCoreTenantsListRequest) FlowDeviceCode(flowDeviceCode string) ApiCoreTenantsListRequest {
 	r.flowDeviceCode = &flowDeviceCode
 	return r
 }
 
+// flow_invalidation
 func (r ApiCoreTenantsListRequest) FlowInvalidation(flowInvalidation string) ApiCoreTenantsListRequest {
 	r.flowInvalidation = &flowInvalidation
 	return r
 }
 
+// flow_recovery
 func (r ApiCoreTenantsListRequest) FlowRecovery(flowRecovery string) ApiCoreTenantsListRequest {
 	r.flowRecovery = &flowRecovery
 	return r
 }
 
+// flow_unenrollment
 func (r ApiCoreTenantsListRequest) FlowUnenrollment(flowUnenrollment string) ApiCoreTenantsListRequest {
 	r.flowUnenrollment = &flowUnenrollment
 	return r
 }
 
+// flow_user_settings
 func (r ApiCoreTenantsListRequest) FlowUserSettings(flowUserSettings string) ApiCoreTenantsListRequest {
 	r.flowUserSettings = &flowUserSettings
 	return r
@@ -4087,11 +4099,13 @@ func (r ApiCoreTenantsListRequest) Search(search string) ApiCoreTenantsListReque
 	return r
 }
 
+// tenant_uuid
 func (r ApiCoreTenantsListRequest) TenantUuid(tenantUuid string) ApiCoreTenantsListRequest {
 	r.tenantUuid = &tenantUuid
 	return r
 }
 
+// web_certificate
 func (r ApiCoreTenantsListRequest) WebCertificate(webCertificate string) ApiCoreTenantsListRequest {
 	r.webCertificate = &webCertificate
 	return r

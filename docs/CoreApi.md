@@ -1996,24 +1996,24 @@ import (
 )
 
 func main() {
-    brandingFavicon := "brandingFavicon_example" // string |  (optional)
-    brandingLogo := "brandingLogo_example" // string |  (optional)
-    brandingTitle := "brandingTitle_example" // string |  (optional)
-    default_ := true // bool |  (optional)
-    domain := "domain_example" // string |  (optional)
-    eventRetention := "eventRetention_example" // string |  (optional)
-    flowAuthentication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    flowDeviceCode := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    flowInvalidation := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    flowRecovery := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    flowUnenrollment := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    flowUserSettings := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    brandingFavicon := "brandingFavicon_example" // string | branding_favicon (optional)
+    brandingLogo := "brandingLogo_example" // string | branding_logo (optional)
+    brandingTitle := "brandingTitle_example" // string | branding_title (optional)
+    default_ := "default__example" // string | default (optional)
+    domain := "domain_example" // string | domain (optional)
+    eventRetention := "eventRetention_example" // string | event_retention (optional)
+    flowAuthentication := "flowAuthentication_example" // string | flow_authentication (optional)
+    flowDeviceCode := "flowDeviceCode_example" // string | flow_device_code (optional)
+    flowInvalidation := "flowInvalidation_example" // string | flow_invalidation (optional)
+    flowRecovery := "flowRecovery_example" // string | flow_recovery (optional)
+    flowUnenrollment := "flowUnenrollment_example" // string | flow_unenrollment (optional)
+    flowUserSettings := "flowUserSettings_example" // string | flow_user_settings (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
-    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    webCertificate := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    tenantUuid := "tenantUuid_example" // string | tenant_uuid (optional)
+    webCertificate := "webCertificate_example" // string | web_certificate (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2038,24 +2038,24 @@ Other parameters are passed through a pointer to a apiCoreTenantsListRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **brandingFavicon** | **string** |  | 
- **brandingLogo** | **string** |  | 
- **brandingTitle** | **string** |  | 
- **default_** | **bool** |  | 
- **domain** | **string** |  | 
- **eventRetention** | **string** |  | 
- **flowAuthentication** | **string** |  | 
- **flowDeviceCode** | **string** |  | 
- **flowInvalidation** | **string** |  | 
- **flowRecovery** | **string** |  | 
- **flowUnenrollment** | **string** |  | 
- **flowUserSettings** | **string** |  | 
+ **brandingFavicon** | **string** | branding_favicon | 
+ **brandingLogo** | **string** | branding_logo | 
+ **brandingTitle** | **string** | branding_title | 
+ **default_** | **string** | default | 
+ **domain** | **string** | domain | 
+ **eventRetention** | **string** | event_retention | 
+ **flowAuthentication** | **string** | flow_authentication | 
+ **flowDeviceCode** | **string** | flow_device_code | 
+ **flowInvalidation** | **string** | flow_invalidation | 
+ **flowRecovery** | **string** | flow_recovery | 
+ **flowUnenrollment** | **string** | flow_unenrollment | 
+ **flowUserSettings** | **string** | flow_user_settings | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
- **tenantUuid** | **string** |  | 
- **webCertificate** | **string** |  | 
+ **tenantUuid** | **string** | tenant_uuid | 
+ **webCertificate** | **string** | web_certificate | 
 
 ### Return type
 
