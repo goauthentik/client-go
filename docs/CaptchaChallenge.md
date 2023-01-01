@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **PendingUser** | **string** |  | 
 **PendingUserAvatar** | **string** |  | 
 **SiteKey** | **string** |  | 
-**JsUrl** | **string** |  | [readonly] 
+**JsUrl** | **string** |  | 
 
 ## Methods
 

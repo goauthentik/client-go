@@ -29577,7 +29577,6 @@ components:
         site_key:
           type: string
         js_url:
-          readOnly: true
           type: string
       required:
       - js_url

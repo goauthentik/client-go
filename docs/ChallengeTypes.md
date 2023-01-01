@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **Attrs** | **map[string]string** |  | 
 **Title** | Pointer to **string** |  | [optional] 
 **SiteKey** | **string** |  | 
-**JsUrl** | **string** |  | [readonly] 
+**JsUrl** | **string** |  | 
 **HeaderText** | Pointer to **string** |  | [optional] 
 **Permissions** | [**[]Permission**](Permission.md) |  | 
 **AdditionalPermissions** | [**[]Permission**](Permission.md) |  | 
