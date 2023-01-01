@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UserAccountRequest struct for UserAccountRequest
+// UserAccountRequest Account adding/removing operations
 type UserAccountRequest struct {
 	Pk int32 `json:"pk"`
 }

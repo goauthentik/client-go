@@ -5511,7 +5511,7 @@ paths:
         name: has_key
         required: false
         schema:
-          type: string
+          type: boolean
         style: form
       - explode: true
         in: query
@@ -46690,6 +46690,7 @@ components:
       - username
       type: object
     UserAccountRequest:
+      description: Account adding/removing operations
       example:
         pk: 0
       properties:
