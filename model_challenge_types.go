@@ -662,6 +662,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'ak-stage-flow-error'
+	if jsonDict["component"] == "ak-stage-flow-error" {
+		// try to unmarshal JSON data into FlowErrorChallenge
+		err = json.Unmarshal(data, &dst.FlowErrorChallenge)
+		if err == nil {
+			return nil // data stored in dst.FlowErrorChallenge, return on the first match
+		} else {
+			dst.FlowErrorChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as FlowErrorChallenge: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ak-stage-identification'
 	if jsonDict["component"] == "ak-stage-identification" {
 		// try to unmarshal JSON data into IdentificationChallenge
@@ -695,18 +707,6 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.PromptChallenge = nil
 			return fmt.Errorf("Failed to unmarshal ChallengeTypes as PromptChallenge: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'xak-flow-error'
-	if jsonDict["component"] == "xak-flow-error" {
-		// try to unmarshal JSON data into FlowErrorChallenge
-		err = json.Unmarshal(data, &dst.FlowErrorChallenge)
-		if err == nil {
-			return nil // data stored in dst.FlowErrorChallenge, return on the first match
-		} else {
-			dst.FlowErrorChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as FlowErrorChallenge: %s", err.Error())
 		}
 	}
 

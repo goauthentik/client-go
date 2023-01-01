@@ -24,6 +24,7 @@ type DummyStage struct {
 	VerboseNamePlural string    `json:"verbose_name_plural"`
 	MetaModelName     string    `json:"meta_model_name"`
 	FlowSet           []FlowSet `json:"flow_set,omitempty"`
+	ThrowError        *bool     `json:"throw_error,omitempty"`
 }
 
 // NewDummyStage instantiates a new DummyStage object
@@ -225,6 +226,38 @@ func (o *DummyStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
 
+// GetThrowError returns the ThrowError field value if set, zero value otherwise.
+func (o *DummyStage) GetThrowError() bool {
+	if o == nil || o.ThrowError == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ThrowError
+}
+
+// GetThrowErrorOk returns a tuple with the ThrowError field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DummyStage) GetThrowErrorOk() (*bool, bool) {
+	if o == nil || o.ThrowError == nil {
+		return nil, false
+	}
+	return o.ThrowError, true
+}
+
+// HasThrowError returns a boolean if a field has been set.
+func (o *DummyStage) HasThrowError() bool {
+	if o != nil && o.ThrowError != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetThrowError gets a reference to the given bool and assigns it to the ThrowError field.
+func (o *DummyStage) SetThrowError(v bool) {
+	o.ThrowError = &v
+}
+
 func (o DummyStage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -247,6 +280,9 @@ func (o DummyStage) MarshalJSON() ([]byte, error) {
 	}
 	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
+	}
+	if o.ThrowError != nil {
+		toSerialize["throw_error"] = o.ThrowError
 	}
 	return json.Marshal(toSerialize)
 }

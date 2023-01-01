@@ -4,12 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
+**Type** | Pointer to **string** |  | [optional] [default to "native"]
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | Pointer to **string** |  | [optional] [default to "xak-flow-error"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-flow-error"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
-**PendingUser** | **string** |  | 
-**PendingUserAvatar** | **string** |  | 
 **RequestId** | **string** |  | 
 **Error** | Pointer to **string** |  | [optional] 
 **Traceback** | Pointer to **string** |  | [optional] 
@@ -18,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewFlowErrorChallenge
 
-`func NewFlowErrorChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, requestId string, ) *FlowErrorChallenge`
+`func NewFlowErrorChallenge(requestId string, ) *FlowErrorChallenge`
 
 NewFlowErrorChallenge instantiates a new FlowErrorChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -35,23 +33,28 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *FlowErrorChallenge) GetType() ChallengeChoices`
+`func (o *FlowErrorChallenge) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *FlowErrorChallenge) GetTypeOk() (*ChallengeChoices, bool)`
+`func (o *FlowErrorChallenge) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *FlowErrorChallenge) SetType(v ChallengeChoices)`
+`func (o *FlowErrorChallenge) SetType(v string)`
 
 SetType sets Type field to given value.
 
+### HasType
+
+`func (o *FlowErrorChallenge) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetFlowInfo
 
@@ -127,46 +130,6 @@ SetResponseErrors sets ResponseErrors field to given value.
 `func (o *FlowErrorChallenge) HasResponseErrors() bool`
 
 HasResponseErrors returns a boolean if a field has been set.
-
-### GetPendingUser
-
-`func (o *FlowErrorChallenge) GetPendingUser() string`
-
-GetPendingUser returns the PendingUser field if non-nil, zero value otherwise.
-
-### GetPendingUserOk
-
-`func (o *FlowErrorChallenge) GetPendingUserOk() (*string, bool)`
-
-GetPendingUserOk returns a tuple with the PendingUser field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPendingUser
-
-`func (o *FlowErrorChallenge) SetPendingUser(v string)`
-
-SetPendingUser sets PendingUser field to given value.
-
-
-### GetPendingUserAvatar
-
-`func (o *FlowErrorChallenge) GetPendingUserAvatar() string`
-
-GetPendingUserAvatar returns the PendingUserAvatar field if non-nil, zero value otherwise.
-
-### GetPendingUserAvatarOk
-
-`func (o *FlowErrorChallenge) GetPendingUserAvatarOk() (*string, bool)`
-
-GetPendingUserAvatarOk returns a tuple with the PendingUserAvatar field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPendingUserAvatar
-
-`func (o *FlowErrorChallenge) SetPendingUserAvatar(v string)`
-
-SetPendingUserAvatar sets PendingUserAvatar field to given value.
-
 
 ### GetRequestId
 

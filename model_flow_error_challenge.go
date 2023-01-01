@@ -17,28 +17,25 @@ import (
 
 // FlowErrorChallenge Challenge class when an unhandled error occurs during a stage. Normal users are shown an error message, superusers are shown a full stacktrace.
 type FlowErrorChallenge struct {
-	Type              ChallengeChoices          `json:"type"`
-	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component         *string                   `json:"component,omitempty"`
-	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser       string                    `json:"pending_user"`
-	PendingUserAvatar string                    `json:"pending_user_avatar"`
-	RequestId         string                    `json:"request_id"`
-	Error             *string                   `json:"error,omitempty"`
-	Traceback         *string                   `json:"traceback,omitempty"`
+	Type           *string                   `json:"type,omitempty"`
+	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component      *string                   `json:"component,omitempty"`
+	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	RequestId      string                    `json:"request_id"`
+	Error          *string                   `json:"error,omitempty"`
+	Traceback      *string                   `json:"traceback,omitempty"`
 }
 
 // NewFlowErrorChallenge instantiates a new FlowErrorChallenge object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFlowErrorChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, requestId string) *FlowErrorChallenge {
+func NewFlowErrorChallenge(requestId string) *FlowErrorChallenge {
 	this := FlowErrorChallenge{}
-	this.Type = type_
-	var component string = "xak-flow-error"
+	var type_ string = "native"
+	this.Type = &type_
+	var component string = "ak-stage-flow-error"
 	this.Component = &component
-	this.PendingUser = pendingUser
-	this.PendingUserAvatar = pendingUserAvatar
 	this.RequestId = requestId
 	return &this
 }
@@ -48,33 +45,43 @@ func NewFlowErrorChallenge(type_ ChallengeChoices, pendingUser string, pendingUs
 // but it doesn't guarantee that properties required by API are set
 func NewFlowErrorChallengeWithDefaults() *FlowErrorChallenge {
 	this := FlowErrorChallenge{}
-	var component string = "xak-flow-error"
+	var type_ string = "native"
+	this.Type = &type_
+	var component string = "ak-stage-flow-error"
 	this.Component = &component
 	return &this
 }
 
-// GetType returns the Type field value
-func (o *FlowErrorChallenge) GetType() ChallengeChoices {
-	if o == nil {
-		var ret ChallengeChoices
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *FlowErrorChallenge) GetType() string {
+	if o == nil || o.Type == nil {
+		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FlowErrorChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil {
+func (o *FlowErrorChallenge) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
-func (o *FlowErrorChallenge) SetType(v ChallengeChoices) {
-	o.Type = v
+// HasType returns a boolean if a field has been set.
+func (o *FlowErrorChallenge) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *FlowErrorChallenge) SetType(v string) {
+	o.Type = &v
 }
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
@@ -173,54 +180,6 @@ func (o *FlowErrorChallenge) SetResponseErrors(v map[string][]ErrorDetail) {
 	o.ResponseErrors = &v
 }
 
-// GetPendingUser returns the PendingUser field value
-func (o *FlowErrorChallenge) GetPendingUser() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.PendingUser
-}
-
-// GetPendingUserOk returns a tuple with the PendingUser field value
-// and a boolean to check if the value has been set.
-func (o *FlowErrorChallenge) GetPendingUserOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PendingUser, true
-}
-
-// SetPendingUser sets field value
-func (o *FlowErrorChallenge) SetPendingUser(v string) {
-	o.PendingUser = v
-}
-
-// GetPendingUserAvatar returns the PendingUserAvatar field value
-func (o *FlowErrorChallenge) GetPendingUserAvatar() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.PendingUserAvatar
-}
-
-// GetPendingUserAvatarOk returns a tuple with the PendingUserAvatar field value
-// and a boolean to check if the value has been set.
-func (o *FlowErrorChallenge) GetPendingUserAvatarOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PendingUserAvatar, true
-}
-
-// SetPendingUserAvatar sets field value
-func (o *FlowErrorChallenge) SetPendingUserAvatar(v string) {
-	o.PendingUserAvatar = v
-}
-
 // GetRequestId returns the RequestId field value
 func (o *FlowErrorChallenge) GetRequestId() string {
 	if o == nil {
@@ -311,7 +270,7 @@ func (o *FlowErrorChallenge) SetTraceback(v string) {
 
 func (o FlowErrorChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.Type != nil {
 		toSerialize["type"] = o.Type
 	}
 	if o.FlowInfo != nil {
@@ -322,12 +281,6 @@ func (o FlowErrorChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if o.ResponseErrors != nil {
 		toSerialize["response_errors"] = o.ResponseErrors
-	}
-	if true {
-		toSerialize["pending_user"] = o.PendingUser
-	}
-	if true {
-		toSerialize["pending_user_avatar"] = o.PendingUserAvatar
 	}
 	if true {
 		toSerialize["request_id"] = o.RequestId

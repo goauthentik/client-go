@@ -5404,7 +5404,7 @@ Name | Type | Description  | Notes
 
 ## StagesDummyList
 
-> PaginatedDummyStageList StagesDummyList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+> PaginatedDummyStageList StagesDummyList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).ThrowError(throwError).Execute()
 
 
 
@@ -5429,10 +5429,11 @@ func main() {
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    throwError := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDummyList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+    resp, r, err := apiClient.StagesApi.StagesDummyList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).ThrowError(throwError).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDummyList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5459,6 +5460,7 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
  **stageUuid** | **string** |  | 
+ **throwError** | **bool** |  | 
 
 ### Return type
 

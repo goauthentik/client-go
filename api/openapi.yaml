@@ -24092,6 +24092,13 @@ paths:
           format: uuid
           type: string
         style: form
+      - explode: true
+        in: query
+        name: throw_error
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -29887,7 +29894,7 @@ components:
           ak-stage-consent: '#/components/schemas/ConsentChallenge'
           ak-stage-dummy: '#/components/schemas/DummyChallenge'
           ak-stage-email: '#/components/schemas/EmailChallenge'
-          xak-flow-error: '#/components/schemas/FlowErrorChallenge'
+          ak-stage-flow-error: '#/components/schemas/FlowErrorChallenge'
           ak-stage-identification: '#/components/schemas/IdentificationChallenge'
           ak-provider-oauth2-device-code: '#/components/schemas/OAuthDeviceCodeChallenge'
           ak-provider-oauth2-device-code-finish: '#/components/schemas/OAuthDeviceCodeFinishChallenge'
@@ -30649,6 +30656,7 @@ components:
         verbose_name: verbose_name
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
+        throw_error: true
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
@@ -30700,6 +30708,8 @@ components:
           items:
             $ref: '#/components/schemas/FlowSet'
           type: array
+        throw_error:
+          type: boolean
       required:
       - component
       - meta_model_name
@@ -30711,6 +30721,7 @@ components:
     DummyStageRequest:
       description: DummyStage Serializer
       example:
+        throw_error: true
         name: name
         flow_set:
         - policy_engine_mode: null
@@ -30737,6 +30748,8 @@ components:
           items:
             $ref: '#/components/schemas/FlowSetRequest'
           type: array
+        throw_error:
+          type: boolean
       required:
       - name
       type: object
@@ -31653,11 +31666,12 @@ components:
         \ Normal users\nare shown an error message, superusers are shown a full stacktrace."
       properties:
         type:
-          $ref: '#/components/schemas/ChallengeChoices'
+          default: native
+          type: string
         flow_info:
           $ref: '#/components/schemas/ContextualFlowInfo'
         component:
-          default: xak-flow-error
+          default: ak-stage-flow-error
           type: string
         response_errors:
           additionalProperties:
@@ -31665,10 +31679,6 @@ components:
               $ref: '#/components/schemas/ErrorDetail'
             type: array
           type: object
-        pending_user:
-          type: string
-        pending_user_avatar:
-          type: string
         request_id:
           type: string
         error:
@@ -31676,10 +31686,7 @@ components:
         traceback:
           type: string
       required:
-      - pending_user
-      - pending_user_avatar
       - request_id
-      - type
       type: object
     FlowImportResult:
       description: Logs of an attempted flow import
@@ -35912,6 +35919,7 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          throw_error: true
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
@@ -35943,6 +35951,7 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          throw_error: true
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
@@ -40971,6 +40980,7 @@ components:
     PatchedDummyStageRequest:
       description: DummyStage Serializer
       example:
+        throw_error: true
         name: name
         flow_set:
         - policy_engine_mode: null
@@ -40997,6 +41007,8 @@ components:
           items:
             $ref: '#/components/schemas/FlowSetRequest'
           type: array
+        throw_error:
+          type: boolean
       type: object
     PatchedDuoDeviceRequest:
       description: Serializer for Duo authenticator devices

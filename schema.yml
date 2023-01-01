@@ -21607,6 +21607,10 @@ paths:
         schema:
           type: string
           format: uuid
+      - in: query
+        name: throw_error
+        schema:
+          type: boolean
       tags:
       - stages
       security:
@@ -26607,7 +26611,7 @@ components:
           ak-stage-consent: '#/components/schemas/ConsentChallenge'
           ak-stage-dummy: '#/components/schemas/DummyChallenge'
           ak-stage-email: '#/components/schemas/EmailChallenge'
-          xak-flow-error: '#/components/schemas/FlowErrorChallenge'
+          ak-stage-flow-error: '#/components/schemas/FlowErrorChallenge'
           ak-stage-identification: '#/components/schemas/IdentificationChallenge'
           ak-provider-oauth2-device-code: '#/components/schemas/OAuthDeviceCodeChallenge'
           ak-provider-oauth2-device-code-finish: '#/components/schemas/OAuthDeviceCodeFinishChallenge'
@@ -27177,6 +27181,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FlowSet'
+        throw_error:
+          type: boolean
       required:
       - component
       - meta_model_name
@@ -27195,6 +27201,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FlowSetRequest'
+        throw_error:
+          type: boolean
       required:
       - name
     DuoDevice:
@@ -27868,22 +27876,19 @@ components:
         are shown an error message, superusers are shown a full stacktrace.
       properties:
         type:
-          $ref: '#/components/schemas/ChallengeChoices'
+          type: string
+          default: native
         flow_info:
           $ref: '#/components/schemas/ContextualFlowInfo'
         component:
           type: string
-          default: xak-flow-error
+          default: ak-stage-flow-error
         response_errors:
           type: object
           additionalProperties:
             type: array
             items:
               $ref: '#/components/schemas/ErrorDetail'
-        pending_user:
-          type: string
-        pending_user_avatar:
-          type: string
         request_id:
           type: string
         error:
@@ -27891,10 +27896,7 @@ components:
         traceback:
           type: string
       required:
-      - pending_user
-      - pending_user_avatar
       - request_id
-      - type
     FlowImportResult:
       type: object
       description: Logs of an attempted flow import
@@ -33739,6 +33741,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FlowSetRequest'
+        throw_error:
+          type: boolean
     PatchedDuoDeviceRequest:
       type: object
       description: Serializer for Duo authenticator devices

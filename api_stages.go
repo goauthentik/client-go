@@ -10927,6 +10927,7 @@ type ApiStagesDummyListRequest struct {
 	pageSize   *int32
 	search     *string
 	stageUuid  *string
+	throwError *bool
 }
 
 func (r ApiStagesDummyListRequest) Name(name string) ApiStagesDummyListRequest {
@@ -10960,6 +10961,11 @@ func (r ApiStagesDummyListRequest) Search(search string) ApiStagesDummyListReque
 
 func (r ApiStagesDummyListRequest) StageUuid(stageUuid string) ApiStagesDummyListRequest {
 	r.stageUuid = &stageUuid
+	return r
+}
+
+func (r ApiStagesDummyListRequest) ThrowError(throwError bool) ApiStagesDummyListRequest {
+	r.throwError = &throwError
 	return r
 }
 
@@ -11020,6 +11026,9 @@ func (a *StagesApiService) StagesDummyListExecute(r ApiStagesDummyListRequest) (
 	}
 	if r.stageUuid != nil {
 		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+	}
+	if r.throwError != nil {
+		localVarQueryParams.Add("throw_error", parameterToString(*r.throwError, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
