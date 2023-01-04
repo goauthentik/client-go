@@ -55,13 +55,15 @@ type SAMLProvider struct {
 	UrlSsoPost          string                `json:"url_sso_post"`
 	UrlSsoRedirect      string                `json:"url_sso_redirect"`
 	UrlSsoInit          string                `json:"url_sso_init"`
+	UrlSloPost          string                `json:"url_slo_post"`
+	UrlSloRedirect      string                `json:"url_slo_redirect"`
 }
 
 // NewSAMLProvider instantiates a new SAMLProvider object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSAMLProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, urlDownloadMetadata string, urlSsoPost string, urlSsoRedirect string, urlSsoInit string) *SAMLProvider {
+func NewSAMLProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, urlDownloadMetadata string, urlSsoPost string, urlSsoRedirect string, urlSsoInit string, urlSloPost string, urlSloRedirect string) *SAMLProvider {
 	this := SAMLProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -77,6 +79,8 @@ func NewSAMLProvider(pk int32, name string, authorizationFlow string, component 
 	this.UrlSsoPost = urlSsoPost
 	this.UrlSsoRedirect = urlSsoRedirect
 	this.UrlSsoInit = urlSsoInit
+	this.UrlSloPost = urlSloPost
+	this.UrlSloRedirect = urlSloRedirect
 	return &this
 }
 
@@ -852,6 +856,54 @@ func (o *SAMLProvider) SetUrlSsoInit(v string) {
 	o.UrlSsoInit = v
 }
 
+// GetUrlSloPost returns the UrlSloPost field value
+func (o *SAMLProvider) GetUrlSloPost() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UrlSloPost
+}
+
+// GetUrlSloPostOk returns a tuple with the UrlSloPost field value
+// and a boolean to check if the value has been set.
+func (o *SAMLProvider) GetUrlSloPostOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UrlSloPost, true
+}
+
+// SetUrlSloPost sets field value
+func (o *SAMLProvider) SetUrlSloPost(v string) {
+	o.UrlSloPost = v
+}
+
+// GetUrlSloRedirect returns the UrlSloRedirect field value
+func (o *SAMLProvider) GetUrlSloRedirect() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UrlSloRedirect
+}
+
+// GetUrlSloRedirectOk returns a tuple with the UrlSloRedirect field value
+// and a boolean to check if the value has been set.
+func (o *SAMLProvider) GetUrlSloRedirectOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UrlSloRedirect, true
+}
+
+// SetUrlSloRedirect sets field value
+func (o *SAMLProvider) SetUrlSloRedirect(v string) {
+	o.UrlSloRedirect = v
+}
+
 func (o SAMLProvider) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -931,6 +983,12 @@ func (o SAMLProvider) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["url_sso_init"] = o.UrlSsoInit
+	}
+	if true {
+		toSerialize["url_slo_post"] = o.UrlSloPost
+	}
+	if true {
+		toSerialize["url_slo_redirect"] = o.UrlSloRedirect
 	}
 	return json.Marshal(toSerialize)
 }

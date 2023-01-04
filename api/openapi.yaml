@@ -38729,11 +38729,13 @@ components:
         results:
         - url_sso_init: url_sso_init
           verbose_name_plural: verbose_name_plural
+          url_slo_redirect: url_slo_redirect
           session_valid_not_on_or_after: session_valid_not_on_or_after
           assigned_application_slug: assigned_application_slug
           issuer: issuer
           url_sso_redirect: url_sso_redirect
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          url_slo_post: url_slo_post
           assigned_application_name: assigned_application_name
           signature_algorithm: null
           property_mappings:
@@ -38757,11 +38759,13 @@ components:
           name_id_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - url_sso_init: url_sso_init
           verbose_name_plural: verbose_name_plural
+          url_slo_redirect: url_slo_redirect
           session_valid_not_on_or_after: session_valid_not_on_or_after
           assigned_application_slug: assigned_application_slug
           issuer: issuer
           url_sso_redirect: url_sso_redirect
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          url_slo_post: url_slo_post
           assigned_application_name: assigned_application_name
           signature_algorithm: null
           property_mappings:
@@ -44965,11 +44969,13 @@ components:
       example:
         url_sso_init: url_sso_init
         verbose_name_plural: verbose_name_plural
+        url_slo_redirect: url_slo_redirect
         session_valid_not_on_or_after: session_valid_not_on_or_after
         assigned_application_slug: assigned_application_slug
         issuer: issuer
         url_sso_redirect: url_sso_redirect
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        url_slo_post: url_slo_post
         assigned_application_name: assigned_application_name
         signature_algorithm: null
         property_mappings:
@@ -45093,6 +45099,12 @@ components:
         url_sso_init:
           readOnly: true
           type: string
+        url_slo_post:
+          readOnly: true
+          type: string
+        url_slo_redirect:
+          readOnly: true
+          type: string
       required:
       - acs_url
       - assigned_application_name
@@ -45103,6 +45115,8 @@ components:
       - name
       - pk
       - url_download_metadata
+      - url_slo_post
+      - url_slo_redirect
       - url_sso_init
       - url_sso_post
       - url_sso_redirect

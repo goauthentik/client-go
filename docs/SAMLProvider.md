@@ -30,12 +30,14 @@ Name | Type | Description | Notes
 **UrlSsoPost** | **string** |  | [readonly] 
 **UrlSsoRedirect** | **string** |  | [readonly] 
 **UrlSsoInit** | **string** |  | [readonly] 
+**UrlSloPost** | **string** |  | [readonly] 
+**UrlSloRedirect** | **string** |  | [readonly] 
 
 ## Methods
 
 ### NewSAMLProvider
 
-`func NewSAMLProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, urlDownloadMetadata string, urlSsoPost string, urlSsoRedirect string, urlSsoInit string, ) *SAMLProvider`
+`func NewSAMLProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, urlDownloadMetadata string, urlSsoPost string, urlSsoRedirect string, urlSsoInit string, urlSloPost string, urlSloRedirect string, ) *SAMLProvider`
 
 NewSAMLProvider instantiates a new SAMLProvider object
 This constructor will assign default values to properties that have it defined,
@@ -668,6 +670,46 @@ and a boolean to check if the value has been set.
 `func (o *SAMLProvider) SetUrlSsoInit(v string)`
 
 SetUrlSsoInit sets UrlSsoInit field to given value.
+
+
+### GetUrlSloPost
+
+`func (o *SAMLProvider) GetUrlSloPost() string`
+
+GetUrlSloPost returns the UrlSloPost field if non-nil, zero value otherwise.
+
+### GetUrlSloPostOk
+
+`func (o *SAMLProvider) GetUrlSloPostOk() (*string, bool)`
+
+GetUrlSloPostOk returns a tuple with the UrlSloPost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrlSloPost
+
+`func (o *SAMLProvider) SetUrlSloPost(v string)`
+
+SetUrlSloPost sets UrlSloPost field to given value.
+
+
+### GetUrlSloRedirect
+
+`func (o *SAMLProvider) GetUrlSloRedirect() string`
+
+GetUrlSloRedirect returns the UrlSloRedirect field if non-nil, zero value otherwise.
+
+### GetUrlSloRedirectOk
+
+`func (o *SAMLProvider) GetUrlSloRedirectOk() (*string, bool)`
+
+GetUrlSloRedirectOk returns a tuple with the UrlSloRedirect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrlSloRedirect
+
+`func (o *SAMLProvider) SetUrlSloRedirect(v string)`
+
+SetUrlSloRedirect sets UrlSloRedirect field to given value.
 
 
 
