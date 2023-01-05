@@ -25,8 +25,6 @@
 
 * `POLICIES_EXPRESSION` (value: `"authentik.policies.expression"`)
 
-* `POLICIES_HIBP` (value: `"authentik.policies.hibp"`)
-
 * `POLICIES_PASSWORD` (value: `"authentik.policies.password"`)
 
 * `POLICIES_REPUTATION` (value: `"authentik.policies.reputation"`)

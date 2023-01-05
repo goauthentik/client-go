@@ -318,13 +318,6 @@ Class | Method | HTTP request | Description
 *PoliciesApi* | [**PoliciesExpressionRetrieve**](docs/PoliciesApi.md#policiesexpressionretrieve) | **Get** /policies/expression/{policy_uuid}/ | 
 *PoliciesApi* | [**PoliciesExpressionUpdate**](docs/PoliciesApi.md#policiesexpressionupdate) | **Put** /policies/expression/{policy_uuid}/ | 
 *PoliciesApi* | [**PoliciesExpressionUsedByList**](docs/PoliciesApi.md#policiesexpressionusedbylist) | **Get** /policies/expression/{policy_uuid}/used_by/ | 
-*PoliciesApi* | [**PoliciesHaveibeenpwnedCreate**](docs/PoliciesApi.md#policieshaveibeenpwnedcreate) | **Post** /policies/haveibeenpwned/ | 
-*PoliciesApi* | [**PoliciesHaveibeenpwnedDestroy**](docs/PoliciesApi.md#policieshaveibeenpwneddestroy) | **Delete** /policies/haveibeenpwned/{policy_uuid}/ | 
-*PoliciesApi* | [**PoliciesHaveibeenpwnedList**](docs/PoliciesApi.md#policieshaveibeenpwnedlist) | **Get** /policies/haveibeenpwned/ | 
-*PoliciesApi* | [**PoliciesHaveibeenpwnedPartialUpdate**](docs/PoliciesApi.md#policieshaveibeenpwnedpartialupdate) | **Patch** /policies/haveibeenpwned/{policy_uuid}/ | 
-*PoliciesApi* | [**PoliciesHaveibeenpwnedRetrieve**](docs/PoliciesApi.md#policieshaveibeenpwnedretrieve) | **Get** /policies/haveibeenpwned/{policy_uuid}/ | 
-*PoliciesApi* | [**PoliciesHaveibeenpwnedUpdate**](docs/PoliciesApi.md#policieshaveibeenpwnedupdate) | **Put** /policies/haveibeenpwned/{policy_uuid}/ | 
-*PoliciesApi* | [**PoliciesHaveibeenpwnedUsedByList**](docs/PoliciesApi.md#policieshaveibeenpwnedusedbylist) | **Get** /policies/haveibeenpwned/{policy_uuid}/used_by/ | 
 *PoliciesApi* | [**PoliciesPasswordCreate**](docs/PoliciesApi.md#policiespasswordcreate) | **Post** /policies/password/ | 
 *PoliciesApi* | [**PoliciesPasswordDestroy**](docs/PoliciesApi.md#policiespassworddestroy) | **Delete** /policies/password/{policy_uuid}/ | 
 *PoliciesApi* | [**PoliciesPasswordExpiryCreate**](docs/PoliciesApi.md#policiespasswordexpirycreate) | **Post** /policies/password_expiry/ | 
@@ -785,8 +778,6 @@ Class | Method | HTTP request | Description
  - [GroupMember](docs/GroupMember.md)
  - [GroupMemberRequest](docs/GroupMemberRequest.md)
  - [GroupRequest](docs/GroupRequest.md)
- - [HaveIBeenPwendPolicy](docs/HaveIBeenPwendPolicy.md)
- - [HaveIBeenPwendPolicyRequest](docs/HaveIBeenPwendPolicyRequest.md)
  - [IdentificationChallenge](docs/IdentificationChallenge.md)
  - [IdentificationChallengeResponseRequest](docs/IdentificationChallengeResponseRequest.md)
  - [IdentificationStage](docs/IdentificationStage.md)
@@ -872,7 +863,6 @@ Class | Method | HTTP request | Description
  - [PaginatedFlowList](docs/PaginatedFlowList.md)
  - [PaginatedFlowStageBindingList](docs/PaginatedFlowStageBindingList.md)
  - [PaginatedGroupList](docs/PaginatedGroupList.md)
- - [PaginatedHaveIBeenPwendPolicyList](docs/PaginatedHaveIBeenPwendPolicyList.md)
  - [PaginatedIdentificationStageList](docs/PaginatedIdentificationStageList.md)
  - [PaginatedInvitationList](docs/PaginatedInvitationList.md)
  - [PaginatedInvitationStageList](docs/PaginatedInvitationStageList.md)
@@ -957,7 +947,6 @@ Class | Method | HTTP request | Description
  - [PatchedFlowRequest](docs/PatchedFlowRequest.md)
  - [PatchedFlowStageBindingRequest](docs/PatchedFlowStageBindingRequest.md)
  - [PatchedGroupRequest](docs/PatchedGroupRequest.md)
- - [PatchedHaveIBeenPwendPolicyRequest](docs/PatchedHaveIBeenPwendPolicyRequest.md)
  - [PatchedIdentificationStageRequest](docs/PatchedIdentificationStageRequest.md)
  - [PatchedInvitationRequest](docs/PatchedInvitationRequest.md)
  - [PatchedInvitationStageRequest](docs/PatchedInvitationStageRequest.md)

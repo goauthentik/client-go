@@ -158,8 +158,6 @@ docs/Group.md
 docs/GroupMember.md
 docs/GroupMemberRequest.md
 docs/GroupRequest.md
-docs/HaveIBeenPwendPolicy.md
-docs/HaveIBeenPwendPolicyRequest.md
 docs/IdentificationChallenge.md
 docs/IdentificationChallengeResponseRequest.md
 docs/IdentificationStage.md
@@ -248,7 +246,6 @@ docs/PaginatedExpressionPolicyList.md
 docs/PaginatedFlowList.md
 docs/PaginatedFlowStageBindingList.md
 docs/PaginatedGroupList.md
-docs/PaginatedHaveIBeenPwendPolicyList.md
 docs/PaginatedIdentificationStageList.md
 docs/PaginatedInvitationList.md
 docs/PaginatedInvitationStageList.md
@@ -333,7 +330,6 @@ docs/PatchedExpressionPolicyRequest.md
 docs/PatchedFlowRequest.md
 docs/PatchedFlowStageBindingRequest.md
 docs/PatchedGroupRequest.md
-docs/PatchedHaveIBeenPwendPolicyRequest.md
 docs/PatchedIdentificationStageRequest.md
 docs/PatchedInvitationRequest.md
 docs/PatchedInvitationStageRequest.md
@@ -641,8 +637,6 @@ model_group.go
 model_group_member.go
 model_group_member_request.go
 model_group_request.go
-model_have_i_been_pwend_policy.go
-model_have_i_been_pwend_policy_request.go
 model_identification_challenge.go
 model_identification_challenge_response_request.go
 model_identification_stage.go
@@ -728,7 +722,6 @@ model_paginated_expression_policy_list.go
 model_paginated_flow_list.go
 model_paginated_flow_stage_binding_list.go
 model_paginated_group_list.go
-model_paginated_have_i_been_pwend_policy_list.go
 model_paginated_identification_stage_list.go
 model_paginated_invitation_list.go
 model_paginated_invitation_stage_list.go
@@ -813,7 +806,6 @@ model_patched_expression_policy_request.go
 model_patched_flow_request.go
 model_patched_flow_stage_binding_request.go
 model_patched_group_request.go
-model_patched_have_i_been_pwend_policy_request.go
 model_patched_identification_stage_request.go
 model_patched_invitation_request.go
 model_patched_invitation_stage_request.go
