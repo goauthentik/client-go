@@ -470,6 +470,7 @@ docs/UsedByActionEnum.md
 docs/User.md
 docs/UserAccountRequest.md
 docs/UserConsent.md
+docs/UserCreationModeEnum.md
 docs/UserDeleteStage.md
 docs/UserDeleteStageRequest.md
 docs/UserFieldsEnum.md
@@ -939,6 +940,7 @@ model_used_by_action_enum.go
 model_user.go
 model_user_account_request.go
 model_user_consent.go
+model_user_creation_mode_enum.go
 model_user_delete_stage.go
 model_user_delete_stage_request.go
 model_user_fields_enum.go

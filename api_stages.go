@@ -22552,7 +22552,6 @@ func (a *StagesApiService) StagesUserWriteDestroyExecute(r ApiStagesUserWriteDes
 type ApiStagesUserWriteListRequest struct {
 	ctx                   context.Context
 	ApiService            *StagesApiService
-	canCreateUsers        *bool
 	createUsersAsInactive *bool
 	createUsersGroup      *string
 	name                  *string
@@ -22561,12 +22560,8 @@ type ApiStagesUserWriteListRequest struct {
 	pageSize              *int32
 	search                *string
 	stageUuid             *string
+	userCreationMode      *string
 	userPathTemplate      *string
-}
-
-func (r ApiStagesUserWriteListRequest) CanCreateUsers(canCreateUsers bool) ApiStagesUserWriteListRequest {
-	r.canCreateUsers = &canCreateUsers
-	return r
 }
 
 func (r ApiStagesUserWriteListRequest) CreateUsersAsInactive(createUsersAsInactive bool) ApiStagesUserWriteListRequest {
@@ -22610,6 +22605,11 @@ func (r ApiStagesUserWriteListRequest) Search(search string) ApiStagesUserWriteL
 
 func (r ApiStagesUserWriteListRequest) StageUuid(stageUuid string) ApiStagesUserWriteListRequest {
 	r.stageUuid = &stageUuid
+	return r
+}
+
+func (r ApiStagesUserWriteListRequest) UserCreationMode(userCreationMode string) ApiStagesUserWriteListRequest {
+	r.userCreationMode = &userCreationMode
 	return r
 }
 
@@ -22658,9 +22658,6 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.canCreateUsers != nil {
-		localVarQueryParams.Add("can_create_users", parameterToString(*r.canCreateUsers, ""))
-	}
 	if r.createUsersAsInactive != nil {
 		localVarQueryParams.Add("create_users_as_inactive", parameterToString(*r.createUsersAsInactive, ""))
 	}
@@ -22684,6 +22681,9 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 	}
 	if r.stageUuid != nil {
 		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+	}
+	if r.userCreationMode != nil {
+		localVarQueryParams.Add("user_creation_mode", parameterToString(*r.userCreationMode, ""))
 	}
 	if r.userPathTemplate != nil {
 		localVarQueryParams.Add("user_path_template", parameterToString(*r.userPathTemplate, ""))

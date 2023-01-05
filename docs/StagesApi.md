@@ -10956,7 +10956,7 @@ Name | Type | Description  | Notes
 
 ## StagesUserWriteList
 
-> PaginatedUserWriteStageList StagesUserWriteList(ctx).CanCreateUsers(canCreateUsers).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserPathTemplate(userPathTemplate).Execute()
+> PaginatedUserWriteStageList StagesUserWriteList(ctx).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserCreationMode(userCreationMode).UserPathTemplate(userPathTemplate).Execute()
 
 
 
@@ -10975,7 +10975,6 @@ import (
 )
 
 func main() {
-    canCreateUsers := true // bool |  (optional)
     createUsersAsInactive := true // bool |  (optional)
     createUsersGroup := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     name := "name_example" // string |  (optional)
@@ -10984,11 +10983,12 @@ func main() {
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    userCreationMode := "userCreationMode_example" // string |  (optional)
     userPathTemplate := "userPathTemplate_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserWriteList(context.Background()).CanCreateUsers(canCreateUsers).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserPathTemplate(userPathTemplate).Execute()
+    resp, r, err := apiClient.StagesApi.StagesUserWriteList(context.Background()).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserCreationMode(userCreationMode).UserPathTemplate(userPathTemplate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserWriteList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11009,7 +11009,6 @@ Other parameters are passed through a pointer to a apiStagesUserWriteListRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **canCreateUsers** | **bool** |  | 
  **createUsersAsInactive** | **bool** |  | 
  **createUsersGroup** | **string** |  | 
  **name** | **string** |  | 
@@ -11018,6 +11017,7 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
  **stageUuid** | **string** |  | 
+ **userCreationMode** | **string** |  | 
  **userPathTemplate** | **string** |  | 
 
 ### Return type

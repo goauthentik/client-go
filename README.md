@@ -1080,6 +1080,7 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [UserAccountRequest](docs/UserAccountRequest.md)
  - [UserConsent](docs/UserConsent.md)
+ - [UserCreationModeEnum](docs/UserCreationModeEnum.md)
  - [UserDeleteStage](docs/UserDeleteStage.md)
  - [UserDeleteStageRequest](docs/UserDeleteStageRequest.md)
  - [UserFieldsEnum](docs/UserFieldsEnum.md)

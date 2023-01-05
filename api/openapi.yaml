@@ -27188,13 +27188,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: can_create_users
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
         name: create_users_as_inactive
         required: false
         schema:
@@ -27253,6 +27246,17 @@ paths:
         required: false
         schema:
           format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: user_creation_mode
+        required: false
+        schema:
+          enum:
+          - always_create
+          - create_when_required
+          - never_create
           type: string
         style: form
       - explode: true
@@ -39326,6 +39330,7 @@ components:
           name: name
           create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user_creation_mode: null
           flow_set:
           - policy_engine_mode: null
             compatibility_mode: true
@@ -39352,7 +39357,6 @@ components:
             title: title
             slug: slug
           create_users_as_inactive: true
-          can_create_users: true
         - component: component
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
@@ -39361,6 +39365,7 @@ components:
           name: name
           create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user_creation_mode: null
           flow_set:
           - policy_engine_mode: null
             compatibility_mode: true
@@ -39387,7 +39392,6 @@ components:
             title: title
             slug: slug
           create_users_as_inactive: true
-          can_create_users: true
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -42616,6 +42620,7 @@ components:
         user_path_template: user_path_template
         name: name
         create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user_creation_mode: null
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -42634,7 +42639,6 @@ components:
           title: title
           slug: slug
         create_users_as_inactive: true
-        can_create_users: true
       properties:
         name:
           minLength: 1
@@ -42643,6 +42647,8 @@ components:
           items:
             $ref: '#/components/schemas/FlowSetRequest'
           type: array
+        user_creation_mode:
+          $ref: '#/components/schemas/UserCreationModeEnum'
         create_users_as_inactive:
           description: "When set, newly created users are inactive and cannot login."
           type: boolean
@@ -42651,10 +42657,6 @@ components:
           format: uuid
           nullable: true
           type: string
-        can_create_users:
-          description: "When set, this stage can create users. If not enabled and\
-            \ no user is available, stage will fail."
-          type: boolean
         user_path_template:
           type: string
       type: object
@@ -46250,6 +46252,12 @@ components:
       - pk
       - user
       type: object
+    UserCreationModeEnum:
+      enum:
+      - never_create
+      - create_when_required
+      - always_create
+      type: string
     UserDeleteStage:
       description: UserDeleteStage Serializer
       example:
@@ -47024,6 +47032,7 @@ components:
         name: name
         create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user_creation_mode: null
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -47050,7 +47059,6 @@ components:
           title: title
           slug: slug
         create_users_as_inactive: true
-        can_create_users: true
       properties:
         pk:
           format: uuid
@@ -47075,6 +47083,8 @@ components:
           items:
             $ref: '#/components/schemas/FlowSet'
           type: array
+        user_creation_mode:
+          $ref: '#/components/schemas/UserCreationModeEnum'
         create_users_as_inactive:
           description: "When set, newly created users are inactive and cannot login."
           type: boolean
@@ -47083,10 +47093,6 @@ components:
           format: uuid
           nullable: true
           type: string
-        can_create_users:
-          description: "When set, this stage can create users. If not enabled and\
-            \ no user is available, stage will fail."
-          type: boolean
         user_path_template:
           type: string
       required:
@@ -47103,6 +47109,7 @@ components:
         user_path_template: user_path_template
         name: name
         create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user_creation_mode: null
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -47121,7 +47128,6 @@ components:
           title: title
           slug: slug
         create_users_as_inactive: true
-        can_create_users: true
       properties:
         name:
           minLength: 1
@@ -47130,6 +47136,8 @@ components:
           items:
             $ref: '#/components/schemas/FlowSetRequest'
           type: array
+        user_creation_mode:
+          $ref: '#/components/schemas/UserCreationModeEnum'
         create_users_as_inactive:
           description: "When set, newly created users are inactive and cannot login."
           type: boolean
@@ -47138,10 +47146,6 @@ components:
           format: uuid
           nullable: true
           type: string
-        can_create_users:
-          description: "When set, this stage can create users. If not enabled and\
-            \ no user is available, stage will fail."
-          type: boolean
         user_path_template:
           type: string
       required:

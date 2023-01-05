@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 **VerboseNamePlural** | **string** |  | [readonly] 
 **MetaModelName** | **string** |  | [readonly] 
 **FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
+**UserCreationMode** | Pointer to [**UserCreationModeEnum**](UserCreationModeEnum.md) |  | [optional] 
 **CreateUsersAsInactive** | Pointer to **bool** | When set, newly created users are inactive and cannot login. | [optional] 
 **CreateUsersGroup** | Pointer to **NullableString** | Optionally add newly created users to this group. | [optional] 
-**CanCreateUsers** | Pointer to **bool** | When set, this stage can create users. If not enabled and no user is available, stage will fail. | [optional] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -180,6 +180,31 @@ SetFlowSet sets FlowSet field to given value.
 
 HasFlowSet returns a boolean if a field has been set.
 
+### GetUserCreationMode
+
+`func (o *UserWriteStage) GetUserCreationMode() UserCreationModeEnum`
+
+GetUserCreationMode returns the UserCreationMode field if non-nil, zero value otherwise.
+
+### GetUserCreationModeOk
+
+`func (o *UserWriteStage) GetUserCreationModeOk() (*UserCreationModeEnum, bool)`
+
+GetUserCreationModeOk returns a tuple with the UserCreationMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserCreationMode
+
+`func (o *UserWriteStage) SetUserCreationMode(v UserCreationModeEnum)`
+
+SetUserCreationMode sets UserCreationMode field to given value.
+
+### HasUserCreationMode
+
+`func (o *UserWriteStage) HasUserCreationMode() bool`
+
+HasUserCreationMode returns a boolean if a field has been set.
+
 ### GetCreateUsersAsInactive
 
 `func (o *UserWriteStage) GetCreateUsersAsInactive() bool`
@@ -240,31 +265,6 @@ HasCreateUsersGroup returns a boolean if a field has been set.
 `func (o *UserWriteStage) UnsetCreateUsersGroup()`
 
 UnsetCreateUsersGroup ensures that no value is present for CreateUsersGroup, not even an explicit nil
-### GetCanCreateUsers
-
-`func (o *UserWriteStage) GetCanCreateUsers() bool`
-
-GetCanCreateUsers returns the CanCreateUsers field if non-nil, zero value otherwise.
-
-### GetCanCreateUsersOk
-
-`func (o *UserWriteStage) GetCanCreateUsersOk() (*bool, bool)`
-
-GetCanCreateUsersOk returns a tuple with the CanCreateUsers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCanCreateUsers
-
-`func (o *UserWriteStage) SetCanCreateUsers(v bool)`
-
-SetCanCreateUsers sets CanCreateUsers field to given value.
-
-### HasCanCreateUsers
-
-`func (o *UserWriteStage) HasCanCreateUsers() bool`
-
-HasCanCreateUsers returns a boolean if a field has been set.
-
 ### GetUserPathTemplate
 
 `func (o *UserWriteStage) GetUserPathTemplate() string`
