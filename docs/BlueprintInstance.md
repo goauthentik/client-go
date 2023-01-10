@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
 **Name** | **string** |  | 
-**Path** | **string** |  | 
+**Path** | Pointer to **string** |  | [optional] [default to ""]
 **Context** | Pointer to **map[string]interface{}** |  | [optional] 
 **LastApplied** | **time.Time** |  | [readonly] 
 **LastAppliedHash** | **string** |  | [readonly] 
@@ -14,12 +14,13 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** |  | [optional] 
 **ManagedModels** | **[]string** |  | [readonly] 
 **Metadata** | **map[string]interface{}** |  | [readonly] 
+**Content** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewBlueprintInstance
 
-`func NewBlueprintInstance(pk string, name string, path string, lastApplied time.Time, lastAppliedHash string, status NullableBlueprintInstanceStatusEnum, managedModels []string, metadata map[string]interface{}, ) *BlueprintInstance`
+`func NewBlueprintInstance(pk string, name string, lastApplied time.Time, lastAppliedHash string, status NullableBlueprintInstanceStatusEnum, managedModels []string, metadata map[string]interface{}, ) *BlueprintInstance`
 
 NewBlueprintInstance instantiates a new BlueprintInstance object
 This constructor will assign default values to properties that have it defined,
@@ -93,6 +94,11 @@ and a boolean to check if the value has been set.
 
 SetPath sets Path field to given value.
 
+### HasPath
+
+`func (o *BlueprintInstance) HasPath() bool`
+
+HasPath returns a boolean if a field has been set.
 
 ### GetContext
 
@@ -253,6 +259,31 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
+
+### GetContent
+
+`func (o *BlueprintInstance) GetContent() string`
+
+GetContent returns the Content field if non-nil, zero value otherwise.
+
+### GetContentOk
+
+`func (o *BlueprintInstance) GetContentOk() (*string, bool)`
+
+GetContentOk returns a tuple with the Content field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContent
+
+`func (o *BlueprintInstance) SetContent(v string)`
+
+SetContent sets Content field to given value.
+
+### HasContent
+
+`func (o *BlueprintInstance) HasContent() bool`
+
+HasContent returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

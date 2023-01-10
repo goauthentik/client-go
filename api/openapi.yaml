@@ -29084,6 +29084,7 @@ components:
           key: ""
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enabled: true
+        content: content
         status: ""
       properties:
         pk:
@@ -29094,6 +29095,7 @@ components:
         name:
           type: string
         path:
+          default: ""
           type: string
         context:
           additionalProperties: {}
@@ -29120,13 +29122,14 @@ components:
           additionalProperties: {}
           readOnly: true
           type: object
+        content:
+          type: string
       required:
       - last_applied
       - last_applied_hash
       - managed_models
       - metadata
       - name
-      - path
       - pk
       - status
       type: object
@@ -29138,21 +29141,23 @@ components:
         context:
           key: ""
         enabled: true
+        content: content
       properties:
         name:
           minLength: 1
           type: string
         path:
-          minLength: 1
+          default: ""
           type: string
         context:
           additionalProperties: {}
           type: object
         enabled:
           type: boolean
+        content:
+          type: string
       required:
       - name
-      - path
       type: object
     BlueprintInstanceStatusEnum:
       enum:
@@ -35021,6 +35026,7 @@ components:
             key: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
+          content: content
           status: ""
         - path: path
           metadata:
@@ -35035,6 +35041,7 @@ components:
             key: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
+          content: content
           status: ""
       properties:
         pagination:
@@ -40249,18 +40256,21 @@ components:
         context:
           key: ""
         enabled: true
+        content: content
       properties:
         name:
           minLength: 1
           type: string
         path:
-          minLength: 1
+          default: ""
           type: string
         context:
           additionalProperties: {}
           type: object
         enabled:
           type: boolean
+        content:
+          type: string
       type: object
     PatchedCaptchaStageRequest:
       description: CaptchaStage Serializer

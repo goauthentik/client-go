@@ -20,7 +20,7 @@ import (
 type BlueprintInstance struct {
 	Pk              string                              `json:"pk"`
 	Name            string                              `json:"name"`
-	Path            string                              `json:"path"`
+	Path            *string                             `json:"path,omitempty"`
 	Context         map[string]interface{}              `json:"context,omitempty"`
 	LastApplied     time.Time                           `json:"last_applied"`
 	LastAppliedHash string                              `json:"last_applied_hash"`
@@ -28,17 +28,19 @@ type BlueprintInstance struct {
 	Enabled         *bool                               `json:"enabled,omitempty"`
 	ManagedModels   []string                            `json:"managed_models"`
 	Metadata        map[string]interface{}              `json:"metadata"`
+	Content         *string                             `json:"content,omitempty"`
 }
 
 // NewBlueprintInstance instantiates a new BlueprintInstance object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlueprintInstance(pk string, name string, path string, lastApplied time.Time, lastAppliedHash string, status NullableBlueprintInstanceStatusEnum, managedModels []string, metadata map[string]interface{}) *BlueprintInstance {
+func NewBlueprintInstance(pk string, name string, lastApplied time.Time, lastAppliedHash string, status NullableBlueprintInstanceStatusEnum, managedModels []string, metadata map[string]interface{}) *BlueprintInstance {
 	this := BlueprintInstance{}
 	this.Pk = pk
 	this.Name = name
-	this.Path = path
+	var path string = ""
+	this.Path = &path
 	this.LastApplied = lastApplied
 	this.LastAppliedHash = lastAppliedHash
 	this.Status = status
@@ -52,6 +54,8 @@ func NewBlueprintInstance(pk string, name string, path string, lastApplied time.
 // but it doesn't guarantee that properties required by API are set
 func NewBlueprintInstanceWithDefaults() *BlueprintInstance {
 	this := BlueprintInstance{}
+	var path string = ""
+	this.Path = &path
 	return &this
 }
 
@@ -103,28 +107,36 @@ func (o *BlueprintInstance) SetName(v string) {
 	o.Name = v
 }
 
-// GetPath returns the Path field value
+// GetPath returns the Path field value if set, zero value otherwise.
 func (o *BlueprintInstance) GetPath() string {
-	if o == nil {
+	if o == nil || o.Path == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Path
+	return *o.Path
 }
 
-// GetPathOk returns a tuple with the Path field value
+// GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BlueprintInstance) GetPathOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Path == nil {
 		return nil, false
 	}
-	return &o.Path, true
+	return o.Path, true
 }
 
-// SetPath sets field value
+// HasPath returns a boolean if a field has been set.
+func (o *BlueprintInstance) HasPath() bool {
+	if o != nil && o.Path != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPath gets a reference to the given string and assigns it to the Path field.
 func (o *BlueprintInstance) SetPath(v string) {
-	o.Path = v
+	o.Path = &v
 }
 
 // GetContext returns the Context field value if set, zero value otherwise.
@@ -313,6 +325,38 @@ func (o *BlueprintInstance) SetMetadata(v map[string]interface{}) {
 	o.Metadata = v
 }
 
+// GetContent returns the Content field value if set, zero value otherwise.
+func (o *BlueprintInstance) GetContent() string {
+	if o == nil || o.Content == nil {
+		var ret string
+		return ret
+	}
+	return *o.Content
+}
+
+// GetContentOk returns a tuple with the Content field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BlueprintInstance) GetContentOk() (*string, bool) {
+	if o == nil || o.Content == nil {
+		return nil, false
+	}
+	return o.Content, true
+}
+
+// HasContent returns a boolean if a field has been set.
+func (o *BlueprintInstance) HasContent() bool {
+	if o != nil && o.Content != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetContent gets a reference to the given string and assigns it to the Content field.
+func (o *BlueprintInstance) SetContent(v string) {
+	o.Content = &v
+}
+
 func (o BlueprintInstance) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -321,7 +365,7 @@ func (o BlueprintInstance) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if true {
+	if o.Path != nil {
 		toSerialize["path"] = o.Path
 	}
 	if o.Context != nil {
@@ -344,6 +388,9 @@ func (o BlueprintInstance) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["metadata"] = o.Metadata
+	}
+	if o.Content != nil {
+		toSerialize["content"] = o.Content
 	}
 	return json.Marshal(toSerialize)
 }

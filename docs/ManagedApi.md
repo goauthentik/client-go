@@ -168,7 +168,7 @@ import (
 )
 
 func main() {
-    blueprintInstanceRequest := *openapiclient.NewBlueprintInstanceRequest("Name_example", "Path_example") // BlueprintInstanceRequest | 
+    blueprintInstanceRequest := *openapiclient.NewBlueprintInstanceRequest("Name_example") // BlueprintInstanceRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -521,7 +521,7 @@ import (
 
 func main() {
     instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
-    blueprintInstanceRequest := *openapiclient.NewBlueprintInstanceRequest("Name_example", "Path_example") // BlueprintInstanceRequest | 
+    blueprintInstanceRequest := *openapiclient.NewBlueprintInstanceRequest("Name_example") // BlueprintInstanceRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

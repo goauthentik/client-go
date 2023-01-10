@@ -21,6 +21,7 @@ type PatchedBlueprintInstanceRequest struct {
 	Path    *string                `json:"path,omitempty"`
 	Context map[string]interface{} `json:"context,omitempty"`
 	Enabled *bool                  `json:"enabled,omitempty"`
+	Content *string                `json:"content,omitempty"`
 }
 
 // NewPatchedBlueprintInstanceRequest instantiates a new PatchedBlueprintInstanceRequest object
@@ -29,6 +30,8 @@ type PatchedBlueprintInstanceRequest struct {
 // will change when the set of required properties is changed
 func NewPatchedBlueprintInstanceRequest() *PatchedBlueprintInstanceRequest {
 	this := PatchedBlueprintInstanceRequest{}
+	var path string = ""
+	this.Path = &path
 	return &this
 }
 
@@ -37,6 +40,8 @@ func NewPatchedBlueprintInstanceRequest() *PatchedBlueprintInstanceRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewPatchedBlueprintInstanceRequestWithDefaults() *PatchedBlueprintInstanceRequest {
 	this := PatchedBlueprintInstanceRequest{}
+	var path string = ""
+	this.Path = &path
 	return &this
 }
 
@@ -168,6 +173,38 @@ func (o *PatchedBlueprintInstanceRequest) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
+// GetContent returns the Content field value if set, zero value otherwise.
+func (o *PatchedBlueprintInstanceRequest) GetContent() string {
+	if o == nil || o.Content == nil {
+		var ret string
+		return ret
+	}
+	return *o.Content
+}
+
+// GetContentOk returns a tuple with the Content field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedBlueprintInstanceRequest) GetContentOk() (*string, bool) {
+	if o == nil || o.Content == nil {
+		return nil, false
+	}
+	return o.Content, true
+}
+
+// HasContent returns a boolean if a field has been set.
+func (o *PatchedBlueprintInstanceRequest) HasContent() bool {
+	if o != nil && o.Content != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetContent gets a reference to the given string and assigns it to the Content field.
+func (o *PatchedBlueprintInstanceRequest) SetContent(v string) {
+	o.Content = &v
+}
+
 func (o PatchedBlueprintInstanceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -181,6 +218,9 @@ func (o PatchedBlueprintInstanceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
+	}
+	if o.Content != nil {
+		toSerialize["content"] = o.Content
 	}
 	return json.Marshal(toSerialize)
 }

@@ -5,15 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Path** | **string** |  | 
+**Path** | Pointer to **string** |  | [optional] [default to ""]
 **Context** | Pointer to **map[string]interface{}** |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
+**Content** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewBlueprintInstanceRequest
 
-`func NewBlueprintInstanceRequest(name string, path string, ) *BlueprintInstanceRequest`
+`func NewBlueprintInstanceRequest(name string, ) *BlueprintInstanceRequest`
 
 NewBlueprintInstanceRequest instantiates a new BlueprintInstanceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -67,6 +68,11 @@ and a boolean to check if the value has been set.
 
 SetPath sets Path field to given value.
 
+### HasPath
+
+`func (o *BlueprintInstanceRequest) HasPath() bool`
+
+HasPath returns a boolean if a field has been set.
 
 ### GetContext
 
@@ -117,6 +123,31 @@ SetEnabled sets Enabled field to given value.
 `func (o *BlueprintInstanceRequest) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### GetContent
+
+`func (o *BlueprintInstanceRequest) GetContent() string`
+
+GetContent returns the Content field if non-nil, zero value otherwise.
+
+### GetContentOk
+
+`func (o *BlueprintInstanceRequest) GetContentOk() (*string, bool)`
+
+GetContentOk returns a tuple with the Content field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContent
+
+`func (o *BlueprintInstanceRequest) SetContent(v string)`
+
+SetContent sets Content field to given value.
+
+### HasContent
+
+`func (o *BlueprintInstanceRequest) HasContent() bool`
+
+HasContent returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

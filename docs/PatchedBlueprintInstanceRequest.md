@@ -5,9 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**Path** | Pointer to **string** |  | [optional] 
+**Path** | Pointer to **string** |  | [optional] [default to ""]
 **Context** | Pointer to **map[string]interface{}** |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
+**Content** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetEnabled sets Enabled field to given value.
 `func (o *PatchedBlueprintInstanceRequest) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### GetContent
+
+`func (o *PatchedBlueprintInstanceRequest) GetContent() string`
+
+GetContent returns the Content field if non-nil, zero value otherwise.
+
+### GetContentOk
+
+`func (o *PatchedBlueprintInstanceRequest) GetContentOk() (*string, bool)`
+
+GetContentOk returns a tuple with the Content field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContent
+
+`func (o *PatchedBlueprintInstanceRequest) SetContent(v string)`
+
+SetContent sets Content field to given value.
+
+### HasContent
+
+`func (o *PatchedBlueprintInstanceRequest) HasContent() bool`
+
+HasContent returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
