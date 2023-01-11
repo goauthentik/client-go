@@ -17,20 +17,20 @@ import (
 
 // LoginMetrics Login Metrics per 1h
 type LoginMetrics struct {
-	LoginsPer1h         []Coordinate `json:"logins_per_1h"`
-	LoginsFailedPer1h   []Coordinate `json:"logins_failed_per_1h"`
-	AuthorizationsPer1h []Coordinate `json:"authorizations_per_1h"`
+	Logins         []Coordinate `json:"logins"`
+	LoginsFailed   []Coordinate `json:"logins_failed"`
+	Authorizations []Coordinate `json:"authorizations"`
 }
 
 // NewLoginMetrics instantiates a new LoginMetrics object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLoginMetrics(loginsPer1h []Coordinate, loginsFailedPer1h []Coordinate, authorizationsPer1h []Coordinate) *LoginMetrics {
+func NewLoginMetrics(logins []Coordinate, loginsFailed []Coordinate, authorizations []Coordinate) *LoginMetrics {
 	this := LoginMetrics{}
-	this.LoginsPer1h = loginsPer1h
-	this.LoginsFailedPer1h = loginsFailedPer1h
-	this.AuthorizationsPer1h = authorizationsPer1h
+	this.Logins = logins
+	this.LoginsFailed = loginsFailed
+	this.Authorizations = authorizations
 	return &this
 }
 
@@ -42,88 +42,88 @@ func NewLoginMetricsWithDefaults() *LoginMetrics {
 	return &this
 }
 
-// GetLoginsPer1h returns the LoginsPer1h field value
-func (o *LoginMetrics) GetLoginsPer1h() []Coordinate {
+// GetLogins returns the Logins field value
+func (o *LoginMetrics) GetLogins() []Coordinate {
 	if o == nil {
 		var ret []Coordinate
 		return ret
 	}
 
-	return o.LoginsPer1h
+	return o.Logins
 }
 
-// GetLoginsPer1hOk returns a tuple with the LoginsPer1h field value
+// GetLoginsOk returns a tuple with the Logins field value
 // and a boolean to check if the value has been set.
-func (o *LoginMetrics) GetLoginsPer1hOk() ([]Coordinate, bool) {
+func (o *LoginMetrics) GetLoginsOk() ([]Coordinate, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LoginsPer1h, true
+	return o.Logins, true
 }
 
-// SetLoginsPer1h sets field value
-func (o *LoginMetrics) SetLoginsPer1h(v []Coordinate) {
-	o.LoginsPer1h = v
+// SetLogins sets field value
+func (o *LoginMetrics) SetLogins(v []Coordinate) {
+	o.Logins = v
 }
 
-// GetLoginsFailedPer1h returns the LoginsFailedPer1h field value
-func (o *LoginMetrics) GetLoginsFailedPer1h() []Coordinate {
+// GetLoginsFailed returns the LoginsFailed field value
+func (o *LoginMetrics) GetLoginsFailed() []Coordinate {
 	if o == nil {
 		var ret []Coordinate
 		return ret
 	}
 
-	return o.LoginsFailedPer1h
+	return o.LoginsFailed
 }
 
-// GetLoginsFailedPer1hOk returns a tuple with the LoginsFailedPer1h field value
+// GetLoginsFailedOk returns a tuple with the LoginsFailed field value
 // and a boolean to check if the value has been set.
-func (o *LoginMetrics) GetLoginsFailedPer1hOk() ([]Coordinate, bool) {
+func (o *LoginMetrics) GetLoginsFailedOk() ([]Coordinate, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LoginsFailedPer1h, true
+	return o.LoginsFailed, true
 }
 
-// SetLoginsFailedPer1h sets field value
-func (o *LoginMetrics) SetLoginsFailedPer1h(v []Coordinate) {
-	o.LoginsFailedPer1h = v
+// SetLoginsFailed sets field value
+func (o *LoginMetrics) SetLoginsFailed(v []Coordinate) {
+	o.LoginsFailed = v
 }
 
-// GetAuthorizationsPer1h returns the AuthorizationsPer1h field value
-func (o *LoginMetrics) GetAuthorizationsPer1h() []Coordinate {
+// GetAuthorizations returns the Authorizations field value
+func (o *LoginMetrics) GetAuthorizations() []Coordinate {
 	if o == nil {
 		var ret []Coordinate
 		return ret
 	}
 
-	return o.AuthorizationsPer1h
+	return o.Authorizations
 }
 
-// GetAuthorizationsPer1hOk returns a tuple with the AuthorizationsPer1h field value
+// GetAuthorizationsOk returns a tuple with the Authorizations field value
 // and a boolean to check if the value has been set.
-func (o *LoginMetrics) GetAuthorizationsPer1hOk() ([]Coordinate, bool) {
+func (o *LoginMetrics) GetAuthorizationsOk() ([]Coordinate, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AuthorizationsPer1h, true
+	return o.Authorizations, true
 }
 
-// SetAuthorizationsPer1h sets field value
-func (o *LoginMetrics) SetAuthorizationsPer1h(v []Coordinate) {
-	o.AuthorizationsPer1h = v
+// SetAuthorizations sets field value
+func (o *LoginMetrics) SetAuthorizations(v []Coordinate) {
+	o.Authorizations = v
 }
 
 func (o LoginMetrics) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["logins_per_1h"] = o.LoginsPer1h
+		toSerialize["logins"] = o.Logins
 	}
 	if true {
-		toSerialize["logins_failed_per_1h"] = o.LoginsFailedPer1h
+		toSerialize["logins_failed"] = o.LoginsFailed
 	}
 	if true {
-		toSerialize["authorizations_per_1h"] = o.AuthorizationsPer1h
+		toSerialize["authorizations"] = o.Authorizations
 	}
 	return json.Marshal(toSerialize)
 }

@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LoginsPer1h** | [**[]Coordinate**](Coordinate.md) |  | [readonly] 
-**LoginsFailedPer1h** | [**[]Coordinate**](Coordinate.md) |  | [readonly] 
-**AuthorizationsPer1h** | [**[]Coordinate**](Coordinate.md) |  | [readonly] 
+**Logins** | [**[]Coordinate**](Coordinate.md) |  | [readonly] 
+**LoginsFailed** | [**[]Coordinate**](Coordinate.md) |  | [readonly] 
+**Authorizations** | [**[]Coordinate**](Coordinate.md) |  | [readonly] 
 
 ## Methods
 
 ### NewLoginMetrics
 
-`func NewLoginMetrics(loginsPer1h []Coordinate, loginsFailedPer1h []Coordinate, authorizationsPer1h []Coordinate, ) *LoginMetrics`
+`func NewLoginMetrics(logins []Coordinate, loginsFailed []Coordinate, authorizations []Coordinate, ) *LoginMetrics`
 
 NewLoginMetrics instantiates a new LoginMetrics object
 This constructor will assign default values to properties that have it defined,
@@ -27,64 +27,64 @@ NewLoginMetricsWithDefaults instantiates a new LoginMetrics object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetLoginsPer1h
+### GetLogins
 
-`func (o *LoginMetrics) GetLoginsPer1h() []Coordinate`
+`func (o *LoginMetrics) GetLogins() []Coordinate`
 
-GetLoginsPer1h returns the LoginsPer1h field if non-nil, zero value otherwise.
+GetLogins returns the Logins field if non-nil, zero value otherwise.
 
-### GetLoginsPer1hOk
+### GetLoginsOk
 
-`func (o *LoginMetrics) GetLoginsPer1hOk() (*[]Coordinate, bool)`
+`func (o *LoginMetrics) GetLoginsOk() (*[]Coordinate, bool)`
 
-GetLoginsPer1hOk returns a tuple with the LoginsPer1h field if it's non-nil, zero value otherwise
+GetLoginsOk returns a tuple with the Logins field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLoginsPer1h
+### SetLogins
 
-`func (o *LoginMetrics) SetLoginsPer1h(v []Coordinate)`
+`func (o *LoginMetrics) SetLogins(v []Coordinate)`
 
-SetLoginsPer1h sets LoginsPer1h field to given value.
+SetLogins sets Logins field to given value.
 
 
-### GetLoginsFailedPer1h
+### GetLoginsFailed
 
-`func (o *LoginMetrics) GetLoginsFailedPer1h() []Coordinate`
+`func (o *LoginMetrics) GetLoginsFailed() []Coordinate`
 
-GetLoginsFailedPer1h returns the LoginsFailedPer1h field if non-nil, zero value otherwise.
+GetLoginsFailed returns the LoginsFailed field if non-nil, zero value otherwise.
 
-### GetLoginsFailedPer1hOk
+### GetLoginsFailedOk
 
-`func (o *LoginMetrics) GetLoginsFailedPer1hOk() (*[]Coordinate, bool)`
+`func (o *LoginMetrics) GetLoginsFailedOk() (*[]Coordinate, bool)`
 
-GetLoginsFailedPer1hOk returns a tuple with the LoginsFailedPer1h field if it's non-nil, zero value otherwise
+GetLoginsFailedOk returns a tuple with the LoginsFailed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLoginsFailedPer1h
+### SetLoginsFailed
 
-`func (o *LoginMetrics) SetLoginsFailedPer1h(v []Coordinate)`
+`func (o *LoginMetrics) SetLoginsFailed(v []Coordinate)`
 
-SetLoginsFailedPer1h sets LoginsFailedPer1h field to given value.
+SetLoginsFailed sets LoginsFailed field to given value.
 
 
-### GetAuthorizationsPer1h
+### GetAuthorizations
 
-`func (o *LoginMetrics) GetAuthorizationsPer1h() []Coordinate`
+`func (o *LoginMetrics) GetAuthorizations() []Coordinate`
 
-GetAuthorizationsPer1h returns the AuthorizationsPer1h field if non-nil, zero value otherwise.
+GetAuthorizations returns the Authorizations field if non-nil, zero value otherwise.
 
-### GetAuthorizationsPer1hOk
+### GetAuthorizationsOk
 
-`func (o *LoginMetrics) GetAuthorizationsPer1hOk() (*[]Coordinate, bool)`
+`func (o *LoginMetrics) GetAuthorizationsOk() (*[]Coordinate, bool)`
 
-GetAuthorizationsPer1hOk returns a tuple with the AuthorizationsPer1h field if it's non-nil, zero value otherwise
+GetAuthorizationsOk returns a tuple with the Authorizations field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAuthorizationsPer1h
+### SetAuthorizations
 
-`func (o *LoginMetrics) SetAuthorizationsPer1h(v []Coordinate)`
+`func (o *LoginMetrics) SetAuthorizations(v []Coordinate)`
 
-SetAuthorizationsPer1h sets AuthorizationsPer1h field to given value.
+SetAuthorizations sets Authorizations field to given value.
 
 
 

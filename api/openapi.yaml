@@ -33143,41 +33143,41 @@ components:
     LoginMetrics:
       description: Login Metrics per 1h
       example:
-        logins_failed_per_1h:
+        logins_failed:
         - y_cord: 6
           x_cord: 0
         - y_cord: 6
           x_cord: 0
-        authorizations_per_1h:
+        authorizations:
         - y_cord: 6
           x_cord: 0
         - y_cord: 6
           x_cord: 0
-        logins_per_1h:
+        logins:
         - y_cord: 6
           x_cord: 0
         - y_cord: 6
           x_cord: 0
       properties:
-        logins_per_1h:
+        logins:
           items:
             $ref: '#/components/schemas/Coordinate'
           readOnly: true
           type: array
-        logins_failed_per_1h:
+        logins_failed:
           items:
             $ref: '#/components/schemas/Coordinate'
           readOnly: true
           type: array
-        authorizations_per_1h:
+        authorizations:
           items:
             $ref: '#/components/schemas/Coordinate'
           readOnly: true
           type: array
       required:
-      - authorizations_per_1h
-      - logins_failed_per_1h
-      - logins_per_1h
+      - authorizations
+      - logins
+      - logins_failed
       type: object
     LoginSource:
       description: Serializer for Login buttons of sources
@@ -46652,41 +46652,41 @@ components:
     UserMetrics:
       description: User Metrics
       example:
-        logins_failed_per_1h:
+        logins_failed:
         - y_cord: 6
           x_cord: 0
         - y_cord: 6
           x_cord: 0
-        authorizations_per_1h:
+        authorizations:
         - y_cord: 6
           x_cord: 0
         - y_cord: 6
           x_cord: 0
-        logins_per_1h:
+        logins:
         - y_cord: 6
           x_cord: 0
         - y_cord: 6
           x_cord: 0
       properties:
-        logins_per_1h:
+        logins:
           items:
             $ref: '#/components/schemas/Coordinate'
           readOnly: true
           type: array
-        logins_failed_per_1h:
+        logins_failed:
           items:
             $ref: '#/components/schemas/Coordinate'
           readOnly: true
           type: array
-        authorizations_per_1h:
+        authorizations:
           items:
             $ref: '#/components/schemas/Coordinate'
           readOnly: true
           type: array
       required:
-      - authorizations_per_1h
-      - logins_failed_per_1h
-      - logins_per_1h
+      - authorizations
+      - logins
+      - logins_failed
       type: object
     UserOAuthSourceConnection:
       description: OAuth Source Serializer
