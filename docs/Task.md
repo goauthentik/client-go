@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **TaskName** | **string** |  | 
 **TaskDescription** | **string** |  | 
 **TaskFinishTimestamp** | **time.Time** |  | 
+**TaskDuration** | **int32** |  | [readonly] 
 **Status** | [**TaskStatusEnum**](TaskStatusEnum.md) |  | 
 **Messages** | **[]interface{}** |  | 
 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewTask
 
-`func NewTask(taskName string, taskDescription string, taskFinishTimestamp time.Time, status TaskStatusEnum, messages []interface{}, ) *Task`
+`func NewTask(taskName string, taskDescription string, taskFinishTimestamp time.Time, taskDuration int32, status TaskStatusEnum, messages []interface{}, ) *Task`
 
 NewTask instantiates a new Task object
 This constructor will assign default values to properties that have it defined,
@@ -87,6 +88,26 @@ and a boolean to check if the value has been set.
 `func (o *Task) SetTaskFinishTimestamp(v time.Time)`
 
 SetTaskFinishTimestamp sets TaskFinishTimestamp field to given value.
+
+
+### GetTaskDuration
+
+`func (o *Task) GetTaskDuration() int32`
+
+GetTaskDuration returns the TaskDuration field if non-nil, zero value otherwise.
+
+### GetTaskDurationOk
+
+`func (o *Task) GetTaskDurationOk() (*int32, bool)`
+
+GetTaskDurationOk returns a tuple with the TaskDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTaskDuration
+
+`func (o *Task) SetTaskDuration(v int32)`
+
+SetTaskDuration sets TaskDuration field to given value.
 
 
 ### GetStatus

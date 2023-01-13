@@ -21,6 +21,7 @@ type Task struct {
 	TaskName            string         `json:"task_name"`
 	TaskDescription     string         `json:"task_description"`
 	TaskFinishTimestamp time.Time      `json:"task_finish_timestamp"`
+	TaskDuration        int32          `json:"task_duration"`
 	Status              TaskStatusEnum `json:"status"`
 	Messages            []interface{}  `json:"messages"`
 }
@@ -29,11 +30,12 @@ type Task struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTask(taskName string, taskDescription string, taskFinishTimestamp time.Time, status TaskStatusEnum, messages []interface{}) *Task {
+func NewTask(taskName string, taskDescription string, taskFinishTimestamp time.Time, taskDuration int32, status TaskStatusEnum, messages []interface{}) *Task {
 	this := Task{}
 	this.TaskName = taskName
 	this.TaskDescription = taskDescription
 	this.TaskFinishTimestamp = taskFinishTimestamp
+	this.TaskDuration = taskDuration
 	this.Status = status
 	this.Messages = messages
 	return &this
@@ -119,6 +121,30 @@ func (o *Task) SetTaskFinishTimestamp(v time.Time) {
 	o.TaskFinishTimestamp = v
 }
 
+// GetTaskDuration returns the TaskDuration field value
+func (o *Task) GetTaskDuration() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.TaskDuration
+}
+
+// GetTaskDurationOk returns a tuple with the TaskDuration field value
+// and a boolean to check if the value has been set.
+func (o *Task) GetTaskDurationOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TaskDuration, true
+}
+
+// SetTaskDuration sets field value
+func (o *Task) SetTaskDuration(v int32) {
+	o.TaskDuration = v
+}
+
 // GetStatus returns the Status field value
 func (o *Task) GetStatus() TaskStatusEnum {
 	if o == nil {
@@ -177,6 +203,9 @@ func (o Task) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["task_finish_timestamp"] = o.TaskFinishTimestamp
+	}
+	if true {
+		toSerialize["task_duration"] = o.TaskDuration
 	}
 	if true {
 		toSerialize["status"] = o.Status
