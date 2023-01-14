@@ -21,7 +21,7 @@ type ScopeMappingRequest struct {
 	Managed    NullableString `json:"managed,omitempty"`
 	Name       string         `json:"name"`
 	Expression string         `json:"expression"`
-	// Scope used by the client
+	// Scope name requested by the client
 	ScopeName string `json:"scope_name"`
 	// Description shown to the user when consenting. If left empty, the user won't be informed.
 	Description *string `json:"description,omitempty"`

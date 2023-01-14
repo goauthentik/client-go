@@ -2771,6 +2771,7 @@ type ApiSourcesOauthListRequest struct {
 	consumerKey        *string
 	enabled            *bool
 	enrollmentFlow     *string
+	hasJwks            *bool
 	name               *string
 	ordering           *string
 	page               *int32
@@ -2816,6 +2817,12 @@ func (r ApiSourcesOauthListRequest) Enabled(enabled bool) ApiSourcesOauthListReq
 
 func (r ApiSourcesOauthListRequest) EnrollmentFlow(enrollmentFlow string) ApiSourcesOauthListRequest {
 	r.enrollmentFlow = &enrollmentFlow
+	return r
+}
+
+// Only return sources with JWKS data
+func (r ApiSourcesOauthListRequest) HasJwks(hasJwks bool) ApiSourcesOauthListRequest {
+	r.hasJwks = &hasJwks
 	return r
 }
 
@@ -2939,6 +2946,9 @@ func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest
 	}
 	if r.enrollmentFlow != nil {
 		localVarQueryParams.Add("enrollment_flow", parameterToString(*r.enrollmentFlow, ""))
+	}
+	if r.hasJwks != nil {
+		localVarQueryParams.Add("has_jwks", parameterToString(*r.hasJwks, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))

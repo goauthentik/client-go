@@ -18083,6 +18083,14 @@ paths:
           format: uuid
           type: string
         style: form
+      - description: Only return sources with JWKS data
+        explode: true
+        in: query
+        name: has_jwks
+        required: false
+        schema:
+          type: boolean
+        style: form
       - explode: true
         in: query
         name: name
@@ -37873,59 +37881,67 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - external_host: https://openapi-generator.tech
-          verbose_name_plural: verbose_name_plural
+        - verbose_name_plural: verbose_name_plural
+          certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          assigned_application_slug: assigned_application_slug
+          client_id: client_id
+          mode: ""
+          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          assigned_application_name: assigned_application_name
+          internal_host_ssl_validation: true
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          external_host: https://openapi-generator.tech
           cookie_domain: cookie_domain
           skip_path_regex: skip_path_regex
-          certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           basic_auth_password_attribute: basic_auth_password_attribute
-          assigned_application_slug: assigned_application_slug
           redirect_uris: redirect_uris
-          mode: ""
           internal_host: https://openapi-generator.tech
           outpost_set:
           - outpost_set
           - outpost_set
           component: component
           verbose_name: verbose_name
-          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           basic_auth_enabled: true
           basic_auth_user_attribute: basic_auth_user_attribute
           meta_model_name: meta_model_name
-          assigned_application_name: assigned_application_name
+          jwks_sources:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 0
-          internal_host_ssl_validation: true
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           token_validity: token_validity
-        - external_host: https://openapi-generator.tech
-          verbose_name_plural: verbose_name_plural
+        - verbose_name_plural: verbose_name_plural
+          certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          assigned_application_slug: assigned_application_slug
+          client_id: client_id
+          mode: ""
+          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          assigned_application_name: assigned_application_name
+          internal_host_ssl_validation: true
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          external_host: https://openapi-generator.tech
           cookie_domain: cookie_domain
           skip_path_regex: skip_path_regex
-          certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           basic_auth_password_attribute: basic_auth_password_attribute
-          assigned_application_slug: assigned_application_slug
           redirect_uris: redirect_uris
-          mode: ""
           internal_host: https://openapi-generator.tech
           outpost_set:
           - outpost_set
           - outpost_set
           component: component
           verbose_name: verbose_name
-          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           basic_auth_enabled: true
           basic_auth_user_attribute: basic_auth_user_attribute
           meta_model_name: meta_model_name
-          assigned_application_name: assigned_application_name
+          jwks_sources:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 0
-          internal_host_ssl_validation: true
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           token_validity: token_validity
       properties:
         pagination:
@@ -41954,6 +41970,9 @@ components:
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         basic_auth_enabled: true
         basic_auth_user_attribute: basic_auth_user_attribute
+        jwks_sources:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         internal_host_ssl_validation: true
         property_mappings:
@@ -42013,6 +42032,14 @@ components:
             Exclusive with internal_host.
         cookie_domain:
           type: string
+        jwks_sources:
+          items:
+            format: uuid
+            title: Any JWT signed by the JWK of the selected source can be used to
+              authenticate.
+            type: string
+          title: Any JWT signed by the JWK of the selected source can be used to authenticate.
+          type: array
         token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
             \ hours=1;minutes=2;seconds=3)."
@@ -42310,7 +42337,7 @@ components:
           minLength: 1
           type: string
         scope_name:
-          description: Scope used by the client
+          description: Scope name requested by the client
           minLength: 1
           type: string
         description:
@@ -43853,32 +43880,36 @@ components:
     ProxyProvider:
       description: ProxyProvider Serializer
       example:
-        external_host: https://openapi-generator.tech
         verbose_name_plural: verbose_name_plural
+        certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        assigned_application_slug: assigned_application_slug
+        client_id: client_id
+        mode: ""
+        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        assigned_application_name: assigned_application_name
+        internal_host_ssl_validation: true
+        property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        external_host: https://openapi-generator.tech
         cookie_domain: cookie_domain
         skip_path_regex: skip_path_regex
-        certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         basic_auth_password_attribute: basic_auth_password_attribute
-        assigned_application_slug: assigned_application_slug
         redirect_uris: redirect_uris
-        mode: ""
         internal_host: https://openapi-generator.tech
         outpost_set:
         - outpost_set
         - outpost_set
         component: component
         verbose_name: verbose_name
-        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         basic_auth_enabled: true
         basic_auth_user_attribute: basic_auth_user_attribute
         meta_model_name: meta_model_name
-        assigned_application_name: assigned_application_name
+        jwks_sources:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         pk: 0
-        internal_host_ssl_validation: true
-        property_mappings:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         token_validity: token_validity
       properties:
         pk:
@@ -43914,6 +43945,9 @@ components:
           readOnly: true
           type: string
         meta_model_name:
+          readOnly: true
+          type: string
+        client_id:
           readOnly: true
           type: string
         internal_host:
@@ -43958,6 +43992,14 @@ components:
           type: string
         cookie_domain:
           type: string
+        jwks_sources:
+          items:
+            format: uuid
+            title: Any JWT signed by the JWK of the selected source can be used to
+              authenticate.
+            type: string
+          title: Any JWT signed by the JWK of the selected source can be used to authenticate.
+          type: array
         token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
             \ hours=1;minutes=2;seconds=3)."
@@ -43971,6 +44013,7 @@ components:
       - assigned_application_name
       - assigned_application_slug
       - authorization_flow
+      - client_id
       - component
       - external_host
       - meta_model_name
@@ -43994,6 +44037,9 @@ components:
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         basic_auth_enabled: true
         basic_auth_user_attribute: basic_auth_user_attribute
+        jwks_sources:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         internal_host_ssl_validation: true
         property_mappings:
@@ -44053,6 +44099,14 @@ components:
             Exclusive with internal_host.
         cookie_domain:
           type: string
+        jwks_sources:
+          items:
+            format: uuid
+            title: Any JWT signed by the JWK of the selected source can be used to
+              authenticate.
+            type: string
+          title: Any JWT signed by the JWK of the selected source can be used to authenticate.
+          type: array
         token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
             \ hours=1;minutes=2;seconds=3)."
@@ -45053,7 +45107,7 @@ components:
           readOnly: true
           type: string
         scope_name:
-          description: Scope used by the client
+          description: Scope name requested by the client
           type: string
         description:
           description: "Description shown to the user when consenting. If left empty,\
@@ -45095,7 +45149,7 @@ components:
           minLength: 1
           type: string
         scope_name:
-          description: Scope used by the client
+          description: Scope name requested by the client
           minLength: 1
           type: string
         description:

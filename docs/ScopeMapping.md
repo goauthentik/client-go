@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
 **MetaModelName** | **string** |  | [readonly] 
-**ScopeName** | **string** | Scope used by the client | 
+**ScopeName** | **string** | Scope name requested by the client | 
 **Description** | Pointer to **string** | Description shown to the user when consenting. If left empty, the user won&#39;t be informed. | [optional] 
 
 ## Methods

@@ -37,6 +37,7 @@ type ProxyProviderRequest struct {
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
 	Mode         NullableProxyMode `json:"mode,omitempty"`
 	CookieDomain *string           `json:"cookie_domain,omitempty"`
+	JwksSources  []string          `json:"jwks_sources,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	TokenValidity *string `json:"token_validity,omitempty"`
 }
@@ -475,6 +476,38 @@ func (o *ProxyProviderRequest) SetCookieDomain(v string) {
 	o.CookieDomain = &v
 }
 
+// GetJwksSources returns the JwksSources field value if set, zero value otherwise.
+func (o *ProxyProviderRequest) GetJwksSources() []string {
+	if o == nil || o.JwksSources == nil {
+		var ret []string
+		return ret
+	}
+	return o.JwksSources
+}
+
+// GetJwksSourcesOk returns a tuple with the JwksSources field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProxyProviderRequest) GetJwksSourcesOk() ([]string, bool) {
+	if o == nil || o.JwksSources == nil {
+		return nil, false
+	}
+	return o.JwksSources, true
+}
+
+// HasJwksSources returns a boolean if a field has been set.
+func (o *ProxyProviderRequest) HasJwksSources() bool {
+	if o != nil && o.JwksSources != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwksSources gets a reference to the given []string and assigns it to the JwksSources field.
+func (o *ProxyProviderRequest) SetJwksSources(v []string) {
+	o.JwksSources = v
+}
+
 // GetTokenValidity returns the TokenValidity field value if set, zero value otherwise.
 func (o *ProxyProviderRequest) GetTokenValidity() string {
 	if o == nil || o.TokenValidity == nil {
@@ -547,6 +580,9 @@ func (o ProxyProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.CookieDomain != nil {
 		toSerialize["cookie_domain"] = o.CookieDomain
+	}
+	if o.JwksSources != nil {
+		toSerialize["jwks_sources"] = o.JwksSources
 	}
 	if o.TokenValidity != nil {
 		toSerialize["token_validity"] = o.TokenValidity

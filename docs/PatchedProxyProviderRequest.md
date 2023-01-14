@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **BasicAuthUserAttribute** | Pointer to **string** | User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user&#39;s Email address is used. | [optional] 
 **Mode** | Pointer to [**NullableProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
+**JwksSources** | Pointer to **[]string** |  | [optional] 
 **TokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 
 ## Methods
@@ -382,6 +383,31 @@ SetCookieDomain sets CookieDomain field to given value.
 `func (o *PatchedProxyProviderRequest) HasCookieDomain() bool`
 
 HasCookieDomain returns a boolean if a field has been set.
+
+### GetJwksSources
+
+`func (o *PatchedProxyProviderRequest) GetJwksSources() []string`
+
+GetJwksSources returns the JwksSources field if non-nil, zero value otherwise.
+
+### GetJwksSourcesOk
+
+`func (o *PatchedProxyProviderRequest) GetJwksSourcesOk() (*[]string, bool)`
+
+GetJwksSourcesOk returns a tuple with the JwksSources field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwksSources
+
+`func (o *PatchedProxyProviderRequest) SetJwksSources(v []string)`
+
+SetJwksSources sets JwksSources field to given value.
+
+### HasJwksSources
+
+`func (o *PatchedProxyProviderRequest) HasJwksSources() bool`
+
+HasJwksSources returns a boolean if a field has been set.
 
 ### GetTokenValidity
 

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** |  | [readonly] 
 **VerboseNamePlural** | **string** |  | [readonly] 
 **MetaModelName** | **string** |  | [readonly] 
+**ClientId** | **string** |  | [readonly] 
 **InternalHost** | Pointer to **string** |  | [optional] 
 **ExternalHost** | **string** |  | 
 **InternalHostSslValidation** | Pointer to **bool** | Validate SSL Certificates of upstream servers | [optional] 
@@ -25,6 +26,7 @@ Name | Type | Description | Notes
 **Mode** | Pointer to [**NullableProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
 **RedirectUris** | **string** |  | [readonly] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
+**JwksSources** | Pointer to **[]string** |  | [optional] 
 **TokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **OutpostSet** | **[]string** |  | [readonly] 
 
@@ -32,7 +34,7 @@ Name | Type | Description | Notes
 
 ### NewProxyProvider
 
-`func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, externalHost string, redirectUris string, outpostSet []string, ) *ProxyProvider`
+`func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris string, outpostSet []string, ) *ProxyProvider`
 
 NewProxyProvider instantiates a new ProxyProvider object
 This constructor will assign default values to properties that have it defined,
@@ -250,6 +252,26 @@ and a boolean to check if the value has been set.
 `func (o *ProxyProvider) SetMetaModelName(v string)`
 
 SetMetaModelName sets MetaModelName field to given value.
+
+
+### GetClientId
+
+`func (o *ProxyProvider) GetClientId() string`
+
+GetClientId returns the ClientId field if non-nil, zero value otherwise.
+
+### GetClientIdOk
+
+`func (o *ProxyProvider) GetClientIdOk() (*string, bool)`
+
+GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientId
+
+`func (o *ProxyProvider) SetClientId(v string)`
+
+SetClientId sets ClientId field to given value.
 
 
 ### GetInternalHost
@@ -536,6 +558,31 @@ SetCookieDomain sets CookieDomain field to given value.
 `func (o *ProxyProvider) HasCookieDomain() bool`
 
 HasCookieDomain returns a boolean if a field has been set.
+
+### GetJwksSources
+
+`func (o *ProxyProvider) GetJwksSources() []string`
+
+GetJwksSources returns the JwksSources field if non-nil, zero value otherwise.
+
+### GetJwksSourcesOk
+
+`func (o *ProxyProvider) GetJwksSourcesOk() (*[]string, bool)`
+
+GetJwksSourcesOk returns a tuple with the JwksSources field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwksSources
+
+`func (o *ProxyProvider) SetJwksSources(v []string)`
+
+SetJwksSources sets JwksSources field to given value.
+
+### HasJwksSources
+
+`func (o *ProxyProvider) HasJwksSources() bool`
+
+HasJwksSources returns a boolean if a field has been set.
 
 ### GetTokenValidity
 

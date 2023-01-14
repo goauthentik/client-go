@@ -30,6 +30,7 @@ type ProxyProvider struct {
 	VerboseName             string  `json:"verbose_name"`
 	VerboseNamePlural       string  `json:"verbose_name_plural"`
 	MetaModelName           string  `json:"meta_model_name"`
+	ClientId                string  `json:"client_id"`
 	InternalHost            *string `json:"internal_host,omitempty"`
 	ExternalHost            string  `json:"external_host"`
 	// Validate SSL Certificates of upstream servers
@@ -47,6 +48,7 @@ type ProxyProvider struct {
 	Mode         NullableProxyMode `json:"mode,omitempty"`
 	RedirectUris string            `json:"redirect_uris"`
 	CookieDomain *string           `json:"cookie_domain,omitempty"`
+	JwksSources  []string          `json:"jwks_sources,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	TokenValidity *string  `json:"token_validity,omitempty"`
 	OutpostSet    []string `json:"outpost_set"`
@@ -56,7 +58,7 @@ type ProxyProvider struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, externalHost string, redirectUris string, outpostSet []string) *ProxyProvider {
+func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris string, outpostSet []string) *ProxyProvider {
 	this := ProxyProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -67,6 +69,7 @@ func NewProxyProvider(pk int32, name string, authorizationFlow string, component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
+	this.ClientId = clientId
 	this.ExternalHost = externalHost
 	this.RedirectUris = redirectUris
 	this.OutpostSet = outpostSet
@@ -327,6 +330,30 @@ func (o *ProxyProvider) GetMetaModelNameOk() (*string, bool) {
 // SetMetaModelName sets field value
 func (o *ProxyProvider) SetMetaModelName(v string) {
 	o.MetaModelName = v
+}
+
+// GetClientId returns the ClientId field value
+func (o *ProxyProvider) GetClientId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ClientId
+}
+
+// GetClientIdOk returns a tuple with the ClientId field value
+// and a boolean to check if the value has been set.
+func (o *ProxyProvider) GetClientIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ClientId, true
+}
+
+// SetClientId sets field value
+func (o *ProxyProvider) SetClientId(v string) {
+	o.ClientId = v
 }
 
 // GetInternalHost returns the InternalHost field value if set, zero value otherwise.
@@ -687,6 +714,38 @@ func (o *ProxyProvider) SetCookieDomain(v string) {
 	o.CookieDomain = &v
 }
 
+// GetJwksSources returns the JwksSources field value if set, zero value otherwise.
+func (o *ProxyProvider) GetJwksSources() []string {
+	if o == nil || o.JwksSources == nil {
+		var ret []string
+		return ret
+	}
+	return o.JwksSources
+}
+
+// GetJwksSourcesOk returns a tuple with the JwksSources field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProxyProvider) GetJwksSourcesOk() ([]string, bool) {
+	if o == nil || o.JwksSources == nil {
+		return nil, false
+	}
+	return o.JwksSources, true
+}
+
+// HasJwksSources returns a boolean if a field has been set.
+func (o *ProxyProvider) HasJwksSources() bool {
+	if o != nil && o.JwksSources != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwksSources gets a reference to the given []string and assigns it to the JwksSources field.
+func (o *ProxyProvider) SetJwksSources(v []string) {
+	o.JwksSources = v
+}
+
 // GetTokenValidity returns the TokenValidity field value if set, zero value otherwise.
 func (o *ProxyProvider) GetTokenValidity() string {
 	if o == nil || o.TokenValidity == nil {
@@ -775,6 +834,9 @@ func (o ProxyProvider) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["meta_model_name"] = o.MetaModelName
 	}
+	if true {
+		toSerialize["client_id"] = o.ClientId
+	}
 	if o.InternalHost != nil {
 		toSerialize["internal_host"] = o.InternalHost
 	}
@@ -807,6 +869,9 @@ func (o ProxyProvider) MarshalJSON() ([]byte, error) {
 	}
 	if o.CookieDomain != nil {
 		toSerialize["cookie_domain"] = o.CookieDomain
+	}
+	if o.JwksSources != nil {
+		toSerialize["jwks_sources"] = o.JwksSources
 	}
 	if o.TokenValidity != nil {
 		toSerialize["token_validity"] = o.TokenValidity

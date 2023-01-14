@@ -26,7 +26,7 @@ type ScopeMapping struct {
 	VerboseName       string         `json:"verbose_name"`
 	VerboseNamePlural string         `json:"verbose_name_plural"`
 	MetaModelName     string         `json:"meta_model_name"`
-	// Scope used by the client
+	// Scope name requested by the client
 	ScopeName string `json:"scope_name"`
 	// Description shown to the user when consenting. If left empty, the user won't be informed.
 	Description *string `json:"description,omitempty"`
