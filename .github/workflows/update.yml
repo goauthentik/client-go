@@ -20,6 +20,8 @@ jobs:
       - name: Push
         id: push
         run: |
+          git config --global user.email "github-bot@goauthentik.io"
+          git config --global user.name "authentik-bot"
           git add .
           git commit -m "Update API Client" || exit 0
           git push
