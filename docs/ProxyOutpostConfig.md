@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Mode** | Pointer to [**NullableProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
 **TokenValidity** | **NullableFloat64** |  | [readonly] 
+**InterceptHeaderAuth** | Pointer to **bool** | When enabled, this provider will intercept the authorization header and authenticate requests based on its value. | [optional] 
 **ScopesToRequest** | **[]string** |  | [readonly] 
 **AssignedApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
 **AssignedApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
@@ -474,6 +475,31 @@ SetTokenValidity sets TokenValidity field to given value.
 `func (o *ProxyOutpostConfig) UnsetTokenValidity()`
 
 UnsetTokenValidity ensures that no value is present for TokenValidity, not even an explicit nil
+### GetInterceptHeaderAuth
+
+`func (o *ProxyOutpostConfig) GetInterceptHeaderAuth() bool`
+
+GetInterceptHeaderAuth returns the InterceptHeaderAuth field if non-nil, zero value otherwise.
+
+### GetInterceptHeaderAuthOk
+
+`func (o *ProxyOutpostConfig) GetInterceptHeaderAuthOk() (*bool, bool)`
+
+GetInterceptHeaderAuthOk returns a tuple with the InterceptHeaderAuth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterceptHeaderAuth
+
+`func (o *ProxyOutpostConfig) SetInterceptHeaderAuth(v bool)`
+
+SetInterceptHeaderAuth sets InterceptHeaderAuth field to given value.
+
+### HasInterceptHeaderAuth
+
+`func (o *ProxyOutpostConfig) HasInterceptHeaderAuth() bool`
+
+HasInterceptHeaderAuth returns a boolean if a field has been set.
+
 ### GetScopesToRequest
 
 `func (o *ProxyOutpostConfig) GetScopesToRequest() []string`

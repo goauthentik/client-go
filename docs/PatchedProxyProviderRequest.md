@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **BasicAuthPasswordAttribute** | Pointer to **string** | User/Group Attribute used for the password part of the HTTP-Basic Header. | [optional] 
 **BasicAuthUserAttribute** | Pointer to **string** | User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user&#39;s Email address is used. | [optional] 
 **Mode** | Pointer to [**NullableProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
+**InterceptHeaderAuth** | Pointer to **bool** | When enabled, this provider will intercept the authorization header and authenticate requests based on its value. | [optional] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
 **JwksSources** | Pointer to **[]string** |  | [optional] 
 **TokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
@@ -359,6 +360,31 @@ HasMode returns a boolean if a field has been set.
 `func (o *PatchedProxyProviderRequest) UnsetMode()`
 
 UnsetMode ensures that no value is present for Mode, not even an explicit nil
+### GetInterceptHeaderAuth
+
+`func (o *PatchedProxyProviderRequest) GetInterceptHeaderAuth() bool`
+
+GetInterceptHeaderAuth returns the InterceptHeaderAuth field if non-nil, zero value otherwise.
+
+### GetInterceptHeaderAuthOk
+
+`func (o *PatchedProxyProviderRequest) GetInterceptHeaderAuthOk() (*bool, bool)`
+
+GetInterceptHeaderAuthOk returns a tuple with the InterceptHeaderAuth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterceptHeaderAuth
+
+`func (o *PatchedProxyProviderRequest) SetInterceptHeaderAuth(v bool)`
+
+SetInterceptHeaderAuth sets InterceptHeaderAuth field to given value.
+
+### HasInterceptHeaderAuth
+
+`func (o *PatchedProxyProviderRequest) HasInterceptHeaderAuth() bool`
+
+HasInterceptHeaderAuth returns a boolean if a field has been set.
+
 ### GetCookieDomain
 
 `func (o *PatchedProxyProviderRequest) GetCookieDomain() string`

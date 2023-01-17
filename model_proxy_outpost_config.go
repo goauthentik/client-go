@@ -37,10 +37,12 @@ type ProxyOutpostConfig struct {
 	// User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user's Email address is used.
 	BasicAuthUserAttribute *string `json:"basic_auth_user_attribute,omitempty"`
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
-	Mode            NullableProxyMode `json:"mode,omitempty"`
-	CookieDomain    *string           `json:"cookie_domain,omitempty"`
-	TokenValidity   NullableFloat64   `json:"token_validity"`
-	ScopesToRequest []string          `json:"scopes_to_request"`
+	Mode          NullableProxyMode `json:"mode,omitempty"`
+	CookieDomain  *string           `json:"cookie_domain,omitempty"`
+	TokenValidity NullableFloat64   `json:"token_validity"`
+	// When enabled, this provider will intercept the authorization header and authenticate requests based on its value.
+	InterceptHeaderAuth *bool    `json:"intercept_header_auth,omitempty"`
+	ScopesToRequest     []string `json:"scopes_to_request"`
 	// Internal application name, used in URLs.
 	AssignedApplicationSlug string `json:"assigned_application_slug"`
 	// Application's display Name.
@@ -600,6 +602,38 @@ func (o *ProxyOutpostConfig) SetTokenValidity(v float64) {
 	o.TokenValidity.Set(&v)
 }
 
+// GetInterceptHeaderAuth returns the InterceptHeaderAuth field value if set, zero value otherwise.
+func (o *ProxyOutpostConfig) GetInterceptHeaderAuth() bool {
+	if o == nil || o.InterceptHeaderAuth == nil {
+		var ret bool
+		return ret
+	}
+	return *o.InterceptHeaderAuth
+}
+
+// GetInterceptHeaderAuthOk returns a tuple with the InterceptHeaderAuth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProxyOutpostConfig) GetInterceptHeaderAuthOk() (*bool, bool) {
+	if o == nil || o.InterceptHeaderAuth == nil {
+		return nil, false
+	}
+	return o.InterceptHeaderAuth, true
+}
+
+// HasInterceptHeaderAuth returns a boolean if a field has been set.
+func (o *ProxyOutpostConfig) HasInterceptHeaderAuth() bool {
+	if o != nil && o.InterceptHeaderAuth != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInterceptHeaderAuth gets a reference to the given bool and assigns it to the InterceptHeaderAuth field.
+func (o *ProxyOutpostConfig) SetInterceptHeaderAuth(v bool) {
+	o.InterceptHeaderAuth = &v
+}
+
 // GetScopesToRequest returns the ScopesToRequest field value
 func (o *ProxyOutpostConfig) GetScopesToRequest() []string {
 	if o == nil {
@@ -724,6 +758,9 @@ func (o ProxyOutpostConfig) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["token_validity"] = o.TokenValidity.Get()
+	}
+	if o.InterceptHeaderAuth != nil {
+		toSerialize["intercept_header_auth"] = o.InterceptHeaderAuth
 	}
 	if true {
 		toSerialize["scopes_to_request"] = o.ScopesToRequest

@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **BasicAuthPasswordAttribute** | Pointer to **string** | User/Group Attribute used for the password part of the HTTP-Basic Header. | [optional] 
 **BasicAuthUserAttribute** | Pointer to **string** | User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user&#39;s Email address is used. | [optional] 
 **Mode** | Pointer to [**NullableProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
+**InterceptHeaderAuth** | Pointer to **bool** | When enabled, this provider will intercept the authorization header and authenticate requests based on its value. | [optional] 
 **RedirectUris** | **string** |  | [readonly] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
 **JwksSources** | Pointer to **[]string** |  | [optional] 
@@ -514,6 +515,31 @@ HasMode returns a boolean if a field has been set.
 `func (o *ProxyProvider) UnsetMode()`
 
 UnsetMode ensures that no value is present for Mode, not even an explicit nil
+### GetInterceptHeaderAuth
+
+`func (o *ProxyProvider) GetInterceptHeaderAuth() bool`
+
+GetInterceptHeaderAuth returns the InterceptHeaderAuth field if non-nil, zero value otherwise.
+
+### GetInterceptHeaderAuthOk
+
+`func (o *ProxyProvider) GetInterceptHeaderAuthOk() (*bool, bool)`
+
+GetInterceptHeaderAuthOk returns a tuple with the InterceptHeaderAuth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterceptHeaderAuth
+
+`func (o *ProxyProvider) SetInterceptHeaderAuth(v bool)`
+
+SetInterceptHeaderAuth sets InterceptHeaderAuth field to given value.
+
+### HasInterceptHeaderAuth
+
+`func (o *ProxyProvider) HasInterceptHeaderAuth() bool`
+
+HasInterceptHeaderAuth returns a boolean if a field has been set.
+
 ### GetRedirectUris
 
 `func (o *ProxyProvider) GetRedirectUris() string`

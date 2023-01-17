@@ -35,9 +35,11 @@ type ProxyProviderRequest struct {
 	// User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user's Email address is used.
 	BasicAuthUserAttribute *string `json:"basic_auth_user_attribute,omitempty"`
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
-	Mode         NullableProxyMode `json:"mode,omitempty"`
-	CookieDomain *string           `json:"cookie_domain,omitempty"`
-	JwksSources  []string          `json:"jwks_sources,omitempty"`
+	Mode NullableProxyMode `json:"mode,omitempty"`
+	// When enabled, this provider will intercept the authorization header and authenticate requests based on its value.
+	InterceptHeaderAuth *bool    `json:"intercept_header_auth,omitempty"`
+	CookieDomain        *string  `json:"cookie_domain,omitempty"`
+	JwksSources         []string `json:"jwks_sources,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	TokenValidity *string `json:"token_validity,omitempty"`
 }
@@ -444,6 +446,38 @@ func (o *ProxyProviderRequest) UnsetMode() {
 	o.Mode.Unset()
 }
 
+// GetInterceptHeaderAuth returns the InterceptHeaderAuth field value if set, zero value otherwise.
+func (o *ProxyProviderRequest) GetInterceptHeaderAuth() bool {
+	if o == nil || o.InterceptHeaderAuth == nil {
+		var ret bool
+		return ret
+	}
+	return *o.InterceptHeaderAuth
+}
+
+// GetInterceptHeaderAuthOk returns a tuple with the InterceptHeaderAuth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProxyProviderRequest) GetInterceptHeaderAuthOk() (*bool, bool) {
+	if o == nil || o.InterceptHeaderAuth == nil {
+		return nil, false
+	}
+	return o.InterceptHeaderAuth, true
+}
+
+// HasInterceptHeaderAuth returns a boolean if a field has been set.
+func (o *ProxyProviderRequest) HasInterceptHeaderAuth() bool {
+	if o != nil && o.InterceptHeaderAuth != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInterceptHeaderAuth gets a reference to the given bool and assigns it to the InterceptHeaderAuth field.
+func (o *ProxyProviderRequest) SetInterceptHeaderAuth(v bool) {
+	o.InterceptHeaderAuth = &v
+}
+
 // GetCookieDomain returns the CookieDomain field value if set, zero value otherwise.
 func (o *ProxyProviderRequest) GetCookieDomain() string {
 	if o == nil || o.CookieDomain == nil {
@@ -577,6 +611,9 @@ func (o ProxyProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
+	}
+	if o.InterceptHeaderAuth != nil {
+		toSerialize["intercept_header_auth"] = o.InterceptHeaderAuth
 	}
 	if o.CookieDomain != nil {
 		toSerialize["cookie_domain"] = o.CookieDomain

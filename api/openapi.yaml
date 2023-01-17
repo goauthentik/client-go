@@ -37830,6 +37830,7 @@ components:
           basic_auth_user_attribute: basic_auth_user_attribute
           assigned_application_name: assigned_application_name
           name: name
+          intercept_header_auth: true
           scopes_to_request:
           - scopes_to_request
           - scopes_to_request
@@ -37852,6 +37853,7 @@ components:
           basic_auth_user_attribute: basic_auth_user_attribute
           assigned_application_name: assigned_application_name
           name: name
+          intercept_header_auth: true
           scopes_to_request:
           - scopes_to_request
           - scopes_to_request
@@ -37888,6 +37890,7 @@ components:
           mode: ""
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_name: assigned_application_name
+          intercept_header_auth: true
           internal_host_ssl_validation: true
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -37919,6 +37922,7 @@ components:
           mode: ""
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_name: assigned_application_name
+          intercept_header_auth: true
           internal_host_ssl_validation: true
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -41974,6 +41978,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        intercept_header_auth: true
         internal_host_ssl_validation: true
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -42030,6 +42035,10 @@ components:
           - $ref: '#/components/schemas/ProxyMode'
           description: Enable support for forwardAuth in traefik and nginx auth_request.
             Exclusive with internal_host.
+        intercept_header_auth:
+          description: "When enabled, this provider will intercept the authorization\
+            \ header and authenticate requests based on its value."
+          type: boolean
         cookie_domain:
           type: string
         jwks_sources:
@@ -43786,6 +43795,7 @@ components:
         basic_auth_user_attribute: basic_auth_user_attribute
         assigned_application_name: assigned_application_name
         name: name
+        intercept_header_auth: true
         scopes_to_request:
         - scopes_to_request
         - scopes_to_request
@@ -43854,6 +43864,10 @@ components:
           nullable: true
           readOnly: true
           type: number
+        intercept_header_auth:
+          description: "When enabled, this provider will intercept the authorization\
+            \ header and authenticate requests based on its value."
+          type: boolean
         scopes_to_request:
           items:
             type: string
@@ -43887,6 +43901,7 @@ components:
         mode: ""
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_name: assigned_application_name
+        intercept_header_auth: true
         internal_host_ssl_validation: true
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -43987,6 +44002,10 @@ components:
           - $ref: '#/components/schemas/ProxyMode'
           description: Enable support for forwardAuth in traefik and nginx auth_request.
             Exclusive with internal_host.
+        intercept_header_auth:
+          description: "When enabled, this provider will intercept the authorization\
+            \ header and authenticate requests based on its value."
+          type: boolean
         redirect_uris:
           readOnly: true
           type: string
@@ -44041,6 +44060,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        intercept_header_auth: true
         internal_host_ssl_validation: true
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -44097,6 +44117,10 @@ components:
           - $ref: '#/components/schemas/ProxyMode'
           description: Enable support for forwardAuth in traefik and nginx auth_request.
             Exclusive with internal_host.
+        intercept_header_auth:
+          description: "When enabled, this provider will intercept the authorization\
+            \ header and authenticate requests based on its value."
+          type: boolean
         cookie_domain:
           type: string
         jwks_sources:
