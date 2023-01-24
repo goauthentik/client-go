@@ -17,6 +17,7 @@ import (
 
 // PatchedPromptRequest Prompt Serializer
 type PatchedPromptRequest struct {
+	Name *string `json:"name,omitempty"`
 	// Name of the form field, also used to store the value
 	FieldKey              *string         `json:"field_key,omitempty"`
 	Label                 *string         `json:"label,omitempty"`
@@ -44,6 +45,38 @@ func NewPatchedPromptRequest() *PatchedPromptRequest {
 func NewPatchedPromptRequestWithDefaults() *PatchedPromptRequest {
 	this := PatchedPromptRequest{}
 	return &this
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *PatchedPromptRequest) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedPromptRequest) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *PatchedPromptRequest) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *PatchedPromptRequest) SetName(v string) {
+	o.Name = &v
 }
 
 // GetFieldKey returns the FieldKey field value if set, zero value otherwise.
@@ -336,6 +369,9 @@ func (o *PatchedPromptRequest) SetPlaceholderExpression(v bool) {
 
 func (o PatchedPromptRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
+	}
 	if o.FieldKey != nil {
 		toSerialize["field_key"] = o.FieldKey
 	}

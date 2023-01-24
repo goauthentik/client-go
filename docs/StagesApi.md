@@ -8361,7 +8361,7 @@ import (
 )
 
 func main() {
-    promptRequest := *openapiclient.NewPromptRequest("FieldKey_example", "Label_example", openapiclient.PromptTypeEnum("text")) // PromptRequest | 
+    promptRequest := *openapiclient.NewPromptRequest("Name_example", "FieldKey_example", "Label_example", openapiclient.PromptTypeEnum("text")) // PromptRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -8476,7 +8476,7 @@ Name | Type | Description  | Notes
 
 ## StagesPromptPromptsList
 
-> PaginatedPromptList StagesPromptPromptsList(ctx).FieldKey(fieldKey).Label(label).Ordering(ordering).Page(page).PageSize(pageSize).Placeholder(placeholder).Search(search).Type_(type_).Execute()
+> PaginatedPromptList StagesPromptPromptsList(ctx).FieldKey(fieldKey).Label(label).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Placeholder(placeholder).Search(search).Type_(type_).Execute()
 
 
 
@@ -8497,6 +8497,7 @@ import (
 func main() {
     fieldKey := "fieldKey_example" // string |  (optional)
     label := "label_example" // string |  (optional)
+    name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -8506,7 +8507,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptPromptsList(context.Background()).FieldKey(fieldKey).Label(label).Ordering(ordering).Page(page).PageSize(pageSize).Placeholder(placeholder).Search(search).Type_(type_).Execute()
+    resp, r, err := apiClient.StagesApi.StagesPromptPromptsList(context.Background()).FieldKey(fieldKey).Label(label).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Placeholder(placeholder).Search(search).Type_(type_).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptPromptsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8529,6 +8530,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fieldKey** | **string** |  | 
  **label** | **string** |  | 
+ **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
@@ -8718,7 +8720,7 @@ import (
 
 func main() {
     promptUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt.
-    promptRequest := *openapiclient.NewPromptRequest("FieldKey_example", "Label_example", openapiclient.PromptTypeEnum("text")) // PromptRequest | 
+    promptRequest := *openapiclient.NewPromptRequest("Name_example", "FieldKey_example", "Label_example", openapiclient.PromptTypeEnum("text")) // PromptRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

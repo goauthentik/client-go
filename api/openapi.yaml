@@ -25663,6 +25663,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
       - description: Which field to use when ordering the results.
         explode: true
         in: query
@@ -37534,6 +37541,7 @@ components:
               title: title
               slug: slug
           field_key: field_key
+          name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           label: label
           placeholder: placeholder
@@ -37606,6 +37614,7 @@ components:
               title: title
               slug: slug
           field_key: field_key
+          name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           label: label
           placeholder: placeholder
@@ -41882,6 +41891,7 @@ components:
             title: title
             slug: slug
         field_key: field_key
+        name: name
         label: label
         placeholder: placeholder
         type: null
@@ -41889,6 +41899,9 @@ components:
         required: true
         order: -1803530559
       properties:
+        name:
+          minLength: 1
+          type: string
         field_key:
           description: "Name of the form field, also used to store the value"
           minLength: 1
@@ -43285,6 +43298,7 @@ components:
             title: title
             slug: slug
         field_key: field_key
+        name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         label: label
         placeholder: placeholder
@@ -43297,6 +43311,8 @@ components:
           format: uuid
           readOnly: true
           title: Prompt uuid
+          type: string
+        name:
           type: string
         field_key:
           description: "Name of the form field, also used to store the value"
@@ -43324,6 +43340,7 @@ components:
       required:
       - field_key
       - label
+      - name
       - pk
       - type
       type: object
@@ -43403,6 +43420,7 @@ components:
             title: title
             slug: slug
         field_key: field_key
+        name: name
         label: label
         placeholder: placeholder
         type: null
@@ -43410,6 +43428,9 @@ components:
         required: true
         order: -1803530559
       properties:
+        name:
+          minLength: 1
+          type: string
         field_key:
           description: "Name of the form field, also used to store the value"
           minLength: 1
@@ -43438,6 +43459,7 @@ components:
       required:
       - field_key
       - label
+      - name
       - type
       type: object
     PromptStage:

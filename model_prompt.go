@@ -17,7 +17,8 @@ import (
 
 // Prompt Prompt Serializer
 type Prompt struct {
-	Pk string `json:"pk"`
+	Pk   string `json:"pk"`
+	Name string `json:"name"`
 	// Name of the form field, also used to store the value
 	FieldKey              string         `json:"field_key"`
 	Label                 string         `json:"label"`
@@ -34,9 +35,10 @@ type Prompt struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrompt(pk string, fieldKey string, label string, type_ PromptTypeEnum) *Prompt {
+func NewPrompt(pk string, name string, fieldKey string, label string, type_ PromptTypeEnum) *Prompt {
 	this := Prompt{}
 	this.Pk = pk
+	this.Name = name
 	this.FieldKey = fieldKey
 	this.Label = label
 	this.Type = type_
@@ -73,6 +75,30 @@ func (o *Prompt) GetPkOk() (*string, bool) {
 // SetPk sets field value
 func (o *Prompt) SetPk(v string) {
 	o.Pk = v
+}
+
+// GetName returns the Name field value
+func (o *Prompt) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *Prompt) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *Prompt) SetName(v string) {
+	o.Name = v
 }
 
 // GetFieldKey returns the FieldKey field value
@@ -343,6 +369,9 @@ func (o Prompt) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
 	}
 	if true {
 		toSerialize["field_key"] = o.FieldKey

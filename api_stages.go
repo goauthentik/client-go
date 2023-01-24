@@ -17388,6 +17388,7 @@ type ApiStagesPromptPromptsListRequest struct {
 	ApiService  *StagesApiService
 	fieldKey    *string
 	label       *string
+	name        *string
 	ordering    *string
 	page        *int32
 	pageSize    *int32
@@ -17403,6 +17404,11 @@ func (r ApiStagesPromptPromptsListRequest) FieldKey(fieldKey string) ApiStagesPr
 
 func (r ApiStagesPromptPromptsListRequest) Label(label string) ApiStagesPromptPromptsListRequest {
 	r.label = &label
+	return r
+}
+
+func (r ApiStagesPromptPromptsListRequest) Name(name string) ApiStagesPromptPromptsListRequest {
+	r.name = &name
 	return r
 }
 
@@ -17485,6 +17491,9 @@ func (a *StagesApiService) StagesPromptPromptsListExecute(r ApiStagesPromptPromp
 	}
 	if r.label != nil {
 		localVarQueryParams.Add("label", parameterToString(*r.label, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))

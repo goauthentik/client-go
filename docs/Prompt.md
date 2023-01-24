@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
+**Name** | **string** |  | 
 **FieldKey** | **string** | Name of the form field, also used to store the value | 
 **Label** | **string** |  | 
 **Type** | [**PromptTypeEnum**](PromptTypeEnum.md) |  | 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewPrompt
 
-`func NewPrompt(pk string, fieldKey string, label string, type_ PromptTypeEnum, ) *Prompt`
+`func NewPrompt(pk string, name string, fieldKey string, label string, type_ PromptTypeEnum, ) *Prompt`
 
 NewPrompt instantiates a new Prompt object
 This constructor will assign default values to properties that have it defined,
@@ -52,6 +53,26 @@ and a boolean to check if the value has been set.
 `func (o *Prompt) SetPk(v string)`
 
 SetPk sets Pk field to given value.
+
+
+### GetName
+
+`func (o *Prompt) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *Prompt) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *Prompt) SetName(v string)`
+
+SetName sets Name field to given value.
 
 
 ### GetFieldKey

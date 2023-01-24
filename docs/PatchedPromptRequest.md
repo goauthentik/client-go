@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Name** | Pointer to **string** |  | [optional] 
 **FieldKey** | Pointer to **string** | Name of the form field, also used to store the value | [optional] 
 **Label** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to [**PromptTypeEnum**](PromptTypeEnum.md) |  | [optional] 
@@ -32,6 +33,31 @@ will change when the set of required properties is changed
 NewPatchedPromptRequestWithDefaults instantiates a new PatchedPromptRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetName
+
+`func (o *PatchedPromptRequest) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *PatchedPromptRequest) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *PatchedPromptRequest) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *PatchedPromptRequest) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetFieldKey
 

@@ -17,6 +17,7 @@ import (
 
 // PromptRequest Prompt Serializer
 type PromptRequest struct {
+	Name string `json:"name"`
 	// Name of the form field, also used to store the value
 	FieldKey              string         `json:"field_key"`
 	Label                 string         `json:"label"`
@@ -33,8 +34,9 @@ type PromptRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPromptRequest(fieldKey string, label string, type_ PromptTypeEnum) *PromptRequest {
+func NewPromptRequest(name string, fieldKey string, label string, type_ PromptTypeEnum) *PromptRequest {
 	this := PromptRequest{}
+	this.Name = name
 	this.FieldKey = fieldKey
 	this.Label = label
 	this.Type = type_
@@ -47,6 +49,30 @@ func NewPromptRequest(fieldKey string, label string, type_ PromptTypeEnum) *Prom
 func NewPromptRequestWithDefaults() *PromptRequest {
 	this := PromptRequest{}
 	return &this
+}
+
+// GetName returns the Name field value
+func (o *PromptRequest) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *PromptRequest) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *PromptRequest) SetName(v string) {
+	o.Name = v
 }
 
 // GetFieldKey returns the FieldKey field value
@@ -315,6 +341,9 @@ func (o *PromptRequest) SetPlaceholderExpression(v bool) {
 
 func (o PromptRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["name"] = o.Name
+	}
 	if true {
 		toSerialize["field_key"] = o.FieldKey
 	}
