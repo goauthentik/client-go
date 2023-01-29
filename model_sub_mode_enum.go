@@ -22,6 +22,7 @@ type SubModeEnum string
 // List of SubModeEnum
 const (
 	SUBMODEENUM_HASHED_USER_ID SubModeEnum = "hashed_user_id"
+	SUBMODEENUM_USER_ID        SubModeEnum = "user_id"
 	SUBMODEENUM_USER_USERNAME  SubModeEnum = "user_username"
 	SUBMODEENUM_USER_EMAIL     SubModeEnum = "user_email"
 	SUBMODEENUM_USER_UPN       SubModeEnum = "user_upn"
@@ -30,6 +31,7 @@ const (
 // All allowed values of SubModeEnum enum
 var AllowedSubModeEnumEnumValues = []SubModeEnum{
 	"hashed_user_id",
+	"user_id",
 	"user_username",
 	"user_email",
 	"user_upn",

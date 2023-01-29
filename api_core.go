@@ -5657,7 +5657,8 @@ func (r ApiCoreTokensSetKeyCreateRequest) Execute() (*http.Response, error) {
 /*
 CoreTokensSetKeyCreate Method for CoreTokensSetKeyCreate
 
-Return token key and log access
+Set token key. Action is logged as event. `authentik_core.set_token_key` permission
+is required.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param identifier

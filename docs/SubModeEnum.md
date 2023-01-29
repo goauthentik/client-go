@@ -5,6 +5,8 @@
 
 * `HASHED_USER_ID` (value: `"hashed_user_id"`)
 
+* `USER_ID` (value: `"user_id"`)
+
 * `USER_USERNAME` (value: `"user_username"`)
 
 * `USER_EMAIL` (value: `"user_email"`)

@@ -4604,7 +4604,9 @@ paths:
       - core
   /core/tokens/{identifier}/set_key/:
     post:
-      description: Return token key and log access
+      description: |-
+        Set token key. Action is logged as event. `authentik_core.set_token_key` permission
+        is required.
       operationId: core_tokens_set_key_create
       parameters:
       - explode: false
@@ -15829,6 +15831,7 @@ paths:
           enum:
           - hashed_user_id
           - user_email
+          - user_id
           - user_upn
           - user_username
           type: string
@@ -45741,6 +45744,7 @@ components:
     SubModeEnum:
       enum:
       - hashed_user_id
+      - user_id
       - user_username
       - user_email
       - user_upn
