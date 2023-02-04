@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AdminAppsList**](AdminApi.md#AdminAppsList) | **Get** /admin/apps/ | 
 [**AdminMetricsRetrieve**](AdminApi.md#AdminMetricsRetrieve) | **Get** /admin/metrics/ | 
+[**AdminSystemCreate**](AdminApi.md#AdminSystemCreate) | **Post** /admin/system/ | 
 [**AdminSystemRetrieve**](AdminApi.md#AdminSystemRetrieve) | **Get** /admin/system/ | 
 [**AdminSystemTasksList**](AdminApi.md#AdminSystemTasksList) | **Get** /admin/system_tasks/ | 
 [**AdminSystemTasksRetrieve**](AdminApi.md#AdminSystemTasksRetrieve) | **Get** /admin/system_tasks/{id}/ | 
@@ -122,6 +123,67 @@ Other parameters are passed through a pointer to a apiAdminMetricsRetrieveReques
 ### Return type
 
 [**LoginMetrics**](LoginMetrics.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AdminSystemCreate
+
+> System AdminSystemCreate(ctx).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminSystemCreate(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminSystemCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminSystemCreate`: System
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminSystemCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAdminSystemCreateRequest struct via the builder pattern
+
+
+### Return type
+
+[**System**](System.md)
 
 ### Authorization
 

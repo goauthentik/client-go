@@ -94,6 +94,32 @@ paths:
       - authentik: []
       tags:
       - admin
+    post:
+      description: Get system information.
+      operationId: admin_system_create
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/System'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - admin
   /admin/system_tasks/:
     get:
       description: List system tasks

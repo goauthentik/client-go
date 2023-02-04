@@ -39,6 +39,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AdminApi* | [**AdminAppsList**](docs/AdminApi.md#adminappslist) | **Get** /admin/apps/ | 
 *AdminApi* | [**AdminMetricsRetrieve**](docs/AdminApi.md#adminmetricsretrieve) | **Get** /admin/metrics/ | 
+*AdminApi* | [**AdminSystemCreate**](docs/AdminApi.md#adminsystemcreate) | **Post** /admin/system/ | 
 *AdminApi* | [**AdminSystemRetrieve**](docs/AdminApi.md#adminsystemretrieve) | **Get** /admin/system/ | 
 *AdminApi* | [**AdminSystemTasksList**](docs/AdminApi.md#adminsystemtaskslist) | **Get** /admin/system_tasks/ | 
 *AdminApi* | [**AdminSystemTasksRetrieve**](docs/AdminApi.md#adminsystemtasksretrieve) | **Get** /admin/system_tasks/{id}/ | 
