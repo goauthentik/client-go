@@ -37,9 +37,9 @@ type ProxyOutpostConfig struct {
 	// User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user's Email address is used.
 	BasicAuthUserAttribute *string `json:"basic_auth_user_attribute,omitempty"`
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
-	Mode          NullableProxyMode `json:"mode,omitempty"`
-	CookieDomain  *string           `json:"cookie_domain,omitempty"`
-	TokenValidity NullableFloat64   `json:"token_validity"`
+	Mode                NullableProxyMode `json:"mode,omitempty"`
+	CookieDomain        *string           `json:"cookie_domain,omitempty"`
+	AccessTokenValidity NullableFloat64   `json:"access_token_validity"`
 	// When enabled, this provider will intercept the authorization header and authenticate requests based on its value.
 	InterceptHeaderAuth *bool    `json:"intercept_header_auth,omitempty"`
 	ScopesToRequest     []string `json:"scopes_to_request"`
@@ -53,13 +53,13 @@ type ProxyOutpostConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration ProxyOutpostConfigOidcConfiguration, tokenValidity NullableFloat64, scopesToRequest []string, assignedApplicationSlug string, assignedApplicationName string) *ProxyOutpostConfig {
+func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration ProxyOutpostConfigOidcConfiguration, accessTokenValidity NullableFloat64, scopesToRequest []string, assignedApplicationSlug string, assignedApplicationName string) *ProxyOutpostConfig {
 	this := ProxyOutpostConfig{}
 	this.Pk = pk
 	this.Name = name
 	this.ExternalHost = externalHost
 	this.OidcConfiguration = oidcConfiguration
-	this.TokenValidity = tokenValidity
+	this.AccessTokenValidity = accessTokenValidity
 	this.ScopesToRequest = scopesToRequest
 	this.AssignedApplicationSlug = assignedApplicationSlug
 	this.AssignedApplicationName = assignedApplicationName
@@ -576,30 +576,30 @@ func (o *ProxyOutpostConfig) SetCookieDomain(v string) {
 	o.CookieDomain = &v
 }
 
-// GetTokenValidity returns the TokenValidity field value
+// GetAccessTokenValidity returns the AccessTokenValidity field value
 // If the value is explicit nil, the zero value for float64 will be returned
-func (o *ProxyOutpostConfig) GetTokenValidity() float64 {
-	if o == nil || o.TokenValidity.Get() == nil {
+func (o *ProxyOutpostConfig) GetAccessTokenValidity() float64 {
+	if o == nil || o.AccessTokenValidity.Get() == nil {
 		var ret float64
 		return ret
 	}
 
-	return *o.TokenValidity.Get()
+	return *o.AccessTokenValidity.Get()
 }
 
-// GetTokenValidityOk returns a tuple with the TokenValidity field value
+// GetAccessTokenValidityOk returns a tuple with the AccessTokenValidity field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProxyOutpostConfig) GetTokenValidityOk() (*float64, bool) {
+func (o *ProxyOutpostConfig) GetAccessTokenValidityOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.TokenValidity.Get(), o.TokenValidity.IsSet()
+	return o.AccessTokenValidity.Get(), o.AccessTokenValidity.IsSet()
 }
 
-// SetTokenValidity sets field value
-func (o *ProxyOutpostConfig) SetTokenValidity(v float64) {
-	o.TokenValidity.Set(&v)
+// SetAccessTokenValidity sets field value
+func (o *ProxyOutpostConfig) SetAccessTokenValidity(v float64) {
+	o.AccessTokenValidity.Set(&v)
 }
 
 // GetInterceptHeaderAuth returns the InterceptHeaderAuth field value if set, zero value otherwise.
@@ -757,7 +757,7 @@ func (o ProxyOutpostConfig) MarshalJSON() ([]byte, error) {
 		toSerialize["cookie_domain"] = o.CookieDomain
 	}
 	if true {
-		toSerialize["token_validity"] = o.TokenValidity.Get()
+		toSerialize["access_token_validity"] = o.AccessTokenValidity.Get()
 	}
 	if o.InterceptHeaderAuth != nil {
 		toSerialize["intercept_header_auth"] = o.InterceptHeaderAuth

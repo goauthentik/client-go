@@ -1036,7 +1036,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersOauth2List
 
-> PaginatedOAuth2ProviderList ProvidersOauth2List(ctx).AccessCodeValidity(accessCodeValidity).Application(application).AuthorizationFlow(authorizationFlow).ClientId(clientId).ClientType(clientType).IncludeClaimsInIdToken(includeClaimsInIdToken).IssuerMode(issuerMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).RedirectUris(redirectUris).Search(search).SigningKey(signingKey).SubMode(subMode).TokenValidity(tokenValidity).Execute()
+> PaginatedOAuth2ProviderList ProvidersOauth2List(ctx).AccessCodeValidity(accessCodeValidity).AccessTokenValidity(accessTokenValidity).Application(application).AuthorizationFlow(authorizationFlow).ClientId(clientId).ClientType(clientType).IncludeClaimsInIdToken(includeClaimsInIdToken).IssuerMode(issuerMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).RedirectUris(redirectUris).RefreshTokenValidity(refreshTokenValidity).Search(search).SigningKey(signingKey).SubMode(subMode).Execute()
 
 
 
@@ -1056,6 +1056,7 @@ import (
 
 func main() {
     accessCodeValidity := "accessCodeValidity_example" // string |  (optional)
+    accessTokenValidity := "accessTokenValidity_example" // string |  (optional)
     application := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     clientId := "clientId_example" // string |  (optional)
@@ -1068,14 +1069,14 @@ func main() {
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     propertyMappings := []string{"Inner_example"} // []string |  (optional)
     redirectUris := "redirectUris_example" // string |  (optional)
+    refreshTokenValidity := "refreshTokenValidity_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     signingKey := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     subMode := "subMode_example" // string | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. (optional)
-    tokenValidity := "tokenValidity_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersOauth2List(context.Background()).AccessCodeValidity(accessCodeValidity).Application(application).AuthorizationFlow(authorizationFlow).ClientId(clientId).ClientType(clientType).IncludeClaimsInIdToken(includeClaimsInIdToken).IssuerMode(issuerMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).RedirectUris(redirectUris).Search(search).SigningKey(signingKey).SubMode(subMode).TokenValidity(tokenValidity).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersOauth2List(context.Background()).AccessCodeValidity(accessCodeValidity).AccessTokenValidity(accessTokenValidity).Application(application).AuthorizationFlow(authorizationFlow).ClientId(clientId).ClientType(clientType).IncludeClaimsInIdToken(includeClaimsInIdToken).IssuerMode(issuerMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).RedirectUris(redirectUris).RefreshTokenValidity(refreshTokenValidity).Search(search).SigningKey(signingKey).SubMode(subMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersOauth2List``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1097,6 +1098,7 @@ Other parameters are passed through a pointer to a apiProvidersOauth2ListRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accessCodeValidity** | **string** |  | 
+ **accessTokenValidity** | **string** |  | 
  **application** | **string** |  | 
  **authorizationFlow** | **string** |  | 
  **clientId** | **string** |  | 
@@ -1109,10 +1111,10 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | Number of results to return per page. | 
  **propertyMappings** | **[]string** |  | 
  **redirectUris** | **string** |  | 
+ **refreshTokenValidity** | **string** |  | 
  **search** | **string** | A search term. | 
  **signingKey** | **string** |  | 
  **subMode** | **string** | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | 
- **tokenValidity** | **string** |  | 
 
 ### Return type
 

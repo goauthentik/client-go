@@ -37,7 +37,9 @@ type OAuth2Provider struct {
 	// Access codes not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	AccessCodeValidity *string `json:"access_code_validity,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
-	TokenValidity *string `json:"token_validity,omitempty"`
+	AccessTokenValidity *string `json:"access_token_validity,omitempty"`
+	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
+	RefreshTokenValidity *string `json:"refresh_token_validity,omitempty"`
 	// Include User claims from scopes in the id_token, for applications that don't access the userinfo endpoint.
 	IncludeClaimsInIdToken *bool `json:"include_claims_in_id_token,omitempty"`
 	// Key used to sign the tokens. Only required when JWT Algorithm is set to RS256.
@@ -464,36 +466,68 @@ func (o *OAuth2Provider) SetAccessCodeValidity(v string) {
 	o.AccessCodeValidity = &v
 }
 
-// GetTokenValidity returns the TokenValidity field value if set, zero value otherwise.
-func (o *OAuth2Provider) GetTokenValidity() string {
-	if o == nil || o.TokenValidity == nil {
+// GetAccessTokenValidity returns the AccessTokenValidity field value if set, zero value otherwise.
+func (o *OAuth2Provider) GetAccessTokenValidity() string {
+	if o == nil || o.AccessTokenValidity == nil {
 		var ret string
 		return ret
 	}
-	return *o.TokenValidity
+	return *o.AccessTokenValidity
 }
 
-// GetTokenValidityOk returns a tuple with the TokenValidity field value if set, nil otherwise
+// GetAccessTokenValidityOk returns a tuple with the AccessTokenValidity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OAuth2Provider) GetTokenValidityOk() (*string, bool) {
-	if o == nil || o.TokenValidity == nil {
+func (o *OAuth2Provider) GetAccessTokenValidityOk() (*string, bool) {
+	if o == nil || o.AccessTokenValidity == nil {
 		return nil, false
 	}
-	return o.TokenValidity, true
+	return o.AccessTokenValidity, true
 }
 
-// HasTokenValidity returns a boolean if a field has been set.
-func (o *OAuth2Provider) HasTokenValidity() bool {
-	if o != nil && o.TokenValidity != nil {
+// HasAccessTokenValidity returns a boolean if a field has been set.
+func (o *OAuth2Provider) HasAccessTokenValidity() bool {
+	if o != nil && o.AccessTokenValidity != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTokenValidity gets a reference to the given string and assigns it to the TokenValidity field.
-func (o *OAuth2Provider) SetTokenValidity(v string) {
-	o.TokenValidity = &v
+// SetAccessTokenValidity gets a reference to the given string and assigns it to the AccessTokenValidity field.
+func (o *OAuth2Provider) SetAccessTokenValidity(v string) {
+	o.AccessTokenValidity = &v
+}
+
+// GetRefreshTokenValidity returns the RefreshTokenValidity field value if set, zero value otherwise.
+func (o *OAuth2Provider) GetRefreshTokenValidity() string {
+	if o == nil || o.RefreshTokenValidity == nil {
+		var ret string
+		return ret
+	}
+	return *o.RefreshTokenValidity
+}
+
+// GetRefreshTokenValidityOk returns a tuple with the RefreshTokenValidity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuth2Provider) GetRefreshTokenValidityOk() (*string, bool) {
+	if o == nil || o.RefreshTokenValidity == nil {
+		return nil, false
+	}
+	return o.RefreshTokenValidity, true
+}
+
+// HasRefreshTokenValidity returns a boolean if a field has been set.
+func (o *OAuth2Provider) HasRefreshTokenValidity() bool {
+	if o != nil && o.RefreshTokenValidity != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRefreshTokenValidity gets a reference to the given string and assigns it to the RefreshTokenValidity field.
+func (o *OAuth2Provider) SetRefreshTokenValidity(v string) {
+	o.RefreshTokenValidity = &v
 }
 
 // GetIncludeClaimsInIdToken returns the IncludeClaimsInIdToken field value if set, zero value otherwise.
@@ -765,8 +799,11 @@ func (o OAuth2Provider) MarshalJSON() ([]byte, error) {
 	if o.AccessCodeValidity != nil {
 		toSerialize["access_code_validity"] = o.AccessCodeValidity
 	}
-	if o.TokenValidity != nil {
-		toSerialize["token_validity"] = o.TokenValidity
+	if o.AccessTokenValidity != nil {
+		toSerialize["access_token_validity"] = o.AccessTokenValidity
+	}
+	if o.RefreshTokenValidity != nil {
+		toSerialize["refresh_token_validity"] = o.RefreshTokenValidity
 	}
 	if o.IncludeClaimsInIdToken != nil {
 		toSerialize["include_claims_in_id_token"] = o.IncludeClaimsInIdToken

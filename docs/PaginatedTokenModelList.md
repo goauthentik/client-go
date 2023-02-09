@@ -1,67 +1,67 @@
-# PaginatedRefreshTokenModelList
+# PaginatedTokenModelList
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
-**Results** | [**[]RefreshTokenModel**](RefreshTokenModel.md) |  | 
+**Results** | [**[]TokenModel**](TokenModel.md) |  | 
 
 ## Methods
 
-### NewPaginatedRefreshTokenModelList
+### NewPaginatedTokenModelList
 
-`func NewPaginatedRefreshTokenModelList(pagination PaginatedApplicationListPagination, results []RefreshTokenModel, ) *PaginatedRefreshTokenModelList`
+`func NewPaginatedTokenModelList(pagination PaginatedApplicationListPagination, results []TokenModel, ) *PaginatedTokenModelList`
 
-NewPaginatedRefreshTokenModelList instantiates a new PaginatedRefreshTokenModelList object
+NewPaginatedTokenModelList instantiates a new PaginatedTokenModelList object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewPaginatedRefreshTokenModelListWithDefaults
+### NewPaginatedTokenModelListWithDefaults
 
-`func NewPaginatedRefreshTokenModelListWithDefaults() *PaginatedRefreshTokenModelList`
+`func NewPaginatedTokenModelListWithDefaults() *PaginatedTokenModelList`
 
-NewPaginatedRefreshTokenModelListWithDefaults instantiates a new PaginatedRefreshTokenModelList object
+NewPaginatedTokenModelListWithDefaults instantiates a new PaginatedTokenModelList object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedRefreshTokenModelList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedTokenModelList) GetPagination() PaginatedApplicationListPagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedRefreshTokenModelList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedTokenModelList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedRefreshTokenModelList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedTokenModelList) SetPagination(v PaginatedApplicationListPagination)`
 
 SetPagination sets Pagination field to given value.
 
 
 ### GetResults
 
-`func (o *PaginatedRefreshTokenModelList) GetResults() []RefreshTokenModel`
+`func (o *PaginatedTokenModelList) GetResults() []TokenModel`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *PaginatedRefreshTokenModelList) GetResultsOk() (*[]RefreshTokenModel, bool)`
+`func (o *PaginatedTokenModelList) GetResultsOk() (*[]TokenModel, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *PaginatedRefreshTokenModelList) SetResults(v []RefreshTokenModel)`
+`func (o *PaginatedTokenModelList) SetResults(v []TokenModel)`
 
 SetResults sets Results field to given value.
 

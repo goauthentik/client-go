@@ -8809,6 +8809,185 @@ paths:
       - authentik: []
       tags:
       - managed
+  /oauth2/access_tokens/:
+    get:
+      description: AccessToken Viewset
+      operationId: oauth2_access_tokens_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: provider
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: user
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTokenModelList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - oauth2
+  /oauth2/access_tokens/{id}/:
+    delete:
+      description: AccessToken Viewset
+      operationId: oauth2_access_tokens_destroy
+      parameters:
+      - description: A unique integer value identifying this OAuth2 Access Token.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - oauth2
+    get:
+      description: AccessToken Viewset
+      operationId: oauth2_access_tokens_retrieve
+      parameters:
+      - description: A unique integer value identifying this OAuth2 Access Token.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenModel'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - oauth2
+  /oauth2/access_tokens/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: oauth2_access_tokens_used_by_list
+      parameters:
+      - description: A unique integer value identifying this OAuth2 Access Token.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - oauth2
   /oauth2/authorization_codes/:
     get:
       description: AuthorizationCode Viewset
@@ -9044,7 +9223,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedRefreshTokenModelList'
+                $ref: '#/components/schemas/PaginatedTokenModelList'
           description: ""
         "400":
           content:
@@ -9067,7 +9246,7 @@ paths:
       description: RefreshToken Viewset
       operationId: oauth2_refresh_tokens_destroy
       parameters:
-      - description: A unique integer value identifying this OAuth2 Token.
+      - description: A unique integer value identifying this OAuth2 Refresh Token.
         explode: false
         in: path
         name: id
@@ -9098,7 +9277,7 @@ paths:
       description: RefreshToken Viewset
       operationId: oauth2_refresh_tokens_retrieve
       parameters:
-      - description: A unique integer value identifying this OAuth2 Token.
+      - description: A unique integer value identifying this OAuth2 Refresh Token.
         explode: false
         in: path
         name: id
@@ -9111,7 +9290,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RefreshTokenModel'
+                $ref: '#/components/schemas/TokenModel'
           description: ""
         "400":
           content:
@@ -9134,7 +9313,7 @@ paths:
       description: Get a list of all objects that use this object
       operationId: oauth2_refresh_tokens_used_by_list
       parameters:
-      - description: A unique integer value identifying this OAuth2 Token.
+      - description: A unique integer value identifying this OAuth2 Refresh Token.
         explode: false
         in: path
         name: id
@@ -15732,6 +15911,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: access_token_validity
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: application
         required: false
         schema:
@@ -15831,6 +16017,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: refresh_token_validity
+        required: false
+        schema:
+          type: string
+        style: form
       - description: A search term.
         explode: true
         in: query
@@ -15860,13 +16053,6 @@ paths:
           - user_id
           - user_upn
           - user_username
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: token_validity
-        required: false
-        schema:
           type: string
         style: form
       responses:
@@ -30993,6 +31179,7 @@ components:
           redirect_uris: redirect_uris
           sub_mode: ""
           client_id: client_id
+          refresh_token_validity: refresh_token_validity
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -31000,6 +31187,7 @@ components:
           meta_model_name: meta_model_name
           include_claims_in_id_token: true
           assigned_application_name: assigned_application_name
+          access_token_validity: access_token_validity
           issuer_mode: ""
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -31010,7 +31198,6 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          token_validity: token_validity
         scope:
         - scope
         - scope
@@ -33547,6 +33734,7 @@ components:
         redirect_uris: redirect_uris
         sub_mode: ""
         client_id: client_id
+        refresh_token_validity: refresh_token_validity
         component: component
         verbose_name: verbose_name
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -33554,6 +33742,7 @@ components:
         meta_model_name: meta_model_name
         include_claims_in_id_token: true
         assigned_application_name: assigned_application_name
+        access_token_validity: access_token_validity
         issuer_mode: ""
         jwks_sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -33564,7 +33753,6 @@ components:
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        token_validity: token_validity
       properties:
         pk:
           readOnly: true
@@ -33616,7 +33804,11 @@ components:
           description: "Access codes not valid on or after current time + this value\
             \ (Format: hours=1;minutes=2;seconds=3)."
           type: string
-        token_validity:
+        access_token_validity:
+          description: "Tokens not valid on or after current time + this value (Format:\
+            \ hours=1;minutes=2;seconds=3)."
+          type: string
+        refresh_token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
             \ hours=1;minutes=2;seconds=3)."
           type: string
@@ -33669,9 +33861,11 @@ components:
         redirect_uris: redirect_uris
         sub_mode: ""
         client_id: client_id
+        refresh_token_validity: refresh_token_validity
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         access_code_validity: access_code_validity
         include_claims_in_id_token: true
+        access_token_validity: access_token_validity
         issuer_mode: ""
         jwks_sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -33681,7 +33875,6 @@ components:
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        token_validity: token_validity
       properties:
         name:
           minLength: 1
@@ -33712,7 +33905,12 @@ components:
             \ (Format: hours=1;minutes=2;seconds=3)."
           minLength: 1
           type: string
-        token_validity:
+        access_token_validity:
+          description: "Tokens not valid on or after current time + this value (Format:\
+            \ hours=1;minutes=2;seconds=3)."
+          minLength: 1
+          type: string
+        refresh_token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
             \ hours=1;minutes=2;seconds=3)."
           minLength: 1
@@ -35821,6 +36019,7 @@ components:
             redirect_uris: redirect_uris
             sub_mode: ""
             client_id: client_id
+            refresh_token_validity: refresh_token_validity
             component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35828,6 +36027,7 @@ components:
             meta_model_name: meta_model_name
             include_claims_in_id_token: true
             assigned_application_name: assigned_application_name
+            access_token_validity: access_token_validity
             issuer_mode: ""
             jwks_sources:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35838,7 +36038,6 @@ components:
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            token_validity: token_validity
           scope:
           - scope
           - scope
@@ -35886,6 +36085,7 @@ components:
             redirect_uris: redirect_uris
             sub_mode: ""
             client_id: client_id
+            refresh_token_validity: refresh_token_validity
             component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35893,6 +36093,7 @@ components:
             meta_model_name: meta_model_name
             include_claims_in_id_token: true
             assigned_application_name: assigned_application_name
+            access_token_validity: access_token_validity
             issuer_mode: ""
             jwks_sources:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35903,7 +36104,6 @@ components:
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            token_validity: token_validity
           scope:
           - scope
           - scope
@@ -36886,6 +37086,7 @@ components:
           redirect_uris: redirect_uris
           sub_mode: ""
           client_id: client_id
+          refresh_token_validity: refresh_token_validity
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36893,6 +37094,7 @@ components:
           meta_model_name: meta_model_name
           include_claims_in_id_token: true
           assigned_application_name: assigned_application_name
+          access_token_validity: access_token_validity
           issuer_mode: ""
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36903,7 +37105,6 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          token_validity: token_validity
         - verbose_name_plural: verbose_name_plural
           signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
@@ -36911,6 +37112,7 @@ components:
           redirect_uris: redirect_uris
           sub_mode: ""
           client_id: client_id
+          refresh_token_validity: refresh_token_validity
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36918,6 +37120,7 @@ components:
           meta_model_name: meta_model_name
           include_claims_in_id_token: true
           assigned_application_name: assigned_application_name
+          access_token_validity: access_token_validity
           issuer_mode: ""
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36928,7 +37131,6 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          token_validity: token_validity
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -37866,6 +38068,7 @@ components:
           oidc_configuration: null
           basic_auth_enabled: true
           basic_auth_user_attribute: basic_auth_user_attribute
+          access_token_validity: 6.027456183070403
           assigned_application_name: assigned_application_name
           name: name
           intercept_header_auth: true
@@ -37875,7 +38078,6 @@ components:
           pk: 0
           client_secret: client_secret
           internal_host_ssl_validation: true
-          token_validity: 6.027456183070403
         - external_host: https://openapi-generator.tech
           cookie_domain: cookie_domain
           skip_path_regex: skip_path_regex
@@ -37889,6 +38091,7 @@ components:
           oidc_configuration: null
           basic_auth_enabled: true
           basic_auth_user_attribute: basic_auth_user_attribute
+          access_token_validity: 6.027456183070403
           assigned_application_name: assigned_application_name
           name: name
           intercept_header_auth: true
@@ -37898,7 +38101,6 @@ components:
           pk: 0
           client_secret: client_secret
           internal_host_ssl_validation: true
-          token_validity: 6.027456183070403
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -37925,6 +38127,7 @@ components:
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_id: client_id
+          refresh_token_validity: refresh_token_validity
           mode: ""
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_name: assigned_application_name
@@ -37947,16 +38150,17 @@ components:
           basic_auth_enabled: true
           basic_auth_user_attribute: basic_auth_user_attribute
           meta_model_name: meta_model_name
+          access_token_validity: access_token_validity
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 0
-          token_validity: token_validity
         - verbose_name_plural: verbose_name_plural
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_id: client_id
+          refresh_token_validity: refresh_token_validity
           mode: ""
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_name: assigned_application_name
@@ -37979,174 +38183,18 @@ components:
           basic_auth_enabled: true
           basic_auth_user_attribute: basic_auth_user_attribute
           meta_model_name: meta_model_name
+          access_token_validity: access_token_validity
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 0
-          token_validity: token_validity
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
         results:
           items:
             $ref: '#/components/schemas/ProxyProvider'
-          type: array
-      required:
-      - pagination
-      - results
-      type: object
-    PaginatedRefreshTokenModelList:
-      example:
-        pagination:
-          next: 0.8008281904610115
-          current: 5.962133916683182
-          previous: 6.027456183070403
-          start_index: 2.3021358869347655
-          count: 1.4658129805029452
-          end_index: 7.061401241503109
-          total_pages: 5.637376656633329
-        results:
-        - expires: 2000-01-23T04:56:07.000+00:00
-          is_expired: true
-          provider:
-            verbose_name_plural: verbose_name_plural
-            signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            assigned_application_slug: assigned_application_slug
-            client_type: ""
-            redirect_uris: redirect_uris
-            sub_mode: ""
-            client_id: client_id
-            component: component
-            verbose_name: verbose_name
-            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            access_code_validity: access_code_validity
-            meta_model_name: meta_model_name
-            include_claims_in_id_token: true
-            assigned_application_name: assigned_application_name
-            issuer_mode: ""
-            jwks_sources:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            name: name
-            pk: 6
-            client_secret: client_secret
-            property_mappings:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            token_validity: token_validity
-          scope:
-          - scope
-          - scope
-          id_token: id_token
-          pk: 0
-          revoked: true
-          user:
-            is_active: true
-            is_superuser: true
-            last_login: 2000-01-23T04:56:07.000+00:00
-            groups:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            avatar: avatar
-            groups_obj:
-            - parent_name: parent_name
-              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              is_superuser: true
-              name: name
-              attributes:
-                key: ""
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              num_pk: 1
-            - parent_name: parent_name
-              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              is_superuser: true
-              name: name
-              attributes:
-                key: ""
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              num_pk: 1
-            uid: uid
-            path: path
-            name: name
-            attributes:
-              key: ""
-            pk: 6
-            email: email
-            username: username
-        - expires: 2000-01-23T04:56:07.000+00:00
-          is_expired: true
-          provider:
-            verbose_name_plural: verbose_name_plural
-            signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            assigned_application_slug: assigned_application_slug
-            client_type: ""
-            redirect_uris: redirect_uris
-            sub_mode: ""
-            client_id: client_id
-            component: component
-            verbose_name: verbose_name
-            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            access_code_validity: access_code_validity
-            meta_model_name: meta_model_name
-            include_claims_in_id_token: true
-            assigned_application_name: assigned_application_name
-            issuer_mode: ""
-            jwks_sources:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            name: name
-            pk: 6
-            client_secret: client_secret
-            property_mappings:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            token_validity: token_validity
-          scope:
-          - scope
-          - scope
-          id_token: id_token
-          pk: 0
-          revoked: true
-          user:
-            is_active: true
-            is_superuser: true
-            last_login: 2000-01-23T04:56:07.000+00:00
-            groups:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            avatar: avatar
-            groups_obj:
-            - parent_name: parent_name
-              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              is_superuser: true
-              name: name
-              attributes:
-                key: ""
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              num_pk: 1
-            - parent_name: parent_name
-              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              is_superuser: true
-              name: name
-              attributes:
-                key: ""
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              num_pk: 1
-            uid: uid
-            path: path
-            name: name
-            attributes:
-              key: ""
-            pk: 6
-            email: email
-            username: username
-      properties:
-        pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
-        results:
-          items:
-            $ref: '#/components/schemas/RefreshTokenModel'
           type: array
       required:
       - pagination
@@ -38819,6 +38867,164 @@ components:
         results:
           items:
             $ref: '#/components/schemas/Token'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedTokenModelList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - expires: 2000-01-23T04:56:07.000+00:00
+          is_expired: true
+          provider:
+            verbose_name_plural: verbose_name_plural
+            signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            assigned_application_slug: assigned_application_slug
+            client_type: ""
+            redirect_uris: redirect_uris
+            sub_mode: ""
+            client_id: client_id
+            refresh_token_validity: refresh_token_validity
+            component: component
+            verbose_name: verbose_name
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            access_code_validity: access_code_validity
+            meta_model_name: meta_model_name
+            include_claims_in_id_token: true
+            assigned_application_name: assigned_application_name
+            access_token_validity: access_token_validity
+            issuer_mode: ""
+            jwks_sources:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+            pk: 6
+            client_secret: client_secret
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          scope:
+          - scope
+          - scope
+          id_token: id_token
+          pk: 0
+          revoked: true
+          user:
+            is_active: true
+            is_superuser: true
+            last_login: 2000-01-23T04:56:07.000+00:00
+            groups:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            avatar: avatar
+            groups_obj:
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              is_superuser: true
+              name: name
+              attributes:
+                key: ""
+              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              num_pk: 1
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              is_superuser: true
+              name: name
+              attributes:
+                key: ""
+              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              num_pk: 1
+            uid: uid
+            path: path
+            name: name
+            attributes:
+              key: ""
+            pk: 6
+            email: email
+            username: username
+        - expires: 2000-01-23T04:56:07.000+00:00
+          is_expired: true
+          provider:
+            verbose_name_plural: verbose_name_plural
+            signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            assigned_application_slug: assigned_application_slug
+            client_type: ""
+            redirect_uris: redirect_uris
+            sub_mode: ""
+            client_id: client_id
+            refresh_token_validity: refresh_token_validity
+            component: component
+            verbose_name: verbose_name
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            access_code_validity: access_code_validity
+            meta_model_name: meta_model_name
+            include_claims_in_id_token: true
+            assigned_application_name: assigned_application_name
+            access_token_validity: access_token_validity
+            issuer_mode: ""
+            jwks_sources:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+            pk: 6
+            client_secret: client_secret
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          scope:
+          - scope
+          - scope
+          id_token: id_token
+          pk: 0
+          revoked: true
+          user:
+            is_active: true
+            is_superuser: true
+            last_login: 2000-01-23T04:56:07.000+00:00
+            groups:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            avatar: avatar
+            groups_obj:
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              is_superuser: true
+              name: name
+              attributes:
+                key: ""
+              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              num_pk: 1
+            - parent_name: parent_name
+              parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              is_superuser: true
+              name: name
+              attributes:
+                key: ""
+              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              num_pk: 1
+            uid: uid
+            path: path
+            name: name
+            attributes:
+              key: ""
+            pk: 6
+            email: email
+            username: username
+      properties:
+        pagination:
+          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/TokenModel'
           type: array
       required:
       - pagination
@@ -41386,9 +41592,11 @@ components:
         redirect_uris: redirect_uris
         sub_mode: ""
         client_id: client_id
+        refresh_token_validity: refresh_token_validity
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         access_code_validity: access_code_validity
         include_claims_in_id_token: true
+        access_token_validity: access_token_validity
         issuer_mode: ""
         jwks_sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -41398,7 +41606,6 @@ components:
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        token_validity: token_validity
       properties:
         name:
           minLength: 1
@@ -41429,7 +41636,12 @@ components:
             \ (Format: hours=1;minutes=2;seconds=3)."
           minLength: 1
           type: string
-        token_validity:
+        access_token_validity:
+          description: "Tokens not valid on or after current time + this value (Format:\
+            \ hours=1;minutes=2;seconds=3)."
+          minLength: 1
+          type: string
+        refresh_token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
             \ hours=1;minutes=2;seconds=3)."
           minLength: 1
@@ -42011,11 +42223,13 @@ components:
         skip_path_regex: skip_path_regex
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         basic_auth_password_attribute: basic_auth_password_attribute
+        refresh_token_validity: refresh_token_validity
         mode: ""
         internal_host: https://openapi-generator.tech
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         basic_auth_enabled: true
         basic_auth_user_attribute: basic_auth_user_attribute
+        access_token_validity: access_token_validity
         jwks_sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -42025,7 +42239,6 @@ components:
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        token_validity: token_validity
       properties:
         name:
           minLength: 1
@@ -42091,7 +42304,12 @@ components:
             type: string
           title: Any JWT signed by the JWK of the selected source can be used to authenticate.
           type: array
-        token_validity:
+        access_token_validity:
+          description: "Tokens not valid on or after current time + this value (Format:\
+            \ hours=1;minutes=2;seconds=3)."
+          minLength: 1
+          type: string
+        refresh_token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
             \ hours=1;minutes=2;seconds=3)."
           minLength: 1
@@ -43844,6 +44062,7 @@ components:
         oidc_configuration: null
         basic_auth_enabled: true
         basic_auth_user_attribute: basic_auth_user_attribute
+        access_token_validity: 6.027456183070403
         assigned_application_name: assigned_application_name
         name: name
         intercept_header_auth: true
@@ -43853,7 +44072,6 @@ components:
         pk: 0
         client_secret: client_secret
         internal_host_ssl_validation: true
-        token_validity: 6.027456183070403
       properties:
         pk:
           readOnly: true
@@ -43910,7 +44128,7 @@ components:
             Exclusive with internal_host.
         cookie_domain:
           type: string
-        token_validity:
+        access_token_validity:
           format: double
           nullable: true
           readOnly: true
@@ -43933,6 +44151,7 @@ components:
           readOnly: true
           type: string
       required:
+      - access_token_validity
       - assigned_application_name
       - assigned_application_slug
       - external_host
@@ -43940,7 +44159,6 @@ components:
       - oidc_configuration
       - pk
       - scopes_to_request
-      - token_validity
       type: object
     ProxyProvider:
       description: ProxyProvider Serializer
@@ -43949,6 +44167,7 @@ components:
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_slug: assigned_application_slug
         client_id: client_id
+        refresh_token_validity: refresh_token_validity
         mode: ""
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_name: assigned_application_name
@@ -43971,12 +44190,12 @@ components:
         basic_auth_enabled: true
         basic_auth_user_attribute: basic_auth_user_attribute
         meta_model_name: meta_model_name
+        access_token_validity: access_token_validity
         jwks_sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         pk: 0
-        token_validity: token_validity
       properties:
         pk:
           readOnly: true
@@ -44070,7 +44289,11 @@ components:
             type: string
           title: Any JWT signed by the JWK of the selected source can be used to authenticate.
           type: array
-        token_validity:
+        access_token_validity:
+          description: "Tokens not valid on or after current time + this value (Format:\
+            \ hours=1;minutes=2;seconds=3)."
+          type: string
+        refresh_token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
             \ hours=1;minutes=2;seconds=3)."
           type: string
@@ -44102,11 +44325,13 @@ components:
         skip_path_regex: skip_path_regex
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         basic_auth_password_attribute: basic_auth_password_attribute
+        refresh_token_validity: refresh_token_validity
         mode: ""
         internal_host: https://openapi-generator.tech
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         basic_auth_enabled: true
         basic_auth_user_attribute: basic_auth_user_attribute
+        access_token_validity: access_token_validity
         jwks_sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -44116,7 +44341,6 @@ components:
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        token_validity: token_validity
       properties:
         name:
           minLength: 1
@@ -44182,7 +44406,12 @@ components:
             type: string
           title: Any JWT signed by the JWK of the selected source can be used to authenticate.
           type: array
-        token_validity:
+        access_token_validity:
+          description: "Tokens not valid on or after current time + this value (Format:\
+            \ hours=1;minutes=2;seconds=3)."
+          minLength: 1
+          type: string
+        refresh_token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
             \ hours=1;minutes=2;seconds=3)."
           minLength: 1
@@ -44228,108 +44457,6 @@ components:
       required:
       - to
       - type
-      type: object
-    RefreshTokenModel:
-      description: Serializer for BaseGrantModel and RefreshToken
-      example:
-        expires: 2000-01-23T04:56:07.000+00:00
-        is_expired: true
-        provider:
-          verbose_name_plural: verbose_name_plural
-          signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          assigned_application_slug: assigned_application_slug
-          client_type: ""
-          redirect_uris: redirect_uris
-          sub_mode: ""
-          client_id: client_id
-          component: component
-          verbose_name: verbose_name
-          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          access_code_validity: access_code_validity
-          meta_model_name: meta_model_name
-          include_claims_in_id_token: true
-          assigned_application_name: assigned_application_name
-          issuer_mode: ""
-          jwks_sources:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          pk: 6
-          client_secret: client_secret
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          token_validity: token_validity
-        scope:
-        - scope
-        - scope
-        id_token: id_token
-        pk: 0
-        revoked: true
-        user:
-          is_active: true
-          is_superuser: true
-          last_login: 2000-01-23T04:56:07.000+00:00
-          groups:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          avatar: avatar
-          groups_obj:
-          - parent_name: parent_name
-            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            is_superuser: true
-            name: name
-            attributes:
-              key: ""
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            num_pk: 1
-          - parent_name: parent_name
-            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            is_superuser: true
-            name: name
-            attributes:
-              key: ""
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            num_pk: 1
-          uid: uid
-          path: path
-          name: name
-          attributes:
-            key: ""
-          pk: 6
-          email: email
-          username: username
-      properties:
-        pk:
-          readOnly: true
-          title: ID
-          type: integer
-        provider:
-          $ref: '#/components/schemas/OAuth2Provider'
-        user:
-          $ref: '#/components/schemas/User'
-        is_expired:
-          readOnly: true
-          type: boolean
-        expires:
-          format: date-time
-          type: string
-        scope:
-          items:
-            type: string
-          type: array
-        id_token:
-          readOnly: true
-          type: string
-        revoked:
-          type: boolean
-      required:
-      - id_token
-      - is_expired
-      - pk
-      - provider
-      - scope
-      - user
       type: object
     Reputation:
       description: Reputation Serializer
@@ -46103,6 +46230,109 @@ components:
       - identifier
       - pk
       - user_obj
+      type: object
+    TokenModel:
+      description: Serializer for BaseGrantModel and RefreshToken
+      example:
+        expires: 2000-01-23T04:56:07.000+00:00
+        is_expired: true
+        provider:
+          verbose_name_plural: verbose_name_plural
+          signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          assigned_application_slug: assigned_application_slug
+          client_type: ""
+          redirect_uris: redirect_uris
+          sub_mode: ""
+          client_id: client_id
+          refresh_token_validity: refresh_token_validity
+          component: component
+          verbose_name: verbose_name
+          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          access_code_validity: access_code_validity
+          meta_model_name: meta_model_name
+          include_claims_in_id_token: true
+          assigned_application_name: assigned_application_name
+          access_token_validity: access_token_validity
+          issuer_mode: ""
+          jwks_sources:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          pk: 6
+          client_secret: client_secret
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        scope:
+        - scope
+        - scope
+        id_token: id_token
+        pk: 0
+        revoked: true
+        user:
+          is_active: true
+          is_superuser: true
+          last_login: 2000-01-23T04:56:07.000+00:00
+          groups:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          avatar: avatar
+          groups_obj:
+          - parent_name: parent_name
+            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            is_superuser: true
+            name: name
+            attributes:
+              key: ""
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            num_pk: 1
+          - parent_name: parent_name
+            parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            is_superuser: true
+            name: name
+            attributes:
+              key: ""
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            num_pk: 1
+          uid: uid
+          path: path
+          name: name
+          attributes:
+            key: ""
+          pk: 6
+          email: email
+          username: username
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        provider:
+          $ref: '#/components/schemas/OAuth2Provider'
+        user:
+          $ref: '#/components/schemas/User'
+        is_expired:
+          readOnly: true
+          type: boolean
+        expires:
+          format: date-time
+          type: string
+        scope:
+          items:
+            type: string
+          type: array
+        id_token:
+          readOnly: true
+          type: string
+        revoked:
+          type: boolean
+      required:
+      - id_token
+      - is_expired
+      - pk
+      - provider
+      - scope
+      - user
       type: object
     TokenRequest:
       description: Token Serializer

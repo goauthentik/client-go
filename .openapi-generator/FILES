@@ -274,7 +274,6 @@ docs/PaginatedPropertyMappingList.md
 docs/PaginatedProviderList.md
 docs/PaginatedProxyOutpostConfigList.md
 docs/PaginatedProxyProviderList.md
-docs/PaginatedRefreshTokenModelList.md
 docs/PaginatedReputationList.md
 docs/PaginatedReputationPolicyList.md
 docs/PaginatedSAMLPropertyMappingList.md
@@ -289,6 +288,7 @@ docs/PaginatedStaticDeviceList.md
 docs/PaginatedTOTPDeviceList.md
 docs/PaginatedTenantList.md
 docs/PaginatedTokenList.md
+docs/PaginatedTokenModelList.md
 docs/PaginatedUserConsentList.md
 docs/PaginatedUserDeleteStageList.md
 docs/PaginatedUserList.md
@@ -412,7 +412,6 @@ docs/ProxyOutpostConfigOidcConfiguration.md
 docs/ProxyProvider.md
 docs/ProxyProviderRequest.md
 docs/RedirectChallenge.md
-docs/RefreshTokenModel.md
 docs/Reputation.md
 docs/ReputationPolicy.md
 docs/ReputationPolicyRequest.md
@@ -461,6 +460,7 @@ docs/TaskStatusEnum.md
 docs/Tenant.md
 docs/TenantRequest.md
 docs/Token.md
+docs/TokenModel.md
 docs/TokenRequest.md
 docs/TokenSetKeyRequest.md
 docs/TokenView.md
@@ -751,7 +751,6 @@ model_paginated_property_mapping_list.go
 model_paginated_provider_list.go
 model_paginated_proxy_outpost_config_list.go
 model_paginated_proxy_provider_list.go
-model_paginated_refresh_token_model_list.go
 model_paginated_reputation_list.go
 model_paginated_reputation_policy_list.go
 model_paginated_saml_property_mapping_list.go
@@ -765,6 +764,7 @@ model_paginated_stage_list.go
 model_paginated_static_device_list.go
 model_paginated_tenant_list.go
 model_paginated_token_list.go
+model_paginated_token_model_list.go
 model_paginated_totp_device_list.go
 model_paginated_user_consent_list.go
 model_paginated_user_delete_stage_list.go
@@ -886,7 +886,6 @@ model_proxy_outpost_config_oidc_configuration.go
 model_proxy_provider.go
 model_proxy_provider_request.go
 model_redirect_challenge.go
-model_refresh_token_model.go
 model_reputation.go
 model_reputation_policy.go
 model_reputation_policy_request.go
@@ -929,6 +928,7 @@ model_task_status_enum.go
 model_tenant.go
 model_tenant_request.go
 model_token.go
+model_token_model.go
 model_token_request.go
 model_token_set_key_request.go
 model_token_view.go

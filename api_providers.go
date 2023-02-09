@@ -2109,6 +2109,7 @@ type ApiProvidersOauth2ListRequest struct {
 	ctx                    context.Context
 	ApiService             *ProvidersApiService
 	accessCodeValidity     *string
+	accessTokenValidity    *string
 	application            *string
 	authorizationFlow      *string
 	clientId               *string
@@ -2121,14 +2122,19 @@ type ApiProvidersOauth2ListRequest struct {
 	pageSize               *int32
 	propertyMappings       *[]string
 	redirectUris           *string
+	refreshTokenValidity   *string
 	search                 *string
 	signingKey             *string
 	subMode                *string
-	tokenValidity          *string
 }
 
 func (r ApiProvidersOauth2ListRequest) AccessCodeValidity(accessCodeValidity string) ApiProvidersOauth2ListRequest {
 	r.accessCodeValidity = &accessCodeValidity
+	return r
+}
+
+func (r ApiProvidersOauth2ListRequest) AccessTokenValidity(accessTokenValidity string) ApiProvidersOauth2ListRequest {
+	r.accessTokenValidity = &accessTokenValidity
 	return r
 }
 
@@ -2197,6 +2203,11 @@ func (r ApiProvidersOauth2ListRequest) RedirectUris(redirectUris string) ApiProv
 	return r
 }
 
+func (r ApiProvidersOauth2ListRequest) RefreshTokenValidity(refreshTokenValidity string) ApiProvidersOauth2ListRequest {
+	r.refreshTokenValidity = &refreshTokenValidity
+	return r
+}
+
 // A search term.
 func (r ApiProvidersOauth2ListRequest) Search(search string) ApiProvidersOauth2ListRequest {
 	r.search = &search
@@ -2211,11 +2222,6 @@ func (r ApiProvidersOauth2ListRequest) SigningKey(signingKey string) ApiProvider
 // Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
 func (r ApiProvidersOauth2ListRequest) SubMode(subMode string) ApiProvidersOauth2ListRequest {
 	r.subMode = &subMode
-	return r
-}
-
-func (r ApiProvidersOauth2ListRequest) TokenValidity(tokenValidity string) ApiProvidersOauth2ListRequest {
-	r.tokenValidity = &tokenValidity
 	return r
 }
 
@@ -2262,6 +2268,9 @@ func (a *ProvidersApiService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 	if r.accessCodeValidity != nil {
 		localVarQueryParams.Add("access_code_validity", parameterToString(*r.accessCodeValidity, ""))
 	}
+	if r.accessTokenValidity != nil {
+		localVarQueryParams.Add("access_token_validity", parameterToString(*r.accessTokenValidity, ""))
+	}
 	if r.application != nil {
 		localVarQueryParams.Add("application", parameterToString(*r.application, ""))
 	}
@@ -2306,6 +2315,9 @@ func (a *ProvidersApiService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 	if r.redirectUris != nil {
 		localVarQueryParams.Add("redirect_uris", parameterToString(*r.redirectUris, ""))
 	}
+	if r.refreshTokenValidity != nil {
+		localVarQueryParams.Add("refresh_token_validity", parameterToString(*r.refreshTokenValidity, ""))
+	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -2314,9 +2326,6 @@ func (a *ProvidersApiService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 	}
 	if r.subMode != nil {
 		localVarQueryParams.Add("sub_mode", parameterToString(*r.subMode, ""))
-	}
-	if r.tokenValidity != nil {
-		localVarQueryParams.Add("token_validity", parameterToString(*r.tokenValidity, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

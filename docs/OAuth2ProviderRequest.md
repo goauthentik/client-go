@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **ClientId** | Pointer to **string** |  | [optional] 
 **ClientSecret** | Pointer to **string** |  | [optional] 
 **AccessCodeValidity** | Pointer to **string** | Access codes not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
-**TokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
+**AccessTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
+**RefreshTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **IncludeClaimsInIdToken** | Pointer to **bool** | Include User claims from scopes in the id_token, for applications that don&#39;t access the userinfo endpoint. | [optional] 
 **SigningKey** | Pointer to **NullableString** | Key used to sign the tokens. Only required when JWT Algorithm is set to RS256. | [optional] 
 **RedirectUris** | Pointer to **string** | Enter each URI on a new line. | [optional] 
@@ -213,30 +214,55 @@ SetAccessCodeValidity sets AccessCodeValidity field to given value.
 
 HasAccessCodeValidity returns a boolean if a field has been set.
 
-### GetTokenValidity
+### GetAccessTokenValidity
 
-`func (o *OAuth2ProviderRequest) GetTokenValidity() string`
+`func (o *OAuth2ProviderRequest) GetAccessTokenValidity() string`
 
-GetTokenValidity returns the TokenValidity field if non-nil, zero value otherwise.
+GetAccessTokenValidity returns the AccessTokenValidity field if non-nil, zero value otherwise.
 
-### GetTokenValidityOk
+### GetAccessTokenValidityOk
 
-`func (o *OAuth2ProviderRequest) GetTokenValidityOk() (*string, bool)`
+`func (o *OAuth2ProviderRequest) GetAccessTokenValidityOk() (*string, bool)`
 
-GetTokenValidityOk returns a tuple with the TokenValidity field if it's non-nil, zero value otherwise
+GetAccessTokenValidityOk returns a tuple with the AccessTokenValidity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTokenValidity
+### SetAccessTokenValidity
 
-`func (o *OAuth2ProviderRequest) SetTokenValidity(v string)`
+`func (o *OAuth2ProviderRequest) SetAccessTokenValidity(v string)`
 
-SetTokenValidity sets TokenValidity field to given value.
+SetAccessTokenValidity sets AccessTokenValidity field to given value.
 
-### HasTokenValidity
+### HasAccessTokenValidity
 
-`func (o *OAuth2ProviderRequest) HasTokenValidity() bool`
+`func (o *OAuth2ProviderRequest) HasAccessTokenValidity() bool`
 
-HasTokenValidity returns a boolean if a field has been set.
+HasAccessTokenValidity returns a boolean if a field has been set.
+
+### GetRefreshTokenValidity
+
+`func (o *OAuth2ProviderRequest) GetRefreshTokenValidity() string`
+
+GetRefreshTokenValidity returns the RefreshTokenValidity field if non-nil, zero value otherwise.
+
+### GetRefreshTokenValidityOk
+
+`func (o *OAuth2ProviderRequest) GetRefreshTokenValidityOk() (*string, bool)`
+
+GetRefreshTokenValidityOk returns a tuple with the RefreshTokenValidity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefreshTokenValidity
+
+`func (o *OAuth2ProviderRequest) SetRefreshTokenValidity(v string)`
+
+SetRefreshTokenValidity sets RefreshTokenValidity field to given value.
+
+### HasRefreshTokenValidity
+
+`func (o *OAuth2ProviderRequest) HasRefreshTokenValidity() bool`
+
+HasRefreshTokenValidity returns a boolean if a field has been set.
 
 ### GetIncludeClaimsInIdToken
 

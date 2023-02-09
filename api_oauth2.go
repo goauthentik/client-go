@@ -23,6 +23,593 @@ import (
 // Oauth2ApiService Oauth2Api service
 type Oauth2ApiService service
 
+type ApiOauth2AccessTokensDestroyRequest struct {
+	ctx        context.Context
+	ApiService *Oauth2ApiService
+	id         int32
+}
+
+func (r ApiOauth2AccessTokensDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.Oauth2AccessTokensDestroyExecute(r)
+}
+
+/*
+Oauth2AccessTokensDestroy Method for Oauth2AccessTokensDestroy
+
+AccessToken Viewset
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this OAuth2 Access Token.
+ @return ApiOauth2AccessTokensDestroyRequest
+*/
+func (a *Oauth2ApiService) Oauth2AccessTokensDestroy(ctx context.Context, id int32) ApiOauth2AccessTokensDestroyRequest {
+	return ApiOauth2AccessTokensDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *Oauth2ApiService) Oauth2AccessTokensDestroyExecute(r ApiOauth2AccessTokensDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "Oauth2ApiService.Oauth2AccessTokensDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/oauth2/access_tokens/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiOauth2AccessTokensListRequest struct {
+	ctx        context.Context
+	ApiService *Oauth2ApiService
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	provider   *int32
+	search     *string
+	user       *int32
+}
+
+// Which field to use when ordering the results.
+func (r ApiOauth2AccessTokensListRequest) Ordering(ordering string) ApiOauth2AccessTokensListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiOauth2AccessTokensListRequest) Page(page int32) ApiOauth2AccessTokensListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiOauth2AccessTokensListRequest) PageSize(pageSize int32) ApiOauth2AccessTokensListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiOauth2AccessTokensListRequest) Provider(provider int32) ApiOauth2AccessTokensListRequest {
+	r.provider = &provider
+	return r
+}
+
+// A search term.
+func (r ApiOauth2AccessTokensListRequest) Search(search string) ApiOauth2AccessTokensListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiOauth2AccessTokensListRequest) User(user int32) ApiOauth2AccessTokensListRequest {
+	r.user = &user
+	return r
+}
+
+func (r ApiOauth2AccessTokensListRequest) Execute() (*PaginatedTokenModelList, *http.Response, error) {
+	return r.ApiService.Oauth2AccessTokensListExecute(r)
+}
+
+/*
+Oauth2AccessTokensList Method for Oauth2AccessTokensList
+
+AccessToken Viewset
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOauth2AccessTokensListRequest
+*/
+func (a *Oauth2ApiService) Oauth2AccessTokensList(ctx context.Context) ApiOauth2AccessTokensListRequest {
+	return ApiOauth2AccessTokensListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//  @return PaginatedTokenModelList
+func (a *Oauth2ApiService) Oauth2AccessTokensListExecute(r ApiOauth2AccessTokensListRequest) (*PaginatedTokenModelList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedTokenModelList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "Oauth2ApiService.Oauth2AccessTokensList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/oauth2/access_tokens/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.provider != nil {
+		localVarQueryParams.Add("provider", parameterToString(*r.provider, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.user != nil {
+		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiOauth2AccessTokensRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *Oauth2ApiService
+	id         int32
+}
+
+func (r ApiOauth2AccessTokensRetrieveRequest) Execute() (*TokenModel, *http.Response, error) {
+	return r.ApiService.Oauth2AccessTokensRetrieveExecute(r)
+}
+
+/*
+Oauth2AccessTokensRetrieve Method for Oauth2AccessTokensRetrieve
+
+AccessToken Viewset
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this OAuth2 Access Token.
+ @return ApiOauth2AccessTokensRetrieveRequest
+*/
+func (a *Oauth2ApiService) Oauth2AccessTokensRetrieve(ctx context.Context, id int32) ApiOauth2AccessTokensRetrieveRequest {
+	return ApiOauth2AccessTokensRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//  @return TokenModel
+func (a *Oauth2ApiService) Oauth2AccessTokensRetrieveExecute(r ApiOauth2AccessTokensRetrieveRequest) (*TokenModel, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TokenModel
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "Oauth2ApiService.Oauth2AccessTokensRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/oauth2/access_tokens/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiOauth2AccessTokensUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *Oauth2ApiService
+	id         int32
+}
+
+func (r ApiOauth2AccessTokensUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.Oauth2AccessTokensUsedByListExecute(r)
+}
+
+/*
+Oauth2AccessTokensUsedByList Method for Oauth2AccessTokensUsedByList
+
+Get a list of all objects that use this object
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this OAuth2 Access Token.
+ @return ApiOauth2AccessTokensUsedByListRequest
+*/
+func (a *Oauth2ApiService) Oauth2AccessTokensUsedByList(ctx context.Context, id int32) ApiOauth2AccessTokensUsedByListRequest {
+	return ApiOauth2AccessTokensUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//  @return []UsedBy
+func (a *Oauth2ApiService) Oauth2AccessTokensUsedByListExecute(r ApiOauth2AccessTokensUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "Oauth2ApiService.Oauth2AccessTokensUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/oauth2/access_tokens/{id}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiOauth2AuthorizationCodesDestroyRequest struct {
 	ctx        context.Context
 	ApiService *Oauth2ApiService
@@ -626,7 +1213,7 @@ Oauth2RefreshTokensDestroy Method for Oauth2RefreshTokensDestroy
 RefreshToken Viewset
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this OAuth2 Token.
+ @param id A unique integer value identifying this OAuth2 Refresh Token.
  @return ApiOauth2RefreshTokensDestroyRequest
 */
 func (a *Oauth2ApiService) Oauth2RefreshTokensDestroy(ctx context.Context, id int32) ApiOauth2RefreshTokensDestroyRequest {
@@ -780,7 +1367,7 @@ func (r ApiOauth2RefreshTokensListRequest) User(user int32) ApiOauth2RefreshToke
 	return r
 }
 
-func (r ApiOauth2RefreshTokensListRequest) Execute() (*PaginatedRefreshTokenModelList, *http.Response, error) {
+func (r ApiOauth2RefreshTokensListRequest) Execute() (*PaginatedTokenModelList, *http.Response, error) {
 	return r.ApiService.Oauth2RefreshTokensListExecute(r)
 }
 
@@ -800,13 +1387,13 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensList(ctx context.Context) ApiOauth
 }
 
 // Execute executes the request
-//  @return PaginatedRefreshTokenModelList
-func (a *Oauth2ApiService) Oauth2RefreshTokensListExecute(r ApiOauth2RefreshTokensListRequest) (*PaginatedRefreshTokenModelList, *http.Response, error) {
+//  @return PaginatedTokenModelList
+func (a *Oauth2ApiService) Oauth2RefreshTokensListExecute(r ApiOauth2RefreshTokensListRequest) (*PaginatedTokenModelList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedRefreshTokenModelList
+		localVarReturnValue *PaginatedTokenModelList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "Oauth2ApiService.Oauth2RefreshTokensList")
@@ -931,7 +1518,7 @@ type ApiOauth2RefreshTokensRetrieveRequest struct {
 	id         int32
 }
 
-func (r ApiOauth2RefreshTokensRetrieveRequest) Execute() (*RefreshTokenModel, *http.Response, error) {
+func (r ApiOauth2RefreshTokensRetrieveRequest) Execute() (*TokenModel, *http.Response, error) {
 	return r.ApiService.Oauth2RefreshTokensRetrieveExecute(r)
 }
 
@@ -941,7 +1528,7 @@ Oauth2RefreshTokensRetrieve Method for Oauth2RefreshTokensRetrieve
 RefreshToken Viewset
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this OAuth2 Token.
+ @param id A unique integer value identifying this OAuth2 Refresh Token.
  @return ApiOauth2RefreshTokensRetrieveRequest
 */
 func (a *Oauth2ApiService) Oauth2RefreshTokensRetrieve(ctx context.Context, id int32) ApiOauth2RefreshTokensRetrieveRequest {
@@ -953,13 +1540,13 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensRetrieve(ctx context.Context, id i
 }
 
 // Execute executes the request
-//  @return RefreshTokenModel
-func (a *Oauth2ApiService) Oauth2RefreshTokensRetrieveExecute(r ApiOauth2RefreshTokensRetrieveRequest) (*RefreshTokenModel, *http.Response, error) {
+//  @return TokenModel
+func (a *Oauth2ApiService) Oauth2RefreshTokensRetrieveExecute(r ApiOauth2RefreshTokensRetrieveRequest) (*TokenModel, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *RefreshTokenModel
+		localVarReturnValue *TokenModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "Oauth2ApiService.Oauth2RefreshTokensRetrieve")
@@ -1077,7 +1664,7 @@ Oauth2RefreshTokensUsedByList Method for Oauth2RefreshTokensUsedByList
 Get a list of all objects that use this object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this OAuth2 Token.
+ @param id A unique integer value identifying this OAuth2 Refresh Token.
  @return ApiOauth2RefreshTokensUsedByListRequest
 */
 func (a *Oauth2ApiService) Oauth2RefreshTokensUsedByList(ctx context.Context, id int32) ApiOauth2RefreshTokensUsedByListRequest {

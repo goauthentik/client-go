@@ -41,7 +41,9 @@ type PatchedProxyProviderRequest struct {
 	CookieDomain        *string  `json:"cookie_domain,omitempty"`
 	JwksSources         []string `json:"jwks_sources,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
-	TokenValidity *string `json:"token_validity,omitempty"`
+	AccessTokenValidity *string `json:"access_token_validity,omitempty"`
+	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
+	RefreshTokenValidity *string `json:"refresh_token_validity,omitempty"`
 }
 
 // NewPatchedProxyProviderRequest instantiates a new PatchedProxyProviderRequest object
@@ -563,36 +565,68 @@ func (o *PatchedProxyProviderRequest) SetJwksSources(v []string) {
 	o.JwksSources = v
 }
 
-// GetTokenValidity returns the TokenValidity field value if set, zero value otherwise.
-func (o *PatchedProxyProviderRequest) GetTokenValidity() string {
-	if o == nil || o.TokenValidity == nil {
+// GetAccessTokenValidity returns the AccessTokenValidity field value if set, zero value otherwise.
+func (o *PatchedProxyProviderRequest) GetAccessTokenValidity() string {
+	if o == nil || o.AccessTokenValidity == nil {
 		var ret string
 		return ret
 	}
-	return *o.TokenValidity
+	return *o.AccessTokenValidity
 }
 
-// GetTokenValidityOk returns a tuple with the TokenValidity field value if set, nil otherwise
+// GetAccessTokenValidityOk returns a tuple with the AccessTokenValidity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedProxyProviderRequest) GetTokenValidityOk() (*string, bool) {
-	if o == nil || o.TokenValidity == nil {
+func (o *PatchedProxyProviderRequest) GetAccessTokenValidityOk() (*string, bool) {
+	if o == nil || o.AccessTokenValidity == nil {
 		return nil, false
 	}
-	return o.TokenValidity, true
+	return o.AccessTokenValidity, true
 }
 
-// HasTokenValidity returns a boolean if a field has been set.
-func (o *PatchedProxyProviderRequest) HasTokenValidity() bool {
-	if o != nil && o.TokenValidity != nil {
+// HasAccessTokenValidity returns a boolean if a field has been set.
+func (o *PatchedProxyProviderRequest) HasAccessTokenValidity() bool {
+	if o != nil && o.AccessTokenValidity != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTokenValidity gets a reference to the given string and assigns it to the TokenValidity field.
-func (o *PatchedProxyProviderRequest) SetTokenValidity(v string) {
-	o.TokenValidity = &v
+// SetAccessTokenValidity gets a reference to the given string and assigns it to the AccessTokenValidity field.
+func (o *PatchedProxyProviderRequest) SetAccessTokenValidity(v string) {
+	o.AccessTokenValidity = &v
+}
+
+// GetRefreshTokenValidity returns the RefreshTokenValidity field value if set, zero value otherwise.
+func (o *PatchedProxyProviderRequest) GetRefreshTokenValidity() string {
+	if o == nil || o.RefreshTokenValidity == nil {
+		var ret string
+		return ret
+	}
+	return *o.RefreshTokenValidity
+}
+
+// GetRefreshTokenValidityOk returns a tuple with the RefreshTokenValidity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedProxyProviderRequest) GetRefreshTokenValidityOk() (*string, bool) {
+	if o == nil || o.RefreshTokenValidity == nil {
+		return nil, false
+	}
+	return o.RefreshTokenValidity, true
+}
+
+// HasRefreshTokenValidity returns a boolean if a field has been set.
+func (o *PatchedProxyProviderRequest) HasRefreshTokenValidity() bool {
+	if o != nil && o.RefreshTokenValidity != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRefreshTokenValidity gets a reference to the given string and assigns it to the RefreshTokenValidity field.
+func (o *PatchedProxyProviderRequest) SetRefreshTokenValidity(v string) {
+	o.RefreshTokenValidity = &v
 }
 
 func (o PatchedProxyProviderRequest) MarshalJSON() ([]byte, error) {
@@ -642,8 +676,11 @@ func (o PatchedProxyProviderRequest) MarshalJSON() ([]byte, error) {
 	if o.JwksSources != nil {
 		toSerialize["jwks_sources"] = o.JwksSources
 	}
-	if o.TokenValidity != nil {
-		toSerialize["token_validity"] = o.TokenValidity
+	if o.AccessTokenValidity != nil {
+		toSerialize["access_token_validity"] = o.AccessTokenValidity
+	}
+	if o.RefreshTokenValidity != nil {
+		toSerialize["refresh_token_validity"] = o.RefreshTokenValidity
 	}
 	return json.Marshal(toSerialize)
 }

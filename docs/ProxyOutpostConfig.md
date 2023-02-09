@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **BasicAuthUserAttribute** | Pointer to **string** | User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user&#39;s Email address is used. | [optional] 
 **Mode** | Pointer to [**NullableProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
-**TokenValidity** | **NullableFloat64** |  | [readonly] 
+**AccessTokenValidity** | **NullableFloat64** |  | [readonly] 
 **InterceptHeaderAuth** | Pointer to **bool** | When enabled, this provider will intercept the authorization header and authenticate requests based on its value. | [optional] 
 **ScopesToRequest** | **[]string** |  | [readonly] 
 **AssignedApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewProxyOutpostConfig
 
-`func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration ProxyOutpostConfigOidcConfiguration, tokenValidity NullableFloat64, scopesToRequest []string, assignedApplicationSlug string, assignedApplicationName string, ) *ProxyOutpostConfig`
+`func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration ProxyOutpostConfigOidcConfiguration, accessTokenValidity NullableFloat64, scopesToRequest []string, assignedApplicationSlug string, assignedApplicationName string, ) *ProxyOutpostConfig`
 
 NewProxyOutpostConfig instantiates a new ProxyOutpostConfig object
 This constructor will assign default values to properties that have it defined,
@@ -445,36 +445,36 @@ SetCookieDomain sets CookieDomain field to given value.
 
 HasCookieDomain returns a boolean if a field has been set.
 
-### GetTokenValidity
+### GetAccessTokenValidity
 
-`func (o *ProxyOutpostConfig) GetTokenValidity() float64`
+`func (o *ProxyOutpostConfig) GetAccessTokenValidity() float64`
 
-GetTokenValidity returns the TokenValidity field if non-nil, zero value otherwise.
+GetAccessTokenValidity returns the AccessTokenValidity field if non-nil, zero value otherwise.
 
-### GetTokenValidityOk
+### GetAccessTokenValidityOk
 
-`func (o *ProxyOutpostConfig) GetTokenValidityOk() (*float64, bool)`
+`func (o *ProxyOutpostConfig) GetAccessTokenValidityOk() (*float64, bool)`
 
-GetTokenValidityOk returns a tuple with the TokenValidity field if it's non-nil, zero value otherwise
+GetAccessTokenValidityOk returns a tuple with the AccessTokenValidity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTokenValidity
+### SetAccessTokenValidity
 
-`func (o *ProxyOutpostConfig) SetTokenValidity(v float64)`
+`func (o *ProxyOutpostConfig) SetAccessTokenValidity(v float64)`
 
-SetTokenValidity sets TokenValidity field to given value.
+SetAccessTokenValidity sets AccessTokenValidity field to given value.
 
 
-### SetTokenValidityNil
+### SetAccessTokenValidityNil
 
-`func (o *ProxyOutpostConfig) SetTokenValidityNil(b bool)`
+`func (o *ProxyOutpostConfig) SetAccessTokenValidityNil(b bool)`
 
- SetTokenValidityNil sets the value for TokenValidity to be an explicit nil
+ SetAccessTokenValidityNil sets the value for AccessTokenValidity to be an explicit nil
 
-### UnsetTokenValidity
-`func (o *ProxyOutpostConfig) UnsetTokenValidity()`
+### UnsetAccessTokenValidity
+`func (o *ProxyOutpostConfig) UnsetAccessTokenValidity()`
 
-UnsetTokenValidity ensures that no value is present for TokenValidity, not even an explicit nil
+UnsetAccessTokenValidity ensures that no value is present for AccessTokenValidity, not even an explicit nil
 ### GetInterceptHeaderAuth
 
 `func (o *ProxyOutpostConfig) GetInterceptHeaderAuth() bool`

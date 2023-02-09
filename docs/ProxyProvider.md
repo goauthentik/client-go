@@ -28,7 +28,8 @@ Name | Type | Description | Notes
 **RedirectUris** | **string** |  | [readonly] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
 **JwksSources** | Pointer to **[]string** |  | [optional] 
-**TokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
+**AccessTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
+**RefreshTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **OutpostSet** | **[]string** |  | [readonly] 
 
 ## Methods
@@ -610,30 +611,55 @@ SetJwksSources sets JwksSources field to given value.
 
 HasJwksSources returns a boolean if a field has been set.
 
-### GetTokenValidity
+### GetAccessTokenValidity
 
-`func (o *ProxyProvider) GetTokenValidity() string`
+`func (o *ProxyProvider) GetAccessTokenValidity() string`
 
-GetTokenValidity returns the TokenValidity field if non-nil, zero value otherwise.
+GetAccessTokenValidity returns the AccessTokenValidity field if non-nil, zero value otherwise.
 
-### GetTokenValidityOk
+### GetAccessTokenValidityOk
 
-`func (o *ProxyProvider) GetTokenValidityOk() (*string, bool)`
+`func (o *ProxyProvider) GetAccessTokenValidityOk() (*string, bool)`
 
-GetTokenValidityOk returns a tuple with the TokenValidity field if it's non-nil, zero value otherwise
+GetAccessTokenValidityOk returns a tuple with the AccessTokenValidity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTokenValidity
+### SetAccessTokenValidity
 
-`func (o *ProxyProvider) SetTokenValidity(v string)`
+`func (o *ProxyProvider) SetAccessTokenValidity(v string)`
 
-SetTokenValidity sets TokenValidity field to given value.
+SetAccessTokenValidity sets AccessTokenValidity field to given value.
 
-### HasTokenValidity
+### HasAccessTokenValidity
 
-`func (o *ProxyProvider) HasTokenValidity() bool`
+`func (o *ProxyProvider) HasAccessTokenValidity() bool`
 
-HasTokenValidity returns a boolean if a field has been set.
+HasAccessTokenValidity returns a boolean if a field has been set.
+
+### GetRefreshTokenValidity
+
+`func (o *ProxyProvider) GetRefreshTokenValidity() string`
+
+GetRefreshTokenValidity returns the RefreshTokenValidity field if non-nil, zero value otherwise.
+
+### GetRefreshTokenValidityOk
+
+`func (o *ProxyProvider) GetRefreshTokenValidityOk() (*string, bool)`
+
+GetRefreshTokenValidityOk returns a tuple with the RefreshTokenValidity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefreshTokenValidity
+
+`func (o *ProxyProvider) SetRefreshTokenValidity(v string)`
+
+SetRefreshTokenValidity sets RefreshTokenValidity field to given value.
+
+### HasRefreshTokenValidity
+
+`func (o *ProxyProvider) HasRefreshTokenValidity() bool`
+
+HasRefreshTokenValidity returns a boolean if a field has been set.
 
 ### GetOutpostSet
 

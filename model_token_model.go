@@ -16,8 +16,8 @@ import (
 	"time"
 )
 
-// RefreshTokenModel Serializer for BaseGrantModel and RefreshToken
-type RefreshTokenModel struct {
+// TokenModel Serializer for BaseGrantModel and RefreshToken
+type TokenModel struct {
 	Pk        int32          `json:"pk"`
 	Provider  OAuth2Provider `json:"provider"`
 	User      User           `json:"user"`
@@ -28,12 +28,12 @@ type RefreshTokenModel struct {
 	Revoked   *bool          `json:"revoked,omitempty"`
 }
 
-// NewRefreshTokenModel instantiates a new RefreshTokenModel object
+// NewTokenModel instantiates a new TokenModel object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefreshTokenModel(pk int32, provider OAuth2Provider, user User, isExpired bool, scope []string, idToken string) *RefreshTokenModel {
-	this := RefreshTokenModel{}
+func NewTokenModel(pk int32, provider OAuth2Provider, user User, isExpired bool, scope []string, idToken string) *TokenModel {
+	this := TokenModel{}
 	this.Pk = pk
 	this.Provider = provider
 	this.User = user
@@ -43,16 +43,16 @@ func NewRefreshTokenModel(pk int32, provider OAuth2Provider, user User, isExpire
 	return &this
 }
 
-// NewRefreshTokenModelWithDefaults instantiates a new RefreshTokenModel object
+// NewTokenModelWithDefaults instantiates a new TokenModel object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRefreshTokenModelWithDefaults() *RefreshTokenModel {
-	this := RefreshTokenModel{}
+func NewTokenModelWithDefaults() *TokenModel {
+	this := TokenModel{}
 	return &this
 }
 
 // GetPk returns the Pk field value
-func (o *RefreshTokenModel) GetPk() int32 {
+func (o *TokenModel) GetPk() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -63,7 +63,7 @@ func (o *RefreshTokenModel) GetPk() int32 {
 
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
-func (o *RefreshTokenModel) GetPkOk() (*int32, bool) {
+func (o *TokenModel) GetPkOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -71,12 +71,12 @@ func (o *RefreshTokenModel) GetPkOk() (*int32, bool) {
 }
 
 // SetPk sets field value
-func (o *RefreshTokenModel) SetPk(v int32) {
+func (o *TokenModel) SetPk(v int32) {
 	o.Pk = v
 }
 
 // GetProvider returns the Provider field value
-func (o *RefreshTokenModel) GetProvider() OAuth2Provider {
+func (o *TokenModel) GetProvider() OAuth2Provider {
 	if o == nil {
 		var ret OAuth2Provider
 		return ret
@@ -87,7 +87,7 @@ func (o *RefreshTokenModel) GetProvider() OAuth2Provider {
 
 // GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
-func (o *RefreshTokenModel) GetProviderOk() (*OAuth2Provider, bool) {
+func (o *TokenModel) GetProviderOk() (*OAuth2Provider, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -95,12 +95,12 @@ func (o *RefreshTokenModel) GetProviderOk() (*OAuth2Provider, bool) {
 }
 
 // SetProvider sets field value
-func (o *RefreshTokenModel) SetProvider(v OAuth2Provider) {
+func (o *TokenModel) SetProvider(v OAuth2Provider) {
 	o.Provider = v
 }
 
 // GetUser returns the User field value
-func (o *RefreshTokenModel) GetUser() User {
+func (o *TokenModel) GetUser() User {
 	if o == nil {
 		var ret User
 		return ret
@@ -111,7 +111,7 @@ func (o *RefreshTokenModel) GetUser() User {
 
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *RefreshTokenModel) GetUserOk() (*User, bool) {
+func (o *TokenModel) GetUserOk() (*User, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -119,12 +119,12 @@ func (o *RefreshTokenModel) GetUserOk() (*User, bool) {
 }
 
 // SetUser sets field value
-func (o *RefreshTokenModel) SetUser(v User) {
+func (o *TokenModel) SetUser(v User) {
 	o.User = v
 }
 
 // GetIsExpired returns the IsExpired field value
-func (o *RefreshTokenModel) GetIsExpired() bool {
+func (o *TokenModel) GetIsExpired() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -135,7 +135,7 @@ func (o *RefreshTokenModel) GetIsExpired() bool {
 
 // GetIsExpiredOk returns a tuple with the IsExpired field value
 // and a boolean to check if the value has been set.
-func (o *RefreshTokenModel) GetIsExpiredOk() (*bool, bool) {
+func (o *TokenModel) GetIsExpiredOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,12 +143,12 @@ func (o *RefreshTokenModel) GetIsExpiredOk() (*bool, bool) {
 }
 
 // SetIsExpired sets field value
-func (o *RefreshTokenModel) SetIsExpired(v bool) {
+func (o *TokenModel) SetIsExpired(v bool) {
 	o.IsExpired = v
 }
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
-func (o *RefreshTokenModel) GetExpires() time.Time {
+func (o *TokenModel) GetExpires() time.Time {
 	if o == nil || o.Expires == nil {
 		var ret time.Time
 		return ret
@@ -158,7 +158,7 @@ func (o *RefreshTokenModel) GetExpires() time.Time {
 
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RefreshTokenModel) GetExpiresOk() (*time.Time, bool) {
+func (o *TokenModel) GetExpiresOk() (*time.Time, bool) {
 	if o == nil || o.Expires == nil {
 		return nil, false
 	}
@@ -166,7 +166,7 @@ func (o *RefreshTokenModel) GetExpiresOk() (*time.Time, bool) {
 }
 
 // HasExpires returns a boolean if a field has been set.
-func (o *RefreshTokenModel) HasExpires() bool {
+func (o *TokenModel) HasExpires() bool {
 	if o != nil && o.Expires != nil {
 		return true
 	}
@@ -175,12 +175,12 @@ func (o *RefreshTokenModel) HasExpires() bool {
 }
 
 // SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
-func (o *RefreshTokenModel) SetExpires(v time.Time) {
+func (o *TokenModel) SetExpires(v time.Time) {
 	o.Expires = &v
 }
 
 // GetScope returns the Scope field value
-func (o *RefreshTokenModel) GetScope() []string {
+func (o *TokenModel) GetScope() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -191,7 +191,7 @@ func (o *RefreshTokenModel) GetScope() []string {
 
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *RefreshTokenModel) GetScopeOk() ([]string, bool) {
+func (o *TokenModel) GetScopeOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -199,12 +199,12 @@ func (o *RefreshTokenModel) GetScopeOk() ([]string, bool) {
 }
 
 // SetScope sets field value
-func (o *RefreshTokenModel) SetScope(v []string) {
+func (o *TokenModel) SetScope(v []string) {
 	o.Scope = v
 }
 
 // GetIdToken returns the IdToken field value
-func (o *RefreshTokenModel) GetIdToken() string {
+func (o *TokenModel) GetIdToken() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -215,7 +215,7 @@ func (o *RefreshTokenModel) GetIdToken() string {
 
 // GetIdTokenOk returns a tuple with the IdToken field value
 // and a boolean to check if the value has been set.
-func (o *RefreshTokenModel) GetIdTokenOk() (*string, bool) {
+func (o *TokenModel) GetIdTokenOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -223,12 +223,12 @@ func (o *RefreshTokenModel) GetIdTokenOk() (*string, bool) {
 }
 
 // SetIdToken sets field value
-func (o *RefreshTokenModel) SetIdToken(v string) {
+func (o *TokenModel) SetIdToken(v string) {
 	o.IdToken = v
 }
 
 // GetRevoked returns the Revoked field value if set, zero value otherwise.
-func (o *RefreshTokenModel) GetRevoked() bool {
+func (o *TokenModel) GetRevoked() bool {
 	if o == nil || o.Revoked == nil {
 		var ret bool
 		return ret
@@ -238,7 +238,7 @@ func (o *RefreshTokenModel) GetRevoked() bool {
 
 // GetRevokedOk returns a tuple with the Revoked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RefreshTokenModel) GetRevokedOk() (*bool, bool) {
+func (o *TokenModel) GetRevokedOk() (*bool, bool) {
 	if o == nil || o.Revoked == nil {
 		return nil, false
 	}
@@ -246,7 +246,7 @@ func (o *RefreshTokenModel) GetRevokedOk() (*bool, bool) {
 }
 
 // HasRevoked returns a boolean if a field has been set.
-func (o *RefreshTokenModel) HasRevoked() bool {
+func (o *TokenModel) HasRevoked() bool {
 	if o != nil && o.Revoked != nil {
 		return true
 	}
@@ -255,11 +255,11 @@ func (o *RefreshTokenModel) HasRevoked() bool {
 }
 
 // SetRevoked gets a reference to the given bool and assigns it to the Revoked field.
-func (o *RefreshTokenModel) SetRevoked(v bool) {
+func (o *TokenModel) SetRevoked(v bool) {
 	o.Revoked = &v
 }
 
-func (o RefreshTokenModel) MarshalJSON() ([]byte, error) {
+func (o TokenModel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["pk"] = o.Pk
@@ -288,38 +288,38 @@ func (o RefreshTokenModel) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableRefreshTokenModel struct {
-	value *RefreshTokenModel
+type NullableTokenModel struct {
+	value *TokenModel
 	isSet bool
 }
 
-func (v NullableRefreshTokenModel) Get() *RefreshTokenModel {
+func (v NullableTokenModel) Get() *TokenModel {
 	return v.value
 }
 
-func (v *NullableRefreshTokenModel) Set(val *RefreshTokenModel) {
+func (v *NullableTokenModel) Set(val *TokenModel) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRefreshTokenModel) IsSet() bool {
+func (v NullableTokenModel) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRefreshTokenModel) Unset() {
+func (v *NullableTokenModel) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRefreshTokenModel(val *RefreshTokenModel) *NullableRefreshTokenModel {
-	return &NullableRefreshTokenModel{value: val, isSet: true}
+func NewNullableTokenModel(val *TokenModel) *NullableTokenModel {
+	return &NullableTokenModel{value: val, isSet: true}
 }
 
-func (v NullableRefreshTokenModel) MarshalJSON() ([]byte, error) {
+func (v NullableTokenModel) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRefreshTokenModel) UnmarshalJSON(src []byte) error {
+func (v *NullableTokenModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -242,6 +242,10 @@ Class | Method | HTTP request | Description
 *ManagedApi* | [**ManagedBlueprintsRetrieve**](docs/ManagedApi.md#managedblueprintsretrieve) | **Get** /managed/blueprints/{instance_uuid}/ | 
 *ManagedApi* | [**ManagedBlueprintsUpdate**](docs/ManagedApi.md#managedblueprintsupdate) | **Put** /managed/blueprints/{instance_uuid}/ | 
 *ManagedApi* | [**ManagedBlueprintsUsedByList**](docs/ManagedApi.md#managedblueprintsusedbylist) | **Get** /managed/blueprints/{instance_uuid}/used_by/ | 
+*Oauth2Api* | [**Oauth2AccessTokensDestroy**](docs/Oauth2Api.md#oauth2accesstokensdestroy) | **Delete** /oauth2/access_tokens/{id}/ | 
+*Oauth2Api* | [**Oauth2AccessTokensList**](docs/Oauth2Api.md#oauth2accesstokenslist) | **Get** /oauth2/access_tokens/ | 
+*Oauth2Api* | [**Oauth2AccessTokensRetrieve**](docs/Oauth2Api.md#oauth2accesstokensretrieve) | **Get** /oauth2/access_tokens/{id}/ | 
+*Oauth2Api* | [**Oauth2AccessTokensUsedByList**](docs/Oauth2Api.md#oauth2accesstokensusedbylist) | **Get** /oauth2/access_tokens/{id}/used_by/ | 
 *Oauth2Api* | [**Oauth2AuthorizationCodesDestroy**](docs/Oauth2Api.md#oauth2authorizationcodesdestroy) | **Delete** /oauth2/authorization_codes/{id}/ | 
 *Oauth2Api* | [**Oauth2AuthorizationCodesList**](docs/Oauth2Api.md#oauth2authorizationcodeslist) | **Get** /oauth2/authorization_codes/ | 
 *Oauth2Api* | [**Oauth2AuthorizationCodesRetrieve**](docs/Oauth2Api.md#oauth2authorizationcodesretrieve) | **Get** /oauth2/authorization_codes/{id}/ | 
@@ -892,7 +896,6 @@ Class | Method | HTTP request | Description
  - [PaginatedProviderList](docs/PaginatedProviderList.md)
  - [PaginatedProxyOutpostConfigList](docs/PaginatedProxyOutpostConfigList.md)
  - [PaginatedProxyProviderList](docs/PaginatedProxyProviderList.md)
- - [PaginatedRefreshTokenModelList](docs/PaginatedRefreshTokenModelList.md)
  - [PaginatedReputationList](docs/PaginatedReputationList.md)
  - [PaginatedReputationPolicyList](docs/PaginatedReputationPolicyList.md)
  - [PaginatedSAMLPropertyMappingList](docs/PaginatedSAMLPropertyMappingList.md)
@@ -907,6 +910,7 @@ Class | Method | HTTP request | Description
  - [PaginatedTOTPDeviceList](docs/PaginatedTOTPDeviceList.md)
  - [PaginatedTenantList](docs/PaginatedTenantList.md)
  - [PaginatedTokenList](docs/PaginatedTokenList.md)
+ - [PaginatedTokenModelList](docs/PaginatedTokenModelList.md)
  - [PaginatedUserConsentList](docs/PaginatedUserConsentList.md)
  - [PaginatedUserDeleteStageList](docs/PaginatedUserDeleteStageList.md)
  - [PaginatedUserList](docs/PaginatedUserList.md)
@@ -1027,7 +1031,6 @@ Class | Method | HTTP request | Description
  - [ProxyProvider](docs/ProxyProvider.md)
  - [ProxyProviderRequest](docs/ProxyProviderRequest.md)
  - [RedirectChallenge](docs/RedirectChallenge.md)
- - [RefreshTokenModel](docs/RefreshTokenModel.md)
  - [Reputation](docs/Reputation.md)
  - [ReputationPolicy](docs/ReputationPolicy.md)
  - [ReputationPolicyRequest](docs/ReputationPolicyRequest.md)
@@ -1072,6 +1075,7 @@ Class | Method | HTTP request | Description
  - [Tenant](docs/Tenant.md)
  - [TenantRequest](docs/TenantRequest.md)
  - [Token](docs/Token.md)
+ - [TokenModel](docs/TokenModel.md)
  - [TokenRequest](docs/TokenRequest.md)
  - [TokenSetKeyRequest](docs/TokenSetKeyRequest.md)
  - [TokenView](docs/TokenView.md)
