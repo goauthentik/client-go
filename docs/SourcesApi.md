@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**SourcesAllUsedByList**](SourcesApi.md#SourcesAllUsedByList) | **Get** /sources/all/{slug}/used_by/ | 
 [**SourcesAllUserSettingsList**](SourcesApi.md#SourcesAllUserSettingsList) | **Get** /sources/all/user_settings/ | 
 [**SourcesLdapCreate**](SourcesApi.md#SourcesLdapCreate) | **Post** /sources/ldap/ | 
+[**SourcesLdapDebugRetrieve**](SourcesApi.md#SourcesLdapDebugRetrieve) | **Get** /sources/ldap/{slug}/debug/ | 
 [**SourcesLdapDestroy**](SourcesApi.md#SourcesLdapDestroy) | **Delete** /sources/ldap/{slug}/ | 
 [**SourcesLdapList**](SourcesApi.md#SourcesLdapList) | **Get** /sources/ldap/ | 
 [**SourcesLdapPartialUpdate**](SourcesApi.md#SourcesLdapPartialUpdate) | **Patch** /sources/ldap/{slug}/ | 
@@ -684,6 +685,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesLdapDebugRetrieve
+
+> LDAPDebug SourcesLdapDebugRetrieve(ctx, slug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapDebugRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapDebugRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesLdapDebugRetrieve`: LDAPDebug
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesLdapDebugRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesLdapDebugRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**LDAPDebug**](LDAPDebug.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

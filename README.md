@@ -431,6 +431,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesAllUsedByList**](docs/SourcesApi.md#sourcesallusedbylist) | **Get** /sources/all/{slug}/used_by/ | 
 *SourcesApi* | [**SourcesAllUserSettingsList**](docs/SourcesApi.md#sourcesallusersettingslist) | **Get** /sources/all/user_settings/ | 
 *SourcesApi* | [**SourcesLdapCreate**](docs/SourcesApi.md#sourcesldapcreate) | **Post** /sources/ldap/ | 
+*SourcesApi* | [**SourcesLdapDebugRetrieve**](docs/SourcesApi.md#sourcesldapdebugretrieve) | **Get** /sources/ldap/{slug}/debug/ | 
 *SourcesApi* | [**SourcesLdapDestroy**](docs/SourcesApi.md#sourcesldapdestroy) | **Delete** /sources/ldap/{slug}/ | 
 *SourcesApi* | [**SourcesLdapList**](docs/SourcesApi.md#sourcesldaplist) | **Get** /sources/ldap/ | 
 *SourcesApi* | [**SourcesLdapPartialUpdate**](docs/SourcesApi.md#sourcesldappartialupdate) | **Patch** /sources/ldap/{slug}/ | 
@@ -799,6 +800,7 @@ Class | Method | HTTP request | Description
  - [KubernetesServiceConnection](docs/KubernetesServiceConnection.md)
  - [KubernetesServiceConnectionRequest](docs/KubernetesServiceConnectionRequest.md)
  - [LDAPAPIAccessMode](docs/LDAPAPIAccessMode.md)
+ - [LDAPDebug](docs/LDAPDebug.md)
  - [LDAPOutpostConfig](docs/LDAPOutpostConfig.md)
  - [LDAPPropertyMapping](docs/LDAPPropertyMapping.md)
  - [LDAPPropertyMappingRequest](docs/LDAPPropertyMappingRequest.md)

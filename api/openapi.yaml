@@ -18166,6 +18166,42 @@ paths:
       - authentik: []
       tags:
       - sources
+  /sources/ldap/{slug}/debug/:
+    get:
+      description: Get raw LDAP data to debug
+      operationId: sources_ldap_debug_retrieve
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LDAPDebug'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
   /sources/ldap/{slug}/sync_status/:
     get:
       description: Get source's sync status
@@ -32696,6 +32732,41 @@ components:
       - direct
       - cached
       type: string
+    LDAPDebug:
+      example:
+        membership:
+        - key: ""
+        - key: ""
+        user:
+        - key: ""
+        - key: ""
+        group:
+        - key: ""
+        - key: ""
+      properties:
+        user:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+        group:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+        membership:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+      required:
+      - group
+      - membership
+      - user
+      type: object
     LDAPOutpostConfig:
       description: LDAPProvider Serializer
       example:
