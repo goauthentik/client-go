@@ -27,7 +27,6 @@ type InvitationCreatedBy struct {
 	IsActive   *bool                  `json:"is_active,omitempty"`
 	LastLogin  NullableTime           `json:"last_login,omitempty"`
 	Email      *string                `json:"email,omitempty"`
-	Avatar     string                 `json:"avatar"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	Uid        string                 `json:"uid"`
 }
@@ -36,12 +35,11 @@ type InvitationCreatedBy struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvitationCreatedBy(pk int32, username string, name string, avatar string, uid string) *InvitationCreatedBy {
+func NewInvitationCreatedBy(pk int32, username string, name string, uid string) *InvitationCreatedBy {
 	this := InvitationCreatedBy{}
 	this.Pk = pk
 	this.Username = username
 	this.Name = name
-	this.Avatar = avatar
 	this.Uid = uid
 	return &this
 }
@@ -233,30 +231,6 @@ func (o *InvitationCreatedBy) SetEmail(v string) {
 	o.Email = &v
 }
 
-// GetAvatar returns the Avatar field value
-func (o *InvitationCreatedBy) GetAvatar() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Avatar
-}
-
-// GetAvatarOk returns a tuple with the Avatar field value
-// and a boolean to check if the value has been set.
-func (o *InvitationCreatedBy) GetAvatarOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Avatar, true
-}
-
-// SetAvatar sets field value
-func (o *InvitationCreatedBy) SetAvatar(v string) {
-	o.Avatar = v
-}
-
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *InvitationCreatedBy) GetAttributes() map[string]interface{} {
 	if o == nil || o.Attributes == nil {
@@ -332,9 +306,6 @@ func (o InvitationCreatedBy) MarshalJSON() ([]byte, error) {
 	}
 	if o.Email != nil {
 		toSerialize["email"] = o.Email
-	}
-	if true {
-		toSerialize["avatar"] = o.Avatar
 	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes

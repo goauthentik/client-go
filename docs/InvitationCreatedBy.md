@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **IsActive** | Pointer to **bool** | Designates whether this user should be treated as active. Unselect this instead of deleting accounts. | [optional] 
 **LastLogin** | Pointer to **NullableTime** |  | [optional] 
 **Email** | Pointer to **string** |  | [optional] 
-**Avatar** | **string** |  | [readonly] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 **Uid** | **string** |  | [readonly] 
 
@@ -18,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewInvitationCreatedBy
 
-`func NewInvitationCreatedBy(pk int32, username string, name string, avatar string, uid string, ) *InvitationCreatedBy`
+`func NewInvitationCreatedBy(pk int32, username string, name string, uid string, ) *InvitationCreatedBy`
 
 NewInvitationCreatedBy instantiates a new InvitationCreatedBy object
 This constructor will assign default values to properties that have it defined,
@@ -177,26 +176,6 @@ SetEmail sets Email field to given value.
 `func (o *InvitationCreatedBy) HasEmail() bool`
 
 HasEmail returns a boolean if a field has been set.
-
-### GetAvatar
-
-`func (o *InvitationCreatedBy) GetAvatar() string`
-
-GetAvatar returns the Avatar field if non-nil, zero value otherwise.
-
-### GetAvatarOk
-
-`func (o *InvitationCreatedBy) GetAvatarOk() (*string, bool)`
-
-GetAvatarOk returns a tuple with the Avatar field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAvatar
-
-`func (o *InvitationCreatedBy) SetAvatar(v string)`
-
-SetAvatar sets Avatar field to given value.
-
 
 ### GetAttributes
 

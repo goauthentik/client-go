@@ -31979,7 +31979,6 @@ components:
           attributes:
             key: ""
           pk: 1
-          avatar: avatar
           email: email
           username: username
         - uid: uid
@@ -31989,7 +31988,6 @@ components:
           attributes:
             key: ""
           pk: 1
-          avatar: avatar
           email: email
           username: username
         users:
@@ -32046,7 +32044,6 @@ components:
         attributes:
           key: ""
         pk: 1
-        avatar: avatar
         email: email
         username: username
       properties:
@@ -32077,9 +32074,6 @@ components:
           maxLength: 254
           title: Email address
           type: string
-        avatar:
-          readOnly: true
-          type: string
         attributes:
           additionalProperties: {}
           type: object
@@ -32087,7 +32081,6 @@ components:
           readOnly: true
           type: string
       required:
-      - avatar
       - name
       - pk
       - uid
@@ -36394,7 +36387,6 @@ components:
             attributes:
               key: ""
             pk: 1
-            avatar: avatar
             email: email
             username: username
           - uid: uid
@@ -36404,7 +36396,6 @@ components:
             attributes:
               key: ""
             pk: 1
-            avatar: avatar
             email: email
             username: username
           users:
@@ -36426,7 +36417,6 @@ components:
             attributes:
               key: ""
             pk: 1
-            avatar: avatar
             email: email
             username: username
           - uid: uid
@@ -36436,7 +36426,6 @@ components:
             attributes:
               key: ""
             pk: 1
-            avatar: avatar
             email: email
             username: username
           users:
