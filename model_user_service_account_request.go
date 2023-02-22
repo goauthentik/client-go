@@ -13,12 +13,16 @@ package api
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // UserServiceAccountRequest struct for UserServiceAccountRequest
 type UserServiceAccountRequest struct {
 	Name        string `json:"name"`
 	CreateGroup *bool  `json:"create_group,omitempty"`
+	Expiring    *bool  `json:"expiring,omitempty"`
+	// If not provided, valid for 360 days
+	Expires *time.Time `json:"expires,omitempty"`
 }
 
 // NewUserServiceAccountRequest instantiates a new UserServiceAccountRequest object
@@ -30,6 +34,8 @@ func NewUserServiceAccountRequest(name string) *UserServiceAccountRequest {
 	this.Name = name
 	var createGroup bool = false
 	this.CreateGroup = &createGroup
+	var expiring bool = true
+	this.Expiring = &expiring
 	return &this
 }
 
@@ -40,6 +46,8 @@ func NewUserServiceAccountRequestWithDefaults() *UserServiceAccountRequest {
 	this := UserServiceAccountRequest{}
 	var createGroup bool = false
 	this.CreateGroup = &createGroup
+	var expiring bool = true
+	this.Expiring = &expiring
 	return &this
 }
 
@@ -99,6 +107,70 @@ func (o *UserServiceAccountRequest) SetCreateGroup(v bool) {
 	o.CreateGroup = &v
 }
 
+// GetExpiring returns the Expiring field value if set, zero value otherwise.
+func (o *UserServiceAccountRequest) GetExpiring() bool {
+	if o == nil || o.Expiring == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Expiring
+}
+
+// GetExpiringOk returns a tuple with the Expiring field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserServiceAccountRequest) GetExpiringOk() (*bool, bool) {
+	if o == nil || o.Expiring == nil {
+		return nil, false
+	}
+	return o.Expiring, true
+}
+
+// HasExpiring returns a boolean if a field has been set.
+func (o *UserServiceAccountRequest) HasExpiring() bool {
+	if o != nil && o.Expiring != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiring gets a reference to the given bool and assigns it to the Expiring field.
+func (o *UserServiceAccountRequest) SetExpiring(v bool) {
+	o.Expiring = &v
+}
+
+// GetExpires returns the Expires field value if set, zero value otherwise.
+func (o *UserServiceAccountRequest) GetExpires() time.Time {
+	if o == nil || o.Expires == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.Expires
+}
+
+// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserServiceAccountRequest) GetExpiresOk() (*time.Time, bool) {
+	if o == nil || o.Expires == nil {
+		return nil, false
+	}
+	return o.Expires, true
+}
+
+// HasExpires returns a boolean if a field has been set.
+func (o *UserServiceAccountRequest) HasExpires() bool {
+	if o != nil && o.Expires != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
+func (o *UserServiceAccountRequest) SetExpires(v time.Time) {
+	o.Expires = &v
+}
+
 func (o UserServiceAccountRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -106,6 +178,12 @@ func (o UserServiceAccountRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.CreateGroup != nil {
 		toSerialize["create_group"] = o.CreateGroup
+	}
+	if o.Expiring != nil {
+		toSerialize["expiring"] = o.Expiring
+	}
+	if o.Expires != nil {
+		toSerialize["expires"] = o.Expires
 	}
 	return json.Marshal(toSerialize)
 }
