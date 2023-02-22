@@ -9968,7 +9968,7 @@ Name | Type | Description  | Notes
 
 ## StagesUserLoginList
 
-> PaginatedUserLoginStageList StagesUserLoginList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SessionDuration(sessionDuration).StageUuid(stageUuid).Execute()
+> PaginatedUserLoginStageList StagesUserLoginList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SessionDuration(sessionDuration).StageUuid(stageUuid).TerminateOtherSessions(terminateOtherSessions).Execute()
 
 
 
@@ -9994,10 +9994,11 @@ func main() {
     search := "search_example" // string | A search term. (optional)
     sessionDuration := "sessionDuration_example" // string |  (optional)
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    terminateOtherSessions := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLoginList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SessionDuration(sessionDuration).StageUuid(stageUuid).Execute()
+    resp, r, err := apiClient.StagesApi.StagesUserLoginList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SessionDuration(sessionDuration).StageUuid(stageUuid).TerminateOtherSessions(terminateOtherSessions).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLoginList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10025,6 +10026,7 @@ Name | Type | Description  | Notes
  **search** | **string** | A search term. | 
  **sessionDuration** | **string** |  | 
  **stageUuid** | **string** |  | 
+ **terminateOtherSessions** | **bool** |  | 
 
 ### Return type
 

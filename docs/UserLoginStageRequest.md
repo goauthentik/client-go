@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **SessionDuration** | Pointer to **string** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
+**TerminateOtherSessions** | Pointer to **bool** | Terminate all other sessions of the user logging in. | [optional] 
 
 ## Methods
 
@@ -96,6 +97,31 @@ SetSessionDuration sets SessionDuration field to given value.
 `func (o *UserLoginStageRequest) HasSessionDuration() bool`
 
 HasSessionDuration returns a boolean if a field has been set.
+
+### GetTerminateOtherSessions
+
+`func (o *UserLoginStageRequest) GetTerminateOtherSessions() bool`
+
+GetTerminateOtherSessions returns the TerminateOtherSessions field if non-nil, zero value otherwise.
+
+### GetTerminateOtherSessionsOk
+
+`func (o *UserLoginStageRequest) GetTerminateOtherSessionsOk() (*bool, bool)`
+
+GetTerminateOtherSessionsOk returns a tuple with the TerminateOtherSessions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTerminateOtherSessions
+
+`func (o *UserLoginStageRequest) SetTerminateOtherSessions(v bool)`
+
+SetTerminateOtherSessions sets TerminateOtherSessions field to given value.
+
+### HasTerminateOtherSessions
+
+`func (o *UserLoginStageRequest) HasTerminateOtherSessions() bool`
+
+HasTerminateOtherSessions returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

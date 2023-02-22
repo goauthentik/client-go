@@ -20508,15 +20508,16 @@ func (a *StagesApiService) StagesUserLoginDestroyExecute(r ApiStagesUserLoginDes
 }
 
 type ApiStagesUserLoginListRequest struct {
-	ctx             context.Context
-	ApiService      *StagesApiService
-	name            *string
-	ordering        *string
-	page            *int32
-	pageSize        *int32
-	search          *string
-	sessionDuration *string
-	stageUuid       *string
+	ctx                    context.Context
+	ApiService             *StagesApiService
+	name                   *string
+	ordering               *string
+	page                   *int32
+	pageSize               *int32
+	search                 *string
+	sessionDuration        *string
+	stageUuid              *string
+	terminateOtherSessions *bool
 }
 
 func (r ApiStagesUserLoginListRequest) Name(name string) ApiStagesUserLoginListRequest {
@@ -20555,6 +20556,11 @@ func (r ApiStagesUserLoginListRequest) SessionDuration(sessionDuration string) A
 
 func (r ApiStagesUserLoginListRequest) StageUuid(stageUuid string) ApiStagesUserLoginListRequest {
 	r.stageUuid = &stageUuid
+	return r
+}
+
+func (r ApiStagesUserLoginListRequest) TerminateOtherSessions(terminateOtherSessions bool) ApiStagesUserLoginListRequest {
+	r.terminateOtherSessions = &terminateOtherSessions
 	return r
 }
 
@@ -20618,6 +20624,9 @@ func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRe
 	}
 	if r.stageUuid != nil {
 		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+	}
+	if r.terminateOtherSessions != nil {
+		localVarQueryParams.Add("terminate_other_sessions", parameterToString(*r.terminateOtherSessions, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

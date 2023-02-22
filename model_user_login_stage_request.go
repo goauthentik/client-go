@@ -21,6 +21,8 @@ type UserLoginStageRequest struct {
 	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)
 	SessionDuration *string `json:"session_duration,omitempty"`
+	// Terminate all other sessions of the user logging in.
+	TerminateOtherSessions *bool `json:"terminate_other_sessions,omitempty"`
 }
 
 // NewUserLoginStageRequest instantiates a new UserLoginStageRequest object
@@ -129,6 +131,38 @@ func (o *UserLoginStageRequest) SetSessionDuration(v string) {
 	o.SessionDuration = &v
 }
 
+// GetTerminateOtherSessions returns the TerminateOtherSessions field value if set, zero value otherwise.
+func (o *UserLoginStageRequest) GetTerminateOtherSessions() bool {
+	if o == nil || o.TerminateOtherSessions == nil {
+		var ret bool
+		return ret
+	}
+	return *o.TerminateOtherSessions
+}
+
+// GetTerminateOtherSessionsOk returns a tuple with the TerminateOtherSessions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserLoginStageRequest) GetTerminateOtherSessionsOk() (*bool, bool) {
+	if o == nil || o.TerminateOtherSessions == nil {
+		return nil, false
+	}
+	return o.TerminateOtherSessions, true
+}
+
+// HasTerminateOtherSessions returns a boolean if a field has been set.
+func (o *UserLoginStageRequest) HasTerminateOtherSessions() bool {
+	if o != nil && o.TerminateOtherSessions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTerminateOtherSessions gets a reference to the given bool and assigns it to the TerminateOtherSessions field.
+func (o *UserLoginStageRequest) SetTerminateOtherSessions(v bool) {
+	o.TerminateOtherSessions = &v
+}
+
 func (o UserLoginStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -139,6 +173,9 @@ func (o UserLoginStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.SessionDuration != nil {
 		toSerialize["session_duration"] = o.SessionDuration
+	}
+	if o.TerminateOtherSessions != nil {
+		toSerialize["terminate_other_sessions"] = o.TerminateOtherSessions
 	}
 	return json.Marshal(toSerialize)
 }

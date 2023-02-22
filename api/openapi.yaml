@@ -26903,6 +26903,13 @@ paths:
           format: uuid
           type: string
         style: form
+      - explode: true
+        in: query
+        name: terminate_other_sessions
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -39393,7 +39400,8 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - component: component
+        - terminate_other_sessions: true
+          component: component
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
@@ -39425,7 +39433,8 @@ components:
             title: title
             slug: slug
           session_duration: session_duration
-        - component: component
+        - terminate_other_sessions: true
+          component: component
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
@@ -42839,6 +42848,7 @@ components:
     PatchedUserLoginStageRequest:
       description: UserLoginStage Serializer
       example:
+        terminate_other_sessions: true
         name: name
         flow_set:
         - policy_engine_mode: null
@@ -42871,6 +42881,9 @@ components:
             \ the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)"
           minLength: 1
           type: string
+        terminate_other_sessions:
+          description: Terminate all other sessions of the user logging in.
+          type: boolean
       type: object
     PatchedUserLogoutStageRequest:
       description: UserLogoutStage Serializer
@@ -46862,6 +46875,7 @@ components:
     UserLoginStage:
       description: UserLoginStage Serializer
       example:
+        terminate_other_sessions: true
         component: component
         verbose_name: verbose_name
         verbose_name_plural: verbose_name_plural
@@ -46922,6 +46936,9 @@ components:
           description: "Determines how long a session lasts. Default of 0 means that\
             \ the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)"
           type: string
+        terminate_other_sessions:
+          description: Terminate all other sessions of the user logging in.
+          type: boolean
       required:
       - component
       - meta_model_name
@@ -46933,6 +46950,7 @@ components:
     UserLoginStageRequest:
       description: UserLoginStage Serializer
       example:
+        terminate_other_sessions: true
         name: name
         flow_set:
         - policy_engine_mode: null
@@ -46965,6 +46983,9 @@ components:
             \ the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)"
           minLength: 1
           type: string
+        terminate_other_sessions:
+          description: Terminate all other sessions of the user logging in.
+          type: boolean
       required:
       - name
       type: object
