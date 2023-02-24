@@ -6696,6 +6696,7 @@ type ApiSourcesUserConnectionsAllListRequest struct {
 	page       *int32
 	pageSize   *int32
 	search     *string
+	user       *int32
 }
 
 // Which field to use when ordering the results.
@@ -6719,6 +6720,11 @@ func (r ApiSourcesUserConnectionsAllListRequest) PageSize(pageSize int32) ApiSou
 // A search term.
 func (r ApiSourcesUserConnectionsAllListRequest) Search(search string) ApiSourcesUserConnectionsAllListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiSourcesUserConnectionsAllListRequest) User(user int32) ApiSourcesUserConnectionsAllListRequest {
+	r.user = &user
 	return r
 }
 
@@ -6773,6 +6779,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUse
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.user != nil {
+		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -3192,7 +3192,7 @@ Name | Type | Description  | Notes
 
 ## SourcesUserConnectionsAllList
 
-> PaginatedUserSourceConnectionList SourcesUserConnectionsAllList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedUserSourceConnectionList SourcesUserConnectionsAllList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).User(user).Execute()
 
 
 
@@ -3215,10 +3215,11 @@ func main() {
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
+    user := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).User(user).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3243,6 +3244,7 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
+ **user** | **int32** |  | 
 
 ### Return type
 
