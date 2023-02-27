@@ -47,9 +47,9 @@ CoreApplicationsCheckAccessRetrieve Method for CoreApplicationsCheckAccessRetrie
 
 Check access to a single application by slug
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiCoreApplicationsCheckAccessRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param slug
+ @return ApiCoreApplicationsCheckAccessRetrieveRequest
 */
 func (a *CoreApiService) CoreApplicationsCheckAccessRetrieve(ctx context.Context, slug string) ApiCoreApplicationsCheckAccessRetrieveRequest {
 	return ApiCoreApplicationsCheckAccessRetrieveRequest{
@@ -60,8 +60,7 @@ func (a *CoreApiService) CoreApplicationsCheckAccessRetrieve(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return PolicyTestResult
+//  @return PolicyTestResult
 func (a *CoreApiService) CoreApplicationsCheckAccessRetrieveExecute(r ApiCoreApplicationsCheckAccessRetrieveRequest) (*PolicyTestResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -192,8 +191,8 @@ CoreApplicationsCreate Method for CoreApplicationsCreate
 
 Application Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreApplicationsCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreApplicationsCreateRequest
 */
 func (a *CoreApiService) CoreApplicationsCreate(ctx context.Context) ApiCoreApplicationsCreateRequest {
 	return ApiCoreApplicationsCreateRequest{
@@ -203,8 +202,7 @@ func (a *CoreApiService) CoreApplicationsCreate(ctx context.Context) ApiCoreAppl
 }
 
 // Execute executes the request
-//
-//	@return Application
+//  @return Application
 func (a *CoreApiService) CoreApplicationsCreateExecute(r ApiCoreApplicationsCreateRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -331,9 +329,9 @@ CoreApplicationsDestroy Method for CoreApplicationsDestroy
 
 Application Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiCoreApplicationsDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param slug
+ @return ApiCoreApplicationsDestroyRequest
 */
 func (a *CoreApiService) CoreApplicationsDestroy(ctx context.Context, slug string) ApiCoreApplicationsDestroyRequest {
 	return ApiCoreApplicationsDestroyRequest{
@@ -525,8 +523,8 @@ CoreApplicationsList Method for CoreApplicationsList
 
 Custom list method that checks Policy based access instead of guardian
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreApplicationsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreApplicationsListRequest
 */
 func (a *CoreApiService) CoreApplicationsList(ctx context.Context) ApiCoreApplicationsListRequest {
 	return ApiCoreApplicationsListRequest{
@@ -536,8 +534,7 @@ func (a *CoreApiService) CoreApplicationsList(ctx context.Context) ApiCoreApplic
 }
 
 // Execute executes the request
-//
-//	@return PaginatedApplicationList
+//  @return PaginatedApplicationList
 func (a *CoreApiService) CoreApplicationsListExecute(r ApiCoreApplicationsListRequest) (*PaginatedApplicationList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -692,9 +689,9 @@ CoreApplicationsMetricsList Method for CoreApplicationsMetricsList
 
 Metrics for application logins
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiCoreApplicationsMetricsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param slug
+ @return ApiCoreApplicationsMetricsListRequest
 */
 func (a *CoreApiService) CoreApplicationsMetricsList(ctx context.Context, slug string) ApiCoreApplicationsMetricsListRequest {
 	return ApiCoreApplicationsMetricsListRequest{
@@ -705,8 +702,7 @@ func (a *CoreApiService) CoreApplicationsMetricsList(ctx context.Context, slug s
 }
 
 // Execute executes the request
-//
-//	@return []Coordinate
+//  @return []Coordinate
 func (a *CoreApiService) CoreApplicationsMetricsListExecute(r ApiCoreApplicationsMetricsListRequest) ([]Coordinate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -835,9 +831,9 @@ CoreApplicationsPartialUpdate Method for CoreApplicationsPartialUpdate
 
 Application Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiCoreApplicationsPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param slug
+ @return ApiCoreApplicationsPartialUpdateRequest
 */
 func (a *CoreApiService) CoreApplicationsPartialUpdate(ctx context.Context, slug string) ApiCoreApplicationsPartialUpdateRequest {
 	return ApiCoreApplicationsPartialUpdateRequest{
@@ -848,8 +844,7 @@ func (a *CoreApiService) CoreApplicationsPartialUpdate(ctx context.Context, slug
 }
 
 // Execute executes the request
-//
-//	@return Application
+//  @return Application
 func (a *CoreApiService) CoreApplicationsPartialUpdateExecute(r ApiCoreApplicationsPartialUpdateRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -974,9 +969,9 @@ CoreApplicationsRetrieve Method for CoreApplicationsRetrieve
 
 Application Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiCoreApplicationsRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param slug
+ @return ApiCoreApplicationsRetrieveRequest
 */
 func (a *CoreApiService) CoreApplicationsRetrieve(ctx context.Context, slug string) ApiCoreApplicationsRetrieveRequest {
 	return ApiCoreApplicationsRetrieveRequest{
@@ -987,8 +982,7 @@ func (a *CoreApiService) CoreApplicationsRetrieve(ctx context.Context, slug stri
 }
 
 // Execute executes the request
-//
-//	@return Application
+//  @return Application
 func (a *CoreApiService) CoreApplicationsRetrieveExecute(r ApiCoreApplicationsRetrieveRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1123,9 +1117,9 @@ CoreApplicationsSetIconCreate Method for CoreApplicationsSetIconCreate
 
 Set application icon
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiCoreApplicationsSetIconCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param slug
+ @return ApiCoreApplicationsSetIconCreateRequest
 */
 func (a *CoreApiService) CoreApplicationsSetIconCreate(ctx context.Context, slug string) ApiCoreApplicationsSetIconCreateRequest {
 	return ApiCoreApplicationsSetIconCreateRequest{
@@ -1264,9 +1258,9 @@ CoreApplicationsSetIconUrlCreate Method for CoreApplicationsSetIconUrlCreate
 
 Set application icon (as URL)
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiCoreApplicationsSetIconUrlCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param slug
+ @return ApiCoreApplicationsSetIconUrlCreateRequest
 */
 func (a *CoreApiService) CoreApplicationsSetIconUrlCreate(ctx context.Context, slug string) ApiCoreApplicationsSetIconUrlCreateRequest {
 	return ApiCoreApplicationsSetIconUrlCreateRequest{
@@ -1390,9 +1384,9 @@ CoreApplicationsUpdate Method for CoreApplicationsUpdate
 
 Application Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiCoreApplicationsUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param slug
+ @return ApiCoreApplicationsUpdateRequest
 */
 func (a *CoreApiService) CoreApplicationsUpdate(ctx context.Context, slug string) ApiCoreApplicationsUpdateRequest {
 	return ApiCoreApplicationsUpdateRequest{
@@ -1403,8 +1397,7 @@ func (a *CoreApiService) CoreApplicationsUpdate(ctx context.Context, slug string
 }
 
 // Execute executes the request
-//
-//	@return Application
+//  @return Application
 func (a *CoreApiService) CoreApplicationsUpdateExecute(r ApiCoreApplicationsUpdateRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -1532,9 +1525,9 @@ CoreApplicationsUsedByList Method for CoreApplicationsUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiCoreApplicationsUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param slug
+ @return ApiCoreApplicationsUsedByListRequest
 */
 func (a *CoreApiService) CoreApplicationsUsedByList(ctx context.Context, slug string) ApiCoreApplicationsUsedByListRequest {
 	return ApiCoreApplicationsUsedByListRequest{
@@ -1545,8 +1538,7 @@ func (a *CoreApiService) CoreApplicationsUsedByList(ctx context.Context, slug st
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *CoreApiService) CoreApplicationsUsedByListExecute(r ApiCoreApplicationsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1669,9 +1661,9 @@ CoreAuthenticatedSessionsDestroy Method for CoreAuthenticatedSessionsDestroy
 
 AuthenticatedSession Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid A UUID string identifying this Authenticated Session.
-	@return ApiCoreAuthenticatedSessionsDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param uuid A UUID string identifying this Authenticated Session.
+ @return ApiCoreAuthenticatedSessionsDestroyRequest
 */
 func (a *CoreApiService) CoreAuthenticatedSessionsDestroy(ctx context.Context, uuid string) ApiCoreAuthenticatedSessionsDestroyRequest {
 	return ApiCoreAuthenticatedSessionsDestroyRequest{
@@ -1839,8 +1831,8 @@ CoreAuthenticatedSessionsList Method for CoreAuthenticatedSessionsList
 
 AuthenticatedSession Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreAuthenticatedSessionsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreAuthenticatedSessionsListRequest
 */
 func (a *CoreApiService) CoreAuthenticatedSessionsList(ctx context.Context) ApiCoreAuthenticatedSessionsListRequest {
 	return ApiCoreAuthenticatedSessionsListRequest{
@@ -1850,8 +1842,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsList(ctx context.Context) ApiC
 }
 
 // Execute executes the request
-//
-//	@return PaginatedAuthenticatedSessionList
+//  @return PaginatedAuthenticatedSessionList
 func (a *CoreApiService) CoreAuthenticatedSessionsListExecute(r ApiCoreAuthenticatedSessionsListRequest) (*PaginatedAuthenticatedSessionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1994,9 +1985,9 @@ CoreAuthenticatedSessionsRetrieve Method for CoreAuthenticatedSessionsRetrieve
 
 AuthenticatedSession Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid A UUID string identifying this Authenticated Session.
-	@return ApiCoreAuthenticatedSessionsRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param uuid A UUID string identifying this Authenticated Session.
+ @return ApiCoreAuthenticatedSessionsRetrieveRequest
 */
 func (a *CoreApiService) CoreAuthenticatedSessionsRetrieve(ctx context.Context, uuid string) ApiCoreAuthenticatedSessionsRetrieveRequest {
 	return ApiCoreAuthenticatedSessionsRetrieveRequest{
@@ -2007,8 +1998,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsRetrieve(ctx context.Context, 
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatedSession
+//  @return AuthenticatedSession
 func (a *CoreApiService) CoreAuthenticatedSessionsRetrieveExecute(r ApiCoreAuthenticatedSessionsRetrieveRequest) (*AuthenticatedSession, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2131,9 +2121,9 @@ CoreAuthenticatedSessionsUsedByList Method for CoreAuthenticatedSessionsUsedByLi
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid A UUID string identifying this Authenticated Session.
-	@return ApiCoreAuthenticatedSessionsUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param uuid A UUID string identifying this Authenticated Session.
+ @return ApiCoreAuthenticatedSessionsUsedByListRequest
 */
 func (a *CoreApiService) CoreAuthenticatedSessionsUsedByList(ctx context.Context, uuid string) ApiCoreAuthenticatedSessionsUsedByListRequest {
 	return ApiCoreAuthenticatedSessionsUsedByListRequest{
@@ -2144,8 +2134,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsUsedByList(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *CoreApiService) CoreAuthenticatedSessionsUsedByListExecute(r ApiCoreAuthenticatedSessionsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2274,9 +2263,9 @@ CoreGroupsAddUserCreate Method for CoreGroupsAddUserCreate
 
 Add user to group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupUuid A UUID string identifying this group.
-	@return ApiCoreGroupsAddUserCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupUuid A UUID string identifying this group.
+ @return ApiCoreGroupsAddUserCreateRequest
 */
 func (a *CoreApiService) CoreGroupsAddUserCreate(ctx context.Context, groupUuid string) ApiCoreGroupsAddUserCreateRequest {
 	return ApiCoreGroupsAddUserCreateRequest{
@@ -2409,8 +2398,8 @@ CoreGroupsCreate Method for CoreGroupsCreate
 
 Group Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreGroupsCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreGroupsCreateRequest
 */
 func (a *CoreApiService) CoreGroupsCreate(ctx context.Context) ApiCoreGroupsCreateRequest {
 	return ApiCoreGroupsCreateRequest{
@@ -2420,8 +2409,7 @@ func (a *CoreApiService) CoreGroupsCreate(ctx context.Context) ApiCoreGroupsCrea
 }
 
 // Execute executes the request
-//
-//	@return Group
+//  @return Group
 func (a *CoreApiService) CoreGroupsCreateExecute(r ApiCoreGroupsCreateRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2548,9 +2536,9 @@ CoreGroupsDestroy Method for CoreGroupsDestroy
 
 Group Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupUuid A UUID string identifying this group.
-	@return ApiCoreGroupsDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupUuid A UUID string identifying this group.
+ @return ApiCoreGroupsDestroyRequest
 */
 func (a *CoreApiService) CoreGroupsDestroy(ctx context.Context, groupUuid string) ApiCoreGroupsDestroyRequest {
 	return ApiCoreGroupsDestroyRequest{
@@ -2732,8 +2720,8 @@ CoreGroupsList Method for CoreGroupsList
 
 Group Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreGroupsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreGroupsListRequest
 */
 func (a *CoreApiService) CoreGroupsList(ctx context.Context) ApiCoreGroupsListRequest {
 	return ApiCoreGroupsListRequest{
@@ -2743,8 +2731,7 @@ func (a *CoreApiService) CoreGroupsList(ctx context.Context) ApiCoreGroupsListRe
 }
 
 // Execute executes the request
-//
-//	@return PaginatedGroupList
+//  @return PaginatedGroupList
 func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*PaginatedGroupList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2915,9 +2902,9 @@ CoreGroupsPartialUpdate Method for CoreGroupsPartialUpdate
 
 Group Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupUuid A UUID string identifying this group.
-	@return ApiCoreGroupsPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupUuid A UUID string identifying this group.
+ @return ApiCoreGroupsPartialUpdateRequest
 */
 func (a *CoreApiService) CoreGroupsPartialUpdate(ctx context.Context, groupUuid string) ApiCoreGroupsPartialUpdateRequest {
 	return ApiCoreGroupsPartialUpdateRequest{
@@ -2928,8 +2915,7 @@ func (a *CoreApiService) CoreGroupsPartialUpdate(ctx context.Context, groupUuid 
 }
 
 // Execute executes the request
-//
-//	@return Group
+//  @return Group
 func (a *CoreApiService) CoreGroupsPartialUpdateExecute(r ApiCoreGroupsPartialUpdateRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -3060,9 +3046,9 @@ CoreGroupsRemoveUserCreate Method for CoreGroupsRemoveUserCreate
 
 Add user to group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupUuid A UUID string identifying this group.
-	@return ApiCoreGroupsRemoveUserCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupUuid A UUID string identifying this group.
+ @return ApiCoreGroupsRemoveUserCreateRequest
 */
 func (a *CoreApiService) CoreGroupsRemoveUserCreate(ctx context.Context, groupUuid string) ApiCoreGroupsRemoveUserCreateRequest {
 	return ApiCoreGroupsRemoveUserCreateRequest{
@@ -3190,9 +3176,9 @@ CoreGroupsRetrieve Method for CoreGroupsRetrieve
 
 Group Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupUuid A UUID string identifying this group.
-	@return ApiCoreGroupsRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupUuid A UUID string identifying this group.
+ @return ApiCoreGroupsRetrieveRequest
 */
 func (a *CoreApiService) CoreGroupsRetrieve(ctx context.Context, groupUuid string) ApiCoreGroupsRetrieveRequest {
 	return ApiCoreGroupsRetrieveRequest{
@@ -3203,8 +3189,7 @@ func (a *CoreApiService) CoreGroupsRetrieve(ctx context.Context, groupUuid strin
 }
 
 // Execute executes the request
-//
-//	@return Group
+//  @return Group
 func (a *CoreApiService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3333,9 +3318,9 @@ CoreGroupsUpdate Method for CoreGroupsUpdate
 
 Group Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupUuid A UUID string identifying this group.
-	@return ApiCoreGroupsUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupUuid A UUID string identifying this group.
+ @return ApiCoreGroupsUpdateRequest
 */
 func (a *CoreApiService) CoreGroupsUpdate(ctx context.Context, groupUuid string) ApiCoreGroupsUpdateRequest {
 	return ApiCoreGroupsUpdateRequest{
@@ -3346,8 +3331,7 @@ func (a *CoreApiService) CoreGroupsUpdate(ctx context.Context, groupUuid string)
 }
 
 // Execute executes the request
-//
-//	@return Group
+//  @return Group
 func (a *CoreApiService) CoreGroupsUpdateExecute(r ApiCoreGroupsUpdateRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -3475,9 +3459,9 @@ CoreGroupsUsedByList Method for CoreGroupsUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupUuid A UUID string identifying this group.
-	@return ApiCoreGroupsUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupUuid A UUID string identifying this group.
+ @return ApiCoreGroupsUsedByListRequest
 */
 func (a *CoreApiService) CoreGroupsUsedByList(ctx context.Context, groupUuid string) ApiCoreGroupsUsedByListRequest {
 	return ApiCoreGroupsUsedByListRequest{
@@ -3488,8 +3472,7 @@ func (a *CoreApiService) CoreGroupsUsedByList(ctx context.Context, groupUuid str
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *CoreApiService) CoreGroupsUsedByListExecute(r ApiCoreGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3617,8 +3600,8 @@ CoreTenantsCreate Method for CoreTenantsCreate
 
 Tenant Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreTenantsCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreTenantsCreateRequest
 */
 func (a *CoreApiService) CoreTenantsCreate(ctx context.Context) ApiCoreTenantsCreateRequest {
 	return ApiCoreTenantsCreateRequest{
@@ -3628,8 +3611,7 @@ func (a *CoreApiService) CoreTenantsCreate(ctx context.Context) ApiCoreTenantsCr
 }
 
 // Execute executes the request
-//
-//	@return Tenant
+//  @return Tenant
 func (a *CoreApiService) CoreTenantsCreateExecute(r ApiCoreTenantsCreateRequest) (*Tenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -3755,8 +3737,8 @@ CoreTenantsCurrentRetrieve Method for CoreTenantsCurrentRetrieve
 
 Get current tenant
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreTenantsCurrentRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreTenantsCurrentRetrieveRequest
 */
 func (a *CoreApiService) CoreTenantsCurrentRetrieve(ctx context.Context) ApiCoreTenantsCurrentRetrieveRequest {
 	return ApiCoreTenantsCurrentRetrieveRequest{
@@ -3766,8 +3748,7 @@ func (a *CoreApiService) CoreTenantsCurrentRetrieve(ctx context.Context) ApiCore
 }
 
 // Execute executes the request
-//
-//	@return CurrentTenant
+//  @return CurrentTenant
 func (a *CoreApiService) CoreTenantsCurrentRetrieveExecute(r ApiCoreTenantsCurrentRetrieveRequest) (*CurrentTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3889,9 +3870,9 @@ CoreTenantsDestroy Method for CoreTenantsDestroy
 
 Tenant Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param tenantUuid A UUID string identifying this Tenant.
-	@return ApiCoreTenantsDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenantUuid A UUID string identifying this Tenant.
+ @return ApiCoreTenantsDestroyRequest
 */
 func (a *CoreApiService) CoreTenantsDestroy(ctx context.Context, tenantUuid string) ApiCoreTenantsDestroyRequest {
 	return ApiCoreTenantsDestroyRequest{
@@ -4139,8 +4120,8 @@ CoreTenantsList Method for CoreTenantsList
 
 Tenant Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreTenantsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreTenantsListRequest
 */
 func (a *CoreApiService) CoreTenantsList(ctx context.Context) ApiCoreTenantsListRequest {
 	return ApiCoreTenantsListRequest{
@@ -4150,8 +4131,7 @@ func (a *CoreApiService) CoreTenantsList(ctx context.Context) ApiCoreTenantsList
 }
 
 // Execute executes the request
-//
-//	@return PaginatedTenantList
+//  @return PaginatedTenantList
 func (a *CoreApiService) CoreTenantsListExecute(r ApiCoreTenantsListRequest) (*PaginatedTenantList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4333,9 +4313,9 @@ CoreTenantsPartialUpdate Method for CoreTenantsPartialUpdate
 
 Tenant Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param tenantUuid A UUID string identifying this Tenant.
-	@return ApiCoreTenantsPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenantUuid A UUID string identifying this Tenant.
+ @return ApiCoreTenantsPartialUpdateRequest
 */
 func (a *CoreApiService) CoreTenantsPartialUpdate(ctx context.Context, tenantUuid string) ApiCoreTenantsPartialUpdateRequest {
 	return ApiCoreTenantsPartialUpdateRequest{
@@ -4346,8 +4326,7 @@ func (a *CoreApiService) CoreTenantsPartialUpdate(ctx context.Context, tenantUui
 }
 
 // Execute executes the request
-//
-//	@return Tenant
+//  @return Tenant
 func (a *CoreApiService) CoreTenantsPartialUpdateExecute(r ApiCoreTenantsPartialUpdateRequest) (*Tenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -4472,9 +4451,9 @@ CoreTenantsRetrieve Method for CoreTenantsRetrieve
 
 Tenant Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param tenantUuid A UUID string identifying this Tenant.
-	@return ApiCoreTenantsRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenantUuid A UUID string identifying this Tenant.
+ @return ApiCoreTenantsRetrieveRequest
 */
 func (a *CoreApiService) CoreTenantsRetrieve(ctx context.Context, tenantUuid string) ApiCoreTenantsRetrieveRequest {
 	return ApiCoreTenantsRetrieveRequest{
@@ -4485,8 +4464,7 @@ func (a *CoreApiService) CoreTenantsRetrieve(ctx context.Context, tenantUuid str
 }
 
 // Execute executes the request
-//
-//	@return Tenant
+//  @return Tenant
 func (a *CoreApiService) CoreTenantsRetrieveExecute(r ApiCoreTenantsRetrieveRequest) (*Tenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4615,9 +4593,9 @@ CoreTenantsUpdate Method for CoreTenantsUpdate
 
 Tenant Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param tenantUuid A UUID string identifying this Tenant.
-	@return ApiCoreTenantsUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenantUuid A UUID string identifying this Tenant.
+ @return ApiCoreTenantsUpdateRequest
 */
 func (a *CoreApiService) CoreTenantsUpdate(ctx context.Context, tenantUuid string) ApiCoreTenantsUpdateRequest {
 	return ApiCoreTenantsUpdateRequest{
@@ -4628,8 +4606,7 @@ func (a *CoreApiService) CoreTenantsUpdate(ctx context.Context, tenantUuid strin
 }
 
 // Execute executes the request
-//
-//	@return Tenant
+//  @return Tenant
 func (a *CoreApiService) CoreTenantsUpdateExecute(r ApiCoreTenantsUpdateRequest) (*Tenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -4757,9 +4734,9 @@ CoreTenantsUsedByList Method for CoreTenantsUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param tenantUuid A UUID string identifying this Tenant.
-	@return ApiCoreTenantsUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenantUuid A UUID string identifying this Tenant.
+ @return ApiCoreTenantsUsedByListRequest
 */
 func (a *CoreApiService) CoreTenantsUsedByList(ctx context.Context, tenantUuid string) ApiCoreTenantsUsedByListRequest {
 	return ApiCoreTenantsUsedByListRequest{
@@ -4770,8 +4747,7 @@ func (a *CoreApiService) CoreTenantsUsedByList(ctx context.Context, tenantUuid s
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *CoreApiService) CoreTenantsUsedByListExecute(r ApiCoreTenantsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4899,8 +4875,8 @@ CoreTokensCreate Method for CoreTokensCreate
 
 Token Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreTokensCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreTokensCreateRequest
 */
 func (a *CoreApiService) CoreTokensCreate(ctx context.Context) ApiCoreTokensCreateRequest {
 	return ApiCoreTokensCreateRequest{
@@ -4910,8 +4886,7 @@ func (a *CoreApiService) CoreTokensCreate(ctx context.Context) ApiCoreTokensCrea
 }
 
 // Execute executes the request
-//
-//	@return Token
+//  @return Token
 func (a *CoreApiService) CoreTokensCreateExecute(r ApiCoreTokensCreateRequest) (*Token, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -5038,9 +5013,9 @@ CoreTokensDestroy Method for CoreTokensDestroy
 
 Token Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param identifier
-	@return ApiCoreTokensDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param identifier
+ @return ApiCoreTokensDestroyRequest
 */
 func (a *CoreApiService) CoreTokensDestroy(ctx context.Context, identifier string) ApiCoreTokensDestroyRequest {
 	return ApiCoreTokensDestroyRequest{
@@ -5232,8 +5207,8 @@ CoreTokensList Method for CoreTokensList
 
 Token Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreTokensListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreTokensListRequest
 */
 func (a *CoreApiService) CoreTokensList(ctx context.Context) ApiCoreTokensListRequest {
 	return ApiCoreTokensListRequest{
@@ -5243,8 +5218,7 @@ func (a *CoreApiService) CoreTokensList(ctx context.Context) ApiCoreTokensListRe
 }
 
 // Execute executes the request
-//
-//	@return PaginatedTokenList
+//  @return PaginatedTokenList
 func (a *CoreApiService) CoreTokensListExecute(r ApiCoreTokensListRequest) (*PaginatedTokenList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5405,9 +5379,9 @@ CoreTokensPartialUpdate Method for CoreTokensPartialUpdate
 
 Token Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param identifier
-	@return ApiCoreTokensPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param identifier
+ @return ApiCoreTokensPartialUpdateRequest
 */
 func (a *CoreApiService) CoreTokensPartialUpdate(ctx context.Context, identifier string) ApiCoreTokensPartialUpdateRequest {
 	return ApiCoreTokensPartialUpdateRequest{
@@ -5418,8 +5392,7 @@ func (a *CoreApiService) CoreTokensPartialUpdate(ctx context.Context, identifier
 }
 
 // Execute executes the request
-//
-//	@return Token
+//  @return Token
 func (a *CoreApiService) CoreTokensPartialUpdateExecute(r ApiCoreTokensPartialUpdateRequest) (*Token, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -5544,9 +5517,9 @@ CoreTokensRetrieve Method for CoreTokensRetrieve
 
 Token Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param identifier
-	@return ApiCoreTokensRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param identifier
+ @return ApiCoreTokensRetrieveRequest
 */
 func (a *CoreApiService) CoreTokensRetrieve(ctx context.Context, identifier string) ApiCoreTokensRetrieveRequest {
 	return ApiCoreTokensRetrieveRequest{
@@ -5557,8 +5530,7 @@ func (a *CoreApiService) CoreTokensRetrieve(ctx context.Context, identifier stri
 }
 
 // Execute executes the request
-//
-//	@return Token
+//  @return Token
 func (a *CoreApiService) CoreTokensRetrieveExecute(r ApiCoreTokensRetrieveRequest) (*Token, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5688,9 +5660,9 @@ CoreTokensSetKeyCreate Method for CoreTokensSetKeyCreate
 Set token key. Action is logged as event. `authentik_core.set_token_key` permission
 is required.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param identifier
-	@return ApiCoreTokensSetKeyCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param identifier
+ @return ApiCoreTokensSetKeyCreateRequest
 */
 func (a *CoreApiService) CoreTokensSetKeyCreate(ctx context.Context, identifier string) ApiCoreTokensSetKeyCreateRequest {
 	return ApiCoreTokensSetKeyCreateRequest{
@@ -5814,9 +5786,9 @@ CoreTokensUpdate Method for CoreTokensUpdate
 
 Token Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param identifier
-	@return ApiCoreTokensUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param identifier
+ @return ApiCoreTokensUpdateRequest
 */
 func (a *CoreApiService) CoreTokensUpdate(ctx context.Context, identifier string) ApiCoreTokensUpdateRequest {
 	return ApiCoreTokensUpdateRequest{
@@ -5827,8 +5799,7 @@ func (a *CoreApiService) CoreTokensUpdate(ctx context.Context, identifier string
 }
 
 // Execute executes the request
-//
-//	@return Token
+//  @return Token
 func (a *CoreApiService) CoreTokensUpdateExecute(r ApiCoreTokensUpdateRequest) (*Token, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -5956,9 +5927,9 @@ CoreTokensUsedByList Method for CoreTokensUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param identifier
-	@return ApiCoreTokensUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param identifier
+ @return ApiCoreTokensUsedByListRequest
 */
 func (a *CoreApiService) CoreTokensUsedByList(ctx context.Context, identifier string) ApiCoreTokensUsedByListRequest {
 	return ApiCoreTokensUsedByListRequest{
@@ -5969,8 +5940,7 @@ func (a *CoreApiService) CoreTokensUsedByList(ctx context.Context, identifier st
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *CoreApiService) CoreTokensUsedByListExecute(r ApiCoreTokensUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6093,9 +6063,9 @@ CoreTokensViewKeyRetrieve Method for CoreTokensViewKeyRetrieve
 
 Return token key and log access
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param identifier
-	@return ApiCoreTokensViewKeyRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param identifier
+ @return ApiCoreTokensViewKeyRetrieveRequest
 */
 func (a *CoreApiService) CoreTokensViewKeyRetrieve(ctx context.Context, identifier string) ApiCoreTokensViewKeyRetrieveRequest {
 	return ApiCoreTokensViewKeyRetrieveRequest{
@@ -6106,8 +6076,7 @@ func (a *CoreApiService) CoreTokensViewKeyRetrieve(ctx context.Context, identifi
 }
 
 // Execute executes the request
-//
-//	@return TokenView
+//  @return TokenView
 func (a *CoreApiService) CoreTokensViewKeyRetrieveExecute(r ApiCoreTokensViewKeyRetrieveRequest) (*TokenView, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6230,9 +6199,9 @@ CoreUserConsentDestroy Method for CoreUserConsentDestroy
 
 UserConsent Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User Consent.
-	@return ApiCoreUserConsentDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this User Consent.
+ @return ApiCoreUserConsentDestroyRequest
 */
 func (a *CoreApiService) CoreUserConsentDestroy(ctx context.Context, id int32) ApiCoreUserConsentDestroyRequest {
 	return ApiCoreUserConsentDestroyRequest{
@@ -6394,8 +6363,8 @@ CoreUserConsentList Method for CoreUserConsentList
 
 UserConsent Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreUserConsentListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreUserConsentListRequest
 */
 func (a *CoreApiService) CoreUserConsentList(ctx context.Context) ApiCoreUserConsentListRequest {
 	return ApiCoreUserConsentListRequest{
@@ -6405,8 +6374,7 @@ func (a *CoreApiService) CoreUserConsentList(ctx context.Context) ApiCoreUserCon
 }
 
 // Execute executes the request
-//
-//	@return PaginatedUserConsentList
+//  @return PaginatedUserConsentList
 func (a *CoreApiService) CoreUserConsentListExecute(r ApiCoreUserConsentListRequest) (*PaginatedUserConsentList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6546,9 +6514,9 @@ CoreUserConsentRetrieve Method for CoreUserConsentRetrieve
 
 UserConsent Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User Consent.
-	@return ApiCoreUserConsentRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this User Consent.
+ @return ApiCoreUserConsentRetrieveRequest
 */
 func (a *CoreApiService) CoreUserConsentRetrieve(ctx context.Context, id int32) ApiCoreUserConsentRetrieveRequest {
 	return ApiCoreUserConsentRetrieveRequest{
@@ -6559,8 +6527,7 @@ func (a *CoreApiService) CoreUserConsentRetrieve(ctx context.Context, id int32) 
 }
 
 // Execute executes the request
-//
-//	@return UserConsent
+//  @return UserConsent
 func (a *CoreApiService) CoreUserConsentRetrieveExecute(r ApiCoreUserConsentRetrieveRequest) (*UserConsent, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6683,9 +6650,9 @@ CoreUserConsentUsedByList Method for CoreUserConsentUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User Consent.
-	@return ApiCoreUserConsentUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this User Consent.
+ @return ApiCoreUserConsentUsedByListRequest
 */
 func (a *CoreApiService) CoreUserConsentUsedByList(ctx context.Context, id int32) ApiCoreUserConsentUsedByListRequest {
 	return ApiCoreUserConsentUsedByListRequest{
@@ -6696,8 +6663,7 @@ func (a *CoreApiService) CoreUserConsentUsedByList(ctx context.Context, id int32
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *CoreApiService) CoreUserConsentUsedByListExecute(r ApiCoreUserConsentUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6825,8 +6791,8 @@ CoreUsersCreate Method for CoreUsersCreate
 
 User Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreUsersCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreUsersCreateRequest
 */
 func (a *CoreApiService) CoreUsersCreate(ctx context.Context) ApiCoreUsersCreateRequest {
 	return ApiCoreUsersCreateRequest{
@@ -6836,8 +6802,7 @@ func (a *CoreApiService) CoreUsersCreate(ctx context.Context) ApiCoreUsersCreate
 }
 
 // Execute executes the request
-//
-//	@return User
+//  @return User
 func (a *CoreApiService) CoreUsersCreateExecute(r ApiCoreUsersCreateRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -6964,9 +6929,9 @@ CoreUsersDestroy Method for CoreUsersDestroy
 
 User Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User.
-	@return ApiCoreUsersDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this User.
+ @return ApiCoreUsersDestroyRequest
 */
 func (a *CoreApiService) CoreUsersDestroy(ctx context.Context, id int32) ApiCoreUsersDestroyRequest {
 	return ApiCoreUsersDestroyRequest{
@@ -7183,8 +7148,8 @@ CoreUsersList Method for CoreUsersList
 
 User Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreUsersListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreUsersListRequest
 */
 func (a *CoreApiService) CoreUsersList(ctx context.Context) ApiCoreUsersListRequest {
 	return ApiCoreUsersListRequest{
@@ -7194,8 +7159,7 @@ func (a *CoreApiService) CoreUsersList(ctx context.Context) ApiCoreUsersListRequ
 }
 
 // Execute executes the request
-//
-//	@return PaginatedUserList
+//  @return PaginatedUserList
 func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*PaginatedUserList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7377,8 +7341,8 @@ CoreUsersMeRetrieve Method for CoreUsersMeRetrieve
 
 Get information about current user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreUsersMeRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreUsersMeRetrieveRequest
 */
 func (a *CoreApiService) CoreUsersMeRetrieve(ctx context.Context) ApiCoreUsersMeRetrieveRequest {
 	return ApiCoreUsersMeRetrieveRequest{
@@ -7388,8 +7352,7 @@ func (a *CoreApiService) CoreUsersMeRetrieve(ctx context.Context) ApiCoreUsersMe
 }
 
 // Execute executes the request
-//
-//	@return SessionUser
+//  @return SessionUser
 func (a *CoreApiService) CoreUsersMeRetrieveExecute(r ApiCoreUsersMeRetrieveRequest) (*SessionUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7511,9 +7474,9 @@ CoreUsersMetricsRetrieve Method for CoreUsersMetricsRetrieve
 
 User metrics per 1h
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User.
-	@return ApiCoreUsersMetricsRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this User.
+ @return ApiCoreUsersMetricsRetrieveRequest
 */
 func (a *CoreApiService) CoreUsersMetricsRetrieve(ctx context.Context, id int32) ApiCoreUsersMetricsRetrieveRequest {
 	return ApiCoreUsersMetricsRetrieveRequest{
@@ -7524,8 +7487,7 @@ func (a *CoreApiService) CoreUsersMetricsRetrieve(ctx context.Context, id int32)
 }
 
 // Execute executes the request
-//
-//	@return UserMetrics
+//  @return UserMetrics
 func (a *CoreApiService) CoreUsersMetricsRetrieveExecute(r ApiCoreUsersMetricsRetrieveRequest) (*UserMetrics, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7654,9 +7616,9 @@ CoreUsersPartialUpdate Method for CoreUsersPartialUpdate
 
 User Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User.
-	@return ApiCoreUsersPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this User.
+ @return ApiCoreUsersPartialUpdateRequest
 */
 func (a *CoreApiService) CoreUsersPartialUpdate(ctx context.Context, id int32) ApiCoreUsersPartialUpdateRequest {
 	return ApiCoreUsersPartialUpdateRequest{
@@ -7667,8 +7629,7 @@ func (a *CoreApiService) CoreUsersPartialUpdate(ctx context.Context, id int32) A
 }
 
 // Execute executes the request
-//
-//	@return User
+//  @return User
 func (a *CoreApiService) CoreUsersPartialUpdateExecute(r ApiCoreUsersPartialUpdateRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -7798,8 +7759,8 @@ CoreUsersPathsRetrieve Method for CoreUsersPathsRetrieve
 
 Get all user paths
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreUsersPathsRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreUsersPathsRetrieveRequest
 */
 func (a *CoreApiService) CoreUsersPathsRetrieve(ctx context.Context) ApiCoreUsersPathsRetrieveRequest {
 	return ApiCoreUsersPathsRetrieveRequest{
@@ -7809,8 +7770,7 @@ func (a *CoreApiService) CoreUsersPathsRetrieve(ctx context.Context) ApiCoreUser
 }
 
 // Execute executes the request
-//
-//	@return UserPath
+//  @return UserPath
 func (a *CoreApiService) CoreUsersPathsRetrieveExecute(r ApiCoreUsersPathsRetrieveRequest) (*UserPath, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7941,9 +7901,9 @@ CoreUsersRecoveryEmailRetrieve Method for CoreUsersRecoveryEmailRetrieve
 
 Create a temporary link that a user can use to recover their accounts
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User.
-	@return ApiCoreUsersRecoveryEmailRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this User.
+ @return ApiCoreUsersRecoveryEmailRetrieveRequest
 */
 func (a *CoreApiService) CoreUsersRecoveryEmailRetrieve(ctx context.Context, id int32) ApiCoreUsersRecoveryEmailRetrieveRequest {
 	return ApiCoreUsersRecoveryEmailRetrieveRequest{
@@ -8070,9 +8030,9 @@ CoreUsersRecoveryRetrieve Method for CoreUsersRecoveryRetrieve
 
 Create a temporary link that a user can use to recover their accounts
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User.
-	@return ApiCoreUsersRecoveryRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this User.
+ @return ApiCoreUsersRecoveryRetrieveRequest
 */
 func (a *CoreApiService) CoreUsersRecoveryRetrieve(ctx context.Context, id int32) ApiCoreUsersRecoveryRetrieveRequest {
 	return ApiCoreUsersRecoveryRetrieveRequest{
@@ -8083,8 +8043,7 @@ func (a *CoreApiService) CoreUsersRecoveryRetrieve(ctx context.Context, id int32
 }
 
 // Execute executes the request
-//
-//	@return Link
+//  @return Link
 func (a *CoreApiService) CoreUsersRecoveryRetrieveExecute(r ApiCoreUsersRecoveryRetrieveRequest) (*Link, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8217,9 +8176,9 @@ CoreUsersRetrieve Method for CoreUsersRetrieve
 
 User Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User.
-	@return ApiCoreUsersRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this User.
+ @return ApiCoreUsersRetrieveRequest
 */
 func (a *CoreApiService) CoreUsersRetrieve(ctx context.Context, id int32) ApiCoreUsersRetrieveRequest {
 	return ApiCoreUsersRetrieveRequest{
@@ -8230,8 +8189,7 @@ func (a *CoreApiService) CoreUsersRetrieve(ctx context.Context, id int32) ApiCor
 }
 
 // Execute executes the request
-//
-//	@return User
+//  @return User
 func (a *CoreApiService) CoreUsersRetrieveExecute(r ApiCoreUsersRetrieveRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8359,8 +8317,8 @@ CoreUsersServiceAccountCreate Method for CoreUsersServiceAccountCreate
 
 Create a new user account that is marked as a service account
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreUsersServiceAccountCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCoreUsersServiceAccountCreateRequest
 */
 func (a *CoreApiService) CoreUsersServiceAccountCreate(ctx context.Context) ApiCoreUsersServiceAccountCreateRequest {
 	return ApiCoreUsersServiceAccountCreateRequest{
@@ -8370,8 +8328,7 @@ func (a *CoreApiService) CoreUsersServiceAccountCreate(ctx context.Context) ApiC
 }
 
 // Execute executes the request
-//
-//	@return UserServiceAccountResponse
+//  @return UserServiceAccountResponse
 func (a *CoreApiService) CoreUsersServiceAccountCreateExecute(r ApiCoreUsersServiceAccountCreateRequest) (*UserServiceAccountResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -8504,9 +8461,9 @@ CoreUsersSetPasswordCreate Method for CoreUsersSetPasswordCreate
 
 Set password for user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User.
-	@return ApiCoreUsersSetPasswordCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this User.
+ @return ApiCoreUsersSetPasswordCreateRequest
 */
 func (a *CoreApiService) CoreUsersSetPasswordCreate(ctx context.Context, id int32) ApiCoreUsersSetPasswordCreateRequest {
 	return ApiCoreUsersSetPasswordCreateRequest{
@@ -8630,9 +8587,9 @@ CoreUsersUpdate Method for CoreUsersUpdate
 
 User Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User.
-	@return ApiCoreUsersUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this User.
+ @return ApiCoreUsersUpdateRequest
 */
 func (a *CoreApiService) CoreUsersUpdate(ctx context.Context, id int32) ApiCoreUsersUpdateRequest {
 	return ApiCoreUsersUpdateRequest{
@@ -8643,8 +8600,7 @@ func (a *CoreApiService) CoreUsersUpdate(ctx context.Context, id int32) ApiCoreU
 }
 
 // Execute executes the request
-//
-//	@return User
+//  @return User
 func (a *CoreApiService) CoreUsersUpdateExecute(r ApiCoreUsersUpdateRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -8772,9 +8728,9 @@ CoreUsersUsedByList Method for CoreUsersUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User.
-	@return ApiCoreUsersUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this User.
+ @return ApiCoreUsersUsedByListRequest
 */
 func (a *CoreApiService) CoreUsersUsedByList(ctx context.Context, id int32) ApiCoreUsersUsedByListRequest {
 	return ApiCoreUsersUsedByListRequest{
@@ -8785,8 +8741,7 @@ func (a *CoreApiService) CoreUsersUsedByList(ctx context.Context, id int32) ApiC
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *CoreApiService) CoreUsersUsedByListExecute(r ApiCoreUsersUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

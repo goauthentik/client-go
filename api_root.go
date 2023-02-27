@@ -36,8 +36,8 @@ RootConfigRetrieve Method for RootConfigRetrieve
 
 Retrieve public configuration options
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRootConfigRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRootConfigRetrieveRequest
 */
 func (a *RootApiService) RootConfigRetrieve(ctx context.Context) ApiRootConfigRetrieveRequest {
 	return ApiRootConfigRetrieveRequest{
@@ -47,8 +47,7 @@ func (a *RootApiService) RootConfigRetrieve(ctx context.Context) ApiRootConfigRe
 }
 
 // Execute executes the request
-//
-//	@return Config
+//  @return Config
 func (a *RootApiService) RootConfigRetrieveExecute(r ApiRootConfigRetrieveRequest) (*Config, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

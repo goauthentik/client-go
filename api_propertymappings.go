@@ -39,9 +39,9 @@ PropertymappingsAllDestroy Method for PropertymappingsAllDestroy
 
 PropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Property Mapping.
-	@return ApiPropertymappingsAllDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Property Mapping.
+ @return ApiPropertymappingsAllDestroyRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsAllDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsAllDestroyRequest {
 	return ApiPropertymappingsAllDestroyRequest{
@@ -197,8 +197,8 @@ PropertymappingsAllList Method for PropertymappingsAllList
 
 PropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsAllListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPropertymappingsAllListRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsAllList(ctx context.Context) ApiPropertymappingsAllListRequest {
 	return ApiPropertymappingsAllListRequest{
@@ -208,8 +208,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllList(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return PaginatedPropertyMappingList
+//  @return PaginatedPropertyMappingList
 func (a *PropertymappingsApiService) PropertymappingsAllListExecute(r ApiPropertymappingsAllListRequest) (*PaginatedPropertyMappingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -346,9 +345,9 @@ PropertymappingsAllRetrieve Method for PropertymappingsAllRetrieve
 
 PropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Property Mapping.
-	@return ApiPropertymappingsAllRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Property Mapping.
+ @return ApiPropertymappingsAllRetrieveRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsAllRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsAllRetrieveRequest {
 	return ApiPropertymappingsAllRetrieveRequest{
@@ -359,8 +358,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllRetrieve(ctx context.Con
 }
 
 // Execute executes the request
-//
-//	@return PropertyMapping
+//  @return PropertyMapping
 func (a *PropertymappingsApiService) PropertymappingsAllRetrieveExecute(r ApiPropertymappingsAllRetrieveRequest) (*PropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -495,9 +493,9 @@ PropertymappingsAllTestCreate Method for PropertymappingsAllTestCreate
 
 Test Property Mapping
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Property Mapping.
-	@return ApiPropertymappingsAllTestCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Property Mapping.
+ @return ApiPropertymappingsAllTestCreateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsAllTestCreate(ctx context.Context, pmUuid string) ApiPropertymappingsAllTestCreateRequest {
 	return ApiPropertymappingsAllTestCreateRequest{
@@ -508,8 +506,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllTestCreate(ctx context.C
 }
 
 // Execute executes the request
-//
-//	@return PropertyMappingTestResult
+//  @return PropertyMappingTestResult
 func (a *PropertymappingsApiService) PropertymappingsAllTestCreateExecute(r ApiPropertymappingsAllTestCreateRequest) (*PropertyMappingTestResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -629,8 +626,8 @@ PropertymappingsAllTypesList Method for PropertymappingsAllTypesList
 
 Get all creatable property-mapping types
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsAllTypesListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPropertymappingsAllTypesListRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsAllTypesList(ctx context.Context) ApiPropertymappingsAllTypesListRequest {
 	return ApiPropertymappingsAllTypesListRequest{
@@ -640,8 +637,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllTypesList(ctx context.Co
 }
 
 // Execute executes the request
-//
-//	@return []TypeCreate
+//  @return []TypeCreate
 func (a *PropertymappingsApiService) PropertymappingsAllTypesListExecute(r ApiPropertymappingsAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -763,9 +759,9 @@ PropertymappingsAllUsedByList Method for PropertymappingsAllUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Property Mapping.
-	@return ApiPropertymappingsAllUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Property Mapping.
+ @return ApiPropertymappingsAllUsedByListRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsAllUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsAllUsedByListRequest {
 	return ApiPropertymappingsAllUsedByListRequest{
@@ -776,8 +772,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllUsedByList(ctx context.C
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *PropertymappingsApiService) PropertymappingsAllUsedByListExecute(r ApiPropertymappingsAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -905,8 +900,8 @@ PropertymappingsLdapCreate Method for PropertymappingsLdapCreate
 
 LDAP PropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsLdapCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPropertymappingsLdapCreateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsLdapCreate(ctx context.Context) ApiPropertymappingsLdapCreateRequest {
 	return ApiPropertymappingsLdapCreateRequest{
@@ -916,8 +911,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapCreate(ctx context.Cont
 }
 
 // Execute executes the request
-//
-//	@return LDAPPropertyMapping
+//  @return LDAPPropertyMapping
 func (a *PropertymappingsApiService) PropertymappingsLdapCreateExecute(r ApiPropertymappingsLdapCreateRequest) (*LDAPPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1044,9 +1038,9 @@ PropertymappingsLdapDestroy Method for PropertymappingsLdapDestroy
 
 LDAP PropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this LDAP Property Mapping.
-	@return ApiPropertymappingsLdapDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this LDAP Property Mapping.
+ @return ApiPropertymappingsLdapDestroyRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsLdapDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsLdapDestroyRequest {
 	return ApiPropertymappingsLdapDestroyRequest{
@@ -1226,8 +1220,8 @@ PropertymappingsLdapList Method for PropertymappingsLdapList
 
 LDAP PropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsLdapListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPropertymappingsLdapListRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsLdapList(ctx context.Context) ApiPropertymappingsLdapListRequest {
 	return ApiPropertymappingsLdapListRequest{
@@ -1237,8 +1231,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapList(ctx context.Contex
 }
 
 // Execute executes the request
-//
-//	@return PaginatedLDAPPropertyMappingList
+//  @return PaginatedLDAPPropertyMappingList
 func (a *PropertymappingsApiService) PropertymappingsLdapListExecute(r ApiPropertymappingsLdapListRequest) (*PaginatedLDAPPropertyMappingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1401,9 +1394,9 @@ PropertymappingsLdapPartialUpdate Method for PropertymappingsLdapPartialUpdate
 
 LDAP PropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this LDAP Property Mapping.
-	@return ApiPropertymappingsLdapPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this LDAP Property Mapping.
+ @return ApiPropertymappingsLdapPartialUpdateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsLdapPartialUpdateRequest {
 	return ApiPropertymappingsLdapPartialUpdateRequest{
@@ -1414,8 +1407,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdate(ctx conte
 }
 
 // Execute executes the request
-//
-//	@return LDAPPropertyMapping
+//  @return LDAPPropertyMapping
 func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdateExecute(r ApiPropertymappingsLdapPartialUpdateRequest) (*LDAPPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -1540,9 +1532,9 @@ PropertymappingsLdapRetrieve Method for PropertymappingsLdapRetrieve
 
 LDAP PropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this LDAP Property Mapping.
-	@return ApiPropertymappingsLdapRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this LDAP Property Mapping.
+ @return ApiPropertymappingsLdapRetrieveRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsLdapRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsLdapRetrieveRequest {
 	return ApiPropertymappingsLdapRetrieveRequest{
@@ -1553,8 +1545,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapRetrieve(ctx context.Co
 }
 
 // Execute executes the request
-//
-//	@return LDAPPropertyMapping
+//  @return LDAPPropertyMapping
 func (a *PropertymappingsApiService) PropertymappingsLdapRetrieveExecute(r ApiPropertymappingsLdapRetrieveRequest) (*LDAPPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1683,9 +1674,9 @@ PropertymappingsLdapUpdate Method for PropertymappingsLdapUpdate
 
 LDAP PropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this LDAP Property Mapping.
-	@return ApiPropertymappingsLdapUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this LDAP Property Mapping.
+ @return ApiPropertymappingsLdapUpdateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsLdapUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsLdapUpdateRequest {
 	return ApiPropertymappingsLdapUpdateRequest{
@@ -1696,8 +1687,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUpdate(ctx context.Cont
 }
 
 // Execute executes the request
-//
-//	@return LDAPPropertyMapping
+//  @return LDAPPropertyMapping
 func (a *PropertymappingsApiService) PropertymappingsLdapUpdateExecute(r ApiPropertymappingsLdapUpdateRequest) (*LDAPPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -1825,9 +1815,9 @@ PropertymappingsLdapUsedByList Method for PropertymappingsLdapUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this LDAP Property Mapping.
-	@return ApiPropertymappingsLdapUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this LDAP Property Mapping.
+ @return ApiPropertymappingsLdapUsedByListRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsLdapUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsLdapUsedByListRequest {
 	return ApiPropertymappingsLdapUsedByListRequest{
@@ -1838,8 +1828,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUsedByList(ctx context.
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *PropertymappingsApiService) PropertymappingsLdapUsedByListExecute(r ApiPropertymappingsLdapUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1967,8 +1956,8 @@ PropertymappingsNotificationCreate Method for PropertymappingsNotificationCreate
 
 NotificationWebhookMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsNotificationCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPropertymappingsNotificationCreateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsNotificationCreate(ctx context.Context) ApiPropertymappingsNotificationCreateRequest {
 	return ApiPropertymappingsNotificationCreateRequest{
@@ -1978,8 +1967,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationCreate(ctx cont
 }
 
 // Execute executes the request
-//
-//	@return NotificationWebhookMapping
+//  @return NotificationWebhookMapping
 func (a *PropertymappingsApiService) PropertymappingsNotificationCreateExecute(r ApiPropertymappingsNotificationCreateRequest) (*NotificationWebhookMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2106,9 +2094,9 @@ PropertymappingsNotificationDestroy Method for PropertymappingsNotificationDestr
 
 NotificationWebhookMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Webhook Mapping.
-	@return ApiPropertymappingsNotificationDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Webhook Mapping.
+ @return ApiPropertymappingsNotificationDestroyRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsNotificationDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationDestroyRequest {
 	return ApiPropertymappingsNotificationDestroyRequest{
@@ -2264,8 +2252,8 @@ PropertymappingsNotificationList Method for PropertymappingsNotificationList
 
 NotificationWebhookMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsNotificationListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPropertymappingsNotificationListRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsNotificationList(ctx context.Context) ApiPropertymappingsNotificationListRequest {
 	return ApiPropertymappingsNotificationListRequest{
@@ -2275,8 +2263,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationList(ctx contex
 }
 
 // Execute executes the request
-//
-//	@return PaginatedNotificationWebhookMappingList
+//  @return PaginatedNotificationWebhookMappingList
 func (a *PropertymappingsApiService) PropertymappingsNotificationListExecute(r ApiPropertymappingsNotificationListRequest) (*PaginatedNotificationWebhookMappingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2419,9 +2406,9 @@ PropertymappingsNotificationPartialUpdate Method for PropertymappingsNotificatio
 
 NotificationWebhookMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Webhook Mapping.
-	@return ApiPropertymappingsNotificationPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Webhook Mapping.
+ @return ApiPropertymappingsNotificationPartialUpdateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationPartialUpdateRequest {
 	return ApiPropertymappingsNotificationPartialUpdateRequest{
@@ -2432,8 +2419,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdate(c
 }
 
 // Execute executes the request
-//
-//	@return NotificationWebhookMapping
+//  @return NotificationWebhookMapping
 func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdateExecute(r ApiPropertymappingsNotificationPartialUpdateRequest) (*NotificationWebhookMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2558,9 +2544,9 @@ PropertymappingsNotificationRetrieve Method for PropertymappingsNotificationRetr
 
 NotificationWebhookMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Webhook Mapping.
-	@return ApiPropertymappingsNotificationRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Webhook Mapping.
+ @return ApiPropertymappingsNotificationRetrieveRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationRetrieveRequest {
 	return ApiPropertymappingsNotificationRetrieveRequest{
@@ -2571,8 +2557,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieve(ctx co
 }
 
 // Execute executes the request
-//
-//	@return NotificationWebhookMapping
+//  @return NotificationWebhookMapping
 func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieveExecute(r ApiPropertymappingsNotificationRetrieveRequest) (*NotificationWebhookMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2701,9 +2686,9 @@ PropertymappingsNotificationUpdate Method for PropertymappingsNotificationUpdate
 
 NotificationWebhookMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Webhook Mapping.
-	@return ApiPropertymappingsNotificationUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Webhook Mapping.
+ @return ApiPropertymappingsNotificationUpdateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsNotificationUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationUpdateRequest {
 	return ApiPropertymappingsNotificationUpdateRequest{
@@ -2714,8 +2699,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUpdate(ctx cont
 }
 
 // Execute executes the request
-//
-//	@return NotificationWebhookMapping
+//  @return NotificationWebhookMapping
 func (a *PropertymappingsApiService) PropertymappingsNotificationUpdateExecute(r ApiPropertymappingsNotificationUpdateRequest) (*NotificationWebhookMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -2843,9 +2827,9 @@ PropertymappingsNotificationUsedByList Method for PropertymappingsNotificationUs
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Webhook Mapping.
-	@return ApiPropertymappingsNotificationUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Webhook Mapping.
+ @return ApiPropertymappingsNotificationUsedByListRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsNotificationUsedByListRequest {
 	return ApiPropertymappingsNotificationUsedByListRequest{
@@ -2856,8 +2840,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByList(ctx 
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecute(r ApiPropertymappingsNotificationUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2985,8 +2968,8 @@ PropertymappingsSamlCreate Method for PropertymappingsSamlCreate
 
 SAMLPropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsSamlCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPropertymappingsSamlCreateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsSamlCreate(ctx context.Context) ApiPropertymappingsSamlCreateRequest {
 	return ApiPropertymappingsSamlCreateRequest{
@@ -2996,8 +2979,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlCreate(ctx context.Cont
 }
 
 // Execute executes the request
-//
-//	@return SAMLPropertyMapping
+//  @return SAMLPropertyMapping
 func (a *PropertymappingsApiService) PropertymappingsSamlCreateExecute(r ApiPropertymappingsSamlCreateRequest) (*SAMLPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -3124,9 +3106,9 @@ PropertymappingsSamlDestroy Method for PropertymappingsSamlDestroy
 
 SAMLPropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SAML Property Mapping.
-	@return ApiPropertymappingsSamlDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this SAML Property Mapping.
+ @return ApiPropertymappingsSamlDestroyRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsSamlDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsSamlDestroyRequest {
 	return ApiPropertymappingsSamlDestroyRequest{
@@ -3312,8 +3294,8 @@ PropertymappingsSamlList Method for PropertymappingsSamlList
 
 SAMLPropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsSamlListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPropertymappingsSamlListRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsSamlList(ctx context.Context) ApiPropertymappingsSamlListRequest {
 	return ApiPropertymappingsSamlListRequest{
@@ -3323,8 +3305,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlList(ctx context.Contex
 }
 
 // Execute executes the request
-//
-//	@return PaginatedSAMLPropertyMappingList
+//  @return PaginatedSAMLPropertyMappingList
 func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiPropertymappingsSamlListRequest) (*PaginatedSAMLPropertyMappingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3490,9 +3471,9 @@ PropertymappingsSamlPartialUpdate Method for PropertymappingsSamlPartialUpdate
 
 SAMLPropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SAML Property Mapping.
-	@return ApiPropertymappingsSamlPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this SAML Property Mapping.
+ @return ApiPropertymappingsSamlPartialUpdateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsSamlPartialUpdateRequest {
 	return ApiPropertymappingsSamlPartialUpdateRequest{
@@ -3503,8 +3484,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdate(ctx conte
 }
 
 // Execute executes the request
-//
-//	@return SAMLPropertyMapping
+//  @return SAMLPropertyMapping
 func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r ApiPropertymappingsSamlPartialUpdateRequest) (*SAMLPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -3629,9 +3609,9 @@ PropertymappingsSamlRetrieve Method for PropertymappingsSamlRetrieve
 
 SAMLPropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SAML Property Mapping.
-	@return ApiPropertymappingsSamlRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this SAML Property Mapping.
+ @return ApiPropertymappingsSamlRetrieveRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsSamlRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsSamlRetrieveRequest {
 	return ApiPropertymappingsSamlRetrieveRequest{
@@ -3642,8 +3622,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlRetrieve(ctx context.Co
 }
 
 // Execute executes the request
-//
-//	@return SAMLPropertyMapping
+//  @return SAMLPropertyMapping
 func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPropertymappingsSamlRetrieveRequest) (*SAMLPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3772,9 +3751,9 @@ PropertymappingsSamlUpdate Method for PropertymappingsSamlUpdate
 
 SAMLPropertyMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SAML Property Mapping.
-	@return ApiPropertymappingsSamlUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this SAML Property Mapping.
+ @return ApiPropertymappingsSamlUpdateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsSamlUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsSamlUpdateRequest {
 	return ApiPropertymappingsSamlUpdateRequest{
@@ -3785,8 +3764,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUpdate(ctx context.Cont
 }
 
 // Execute executes the request
-//
-//	@return SAMLPropertyMapping
+//  @return SAMLPropertyMapping
 func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiPropertymappingsSamlUpdateRequest) (*SAMLPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -3914,9 +3892,9 @@ PropertymappingsSamlUsedByList Method for PropertymappingsSamlUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SAML Property Mapping.
-	@return ApiPropertymappingsSamlUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this SAML Property Mapping.
+ @return ApiPropertymappingsSamlUsedByListRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsSamlUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsSamlUsedByListRequest {
 	return ApiPropertymappingsSamlUsedByListRequest{
@@ -3927,8 +3905,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUsedByList(ctx context.
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r ApiPropertymappingsSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4056,8 +4033,8 @@ PropertymappingsScopeCreate Method for PropertymappingsScopeCreate
 
 ScopeMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsScopeCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPropertymappingsScopeCreateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsScopeCreate(ctx context.Context) ApiPropertymappingsScopeCreateRequest {
 	return ApiPropertymappingsScopeCreateRequest{
@@ -4067,8 +4044,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeCreate(ctx context.Con
 }
 
 // Execute executes the request
-//
-//	@return ScopeMapping
+//  @return ScopeMapping
 func (a *PropertymappingsApiService) PropertymappingsScopeCreateExecute(r ApiPropertymappingsScopeCreateRequest) (*ScopeMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -4195,9 +4171,9 @@ PropertymappingsScopeDestroy Method for PropertymappingsScopeDestroy
 
 ScopeMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Scope Mapping.
-	@return ApiPropertymappingsScopeDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Scope Mapping.
+ @return ApiPropertymappingsScopeDestroyRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsScopeDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsScopeDestroyRequest {
 	return ApiPropertymappingsScopeDestroyRequest{
@@ -4365,8 +4341,8 @@ PropertymappingsScopeList Method for PropertymappingsScopeList
 
 ScopeMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsScopeListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPropertymappingsScopeListRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsScopeList(ctx context.Context) ApiPropertymappingsScopeListRequest {
 	return ApiPropertymappingsScopeListRequest{
@@ -4376,8 +4352,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeList(ctx context.Conte
 }
 
 // Execute executes the request
-//
-//	@return PaginatedScopeMappingList
+//  @return PaginatedScopeMappingList
 func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPropertymappingsScopeListRequest) (*PaginatedScopeMappingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4534,9 +4509,9 @@ PropertymappingsScopePartialUpdate Method for PropertymappingsScopePartialUpdate
 
 ScopeMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Scope Mapping.
-	@return ApiPropertymappingsScopePartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Scope Mapping.
+ @return ApiPropertymappingsScopePartialUpdateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsScopePartialUpdateRequest {
 	return ApiPropertymappingsScopePartialUpdateRequest{
@@ -4547,8 +4522,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdate(ctx cont
 }
 
 // Execute executes the request
-//
-//	@return ScopeMapping
+//  @return ScopeMapping
 func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r ApiPropertymappingsScopePartialUpdateRequest) (*ScopeMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -4673,9 +4647,9 @@ PropertymappingsScopeRetrieve Method for PropertymappingsScopeRetrieve
 
 ScopeMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Scope Mapping.
-	@return ApiPropertymappingsScopeRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Scope Mapping.
+ @return ApiPropertymappingsScopeRetrieveRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsScopeRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsScopeRetrieveRequest {
 	return ApiPropertymappingsScopeRetrieveRequest{
@@ -4686,8 +4660,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeRetrieve(ctx context.C
 }
 
 // Execute executes the request
-//
-//	@return ScopeMapping
+//  @return ScopeMapping
 func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiPropertymappingsScopeRetrieveRequest) (*ScopeMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4816,9 +4789,9 @@ PropertymappingsScopeUpdate Method for PropertymappingsScopeUpdate
 
 ScopeMapping Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Scope Mapping.
-	@return ApiPropertymappingsScopeUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Scope Mapping.
+ @return ApiPropertymappingsScopeUpdateRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsScopeUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsScopeUpdateRequest {
 	return ApiPropertymappingsScopeUpdateRequest{
@@ -4829,8 +4802,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUpdate(ctx context.Con
 }
 
 // Execute executes the request
-//
-//	@return ScopeMapping
+//  @return ScopeMapping
 func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPropertymappingsScopeUpdateRequest) (*ScopeMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -4958,9 +4930,9 @@ PropertymappingsScopeUsedByList Method for PropertymappingsScopeUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Scope Mapping.
-	@return ApiPropertymappingsScopeUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param pmUuid A UUID string identifying this Scope Mapping.
+ @return ApiPropertymappingsScopeUsedByListRequest
 */
 func (a *PropertymappingsApiService) PropertymappingsScopeUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsScopeUsedByListRequest {
 	return ApiPropertymappingsScopeUsedByListRequest{
@@ -4971,8 +4943,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUsedByList(ctx context
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *PropertymappingsApiService) PropertymappingsScopeUsedByListExecute(r ApiPropertymappingsScopeUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

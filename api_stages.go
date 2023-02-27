@@ -40,9 +40,9 @@ StagesAllDestroy Method for StagesAllDestroy
 
 Stage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this stage.
-	@return ApiStagesAllDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this stage.
+ @return ApiStagesAllDestroyRequest
 */
 func (a *StagesApiService) StagesAllDestroy(ctx context.Context, stageUuid string) ApiStagesAllDestroyRequest {
 	return ApiStagesAllDestroyRequest{
@@ -198,8 +198,8 @@ StagesAllList Method for StagesAllList
 
 Stage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAllListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAllListRequest
 */
 func (a *StagesApiService) StagesAllList(ctx context.Context) ApiStagesAllListRequest {
 	return ApiStagesAllListRequest{
@@ -209,8 +209,7 @@ func (a *StagesApiService) StagesAllList(ctx context.Context) ApiStagesAllListRe
 }
 
 // Execute executes the request
-//
-//	@return PaginatedStageList
+//  @return PaginatedStageList
 func (a *StagesApiService) StagesAllListExecute(r ApiStagesAllListRequest) (*PaginatedStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -347,9 +346,9 @@ StagesAllRetrieve Method for StagesAllRetrieve
 
 Stage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this stage.
-	@return ApiStagesAllRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this stage.
+ @return ApiStagesAllRetrieveRequest
 */
 func (a *StagesApiService) StagesAllRetrieve(ctx context.Context, stageUuid string) ApiStagesAllRetrieveRequest {
 	return ApiStagesAllRetrieveRequest{
@@ -360,8 +359,7 @@ func (a *StagesApiService) StagesAllRetrieve(ctx context.Context, stageUuid stri
 }
 
 // Execute executes the request
-//
-//	@return Stage
+//  @return Stage
 func (a *StagesApiService) StagesAllRetrieveExecute(r ApiStagesAllRetrieveRequest) (*Stage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -483,8 +481,8 @@ StagesAllTypesList Method for StagesAllTypesList
 
 Get all creatable stage types
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAllTypesListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAllTypesListRequest
 */
 func (a *StagesApiService) StagesAllTypesList(ctx context.Context) ApiStagesAllTypesListRequest {
 	return ApiStagesAllTypesListRequest{
@@ -494,8 +492,7 @@ func (a *StagesApiService) StagesAllTypesList(ctx context.Context) ApiStagesAllT
 }
 
 // Execute executes the request
-//
-//	@return []TypeCreate
+//  @return []TypeCreate
 func (a *StagesApiService) StagesAllTypesListExecute(r ApiStagesAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -617,9 +614,9 @@ StagesAllUsedByList Method for StagesAllUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this stage.
-	@return ApiStagesAllUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this stage.
+ @return ApiStagesAllUsedByListRequest
 */
 func (a *StagesApiService) StagesAllUsedByList(ctx context.Context, stageUuid string) ApiStagesAllUsedByListRequest {
 	return ApiStagesAllUsedByListRequest{
@@ -630,8 +627,7 @@ func (a *StagesApiService) StagesAllUsedByList(ctx context.Context, stageUuid st
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesAllUsedByListExecute(r ApiStagesAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -753,8 +749,8 @@ StagesAllUserSettingsList Method for StagesAllUserSettingsList
 
 Get all stages the user can configure
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAllUserSettingsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAllUserSettingsListRequest
 */
 func (a *StagesApiService) StagesAllUserSettingsList(ctx context.Context) ApiStagesAllUserSettingsListRequest {
 	return ApiStagesAllUserSettingsListRequest{
@@ -764,8 +760,7 @@ func (a *StagesApiService) StagesAllUserSettingsList(ctx context.Context) ApiSta
 }
 
 // Execute executes the request
-//
-//	@return []UserSetting
+//  @return []UserSetting
 func (a *StagesApiService) StagesAllUserSettingsListExecute(r ApiStagesAllUserSettingsListRequest) ([]UserSetting, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -892,8 +887,8 @@ StagesAuthenticatorDuoCreate Method for StagesAuthenticatorDuoCreate
 
 AuthenticatorDuoStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAuthenticatorDuoCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAuthenticatorDuoCreateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorDuoCreate(ctx context.Context) ApiStagesAuthenticatorDuoCreateRequest {
 	return ApiStagesAuthenticatorDuoCreateRequest{
@@ -903,8 +898,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoCreate(ctx context.Context) Api
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorDuoStage
+//  @return AuthenticatorDuoStage
 func (a *StagesApiService) StagesAuthenticatorDuoCreateExecute(r ApiStagesAuthenticatorDuoCreateRequest) (*AuthenticatorDuoStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1031,9 +1025,9 @@ StagesAuthenticatorDuoDestroy Method for StagesAuthenticatorDuoDestroy
 
 AuthenticatorDuoStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorDuoDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorDuoDestroyRequest
 */
 func (a *StagesApiService) StagesAuthenticatorDuoDestroy(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoDestroyRequest {
 	return ApiStagesAuthenticatorDuoDestroyRequest{
@@ -1156,9 +1150,9 @@ StagesAuthenticatorDuoEnrollmentStatusCreate Method for StagesAuthenticatorDuoEn
 
 Check enrollment status of user details in current session
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest {
 	return ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest{
@@ -1169,8 +1163,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreate(ctx cont
 }
 
 // Execute executes the request
-//
-//	@return DuoDeviceEnrollmentStatus
+//  @return DuoDeviceEnrollmentStatus
 func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreateExecute(r ApiStagesAuthenticatorDuoEnrollmentStatusCreateRequest) (*DuoDeviceEnrollmentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1299,9 +1292,9 @@ StagesAuthenticatorDuoImportDeviceManualCreate Method for StagesAuthenticatorDuo
 
 Import duo devices into authentik
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorDuoImportDeviceManualCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorDuoImportDeviceManualCreateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorDuoImportDeviceManualCreate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoImportDeviceManualCreateRequest {
 	return ApiStagesAuthenticatorDuoImportDeviceManualCreateRequest{
@@ -1419,9 +1412,9 @@ StagesAuthenticatorDuoImportDevicesAutomaticCreate Method for StagesAuthenticato
 
 Import duo devices into authentik
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorDuoImportDevicesAutomaticCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorDuoImportDevicesAutomaticCreateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesAutomaticCreate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoImportDevicesAutomaticCreateRequest {
 	return ApiStagesAuthenticatorDuoImportDevicesAutomaticCreateRequest{
@@ -1432,8 +1425,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesAutomaticCreate(ct
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorDuoStageDeviceImportResponse
+//  @return AuthenticatorDuoStageDeviceImportResponse
 func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesAutomaticCreateExecute(r ApiStagesAuthenticatorDuoImportDevicesAutomaticCreateRequest) (*AuthenticatorDuoStageDeviceImportResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1597,8 +1589,8 @@ StagesAuthenticatorDuoList Method for StagesAuthenticatorDuoList
 
 AuthenticatorDuoStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAuthenticatorDuoListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAuthenticatorDuoListRequest
 */
 func (a *StagesApiService) StagesAuthenticatorDuoList(ctx context.Context) ApiStagesAuthenticatorDuoListRequest {
 	return ApiStagesAuthenticatorDuoListRequest{
@@ -1608,8 +1600,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoList(ctx context.Context) ApiSt
 }
 
 // Execute executes the request
-//
-//	@return PaginatedAuthenticatorDuoStageList
+//  @return PaginatedAuthenticatorDuoStageList
 func (a *StagesApiService) StagesAuthenticatorDuoListExecute(r ApiStagesAuthenticatorDuoListRequest) (*PaginatedAuthenticatorDuoStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1761,9 +1752,9 @@ StagesAuthenticatorDuoPartialUpdate Method for StagesAuthenticatorDuoPartialUpda
 
 AuthenticatorDuoStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorDuoPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorDuoPartialUpdateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoPartialUpdateRequest {
 	return ApiStagesAuthenticatorDuoPartialUpdateRequest{
@@ -1774,8 +1765,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdate(ctx context.Conte
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorDuoStage
+//  @return AuthenticatorDuoStage
 func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdateExecute(r ApiStagesAuthenticatorDuoPartialUpdateRequest) (*AuthenticatorDuoStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -1900,9 +1890,9 @@ StagesAuthenticatorDuoRetrieve Method for StagesAuthenticatorDuoRetrieve
 
 AuthenticatorDuoStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorDuoRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorDuoRetrieveRequest
 */
 func (a *StagesApiService) StagesAuthenticatorDuoRetrieve(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoRetrieveRequest {
 	return ApiStagesAuthenticatorDuoRetrieveRequest{
@@ -1913,8 +1903,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoRetrieve(ctx context.Context, s
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorDuoStage
+//  @return AuthenticatorDuoStage
 func (a *StagesApiService) StagesAuthenticatorDuoRetrieveExecute(r ApiStagesAuthenticatorDuoRetrieveRequest) (*AuthenticatorDuoStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2043,9 +2032,9 @@ StagesAuthenticatorDuoUpdate Method for StagesAuthenticatorDuoUpdate
 
 AuthenticatorDuoStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorDuoUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorDuoUpdateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorDuoUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoUpdateRequest {
 	return ApiStagesAuthenticatorDuoUpdateRequest{
@@ -2056,8 +2045,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoUpdate(ctx context.Context, sta
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorDuoStage
+//  @return AuthenticatorDuoStage
 func (a *StagesApiService) StagesAuthenticatorDuoUpdateExecute(r ApiStagesAuthenticatorDuoUpdateRequest) (*AuthenticatorDuoStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -2185,9 +2173,9 @@ StagesAuthenticatorDuoUsedByList Method for StagesAuthenticatorDuoUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorDuoUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Duo Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorDuoUsedByListRequest
 */
 func (a *StagesApiService) StagesAuthenticatorDuoUsedByList(ctx context.Context, stageUuid string) ApiStagesAuthenticatorDuoUsedByListRequest {
 	return ApiStagesAuthenticatorDuoUsedByListRequest{
@@ -2198,8 +2186,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoUsedByList(ctx context.Context,
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesAuthenticatorDuoUsedByListExecute(r ApiStagesAuthenticatorDuoUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2327,8 +2314,8 @@ StagesAuthenticatorSmsCreate Method for StagesAuthenticatorSmsCreate
 
 AuthenticatorSMSStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAuthenticatorSmsCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAuthenticatorSmsCreateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorSmsCreate(ctx context.Context) ApiStagesAuthenticatorSmsCreateRequest {
 	return ApiStagesAuthenticatorSmsCreateRequest{
@@ -2338,8 +2325,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsCreate(ctx context.Context) Api
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorSMSStage
+//  @return AuthenticatorSMSStage
 func (a *StagesApiService) StagesAuthenticatorSmsCreateExecute(r ApiStagesAuthenticatorSmsCreateRequest) (*AuthenticatorSMSStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2466,9 +2452,9 @@ StagesAuthenticatorSmsDestroy Method for StagesAuthenticatorSmsDestroy
 
 AuthenticatorSMSStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorSmsDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorSmsDestroyRequest
 */
 func (a *StagesApiService) StagesAuthenticatorSmsDestroy(ctx context.Context, stageUuid string) ApiStagesAuthenticatorSmsDestroyRequest {
 	return ApiStagesAuthenticatorSmsDestroyRequest{
@@ -2684,8 +2670,8 @@ StagesAuthenticatorSmsList Method for StagesAuthenticatorSmsList
 
 AuthenticatorSMSStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAuthenticatorSmsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAuthenticatorSmsListRequest
 */
 func (a *StagesApiService) StagesAuthenticatorSmsList(ctx context.Context) ApiStagesAuthenticatorSmsListRequest {
 	return ApiStagesAuthenticatorSmsListRequest{
@@ -2695,8 +2681,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsList(ctx context.Context) ApiSt
 }
 
 // Execute executes the request
-//
-//	@return PaginatedAuthenticatorSMSStageList
+//  @return PaginatedAuthenticatorSMSStageList
 func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenticatorSmsListRequest) (*PaginatedAuthenticatorSMSStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2869,9 +2854,9 @@ StagesAuthenticatorSmsPartialUpdate Method for StagesAuthenticatorSmsPartialUpda
 
 AuthenticatorSMSStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorSmsPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorSmsPartialUpdateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorSmsPartialUpdateRequest {
 	return ApiStagesAuthenticatorSmsPartialUpdateRequest{
@@ -2882,8 +2867,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdate(ctx context.Conte
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorSMSStage
+//  @return AuthenticatorSMSStage
 func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdateExecute(r ApiStagesAuthenticatorSmsPartialUpdateRequest) (*AuthenticatorSMSStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -3008,9 +2992,9 @@ StagesAuthenticatorSmsRetrieve Method for StagesAuthenticatorSmsRetrieve
 
 AuthenticatorSMSStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorSmsRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorSmsRetrieveRequest
 */
 func (a *StagesApiService) StagesAuthenticatorSmsRetrieve(ctx context.Context, stageUuid string) ApiStagesAuthenticatorSmsRetrieveRequest {
 	return ApiStagesAuthenticatorSmsRetrieveRequest{
@@ -3021,8 +3005,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsRetrieve(ctx context.Context, s
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorSMSStage
+//  @return AuthenticatorSMSStage
 func (a *StagesApiService) StagesAuthenticatorSmsRetrieveExecute(r ApiStagesAuthenticatorSmsRetrieveRequest) (*AuthenticatorSMSStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3151,9 +3134,9 @@ StagesAuthenticatorSmsUpdate Method for StagesAuthenticatorSmsUpdate
 
 AuthenticatorSMSStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorSmsUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorSmsUpdateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorSmsUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorSmsUpdateRequest {
 	return ApiStagesAuthenticatorSmsUpdateRequest{
@@ -3164,8 +3147,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsUpdate(ctx context.Context, sta
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorSMSStage
+//  @return AuthenticatorSMSStage
 func (a *StagesApiService) StagesAuthenticatorSmsUpdateExecute(r ApiStagesAuthenticatorSmsUpdateRequest) (*AuthenticatorSMSStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -3293,9 +3275,9 @@ StagesAuthenticatorSmsUsedByList Method for StagesAuthenticatorSmsUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorSmsUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this SMS Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorSmsUsedByListRequest
 */
 func (a *StagesApiService) StagesAuthenticatorSmsUsedByList(ctx context.Context, stageUuid string) ApiStagesAuthenticatorSmsUsedByListRequest {
 	return ApiStagesAuthenticatorSmsUsedByListRequest{
@@ -3306,8 +3288,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsUsedByList(ctx context.Context,
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesAuthenticatorSmsUsedByListExecute(r ApiStagesAuthenticatorSmsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3435,8 +3416,8 @@ StagesAuthenticatorStaticCreate Method for StagesAuthenticatorStaticCreate
 
 AuthenticatorStaticStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAuthenticatorStaticCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAuthenticatorStaticCreateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorStaticCreate(ctx context.Context) ApiStagesAuthenticatorStaticCreateRequest {
 	return ApiStagesAuthenticatorStaticCreateRequest{
@@ -3446,8 +3427,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticCreate(ctx context.Context) 
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorStaticStage
+//  @return AuthenticatorStaticStage
 func (a *StagesApiService) StagesAuthenticatorStaticCreateExecute(r ApiStagesAuthenticatorStaticCreateRequest) (*AuthenticatorStaticStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -3574,9 +3554,9 @@ StagesAuthenticatorStaticDestroy Method for StagesAuthenticatorStaticDestroy
 
 AuthenticatorStaticStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Static Authenticator Stage.
-	@return ApiStagesAuthenticatorStaticDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Static Authenticator Stage.
+ @return ApiStagesAuthenticatorStaticDestroyRequest
 */
 func (a *StagesApiService) StagesAuthenticatorStaticDestroy(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticDestroyRequest {
 	return ApiStagesAuthenticatorStaticDestroyRequest{
@@ -3750,8 +3730,8 @@ StagesAuthenticatorStaticList Method for StagesAuthenticatorStaticList
 
 AuthenticatorStaticStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAuthenticatorStaticListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAuthenticatorStaticListRequest
 */
 func (a *StagesApiService) StagesAuthenticatorStaticList(ctx context.Context) ApiStagesAuthenticatorStaticListRequest {
 	return ApiStagesAuthenticatorStaticListRequest{
@@ -3761,8 +3741,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticList(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//
-//	@return PaginatedAuthenticatorStaticStageList
+//  @return PaginatedAuthenticatorStaticStageList
 func (a *StagesApiService) StagesAuthenticatorStaticListExecute(r ApiStagesAuthenticatorStaticListRequest) (*PaginatedAuthenticatorStaticStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3914,9 +3893,9 @@ StagesAuthenticatorStaticPartialUpdate Method for StagesAuthenticatorStaticParti
 
 AuthenticatorStaticStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Static Authenticator Stage.
-	@return ApiStagesAuthenticatorStaticPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Static Authenticator Stage.
+ @return ApiStagesAuthenticatorStaticPartialUpdateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticPartialUpdateRequest {
 	return ApiStagesAuthenticatorStaticPartialUpdateRequest{
@@ -3927,8 +3906,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdate(ctx context.Co
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorStaticStage
+//  @return AuthenticatorStaticStage
 func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdateExecute(r ApiStagesAuthenticatorStaticPartialUpdateRequest) (*AuthenticatorStaticStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -4053,9 +4031,9 @@ StagesAuthenticatorStaticRetrieve Method for StagesAuthenticatorStaticRetrieve
 
 AuthenticatorStaticStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Static Authenticator Stage.
-	@return ApiStagesAuthenticatorStaticRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Static Authenticator Stage.
+ @return ApiStagesAuthenticatorStaticRetrieveRequest
 */
 func (a *StagesApiService) StagesAuthenticatorStaticRetrieve(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticRetrieveRequest {
 	return ApiStagesAuthenticatorStaticRetrieveRequest{
@@ -4066,8 +4044,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticRetrieve(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorStaticStage
+//  @return AuthenticatorStaticStage
 func (a *StagesApiService) StagesAuthenticatorStaticRetrieveExecute(r ApiStagesAuthenticatorStaticRetrieveRequest) (*AuthenticatorStaticStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4196,9 +4173,9 @@ StagesAuthenticatorStaticUpdate Method for StagesAuthenticatorStaticUpdate
 
 AuthenticatorStaticStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Static Authenticator Stage.
-	@return ApiStagesAuthenticatorStaticUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Static Authenticator Stage.
+ @return ApiStagesAuthenticatorStaticUpdateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorStaticUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticUpdateRequest {
 	return ApiStagesAuthenticatorStaticUpdateRequest{
@@ -4209,8 +4186,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticUpdate(ctx context.Context, 
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorStaticStage
+//  @return AuthenticatorStaticStage
 func (a *StagesApiService) StagesAuthenticatorStaticUpdateExecute(r ApiStagesAuthenticatorStaticUpdateRequest) (*AuthenticatorStaticStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -4338,9 +4314,9 @@ StagesAuthenticatorStaticUsedByList Method for StagesAuthenticatorStaticUsedByLi
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Static Authenticator Stage.
-	@return ApiStagesAuthenticatorStaticUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Static Authenticator Stage.
+ @return ApiStagesAuthenticatorStaticUsedByListRequest
 */
 func (a *StagesApiService) StagesAuthenticatorStaticUsedByList(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticUsedByListRequest {
 	return ApiStagesAuthenticatorStaticUsedByListRequest{
@@ -4351,8 +4327,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticUsedByList(ctx context.Conte
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesAuthenticatorStaticUsedByListExecute(r ApiStagesAuthenticatorStaticUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4480,8 +4455,8 @@ StagesAuthenticatorTotpCreate Method for StagesAuthenticatorTotpCreate
 
 AuthenticatorTOTPStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAuthenticatorTotpCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAuthenticatorTotpCreateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorTotpCreate(ctx context.Context) ApiStagesAuthenticatorTotpCreateRequest {
 	return ApiStagesAuthenticatorTotpCreateRequest{
@@ -4491,8 +4466,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpCreate(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorTOTPStage
+//  @return AuthenticatorTOTPStage
 func (a *StagesApiService) StagesAuthenticatorTotpCreateExecute(r ApiStagesAuthenticatorTotpCreateRequest) (*AuthenticatorTOTPStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -4619,9 +4593,9 @@ StagesAuthenticatorTotpDestroy Method for StagesAuthenticatorTotpDestroy
 
 AuthenticatorTOTPStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorTotpDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorTotpDestroyRequest
 */
 func (a *StagesApiService) StagesAuthenticatorTotpDestroy(ctx context.Context, stageUuid string) ApiStagesAuthenticatorTotpDestroyRequest {
 	return ApiStagesAuthenticatorTotpDestroyRequest{
@@ -4795,8 +4769,8 @@ StagesAuthenticatorTotpList Method for StagesAuthenticatorTotpList
 
 AuthenticatorTOTPStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAuthenticatorTotpListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAuthenticatorTotpListRequest
 */
 func (a *StagesApiService) StagesAuthenticatorTotpList(ctx context.Context) ApiStagesAuthenticatorTotpListRequest {
 	return ApiStagesAuthenticatorTotpListRequest{
@@ -4806,8 +4780,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpList(ctx context.Context) ApiS
 }
 
 // Execute executes the request
-//
-//	@return PaginatedAuthenticatorTOTPStageList
+//  @return PaginatedAuthenticatorTOTPStageList
 func (a *StagesApiService) StagesAuthenticatorTotpListExecute(r ApiStagesAuthenticatorTotpListRequest) (*PaginatedAuthenticatorTOTPStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4959,9 +4932,9 @@ StagesAuthenticatorTotpPartialUpdate Method for StagesAuthenticatorTotpPartialUp
 
 AuthenticatorTOTPStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorTotpPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorTotpPartialUpdateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorTotpPartialUpdateRequest {
 	return ApiStagesAuthenticatorTotpPartialUpdateRequest{
@@ -4972,8 +4945,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdate(ctx context.Cont
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorTOTPStage
+//  @return AuthenticatorTOTPStage
 func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdateExecute(r ApiStagesAuthenticatorTotpPartialUpdateRequest) (*AuthenticatorTOTPStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -5098,9 +5070,9 @@ StagesAuthenticatorTotpRetrieve Method for StagesAuthenticatorTotpRetrieve
 
 AuthenticatorTOTPStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorTotpRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorTotpRetrieveRequest
 */
 func (a *StagesApiService) StagesAuthenticatorTotpRetrieve(ctx context.Context, stageUuid string) ApiStagesAuthenticatorTotpRetrieveRequest {
 	return ApiStagesAuthenticatorTotpRetrieveRequest{
@@ -5111,8 +5083,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpRetrieve(ctx context.Context, 
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorTOTPStage
+//  @return AuthenticatorTOTPStage
 func (a *StagesApiService) StagesAuthenticatorTotpRetrieveExecute(r ApiStagesAuthenticatorTotpRetrieveRequest) (*AuthenticatorTOTPStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5241,9 +5212,9 @@ StagesAuthenticatorTotpUpdate Method for StagesAuthenticatorTotpUpdate
 
 AuthenticatorTOTPStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorTotpUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorTotpUpdateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorTotpUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorTotpUpdateRequest {
 	return ApiStagesAuthenticatorTotpUpdateRequest{
@@ -5254,8 +5225,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpUpdate(ctx context.Context, st
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorTOTPStage
+//  @return AuthenticatorTOTPStage
 func (a *StagesApiService) StagesAuthenticatorTotpUpdateExecute(r ApiStagesAuthenticatorTotpUpdateRequest) (*AuthenticatorTOTPStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -5383,9 +5353,9 @@ StagesAuthenticatorTotpUsedByList Method for StagesAuthenticatorTotpUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorTotpUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this TOTP Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorTotpUsedByListRequest
 */
 func (a *StagesApiService) StagesAuthenticatorTotpUsedByList(ctx context.Context, stageUuid string) ApiStagesAuthenticatorTotpUsedByListRequest {
 	return ApiStagesAuthenticatorTotpUsedByListRequest{
@@ -5396,8 +5366,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpUsedByList(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesAuthenticatorTotpUsedByListExecute(r ApiStagesAuthenticatorTotpUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5525,8 +5494,8 @@ StagesAuthenticatorValidateCreate Method for StagesAuthenticatorValidateCreate
 
 AuthenticatorValidateStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAuthenticatorValidateCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAuthenticatorValidateCreateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorValidateCreate(ctx context.Context) ApiStagesAuthenticatorValidateCreateRequest {
 	return ApiStagesAuthenticatorValidateCreateRequest{
@@ -5536,8 +5505,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateCreate(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorValidateStage
+//  @return AuthenticatorValidateStage
 func (a *StagesApiService) StagesAuthenticatorValidateCreateExecute(r ApiStagesAuthenticatorValidateCreateRequest) (*AuthenticatorValidateStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -5664,9 +5632,9 @@ StagesAuthenticatorValidateDestroy Method for StagesAuthenticatorValidateDestroy
 
 AuthenticatorValidateStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Authenticator Validation Stage.
-	@return ApiStagesAuthenticatorValidateDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Authenticator Validation Stage.
+ @return ApiStagesAuthenticatorValidateDestroyRequest
 */
 func (a *StagesApiService) StagesAuthenticatorValidateDestroy(ctx context.Context, stageUuid string) ApiStagesAuthenticatorValidateDestroyRequest {
 	return ApiStagesAuthenticatorValidateDestroyRequest{
@@ -5834,8 +5802,8 @@ StagesAuthenticatorValidateList Method for StagesAuthenticatorValidateList
 
 AuthenticatorValidateStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAuthenticatorValidateListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAuthenticatorValidateListRequest
 */
 func (a *StagesApiService) StagesAuthenticatorValidateList(ctx context.Context) ApiStagesAuthenticatorValidateListRequest {
 	return ApiStagesAuthenticatorValidateListRequest{
@@ -5845,8 +5813,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateList(ctx context.Context) 
 }
 
 // Execute executes the request
-//
-//	@return PaginatedAuthenticatorValidateStageList
+//  @return PaginatedAuthenticatorValidateStageList
 func (a *StagesApiService) StagesAuthenticatorValidateListExecute(r ApiStagesAuthenticatorValidateListRequest) (*PaginatedAuthenticatorValidateStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6003,9 +5970,9 @@ StagesAuthenticatorValidatePartialUpdate Method for StagesAuthenticatorValidateP
 
 AuthenticatorValidateStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Authenticator Validation Stage.
-	@return ApiStagesAuthenticatorValidatePartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Authenticator Validation Stage.
+ @return ApiStagesAuthenticatorValidatePartialUpdateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorValidatePartialUpdateRequest {
 	return ApiStagesAuthenticatorValidatePartialUpdateRequest{
@@ -6016,8 +5983,7 @@ func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdate(ctx context.
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorValidateStage
+//  @return AuthenticatorValidateStage
 func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdateExecute(r ApiStagesAuthenticatorValidatePartialUpdateRequest) (*AuthenticatorValidateStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -6142,9 +6108,9 @@ StagesAuthenticatorValidateRetrieve Method for StagesAuthenticatorValidateRetrie
 
 AuthenticatorValidateStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Authenticator Validation Stage.
-	@return ApiStagesAuthenticatorValidateRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Authenticator Validation Stage.
+ @return ApiStagesAuthenticatorValidateRetrieveRequest
 */
 func (a *StagesApiService) StagesAuthenticatorValidateRetrieve(ctx context.Context, stageUuid string) ApiStagesAuthenticatorValidateRetrieveRequest {
 	return ApiStagesAuthenticatorValidateRetrieveRequest{
@@ -6155,8 +6121,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateRetrieve(ctx context.Conte
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorValidateStage
+//  @return AuthenticatorValidateStage
 func (a *StagesApiService) StagesAuthenticatorValidateRetrieveExecute(r ApiStagesAuthenticatorValidateRetrieveRequest) (*AuthenticatorValidateStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6285,9 +6250,9 @@ StagesAuthenticatorValidateUpdate Method for StagesAuthenticatorValidateUpdate
 
 AuthenticatorValidateStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Authenticator Validation Stage.
-	@return ApiStagesAuthenticatorValidateUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Authenticator Validation Stage.
+ @return ApiStagesAuthenticatorValidateUpdateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorValidateUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorValidateUpdateRequest {
 	return ApiStagesAuthenticatorValidateUpdateRequest{
@@ -6298,8 +6263,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateUpdate(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return AuthenticatorValidateStage
+//  @return AuthenticatorValidateStage
 func (a *StagesApiService) StagesAuthenticatorValidateUpdateExecute(r ApiStagesAuthenticatorValidateUpdateRequest) (*AuthenticatorValidateStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -6427,9 +6391,9 @@ StagesAuthenticatorValidateUsedByList Method for StagesAuthenticatorValidateUsed
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Authenticator Validation Stage.
-	@return ApiStagesAuthenticatorValidateUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Authenticator Validation Stage.
+ @return ApiStagesAuthenticatorValidateUsedByListRequest
 */
 func (a *StagesApiService) StagesAuthenticatorValidateUsedByList(ctx context.Context, stageUuid string) ApiStagesAuthenticatorValidateUsedByListRequest {
 	return ApiStagesAuthenticatorValidateUsedByListRequest{
@@ -6440,8 +6404,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateUsedByList(ctx context.Con
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesAuthenticatorValidateUsedByListExecute(r ApiStagesAuthenticatorValidateUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6569,8 +6532,8 @@ StagesAuthenticatorWebauthnCreate Method for StagesAuthenticatorWebauthnCreate
 
 AuthenticateWebAuthnStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAuthenticatorWebauthnCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAuthenticatorWebauthnCreateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorWebauthnCreate(ctx context.Context) ApiStagesAuthenticatorWebauthnCreateRequest {
 	return ApiStagesAuthenticatorWebauthnCreateRequest{
@@ -6580,8 +6543,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnCreate(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return AuthenticateWebAuthnStage
+//  @return AuthenticateWebAuthnStage
 func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesAuthenticatorWebauthnCreateRequest) (*AuthenticateWebAuthnStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -6708,9 +6670,9 @@ StagesAuthenticatorWebauthnDestroy Method for StagesAuthenticatorWebauthnDestroy
 
 AuthenticateWebAuthnStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorWebauthnDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorWebauthnDestroyRequest
 */
 func (a *StagesApiService) StagesAuthenticatorWebauthnDestroy(ctx context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnDestroyRequest {
 	return ApiStagesAuthenticatorWebauthnDestroyRequest{
@@ -6896,8 +6858,8 @@ StagesAuthenticatorWebauthnList Method for StagesAuthenticatorWebauthnList
 
 AuthenticateWebAuthnStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesAuthenticatorWebauthnListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesAuthenticatorWebauthnListRequest
 */
 func (a *StagesApiService) StagesAuthenticatorWebauthnList(ctx context.Context) ApiStagesAuthenticatorWebauthnListRequest {
 	return ApiStagesAuthenticatorWebauthnListRequest{
@@ -6907,8 +6869,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnList(ctx context.Context) 
 }
 
 // Execute executes the request
-//
-//	@return PaginatedAuthenticateWebAuthnStageList
+//  @return PaginatedAuthenticateWebAuthnStageList
 func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAuthenticatorWebauthnListRequest) (*PaginatedAuthenticateWebAuthnStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7066,9 +7027,9 @@ StagesAuthenticatorWebauthnPartialUpdate Method for StagesAuthenticatorWebauthnP
 
 AuthenticateWebAuthnStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorWebauthnPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorWebauthnPartialUpdateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnPartialUpdateRequest {
 	return ApiStagesAuthenticatorWebauthnPartialUpdateRequest{
@@ -7079,8 +7040,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdate(ctx context.
 }
 
 // Execute executes the request
-//
-//	@return AuthenticateWebAuthnStage
+//  @return AuthenticateWebAuthnStage
 func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r ApiStagesAuthenticatorWebauthnPartialUpdateRequest) (*AuthenticateWebAuthnStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -7205,9 +7165,9 @@ StagesAuthenticatorWebauthnRetrieve Method for StagesAuthenticatorWebauthnRetrie
 
 AuthenticateWebAuthnStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorWebauthnRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorWebauthnRetrieveRequest
 */
 func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieve(ctx context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnRetrieveRequest {
 	return ApiStagesAuthenticatorWebauthnRetrieveRequest{
@@ -7218,8 +7178,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieve(ctx context.Conte
 }
 
 // Execute executes the request
-//
-//	@return AuthenticateWebAuthnStage
+//  @return AuthenticateWebAuthnStage
 func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStagesAuthenticatorWebauthnRetrieveRequest) (*AuthenticateWebAuthnStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7348,9 +7307,9 @@ StagesAuthenticatorWebauthnUpdate Method for StagesAuthenticatorWebauthnUpdate
 
 AuthenticateWebAuthnStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorWebauthnUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorWebauthnUpdateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorWebauthnUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnUpdateRequest {
 	return ApiStagesAuthenticatorWebauthnUpdateRequest{
@@ -7361,8 +7320,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUpdate(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return AuthenticateWebAuthnStage
+//  @return AuthenticateWebAuthnStage
 func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesAuthenticatorWebauthnUpdateRequest) (*AuthenticateWebAuthnStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -7490,9 +7448,9 @@ StagesAuthenticatorWebauthnUsedByList Method for StagesAuthenticatorWebauthnUsed
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
-	@return ApiStagesAuthenticatorWebauthnUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
+ @return ApiStagesAuthenticatorWebauthnUsedByListRequest
 */
 func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByList(ctx context.Context, stageUuid string) ApiStagesAuthenticatorWebauthnUsedByListRequest {
 	return ApiStagesAuthenticatorWebauthnUsedByListRequest{
@@ -7503,8 +7461,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByList(ctx context.Con
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByListExecute(r ApiStagesAuthenticatorWebauthnUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7632,8 +7589,8 @@ StagesCaptchaCreate Method for StagesCaptchaCreate
 
 CaptchaStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesCaptchaCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesCaptchaCreateRequest
 */
 func (a *StagesApiService) StagesCaptchaCreate(ctx context.Context) ApiStagesCaptchaCreateRequest {
 	return ApiStagesCaptchaCreateRequest{
@@ -7643,8 +7600,7 @@ func (a *StagesApiService) StagesCaptchaCreate(ctx context.Context) ApiStagesCap
 }
 
 // Execute executes the request
-//
-//	@return CaptchaStage
+//  @return CaptchaStage
 func (a *StagesApiService) StagesCaptchaCreateExecute(r ApiStagesCaptchaCreateRequest) (*CaptchaStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -7771,9 +7727,9 @@ StagesCaptchaDestroy Method for StagesCaptchaDestroy
 
 CaptchaStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Captcha Stage.
-	@return ApiStagesCaptchaDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Captcha Stage.
+ @return ApiStagesCaptchaDestroyRequest
 */
 func (a *StagesApiService) StagesCaptchaDestroy(ctx context.Context, stageUuid string) ApiStagesCaptchaDestroyRequest {
 	return ApiStagesCaptchaDestroyRequest{
@@ -7935,8 +7891,8 @@ StagesCaptchaList Method for StagesCaptchaList
 
 CaptchaStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesCaptchaListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesCaptchaListRequest
 */
 func (a *StagesApiService) StagesCaptchaList(ctx context.Context) ApiStagesCaptchaListRequest {
 	return ApiStagesCaptchaListRequest{
@@ -7946,8 +7902,7 @@ func (a *StagesApiService) StagesCaptchaList(ctx context.Context) ApiStagesCaptc
 }
 
 // Execute executes the request
-//
-//	@return PaginatedCaptchaStageList
+//  @return PaginatedCaptchaStageList
 func (a *StagesApiService) StagesCaptchaListExecute(r ApiStagesCaptchaListRequest) (*PaginatedCaptchaStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8093,9 +8048,9 @@ StagesCaptchaPartialUpdate Method for StagesCaptchaPartialUpdate
 
 CaptchaStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Captcha Stage.
-	@return ApiStagesCaptchaPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Captcha Stage.
+ @return ApiStagesCaptchaPartialUpdateRequest
 */
 func (a *StagesApiService) StagesCaptchaPartialUpdate(ctx context.Context, stageUuid string) ApiStagesCaptchaPartialUpdateRequest {
 	return ApiStagesCaptchaPartialUpdateRequest{
@@ -8106,8 +8061,7 @@ func (a *StagesApiService) StagesCaptchaPartialUpdate(ctx context.Context, stage
 }
 
 // Execute executes the request
-//
-//	@return CaptchaStage
+//  @return CaptchaStage
 func (a *StagesApiService) StagesCaptchaPartialUpdateExecute(r ApiStagesCaptchaPartialUpdateRequest) (*CaptchaStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -8232,9 +8186,9 @@ StagesCaptchaRetrieve Method for StagesCaptchaRetrieve
 
 CaptchaStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Captcha Stage.
-	@return ApiStagesCaptchaRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Captcha Stage.
+ @return ApiStagesCaptchaRetrieveRequest
 */
 func (a *StagesApiService) StagesCaptchaRetrieve(ctx context.Context, stageUuid string) ApiStagesCaptchaRetrieveRequest {
 	return ApiStagesCaptchaRetrieveRequest{
@@ -8245,8 +8199,7 @@ func (a *StagesApiService) StagesCaptchaRetrieve(ctx context.Context, stageUuid 
 }
 
 // Execute executes the request
-//
-//	@return CaptchaStage
+//  @return CaptchaStage
 func (a *StagesApiService) StagesCaptchaRetrieveExecute(r ApiStagesCaptchaRetrieveRequest) (*CaptchaStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8375,9 +8328,9 @@ StagesCaptchaUpdate Method for StagesCaptchaUpdate
 
 CaptchaStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Captcha Stage.
-	@return ApiStagesCaptchaUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Captcha Stage.
+ @return ApiStagesCaptchaUpdateRequest
 */
 func (a *StagesApiService) StagesCaptchaUpdate(ctx context.Context, stageUuid string) ApiStagesCaptchaUpdateRequest {
 	return ApiStagesCaptchaUpdateRequest{
@@ -8388,8 +8341,7 @@ func (a *StagesApiService) StagesCaptchaUpdate(ctx context.Context, stageUuid st
 }
 
 // Execute executes the request
-//
-//	@return CaptchaStage
+//  @return CaptchaStage
 func (a *StagesApiService) StagesCaptchaUpdateExecute(r ApiStagesCaptchaUpdateRequest) (*CaptchaStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -8517,9 +8469,9 @@ StagesCaptchaUsedByList Method for StagesCaptchaUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Captcha Stage.
-	@return ApiStagesCaptchaUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Captcha Stage.
+ @return ApiStagesCaptchaUsedByListRequest
 */
 func (a *StagesApiService) StagesCaptchaUsedByList(ctx context.Context, stageUuid string) ApiStagesCaptchaUsedByListRequest {
 	return ApiStagesCaptchaUsedByListRequest{
@@ -8530,8 +8482,7 @@ func (a *StagesApiService) StagesCaptchaUsedByList(ctx context.Context, stageUui
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesCaptchaUsedByListExecute(r ApiStagesCaptchaUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8659,8 +8610,8 @@ StagesConsentCreate Method for StagesConsentCreate
 
 ConsentStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesConsentCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesConsentCreateRequest
 */
 func (a *StagesApiService) StagesConsentCreate(ctx context.Context) ApiStagesConsentCreateRequest {
 	return ApiStagesConsentCreateRequest{
@@ -8670,8 +8621,7 @@ func (a *StagesApiService) StagesConsentCreate(ctx context.Context) ApiStagesCon
 }
 
 // Execute executes the request
-//
-//	@return ConsentStage
+//  @return ConsentStage
 func (a *StagesApiService) StagesConsentCreateExecute(r ApiStagesConsentCreateRequest) (*ConsentStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -8798,9 +8748,9 @@ StagesConsentDestroy Method for StagesConsentDestroy
 
 ConsentStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Consent Stage.
-	@return ApiStagesConsentDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Consent Stage.
+ @return ApiStagesConsentDestroyRequest
 */
 func (a *StagesApiService) StagesConsentDestroy(ctx context.Context, stageUuid string) ApiStagesConsentDestroyRequest {
 	return ApiStagesConsentDestroyRequest{
@@ -8974,8 +8924,8 @@ StagesConsentList Method for StagesConsentList
 
 ConsentStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesConsentListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesConsentListRequest
 */
 func (a *StagesApiService) StagesConsentList(ctx context.Context) ApiStagesConsentListRequest {
 	return ApiStagesConsentListRequest{
@@ -8985,8 +8935,7 @@ func (a *StagesApiService) StagesConsentList(ctx context.Context) ApiStagesConse
 }
 
 // Execute executes the request
-//
-//	@return PaginatedConsentStageList
+//  @return PaginatedConsentStageList
 func (a *StagesApiService) StagesConsentListExecute(r ApiStagesConsentListRequest) (*PaginatedConsentStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -9138,9 +9087,9 @@ StagesConsentPartialUpdate Method for StagesConsentPartialUpdate
 
 ConsentStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Consent Stage.
-	@return ApiStagesConsentPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Consent Stage.
+ @return ApiStagesConsentPartialUpdateRequest
 */
 func (a *StagesApiService) StagesConsentPartialUpdate(ctx context.Context, stageUuid string) ApiStagesConsentPartialUpdateRequest {
 	return ApiStagesConsentPartialUpdateRequest{
@@ -9151,8 +9100,7 @@ func (a *StagesApiService) StagesConsentPartialUpdate(ctx context.Context, stage
 }
 
 // Execute executes the request
-//
-//	@return ConsentStage
+//  @return ConsentStage
 func (a *StagesApiService) StagesConsentPartialUpdateExecute(r ApiStagesConsentPartialUpdateRequest) (*ConsentStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -9277,9 +9225,9 @@ StagesConsentRetrieve Method for StagesConsentRetrieve
 
 ConsentStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Consent Stage.
-	@return ApiStagesConsentRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Consent Stage.
+ @return ApiStagesConsentRetrieveRequest
 */
 func (a *StagesApiService) StagesConsentRetrieve(ctx context.Context, stageUuid string) ApiStagesConsentRetrieveRequest {
 	return ApiStagesConsentRetrieveRequest{
@@ -9290,8 +9238,7 @@ func (a *StagesApiService) StagesConsentRetrieve(ctx context.Context, stageUuid 
 }
 
 // Execute executes the request
-//
-//	@return ConsentStage
+//  @return ConsentStage
 func (a *StagesApiService) StagesConsentRetrieveExecute(r ApiStagesConsentRetrieveRequest) (*ConsentStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -9420,9 +9367,9 @@ StagesConsentUpdate Method for StagesConsentUpdate
 
 ConsentStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Consent Stage.
-	@return ApiStagesConsentUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Consent Stage.
+ @return ApiStagesConsentUpdateRequest
 */
 func (a *StagesApiService) StagesConsentUpdate(ctx context.Context, stageUuid string) ApiStagesConsentUpdateRequest {
 	return ApiStagesConsentUpdateRequest{
@@ -9433,8 +9380,7 @@ func (a *StagesApiService) StagesConsentUpdate(ctx context.Context, stageUuid st
 }
 
 // Execute executes the request
-//
-//	@return ConsentStage
+//  @return ConsentStage
 func (a *StagesApiService) StagesConsentUpdateExecute(r ApiStagesConsentUpdateRequest) (*ConsentStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -9562,9 +9508,9 @@ StagesConsentUsedByList Method for StagesConsentUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Consent Stage.
-	@return ApiStagesConsentUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Consent Stage.
+ @return ApiStagesConsentUsedByListRequest
 */
 func (a *StagesApiService) StagesConsentUsedByList(ctx context.Context, stageUuid string) ApiStagesConsentUsedByListRequest {
 	return ApiStagesConsentUsedByListRequest{
@@ -9575,8 +9521,7 @@ func (a *StagesApiService) StagesConsentUsedByList(ctx context.Context, stageUui
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesConsentUsedByListExecute(r ApiStagesConsentUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -9704,8 +9649,8 @@ StagesDenyCreate Method for StagesDenyCreate
 
 DenyStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesDenyCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesDenyCreateRequest
 */
 func (a *StagesApiService) StagesDenyCreate(ctx context.Context) ApiStagesDenyCreateRequest {
 	return ApiStagesDenyCreateRequest{
@@ -9715,8 +9660,7 @@ func (a *StagesApiService) StagesDenyCreate(ctx context.Context) ApiStagesDenyCr
 }
 
 // Execute executes the request
-//
-//	@return DenyStage
+//  @return DenyStage
 func (a *StagesApiService) StagesDenyCreateExecute(r ApiStagesDenyCreateRequest) (*DenyStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -9843,9 +9787,9 @@ StagesDenyDestroy Method for StagesDenyDestroy
 
 DenyStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Deny Stage.
-	@return ApiStagesDenyDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Deny Stage.
+ @return ApiStagesDenyDestroyRequest
 */
 func (a *StagesApiService) StagesDenyDestroy(ctx context.Context, stageUuid string) ApiStagesDenyDestroyRequest {
 	return ApiStagesDenyDestroyRequest{
@@ -10007,8 +9951,8 @@ StagesDenyList Method for StagesDenyList
 
 DenyStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesDenyListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesDenyListRequest
 */
 func (a *StagesApiService) StagesDenyList(ctx context.Context) ApiStagesDenyListRequest {
 	return ApiStagesDenyListRequest{
@@ -10018,8 +9962,7 @@ func (a *StagesApiService) StagesDenyList(ctx context.Context) ApiStagesDenyList
 }
 
 // Execute executes the request
-//
-//	@return PaginatedDenyStageList
+//  @return PaginatedDenyStageList
 func (a *StagesApiService) StagesDenyListExecute(r ApiStagesDenyListRequest) (*PaginatedDenyStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -10165,9 +10108,9 @@ StagesDenyPartialUpdate Method for StagesDenyPartialUpdate
 
 DenyStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Deny Stage.
-	@return ApiStagesDenyPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Deny Stage.
+ @return ApiStagesDenyPartialUpdateRequest
 */
 func (a *StagesApiService) StagesDenyPartialUpdate(ctx context.Context, stageUuid string) ApiStagesDenyPartialUpdateRequest {
 	return ApiStagesDenyPartialUpdateRequest{
@@ -10178,8 +10121,7 @@ func (a *StagesApiService) StagesDenyPartialUpdate(ctx context.Context, stageUui
 }
 
 // Execute executes the request
-//
-//	@return DenyStage
+//  @return DenyStage
 func (a *StagesApiService) StagesDenyPartialUpdateExecute(r ApiStagesDenyPartialUpdateRequest) (*DenyStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -10304,9 +10246,9 @@ StagesDenyRetrieve Method for StagesDenyRetrieve
 
 DenyStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Deny Stage.
-	@return ApiStagesDenyRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Deny Stage.
+ @return ApiStagesDenyRetrieveRequest
 */
 func (a *StagesApiService) StagesDenyRetrieve(ctx context.Context, stageUuid string) ApiStagesDenyRetrieveRequest {
 	return ApiStagesDenyRetrieveRequest{
@@ -10317,8 +10259,7 @@ func (a *StagesApiService) StagesDenyRetrieve(ctx context.Context, stageUuid str
 }
 
 // Execute executes the request
-//
-//	@return DenyStage
+//  @return DenyStage
 func (a *StagesApiService) StagesDenyRetrieveExecute(r ApiStagesDenyRetrieveRequest) (*DenyStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -10447,9 +10388,9 @@ StagesDenyUpdate Method for StagesDenyUpdate
 
 DenyStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Deny Stage.
-	@return ApiStagesDenyUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Deny Stage.
+ @return ApiStagesDenyUpdateRequest
 */
 func (a *StagesApiService) StagesDenyUpdate(ctx context.Context, stageUuid string) ApiStagesDenyUpdateRequest {
 	return ApiStagesDenyUpdateRequest{
@@ -10460,8 +10401,7 @@ func (a *StagesApiService) StagesDenyUpdate(ctx context.Context, stageUuid strin
 }
 
 // Execute executes the request
-//
-//	@return DenyStage
+//  @return DenyStage
 func (a *StagesApiService) StagesDenyUpdateExecute(r ApiStagesDenyUpdateRequest) (*DenyStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -10589,9 +10529,9 @@ StagesDenyUsedByList Method for StagesDenyUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Deny Stage.
-	@return ApiStagesDenyUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Deny Stage.
+ @return ApiStagesDenyUsedByListRequest
 */
 func (a *StagesApiService) StagesDenyUsedByList(ctx context.Context, stageUuid string) ApiStagesDenyUsedByListRequest {
 	return ApiStagesDenyUsedByListRequest{
@@ -10602,8 +10542,7 @@ func (a *StagesApiService) StagesDenyUsedByList(ctx context.Context, stageUuid s
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesDenyUsedByListExecute(r ApiStagesDenyUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -10731,8 +10670,8 @@ StagesDummyCreate Method for StagesDummyCreate
 
 DummyStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesDummyCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesDummyCreateRequest
 */
 func (a *StagesApiService) StagesDummyCreate(ctx context.Context) ApiStagesDummyCreateRequest {
 	return ApiStagesDummyCreateRequest{
@@ -10742,8 +10681,7 @@ func (a *StagesApiService) StagesDummyCreate(ctx context.Context) ApiStagesDummy
 }
 
 // Execute executes the request
-//
-//	@return DummyStage
+//  @return DummyStage
 func (a *StagesApiService) StagesDummyCreateExecute(r ApiStagesDummyCreateRequest) (*DummyStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -10870,9 +10808,9 @@ StagesDummyDestroy Method for StagesDummyDestroy
 
 DummyStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Dummy Stage.
-	@return ApiStagesDummyDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Dummy Stage.
+ @return ApiStagesDummyDestroyRequest
 */
 func (a *StagesApiService) StagesDummyDestroy(ctx context.Context, stageUuid string) ApiStagesDummyDestroyRequest {
 	return ApiStagesDummyDestroyRequest{
@@ -11040,8 +10978,8 @@ StagesDummyList Method for StagesDummyList
 
 DummyStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesDummyListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesDummyListRequest
 */
 func (a *StagesApiService) StagesDummyList(ctx context.Context) ApiStagesDummyListRequest {
 	return ApiStagesDummyListRequest{
@@ -11051,8 +10989,7 @@ func (a *StagesApiService) StagesDummyList(ctx context.Context) ApiStagesDummyLi
 }
 
 // Execute executes the request
-//
-//	@return PaginatedDummyStageList
+//  @return PaginatedDummyStageList
 func (a *StagesApiService) StagesDummyListExecute(r ApiStagesDummyListRequest) (*PaginatedDummyStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -11201,9 +11138,9 @@ StagesDummyPartialUpdate Method for StagesDummyPartialUpdate
 
 DummyStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Dummy Stage.
-	@return ApiStagesDummyPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Dummy Stage.
+ @return ApiStagesDummyPartialUpdateRequest
 */
 func (a *StagesApiService) StagesDummyPartialUpdate(ctx context.Context, stageUuid string) ApiStagesDummyPartialUpdateRequest {
 	return ApiStagesDummyPartialUpdateRequest{
@@ -11214,8 +11151,7 @@ func (a *StagesApiService) StagesDummyPartialUpdate(ctx context.Context, stageUu
 }
 
 // Execute executes the request
-//
-//	@return DummyStage
+//  @return DummyStage
 func (a *StagesApiService) StagesDummyPartialUpdateExecute(r ApiStagesDummyPartialUpdateRequest) (*DummyStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -11340,9 +11276,9 @@ StagesDummyRetrieve Method for StagesDummyRetrieve
 
 DummyStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Dummy Stage.
-	@return ApiStagesDummyRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Dummy Stage.
+ @return ApiStagesDummyRetrieveRequest
 */
 func (a *StagesApiService) StagesDummyRetrieve(ctx context.Context, stageUuid string) ApiStagesDummyRetrieveRequest {
 	return ApiStagesDummyRetrieveRequest{
@@ -11353,8 +11289,7 @@ func (a *StagesApiService) StagesDummyRetrieve(ctx context.Context, stageUuid st
 }
 
 // Execute executes the request
-//
-//	@return DummyStage
+//  @return DummyStage
 func (a *StagesApiService) StagesDummyRetrieveExecute(r ApiStagesDummyRetrieveRequest) (*DummyStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -11483,9 +11418,9 @@ StagesDummyUpdate Method for StagesDummyUpdate
 
 DummyStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Dummy Stage.
-	@return ApiStagesDummyUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Dummy Stage.
+ @return ApiStagesDummyUpdateRequest
 */
 func (a *StagesApiService) StagesDummyUpdate(ctx context.Context, stageUuid string) ApiStagesDummyUpdateRequest {
 	return ApiStagesDummyUpdateRequest{
@@ -11496,8 +11431,7 @@ func (a *StagesApiService) StagesDummyUpdate(ctx context.Context, stageUuid stri
 }
 
 // Execute executes the request
-//
-//	@return DummyStage
+//  @return DummyStage
 func (a *StagesApiService) StagesDummyUpdateExecute(r ApiStagesDummyUpdateRequest) (*DummyStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -11625,9 +11559,9 @@ StagesDummyUsedByList Method for StagesDummyUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Dummy Stage.
-	@return ApiStagesDummyUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Dummy Stage.
+ @return ApiStagesDummyUsedByListRequest
 */
 func (a *StagesApiService) StagesDummyUsedByList(ctx context.Context, stageUuid string) ApiStagesDummyUsedByListRequest {
 	return ApiStagesDummyUsedByListRequest{
@@ -11638,8 +11572,7 @@ func (a *StagesApiService) StagesDummyUsedByList(ctx context.Context, stageUuid 
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesDummyUsedByListExecute(r ApiStagesDummyUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -11767,8 +11700,8 @@ StagesEmailCreate Method for StagesEmailCreate
 
 EmailStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesEmailCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesEmailCreateRequest
 */
 func (a *StagesApiService) StagesEmailCreate(ctx context.Context) ApiStagesEmailCreateRequest {
 	return ApiStagesEmailCreateRequest{
@@ -11778,8 +11711,7 @@ func (a *StagesApiService) StagesEmailCreate(ctx context.Context) ApiStagesEmail
 }
 
 // Execute executes the request
-//
-//	@return EmailStage
+//  @return EmailStage
 func (a *StagesApiService) StagesEmailCreateExecute(r ApiStagesEmailCreateRequest) (*EmailStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -11906,9 +11838,9 @@ StagesEmailDestroy Method for StagesEmailDestroy
 
 EmailStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Email Stage.
-	@return ApiStagesEmailDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Email Stage.
+ @return ApiStagesEmailDestroyRequest
 */
 func (a *StagesApiService) StagesEmailDestroy(ctx context.Context, stageUuid string) ApiStagesEmailDestroyRequest {
 	return ApiStagesEmailDestroyRequest{
@@ -12136,8 +12068,8 @@ StagesEmailList Method for StagesEmailList
 
 EmailStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesEmailListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesEmailListRequest
 */
 func (a *StagesApiService) StagesEmailList(ctx context.Context) ApiStagesEmailListRequest {
 	return ApiStagesEmailListRequest{
@@ -12147,8 +12079,7 @@ func (a *StagesApiService) StagesEmailList(ctx context.Context) ApiStagesEmailLi
 }
 
 // Execute executes the request
-//
-//	@return PaginatedEmailStageList
+//  @return PaginatedEmailStageList
 func (a *StagesApiService) StagesEmailListExecute(r ApiStagesEmailListRequest) (*PaginatedEmailStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -12327,9 +12258,9 @@ StagesEmailPartialUpdate Method for StagesEmailPartialUpdate
 
 EmailStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Email Stage.
-	@return ApiStagesEmailPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Email Stage.
+ @return ApiStagesEmailPartialUpdateRequest
 */
 func (a *StagesApiService) StagesEmailPartialUpdate(ctx context.Context, stageUuid string) ApiStagesEmailPartialUpdateRequest {
 	return ApiStagesEmailPartialUpdateRequest{
@@ -12340,8 +12271,7 @@ func (a *StagesApiService) StagesEmailPartialUpdate(ctx context.Context, stageUu
 }
 
 // Execute executes the request
-//
-//	@return EmailStage
+//  @return EmailStage
 func (a *StagesApiService) StagesEmailPartialUpdateExecute(r ApiStagesEmailPartialUpdateRequest) (*EmailStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -12466,9 +12396,9 @@ StagesEmailRetrieve Method for StagesEmailRetrieve
 
 EmailStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Email Stage.
-	@return ApiStagesEmailRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Email Stage.
+ @return ApiStagesEmailRetrieveRequest
 */
 func (a *StagesApiService) StagesEmailRetrieve(ctx context.Context, stageUuid string) ApiStagesEmailRetrieveRequest {
 	return ApiStagesEmailRetrieveRequest{
@@ -12479,8 +12409,7 @@ func (a *StagesApiService) StagesEmailRetrieve(ctx context.Context, stageUuid st
 }
 
 // Execute executes the request
-//
-//	@return EmailStage
+//  @return EmailStage
 func (a *StagesApiService) StagesEmailRetrieveExecute(r ApiStagesEmailRetrieveRequest) (*EmailStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -12602,8 +12531,8 @@ StagesEmailTemplatesList Method for StagesEmailTemplatesList
 
 Get all available templates, including custom templates
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesEmailTemplatesListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesEmailTemplatesListRequest
 */
 func (a *StagesApiService) StagesEmailTemplatesList(ctx context.Context) ApiStagesEmailTemplatesListRequest {
 	return ApiStagesEmailTemplatesListRequest{
@@ -12613,8 +12542,7 @@ func (a *StagesApiService) StagesEmailTemplatesList(ctx context.Context) ApiStag
 }
 
 // Execute executes the request
-//
-//	@return []TypeCreate
+//  @return []TypeCreate
 func (a *StagesApiService) StagesEmailTemplatesListExecute(r ApiStagesEmailTemplatesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -12742,9 +12670,9 @@ StagesEmailUpdate Method for StagesEmailUpdate
 
 EmailStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Email Stage.
-	@return ApiStagesEmailUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Email Stage.
+ @return ApiStagesEmailUpdateRequest
 */
 func (a *StagesApiService) StagesEmailUpdate(ctx context.Context, stageUuid string) ApiStagesEmailUpdateRequest {
 	return ApiStagesEmailUpdateRequest{
@@ -12755,8 +12683,7 @@ func (a *StagesApiService) StagesEmailUpdate(ctx context.Context, stageUuid stri
 }
 
 // Execute executes the request
-//
-//	@return EmailStage
+//  @return EmailStage
 func (a *StagesApiService) StagesEmailUpdateExecute(r ApiStagesEmailUpdateRequest) (*EmailStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -12884,9 +12811,9 @@ StagesEmailUsedByList Method for StagesEmailUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Email Stage.
-	@return ApiStagesEmailUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Email Stage.
+ @return ApiStagesEmailUsedByListRequest
 */
 func (a *StagesApiService) StagesEmailUsedByList(ctx context.Context, stageUuid string) ApiStagesEmailUsedByListRequest {
 	return ApiStagesEmailUsedByListRequest{
@@ -12897,8 +12824,7 @@ func (a *StagesApiService) StagesEmailUsedByList(ctx context.Context, stageUuid 
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesEmailUsedByListExecute(r ApiStagesEmailUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -13026,8 +12952,8 @@ StagesIdentificationCreate Method for StagesIdentificationCreate
 
 IdentificationStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesIdentificationCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesIdentificationCreateRequest
 */
 func (a *StagesApiService) StagesIdentificationCreate(ctx context.Context) ApiStagesIdentificationCreateRequest {
 	return ApiStagesIdentificationCreateRequest{
@@ -13037,8 +12963,7 @@ func (a *StagesApiService) StagesIdentificationCreate(ctx context.Context) ApiSt
 }
 
 // Execute executes the request
-//
-//	@return IdentificationStage
+//  @return IdentificationStage
 func (a *StagesApiService) StagesIdentificationCreateExecute(r ApiStagesIdentificationCreateRequest) (*IdentificationStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -13165,9 +13090,9 @@ StagesIdentificationDestroy Method for StagesIdentificationDestroy
 
 IdentificationStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Identification Stage.
-	@return ApiStagesIdentificationDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Identification Stage.
+ @return ApiStagesIdentificationDestroyRequest
 */
 func (a *StagesApiService) StagesIdentificationDestroy(ctx context.Context, stageUuid string) ApiStagesIdentificationDestroyRequest {
 	return ApiStagesIdentificationDestroyRequest{
@@ -13365,8 +13290,8 @@ StagesIdentificationList Method for StagesIdentificationList
 
 IdentificationStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesIdentificationListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesIdentificationListRequest
 */
 func (a *StagesApiService) StagesIdentificationList(ctx context.Context) ApiStagesIdentificationListRequest {
 	return ApiStagesIdentificationListRequest{
@@ -13376,8 +13301,7 @@ func (a *StagesApiService) StagesIdentificationList(ctx context.Context) ApiStag
 }
 
 // Execute executes the request
-//
-//	@return PaginatedIdentificationStageList
+//  @return PaginatedIdentificationStageList
 func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentificationListRequest) (*PaginatedIdentificationStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -13541,9 +13465,9 @@ StagesIdentificationPartialUpdate Method for StagesIdentificationPartialUpdate
 
 IdentificationStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Identification Stage.
-	@return ApiStagesIdentificationPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Identification Stage.
+ @return ApiStagesIdentificationPartialUpdateRequest
 */
 func (a *StagesApiService) StagesIdentificationPartialUpdate(ctx context.Context, stageUuid string) ApiStagesIdentificationPartialUpdateRequest {
 	return ApiStagesIdentificationPartialUpdateRequest{
@@ -13554,8 +13478,7 @@ func (a *StagesApiService) StagesIdentificationPartialUpdate(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return IdentificationStage
+//  @return IdentificationStage
 func (a *StagesApiService) StagesIdentificationPartialUpdateExecute(r ApiStagesIdentificationPartialUpdateRequest) (*IdentificationStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -13680,9 +13603,9 @@ StagesIdentificationRetrieve Method for StagesIdentificationRetrieve
 
 IdentificationStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Identification Stage.
-	@return ApiStagesIdentificationRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Identification Stage.
+ @return ApiStagesIdentificationRetrieveRequest
 */
 func (a *StagesApiService) StagesIdentificationRetrieve(ctx context.Context, stageUuid string) ApiStagesIdentificationRetrieveRequest {
 	return ApiStagesIdentificationRetrieveRequest{
@@ -13693,8 +13616,7 @@ func (a *StagesApiService) StagesIdentificationRetrieve(ctx context.Context, sta
 }
 
 // Execute executes the request
-//
-//	@return IdentificationStage
+//  @return IdentificationStage
 func (a *StagesApiService) StagesIdentificationRetrieveExecute(r ApiStagesIdentificationRetrieveRequest) (*IdentificationStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -13823,9 +13745,9 @@ StagesIdentificationUpdate Method for StagesIdentificationUpdate
 
 IdentificationStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Identification Stage.
-	@return ApiStagesIdentificationUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Identification Stage.
+ @return ApiStagesIdentificationUpdateRequest
 */
 func (a *StagesApiService) StagesIdentificationUpdate(ctx context.Context, stageUuid string) ApiStagesIdentificationUpdateRequest {
 	return ApiStagesIdentificationUpdateRequest{
@@ -13836,8 +13758,7 @@ func (a *StagesApiService) StagesIdentificationUpdate(ctx context.Context, stage
 }
 
 // Execute executes the request
-//
-//	@return IdentificationStage
+//  @return IdentificationStage
 func (a *StagesApiService) StagesIdentificationUpdateExecute(r ApiStagesIdentificationUpdateRequest) (*IdentificationStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -13965,9 +13886,9 @@ StagesIdentificationUsedByList Method for StagesIdentificationUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Identification Stage.
-	@return ApiStagesIdentificationUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Identification Stage.
+ @return ApiStagesIdentificationUsedByListRequest
 */
 func (a *StagesApiService) StagesIdentificationUsedByList(ctx context.Context, stageUuid string) ApiStagesIdentificationUsedByListRequest {
 	return ApiStagesIdentificationUsedByListRequest{
@@ -13978,8 +13899,7 @@ func (a *StagesApiService) StagesIdentificationUsedByList(ctx context.Context, s
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesIdentificationUsedByListExecute(r ApiStagesIdentificationUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -14107,8 +14027,8 @@ StagesInvitationInvitationsCreate Method for StagesInvitationInvitationsCreate
 
 Invitation Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesInvitationInvitationsCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesInvitationInvitationsCreateRequest
 */
 func (a *StagesApiService) StagesInvitationInvitationsCreate(ctx context.Context) ApiStagesInvitationInvitationsCreateRequest {
 	return ApiStagesInvitationInvitationsCreateRequest{
@@ -14118,8 +14038,7 @@ func (a *StagesApiService) StagesInvitationInvitationsCreate(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return Invitation
+//  @return Invitation
 func (a *StagesApiService) StagesInvitationInvitationsCreateExecute(r ApiStagesInvitationInvitationsCreateRequest) (*Invitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -14246,9 +14165,9 @@ StagesInvitationInvitationsDestroy Method for StagesInvitationInvitationsDestroy
 
 Invitation Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param inviteUuid A UUID string identifying this Invitation.
-	@return ApiStagesInvitationInvitationsDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param inviteUuid A UUID string identifying this Invitation.
+ @return ApiStagesInvitationInvitationsDestroyRequest
 */
 func (a *StagesApiService) StagesInvitationInvitationsDestroy(ctx context.Context, inviteUuid string) ApiStagesInvitationInvitationsDestroyRequest {
 	return ApiStagesInvitationInvitationsDestroyRequest{
@@ -14422,8 +14341,8 @@ StagesInvitationInvitationsList Method for StagesInvitationInvitationsList
 
 Invitation Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesInvitationInvitationsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesInvitationInvitationsListRequest
 */
 func (a *StagesApiService) StagesInvitationInvitationsList(ctx context.Context) ApiStagesInvitationInvitationsListRequest {
 	return ApiStagesInvitationInvitationsListRequest{
@@ -14433,8 +14352,7 @@ func (a *StagesApiService) StagesInvitationInvitationsList(ctx context.Context) 
 }
 
 // Execute executes the request
-//
-//	@return PaginatedInvitationList
+//  @return PaginatedInvitationList
 func (a *StagesApiService) StagesInvitationInvitationsListExecute(r ApiStagesInvitationInvitationsListRequest) (*PaginatedInvitationList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -14586,9 +14504,9 @@ StagesInvitationInvitationsPartialUpdate Method for StagesInvitationInvitationsP
 
 Invitation Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param inviteUuid A UUID string identifying this Invitation.
-	@return ApiStagesInvitationInvitationsPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param inviteUuid A UUID string identifying this Invitation.
+ @return ApiStagesInvitationInvitationsPartialUpdateRequest
 */
 func (a *StagesApiService) StagesInvitationInvitationsPartialUpdate(ctx context.Context, inviteUuid string) ApiStagesInvitationInvitationsPartialUpdateRequest {
 	return ApiStagesInvitationInvitationsPartialUpdateRequest{
@@ -14599,8 +14517,7 @@ func (a *StagesApiService) StagesInvitationInvitationsPartialUpdate(ctx context.
 }
 
 // Execute executes the request
-//
-//	@return Invitation
+//  @return Invitation
 func (a *StagesApiService) StagesInvitationInvitationsPartialUpdateExecute(r ApiStagesInvitationInvitationsPartialUpdateRequest) (*Invitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -14725,9 +14642,9 @@ StagesInvitationInvitationsRetrieve Method for StagesInvitationInvitationsRetrie
 
 Invitation Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param inviteUuid A UUID string identifying this Invitation.
-	@return ApiStagesInvitationInvitationsRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param inviteUuid A UUID string identifying this Invitation.
+ @return ApiStagesInvitationInvitationsRetrieveRequest
 */
 func (a *StagesApiService) StagesInvitationInvitationsRetrieve(ctx context.Context, inviteUuid string) ApiStagesInvitationInvitationsRetrieveRequest {
 	return ApiStagesInvitationInvitationsRetrieveRequest{
@@ -14738,8 +14655,7 @@ func (a *StagesApiService) StagesInvitationInvitationsRetrieve(ctx context.Conte
 }
 
 // Execute executes the request
-//
-//	@return Invitation
+//  @return Invitation
 func (a *StagesApiService) StagesInvitationInvitationsRetrieveExecute(r ApiStagesInvitationInvitationsRetrieveRequest) (*Invitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -14868,9 +14784,9 @@ StagesInvitationInvitationsUpdate Method for StagesInvitationInvitationsUpdate
 
 Invitation Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param inviteUuid A UUID string identifying this Invitation.
-	@return ApiStagesInvitationInvitationsUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param inviteUuid A UUID string identifying this Invitation.
+ @return ApiStagesInvitationInvitationsUpdateRequest
 */
 func (a *StagesApiService) StagesInvitationInvitationsUpdate(ctx context.Context, inviteUuid string) ApiStagesInvitationInvitationsUpdateRequest {
 	return ApiStagesInvitationInvitationsUpdateRequest{
@@ -14881,8 +14797,7 @@ func (a *StagesApiService) StagesInvitationInvitationsUpdate(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return Invitation
+//  @return Invitation
 func (a *StagesApiService) StagesInvitationInvitationsUpdateExecute(r ApiStagesInvitationInvitationsUpdateRequest) (*Invitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -15010,9 +14925,9 @@ StagesInvitationInvitationsUsedByList Method for StagesInvitationInvitationsUsed
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param inviteUuid A UUID string identifying this Invitation.
-	@return ApiStagesInvitationInvitationsUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param inviteUuid A UUID string identifying this Invitation.
+ @return ApiStagesInvitationInvitationsUsedByListRequest
 */
 func (a *StagesApiService) StagesInvitationInvitationsUsedByList(ctx context.Context, inviteUuid string) ApiStagesInvitationInvitationsUsedByListRequest {
 	return ApiStagesInvitationInvitationsUsedByListRequest{
@@ -15023,8 +14938,7 @@ func (a *StagesApiService) StagesInvitationInvitationsUsedByList(ctx context.Con
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesInvitationInvitationsUsedByListExecute(r ApiStagesInvitationInvitationsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -15152,8 +15066,8 @@ StagesInvitationStagesCreate Method for StagesInvitationStagesCreate
 
 InvitationStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesInvitationStagesCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesInvitationStagesCreateRequest
 */
 func (a *StagesApiService) StagesInvitationStagesCreate(ctx context.Context) ApiStagesInvitationStagesCreateRequest {
 	return ApiStagesInvitationStagesCreateRequest{
@@ -15163,8 +15077,7 @@ func (a *StagesApiService) StagesInvitationStagesCreate(ctx context.Context) Api
 }
 
 // Execute executes the request
-//
-//	@return InvitationStage
+//  @return InvitationStage
 func (a *StagesApiService) StagesInvitationStagesCreateExecute(r ApiStagesInvitationStagesCreateRequest) (*InvitationStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -15291,9 +15204,9 @@ StagesInvitationStagesDestroy Method for StagesInvitationStagesDestroy
 
 InvitationStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Invitation Stage.
-	@return ApiStagesInvitationStagesDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Invitation Stage.
+ @return ApiStagesInvitationStagesDestroyRequest
 */
 func (a *StagesApiService) StagesInvitationStagesDestroy(ctx context.Context, stageUuid string) ApiStagesInvitationStagesDestroyRequest {
 	return ApiStagesInvitationStagesDestroyRequest{
@@ -15467,8 +15380,8 @@ StagesInvitationStagesList Method for StagesInvitationStagesList
 
 InvitationStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesInvitationStagesListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesInvitationStagesListRequest
 */
 func (a *StagesApiService) StagesInvitationStagesList(ctx context.Context) ApiStagesInvitationStagesListRequest {
 	return ApiStagesInvitationStagesListRequest{
@@ -15478,8 +15391,7 @@ func (a *StagesApiService) StagesInvitationStagesList(ctx context.Context) ApiSt
 }
 
 // Execute executes the request
-//
-//	@return PaginatedInvitationStageList
+//  @return PaginatedInvitationStageList
 func (a *StagesApiService) StagesInvitationStagesListExecute(r ApiStagesInvitationStagesListRequest) (*PaginatedInvitationStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -15631,9 +15543,9 @@ StagesInvitationStagesPartialUpdate Method for StagesInvitationStagesPartialUpda
 
 InvitationStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Invitation Stage.
-	@return ApiStagesInvitationStagesPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Invitation Stage.
+ @return ApiStagesInvitationStagesPartialUpdateRequest
 */
 func (a *StagesApiService) StagesInvitationStagesPartialUpdate(ctx context.Context, stageUuid string) ApiStagesInvitationStagesPartialUpdateRequest {
 	return ApiStagesInvitationStagesPartialUpdateRequest{
@@ -15644,8 +15556,7 @@ func (a *StagesApiService) StagesInvitationStagesPartialUpdate(ctx context.Conte
 }
 
 // Execute executes the request
-//
-//	@return InvitationStage
+//  @return InvitationStage
 func (a *StagesApiService) StagesInvitationStagesPartialUpdateExecute(r ApiStagesInvitationStagesPartialUpdateRequest) (*InvitationStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -15770,9 +15681,9 @@ StagesInvitationStagesRetrieve Method for StagesInvitationStagesRetrieve
 
 InvitationStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Invitation Stage.
-	@return ApiStagesInvitationStagesRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Invitation Stage.
+ @return ApiStagesInvitationStagesRetrieveRequest
 */
 func (a *StagesApiService) StagesInvitationStagesRetrieve(ctx context.Context, stageUuid string) ApiStagesInvitationStagesRetrieveRequest {
 	return ApiStagesInvitationStagesRetrieveRequest{
@@ -15783,8 +15694,7 @@ func (a *StagesApiService) StagesInvitationStagesRetrieve(ctx context.Context, s
 }
 
 // Execute executes the request
-//
-//	@return InvitationStage
+//  @return InvitationStage
 func (a *StagesApiService) StagesInvitationStagesRetrieveExecute(r ApiStagesInvitationStagesRetrieveRequest) (*InvitationStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -15913,9 +15823,9 @@ StagesInvitationStagesUpdate Method for StagesInvitationStagesUpdate
 
 InvitationStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Invitation Stage.
-	@return ApiStagesInvitationStagesUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Invitation Stage.
+ @return ApiStagesInvitationStagesUpdateRequest
 */
 func (a *StagesApiService) StagesInvitationStagesUpdate(ctx context.Context, stageUuid string) ApiStagesInvitationStagesUpdateRequest {
 	return ApiStagesInvitationStagesUpdateRequest{
@@ -15926,8 +15836,7 @@ func (a *StagesApiService) StagesInvitationStagesUpdate(ctx context.Context, sta
 }
 
 // Execute executes the request
-//
-//	@return InvitationStage
+//  @return InvitationStage
 func (a *StagesApiService) StagesInvitationStagesUpdateExecute(r ApiStagesInvitationStagesUpdateRequest) (*InvitationStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -16055,9 +15964,9 @@ StagesInvitationStagesUsedByList Method for StagesInvitationStagesUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Invitation Stage.
-	@return ApiStagesInvitationStagesUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Invitation Stage.
+ @return ApiStagesInvitationStagesUsedByListRequest
 */
 func (a *StagesApiService) StagesInvitationStagesUsedByList(ctx context.Context, stageUuid string) ApiStagesInvitationStagesUsedByListRequest {
 	return ApiStagesInvitationStagesUsedByListRequest{
@@ -16068,8 +15977,7 @@ func (a *StagesApiService) StagesInvitationStagesUsedByList(ctx context.Context,
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesInvitationStagesUsedByListExecute(r ApiStagesInvitationStagesUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -16197,8 +16105,8 @@ StagesPasswordCreate Method for StagesPasswordCreate
 
 PasswordStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesPasswordCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesPasswordCreateRequest
 */
 func (a *StagesApiService) StagesPasswordCreate(ctx context.Context) ApiStagesPasswordCreateRequest {
 	return ApiStagesPasswordCreateRequest{
@@ -16208,8 +16116,7 @@ func (a *StagesApiService) StagesPasswordCreate(ctx context.Context) ApiStagesPa
 }
 
 // Execute executes the request
-//
-//	@return PasswordStage
+//  @return PasswordStage
 func (a *StagesApiService) StagesPasswordCreateExecute(r ApiStagesPasswordCreateRequest) (*PasswordStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -16336,9 +16243,9 @@ StagesPasswordDestroy Method for StagesPasswordDestroy
 
 PasswordStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Password Stage.
-	@return ApiStagesPasswordDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Password Stage.
+ @return ApiStagesPasswordDestroyRequest
 */
 func (a *StagesApiService) StagesPasswordDestroy(ctx context.Context, stageUuid string) ApiStagesPasswordDestroyRequest {
 	return ApiStagesPasswordDestroyRequest{
@@ -16506,8 +16413,8 @@ StagesPasswordList Method for StagesPasswordList
 
 PasswordStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesPasswordListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesPasswordListRequest
 */
 func (a *StagesApiService) StagesPasswordList(ctx context.Context) ApiStagesPasswordListRequest {
 	return ApiStagesPasswordListRequest{
@@ -16517,8 +16424,7 @@ func (a *StagesApiService) StagesPasswordList(ctx context.Context) ApiStagesPass
 }
 
 // Execute executes the request
-//
-//	@return PaginatedPasswordStageList
+//  @return PaginatedPasswordStageList
 func (a *StagesApiService) StagesPasswordListExecute(r ApiStagesPasswordListRequest) (*PaginatedPasswordStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -16667,9 +16573,9 @@ StagesPasswordPartialUpdate Method for StagesPasswordPartialUpdate
 
 PasswordStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Password Stage.
-	@return ApiStagesPasswordPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Password Stage.
+ @return ApiStagesPasswordPartialUpdateRequest
 */
 func (a *StagesApiService) StagesPasswordPartialUpdate(ctx context.Context, stageUuid string) ApiStagesPasswordPartialUpdateRequest {
 	return ApiStagesPasswordPartialUpdateRequest{
@@ -16680,8 +16586,7 @@ func (a *StagesApiService) StagesPasswordPartialUpdate(ctx context.Context, stag
 }
 
 // Execute executes the request
-//
-//	@return PasswordStage
+//  @return PasswordStage
 func (a *StagesApiService) StagesPasswordPartialUpdateExecute(r ApiStagesPasswordPartialUpdateRequest) (*PasswordStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -16806,9 +16711,9 @@ StagesPasswordRetrieve Method for StagesPasswordRetrieve
 
 PasswordStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Password Stage.
-	@return ApiStagesPasswordRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Password Stage.
+ @return ApiStagesPasswordRetrieveRequest
 */
 func (a *StagesApiService) StagesPasswordRetrieve(ctx context.Context, stageUuid string) ApiStagesPasswordRetrieveRequest {
 	return ApiStagesPasswordRetrieveRequest{
@@ -16819,8 +16724,7 @@ func (a *StagesApiService) StagesPasswordRetrieve(ctx context.Context, stageUuid
 }
 
 // Execute executes the request
-//
-//	@return PasswordStage
+//  @return PasswordStage
 func (a *StagesApiService) StagesPasswordRetrieveExecute(r ApiStagesPasswordRetrieveRequest) (*PasswordStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -16949,9 +16853,9 @@ StagesPasswordUpdate Method for StagesPasswordUpdate
 
 PasswordStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Password Stage.
-	@return ApiStagesPasswordUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Password Stage.
+ @return ApiStagesPasswordUpdateRequest
 */
 func (a *StagesApiService) StagesPasswordUpdate(ctx context.Context, stageUuid string) ApiStagesPasswordUpdateRequest {
 	return ApiStagesPasswordUpdateRequest{
@@ -16962,8 +16866,7 @@ func (a *StagesApiService) StagesPasswordUpdate(ctx context.Context, stageUuid s
 }
 
 // Execute executes the request
-//
-//	@return PasswordStage
+//  @return PasswordStage
 func (a *StagesApiService) StagesPasswordUpdateExecute(r ApiStagesPasswordUpdateRequest) (*PasswordStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -17091,9 +16994,9 @@ StagesPasswordUsedByList Method for StagesPasswordUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Password Stage.
-	@return ApiStagesPasswordUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Password Stage.
+ @return ApiStagesPasswordUsedByListRequest
 */
 func (a *StagesApiService) StagesPasswordUsedByList(ctx context.Context, stageUuid string) ApiStagesPasswordUsedByListRequest {
 	return ApiStagesPasswordUsedByListRequest{
@@ -17104,8 +17007,7 @@ func (a *StagesApiService) StagesPasswordUsedByList(ctx context.Context, stageUu
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesPasswordUsedByListExecute(r ApiStagesPasswordUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -17233,8 +17135,8 @@ StagesPromptPromptsCreate Method for StagesPromptPromptsCreate
 
 Prompt Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesPromptPromptsCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesPromptPromptsCreateRequest
 */
 func (a *StagesApiService) StagesPromptPromptsCreate(ctx context.Context) ApiStagesPromptPromptsCreateRequest {
 	return ApiStagesPromptPromptsCreateRequest{
@@ -17244,8 +17146,7 @@ func (a *StagesApiService) StagesPromptPromptsCreate(ctx context.Context) ApiSta
 }
 
 // Execute executes the request
-//
-//	@return Prompt
+//  @return Prompt
 func (a *StagesApiService) StagesPromptPromptsCreateExecute(r ApiStagesPromptPromptsCreateRequest) (*Prompt, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -17372,9 +17273,9 @@ StagesPromptPromptsDestroy Method for StagesPromptPromptsDestroy
 
 Prompt Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param promptUuid A UUID string identifying this Prompt.
-	@return ApiStagesPromptPromptsDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param promptUuid A UUID string identifying this Prompt.
+ @return ApiStagesPromptPromptsDestroyRequest
 */
 func (a *StagesApiService) StagesPromptPromptsDestroy(ctx context.Context, promptUuid string) ApiStagesPromptPromptsDestroyRequest {
 	return ApiStagesPromptPromptsDestroyRequest{
@@ -17554,8 +17455,8 @@ StagesPromptPromptsList Method for StagesPromptPromptsList
 
 Prompt Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesPromptPromptsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesPromptPromptsListRequest
 */
 func (a *StagesApiService) StagesPromptPromptsList(ctx context.Context) ApiStagesPromptPromptsListRequest {
 	return ApiStagesPromptPromptsListRequest{
@@ -17565,8 +17466,7 @@ func (a *StagesApiService) StagesPromptPromptsList(ctx context.Context) ApiStage
 }
 
 // Execute executes the request
-//
-//	@return PaginatedPromptList
+//  @return PaginatedPromptList
 func (a *StagesApiService) StagesPromptPromptsListExecute(r ApiStagesPromptPromptsListRequest) (*PaginatedPromptList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -17721,9 +17621,9 @@ StagesPromptPromptsPartialUpdate Method for StagesPromptPromptsPartialUpdate
 
 Prompt Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param promptUuid A UUID string identifying this Prompt.
-	@return ApiStagesPromptPromptsPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param promptUuid A UUID string identifying this Prompt.
+ @return ApiStagesPromptPromptsPartialUpdateRequest
 */
 func (a *StagesApiService) StagesPromptPromptsPartialUpdate(ctx context.Context, promptUuid string) ApiStagesPromptPromptsPartialUpdateRequest {
 	return ApiStagesPromptPromptsPartialUpdateRequest{
@@ -17734,8 +17634,7 @@ func (a *StagesApiService) StagesPromptPromptsPartialUpdate(ctx context.Context,
 }
 
 // Execute executes the request
-//
-//	@return Prompt
+//  @return Prompt
 func (a *StagesApiService) StagesPromptPromptsPartialUpdateExecute(r ApiStagesPromptPromptsPartialUpdateRequest) (*Prompt, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -17860,9 +17759,9 @@ StagesPromptPromptsRetrieve Method for StagesPromptPromptsRetrieve
 
 Prompt Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param promptUuid A UUID string identifying this Prompt.
-	@return ApiStagesPromptPromptsRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param promptUuid A UUID string identifying this Prompt.
+ @return ApiStagesPromptPromptsRetrieveRequest
 */
 func (a *StagesApiService) StagesPromptPromptsRetrieve(ctx context.Context, promptUuid string) ApiStagesPromptPromptsRetrieveRequest {
 	return ApiStagesPromptPromptsRetrieveRequest{
@@ -17873,8 +17772,7 @@ func (a *StagesApiService) StagesPromptPromptsRetrieve(ctx context.Context, prom
 }
 
 // Execute executes the request
-//
-//	@return Prompt
+//  @return Prompt
 func (a *StagesApiService) StagesPromptPromptsRetrieveExecute(r ApiStagesPromptPromptsRetrieveRequest) (*Prompt, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -18003,9 +17901,9 @@ StagesPromptPromptsUpdate Method for StagesPromptPromptsUpdate
 
 Prompt Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param promptUuid A UUID string identifying this Prompt.
-	@return ApiStagesPromptPromptsUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param promptUuid A UUID string identifying this Prompt.
+ @return ApiStagesPromptPromptsUpdateRequest
 */
 func (a *StagesApiService) StagesPromptPromptsUpdate(ctx context.Context, promptUuid string) ApiStagesPromptPromptsUpdateRequest {
 	return ApiStagesPromptPromptsUpdateRequest{
@@ -18016,8 +17914,7 @@ func (a *StagesApiService) StagesPromptPromptsUpdate(ctx context.Context, prompt
 }
 
 // Execute executes the request
-//
-//	@return Prompt
+//  @return Prompt
 func (a *StagesApiService) StagesPromptPromptsUpdateExecute(r ApiStagesPromptPromptsUpdateRequest) (*Prompt, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -18145,9 +18042,9 @@ StagesPromptPromptsUsedByList Method for StagesPromptPromptsUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param promptUuid A UUID string identifying this Prompt.
-	@return ApiStagesPromptPromptsUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param promptUuid A UUID string identifying this Prompt.
+ @return ApiStagesPromptPromptsUsedByListRequest
 */
 func (a *StagesApiService) StagesPromptPromptsUsedByList(ctx context.Context, promptUuid string) ApiStagesPromptPromptsUsedByListRequest {
 	return ApiStagesPromptPromptsUsedByListRequest{
@@ -18158,8 +18055,7 @@ func (a *StagesApiService) StagesPromptPromptsUsedByList(ctx context.Context, pr
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesPromptPromptsUsedByListExecute(r ApiStagesPromptPromptsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -18287,8 +18183,8 @@ StagesPromptStagesCreate Method for StagesPromptStagesCreate
 
 PromptStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesPromptStagesCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesPromptStagesCreateRequest
 */
 func (a *StagesApiService) StagesPromptStagesCreate(ctx context.Context) ApiStagesPromptStagesCreateRequest {
 	return ApiStagesPromptStagesCreateRequest{
@@ -18298,8 +18194,7 @@ func (a *StagesApiService) StagesPromptStagesCreate(ctx context.Context) ApiStag
 }
 
 // Execute executes the request
-//
-//	@return PromptStage
+//  @return PromptStage
 func (a *StagesApiService) StagesPromptStagesCreateExecute(r ApiStagesPromptStagesCreateRequest) (*PromptStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -18426,9 +18321,9 @@ StagesPromptStagesDestroy Method for StagesPromptStagesDestroy
 
 PromptStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Prompt Stage.
-	@return ApiStagesPromptStagesDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Prompt Stage.
+ @return ApiStagesPromptStagesDestroyRequest
 */
 func (a *StagesApiService) StagesPromptStagesDestroy(ctx context.Context, stageUuid string) ApiStagesPromptStagesDestroyRequest {
 	return ApiStagesPromptStagesDestroyRequest{
@@ -18602,8 +18497,8 @@ StagesPromptStagesList Method for StagesPromptStagesList
 
 PromptStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesPromptStagesListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesPromptStagesListRequest
 */
 func (a *StagesApiService) StagesPromptStagesList(ctx context.Context) ApiStagesPromptStagesListRequest {
 	return ApiStagesPromptStagesListRequest{
@@ -18613,8 +18508,7 @@ func (a *StagesApiService) StagesPromptStagesList(ctx context.Context) ApiStages
 }
 
 // Execute executes the request
-//
-//	@return PaginatedPromptStageList
+//  @return PaginatedPromptStageList
 func (a *StagesApiService) StagesPromptStagesListExecute(r ApiStagesPromptStagesListRequest) (*PaginatedPromptStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -18782,9 +18676,9 @@ StagesPromptStagesPartialUpdate Method for StagesPromptStagesPartialUpdate
 
 PromptStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Prompt Stage.
-	@return ApiStagesPromptStagesPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Prompt Stage.
+ @return ApiStagesPromptStagesPartialUpdateRequest
 */
 func (a *StagesApiService) StagesPromptStagesPartialUpdate(ctx context.Context, stageUuid string) ApiStagesPromptStagesPartialUpdateRequest {
 	return ApiStagesPromptStagesPartialUpdateRequest{
@@ -18795,8 +18689,7 @@ func (a *StagesApiService) StagesPromptStagesPartialUpdate(ctx context.Context, 
 }
 
 // Execute executes the request
-//
-//	@return PromptStage
+//  @return PromptStage
 func (a *StagesApiService) StagesPromptStagesPartialUpdateExecute(r ApiStagesPromptStagesPartialUpdateRequest) (*PromptStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -18921,9 +18814,9 @@ StagesPromptStagesRetrieve Method for StagesPromptStagesRetrieve
 
 PromptStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Prompt Stage.
-	@return ApiStagesPromptStagesRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Prompt Stage.
+ @return ApiStagesPromptStagesRetrieveRequest
 */
 func (a *StagesApiService) StagesPromptStagesRetrieve(ctx context.Context, stageUuid string) ApiStagesPromptStagesRetrieveRequest {
 	return ApiStagesPromptStagesRetrieveRequest{
@@ -18934,8 +18827,7 @@ func (a *StagesApiService) StagesPromptStagesRetrieve(ctx context.Context, stage
 }
 
 // Execute executes the request
-//
-//	@return PromptStage
+//  @return PromptStage
 func (a *StagesApiService) StagesPromptStagesRetrieveExecute(r ApiStagesPromptStagesRetrieveRequest) (*PromptStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -19064,9 +18956,9 @@ StagesPromptStagesUpdate Method for StagesPromptStagesUpdate
 
 PromptStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Prompt Stage.
-	@return ApiStagesPromptStagesUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Prompt Stage.
+ @return ApiStagesPromptStagesUpdateRequest
 */
 func (a *StagesApiService) StagesPromptStagesUpdate(ctx context.Context, stageUuid string) ApiStagesPromptStagesUpdateRequest {
 	return ApiStagesPromptStagesUpdateRequest{
@@ -19077,8 +18969,7 @@ func (a *StagesApiService) StagesPromptStagesUpdate(ctx context.Context, stageUu
 }
 
 // Execute executes the request
-//
-//	@return PromptStage
+//  @return PromptStage
 func (a *StagesApiService) StagesPromptStagesUpdateExecute(r ApiStagesPromptStagesUpdateRequest) (*PromptStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -19206,9 +19097,9 @@ StagesPromptStagesUsedByList Method for StagesPromptStagesUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Prompt Stage.
-	@return ApiStagesPromptStagesUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this Prompt Stage.
+ @return ApiStagesPromptStagesUsedByListRequest
 */
 func (a *StagesApiService) StagesPromptStagesUsedByList(ctx context.Context, stageUuid string) ApiStagesPromptStagesUsedByListRequest {
 	return ApiStagesPromptStagesUsedByListRequest{
@@ -19219,8 +19110,7 @@ func (a *StagesApiService) StagesPromptStagesUsedByList(ctx context.Context, sta
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesPromptStagesUsedByListExecute(r ApiStagesPromptStagesUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -19348,8 +19238,8 @@ StagesUserDeleteCreate Method for StagesUserDeleteCreate
 
 UserDeleteStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesUserDeleteCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesUserDeleteCreateRequest
 */
 func (a *StagesApiService) StagesUserDeleteCreate(ctx context.Context) ApiStagesUserDeleteCreateRequest {
 	return ApiStagesUserDeleteCreateRequest{
@@ -19359,8 +19249,7 @@ func (a *StagesApiService) StagesUserDeleteCreate(ctx context.Context) ApiStages
 }
 
 // Execute executes the request
-//
-//	@return UserDeleteStage
+//  @return UserDeleteStage
 func (a *StagesApiService) StagesUserDeleteCreateExecute(r ApiStagesUserDeleteCreateRequest) (*UserDeleteStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -19487,9 +19376,9 @@ StagesUserDeleteDestroy Method for StagesUserDeleteDestroy
 
 UserDeleteStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Delete Stage.
-	@return ApiStagesUserDeleteDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Delete Stage.
+ @return ApiStagesUserDeleteDestroyRequest
 */
 func (a *StagesApiService) StagesUserDeleteDestroy(ctx context.Context, stageUuid string) ApiStagesUserDeleteDestroyRequest {
 	return ApiStagesUserDeleteDestroyRequest{
@@ -19651,8 +19540,8 @@ StagesUserDeleteList Method for StagesUserDeleteList
 
 UserDeleteStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesUserDeleteListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesUserDeleteListRequest
 */
 func (a *StagesApiService) StagesUserDeleteList(ctx context.Context) ApiStagesUserDeleteListRequest {
 	return ApiStagesUserDeleteListRequest{
@@ -19662,8 +19551,7 @@ func (a *StagesApiService) StagesUserDeleteList(ctx context.Context) ApiStagesUs
 }
 
 // Execute executes the request
-//
-//	@return PaginatedUserDeleteStageList
+//  @return PaginatedUserDeleteStageList
 func (a *StagesApiService) StagesUserDeleteListExecute(r ApiStagesUserDeleteListRequest) (*PaginatedUserDeleteStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -19809,9 +19697,9 @@ StagesUserDeletePartialUpdate Method for StagesUserDeletePartialUpdate
 
 UserDeleteStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Delete Stage.
-	@return ApiStagesUserDeletePartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Delete Stage.
+ @return ApiStagesUserDeletePartialUpdateRequest
 */
 func (a *StagesApiService) StagesUserDeletePartialUpdate(ctx context.Context, stageUuid string) ApiStagesUserDeletePartialUpdateRequest {
 	return ApiStagesUserDeletePartialUpdateRequest{
@@ -19822,8 +19710,7 @@ func (a *StagesApiService) StagesUserDeletePartialUpdate(ctx context.Context, st
 }
 
 // Execute executes the request
-//
-//	@return UserDeleteStage
+//  @return UserDeleteStage
 func (a *StagesApiService) StagesUserDeletePartialUpdateExecute(r ApiStagesUserDeletePartialUpdateRequest) (*UserDeleteStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -19948,9 +19835,9 @@ StagesUserDeleteRetrieve Method for StagesUserDeleteRetrieve
 
 UserDeleteStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Delete Stage.
-	@return ApiStagesUserDeleteRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Delete Stage.
+ @return ApiStagesUserDeleteRetrieveRequest
 */
 func (a *StagesApiService) StagesUserDeleteRetrieve(ctx context.Context, stageUuid string) ApiStagesUserDeleteRetrieveRequest {
 	return ApiStagesUserDeleteRetrieveRequest{
@@ -19961,8 +19848,7 @@ func (a *StagesApiService) StagesUserDeleteRetrieve(ctx context.Context, stageUu
 }
 
 // Execute executes the request
-//
-//	@return UserDeleteStage
+//  @return UserDeleteStage
 func (a *StagesApiService) StagesUserDeleteRetrieveExecute(r ApiStagesUserDeleteRetrieveRequest) (*UserDeleteStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -20091,9 +19977,9 @@ StagesUserDeleteUpdate Method for StagesUserDeleteUpdate
 
 UserDeleteStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Delete Stage.
-	@return ApiStagesUserDeleteUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Delete Stage.
+ @return ApiStagesUserDeleteUpdateRequest
 */
 func (a *StagesApiService) StagesUserDeleteUpdate(ctx context.Context, stageUuid string) ApiStagesUserDeleteUpdateRequest {
 	return ApiStagesUserDeleteUpdateRequest{
@@ -20104,8 +19990,7 @@ func (a *StagesApiService) StagesUserDeleteUpdate(ctx context.Context, stageUuid
 }
 
 // Execute executes the request
-//
-//	@return UserDeleteStage
+//  @return UserDeleteStage
 func (a *StagesApiService) StagesUserDeleteUpdateExecute(r ApiStagesUserDeleteUpdateRequest) (*UserDeleteStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -20233,9 +20118,9 @@ StagesUserDeleteUsedByList Method for StagesUserDeleteUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Delete Stage.
-	@return ApiStagesUserDeleteUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Delete Stage.
+ @return ApiStagesUserDeleteUsedByListRequest
 */
 func (a *StagesApiService) StagesUserDeleteUsedByList(ctx context.Context, stageUuid string) ApiStagesUserDeleteUsedByListRequest {
 	return ApiStagesUserDeleteUsedByListRequest{
@@ -20246,8 +20131,7 @@ func (a *StagesApiService) StagesUserDeleteUsedByList(ctx context.Context, stage
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesUserDeleteUsedByListExecute(r ApiStagesUserDeleteUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -20375,8 +20259,8 @@ StagesUserLoginCreate Method for StagesUserLoginCreate
 
 UserLoginStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesUserLoginCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesUserLoginCreateRequest
 */
 func (a *StagesApiService) StagesUserLoginCreate(ctx context.Context) ApiStagesUserLoginCreateRequest {
 	return ApiStagesUserLoginCreateRequest{
@@ -20386,8 +20270,7 @@ func (a *StagesApiService) StagesUserLoginCreate(ctx context.Context) ApiStagesU
 }
 
 // Execute executes the request
-//
-//	@return UserLoginStage
+//  @return UserLoginStage
 func (a *StagesApiService) StagesUserLoginCreateExecute(r ApiStagesUserLoginCreateRequest) (*UserLoginStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -20514,9 +20397,9 @@ StagesUserLoginDestroy Method for StagesUserLoginDestroy
 
 UserLoginStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Login Stage.
-	@return ApiStagesUserLoginDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Login Stage.
+ @return ApiStagesUserLoginDestroyRequest
 */
 func (a *StagesApiService) StagesUserLoginDestroy(ctx context.Context, stageUuid string) ApiStagesUserLoginDestroyRequest {
 	return ApiStagesUserLoginDestroyRequest{
@@ -20690,8 +20573,8 @@ StagesUserLoginList Method for StagesUserLoginList
 
 UserLoginStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesUserLoginListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesUserLoginListRequest
 */
 func (a *StagesApiService) StagesUserLoginList(ctx context.Context) ApiStagesUserLoginListRequest {
 	return ApiStagesUserLoginListRequest{
@@ -20701,8 +20584,7 @@ func (a *StagesApiService) StagesUserLoginList(ctx context.Context) ApiStagesUse
 }
 
 // Execute executes the request
-//
-//	@return PaginatedUserLoginStageList
+//  @return PaginatedUserLoginStageList
 func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRequest) (*PaginatedUserLoginStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -20854,9 +20736,9 @@ StagesUserLoginPartialUpdate Method for StagesUserLoginPartialUpdate
 
 UserLoginStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Login Stage.
-	@return ApiStagesUserLoginPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Login Stage.
+ @return ApiStagesUserLoginPartialUpdateRequest
 */
 func (a *StagesApiService) StagesUserLoginPartialUpdate(ctx context.Context, stageUuid string) ApiStagesUserLoginPartialUpdateRequest {
 	return ApiStagesUserLoginPartialUpdateRequest{
@@ -20867,8 +20749,7 @@ func (a *StagesApiService) StagesUserLoginPartialUpdate(ctx context.Context, sta
 }
 
 // Execute executes the request
-//
-//	@return UserLoginStage
+//  @return UserLoginStage
 func (a *StagesApiService) StagesUserLoginPartialUpdateExecute(r ApiStagesUserLoginPartialUpdateRequest) (*UserLoginStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -20993,9 +20874,9 @@ StagesUserLoginRetrieve Method for StagesUserLoginRetrieve
 
 UserLoginStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Login Stage.
-	@return ApiStagesUserLoginRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Login Stage.
+ @return ApiStagesUserLoginRetrieveRequest
 */
 func (a *StagesApiService) StagesUserLoginRetrieve(ctx context.Context, stageUuid string) ApiStagesUserLoginRetrieveRequest {
 	return ApiStagesUserLoginRetrieveRequest{
@@ -21006,8 +20887,7 @@ func (a *StagesApiService) StagesUserLoginRetrieve(ctx context.Context, stageUui
 }
 
 // Execute executes the request
-//
-//	@return UserLoginStage
+//  @return UserLoginStage
 func (a *StagesApiService) StagesUserLoginRetrieveExecute(r ApiStagesUserLoginRetrieveRequest) (*UserLoginStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -21136,9 +21016,9 @@ StagesUserLoginUpdate Method for StagesUserLoginUpdate
 
 UserLoginStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Login Stage.
-	@return ApiStagesUserLoginUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Login Stage.
+ @return ApiStagesUserLoginUpdateRequest
 */
 func (a *StagesApiService) StagesUserLoginUpdate(ctx context.Context, stageUuid string) ApiStagesUserLoginUpdateRequest {
 	return ApiStagesUserLoginUpdateRequest{
@@ -21149,8 +21029,7 @@ func (a *StagesApiService) StagesUserLoginUpdate(ctx context.Context, stageUuid 
 }
 
 // Execute executes the request
-//
-//	@return UserLoginStage
+//  @return UserLoginStage
 func (a *StagesApiService) StagesUserLoginUpdateExecute(r ApiStagesUserLoginUpdateRequest) (*UserLoginStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -21278,9 +21157,9 @@ StagesUserLoginUsedByList Method for StagesUserLoginUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Login Stage.
-	@return ApiStagesUserLoginUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Login Stage.
+ @return ApiStagesUserLoginUsedByListRequest
 */
 func (a *StagesApiService) StagesUserLoginUsedByList(ctx context.Context, stageUuid string) ApiStagesUserLoginUsedByListRequest {
 	return ApiStagesUserLoginUsedByListRequest{
@@ -21291,8 +21170,7 @@ func (a *StagesApiService) StagesUserLoginUsedByList(ctx context.Context, stageU
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesUserLoginUsedByListExecute(r ApiStagesUserLoginUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -21420,8 +21298,8 @@ StagesUserLogoutCreate Method for StagesUserLogoutCreate
 
 UserLogoutStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesUserLogoutCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesUserLogoutCreateRequest
 */
 func (a *StagesApiService) StagesUserLogoutCreate(ctx context.Context) ApiStagesUserLogoutCreateRequest {
 	return ApiStagesUserLogoutCreateRequest{
@@ -21431,8 +21309,7 @@ func (a *StagesApiService) StagesUserLogoutCreate(ctx context.Context) ApiStages
 }
 
 // Execute executes the request
-//
-//	@return UserLogoutStage
+//  @return UserLogoutStage
 func (a *StagesApiService) StagesUserLogoutCreateExecute(r ApiStagesUserLogoutCreateRequest) (*UserLogoutStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -21559,9 +21436,9 @@ StagesUserLogoutDestroy Method for StagesUserLogoutDestroy
 
 UserLogoutStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Logout Stage.
-	@return ApiStagesUserLogoutDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Logout Stage.
+ @return ApiStagesUserLogoutDestroyRequest
 */
 func (a *StagesApiService) StagesUserLogoutDestroy(ctx context.Context, stageUuid string) ApiStagesUserLogoutDestroyRequest {
 	return ApiStagesUserLogoutDestroyRequest{
@@ -21723,8 +21600,8 @@ StagesUserLogoutList Method for StagesUserLogoutList
 
 UserLogoutStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesUserLogoutListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesUserLogoutListRequest
 */
 func (a *StagesApiService) StagesUserLogoutList(ctx context.Context) ApiStagesUserLogoutListRequest {
 	return ApiStagesUserLogoutListRequest{
@@ -21734,8 +21611,7 @@ func (a *StagesApiService) StagesUserLogoutList(ctx context.Context) ApiStagesUs
 }
 
 // Execute executes the request
-//
-//	@return PaginatedUserLogoutStageList
+//  @return PaginatedUserLogoutStageList
 func (a *StagesApiService) StagesUserLogoutListExecute(r ApiStagesUserLogoutListRequest) (*PaginatedUserLogoutStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -21881,9 +21757,9 @@ StagesUserLogoutPartialUpdate Method for StagesUserLogoutPartialUpdate
 
 UserLogoutStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Logout Stage.
-	@return ApiStagesUserLogoutPartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Logout Stage.
+ @return ApiStagesUserLogoutPartialUpdateRequest
 */
 func (a *StagesApiService) StagesUserLogoutPartialUpdate(ctx context.Context, stageUuid string) ApiStagesUserLogoutPartialUpdateRequest {
 	return ApiStagesUserLogoutPartialUpdateRequest{
@@ -21894,8 +21770,7 @@ func (a *StagesApiService) StagesUserLogoutPartialUpdate(ctx context.Context, st
 }
 
 // Execute executes the request
-//
-//	@return UserLogoutStage
+//  @return UserLogoutStage
 func (a *StagesApiService) StagesUserLogoutPartialUpdateExecute(r ApiStagesUserLogoutPartialUpdateRequest) (*UserLogoutStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -22020,9 +21895,9 @@ StagesUserLogoutRetrieve Method for StagesUserLogoutRetrieve
 
 UserLogoutStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Logout Stage.
-	@return ApiStagesUserLogoutRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Logout Stage.
+ @return ApiStagesUserLogoutRetrieveRequest
 */
 func (a *StagesApiService) StagesUserLogoutRetrieve(ctx context.Context, stageUuid string) ApiStagesUserLogoutRetrieveRequest {
 	return ApiStagesUserLogoutRetrieveRequest{
@@ -22033,8 +21908,7 @@ func (a *StagesApiService) StagesUserLogoutRetrieve(ctx context.Context, stageUu
 }
 
 // Execute executes the request
-//
-//	@return UserLogoutStage
+//  @return UserLogoutStage
 func (a *StagesApiService) StagesUserLogoutRetrieveExecute(r ApiStagesUserLogoutRetrieveRequest) (*UserLogoutStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -22163,9 +22037,9 @@ StagesUserLogoutUpdate Method for StagesUserLogoutUpdate
 
 UserLogoutStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Logout Stage.
-	@return ApiStagesUserLogoutUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Logout Stage.
+ @return ApiStagesUserLogoutUpdateRequest
 */
 func (a *StagesApiService) StagesUserLogoutUpdate(ctx context.Context, stageUuid string) ApiStagesUserLogoutUpdateRequest {
 	return ApiStagesUserLogoutUpdateRequest{
@@ -22176,8 +22050,7 @@ func (a *StagesApiService) StagesUserLogoutUpdate(ctx context.Context, stageUuid
 }
 
 // Execute executes the request
-//
-//	@return UserLogoutStage
+//  @return UserLogoutStage
 func (a *StagesApiService) StagesUserLogoutUpdateExecute(r ApiStagesUserLogoutUpdateRequest) (*UserLogoutStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -22305,9 +22178,9 @@ StagesUserLogoutUsedByList Method for StagesUserLogoutUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Logout Stage.
-	@return ApiStagesUserLogoutUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Logout Stage.
+ @return ApiStagesUserLogoutUsedByListRequest
 */
 func (a *StagesApiService) StagesUserLogoutUsedByList(ctx context.Context, stageUuid string) ApiStagesUserLogoutUsedByListRequest {
 	return ApiStagesUserLogoutUsedByListRequest{
@@ -22318,8 +22191,7 @@ func (a *StagesApiService) StagesUserLogoutUsedByList(ctx context.Context, stage
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesUserLogoutUsedByListExecute(r ApiStagesUserLogoutUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -22447,8 +22319,8 @@ StagesUserWriteCreate Method for StagesUserWriteCreate
 
 UserWriteStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesUserWriteCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesUserWriteCreateRequest
 */
 func (a *StagesApiService) StagesUserWriteCreate(ctx context.Context) ApiStagesUserWriteCreateRequest {
 	return ApiStagesUserWriteCreateRequest{
@@ -22458,8 +22330,7 @@ func (a *StagesApiService) StagesUserWriteCreate(ctx context.Context) ApiStagesU
 }
 
 // Execute executes the request
-//
-//	@return UserWriteStage
+//  @return UserWriteStage
 func (a *StagesApiService) StagesUserWriteCreateExecute(r ApiStagesUserWriteCreateRequest) (*UserWriteStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -22586,9 +22457,9 @@ StagesUserWriteDestroy Method for StagesUserWriteDestroy
 
 UserWriteStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Write Stage.
-	@return ApiStagesUserWriteDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Write Stage.
+ @return ApiStagesUserWriteDestroyRequest
 */
 func (a *StagesApiService) StagesUserWriteDestroy(ctx context.Context, stageUuid string) ApiStagesUserWriteDestroyRequest {
 	return ApiStagesUserWriteDestroyRequest{
@@ -22774,8 +22645,8 @@ StagesUserWriteList Method for StagesUserWriteList
 
 UserWriteStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStagesUserWriteListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStagesUserWriteListRequest
 */
 func (a *StagesApiService) StagesUserWriteList(ctx context.Context) ApiStagesUserWriteListRequest {
 	return ApiStagesUserWriteListRequest{
@@ -22785,8 +22656,7 @@ func (a *StagesApiService) StagesUserWriteList(ctx context.Context) ApiStagesUse
 }
 
 // Execute executes the request
-//
-//	@return PaginatedUserWriteStageList
+//  @return PaginatedUserWriteStageList
 func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRequest) (*PaginatedUserWriteStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -22944,9 +22814,9 @@ StagesUserWritePartialUpdate Method for StagesUserWritePartialUpdate
 
 UserWriteStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Write Stage.
-	@return ApiStagesUserWritePartialUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Write Stage.
+ @return ApiStagesUserWritePartialUpdateRequest
 */
 func (a *StagesApiService) StagesUserWritePartialUpdate(ctx context.Context, stageUuid string) ApiStagesUserWritePartialUpdateRequest {
 	return ApiStagesUserWritePartialUpdateRequest{
@@ -22957,8 +22827,7 @@ func (a *StagesApiService) StagesUserWritePartialUpdate(ctx context.Context, sta
 }
 
 // Execute executes the request
-//
-//	@return UserWriteStage
+//  @return UserWriteStage
 func (a *StagesApiService) StagesUserWritePartialUpdateExecute(r ApiStagesUserWritePartialUpdateRequest) (*UserWriteStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -23083,9 +22952,9 @@ StagesUserWriteRetrieve Method for StagesUserWriteRetrieve
 
 UserWriteStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Write Stage.
-	@return ApiStagesUserWriteRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Write Stage.
+ @return ApiStagesUserWriteRetrieveRequest
 */
 func (a *StagesApiService) StagesUserWriteRetrieve(ctx context.Context, stageUuid string) ApiStagesUserWriteRetrieveRequest {
 	return ApiStagesUserWriteRetrieveRequest{
@@ -23096,8 +22965,7 @@ func (a *StagesApiService) StagesUserWriteRetrieve(ctx context.Context, stageUui
 }
 
 // Execute executes the request
-//
-//	@return UserWriteStage
+//  @return UserWriteStage
 func (a *StagesApiService) StagesUserWriteRetrieveExecute(r ApiStagesUserWriteRetrieveRequest) (*UserWriteStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -23226,9 +23094,9 @@ StagesUserWriteUpdate Method for StagesUserWriteUpdate
 
 UserWriteStage Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Write Stage.
-	@return ApiStagesUserWriteUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Write Stage.
+ @return ApiStagesUserWriteUpdateRequest
 */
 func (a *StagesApiService) StagesUserWriteUpdate(ctx context.Context, stageUuid string) ApiStagesUserWriteUpdateRequest {
 	return ApiStagesUserWriteUpdateRequest{
@@ -23239,8 +23107,7 @@ func (a *StagesApiService) StagesUserWriteUpdate(ctx context.Context, stageUuid 
 }
 
 // Execute executes the request
-//
-//	@return UserWriteStage
+//  @return UserWriteStage
 func (a *StagesApiService) StagesUserWriteUpdateExecute(r ApiStagesUserWriteUpdateRequest) (*UserWriteStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -23368,9 +23235,9 @@ StagesUserWriteUsedByList Method for StagesUserWriteUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this User Write Stage.
-	@return ApiStagesUserWriteUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param stageUuid A UUID string identifying this User Write Stage.
+ @return ApiStagesUserWriteUsedByListRequest
 */
 func (a *StagesApiService) StagesUserWriteUsedByList(ctx context.Context, stageUuid string) ApiStagesUserWriteUsedByListRequest {
 	return ApiStagesUserWriteUsedByListRequest{
@@ -23381,8 +23248,7 @@ func (a *StagesApiService) StagesUserWriteUsedByList(ctx context.Context, stageU
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *StagesApiService) StagesUserWriteUsedByListExecute(r ApiStagesUserWriteUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
