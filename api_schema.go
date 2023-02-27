@@ -51,8 +51,8 @@ OpenApi3 schema for this API. Format can be selected via content negotiation.
 - YAML: application/vnd.oai.openapi
 - JSON: application/vnd.oai.openapi+json
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSchemaRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSchemaRetrieveRequest
 */
 func (a *SchemaApiService) SchemaRetrieve(ctx context.Context) ApiSchemaRetrieveRequest {
 	return ApiSchemaRetrieveRequest{
@@ -62,7 +62,8 @@ func (a *SchemaApiService) SchemaRetrieve(ctx context.Context) ApiSchemaRetrieve
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *SchemaApiService) SchemaRetrieveExecute(r ApiSchemaRetrieveRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

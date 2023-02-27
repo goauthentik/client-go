@@ -43,8 +43,8 @@ AuthenticatorsAdminAllList Method for AuthenticatorsAdminAllList
 
 Get all devices for current user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsAdminAllListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsAdminAllListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminAllList(ctx context.Context) ApiAuthenticatorsAdminAllListRequest {
 	return ApiAuthenticatorsAdminAllListRequest{
@@ -54,7 +54,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminAllList(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []Device
+//
+//	@return []Device
 func (a *AuthenticatorsApiService) AuthenticatorsAdminAllListExecute(r ApiAuthenticatorsAdminAllListRequest) ([]Device, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -184,8 +185,8 @@ AuthenticatorsAdminDuoCreate Method for AuthenticatorsAdminDuoCreate
 
 Viewset for Duo authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsAdminDuoCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsAdminDuoCreateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreate(ctx context.Context) ApiAuthenticatorsAdminDuoCreateRequest {
 	return ApiAuthenticatorsAdminDuoCreateRequest{
@@ -195,7 +196,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreate(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return DuoDevice
+//
+//	@return DuoDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreateExecute(r ApiAuthenticatorsAdminDuoCreateRequest) (*DuoDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -322,9 +324,9 @@ AuthenticatorsAdminDuoDestroy Method for AuthenticatorsAdminDuoDestroy
 
 Viewset for Duo authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Duo Device.
- @return ApiAuthenticatorsAdminDuoDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Duo Device.
+	@return ApiAuthenticatorsAdminDuoDestroyRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoDestroyRequest {
 	return ApiAuthenticatorsAdminDuoDestroyRequest{
@@ -480,8 +482,8 @@ AuthenticatorsAdminDuoList Method for AuthenticatorsAdminDuoList
 
 Viewset for Duo authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsAdminDuoListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsAdminDuoListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoList(ctx context.Context) ApiAuthenticatorsAdminDuoListRequest {
 	return ApiAuthenticatorsAdminDuoListRequest{
@@ -491,7 +493,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoList(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return PaginatedDuoDeviceList
+//
+//	@return PaginatedDuoDeviceList
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthenticatorsAdminDuoListRequest) (*PaginatedDuoDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -634,9 +637,9 @@ AuthenticatorsAdminDuoPartialUpdate Method for AuthenticatorsAdminDuoPartialUpda
 
 Viewset for Duo authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Duo Device.
- @return ApiAuthenticatorsAdminDuoPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Duo Device.
+	@return ApiAuthenticatorsAdminDuoPartialUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoPartialUpdateRequest {
 	return ApiAuthenticatorsAdminDuoPartialUpdateRequest{
@@ -647,7 +650,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdate(ctx conte
 }
 
 // Execute executes the request
-//  @return DuoDevice
+//
+//	@return DuoDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdateExecute(r ApiAuthenticatorsAdminDuoPartialUpdateRequest) (*DuoDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -772,9 +776,9 @@ AuthenticatorsAdminDuoRetrieve Method for AuthenticatorsAdminDuoRetrieve
 
 Viewset for Duo authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Duo Device.
- @return ApiAuthenticatorsAdminDuoRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Duo Device.
+	@return ApiAuthenticatorsAdminDuoRetrieveRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoRetrieveRequest {
 	return ApiAuthenticatorsAdminDuoRetrieveRequest{
@@ -785,7 +789,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieve(ctx context.Co
 }
 
 // Execute executes the request
-//  @return DuoDevice
+//
+//	@return DuoDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAuthenticatorsAdminDuoRetrieveRequest) (*DuoDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -914,9 +919,9 @@ AuthenticatorsAdminDuoUpdate Method for AuthenticatorsAdminDuoUpdate
 
 Viewset for Duo authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Duo Device.
- @return ApiAuthenticatorsAdminDuoUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Duo Device.
+	@return ApiAuthenticatorsAdminDuoUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoUpdateRequest {
 	return ApiAuthenticatorsAdminDuoUpdateRequest{
@@ -927,7 +932,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdate(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return DuoDevice
+//
+//	@return DuoDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuthenticatorsAdminDuoUpdateRequest) (*DuoDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -1060,8 +1066,8 @@ AuthenticatorsAdminSmsCreate Method for AuthenticatorsAdminSmsCreate
 
 Viewset for sms authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsAdminSmsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsAdminSmsCreateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsCreate(ctx context.Context) ApiAuthenticatorsAdminSmsCreateRequest {
 	return ApiAuthenticatorsAdminSmsCreateRequest{
@@ -1071,7 +1077,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsCreate(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return SMSDevice
+//
+//	@return SMSDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsCreateExecute(r ApiAuthenticatorsAdminSmsCreateRequest) (*SMSDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1198,9 +1205,9 @@ AuthenticatorsAdminSmsDestroy Method for AuthenticatorsAdminSmsDestroy
 
 Viewset for sms authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SMS Device.
- @return ApiAuthenticatorsAdminSmsDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SMS Device.
+	@return ApiAuthenticatorsAdminSmsDestroyRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminSmsDestroyRequest {
 	return ApiAuthenticatorsAdminSmsDestroyRequest{
@@ -1356,8 +1363,8 @@ AuthenticatorsAdminSmsList Method for AuthenticatorsAdminSmsList
 
 Viewset for sms authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsAdminSmsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsAdminSmsListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsList(ctx context.Context) ApiAuthenticatorsAdminSmsListRequest {
 	return ApiAuthenticatorsAdminSmsListRequest{
@@ -1367,7 +1374,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsList(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return PaginatedSMSDeviceList
+//
+//	@return PaginatedSMSDeviceList
 func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsListExecute(r ApiAuthenticatorsAdminSmsListRequest) (*PaginatedSMSDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1510,9 +1518,9 @@ AuthenticatorsAdminSmsPartialUpdate Method for AuthenticatorsAdminSmsPartialUpda
 
 Viewset for sms authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SMS Device.
- @return ApiAuthenticatorsAdminSmsPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SMS Device.
+	@return ApiAuthenticatorsAdminSmsPartialUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminSmsPartialUpdateRequest {
 	return ApiAuthenticatorsAdminSmsPartialUpdateRequest{
@@ -1523,7 +1531,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsPartialUpdate(ctx conte
 }
 
 // Execute executes the request
-//  @return SMSDevice
+//
+//	@return SMSDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsPartialUpdateExecute(r ApiAuthenticatorsAdminSmsPartialUpdateRequest) (*SMSDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -1648,9 +1657,9 @@ AuthenticatorsAdminSmsRetrieve Method for AuthenticatorsAdminSmsRetrieve
 
 Viewset for sms authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SMS Device.
- @return ApiAuthenticatorsAdminSmsRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SMS Device.
+	@return ApiAuthenticatorsAdminSmsRetrieveRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminSmsRetrieveRequest {
 	return ApiAuthenticatorsAdminSmsRetrieveRequest{
@@ -1661,7 +1670,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieve(ctx context.Co
 }
 
 // Execute executes the request
-//  @return SMSDevice
+//
+//	@return SMSDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieveExecute(r ApiAuthenticatorsAdminSmsRetrieveRequest) (*SMSDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1790,9 +1800,9 @@ AuthenticatorsAdminSmsUpdate Method for AuthenticatorsAdminSmsUpdate
 
 Viewset for sms authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SMS Device.
- @return ApiAuthenticatorsAdminSmsUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SMS Device.
+	@return ApiAuthenticatorsAdminSmsUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminSmsUpdateRequest {
 	return ApiAuthenticatorsAdminSmsUpdateRequest{
@@ -1803,7 +1813,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsUpdate(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return SMSDevice
+//
+//	@return SMSDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsUpdateExecute(r ApiAuthenticatorsAdminSmsUpdateRequest) (*SMSDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -1936,8 +1947,8 @@ AuthenticatorsAdminStaticCreate Method for AuthenticatorsAdminStaticCreate
 
 Viewset for static authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsAdminStaticCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsAdminStaticCreateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticCreate(ctx context.Context) ApiAuthenticatorsAdminStaticCreateRequest {
 	return ApiAuthenticatorsAdminStaticCreateRequest{
@@ -1947,7 +1958,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticCreate(ctx context.C
 }
 
 // Execute executes the request
-//  @return StaticDevice
+//
+//	@return StaticDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticCreateExecute(r ApiAuthenticatorsAdminStaticCreateRequest) (*StaticDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2074,9 +2086,9 @@ AuthenticatorsAdminStaticDestroy Method for AuthenticatorsAdminStaticDestroy
 
 Viewset for static authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this static device.
- @return ApiAuthenticatorsAdminStaticDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this static device.
+	@return ApiAuthenticatorsAdminStaticDestroyRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticDestroyRequest {
 	return ApiAuthenticatorsAdminStaticDestroyRequest{
@@ -2232,8 +2244,8 @@ AuthenticatorsAdminStaticList Method for AuthenticatorsAdminStaticList
 
 Viewset for static authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsAdminStaticListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsAdminStaticListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticList(ctx context.Context) ApiAuthenticatorsAdminStaticListRequest {
 	return ApiAuthenticatorsAdminStaticListRequest{
@@ -2243,7 +2255,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticList(ctx context.Con
 }
 
 // Execute executes the request
-//  @return PaginatedStaticDeviceList
+//
+//	@return PaginatedStaticDeviceList
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAuthenticatorsAdminStaticListRequest) (*PaginatedStaticDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2386,9 +2399,9 @@ AuthenticatorsAdminStaticPartialUpdate Method for AuthenticatorsAdminStaticParti
 
 Viewset for static authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this static device.
- @return ApiAuthenticatorsAdminStaticPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this static device.
+	@return ApiAuthenticatorsAdminStaticPartialUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticPartialUpdateRequest {
 	return ApiAuthenticatorsAdminStaticPartialUpdateRequest{
@@ -2399,7 +2412,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticPartialUpdate(ctx co
 }
 
 // Execute executes the request
-//  @return StaticDevice
+//
+//	@return StaticDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticPartialUpdateExecute(r ApiAuthenticatorsAdminStaticPartialUpdateRequest) (*StaticDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2524,9 +2538,9 @@ AuthenticatorsAdminStaticRetrieve Method for AuthenticatorsAdminStaticRetrieve
 
 Viewset for static authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this static device.
- @return ApiAuthenticatorsAdminStaticRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this static device.
+	@return ApiAuthenticatorsAdminStaticRetrieveRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticRetrieveRequest {
 	return ApiAuthenticatorsAdminStaticRetrieveRequest{
@@ -2537,7 +2551,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieve(ctx context
 }
 
 // Execute executes the request
-//  @return StaticDevice
+//
+//	@return StaticDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieveExecute(r ApiAuthenticatorsAdminStaticRetrieveRequest) (*StaticDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2666,9 +2681,9 @@ AuthenticatorsAdminStaticUpdate Method for AuthenticatorsAdminStaticUpdate
 
 Viewset for static authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this static device.
- @return ApiAuthenticatorsAdminStaticUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this static device.
+	@return ApiAuthenticatorsAdminStaticUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticUpdateRequest {
 	return ApiAuthenticatorsAdminStaticUpdateRequest{
@@ -2679,7 +2694,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticUpdate(ctx context.C
 }
 
 // Execute executes the request
-//  @return StaticDevice
+//
+//	@return StaticDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticUpdateExecute(r ApiAuthenticatorsAdminStaticUpdateRequest) (*StaticDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -2812,8 +2828,8 @@ AuthenticatorsAdminTotpCreate Method for AuthenticatorsAdminTotpCreate
 
 Viewset for totp authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsAdminTotpCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsAdminTotpCreateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpCreate(ctx context.Context) ApiAuthenticatorsAdminTotpCreateRequest {
 	return ApiAuthenticatorsAdminTotpCreateRequest{
@@ -2823,7 +2839,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpCreate(ctx context.Con
 }
 
 // Execute executes the request
-//  @return TOTPDevice
+//
+//	@return TOTPDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpCreateExecute(r ApiAuthenticatorsAdminTotpCreateRequest) (*TOTPDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2950,9 +2967,9 @@ AuthenticatorsAdminTotpDestroy Method for AuthenticatorsAdminTotpDestroy
 
 Viewset for totp authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this TOTP device.
- @return ApiAuthenticatorsAdminTotpDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this TOTP device.
+	@return ApiAuthenticatorsAdminTotpDestroyRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminTotpDestroyRequest {
 	return ApiAuthenticatorsAdminTotpDestroyRequest{
@@ -3108,8 +3125,8 @@ AuthenticatorsAdminTotpList Method for AuthenticatorsAdminTotpList
 
 Viewset for totp authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsAdminTotpListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsAdminTotpListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpList(ctx context.Context) ApiAuthenticatorsAdminTotpListRequest {
 	return ApiAuthenticatorsAdminTotpListRequest{
@@ -3119,7 +3136,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpList(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return PaginatedTOTPDeviceList
+//
+//	@return PaginatedTOTPDeviceList
 func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthenticatorsAdminTotpListRequest) (*PaginatedTOTPDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3262,9 +3280,9 @@ AuthenticatorsAdminTotpPartialUpdate Method for AuthenticatorsAdminTotpPartialUp
 
 Viewset for totp authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this TOTP device.
- @return ApiAuthenticatorsAdminTotpPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this TOTP device.
+	@return ApiAuthenticatorsAdminTotpPartialUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminTotpPartialUpdateRequest {
 	return ApiAuthenticatorsAdminTotpPartialUpdateRequest{
@@ -3275,7 +3293,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpPartialUpdate(ctx cont
 }
 
 // Execute executes the request
-//  @return TOTPDevice
+//
+//	@return TOTPDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpPartialUpdateExecute(r ApiAuthenticatorsAdminTotpPartialUpdateRequest) (*TOTPDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -3400,9 +3419,9 @@ AuthenticatorsAdminTotpRetrieve Method for AuthenticatorsAdminTotpRetrieve
 
 Viewset for totp authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this TOTP device.
- @return ApiAuthenticatorsAdminTotpRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this TOTP device.
+	@return ApiAuthenticatorsAdminTotpRetrieveRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminTotpRetrieveRequest {
 	return ApiAuthenticatorsAdminTotpRetrieveRequest{
@@ -3413,7 +3432,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieve(ctx context.C
 }
 
 // Execute executes the request
-//  @return TOTPDevice
+//
+//	@return TOTPDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieveExecute(r ApiAuthenticatorsAdminTotpRetrieveRequest) (*TOTPDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3542,9 +3562,9 @@ AuthenticatorsAdminTotpUpdate Method for AuthenticatorsAdminTotpUpdate
 
 Viewset for totp authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this TOTP device.
- @return ApiAuthenticatorsAdminTotpUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this TOTP device.
+	@return ApiAuthenticatorsAdminTotpUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminTotpUpdateRequest {
 	return ApiAuthenticatorsAdminTotpUpdateRequest{
@@ -3555,7 +3575,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpUpdate(ctx context.Con
 }
 
 // Execute executes the request
-//  @return TOTPDevice
+//
+//	@return TOTPDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpUpdateExecute(r ApiAuthenticatorsAdminTotpUpdateRequest) (*TOTPDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -3688,8 +3709,8 @@ AuthenticatorsAdminWebauthnCreate Method for AuthenticatorsAdminWebauthnCreate
 
 Viewset for WebAuthn authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsAdminWebauthnCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsAdminWebauthnCreateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnCreate(ctx context.Context) ApiAuthenticatorsAdminWebauthnCreateRequest {
 	return ApiAuthenticatorsAdminWebauthnCreateRequest{
@@ -3699,7 +3720,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnCreate(ctx context
 }
 
 // Execute executes the request
-//  @return WebAuthnDevice
+//
+//	@return WebAuthnDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnCreateExecute(r ApiAuthenticatorsAdminWebauthnCreateRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -3826,9 +3848,9 @@ AuthenticatorsAdminWebauthnDestroy Method for AuthenticatorsAdminWebauthnDestroy
 
 Viewset for WebAuthn authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this WebAuthn Device.
- @return ApiAuthenticatorsAdminWebauthnDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WebAuthn Device.
+	@return ApiAuthenticatorsAdminWebauthnDestroyRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminWebauthnDestroyRequest {
 	return ApiAuthenticatorsAdminWebauthnDestroyRequest{
@@ -3984,8 +4006,8 @@ AuthenticatorsAdminWebauthnList Method for AuthenticatorsAdminWebauthnList
 
 Viewset for WebAuthn authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsAdminWebauthnListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsAdminWebauthnListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnList(ctx context.Context) ApiAuthenticatorsAdminWebauthnListRequest {
 	return ApiAuthenticatorsAdminWebauthnListRequest{
@@ -3995,7 +4017,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnList(ctx context.C
 }
 
 // Execute executes the request
-//  @return PaginatedWebAuthnDeviceList
+//
+//	@return PaginatedWebAuthnDeviceList
 func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiAuthenticatorsAdminWebauthnListRequest) (*PaginatedWebAuthnDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4138,9 +4161,9 @@ AuthenticatorsAdminWebauthnPartialUpdate Method for AuthenticatorsAdminWebauthnP
 
 Viewset for WebAuthn authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this WebAuthn Device.
- @return ApiAuthenticatorsAdminWebauthnPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WebAuthn Device.
+	@return ApiAuthenticatorsAdminWebauthnPartialUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminWebauthnPartialUpdateRequest {
 	return ApiAuthenticatorsAdminWebauthnPartialUpdateRequest{
@@ -4151,7 +4174,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnPartialUpdate(ctx 
 }
 
 // Execute executes the request
-//  @return WebAuthnDevice
+//
+//	@return WebAuthnDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnPartialUpdateExecute(r ApiAuthenticatorsAdminWebauthnPartialUpdateRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -4276,9 +4300,9 @@ AuthenticatorsAdminWebauthnRetrieve Method for AuthenticatorsAdminWebauthnRetrie
 
 Viewset for WebAuthn authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this WebAuthn Device.
- @return ApiAuthenticatorsAdminWebauthnRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WebAuthn Device.
+	@return ApiAuthenticatorsAdminWebauthnRetrieveRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminWebauthnRetrieveRequest {
 	return ApiAuthenticatorsAdminWebauthnRetrieveRequest{
@@ -4289,7 +4313,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieve(ctx conte
 }
 
 // Execute executes the request
-//  @return WebAuthnDevice
+//
+//	@return WebAuthnDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieveExecute(r ApiAuthenticatorsAdminWebauthnRetrieveRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4418,9 +4443,9 @@ AuthenticatorsAdminWebauthnUpdate Method for AuthenticatorsAdminWebauthnUpdate
 
 Viewset for WebAuthn authenticator devices (for admins)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this WebAuthn Device.
- @return ApiAuthenticatorsAdminWebauthnUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WebAuthn Device.
+	@return ApiAuthenticatorsAdminWebauthnUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminWebauthnUpdateRequest {
 	return ApiAuthenticatorsAdminWebauthnUpdateRequest{
@@ -4431,7 +4456,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnUpdate(ctx context
 }
 
 // Execute executes the request
-//  @return WebAuthnDevice
+//
+//	@return WebAuthnDevice
 func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnUpdateExecute(r ApiAuthenticatorsAdminWebauthnUpdateRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -4558,8 +4584,8 @@ AuthenticatorsAllList Method for AuthenticatorsAllList
 
 Get all devices for current user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsAllListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsAllListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAllList(ctx context.Context) ApiAuthenticatorsAllListRequest {
 	return ApiAuthenticatorsAllListRequest{
@@ -4569,7 +4595,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAllList(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return []Device
+//
+//	@return []Device
 func (a *AuthenticatorsApiService) AuthenticatorsAllListExecute(r ApiAuthenticatorsAllListRequest) ([]Device, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4691,9 +4718,9 @@ AuthenticatorsDuoDestroy Method for AuthenticatorsDuoDestroy
 
 Viewset for Duo authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Duo Device.
- @return ApiAuthenticatorsDuoDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Duo Device.
+	@return ApiAuthenticatorsDuoDestroyRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroy(ctx context.Context, id int32) ApiAuthenticatorsDuoDestroyRequest {
 	return ApiAuthenticatorsDuoDestroyRequest{
@@ -4849,8 +4876,8 @@ AuthenticatorsDuoList Method for AuthenticatorsDuoList
 
 Viewset for Duo authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsDuoListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsDuoListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsDuoList(ctx context.Context) ApiAuthenticatorsDuoListRequest {
 	return ApiAuthenticatorsDuoListRequest{
@@ -4860,7 +4887,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoList(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return PaginatedDuoDeviceList
+//
+//	@return PaginatedDuoDeviceList
 func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticatorsDuoListRequest) (*PaginatedDuoDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5003,9 +5031,9 @@ AuthenticatorsDuoPartialUpdate Method for AuthenticatorsDuoPartialUpdate
 
 Viewset for Duo authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Duo Device.
- @return ApiAuthenticatorsDuoPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Duo Device.
+	@return ApiAuthenticatorsDuoPartialUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsDuoPartialUpdateRequest {
 	return ApiAuthenticatorsDuoPartialUpdateRequest{
@@ -5016,7 +5044,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdate(ctx context.Co
 }
 
 // Execute executes the request
-//  @return DuoDevice
+//
+//	@return DuoDevice
 func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdateExecute(r ApiAuthenticatorsDuoPartialUpdateRequest) (*DuoDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -5141,9 +5170,9 @@ AuthenticatorsDuoRetrieve Method for AuthenticatorsDuoRetrieve
 
 Viewset for Duo authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Duo Device.
- @return ApiAuthenticatorsDuoRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Duo Device.
+	@return ApiAuthenticatorsDuoRetrieveRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieve(ctx context.Context, id int32) ApiAuthenticatorsDuoRetrieveRequest {
 	return ApiAuthenticatorsDuoRetrieveRequest{
@@ -5154,7 +5183,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieve(ctx context.Context
 }
 
 // Execute executes the request
-//  @return DuoDevice
+//
+//	@return DuoDevice
 func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieveExecute(r ApiAuthenticatorsDuoRetrieveRequest) (*DuoDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5283,9 +5313,9 @@ AuthenticatorsDuoUpdate Method for AuthenticatorsDuoUpdate
 
 Viewset for Duo authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Duo Device.
- @return ApiAuthenticatorsDuoUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Duo Device.
+	@return ApiAuthenticatorsDuoUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdate(ctx context.Context, id int32) ApiAuthenticatorsDuoUpdateRequest {
 	return ApiAuthenticatorsDuoUpdateRequest{
@@ -5296,7 +5326,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdate(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return DuoDevice
+//
+//	@return DuoDevice
 func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdateExecute(r ApiAuthenticatorsDuoUpdateRequest) (*DuoDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -5424,9 +5455,9 @@ AuthenticatorsDuoUsedByList Method for AuthenticatorsDuoUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Duo Device.
- @return ApiAuthenticatorsDuoUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Duo Device.
+	@return ApiAuthenticatorsDuoUsedByListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByList(ctx context.Context, id int32) ApiAuthenticatorsDuoUsedByListRequest {
 	return ApiAuthenticatorsDuoUsedByListRequest{
@@ -5437,7 +5468,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByList(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByListExecute(r ApiAuthenticatorsDuoUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5560,9 +5592,9 @@ AuthenticatorsSmsDestroy Method for AuthenticatorsSmsDestroy
 
 Viewset for sms authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SMS Device.
- @return ApiAuthenticatorsSmsDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SMS Device.
+	@return ApiAuthenticatorsSmsDestroyRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroy(ctx context.Context, id int32) ApiAuthenticatorsSmsDestroyRequest {
 	return ApiAuthenticatorsSmsDestroyRequest{
@@ -5718,8 +5750,8 @@ AuthenticatorsSmsList Method for AuthenticatorsSmsList
 
 Viewset for sms authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsSmsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsSmsListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsSmsList(ctx context.Context) ApiAuthenticatorsSmsListRequest {
 	return ApiAuthenticatorsSmsListRequest{
@@ -5729,7 +5761,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsList(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return PaginatedSMSDeviceList
+//
+//	@return PaginatedSMSDeviceList
 func (a *AuthenticatorsApiService) AuthenticatorsSmsListExecute(r ApiAuthenticatorsSmsListRequest) (*PaginatedSMSDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5872,9 +5905,9 @@ AuthenticatorsSmsPartialUpdate Method for AuthenticatorsSmsPartialUpdate
 
 Viewset for sms authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SMS Device.
- @return ApiAuthenticatorsSmsPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SMS Device.
+	@return ApiAuthenticatorsSmsPartialUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsSmsPartialUpdateRequest {
 	return ApiAuthenticatorsSmsPartialUpdateRequest{
@@ -5885,7 +5918,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdate(ctx context.Co
 }
 
 // Execute executes the request
-//  @return SMSDevice
+//
+//	@return SMSDevice
 func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdateExecute(r ApiAuthenticatorsSmsPartialUpdateRequest) (*SMSDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -6010,9 +6044,9 @@ AuthenticatorsSmsRetrieve Method for AuthenticatorsSmsRetrieve
 
 Viewset for sms authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SMS Device.
- @return ApiAuthenticatorsSmsRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SMS Device.
+	@return ApiAuthenticatorsSmsRetrieveRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieve(ctx context.Context, id int32) ApiAuthenticatorsSmsRetrieveRequest {
 	return ApiAuthenticatorsSmsRetrieveRequest{
@@ -6023,7 +6057,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieve(ctx context.Context
 }
 
 // Execute executes the request
-//  @return SMSDevice
+//
+//	@return SMSDevice
 func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieveExecute(r ApiAuthenticatorsSmsRetrieveRequest) (*SMSDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6152,9 +6187,9 @@ AuthenticatorsSmsUpdate Method for AuthenticatorsSmsUpdate
 
 Viewset for sms authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SMS Device.
- @return ApiAuthenticatorsSmsUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SMS Device.
+	@return ApiAuthenticatorsSmsUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdate(ctx context.Context, id int32) ApiAuthenticatorsSmsUpdateRequest {
 	return ApiAuthenticatorsSmsUpdateRequest{
@@ -6165,7 +6200,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdate(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return SMSDevice
+//
+//	@return SMSDevice
 func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdateExecute(r ApiAuthenticatorsSmsUpdateRequest) (*SMSDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -6293,9 +6329,9 @@ AuthenticatorsSmsUsedByList Method for AuthenticatorsSmsUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SMS Device.
- @return ApiAuthenticatorsSmsUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SMS Device.
+	@return ApiAuthenticatorsSmsUsedByListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByList(ctx context.Context, id int32) ApiAuthenticatorsSmsUsedByListRequest {
 	return ApiAuthenticatorsSmsUsedByListRequest{
@@ -6306,7 +6342,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByList(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByListExecute(r ApiAuthenticatorsSmsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6429,9 +6466,9 @@ AuthenticatorsStaticDestroy Method for AuthenticatorsStaticDestroy
 
 Viewset for static authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this static device.
- @return ApiAuthenticatorsStaticDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this static device.
+	@return ApiAuthenticatorsStaticDestroyRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroy(ctx context.Context, id int32) ApiAuthenticatorsStaticDestroyRequest {
 	return ApiAuthenticatorsStaticDestroyRequest{
@@ -6587,8 +6624,8 @@ AuthenticatorsStaticList Method for AuthenticatorsStaticList
 
 Viewset for static authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsStaticListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsStaticListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsStaticList(ctx context.Context) ApiAuthenticatorsStaticListRequest {
 	return ApiAuthenticatorsStaticListRequest{
@@ -6598,7 +6635,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticList(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return PaginatedStaticDeviceList
+//
+//	@return PaginatedStaticDeviceList
 func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenticatorsStaticListRequest) (*PaginatedStaticDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6741,9 +6779,9 @@ AuthenticatorsStaticPartialUpdate Method for AuthenticatorsStaticPartialUpdate
 
 Viewset for static authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this static device.
- @return ApiAuthenticatorsStaticPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this static device.
+	@return ApiAuthenticatorsStaticPartialUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsStaticPartialUpdateRequest {
 	return ApiAuthenticatorsStaticPartialUpdateRequest{
@@ -6754,7 +6792,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdate(ctx context
 }
 
 // Execute executes the request
-//  @return StaticDevice
+//
+//	@return StaticDevice
 func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdateExecute(r ApiAuthenticatorsStaticPartialUpdateRequest) (*StaticDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -6879,9 +6918,9 @@ AuthenticatorsStaticRetrieve Method for AuthenticatorsStaticRetrieve
 
 Viewset for static authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this static device.
- @return ApiAuthenticatorsStaticRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this static device.
+	@return ApiAuthenticatorsStaticRetrieveRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieve(ctx context.Context, id int32) ApiAuthenticatorsStaticRetrieveRequest {
 	return ApiAuthenticatorsStaticRetrieveRequest{
@@ -6892,7 +6931,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieve(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return StaticDevice
+//
+//	@return StaticDevice
 func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieveExecute(r ApiAuthenticatorsStaticRetrieveRequest) (*StaticDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7021,9 +7061,9 @@ AuthenticatorsStaticUpdate Method for AuthenticatorsStaticUpdate
 
 Viewset for static authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this static device.
- @return ApiAuthenticatorsStaticUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this static device.
+	@return ApiAuthenticatorsStaticUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdate(ctx context.Context, id int32) ApiAuthenticatorsStaticUpdateRequest {
 	return ApiAuthenticatorsStaticUpdateRequest{
@@ -7034,7 +7074,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdate(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return StaticDevice
+//
+//	@return StaticDevice
 func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdateExecute(r ApiAuthenticatorsStaticUpdateRequest) (*StaticDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -7162,9 +7203,9 @@ AuthenticatorsStaticUsedByList Method for AuthenticatorsStaticUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this static device.
- @return ApiAuthenticatorsStaticUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this static device.
+	@return ApiAuthenticatorsStaticUsedByListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByList(ctx context.Context, id int32) ApiAuthenticatorsStaticUsedByListRequest {
 	return ApiAuthenticatorsStaticUsedByListRequest{
@@ -7175,7 +7216,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByList(ctx context.Co
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByListExecute(r ApiAuthenticatorsStaticUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7298,9 +7340,9 @@ AuthenticatorsTotpDestroy Method for AuthenticatorsTotpDestroy
 
 Viewset for totp authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this TOTP device.
- @return ApiAuthenticatorsTotpDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this TOTP device.
+	@return ApiAuthenticatorsTotpDestroyRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroy(ctx context.Context, id int32) ApiAuthenticatorsTotpDestroyRequest {
 	return ApiAuthenticatorsTotpDestroyRequest{
@@ -7456,8 +7498,8 @@ AuthenticatorsTotpList Method for AuthenticatorsTotpList
 
 Viewset for totp authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsTotpListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsTotpListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsTotpList(ctx context.Context) ApiAuthenticatorsTotpListRequest {
 	return ApiAuthenticatorsTotpListRequest{
@@ -7467,7 +7509,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpList(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return PaginatedTOTPDeviceList
+//
+//	@return PaginatedTOTPDeviceList
 func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthenticatorsTotpListRequest) (*PaginatedTOTPDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7610,9 +7653,9 @@ AuthenticatorsTotpPartialUpdate Method for AuthenticatorsTotpPartialUpdate
 
 Viewset for totp authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this TOTP device.
- @return ApiAuthenticatorsTotpPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this TOTP device.
+	@return ApiAuthenticatorsTotpPartialUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsTotpPartialUpdateRequest {
 	return ApiAuthenticatorsTotpPartialUpdateRequest{
@@ -7623,7 +7666,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdate(ctx context.C
 }
 
 // Execute executes the request
-//  @return TOTPDevice
+//
+//	@return TOTPDevice
 func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdateExecute(r ApiAuthenticatorsTotpPartialUpdateRequest) (*TOTPDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -7748,9 +7792,9 @@ AuthenticatorsTotpRetrieve Method for AuthenticatorsTotpRetrieve
 
 Viewset for totp authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this TOTP device.
- @return ApiAuthenticatorsTotpRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this TOTP device.
+	@return ApiAuthenticatorsTotpRetrieveRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieve(ctx context.Context, id int32) ApiAuthenticatorsTotpRetrieveRequest {
 	return ApiAuthenticatorsTotpRetrieveRequest{
@@ -7761,7 +7805,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieve(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return TOTPDevice
+//
+//	@return TOTPDevice
 func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieveExecute(r ApiAuthenticatorsTotpRetrieveRequest) (*TOTPDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7890,9 +7935,9 @@ AuthenticatorsTotpUpdate Method for AuthenticatorsTotpUpdate
 
 Viewset for totp authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this TOTP device.
- @return ApiAuthenticatorsTotpUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this TOTP device.
+	@return ApiAuthenticatorsTotpUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdate(ctx context.Context, id int32) ApiAuthenticatorsTotpUpdateRequest {
 	return ApiAuthenticatorsTotpUpdateRequest{
@@ -7903,7 +7948,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdate(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return TOTPDevice
+//
+//	@return TOTPDevice
 func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdateExecute(r ApiAuthenticatorsTotpUpdateRequest) (*TOTPDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -8031,9 +8077,9 @@ AuthenticatorsTotpUsedByList Method for AuthenticatorsTotpUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this TOTP device.
- @return ApiAuthenticatorsTotpUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this TOTP device.
+	@return ApiAuthenticatorsTotpUsedByListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByList(ctx context.Context, id int32) ApiAuthenticatorsTotpUsedByListRequest {
 	return ApiAuthenticatorsTotpUsedByListRequest{
@@ -8044,7 +8090,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByList(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByListExecute(r ApiAuthenticatorsTotpUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8167,9 +8214,9 @@ AuthenticatorsWebauthnDestroy Method for AuthenticatorsWebauthnDestroy
 
 Viewset for WebAuthn authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this WebAuthn Device.
- @return ApiAuthenticatorsWebauthnDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WebAuthn Device.
+	@return ApiAuthenticatorsWebauthnDestroyRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroy(ctx context.Context, id int32) ApiAuthenticatorsWebauthnDestroyRequest {
 	return ApiAuthenticatorsWebauthnDestroyRequest{
@@ -8325,8 +8372,8 @@ AuthenticatorsWebauthnList Method for AuthenticatorsWebauthnList
 
 Viewset for WebAuthn authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthenticatorsWebauthnListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticatorsWebauthnListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnList(ctx context.Context) ApiAuthenticatorsWebauthnListRequest {
 	return ApiAuthenticatorsWebauthnListRequest{
@@ -8336,7 +8383,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnList(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return PaginatedWebAuthnDeviceList
+//
+//	@return PaginatedWebAuthnDeviceList
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthenticatorsWebauthnListRequest) (*PaginatedWebAuthnDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8479,9 +8527,9 @@ AuthenticatorsWebauthnPartialUpdate Method for AuthenticatorsWebauthnPartialUpda
 
 Viewset for WebAuthn authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this WebAuthn Device.
- @return ApiAuthenticatorsWebauthnPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WebAuthn Device.
+	@return ApiAuthenticatorsWebauthnPartialUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsWebauthnPartialUpdateRequest {
 	return ApiAuthenticatorsWebauthnPartialUpdateRequest{
@@ -8492,7 +8540,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdate(ctx conte
 }
 
 // Execute executes the request
-//  @return WebAuthnDevice
+//
+//	@return WebAuthnDevice
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdateExecute(r ApiAuthenticatorsWebauthnPartialUpdateRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -8617,9 +8666,9 @@ AuthenticatorsWebauthnRetrieve Method for AuthenticatorsWebauthnRetrieve
 
 Viewset for WebAuthn authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this WebAuthn Device.
- @return ApiAuthenticatorsWebauthnRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WebAuthn Device.
+	@return ApiAuthenticatorsWebauthnRetrieveRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieve(ctx context.Context, id int32) ApiAuthenticatorsWebauthnRetrieveRequest {
 	return ApiAuthenticatorsWebauthnRetrieveRequest{
@@ -8630,7 +8679,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieve(ctx context.Co
 }
 
 // Execute executes the request
-//  @return WebAuthnDevice
+//
+//	@return WebAuthnDevice
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieveExecute(r ApiAuthenticatorsWebauthnRetrieveRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8759,9 +8809,9 @@ AuthenticatorsWebauthnUpdate Method for AuthenticatorsWebauthnUpdate
 
 Viewset for WebAuthn authenticator devices
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this WebAuthn Device.
- @return ApiAuthenticatorsWebauthnUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WebAuthn Device.
+	@return ApiAuthenticatorsWebauthnUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdate(ctx context.Context, id int32) ApiAuthenticatorsWebauthnUpdateRequest {
 	return ApiAuthenticatorsWebauthnUpdateRequest{
@@ -8772,7 +8822,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdate(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return WebAuthnDevice
+//
+//	@return WebAuthnDevice
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdateExecute(r ApiAuthenticatorsWebauthnUpdateRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -8900,9 +8951,9 @@ AuthenticatorsWebauthnUsedByList Method for AuthenticatorsWebauthnUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this WebAuthn Device.
- @return ApiAuthenticatorsWebauthnUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WebAuthn Device.
+	@return ApiAuthenticatorsWebauthnUsedByListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByList(ctx context.Context, id int32) ApiAuthenticatorsWebauthnUsedByListRequest {
 	return ApiAuthenticatorsWebauthnUsedByListRequest{
@@ -8913,7 +8964,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByList(ctx context.
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByListExecute(r ApiAuthenticatorsWebauthnUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

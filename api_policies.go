@@ -39,8 +39,8 @@ PoliciesAllCacheClearCreate Method for PoliciesAllCacheClearCreate
 
 Clear policy cache
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesAllCacheClearCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesAllCacheClearCreateRequest
 */
 func (a *PoliciesApiService) PoliciesAllCacheClearCreate(ctx context.Context) ApiPoliciesAllCacheClearCreateRequest {
 	return ApiPoliciesAllCacheClearCreateRequest{
@@ -150,8 +150,8 @@ PoliciesAllCacheInfoRetrieve Method for PoliciesAllCacheInfoRetrieve
 
 Info about cached policies
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesAllCacheInfoRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesAllCacheInfoRetrieveRequest
 */
 func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieve(ctx context.Context) ApiPoliciesAllCacheInfoRetrieveRequest {
 	return ApiPoliciesAllCacheInfoRetrieveRequest{
@@ -161,7 +161,8 @@ func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieve(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return Cache
+//
+//	@return Cache
 func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieveExecute(r ApiPoliciesAllCacheInfoRetrieveRequest) (*Cache, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -283,9 +284,9 @@ PoliciesAllDestroy Method for PoliciesAllDestroy
 
 Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Policy.
- @return ApiPoliciesAllDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Policy.
+	@return ApiPoliciesAllDestroyRequest
 */
 func (a *PoliciesApiService) PoliciesAllDestroy(ctx context.Context, policyUuid string) ApiPoliciesAllDestroyRequest {
 	return ApiPoliciesAllDestroyRequest{
@@ -447,8 +448,8 @@ PoliciesAllList Method for PoliciesAllList
 
 Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesAllListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesAllListRequest
 */
 func (a *PoliciesApiService) PoliciesAllList(ctx context.Context) ApiPoliciesAllListRequest {
 	return ApiPoliciesAllListRequest{
@@ -458,7 +459,8 @@ func (a *PoliciesApiService) PoliciesAllList(ctx context.Context) ApiPoliciesAll
 }
 
 // Execute executes the request
-//  @return PaginatedPolicyList
+//
+//	@return PaginatedPolicyList
 func (a *PoliciesApiService) PoliciesAllListExecute(r ApiPoliciesAllListRequest) (*PaginatedPolicyList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -598,9 +600,9 @@ PoliciesAllRetrieve Method for PoliciesAllRetrieve
 
 Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Policy.
- @return ApiPoliciesAllRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Policy.
+	@return ApiPoliciesAllRetrieveRequest
 */
 func (a *PoliciesApiService) PoliciesAllRetrieve(ctx context.Context, policyUuid string) ApiPoliciesAllRetrieveRequest {
 	return ApiPoliciesAllRetrieveRequest{
@@ -611,7 +613,8 @@ func (a *PoliciesApiService) PoliciesAllRetrieve(ctx context.Context, policyUuid
 }
 
 // Execute executes the request
-//  @return Policy
+//
+//	@return Policy
 func (a *PoliciesApiService) PoliciesAllRetrieveExecute(r ApiPoliciesAllRetrieveRequest) (*Policy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -740,9 +743,9 @@ PoliciesAllTestCreate Method for PoliciesAllTestCreate
 
 Test policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Policy.
- @return ApiPoliciesAllTestCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Policy.
+	@return ApiPoliciesAllTestCreateRequest
 */
 func (a *PoliciesApiService) PoliciesAllTestCreate(ctx context.Context, policyUuid string) ApiPoliciesAllTestCreateRequest {
 	return ApiPoliciesAllTestCreateRequest{
@@ -753,7 +756,8 @@ func (a *PoliciesApiService) PoliciesAllTestCreate(ctx context.Context, policyUu
 }
 
 // Execute executes the request
-//  @return PolicyTestResult
+//
+//	@return PolicyTestResult
 func (a *PoliciesApiService) PoliciesAllTestCreateExecute(r ApiPoliciesAllTestCreateRequest) (*PolicyTestResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -870,8 +874,8 @@ PoliciesAllTypesList Method for PoliciesAllTypesList
 
 Get all creatable policy types
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesAllTypesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesAllTypesListRequest
 */
 func (a *PoliciesApiService) PoliciesAllTypesList(ctx context.Context) ApiPoliciesAllTypesListRequest {
 	return ApiPoliciesAllTypesListRequest{
@@ -881,7 +885,8 @@ func (a *PoliciesApiService) PoliciesAllTypesList(ctx context.Context) ApiPolici
 }
 
 // Execute executes the request
-//  @return []TypeCreate
+//
+//	@return []TypeCreate
 func (a *PoliciesApiService) PoliciesAllTypesListExecute(r ApiPoliciesAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1003,9 +1008,9 @@ PoliciesAllUsedByList Method for PoliciesAllUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Policy.
- @return ApiPoliciesAllUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Policy.
+	@return ApiPoliciesAllUsedByListRequest
 */
 func (a *PoliciesApiService) PoliciesAllUsedByList(ctx context.Context, policyUuid string) ApiPoliciesAllUsedByListRequest {
 	return ApiPoliciesAllUsedByListRequest{
@@ -1016,7 +1021,8 @@ func (a *PoliciesApiService) PoliciesAllUsedByList(ctx context.Context, policyUu
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *PoliciesApiService) PoliciesAllUsedByListExecute(r ApiPoliciesAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1144,8 +1150,8 @@ PoliciesBindingsCreate Method for PoliciesBindingsCreate
 
 PolicyBinding Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesBindingsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesBindingsCreateRequest
 */
 func (a *PoliciesApiService) PoliciesBindingsCreate(ctx context.Context) ApiPoliciesBindingsCreateRequest {
 	return ApiPoliciesBindingsCreateRequest{
@@ -1155,7 +1161,8 @@ func (a *PoliciesApiService) PoliciesBindingsCreate(ctx context.Context) ApiPoli
 }
 
 // Execute executes the request
-//  @return PolicyBinding
+//
+//	@return PolicyBinding
 func (a *PoliciesApiService) PoliciesBindingsCreateExecute(r ApiPoliciesBindingsCreateRequest) (*PolicyBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1282,9 +1289,9 @@ PoliciesBindingsDestroy Method for PoliciesBindingsDestroy
 
 PolicyBinding Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyBindingUuid A UUID string identifying this Policy Binding.
- @return ApiPoliciesBindingsDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyBindingUuid A UUID string identifying this Policy Binding.
+	@return ApiPoliciesBindingsDestroyRequest
 */
 func (a *PoliciesApiService) PoliciesBindingsDestroy(ctx context.Context, policyBindingUuid string) ApiPoliciesBindingsDestroyRequest {
 	return ApiPoliciesBindingsDestroyRequest{
@@ -1476,8 +1483,8 @@ PoliciesBindingsList Method for PoliciesBindingsList
 
 PolicyBinding Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesBindingsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesBindingsListRequest
 */
 func (a *PoliciesApiService) PoliciesBindingsList(ctx context.Context) ApiPoliciesBindingsListRequest {
 	return ApiPoliciesBindingsListRequest{
@@ -1487,7 +1494,8 @@ func (a *PoliciesApiService) PoliciesBindingsList(ctx context.Context) ApiPolici
 }
 
 // Execute executes the request
-//  @return PaginatedPolicyBindingList
+//
+//	@return PaginatedPolicyBindingList
 func (a *PoliciesApiService) PoliciesBindingsListExecute(r ApiPoliciesBindingsListRequest) (*PaginatedPolicyBindingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1656,9 +1664,9 @@ PoliciesBindingsPartialUpdate Method for PoliciesBindingsPartialUpdate
 
 PolicyBinding Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyBindingUuid A UUID string identifying this Policy Binding.
- @return ApiPoliciesBindingsPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyBindingUuid A UUID string identifying this Policy Binding.
+	@return ApiPoliciesBindingsPartialUpdateRequest
 */
 func (a *PoliciesApiService) PoliciesBindingsPartialUpdate(ctx context.Context, policyBindingUuid string) ApiPoliciesBindingsPartialUpdateRequest {
 	return ApiPoliciesBindingsPartialUpdateRequest{
@@ -1669,7 +1677,8 @@ func (a *PoliciesApiService) PoliciesBindingsPartialUpdate(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return PolicyBinding
+//
+//	@return PolicyBinding
 func (a *PoliciesApiService) PoliciesBindingsPartialUpdateExecute(r ApiPoliciesBindingsPartialUpdateRequest) (*PolicyBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -1794,9 +1803,9 @@ PoliciesBindingsRetrieve Method for PoliciesBindingsRetrieve
 
 PolicyBinding Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyBindingUuid A UUID string identifying this Policy Binding.
- @return ApiPoliciesBindingsRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyBindingUuid A UUID string identifying this Policy Binding.
+	@return ApiPoliciesBindingsRetrieveRequest
 */
 func (a *PoliciesApiService) PoliciesBindingsRetrieve(ctx context.Context, policyBindingUuid string) ApiPoliciesBindingsRetrieveRequest {
 	return ApiPoliciesBindingsRetrieveRequest{
@@ -1807,7 +1816,8 @@ func (a *PoliciesApiService) PoliciesBindingsRetrieve(ctx context.Context, polic
 }
 
 // Execute executes the request
-//  @return PolicyBinding
+//
+//	@return PolicyBinding
 func (a *PoliciesApiService) PoliciesBindingsRetrieveExecute(r ApiPoliciesBindingsRetrieveRequest) (*PolicyBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1936,9 +1946,9 @@ PoliciesBindingsUpdate Method for PoliciesBindingsUpdate
 
 PolicyBinding Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyBindingUuid A UUID string identifying this Policy Binding.
- @return ApiPoliciesBindingsUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyBindingUuid A UUID string identifying this Policy Binding.
+	@return ApiPoliciesBindingsUpdateRequest
 */
 func (a *PoliciesApiService) PoliciesBindingsUpdate(ctx context.Context, policyBindingUuid string) ApiPoliciesBindingsUpdateRequest {
 	return ApiPoliciesBindingsUpdateRequest{
@@ -1949,7 +1959,8 @@ func (a *PoliciesApiService) PoliciesBindingsUpdate(ctx context.Context, policyB
 }
 
 // Execute executes the request
-//  @return PolicyBinding
+//
+//	@return PolicyBinding
 func (a *PoliciesApiService) PoliciesBindingsUpdateExecute(r ApiPoliciesBindingsUpdateRequest) (*PolicyBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -2077,9 +2088,9 @@ PoliciesBindingsUsedByList Method for PoliciesBindingsUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyBindingUuid A UUID string identifying this Policy Binding.
- @return ApiPoliciesBindingsUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyBindingUuid A UUID string identifying this Policy Binding.
+	@return ApiPoliciesBindingsUsedByListRequest
 */
 func (a *PoliciesApiService) PoliciesBindingsUsedByList(ctx context.Context, policyBindingUuid string) ApiPoliciesBindingsUsedByListRequest {
 	return ApiPoliciesBindingsUsedByListRequest{
@@ -2090,7 +2101,8 @@ func (a *PoliciesApiService) PoliciesBindingsUsedByList(ctx context.Context, pol
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *PoliciesApiService) PoliciesBindingsUsedByListExecute(r ApiPoliciesBindingsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2218,8 +2230,8 @@ PoliciesDummyCreate Method for PoliciesDummyCreate
 
 Dummy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesDummyCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesDummyCreateRequest
 */
 func (a *PoliciesApiService) PoliciesDummyCreate(ctx context.Context) ApiPoliciesDummyCreateRequest {
 	return ApiPoliciesDummyCreateRequest{
@@ -2229,7 +2241,8 @@ func (a *PoliciesApiService) PoliciesDummyCreate(ctx context.Context) ApiPolicie
 }
 
 // Execute executes the request
-//  @return DummyPolicy
+//
+//	@return DummyPolicy
 func (a *PoliciesApiService) PoliciesDummyCreateExecute(r ApiPoliciesDummyCreateRequest) (*DummyPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2356,9 +2369,9 @@ PoliciesDummyDestroy Method for PoliciesDummyDestroy
 
 Dummy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Dummy Policy.
- @return ApiPoliciesDummyDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Dummy Policy.
+	@return ApiPoliciesDummyDestroyRequest
 */
 func (a *PoliciesApiService) PoliciesDummyDestroy(ctx context.Context, policyUuid string) ApiPoliciesDummyDestroyRequest {
 	return ApiPoliciesDummyDestroyRequest{
@@ -2556,8 +2569,8 @@ PoliciesDummyList Method for PoliciesDummyList
 
 Dummy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesDummyListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesDummyListRequest
 */
 func (a *PoliciesApiService) PoliciesDummyList(ctx context.Context) ApiPoliciesDummyListRequest {
 	return ApiPoliciesDummyListRequest{
@@ -2567,7 +2580,8 @@ func (a *PoliciesApiService) PoliciesDummyList(ctx context.Context) ApiPoliciesD
 }
 
 // Execute executes the request
-//  @return PaginatedDummyPolicyList
+//
+//	@return PaginatedDummyPolicyList
 func (a *PoliciesApiService) PoliciesDummyListExecute(r ApiPoliciesDummyListRequest) (*PaginatedDummyPolicyList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2731,9 +2745,9 @@ PoliciesDummyPartialUpdate Method for PoliciesDummyPartialUpdate
 
 Dummy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Dummy Policy.
- @return ApiPoliciesDummyPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Dummy Policy.
+	@return ApiPoliciesDummyPartialUpdateRequest
 */
 func (a *PoliciesApiService) PoliciesDummyPartialUpdate(ctx context.Context, policyUuid string) ApiPoliciesDummyPartialUpdateRequest {
 	return ApiPoliciesDummyPartialUpdateRequest{
@@ -2744,7 +2758,8 @@ func (a *PoliciesApiService) PoliciesDummyPartialUpdate(ctx context.Context, pol
 }
 
 // Execute executes the request
-//  @return DummyPolicy
+//
+//	@return DummyPolicy
 func (a *PoliciesApiService) PoliciesDummyPartialUpdateExecute(r ApiPoliciesDummyPartialUpdateRequest) (*DummyPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2869,9 +2884,9 @@ PoliciesDummyRetrieve Method for PoliciesDummyRetrieve
 
 Dummy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Dummy Policy.
- @return ApiPoliciesDummyRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Dummy Policy.
+	@return ApiPoliciesDummyRetrieveRequest
 */
 func (a *PoliciesApiService) PoliciesDummyRetrieve(ctx context.Context, policyUuid string) ApiPoliciesDummyRetrieveRequest {
 	return ApiPoliciesDummyRetrieveRequest{
@@ -2882,7 +2897,8 @@ func (a *PoliciesApiService) PoliciesDummyRetrieve(ctx context.Context, policyUu
 }
 
 // Execute executes the request
-//  @return DummyPolicy
+//
+//	@return DummyPolicy
 func (a *PoliciesApiService) PoliciesDummyRetrieveExecute(r ApiPoliciesDummyRetrieveRequest) (*DummyPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3011,9 +3027,9 @@ PoliciesDummyUpdate Method for PoliciesDummyUpdate
 
 Dummy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Dummy Policy.
- @return ApiPoliciesDummyUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Dummy Policy.
+	@return ApiPoliciesDummyUpdateRequest
 */
 func (a *PoliciesApiService) PoliciesDummyUpdate(ctx context.Context, policyUuid string) ApiPoliciesDummyUpdateRequest {
 	return ApiPoliciesDummyUpdateRequest{
@@ -3024,7 +3040,8 @@ func (a *PoliciesApiService) PoliciesDummyUpdate(ctx context.Context, policyUuid
 }
 
 // Execute executes the request
-//  @return DummyPolicy
+//
+//	@return DummyPolicy
 func (a *PoliciesApiService) PoliciesDummyUpdateExecute(r ApiPoliciesDummyUpdateRequest) (*DummyPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -3152,9 +3169,9 @@ PoliciesDummyUsedByList Method for PoliciesDummyUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Dummy Policy.
- @return ApiPoliciesDummyUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Dummy Policy.
+	@return ApiPoliciesDummyUsedByListRequest
 */
 func (a *PoliciesApiService) PoliciesDummyUsedByList(ctx context.Context, policyUuid string) ApiPoliciesDummyUsedByListRequest {
 	return ApiPoliciesDummyUsedByListRequest{
@@ -3165,7 +3182,8 @@ func (a *PoliciesApiService) PoliciesDummyUsedByList(ctx context.Context, policy
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *PoliciesApiService) PoliciesDummyUsedByListExecute(r ApiPoliciesDummyUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3293,8 +3311,8 @@ PoliciesEventMatcherCreate Method for PoliciesEventMatcherCreate
 
 Event Matcher Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesEventMatcherCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesEventMatcherCreateRequest
 */
 func (a *PoliciesApiService) PoliciesEventMatcherCreate(ctx context.Context) ApiPoliciesEventMatcherCreateRequest {
 	return ApiPoliciesEventMatcherCreateRequest{
@@ -3304,7 +3322,8 @@ func (a *PoliciesApiService) PoliciesEventMatcherCreate(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return EventMatcherPolicy
+//
+//	@return EventMatcherPolicy
 func (a *PoliciesApiService) PoliciesEventMatcherCreateExecute(r ApiPoliciesEventMatcherCreateRequest) (*EventMatcherPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -3431,9 +3450,9 @@ PoliciesEventMatcherDestroy Method for PoliciesEventMatcherDestroy
 
 Event Matcher Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Event Matcher Policy.
- @return ApiPoliciesEventMatcherDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Event Matcher Policy.
+	@return ApiPoliciesEventMatcherDestroyRequest
 */
 func (a *PoliciesApiService) PoliciesEventMatcherDestroy(ctx context.Context, policyUuid string) ApiPoliciesEventMatcherDestroyRequest {
 	return ApiPoliciesEventMatcherDestroyRequest{
@@ -3632,8 +3651,8 @@ PoliciesEventMatcherList Method for PoliciesEventMatcherList
 
 Event Matcher Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesEventMatcherListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesEventMatcherListRequest
 */
 func (a *PoliciesApiService) PoliciesEventMatcherList(ctx context.Context) ApiPoliciesEventMatcherListRequest {
 	return ApiPoliciesEventMatcherListRequest{
@@ -3643,7 +3662,8 @@ func (a *PoliciesApiService) PoliciesEventMatcherList(ctx context.Context) ApiPo
 }
 
 // Execute executes the request
-//  @return PaginatedEventMatcherPolicyList
+//
+//	@return PaginatedEventMatcherPolicyList
 func (a *PoliciesApiService) PoliciesEventMatcherListExecute(r ApiPoliciesEventMatcherListRequest) (*PaginatedEventMatcherPolicyList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3807,9 +3827,9 @@ PoliciesEventMatcherPartialUpdate Method for PoliciesEventMatcherPartialUpdate
 
 Event Matcher Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Event Matcher Policy.
- @return ApiPoliciesEventMatcherPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Event Matcher Policy.
+	@return ApiPoliciesEventMatcherPartialUpdateRequest
 */
 func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdate(ctx context.Context, policyUuid string) ApiPoliciesEventMatcherPartialUpdateRequest {
 	return ApiPoliciesEventMatcherPartialUpdateRequest{
@@ -3820,7 +3840,8 @@ func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdate(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return EventMatcherPolicy
+//
+//	@return EventMatcherPolicy
 func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdateExecute(r ApiPoliciesEventMatcherPartialUpdateRequest) (*EventMatcherPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -3945,9 +3966,9 @@ PoliciesEventMatcherRetrieve Method for PoliciesEventMatcherRetrieve
 
 Event Matcher Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Event Matcher Policy.
- @return ApiPoliciesEventMatcherRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Event Matcher Policy.
+	@return ApiPoliciesEventMatcherRetrieveRequest
 */
 func (a *PoliciesApiService) PoliciesEventMatcherRetrieve(ctx context.Context, policyUuid string) ApiPoliciesEventMatcherRetrieveRequest {
 	return ApiPoliciesEventMatcherRetrieveRequest{
@@ -3958,7 +3979,8 @@ func (a *PoliciesApiService) PoliciesEventMatcherRetrieve(ctx context.Context, p
 }
 
 // Execute executes the request
-//  @return EventMatcherPolicy
+//
+//	@return EventMatcherPolicy
 func (a *PoliciesApiService) PoliciesEventMatcherRetrieveExecute(r ApiPoliciesEventMatcherRetrieveRequest) (*EventMatcherPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4087,9 +4109,9 @@ PoliciesEventMatcherUpdate Method for PoliciesEventMatcherUpdate
 
 Event Matcher Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Event Matcher Policy.
- @return ApiPoliciesEventMatcherUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Event Matcher Policy.
+	@return ApiPoliciesEventMatcherUpdateRequest
 */
 func (a *PoliciesApiService) PoliciesEventMatcherUpdate(ctx context.Context, policyUuid string) ApiPoliciesEventMatcherUpdateRequest {
 	return ApiPoliciesEventMatcherUpdateRequest{
@@ -4100,7 +4122,8 @@ func (a *PoliciesApiService) PoliciesEventMatcherUpdate(ctx context.Context, pol
 }
 
 // Execute executes the request
-//  @return EventMatcherPolicy
+//
+//	@return EventMatcherPolicy
 func (a *PoliciesApiService) PoliciesEventMatcherUpdateExecute(r ApiPoliciesEventMatcherUpdateRequest) (*EventMatcherPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -4228,9 +4251,9 @@ PoliciesEventMatcherUsedByList Method for PoliciesEventMatcherUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Event Matcher Policy.
- @return ApiPoliciesEventMatcherUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Event Matcher Policy.
+	@return ApiPoliciesEventMatcherUsedByListRequest
 */
 func (a *PoliciesApiService) PoliciesEventMatcherUsedByList(ctx context.Context, policyUuid string) ApiPoliciesEventMatcherUsedByListRequest {
 	return ApiPoliciesEventMatcherUsedByListRequest{
@@ -4241,7 +4264,8 @@ func (a *PoliciesApiService) PoliciesEventMatcherUsedByList(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *PoliciesApiService) PoliciesEventMatcherUsedByListExecute(r ApiPoliciesEventMatcherUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4369,8 +4393,8 @@ PoliciesExpressionCreate Method for PoliciesExpressionCreate
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesExpressionCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesExpressionCreateRequest
 */
 func (a *PoliciesApiService) PoliciesExpressionCreate(ctx context.Context) ApiPoliciesExpressionCreateRequest {
 	return ApiPoliciesExpressionCreateRequest{
@@ -4380,7 +4404,8 @@ func (a *PoliciesApiService) PoliciesExpressionCreate(ctx context.Context) ApiPo
 }
 
 // Execute executes the request
-//  @return ExpressionPolicy
+//
+//	@return ExpressionPolicy
 func (a *PoliciesApiService) PoliciesExpressionCreateExecute(r ApiPoliciesExpressionCreateRequest) (*ExpressionPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -4507,9 +4532,9 @@ PoliciesExpressionDestroy Method for PoliciesExpressionDestroy
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Expression Policy.
- @return ApiPoliciesExpressionDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Expression Policy.
+	@return ApiPoliciesExpressionDestroyRequest
 */
 func (a *PoliciesApiService) PoliciesExpressionDestroy(ctx context.Context, policyUuid string) ApiPoliciesExpressionDestroyRequest {
 	return ApiPoliciesExpressionDestroyRequest{
@@ -4695,8 +4720,8 @@ PoliciesExpressionList Method for PoliciesExpressionList
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesExpressionListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesExpressionListRequest
 */
 func (a *PoliciesApiService) PoliciesExpressionList(ctx context.Context) ApiPoliciesExpressionListRequest {
 	return ApiPoliciesExpressionListRequest{
@@ -4706,7 +4731,8 @@ func (a *PoliciesApiService) PoliciesExpressionList(ctx context.Context) ApiPoli
 }
 
 // Execute executes the request
-//  @return PaginatedExpressionPolicyList
+//
+//	@return PaginatedExpressionPolicyList
 func (a *PoliciesApiService) PoliciesExpressionListExecute(r ApiPoliciesExpressionListRequest) (*PaginatedExpressionPolicyList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4864,9 +4890,9 @@ PoliciesExpressionPartialUpdate Method for PoliciesExpressionPartialUpdate
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Expression Policy.
- @return ApiPoliciesExpressionPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Expression Policy.
+	@return ApiPoliciesExpressionPartialUpdateRequest
 */
 func (a *PoliciesApiService) PoliciesExpressionPartialUpdate(ctx context.Context, policyUuid string) ApiPoliciesExpressionPartialUpdateRequest {
 	return ApiPoliciesExpressionPartialUpdateRequest{
@@ -4877,7 +4903,8 @@ func (a *PoliciesApiService) PoliciesExpressionPartialUpdate(ctx context.Context
 }
 
 // Execute executes the request
-//  @return ExpressionPolicy
+//
+//	@return ExpressionPolicy
 func (a *PoliciesApiService) PoliciesExpressionPartialUpdateExecute(r ApiPoliciesExpressionPartialUpdateRequest) (*ExpressionPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -5002,9 +5029,9 @@ PoliciesExpressionRetrieve Method for PoliciesExpressionRetrieve
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Expression Policy.
- @return ApiPoliciesExpressionRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Expression Policy.
+	@return ApiPoliciesExpressionRetrieveRequest
 */
 func (a *PoliciesApiService) PoliciesExpressionRetrieve(ctx context.Context, policyUuid string) ApiPoliciesExpressionRetrieveRequest {
 	return ApiPoliciesExpressionRetrieveRequest{
@@ -5015,7 +5042,8 @@ func (a *PoliciesApiService) PoliciesExpressionRetrieve(ctx context.Context, pol
 }
 
 // Execute executes the request
-//  @return ExpressionPolicy
+//
+//	@return ExpressionPolicy
 func (a *PoliciesApiService) PoliciesExpressionRetrieveExecute(r ApiPoliciesExpressionRetrieveRequest) (*ExpressionPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5144,9 +5172,9 @@ PoliciesExpressionUpdate Method for PoliciesExpressionUpdate
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Expression Policy.
- @return ApiPoliciesExpressionUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Expression Policy.
+	@return ApiPoliciesExpressionUpdateRequest
 */
 func (a *PoliciesApiService) PoliciesExpressionUpdate(ctx context.Context, policyUuid string) ApiPoliciesExpressionUpdateRequest {
 	return ApiPoliciesExpressionUpdateRequest{
@@ -5157,7 +5185,8 @@ func (a *PoliciesApiService) PoliciesExpressionUpdate(ctx context.Context, polic
 }
 
 // Execute executes the request
-//  @return ExpressionPolicy
+//
+//	@return ExpressionPolicy
 func (a *PoliciesApiService) PoliciesExpressionUpdateExecute(r ApiPoliciesExpressionUpdateRequest) (*ExpressionPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -5285,9 +5314,9 @@ PoliciesExpressionUsedByList Method for PoliciesExpressionUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Expression Policy.
- @return ApiPoliciesExpressionUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Expression Policy.
+	@return ApiPoliciesExpressionUsedByListRequest
 */
 func (a *PoliciesApiService) PoliciesExpressionUsedByList(ctx context.Context, policyUuid string) ApiPoliciesExpressionUsedByListRequest {
 	return ApiPoliciesExpressionUsedByListRequest{
@@ -5298,7 +5327,8 @@ func (a *PoliciesApiService) PoliciesExpressionUsedByList(ctx context.Context, p
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *PoliciesApiService) PoliciesExpressionUsedByListExecute(r ApiPoliciesExpressionUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5426,8 +5456,8 @@ PoliciesPasswordCreate Method for PoliciesPasswordCreate
 
 Password Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesPasswordCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesPasswordCreateRequest
 */
 func (a *PoliciesApiService) PoliciesPasswordCreate(ctx context.Context) ApiPoliciesPasswordCreateRequest {
 	return ApiPoliciesPasswordCreateRequest{
@@ -5437,7 +5467,8 @@ func (a *PoliciesApiService) PoliciesPasswordCreate(ctx context.Context) ApiPoli
 }
 
 // Execute executes the request
-//  @return PasswordPolicy
+//
+//	@return PasswordPolicy
 func (a *PoliciesApiService) PoliciesPasswordCreateExecute(r ApiPoliciesPasswordCreateRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -5564,9 +5595,9 @@ PoliciesPasswordDestroy Method for PoliciesPasswordDestroy
 
 Password Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Password Policy.
- @return ApiPoliciesPasswordDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Policy.
+	@return ApiPoliciesPasswordDestroyRequest
 */
 func (a *PoliciesApiService) PoliciesPasswordDestroy(ctx context.Context, policyUuid string) ApiPoliciesPasswordDestroyRequest {
 	return ApiPoliciesPasswordDestroyRequest{
@@ -5694,8 +5725,8 @@ PoliciesPasswordExpiryCreate Method for PoliciesPasswordExpiryCreate
 
 Password Expiry Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesPasswordExpiryCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesPasswordExpiryCreateRequest
 */
 func (a *PoliciesApiService) PoliciesPasswordExpiryCreate(ctx context.Context) ApiPoliciesPasswordExpiryCreateRequest {
 	return ApiPoliciesPasswordExpiryCreateRequest{
@@ -5705,7 +5736,8 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryCreate(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return PasswordExpiryPolicy
+//
+//	@return PasswordExpiryPolicy
 func (a *PoliciesApiService) PoliciesPasswordExpiryCreateExecute(r ApiPoliciesPasswordExpiryCreateRequest) (*PasswordExpiryPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -5832,9 +5864,9 @@ PoliciesPasswordExpiryDestroy Method for PoliciesPasswordExpiryDestroy
 
 Password Expiry Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Password Expiry Policy.
- @return ApiPoliciesPasswordExpiryDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Expiry Policy.
+	@return ApiPoliciesPasswordExpiryDestroyRequest
 */
 func (a *PoliciesApiService) PoliciesPasswordExpiryDestroy(ctx context.Context, policyUuid string) ApiPoliciesPasswordExpiryDestroyRequest {
 	return ApiPoliciesPasswordExpiryDestroyRequest{
@@ -6026,8 +6058,8 @@ PoliciesPasswordExpiryList Method for PoliciesPasswordExpiryList
 
 Password Expiry Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesPasswordExpiryListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesPasswordExpiryListRequest
 */
 func (a *PoliciesApiService) PoliciesPasswordExpiryList(ctx context.Context) ApiPoliciesPasswordExpiryListRequest {
 	return ApiPoliciesPasswordExpiryListRequest{
@@ -6037,7 +6069,8 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryList(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return PaginatedPasswordExpiryPolicyList
+//
+//	@return PaginatedPasswordExpiryPolicyList
 func (a *PoliciesApiService) PoliciesPasswordExpiryListExecute(r ApiPoliciesPasswordExpiryListRequest) (*PaginatedPasswordExpiryPolicyList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6198,9 +6231,9 @@ PoliciesPasswordExpiryPartialUpdate Method for PoliciesPasswordExpiryPartialUpda
 
 Password Expiry Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Password Expiry Policy.
- @return ApiPoliciesPasswordExpiryPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Expiry Policy.
+	@return ApiPoliciesPasswordExpiryPartialUpdateRequest
 */
 func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdate(ctx context.Context, policyUuid string) ApiPoliciesPasswordExpiryPartialUpdateRequest {
 	return ApiPoliciesPasswordExpiryPartialUpdateRequest{
@@ -6211,7 +6244,8 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdate(ctx context.Con
 }
 
 // Execute executes the request
-//  @return PasswordExpiryPolicy
+//
+//	@return PasswordExpiryPolicy
 func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdateExecute(r ApiPoliciesPasswordExpiryPartialUpdateRequest) (*PasswordExpiryPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -6336,9 +6370,9 @@ PoliciesPasswordExpiryRetrieve Method for PoliciesPasswordExpiryRetrieve
 
 Password Expiry Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Password Expiry Policy.
- @return ApiPoliciesPasswordExpiryRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Expiry Policy.
+	@return ApiPoliciesPasswordExpiryRetrieveRequest
 */
 func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieve(ctx context.Context, policyUuid string) ApiPoliciesPasswordExpiryRetrieveRequest {
 	return ApiPoliciesPasswordExpiryRetrieveRequest{
@@ -6349,7 +6383,8 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieve(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return PasswordExpiryPolicy
+//
+//	@return PasswordExpiryPolicy
 func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieveExecute(r ApiPoliciesPasswordExpiryRetrieveRequest) (*PasswordExpiryPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6478,9 +6513,9 @@ PoliciesPasswordExpiryUpdate Method for PoliciesPasswordExpiryUpdate
 
 Password Expiry Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Password Expiry Policy.
- @return ApiPoliciesPasswordExpiryUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Expiry Policy.
+	@return ApiPoliciesPasswordExpiryUpdateRequest
 */
 func (a *PoliciesApiService) PoliciesPasswordExpiryUpdate(ctx context.Context, policyUuid string) ApiPoliciesPasswordExpiryUpdateRequest {
 	return ApiPoliciesPasswordExpiryUpdateRequest{
@@ -6491,7 +6526,8 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUpdate(ctx context.Context, p
 }
 
 // Execute executes the request
-//  @return PasswordExpiryPolicy
+//
+//	@return PasswordExpiryPolicy
 func (a *PoliciesApiService) PoliciesPasswordExpiryUpdateExecute(r ApiPoliciesPasswordExpiryUpdateRequest) (*PasswordExpiryPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -6619,9 +6655,9 @@ PoliciesPasswordExpiryUsedByList Method for PoliciesPasswordExpiryUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Password Expiry Policy.
- @return ApiPoliciesPasswordExpiryUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Expiry Policy.
+	@return ApiPoliciesPasswordExpiryUsedByListRequest
 */
 func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByList(ctx context.Context, policyUuid string) ApiPoliciesPasswordExpiryUsedByListRequest {
 	return ApiPoliciesPasswordExpiryUsedByListRequest{
@@ -6632,7 +6668,8 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByList(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByListExecute(r ApiPoliciesPasswordExpiryUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6890,8 +6927,8 @@ PoliciesPasswordList Method for PoliciesPasswordList
 
 Password Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesPasswordListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesPasswordListRequest
 */
 func (a *PoliciesApiService) PoliciesPasswordList(ctx context.Context) ApiPoliciesPasswordListRequest {
 	return ApiPoliciesPasswordListRequest{
@@ -6901,7 +6938,8 @@ func (a *PoliciesApiService) PoliciesPasswordList(ctx context.Context) ApiPolici
 }
 
 // Execute executes the request
-//  @return PaginatedPasswordPolicyList
+//
+//	@return PaginatedPasswordPolicyList
 func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordListRequest) (*PaginatedPasswordPolicyList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7095,9 +7133,9 @@ PoliciesPasswordPartialUpdate Method for PoliciesPasswordPartialUpdate
 
 Password Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Password Policy.
- @return ApiPoliciesPasswordPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Policy.
+	@return ApiPoliciesPasswordPartialUpdateRequest
 */
 func (a *PoliciesApiService) PoliciesPasswordPartialUpdate(ctx context.Context, policyUuid string) ApiPoliciesPasswordPartialUpdateRequest {
 	return ApiPoliciesPasswordPartialUpdateRequest{
@@ -7108,7 +7146,8 @@ func (a *PoliciesApiService) PoliciesPasswordPartialUpdate(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return PasswordPolicy
+//
+//	@return PasswordPolicy
 func (a *PoliciesApiService) PoliciesPasswordPartialUpdateExecute(r ApiPoliciesPasswordPartialUpdateRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -7233,9 +7272,9 @@ PoliciesPasswordRetrieve Method for PoliciesPasswordRetrieve
 
 Password Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Password Policy.
- @return ApiPoliciesPasswordRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Policy.
+	@return ApiPoliciesPasswordRetrieveRequest
 */
 func (a *PoliciesApiService) PoliciesPasswordRetrieve(ctx context.Context, policyUuid string) ApiPoliciesPasswordRetrieveRequest {
 	return ApiPoliciesPasswordRetrieveRequest{
@@ -7246,7 +7285,8 @@ func (a *PoliciesApiService) PoliciesPasswordRetrieve(ctx context.Context, polic
 }
 
 // Execute executes the request
-//  @return PasswordPolicy
+//
+//	@return PasswordPolicy
 func (a *PoliciesApiService) PoliciesPasswordRetrieveExecute(r ApiPoliciesPasswordRetrieveRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7375,9 +7415,9 @@ PoliciesPasswordUpdate Method for PoliciesPasswordUpdate
 
 Password Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Password Policy.
- @return ApiPoliciesPasswordUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Policy.
+	@return ApiPoliciesPasswordUpdateRequest
 */
 func (a *PoliciesApiService) PoliciesPasswordUpdate(ctx context.Context, policyUuid string) ApiPoliciesPasswordUpdateRequest {
 	return ApiPoliciesPasswordUpdateRequest{
@@ -7388,7 +7428,8 @@ func (a *PoliciesApiService) PoliciesPasswordUpdate(ctx context.Context, policyU
 }
 
 // Execute executes the request
-//  @return PasswordPolicy
+//
+//	@return PasswordPolicy
 func (a *PoliciesApiService) PoliciesPasswordUpdateExecute(r ApiPoliciesPasswordUpdateRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -7516,9 +7557,9 @@ PoliciesPasswordUsedByList Method for PoliciesPasswordUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Password Policy.
- @return ApiPoliciesPasswordUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Policy.
+	@return ApiPoliciesPasswordUsedByListRequest
 */
 func (a *PoliciesApiService) PoliciesPasswordUsedByList(ctx context.Context, policyUuid string) ApiPoliciesPasswordUsedByListRequest {
 	return ApiPoliciesPasswordUsedByListRequest{
@@ -7529,7 +7570,8 @@ func (a *PoliciesApiService) PoliciesPasswordUsedByList(ctx context.Context, pol
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *PoliciesApiService) PoliciesPasswordUsedByListExecute(r ApiPoliciesPasswordUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7657,8 +7699,8 @@ PoliciesReputationCreate Method for PoliciesReputationCreate
 
 Reputation Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesReputationCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesReputationCreateRequest
 */
 func (a *PoliciesApiService) PoliciesReputationCreate(ctx context.Context) ApiPoliciesReputationCreateRequest {
 	return ApiPoliciesReputationCreateRequest{
@@ -7668,7 +7710,8 @@ func (a *PoliciesApiService) PoliciesReputationCreate(ctx context.Context) ApiPo
 }
 
 // Execute executes the request
-//  @return ReputationPolicy
+//
+//	@return ReputationPolicy
 func (a *PoliciesApiService) PoliciesReputationCreateExecute(r ApiPoliciesReputationCreateRequest) (*ReputationPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -7795,9 +7838,9 @@ PoliciesReputationDestroy Method for PoliciesReputationDestroy
 
 Reputation Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Reputation Policy.
- @return ApiPoliciesReputationDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Reputation Policy.
+	@return ApiPoliciesReputationDestroyRequest
 */
 func (a *PoliciesApiService) PoliciesReputationDestroy(ctx context.Context, policyUuid string) ApiPoliciesReputationDestroyRequest {
 	return ApiPoliciesReputationDestroyRequest{
@@ -7995,8 +8038,8 @@ PoliciesReputationList Method for PoliciesReputationList
 
 Reputation Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesReputationListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesReputationListRequest
 */
 func (a *PoliciesApiService) PoliciesReputationList(ctx context.Context) ApiPoliciesReputationListRequest {
 	return ApiPoliciesReputationListRequest{
@@ -8006,7 +8049,8 @@ func (a *PoliciesApiService) PoliciesReputationList(ctx context.Context) ApiPoli
 }
 
 // Execute executes the request
-//  @return PaginatedReputationPolicyList
+//
+//	@return PaginatedReputationPolicyList
 func (a *PoliciesApiService) PoliciesReputationListExecute(r ApiPoliciesReputationListRequest) (*PaginatedReputationPolicyList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8170,9 +8214,9 @@ PoliciesReputationPartialUpdate Method for PoliciesReputationPartialUpdate
 
 Reputation Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Reputation Policy.
- @return ApiPoliciesReputationPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Reputation Policy.
+	@return ApiPoliciesReputationPartialUpdateRequest
 */
 func (a *PoliciesApiService) PoliciesReputationPartialUpdate(ctx context.Context, policyUuid string) ApiPoliciesReputationPartialUpdateRequest {
 	return ApiPoliciesReputationPartialUpdateRequest{
@@ -8183,7 +8227,8 @@ func (a *PoliciesApiService) PoliciesReputationPartialUpdate(ctx context.Context
 }
 
 // Execute executes the request
-//  @return ReputationPolicy
+//
+//	@return ReputationPolicy
 func (a *PoliciesApiService) PoliciesReputationPartialUpdateExecute(r ApiPoliciesReputationPartialUpdateRequest) (*ReputationPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -8308,9 +8353,9 @@ PoliciesReputationRetrieve Method for PoliciesReputationRetrieve
 
 Reputation Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Reputation Policy.
- @return ApiPoliciesReputationRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Reputation Policy.
+	@return ApiPoliciesReputationRetrieveRequest
 */
 func (a *PoliciesApiService) PoliciesReputationRetrieve(ctx context.Context, policyUuid string) ApiPoliciesReputationRetrieveRequest {
 	return ApiPoliciesReputationRetrieveRequest{
@@ -8321,7 +8366,8 @@ func (a *PoliciesApiService) PoliciesReputationRetrieve(ctx context.Context, pol
 }
 
 // Execute executes the request
-//  @return ReputationPolicy
+//
+//	@return ReputationPolicy
 func (a *PoliciesApiService) PoliciesReputationRetrieveExecute(r ApiPoliciesReputationRetrieveRequest) (*ReputationPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8444,9 +8490,9 @@ PoliciesReputationScoresDestroy Method for PoliciesReputationScoresDestroy
 
 Reputation Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param reputationUuid A UUID string identifying this reputation.
- @return ApiPoliciesReputationScoresDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reputationUuid A UUID string identifying this reputation.
+	@return ApiPoliciesReputationScoresDestroyRequest
 */
 func (a *PoliciesApiService) PoliciesReputationScoresDestroy(ctx context.Context, reputationUuid string) ApiPoliciesReputationScoresDestroyRequest {
 	return ApiPoliciesReputationScoresDestroyRequest{
@@ -8614,8 +8660,8 @@ PoliciesReputationScoresList Method for PoliciesReputationScoresList
 
 Reputation Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPoliciesReputationScoresListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesReputationScoresListRequest
 */
 func (a *PoliciesApiService) PoliciesReputationScoresList(ctx context.Context) ApiPoliciesReputationScoresListRequest {
 	return ApiPoliciesReputationScoresListRequest{
@@ -8625,7 +8671,8 @@ func (a *PoliciesApiService) PoliciesReputationScoresList(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return PaginatedReputationList
+//
+//	@return PaginatedReputationList
 func (a *PoliciesApiService) PoliciesReputationScoresListExecute(r ApiPoliciesReputationScoresListRequest) (*PaginatedReputationList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8768,9 +8815,9 @@ PoliciesReputationScoresRetrieve Method for PoliciesReputationScoresRetrieve
 
 Reputation Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param reputationUuid A UUID string identifying this reputation.
- @return ApiPoliciesReputationScoresRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reputationUuid A UUID string identifying this reputation.
+	@return ApiPoliciesReputationScoresRetrieveRequest
 */
 func (a *PoliciesApiService) PoliciesReputationScoresRetrieve(ctx context.Context, reputationUuid string) ApiPoliciesReputationScoresRetrieveRequest {
 	return ApiPoliciesReputationScoresRetrieveRequest{
@@ -8781,7 +8828,8 @@ func (a *PoliciesApiService) PoliciesReputationScoresRetrieve(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Reputation
+//
+//	@return Reputation
 func (a *PoliciesApiService) PoliciesReputationScoresRetrieveExecute(r ApiPoliciesReputationScoresRetrieveRequest) (*Reputation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8904,9 +8952,9 @@ PoliciesReputationScoresUsedByList Method for PoliciesReputationScoresUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param reputationUuid A UUID string identifying this reputation.
- @return ApiPoliciesReputationScoresUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reputationUuid A UUID string identifying this reputation.
+	@return ApiPoliciesReputationScoresUsedByListRequest
 */
 func (a *PoliciesApiService) PoliciesReputationScoresUsedByList(ctx context.Context, reputationUuid string) ApiPoliciesReputationScoresUsedByListRequest {
 	return ApiPoliciesReputationScoresUsedByListRequest{
@@ -8917,7 +8965,8 @@ func (a *PoliciesApiService) PoliciesReputationScoresUsedByList(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *PoliciesApiService) PoliciesReputationScoresUsedByListExecute(r ApiPoliciesReputationScoresUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -9046,9 +9095,9 @@ PoliciesReputationUpdate Method for PoliciesReputationUpdate
 
 Reputation Policy Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Reputation Policy.
- @return ApiPoliciesReputationUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Reputation Policy.
+	@return ApiPoliciesReputationUpdateRequest
 */
 func (a *PoliciesApiService) PoliciesReputationUpdate(ctx context.Context, policyUuid string) ApiPoliciesReputationUpdateRequest {
 	return ApiPoliciesReputationUpdateRequest{
@@ -9059,7 +9108,8 @@ func (a *PoliciesApiService) PoliciesReputationUpdate(ctx context.Context, polic
 }
 
 // Execute executes the request
-//  @return ReputationPolicy
+//
+//	@return ReputationPolicy
 func (a *PoliciesApiService) PoliciesReputationUpdateExecute(r ApiPoliciesReputationUpdateRequest) (*ReputationPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -9187,9 +9237,9 @@ PoliciesReputationUsedByList Method for PoliciesReputationUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param policyUuid A UUID string identifying this Reputation Policy.
- @return ApiPoliciesReputationUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Reputation Policy.
+	@return ApiPoliciesReputationUsedByListRequest
 */
 func (a *PoliciesApiService) PoliciesReputationUsedByList(ctx context.Context, policyUuid string) ApiPoliciesReputationUsedByListRequest {
 	return ApiPoliciesReputationUsedByListRequest{
@@ -9200,7 +9250,8 @@ func (a *PoliciesApiService) PoliciesReputationUsedByList(ctx context.Context, p
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *PoliciesApiService) PoliciesReputationUsedByListExecute(r ApiPoliciesReputationUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

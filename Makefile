@@ -22,4 +22,5 @@ build:
 	go get
 	go fmt .
 	go mod tidy
-	rm -f .travis.yml
+	go get -u ./...
+	rm -f .travis.yml git_push.sh

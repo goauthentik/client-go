@@ -43,8 +43,8 @@ CryptoCertificatekeypairsCreate Method for CryptoCertificatekeypairsCreate
 
 CertificateKeyPair Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCryptoCertificatekeypairsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCryptoCertificatekeypairsCreateRequest
 */
 func (a *CryptoApiService) CryptoCertificatekeypairsCreate(ctx context.Context) ApiCryptoCertificatekeypairsCreateRequest {
 	return ApiCryptoCertificatekeypairsCreateRequest{
@@ -54,7 +54,8 @@ func (a *CryptoApiService) CryptoCertificatekeypairsCreate(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return CertificateKeyPair
+//
+//	@return CertificateKeyPair
 func (a *CryptoApiService) CryptoCertificatekeypairsCreateExecute(r ApiCryptoCertificatekeypairsCreateRequest) (*CertificateKeyPair, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -181,9 +182,9 @@ CryptoCertificatekeypairsDestroy Method for CryptoCertificatekeypairsDestroy
 
 CertificateKeyPair Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param kpUuid A UUID string identifying this Certificate-Key Pair.
- @return ApiCryptoCertificatekeypairsDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param kpUuid A UUID string identifying this Certificate-Key Pair.
+	@return ApiCryptoCertificatekeypairsDestroyRequest
 */
 func (a *CryptoApiService) CryptoCertificatekeypairsDestroy(ctx context.Context, kpUuid string) ApiCryptoCertificatekeypairsDestroyRequest {
 	return ApiCryptoCertificatekeypairsDestroyRequest{
@@ -311,8 +312,8 @@ CryptoCertificatekeypairsGenerateCreate Method for CryptoCertificatekeypairsGene
 
 Generate a new, self-signed certificate-key pair
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCryptoCertificatekeypairsGenerateCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCryptoCertificatekeypairsGenerateCreateRequest
 */
 func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreate(ctx context.Context) ApiCryptoCertificatekeypairsGenerateCreateRequest {
 	return ApiCryptoCertificatekeypairsGenerateCreateRequest{
@@ -322,7 +323,8 @@ func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreate(ctx context.C
 }
 
 // Execute executes the request
-//  @return CertificateKeyPair
+//
+//	@return CertificateKeyPair
 func (a *CryptoApiService) CryptoCertificatekeypairsGenerateCreateExecute(r ApiCryptoCertificatekeypairsGenerateCreateRequest) (*CertificateKeyPair, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -493,8 +495,8 @@ CryptoCertificatekeypairsList Method for CryptoCertificatekeypairsList
 
 CertificateKeyPair Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCryptoCertificatekeypairsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCryptoCertificatekeypairsListRequest
 */
 func (a *CryptoApiService) CryptoCertificatekeypairsList(ctx context.Context) ApiCryptoCertificatekeypairsListRequest {
 	return ApiCryptoCertificatekeypairsListRequest{
@@ -504,7 +506,8 @@ func (a *CryptoApiService) CryptoCertificatekeypairsList(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return PaginatedCertificateKeyPairList
+//
+//	@return PaginatedCertificateKeyPairList
 func (a *CryptoApiService) CryptoCertificatekeypairsListExecute(r ApiCryptoCertificatekeypairsListRequest) (*PaginatedCertificateKeyPairList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -656,9 +659,9 @@ CryptoCertificatekeypairsPartialUpdate Method for CryptoCertificatekeypairsParti
 
 CertificateKeyPair Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param kpUuid A UUID string identifying this Certificate-Key Pair.
- @return ApiCryptoCertificatekeypairsPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param kpUuid A UUID string identifying this Certificate-Key Pair.
+	@return ApiCryptoCertificatekeypairsPartialUpdateRequest
 */
 func (a *CryptoApiService) CryptoCertificatekeypairsPartialUpdate(ctx context.Context, kpUuid string) ApiCryptoCertificatekeypairsPartialUpdateRequest {
 	return ApiCryptoCertificatekeypairsPartialUpdateRequest{
@@ -669,7 +672,8 @@ func (a *CryptoApiService) CryptoCertificatekeypairsPartialUpdate(ctx context.Co
 }
 
 // Execute executes the request
-//  @return CertificateKeyPair
+//
+//	@return CertificateKeyPair
 func (a *CryptoApiService) CryptoCertificatekeypairsPartialUpdateExecute(r ApiCryptoCertificatekeypairsPartialUpdateRequest) (*CertificateKeyPair, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -794,9 +798,9 @@ CryptoCertificatekeypairsRetrieve Method for CryptoCertificatekeypairsRetrieve
 
 CertificateKeyPair Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param kpUuid A UUID string identifying this Certificate-Key Pair.
- @return ApiCryptoCertificatekeypairsRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param kpUuid A UUID string identifying this Certificate-Key Pair.
+	@return ApiCryptoCertificatekeypairsRetrieveRequest
 */
 func (a *CryptoApiService) CryptoCertificatekeypairsRetrieve(ctx context.Context, kpUuid string) ApiCryptoCertificatekeypairsRetrieveRequest {
 	return ApiCryptoCertificatekeypairsRetrieveRequest{
@@ -807,7 +811,8 @@ func (a *CryptoApiService) CryptoCertificatekeypairsRetrieve(ctx context.Context
 }
 
 // Execute executes the request
-//  @return CertificateKeyPair
+//
+//	@return CertificateKeyPair
 func (a *CryptoApiService) CryptoCertificatekeypairsRetrieveExecute(r ApiCryptoCertificatekeypairsRetrieveRequest) (*CertificateKeyPair, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -936,9 +941,9 @@ CryptoCertificatekeypairsUpdate Method for CryptoCertificatekeypairsUpdate
 
 CertificateKeyPair Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param kpUuid A UUID string identifying this Certificate-Key Pair.
- @return ApiCryptoCertificatekeypairsUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param kpUuid A UUID string identifying this Certificate-Key Pair.
+	@return ApiCryptoCertificatekeypairsUpdateRequest
 */
 func (a *CryptoApiService) CryptoCertificatekeypairsUpdate(ctx context.Context, kpUuid string) ApiCryptoCertificatekeypairsUpdateRequest {
 	return ApiCryptoCertificatekeypairsUpdateRequest{
@@ -949,7 +954,8 @@ func (a *CryptoApiService) CryptoCertificatekeypairsUpdate(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return CertificateKeyPair
+//
+//	@return CertificateKeyPair
 func (a *CryptoApiService) CryptoCertificatekeypairsUpdateExecute(r ApiCryptoCertificatekeypairsUpdateRequest) (*CertificateKeyPair, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -1077,9 +1083,9 @@ CryptoCertificatekeypairsUsedByList Method for CryptoCertificatekeypairsUsedByLi
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param kpUuid A UUID string identifying this Certificate-Key Pair.
- @return ApiCryptoCertificatekeypairsUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param kpUuid A UUID string identifying this Certificate-Key Pair.
+	@return ApiCryptoCertificatekeypairsUsedByListRequest
 */
 func (a *CryptoApiService) CryptoCertificatekeypairsUsedByList(ctx context.Context, kpUuid string) ApiCryptoCertificatekeypairsUsedByListRequest {
 	return ApiCryptoCertificatekeypairsUsedByListRequest{
@@ -1090,7 +1096,8 @@ func (a *CryptoApiService) CryptoCertificatekeypairsUsedByList(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *CryptoApiService) CryptoCertificatekeypairsUsedByListExecute(r ApiCryptoCertificatekeypairsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1219,9 +1226,9 @@ CryptoCertificatekeypairsViewCertificateRetrieve Method for CryptoCertificatekey
 
 Return certificate-key pairs certificate and log access
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param kpUuid A UUID string identifying this Certificate-Key Pair.
- @return ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param kpUuid A UUID string identifying this Certificate-Key Pair.
+	@return ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest
 */
 func (a *CryptoApiService) CryptoCertificatekeypairsViewCertificateRetrieve(ctx context.Context, kpUuid string) ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest {
 	return ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest{
@@ -1232,7 +1239,8 @@ func (a *CryptoApiService) CryptoCertificatekeypairsViewCertificateRetrieve(ctx 
 }
 
 // Execute executes the request
-//  @return CertificateData
+//
+//	@return CertificateData
 func (a *CryptoApiService) CryptoCertificatekeypairsViewCertificateRetrieveExecute(r ApiCryptoCertificatekeypairsViewCertificateRetrieveRequest) (*CertificateData, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1364,9 +1372,9 @@ CryptoCertificatekeypairsViewPrivateKeyRetrieve Method for CryptoCertificatekeyp
 
 Return certificate-key pairs private key and log access
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param kpUuid A UUID string identifying this Certificate-Key Pair.
- @return ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param kpUuid A UUID string identifying this Certificate-Key Pair.
+	@return ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest
 */
 func (a *CryptoApiService) CryptoCertificatekeypairsViewPrivateKeyRetrieve(ctx context.Context, kpUuid string) ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest {
 	return ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest{
@@ -1377,7 +1385,8 @@ func (a *CryptoApiService) CryptoCertificatekeypairsViewPrivateKeyRetrieve(ctx c
 }
 
 // Execute executes the request
-//  @return CertificateData
+//
+//	@return CertificateData
 func (a *CryptoApiService) CryptoCertificatekeypairsViewPrivateKeyRetrieveExecute(r ApiCryptoCertificatekeypairsViewPrivateKeyRetrieveRequest) (*CertificateData, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

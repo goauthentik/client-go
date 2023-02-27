@@ -38,9 +38,9 @@ ManagedBlueprintsApplyCreate Method for ManagedBlueprintsApplyCreate
 
 Apply a blueprint
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param instanceUuid A UUID string identifying this Blueprint Instance.
- @return ApiManagedBlueprintsApplyCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param instanceUuid A UUID string identifying this Blueprint Instance.
+	@return ApiManagedBlueprintsApplyCreateRequest
 */
 func (a *ManagedApiService) ManagedBlueprintsApplyCreate(ctx context.Context, instanceUuid string) ApiManagedBlueprintsApplyCreateRequest {
 	return ApiManagedBlueprintsApplyCreateRequest{
@@ -51,7 +51,8 @@ func (a *ManagedApiService) ManagedBlueprintsApplyCreate(ctx context.Context, in
 }
 
 // Execute executes the request
-//  @return BlueprintInstance
+//
+//	@return BlueprintInstance
 func (a *ManagedApiService) ManagedBlueprintsApplyCreateExecute(r ApiManagedBlueprintsApplyCreateRequest) (*BlueprintInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -173,8 +174,8 @@ ManagedBlueprintsAvailableList Method for ManagedBlueprintsAvailableList
 
 Get blueprints
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiManagedBlueprintsAvailableListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiManagedBlueprintsAvailableListRequest
 */
 func (a *ManagedApiService) ManagedBlueprintsAvailableList(ctx context.Context) ApiManagedBlueprintsAvailableListRequest {
 	return ApiManagedBlueprintsAvailableListRequest{
@@ -184,7 +185,8 @@ func (a *ManagedApiService) ManagedBlueprintsAvailableList(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return []BlueprintFile
+//
+//	@return []BlueprintFile
 func (a *ManagedApiService) ManagedBlueprintsAvailableListExecute(r ApiManagedBlueprintsAvailableListRequest) ([]BlueprintFile, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -311,8 +313,8 @@ ManagedBlueprintsCreate Method for ManagedBlueprintsCreate
 
 Blueprint instances
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiManagedBlueprintsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiManagedBlueprintsCreateRequest
 */
 func (a *ManagedApiService) ManagedBlueprintsCreate(ctx context.Context) ApiManagedBlueprintsCreateRequest {
 	return ApiManagedBlueprintsCreateRequest{
@@ -322,7 +324,8 @@ func (a *ManagedApiService) ManagedBlueprintsCreate(ctx context.Context) ApiMana
 }
 
 // Execute executes the request
-//  @return BlueprintInstance
+//
+//	@return BlueprintInstance
 func (a *ManagedApiService) ManagedBlueprintsCreateExecute(r ApiManagedBlueprintsCreateRequest) (*BlueprintInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -449,9 +452,9 @@ ManagedBlueprintsDestroy Method for ManagedBlueprintsDestroy
 
 Blueprint instances
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param instanceUuid A UUID string identifying this Blueprint Instance.
- @return ApiManagedBlueprintsDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param instanceUuid A UUID string identifying this Blueprint Instance.
+	@return ApiManagedBlueprintsDestroyRequest
 */
 func (a *ManagedApiService) ManagedBlueprintsDestroy(ctx context.Context, instanceUuid string) ApiManagedBlueprintsDestroyRequest {
 	return ApiManagedBlueprintsDestroyRequest{
@@ -613,8 +616,8 @@ ManagedBlueprintsList Method for ManagedBlueprintsList
 
 Blueprint instances
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiManagedBlueprintsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiManagedBlueprintsListRequest
 */
 func (a *ManagedApiService) ManagedBlueprintsList(ctx context.Context) ApiManagedBlueprintsListRequest {
 	return ApiManagedBlueprintsListRequest{
@@ -624,7 +627,8 @@ func (a *ManagedApiService) ManagedBlueprintsList(ctx context.Context) ApiManage
 }
 
 // Execute executes the request
-//  @return PaginatedBlueprintInstanceList
+//
+//	@return PaginatedBlueprintInstanceList
 func (a *ManagedApiService) ManagedBlueprintsListExecute(r ApiManagedBlueprintsListRequest) (*PaginatedBlueprintInstanceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -770,9 +774,9 @@ ManagedBlueprintsPartialUpdate Method for ManagedBlueprintsPartialUpdate
 
 Blueprint instances
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param instanceUuid A UUID string identifying this Blueprint Instance.
- @return ApiManagedBlueprintsPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param instanceUuid A UUID string identifying this Blueprint Instance.
+	@return ApiManagedBlueprintsPartialUpdateRequest
 */
 func (a *ManagedApiService) ManagedBlueprintsPartialUpdate(ctx context.Context, instanceUuid string) ApiManagedBlueprintsPartialUpdateRequest {
 	return ApiManagedBlueprintsPartialUpdateRequest{
@@ -783,7 +787,8 @@ func (a *ManagedApiService) ManagedBlueprintsPartialUpdate(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return BlueprintInstance
+//
+//	@return BlueprintInstance
 func (a *ManagedApiService) ManagedBlueprintsPartialUpdateExecute(r ApiManagedBlueprintsPartialUpdateRequest) (*BlueprintInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -908,9 +913,9 @@ ManagedBlueprintsRetrieve Method for ManagedBlueprintsRetrieve
 
 Blueprint instances
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param instanceUuid A UUID string identifying this Blueprint Instance.
- @return ApiManagedBlueprintsRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param instanceUuid A UUID string identifying this Blueprint Instance.
+	@return ApiManagedBlueprintsRetrieveRequest
 */
 func (a *ManagedApiService) ManagedBlueprintsRetrieve(ctx context.Context, instanceUuid string) ApiManagedBlueprintsRetrieveRequest {
 	return ApiManagedBlueprintsRetrieveRequest{
@@ -921,7 +926,8 @@ func (a *ManagedApiService) ManagedBlueprintsRetrieve(ctx context.Context, insta
 }
 
 // Execute executes the request
-//  @return BlueprintInstance
+//
+//	@return BlueprintInstance
 func (a *ManagedApiService) ManagedBlueprintsRetrieveExecute(r ApiManagedBlueprintsRetrieveRequest) (*BlueprintInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1050,9 +1056,9 @@ ManagedBlueprintsUpdate Method for ManagedBlueprintsUpdate
 
 Blueprint instances
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param instanceUuid A UUID string identifying this Blueprint Instance.
- @return ApiManagedBlueprintsUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param instanceUuid A UUID string identifying this Blueprint Instance.
+	@return ApiManagedBlueprintsUpdateRequest
 */
 func (a *ManagedApiService) ManagedBlueprintsUpdate(ctx context.Context, instanceUuid string) ApiManagedBlueprintsUpdateRequest {
 	return ApiManagedBlueprintsUpdateRequest{
@@ -1063,7 +1069,8 @@ func (a *ManagedApiService) ManagedBlueprintsUpdate(ctx context.Context, instanc
 }
 
 // Execute executes the request
-//  @return BlueprintInstance
+//
+//	@return BlueprintInstance
 func (a *ManagedApiService) ManagedBlueprintsUpdateExecute(r ApiManagedBlueprintsUpdateRequest) (*BlueprintInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -1191,9 +1198,9 @@ ManagedBlueprintsUsedByList Method for ManagedBlueprintsUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param instanceUuid A UUID string identifying this Blueprint Instance.
- @return ApiManagedBlueprintsUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param instanceUuid A UUID string identifying this Blueprint Instance.
+	@return ApiManagedBlueprintsUsedByListRequest
 */
 func (a *ManagedApiService) ManagedBlueprintsUsedByList(ctx context.Context, instanceUuid string) ApiManagedBlueprintsUsedByListRequest {
 	return ApiManagedBlueprintsUsedByListRequest{
@@ -1204,7 +1211,8 @@ func (a *ManagedApiService) ManagedBlueprintsUsedByList(ctx context.Context, ins
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *ManagedApiService) ManagedBlueprintsUsedByListExecute(r ApiManagedBlueprintsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

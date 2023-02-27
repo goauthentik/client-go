@@ -45,8 +45,8 @@ FlowsBindingsCreate Method for FlowsBindingsCreate
 
 FlowStageBinding Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFlowsBindingsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiFlowsBindingsCreateRequest
 */
 func (a *FlowsApiService) FlowsBindingsCreate(ctx context.Context) ApiFlowsBindingsCreateRequest {
 	return ApiFlowsBindingsCreateRequest{
@@ -56,7 +56,8 @@ func (a *FlowsApiService) FlowsBindingsCreate(ctx context.Context) ApiFlowsBindi
 }
 
 // Execute executes the request
-//  @return FlowStageBinding
+//
+//	@return FlowStageBinding
 func (a *FlowsApiService) FlowsBindingsCreateExecute(r ApiFlowsBindingsCreateRequest) (*FlowStageBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -183,9 +184,9 @@ FlowsBindingsDestroy Method for FlowsBindingsDestroy
 
 FlowStageBinding Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param fsbUuid A UUID string identifying this Flow Stage Binding.
- @return ApiFlowsBindingsDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param fsbUuid A UUID string identifying this Flow Stage Binding.
+	@return ApiFlowsBindingsDestroyRequest
 */
 func (a *FlowsApiService) FlowsBindingsDestroy(ctx context.Context, fsbUuid string) ApiFlowsBindingsDestroyRequest {
 	return ApiFlowsBindingsDestroyRequest{
@@ -396,8 +397,8 @@ FlowsBindingsList Method for FlowsBindingsList
 
 FlowStageBinding Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFlowsBindingsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiFlowsBindingsListRequest
 */
 func (a *FlowsApiService) FlowsBindingsList(ctx context.Context) ApiFlowsBindingsListRequest {
 	return ApiFlowsBindingsListRequest{
@@ -407,7 +408,8 @@ func (a *FlowsApiService) FlowsBindingsList(ctx context.Context) ApiFlowsBinding
 }
 
 // Execute executes the request
-//  @return PaginatedFlowStageBindingList
+//
+//	@return PaginatedFlowStageBindingList
 func (a *FlowsApiService) FlowsBindingsListExecute(r ApiFlowsBindingsListRequest) (*PaginatedFlowStageBindingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -585,9 +587,9 @@ FlowsBindingsPartialUpdate Method for FlowsBindingsPartialUpdate
 
 FlowStageBinding Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param fsbUuid A UUID string identifying this Flow Stage Binding.
- @return ApiFlowsBindingsPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param fsbUuid A UUID string identifying this Flow Stage Binding.
+	@return ApiFlowsBindingsPartialUpdateRequest
 */
 func (a *FlowsApiService) FlowsBindingsPartialUpdate(ctx context.Context, fsbUuid string) ApiFlowsBindingsPartialUpdateRequest {
 	return ApiFlowsBindingsPartialUpdateRequest{
@@ -598,7 +600,8 @@ func (a *FlowsApiService) FlowsBindingsPartialUpdate(ctx context.Context, fsbUui
 }
 
 // Execute executes the request
-//  @return FlowStageBinding
+//
+//	@return FlowStageBinding
 func (a *FlowsApiService) FlowsBindingsPartialUpdateExecute(r ApiFlowsBindingsPartialUpdateRequest) (*FlowStageBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -723,9 +726,9 @@ FlowsBindingsRetrieve Method for FlowsBindingsRetrieve
 
 FlowStageBinding Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param fsbUuid A UUID string identifying this Flow Stage Binding.
- @return ApiFlowsBindingsRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param fsbUuid A UUID string identifying this Flow Stage Binding.
+	@return ApiFlowsBindingsRetrieveRequest
 */
 func (a *FlowsApiService) FlowsBindingsRetrieve(ctx context.Context, fsbUuid string) ApiFlowsBindingsRetrieveRequest {
 	return ApiFlowsBindingsRetrieveRequest{
@@ -736,7 +739,8 @@ func (a *FlowsApiService) FlowsBindingsRetrieve(ctx context.Context, fsbUuid str
 }
 
 // Execute executes the request
-//  @return FlowStageBinding
+//
+//	@return FlowStageBinding
 func (a *FlowsApiService) FlowsBindingsRetrieveExecute(r ApiFlowsBindingsRetrieveRequest) (*FlowStageBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -865,9 +869,9 @@ FlowsBindingsUpdate Method for FlowsBindingsUpdate
 
 FlowStageBinding Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param fsbUuid A UUID string identifying this Flow Stage Binding.
- @return ApiFlowsBindingsUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param fsbUuid A UUID string identifying this Flow Stage Binding.
+	@return ApiFlowsBindingsUpdateRequest
 */
 func (a *FlowsApiService) FlowsBindingsUpdate(ctx context.Context, fsbUuid string) ApiFlowsBindingsUpdateRequest {
 	return ApiFlowsBindingsUpdateRequest{
@@ -878,7 +882,8 @@ func (a *FlowsApiService) FlowsBindingsUpdate(ctx context.Context, fsbUuid strin
 }
 
 // Execute executes the request
-//  @return FlowStageBinding
+//
+//	@return FlowStageBinding
 func (a *FlowsApiService) FlowsBindingsUpdateExecute(r ApiFlowsBindingsUpdateRequest) (*FlowStageBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -1006,9 +1011,9 @@ FlowsBindingsUsedByList Method for FlowsBindingsUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param fsbUuid A UUID string identifying this Flow Stage Binding.
- @return ApiFlowsBindingsUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param fsbUuid A UUID string identifying this Flow Stage Binding.
+	@return ApiFlowsBindingsUsedByListRequest
 */
 func (a *FlowsApiService) FlowsBindingsUsedByList(ctx context.Context, fsbUuid string) ApiFlowsBindingsUsedByListRequest {
 	return ApiFlowsBindingsUsedByListRequest{
@@ -1019,7 +1024,8 @@ func (a *FlowsApiService) FlowsBindingsUsedByList(ctx context.Context, fsbUuid s
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *FlowsApiService) FlowsBindingsUsedByListExecute(r ApiFlowsBindingsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1149,9 +1155,9 @@ FlowsExecutorGet Method for FlowsExecutorGet
 
 Get the next pending challenge from the currently active flow.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param flowSlug
- @return ApiFlowsExecutorGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param flowSlug
+	@return ApiFlowsExecutorGetRequest
 */
 func (a *FlowsApiService) FlowsExecutorGet(ctx context.Context, flowSlug string) ApiFlowsExecutorGetRequest {
 	return ApiFlowsExecutorGetRequest{
@@ -1162,7 +1168,8 @@ func (a *FlowsApiService) FlowsExecutorGet(ctx context.Context, flowSlug string)
 }
 
 // Execute executes the request
-//  @return ChallengeTypes
+//
+//	@return ChallengeTypes
 func (a *FlowsApiService) FlowsExecutorGetExecute(r ApiFlowsExecutorGetRequest) (*ChallengeTypes, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1302,9 +1309,9 @@ FlowsExecutorSolve Method for FlowsExecutorSolve
 
 Solve the previously retrieved challenge and advanced to the next stage.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param flowSlug
- @return ApiFlowsExecutorSolveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param flowSlug
+	@return ApiFlowsExecutorSolveRequest
 */
 func (a *FlowsApiService) FlowsExecutorSolve(ctx context.Context, flowSlug string) ApiFlowsExecutorSolveRequest {
 	return ApiFlowsExecutorSolveRequest{
@@ -1315,7 +1322,8 @@ func (a *FlowsApiService) FlowsExecutorSolve(ctx context.Context, flowSlug strin
 }
 
 // Execute executes the request
-//  @return ChallengeTypes
+//
+//	@return ChallengeTypes
 func (a *FlowsApiService) FlowsExecutorSolveExecute(r ApiFlowsExecutorSolveRequest) (*ChallengeTypes, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1444,9 +1452,9 @@ FlowsInspectorGet Method for FlowsInspectorGet
 
 Get current flow state and record it
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param flowSlug
- @return ApiFlowsInspectorGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param flowSlug
+	@return ApiFlowsInspectorGetRequest
 */
 func (a *FlowsApiService) FlowsInspectorGet(ctx context.Context, flowSlug string) ApiFlowsInspectorGetRequest {
 	return ApiFlowsInspectorGetRequest{
@@ -1457,7 +1465,8 @@ func (a *FlowsApiService) FlowsInspectorGet(ctx context.Context, flowSlug string
 }
 
 // Execute executes the request
-//  @return FlowInspection
+//
+//	@return FlowInspection
 func (a *FlowsApiService) FlowsInspectorGetExecute(r ApiFlowsInspectorGetRequest) (*FlowInspection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1569,8 +1578,8 @@ FlowsInstancesCacheClearCreate Method for FlowsInstancesCacheClearCreate
 
 Clear flow cache
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFlowsInstancesCacheClearCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiFlowsInstancesCacheClearCreateRequest
 */
 func (a *FlowsApiService) FlowsInstancesCacheClearCreate(ctx context.Context) ApiFlowsInstancesCacheClearCreateRequest {
 	return ApiFlowsInstancesCacheClearCreateRequest{
@@ -1680,8 +1689,8 @@ FlowsInstancesCacheInfoRetrieve Method for FlowsInstancesCacheInfoRetrieve
 
 Info about cached flows
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFlowsInstancesCacheInfoRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiFlowsInstancesCacheInfoRetrieveRequest
 */
 func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieve(ctx context.Context) ApiFlowsInstancesCacheInfoRetrieveRequest {
 	return ApiFlowsInstancesCacheInfoRetrieveRequest{
@@ -1691,7 +1700,8 @@ func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieve(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return Cache
+//
+//	@return Cache
 func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieveExecute(r ApiFlowsInstancesCacheInfoRetrieveRequest) (*Cache, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1818,8 +1828,8 @@ FlowsInstancesCreate Method for FlowsInstancesCreate
 
 Flow Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFlowsInstancesCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiFlowsInstancesCreateRequest
 */
 func (a *FlowsApiService) FlowsInstancesCreate(ctx context.Context) ApiFlowsInstancesCreateRequest {
 	return ApiFlowsInstancesCreateRequest{
@@ -1829,7 +1839,8 @@ func (a *FlowsApiService) FlowsInstancesCreate(ctx context.Context) ApiFlowsInst
 }
 
 // Execute executes the request
-//  @return Flow
+//
+//	@return Flow
 func (a *FlowsApiService) FlowsInstancesCreateExecute(r ApiFlowsInstancesCreateRequest) (*Flow, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1956,9 +1967,9 @@ FlowsInstancesDestroy Method for FlowsInstancesDestroy
 
 Flow Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiFlowsInstancesDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiFlowsInstancesDestroyRequest
 */
 func (a *FlowsApiService) FlowsInstancesDestroy(ctx context.Context, slug string) ApiFlowsInstancesDestroyRequest {
 	return ApiFlowsInstancesDestroyRequest{
@@ -2081,9 +2092,9 @@ FlowsInstancesDiagramRetrieve Method for FlowsInstancesDiagramRetrieve
 
 Return diagram for flow with slug `slug`, in the format used by flowchart.js
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiFlowsInstancesDiagramRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiFlowsInstancesDiagramRetrieveRequest
 */
 func (a *FlowsApiService) FlowsInstancesDiagramRetrieve(ctx context.Context, slug string) ApiFlowsInstancesDiagramRetrieveRequest {
 	return ApiFlowsInstancesDiagramRetrieveRequest{
@@ -2094,7 +2105,8 @@ func (a *FlowsApiService) FlowsInstancesDiagramRetrieve(ctx context.Context, slu
 }
 
 // Execute executes the request
-//  @return FlowDiagram
+//
+//	@return FlowDiagram
 func (a *FlowsApiService) FlowsInstancesDiagramRetrieveExecute(r ApiFlowsInstancesDiagramRetrieveRequest) (*FlowDiagram, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2217,9 +2229,9 @@ FlowsInstancesExecuteRetrieve Method for FlowsInstancesExecuteRetrieve
 
 Execute flow for current user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiFlowsInstancesExecuteRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiFlowsInstancesExecuteRetrieveRequest
 */
 func (a *FlowsApiService) FlowsInstancesExecuteRetrieve(ctx context.Context, slug string) ApiFlowsInstancesExecuteRetrieveRequest {
 	return ApiFlowsInstancesExecuteRetrieveRequest{
@@ -2230,7 +2242,8 @@ func (a *FlowsApiService) FlowsInstancesExecuteRetrieve(ctx context.Context, slu
 }
 
 // Execute executes the request
-//  @return Link
+//
+//	@return Link
 func (a *FlowsApiService) FlowsInstancesExecuteRetrieveExecute(r ApiFlowsInstancesExecuteRetrieveRequest) (*Link, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2343,9 +2356,9 @@ FlowsInstancesExportRetrieve Method for FlowsInstancesExportRetrieve
 
 Export flow to .yaml file
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiFlowsInstancesExportRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiFlowsInstancesExportRetrieveRequest
 */
 func (a *FlowsApiService) FlowsInstancesExportRetrieve(ctx context.Context, slug string) ApiFlowsInstancesExportRetrieveRequest {
 	return ApiFlowsInstancesExportRetrieveRequest{
@@ -2356,7 +2369,8 @@ func (a *FlowsApiService) FlowsInstancesExportRetrieve(ctx context.Context, slug
 }
 
 // Execute executes the request
-//  @return *os.File
+//
+//	@return *os.File
 func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstancesExportRetrieveRequest) (**os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2490,8 +2504,8 @@ FlowsInstancesImportCreate Method for FlowsInstancesImportCreate
 
 Import flow from .yaml file
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFlowsInstancesImportCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiFlowsInstancesImportCreateRequest
 */
 func (a *FlowsApiService) FlowsInstancesImportCreate(ctx context.Context) ApiFlowsInstancesImportCreateRequest {
 	return ApiFlowsInstancesImportCreateRequest{
@@ -2501,7 +2515,8 @@ func (a *FlowsApiService) FlowsInstancesImportCreate(ctx context.Context) ApiFlo
 }
 
 // Execute executes the request
-//  @return FlowImportResult
+//
+//	@return FlowImportResult
 func (a *FlowsApiService) FlowsInstancesImportCreateExecute(r ApiFlowsInstancesImportCreateRequest) (*FlowImportResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2702,8 +2717,8 @@ FlowsInstancesList Method for FlowsInstancesList
 
 Flow Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFlowsInstancesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiFlowsInstancesListRequest
 */
 func (a *FlowsApiService) FlowsInstancesList(ctx context.Context) ApiFlowsInstancesListRequest {
 	return ApiFlowsInstancesListRequest{
@@ -2713,7 +2728,8 @@ func (a *FlowsApiService) FlowsInstancesList(ctx context.Context) ApiFlowsInstan
 }
 
 // Execute executes the request
-//  @return PaginatedFlowList
+//
+//	@return PaginatedFlowList
 func (a *FlowsApiService) FlowsInstancesListExecute(r ApiFlowsInstancesListRequest) (*PaginatedFlowList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2868,9 +2884,9 @@ FlowsInstancesPartialUpdate Method for FlowsInstancesPartialUpdate
 
 Flow Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiFlowsInstancesPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiFlowsInstancesPartialUpdateRequest
 */
 func (a *FlowsApiService) FlowsInstancesPartialUpdate(ctx context.Context, slug string) ApiFlowsInstancesPartialUpdateRequest {
 	return ApiFlowsInstancesPartialUpdateRequest{
@@ -2881,7 +2897,8 @@ func (a *FlowsApiService) FlowsInstancesPartialUpdate(ctx context.Context, slug 
 }
 
 // Execute executes the request
-//  @return Flow
+//
+//	@return Flow
 func (a *FlowsApiService) FlowsInstancesPartialUpdateExecute(r ApiFlowsInstancesPartialUpdateRequest) (*Flow, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -3006,9 +3023,9 @@ FlowsInstancesRetrieve Method for FlowsInstancesRetrieve
 
 Flow Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiFlowsInstancesRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiFlowsInstancesRetrieveRequest
 */
 func (a *FlowsApiService) FlowsInstancesRetrieve(ctx context.Context, slug string) ApiFlowsInstancesRetrieveRequest {
 	return ApiFlowsInstancesRetrieveRequest{
@@ -3019,7 +3036,8 @@ func (a *FlowsApiService) FlowsInstancesRetrieve(ctx context.Context, slug strin
 }
 
 // Execute executes the request
-//  @return Flow
+//
+//	@return Flow
 func (a *FlowsApiService) FlowsInstancesRetrieveExecute(r ApiFlowsInstancesRetrieveRequest) (*Flow, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3154,9 +3172,9 @@ FlowsInstancesSetBackgroundCreate Method for FlowsInstancesSetBackgroundCreate
 
 Set Flow background
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiFlowsInstancesSetBackgroundCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiFlowsInstancesSetBackgroundCreateRequest
 */
 func (a *FlowsApiService) FlowsInstancesSetBackgroundCreate(ctx context.Context, slug string) ApiFlowsInstancesSetBackgroundCreateRequest {
 	return ApiFlowsInstancesSetBackgroundCreateRequest{
@@ -3295,9 +3313,9 @@ FlowsInstancesSetBackgroundUrlCreate Method for FlowsInstancesSetBackgroundUrlCr
 
 Set Flow background (as URL)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiFlowsInstancesSetBackgroundUrlCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiFlowsInstancesSetBackgroundUrlCreateRequest
 */
 func (a *FlowsApiService) FlowsInstancesSetBackgroundUrlCreate(ctx context.Context, slug string) ApiFlowsInstancesSetBackgroundUrlCreateRequest {
 	return ApiFlowsInstancesSetBackgroundUrlCreateRequest{
@@ -3421,9 +3439,9 @@ FlowsInstancesUpdate Method for FlowsInstancesUpdate
 
 Flow Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiFlowsInstancesUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiFlowsInstancesUpdateRequest
 */
 func (a *FlowsApiService) FlowsInstancesUpdate(ctx context.Context, slug string) ApiFlowsInstancesUpdateRequest {
 	return ApiFlowsInstancesUpdateRequest{
@@ -3434,7 +3452,8 @@ func (a *FlowsApiService) FlowsInstancesUpdate(ctx context.Context, slug string)
 }
 
 // Execute executes the request
-//  @return Flow
+//
+//	@return Flow
 func (a *FlowsApiService) FlowsInstancesUpdateExecute(r ApiFlowsInstancesUpdateRequest) (*Flow, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -3562,9 +3581,9 @@ FlowsInstancesUsedByList Method for FlowsInstancesUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiFlowsInstancesUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiFlowsInstancesUsedByListRequest
 */
 func (a *FlowsApiService) FlowsInstancesUsedByList(ctx context.Context, slug string) ApiFlowsInstancesUsedByListRequest {
 	return ApiFlowsInstancesUsedByListRequest{
@@ -3575,7 +3594,8 @@ func (a *FlowsApiService) FlowsInstancesUsedByList(ctx context.Context, slug str
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *FlowsApiService) FlowsInstancesUsedByListExecute(r ApiFlowsInstancesUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

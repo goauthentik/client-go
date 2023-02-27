@@ -37,8 +37,8 @@ AdminAppsList Method for AdminAppsList
 
 Read-only view list all installed apps
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminAppsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAdminAppsListRequest
 */
 func (a *AdminApiService) AdminAppsList(ctx context.Context) ApiAdminAppsListRequest {
 	return ApiAdminAppsListRequest{
@@ -48,7 +48,8 @@ func (a *AdminApiService) AdminAppsList(ctx context.Context) ApiAdminAppsListReq
 }
 
 // Execute executes the request
-//  @return []App
+//
+//	@return []App
 func (a *AdminApiService) AdminAppsListExecute(r ApiAdminAppsListRequest) ([]App, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -169,8 +170,8 @@ AdminMetricsRetrieve Method for AdminMetricsRetrieve
 
 Login Metrics per 1h
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminMetricsRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAdminMetricsRetrieveRequest
 */
 func (a *AdminApiService) AdminMetricsRetrieve(ctx context.Context) ApiAdminMetricsRetrieveRequest {
 	return ApiAdminMetricsRetrieveRequest{
@@ -180,7 +181,8 @@ func (a *AdminApiService) AdminMetricsRetrieve(ctx context.Context) ApiAdminMetr
 }
 
 // Execute executes the request
-//  @return LoginMetrics
+//
+//	@return LoginMetrics
 func (a *AdminApiService) AdminMetricsRetrieveExecute(r ApiAdminMetricsRetrieveRequest) (*LoginMetrics, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -301,8 +303,8 @@ AdminSystemCreate Method for AdminSystemCreate
 
 Get system information.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminSystemCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAdminSystemCreateRequest
 */
 func (a *AdminApiService) AdminSystemCreate(ctx context.Context) ApiAdminSystemCreateRequest {
 	return ApiAdminSystemCreateRequest{
@@ -312,7 +314,8 @@ func (a *AdminApiService) AdminSystemCreate(ctx context.Context) ApiAdminSystemC
 }
 
 // Execute executes the request
-//  @return System
+//
+//	@return System
 func (a *AdminApiService) AdminSystemCreateExecute(r ApiAdminSystemCreateRequest) (*System, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -433,8 +436,8 @@ AdminSystemRetrieve Method for AdminSystemRetrieve
 
 Get system information.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminSystemRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAdminSystemRetrieveRequest
 */
 func (a *AdminApiService) AdminSystemRetrieve(ctx context.Context) ApiAdminSystemRetrieveRequest {
 	return ApiAdminSystemRetrieveRequest{
@@ -444,7 +447,8 @@ func (a *AdminApiService) AdminSystemRetrieve(ctx context.Context) ApiAdminSyste
 }
 
 // Execute executes the request
-//  @return System
+//
+//	@return System
 func (a *AdminApiService) AdminSystemRetrieveExecute(r ApiAdminSystemRetrieveRequest) (*System, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -565,8 +569,8 @@ AdminSystemTasksList Method for AdminSystemTasksList
 
 List system tasks
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminSystemTasksListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAdminSystemTasksListRequest
 */
 func (a *AdminApiService) AdminSystemTasksList(ctx context.Context) ApiAdminSystemTasksListRequest {
 	return ApiAdminSystemTasksListRequest{
@@ -576,7 +580,8 @@ func (a *AdminApiService) AdminSystemTasksList(ctx context.Context) ApiAdminSyst
 }
 
 // Execute executes the request
-//  @return []Task
+//
+//	@return []Task
 func (a *AdminApiService) AdminSystemTasksListExecute(r ApiAdminSystemTasksListRequest) ([]Task, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -698,9 +703,9 @@ AdminSystemTasksRetrieve Method for AdminSystemTasksRetrieve
 
 Get a single system task
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiAdminSystemTasksRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiAdminSystemTasksRetrieveRequest
 */
 func (a *AdminApiService) AdminSystemTasksRetrieve(ctx context.Context, id string) ApiAdminSystemTasksRetrieveRequest {
 	return ApiAdminSystemTasksRetrieveRequest{
@@ -711,7 +716,8 @@ func (a *AdminApiService) AdminSystemTasksRetrieve(ctx context.Context, id strin
 }
 
 // Execute executes the request
-//  @return Task
+//
+//	@return Task
 func (a *AdminApiService) AdminSystemTasksRetrieveExecute(r ApiAdminSystemTasksRetrieveRequest) (*Task, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -834,9 +840,9 @@ AdminSystemTasksRetryCreate Method for AdminSystemTasksRetryCreate
 
 Retry task
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiAdminSystemTasksRetryCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiAdminSystemTasksRetryCreateRequest
 */
 func (a *AdminApiService) AdminSystemTasksRetryCreate(ctx context.Context, id string) ApiAdminSystemTasksRetryCreateRequest {
 	return ApiAdminSystemTasksRetryCreateRequest{
@@ -958,8 +964,8 @@ AdminVersionRetrieve Method for AdminVersionRetrieve
 
 Get running and latest version.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminVersionRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAdminVersionRetrieveRequest
 */
 func (a *AdminApiService) AdminVersionRetrieve(ctx context.Context) ApiAdminVersionRetrieveRequest {
 	return ApiAdminVersionRetrieveRequest{
@@ -969,7 +975,8 @@ func (a *AdminApiService) AdminVersionRetrieve(ctx context.Context) ApiAdminVers
 }
 
 // Execute executes the request
-//  @return Version
+//
+//	@return Version
 func (a *AdminApiService) AdminVersionRetrieveExecute(r ApiAdminVersionRetrieveRequest) (*Version, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1090,8 +1097,8 @@ AdminWorkersRetrieve Method for AdminWorkersRetrieve
 
 Get currently connected worker count.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminWorkersRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAdminWorkersRetrieveRequest
 */
 func (a *AdminApiService) AdminWorkersRetrieve(ctx context.Context) ApiAdminWorkersRetrieveRequest {
 	return ApiAdminWorkersRetrieveRequest{
@@ -1101,7 +1108,8 @@ func (a *AdminApiService) AdminWorkersRetrieve(ctx context.Context) ApiAdminWork
 }
 
 // Execute executes the request
-//  @return Workers
+//
+//	@return Workers
 func (a *AdminApiService) AdminWorkersRetrieveExecute(r ApiAdminWorkersRetrieveRequest) (*Workers, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
