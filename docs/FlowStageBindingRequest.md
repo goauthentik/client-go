@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Target** | **string** |  | 
 **Stage** | **string** |  | 
-**EvaluateOnPlan** | Pointer to **bool** | Evaluate policies during the Flow planning process. Disable this for input-based policies. | [optional] 
+**EvaluateOnPlan** | Pointer to **bool** | Evaluate policies during the Flow planning process. | [optional] 
 **ReEvaluatePolicies** | Pointer to **bool** | Evaluate policies when the Stage is present to the user. | [optional] 
 **Order** | **int32** |  | 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 

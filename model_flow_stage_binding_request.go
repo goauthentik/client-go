@@ -19,7 +19,7 @@ import (
 type FlowStageBindingRequest struct {
 	Target string `json:"target"`
 	Stage  string `json:"stage"`
-	// Evaluate policies during the Flow planning process. Disable this for input-based policies.
+	// Evaluate policies during the Flow planning process.
 	EvaluateOnPlan *bool `json:"evaluate_on_plan,omitempty"`
 	// Evaluate policies when the Stage is present to the user.
 	ReEvaluatePolicies *bool             `json:"re_evaluate_policies,omitempty"`

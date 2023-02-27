@@ -31879,8 +31879,7 @@ components:
         stage_obj:
           $ref: '#/components/schemas/FlowStageBinding_stage_obj'
         evaluate_on_plan:
-          description: Evaluate policies during the Flow planning process. Disable
-            this for input-based policies.
+          description: Evaluate policies during the Flow planning process.
           type: boolean
         re_evaluate_policies:
           description: Evaluate policies when the Stage is present to the user.
@@ -31924,8 +31923,7 @@ components:
           format: uuid
           type: string
         evaluate_on_plan:
-          description: Evaluate policies during the Flow planning process. Disable
-            this for input-based policies.
+          description: Evaluate policies during the Flow planning process.
           type: boolean
         re_evaluate_policies:
           description: Evaluate policies when the Stage is present to the user.
@@ -41107,8 +41105,7 @@ components:
           format: uuid
           type: string
         evaluate_on_plan:
-          description: Evaluate policies during the Flow planning process. Disable
-            this for input-based policies.
+          description: Evaluate policies during the Flow planning process.
           type: boolean
         re_evaluate_policies:
           description: Evaluate policies when the Stage is present to the user.
