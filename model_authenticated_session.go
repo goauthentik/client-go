@@ -18,7 +18,8 @@ import (
 
 // AuthenticatedSession AuthenticatedSession Serializer
 type AuthenticatedSession struct {
-	Uuid          *string                           `json:"uuid,omitempty"`
+	Uuid *string `json:"uuid,omitempty"`
+	// Check if session is currently active session
 	Current       bool                              `json:"current"`
 	UserAgent     AuthenticatedSessionUserAgent     `json:"user_agent"`
 	GeoIp         NullableAuthenticatedSessionGeoIp `json:"geo_ip"`

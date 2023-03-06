@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
 **Name** | **string** |  | 
-**AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
+**AuthorizationFlow** | Pointer to **NullableString** | Flow used when authorizing this provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
-**Component** | **string** |  | [readonly] 
+**Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
 **AssignedApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
 **AssignedApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
-**VerboseName** | **string** |  | [readonly] 
-**VerboseNamePlural** | **string** |  | [readonly] 
-**MetaModelName** | **string** |  | [readonly] 
+**VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
+**VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
+**MetaModelName** | **string** | Return internal model name | [readonly] 
 **BaseDn** | Pointer to **string** | DN under which objects are accessible. | [optional] 
 **SearchGroup** | Pointer to **NullableString** | Users in this group can do search queries. If not set, every user can execute search queries. | [optional] 
 **Certificate** | Pointer to **NullableString** |  | [optional] 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewLDAPProvider
 
-`func NewLDAPProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, outpostSet []string, ) *LDAPProvider`
+`func NewLDAPProvider(pk int32, name string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, outpostSet []string, ) *LDAPProvider`
 
 NewLDAPProvider instantiates a new LDAPProvider object
 This constructor will assign default values to properties that have it defined,
@@ -102,7 +102,22 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
+### HasAuthorizationFlow
 
+`func (o *LDAPProvider) HasAuthorizationFlow() bool`
+
+HasAuthorizationFlow returns a boolean if a field has been set.
+
+### SetAuthorizationFlowNil
+
+`func (o *LDAPProvider) SetAuthorizationFlowNil(b bool)`
+
+ SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
+
+### UnsetAuthorizationFlow
+`func (o *LDAPProvider) UnsetAuthorizationFlow()`
+
+UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *LDAPProvider) GetPropertyMappings() []string`

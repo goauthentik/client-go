@@ -17,12 +17,13 @@ import (
 
 // NotificationTransport NotificationTransport Serializer
 type NotificationTransport struct {
-	Pk             string                         `json:"pk"`
-	Name           string                         `json:"name"`
-	Mode           *NotificationTransportModeEnum `json:"mode,omitempty"`
-	ModeVerbose    string                         `json:"mode_verbose"`
-	WebhookUrl     *string                        `json:"webhook_url,omitempty"`
-	WebhookMapping NullableString                 `json:"webhook_mapping,omitempty"`
+	Pk   string                         `json:"pk"`
+	Name string                         `json:"name"`
+	Mode *NotificationTransportModeEnum `json:"mode,omitempty"`
+	// Return selected mode with a UI Label
+	ModeVerbose    string         `json:"mode_verbose"`
+	WebhookUrl     *string        `json:"webhook_url,omitempty"`
+	WebhookMapping NullableString `json:"webhook_mapping,omitempty"`
 	// Only send notification once, for example when sending a webhook into a chat channel.
 	SendOnce *bool `json:"send_once,omitempty"`
 }

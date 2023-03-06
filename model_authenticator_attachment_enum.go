@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// AuthenticatorAttachmentEnum the model 'AuthenticatorAttachmentEnum'
+// AuthenticatorAttachmentEnum * `platform` - Platform * `cross-platform` - Cross Platform
 type AuthenticatorAttachmentEnum string
 
 // List of AuthenticatorAttachmentEnum

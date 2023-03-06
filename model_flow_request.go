@@ -22,15 +22,15 @@ type FlowRequest struct {
 	Slug string `json:"slug"`
 	// Shown as the Title in Flow pages.
 	Title string `json:"title"`
-	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
+	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.  * `authentication` - Authentication * `authorization` - Authorization * `invalidation` - Invalidation * `enrollment` - Enrollment * `unenrollment` - Unrenollment * `recovery` - Recovery * `stage_configuration` - Stage Configuration
 	Designation      NullableFlowDesignationEnum `json:"designation"`
 	PolicyEngineMode *PolicyEngineMode           `json:"policy_engine_mode,omitempty"`
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
 	CompatibilityMode *bool       `json:"compatibility_mode,omitempty"`
 	Layout            *LayoutEnum `json:"layout,omitempty"`
-	// Configure what should happen when a flow denies access to a user.
+	// Configure what should happen when a flow denies access to a user.  * `message_continue` - Message Continue * `message` - Message * `continue` - Continue
 	DeniedAction NullableDeniedActionEnum `json:"denied_action,omitempty"`
-	// Required level of authentication and authorization to access a flow.
+	// Required level of authentication and authorization to access a flow.  * `none` - None * `require_authenticated` - Require Authenticated * `require_unauthenticated` - Require Unauthenticated * `require_superuser` - Require Superuser
 	Authentication NullableAuthenticationEnum `json:"authentication,omitempty"`
 }
 

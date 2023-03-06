@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// PromptTypeEnum the model 'PromptTypeEnum'
+// PromptTypeEnum * `text` - Text: Simple Text input * `text_read_only` - Text (read-only): Simple Text input, but cannot be edited. * `username` - Username: Same as Text input, but checks for and prevents duplicate usernames. * `email` - Email: Text field with Email type. * `password` - Password: Masked input, password is validated against sources. Policies still have to be applied to this Stage. If two of these are used in the same stage, they are ensured to be identical. * `number` - Number * `checkbox` - Checkbox * `date` - Date * `date-time` - Date Time * `file` - File: File upload for arbitrary files. File content will be available in flow context as data-URI * `separator` - Separator: Static Separator Line * `hidden` - Hidden: Hidden field, can be used to insert data into form. * `static` - Static: Static value, displayed as-is. * `ak-locale` - authentik: Selection of locales authentik supports
 type PromptTypeEnum string
 
 // List of PromptTypeEnum

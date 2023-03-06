@@ -2519,7 +2519,7 @@ func main() {
     expires := time.Now() // time.Time |  (optional)
     expiring := true // bool |  (optional)
     identifier := "identifier_example" // string |  (optional)
-    intent := "intent_example" // string |  (optional)
+    intent := "intent_example" // string | * `verification` - Intent Verification * `api` - Intent Api * `recovery` - Intent Recovery * `app_password` - Intent App Password  * `verification` - Intent Verification * `api` - Intent Api * `recovery` - Intent Recovery * `app_password` - Intent App Password (optional)
     managed := "managed_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -2554,7 +2554,7 @@ Name | Type | Description  | Notes
  **expires** | **time.Time** |  | 
  **expiring** | **bool** |  | 
  **identifier** | **string** |  | 
- **intent** | **string** |  | 
+ **intent** | **string** | * &#x60;verification&#x60; - Intent Verification * &#x60;api&#x60; - Intent Api * &#x60;recovery&#x60; - Intent Recovery * &#x60;app_password&#x60; - Intent App Password  * &#x60;verification&#x60; - Intent Verification * &#x60;api&#x60; - Intent Api * &#x60;recovery&#x60; - Intent Recovery * &#x60;app_password&#x60; - Intent App Password | 
  **managed** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 

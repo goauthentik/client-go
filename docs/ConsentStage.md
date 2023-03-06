@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
 **Name** | **string** |  | 
-**Component** | **string** |  | [readonly] 
-**VerboseName** | **string** |  | [readonly] 
-**VerboseNamePlural** | **string** |  | [readonly] 
-**MetaModelName** | **string** |  | [readonly] 
+**Component** | **string** | Get object type so that we know how to edit the object | [readonly] 
+**VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
+**VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
+**MetaModelName** | **string** | Return internal model name | [readonly] 
 **FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **Mode** | Pointer to [**ConsentStageModeEnum**](ConsentStageModeEnum.md) |  | [optional] 
 **ConsentExpireIn** | Pointer to **string** | Offset after which consent expires. (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 

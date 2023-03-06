@@ -6,16 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
 **Name** | **string** |  | 
-**Component** | **string** |  | [readonly] 
-**VerboseName** | **string** |  | [readonly] 
-**VerboseNamePlural** | **string** |  | [readonly] 
-**MetaModelName** | **string** |  | [readonly] 
+**Component** | **string** | Get object type so that we know how to edit the object | [readonly] 
+**VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
+**VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
+**MetaModelName** | **string** | Return internal model name | [readonly] 
 **FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **NotConfiguredAction** | Pointer to [**NotConfiguredActionEnum**](NotConfiguredActionEnum.md) |  | [optional] 
 **DeviceClasses** | Pointer to [**[]DeviceClassesEnum**](DeviceClassesEnum.md) | Device classes which can be used to authenticate | [optional] 
 **ConfigurationStages** | Pointer to **[]string** | Stages used to configure Authenticator when user doesn&#39;t have any compatible devices. After this configuration Stage passes, the user is not prompted again. | [optional] 
 **LastAuthThreshold** | Pointer to **string** | If any of the user&#39;s device has been used within this threshold, this stage will be skipped | [optional] 
-**WebauthnUserVerification** | Pointer to [**NullableUserVerificationEnum**](UserVerificationEnum.md) | Enforce user verification for WebAuthn devices. | [optional] 
+**WebauthnUserVerification** | Pointer to [**NullableUserVerificationEnum**](UserVerificationEnum.md) | Enforce user verification for WebAuthn devices.  * &#x60;required&#x60; - Required * &#x60;preferred&#x60; - Preferred * &#x60;discouraged&#x60; - Discouraged | [optional] 
 
 ## Methods
 

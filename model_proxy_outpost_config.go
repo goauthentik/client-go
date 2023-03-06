@@ -36,13 +36,15 @@ type ProxyOutpostConfig struct {
 	BasicAuthPasswordAttribute *string `json:"basic_auth_password_attribute,omitempty"`
 	// User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user's Email address is used.
 	BasicAuthUserAttribute *string `json:"basic_auth_user_attribute,omitempty"`
-	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
-	Mode                NullableProxyMode `json:"mode,omitempty"`
-	CookieDomain        *string           `json:"cookie_domain,omitempty"`
-	AccessTokenValidity NullableFloat64   `json:"access_token_validity"`
+	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.  * `proxy` - Proxy * `forward_single` - Forward Single * `forward_domain` - Forward Domain
+	Mode         NullableProxyMode `json:"mode,omitempty"`
+	CookieDomain *string           `json:"cookie_domain,omitempty"`
+	// Get token validity as second count
+	AccessTokenValidity NullableFloat64 `json:"access_token_validity"`
 	// When enabled, this provider will intercept the authorization header and authenticate requests based on its value.
-	InterceptHeaderAuth *bool    `json:"intercept_header_auth,omitempty"`
-	ScopesToRequest     []string `json:"scopes_to_request"`
+	InterceptHeaderAuth *bool `json:"intercept_header_auth,omitempty"`
+	// Get all the scope names the outpost should request, including custom-defined ones
+	ScopesToRequest []string `json:"scopes_to_request"`
 	// Internal application name, used in URLs.
 	AssignedApplicationSlug string `json:"assigned_application_slug"`
 	// Application's display Name.

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VersionCurrent** | **string** |  | [readonly] 
-**VersionLatest** | **string** |  | [readonly] 
-**BuildHash** | **string** |  | [readonly] 
-**Outdated** | **bool** |  | [readonly] 
+**VersionCurrent** | **string** | Get current version | [readonly] 
+**VersionLatest** | **string** | Get latest version from cache | [readonly] 
+**BuildHash** | **string** | Get build hash, if version is not latest or released | [readonly] 
+**Outdated** | **bool** | Check if we&#39;re running the latest version | [readonly] 
 
 ## Methods
 

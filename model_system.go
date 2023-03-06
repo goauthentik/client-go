@@ -18,14 +18,21 @@ import (
 
 // System Get system information.
 type System struct {
-	Env                 map[string]string `json:"env"`
-	HttpHeaders         map[string]string `json:"http_headers"`
-	HttpHost            string            `json:"http_host"`
-	HttpIsSecure        bool              `json:"http_is_secure"`
-	Runtime             SystemRuntime     `json:"runtime"`
-	Tenant              string            `json:"tenant"`
-	ServerTime          time.Time         `json:"server_time"`
-	EmbeddedOutpostHost string            `json:"embedded_outpost_host"`
+	// Get Environment
+	Env map[string]string `json:"env"`
+	// Get HTTP Request headers
+	HttpHeaders map[string]string `json:"http_headers"`
+	// Get HTTP host
+	HttpHost string `json:"http_host"`
+	// Get HTTP Secure flag
+	HttpIsSecure bool          `json:"http_is_secure"`
+	Runtime      SystemRuntime `json:"runtime"`
+	// Currently active tenant
+	Tenant string `json:"tenant"`
+	// Current server time
+	ServerTime time.Time `json:"server_time"`
+	// Get the FQDN configured on the embedded outpost
+	EmbeddedOutpostHost string `json:"embedded_outpost_host"`
 }
 
 // NewSystem instantiates a new System object

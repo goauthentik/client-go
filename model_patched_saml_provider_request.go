@@ -19,9 +19,9 @@ import (
 type PatchedSAMLProviderRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string  `json:"authorization_flow,omitempty"`
-	PropertyMappings  []string `json:"property_mappings,omitempty"`
-	AcsUrl            *string  `json:"acs_url,omitempty"`
+	AuthorizationFlow NullableString `json:"authorization_flow,omitempty"`
+	PropertyMappings  []string       `json:"property_mappings,omitempty"`
+	AcsUrl            *string        `json:"acs_url,omitempty"`
 	// Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added.
 	Audience *string `json:"audience,omitempty"`
 	// Also known as EntityID
@@ -40,7 +40,7 @@ type PatchedSAMLProviderRequest struct {
 	SigningKp NullableString `json:"signing_kp,omitempty"`
 	// When selected, incoming assertion's Signatures will be validated against this certificate. To allow unsigned Requests, leave on default.
 	VerificationKp NullableString `json:"verification_kp,omitempty"`
-	// This determines how authentik sends the response back to the Service Provider.
+	// This determines how authentik sends the response back to the Service Provider.  * `redirect` - Redirect * `post` - Post
 	SpBinding NullableSpBindingEnum `json:"sp_binding,omitempty"`
 }
 
@@ -93,36 +93,47 @@ func (o *PatchedSAMLProviderRequest) SetName(v string) {
 	o.Name = &v
 }
 
-// GetAuthorizationFlow returns the AuthorizationFlow field value if set, zero value otherwise.
+// GetAuthorizationFlow returns the AuthorizationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedSAMLProviderRequest) GetAuthorizationFlow() string {
-	if o == nil || o.AuthorizationFlow == nil {
+	if o == nil || o.AuthorizationFlow.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.AuthorizationFlow
+	return *o.AuthorizationFlow.Get()
 }
 
 // GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedSAMLProviderRequest) GetAuthorizationFlowOk() (*string, bool) {
-	if o == nil || o.AuthorizationFlow == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.AuthorizationFlow, true
+	return o.AuthorizationFlow.Get(), o.AuthorizationFlow.IsSet()
 }
 
 // HasAuthorizationFlow returns a boolean if a field has been set.
 func (o *PatchedSAMLProviderRequest) HasAuthorizationFlow() bool {
-	if o != nil && o.AuthorizationFlow != nil {
+	if o != nil && o.AuthorizationFlow.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAuthorizationFlow gets a reference to the given string and assigns it to the AuthorizationFlow field.
+// SetAuthorizationFlow gets a reference to the given NullableString and assigns it to the AuthorizationFlow field.
 func (o *PatchedSAMLProviderRequest) SetAuthorizationFlow(v string) {
-	o.AuthorizationFlow = &v
+	o.AuthorizationFlow.Set(&v)
+}
+
+// SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
+func (o *PatchedSAMLProviderRequest) SetAuthorizationFlowNil() {
+	o.AuthorizationFlow.Set(nil)
+}
+
+// UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
+func (o *PatchedSAMLProviderRequest) UnsetAuthorizationFlow() {
+	o.AuthorizationFlow.Unset()
 }
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
@@ -590,8 +601,8 @@ func (o PatchedSAMLProviderRequest) MarshalJSON() ([]byte, error) {
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.AuthorizationFlow != nil {
-		toSerialize["authorization_flow"] = o.AuthorizationFlow
+	if o.AuthorizationFlow.IsSet() {
+		toSerialize["authorization_flow"] = o.AuthorizationFlow.Get()
 	}
 	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings

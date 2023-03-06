@@ -18,12 +18,13 @@ import (
 
 // ExpiringBaseGrantModel Serializer for BaseGrantModel and ExpiringBaseGrant
 type ExpiringBaseGrantModel struct {
-	Pk        int32          `json:"pk"`
-	Provider  OAuth2Provider `json:"provider"`
-	User      User           `json:"user"`
-	IsExpired bool           `json:"is_expired"`
-	Expires   *time.Time     `json:"expires,omitempty"`
-	Scope     []string       `json:"scope"`
+	Pk       int32          `json:"pk"`
+	Provider OAuth2Provider `json:"provider"`
+	User     User           `json:"user"`
+	// Check if token is expired yet.
+	IsExpired bool       `json:"is_expired"`
+	Expires   *time.Time `json:"expires,omitempty"`
+	Scope     []string   `json:"scope"`
 }
 
 // NewExpiringBaseGrantModel instantiates a new ExpiringBaseGrantModel object

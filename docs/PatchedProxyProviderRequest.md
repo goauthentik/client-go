@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**AuthorizationFlow** | Pointer to **string** | Flow used when authorizing this provider. | [optional] 
+**AuthorizationFlow** | Pointer to **NullableString** | Flow used when authorizing this provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **InternalHost** | Pointer to **string** |  | [optional] 
 **ExternalHost** | Pointer to **string** |  | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **BasicAuthEnabled** | Pointer to **bool** | Set a custom HTTP-Basic Authentication header based on values from authentik. | [optional] 
 **BasicAuthPasswordAttribute** | Pointer to **string** | User/Group Attribute used for the password part of the HTTP-Basic Header. | [optional] 
 **BasicAuthUserAttribute** | Pointer to **string** | User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user&#39;s Email address is used. | [optional] 
-**Mode** | Pointer to [**NullableProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
+**Mode** | Pointer to [**NullableProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.  * &#x60;proxy&#x60; - Proxy * &#x60;forward_single&#x60; - Forward Single * &#x60;forward_domain&#x60; - Forward Domain | [optional] 
 **InterceptHeaderAuth** | Pointer to **bool** | When enabled, this provider will intercept the authorization header and authenticate requests based on its value. | [optional] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
 **JwksSources** | Pointer to **[]string** |  | [optional] 
@@ -91,6 +91,16 @@ SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
 HasAuthorizationFlow returns a boolean if a field has been set.
 
+### SetAuthorizationFlowNil
+
+`func (o *PatchedProxyProviderRequest) SetAuthorizationFlowNil(b bool)`
+
+ SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
+
+### UnsetAuthorizationFlow
+`func (o *PatchedProxyProviderRequest) UnsetAuthorizationFlow()`
+
+UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *PatchedProxyProviderRequest) GetPropertyMappings() []string`

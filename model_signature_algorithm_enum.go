@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// SignatureAlgorithmEnum the model 'SignatureAlgorithmEnum'
+// SignatureAlgorithmEnum * `http://www.w3.org/2000/09/xmldsig#rsa-sha1` - RSA-SHA1 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha256` - RSA-SHA256 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha384` - RSA-SHA384 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha512` - RSA-SHA512 * `http://www.w3.org/2000/09/xmldsig#dsa-sha1` - DSA-SHA1
 type SignatureAlgorithmEnum string
 
 // List of SignatureAlgorithmEnum

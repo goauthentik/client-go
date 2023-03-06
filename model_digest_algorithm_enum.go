@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// DigestAlgorithmEnum the model 'DigestAlgorithmEnum'
+// DigestAlgorithmEnum * `http://www.w3.org/2000/09/xmldsig#sha1` - SHA1 * `http://www.w3.org/2001/04/xmlenc#sha256` - SHA256 * `http://www.w3.org/2001/04/xmldsig-more#sha384` - SHA384 * `http://www.w3.org/2001/04/xmlenc#sha512` - SHA512
 type DigestAlgorithmEnum string
 
 // List of DigestAlgorithmEnum

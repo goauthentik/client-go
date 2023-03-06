@@ -20,12 +20,17 @@ type Policy struct {
 	Pk   string `json:"pk"`
 	Name string `json:"name"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging  *bool  `json:"execution_logging,omitempty"`
-	Component         string `json:"component"`
-	VerboseName       string `json:"verbose_name"`
+	ExecutionLogging *bool `json:"execution_logging,omitempty"`
+	// Get object component so that we know how to edit the object
+	Component string `json:"component"`
+	// Return object's verbose_name
+	VerboseName string `json:"verbose_name"`
+	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
-	MetaModelName     string `json:"meta_model_name"`
-	BoundTo           int32  `json:"bound_to"`
+	// Return internal model name
+	MetaModelName string `json:"meta_model_name"`
+	// Return objects policy is bound to
+	BoundTo int32 `json:"bound_to"`
 }
 
 // NewPolicy instantiates a new Policy object

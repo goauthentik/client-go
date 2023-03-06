@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **TaskName** | **string** |  | 
 **TaskDescription** | **string** |  | 
 **TaskFinishTimestamp** | **time.Time** |  | 
-**TaskDuration** | **int32** |  | [readonly] 
+**TaskDuration** | **int32** | Get the duration a task took to run | [readonly] 
 **Status** | [**TaskStatusEnum**](TaskStatusEnum.md) |  | 
 **Messages** | **[]interface{}** |  | 
 

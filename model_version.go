@@ -17,10 +17,14 @@ import (
 
 // Version Get running and latest version.
 type Version struct {
+	// Get current version
 	VersionCurrent string `json:"version_current"`
-	VersionLatest  string `json:"version_latest"`
-	BuildHash      string `json:"build_hash"`
-	Outdated       bool   `json:"outdated"`
+	// Get latest version from cache
+	VersionLatest string `json:"version_latest"`
+	// Get build hash, if version is not latest or released
+	BuildHash string `json:"build_hash"`
+	// Check if we're running the latest version
+	Outdated bool `json:"outdated"`
 }
 
 // NewVersion instantiates a new Version object

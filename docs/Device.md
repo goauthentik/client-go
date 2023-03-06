@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VerboseName** | **string** |  | [readonly] 
-**VerboseNamePlural** | **string** |  | [readonly] 
-**MetaModelName** | **string** |  | [readonly] 
+**VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
+**VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
+**MetaModelName** | **string** | Return internal model name | [readonly] 
 **Pk** | **int32** |  | 
 **Name** | **string** |  | 
-**Type** | **string** |  | [readonly] 
+**Type** | **string** | Get type of device | [readonly] 
 **Confirmed** | **bool** |  | 
 
 ## Methods

@@ -322,7 +322,7 @@ func (r ApiFlowsBindingsListRequest) FsbUuid(fsbUuid string) ApiFlowsBindingsLis
 	return r
 }
 
-// Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.
+// Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.  * &#x60;retry&#x60; - Retry * &#x60;restart&#x60; - Restart * &#x60;restart_with_context&#x60; - Restart With Context
 func (r ApiFlowsBindingsListRequest) InvalidResponseAction(invalidResponseAction string) ApiFlowsBindingsListRequest {
 	r.invalidResponseAction = &invalidResponseAction
 	return r
@@ -361,6 +361,7 @@ func (r ApiFlowsBindingsListRequest) Policies(policies []string) ApiFlowsBinding
 	return r
 }
 
+// * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass  * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass
 func (r ApiFlowsBindingsListRequest) PolicyEngineMode(policyEngineMode string) ApiFlowsBindingsListRequest {
 	r.policyEngineMode = &policyEngineMode
 	return r
@@ -2642,13 +2643,13 @@ type ApiFlowsInstancesListRequest struct {
 	slug         *string
 }
 
-// Configure what should happen when a flow denies access to a user.
+// Configure what should happen when a flow denies access to a user.  * &#x60;message_continue&#x60; - Message Continue * &#x60;message&#x60; - Message * &#x60;continue&#x60; - Continue
 func (r ApiFlowsInstancesListRequest) DeniedAction(deniedAction string) ApiFlowsInstancesListRequest {
 	r.deniedAction = &deniedAction
 	return r
 }
 
-// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
+// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.  * &#x60;authentication&#x60; - Authentication * &#x60;authorization&#x60; - Authorization * &#x60;invalidation&#x60; - Invalidation * &#x60;enrollment&#x60; - Enrollment * &#x60;unenrollment&#x60; - Unrenollment * &#x60;recovery&#x60; - Recovery * &#x60;stage_configuration&#x60; - Stage Configuration
 func (r ApiFlowsInstancesListRequest) Designation(designation string) ApiFlowsInstancesListRequest {
 	r.designation = &designation
 	return r

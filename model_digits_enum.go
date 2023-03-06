@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// DigitsEnum the model 'DigitsEnum'
+// DigitsEnum * `6` - 6 digits, widely compatible * `8` - 8 digits, not compatible with apps like Google Authenticator
 type DigitsEnum int32
 
 // List of DigitsEnum

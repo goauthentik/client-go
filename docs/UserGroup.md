@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
-**NumPk** | **int32** |  | [readonly] 
+**NumPk** | **int32** | Get a numerical, int32 ID for the group | [readonly] 
 **Name** | **string** |  | 
 **IsSuperuser** | Pointer to **bool** | Users added to this group will be superusers. | [optional] 
 **Parent** | Pointer to **NullableString** |  | [optional] 

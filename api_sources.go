@@ -2985,6 +2985,7 @@ func (r ApiSourcesOauthListRequest) PageSize(pageSize int32) ApiSourcesOauthList
 	return r
 }
 
+// * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass  * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass
 func (r ApiSourcesOauthListRequest) PolicyEngineMode(policyEngineMode string) ApiSourcesOauthListRequest {
 	r.policyEngineMode = &policyEngineMode
 	return r
@@ -3016,7 +3017,7 @@ func (r ApiSourcesOauthListRequest) Slug(slug string) ApiSourcesOauthListRequest
 	return r
 }
 
-// How the source determines if an existing user should be authenticated or a new user enrolled.
+// How the source determines if an existing user should be authenticated or a new user enrolled.  * &#x60;identifier&#x60; - Use the source-specific identifier * &#x60;email_link&#x60; - Link to a user with identical email address. Can have security implications when a source doesn&#39;t validate email addresses. * &#x60;email_deny&#x60; - Use the user&#39;s email address, but deny enrollment when the email address already exists. * &#x60;username_link&#x60; - Link to a user with identical username. Can have security implications when a username is used with another source. * &#x60;username_deny&#x60; - Use the user&#39;s username, but deny enrollment when the username already exists.
 func (r ApiSourcesOauthListRequest) UserMatchingMode(userMatchingMode string) ApiSourcesOauthListRequest {
 	r.userMatchingMode = &userMatchingMode
 	return r
@@ -4245,6 +4246,7 @@ func (r ApiSourcesPlexListRequest) PageSize(pageSize int32) ApiSourcesPlexListRe
 	return r
 }
 
+// * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass  * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass
 func (r ApiSourcesPlexListRequest) PolicyEngineMode(policyEngineMode string) ApiSourcesPlexListRequest {
 	r.policyEngineMode = &policyEngineMode
 	return r
@@ -4261,7 +4263,7 @@ func (r ApiSourcesPlexListRequest) Slug(slug string) ApiSourcesPlexListRequest {
 	return r
 }
 
-// How the source determines if an existing user should be authenticated or a new user enrolled.
+// How the source determines if an existing user should be authenticated or a new user enrolled.  * &#x60;identifier&#x60; - Use the source-specific identifier * &#x60;email_link&#x60; - Link to a user with identical email address. Can have security implications when a source doesn&#39;t validate email addresses. * &#x60;email_deny&#x60; - Use the user&#39;s email address, but deny enrollment when the email address already exists. * &#x60;username_link&#x60; - Link to a user with identical username. Can have security implications when a username is used with another source. * &#x60;username_deny&#x60; - Use the user&#39;s username, but deny enrollment when the username already exists.
 func (r ApiSourcesPlexListRequest) UserMatchingMode(userMatchingMode string) ApiSourcesPlexListRequest {
 	r.userMatchingMode = &userMatchingMode
 	return r
@@ -5558,11 +5560,13 @@ func (r ApiSourcesSamlListRequest) AuthenticationFlow(authenticationFlow string)
 	return r
 }
 
+// * &#x60;REDIRECT&#x60; - Redirect Binding * &#x60;POST&#x60; - POST Binding * &#x60;POST_AUTO&#x60; - POST Binding with auto-confirmation  * &#x60;REDIRECT&#x60; - Redirect Binding * &#x60;POST&#x60; - POST Binding * &#x60;POST_AUTO&#x60; - POST Binding with auto-confirmation
 func (r ApiSourcesSamlListRequest) BindingType(bindingType string) ApiSourcesSamlListRequest {
 	r.bindingType = &bindingType
 	return r
 }
 
+// * &#x60;http://www.w3.org/2000/09/xmldsig#sha1&#x60; - SHA1 * &#x60;http://www.w3.org/2001/04/xmlenc#sha256&#x60; - SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#sha384&#x60; - SHA384 * &#x60;http://www.w3.org/2001/04/xmlenc#sha512&#x60; - SHA512  * &#x60;http://www.w3.org/2000/09/xmldsig#sha1&#x60; - SHA1 * &#x60;http://www.w3.org/2001/04/xmlenc#sha256&#x60; - SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#sha384&#x60; - SHA384 * &#x60;http://www.w3.org/2001/04/xmlenc#sha512&#x60; - SHA512
 func (r ApiSourcesSamlListRequest) DigestAlgorithm(digestAlgorithm string) ApiSourcesSamlListRequest {
 	r.digestAlgorithm = &digestAlgorithm
 	return r
@@ -5593,7 +5597,7 @@ func (r ApiSourcesSamlListRequest) Name(name string) ApiSourcesSamlListRequest {
 	return r
 }
 
-// NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.
+// NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.  * &#x60;urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress&#x60; - Email * &#x60;urn:oasis:names:tc:SAML:2.0:nameid-format:persistent&#x60; - Persistent * &#x60;urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName&#x60; - X509 * &#x60;urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName&#x60; - Windows * &#x60;urn:oasis:names:tc:SAML:2.0:nameid-format:transient&#x60; - Transient
 func (r ApiSourcesSamlListRequest) NameIdPolicy(nameIdPolicy string) ApiSourcesSamlListRequest {
 	r.nameIdPolicy = &nameIdPolicy
 	return r
@@ -5617,6 +5621,7 @@ func (r ApiSourcesSamlListRequest) PageSize(pageSize int32) ApiSourcesSamlListRe
 	return r
 }
 
+// * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass  * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass
 func (r ApiSourcesSamlListRequest) PolicyEngineMode(policyEngineMode string) ApiSourcesSamlListRequest {
 	r.policyEngineMode = &policyEngineMode
 	return r
@@ -5633,6 +5638,7 @@ func (r ApiSourcesSamlListRequest) Search(search string) ApiSourcesSamlListReque
 	return r
 }
 
+// * &#x60;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x60; - RSA-SHA1 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x60; - RSA-SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha384&#x60; - RSA-SHA384 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha512&#x60; - RSA-SHA512 * &#x60;http://www.w3.org/2000/09/xmldsig#dsa-sha1&#x60; - DSA-SHA1  * &#x60;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x60; - RSA-SHA1 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x60; - RSA-SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha384&#x60; - RSA-SHA384 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha512&#x60; - RSA-SHA512 * &#x60;http://www.w3.org/2000/09/xmldsig#dsa-sha1&#x60; - DSA-SHA1
 func (r ApiSourcesSamlListRequest) SignatureAlgorithm(signatureAlgorithm string) ApiSourcesSamlListRequest {
 	r.signatureAlgorithm = &signatureAlgorithm
 	return r
@@ -5663,7 +5669,7 @@ func (r ApiSourcesSamlListRequest) TemporaryUserDeleteAfter(temporaryUserDeleteA
 	return r
 }
 
-// How the source determines if an existing user should be authenticated or a new user enrolled.
+// How the source determines if an existing user should be authenticated or a new user enrolled.  * &#x60;identifier&#x60; - Use the source-specific identifier * &#x60;email_link&#x60; - Link to a user with identical email address. Can have security implications when a source doesn&#39;t validate email addresses. * &#x60;email_deny&#x60; - Use the user&#39;s email address, but deny enrollment when the email address already exists. * &#x60;username_link&#x60; - Link to a user with identical username. Can have security implications when a username is used with another source. * &#x60;username_deny&#x60; - Use the user&#39;s username, but deny enrollment when the username already exists.
 func (r ApiSourcesSamlListRequest) UserMatchingMode(userMatchingMode string) ApiSourcesSamlListRequest {
 	r.userMatchingMode = &userMatchingMode
 	return r

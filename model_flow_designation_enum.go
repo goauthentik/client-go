@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// FlowDesignationEnum the model 'FlowDesignationEnum'
+// FlowDesignationEnum * `authentication` - Authentication * `authorization` - Authorization * `invalidation` - Invalidation * `enrollment` - Enrollment * `unenrollment` - Unrenollment * `recovery` - Recovery * `stage_configuration` - Stage Configuration
 type FlowDesignationEnum string
 
 // List of FlowDesignationEnum

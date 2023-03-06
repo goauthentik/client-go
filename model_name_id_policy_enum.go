@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// NameIdPolicyEnum the model 'NameIdPolicyEnum'
+// NameIdPolicyEnum * `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` - Email * `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` - Persistent * `urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName` - X509 * `urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName` - Windows * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` - Transient
 type NameIdPolicyEnum string
 
 // List of NameIdPolicyEnum

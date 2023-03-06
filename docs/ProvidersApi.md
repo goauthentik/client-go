@@ -42,6 +42,14 @@ Method | HTTP request | Description
 [**ProvidersSamlRetrieve**](ProvidersApi.md#ProvidersSamlRetrieve) | **Get** /providers/saml/{id}/ | 
 [**ProvidersSamlUpdate**](ProvidersApi.md#ProvidersSamlUpdate) | **Put** /providers/saml/{id}/ | 
 [**ProvidersSamlUsedByList**](ProvidersApi.md#ProvidersSamlUsedByList) | **Get** /providers/saml/{id}/used_by/ | 
+[**ProvidersScimCreate**](ProvidersApi.md#ProvidersScimCreate) | **Post** /providers/scim/ | 
+[**ProvidersScimDestroy**](ProvidersApi.md#ProvidersScimDestroy) | **Delete** /providers/scim/{id}/ | 
+[**ProvidersScimList**](ProvidersApi.md#ProvidersScimList) | **Get** /providers/scim/ | 
+[**ProvidersScimPartialUpdate**](ProvidersApi.md#ProvidersScimPartialUpdate) | **Patch** /providers/scim/{id}/ | 
+[**ProvidersScimRetrieve**](ProvidersApi.md#ProvidersScimRetrieve) | **Get** /providers/scim/{id}/ | 
+[**ProvidersScimSyncStatusRetrieve**](ProvidersApi.md#ProvidersScimSyncStatusRetrieve) | **Get** /providers/scim/{id}/sync_status/ | 
+[**ProvidersScimUpdate**](ProvidersApi.md#ProvidersScimUpdate) | **Put** /providers/scim/{id}/ | 
+[**ProvidersScimUsedByList**](ProvidersApi.md#ProvidersScimUsedByList) | **Get** /providers/scim/{id}/used_by/ | 
 
 
 
@@ -409,7 +417,7 @@ import (
 )
 
 func main() {
-    lDAPProviderRequest := *openapiclient.NewLDAPProviderRequest("Name_example", "AuthorizationFlow_example") // LDAPProviderRequest | 
+    lDAPProviderRequest := *openapiclient.NewLDAPProviderRequest("Name_example") // LDAPProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -780,7 +788,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this LDAP Provider.
-    lDAPProviderRequest := *openapiclient.NewLDAPProviderRequest("Name_example", "AuthorizationFlow_example") // LDAPProviderRequest | 
+    lDAPProviderRequest := *openapiclient.NewLDAPProviderRequest("Name_example") // LDAPProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -921,7 +929,7 @@ import (
 )
 
 func main() {
-    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example") // OAuth2ProviderRequest | 
+    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example") // OAuth2ProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1060,9 +1068,9 @@ func main() {
     application := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     clientId := "clientId_example" // string |  (optional)
-    clientType := "clientType_example" // string | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable (optional)
+    clientType := "clientType_example" // string | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  * `confidential` - Confidential * `public` - Public (optional)
     includeClaimsInIdToken := true // bool |  (optional)
-    issuerMode := "issuerMode_example" // string | Configure how the issuer field of the ID Token should be filled. (optional)
+    issuerMode := "issuerMode_example" // string | Configure how the issuer field of the ID Token should be filled.  * `global` - Same identifier is used for all providers * `per_provider` - Each provider has a different issuer, based on the application slug. (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -1072,7 +1080,7 @@ func main() {
     refreshTokenValidity := "refreshTokenValidity_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     signingKey := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    subMode := "subMode_example" // string | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. (optional)
+    subMode := "subMode_example" // string | Configure what data should be used as unique User Identifier. For most cases, the default should be fine.  * `hashed_user_id` - Based on the Hashed User ID * `user_id` - Based on user ID * `user_username` - Based on the username * `user_email` - Based on the User's Email. This is recommended over the UPN method. * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1102,9 +1110,9 @@ Name | Type | Description  | Notes
  **application** | **string** |  | 
  **authorizationFlow** | **string** |  | 
  **clientId** | **string** |  | 
- **clientType** | **string** | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable | 
+ **clientType** | **string** | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  * &#x60;confidential&#x60; - Confidential * &#x60;public&#x60; - Public | 
  **includeClaimsInIdToken** | **bool** |  | 
- **issuerMode** | **string** | Configure how the issuer field of the ID Token should be filled. | 
+ **issuerMode** | **string** | Configure how the issuer field of the ID Token should be filled.  * &#x60;global&#x60; - Same identifier is used for all providers * &#x60;per_provider&#x60; - Each provider has a different issuer, based on the application slug. | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -1114,7 +1122,7 @@ Name | Type | Description  | Notes
  **refreshTokenValidity** | **string** |  | 
  **search** | **string** | A search term. | 
  **signingKey** | **string** |  | 
- **subMode** | **string** | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | 
+ **subMode** | **string** | Configure what data should be used as unique User Identifier. For most cases, the default should be fine.  * &#x60;hashed_user_id&#x60; - Based on the Hashed User ID * &#x60;user_id&#x60; - Based on user ID * &#x60;user_username&#x60; - Based on the username * &#x60;user_email&#x60; - Based on the User&#39;s Email. This is recommended over the UPN method. * &#x60;user_upn&#x60; - Based on the User&#39;s UPN, only works if user has a &#39;upn&#39; attribute set. Use this method only if you have different UPN and Mail domains. | 
 
 ### Return type
 
@@ -1438,7 +1446,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this OAuth2/OpenID Provider.
-    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example") // OAuth2ProviderRequest | 
+    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example") // OAuth2ProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1579,7 +1587,7 @@ import (
 )
 
 func main() {
-    proxyProviderRequest := *openapiclient.NewProxyProviderRequest("Name_example", "AuthorizationFlow_example", "ExternalHost_example") // ProxyProviderRequest | 
+    proxyProviderRequest := *openapiclient.NewProxyProviderRequest("Name_example", "ExternalHost_example") // ProxyProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1960,7 +1968,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Proxy Provider.
-    proxyProviderRequest := *openapiclient.NewProxyProviderRequest("Name_example", "AuthorizationFlow_example", "ExternalHost_example") // ProxyProviderRequest | 
+    proxyProviderRequest := *openapiclient.NewProxyProviderRequest("Name_example", "ExternalHost_example") // ProxyProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2101,7 +2109,7 @@ import (
 )
 
 func main() {
-    sAMLProviderRequest := *openapiclient.NewSAMLProviderRequest("Name_example", "AuthorizationFlow_example", "AcsUrl_example") // SAMLProviderRequest | 
+    sAMLProviderRequest := *openapiclient.NewSAMLProviderRequest("Name_example", "AcsUrl_example") // SAMLProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2308,7 +2316,7 @@ func main() {
     assertionValidNotOnOrAfter := "assertionValidNotOnOrAfter_example" // string |  (optional)
     audience := "audience_example" // string |  (optional)
     authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    digestAlgorithm := "digestAlgorithm_example" // string |  (optional)
+    digestAlgorithm := "digestAlgorithm_example" // string | * `http://www.w3.org/2000/09/xmldsig#sha1` - SHA1 * `http://www.w3.org/2001/04/xmlenc#sha256` - SHA256 * `http://www.w3.org/2001/04/xmldsig-more#sha384` - SHA384 * `http://www.w3.org/2001/04/xmlenc#sha512` - SHA512  * `http://www.w3.org/2000/09/xmldsig#sha1` - SHA1 * `http://www.w3.org/2001/04/xmlenc#sha256` - SHA256 * `http://www.w3.org/2001/04/xmldsig-more#sha384` - SHA384 * `http://www.w3.org/2001/04/xmlenc#sha512` - SHA512 (optional)
     issuer := "issuer_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     nameIdMapping := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
@@ -2318,9 +2326,9 @@ func main() {
     propertyMappings := []string{"Inner_example"} // []string |  (optional)
     search := "search_example" // string | A search term. (optional)
     sessionValidNotOnOrAfter := "sessionValidNotOnOrAfter_example" // string |  (optional)
-    signatureAlgorithm := "signatureAlgorithm_example" // string |  (optional)
+    signatureAlgorithm := "signatureAlgorithm_example" // string | * `http://www.w3.org/2000/09/xmldsig#rsa-sha1` - RSA-SHA1 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha256` - RSA-SHA256 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha384` - RSA-SHA384 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha512` - RSA-SHA512 * `http://www.w3.org/2000/09/xmldsig#dsa-sha1` - DSA-SHA1  * `http://www.w3.org/2000/09/xmldsig#rsa-sha1` - RSA-SHA1 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha256` - RSA-SHA256 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha384` - RSA-SHA384 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha512` - RSA-SHA512 * `http://www.w3.org/2000/09/xmldsig#dsa-sha1` - DSA-SHA1 (optional)
     signingKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    spBinding := "spBinding_example" // string | This determines how authentik sends the response back to the Service Provider. (optional)
+    spBinding := "spBinding_example" // string | This determines how authentik sends the response back to the Service Provider.  * `redirect` - Redirect * `post` - Post (optional)
     verificationKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -2351,7 +2359,7 @@ Name | Type | Description  | Notes
  **assertionValidNotOnOrAfter** | **string** |  | 
  **audience** | **string** |  | 
  **authorizationFlow** | **string** |  | 
- **digestAlgorithm** | **string** |  | 
+ **digestAlgorithm** | **string** | * &#x60;http://www.w3.org/2000/09/xmldsig#sha1&#x60; - SHA1 * &#x60;http://www.w3.org/2001/04/xmlenc#sha256&#x60; - SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#sha384&#x60; - SHA384 * &#x60;http://www.w3.org/2001/04/xmlenc#sha512&#x60; - SHA512  * &#x60;http://www.w3.org/2000/09/xmldsig#sha1&#x60; - SHA1 * &#x60;http://www.w3.org/2001/04/xmlenc#sha256&#x60; - SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#sha384&#x60; - SHA384 * &#x60;http://www.w3.org/2001/04/xmlenc#sha512&#x60; - SHA512 | 
  **issuer** | **string** |  | 
  **name** | **string** |  | 
  **nameIdMapping** | **string** |  | 
@@ -2361,9 +2369,9 @@ Name | Type | Description  | Notes
  **propertyMappings** | **[]string** |  | 
  **search** | **string** | A search term. | 
  **sessionValidNotOnOrAfter** | **string** |  | 
- **signatureAlgorithm** | **string** |  | 
+ **signatureAlgorithm** | **string** | * &#x60;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x60; - RSA-SHA1 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x60; - RSA-SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha384&#x60; - RSA-SHA384 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha512&#x60; - RSA-SHA512 * &#x60;http://www.w3.org/2000/09/xmldsig#dsa-sha1&#x60; - DSA-SHA1  * &#x60;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x60; - RSA-SHA1 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x60; - RSA-SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha384&#x60; - RSA-SHA384 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha512&#x60; - RSA-SHA512 * &#x60;http://www.w3.org/2000/09/xmldsig#dsa-sha1&#x60; - DSA-SHA1 | 
  **signingKp** | **string** |  | 
- **spBinding** | **string** | This determines how authentik sends the response back to the Service Provider. | 
+ **spBinding** | **string** | This determines how authentik sends the response back to the Service Provider.  * &#x60;redirect&#x60; - Redirect * &#x60;post&#x60; - Post | 
  **verificationKp** | **string** |  | 
 
 ### Return type
@@ -2692,7 +2700,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this SAML Provider.
-    sAMLProviderRequest := *openapiclient.NewSAMLProviderRequest("Name_example", "AuthorizationFlow_example", "AcsUrl_example") // SAMLProviderRequest | 
+    sAMLProviderRequest := *openapiclient.NewSAMLProviderRequest("Name_example", "AcsUrl_example") // SAMLProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2788,6 +2796,574 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiProvidersSamlUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimCreate
+
+> SCIMProvider ProvidersScimCreate(ctx).SCIMProviderRequest(sCIMProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sCIMProviderRequest := *openapiclient.NewSCIMProviderRequest("Name_example", "Url_example", "Token_example") // SCIMProviderRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimCreate(context.Background()).SCIMProviderRequest(sCIMProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimCreate`: SCIMProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sCIMProviderRequest** | [**SCIMProviderRequest**](SCIMProviderRequest.md) |  | 
+
+### Return type
+
+[**SCIMProvider**](SCIMProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimDestroy
+
+> ProvidersScimDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SCIM Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SCIM Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimList
+
+> PaginatedSCIMProviderList ProvidersScimList(ctx).AuthorizationFlow(authorizationFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Token(token).Url(url).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    token := "token_example" // string |  (optional)
+    url := "url_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimList(context.Background()).AuthorizationFlow(authorizationFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Token(token).Url(url).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimList`: PaginatedSCIMProviderList
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorizationFlow** | **string** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **token** | **string** |  | 
+ **url** | **string** |  | 
+
+### Return type
+
+[**PaginatedSCIMProviderList**](PaginatedSCIMProviderList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimPartialUpdate
+
+> SCIMProvider ProvidersScimPartialUpdate(ctx, id).PatchedSCIMProviderRequest(patchedSCIMProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SCIM Provider.
+    patchedSCIMProviderRequest := *openapiclient.NewPatchedSCIMProviderRequest() // PatchedSCIMProviderRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimPartialUpdate(context.Background(), id).PatchedSCIMProviderRequest(patchedSCIMProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimPartialUpdate`: SCIMProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SCIM Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedSCIMProviderRequest** | [**PatchedSCIMProviderRequest**](PatchedSCIMProviderRequest.md) |  | 
+
+### Return type
+
+[**SCIMProvider**](SCIMProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimRetrieve
+
+> SCIMProvider ProvidersScimRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SCIM Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimRetrieve`: SCIMProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SCIM Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SCIMProvider**](SCIMProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimSyncStatusRetrieve
+
+> Task ProvidersScimSyncStatusRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SCIM Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimSyncStatusRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimSyncStatusRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimSyncStatusRetrieve`: Task
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimSyncStatusRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SCIM Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimSyncStatusRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**Task**](Task.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimUpdate
+
+> SCIMProvider ProvidersScimUpdate(ctx, id).SCIMProviderRequest(sCIMProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SCIM Provider.
+    sCIMProviderRequest := *openapiclient.NewSCIMProviderRequest("Name_example", "Url_example", "Token_example") // SCIMProviderRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimUpdate(context.Background(), id).SCIMProviderRequest(sCIMProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimUpdate`: SCIMProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SCIM Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **sCIMProviderRequest** | [**SCIMProviderRequest**](SCIMProviderRequest.md) |  | 
+
+### Return type
+
+[**SCIMProvider**](SCIMProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimUsedByList
+
+> []UsedBy ProvidersScimUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SCIM Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SCIM Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

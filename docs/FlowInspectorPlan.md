@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CurrentStage** | [**FlowInspectorPlanCurrentStage**](FlowInspectorPlanCurrentStage.md) |  | 
 **NextPlannedStage** | [**FlowInspectorPlanCurrentStage**](FlowInspectorPlanCurrentStage.md) |  | 
-**PlanContext** | **map[string]interface{}** |  | [readonly] 
-**SessionId** | **string** |  | [readonly] 
+**PlanContext** | **map[string]interface{}** | Get the plan&#39;s context, sanitized | [readonly] 
+**SessionId** | **string** | Get a unique session ID | [readonly] 
 
 ## Methods
 

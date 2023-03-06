@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// BindingTypeEnum the model 'BindingTypeEnum'
+// BindingTypeEnum * `REDIRECT` - Redirect Binding * `POST` - POST Binding * `POST_AUTO` - POST Binding with auto-confirmation
 type BindingTypeEnum string
 
 // List of BindingTypeEnum

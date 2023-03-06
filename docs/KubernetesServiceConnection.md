@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Local** | Pointer to **bool** | If enabled, use the local connection. Required Docker socket/Kubernetes Integration | [optional] 
 **Component** | **string** |  | [readonly] 
-**VerboseName** | **string** |  | [readonly] 
-**VerboseNamePlural** | **string** |  | [readonly] 
-**MetaModelName** | **string** |  | [readonly] 
+**VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
+**VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
+**MetaModelName** | **string** | Return internal model name | [readonly] 
 **Kubeconfig** | Pointer to **map[string]interface{}** | Paste your kubeconfig here. authentik will automatically use the currently selected context. | [optional] 
 **VerifySsl** | Pointer to **bool** | Verify SSL Certificates of the Kubernetes API endpoint | [optional] 
 

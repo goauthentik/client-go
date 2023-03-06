@@ -17,13 +17,17 @@ import (
 
 // IdentificationStage IdentificationStage Serializer
 type IdentificationStage struct {
-	Pk                string    `json:"pk"`
-	Name              string    `json:"name"`
-	Component         string    `json:"component"`
-	VerboseName       string    `json:"verbose_name"`
-	VerboseNamePlural string    `json:"verbose_name_plural"`
-	MetaModelName     string    `json:"meta_model_name"`
-	FlowSet           []FlowSet `json:"flow_set,omitempty"`
+	Pk   string `json:"pk"`
+	Name string `json:"name"`
+	// Get object type so that we know how to edit the object
+	Component string `json:"component"`
+	// Return object's verbose_name
+	VerboseName string `json:"verbose_name"`
+	// Return object's plural verbose_name
+	VerboseNamePlural string `json:"verbose_name_plural"`
+	// Return internal model name
+	MetaModelName string    `json:"meta_model_name"`
+	FlowSet       []FlowSet `json:"flow_set,omitempty"`
 	// Fields of the user object to match against. (Hold shift to select multiple options)
 	UserFields []UserFieldsEnum `json:"user_fields,omitempty"`
 	// When set, shows a password field, instead of showing the password field as seaprate step.

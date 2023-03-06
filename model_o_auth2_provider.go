@@ -20,17 +20,21 @@ type OAuth2Provider struct {
 	Pk   int32  `json:"pk"`
 	Name string `json:"name"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string   `json:"authorization_flow"`
-	PropertyMappings  []string `json:"property_mappings,omitempty"`
-	Component         string   `json:"component"`
+	AuthorizationFlow NullableString `json:"authorization_flow,omitempty"`
+	PropertyMappings  []string       `json:"property_mappings,omitempty"`
+	// Get object component so that we know how to edit the object
+	Component string `json:"component"`
 	// Internal application name, used in URLs.
 	AssignedApplicationSlug string `json:"assigned_application_slug"`
 	// Application's display Name.
 	AssignedApplicationName string `json:"assigned_application_name"`
-	VerboseName             string `json:"verbose_name"`
-	VerboseNamePlural       string `json:"verbose_name_plural"`
-	MetaModelName           string `json:"meta_model_name"`
-	// Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable
+	// Return object's verbose_name
+	VerboseName string `json:"verbose_name"`
+	// Return object's plural verbose_name
+	VerboseNamePlural string `json:"verbose_name_plural"`
+	// Return internal model name
+	MetaModelName string `json:"meta_model_name"`
+	// Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  * `confidential` - Confidential * `public` - Public
 	ClientType   NullableClientTypeEnum `json:"client_type,omitempty"`
 	ClientId     *string                `json:"client_id,omitempty"`
 	ClientSecret *string                `json:"client_secret,omitempty"`
@@ -46,9 +50,9 @@ type OAuth2Provider struct {
 	SigningKey NullableString `json:"signing_key,omitempty"`
 	// Enter each URI on a new line.
 	RedirectUris *string `json:"redirect_uris,omitempty"`
-	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
+	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.  * `hashed_user_id` - Based on the Hashed User ID * `user_id` - Based on user ID * `user_username` - Based on the username * `user_email` - Based on the User's Email. This is recommended over the UPN method. * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
 	SubMode NullableSubModeEnum `json:"sub_mode,omitempty"`
-	// Configure how the issuer field of the ID Token should be filled.
+	// Configure how the issuer field of the ID Token should be filled.  * `global` - Same identifier is used for all providers * `per_provider` - Each provider has a different issuer, based on the application slug.
 	IssuerMode  NullableIssuerModeEnum `json:"issuer_mode,omitempty"`
 	JwksSources []string               `json:"jwks_sources,omitempty"`
 }
@@ -57,11 +61,10 @@ type OAuth2Provider struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuth2Provider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string) *OAuth2Provider {
+func NewOAuth2Provider(pk int32, name string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string) *OAuth2Provider {
 	this := OAuth2Provider{}
 	this.Pk = pk
 	this.Name = name
-	this.AuthorizationFlow = authorizationFlow
 	this.Component = component
 	this.AssignedApplicationSlug = assignedApplicationSlug
 	this.AssignedApplicationName = assignedApplicationName
@@ -127,28 +130,47 @@ func (o *OAuth2Provider) SetName(v string) {
 	o.Name = v
 }
 
-// GetAuthorizationFlow returns the AuthorizationFlow field value
+// GetAuthorizationFlow returns the AuthorizationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OAuth2Provider) GetAuthorizationFlow() string {
-	if o == nil {
+	if o == nil || o.AuthorizationFlow.Get() == nil {
 		var ret string
 		return ret
 	}
-
-	return o.AuthorizationFlow
+	return *o.AuthorizationFlow.Get()
 }
 
-// GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value
+// GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OAuth2Provider) GetAuthorizationFlowOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AuthorizationFlow, true
+	return o.AuthorizationFlow.Get(), o.AuthorizationFlow.IsSet()
 }
 
-// SetAuthorizationFlow sets field value
+// HasAuthorizationFlow returns a boolean if a field has been set.
+func (o *OAuth2Provider) HasAuthorizationFlow() bool {
+	if o != nil && o.AuthorizationFlow.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthorizationFlow gets a reference to the given NullableString and assigns it to the AuthorizationFlow field.
 func (o *OAuth2Provider) SetAuthorizationFlow(v string) {
-	o.AuthorizationFlow = v
+	o.AuthorizationFlow.Set(&v)
+}
+
+// SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
+func (o *OAuth2Provider) SetAuthorizationFlowNil() {
+	o.AuthorizationFlow.Set(nil)
+}
+
+// UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
+func (o *OAuth2Provider) UnsetAuthorizationFlow() {
+	o.AuthorizationFlow.Unset()
 }
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
@@ -763,8 +785,8 @@ func (o OAuth2Provider) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if true {
-		toSerialize["authorization_flow"] = o.AuthorizationFlow
+	if o.AuthorizationFlow.IsSet() {
+		toSerialize["authorization_flow"] = o.AuthorizationFlow.Get()
 	}
 	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings

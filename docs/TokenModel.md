@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 **Pk** | **int32** |  | [readonly] 
 **Provider** | [**OAuth2Provider**](OAuth2Provider.md) |  | 
 **User** | [**User**](User.md) |  | 
-**IsExpired** | **bool** |  | [readonly] 
+**IsExpired** | **bool** | Check if token is expired yet. | [readonly] 
 **Expires** | Pointer to **time.Time** |  | [optional] 
 **Scope** | **[]string** |  | 
-**IdToken** | **string** |  | [readonly] 
+**IdToken** | **string** | Get the token&#39;s id_token as JSON String | [readonly] 
 **Revoked** | Pointer to **bool** |  | [optional] 
 
 ## Methods

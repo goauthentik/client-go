@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// SeverityEnum the model 'SeverityEnum'
+// SeverityEnum * `notice` - Notice * `warning` - Warning * `alert` - Alert
 type SeverityEnum string
 
 // List of SeverityEnum

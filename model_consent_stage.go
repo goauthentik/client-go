@@ -17,14 +17,18 @@ import (
 
 // ConsentStage ConsentStage Serializer
 type ConsentStage struct {
-	Pk                string                `json:"pk"`
-	Name              string                `json:"name"`
-	Component         string                `json:"component"`
-	VerboseName       string                `json:"verbose_name"`
-	VerboseNamePlural string                `json:"verbose_name_plural"`
-	MetaModelName     string                `json:"meta_model_name"`
-	FlowSet           []FlowSet             `json:"flow_set,omitempty"`
-	Mode              *ConsentStageModeEnum `json:"mode,omitempty"`
+	Pk   string `json:"pk"`
+	Name string `json:"name"`
+	// Get object type so that we know how to edit the object
+	Component string `json:"component"`
+	// Return object's verbose_name
+	VerboseName string `json:"verbose_name"`
+	// Return object's plural verbose_name
+	VerboseNamePlural string `json:"verbose_name_plural"`
+	// Return internal model name
+	MetaModelName string                `json:"meta_model_name"`
+	FlowSet       []FlowSet             `json:"flow_set,omitempty"`
+	Mode          *ConsentStageModeEnum `json:"mode,omitempty"`
 	// Offset after which consent expires. (Format: hours=1;minutes=2;seconds=3).
 	ConsentExpireIn *string `json:"consent_expire_in,omitempty"`
 }

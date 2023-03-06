@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ChallengeChoices the model 'ChallengeChoices'
+// ChallengeChoices * `native` - NATIVE * `shell` - SHELL * `redirect` - REDIRECT
 type ChallengeChoices string
 
 // List of ChallengeChoices

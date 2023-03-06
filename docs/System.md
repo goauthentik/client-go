@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Env** | **map[string]string** |  | [readonly] 
-**HttpHeaders** | **map[string]string** |  | [readonly] 
-**HttpHost** | **string** |  | [readonly] 
-**HttpIsSecure** | **bool** |  | [readonly] 
+**Env** | **map[string]string** | Get Environment | [readonly] 
+**HttpHeaders** | **map[string]string** | Get HTTP Request headers | [readonly] 
+**HttpHost** | **string** | Get HTTP host | [readonly] 
+**HttpIsSecure** | **bool** | Get HTTP Secure flag | [readonly] 
 **Runtime** | [**SystemRuntime**](SystemRuntime.md) |  | 
-**Tenant** | **string** |  | [readonly] 
-**ServerTime** | **time.Time** |  | [readonly] 
-**EmbeddedOutpostHost** | **string** |  | [readonly] 
+**Tenant** | **string** | Currently active tenant | [readonly] 
+**ServerTime** | **time.Time** | Current server time | [readonly] 
+**EmbeddedOutpostHost** | **string** | Get the FQDN configured on the embedded outpost | [readonly] 
 
 ## Methods
 

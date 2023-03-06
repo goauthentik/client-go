@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
 **Name** | **string** |  | 
-**AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
+**AuthorizationFlow** | Pointer to **NullableString** | Flow used when authorizing this provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
-**Component** | **string** |  | [readonly] 
+**Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
 **AssignedApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
 **AssignedApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
-**VerboseName** | **string** |  | [readonly] 
-**VerboseNamePlural** | **string** |  | [readonly] 
-**MetaModelName** | **string** |  | [readonly] 
+**VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
+**VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
+**MetaModelName** | **string** | Return internal model name | [readonly] 
 **ClientId** | **string** |  | [readonly] 
 **InternalHost** | Pointer to **string** |  | [optional] 
 **ExternalHost** | **string** |  | 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **BasicAuthEnabled** | Pointer to **bool** | Set a custom HTTP-Basic Authentication header based on values from authentik. | [optional] 
 **BasicAuthPasswordAttribute** | Pointer to **string** | User/Group Attribute used for the password part of the HTTP-Basic Header. | [optional] 
 **BasicAuthUserAttribute** | Pointer to **string** | User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user&#39;s Email address is used. | [optional] 
-**Mode** | Pointer to [**NullableProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
+**Mode** | Pointer to [**NullableProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.  * &#x60;proxy&#x60; - Proxy * &#x60;forward_single&#x60; - Forward Single * &#x60;forward_domain&#x60; - Forward Domain | [optional] 
 **InterceptHeaderAuth** | Pointer to **bool** | When enabled, this provider will intercept the authorization header and authenticate requests based on its value. | [optional] 
 **RedirectUris** | **string** |  | [readonly] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 
 ### NewProxyProvider
 
-`func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris string, outpostSet []string, ) *ProxyProvider`
+`func NewProxyProvider(pk int32, name string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris string, outpostSet []string, ) *ProxyProvider`
 
 NewProxyProvider instantiates a new ProxyProvider object
 This constructor will assign default values to properties that have it defined,
@@ -110,7 +110,22 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
+### HasAuthorizationFlow
 
+`func (o *ProxyProvider) HasAuthorizationFlow() bool`
+
+HasAuthorizationFlow returns a boolean if a field has been set.
+
+### SetAuthorizationFlowNil
+
+`func (o *ProxyProvider) SetAuthorizationFlowNil(b bool)`
+
+ SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
+
+### UnsetAuthorizationFlow
+`func (o *ProxyProvider) UnsetAuthorizationFlow()`
+
+UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *ProxyProvider) GetPropertyMappings() []string`

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uuid** | Pointer to **string** |  | [optional] 
-**Current** | **bool** |  | [readonly] 
+**Current** | **bool** | Check if session is currently active session | [readonly] 
 **UserAgent** | [**AuthenticatedSessionUserAgent**](AuthenticatedSessionUserAgent.md) |  | 
 **GeoIp** | [**NullableAuthenticatedSessionGeoIp**](AuthenticatedSessionGeoIp.md) |  | 
 **User** | **int32** |  | 

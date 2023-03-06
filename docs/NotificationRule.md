@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Pk** | **string** |  | [readonly] 
 **Name** | **string** |  | 
 **Transports** | Pointer to **[]string** | Select which transports should be used to notify the user. If none are selected, the notification will only be shown in the authentik UI. | [optional] 
-**Severity** | Pointer to [**NullableSeverityEnum**](SeverityEnum.md) | Controls which severity level the created notifications will have. | [optional] 
+**Severity** | Pointer to [**NullableSeverityEnum**](SeverityEnum.md) | Controls which severity level the created notifications will have.  * &#x60;notice&#x60; - Notice * &#x60;warning&#x60; - Warning * &#x60;alert&#x60; - Alert | [optional] 
 **Group** | Pointer to **NullableString** | Define which group of users this notification should be sent and shown to. If left empty, Notification won&#39;t ben sent. | [optional] 
 **GroupObj** | [**NotificationRuleGroupObj**](NotificationRuleGroupObj.md) |  | 
 

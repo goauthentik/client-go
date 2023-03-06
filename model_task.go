@@ -18,12 +18,13 @@ import (
 
 // Task Serialize TaskInfo and TaskResult
 type Task struct {
-	TaskName            string         `json:"task_name"`
-	TaskDescription     string         `json:"task_description"`
-	TaskFinishTimestamp time.Time      `json:"task_finish_timestamp"`
-	TaskDuration        int32          `json:"task_duration"`
-	Status              TaskStatusEnum `json:"status"`
-	Messages            []interface{}  `json:"messages"`
+	TaskName            string    `json:"task_name"`
+	TaskDescription     string    `json:"task_description"`
+	TaskFinishTimestamp time.Time `json:"task_finish_timestamp"`
+	// Get the duration a task took to run
+	TaskDuration int32          `json:"task_duration"`
+	Status       TaskStatusEnum `json:"status"`
+	Messages     []interface{}  `json:"messages"`
 }
 
 // NewTask instantiates a new Task object

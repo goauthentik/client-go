@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ProviderTypeEnum the model 'ProviderTypeEnum'
+// ProviderTypeEnum * `apple` - Apple * `azuread` - Azure AD * `discord` - Discord * `facebook` - Facebook * `github` - GitHub * `google` - Google * `openidconnect` - OpenID Connect * `okta` - Okta * `reddit` - reddit * `twitter` - Twitter * `mailcow` - Mailcow * `twitch` - Twitch
 type ProviderTypeEnum string
 
 // List of ProviderTypeEnum

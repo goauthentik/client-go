@@ -20,11 +20,14 @@ type KubernetesServiceConnection struct {
 	Pk   string `json:"pk"`
 	Name string `json:"name"`
 	// If enabled, use the local connection. Required Docker socket/Kubernetes Integration
-	Local             *bool  `json:"local,omitempty"`
-	Component         string `json:"component"`
-	VerboseName       string `json:"verbose_name"`
+	Local     *bool  `json:"local,omitempty"`
+	Component string `json:"component"`
+	// Return object's verbose_name
+	VerboseName string `json:"verbose_name"`
+	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
-	MetaModelName     string `json:"meta_model_name"`
+	// Return internal model name
+	MetaModelName string `json:"meta_model_name"`
 	// Paste your kubeconfig here. authentik will automatically use the currently selected context.
 	Kubeconfig map[string]interface{} `json:"kubeconfig,omitempty"`
 	// Verify SSL Certificates of the Kubernetes API endpoint

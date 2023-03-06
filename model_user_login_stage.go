@@ -17,13 +17,17 @@ import (
 
 // UserLoginStage UserLoginStage Serializer
 type UserLoginStage struct {
-	Pk                string    `json:"pk"`
-	Name              string    `json:"name"`
-	Component         string    `json:"component"`
-	VerboseName       string    `json:"verbose_name"`
-	VerboseNamePlural string    `json:"verbose_name_plural"`
-	MetaModelName     string    `json:"meta_model_name"`
-	FlowSet           []FlowSet `json:"flow_set,omitempty"`
+	Pk   string `json:"pk"`
+	Name string `json:"name"`
+	// Get object type so that we know how to edit the object
+	Component string `json:"component"`
+	// Return object's verbose_name
+	VerboseName string `json:"verbose_name"`
+	// Return object's plural verbose_name
+	VerboseNamePlural string `json:"verbose_name_plural"`
+	// Return internal model name
+	MetaModelName string    `json:"meta_model_name"`
+	FlowSet       []FlowSet `json:"flow_set,omitempty"`
 	// Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)
 	SessionDuration *string `json:"session_duration,omitempty"`
 	// Terminate all other sessions of the user logging in.

@@ -26,7 +26,7 @@ type AuthenticatorValidateStageRequest struct {
 	ConfigurationStages []string `json:"configuration_stages,omitempty"`
 	// If any of the user's device has been used within this threshold, this stage will be skipped
 	LastAuthThreshold *string `json:"last_auth_threshold,omitempty"`
-	// Enforce user verification for WebAuthn devices.
+	// Enforce user verification for WebAuthn devices.  * `required` - Required * `preferred` - Preferred * `discouraged` - Discouraged
 	WebauthnUserVerification NullableUserVerificationEnum `json:"webauthn_user_verification,omitempty"`
 }
 

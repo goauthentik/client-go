@@ -18,16 +18,24 @@ import (
 
 // CertificateKeyPair CertificateKeyPair Serializer
 type CertificateKeyPair struct {
-	Pk                     string         `json:"pk"`
-	Name                   string         `json:"name"`
-	FingerprintSha256      NullableString `json:"fingerprint_sha256"`
-	FingerprintSha1        NullableString `json:"fingerprint_sha1"`
-	CertExpiry             NullableTime   `json:"cert_expiry"`
-	CertSubject            NullableString `json:"cert_subject"`
-	PrivateKeyAvailable    bool           `json:"private_key_available"`
-	PrivateKeyType         NullableString `json:"private_key_type"`
-	CertificateDownloadUrl string         `json:"certificate_download_url"`
-	PrivateKeyDownloadUrl  string         `json:"private_key_download_url"`
+	Pk   string `json:"pk"`
+	Name string `json:"name"`
+	// Get certificate Hash (SHA256)
+	FingerprintSha256 NullableString `json:"fingerprint_sha256"`
+	// Get certificate Hash (SHA1)
+	FingerprintSha1 NullableString `json:"fingerprint_sha1"`
+	// Get certificate expiry
+	CertExpiry NullableTime `json:"cert_expiry"`
+	// Get certificate subject as full rfc4514
+	CertSubject NullableString `json:"cert_subject"`
+	// Show if this keypair has a private key configured or not
+	PrivateKeyAvailable bool `json:"private_key_available"`
+	// Get the private key's type, if set
+	PrivateKeyType NullableString `json:"private_key_type"`
+	// Get URL to download certificate
+	CertificateDownloadUrl string `json:"certificate_download_url"`
+	// Get URL to download private key
+	PrivateKeyDownloadUrl string `json:"private_key_download_url"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed NullableString `json:"managed,omitempty"`
 }

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Pk** | **string** |  | [readonly] 
 **Name** | **string** |  | 
 **Mode** | Pointer to [**NotificationTransportModeEnum**](NotificationTransportModeEnum.md) |  | [optional] 
-**ModeVerbose** | **string** |  | [readonly] 
+**ModeVerbose** | **string** | Return selected mode with a UI Label | [readonly] 
 **WebhookUrl** | Pointer to **string** |  | [optional] 
 **WebhookMapping** | Pointer to **NullableString** |  | [optional] 
 **SendOnce** | Pointer to **bool** | Only send notification once, for example when sending a webhook into a chat channel. | [optional] 

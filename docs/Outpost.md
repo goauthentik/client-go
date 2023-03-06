@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ProvidersObj** | [**[]Provider**](Provider.md) |  | [readonly] 
 **ServiceConnection** | Pointer to **NullableString** | Select Service-Connection authentik should use to manage this outpost. Leave empty if authentik should not handle the deployment. | [optional] 
 **ServiceConnectionObj** | [**OutpostServiceConnectionObj**](OutpostServiceConnectionObj.md) |  | 
-**TokenIdentifier** | **string** |  | [readonly] 
+**TokenIdentifier** | **string** | Get Token identifier | [readonly] 
 **Config** | **map[string]interface{}** |  | 
 **Managed** | Pointer to **NullableString** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [optional] 
 

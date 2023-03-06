@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// AuthenticationEnum the model 'AuthenticationEnum'
+// AuthenticationEnum * `none` - None * `require_authenticated` - Require Authenticated * `require_unauthenticated` - Require Unauthenticated * `require_superuser` - Require Superuser
 type AuthenticationEnum string
 
 // List of AuthenticationEnum

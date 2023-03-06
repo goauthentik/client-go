@@ -26,19 +26,24 @@ type LDAPSource struct {
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
-	EnrollmentFlow    NullableString    `json:"enrollment_flow,omitempty"`
-	Component         string            `json:"component"`
-	VerboseName       string            `json:"verbose_name"`
-	VerboseNamePlural string            `json:"verbose_name_plural"`
-	MetaModelName     string            `json:"meta_model_name"`
-	PolicyEngineMode  *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
-	// How the source determines if an existing user should be authenticated or a new user enrolled.
+	EnrollmentFlow NullableString `json:"enrollment_flow,omitempty"`
+	// Get object component so that we know how to edit the object
+	Component string `json:"component"`
+	// Return object's verbose_name
+	VerboseName string `json:"verbose_name"`
+	// Return object's plural verbose_name
+	VerboseNamePlural string `json:"verbose_name_plural"`
+	// Return internal model name
+	MetaModelName    string            `json:"meta_model_name"`
+	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	// How the source determines if an existing user should be authenticated or a new user enrolled.  * `identifier` - Use the source-specific identifier * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses. * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists. * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source. * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
 	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed          NullableString `json:"managed"`
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
-	Icon             NullableString `json:"icon"`
-	ServerUri        string         `json:"server_uri"`
+	// Get the URL to the Icon. If the name is /static or starts with http it is returned as-is
+	Icon      NullableString `json:"icon"`
+	ServerUri string         `json:"server_uri"`
 	// Optionally verify the LDAP Server's Certificate against the CA Chain in this keypair.
 	PeerCertificate NullableString `json:"peer_certificate,omitempty"`
 	BindCn          *string        `json:"bind_cn,omitempty"`

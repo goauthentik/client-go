@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ConsentStageModeEnum the model 'ConsentStageModeEnum'
+// ConsentStageModeEnum * `always_require` - Always Require * `permanent` - Permanent * `expiring` - Expiring
 type ConsentStageModeEnum string
 
 // List of ConsentStageModeEnum

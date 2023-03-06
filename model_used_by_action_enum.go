@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// UsedByActionEnum the model 'UsedByActionEnum'
+// UsedByActionEnum * `CASCADE` - CASCADE * `CASCADE_MANY` - CASCADE_MANY * `SET_NULL` - SET_NULL * `SET_DEFAULT` - SET_DEFAULT
 type UsedByActionEnum string
 
 // List of UsedByActionEnum

@@ -23,13 +23,14 @@ type UserSelf struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive    bool                   `json:"is_active"`
-	IsSuperuser bool                   `json:"is_superuser"`
-	Groups      []UserSelfGroups       `json:"groups"`
-	Email       *string                `json:"email,omitempty"`
-	Avatar      string                 `json:"avatar"`
-	Uid         string                 `json:"uid"`
-	Settings    map[string]interface{} `json:"settings"`
+	IsActive    bool             `json:"is_active"`
+	IsSuperuser bool             `json:"is_superuser"`
+	Groups      []UserSelfGroups `json:"groups"`
+	Email       *string          `json:"email,omitempty"`
+	Avatar      string           `json:"avatar"`
+	Uid         string           `json:"uid"`
+	// Get user settings with tenant and group settings applied
+	Settings map[string]interface{} `json:"settings"`
 }
 
 // NewUserSelf instantiates a new UserSelf object

@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// OutpostTypeEnum the model 'OutpostTypeEnum'
+// OutpostTypeEnum * `proxy` - Proxy * `ldap` - Ldap
 type OutpostTypeEnum string
 
 // List of OutpostTypeEnum

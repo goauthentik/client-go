@@ -17,7 +17,8 @@ import (
 
 // UserGroup Simplified Group Serializer for user's groups
 type UserGroup struct {
-	Pk    string `json:"pk"`
+	Pk string `json:"pk"`
+	// Get a numerical, int32 ID for the group
 	NumPk int32  `json:"num_pk"`
 	Name  string `json:"name"`
 	// Users added to this group will be superusers.

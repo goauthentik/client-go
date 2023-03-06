@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**AuthorizationFlow** | Pointer to **string** | Flow used when authorizing this provider. | [optional] 
+**AuthorizationFlow** | Pointer to **NullableString** | Flow used when authorizing this provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **AcsUrl** | Pointer to **string** |  | [optional] 
 **Audience** | Pointer to **string** | Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added. | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **SignatureAlgorithm** | Pointer to [**SignatureAlgorithmEnum**](SignatureAlgorithmEnum.md) |  | [optional] 
 **SigningKp** | Pointer to **NullableString** | Keypair used to sign outgoing Responses going to the Service Provider. | [optional] 
 **VerificationKp** | Pointer to **NullableString** | When selected, incoming assertion&#39;s Signatures will be validated against this certificate. To allow unsigned Requests, leave on default. | [optional] 
-**SpBinding** | Pointer to [**NullableSpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
+**SpBinding** | Pointer to [**NullableSpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider.  * &#x60;redirect&#x60; - Redirect * &#x60;post&#x60; - Post | [optional] 
 
 ## Methods
 
@@ -89,6 +89,16 @@ SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
 HasAuthorizationFlow returns a boolean if a field has been set.
 
+### SetAuthorizationFlowNil
+
+`func (o *PatchedSAMLProviderRequest) SetAuthorizationFlowNil(b bool)`
+
+ SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
+
+### UnsetAuthorizationFlow
+`func (o *PatchedSAMLProviderRequest) UnsetAuthorizationFlow()`
+
+UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *PatchedSAMLProviderRequest) GetPropertyMappings() []string`

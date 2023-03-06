@@ -18,14 +18,16 @@ import (
 
 // TokenModel Serializer for BaseGrantModel and RefreshToken
 type TokenModel struct {
-	Pk        int32          `json:"pk"`
-	Provider  OAuth2Provider `json:"provider"`
-	User      User           `json:"user"`
-	IsExpired bool           `json:"is_expired"`
-	Expires   *time.Time     `json:"expires,omitempty"`
-	Scope     []string       `json:"scope"`
-	IdToken   string         `json:"id_token"`
-	Revoked   *bool          `json:"revoked,omitempty"`
+	Pk       int32          `json:"pk"`
+	Provider OAuth2Provider `json:"provider"`
+	User     User           `json:"user"`
+	// Check if token is expired yet.
+	IsExpired bool       `json:"is_expired"`
+	Expires   *time.Time `json:"expires,omitempty"`
+	Scope     []string   `json:"scope"`
+	// Get the token's id_token as JSON String
+	IdToken string `json:"id_token"`
+	Revoked *bool  `json:"revoked,omitempty"`
 }
 
 // NewTokenModel instantiates a new TokenModel object

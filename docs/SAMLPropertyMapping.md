@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **Managed** | Pointer to **NullableString** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [optional] 
 **Name** | **string** |  | 
 **Expression** | **string** |  | 
-**Component** | **string** |  | [readonly] 
-**VerboseName** | **string** |  | [readonly] 
-**VerboseNamePlural** | **string** |  | [readonly] 
-**MetaModelName** | **string** |  | [readonly] 
+**Component** | **string** | Get object&#39;s component so that we know how to edit the object | [readonly] 
+**VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
+**VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
+**MetaModelName** | **string** | Return internal model name | [readonly] 
 **SamlName** | **string** |  | 
 **FriendlyName** | Pointer to **NullableString** |  | [optional] 
 

@@ -1585,6 +1585,7 @@ func (r ApiEventsNotificationsListRequest) Seen(seen bool) ApiEventsNotification
 	return r
 }
 
+// * &#x60;notice&#x60; - Notice * &#x60;warning&#x60; - Warning * &#x60;alert&#x60; - Alert  * &#x60;notice&#x60; - Notice * &#x60;warning&#x60; - Warning * &#x60;alert&#x60; - Alert
 func (r ApiEventsNotificationsListRequest) Severity(severity string) ApiEventsNotificationsListRequest {
 	r.severity = &severity
 	return r
@@ -2747,7 +2748,7 @@ func (r ApiEventsRulesListRequest) Search(search string) ApiEventsRulesListReque
 	return r
 }
 
-// Controls which severity level the created notifications will have.
+// Controls which severity level the created notifications will have.  * &#x60;notice&#x60; - Notice * &#x60;warning&#x60; - Warning * &#x60;alert&#x60; - Alert
 func (r ApiEventsRulesListRequest) Severity(severity string) ApiEventsRulesListRequest {
 	r.severity = &severity
 	return r
@@ -3745,6 +3746,7 @@ type ApiEventsTransportsListRequest struct {
 	webhookUrl *string
 }
 
+// * &#x60;local&#x60; - authentik inbuilt notifications * &#x60;webhook&#x60; - Generic Webhook * &#x60;webhook_slack&#x60; - Slack Webhook (Slack/Discord) * &#x60;email&#x60; - Email  * &#x60;local&#x60; - authentik inbuilt notifications * &#x60;webhook&#x60; - Generic Webhook * &#x60;webhook_slack&#x60; - Slack Webhook (Slack/Discord) * &#x60;email&#x60; - Email
 func (r ApiEventsTransportsListRequest) Mode(mode string) ApiEventsTransportsListRequest {
 	r.mode = &mode
 	return r

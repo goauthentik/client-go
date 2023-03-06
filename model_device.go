@@ -17,13 +17,17 @@ import (
 
 // Device Serializer for Duo authenticator devices
 type Device struct {
-	VerboseName       string `json:"verbose_name"`
+	// Return object's verbose_name
+	VerboseName string `json:"verbose_name"`
+	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
-	MetaModelName     string `json:"meta_model_name"`
-	Pk                int32  `json:"pk"`
-	Name              string `json:"name"`
-	Type              string `json:"type"`
-	Confirmed         bool   `json:"confirmed"`
+	// Return internal model name
+	MetaModelName string `json:"meta_model_name"`
+	Pk            int32  `json:"pk"`
+	Name          string `json:"name"`
+	// Get type of device
+	Type      string `json:"type"`
+	Confirmed bool   `json:"confirmed"`
 }
 
 // NewDevice instantiates a new Device object

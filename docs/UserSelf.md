@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Email** | Pointer to **string** |  | [optional] 
 **Avatar** | **string** |  | [readonly] 
 **Uid** | **string** |  | [readonly] 
-**Settings** | **map[string]interface{}** |  | [readonly] 
+**Settings** | **map[string]interface{}** | Get user settings with tenant and group settings applied | [readonly] 
 
 ## Methods
 

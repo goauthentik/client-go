@@ -5159,6 +5159,7 @@ func (r ApiCoreTokensListRequest) Identifier(identifier string) ApiCoreTokensLis
 	return r
 }
 
+// * &#x60;verification&#x60; - Intent Verification * &#x60;api&#x60; - Intent Api * &#x60;recovery&#x60; - Intent Recovery * &#x60;app_password&#x60; - Intent App Password  * &#x60;verification&#x60; - Intent Verification * &#x60;api&#x60; - Intent Api * &#x60;recovery&#x60; - Intent Recovery * &#x60;app_password&#x60; - Intent App Password
 func (r ApiCoreTokensListRequest) Intent(intent string) ApiCoreTokensListRequest {
 	r.intent = &intent
 	return r

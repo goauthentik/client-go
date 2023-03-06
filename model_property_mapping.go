@@ -19,13 +19,17 @@ import (
 type PropertyMapping struct {
 	Pk string `json:"pk"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed           NullableString `json:"managed,omitempty"`
-	Name              string         `json:"name"`
-	Expression        string         `json:"expression"`
-	Component         string         `json:"component"`
-	VerboseName       string         `json:"verbose_name"`
-	VerboseNamePlural string         `json:"verbose_name_plural"`
-	MetaModelName     string         `json:"meta_model_name"`
+	Managed    NullableString `json:"managed,omitempty"`
+	Name       string         `json:"name"`
+	Expression string         `json:"expression"`
+	// Get object's component so that we know how to edit the object
+	Component string `json:"component"`
+	// Return object's verbose_name
+	VerboseName string `json:"verbose_name"`
+	// Return object's plural verbose_name
+	VerboseNamePlural string `json:"verbose_name_plural"`
+	// Return internal model name
+	MetaModelName string `json:"meta_model_name"`
 }
 
 // NewPropertyMapping instantiates a new PropertyMapping object

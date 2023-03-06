@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ProviderEnum the model 'ProviderEnum'
+// ProviderEnum * `twilio` - Twilio * `generic` - Generic
 type ProviderEnum string
 
 // List of ProviderEnum

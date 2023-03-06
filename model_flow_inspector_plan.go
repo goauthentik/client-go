@@ -19,8 +19,10 @@ import (
 type FlowInspectorPlan struct {
 	CurrentStage     FlowInspectorPlanCurrentStage `json:"current_stage"`
 	NextPlannedStage FlowInspectorPlanCurrentStage `json:"next_planned_stage"`
-	PlanContext      map[string]interface{}        `json:"plan_context"`
-	SessionId        string                        `json:"session_id"`
+	// Get the plan's context, sanitized
+	PlanContext map[string]interface{} `json:"plan_context"`
+	// Get a unique session ID
+	SessionId string `json:"session_id"`
 }
 
 // NewFlowInspectorPlan instantiates a new FlowInspectorPlan object

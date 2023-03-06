@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// LayoutEnum the model 'LayoutEnum'
+// LayoutEnum * `stacked` - STACKED * `content_left` - CONTENT_LEFT * `content_right` - CONTENT_RIGHT * `sidebar_left` - SIDEBAR_LEFT * `sidebar_right` - SIDEBAR_RIGHT
 type LayoutEnum string
 
 // List of LayoutEnum

@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Local** | Pointer to **bool** | If enabled, use the local connection. Required Docker socket/Kubernetes Integration | [optional] 
 **Component** | **string** |  | [readonly] 
-**VerboseName** | **string** |  | [readonly] 
-**VerboseNamePlural** | **string** |  | [readonly] 
-**MetaModelName** | **string** |  | [readonly] 
+**VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
+**VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
+**MetaModelName** | **string** | Return internal model name | [readonly] 
 **Url** | **string** | Can be in the format of &#39;unix://&lt;path&gt;&#39; when connecting to a local docker daemon, or &#39;https://&lt;hostname&gt;:2376&#39; when connecting to a remote system. | 
 **TlsVerification** | Pointer to **NullableString** | CA which the endpoint&#39;s Certificate is verified against. Can be left empty for no validation. | [optional] 
 **TlsAuthentication** | Pointer to **NullableString** | Certificate/Key used for authentication. Can be left empty for no authentication. | [optional] 

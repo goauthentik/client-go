@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ProxyMode the model 'ProxyMode'
+// ProxyMode * `proxy` - Proxy * `forward_single` - Forward Single * `forward_domain` - Forward Domain
 type ProxyMode string
 
 // List of ProxyMode

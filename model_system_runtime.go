@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// SystemRuntime Runtime information
+// SystemRuntime Get versions
 type SystemRuntime struct {
 	PythonVersion   string `json:"python_version"`
 	GunicornVersion string `json:"gunicorn_version"`

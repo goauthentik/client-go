@@ -280,6 +280,8 @@ docs/PaginatedReputationPolicyList.md
 docs/PaginatedSAMLPropertyMappingList.md
 docs/PaginatedSAMLProviderList.md
 docs/PaginatedSAMLSourceList.md
+docs/PaginatedSCIMMappingList.md
+docs/PaginatedSCIMProviderList.md
 docs/PaginatedSMSDeviceList.md
 docs/PaginatedScopeMappingList.md
 docs/PaginatedServiceConnectionList.md
@@ -358,6 +360,8 @@ docs/PatchedReputationPolicyRequest.md
 docs/PatchedSAMLPropertyMappingRequest.md
 docs/PatchedSAMLProviderRequest.md
 docs/PatchedSAMLSourceRequest.md
+docs/PatchedSCIMMappingRequest.md
+docs/PatchedSCIMProviderRequest.md
 docs/PatchedSMSDeviceRequest.md
 docs/PatchedScopeMappingRequest.md
 docs/PatchedStaticDeviceRequest.md
@@ -425,6 +429,10 @@ docs/SAMLProvider.md
 docs/SAMLProviderRequest.md
 docs/SAMLSource.md
 docs/SAMLSourceRequest.md
+docs/SCIMMapping.md
+docs/SCIMMappingRequest.md
+docs/SCIMProvider.md
+docs/SCIMProviderRequest.md
 docs/SMSDevice.md
 docs/SMSDeviceRequest.md
 docs/SchemaApi.md
@@ -758,6 +766,8 @@ model_paginated_reputation_policy_list.go
 model_paginated_saml_property_mapping_list.go
 model_paginated_saml_provider_list.go
 model_paginated_saml_source_list.go
+model_paginated_scim_mapping_list.go
+model_paginated_scim_provider_list.go
 model_paginated_scope_mapping_list.go
 model_paginated_service_connection_list.go
 model_paginated_sms_device_list.go
@@ -836,6 +846,8 @@ model_patched_reputation_policy_request.go
 model_patched_saml_property_mapping_request.go
 model_patched_saml_provider_request.go
 model_patched_saml_source_request.go
+model_patched_scim_mapping_request.go
+model_patched_scim_provider_request.go
 model_patched_scope_mapping_request.go
 model_patched_sms_device_request.go
 model_patched_static_device_request.go
@@ -899,6 +911,10 @@ model_saml_provider.go
 model_saml_provider_request.go
 model_saml_source.go
 model_saml_source_request.go
+model_scim_mapping.go
+model_scim_mapping_request.go
+model_scim_provider.go
+model_scim_provider_request.go
 model_scope_mapping.go
 model_scope_mapping_request.go
 model_selectable_stage.go

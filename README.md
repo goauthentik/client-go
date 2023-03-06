@@ -375,6 +375,13 @@ Class | Method | HTTP request | Description
 *PropertymappingsApi* | [**PropertymappingsSamlRetrieve**](docs/PropertymappingsApi.md#propertymappingssamlretrieve) | **Get** /propertymappings/saml/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsSamlUpdate**](docs/PropertymappingsApi.md#propertymappingssamlupdate) | **Put** /propertymappings/saml/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsSamlUsedByList**](docs/PropertymappingsApi.md#propertymappingssamlusedbylist) | **Get** /propertymappings/saml/{pm_uuid}/used_by/ | 
+*PropertymappingsApi* | [**PropertymappingsScimCreate**](docs/PropertymappingsApi.md#propertymappingsscimcreate) | **Post** /propertymappings/scim/ | 
+*PropertymappingsApi* | [**PropertymappingsScimDestroy**](docs/PropertymappingsApi.md#propertymappingsscimdestroy) | **Delete** /propertymappings/scim/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsScimList**](docs/PropertymappingsApi.md#propertymappingsscimlist) | **Get** /propertymappings/scim/ | 
+*PropertymappingsApi* | [**PropertymappingsScimPartialUpdate**](docs/PropertymappingsApi.md#propertymappingsscimpartialupdate) | **Patch** /propertymappings/scim/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsScimRetrieve**](docs/PropertymappingsApi.md#propertymappingsscimretrieve) | **Get** /propertymappings/scim/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsScimUpdate**](docs/PropertymappingsApi.md#propertymappingsscimupdate) | **Put** /propertymappings/scim/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsScimUsedByList**](docs/PropertymappingsApi.md#propertymappingsscimusedbylist) | **Get** /propertymappings/scim/{pm_uuid}/used_by/ | 
 *PropertymappingsApi* | [**PropertymappingsScopeCreate**](docs/PropertymappingsApi.md#propertymappingsscopecreate) | **Post** /propertymappings/scope/ | 
 *PropertymappingsApi* | [**PropertymappingsScopeDestroy**](docs/PropertymappingsApi.md#propertymappingsscopedestroy) | **Delete** /propertymappings/scope/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsScopeList**](docs/PropertymappingsApi.md#propertymappingsscopelist) | **Get** /propertymappings/scope/ | 
@@ -420,6 +427,14 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersSamlRetrieve**](docs/ProvidersApi.md#providerssamlretrieve) | **Get** /providers/saml/{id}/ | 
 *ProvidersApi* | [**ProvidersSamlUpdate**](docs/ProvidersApi.md#providerssamlupdate) | **Put** /providers/saml/{id}/ | 
 *ProvidersApi* | [**ProvidersSamlUsedByList**](docs/ProvidersApi.md#providerssamlusedbylist) | **Get** /providers/saml/{id}/used_by/ | 
+*ProvidersApi* | [**ProvidersScimCreate**](docs/ProvidersApi.md#providersscimcreate) | **Post** /providers/scim/ | 
+*ProvidersApi* | [**ProvidersScimDestroy**](docs/ProvidersApi.md#providersscimdestroy) | **Delete** /providers/scim/{id}/ | 
+*ProvidersApi* | [**ProvidersScimList**](docs/ProvidersApi.md#providersscimlist) | **Get** /providers/scim/ | 
+*ProvidersApi* | [**ProvidersScimPartialUpdate**](docs/ProvidersApi.md#providersscimpartialupdate) | **Patch** /providers/scim/{id}/ | 
+*ProvidersApi* | [**ProvidersScimRetrieve**](docs/ProvidersApi.md#providersscimretrieve) | **Get** /providers/scim/{id}/ | 
+*ProvidersApi* | [**ProvidersScimSyncStatusRetrieve**](docs/ProvidersApi.md#providersscimsyncstatusretrieve) | **Get** /providers/scim/{id}/sync_status/ | 
+*ProvidersApi* | [**ProvidersScimUpdate**](docs/ProvidersApi.md#providersscimupdate) | **Put** /providers/scim/{id}/ | 
+*ProvidersApi* | [**ProvidersScimUsedByList**](docs/ProvidersApi.md#providersscimusedbylist) | **Get** /providers/scim/{id}/used_by/ | 
 *RootApi* | [**RootConfigRetrieve**](docs/RootApi.md#rootconfigretrieve) | **Get** /root/config/ | 
 *SchemaApi* | [**SchemaRetrieve**](docs/SchemaApi.md#schemaretrieve) | **Get** /schema/ | 
 *SourcesApi* | [**SourcesAllDestroy**](docs/SourcesApi.md#sourcesalldestroy) | **Delete** /sources/all/{slug}/ | 
@@ -903,6 +918,8 @@ Class | Method | HTTP request | Description
  - [PaginatedSAMLPropertyMappingList](docs/PaginatedSAMLPropertyMappingList.md)
  - [PaginatedSAMLProviderList](docs/PaginatedSAMLProviderList.md)
  - [PaginatedSAMLSourceList](docs/PaginatedSAMLSourceList.md)
+ - [PaginatedSCIMMappingList](docs/PaginatedSCIMMappingList.md)
+ - [PaginatedSCIMProviderList](docs/PaginatedSCIMProviderList.md)
  - [PaginatedSMSDeviceList](docs/PaginatedSMSDeviceList.md)
  - [PaginatedScopeMappingList](docs/PaginatedScopeMappingList.md)
  - [PaginatedServiceConnectionList](docs/PaginatedServiceConnectionList.md)
@@ -981,6 +998,8 @@ Class | Method | HTTP request | Description
  - [PatchedSAMLPropertyMappingRequest](docs/PatchedSAMLPropertyMappingRequest.md)
  - [PatchedSAMLProviderRequest](docs/PatchedSAMLProviderRequest.md)
  - [PatchedSAMLSourceRequest](docs/PatchedSAMLSourceRequest.md)
+ - [PatchedSCIMMappingRequest](docs/PatchedSCIMMappingRequest.md)
+ - [PatchedSCIMProviderRequest](docs/PatchedSCIMProviderRequest.md)
  - [PatchedSMSDeviceRequest](docs/PatchedSMSDeviceRequest.md)
  - [PatchedScopeMappingRequest](docs/PatchedScopeMappingRequest.md)
  - [PatchedStaticDeviceRequest](docs/PatchedStaticDeviceRequest.md)
@@ -1044,6 +1063,10 @@ Class | Method | HTTP request | Description
  - [SAMLProviderRequest](docs/SAMLProviderRequest.md)
  - [SAMLSource](docs/SAMLSource.md)
  - [SAMLSourceRequest](docs/SAMLSourceRequest.md)
+ - [SCIMMapping](docs/SCIMMapping.md)
+ - [SCIMMappingRequest](docs/SCIMMappingRequest.md)
+ - [SCIMProvider](docs/SCIMProvider.md)
+ - [SCIMProviderRequest](docs/SCIMProviderRequest.md)
  - [SMSDevice](docs/SMSDevice.md)
  - [SMSDeviceRequest](docs/SMSDeviceRequest.md)
  - [ScopeMapping](docs/ScopeMapping.md)

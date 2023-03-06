@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// LDAPAPIAccessMode the model 'LDAPAPIAccessMode'
+// LDAPAPIAccessMode * `direct` - Direct * `cached` - Cached
 type LDAPAPIAccessMode string
 
 // List of LDAPAPIAccessMode

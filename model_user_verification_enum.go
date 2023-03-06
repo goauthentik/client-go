@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// UserVerificationEnum the model 'UserVerificationEnum'
+// UserVerificationEnum * `required` - Required * `preferred` - Preferred * `discouraged` - Discouraged
 type UserVerificationEnum string
 
 // List of UserVerificationEnum

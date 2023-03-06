@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
 **Name** | **string** |  | 
-**AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
+**AuthorizationFlow** | Pointer to **NullableString** | Flow used when authorizing this provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
-**Component** | **string** |  | [readonly] 
+**Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
 **AssignedApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
 **AssignedApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
-**VerboseName** | **string** |  | [readonly] 
-**VerboseNamePlural** | **string** |  | [readonly] 
-**MetaModelName** | **string** |  | [readonly] 
+**VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
+**VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
+**MetaModelName** | **string** | Return internal model name | [readonly] 
 **AcsUrl** | **string** |  | 
 **Audience** | Pointer to **string** | Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added. | [optional] 
 **Issuer** | Pointer to **string** | Also known as EntityID | [optional] 
@@ -25,19 +25,19 @@ Name | Type | Description | Notes
 **SignatureAlgorithm** | Pointer to [**SignatureAlgorithmEnum**](SignatureAlgorithmEnum.md) |  | [optional] 
 **SigningKp** | Pointer to **NullableString** | Keypair used to sign outgoing Responses going to the Service Provider. | [optional] 
 **VerificationKp** | Pointer to **NullableString** | When selected, incoming assertion&#39;s Signatures will be validated against this certificate. To allow unsigned Requests, leave on default. | [optional] 
-**SpBinding** | Pointer to [**NullableSpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
-**UrlDownloadMetadata** | **string** |  | [readonly] 
-**UrlSsoPost** | **string** |  | [readonly] 
-**UrlSsoRedirect** | **string** |  | [readonly] 
-**UrlSsoInit** | **string** |  | [readonly] 
-**UrlSloPost** | **string** |  | [readonly] 
-**UrlSloRedirect** | **string** |  | [readonly] 
+**SpBinding** | Pointer to [**NullableSpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider.  * &#x60;redirect&#x60; - Redirect * &#x60;post&#x60; - Post | [optional] 
+**UrlDownloadMetadata** | **string** | Get metadata download URL | [readonly] 
+**UrlSsoPost** | **string** | Get SSO Post URL | [readonly] 
+**UrlSsoRedirect** | **string** | Get SSO Redirect URL | [readonly] 
+**UrlSsoInit** | **string** | Get SSO IDP-Initiated URL | [readonly] 
+**UrlSloPost** | **string** | Get SLO POST URL | [readonly] 
+**UrlSloRedirect** | **string** | Get SLO redirect URL | [readonly] 
 
 ## Methods
 
 ### NewSAMLProvider
 
-`func NewSAMLProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, urlDownloadMetadata string, urlSsoPost string, urlSsoRedirect string, urlSsoInit string, urlSloPost string, urlSloRedirect string, ) *SAMLProvider`
+`func NewSAMLProvider(pk int32, name string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, urlDownloadMetadata string, urlSsoPost string, urlSsoRedirect string, urlSsoInit string, urlSloPost string, urlSloRedirect string, ) *SAMLProvider`
 
 NewSAMLProvider instantiates a new SAMLProvider object
 This constructor will assign default values to properties that have it defined,
@@ -111,7 +111,22 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
+### HasAuthorizationFlow
 
+`func (o *SAMLProvider) HasAuthorizationFlow() bool`
+
+HasAuthorizationFlow returns a boolean if a field has been set.
+
+### SetAuthorizationFlowNil
+
+`func (o *SAMLProvider) SetAuthorizationFlowNil(b bool)`
+
+ SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
+
+### UnsetAuthorizationFlow
+`func (o *SAMLProvider) UnsetAuthorizationFlow()`
+
+UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *SAMLProvider) GetPropertyMappings() []string`

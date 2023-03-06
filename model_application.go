@@ -24,10 +24,12 @@ type Application struct {
 	Slug        string                 `json:"slug"`
 	Provider    NullableInt32          `json:"provider,omitempty"`
 	ProviderObj ApplicationProviderObj `json:"provider_obj"`
-	LaunchUrl   NullableString         `json:"launch_url"`
+	// Allow formatting of launch URL
+	LaunchUrl NullableString `json:"launch_url"`
 	// Open launch URL in a new browser tab or window.
-	OpenInNewTab     *bool             `json:"open_in_new_tab,omitempty"`
-	MetaLaunchUrl    *string           `json:"meta_launch_url,omitempty"`
+	OpenInNewTab  *bool   `json:"open_in_new_tab,omitempty"`
+	MetaLaunchUrl *string `json:"meta_launch_url,omitempty"`
+	// Get the URL to the App Icon image. If the name is /static or starts with http it is returned as-is
 	MetaIcon         NullableString    `json:"meta_icon"`
 	MetaDescription  *string           `json:"meta_description,omitempty"`
 	MetaPublisher    *string           `json:"meta_publisher,omitempty"`

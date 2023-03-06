@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// CapabilitiesEnum the model 'CapabilitiesEnum'
+// CapabilitiesEnum * `can_save_media` - Can Save Media * `can_geo_ip` - Can Geo Ip * `can_impersonate` - Can Impersonate * `can_debug` - Can Debug
 type CapabilitiesEnum string
 
 // List of CapabilitiesEnum

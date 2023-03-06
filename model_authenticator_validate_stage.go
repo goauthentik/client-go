@@ -17,11 +17,15 @@ import (
 
 // AuthenticatorValidateStage AuthenticatorValidateStage Serializer
 type AuthenticatorValidateStage struct {
-	Pk                  string                   `json:"pk"`
-	Name                string                   `json:"name"`
-	Component           string                   `json:"component"`
-	VerboseName         string                   `json:"verbose_name"`
-	VerboseNamePlural   string                   `json:"verbose_name_plural"`
+	Pk   string `json:"pk"`
+	Name string `json:"name"`
+	// Get object type so that we know how to edit the object
+	Component string `json:"component"`
+	// Return object's verbose_name
+	VerboseName string `json:"verbose_name"`
+	// Return object's plural verbose_name
+	VerboseNamePlural string `json:"verbose_name_plural"`
+	// Return internal model name
 	MetaModelName       string                   `json:"meta_model_name"`
 	FlowSet             []FlowSet                `json:"flow_set,omitempty"`
 	NotConfiguredAction *NotConfiguredActionEnum `json:"not_configured_action,omitempty"`
@@ -31,7 +35,7 @@ type AuthenticatorValidateStage struct {
 	ConfigurationStages []string `json:"configuration_stages,omitempty"`
 	// If any of the user's device has been used within this threshold, this stage will be skipped
 	LastAuthThreshold *string `json:"last_auth_threshold,omitempty"`
-	// Enforce user verification for WebAuthn devices.
+	// Enforce user verification for WebAuthn devices.  * `required` - Required * `preferred` - Preferred * `discouraged` - Discouraged
 	WebauthnUserVerification NullableUserVerificationEnum `json:"webauthn_user_verification,omitempty"`
 }
 

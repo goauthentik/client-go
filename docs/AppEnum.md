@@ -39,6 +39,8 @@
 
 * `PROVIDERS_SAML` (value: `"authentik.providers.saml"`)
 
+* `PROVIDERS_SCIM` (value: `"authentik.providers.scim"`)
+
 * `RECOVERY` (value: `"authentik.recovery"`)
 
 * `SOURCES_LDAP` (value: `"authentik.sources.ldap"`)

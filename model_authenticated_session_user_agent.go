@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// AuthenticatedSessionUserAgent User agent details
+// AuthenticatedSessionUserAgent Get parsed user agent
 type AuthenticatedSessionUserAgent struct {
 	Device    AuthenticatedSessionUserAgentDevice    `json:"device"`
 	Os        AuthenticatedSessionUserAgentOs        `json:"os"`

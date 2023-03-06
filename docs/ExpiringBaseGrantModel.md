@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Pk** | **int32** |  | [readonly] 
 **Provider** | [**OAuth2Provider**](OAuth2Provider.md) |  | 
 **User** | [**User**](User.md) |  | 
-**IsExpired** | **bool** |  | [readonly] 
+**IsExpired** | **bool** | Check if token is expired yet. | [readonly] 
 **Expires** | Pointer to **time.Time** |  | [optional] 
 **Scope** | **[]string** |  | 
 

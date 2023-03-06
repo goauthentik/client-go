@@ -9,10 +9,10 @@ Name | Type | Description | Notes
 **Slug** | **string** | Internal application name, used in URLs. | 
 **Provider** | Pointer to **NullableInt32** |  | [optional] 
 **ProviderObj** | [**ApplicationProviderObj**](ApplicationProviderObj.md) |  | 
-**LaunchUrl** | **NullableString** |  | [readonly] 
+**LaunchUrl** | **NullableString** | Allow formatting of launch URL | [readonly] 
 **OpenInNewTab** | Pointer to **bool** | Open launch URL in a new browser tab or window. | [optional] 
 **MetaLaunchUrl** | Pointer to **string** |  | [optional] 
-**MetaIcon** | **NullableString** |  | [readonly] 
+**MetaIcon** | **NullableString** | Get the URL to the App Icon image. If the name is /static or starts with http it is returned as-is | [readonly] 
 **MetaDescription** | Pointer to **string** |  | [optional] 
 **MetaPublisher** | Pointer to **string** |  | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 

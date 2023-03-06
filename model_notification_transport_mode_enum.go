@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// NotificationTransportModeEnum the model 'NotificationTransportModeEnum'
+// NotificationTransportModeEnum * `local` - authentik inbuilt notifications * `webhook` - Generic Webhook * `webhook_slack` - Slack Webhook (Slack/Discord) * `email` - Email
 type NotificationTransportModeEnum string
 
 // List of NotificationTransportModeEnum

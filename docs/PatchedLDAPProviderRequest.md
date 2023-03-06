@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**AuthorizationFlow** | Pointer to **string** | Flow used when authorizing this provider. | [optional] 
+**AuthorizationFlow** | Pointer to **NullableString** | Flow used when authorizing this provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **BaseDn** | Pointer to **string** | DN under which objects are accessible. | [optional] 
 **SearchGroup** | Pointer to **NullableString** | Users in this group can do search queries. If not set, every user can execute search queries. | [optional] 
@@ -85,6 +85,16 @@ SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
 HasAuthorizationFlow returns a boolean if a field has been set.
 
+### SetAuthorizationFlowNil
+
+`func (o *PatchedLDAPProviderRequest) SetAuthorizationFlowNil(b bool)`
+
+ SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
+
+### UnsetAuthorizationFlow
+`func (o *PatchedLDAPProviderRequest) UnsetAuthorizationFlow()`
+
+UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *PatchedLDAPProviderRequest) GetPropertyMappings() []string`
