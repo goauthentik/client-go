@@ -6254,20 +6254,25 @@ func (a *ProvidersApiService) ProvidersScimDestroyExecute(r ApiProvidersScimDest
 }
 
 type ApiProvidersScimListRequest struct {
-	ctx               context.Context
-	ApiService        *ProvidersApiService
-	authorizationFlow *string
-	name              *string
-	ordering          *string
-	page              *int32
-	pageSize          *int32
-	search            *string
-	token             *string
-	url               *string
+	ctx                        context.Context
+	ApiService                 *ProvidersApiService
+	excludeUsersServiceAccount *bool
+	filterGroup                *string
+	name                       *string
+	ordering                   *string
+	page                       *int32
+	pageSize                   *int32
+	search                     *string
+	url                        *string
 }
 
-func (r ApiProvidersScimListRequest) AuthorizationFlow(authorizationFlow string) ApiProvidersScimListRequest {
-	r.authorizationFlow = &authorizationFlow
+func (r ApiProvidersScimListRequest) ExcludeUsersServiceAccount(excludeUsersServiceAccount bool) ApiProvidersScimListRequest {
+	r.excludeUsersServiceAccount = &excludeUsersServiceAccount
+	return r
+}
+
+func (r ApiProvidersScimListRequest) FilterGroup(filterGroup string) ApiProvidersScimListRequest {
+	r.filterGroup = &filterGroup
 	return r
 }
 
@@ -6297,11 +6302,6 @@ func (r ApiProvidersScimListRequest) PageSize(pageSize int32) ApiProvidersScimLi
 // A search term.
 func (r ApiProvidersScimListRequest) Search(search string) ApiProvidersScimListRequest {
 	r.search = &search
-	return r
-}
-
-func (r ApiProvidersScimListRequest) Token(token string) ApiProvidersScimListRequest {
-	r.token = &token
 	return r
 }
 
@@ -6350,8 +6350,11 @@ func (a *ProvidersApiService) ProvidersScimListExecute(r ApiProvidersScimListReq
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.authorizationFlow != nil {
-		localVarQueryParams.Add("authorization_flow", parameterToString(*r.authorizationFlow, ""))
+	if r.excludeUsersServiceAccount != nil {
+		localVarQueryParams.Add("exclude_users_service_account", parameterToString(*r.excludeUsersServiceAccount, ""))
+	}
+	if r.filterGroup != nil {
+		localVarQueryParams.Add("filter_group", parameterToString(*r.filterGroup, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -6367,9 +6370,6 @@ func (a *ProvidersApiService) ProvidersScimListExecute(r ApiProvidersScimListReq
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
-	}
-	if r.token != nil {
-		localVarQueryParams.Add("token", parameterToString(*r.token, ""))
 	}
 	if r.url != nil {
 		localVarQueryParams.Add("url", parameterToString(*r.url, ""))

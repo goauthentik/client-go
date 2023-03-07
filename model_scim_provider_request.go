@@ -24,7 +24,9 @@ type SCIMProviderRequest struct {
 	// Base URL to SCIM requests, usually ends in /v2
 	Url string `json:"url"`
 	// Authentication token
-	Token string `json:"token"`
+	Token                      string         `json:"token"`
+	ExcludeUsersServiceAccount *bool          `json:"exclude_users_service_account,omitempty"`
+	FilterGroup                NullableString `json:"filter_group,omitempty"`
 }
 
 // NewSCIMProviderRequest instantiates a new SCIMProviderRequest object
@@ -183,6 +185,81 @@ func (o *SCIMProviderRequest) SetToken(v string) {
 	o.Token = v
 }
 
+// GetExcludeUsersServiceAccount returns the ExcludeUsersServiceAccount field value if set, zero value otherwise.
+func (o *SCIMProviderRequest) GetExcludeUsersServiceAccount() bool {
+	if o == nil || o.ExcludeUsersServiceAccount == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ExcludeUsersServiceAccount
+}
+
+// GetExcludeUsersServiceAccountOk returns a tuple with the ExcludeUsersServiceAccount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SCIMProviderRequest) GetExcludeUsersServiceAccountOk() (*bool, bool) {
+	if o == nil || o.ExcludeUsersServiceAccount == nil {
+		return nil, false
+	}
+	return o.ExcludeUsersServiceAccount, true
+}
+
+// HasExcludeUsersServiceAccount returns a boolean if a field has been set.
+func (o *SCIMProviderRequest) HasExcludeUsersServiceAccount() bool {
+	if o != nil && o.ExcludeUsersServiceAccount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExcludeUsersServiceAccount gets a reference to the given bool and assigns it to the ExcludeUsersServiceAccount field.
+func (o *SCIMProviderRequest) SetExcludeUsersServiceAccount(v bool) {
+	o.ExcludeUsersServiceAccount = &v
+}
+
+// GetFilterGroup returns the FilterGroup field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SCIMProviderRequest) GetFilterGroup() string {
+	if o == nil || o.FilterGroup.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.FilterGroup.Get()
+}
+
+// GetFilterGroupOk returns a tuple with the FilterGroup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SCIMProviderRequest) GetFilterGroupOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FilterGroup.Get(), o.FilterGroup.IsSet()
+}
+
+// HasFilterGroup returns a boolean if a field has been set.
+func (o *SCIMProviderRequest) HasFilterGroup() bool {
+	if o != nil && o.FilterGroup.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFilterGroup gets a reference to the given NullableString and assigns it to the FilterGroup field.
+func (o *SCIMProviderRequest) SetFilterGroup(v string) {
+	o.FilterGroup.Set(&v)
+}
+
+// SetFilterGroupNil sets the value for FilterGroup to be an explicit nil
+func (o *SCIMProviderRequest) SetFilterGroupNil() {
+	o.FilterGroup.Set(nil)
+}
+
+// UnsetFilterGroup ensures that no value is present for FilterGroup, not even an explicit nil
+func (o *SCIMProviderRequest) UnsetFilterGroup() {
+	o.FilterGroup.Unset()
+}
+
 func (o SCIMProviderRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -199,6 +276,12 @@ func (o SCIMProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["token"] = o.Token
+	}
+	if o.ExcludeUsersServiceAccount != nil {
+		toSerialize["exclude_users_service_account"] = o.ExcludeUsersServiceAccount
+	}
+	if o.FilterGroup.IsSet() {
+		toSerialize["filter_group"] = o.FilterGroup.Get()
 	}
 	return json.Marshal(toSerialize)
 }

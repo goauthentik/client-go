@@ -2956,7 +2956,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersScimList
 
-> PaginatedSCIMProviderList ProvidersScimList(ctx).AuthorizationFlow(authorizationFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Token(token).Url(url).Execute()
+> PaginatedSCIMProviderList ProvidersScimList(ctx).ExcludeUsersServiceAccount(excludeUsersServiceAccount).FilterGroup(filterGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Url(url).Execute()
 
 
 
@@ -2975,18 +2975,18 @@ import (
 )
 
 func main() {
-    authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    excludeUsersServiceAccount := true // bool |  (optional)
+    filterGroup := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
-    token := "token_example" // string |  (optional)
     url := "url_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersScimList(context.Background()).AuthorizationFlow(authorizationFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Token(token).Url(url).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimList(context.Background()).ExcludeUsersServiceAccount(excludeUsersServiceAccount).FilterGroup(filterGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Url(url).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3007,13 +3007,13 @@ Other parameters are passed through a pointer to a apiProvidersScimListRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorizationFlow** | **string** |  | 
+ **excludeUsersServiceAccount** | **bool** |  | 
+ **filterGroup** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
- **token** | **string** |  | 
  **url** | **string** |  | 
 
 ### Return type

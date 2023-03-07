@@ -17695,7 +17695,14 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: authorization_flow
+        name: exclude_users_service_account
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: filter_group
         required: false
         schema:
           format: uuid
@@ -17736,13 +17743,6 @@ paths:
         explode: true
         in: query
         name: search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: token
         required: false
         schema:
           type: string
@@ -40024,38 +40024,42 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - component: component
-          verbose_name: verbose_name
-          property_mappings_group:
+        - property_mappings_group:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
+          assigned_application_slug: assigned_application_slug
+          url: url
+          token: token
+          exclude_users_service_account: true
+          component: component
+          verbose_name: verbose_name
           meta_model_name: meta_model_name
+          filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_name: assigned_application_name
           name: name
           pk: 0
-          assigned_application_slug: assigned_application_slug
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          url: url
-          token: token
-        - component: component
-          verbose_name: verbose_name
-          property_mappings_group:
+        - property_mappings_group:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
+          assigned_application_slug: assigned_application_slug
+          url: url
+          token: token
+          exclude_users_service_account: true
+          component: component
+          verbose_name: verbose_name
           meta_model_name: meta_model_name
+          filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_name: assigned_application_name
           name: name
           pk: 0
-          assigned_application_slug: assigned_application_slug
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          url: url
-          token: token
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -44329,12 +44333,14 @@ components:
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         url: url
         token: token
+        exclude_users_service_account: true
       properties:
         name:
           minLength: 1
@@ -44357,6 +44363,12 @@ components:
         token:
           description: Authentication token
           minLength: 1
+          type: string
+        exclude_users_service_account:
+          type: boolean
+        filter_group:
+          format: uuid
+          nullable: true
           type: string
       type: object
     PatchedSMSDeviceRequest:
@@ -47259,22 +47271,24 @@ components:
     SCIMProvider:
       description: SCIMProvider Serializer
       example:
-        component: component
-        verbose_name: verbose_name
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verbose_name_plural: verbose_name_plural
+        assigned_application_slug: assigned_application_slug
+        url: url
+        token: token
+        exclude_users_service_account: true
+        component: component
+        verbose_name: verbose_name
         meta_model_name: meta_model_name
+        filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_name: assigned_application_name
         name: name
         pk: 0
-        assigned_application_slug: assigned_application_slug
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        url: url
-        token: token
       properties:
         pk:
           readOnly: true
@@ -47323,6 +47337,12 @@ components:
         token:
           description: Authentication token
           type: string
+        exclude_users_service_account:
+          type: boolean
+        filter_group:
+          format: uuid
+          nullable: true
+          type: string
       required:
       - assigned_application_name
       - assigned_application_slug
@@ -47341,12 +47361,14 @@ components:
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         url: url
         token: token
+        exclude_users_service_account: true
       properties:
         name:
           minLength: 1
@@ -47369,6 +47391,12 @@ components:
         token:
           description: Authentication token
           minLength: 1
+          type: string
+        exclude_users_service_account:
+          type: boolean
+        filter_group:
+          format: uuid
+          nullable: true
           type: string
       required:
       - name

@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **Url** | **string** | Base URL to SCIM requests, usually ends in /v2 | 
 **Token** | **string** | Authentication token | 
+**ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
+**FilterGroup** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -286,6 +288,66 @@ and a boolean to check if the value has been set.
 SetToken sets Token field to given value.
 
 
+### GetExcludeUsersServiceAccount
+
+`func (o *SCIMProvider) GetExcludeUsersServiceAccount() bool`
+
+GetExcludeUsersServiceAccount returns the ExcludeUsersServiceAccount field if non-nil, zero value otherwise.
+
+### GetExcludeUsersServiceAccountOk
+
+`func (o *SCIMProvider) GetExcludeUsersServiceAccountOk() (*bool, bool)`
+
+GetExcludeUsersServiceAccountOk returns a tuple with the ExcludeUsersServiceAccount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExcludeUsersServiceAccount
+
+`func (o *SCIMProvider) SetExcludeUsersServiceAccount(v bool)`
+
+SetExcludeUsersServiceAccount sets ExcludeUsersServiceAccount field to given value.
+
+### HasExcludeUsersServiceAccount
+
+`func (o *SCIMProvider) HasExcludeUsersServiceAccount() bool`
+
+HasExcludeUsersServiceAccount returns a boolean if a field has been set.
+
+### GetFilterGroup
+
+`func (o *SCIMProvider) GetFilterGroup() string`
+
+GetFilterGroup returns the FilterGroup field if non-nil, zero value otherwise.
+
+### GetFilterGroupOk
+
+`func (o *SCIMProvider) GetFilterGroupOk() (*string, bool)`
+
+GetFilterGroupOk returns a tuple with the FilterGroup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilterGroup
+
+`func (o *SCIMProvider) SetFilterGroup(v string)`
+
+SetFilterGroup sets FilterGroup field to given value.
+
+### HasFilterGroup
+
+`func (o *SCIMProvider) HasFilterGroup() bool`
+
+HasFilterGroup returns a boolean if a field has been set.
+
+### SetFilterGroupNil
+
+`func (o *SCIMProvider) SetFilterGroupNil(b bool)`
+
+ SetFilterGroupNil sets the value for FilterGroup to be an explicit nil
+
+### UnsetFilterGroup
+`func (o *SCIMProvider) UnsetFilterGroup()`
+
+UnsetFilterGroup ensures that no value is present for FilterGroup, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
