@@ -474,6 +474,7 @@ docs/TokenRequest.md
 docs/TokenSetKeyRequest.md
 docs/TokenView.md
 docs/TypeCreate.md
+docs/UiThemeEnum.md
 docs/UsedBy.md
 docs/UsedByActionEnum.md
 docs/User.md
@@ -953,6 +954,7 @@ model_token_view.go
 model_totp_device.go
 model_totp_device_request.go
 model_type_create.go
+model_ui_theme_enum.go
 model_used_by.go
 model_used_by_action_enum.go
 model_user.go

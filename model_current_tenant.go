@@ -17,31 +17,33 @@ import (
 
 // CurrentTenant Partial tenant information for styling
 type CurrentTenant struct {
-	MatchedDomain      string       `json:"matched_domain"`
-	BrandingTitle      string       `json:"branding_title"`
-	BrandingLogo       string       `json:"branding_logo"`
-	BrandingFavicon    string       `json:"branding_favicon"`
-	UiFooterLinks      []FooterLink `json:"ui_footer_links"`
-	FlowAuthentication *string      `json:"flow_authentication,omitempty"`
-	FlowInvalidation   *string      `json:"flow_invalidation,omitempty"`
-	FlowRecovery       *string      `json:"flow_recovery,omitempty"`
-	FlowUnenrollment   *string      `json:"flow_unenrollment,omitempty"`
-	FlowUserSettings   *string      `json:"flow_user_settings,omitempty"`
-	FlowDeviceCode     *string      `json:"flow_device_code,omitempty"`
-	DefaultLocale      string       `json:"default_locale"`
+	MatchedDomain      string              `json:"matched_domain"`
+	BrandingTitle      string              `json:"branding_title"`
+	BrandingLogo       string              `json:"branding_logo"`
+	BrandingFavicon    string              `json:"branding_favicon"`
+	UiFooterLinks      []FooterLink        `json:"ui_footer_links"`
+	UiTheme            NullableUiThemeEnum `json:"ui_theme"`
+	FlowAuthentication *string             `json:"flow_authentication,omitempty"`
+	FlowInvalidation   *string             `json:"flow_invalidation,omitempty"`
+	FlowRecovery       *string             `json:"flow_recovery,omitempty"`
+	FlowUnenrollment   *string             `json:"flow_unenrollment,omitempty"`
+	FlowUserSettings   *string             `json:"flow_user_settings,omitempty"`
+	FlowDeviceCode     *string             `json:"flow_device_code,omitempty"`
+	DefaultLocale      string              `json:"default_locale"`
 }
 
 // NewCurrentTenant instantiates a new CurrentTenant object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCurrentTenant(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, uiFooterLinks []FooterLink, defaultLocale string) *CurrentTenant {
+func NewCurrentTenant(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, uiFooterLinks []FooterLink, uiTheme NullableUiThemeEnum, defaultLocale string) *CurrentTenant {
 	this := CurrentTenant{}
 	this.MatchedDomain = matchedDomain
 	this.BrandingTitle = brandingTitle
 	this.BrandingLogo = brandingLogo
 	this.BrandingFavicon = brandingFavicon
 	this.UiFooterLinks = uiFooterLinks
+	this.UiTheme = uiTheme
 	this.DefaultLocale = defaultLocale
 	return &this
 }
@@ -172,6 +174,32 @@ func (o *CurrentTenant) GetUiFooterLinksOk() ([]FooterLink, bool) {
 // SetUiFooterLinks sets field value
 func (o *CurrentTenant) SetUiFooterLinks(v []FooterLink) {
 	o.UiFooterLinks = v
+}
+
+// GetUiTheme returns the UiTheme field value
+// If the value is explicit nil, the zero value for UiThemeEnum will be returned
+func (o *CurrentTenant) GetUiTheme() UiThemeEnum {
+	if o == nil || o.UiTheme.Get() == nil {
+		var ret UiThemeEnum
+		return ret
+	}
+
+	return *o.UiTheme.Get()
+}
+
+// GetUiThemeOk returns a tuple with the UiTheme field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CurrentTenant) GetUiThemeOk() (*UiThemeEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.UiTheme.Get(), o.UiTheme.IsSet()
+}
+
+// SetUiTheme sets field value
+func (o *CurrentTenant) SetUiTheme(v UiThemeEnum) {
+	o.UiTheme.Set(&v)
 }
 
 // GetFlowAuthentication returns the FlowAuthentication field value if set, zero value otherwise.
@@ -406,6 +434,9 @@ func (o CurrentTenant) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["ui_footer_links"] = o.UiFooterLinks
+	}
+	if true {
+		toSerialize["ui_theme"] = o.UiTheme.Get()
 	}
 	if o.FlowAuthentication != nil {
 		toSerialize["flow_authentication"] = o.FlowAuthentication

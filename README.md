@@ -1105,6 +1105,7 @@ Class | Method | HTTP request | Description
  - [TokenSetKeyRequest](docs/TokenSetKeyRequest.md)
  - [TokenView](docs/TokenView.md)
  - [TypeCreate](docs/TypeCreate.md)
+ - [UiThemeEnum](docs/UiThemeEnum.md)
  - [UsedBy](docs/UsedBy.md)
  - [UsedByActionEnum](docs/UsedByActionEnum.md)
  - [User](docs/User.md)

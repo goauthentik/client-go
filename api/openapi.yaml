@@ -31135,18 +31135,19 @@ components:
       description: Partial tenant information for styling
       example:
         branding_logo: branding_logo
-        flow_authentication: flow_authentication
-        flow_recovery: flow_recovery
-        flow_invalidation: flow_invalidation
         ui_footer_links:
         - name: name
           href: href
         - name: name
           href: href
-        default_locale: default_locale
-        flow_unenrollment: flow_unenrollment
         flow_device_code: flow_device_code
         matched_domain: matched_domain
+        flow_authentication: flow_authentication
+        flow_recovery: flow_recovery
+        flow_invalidation: flow_invalidation
+        ui_theme: ""
+        default_locale: default_locale
+        flow_unenrollment: flow_unenrollment
         branding_title: branding_title
         branding_favicon: branding_favicon
         flow_user_settings: flow_user_settings
@@ -31165,6 +31166,10 @@ components:
             $ref: '#/components/schemas/FooterLink'
           readOnly: true
           type: array
+        ui_theme:
+          allOf:
+          - $ref: '#/components/schemas/UiThemeEnum'
+          readOnly: true
         flow_authentication:
           type: string
         flow_invalidation:
@@ -31187,6 +31192,7 @@ components:
       - default_locale
       - matched_domain
       - ui_footer_links
+      - ui_theme
       type: object
     DeniedActionEnum:
       description: |-
@@ -48658,6 +48664,16 @@ components:
       - model_name
       - name
       type: object
+    UiThemeEnum:
+      description: |-
+        * `automatic` - Automatic
+        * `light` - Light
+        * `dark` - Dark
+      enum:
+      - automatic
+      - light
+      - dark
+      type: string
     UsedBy:
       description: A list of all objects referencing the queried object
       example:
