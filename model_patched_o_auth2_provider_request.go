@@ -19,8 +19,8 @@ import (
 type PatchedOAuth2ProviderRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow NullableString `json:"authorization_flow,omitempty"`
-	PropertyMappings  []string       `json:"property_mappings,omitempty"`
+	AuthorizationFlow *string  `json:"authorization_flow,omitempty"`
+	PropertyMappings  []string `json:"property_mappings,omitempty"`
 	// Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  * `confidential` - Confidential * `public` - Public
 	ClientType   NullableClientTypeEnum `json:"client_type,omitempty"`
 	ClientId     *string                `json:"client_id,omitempty"`
@@ -93,47 +93,36 @@ func (o *PatchedOAuth2ProviderRequest) SetName(v string) {
 	o.Name = &v
 }
 
-// GetAuthorizationFlow returns the AuthorizationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAuthorizationFlow returns the AuthorizationFlow field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetAuthorizationFlow() string {
-	if o == nil || o.AuthorizationFlow.Get() == nil {
+	if o == nil || o.AuthorizationFlow == nil {
 		var ret string
 		return ret
 	}
-	return *o.AuthorizationFlow.Get()
+	return *o.AuthorizationFlow
 }
 
 // GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuth2ProviderRequest) GetAuthorizationFlowOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.AuthorizationFlow == nil {
 		return nil, false
 	}
-	return o.AuthorizationFlow.Get(), o.AuthorizationFlow.IsSet()
+	return o.AuthorizationFlow, true
 }
 
 // HasAuthorizationFlow returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasAuthorizationFlow() bool {
-	if o != nil && o.AuthorizationFlow.IsSet() {
+	if o != nil && o.AuthorizationFlow != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAuthorizationFlow gets a reference to the given NullableString and assigns it to the AuthorizationFlow field.
+// SetAuthorizationFlow gets a reference to the given string and assigns it to the AuthorizationFlow field.
 func (o *PatchedOAuth2ProviderRequest) SetAuthorizationFlow(v string) {
-	o.AuthorizationFlow.Set(&v)
-}
-
-// SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
-func (o *PatchedOAuth2ProviderRequest) SetAuthorizationFlowNil() {
-	o.AuthorizationFlow.Set(nil)
-}
-
-// UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
-func (o *PatchedOAuth2ProviderRequest) UnsetAuthorizationFlow() {
-	o.AuthorizationFlow.Unset()
+	o.AuthorizationFlow = &v
 }
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
@@ -601,8 +590,8 @@ func (o PatchedOAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.AuthorizationFlow.IsSet() {
-		toSerialize["authorization_flow"] = o.AuthorizationFlow.Get()
+	if o.AuthorizationFlow != nil {
+		toSerialize["authorization_flow"] = o.AuthorizationFlow
 	}
 	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings

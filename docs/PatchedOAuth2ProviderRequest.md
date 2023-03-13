@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**AuthorizationFlow** | Pointer to **NullableString** | Flow used when authorizing this provider. | [optional] 
+**AuthorizationFlow** | Pointer to **string** | Flow used when authorizing this provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **ClientType** | Pointer to [**NullableClientTypeEnum**](ClientTypeEnum.md) | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  * &#x60;confidential&#x60; - Confidential * &#x60;public&#x60; - Public | [optional] 
 **ClientId** | Pointer to **string** |  | [optional] 
@@ -89,16 +89,6 @@ SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
 HasAuthorizationFlow returns a boolean if a field has been set.
 
-### SetAuthorizationFlowNil
-
-`func (o *PatchedOAuth2ProviderRequest) SetAuthorizationFlowNil(b bool)`
-
- SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
-
-### UnsetAuthorizationFlow
-`func (o *PatchedOAuth2ProviderRequest) UnsetAuthorizationFlow()`
-
-UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *PatchedOAuth2ProviderRequest) GetPropertyMappings() []string`

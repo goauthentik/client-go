@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
 **Name** | **string** |  | 
-**AuthorizationFlow** | Pointer to **NullableString** | Flow used when authorizing this provider. | [optional] 
+**AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
 **AssignedApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
@@ -37,7 +37,7 @@ Name | Type | Description | Notes
 
 ### NewSAMLProvider
 
-`func NewSAMLProvider(pk int32, name string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, urlDownloadMetadata string, urlSsoPost string, urlSsoRedirect string, urlSsoInit string, urlSloPost string, urlSloRedirect string, ) *SAMLProvider`
+`func NewSAMLProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, urlDownloadMetadata string, urlSsoPost string, urlSsoRedirect string, urlSsoInit string, urlSloPost string, urlSloRedirect string, ) *SAMLProvider`
 
 NewSAMLProvider instantiates a new SAMLProvider object
 This constructor will assign default values to properties that have it defined,
@@ -111,22 +111,7 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
-### HasAuthorizationFlow
 
-`func (o *SAMLProvider) HasAuthorizationFlow() bool`
-
-HasAuthorizationFlow returns a boolean if a field has been set.
-
-### SetAuthorizationFlowNil
-
-`func (o *SAMLProvider) SetAuthorizationFlowNil(b bool)`
-
- SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
-
-### UnsetAuthorizationFlow
-`func (o *SAMLProvider) UnsetAuthorizationFlow()`
-
-UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *SAMLProvider) GetPropertyMappings() []string`

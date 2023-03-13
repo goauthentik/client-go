@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**AuthorizationFlow** | Pointer to **NullableString** | Flow used when authorizing this provider. | [optional] 
+**AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **InternalHost** | Pointer to **string** |  | [optional] 
 **ExternalHost** | **string** |  | 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewProxyProviderRequest
 
-`func NewProxyProviderRequest(name string, externalHost string, ) *ProxyProviderRequest`
+`func NewProxyProviderRequest(name string, authorizationFlow string, externalHost string, ) *ProxyProviderRequest`
 
 NewProxyProviderRequest instantiates a new ProxyProviderRequest object
 This constructor will assign default values to properties that have it defined,
@@ -80,22 +80,7 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
-### HasAuthorizationFlow
 
-`func (o *ProxyProviderRequest) HasAuthorizationFlow() bool`
-
-HasAuthorizationFlow returns a boolean if a field has been set.
-
-### SetAuthorizationFlowNil
-
-`func (o *ProxyProviderRequest) SetAuthorizationFlowNil(b bool)`
-
- SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
-
-### UnsetAuthorizationFlow
-`func (o *ProxyProviderRequest) UnsetAuthorizationFlow()`
-
-UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *ProxyProviderRequest) GetPropertyMappings() []string`

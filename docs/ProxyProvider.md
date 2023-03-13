@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
 **Name** | **string** |  | 
-**AuthorizationFlow** | Pointer to **NullableString** | Flow used when authorizing this provider. | [optional] 
+**AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
 **AssignedApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 
 ### NewProxyProvider
 
-`func NewProxyProvider(pk int32, name string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris string, outpostSet []string, ) *ProxyProvider`
+`func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris string, outpostSet []string, ) *ProxyProvider`
 
 NewProxyProvider instantiates a new ProxyProvider object
 This constructor will assign default values to properties that have it defined,
@@ -110,22 +110,7 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
-### HasAuthorizationFlow
 
-`func (o *ProxyProvider) HasAuthorizationFlow() bool`
-
-HasAuthorizationFlow returns a boolean if a field has been set.
-
-### SetAuthorizationFlowNil
-
-`func (o *ProxyProvider) SetAuthorizationFlowNil(b bool)`
-
- SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
-
-### UnsetAuthorizationFlow
-`func (o *ProxyProvider) UnsetAuthorizationFlow()`
-
-UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *ProxyProvider) GetPropertyMappings() []string`

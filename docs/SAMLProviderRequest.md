@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**AuthorizationFlow** | Pointer to **NullableString** | Flow used when authorizing this provider. | [optional] 
+**AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **AcsUrl** | **string** |  | 
 **Audience** | Pointer to **string** | Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added. | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewSAMLProviderRequest
 
-`func NewSAMLProviderRequest(name string, acsUrl string, ) *SAMLProviderRequest`
+`func NewSAMLProviderRequest(name string, authorizationFlow string, acsUrl string, ) *SAMLProviderRequest`
 
 NewSAMLProviderRequest instantiates a new SAMLProviderRequest object
 This constructor will assign default values to properties that have it defined,
@@ -78,22 +78,7 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
-### HasAuthorizationFlow
 
-`func (o *SAMLProviderRequest) HasAuthorizationFlow() bool`
-
-HasAuthorizationFlow returns a boolean if a field has been set.
-
-### SetAuthorizationFlowNil
-
-`func (o *SAMLProviderRequest) SetAuthorizationFlowNil(b bool)`
-
- SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
-
-### UnsetAuthorizationFlow
-`func (o *SAMLProviderRequest) UnsetAuthorizationFlow()`
-
-UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *SAMLProviderRequest) GetPropertyMappings() []string`

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**AuthorizationFlow** | Pointer to **NullableString** | Flow used when authorizing this provider. | [optional] 
+**AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **ClientType** | Pointer to [**NullableClientTypeEnum**](ClientTypeEnum.md) | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  * &#x60;confidential&#x60; - Confidential * &#x60;public&#x60; - Public | [optional] 
 **ClientId** | Pointer to **string** |  | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewOAuth2ProviderRequest
 
-`func NewOAuth2ProviderRequest(name string, ) *OAuth2ProviderRequest`
+`func NewOAuth2ProviderRequest(name string, authorizationFlow string, ) *OAuth2ProviderRequest`
 
 NewOAuth2ProviderRequest instantiates a new OAuth2ProviderRequest object
 This constructor will assign default values to properties that have it defined,
@@ -78,22 +78,7 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
-### HasAuthorizationFlow
 
-`func (o *OAuth2ProviderRequest) HasAuthorizationFlow() bool`
-
-HasAuthorizationFlow returns a boolean if a field has been set.
-
-### SetAuthorizationFlowNil
-
-`func (o *OAuth2ProviderRequest) SetAuthorizationFlowNil(b bool)`
-
- SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
-
-### UnsetAuthorizationFlow
-`func (o *OAuth2ProviderRequest) UnsetAuthorizationFlow()`
-
-UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *OAuth2ProviderRequest) GetPropertyMappings() []string`

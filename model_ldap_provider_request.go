@@ -19,8 +19,8 @@ import (
 type LDAPProviderRequest struct {
 	Name string `json:"name"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow NullableString `json:"authorization_flow,omitempty"`
-	PropertyMappings  []string       `json:"property_mappings,omitempty"`
+	AuthorizationFlow string   `json:"authorization_flow"`
+	PropertyMappings  []string `json:"property_mappings,omitempty"`
 	// DN under which objects are accessible.
 	BaseDn *string `json:"base_dn,omitempty"`
 	// Users in this group can do search queries. If not set, every user can execute search queries.
@@ -39,9 +39,10 @@ type LDAPProviderRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLDAPProviderRequest(name string) *LDAPProviderRequest {
+func NewLDAPProviderRequest(name string, authorizationFlow string) *LDAPProviderRequest {
 	this := LDAPProviderRequest{}
 	this.Name = name
+	this.AuthorizationFlow = authorizationFlow
 	return &this
 }
 
@@ -77,47 +78,28 @@ func (o *LDAPProviderRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetAuthorizationFlow returns the AuthorizationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAuthorizationFlow returns the AuthorizationFlow field value
 func (o *LDAPProviderRequest) GetAuthorizationFlow() string {
-	if o == nil || o.AuthorizationFlow.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.AuthorizationFlow.Get()
+
+	return o.AuthorizationFlow
 }
 
-// GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value if set, nil otherwise
+// GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LDAPProviderRequest) GetAuthorizationFlowOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AuthorizationFlow.Get(), o.AuthorizationFlow.IsSet()
+	return &o.AuthorizationFlow, true
 }
 
-// HasAuthorizationFlow returns a boolean if a field has been set.
-func (o *LDAPProviderRequest) HasAuthorizationFlow() bool {
-	if o != nil && o.AuthorizationFlow.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAuthorizationFlow gets a reference to the given NullableString and assigns it to the AuthorizationFlow field.
+// SetAuthorizationFlow sets field value
 func (o *LDAPProviderRequest) SetAuthorizationFlow(v string) {
-	o.AuthorizationFlow.Set(&v)
-}
-
-// SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
-func (o *LDAPProviderRequest) SetAuthorizationFlowNil() {
-	o.AuthorizationFlow.Set(nil)
-}
-
-// UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
-func (o *LDAPProviderRequest) UnsetAuthorizationFlow() {
-	o.AuthorizationFlow.Unset()
+	o.AuthorizationFlow = v
 }
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
@@ -435,8 +417,8 @@ func (o LDAPProviderRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.AuthorizationFlow.IsSet() {
-		toSerialize["authorization_flow"] = o.AuthorizationFlow.Get()
+	if true {
+		toSerialize["authorization_flow"] = o.AuthorizationFlow
 	}
 	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings

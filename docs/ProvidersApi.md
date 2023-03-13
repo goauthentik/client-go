@@ -417,7 +417,7 @@ import (
 )
 
 func main() {
-    lDAPProviderRequest := *openapiclient.NewLDAPProviderRequest("Name_example") // LDAPProviderRequest | 
+    lDAPProviderRequest := *openapiclient.NewLDAPProviderRequest("Name_example", "AuthorizationFlow_example") // LDAPProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -788,7 +788,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this LDAP Provider.
-    lDAPProviderRequest := *openapiclient.NewLDAPProviderRequest("Name_example") // LDAPProviderRequest | 
+    lDAPProviderRequest := *openapiclient.NewLDAPProviderRequest("Name_example", "AuthorizationFlow_example") // LDAPProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -929,7 +929,7 @@ import (
 )
 
 func main() {
-    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example") // OAuth2ProviderRequest | 
+    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example") // OAuth2ProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1446,7 +1446,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this OAuth2/OpenID Provider.
-    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example") // OAuth2ProviderRequest | 
+    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example") // OAuth2ProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1587,7 +1587,7 @@ import (
 )
 
 func main() {
-    proxyProviderRequest := *openapiclient.NewProxyProviderRequest("Name_example", "ExternalHost_example") // ProxyProviderRequest | 
+    proxyProviderRequest := *openapiclient.NewProxyProviderRequest("Name_example", "AuthorizationFlow_example", "ExternalHost_example") // ProxyProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1968,7 +1968,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Proxy Provider.
-    proxyProviderRequest := *openapiclient.NewProxyProviderRequest("Name_example", "ExternalHost_example") // ProxyProviderRequest | 
+    proxyProviderRequest := *openapiclient.NewProxyProviderRequest("Name_example", "AuthorizationFlow_example", "ExternalHost_example") // ProxyProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2109,7 +2109,7 @@ import (
 )
 
 func main() {
-    sAMLProviderRequest := *openapiclient.NewSAMLProviderRequest("Name_example", "AcsUrl_example") // SAMLProviderRequest | 
+    sAMLProviderRequest := *openapiclient.NewSAMLProviderRequest("Name_example", "AuthorizationFlow_example", "AcsUrl_example") // SAMLProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2700,7 +2700,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this SAML Provider.
-    sAMLProviderRequest := *openapiclient.NewSAMLProviderRequest("Name_example", "AcsUrl_example") // SAMLProviderRequest | 
+    sAMLProviderRequest := *openapiclient.NewSAMLProviderRequest("Name_example", "AuthorizationFlow_example", "AcsUrl_example") // SAMLProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

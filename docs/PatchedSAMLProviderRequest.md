@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**AuthorizationFlow** | Pointer to **NullableString** | Flow used when authorizing this provider. | [optional] 
+**AuthorizationFlow** | Pointer to **string** | Flow used when authorizing this provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **AcsUrl** | Pointer to **string** |  | [optional] 
 **Audience** | Pointer to **string** | Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added. | [optional] 
@@ -89,16 +89,6 @@ SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
 HasAuthorizationFlow returns a boolean if a field has been set.
 
-### SetAuthorizationFlowNil
-
-`func (o *PatchedSAMLProviderRequest) SetAuthorizationFlowNil(b bool)`
-
- SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
-
-### UnsetAuthorizationFlow
-`func (o *PatchedSAMLProviderRequest) UnsetAuthorizationFlow()`
-
-UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *PatchedSAMLProviderRequest) GetPropertyMappings() []string`

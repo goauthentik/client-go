@@ -20,8 +20,8 @@ type ProxyProvider struct {
 	Pk   int32  `json:"pk"`
 	Name string `json:"name"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow NullableString `json:"authorization_flow,omitempty"`
-	PropertyMappings  []string       `json:"property_mappings,omitempty"`
+	AuthorizationFlow string   `json:"authorization_flow"`
+	PropertyMappings  []string `json:"property_mappings,omitempty"`
 	// Get object component so that we know how to edit the object
 	Component string `json:"component"`
 	// Internal application name, used in URLs.
@@ -66,10 +66,11 @@ type ProxyProvider struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProxyProvider(pk int32, name string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris string, outpostSet []string) *ProxyProvider {
+func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris string, outpostSet []string) *ProxyProvider {
 	this := ProxyProvider{}
 	this.Pk = pk
 	this.Name = name
+	this.AuthorizationFlow = authorizationFlow
 	this.Component = component
 	this.AssignedApplicationSlug = assignedApplicationSlug
 	this.AssignedApplicationName = assignedApplicationName
@@ -139,47 +140,28 @@ func (o *ProxyProvider) SetName(v string) {
 	o.Name = v
 }
 
-// GetAuthorizationFlow returns the AuthorizationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAuthorizationFlow returns the AuthorizationFlow field value
 func (o *ProxyProvider) GetAuthorizationFlow() string {
-	if o == nil || o.AuthorizationFlow.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.AuthorizationFlow.Get()
+
+	return o.AuthorizationFlow
 }
 
-// GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value if set, nil otherwise
+// GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxyProvider) GetAuthorizationFlowOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AuthorizationFlow.Get(), o.AuthorizationFlow.IsSet()
+	return &o.AuthorizationFlow, true
 }
 
-// HasAuthorizationFlow returns a boolean if a field has been set.
-func (o *ProxyProvider) HasAuthorizationFlow() bool {
-	if o != nil && o.AuthorizationFlow.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAuthorizationFlow gets a reference to the given NullableString and assigns it to the AuthorizationFlow field.
+// SetAuthorizationFlow sets field value
 func (o *ProxyProvider) SetAuthorizationFlow(v string) {
-	o.AuthorizationFlow.Set(&v)
-}
-
-// SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
-func (o *ProxyProvider) SetAuthorizationFlowNil() {
-	o.AuthorizationFlow.Set(nil)
-}
-
-// UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
-func (o *ProxyProvider) UnsetAuthorizationFlow() {
-	o.AuthorizationFlow.Unset()
+	o.AuthorizationFlow = v
 }
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
@@ -900,8 +882,8 @@ func (o ProxyProvider) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.AuthorizationFlow.IsSet() {
-		toSerialize["authorization_flow"] = o.AuthorizationFlow.Get()
+	if true {
+		toSerialize["authorization_flow"] = o.AuthorizationFlow
 	}
 	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings

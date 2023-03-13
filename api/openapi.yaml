@@ -34287,7 +34287,6 @@ components:
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
-          nullable: true
           type: string
         property_mappings:
           items:
@@ -34360,6 +34359,7 @@ components:
       required:
       - assigned_application_name
       - assigned_application_slug
+      - authorization_flow
       - component
       - meta_model_name
       - name
@@ -34391,7 +34391,6 @@ components:
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
-          nullable: true
           type: string
         property_mappings:
           items:
@@ -34434,6 +34433,7 @@ components:
         bind_mode:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
       required:
+      - authorization_flow
       - name
       type: object
     LDAPSource:
@@ -35220,7 +35220,6 @@ components:
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
-          nullable: true
           type: string
         property_mappings:
           items:
@@ -35317,6 +35316,7 @@ components:
       required:
       - assigned_application_name
       - assigned_application_slug
+      - authorization_flow
       - component
       - meta_model_name
       - name
@@ -35353,7 +35353,6 @@ components:
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
-          nullable: true
           type: string
         property_mappings:
           items:
@@ -35428,6 +35427,7 @@ components:
           title: Any JWT signed by the JWK of the selected source can be used to authenticate.
           type: array
       required:
+      - authorization_flow
       - name
       type: object
     OAuth2ProviderSetupURLs:
@@ -42996,7 +42996,6 @@ components:
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
-          nullable: true
           type: string
         property_mappings:
           items:
@@ -43307,7 +43306,6 @@ components:
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
-          nullable: true
           type: string
         property_mappings:
           items:
@@ -43965,7 +43963,6 @@ components:
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
-          nullable: true
           type: string
         property_mappings:
           items:
@@ -44123,7 +44120,6 @@ components:
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
-          nullable: true
           type: string
         property_mappings:
           items:
@@ -46098,7 +46094,6 @@ components:
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
-          nullable: true
           type: string
         property_mappings:
           items:
@@ -46206,6 +46201,7 @@ components:
       required:
       - assigned_application_name
       - assigned_application_slug
+      - authorization_flow
       - client_id
       - component
       - external_host
@@ -46248,7 +46244,6 @@ components:
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
-          nullable: true
           type: string
         property_mappings:
           items:
@@ -46322,6 +46317,7 @@ components:
           minLength: 1
           type: string
       required:
+      - authorization_flow
       - external_host
       - name
       type: object
@@ -46656,7 +46652,6 @@ components:
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
-          nullable: true
           type: string
         property_mappings:
           items:
@@ -46772,6 +46767,7 @@ components:
       - acs_url
       - assigned_application_name
       - assigned_application_slug
+      - authorization_flow
       - component
       - meta_model_name
       - name
@@ -46830,7 +46826,6 @@ components:
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
-          nullable: true
           type: string
         property_mappings:
           items:
@@ -46901,6 +46896,7 @@ components:
           title: Service Provider Binding
       required:
       - acs_url
+      - authorization_flow
       - name
       type: object
     SAMLSource:
