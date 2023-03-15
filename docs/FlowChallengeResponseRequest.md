@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-prompt"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-stage-user-login"]
 **Code** | **int32** |  | 
 **PhoneNumber** | Pointer to **string** |  | [optional] 
 **SelectedChallenge** | Pointer to [**DeviceChallengeRequest**](DeviceChallengeRequest.md) |  | [optional] 
@@ -15,12 +15,13 @@ Name | Type | Description | Notes
 **Token** | **string** |  | 
 **UidField** | **string** |  | 
 **Password** | **string** |  | 
+**RememberMe** | **bool** |  | 
 
 ## Methods
 
 ### NewFlowChallengeResponseRequest
 
-`func NewFlowChallengeResponseRequest(code int32, response map[string]interface{}, token string, uidField string, password string, ) *FlowChallengeResponseRequest`
+`func NewFlowChallengeResponseRequest(code int32, response map[string]interface{}, token string, uidField string, password string, rememberMe bool, ) *FlowChallengeResponseRequest`
 
 NewFlowChallengeResponseRequest instantiates a new FlowChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -283,6 +284,26 @@ and a boolean to check if the value has been set.
 `func (o *FlowChallengeResponseRequest) SetPassword(v string)`
 
 SetPassword sets Password field to given value.
+
+
+### GetRememberMe
+
+`func (o *FlowChallengeResponseRequest) GetRememberMe() bool`
+
+GetRememberMe returns the RememberMe field if non-nil, zero value otherwise.
+
+### GetRememberMeOk
+
+`func (o *FlowChallengeResponseRequest) GetRememberMeOk() (*bool, bool)`
+
+GetRememberMeOk returns a tuple with the RememberMe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRememberMe
+
+`func (o *FlowChallengeResponseRequest) SetRememberMe(v bool)`
+
+SetRememberMe sets RememberMe field to given value.
 
 
 

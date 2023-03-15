@@ -36,6 +36,7 @@ type FlowChallengeResponseRequest struct {
 	PasswordChallengeResponseRequest                *PasswordChallengeResponseRequest
 	PlexAuthenticationChallengeResponseRequest      *PlexAuthenticationChallengeResponseRequest
 	PromptChallengeResponseRequest                  *PromptChallengeResponseRequest
+	UserLoginChallengeResponseRequest               *UserLoginChallengeResponseRequest
 }
 
 // AppleChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns AppleChallengeResponseRequest wrapped in FlowChallengeResponseRequest
@@ -161,6 +162,13 @@ func PlexAuthenticationChallengeResponseRequestAsFlowChallengeResponseRequest(v 
 func PromptChallengeResponseRequestAsFlowChallengeResponseRequest(v *PromptChallengeResponseRequest) FlowChallengeResponseRequest {
 	return FlowChallengeResponseRequest{
 		PromptChallengeResponseRequest: v,
+	}
+}
+
+// UserLoginChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns UserLoginChallengeResponseRequest wrapped in FlowChallengeResponseRequest
+func UserLoginChallengeResponseRequestAsFlowChallengeResponseRequest(v *UserLoginChallengeResponseRequest) FlowChallengeResponseRequest {
+	return FlowChallengeResponseRequest{
+		UserLoginChallengeResponseRequest: v,
 	}
 }
 
@@ -390,6 +398,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'UserLoginChallengeResponseRequest'
+	if jsonDict["component"] == "UserLoginChallengeResponseRequest" {
+		// try to unmarshal JSON data into UserLoginChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.UserLoginChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.UserLoginChallengeResponseRequest, return on the first match
+		} else {
+			dst.UserLoginChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as UserLoginChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ak-provider-oauth2-device-code'
 	if jsonDict["component"] == "ak-provider-oauth2-device-code" {
 		// try to unmarshal JSON data into OAuthDeviceCodeChallengeResponseRequest
@@ -606,6 +626,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'ak-stage-user-login'
+	if jsonDict["component"] == "ak-stage-user-login" {
+		// try to unmarshal JSON data into UserLoginChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.UserLoginChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.UserLoginChallengeResponseRequest, return on the first match
+		} else {
+			dst.UserLoginChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as UserLoginChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
 	return nil
 }
 
@@ -681,6 +713,10 @@ func (src FlowChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 
 	if src.PromptChallengeResponseRequest != nil {
 		return json.Marshal(&src.PromptChallengeResponseRequest)
+	}
+
+	if src.UserLoginChallengeResponseRequest != nil {
+		return json.Marshal(&src.UserLoginChallengeResponseRequest)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -761,6 +797,10 @@ func (obj *FlowChallengeResponseRequest) GetActualInstance() interface{} {
 
 	if obj.PromptChallengeResponseRequest != nil {
 		return obj.PromptChallengeResponseRequest
+	}
+
+	if obj.UserLoginChallengeResponseRequest != nil {
+		return obj.UserLoginChallengeResponseRequest
 	}
 
 	// all schemas are nil

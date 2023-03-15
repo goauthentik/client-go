@@ -1117,6 +1117,8 @@ Class | Method | HTTP request | Description
  - [UserFieldsEnum](docs/UserFieldsEnum.md)
  - [UserGroup](docs/UserGroup.md)
  - [UserGroupRequest](docs/UserGroupRequest.md)
+ - [UserLoginChallenge](docs/UserLoginChallenge.md)
+ - [UserLoginChallengeResponseRequest](docs/UserLoginChallengeResponseRequest.md)
  - [UserLoginStage](docs/UserLoginStage.md)
  - [UserLoginStageRequest](docs/UserLoginStageRequest.md)
  - [UserLogoutStage](docs/UserLogoutStage.md)

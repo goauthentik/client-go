@@ -40,6 +40,7 @@ type ChallengeTypes struct {
 	PromptChallenge                  *PromptChallenge
 	RedirectChallenge                *RedirectChallenge
 	ShellChallenge                   *ShellChallenge
+	UserLoginChallenge               *UserLoginChallenge
 }
 
 // AccessDeniedChallengeAsChallengeTypes is a convenience function that returns AccessDeniedChallenge wrapped in ChallengeTypes
@@ -193,6 +194,13 @@ func RedirectChallengeAsChallengeTypes(v *RedirectChallenge) ChallengeTypes {
 func ShellChallengeAsChallengeTypes(v *ShellChallenge) ChallengeTypes {
 	return ChallengeTypes{
 		ShellChallenge: v,
+	}
+}
+
+// UserLoginChallengeAsChallengeTypes is a convenience function that returns UserLoginChallenge wrapped in ChallengeTypes
+func UserLoginChallengeAsChallengeTypes(v *UserLoginChallenge) ChallengeTypes {
+	return ChallengeTypes{
+		UserLoginChallenge: v,
 	}
 }
 
@@ -470,6 +478,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'UserLoginChallenge'
+	if jsonDict["component"] == "UserLoginChallenge" {
+		// try to unmarshal JSON data into UserLoginChallenge
+		err = json.Unmarshal(data, &dst.UserLoginChallenge)
+		if err == nil {
+			return nil // data stored in dst.UserLoginChallenge, return on the first match
+		} else {
+			dst.UserLoginChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as UserLoginChallenge: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ak-provider-oauth2-device-code'
 	if jsonDict["component"] == "ak-provider-oauth2-device-code" {
 		// try to unmarshal JSON data into OAuthDeviceCodeChallenge
@@ -710,6 +730,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'ak-stage-user-login'
+	if jsonDict["component"] == "ak-stage-user-login" {
+		// try to unmarshal JSON data into UserLoginChallenge
+		err = json.Unmarshal(data, &dst.UserLoginChallenge)
+		if err == nil {
+			return nil // data stored in dst.UserLoginChallenge, return on the first match
+		} else {
+			dst.UserLoginChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as UserLoginChallenge: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'xak-flow-redirect'
 	if jsonDict["component"] == "xak-flow-redirect" {
 		// try to unmarshal JSON data into RedirectChallenge
@@ -827,6 +859,10 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.ShellChallenge)
 	}
 
+	if src.UserLoginChallenge != nil {
+		return json.Marshal(&src.UserLoginChallenge)
+	}
+
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -921,6 +957,10 @@ func (obj *ChallengeTypes) GetActualInstance() interface{} {
 
 	if obj.ShellChallenge != nil {
 		return obj.ShellChallenge
+	}
+
+	if obj.UserLoginChallenge != nil {
+		return obj.UserLoginChallenge
 	}
 
 	// all schemas are nil

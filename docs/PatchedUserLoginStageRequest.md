@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **SessionDuration** | Pointer to **string** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
 **TerminateOtherSessions** | Pointer to **bool** | Terminate all other sessions of the user logging in. | [optional] 
+**RememberMeOffset** | Pointer to **string** | Offset the session will be extended by when the user picks the remember me option. Default of 0 means that the remember me option will not be shown. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetTerminateOtherSessions sets TerminateOtherSessions field to given value.
 `func (o *PatchedUserLoginStageRequest) HasTerminateOtherSessions() bool`
 
 HasTerminateOtherSessions returns a boolean if a field has been set.
+
+### GetRememberMeOffset
+
+`func (o *PatchedUserLoginStageRequest) GetRememberMeOffset() string`
+
+GetRememberMeOffset returns the RememberMeOffset field if non-nil, zero value otherwise.
+
+### GetRememberMeOffsetOk
+
+`func (o *PatchedUserLoginStageRequest) GetRememberMeOffsetOk() (*string, bool)`
+
+GetRememberMeOffsetOk returns a tuple with the RememberMeOffset field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRememberMeOffset
+
+`func (o *PatchedUserLoginStageRequest) SetRememberMeOffset(v string)`
+
+SetRememberMeOffset sets RememberMeOffset field to given value.
+
+### HasRememberMeOffset
+
+`func (o *PatchedUserLoginStageRequest) HasRememberMeOffset() bool`
+
+HasRememberMeOffset returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -23,6 +23,8 @@ type PatchedUserLoginStageRequest struct {
 	SessionDuration *string `json:"session_duration,omitempty"`
 	// Terminate all other sessions of the user logging in.
 	TerminateOtherSessions *bool `json:"terminate_other_sessions,omitempty"`
+	// Offset the session will be extended by when the user picks the remember me option. Default of 0 means that the remember me option will not be shown. (Format: hours=-1;minutes=-2;seconds=-3)
+	RememberMeOffset *string `json:"remember_me_offset,omitempty"`
 }
 
 // NewPatchedUserLoginStageRequest instantiates a new PatchedUserLoginStageRequest object
@@ -170,6 +172,38 @@ func (o *PatchedUserLoginStageRequest) SetTerminateOtherSessions(v bool) {
 	o.TerminateOtherSessions = &v
 }
 
+// GetRememberMeOffset returns the RememberMeOffset field value if set, zero value otherwise.
+func (o *PatchedUserLoginStageRequest) GetRememberMeOffset() string {
+	if o == nil || o.RememberMeOffset == nil {
+		var ret string
+		return ret
+	}
+	return *o.RememberMeOffset
+}
+
+// GetRememberMeOffsetOk returns a tuple with the RememberMeOffset field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedUserLoginStageRequest) GetRememberMeOffsetOk() (*string, bool) {
+	if o == nil || o.RememberMeOffset == nil {
+		return nil, false
+	}
+	return o.RememberMeOffset, true
+}
+
+// HasRememberMeOffset returns a boolean if a field has been set.
+func (o *PatchedUserLoginStageRequest) HasRememberMeOffset() bool {
+	if o != nil && o.RememberMeOffset != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRememberMeOffset gets a reference to the given string and assigns it to the RememberMeOffset field.
+func (o *PatchedUserLoginStageRequest) SetRememberMeOffset(v string) {
+	o.RememberMeOffset = &v
+}
+
 func (o PatchedUserLoginStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -183,6 +217,9 @@ func (o PatchedUserLoginStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.TerminateOtherSessions != nil {
 		toSerialize["terminate_other_sessions"] = o.TerminateOtherSessions
+	}
+	if o.RememberMeOffset != nil {
+		toSerialize["remember_me_offset"] = o.RememberMeOffset
 	}
 	return json.Marshal(toSerialize)
 }

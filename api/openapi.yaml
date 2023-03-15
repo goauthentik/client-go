@@ -27781,6 +27781,13 @@ paths:
         schema:
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: remember_me_offset
+        required: false
+        schema:
+          type: string
+        style: form
       - description: A search term.
         explode: true
         in: query
@@ -30842,6 +30849,7 @@ components:
           ak-stage-prompt: '#/components/schemas/PromptChallenge'
           xak-flow-redirect: '#/components/schemas/RedirectChallenge'
           xak-flow-shell: '#/components/schemas/ShellChallenge'
+          ak-stage-user-login: '#/components/schemas/UserLoginChallenge'
         propertyName: component
       oneOf:
       - $ref: '#/components/schemas/AccessDeniedChallenge'
@@ -30866,6 +30874,7 @@ components:
       - $ref: '#/components/schemas/PromptChallenge'
       - $ref: '#/components/schemas/RedirectChallenge'
       - $ref: '#/components/schemas/ShellChallenge'
+      - $ref: '#/components/schemas/UserLoginChallenge'
     ClientTypeEnum:
       description: |-
         * `confidential` - Confidential
@@ -32775,6 +32784,7 @@ components:
           ak-stage-password: '#/components/schemas/PasswordChallengeResponseRequest'
           ak-source-plex: '#/components/schemas/PlexAuthenticationChallengeResponseRequest'
           ak-stage-prompt: '#/components/schemas/PromptChallengeResponseRequest'
+          ak-stage-user-login: '#/components/schemas/UserLoginChallengeResponseRequest'
         propertyName: component
       oneOf:
       - $ref: '#/components/schemas/AppleChallengeResponseRequest'
@@ -32795,6 +32805,7 @@ components:
       - $ref: '#/components/schemas/PasswordChallengeResponseRequest'
       - $ref: '#/components/schemas/PlexAuthenticationChallengeResponseRequest'
       - $ref: '#/components/schemas/PromptChallengeResponseRequest'
+      - $ref: '#/components/schemas/UserLoginChallengeResponseRequest'
     FlowDesignationEnum:
       description: |-
         * `authentication` - Authentication
@@ -40937,6 +40948,7 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          remember_me_offset: remember_me_offset
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
@@ -40970,6 +40982,7 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          remember_me_offset: remember_me_offset
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
@@ -44584,6 +44597,7 @@ components:
       description: UserLoginStage Serializer
       example:
         terminate_other_sessions: true
+        remember_me_offset: remember_me_offset
         name: name
         flow_set:
         - policy_engine_mode: null
@@ -44619,6 +44633,12 @@ components:
         terminate_other_sessions:
           description: Terminate all other sessions of the user logging in.
           type: boolean
+        remember_me_offset:
+          description: "Offset the session will be extended by when the user picks\
+            \ the remember me option. Default of 0 means that the remember me option\
+            \ will not be shown. (Format: hours=-1;minutes=-2;seconds=-3)"
+          minLength: 1
+          type: string
       type: object
     PatchedUserLogoutStageRequest:
       description: UserLogoutStage Serializer
@@ -49070,6 +49090,43 @@ components:
       required:
       - name
       type: object
+    UserLoginChallenge:
+      description: Empty challenge
+      properties:
+        type:
+          $ref: '#/components/schemas/ChallengeChoices'
+        flow_info:
+          $ref: '#/components/schemas/ContextualFlowInfo'
+        component:
+          default: ak-stage-user-login
+          type: string
+        response_errors:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/ErrorDetail'
+            type: array
+          type: object
+        pending_user:
+          type: string
+        pending_user_avatar:
+          type: string
+      required:
+      - pending_user
+      - pending_user_avatar
+      - type
+      type: object
+    UserLoginChallengeResponseRequest:
+      description: User login challenge
+      properties:
+        component:
+          default: ak-stage-user-login
+          minLength: 1
+          type: string
+        remember_me:
+          type: boolean
+      required:
+      - remember_me
+      type: object
     UserLoginStage:
       description: UserLoginStage Serializer
       example:
@@ -49078,6 +49135,7 @@ components:
         verbose_name: verbose_name
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
+        remember_me_offset: remember_me_offset
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
@@ -49141,6 +49199,11 @@ components:
         terminate_other_sessions:
           description: Terminate all other sessions of the user logging in.
           type: boolean
+        remember_me_offset:
+          description: "Offset the session will be extended by when the user picks\
+            \ the remember me option. Default of 0 means that the remember me option\
+            \ will not be shown. (Format: hours=-1;minutes=-2;seconds=-3)"
+          type: string
       required:
       - component
       - meta_model_name
@@ -49153,6 +49216,7 @@ components:
       description: UserLoginStage Serializer
       example:
         terminate_other_sessions: true
+        remember_me_offset: remember_me_offset
         name: name
         flow_set:
         - policy_engine_mode: null
@@ -49188,6 +49252,12 @@ components:
         terminate_other_sessions:
           description: Terminate all other sessions of the user logging in.
           type: boolean
+        remember_me_offset:
+          description: "Offset the session will be extended by when the user picks\
+            \ the remember me option. Default of 0 means that the remember me option\
+            \ will not be shown. (Format: hours=-1;minutes=-2;seconds=-3)"
+          minLength: 1
+          type: string
       required:
       - name
       type: object
