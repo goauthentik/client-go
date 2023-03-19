@@ -16,36 +16,44 @@ import (
 	"fmt"
 )
 
-// PromptTypeEnum * `text` - Text: Simple Text input * `text_read_only` - Text (read-only): Simple Text input, but cannot be edited. * `username` - Username: Same as Text input, but checks for and prevents duplicate usernames. * `email` - Email: Text field with Email type. * `password` - Password: Masked input, password is validated against sources. Policies still have to be applied to this Stage. If two of these are used in the same stage, they are ensured to be identical. * `number` - Number * `checkbox` - Checkbox * `date` - Date * `date-time` - Date Time * `file` - File: File upload for arbitrary files. File content will be available in flow context as data-URI * `separator` - Separator: Static Separator Line * `hidden` - Hidden: Hidden field, can be used to insert data into form. * `static` - Static: Static value, displayed as-is. * `ak-locale` - authentik: Selection of locales authentik supports
+// PromptTypeEnum * `text` - Text: Simple Text input * `text_area` - Text area: Multiline Text Input. * `text_read_only` - Text (read-only): Simple Text input, but cannot be edited. * `text_area_read_only` - Text area (read-only): Multiline Text input, but cannot be edited. * `username` - Username: Same as Text input, but checks for and prevents duplicate usernames. * `email` - Email: Text field with Email type. * `password` - Password: Masked input, password is validated against sources. Policies still have to be applied to this Stage. If two of these are used in the same stage, they are ensured to be identical. * `number` - Number * `checkbox` - Checkbox * `radio-button-group` - Fixed choice field rendered as a group of radio buttons. * `dropdown` - Fixed choice field rendered as a dropdown. * `date` - Date * `date-time` - Date Time * `file` - File: File upload for arbitrary files. File content will be available in flow context as data-URI * `separator` - Separator: Static Separator Line * `hidden` - Hidden: Hidden field, can be used to insert data into form. * `static` - Static: Static value, displayed as-is. * `ak-locale` - authentik: Selection of locales authentik supports
 type PromptTypeEnum string
 
 // List of PromptTypeEnum
 const (
-	PROMPTTYPEENUM_TEXT           PromptTypeEnum = "text"
-	PROMPTTYPEENUM_TEXT_READ_ONLY PromptTypeEnum = "text_read_only"
-	PROMPTTYPEENUM_USERNAME       PromptTypeEnum = "username"
-	PROMPTTYPEENUM_EMAIL          PromptTypeEnum = "email"
-	PROMPTTYPEENUM_PASSWORD       PromptTypeEnum = "password"
-	PROMPTTYPEENUM_NUMBER         PromptTypeEnum = "number"
-	PROMPTTYPEENUM_CHECKBOX       PromptTypeEnum = "checkbox"
-	PROMPTTYPEENUM_DATE           PromptTypeEnum = "date"
-	PROMPTTYPEENUM_DATE_TIME      PromptTypeEnum = "date-time"
-	PROMPTTYPEENUM_FILE           PromptTypeEnum = "file"
-	PROMPTTYPEENUM_SEPARATOR      PromptTypeEnum = "separator"
-	PROMPTTYPEENUM_HIDDEN         PromptTypeEnum = "hidden"
-	PROMPTTYPEENUM_STATIC         PromptTypeEnum = "static"
-	PROMPTTYPEENUM_AK_LOCALE      PromptTypeEnum = "ak-locale"
+	PROMPTTYPEENUM_TEXT                PromptTypeEnum = "text"
+	PROMPTTYPEENUM_TEXT_AREA           PromptTypeEnum = "text_area"
+	PROMPTTYPEENUM_TEXT_READ_ONLY      PromptTypeEnum = "text_read_only"
+	PROMPTTYPEENUM_TEXT_AREA_READ_ONLY PromptTypeEnum = "text_area_read_only"
+	PROMPTTYPEENUM_USERNAME            PromptTypeEnum = "username"
+	PROMPTTYPEENUM_EMAIL               PromptTypeEnum = "email"
+	PROMPTTYPEENUM_PASSWORD            PromptTypeEnum = "password"
+	PROMPTTYPEENUM_NUMBER              PromptTypeEnum = "number"
+	PROMPTTYPEENUM_CHECKBOX            PromptTypeEnum = "checkbox"
+	PROMPTTYPEENUM_RADIO_BUTTON_GROUP  PromptTypeEnum = "radio-button-group"
+	PROMPTTYPEENUM_DROPDOWN            PromptTypeEnum = "dropdown"
+	PROMPTTYPEENUM_DATE                PromptTypeEnum = "date"
+	PROMPTTYPEENUM_DATE_TIME           PromptTypeEnum = "date-time"
+	PROMPTTYPEENUM_FILE                PromptTypeEnum = "file"
+	PROMPTTYPEENUM_SEPARATOR           PromptTypeEnum = "separator"
+	PROMPTTYPEENUM_HIDDEN              PromptTypeEnum = "hidden"
+	PROMPTTYPEENUM_STATIC              PromptTypeEnum = "static"
+	PROMPTTYPEENUM_AK_LOCALE           PromptTypeEnum = "ak-locale"
 )
 
 // All allowed values of PromptTypeEnum enum
 var AllowedPromptTypeEnumEnumValues = []PromptTypeEnum{
 	"text",
+	"text_area",
 	"text_read_only",
+	"text_area_read_only",
 	"username",
 	"email",
 	"password",
 	"number",
 	"checkbox",
+	"radio-button-group",
+	"dropdown",
 	"date",
 	"date-time",
 	"file",

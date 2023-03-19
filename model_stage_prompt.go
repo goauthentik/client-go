@@ -24,13 +24,14 @@ type StagePrompt struct {
 	Placeholder string         `json:"placeholder"`
 	Order       int32          `json:"order"`
 	SubText     string         `json:"sub_text"`
+	Choices     []string       `json:"choices"`
 }
 
 // NewStagePrompt instantiates a new StagePrompt object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, order int32, subText string) *StagePrompt {
+func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, order int32, subText string, choices []string) *StagePrompt {
 	this := StagePrompt{}
 	this.FieldKey = fieldKey
 	this.Label = label
@@ -39,6 +40,7 @@ func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, require
 	this.Placeholder = placeholder
 	this.Order = order
 	this.SubText = subText
+	this.Choices = choices
 	return &this
 }
 
@@ -218,6 +220,32 @@ func (o *StagePrompt) SetSubText(v string) {
 	o.SubText = v
 }
 
+// GetChoices returns the Choices field value
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *StagePrompt) GetChoices() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.Choices
+}
+
+// GetChoicesOk returns a tuple with the Choices field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StagePrompt) GetChoicesOk() ([]string, bool) {
+	if o == nil || o.Choices == nil {
+		return nil, false
+	}
+	return o.Choices, true
+}
+
+// SetChoices sets field value
+func (o *StagePrompt) SetChoices(v []string) {
+	o.Choices = v
+}
+
 func (o StagePrompt) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -240,6 +268,9 @@ func (o StagePrompt) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["sub_text"] = o.SubText
+	}
+	if o.Choices != nil {
+		toSerialize["choices"] = o.Choices
 	}
 	return json.Marshal(toSerialize)
 }

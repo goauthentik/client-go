@@ -19,15 +19,16 @@ import (
 type PatchedPromptRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Name of the form field, also used to store the value
-	FieldKey              *string         `json:"field_key,omitempty"`
-	Label                 *string         `json:"label,omitempty"`
-	Type                  *PromptTypeEnum `json:"type,omitempty"`
-	Required              *bool           `json:"required,omitempty"`
-	Placeholder           *string         `json:"placeholder,omitempty"`
-	Order                 *int32          `json:"order,omitempty"`
-	PromptstageSet        []StageRequest  `json:"promptstage_set,omitempty"`
-	SubText               *string         `json:"sub_text,omitempty"`
-	PlaceholderExpression *bool           `json:"placeholder_expression,omitempty"`
+	FieldKey *string         `json:"field_key,omitempty"`
+	Label    *string         `json:"label,omitempty"`
+	Type     *PromptTypeEnum `json:"type,omitempty"`
+	Required *bool           `json:"required,omitempty"`
+	// When creating a Radio Button Group or Dropdown, enable interpreting as expression and return a list to return multiple choices.
+	Placeholder           *string        `json:"placeholder,omitempty"`
+	Order                 *int32         `json:"order,omitempty"`
+	PromptstageSet        []StageRequest `json:"promptstage_set,omitempty"`
+	SubText               *string        `json:"sub_text,omitempty"`
+	PlaceholderExpression *bool          `json:"placeholder_expression,omitempty"`
 }
 
 // NewPatchedPromptRequest instantiates a new PatchedPromptRequest object

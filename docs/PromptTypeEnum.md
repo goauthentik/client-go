@@ -5,7 +5,11 @@
 
 * `TEXT` (value: `"text"`)
 
+* `TEXT_AREA` (value: `"text_area"`)
+
 * `TEXT_READ_ONLY` (value: `"text_read_only"`)
+
+* `TEXT_AREA_READ_ONLY` (value: `"text_area_read_only"`)
 
 * `USERNAME` (value: `"username"`)
 
@@ -16,6 +20,10 @@
 * `NUMBER` (value: `"number"`)
 
 * `CHECKBOX` (value: `"checkbox"`)
+
+* `RADIO_BUTTON_GROUP` (value: `"radio-button-group"`)
+
+* `DROPDOWN` (value: `"dropdown"`)
 
 * `DATE` (value: `"date"`)
 

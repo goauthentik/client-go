@@ -11,12 +11,13 @@ Name | Type | Description | Notes
 **Placeholder** | **string** |  | 
 **Order** | **int32** |  | 
 **SubText** | **string** |  | 
+**Choices** | **[]string** |  | 
 
 ## Methods
 
 ### NewStagePrompt
 
-`func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, order int32, subText string, ) *StagePrompt`
+`func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, order int32, subText string, choices []string, ) *StagePrompt`
 
 NewStagePrompt instantiates a new StagePrompt object
 This constructor will assign default values to properties that have it defined,
@@ -171,6 +172,36 @@ and a boolean to check if the value has been set.
 SetSubText sets SubText field to given value.
 
 
+### GetChoices
+
+`func (o *StagePrompt) GetChoices() []string`
+
+GetChoices returns the Choices field if non-nil, zero value otherwise.
+
+### GetChoicesOk
+
+`func (o *StagePrompt) GetChoicesOk() (*[]string, bool)`
+
+GetChoicesOk returns a tuple with the Choices field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChoices
+
+`func (o *StagePrompt) SetChoices(v []string)`
+
+SetChoices sets Choices field to given value.
+
+
+### SetChoicesNil
+
+`func (o *StagePrompt) SetChoicesNil(b bool)`
+
+ SetChoicesNil sets the value for Choices to be an explicit nil
+
+### UnsetChoices
+`func (o *StagePrompt) UnsetChoices()`
+
+UnsetChoices ensures that no value is present for Choices, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

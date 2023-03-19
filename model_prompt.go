@@ -20,15 +20,16 @@ type Prompt struct {
 	Pk   string `json:"pk"`
 	Name string `json:"name"`
 	// Name of the form field, also used to store the value
-	FieldKey              string         `json:"field_key"`
-	Label                 string         `json:"label"`
-	Type                  PromptTypeEnum `json:"type"`
-	Required              *bool          `json:"required,omitempty"`
-	Placeholder           *string        `json:"placeholder,omitempty"`
-	Order                 *int32         `json:"order,omitempty"`
-	PromptstageSet        []Stage        `json:"promptstage_set,omitempty"`
-	SubText               *string        `json:"sub_text,omitempty"`
-	PlaceholderExpression *bool          `json:"placeholder_expression,omitempty"`
+	FieldKey string         `json:"field_key"`
+	Label    string         `json:"label"`
+	Type     PromptTypeEnum `json:"type"`
+	Required *bool          `json:"required,omitempty"`
+	// When creating a Radio Button Group or Dropdown, enable interpreting as expression and return a list to return multiple choices.
+	Placeholder           *string `json:"placeholder,omitempty"`
+	Order                 *int32  `json:"order,omitempty"`
+	PromptstageSet        []Stage `json:"promptstage_set,omitempty"`
+	SubText               *string `json:"sub_text,omitempty"`
+	PlaceholderExpression *bool   `json:"placeholder_expression,omitempty"`
 }
 
 // NewPrompt instantiates a new Prompt object

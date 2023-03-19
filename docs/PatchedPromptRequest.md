@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Label** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to [**PromptTypeEnum**](PromptTypeEnum.md) |  | [optional] 
 **Required** | Pointer to **bool** |  | [optional] 
-**Placeholder** | Pointer to **string** |  | [optional] 
+**Placeholder** | Pointer to **string** | When creating a Radio Button Group or Dropdown, enable interpreting as expression and return a list to return multiple choices. | [optional] 
 **Order** | Pointer to **int32** |  | [optional] 
 **PromptstageSet** | Pointer to [**[]StageRequest**](StageRequest.md) |  | [optional] 
 **SubText** | Pointer to **string** |  | [optional] 

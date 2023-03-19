@@ -26836,31 +26836,39 @@ paths:
         schema:
           type: string
         style: form
-      - description: "* `text` - Text: Simple Text input\n* `text_read_only` - Text\
-          \ (read-only): Simple Text input, but cannot be edited.\n* `username` -\
-          \ Username: Same as Text input, but checks for and prevents duplicate usernames.\n\
+      - description: "* `text` - Text: Simple Text input\n* `text_area` - Text area:\
+          \ Multiline Text Input.\n* `text_read_only` - Text (read-only): Simple Text\
+          \ input, but cannot be edited.\n* `text_area_read_only` - Text area (read-only):\
+          \ Multiline Text input, but cannot be edited.\n* `username` - Username:\
+          \ Same as Text input, but checks for and prevents duplicate usernames.\n\
           * `email` - Email: Text field with Email type.\n* `password` - Password:\
           \ Masked input, password is validated against sources. Policies still have\
           \ to be applied to this Stage. If two of these are used in the same stage,\
           \ they are ensured to be identical.\n* `number` - Number\n* `checkbox` -\
-          \ Checkbox\n* `date` - Date\n* `date-time` - Date Time\n* `file` - File:\
-          \ File upload for arbitrary files. File content will be available in flow\
-          \ context as data-URI\n* `separator` - Separator: Static Separator Line\n\
-          * `hidden` - Hidden: Hidden field, can be used to insert data into form.\n\
-          * `static` - Static: Static value, displayed as-is.\n* `ak-locale` - authentik:\
-          \ Selection of locales authentik supports\n\n* `text` - Text: Simple Text\
-          \ input\n* `text_read_only` - Text (read-only): Simple Text input, but cannot\
-          \ be edited.\n* `username` - Username: Same as Text input, but checks for\
-          \ and prevents duplicate usernames.\n* `email` - Email: Text field with\
-          \ Email type.\n* `password` - Password: Masked input, password is validated\
-          \ against sources. Policies still have to be applied to this Stage. If two\
-          \ of these are used in the same stage, they are ensured to be identical.\n\
-          * `number` - Number\n* `checkbox` - Checkbox\n* `date` - Date\n* `date-time`\
-          \ - Date Time\n* `file` - File: File upload for arbitrary files. File content\
-          \ will be available in flow context as data-URI\n* `separator` - Separator:\
-          \ Static Separator Line\n* `hidden` - Hidden: Hidden field, can be used\
-          \ to insert data into form.\n* `static` - Static: Static value, displayed\
-          \ as-is.\n* `ak-locale` - authentik: Selection of locales authentik supports"
+          \ Checkbox\n* `radio-button-group` - Fixed choice field rendered as a group\
+          \ of radio buttons.\n* `dropdown` - Fixed choice field rendered as a dropdown.\n\
+          * `date` - Date\n* `date-time` - Date Time\n* `file` - File: File upload\
+          \ for arbitrary files. File content will be available in flow context as\
+          \ data-URI\n* `separator` - Separator: Static Separator Line\n* `hidden`\
+          \ - Hidden: Hidden field, can be used to insert data into form.\n* `static`\
+          \ - Static: Static value, displayed as-is.\n* `ak-locale` - authentik: Selection\
+          \ of locales authentik supports\n\n* `text` - Text: Simple Text input\n\
+          * `text_area` - Text area: Multiline Text Input.\n* `text_read_only` - Text\
+          \ (read-only): Simple Text input, but cannot be edited.\n* `text_area_read_only`\
+          \ - Text area (read-only): Multiline Text input, but cannot be edited.\n\
+          * `username` - Username: Same as Text input, but checks for and prevents\
+          \ duplicate usernames.\n* `email` - Email: Text field with Email type.\n\
+          * `password` - Password: Masked input, password is validated against sources.\
+          \ Policies still have to be applied to this Stage. If two of these are used\
+          \ in the same stage, they are ensured to be identical.\n* `number` - Number\n\
+          * `checkbox` - Checkbox\n* `radio-button-group` - Fixed choice field rendered\
+          \ as a group of radio buttons.\n* `dropdown` - Fixed choice field rendered\
+          \ as a dropdown.\n* `date` - Date\n* `date-time` - Date Time\n* `file` -\
+          \ File: File upload for arbitrary files. File content will be available\
+          \ in flow context as data-URI\n* `separator` - Separator: Static Separator\
+          \ Line\n* `hidden` - Hidden: Hidden field, can be used to insert data into\
+          \ form.\n* `static` - Static: Static value, displayed as-is.\n* `ak-locale`\
+          \ - authentik: Selection of locales authentik supports"
         explode: true
         in: query
         name: type
@@ -26871,14 +26879,18 @@ paths:
           - checkbox
           - date
           - date-time
+          - dropdown
           - email
           - file
           - hidden
           - number
           - password
+          - radio-button-group
           - separator
           - static
           - text
+          - text_area
+          - text_area_read_only
           - text_read_only
           - username
           type: string
@@ -43885,6 +43897,8 @@ components:
         required:
           type: boolean
         placeholder:
+          description: "When creating a Radio Button Group or Dropdown, enable interpreting\
+            \ as expression and return a list to return multiple choices."
           type: string
         order:
           maximum: 2147483647
@@ -45427,6 +45441,8 @@ components:
         required:
           type: boolean
         placeholder:
+          description: "When creating a Radio Button Group or Dropdown, enable interpreting\
+            \ as expression and return a list to return multiple choices."
           type: string
         order:
           maximum: 2147483647
@@ -45546,6 +45562,8 @@ components:
         required:
           type: boolean
         placeholder:
+          description: "When creating a Radio Button Group or Dropdown, enable interpreting\
+            \ as expression and return a list to return multiple choices."
           type: string
         order:
           maximum: 2147483647
@@ -45702,27 +45720,34 @@ components:
       - name
       type: object
     PromptTypeEnum:
-      description: "* `text` - Text: Simple Text input\n* `text_read_only` - Text\
-        \ (read-only): Simple Text input, but cannot be edited.\n* `username` - Username:\
-        \ Same as Text input, but checks for and prevents duplicate usernames.\n*\
-        \ `email` - Email: Text field with Email type.\n* `password` - Password: Masked\
-        \ input, password is validated against sources. Policies still have to be\
-        \ applied to this Stage. If two of these are used in the same stage, they\
-        \ are ensured to be identical.\n* `number` - Number\n* `checkbox` - Checkbox\n\
-        * `date` - Date\n* `date-time` - Date Time\n* `file` - File: File upload for\
-        \ arbitrary files. File content will be available in flow context as data-URI\n\
-        * `separator` - Separator: Static Separator Line\n* `hidden` - Hidden: Hidden\
-        \ field, can be used to insert data into form.\n* `static` - Static: Static\
-        \ value, displayed as-is.\n* `ak-locale` - authentik: Selection of locales\
-        \ authentik supports"
+      description: "* `text` - Text: Simple Text input\n* `text_area` - Text area:\
+        \ Multiline Text Input.\n* `text_read_only` - Text (read-only): Simple Text\
+        \ input, but cannot be edited.\n* `text_area_read_only` - Text area (read-only):\
+        \ Multiline Text input, but cannot be edited.\n* `username` - Username: Same\
+        \ as Text input, but checks for and prevents duplicate usernames.\n* `email`\
+        \ - Email: Text field with Email type.\n* `password` - Password: Masked input,\
+        \ password is validated against sources. Policies still have to be applied\
+        \ to this Stage. If two of these are used in the same stage, they are ensured\
+        \ to be identical.\n* `number` - Number\n* `checkbox` - Checkbox\n* `radio-button-group`\
+        \ - Fixed choice field rendered as a group of radio buttons.\n* `dropdown`\
+        \ - Fixed choice field rendered as a dropdown.\n* `date` - Date\n* `date-time`\
+        \ - Date Time\n* `file` - File: File upload for arbitrary files. File content\
+        \ will be available in flow context as data-URI\n* `separator` - Separator:\
+        \ Static Separator Line\n* `hidden` - Hidden: Hidden field, can be used to\
+        \ insert data into form.\n* `static` - Static: Static value, displayed as-is.\n\
+        * `ak-locale` - authentik: Selection of locales authentik supports"
       enum:
       - text
+      - text_area
       - text_read_only
+      - text_area_read_only
       - username
       - email
       - password
       - number
       - checkbox
+      - radio-button-group
+      - dropdown
       - date
       - date-time
       - file
@@ -48035,7 +48060,13 @@ components:
           type: integer
         sub_text:
           type: string
+        choices:
+          items:
+            type: string
+          nullable: true
+          type: array
       required:
+      - choices
       - field_key
       - label
       - order

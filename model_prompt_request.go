@@ -19,10 +19,11 @@ import (
 type PromptRequest struct {
 	Name string `json:"name"`
 	// Name of the form field, also used to store the value
-	FieldKey              string         `json:"field_key"`
-	Label                 string         `json:"label"`
-	Type                  PromptTypeEnum `json:"type"`
-	Required              *bool          `json:"required,omitempty"`
+	FieldKey string         `json:"field_key"`
+	Label    string         `json:"label"`
+	Type     PromptTypeEnum `json:"type"`
+	Required *bool          `json:"required,omitempty"`
+	// When creating a Radio Button Group or Dropdown, enable interpreting as expression and return a list to return multiple choices.
 	Placeholder           *string        `json:"placeholder,omitempty"`
 	Order                 *int32         `json:"order,omitempty"`
 	PromptstageSet        []StageRequest `json:"promptstage_set,omitempty"`
