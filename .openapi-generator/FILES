@@ -275,6 +275,8 @@ docs/PaginatedPropertyMappingList.md
 docs/PaginatedProviderList.md
 docs/PaginatedProxyOutpostConfigList.md
 docs/PaginatedProxyProviderList.md
+docs/PaginatedRadiusOutpostConfigList.md
+docs/PaginatedRadiusProviderList.md
 docs/PaginatedReputationList.md
 docs/PaginatedReputationPolicyList.md
 docs/PaginatedSAMLPropertyMappingList.md
@@ -356,6 +358,7 @@ docs/PatchedPolicyBindingRequest.md
 docs/PatchedPromptRequest.md
 docs/PatchedPromptStageRequest.md
 docs/PatchedProxyProviderRequest.md
+docs/PatchedRadiusProviderRequest.md
 docs/PatchedReputationPolicyRequest.md
 docs/PatchedSAMLPropertyMappingRequest.md
 docs/PatchedSAMLProviderRequest.md
@@ -416,6 +419,9 @@ docs/ProxyOutpostConfig.md
 docs/ProxyOutpostConfigOidcConfiguration.md
 docs/ProxyProvider.md
 docs/ProxyProviderRequest.md
+docs/RadiusOutpostConfig.md
+docs/RadiusProvider.md
+docs/RadiusProviderRequest.md
 docs/RedirectChallenge.md
 docs/Reputation.md
 docs/ReputationPolicy.md
@@ -764,6 +770,8 @@ model_paginated_property_mapping_list.go
 model_paginated_provider_list.go
 model_paginated_proxy_outpost_config_list.go
 model_paginated_proxy_provider_list.go
+model_paginated_radius_outpost_config_list.go
+model_paginated_radius_provider_list.go
 model_paginated_reputation_list.go
 model_paginated_reputation_policy_list.go
 model_paginated_saml_property_mapping_list.go
@@ -845,6 +853,7 @@ model_patched_policy_binding_request.go
 model_patched_prompt_request.go
 model_patched_prompt_stage_request.go
 model_patched_proxy_provider_request.go
+model_patched_radius_provider_request.go
 model_patched_reputation_policy_request.go
 model_patched_saml_property_mapping_request.go
 model_patched_saml_provider_request.go
@@ -902,6 +911,9 @@ model_proxy_outpost_config.go
 model_proxy_outpost_config_oidc_configuration.go
 model_proxy_provider.go
 model_proxy_provider_request.go
+model_radius_outpost_config.go
+model_radius_provider.go
+model_radius_provider_request.go
 model_redirect_challenge.go
 model_reputation.go
 model_reputation_policy.go

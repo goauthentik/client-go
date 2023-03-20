@@ -10078,6 +10078,109 @@ paths:
       - authentik: []
       tags:
       - outposts
+  /outposts/radius/:
+    get:
+      description: RadiusProvider Viewset
+      operationId: outposts_radius_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRadiusOutpostConfigList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - outposts
+  /outposts/radius/{id}/:
+    get:
+      description: RadiusProvider Viewset
+      operationId: outposts_radius_retrieve
+      parameters:
+      - description: A unique integer value identifying this Radius Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RadiusOutpostConfig'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - outposts
   /outposts/service_connections/all/:
     get:
       description: ServiceConnection Viewset
@@ -17110,6 +17213,312 @@ paths:
       operationId: providers_proxy_used_by_list
       parameters:
       - description: A unique integer value identifying this Proxy Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/radius/:
+    get:
+      description: RadiusProvider Viewset
+      operationId: providers_radius_list
+      parameters:
+      - explode: true
+        in: query
+        name: application__isnull
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: authorization_flow__slug__iexact
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: client_networks__iexact
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name__iexact
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRadiusProviderList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    post:
+      description: RadiusProvider Viewset
+      operationId: providers_radius_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RadiusProviderRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RadiusProvider'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/radius/{id}/:
+    delete:
+      description: RadiusProvider Viewset
+      operationId: providers_radius_destroy
+      parameters:
+      - description: A unique integer value identifying this Radius Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    get:
+      description: RadiusProvider Viewset
+      operationId: providers_radius_retrieve
+      parameters:
+      - description: A unique integer value identifying this Radius Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RadiusProvider'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    patch:
+      description: RadiusProvider Viewset
+      operationId: providers_radius_partial_update
+      parameters:
+      - description: A unique integer value identifying this Radius Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRadiusProviderRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RadiusProvider'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    put:
+      description: RadiusProvider Viewset
+      operationId: providers_radius_update
+      parameters:
+      - description: A unique integer value identifying this Radius Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RadiusProviderRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RadiusProvider'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/radius/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: providers_radius_used_by_list
+      parameters:
+      - description: A unique integer value identifying this Radius Provider.
         explode: false
         in: path
         name: id
@@ -28775,6 +29184,7 @@ components:
         * `authentik.providers.ldap` - authentik Providers.LDAP
         * `authentik.providers.oauth2` - authentik Providers.OAuth2
         * `authentik.providers.proxy` - authentik Providers.Proxy
+        * `authentik.providers.radius` - authentik Providers.Radius
         * `authentik.providers.saml` - authentik Providers.SAML
         * `authentik.providers.scim` - authentik Providers.SCIM
         * `authentik.recovery` - authentik Recovery
@@ -28822,6 +29232,7 @@ components:
       - authentik.providers.ldap
       - authentik.providers.oauth2
       - authentik.providers.proxy
+      - authentik.providers.radius
       - authentik.providers.saml
       - authentik.providers.scim
       - authentik.recovery
@@ -32291,13 +32702,14 @@ components:
             * `authentik.policies` - authentik Policies\n* `authentik.providers.ldap`\
             \ - authentik Providers.LDAP\n* `authentik.providers.oauth2` - authentik\
             \ Providers.OAuth2\n* `authentik.providers.proxy` - authentik Providers.Proxy\n\
-            * `authentik.providers.saml` - authentik Providers.SAML\n* `authentik.providers.scim`\
-            \ - authentik Providers.SCIM\n* `authentik.recovery` - authentik Recovery\n\
-            * `authentik.sources.ldap` - authentik Sources.LDAP\n* `authentik.sources.oauth`\
-            \ - authentik Sources.OAuth\n* `authentik.sources.plex` - authentik Sources.Plex\n\
-            * `authentik.sources.saml` - authentik Sources.SAML\n* `authentik.stages.authenticator_duo`\
-            \ - authentik Stages.Authenticator.Duo\n* `authentik.stages.authenticator_sms`\
-            \ - authentik Stages.Authenticator.SMS\n* `authentik.stages.authenticator_static`\
+            * `authentik.providers.radius` - authentik Providers.Radius\n* `authentik.providers.saml`\
+            \ - authentik Providers.SAML\n* `authentik.providers.scim` - authentik\
+            \ Providers.SCIM\n* `authentik.recovery` - authentik Recovery\n* `authentik.sources.ldap`\
+            \ - authentik Sources.LDAP\n* `authentik.sources.oauth` - authentik Sources.OAuth\n\
+            * `authentik.sources.plex` - authentik Sources.Plex\n* `authentik.sources.saml`\
+            \ - authentik Sources.SAML\n* `authentik.stages.authenticator_duo` - authentik\
+            \ Stages.Authenticator.Duo\n* `authentik.stages.authenticator_sms` - authentik\
+            \ Stages.Authenticator.SMS\n* `authentik.stages.authenticator_static`\
             \ - authentik Stages.Authenticator.Static\n* `authentik.stages.authenticator_totp`\
             \ - authentik Stages.Authenticator.TOTP\n* `authentik.stages.authenticator_validate`\
             \ - authentik Stages.Authenticator.Validate\n* `authentik.stages.authenticator_webauthn`\
@@ -32378,13 +32790,14 @@ components:
             * `authentik.policies` - authentik Policies\n* `authentik.providers.ldap`\
             \ - authentik Providers.LDAP\n* `authentik.providers.oauth2` - authentik\
             \ Providers.OAuth2\n* `authentik.providers.proxy` - authentik Providers.Proxy\n\
-            * `authentik.providers.saml` - authentik Providers.SAML\n* `authentik.providers.scim`\
-            \ - authentik Providers.SCIM\n* `authentik.recovery` - authentik Recovery\n\
-            * `authentik.sources.ldap` - authentik Sources.LDAP\n* `authentik.sources.oauth`\
-            \ - authentik Sources.OAuth\n* `authentik.sources.plex` - authentik Sources.Plex\n\
-            * `authentik.sources.saml` - authentik Sources.SAML\n* `authentik.stages.authenticator_duo`\
-            \ - authentik Stages.Authenticator.Duo\n* `authentik.stages.authenticator_sms`\
-            \ - authentik Stages.Authenticator.SMS\n* `authentik.stages.authenticator_static`\
+            * `authentik.providers.radius` - authentik Providers.Radius\n* `authentik.providers.saml`\
+            \ - authentik Providers.SAML\n* `authentik.providers.scim` - authentik\
+            \ Providers.SCIM\n* `authentik.recovery` - authentik Recovery\n* `authentik.sources.ldap`\
+            \ - authentik Sources.LDAP\n* `authentik.sources.oauth` - authentik Sources.OAuth\n\
+            * `authentik.sources.plex` - authentik Sources.Plex\n* `authentik.sources.saml`\
+            \ - authentik Sources.SAML\n* `authentik.stages.authenticator_duo` - authentik\
+            \ Stages.Authenticator.Duo\n* `authentik.stages.authenticator_sms` - authentik\
+            \ Stages.Authenticator.SMS\n* `authentik.stages.authenticator_static`\
             \ - authentik Stages.Authenticator.Static\n* `authentik.stages.authenticator_totp`\
             \ - authentik Stages.Authenticator.TOTP\n* `authentik.stages.authenticator_validate`\
             \ - authentik Stages.Authenticator.Validate\n* `authentik.stages.authenticator_webauthn`\
@@ -36076,9 +36489,11 @@ components:
       description: |-
         * `proxy` - Proxy
         * `ldap` - Ldap
+        * `radius` - Radius
       enum:
       - proxy
       - ldap
+      - radius
       type: string
     PaginatedApplicationList:
       example:
@@ -39726,6 +40141,90 @@ components:
       - pagination
       - results
       type: object
+    PaginatedRadiusOutpostConfigList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - application_slug: application_slug
+          client_networks: client_networks
+          name: name
+          auth_flow_slug: auth_flow_slug
+          shared_secret: shared_secret
+          pk: 0
+        - application_slug: application_slug
+          client_networks: client_networks
+          name: name
+          auth_flow_slug: auth_flow_slug
+          shared_secret: shared_secret
+          pk: 0
+      properties:
+        pagination:
+          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/RadiusOutpostConfig'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedRadiusProviderList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - component: component
+          verbose_name: verbose_name
+          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          client_networks: client_networks
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          assigned_application_name: assigned_application_name
+          name: name
+          shared_secret: shared_secret
+          pk: 0
+          assigned_application_slug: assigned_application_slug
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - component: component
+          verbose_name: verbose_name
+          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          client_networks: client_networks
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          assigned_application_name: assigned_application_name
+          name: name
+          shared_secret: shared_secret
+          pk: 0
+          assigned_application_slug: assigned_application_slug
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/RadiusProvider'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedReputationList:
       example:
         pagination:
@@ -42578,13 +43077,14 @@ components:
             * `authentik.policies` - authentik Policies\n* `authentik.providers.ldap`\
             \ - authentik Providers.LDAP\n* `authentik.providers.oauth2` - authentik\
             \ Providers.OAuth2\n* `authentik.providers.proxy` - authentik Providers.Proxy\n\
-            * `authentik.providers.saml` - authentik Providers.SAML\n* `authentik.providers.scim`\
-            \ - authentik Providers.SCIM\n* `authentik.recovery` - authentik Recovery\n\
-            * `authentik.sources.ldap` - authentik Sources.LDAP\n* `authentik.sources.oauth`\
-            \ - authentik Sources.OAuth\n* `authentik.sources.plex` - authentik Sources.Plex\n\
-            * `authentik.sources.saml` - authentik Sources.SAML\n* `authentik.stages.authenticator_duo`\
-            \ - authentik Stages.Authenticator.Duo\n* `authentik.stages.authenticator_sms`\
-            \ - authentik Stages.Authenticator.SMS\n* `authentik.stages.authenticator_static`\
+            * `authentik.providers.radius` - authentik Providers.Radius\n* `authentik.providers.saml`\
+            \ - authentik Providers.SAML\n* `authentik.providers.scim` - authentik\
+            \ Providers.SCIM\n* `authentik.recovery` - authentik Recovery\n* `authentik.sources.ldap`\
+            \ - authentik Sources.LDAP\n* `authentik.sources.oauth` - authentik Sources.OAuth\n\
+            * `authentik.sources.plex` - authentik Sources.Plex\n* `authentik.sources.saml`\
+            \ - authentik Sources.SAML\n* `authentik.stages.authenticator_duo` - authentik\
+            \ Stages.Authenticator.Duo\n* `authentik.stages.authenticator_sms` - authentik\
+            \ Stages.Authenticator.SMS\n* `authentik.stages.authenticator_static`\
             \ - authentik Stages.Authenticator.Static\n* `authentik.stages.authenticator_totp`\
             \ - authentik Stages.Authenticator.TOTP\n* `authentik.stages.authenticator_validate`\
             \ - authentik Stages.Authenticator.Validate\n* `authentik.stages.authenticator_webauthn`\
@@ -44060,6 +44560,40 @@ components:
         refresh_token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
             \ hours=1;minutes=2;seconds=3)."
+          minLength: 1
+          type: string
+      type: object
+    PatchedRadiusProviderRequest:
+      description: RadiusProvider Serializer
+      example:
+        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        client_networks: client_networks
+        name: name
+        shared_secret: shared_secret
+        property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        name:
+          minLength: 1
+          type: string
+        authorization_flow:
+          description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        client_networks:
+          description: List of CIDRs (comma-seperated) that clients can connect from.
+            A more specific CIDR will match before a looser one. Clients connecting
+            from a non-specified CIDR will be dropped.
+          minLength: 1
+          type: string
+        shared_secret:
+          description: Shared secret between clients and server to hash packets.
           minLength: 1
           type: string
       type: object
@@ -46364,6 +46898,153 @@ components:
       required:
       - authorization_flow
       - external_host
+      - name
+      type: object
+    RadiusOutpostConfig:
+      description: RadiusProvider Serializer
+      example:
+        application_slug: application_slug
+        client_networks: client_networks
+        name: name
+        auth_flow_slug: auth_flow_slug
+        shared_secret: shared_secret
+        pk: 0
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        name:
+          type: string
+        application_slug:
+          type: string
+        auth_flow_slug:
+          type: string
+        client_networks:
+          description: List of CIDRs (comma-seperated) that clients can connect from.
+            A more specific CIDR will match before a looser one. Clients connecting
+            from a non-specified CIDR will be dropped.
+          type: string
+        shared_secret:
+          description: Shared secret between clients and server to hash packets.
+          type: string
+      required:
+      - application_slug
+      - auth_flow_slug
+      - name
+      - pk
+      type: object
+    RadiusProvider:
+      description: RadiusProvider Serializer
+      example:
+        component: component
+        verbose_name: verbose_name
+        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        client_networks: client_networks
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        assigned_application_name: assigned_application_name
+        name: name
+        shared_secret: shared_secret
+        pk: 0
+        assigned_application_slug: assigned_application_slug
+        property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        name:
+          type: string
+        authorization_flow:
+          description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        component:
+          description: Get object component so that we know how to edit the object
+          readOnly: true
+          type: string
+        assigned_application_slug:
+          description: "Internal application name, used in URLs."
+          readOnly: true
+          type: string
+        assigned_application_name:
+          description: Application's display Name.
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        client_networks:
+          description: List of CIDRs (comma-seperated) that clients can connect from.
+            A more specific CIDR will match before a looser one. Clients connecting
+            from a non-specified CIDR will be dropped.
+          type: string
+        shared_secret:
+          description: Shared secret between clients and server to hash packets.
+          type: string
+      required:
+      - assigned_application_name
+      - assigned_application_slug
+      - authorization_flow
+      - component
+      - meta_model_name
+      - name
+      - pk
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    RadiusProviderRequest:
+      description: RadiusProvider Serializer
+      example:
+        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        client_networks: client_networks
+        name: name
+        shared_secret: shared_secret
+        property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        name:
+          minLength: 1
+          type: string
+        authorization_flow:
+          description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        client_networks:
+          description: List of CIDRs (comma-seperated) that clients can connect from.
+            A more specific CIDR will match before a looser one. Clients connecting
+            from a non-specified CIDR will be dropped.
+          minLength: 1
+          type: string
+        shared_secret:
+          description: Shared secret between clients and server to hash packets.
+          minLength: 1
+          type: string
+      required:
+      - authorization_flow
       - name
       type: object
     RedirectChallenge:

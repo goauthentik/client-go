@@ -32,6 +32,13 @@ Method | HTTP request | Description
 [**ProvidersProxyRetrieve**](ProvidersApi.md#ProvidersProxyRetrieve) | **Get** /providers/proxy/{id}/ | 
 [**ProvidersProxyUpdate**](ProvidersApi.md#ProvidersProxyUpdate) | **Put** /providers/proxy/{id}/ | 
 [**ProvidersProxyUsedByList**](ProvidersApi.md#ProvidersProxyUsedByList) | **Get** /providers/proxy/{id}/used_by/ | 
+[**ProvidersRadiusCreate**](ProvidersApi.md#ProvidersRadiusCreate) | **Post** /providers/radius/ | 
+[**ProvidersRadiusDestroy**](ProvidersApi.md#ProvidersRadiusDestroy) | **Delete** /providers/radius/{id}/ | 
+[**ProvidersRadiusList**](ProvidersApi.md#ProvidersRadiusList) | **Get** /providers/radius/ | 
+[**ProvidersRadiusPartialUpdate**](ProvidersApi.md#ProvidersRadiusPartialUpdate) | **Patch** /providers/radius/{id}/ | 
+[**ProvidersRadiusRetrieve**](ProvidersApi.md#ProvidersRadiusRetrieve) | **Get** /providers/radius/{id}/ | 
+[**ProvidersRadiusUpdate**](ProvidersApi.md#ProvidersRadiusUpdate) | **Put** /providers/radius/{id}/ | 
+[**ProvidersRadiusUsedByList**](ProvidersApi.md#ProvidersRadiusUsedByList) | **Get** /providers/radius/{id}/used_by/ | 
 [**ProvidersSamlCreate**](ProvidersApi.md#ProvidersSamlCreate) | **Post** /providers/saml/ | 
 [**ProvidersSamlDestroy**](ProvidersApi.md#ProvidersSamlDestroy) | **Delete** /providers/saml/{id}/ | 
 [**ProvidersSamlImportMetadataCreate**](ProvidersApi.md#ProvidersSamlImportMetadataCreate) | **Post** /providers/saml/import_metadata/ | 
@@ -2064,6 +2071,504 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiProvidersProxyUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersRadiusCreate
+
+> RadiusProvider ProvidersRadiusCreate(ctx).RadiusProviderRequest(radiusProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    radiusProviderRequest := *openapiclient.NewRadiusProviderRequest("Name_example", "AuthorizationFlow_example") // RadiusProviderRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersRadiusCreate(context.Background()).RadiusProviderRequest(radiusProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRadiusCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersRadiusCreate`: RadiusProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersRadiusCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersRadiusCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **radiusProviderRequest** | [**RadiusProviderRequest**](RadiusProviderRequest.md) |  | 
+
+### Return type
+
+[**RadiusProvider**](RadiusProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersRadiusDestroy
+
+> ProvidersRadiusDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Radius Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersRadiusDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRadiusDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Radius Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersRadiusDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersRadiusList
+
+> PaginatedRadiusProviderList ProvidersRadiusList(ctx).ApplicationIsnull(applicationIsnull).AuthorizationFlowSlugIexact(authorizationFlowSlugIexact).ClientNetworksIexact(clientNetworksIexact).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    applicationIsnull := true // bool |  (optional)
+    authorizationFlowSlugIexact := "authorizationFlowSlugIexact_example" // string |  (optional)
+    clientNetworksIexact := "clientNetworksIexact_example" // string |  (optional)
+    nameIexact := "nameIexact_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersRadiusList(context.Background()).ApplicationIsnull(applicationIsnull).AuthorizationFlowSlugIexact(authorizationFlowSlugIexact).ClientNetworksIexact(clientNetworksIexact).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRadiusList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersRadiusList`: PaginatedRadiusProviderList
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersRadiusList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersRadiusListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationIsnull** | **bool** |  | 
+ **authorizationFlowSlugIexact** | **string** |  | 
+ **clientNetworksIexact** | **string** |  | 
+ **nameIexact** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedRadiusProviderList**](PaginatedRadiusProviderList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersRadiusPartialUpdate
+
+> RadiusProvider ProvidersRadiusPartialUpdate(ctx, id).PatchedRadiusProviderRequest(patchedRadiusProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Radius Provider.
+    patchedRadiusProviderRequest := *openapiclient.NewPatchedRadiusProviderRequest() // PatchedRadiusProviderRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersRadiusPartialUpdate(context.Background(), id).PatchedRadiusProviderRequest(patchedRadiusProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRadiusPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersRadiusPartialUpdate`: RadiusProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersRadiusPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Radius Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersRadiusPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedRadiusProviderRequest** | [**PatchedRadiusProviderRequest**](PatchedRadiusProviderRequest.md) |  | 
+
+### Return type
+
+[**RadiusProvider**](RadiusProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersRadiusRetrieve
+
+> RadiusProvider ProvidersRadiusRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Radius Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersRadiusRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRadiusRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersRadiusRetrieve`: RadiusProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersRadiusRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Radius Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersRadiusRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**RadiusProvider**](RadiusProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersRadiusUpdate
+
+> RadiusProvider ProvidersRadiusUpdate(ctx, id).RadiusProviderRequest(radiusProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Radius Provider.
+    radiusProviderRequest := *openapiclient.NewRadiusProviderRequest("Name_example", "AuthorizationFlow_example") // RadiusProviderRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersRadiusUpdate(context.Background(), id).RadiusProviderRequest(radiusProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRadiusUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersRadiusUpdate`: RadiusProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersRadiusUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Radius Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersRadiusUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **radiusProviderRequest** | [**RadiusProviderRequest**](RadiusProviderRequest.md) |  | 
+
+### Return type
+
+[**RadiusProvider**](RadiusProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersRadiusUsedByList
+
+> []UsedBy ProvidersRadiusUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Radius Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersRadiusUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRadiusUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersRadiusUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersRadiusUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Radius Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersRadiusUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

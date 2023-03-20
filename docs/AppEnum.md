@@ -37,6 +37,8 @@
 
 * `PROVIDERS_PROXY` (value: `"authentik.providers.proxy"`)
 
+* `PROVIDERS_RADIUS` (value: `"authentik.providers.radius"`)
+
 * `PROVIDERS_SAML` (value: `"authentik.providers.saml"`)
 
 * `PROVIDERS_SCIM` (value: `"authentik.providers.scim"`)

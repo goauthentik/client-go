@@ -17,6 +17,8 @@ Method | HTTP request | Description
 [**OutpostsLdapRetrieve**](OutpostsApi.md#OutpostsLdapRetrieve) | **Get** /outposts/ldap/{id}/ | 
 [**OutpostsProxyList**](OutpostsApi.md#OutpostsProxyList) | **Get** /outposts/proxy/ | 
 [**OutpostsProxyRetrieve**](OutpostsApi.md#OutpostsProxyRetrieve) | **Get** /outposts/proxy/{id}/ | 
+[**OutpostsRadiusList**](OutpostsApi.md#OutpostsRadiusList) | **Get** /outposts/radius/ | 
+[**OutpostsRadiusRetrieve**](OutpostsApi.md#OutpostsRadiusRetrieve) | **Get** /outposts/radius/{id}/ | 
 [**OutpostsServiceConnectionsAllDestroy**](OutpostsApi.md#OutpostsServiceConnectionsAllDestroy) | **Delete** /outposts/service_connections/all/{uuid}/ | 
 [**OutpostsServiceConnectionsAllList**](OutpostsApi.md#OutpostsServiceConnectionsAllList) | **Get** /outposts/service_connections/all/ | 
 [**OutpostsServiceConnectionsAllRetrieve**](OutpostsApi.md#OutpostsServiceConnectionsAllRetrieve) | **Get** /outposts/service_connections/all/{uuid}/ | 
@@ -970,6 +972,150 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ProxyOutpostConfig**](ProxyOutpostConfig.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## OutpostsRadiusList
+
+> PaginatedRadiusOutpostConfigList OutpostsRadiusList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsRadiusList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsRadiusList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsRadiusList`: PaginatedRadiusOutpostConfigList
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsRadiusList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiOutpostsRadiusListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedRadiusOutpostConfigList**](PaginatedRadiusOutpostConfigList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## OutpostsRadiusRetrieve
+
+> RadiusOutpostConfig OutpostsRadiusRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Radius Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsRadiusRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsRadiusRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsRadiusRetrieve`: RadiusOutpostConfig
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsRadiusRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Radius Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiOutpostsRadiusRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**RadiusOutpostConfig**](RadiusOutpostConfig.md)
 
 ### Authorization
 

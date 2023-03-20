@@ -267,6 +267,8 @@ Class | Method | HTTP request | Description
 *OutpostsApi* | [**OutpostsLdapRetrieve**](docs/OutpostsApi.md#outpostsldapretrieve) | **Get** /outposts/ldap/{id}/ | 
 *OutpostsApi* | [**OutpostsProxyList**](docs/OutpostsApi.md#outpostsproxylist) | **Get** /outposts/proxy/ | 
 *OutpostsApi* | [**OutpostsProxyRetrieve**](docs/OutpostsApi.md#outpostsproxyretrieve) | **Get** /outposts/proxy/{id}/ | 
+*OutpostsApi* | [**OutpostsRadiusList**](docs/OutpostsApi.md#outpostsradiuslist) | **Get** /outposts/radius/ | 
+*OutpostsApi* | [**OutpostsRadiusRetrieve**](docs/OutpostsApi.md#outpostsradiusretrieve) | **Get** /outposts/radius/{id}/ | 
 *OutpostsApi* | [**OutpostsServiceConnectionsAllDestroy**](docs/OutpostsApi.md#outpostsserviceconnectionsalldestroy) | **Delete** /outposts/service_connections/all/{uuid}/ | 
 *OutpostsApi* | [**OutpostsServiceConnectionsAllList**](docs/OutpostsApi.md#outpostsserviceconnectionsalllist) | **Get** /outposts/service_connections/all/ | 
 *OutpostsApi* | [**OutpostsServiceConnectionsAllRetrieve**](docs/OutpostsApi.md#outpostsserviceconnectionsallretrieve) | **Get** /outposts/service_connections/all/{uuid}/ | 
@@ -417,6 +419,13 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersProxyRetrieve**](docs/ProvidersApi.md#providersproxyretrieve) | **Get** /providers/proxy/{id}/ | 
 *ProvidersApi* | [**ProvidersProxyUpdate**](docs/ProvidersApi.md#providersproxyupdate) | **Put** /providers/proxy/{id}/ | 
 *ProvidersApi* | [**ProvidersProxyUsedByList**](docs/ProvidersApi.md#providersproxyusedbylist) | **Get** /providers/proxy/{id}/used_by/ | 
+*ProvidersApi* | [**ProvidersRadiusCreate**](docs/ProvidersApi.md#providersradiuscreate) | **Post** /providers/radius/ | 
+*ProvidersApi* | [**ProvidersRadiusDestroy**](docs/ProvidersApi.md#providersradiusdestroy) | **Delete** /providers/radius/{id}/ | 
+*ProvidersApi* | [**ProvidersRadiusList**](docs/ProvidersApi.md#providersradiuslist) | **Get** /providers/radius/ | 
+*ProvidersApi* | [**ProvidersRadiusPartialUpdate**](docs/ProvidersApi.md#providersradiuspartialupdate) | **Patch** /providers/radius/{id}/ | 
+*ProvidersApi* | [**ProvidersRadiusRetrieve**](docs/ProvidersApi.md#providersradiusretrieve) | **Get** /providers/radius/{id}/ | 
+*ProvidersApi* | [**ProvidersRadiusUpdate**](docs/ProvidersApi.md#providersradiusupdate) | **Put** /providers/radius/{id}/ | 
+*ProvidersApi* | [**ProvidersRadiusUsedByList**](docs/ProvidersApi.md#providersradiususedbylist) | **Get** /providers/radius/{id}/used_by/ | 
 *ProvidersApi* | [**ProvidersSamlCreate**](docs/ProvidersApi.md#providerssamlcreate) | **Post** /providers/saml/ | 
 *ProvidersApi* | [**ProvidersSamlDestroy**](docs/ProvidersApi.md#providerssamldestroy) | **Delete** /providers/saml/{id}/ | 
 *ProvidersApi* | [**ProvidersSamlImportMetadataCreate**](docs/ProvidersApi.md#providerssamlimportmetadatacreate) | **Post** /providers/saml/import_metadata/ | 
@@ -913,6 +922,8 @@ Class | Method | HTTP request | Description
  - [PaginatedProviderList](docs/PaginatedProviderList.md)
  - [PaginatedProxyOutpostConfigList](docs/PaginatedProxyOutpostConfigList.md)
  - [PaginatedProxyProviderList](docs/PaginatedProxyProviderList.md)
+ - [PaginatedRadiusOutpostConfigList](docs/PaginatedRadiusOutpostConfigList.md)
+ - [PaginatedRadiusProviderList](docs/PaginatedRadiusProviderList.md)
  - [PaginatedReputationList](docs/PaginatedReputationList.md)
  - [PaginatedReputationPolicyList](docs/PaginatedReputationPolicyList.md)
  - [PaginatedSAMLPropertyMappingList](docs/PaginatedSAMLPropertyMappingList.md)
@@ -994,6 +1005,7 @@ Class | Method | HTTP request | Description
  - [PatchedPromptRequest](docs/PatchedPromptRequest.md)
  - [PatchedPromptStageRequest](docs/PatchedPromptStageRequest.md)
  - [PatchedProxyProviderRequest](docs/PatchedProxyProviderRequest.md)
+ - [PatchedRadiusProviderRequest](docs/PatchedRadiusProviderRequest.md)
  - [PatchedReputationPolicyRequest](docs/PatchedReputationPolicyRequest.md)
  - [PatchedSAMLPropertyMappingRequest](docs/PatchedSAMLPropertyMappingRequest.md)
  - [PatchedSAMLProviderRequest](docs/PatchedSAMLProviderRequest.md)
@@ -1051,6 +1063,9 @@ Class | Method | HTTP request | Description
  - [ProxyOutpostConfigOidcConfiguration](docs/ProxyOutpostConfigOidcConfiguration.md)
  - [ProxyProvider](docs/ProxyProvider.md)
  - [ProxyProviderRequest](docs/ProxyProviderRequest.md)
+ - [RadiusOutpostConfig](docs/RadiusOutpostConfig.md)
+ - [RadiusProvider](docs/RadiusProvider.md)
+ - [RadiusProviderRequest](docs/RadiusProviderRequest.md)
  - [RedirectChallenge](docs/RedirectChallenge.md)
  - [Reputation](docs/Reputation.md)
  - [ReputationPolicy](docs/ReputationPolicy.md)
