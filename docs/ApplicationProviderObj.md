@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
 **Name** | **string** |  | 
+**AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
@@ -74,6 +75,41 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetAuthenticationFlow
+
+`func (o *ApplicationProviderObj) GetAuthenticationFlow() string`
+
+GetAuthenticationFlow returns the AuthenticationFlow field if non-nil, zero value otherwise.
+
+### GetAuthenticationFlowOk
+
+`func (o *ApplicationProviderObj) GetAuthenticationFlowOk() (*string, bool)`
+
+GetAuthenticationFlowOk returns a tuple with the AuthenticationFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthenticationFlow
+
+`func (o *ApplicationProviderObj) SetAuthenticationFlow(v string)`
+
+SetAuthenticationFlow sets AuthenticationFlow field to given value.
+
+### HasAuthenticationFlow
+
+`func (o *ApplicationProviderObj) HasAuthenticationFlow() bool`
+
+HasAuthenticationFlow returns a boolean if a field has been set.
+
+### SetAuthenticationFlowNil
+
+`func (o *ApplicationProviderObj) SetAuthenticationFlowNil(b bool)`
+
+ SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
+
+### UnsetAuthenticationFlow
+`func (o *ApplicationProviderObj) UnsetAuthenticationFlow()`
+
+UnsetAuthenticationFlow ensures that no value is present for AuthenticationFlow, not even an explicit nil
 ### GetAuthorizationFlow
 
 `func (o *ApplicationProviderObj) GetAuthorizationFlow() string`

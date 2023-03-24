@@ -5869,6 +5869,7 @@ type ApiProvidersSamlListRequest struct {
 	assertionValidNotBefore    *string
 	assertionValidNotOnOrAfter *string
 	audience                   *string
+	authenticationFlow         *string
 	authorizationFlow          *string
 	digestAlgorithm            *string
 	issuer                     *string
@@ -5903,6 +5904,11 @@ func (r ApiProvidersSamlListRequest) AssertionValidNotOnOrAfter(assertionValidNo
 
 func (r ApiProvidersSamlListRequest) Audience(audience string) ApiProvidersSamlListRequest {
 	r.audience = &audience
+	return r
+}
+
+func (r ApiProvidersSamlListRequest) AuthenticationFlow(authenticationFlow string) ApiProvidersSamlListRequest {
+	r.authenticationFlow = &authenticationFlow
 	return r
 }
 
@@ -6039,6 +6045,9 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	}
 	if r.audience != nil {
 		localVarQueryParams.Add("audience", parameterToString(*r.audience, ""))
+	}
+	if r.authenticationFlow != nil {
+		localVarQueryParams.Add("authentication_flow", parameterToString(*r.authenticationFlow, ""))
 	}
 	if r.authorizationFlow != nil {
 		localVarQueryParams.Add("authorization_flow", parameterToString(*r.authorizationFlow, ""))

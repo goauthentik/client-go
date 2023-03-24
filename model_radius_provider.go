@@ -19,6 +19,8 @@ import (
 type RadiusProvider struct {
 	Pk   int32  `json:"pk"`
 	Name string `json:"name"`
+	// Flow used for authentication when the associated application is accessed by an un-authenticated user.
+	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow used when authorizing this provider.
 	AuthorizationFlow string   `json:"authorization_flow"`
 	PropertyMappings  []string `json:"property_mappings,omitempty"`
@@ -34,7 +36,7 @@ type RadiusProvider struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
-	// List of CIDRs (comma-seperated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped.
+	// List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped.
 	ClientNetworks *string `json:"client_networks,omitempty"`
 	// Shared secret between clients and server to hash packets.
 	SharedSecret *string `json:"shared_secret,omitempty"`
@@ -112,6 +114,49 @@ func (o *RadiusProvider) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *RadiusProvider) SetName(v string) {
 	o.Name = v
+}
+
+// GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RadiusProvider) GetAuthenticationFlow() string {
+	if o == nil || o.AuthenticationFlow.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthenticationFlow.Get()
+}
+
+// GetAuthenticationFlowOk returns a tuple with the AuthenticationFlow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RadiusProvider) GetAuthenticationFlowOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthenticationFlow.Get(), o.AuthenticationFlow.IsSet()
+}
+
+// HasAuthenticationFlow returns a boolean if a field has been set.
+func (o *RadiusProvider) HasAuthenticationFlow() bool {
+	if o != nil && o.AuthenticationFlow.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthenticationFlow gets a reference to the given NullableString and assigns it to the AuthenticationFlow field.
+func (o *RadiusProvider) SetAuthenticationFlow(v string) {
+	o.AuthenticationFlow.Set(&v)
+}
+
+// SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
+func (o *RadiusProvider) SetAuthenticationFlowNil() {
+	o.AuthenticationFlow.Set(nil)
+}
+
+// UnsetAuthenticationFlow ensures that no value is present for AuthenticationFlow, not even an explicit nil
+func (o *RadiusProvider) UnsetAuthenticationFlow() {
+	o.AuthenticationFlow.Unset()
 }
 
 // GetAuthorizationFlow returns the AuthorizationFlow field value
@@ -385,6 +430,9 @@ func (o RadiusProvider) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.AuthenticationFlow.IsSet() {
+		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
 	}
 	if true {
 		toSerialize["authorization_flow"] = o.AuthorizationFlow

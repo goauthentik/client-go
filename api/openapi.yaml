@@ -17586,6 +17586,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: authentication_flow
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: authorization_flow
         required: false
         schema:
@@ -32890,6 +32898,7 @@ components:
           sub_mode: ""
           client_id: client_id
           refresh_token_validity: refresh_token_validity
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -34698,6 +34707,7 @@ components:
         tls_server_name: tls_server_name
         bind_mode: null
         assigned_application_slug: assigned_application_slug
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         outpost_set:
         - outpost_set
         - outpost_set
@@ -34719,6 +34729,12 @@ components:
           title: ID
           type: integer
         name:
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -34807,6 +34823,7 @@ components:
     LDAPProviderRequest:
       description: LDAPProvider Serializer
       example:
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         uid_start_number: -1803530559
         search_mode: null
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -34823,6 +34840,12 @@ components:
       properties:
         name:
           minLength: 1
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -35628,6 +35651,7 @@ components:
         sub_mode: ""
         client_id: client_id
         refresh_token_validity: refresh_token_validity
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         component: component
         verbose_name: verbose_name
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35652,6 +35676,12 @@ components:
           title: ID
           type: integer
         name:
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -35769,6 +35799,7 @@ components:
         sub_mode: ""
         client_id: client_id
         refresh_token_validity: refresh_token_validity
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         access_code_validity: access_code_validity
         include_claims_in_id_token: true
@@ -35785,6 +35816,12 @@ components:
       properties:
         name:
           minLength: 1
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -36290,7 +36327,8 @@ components:
       example:
         service_connection_obj: null
         providers_obj:
-        - component: component
+        - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
@@ -36302,7 +36340,8 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - component: component
+        - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
@@ -37965,6 +38004,7 @@ components:
             sub_mode: ""
             client_id: client_id
             refresh_token_validity: refresh_token_validity
+            authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -38031,6 +38071,7 @@ components:
             sub_mode: ""
             client_id: client_id
             refresh_token_validity: refresh_token_validity
+            authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -38706,6 +38747,7 @@ components:
           tls_server_name: tls_server_name
           bind_mode: null
           assigned_application_slug: assigned_application_slug
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           outpost_set:
           - outpost_set
           - outpost_set
@@ -38729,6 +38771,7 @@ components:
           tls_server_name: tls_server_name
           bind_mode: null
           assigned_application_slug: assigned_application_slug
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           outpost_set:
           - outpost_set
           - outpost_set
@@ -39028,6 +39071,7 @@ components:
           sub_mode: ""
           client_id: client_id
           refresh_token_validity: refresh_token_validity
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -39054,6 +39098,7 @@ components:
           sub_mode: ""
           client_id: client_id
           refresh_token_validity: refresh_token_validity
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -39174,7 +39219,8 @@ components:
         results:
         - service_connection_obj: null
           providers_obj:
-          - component: component
+          - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             verbose_name_plural: verbose_name_plural
@@ -39186,7 +39232,8 @@ components:
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - component: component
+          - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             verbose_name_plural: verbose_name_plural
@@ -39211,7 +39258,8 @@ components:
           - 0
         - service_connection_obj: null
           providers_obj:
-          - component: component
+          - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             verbose_name_plural: verbose_name_plural
@@ -39223,7 +39271,8 @@ components:
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - component: component
+          - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             verbose_name_plural: verbose_name_plural
@@ -39950,7 +39999,8 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - component: component
+        - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
@@ -39962,7 +40012,8 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - component: component
+        - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
@@ -40082,6 +40133,7 @@ components:
           skip_path_regex: skip_path_regex
           basic_auth_password_attribute: basic_auth_password_attribute
           redirect_uris: redirect_uris
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_host: https://openapi-generator.tech
           outpost_set:
           - outpost_set
@@ -40115,6 +40167,7 @@ components:
           skip_path_regex: skip_path_regex
           basic_auth_password_attribute: basic_auth_password_attribute
           redirect_uris: redirect_uris
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_host: https://openapi-generator.tech
           outpost_set:
           - outpost_set
@@ -40186,31 +40239,33 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - component: component
+        - client_networks: client_networks
+          verbose_name_plural: verbose_name_plural
+          shared_secret: shared_secret
+          assigned_application_slug: assigned_application_slug
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          client_networks: client_networks
-          verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           assigned_application_name: assigned_application_name
           name: name
-          shared_secret: shared_secret
           pk: 0
-          assigned_application_slug: assigned_application_slug
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - component: component
+        - client_networks: client_networks
+          verbose_name_plural: verbose_name_plural
+          shared_secret: shared_secret
+          assigned_application_slug: assigned_application_slug
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          client_networks: client_networks
-          verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           assigned_application_name: assigned_application_name
           name: name
-          shared_secret: shared_secret
           pk: 0
-          assigned_application_slug: assigned_application_slug
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -40378,6 +40433,7 @@ components:
           acs_url: https://openapi-generator.tech
           url_download_metadata: url_download_metadata
           assertion_valid_not_before: assertion_valid_not_before
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
           digest_algorithm: null
@@ -40408,6 +40464,7 @@ components:
           acs_url: https://openapi-generator.tech
           url_download_metadata: url_download_metadata
           assertion_valid_not_before: assertion_valid_not_before
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
           digest_algorithm: null
@@ -41015,6 +41072,7 @@ components:
             sub_mode: ""
             client_id: client_id
             refresh_token_validity: refresh_token_validity
+            authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -41083,6 +41141,7 @@ components:
             sub_mode: ""
             client_id: client_id
             refresh_token_validity: refresh_token_validity
+            authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -43501,6 +43560,7 @@ components:
     PatchedLDAPProviderRequest:
       description: LDAPProvider Serializer
       example:
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         uid_start_number: -1803530559
         search_mode: null
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -43517,6 +43577,12 @@ components:
       properties:
         name:
           minLength: 1
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -43811,6 +43877,7 @@ components:
         sub_mode: ""
         client_id: client_id
         refresh_token_validity: refresh_token_validity
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         access_code_validity: access_code_validity
         include_claims_in_id_token: true
@@ -43827,6 +43894,12 @@ components:
       properties:
         name:
           minLength: 1
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -44468,6 +44541,7 @@ components:
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         basic_auth_password_attribute: basic_auth_password_attribute
         refresh_token_validity: refresh_token_validity
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mode: ""
         internal_host: https://openapi-generator.tech
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -44486,6 +44560,12 @@ components:
       properties:
         name:
           minLength: 1
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -44566,6 +44646,7 @@ components:
     PatchedRadiusProviderRequest:
       description: RadiusProvider Serializer
       example:
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_networks: client_networks
         name: name
@@ -44577,6 +44658,12 @@ components:
         name:
           minLength: 1
           type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
+          type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
@@ -44587,7 +44674,7 @@ components:
             type: string
           type: array
         client_networks:
-          description: List of CIDRs (comma-seperated) that clients can connect from.
+          description: List of CIDRs (comma-separated) that clients can connect from.
             A more specific CIDR will match before a looser one. Clients connecting
             from a non-specified CIDR will be dropped.
           minLength: 1
@@ -44663,6 +44750,7 @@ components:
         acs_url: https://openapi-generator.tech
         issuer: issuer
         assertion_valid_not_before: assertion_valid_not_before
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         digest_algorithm: null
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
@@ -44677,6 +44765,12 @@ components:
       properties:
         name:
           minLength: 1
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -46378,6 +46472,7 @@ components:
     Provider:
       description: Provider Serializer
       example:
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         component: component
         verbose_name: verbose_name
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46396,6 +46491,12 @@ components:
           title: ID
           type: integer
         name:
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -46454,6 +46555,12 @@ components:
       properties:
         name:
           minLength: 1
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -46648,6 +46755,7 @@ components:
         skip_path_regex: skip_path_regex
         basic_auth_password_attribute: basic_auth_password_attribute
         redirect_uris: redirect_uris
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         internal_host: https://openapi-generator.tech
         outpost_set:
         - outpost_set
@@ -46669,6 +46777,12 @@ components:
           title: ID
           type: integer
         name:
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -46801,6 +46915,7 @@ components:
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         basic_auth_password_attribute: basic_auth_password_attribute
         refresh_token_validity: refresh_token_validity
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mode: ""
         internal_host: https://openapi-generator.tech
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46819,6 +46934,12 @@ components:
       properties:
         name:
           minLength: 1
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -46921,7 +47042,7 @@ components:
         auth_flow_slug:
           type: string
         client_networks:
-          description: List of CIDRs (comma-seperated) that clients can connect from.
+          description: List of CIDRs (comma-separated) that clients can connect from.
             A more specific CIDR will match before a looser one. Clients connecting
             from a non-specified CIDR will be dropped.
           type: string
@@ -46937,17 +47058,18 @@ components:
     RadiusProvider:
       description: RadiusProvider Serializer
       example:
+        client_networks: client_networks
+        verbose_name_plural: verbose_name_plural
+        shared_secret: shared_secret
+        assigned_application_slug: assigned_application_slug
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         component: component
         verbose_name: verbose_name
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        client_networks: client_networks
-        verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
         assigned_application_name: assigned_application_name
         name: name
-        shared_secret: shared_secret
         pk: 0
-        assigned_application_slug: assigned_application_slug
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46957,6 +47079,12 @@ components:
           title: ID
           type: integer
         name:
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -46992,7 +47120,7 @@ components:
           readOnly: true
           type: string
         client_networks:
-          description: List of CIDRs (comma-seperated) that clients can connect from.
+          description: List of CIDRs (comma-separated) that clients can connect from.
             A more specific CIDR will match before a looser one. Clients connecting
             from a non-specified CIDR will be dropped.
           type: string
@@ -47013,6 +47141,7 @@ components:
     RadiusProviderRequest:
       description: RadiusProvider Serializer
       example:
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_networks: client_networks
         name: name
@@ -47024,6 +47153,12 @@ components:
         name:
           minLength: 1
           type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
+          type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
@@ -47034,7 +47169,7 @@ components:
             type: string
           type: array
         client_networks:
-          description: List of CIDRs (comma-seperated) that clients can connect from.
+          description: List of CIDRs (comma-separated) that clients can connect from.
             A more specific CIDR will match before a looser one. Clients connecting
             from a non-specified CIDR will be dropped.
           minLength: 1
@@ -47358,6 +47493,7 @@ components:
         acs_url: https://openapi-generator.tech
         url_download_metadata: url_download_metadata
         assertion_valid_not_before: assertion_valid_not_before
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         component: component
         verbose_name: verbose_name
         digest_algorithm: null
@@ -47374,6 +47510,12 @@ components:
           title: ID
           type: integer
         name:
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -47534,6 +47676,7 @@ components:
         acs_url: https://openapi-generator.tech
         issuer: issuer
         assertion_valid_not_before: assertion_valid_not_before
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         digest_algorithm: null
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
@@ -47548,6 +47691,12 @@ components:
       properties:
         name:
           minLength: 1
+          type: string
+        authentication_flow:
+          description: Flow used for authentication when the associated application
+            is accessed by an un-authenticated user.
+          format: uuid
+          nullable: true
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
@@ -49218,6 +49367,7 @@ components:
           sub_mode: ""
           client_id: client_id
           refresh_token_validity: refresh_token_validity
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

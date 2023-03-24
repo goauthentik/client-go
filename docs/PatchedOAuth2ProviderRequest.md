@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
+**AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | Pointer to **string** | Flow used when authorizing this provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **ClientType** | Pointer to [**NullableClientTypeEnum**](ClientTypeEnum.md) | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  * &#x60;confidential&#x60; - Confidential * &#x60;public&#x60; - Public | [optional] 
@@ -64,6 +65,41 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### GetAuthenticationFlow
+
+`func (o *PatchedOAuth2ProviderRequest) GetAuthenticationFlow() string`
+
+GetAuthenticationFlow returns the AuthenticationFlow field if non-nil, zero value otherwise.
+
+### GetAuthenticationFlowOk
+
+`func (o *PatchedOAuth2ProviderRequest) GetAuthenticationFlowOk() (*string, bool)`
+
+GetAuthenticationFlowOk returns a tuple with the AuthenticationFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthenticationFlow
+
+`func (o *PatchedOAuth2ProviderRequest) SetAuthenticationFlow(v string)`
+
+SetAuthenticationFlow sets AuthenticationFlow field to given value.
+
+### HasAuthenticationFlow
+
+`func (o *PatchedOAuth2ProviderRequest) HasAuthenticationFlow() bool`
+
+HasAuthenticationFlow returns a boolean if a field has been set.
+
+### SetAuthenticationFlowNil
+
+`func (o *PatchedOAuth2ProviderRequest) SetAuthenticationFlowNil(b bool)`
+
+ SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
+
+### UnsetAuthenticationFlow
+`func (o *PatchedOAuth2ProviderRequest) UnsetAuthenticationFlow()`
+
+UnsetAuthenticationFlow ensures that no value is present for AuthenticationFlow, not even an explicit nil
 ### GetAuthorizationFlow
 
 `func (o *PatchedOAuth2ProviderRequest) GetAuthorizationFlow() string`

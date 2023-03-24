@@ -21,7 +21,7 @@ type RadiusOutpostConfig struct {
 	Name            string `json:"name"`
 	ApplicationSlug string `json:"application_slug"`
 	AuthFlowSlug    string `json:"auth_flow_slug"`
-	// List of CIDRs (comma-seperated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped.
+	// List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped.
 	ClientNetworks *string `json:"client_networks,omitempty"`
 	// Shared secret between clients and server to hash packets.
 	SharedSecret *string `json:"shared_secret,omitempty"`

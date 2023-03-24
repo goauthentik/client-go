@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
+**AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | Pointer to **string** | Flow used when authorizing this provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **BaseDn** | Pointer to **string** | DN under which objects are accessible. | [optional] 
@@ -60,6 +61,41 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### GetAuthenticationFlow
+
+`func (o *PatchedLDAPProviderRequest) GetAuthenticationFlow() string`
+
+GetAuthenticationFlow returns the AuthenticationFlow field if non-nil, zero value otherwise.
+
+### GetAuthenticationFlowOk
+
+`func (o *PatchedLDAPProviderRequest) GetAuthenticationFlowOk() (*string, bool)`
+
+GetAuthenticationFlowOk returns a tuple with the AuthenticationFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthenticationFlow
+
+`func (o *PatchedLDAPProviderRequest) SetAuthenticationFlow(v string)`
+
+SetAuthenticationFlow sets AuthenticationFlow field to given value.
+
+### HasAuthenticationFlow
+
+`func (o *PatchedLDAPProviderRequest) HasAuthenticationFlow() bool`
+
+HasAuthenticationFlow returns a boolean if a field has been set.
+
+### SetAuthenticationFlowNil
+
+`func (o *PatchedLDAPProviderRequest) SetAuthenticationFlowNil(b bool)`
+
+ SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
+
+### UnsetAuthenticationFlow
+`func (o *PatchedLDAPProviderRequest) UnsetAuthenticationFlow()`
+
+UnsetAuthenticationFlow ensures that no value is present for AuthenticationFlow, not even an explicit nil
 ### GetAuthorizationFlow
 
 `func (o *PatchedLDAPProviderRequest) GetAuthorizationFlow() string`

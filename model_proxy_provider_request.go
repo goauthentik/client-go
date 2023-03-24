@@ -18,6 +18,8 @@ import (
 // ProxyProviderRequest ProxyProvider Serializer
 type ProxyProviderRequest struct {
 	Name string `json:"name"`
+	// Flow used for authentication when the associated application is accessed by an un-authenticated user.
+	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow used when authorizing this provider.
 	AuthorizationFlow string   `json:"authorization_flow"`
 	PropertyMappings  []string `json:"property_mappings,omitempty"`
@@ -88,6 +90,49 @@ func (o *ProxyProviderRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *ProxyProviderRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProxyProviderRequest) GetAuthenticationFlow() string {
+	if o == nil || o.AuthenticationFlow.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthenticationFlow.Get()
+}
+
+// GetAuthenticationFlowOk returns a tuple with the AuthenticationFlow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProxyProviderRequest) GetAuthenticationFlowOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthenticationFlow.Get(), o.AuthenticationFlow.IsSet()
+}
+
+// HasAuthenticationFlow returns a boolean if a field has been set.
+func (o *ProxyProviderRequest) HasAuthenticationFlow() bool {
+	if o != nil && o.AuthenticationFlow.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthenticationFlow gets a reference to the given NullableString and assigns it to the AuthenticationFlow field.
+func (o *ProxyProviderRequest) SetAuthenticationFlow(v string) {
+	o.AuthenticationFlow.Set(&v)
+}
+
+// SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
+func (o *ProxyProviderRequest) SetAuthenticationFlowNil() {
+	o.AuthenticationFlow.Set(nil)
+}
+
+// UnsetAuthenticationFlow ensures that no value is present for AuthenticationFlow, not even an explicit nil
+func (o *ProxyProviderRequest) UnsetAuthenticationFlow() {
+	o.AuthenticationFlow.Unset()
 }
 
 // GetAuthorizationFlow returns the AuthorizationFlow field value
@@ -612,6 +657,9 @@ func (o ProxyProviderRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.AuthenticationFlow.IsSet() {
+		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
 	}
 	if true {
 		toSerialize["authorization_flow"] = o.AuthorizationFlow

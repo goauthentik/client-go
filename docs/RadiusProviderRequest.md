@@ -5,9 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
+**AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
-**ClientNetworks** | Pointer to **string** | List of CIDRs (comma-seperated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped. | [optional] 
+**ClientNetworks** | Pointer to **string** | List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped. | [optional] 
 **SharedSecret** | Pointer to **string** | Shared secret between clients and server to hash packets. | [optional] 
 
 ## Methods
@@ -49,6 +50,41 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetAuthenticationFlow
+
+`func (o *RadiusProviderRequest) GetAuthenticationFlow() string`
+
+GetAuthenticationFlow returns the AuthenticationFlow field if non-nil, zero value otherwise.
+
+### GetAuthenticationFlowOk
+
+`func (o *RadiusProviderRequest) GetAuthenticationFlowOk() (*string, bool)`
+
+GetAuthenticationFlowOk returns a tuple with the AuthenticationFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthenticationFlow
+
+`func (o *RadiusProviderRequest) SetAuthenticationFlow(v string)`
+
+SetAuthenticationFlow sets AuthenticationFlow field to given value.
+
+### HasAuthenticationFlow
+
+`func (o *RadiusProviderRequest) HasAuthenticationFlow() bool`
+
+HasAuthenticationFlow returns a boolean if a field has been set.
+
+### SetAuthenticationFlowNil
+
+`func (o *RadiusProviderRequest) SetAuthenticationFlowNil(b bool)`
+
+ SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
+
+### UnsetAuthenticationFlow
+`func (o *RadiusProviderRequest) UnsetAuthenticationFlow()`
+
+UnsetAuthenticationFlow ensures that no value is present for AuthenticationFlow, not even an explicit nil
 ### GetAuthorizationFlow
 
 `func (o *RadiusProviderRequest) GetAuthorizationFlow() string`
