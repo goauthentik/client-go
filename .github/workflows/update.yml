@@ -22,6 +22,8 @@ jobs:
         run: make
       - name: Push
         id: push
+        env:
+          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
         run: |
           git config --global user.email "github-bot@goauthentik.io"
           git config --global user.name "authentik-bot"
