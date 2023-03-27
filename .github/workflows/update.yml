@@ -23,7 +23,7 @@ jobs:
           git config --global user.email "github-bot@goauthentik.io"
           git config --global user.name "authentik-bot"
           git add .
-          git commit -m "Update API Client" -m "$(cat diff.txt)" || exit 0
+          git commit -m "Update API Client" -m "$(cat diff.test)" || exit 0
           git push
           version=$(cd version && go run .)
           git tag $version

@@ -16,7 +16,7 @@ build:
 		--rm -v ${PWD}:/local \
 		--user ${UID}:${GID} \
 		docker.io/openapitools/openapi-diff:2.1.0-beta.3 \
-		--text /local/diff.txt \
+		--text /local/diff.test \
 		/local/schema-old.yml /local/schema.yml
 	rm schema-old.yml
 	docker run \
