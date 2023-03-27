@@ -27259,30 +27259,33 @@ paths:
           \ Multiline Text input, but cannot be edited.\n* `username` - Username:\
           \ Same as Text input, but checks for and prevents duplicate usernames.\n\
           * `email` - Email: Text field with Email type.\n* `password` - Password:\
-          \ Masked input, multiple inputs of this type on the same prompt need to\
-          \ be identical.\n* `number` - Number\n* `checkbox` - Checkbox\n* `radio-button-group`\
-          \ - Fixed choice field rendered as a group of radio buttons.\n* `dropdown`\
-          \ - Fixed choice field rendered as a dropdown.\n* `date` - Date\n* `date-time`\
-          \ - Date Time\n* `file` - File: File upload for arbitrary files. File content\
-          \ will be available in flow context as data-URI\n* `separator` - Separator:\
-          \ Static Separator Line\n* `hidden` - Hidden: Hidden field, can be used\
-          \ to insert data into form.\n* `static` - Static: Static value, displayed\
-          \ as-is.\n* `ak-locale` - authentik: Selection of locales authentik supports\n\
-          \n* `text` - Text: Simple Text input\n* `text_area` - Text area: Multiline\
-          \ Text Input.\n* `text_read_only` - Text (read-only): Simple Text input,\
-          \ but cannot be edited.\n* `text_area_read_only` - Text area (read-only):\
-          \ Multiline Text input, but cannot be edited.\n* `username` - Username:\
-          \ Same as Text input, but checks for and prevents duplicate usernames.\n\
-          * `email` - Email: Text field with Email type.\n* `password` - Password:\
-          \ Masked input, multiple inputs of this type on the same prompt need to\
-          \ be identical.\n* `number` - Number\n* `checkbox` - Checkbox\n* `radio-button-group`\
-          \ - Fixed choice field rendered as a group of radio buttons.\n* `dropdown`\
-          \ - Fixed choice field rendered as a dropdown.\n* `date` - Date\n* `date-time`\
-          \ - Date Time\n* `file` - File: File upload for arbitrary files. File content\
-          \ will be available in flow context as data-URI\n* `separator` - Separator:\
-          \ Static Separator Line\n* `hidden` - Hidden: Hidden field, can be used\
-          \ to insert data into form.\n* `static` - Static: Static value, displayed\
-          \ as-is.\n* `ak-locale` - authentik: Selection of locales authentik supports"
+          \ Masked input, password is validated against sources. Policies still have\
+          \ to be applied to this Stage. If two of these are used in the same stage,\
+          \ they are ensured to be identical.\n* `number` - Number\n* `checkbox` -\
+          \ Checkbox\n* `radio-button-group` - Fixed choice field rendered as a group\
+          \ of radio buttons.\n* `dropdown` - Fixed choice field rendered as a dropdown.\n\
+          * `date` - Date\n* `date-time` - Date Time\n* `file` - File: File upload\
+          \ for arbitrary files. File content will be available in flow context as\
+          \ data-URI\n* `separator` - Separator: Static Separator Line\n* `hidden`\
+          \ - Hidden: Hidden field, can be used to insert data into form.\n* `static`\
+          \ - Static: Static value, displayed as-is.\n* `ak-locale` - authentik: Selection\
+          \ of locales authentik supports\n\n* `text` - Text: Simple Text input\n\
+          * `text_area` - Text area: Multiline Text Input.\n* `text_read_only` - Text\
+          \ (read-only): Simple Text input, but cannot be edited.\n* `text_area_read_only`\
+          \ - Text area (read-only): Multiline Text input, but cannot be edited.\n\
+          * `username` - Username: Same as Text input, but checks for and prevents\
+          \ duplicate usernames.\n* `email` - Email: Text field with Email type.\n\
+          * `password` - Password: Masked input, password is validated against sources.\
+          \ Policies still have to be applied to this Stage. If two of these are used\
+          \ in the same stage, they are ensured to be identical.\n* `number` - Number\n\
+          * `checkbox` - Checkbox\n* `radio-button-group` - Fixed choice field rendered\
+          \ as a group of radio buttons.\n* `dropdown` - Fixed choice field rendered\
+          \ as a dropdown.\n* `date` - Date\n* `date-time` - Date Time\n* `file` -\
+          \ File: File upload for arbitrary files. File content will be available\
+          \ in flow context as data-URI\n* `separator` - Separator: Static Separator\
+          \ Line\n* `hidden` - Hidden: Hidden field, can be used to insert data into\
+          \ form.\n* `static` - Static: Static value, displayed as-is.\n* `ak-locale`\
+          \ - authentik: Selection of locales authentik supports"
         explode: true
         in: query
         name: type
@@ -27538,39 +27541,6 @@ paths:
                 items:
                   $ref: '#/components/schemas/UsedBy'
                 type: array
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - stages
-  /stages/prompt/prompts/preview/:
-    post:
-      description: "Preview a prompt as a challenge, just like a flow would receive"
-      operationId: stages_prompt_prompts_preview_create
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PromptRequest'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PromptChallenge'
           description: ""
         "400":
           content:
@@ -46123,41 +46093,6 @@ components:
       type: object
     PromptChallenge:
       description: "Initial challenge being sent, define fields"
-      example:
-        component: ak-stage-prompt
-        response_errors:
-          key:
-          - code: code
-            string: string
-          - code: code
-            string: string
-        type: null
-        flow_info:
-          layout: null
-          background: background
-          title: title
-          cancel_url: cancel_url
-        fields:
-        - sub_text: sub_text
-          field_key: field_key
-          label: label
-          placeholder: placeholder
-          type: null
-          choices:
-          - choices
-          - choices
-          required: true
-          order: 0
-        - sub_text: sub_text
-          field_key: field_key
-          label: label
-          placeholder: placeholder
-          type: null
-          choices:
-          - choices
-          - choices
-          required: true
-          order: 0
       properties:
         type:
           $ref: '#/components/schemas/ChallengeChoices'
@@ -46419,15 +46354,16 @@ components:
         \ Multiline Text input, but cannot be edited.\n* `username` - Username: Same\
         \ as Text input, but checks for and prevents duplicate usernames.\n* `email`\
         \ - Email: Text field with Email type.\n* `password` - Password: Masked input,\
-        \ multiple inputs of this type on the same prompt need to be identical.\n\
-        * `number` - Number\n* `checkbox` - Checkbox\n* `radio-button-group` - Fixed\
-        \ choice field rendered as a group of radio buttons.\n* `dropdown` - Fixed\
-        \ choice field rendered as a dropdown.\n* `date` - Date\n* `date-time` - Date\
-        \ Time\n* `file` - File: File upload for arbitrary files. File content will\
-        \ be available in flow context as data-URI\n* `separator` - Separator: Static\
-        \ Separator Line\n* `hidden` - Hidden: Hidden field, can be used to insert\
-        \ data into form.\n* `static` - Static: Static value, displayed as-is.\n*\
-        \ `ak-locale` - authentik: Selection of locales authentik supports"
+        \ password is validated against sources. Policies still have to be applied\
+        \ to this Stage. If two of these are used in the same stage, they are ensured\
+        \ to be identical.\n* `number` - Number\n* `checkbox` - Checkbox\n* `radio-button-group`\
+        \ - Fixed choice field rendered as a group of radio buttons.\n* `dropdown`\
+        \ - Fixed choice field rendered as a dropdown.\n* `date` - Date\n* `date-time`\
+        \ - Date Time\n* `file` - File: File upload for arbitrary files. File content\
+        \ will be available in flow context as data-URI\n* `separator` - Separator:\
+        \ Static Separator Line\n* `hidden` - Hidden: Hidden field, can be used to\
+        \ insert data into form.\n* `static` - Static: Static value, displayed as-is.\n\
+        * `ak-locale` - authentik: Selection of locales authentik supports"
       enum:
       - text
       - text_area
@@ -48939,17 +48875,6 @@ components:
       type: object
     StagePrompt:
       description: Serializer for a single Prompt field
-      example:
-        sub_text: sub_text
-        field_key: field_key
-        label: label
-        placeholder: placeholder
-        type: null
-        choices:
-        - choices
-        - choices
-        required: true
-        order: 0
       properties:
         field_key:
           type: string
