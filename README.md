@@ -634,7 +634,6 @@ Class | Method | HTTP request | Description
 *StagesApi* | [**StagesPromptPromptsDestroy**](docs/StagesApi.md#stagespromptpromptsdestroy) | **Delete** /stages/prompt/prompts/{prompt_uuid}/ | 
 *StagesApi* | [**StagesPromptPromptsList**](docs/StagesApi.md#stagespromptpromptslist) | **Get** /stages/prompt/prompts/ | 
 *StagesApi* | [**StagesPromptPromptsPartialUpdate**](docs/StagesApi.md#stagespromptpromptspartialupdate) | **Patch** /stages/prompt/prompts/{prompt_uuid}/ | 
-*StagesApi* | [**StagesPromptPromptsPreviewCreate**](docs/StagesApi.md#stagespromptpromptspreviewcreate) | **Post** /stages/prompt/prompts/preview/ | 
 *StagesApi* | [**StagesPromptPromptsRetrieve**](docs/StagesApi.md#stagespromptpromptsretrieve) | **Get** /stages/prompt/prompts/{prompt_uuid}/ | 
 *StagesApi* | [**StagesPromptPromptsUpdate**](docs/StagesApi.md#stagespromptpromptsupdate) | **Put** /stages/prompt/prompts/{prompt_uuid}/ | 
 *StagesApi* | [**StagesPromptPromptsUsedByList**](docs/StagesApi.md#stagespromptpromptsusedbylist) | **Get** /stages/prompt/prompts/{prompt_uuid}/used_by/ | 
