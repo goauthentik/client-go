@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceChallenge{}
+
 // DeviceChallenge Single device challenge
 type DeviceChallenge struct {
 	DeviceClass string                 `json:"device_class"`
@@ -104,7 +107,7 @@ func (o *DeviceChallenge) GetChallenge() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *DeviceChallenge) GetChallengeOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Challenge, true
 }
@@ -115,17 +118,19 @@ func (o *DeviceChallenge) SetChallenge(v map[string]interface{}) {
 }
 
 func (o DeviceChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["device_class"] = o.DeviceClass
-	}
-	if true {
-		toSerialize["device_uid"] = o.DeviceUid
-	}
-	if true {
-		toSerialize["challenge"] = o.Challenge
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceChallenge) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["device_class"] = o.DeviceClass
+	toSerialize["device_uid"] = o.DeviceUid
+	toSerialize["challenge"] = o.Challenge
+	return toSerialize, nil
 }
 
 type NullableDeviceChallenge struct {

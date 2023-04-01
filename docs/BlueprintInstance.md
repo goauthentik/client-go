@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Context** | Pointer to **map[string]interface{}** |  | [optional] 
 **LastApplied** | **time.Time** |  | [readonly] 
 **LastAppliedHash** | **string** |  | [readonly] 
-**Status** | [**NullableBlueprintInstanceStatusEnum**](BlueprintInstanceStatusEnum.md) |  | [readonly] 
+**Status** | [**BlueprintInstanceStatusEnum**](BlueprintInstanceStatusEnum.md) |  | [readonly] 
 **Enabled** | Pointer to **bool** |  | [optional] 
 **ManagedModels** | **[]string** |  | [readonly] 
 **Metadata** | **map[string]interface{}** |  | [readonly] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewBlueprintInstance
 
-`func NewBlueprintInstance(pk string, name string, lastApplied time.Time, lastAppliedHash string, status NullableBlueprintInstanceStatusEnum, managedModels []string, metadata map[string]interface{}, ) *BlueprintInstance`
+`func NewBlueprintInstance(pk string, name string, lastApplied time.Time, lastAppliedHash string, status BlueprintInstanceStatusEnum, managedModels []string, metadata map[string]interface{}, ) *BlueprintInstance`
 
 NewBlueprintInstance instantiates a new BlueprintInstance object
 This constructor will assign default values to properties that have it defined,
@@ -185,16 +185,6 @@ and a boolean to check if the value has been set.
 SetStatus sets Status field to given value.
 
 
-### SetStatusNil
-
-`func (o *BlueprintInstance) SetStatusNil(b bool)`
-
- SetStatusNil sets the value for Status to be an explicit nil
-
-### UnsetStatus
-`func (o *BlueprintInstance) UnsetStatus()`
-
-UnsetStatus ensures that no value is present for Status, not even an explicit nil
 ### GetEnabled
 
 `func (o *BlueprintInstance) GetEnabled() bool`

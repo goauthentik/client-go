@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LDAPDebug type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LDAPDebug{}
+
 // LDAPDebug struct for LDAPDebug
 type LDAPDebug struct {
 	User       []map[string]interface{} `json:"user"`
@@ -115,17 +118,19 @@ func (o *LDAPDebug) SetMembership(v []map[string]interface{}) {
 }
 
 func (o LDAPDebug) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["group"] = o.Group
-	}
-	if true {
-		toSerialize["membership"] = o.Membership
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LDAPDebug) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: user is readOnly
+	// skip: group is readOnly
+	// skip: membership is readOnly
+	return toSerialize, nil
 }
 
 type NullableLDAPDebug struct {

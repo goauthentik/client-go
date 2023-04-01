@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthenticatedSessionGeoIp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatedSessionGeoIp{}
+
 // AuthenticatedSessionGeoIp Get parsed user agent
 type AuthenticatedSessionGeoIp struct {
 	Continent string  `json:"continent"`
@@ -167,23 +170,21 @@ func (o *AuthenticatedSessionGeoIp) SetCity(v string) {
 }
 
 func (o AuthenticatedSessionGeoIp) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["continent"] = o.Continent
-	}
-	if true {
-		toSerialize["country"] = o.Country
-	}
-	if true {
-		toSerialize["lat"] = o.Lat
-	}
-	if true {
-		toSerialize["long"] = o.Long
-	}
-	if true {
-		toSerialize["city"] = o.City
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatedSessionGeoIp) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["continent"] = o.Continent
+	toSerialize["country"] = o.Country
+	toSerialize["lat"] = o.Lat
+	toSerialize["long"] = o.Long
+	toSerialize["city"] = o.City
+	return toSerialize, nil
 }
 
 type NullableAuthenticatedSessionGeoIp struct {

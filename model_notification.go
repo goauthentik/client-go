@@ -16,21 +16,24 @@ import (
 	"time"
 )
 
+// checks if the Notification type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Notification{}
+
 // Notification Notification Serializer
 type Notification struct {
-	Pk       string               `json:"pk"`
-	Severity NullableSeverityEnum `json:"severity"`
-	Body     string               `json:"body"`
-	Created  time.Time            `json:"created"`
-	Event    *Event               `json:"event,omitempty"`
-	Seen     *bool                `json:"seen,omitempty"`
+	Pk       string       `json:"pk"`
+	Severity SeverityEnum `json:"severity"`
+	Body     string       `json:"body"`
+	Created  time.Time    `json:"created"`
+	Event    *Event       `json:"event,omitempty"`
+	Seen     *bool        `json:"seen,omitempty"`
 }
 
 // NewNotification instantiates a new Notification object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotification(pk string, severity NullableSeverityEnum, body string, created time.Time) *Notification {
+func NewNotification(pk string, severity SeverityEnum, body string, created time.Time) *Notification {
 	this := Notification{}
 	this.Pk = pk
 	this.Severity = severity
@@ -72,29 +75,27 @@ func (o *Notification) SetPk(v string) {
 }
 
 // GetSeverity returns the Severity field value
-// If the value is explicit nil, the zero value for SeverityEnum will be returned
 func (o *Notification) GetSeverity() SeverityEnum {
-	if o == nil || o.Severity.Get() == nil {
+	if o == nil {
 		var ret SeverityEnum
 		return ret
 	}
 
-	return *o.Severity.Get()
+	return o.Severity
 }
 
 // GetSeverityOk returns a tuple with the Severity field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Notification) GetSeverityOk() (*SeverityEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Severity.Get(), o.Severity.IsSet()
+	return &o.Severity, true
 }
 
 // SetSeverity sets field value
 func (o *Notification) SetSeverity(v SeverityEnum) {
-	o.Severity.Set(&v)
+	o.Severity = v
 }
 
 // GetBody returns the Body field value
@@ -147,7 +148,7 @@ func (o *Notification) SetCreated(v time.Time) {
 
 // GetEvent returns the Event field value if set, zero value otherwise.
 func (o *Notification) GetEvent() Event {
-	if o == nil || o.Event == nil {
+	if o == nil || IsNil(o.Event) {
 		var ret Event
 		return ret
 	}
@@ -157,7 +158,7 @@ func (o *Notification) GetEvent() Event {
 // GetEventOk returns a tuple with the Event field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Notification) GetEventOk() (*Event, bool) {
-	if o == nil || o.Event == nil {
+	if o == nil || IsNil(o.Event) {
 		return nil, false
 	}
 	return o.Event, true
@@ -165,7 +166,7 @@ func (o *Notification) GetEventOk() (*Event, bool) {
 
 // HasEvent returns a boolean if a field has been set.
 func (o *Notification) HasEvent() bool {
-	if o != nil && o.Event != nil {
+	if o != nil && !IsNil(o.Event) {
 		return true
 	}
 
@@ -179,7 +180,7 @@ func (o *Notification) SetEvent(v Event) {
 
 // GetSeen returns the Seen field value if set, zero value otherwise.
 func (o *Notification) GetSeen() bool {
-	if o == nil || o.Seen == nil {
+	if o == nil || IsNil(o.Seen) {
 		var ret bool
 		return ret
 	}
@@ -189,7 +190,7 @@ func (o *Notification) GetSeen() bool {
 // GetSeenOk returns a tuple with the Seen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Notification) GetSeenOk() (*bool, bool) {
-	if o == nil || o.Seen == nil {
+	if o == nil || IsNil(o.Seen) {
 		return nil, false
 	}
 	return o.Seen, true
@@ -197,7 +198,7 @@ func (o *Notification) GetSeenOk() (*bool, bool) {
 
 // HasSeen returns a boolean if a field has been set.
 func (o *Notification) HasSeen() bool {
-	if o != nil && o.Seen != nil {
+	if o != nil && !IsNil(o.Seen) {
 		return true
 	}
 
@@ -210,26 +211,26 @@ func (o *Notification) SetSeen(v bool) {
 }
 
 func (o Notification) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["severity"] = o.Severity.Get()
-	}
-	if true {
-		toSerialize["body"] = o.Body
-	}
-	if true {
-		toSerialize["created"] = o.Created
-	}
-	if o.Event != nil {
-		toSerialize["event"] = o.Event
-	}
-	if o.Seen != nil {
-		toSerialize["seen"] = o.Seen
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Notification) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
+	// skip: severity is readOnly
+	// skip: body is readOnly
+	// skip: created is readOnly
+	if !IsNil(o.Event) {
+		toSerialize["event"] = o.Event
+	}
+	if !IsNil(o.Seen) {
+		toSerialize["seen"] = o.Seen
+	}
+	return toSerialize, nil
 }
 
 type NullableNotification struct {

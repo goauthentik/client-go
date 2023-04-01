@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OpenIDConnectConfiguration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OpenIDConnectConfiguration{}
+
 // OpenIDConnectConfiguration rest_framework Serializer for OIDC Configuration
 type OpenIDConnectConfiguration struct {
 	Issuer                            string   `json:"issuer"`
@@ -323,41 +326,27 @@ func (o *OpenIDConnectConfiguration) SetTokenEndpointAuthMethodsSupported(v []st
 }
 
 func (o OpenIDConnectConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["issuer"] = o.Issuer
-	}
-	if true {
-		toSerialize["authorization_endpoint"] = o.AuthorizationEndpoint
-	}
-	if true {
-		toSerialize["token_endpoint"] = o.TokenEndpoint
-	}
-	if true {
-		toSerialize["userinfo_endpoint"] = o.UserinfoEndpoint
-	}
-	if true {
-		toSerialize["end_session_endpoint"] = o.EndSessionEndpoint
-	}
-	if true {
-		toSerialize["introspection_endpoint"] = o.IntrospectionEndpoint
-	}
-	if true {
-		toSerialize["jwks_uri"] = o.JwksUri
-	}
-	if true {
-		toSerialize["response_types_supported"] = o.ResponseTypesSupported
-	}
-	if true {
-		toSerialize["id_token_signing_alg_values_supported"] = o.IdTokenSigningAlgValuesSupported
-	}
-	if true {
-		toSerialize["subject_types_supported"] = o.SubjectTypesSupported
-	}
-	if true {
-		toSerialize["token_endpoint_auth_methods_supported"] = o.TokenEndpointAuthMethodsSupported
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OpenIDConnectConfiguration) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["issuer"] = o.Issuer
+	toSerialize["authorization_endpoint"] = o.AuthorizationEndpoint
+	toSerialize["token_endpoint"] = o.TokenEndpoint
+	toSerialize["userinfo_endpoint"] = o.UserinfoEndpoint
+	toSerialize["end_session_endpoint"] = o.EndSessionEndpoint
+	toSerialize["introspection_endpoint"] = o.IntrospectionEndpoint
+	toSerialize["jwks_uri"] = o.JwksUri
+	toSerialize["response_types_supported"] = o.ResponseTypesSupported
+	toSerialize["id_token_signing_alg_values_supported"] = o.IdTokenSigningAlgValuesSupported
+	toSerialize["subject_types_supported"] = o.SubjectTypesSupported
+	toSerialize["token_endpoint_auth_methods_supported"] = o.TokenEndpointAuthMethodsSupported
+	return toSerialize, nil
 }
 
 type NullableOpenIDConnectConfiguration struct {

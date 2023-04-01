@@ -211,7 +211,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 	var jsonDict map[string]interface{}
 	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
-		return fmt.Errorf("Failed to unmarshal JSON into map for the discriminator lookup.")
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
 	}
 
 	// check if the discriminator value is 'AccessDeniedChallenge'
@@ -222,7 +222,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AccessDeniedChallenge, return on the first match
 		} else {
 			dst.AccessDeniedChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AccessDeniedChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AccessDeniedChallenge: %s", err.Error())
 		}
 	}
 
@@ -234,7 +234,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AppleLoginChallenge, return on the first match
 		} else {
 			dst.AppleLoginChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AppleLoginChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AppleLoginChallenge: %s", err.Error())
 		}
 	}
 
@@ -246,7 +246,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorDuoChallenge, return on the first match
 		} else {
 			dst.AuthenticatorDuoChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorDuoChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AuthenticatorDuoChallenge: %s", err.Error())
 		}
 	}
 
@@ -258,7 +258,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorSMSChallenge, return on the first match
 		} else {
 			dst.AuthenticatorSMSChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorSMSChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AuthenticatorSMSChallenge: %s", err.Error())
 		}
 	}
 
@@ -270,7 +270,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorStaticChallenge, return on the first match
 		} else {
 			dst.AuthenticatorStaticChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorStaticChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AuthenticatorStaticChallenge: %s", err.Error())
 		}
 	}
 
@@ -282,7 +282,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorTOTPChallenge, return on the first match
 		} else {
 			dst.AuthenticatorTOTPChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorTOTPChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AuthenticatorTOTPChallenge: %s", err.Error())
 		}
 	}
 
@@ -294,7 +294,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorValidationChallenge, return on the first match
 		} else {
 			dst.AuthenticatorValidationChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorValidationChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AuthenticatorValidationChallenge: %s", err.Error())
 		}
 	}
 
@@ -306,7 +306,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorWebAuthnChallenge, return on the first match
 		} else {
 			dst.AuthenticatorWebAuthnChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorWebAuthnChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AuthenticatorWebAuthnChallenge: %s", err.Error())
 		}
 	}
 
@@ -318,7 +318,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AutosubmitChallenge, return on the first match
 		} else {
 			dst.AutosubmitChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AutosubmitChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AutosubmitChallenge: %s", err.Error())
 		}
 	}
 
@@ -330,7 +330,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.CaptchaChallenge, return on the first match
 		} else {
 			dst.CaptchaChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as CaptchaChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as CaptchaChallenge: %s", err.Error())
 		}
 	}
 
@@ -342,7 +342,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.ConsentChallenge, return on the first match
 		} else {
 			dst.ConsentChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as ConsentChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as ConsentChallenge: %s", err.Error())
 		}
 	}
 
@@ -354,7 +354,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.DummyChallenge, return on the first match
 		} else {
 			dst.DummyChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as DummyChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as DummyChallenge: %s", err.Error())
 		}
 	}
 
@@ -366,7 +366,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.EmailChallenge, return on the first match
 		} else {
 			dst.EmailChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as EmailChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as EmailChallenge: %s", err.Error())
 		}
 	}
 
@@ -378,7 +378,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.FlowErrorChallenge, return on the first match
 		} else {
 			dst.FlowErrorChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as FlowErrorChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as FlowErrorChallenge: %s", err.Error())
 		}
 	}
 
@@ -390,7 +390,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.IdentificationChallenge, return on the first match
 		} else {
 			dst.IdentificationChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as IdentificationChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as IdentificationChallenge: %s", err.Error())
 		}
 	}
 
@@ -402,7 +402,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.OAuthDeviceCodeChallenge, return on the first match
 		} else {
 			dst.OAuthDeviceCodeChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as OAuthDeviceCodeChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as OAuthDeviceCodeChallenge: %s", err.Error())
 		}
 	}
 
@@ -414,7 +414,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.OAuthDeviceCodeFinishChallenge, return on the first match
 		} else {
 			dst.OAuthDeviceCodeFinishChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as OAuthDeviceCodeFinishChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as OAuthDeviceCodeFinishChallenge: %s", err.Error())
 		}
 	}
 
@@ -426,7 +426,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.PasswordChallenge, return on the first match
 		} else {
 			dst.PasswordChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as PasswordChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as PasswordChallenge: %s", err.Error())
 		}
 	}
 
@@ -438,7 +438,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.PlexAuthenticationChallenge, return on the first match
 		} else {
 			dst.PlexAuthenticationChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as PlexAuthenticationChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as PlexAuthenticationChallenge: %s", err.Error())
 		}
 	}
 
@@ -450,7 +450,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.PromptChallenge, return on the first match
 		} else {
 			dst.PromptChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as PromptChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as PromptChallenge: %s", err.Error())
 		}
 	}
 
@@ -462,7 +462,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.RedirectChallenge, return on the first match
 		} else {
 			dst.RedirectChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as RedirectChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as RedirectChallenge: %s", err.Error())
 		}
 	}
 
@@ -474,7 +474,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.ShellChallenge, return on the first match
 		} else {
 			dst.ShellChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as ShellChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as ShellChallenge: %s", err.Error())
 		}
 	}
 
@@ -486,7 +486,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.UserLoginChallenge, return on the first match
 		} else {
 			dst.UserLoginChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as UserLoginChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as UserLoginChallenge: %s", err.Error())
 		}
 	}
 
@@ -498,7 +498,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.OAuthDeviceCodeChallenge, return on the first match
 		} else {
 			dst.OAuthDeviceCodeChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as OAuthDeviceCodeChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as OAuthDeviceCodeChallenge: %s", err.Error())
 		}
 	}
 
@@ -510,7 +510,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.OAuthDeviceCodeFinishChallenge, return on the first match
 		} else {
 			dst.OAuthDeviceCodeFinishChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as OAuthDeviceCodeFinishChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as OAuthDeviceCodeFinishChallenge: %s", err.Error())
 		}
 	}
 
@@ -522,7 +522,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AppleLoginChallenge, return on the first match
 		} else {
 			dst.AppleLoginChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AppleLoginChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AppleLoginChallenge: %s", err.Error())
 		}
 	}
 
@@ -534,7 +534,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.PlexAuthenticationChallenge, return on the first match
 		} else {
 			dst.PlexAuthenticationChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as PlexAuthenticationChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as PlexAuthenticationChallenge: %s", err.Error())
 		}
 	}
 
@@ -546,7 +546,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AccessDeniedChallenge, return on the first match
 		} else {
 			dst.AccessDeniedChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AccessDeniedChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AccessDeniedChallenge: %s", err.Error())
 		}
 	}
 
@@ -558,7 +558,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorDuoChallenge, return on the first match
 		} else {
 			dst.AuthenticatorDuoChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorDuoChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AuthenticatorDuoChallenge: %s", err.Error())
 		}
 	}
 
@@ -570,7 +570,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorSMSChallenge, return on the first match
 		} else {
 			dst.AuthenticatorSMSChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorSMSChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AuthenticatorSMSChallenge: %s", err.Error())
 		}
 	}
 
@@ -582,7 +582,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorStaticChallenge, return on the first match
 		} else {
 			dst.AuthenticatorStaticChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorStaticChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AuthenticatorStaticChallenge: %s", err.Error())
 		}
 	}
 
@@ -594,7 +594,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorTOTPChallenge, return on the first match
 		} else {
 			dst.AuthenticatorTOTPChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorTOTPChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AuthenticatorTOTPChallenge: %s", err.Error())
 		}
 	}
 
@@ -606,7 +606,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorValidationChallenge, return on the first match
 		} else {
 			dst.AuthenticatorValidationChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorValidationChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AuthenticatorValidationChallenge: %s", err.Error())
 		}
 	}
 
@@ -618,7 +618,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorWebAuthnChallenge, return on the first match
 		} else {
 			dst.AuthenticatorWebAuthnChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorWebAuthnChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AuthenticatorWebAuthnChallenge: %s", err.Error())
 		}
 	}
 
@@ -630,7 +630,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AutosubmitChallenge, return on the first match
 		} else {
 			dst.AutosubmitChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AutosubmitChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as AutosubmitChallenge: %s", err.Error())
 		}
 	}
 
@@ -642,7 +642,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.CaptchaChallenge, return on the first match
 		} else {
 			dst.CaptchaChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as CaptchaChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as CaptchaChallenge: %s", err.Error())
 		}
 	}
 
@@ -654,7 +654,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.ConsentChallenge, return on the first match
 		} else {
 			dst.ConsentChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as ConsentChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as ConsentChallenge: %s", err.Error())
 		}
 	}
 
@@ -666,7 +666,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.DummyChallenge, return on the first match
 		} else {
 			dst.DummyChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as DummyChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as DummyChallenge: %s", err.Error())
 		}
 	}
 
@@ -678,7 +678,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.EmailChallenge, return on the first match
 		} else {
 			dst.EmailChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as EmailChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as EmailChallenge: %s", err.Error())
 		}
 	}
 
@@ -690,7 +690,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.FlowErrorChallenge, return on the first match
 		} else {
 			dst.FlowErrorChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as FlowErrorChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as FlowErrorChallenge: %s", err.Error())
 		}
 	}
 
@@ -702,7 +702,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.IdentificationChallenge, return on the first match
 		} else {
 			dst.IdentificationChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as IdentificationChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as IdentificationChallenge: %s", err.Error())
 		}
 	}
 
@@ -714,7 +714,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.PasswordChallenge, return on the first match
 		} else {
 			dst.PasswordChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as PasswordChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as PasswordChallenge: %s", err.Error())
 		}
 	}
 
@@ -726,7 +726,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.PromptChallenge, return on the first match
 		} else {
 			dst.PromptChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as PromptChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as PromptChallenge: %s", err.Error())
 		}
 	}
 
@@ -738,7 +738,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.UserLoginChallenge, return on the first match
 		} else {
 			dst.UserLoginChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as UserLoginChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as UserLoginChallenge: %s", err.Error())
 		}
 	}
 
@@ -750,7 +750,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.RedirectChallenge, return on the first match
 		} else {
 			dst.RedirectChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as RedirectChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as RedirectChallenge: %s", err.Error())
 		}
 	}
 
@@ -762,7 +762,7 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.ShellChallenge, return on the first match
 		} else {
 			dst.ShellChallenge = nil
-			return fmt.Errorf("Failed to unmarshal ChallengeTypes as ShellChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal ChallengeTypes as ShellChallenge: %s", err.Error())
 		}
 	}
 

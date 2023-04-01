@@ -15,20 +15,23 @@ import (
 	"encoding/json"
 )
 
+// checks if the PlexSourceConnection type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PlexSourceConnection{}
+
 // PlexSourceConnection Plex Source connection Serializer
 type PlexSourceConnection struct {
-	Pk         int32                      `json:"pk"`
-	User       int32                      `json:"user"`
-	Source     PlexSourceConnectionSource `json:"source"`
-	Identifier string                     `json:"identifier"`
-	PlexToken  string                     `json:"plex_token"`
+	Pk         int32  `json:"pk"`
+	User       int32  `json:"user"`
+	Source     Source `json:"source"`
+	Identifier string `json:"identifier"`
+	PlexToken  string `json:"plex_token"`
 }
 
 // NewPlexSourceConnection instantiates a new PlexSourceConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlexSourceConnection(pk int32, user int32, source PlexSourceConnectionSource, identifier string, plexToken string) *PlexSourceConnection {
+func NewPlexSourceConnection(pk int32, user int32, source Source, identifier string, plexToken string) *PlexSourceConnection {
 	this := PlexSourceConnection{}
 	this.Pk = pk
 	this.User = user
@@ -95,9 +98,9 @@ func (o *PlexSourceConnection) SetUser(v int32) {
 }
 
 // GetSource returns the Source field value
-func (o *PlexSourceConnection) GetSource() PlexSourceConnectionSource {
+func (o *PlexSourceConnection) GetSource() Source {
 	if o == nil {
-		var ret PlexSourceConnectionSource
+		var ret Source
 		return ret
 	}
 
@@ -106,7 +109,7 @@ func (o *PlexSourceConnection) GetSource() PlexSourceConnectionSource {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *PlexSourceConnection) GetSourceOk() (*PlexSourceConnectionSource, bool) {
+func (o *PlexSourceConnection) GetSourceOk() (*Source, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -114,7 +117,7 @@ func (o *PlexSourceConnection) GetSourceOk() (*PlexSourceConnectionSource, bool)
 }
 
 // SetSource sets field value
-func (o *PlexSourceConnection) SetSource(v PlexSourceConnectionSource) {
+func (o *PlexSourceConnection) SetSource(v Source) {
 	o.Source = v
 }
 
@@ -167,23 +170,21 @@ func (o *PlexSourceConnection) SetPlexToken(v string) {
 }
 
 func (o PlexSourceConnection) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["source"] = o.Source
-	}
-	if true {
-		toSerialize["identifier"] = o.Identifier
-	}
-	if true {
-		toSerialize["plex_token"] = o.PlexToken
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PlexSourceConnection) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
+	// skip: user is readOnly
+	// skip: source is readOnly
+	toSerialize["identifier"] = o.Identifier
+	toSerialize["plex_token"] = o.PlexToken
+	return toSerialize, nil
 }
 
 type NullablePlexSourceConnection struct {

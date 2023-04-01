@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SessionUser type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SessionUser{}
+
 // SessionUser Response for the /user/me endpoint, returns the currently active user (as `user` property) and, if this user is being impersonated, the original user in the `original` property.
 type SessionUser struct {
 	User     UserSelf  `json:"user"`
@@ -65,7 +68,7 @@ func (o *SessionUser) SetUser(v UserSelf) {
 
 // GetOriginal returns the Original field value if set, zero value otherwise.
 func (o *SessionUser) GetOriginal() UserSelf {
-	if o == nil || o.Original == nil {
+	if o == nil || IsNil(o.Original) {
 		var ret UserSelf
 		return ret
 	}
@@ -75,7 +78,7 @@ func (o *SessionUser) GetOriginal() UserSelf {
 // GetOriginalOk returns a tuple with the Original field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionUser) GetOriginalOk() (*UserSelf, bool) {
-	if o == nil || o.Original == nil {
+	if o == nil || IsNil(o.Original) {
 		return nil, false
 	}
 	return o.Original, true
@@ -83,7 +86,7 @@ func (o *SessionUser) GetOriginalOk() (*UserSelf, bool) {
 
 // HasOriginal returns a boolean if a field has been set.
 func (o *SessionUser) HasOriginal() bool {
-	if o != nil && o.Original != nil {
+	if o != nil && !IsNil(o.Original) {
 		return true
 	}
 
@@ -96,14 +99,20 @@ func (o *SessionUser) SetOriginal(v UserSelf) {
 }
 
 func (o SessionUser) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if o.Original != nil {
-		toSerialize["original"] = o.Original
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SessionUser) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["user"] = o.User
+	if !IsNil(o.Original) {
+		toSerialize["original"] = o.Original
+	}
+	return toSerialize, nil
 }
 
 type NullableSessionUser struct {

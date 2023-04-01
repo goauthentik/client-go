@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the InvitationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InvitationRequest{}
+
 // InvitationRequest Invitation Serializer
 type InvitationRequest struct {
 	Name      string                 `json:"name"`
@@ -71,7 +74,7 @@ func (o *InvitationRequest) SetName(v string) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *InvitationRequest) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		var ret time.Time
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *InvitationRequest) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InvitationRequest) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
 	return o.Expires, true
@@ -89,7 +92,7 @@ func (o *InvitationRequest) GetExpiresOk() (*time.Time, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *InvitationRequest) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && !IsNil(o.Expires) {
 		return true
 	}
 
@@ -103,7 +106,7 @@ func (o *InvitationRequest) SetExpires(v time.Time) {
 
 // GetFixedData returns the FixedData field value if set, zero value otherwise.
 func (o *InvitationRequest) GetFixedData() map[string]interface{} {
-	if o == nil || o.FixedData == nil {
+	if o == nil || IsNil(o.FixedData) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -113,15 +116,15 @@ func (o *InvitationRequest) GetFixedData() map[string]interface{} {
 // GetFixedDataOk returns a tuple with the FixedData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InvitationRequest) GetFixedDataOk() (map[string]interface{}, bool) {
-	if o == nil || o.FixedData == nil {
-		return nil, false
+	if o == nil || IsNil(o.FixedData) {
+		return map[string]interface{}{}, false
 	}
 	return o.FixedData, true
 }
 
 // HasFixedData returns a boolean if a field has been set.
 func (o *InvitationRequest) HasFixedData() bool {
-	if o != nil && o.FixedData != nil {
+	if o != nil && !IsNil(o.FixedData) {
 		return true
 	}
 
@@ -135,7 +138,7 @@ func (o *InvitationRequest) SetFixedData(v map[string]interface{}) {
 
 // GetSingleUse returns the SingleUse field value if set, zero value otherwise.
 func (o *InvitationRequest) GetSingleUse() bool {
-	if o == nil || o.SingleUse == nil {
+	if o == nil || IsNil(o.SingleUse) {
 		var ret bool
 		return ret
 	}
@@ -145,7 +148,7 @@ func (o *InvitationRequest) GetSingleUse() bool {
 // GetSingleUseOk returns a tuple with the SingleUse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InvitationRequest) GetSingleUseOk() (*bool, bool) {
-	if o == nil || o.SingleUse == nil {
+	if o == nil || IsNil(o.SingleUse) {
 		return nil, false
 	}
 	return o.SingleUse, true
@@ -153,7 +156,7 @@ func (o *InvitationRequest) GetSingleUseOk() (*bool, bool) {
 
 // HasSingleUse returns a boolean if a field has been set.
 func (o *InvitationRequest) HasSingleUse() bool {
-	if o != nil && o.SingleUse != nil {
+	if o != nil && !IsNil(o.SingleUse) {
 		return true
 	}
 
@@ -167,7 +170,7 @@ func (o *InvitationRequest) SetSingleUse(v bool) {
 
 // GetFlow returns the Flow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InvitationRequest) GetFlow() string {
-	if o == nil || o.Flow.Get() == nil {
+	if o == nil || IsNil(o.Flow.Get()) {
 		var ret string
 		return ret
 	}
@@ -209,23 +212,29 @@ func (o *InvitationRequest) UnsetFlow() {
 }
 
 func (o InvitationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.Expires != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o InvitationRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Expires) {
 		toSerialize["expires"] = o.Expires
 	}
-	if o.FixedData != nil {
+	if !IsNil(o.FixedData) {
 		toSerialize["fixed_data"] = o.FixedData
 	}
-	if o.SingleUse != nil {
+	if !IsNil(o.SingleUse) {
 		toSerialize["single_use"] = o.SingleUse
 	}
 	if o.Flow.IsSet() {
 		toSerialize["flow"] = o.Flow.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableInvitationRequest struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedLDAPPropertyMappingRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedLDAPPropertyMappingRequest{}
+
 // PatchedLDAPPropertyMappingRequest LDAP PropertyMapping Serializer
 type PatchedLDAPPropertyMappingRequest struct {
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
@@ -43,7 +46,7 @@ func NewPatchedLDAPPropertyMappingRequestWithDefaults() *PatchedLDAPPropertyMapp
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedLDAPPropertyMappingRequest) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *PatchedLDAPPropertyMappingRequest) UnsetManaged() {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedLDAPPropertyMappingRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -96,7 +99,7 @@ func (o *PatchedLDAPPropertyMappingRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedLDAPPropertyMappingRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -104,7 +107,7 @@ func (o *PatchedLDAPPropertyMappingRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedLDAPPropertyMappingRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *PatchedLDAPPropertyMappingRequest) SetName(v string) {
 
 // GetExpression returns the Expression field value if set, zero value otherwise.
 func (o *PatchedLDAPPropertyMappingRequest) GetExpression() string {
-	if o == nil || o.Expression == nil {
+	if o == nil || IsNil(o.Expression) {
 		var ret string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *PatchedLDAPPropertyMappingRequest) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedLDAPPropertyMappingRequest) GetExpressionOk() (*string, bool) {
-	if o == nil || o.Expression == nil {
+	if o == nil || IsNil(o.Expression) {
 		return nil, false
 	}
 	return o.Expression, true
@@ -136,7 +139,7 @@ func (o *PatchedLDAPPropertyMappingRequest) GetExpressionOk() (*string, bool) {
 
 // HasExpression returns a boolean if a field has been set.
 func (o *PatchedLDAPPropertyMappingRequest) HasExpression() bool {
-	if o != nil && o.Expression != nil {
+	if o != nil && !IsNil(o.Expression) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *PatchedLDAPPropertyMappingRequest) SetExpression(v string) {
 
 // GetObjectField returns the ObjectField field value if set, zero value otherwise.
 func (o *PatchedLDAPPropertyMappingRequest) GetObjectField() string {
-	if o == nil || o.ObjectField == nil {
+	if o == nil || IsNil(o.ObjectField) {
 		var ret string
 		return ret
 	}
@@ -160,7 +163,7 @@ func (o *PatchedLDAPPropertyMappingRequest) GetObjectField() string {
 // GetObjectFieldOk returns a tuple with the ObjectField field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedLDAPPropertyMappingRequest) GetObjectFieldOk() (*string, bool) {
-	if o == nil || o.ObjectField == nil {
+	if o == nil || IsNil(o.ObjectField) {
 		return nil, false
 	}
 	return o.ObjectField, true
@@ -168,7 +171,7 @@ func (o *PatchedLDAPPropertyMappingRequest) GetObjectFieldOk() (*string, bool) {
 
 // HasObjectField returns a boolean if a field has been set.
 func (o *PatchedLDAPPropertyMappingRequest) HasObjectField() bool {
-	if o != nil && o.ObjectField != nil {
+	if o != nil && !IsNil(o.ObjectField) {
 		return true
 	}
 
@@ -181,20 +184,28 @@ func (o *PatchedLDAPPropertyMappingRequest) SetObjectField(v string) {
 }
 
 func (o PatchedLDAPPropertyMappingRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedLDAPPropertyMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Expression != nil {
+	if !IsNil(o.Expression) {
 		toSerialize["expression"] = o.Expression
 	}
-	if o.ObjectField != nil {
+	if !IsNil(o.ObjectField) {
 		toSerialize["object_field"] = o.ObjectField
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedLDAPPropertyMappingRequest struct {

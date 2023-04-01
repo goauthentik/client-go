@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PasswordPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PasswordPolicy{}
+
 // PasswordPolicy Password Policy Serializer
 type PasswordPolicy struct {
 	Pk   string `json:"pk"`
@@ -123,7 +126,7 @@ func (o *PasswordPolicy) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetExecutionLogging() bool {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		var ret bool
 		return ret
 	}
@@ -133,7 +136,7 @@ func (o *PasswordPolicy) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -141,7 +144,7 @@ func (o *PasswordPolicy) GetExecutionLoggingOk() (*bool, bool) {
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *PasswordPolicy) HasExecutionLogging() bool {
-	if o != nil && o.ExecutionLogging != nil {
+	if o != nil && !IsNil(o.ExecutionLogging) {
 		return true
 	}
 
@@ -275,7 +278,7 @@ func (o *PasswordPolicy) SetBoundTo(v int32) {
 
 // GetPasswordField returns the PasswordField field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetPasswordField() string {
-	if o == nil || o.PasswordField == nil {
+	if o == nil || IsNil(o.PasswordField) {
 		var ret string
 		return ret
 	}
@@ -285,7 +288,7 @@ func (o *PasswordPolicy) GetPasswordField() string {
 // GetPasswordFieldOk returns a tuple with the PasswordField field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetPasswordFieldOk() (*string, bool) {
-	if o == nil || o.PasswordField == nil {
+	if o == nil || IsNil(o.PasswordField) {
 		return nil, false
 	}
 	return o.PasswordField, true
@@ -293,7 +296,7 @@ func (o *PasswordPolicy) GetPasswordFieldOk() (*string, bool) {
 
 // HasPasswordField returns a boolean if a field has been set.
 func (o *PasswordPolicy) HasPasswordField() bool {
-	if o != nil && o.PasswordField != nil {
+	if o != nil && !IsNil(o.PasswordField) {
 		return true
 	}
 
@@ -307,7 +310,7 @@ func (o *PasswordPolicy) SetPasswordField(v string) {
 
 // GetAmountDigits returns the AmountDigits field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetAmountDigits() int32 {
-	if o == nil || o.AmountDigits == nil {
+	if o == nil || IsNil(o.AmountDigits) {
 		var ret int32
 		return ret
 	}
@@ -317,7 +320,7 @@ func (o *PasswordPolicy) GetAmountDigits() int32 {
 // GetAmountDigitsOk returns a tuple with the AmountDigits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetAmountDigitsOk() (*int32, bool) {
-	if o == nil || o.AmountDigits == nil {
+	if o == nil || IsNil(o.AmountDigits) {
 		return nil, false
 	}
 	return o.AmountDigits, true
@@ -325,7 +328,7 @@ func (o *PasswordPolicy) GetAmountDigitsOk() (*int32, bool) {
 
 // HasAmountDigits returns a boolean if a field has been set.
 func (o *PasswordPolicy) HasAmountDigits() bool {
-	if o != nil && o.AmountDigits != nil {
+	if o != nil && !IsNil(o.AmountDigits) {
 		return true
 	}
 
@@ -339,7 +342,7 @@ func (o *PasswordPolicy) SetAmountDigits(v int32) {
 
 // GetAmountUppercase returns the AmountUppercase field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetAmountUppercase() int32 {
-	if o == nil || o.AmountUppercase == nil {
+	if o == nil || IsNil(o.AmountUppercase) {
 		var ret int32
 		return ret
 	}
@@ -349,7 +352,7 @@ func (o *PasswordPolicy) GetAmountUppercase() int32 {
 // GetAmountUppercaseOk returns a tuple with the AmountUppercase field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetAmountUppercaseOk() (*int32, bool) {
-	if o == nil || o.AmountUppercase == nil {
+	if o == nil || IsNil(o.AmountUppercase) {
 		return nil, false
 	}
 	return o.AmountUppercase, true
@@ -357,7 +360,7 @@ func (o *PasswordPolicy) GetAmountUppercaseOk() (*int32, bool) {
 
 // HasAmountUppercase returns a boolean if a field has been set.
 func (o *PasswordPolicy) HasAmountUppercase() bool {
-	if o != nil && o.AmountUppercase != nil {
+	if o != nil && !IsNil(o.AmountUppercase) {
 		return true
 	}
 
@@ -371,7 +374,7 @@ func (o *PasswordPolicy) SetAmountUppercase(v int32) {
 
 // GetAmountLowercase returns the AmountLowercase field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetAmountLowercase() int32 {
-	if o == nil || o.AmountLowercase == nil {
+	if o == nil || IsNil(o.AmountLowercase) {
 		var ret int32
 		return ret
 	}
@@ -381,7 +384,7 @@ func (o *PasswordPolicy) GetAmountLowercase() int32 {
 // GetAmountLowercaseOk returns a tuple with the AmountLowercase field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetAmountLowercaseOk() (*int32, bool) {
-	if o == nil || o.AmountLowercase == nil {
+	if o == nil || IsNil(o.AmountLowercase) {
 		return nil, false
 	}
 	return o.AmountLowercase, true
@@ -389,7 +392,7 @@ func (o *PasswordPolicy) GetAmountLowercaseOk() (*int32, bool) {
 
 // HasAmountLowercase returns a boolean if a field has been set.
 func (o *PasswordPolicy) HasAmountLowercase() bool {
-	if o != nil && o.AmountLowercase != nil {
+	if o != nil && !IsNil(o.AmountLowercase) {
 		return true
 	}
 
@@ -403,7 +406,7 @@ func (o *PasswordPolicy) SetAmountLowercase(v int32) {
 
 // GetAmountSymbols returns the AmountSymbols field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetAmountSymbols() int32 {
-	if o == nil || o.AmountSymbols == nil {
+	if o == nil || IsNil(o.AmountSymbols) {
 		var ret int32
 		return ret
 	}
@@ -413,7 +416,7 @@ func (o *PasswordPolicy) GetAmountSymbols() int32 {
 // GetAmountSymbolsOk returns a tuple with the AmountSymbols field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetAmountSymbolsOk() (*int32, bool) {
-	if o == nil || o.AmountSymbols == nil {
+	if o == nil || IsNil(o.AmountSymbols) {
 		return nil, false
 	}
 	return o.AmountSymbols, true
@@ -421,7 +424,7 @@ func (o *PasswordPolicy) GetAmountSymbolsOk() (*int32, bool) {
 
 // HasAmountSymbols returns a boolean if a field has been set.
 func (o *PasswordPolicy) HasAmountSymbols() bool {
-	if o != nil && o.AmountSymbols != nil {
+	if o != nil && !IsNil(o.AmountSymbols) {
 		return true
 	}
 
@@ -435,7 +438,7 @@ func (o *PasswordPolicy) SetAmountSymbols(v int32) {
 
 // GetLengthMin returns the LengthMin field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetLengthMin() int32 {
-	if o == nil || o.LengthMin == nil {
+	if o == nil || IsNil(o.LengthMin) {
 		var ret int32
 		return ret
 	}
@@ -445,7 +448,7 @@ func (o *PasswordPolicy) GetLengthMin() int32 {
 // GetLengthMinOk returns a tuple with the LengthMin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetLengthMinOk() (*int32, bool) {
-	if o == nil || o.LengthMin == nil {
+	if o == nil || IsNil(o.LengthMin) {
 		return nil, false
 	}
 	return o.LengthMin, true
@@ -453,7 +456,7 @@ func (o *PasswordPolicy) GetLengthMinOk() (*int32, bool) {
 
 // HasLengthMin returns a boolean if a field has been set.
 func (o *PasswordPolicy) HasLengthMin() bool {
-	if o != nil && o.LengthMin != nil {
+	if o != nil && !IsNil(o.LengthMin) {
 		return true
 	}
 
@@ -467,7 +470,7 @@ func (o *PasswordPolicy) SetLengthMin(v int32) {
 
 // GetSymbolCharset returns the SymbolCharset field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetSymbolCharset() string {
-	if o == nil || o.SymbolCharset == nil {
+	if o == nil || IsNil(o.SymbolCharset) {
 		var ret string
 		return ret
 	}
@@ -477,7 +480,7 @@ func (o *PasswordPolicy) GetSymbolCharset() string {
 // GetSymbolCharsetOk returns a tuple with the SymbolCharset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetSymbolCharsetOk() (*string, bool) {
-	if o == nil || o.SymbolCharset == nil {
+	if o == nil || IsNil(o.SymbolCharset) {
 		return nil, false
 	}
 	return o.SymbolCharset, true
@@ -485,7 +488,7 @@ func (o *PasswordPolicy) GetSymbolCharsetOk() (*string, bool) {
 
 // HasSymbolCharset returns a boolean if a field has been set.
 func (o *PasswordPolicy) HasSymbolCharset() bool {
-	if o != nil && o.SymbolCharset != nil {
+	if o != nil && !IsNil(o.SymbolCharset) {
 		return true
 	}
 
@@ -499,7 +502,7 @@ func (o *PasswordPolicy) SetSymbolCharset(v string) {
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetErrorMessage() string {
-	if o == nil || o.ErrorMessage == nil {
+	if o == nil || IsNil(o.ErrorMessage) {
 		var ret string
 		return ret
 	}
@@ -509,7 +512,7 @@ func (o *PasswordPolicy) GetErrorMessage() string {
 // GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetErrorMessageOk() (*string, bool) {
-	if o == nil || o.ErrorMessage == nil {
+	if o == nil || IsNil(o.ErrorMessage) {
 		return nil, false
 	}
 	return o.ErrorMessage, true
@@ -517,7 +520,7 @@ func (o *PasswordPolicy) GetErrorMessageOk() (*string, bool) {
 
 // HasErrorMessage returns a boolean if a field has been set.
 func (o *PasswordPolicy) HasErrorMessage() bool {
-	if o != nil && o.ErrorMessage != nil {
+	if o != nil && !IsNil(o.ErrorMessage) {
 		return true
 	}
 
@@ -531,7 +534,7 @@ func (o *PasswordPolicy) SetErrorMessage(v string) {
 
 // GetCheckStaticRules returns the CheckStaticRules field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetCheckStaticRules() bool {
-	if o == nil || o.CheckStaticRules == nil {
+	if o == nil || IsNil(o.CheckStaticRules) {
 		var ret bool
 		return ret
 	}
@@ -541,7 +544,7 @@ func (o *PasswordPolicy) GetCheckStaticRules() bool {
 // GetCheckStaticRulesOk returns a tuple with the CheckStaticRules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetCheckStaticRulesOk() (*bool, bool) {
-	if o == nil || o.CheckStaticRules == nil {
+	if o == nil || IsNil(o.CheckStaticRules) {
 		return nil, false
 	}
 	return o.CheckStaticRules, true
@@ -549,7 +552,7 @@ func (o *PasswordPolicy) GetCheckStaticRulesOk() (*bool, bool) {
 
 // HasCheckStaticRules returns a boolean if a field has been set.
 func (o *PasswordPolicy) HasCheckStaticRules() bool {
-	if o != nil && o.CheckStaticRules != nil {
+	if o != nil && !IsNil(o.CheckStaticRules) {
 		return true
 	}
 
@@ -563,7 +566,7 @@ func (o *PasswordPolicy) SetCheckStaticRules(v bool) {
 
 // GetCheckHaveIBeenPwned returns the CheckHaveIBeenPwned field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetCheckHaveIBeenPwned() bool {
-	if o == nil || o.CheckHaveIBeenPwned == nil {
+	if o == nil || IsNil(o.CheckHaveIBeenPwned) {
 		var ret bool
 		return ret
 	}
@@ -573,7 +576,7 @@ func (o *PasswordPolicy) GetCheckHaveIBeenPwned() bool {
 // GetCheckHaveIBeenPwnedOk returns a tuple with the CheckHaveIBeenPwned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetCheckHaveIBeenPwnedOk() (*bool, bool) {
-	if o == nil || o.CheckHaveIBeenPwned == nil {
+	if o == nil || IsNil(o.CheckHaveIBeenPwned) {
 		return nil, false
 	}
 	return o.CheckHaveIBeenPwned, true
@@ -581,7 +584,7 @@ func (o *PasswordPolicy) GetCheckHaveIBeenPwnedOk() (*bool, bool) {
 
 // HasCheckHaveIBeenPwned returns a boolean if a field has been set.
 func (o *PasswordPolicy) HasCheckHaveIBeenPwned() bool {
-	if o != nil && o.CheckHaveIBeenPwned != nil {
+	if o != nil && !IsNil(o.CheckHaveIBeenPwned) {
 		return true
 	}
 
@@ -595,7 +598,7 @@ func (o *PasswordPolicy) SetCheckHaveIBeenPwned(v bool) {
 
 // GetCheckZxcvbn returns the CheckZxcvbn field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetCheckZxcvbn() bool {
-	if o == nil || o.CheckZxcvbn == nil {
+	if o == nil || IsNil(o.CheckZxcvbn) {
 		var ret bool
 		return ret
 	}
@@ -605,7 +608,7 @@ func (o *PasswordPolicy) GetCheckZxcvbn() bool {
 // GetCheckZxcvbnOk returns a tuple with the CheckZxcvbn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetCheckZxcvbnOk() (*bool, bool) {
-	if o == nil || o.CheckZxcvbn == nil {
+	if o == nil || IsNil(o.CheckZxcvbn) {
 		return nil, false
 	}
 	return o.CheckZxcvbn, true
@@ -613,7 +616,7 @@ func (o *PasswordPolicy) GetCheckZxcvbnOk() (*bool, bool) {
 
 // HasCheckZxcvbn returns a boolean if a field has been set.
 func (o *PasswordPolicy) HasCheckZxcvbn() bool {
-	if o != nil && o.CheckZxcvbn != nil {
+	if o != nil && !IsNil(o.CheckZxcvbn) {
 		return true
 	}
 
@@ -627,7 +630,7 @@ func (o *PasswordPolicy) SetCheckZxcvbn(v bool) {
 
 // GetHibpAllowedCount returns the HibpAllowedCount field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetHibpAllowedCount() int32 {
-	if o == nil || o.HibpAllowedCount == nil {
+	if o == nil || IsNil(o.HibpAllowedCount) {
 		var ret int32
 		return ret
 	}
@@ -637,7 +640,7 @@ func (o *PasswordPolicy) GetHibpAllowedCount() int32 {
 // GetHibpAllowedCountOk returns a tuple with the HibpAllowedCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetHibpAllowedCountOk() (*int32, bool) {
-	if o == nil || o.HibpAllowedCount == nil {
+	if o == nil || IsNil(o.HibpAllowedCount) {
 		return nil, false
 	}
 	return o.HibpAllowedCount, true
@@ -645,7 +648,7 @@ func (o *PasswordPolicy) GetHibpAllowedCountOk() (*int32, bool) {
 
 // HasHibpAllowedCount returns a boolean if a field has been set.
 func (o *PasswordPolicy) HasHibpAllowedCount() bool {
-	if o != nil && o.HibpAllowedCount != nil {
+	if o != nil && !IsNil(o.HibpAllowedCount) {
 		return true
 	}
 
@@ -659,7 +662,7 @@ func (o *PasswordPolicy) SetHibpAllowedCount(v int32) {
 
 // GetZxcvbnScoreThreshold returns the ZxcvbnScoreThreshold field value if set, zero value otherwise.
 func (o *PasswordPolicy) GetZxcvbnScoreThreshold() int32 {
-	if o == nil || o.ZxcvbnScoreThreshold == nil {
+	if o == nil || IsNil(o.ZxcvbnScoreThreshold) {
 		var ret int32
 		return ret
 	}
@@ -669,7 +672,7 @@ func (o *PasswordPolicy) GetZxcvbnScoreThreshold() int32 {
 // GetZxcvbnScoreThresholdOk returns a tuple with the ZxcvbnScoreThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicy) GetZxcvbnScoreThresholdOk() (*int32, bool) {
-	if o == nil || o.ZxcvbnScoreThreshold == nil {
+	if o == nil || IsNil(o.ZxcvbnScoreThreshold) {
 		return nil, false
 	}
 	return o.ZxcvbnScoreThreshold, true
@@ -677,7 +680,7 @@ func (o *PasswordPolicy) GetZxcvbnScoreThresholdOk() (*int32, bool) {
 
 // HasZxcvbnScoreThreshold returns a boolean if a field has been set.
 func (o *PasswordPolicy) HasZxcvbnScoreThreshold() bool {
-	if o != nil && o.ZxcvbnScoreThreshold != nil {
+	if o != nil && !IsNil(o.ZxcvbnScoreThreshold) {
 		return true
 	}
 
@@ -690,71 +693,65 @@ func (o *PasswordPolicy) SetZxcvbnScoreThreshold(v int32) {
 }
 
 func (o PasswordPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.ExecutionLogging != nil {
-		toSerialize["execution_logging"] = o.ExecutionLogging
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if true {
-		toSerialize["bound_to"] = o.BoundTo
-	}
-	if o.PasswordField != nil {
-		toSerialize["password_field"] = o.PasswordField
-	}
-	if o.AmountDigits != nil {
-		toSerialize["amount_digits"] = o.AmountDigits
-	}
-	if o.AmountUppercase != nil {
-		toSerialize["amount_uppercase"] = o.AmountUppercase
-	}
-	if o.AmountLowercase != nil {
-		toSerialize["amount_lowercase"] = o.AmountLowercase
-	}
-	if o.AmountSymbols != nil {
-		toSerialize["amount_symbols"] = o.AmountSymbols
-	}
-	if o.LengthMin != nil {
-		toSerialize["length_min"] = o.LengthMin
-	}
-	if o.SymbolCharset != nil {
-		toSerialize["symbol_charset"] = o.SymbolCharset
-	}
-	if o.ErrorMessage != nil {
-		toSerialize["error_message"] = o.ErrorMessage
-	}
-	if o.CheckStaticRules != nil {
-		toSerialize["check_static_rules"] = o.CheckStaticRules
-	}
-	if o.CheckHaveIBeenPwned != nil {
-		toSerialize["check_have_i_been_pwned"] = o.CheckHaveIBeenPwned
-	}
-	if o.CheckZxcvbn != nil {
-		toSerialize["check_zxcvbn"] = o.CheckZxcvbn
-	}
-	if o.HibpAllowedCount != nil {
-		toSerialize["hibp_allowed_count"] = o.HibpAllowedCount
-	}
-	if o.ZxcvbnScoreThreshold != nil {
-		toSerialize["zxcvbn_score_threshold"] = o.ZxcvbnScoreThreshold
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PasswordPolicy) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
+	toSerialize["name"] = o.Name
+	if !IsNil(o.ExecutionLogging) {
+		toSerialize["execution_logging"] = o.ExecutionLogging
+	}
+	// skip: component is readOnly
+	// skip: verbose_name is readOnly
+	// skip: verbose_name_plural is readOnly
+	// skip: meta_model_name is readOnly
+	// skip: bound_to is readOnly
+	if !IsNil(o.PasswordField) {
+		toSerialize["password_field"] = o.PasswordField
+	}
+	if !IsNil(o.AmountDigits) {
+		toSerialize["amount_digits"] = o.AmountDigits
+	}
+	if !IsNil(o.AmountUppercase) {
+		toSerialize["amount_uppercase"] = o.AmountUppercase
+	}
+	if !IsNil(o.AmountLowercase) {
+		toSerialize["amount_lowercase"] = o.AmountLowercase
+	}
+	if !IsNil(o.AmountSymbols) {
+		toSerialize["amount_symbols"] = o.AmountSymbols
+	}
+	if !IsNil(o.LengthMin) {
+		toSerialize["length_min"] = o.LengthMin
+	}
+	if !IsNil(o.SymbolCharset) {
+		toSerialize["symbol_charset"] = o.SymbolCharset
+	}
+	if !IsNil(o.ErrorMessage) {
+		toSerialize["error_message"] = o.ErrorMessage
+	}
+	if !IsNil(o.CheckStaticRules) {
+		toSerialize["check_static_rules"] = o.CheckStaticRules
+	}
+	if !IsNil(o.CheckHaveIBeenPwned) {
+		toSerialize["check_have_i_been_pwned"] = o.CheckHaveIBeenPwned
+	}
+	if !IsNil(o.CheckZxcvbn) {
+		toSerialize["check_zxcvbn"] = o.CheckZxcvbn
+	}
+	if !IsNil(o.HibpAllowedCount) {
+		toSerialize["hibp_allowed_count"] = o.HibpAllowedCount
+	}
+	if !IsNil(o.ZxcvbnScoreThreshold) {
+		toSerialize["zxcvbn_score_threshold"] = o.ZxcvbnScoreThreshold
+	}
+	return toSerialize, nil
 }
 
 type NullablePasswordPolicy struct {

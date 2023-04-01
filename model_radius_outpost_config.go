@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RadiusOutpostConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RadiusOutpostConfig{}
+
 // RadiusOutpostConfig RadiusProvider Serializer
 type RadiusOutpostConfig struct {
 	Pk              int32  `json:"pk"`
@@ -146,7 +149,7 @@ func (o *RadiusOutpostConfig) SetAuthFlowSlug(v string) {
 
 // GetClientNetworks returns the ClientNetworks field value if set, zero value otherwise.
 func (o *RadiusOutpostConfig) GetClientNetworks() string {
-	if o == nil || o.ClientNetworks == nil {
+	if o == nil || IsNil(o.ClientNetworks) {
 		var ret string
 		return ret
 	}
@@ -156,7 +159,7 @@ func (o *RadiusOutpostConfig) GetClientNetworks() string {
 // GetClientNetworksOk returns a tuple with the ClientNetworks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RadiusOutpostConfig) GetClientNetworksOk() (*string, bool) {
-	if o == nil || o.ClientNetworks == nil {
+	if o == nil || IsNil(o.ClientNetworks) {
 		return nil, false
 	}
 	return o.ClientNetworks, true
@@ -164,7 +167,7 @@ func (o *RadiusOutpostConfig) GetClientNetworksOk() (*string, bool) {
 
 // HasClientNetworks returns a boolean if a field has been set.
 func (o *RadiusOutpostConfig) HasClientNetworks() bool {
-	if o != nil && o.ClientNetworks != nil {
+	if o != nil && !IsNil(o.ClientNetworks) {
 		return true
 	}
 
@@ -178,7 +181,7 @@ func (o *RadiusOutpostConfig) SetClientNetworks(v string) {
 
 // GetSharedSecret returns the SharedSecret field value if set, zero value otherwise.
 func (o *RadiusOutpostConfig) GetSharedSecret() string {
-	if o == nil || o.SharedSecret == nil {
+	if o == nil || IsNil(o.SharedSecret) {
 		var ret string
 		return ret
 	}
@@ -188,7 +191,7 @@ func (o *RadiusOutpostConfig) GetSharedSecret() string {
 // GetSharedSecretOk returns a tuple with the SharedSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RadiusOutpostConfig) GetSharedSecretOk() (*string, bool) {
-	if o == nil || o.SharedSecret == nil {
+	if o == nil || IsNil(o.SharedSecret) {
 		return nil, false
 	}
 	return o.SharedSecret, true
@@ -196,7 +199,7 @@ func (o *RadiusOutpostConfig) GetSharedSecretOk() (*string, bool) {
 
 // HasSharedSecret returns a boolean if a field has been set.
 func (o *RadiusOutpostConfig) HasSharedSecret() bool {
-	if o != nil && o.SharedSecret != nil {
+	if o != nil && !IsNil(o.SharedSecret) {
 		return true
 	}
 
@@ -209,26 +212,26 @@ func (o *RadiusOutpostConfig) SetSharedSecret(v string) {
 }
 
 func (o RadiusOutpostConfig) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["application_slug"] = o.ApplicationSlug
-	}
-	if true {
-		toSerialize["auth_flow_slug"] = o.AuthFlowSlug
-	}
-	if o.ClientNetworks != nil {
-		toSerialize["client_networks"] = o.ClientNetworks
-	}
-	if o.SharedSecret != nil {
-		toSerialize["shared_secret"] = o.SharedSecret
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RadiusOutpostConfig) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
+	toSerialize["name"] = o.Name
+	toSerialize["application_slug"] = o.ApplicationSlug
+	toSerialize["auth_flow_slug"] = o.AuthFlowSlug
+	if !IsNil(o.ClientNetworks) {
+		toSerialize["client_networks"] = o.ClientNetworks
+	}
+	if !IsNil(o.SharedSecret) {
+		toSerialize["shared_secret"] = o.SharedSecret
+	}
+	return toSerialize, nil
 }
 
 type NullableRadiusOutpostConfig struct {

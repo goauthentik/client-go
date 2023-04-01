@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SCIMMappingRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SCIMMappingRequest{}
+
 // SCIMMappingRequest SCIMMapping Serializer
 type SCIMMappingRequest struct {
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
@@ -44,7 +47,7 @@ func NewSCIMMappingRequestWithDefaults() *SCIMMappingRequest {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SCIMMappingRequest) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -134,17 +137,21 @@ func (o *SCIMMappingRequest) SetExpression(v string) {
 }
 
 func (o SCIMMappingRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SCIMMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["expression"] = o.Expression
-	}
-	return json.Marshal(toSerialize)
+	toSerialize["name"] = o.Name
+	toSerialize["expression"] = o.Expression
+	return toSerialize, nil
 }
 
 type NullableSCIMMappingRequest struct {

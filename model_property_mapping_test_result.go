@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PropertyMappingTestResult type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PropertyMappingTestResult{}
+
 // PropertyMappingTestResult Result of a Property-mapping test
 type PropertyMappingTestResult struct {
 	Result     string `json:"result"`
@@ -89,14 +92,18 @@ func (o *PropertyMappingTestResult) SetSuccessful(v bool) {
 }
 
 func (o PropertyMappingTestResult) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["result"] = o.Result
-	}
-	if true {
-		toSerialize["successful"] = o.Successful
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PropertyMappingTestResult) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: result is readOnly
+	// skip: successful is readOnly
+	return toSerialize, nil
 }
 
 type NullablePropertyMappingTestResult struct {

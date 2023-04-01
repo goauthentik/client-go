@@ -12,13 +12,13 @@ Name | Type | Description | Notes
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
-**Digits** | [**NullableDigitsEnum**](DigitsEnum.md) |  | 
+**Digits** | [**DigitsEnum**](DigitsEnum.md) |  | 
 
 ## Methods
 
 ### NewAuthenticatorTOTPStage
 
-`func NewAuthenticatorTOTPStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, digits NullableDigitsEnum, ) *AuthenticatorTOTPStage`
+`func NewAuthenticatorTOTPStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, digits DigitsEnum, ) *AuthenticatorTOTPStage`
 
 NewAuthenticatorTOTPStage instantiates a new AuthenticatorTOTPStage object
 This constructor will assign default values to properties that have it defined,
@@ -233,16 +233,6 @@ and a boolean to check if the value has been set.
 SetDigits sets Digits field to given value.
 
 
-### SetDigitsNil
-
-`func (o *AuthenticatorTOTPStage) SetDigitsNil(b bool)`
-
- SetDigitsNil sets the value for Digits to be an explicit nil
-
-### UnsetDigits
-`func (o *AuthenticatorTOTPStage) UnsetDigits()`
-
-UnsetDigits ensures that no value is present for Digits, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

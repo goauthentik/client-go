@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CaptchaChallengeResponseRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CaptchaChallengeResponseRequest{}
+
 // CaptchaChallengeResponseRequest Validate captcha token
 type CaptchaChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
@@ -45,7 +48,7 @@ func NewCaptchaChallengeResponseRequestWithDefaults() *CaptchaChallengeResponseR
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *CaptchaChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *CaptchaChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -63,7 +66,7 @@ func (o *CaptchaChallengeResponseRequest) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *CaptchaChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -100,14 +103,20 @@ func (o *CaptchaChallengeResponseRequest) SetToken(v string) {
 }
 
 func (o CaptchaChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["token"] = o.Token
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CaptchaChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	toSerialize["token"] = o.Token
+	return toSerialize, nil
 }
 
 type NullableCaptchaChallengeResponseRequest struct {

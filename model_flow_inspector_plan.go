@@ -15,10 +15,13 @@ import (
 	"encoding/json"
 )
 
+// checks if the FlowInspectorPlan type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FlowInspectorPlan{}
+
 // FlowInspectorPlan Serializer for an active FlowPlan
 type FlowInspectorPlan struct {
-	CurrentStage     FlowInspectorPlanCurrentStage `json:"current_stage"`
-	NextPlannedStage FlowInspectorPlanCurrentStage `json:"next_planned_stage"`
+	CurrentStage     FlowStageBinding `json:"current_stage"`
+	NextPlannedStage FlowStageBinding `json:"next_planned_stage"`
 	// Get the plan's context, sanitized
 	PlanContext map[string]interface{} `json:"plan_context"`
 	// Get a unique session ID
@@ -29,7 +32,7 @@ type FlowInspectorPlan struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFlowInspectorPlan(currentStage FlowInspectorPlanCurrentStage, nextPlannedStage FlowInspectorPlanCurrentStage, planContext map[string]interface{}, sessionId string) *FlowInspectorPlan {
+func NewFlowInspectorPlan(currentStage FlowStageBinding, nextPlannedStage FlowStageBinding, planContext map[string]interface{}, sessionId string) *FlowInspectorPlan {
 	this := FlowInspectorPlan{}
 	this.CurrentStage = currentStage
 	this.NextPlannedStage = nextPlannedStage
@@ -47,9 +50,9 @@ func NewFlowInspectorPlanWithDefaults() *FlowInspectorPlan {
 }
 
 // GetCurrentStage returns the CurrentStage field value
-func (o *FlowInspectorPlan) GetCurrentStage() FlowInspectorPlanCurrentStage {
+func (o *FlowInspectorPlan) GetCurrentStage() FlowStageBinding {
 	if o == nil {
-		var ret FlowInspectorPlanCurrentStage
+		var ret FlowStageBinding
 		return ret
 	}
 
@@ -58,7 +61,7 @@ func (o *FlowInspectorPlan) GetCurrentStage() FlowInspectorPlanCurrentStage {
 
 // GetCurrentStageOk returns a tuple with the CurrentStage field value
 // and a boolean to check if the value has been set.
-func (o *FlowInspectorPlan) GetCurrentStageOk() (*FlowInspectorPlanCurrentStage, bool) {
+func (o *FlowInspectorPlan) GetCurrentStageOk() (*FlowStageBinding, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,14 +69,14 @@ func (o *FlowInspectorPlan) GetCurrentStageOk() (*FlowInspectorPlanCurrentStage,
 }
 
 // SetCurrentStage sets field value
-func (o *FlowInspectorPlan) SetCurrentStage(v FlowInspectorPlanCurrentStage) {
+func (o *FlowInspectorPlan) SetCurrentStage(v FlowStageBinding) {
 	o.CurrentStage = v
 }
 
 // GetNextPlannedStage returns the NextPlannedStage field value
-func (o *FlowInspectorPlan) GetNextPlannedStage() FlowInspectorPlanCurrentStage {
+func (o *FlowInspectorPlan) GetNextPlannedStage() FlowStageBinding {
 	if o == nil {
-		var ret FlowInspectorPlanCurrentStage
+		var ret FlowStageBinding
 		return ret
 	}
 
@@ -82,7 +85,7 @@ func (o *FlowInspectorPlan) GetNextPlannedStage() FlowInspectorPlanCurrentStage 
 
 // GetNextPlannedStageOk returns a tuple with the NextPlannedStage field value
 // and a boolean to check if the value has been set.
-func (o *FlowInspectorPlan) GetNextPlannedStageOk() (*FlowInspectorPlanCurrentStage, bool) {
+func (o *FlowInspectorPlan) GetNextPlannedStageOk() (*FlowStageBinding, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -90,7 +93,7 @@ func (o *FlowInspectorPlan) GetNextPlannedStageOk() (*FlowInspectorPlanCurrentSt
 }
 
 // SetNextPlannedStage sets field value
-func (o *FlowInspectorPlan) SetNextPlannedStage(v FlowInspectorPlanCurrentStage) {
+func (o *FlowInspectorPlan) SetNextPlannedStage(v FlowStageBinding) {
 	o.NextPlannedStage = v
 }
 
@@ -108,7 +111,7 @@ func (o *FlowInspectorPlan) GetPlanContext() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *FlowInspectorPlan) GetPlanContextOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.PlanContext, true
 }
@@ -143,20 +146,20 @@ func (o *FlowInspectorPlan) SetSessionId(v string) {
 }
 
 func (o FlowInspectorPlan) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["current_stage"] = o.CurrentStage
-	}
-	if true {
-		toSerialize["next_planned_stage"] = o.NextPlannedStage
-	}
-	if true {
-		toSerialize["plan_context"] = o.PlanContext
-	}
-	if true {
-		toSerialize["session_id"] = o.SessionId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o FlowInspectorPlan) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: current_stage is readOnly
+	// skip: next_planned_stage is readOnly
+	// skip: plan_context is readOnly
+	// skip: session_id is readOnly
+	return toSerialize, nil
 }
 
 type NullableFlowInspectorPlan struct {

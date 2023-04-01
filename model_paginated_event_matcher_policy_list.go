@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PaginatedEventMatcherPolicyList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginatedEventMatcherPolicyList{}
+
 // PaginatedEventMatcherPolicyList struct for PaginatedEventMatcherPolicyList
 type PaginatedEventMatcherPolicyList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
@@ -89,14 +92,18 @@ func (o *PaginatedEventMatcherPolicyList) SetResults(v []EventMatcherPolicy) {
 }
 
 func (o PaginatedEventMatcherPolicyList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if true {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaginatedEventMatcherPolicyList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pagination"] = o.Pagination
+	toSerialize["results"] = o.Results
+	return toSerialize, nil
 }
 
 type NullablePaginatedEventMatcherPolicyList struct {

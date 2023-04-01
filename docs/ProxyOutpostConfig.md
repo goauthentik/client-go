@@ -11,14 +11,14 @@ Name | Type | Description | Notes
 **InternalHostSslValidation** | Pointer to **bool** | Validate SSL Certificates of upstream servers | [optional] 
 **ClientId** | Pointer to **string** |  | [optional] 
 **ClientSecret** | Pointer to **string** |  | [optional] 
-**OidcConfiguration** | [**ProxyOutpostConfigOidcConfiguration**](ProxyOutpostConfigOidcConfiguration.md) |  | 
+**OidcConfiguration** | [**OpenIDConnectConfiguration**](OpenIDConnectConfiguration.md) |  | [readonly] 
 **CookieSecret** | Pointer to **string** |  | [optional] 
 **Certificate** | Pointer to **NullableString** |  | [optional] 
 **SkipPathRegex** | Pointer to **string** | Regular expressions for which authentication is not required. Each new line is interpreted as a new Regular Expression. | [optional] 
 **BasicAuthEnabled** | Pointer to **bool** | Set a custom HTTP-Basic Authentication header based on values from authentik. | [optional] 
 **BasicAuthPasswordAttribute** | Pointer to **string** | User/Group Attribute used for the password part of the HTTP-Basic Header. | [optional] 
 **BasicAuthUserAttribute** | Pointer to **string** | User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user&#39;s Email address is used. | [optional] 
-**Mode** | Pointer to [**NullableProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.  * &#x60;proxy&#x60; - Proxy * &#x60;forward_single&#x60; - Forward Single * &#x60;forward_domain&#x60; - Forward Domain | [optional] 
+**Mode** | Pointer to [**ProxyMode**](ProxyMode.md) |  | [optional] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
 **AccessTokenValidity** | **NullableFloat64** | Get token validity as second count | [readonly] 
 **InterceptHeaderAuth** | Pointer to **bool** | When enabled, this provider will intercept the authorization header and authenticate requests based on its value. | [optional] 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewProxyOutpostConfig
 
-`func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration ProxyOutpostConfigOidcConfiguration, accessTokenValidity NullableFloat64, scopesToRequest []string, assignedApplicationSlug string, assignedApplicationName string, ) *ProxyOutpostConfig`
+`func NewProxyOutpostConfig(pk int32, name string, externalHost string, oidcConfiguration OpenIDConnectConfiguration, accessTokenValidity NullableFloat64, scopesToRequest []string, assignedApplicationSlug string, assignedApplicationName string, ) *ProxyOutpostConfig`
 
 NewProxyOutpostConfig instantiates a new ProxyOutpostConfig object
 This constructor will assign default values to properties that have it defined,
@@ -207,20 +207,20 @@ HasClientSecret returns a boolean if a field has been set.
 
 ### GetOidcConfiguration
 
-`func (o *ProxyOutpostConfig) GetOidcConfiguration() ProxyOutpostConfigOidcConfiguration`
+`func (o *ProxyOutpostConfig) GetOidcConfiguration() OpenIDConnectConfiguration`
 
 GetOidcConfiguration returns the OidcConfiguration field if non-nil, zero value otherwise.
 
 ### GetOidcConfigurationOk
 
-`func (o *ProxyOutpostConfig) GetOidcConfigurationOk() (*ProxyOutpostConfigOidcConfiguration, bool)`
+`func (o *ProxyOutpostConfig) GetOidcConfigurationOk() (*OpenIDConnectConfiguration, bool)`
 
 GetOidcConfigurationOk returns a tuple with the OidcConfiguration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOidcConfiguration
 
-`func (o *ProxyOutpostConfig) SetOidcConfiguration(v ProxyOutpostConfigOidcConfiguration)`
+`func (o *ProxyOutpostConfig) SetOidcConfiguration(v OpenIDConnectConfiguration)`
 
 SetOidcConfiguration sets OidcConfiguration field to given value.
 
@@ -410,16 +410,6 @@ SetMode sets Mode field to given value.
 
 HasMode returns a boolean if a field has been set.
 
-### SetModeNil
-
-`func (o *ProxyOutpostConfig) SetModeNil(b bool)`
-
- SetModeNil sets the value for Mode to be an explicit nil
-
-### UnsetMode
-`func (o *ProxyOutpostConfig) UnsetMode()`
-
-UnsetMode ensures that no value is present for Mode, not even an explicit nil
 ### GetCookieDomain
 
 `func (o *ProxyOutpostConfig) GetCookieDomain() string`

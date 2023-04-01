@@ -14,7 +14,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -121,9 +121,9 @@ func (a *OutpostsApiService) OutpostsInstancesCreateExecute(r ApiOutpostsInstanc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -140,6 +140,7 @@ func (a *OutpostsApiService) OutpostsInstancesCreateExecute(r ApiOutpostsInstanc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -150,6 +151,7 @@ func (a *OutpostsApiService) OutpostsInstancesCreateExecute(r ApiOutpostsInstanc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -253,9 +255,9 @@ func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieveExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -272,6 +274,7 @@ func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieveExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -282,6 +285,7 @@ func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieveExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -340,7 +344,7 @@ func (a *OutpostsApiService) OutpostsInstancesDestroyExecute(r ApiOutpostsInstan
 	}
 
 	localVarPath := localBasePath + "/outposts/instances/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -387,9 +391,9 @@ func (a *OutpostsApiService) OutpostsInstancesDestroyExecute(r ApiOutpostsInstan
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -406,6 +410,7 @@ func (a *OutpostsApiService) OutpostsInstancesDestroyExecute(r ApiOutpostsInstan
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -416,6 +421,7 @@ func (a *OutpostsApiService) OutpostsInstancesDestroyExecute(r ApiOutpostsInstan
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -529,49 +535,49 @@ func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsIns
 	}
 
 	localVarPath := localBasePath + "/outposts/instances/{uuid}/health/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.managedIcontains != nil {
-		localVarQueryParams.Add("managed__icontains", parameterToString(*r.managedIcontains, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "managed__icontains", r.managedIcontains, "")
 	}
 	if r.managedIexact != nil {
-		localVarQueryParams.Add("managed__iexact", parameterToString(*r.managedIexact, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "managed__iexact", r.managedIexact, "")
 	}
 	if r.nameIcontains != nil {
-		localVarQueryParams.Add("name__icontains", parameterToString(*r.nameIcontains, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name__icontains", r.nameIcontains, "")
 	}
 	if r.nameIexact != nil {
-		localVarQueryParams.Add("name__iexact", parameterToString(*r.nameIexact, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name__iexact", r.nameIexact, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.providersIsnull != nil {
-		localVarQueryParams.Add("providers__isnull", parameterToString(*r.providersIsnull, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "providers__isnull", r.providersIsnull, "")
 	}
 	if r.providersByPk != nil {
 		t := *r.providersByPk
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("providers_by_pk", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "providers_by_pk", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("providers_by_pk", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "providers_by_pk", t, "multi")
 		}
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.serviceConnectionNameIcontains != nil {
-		localVarQueryParams.Add("service_connection__name__icontains", parameterToString(*r.serviceConnectionNameIcontains, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "service_connection__name__icontains", r.serviceConnectionNameIcontains, "")
 	}
 	if r.serviceConnectionNameIexact != nil {
-		localVarQueryParams.Add("service_connection__name__iexact", parameterToString(*r.serviceConnectionNameIexact, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "service_connection__name__iexact", r.serviceConnectionNameIexact, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -614,9 +620,9 @@ func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsIns
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -633,6 +639,7 @@ func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsIns
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -643,6 +650,7 @@ func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsIns
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -782,48 +790,48 @@ func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstances
 	localVarFormParams := url.Values{}
 
 	if r.managedIcontains != nil {
-		localVarQueryParams.Add("managed__icontains", parameterToString(*r.managedIcontains, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "managed__icontains", r.managedIcontains, "")
 	}
 	if r.managedIexact != nil {
-		localVarQueryParams.Add("managed__iexact", parameterToString(*r.managedIexact, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "managed__iexact", r.managedIexact, "")
 	}
 	if r.nameIcontains != nil {
-		localVarQueryParams.Add("name__icontains", parameterToString(*r.nameIcontains, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name__icontains", r.nameIcontains, "")
 	}
 	if r.nameIexact != nil {
-		localVarQueryParams.Add("name__iexact", parameterToString(*r.nameIexact, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name__iexact", r.nameIexact, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.providersIsnull != nil {
-		localVarQueryParams.Add("providers__isnull", parameterToString(*r.providersIsnull, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "providers__isnull", r.providersIsnull, "")
 	}
 	if r.providersByPk != nil {
 		t := *r.providersByPk
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("providers_by_pk", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "providers_by_pk", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("providers_by_pk", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "providers_by_pk", t, "multi")
 		}
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.serviceConnectionNameIcontains != nil {
-		localVarQueryParams.Add("service_connection__name__icontains", parameterToString(*r.serviceConnectionNameIcontains, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "service_connection__name__icontains", r.serviceConnectionNameIcontains, "")
 	}
 	if r.serviceConnectionNameIexact != nil {
-		localVarQueryParams.Add("service_connection__name__iexact", parameterToString(*r.serviceConnectionNameIexact, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "service_connection__name__iexact", r.serviceConnectionNameIexact, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -866,9 +874,9 @@ func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstances
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -885,6 +893,7 @@ func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstances
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -895,6 +904,7 @@ func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstances
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -961,7 +971,7 @@ func (a *OutpostsApiService) OutpostsInstancesPartialUpdateExecute(r ApiOutposts
 	}
 
 	localVarPath := localBasePath + "/outposts/instances/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1010,9 +1020,9 @@ func (a *OutpostsApiService) OutpostsInstancesPartialUpdateExecute(r ApiOutposts
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1029,6 +1039,7 @@ func (a *OutpostsApiService) OutpostsInstancesPartialUpdateExecute(r ApiOutposts
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1039,6 +1050,7 @@ func (a *OutpostsApiService) OutpostsInstancesPartialUpdateExecute(r ApiOutposts
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1099,7 +1111,7 @@ func (a *OutpostsApiService) OutpostsInstancesRetrieveExecute(r ApiOutpostsInsta
 	}
 
 	localVarPath := localBasePath + "/outposts/instances/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1146,9 +1158,9 @@ func (a *OutpostsApiService) OutpostsInstancesRetrieveExecute(r ApiOutpostsInsta
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1165,6 +1177,7 @@ func (a *OutpostsApiService) OutpostsInstancesRetrieveExecute(r ApiOutpostsInsta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1175,6 +1188,7 @@ func (a *OutpostsApiService) OutpostsInstancesRetrieveExecute(r ApiOutpostsInsta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1241,7 +1255,7 @@ func (a *OutpostsApiService) OutpostsInstancesUpdateExecute(r ApiOutpostsInstanc
 	}
 
 	localVarPath := localBasePath + "/outposts/instances/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1293,9 +1307,9 @@ func (a *OutpostsApiService) OutpostsInstancesUpdateExecute(r ApiOutpostsInstanc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1312,6 +1326,7 @@ func (a *OutpostsApiService) OutpostsInstancesUpdateExecute(r ApiOutpostsInstanc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1322,6 +1337,7 @@ func (a *OutpostsApiService) OutpostsInstancesUpdateExecute(r ApiOutpostsInstanc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1382,7 +1398,7 @@ func (a *OutpostsApiService) OutpostsInstancesUsedByListExecute(r ApiOutpostsIns
 	}
 
 	localVarPath := localBasePath + "/outposts/instances/{uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1429,9 +1445,9 @@ func (a *OutpostsApiService) OutpostsInstancesUsedByListExecute(r ApiOutpostsIns
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1448,6 +1464,7 @@ func (a *OutpostsApiService) OutpostsInstancesUsedByListExecute(r ApiOutpostsIns
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1458,6 +1475,7 @@ func (a *OutpostsApiService) OutpostsInstancesUsedByListExecute(r ApiOutpostsIns
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1555,19 +1573,19 @@ func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListReques
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1610,9 +1628,9 @@ func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1629,6 +1647,7 @@ func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1639,6 +1658,7 @@ func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1699,7 +1719,7 @@ func (a *OutpostsApiService) OutpostsLdapRetrieveExecute(r ApiOutpostsLdapRetrie
 	}
 
 	localVarPath := localBasePath + "/outposts/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1746,9 +1766,9 @@ func (a *OutpostsApiService) OutpostsLdapRetrieveExecute(r ApiOutpostsLdapRetrie
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1765,6 +1785,7 @@ func (a *OutpostsApiService) OutpostsLdapRetrieveExecute(r ApiOutpostsLdapRetrie
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1775,6 +1796,7 @@ func (a *OutpostsApiService) OutpostsLdapRetrieveExecute(r ApiOutpostsLdapRetrie
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1872,19 +1894,19 @@ func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequ
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1927,9 +1949,9 @@ func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1946,6 +1968,7 @@ func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1956,6 +1979,7 @@ func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2016,7 +2040,7 @@ func (a *OutpostsApiService) OutpostsProxyRetrieveExecute(r ApiOutpostsProxyRetr
 	}
 
 	localVarPath := localBasePath + "/outposts/proxy/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2063,9 +2087,9 @@ func (a *OutpostsApiService) OutpostsProxyRetrieveExecute(r ApiOutpostsProxyRetr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2082,6 +2106,7 @@ func (a *OutpostsApiService) OutpostsProxyRetrieveExecute(r ApiOutpostsProxyRetr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2092,6 +2117,7 @@ func (a *OutpostsApiService) OutpostsProxyRetrieveExecute(r ApiOutpostsProxyRetr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2189,19 +2215,19 @@ func (a *OutpostsApiService) OutpostsRadiusListExecute(r ApiOutpostsRadiusListRe
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2244,9 +2270,9 @@ func (a *OutpostsApiService) OutpostsRadiusListExecute(r ApiOutpostsRadiusListRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2263,6 +2289,7 @@ func (a *OutpostsApiService) OutpostsRadiusListExecute(r ApiOutpostsRadiusListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2273,6 +2300,7 @@ func (a *OutpostsApiService) OutpostsRadiusListExecute(r ApiOutpostsRadiusListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2333,7 +2361,7 @@ func (a *OutpostsApiService) OutpostsRadiusRetrieveExecute(r ApiOutpostsRadiusRe
 	}
 
 	localVarPath := localBasePath + "/outposts/radius/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2380,9 +2408,9 @@ func (a *OutpostsApiService) OutpostsRadiusRetrieveExecute(r ApiOutpostsRadiusRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2399,6 +2427,7 @@ func (a *OutpostsApiService) OutpostsRadiusRetrieveExecute(r ApiOutpostsRadiusRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2409,6 +2438,7 @@ func (a *OutpostsApiService) OutpostsRadiusRetrieveExecute(r ApiOutpostsRadiusRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2467,7 +2497,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllDestroyExecute(r ApiOu
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/all/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2514,9 +2544,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllDestroyExecute(r ApiOu
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2533,6 +2563,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllDestroyExecute(r ApiOu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -2543,6 +2574,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllDestroyExecute(r ApiOu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -2631,19 +2663,19 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllListExecute(r ApiOutpo
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2686,9 +2718,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllListExecute(r ApiOutpo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2705,6 +2737,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllListExecute(r ApiOutpo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2715,6 +2748,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllListExecute(r ApiOutpo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2775,7 +2809,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieveExecute(r ApiO
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/all/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2822,9 +2856,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieveExecute(r ApiO
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2841,6 +2875,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieveExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2851,6 +2886,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieveExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2911,7 +2947,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieveExecute(r
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/all/{uuid}/state/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2958,9 +2994,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieveExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2977,6 +3013,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieveExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2987,6 +3024,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieveExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3090,9 +3128,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesListExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3109,6 +3147,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3119,6 +3158,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3179,7 +3219,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByListExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/all/{uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3226,9 +3266,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByListExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3245,6 +3285,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3255,6 +3296,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3369,9 +3411,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3388,6 +3430,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3398,6 +3441,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3456,7 +3500,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerDestroyExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/docker/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3503,9 +3547,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerDestroyExecute(r Ap
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3522,6 +3566,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerDestroyExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -3532,6 +3577,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerDestroyExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3644,31 +3690,31 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerListExecute(r ApiOu
 	localVarFormParams := url.Values{}
 
 	if r.local != nil {
-		localVarQueryParams.Add("local", parameterToString(*r.local, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "local", r.local, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.tlsAuthentication != nil {
-		localVarQueryParams.Add("tls_authentication", parameterToString(*r.tlsAuthentication, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tls_authentication", r.tlsAuthentication, "")
 	}
 	if r.tlsVerification != nil {
-		localVarQueryParams.Add("tls_verification", parameterToString(*r.tlsVerification, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tls_verification", r.tlsVerification, "")
 	}
 	if r.url != nil {
-		localVarQueryParams.Add("url", parameterToString(*r.url, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "url", r.url, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3711,9 +3757,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerListExecute(r ApiOu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3730,6 +3776,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerListExecute(r ApiOu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3740,6 +3787,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerListExecute(r ApiOu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3806,7 +3854,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdateExecut
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/docker/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3855,9 +3903,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdateExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3874,6 +3922,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdateExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3884,6 +3933,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdateExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3944,7 +3994,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieveExecute(r A
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/docker/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3991,9 +4041,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieveExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4010,6 +4060,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieveExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4020,6 +4071,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieveExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4086,7 +4138,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdateExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/docker/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4138,9 +4190,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4157,6 +4209,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4167,6 +4220,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4227,7 +4281,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByListExecute(r
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/docker/{uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4274,9 +4328,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByListExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4293,6 +4347,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByListExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4303,6 +4358,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByListExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4417,9 +4473,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreateExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4436,6 +4492,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4446,6 +4503,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4504,7 +4562,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesDestroyExecute(
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/kubernetes/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4551,9 +4609,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesDestroyExecute(
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4570,6 +4628,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesDestroyExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4580,6 +4639,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesDestroyExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4674,22 +4734,22 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesListExecute(r A
 	localVarFormParams := url.Values{}
 
 	if r.local != nil {
-		localVarQueryParams.Add("local", parameterToString(*r.local, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "local", r.local, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4732,9 +4792,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesListExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4751,6 +4811,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesListExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4761,6 +4822,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesListExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4827,7 +4889,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdateEx
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/kubernetes/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4876,9 +4938,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdateEx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4895,6 +4957,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdateEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4905,6 +4968,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdateEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4965,7 +5029,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieveExecute
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/kubernetes/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5012,9 +5076,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieveExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5031,6 +5095,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieveExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5041,6 +5106,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieveExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5107,7 +5173,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdateExecute(r
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/kubernetes/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5159,9 +5225,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdateExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5178,6 +5244,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5188,6 +5255,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5248,7 +5316,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByListExecu
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/kubernetes/{uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5295,9 +5363,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByListExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5314,6 +5382,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByListExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5324,6 +5393,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByListExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

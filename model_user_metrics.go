@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserMetrics type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserMetrics{}
+
 // UserMetrics User Metrics
 type UserMetrics struct {
 	Logins         []Coordinate `json:"logins"`
@@ -115,17 +118,19 @@ func (o *UserMetrics) SetAuthorizations(v []Coordinate) {
 }
 
 func (o UserMetrics) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["logins"] = o.Logins
-	}
-	if true {
-		toSerialize["logins_failed"] = o.LoginsFailed
-	}
-	if true {
-		toSerialize["authorizations"] = o.Authorizations
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserMetrics) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: logins is readOnly
+	// skip: logins_failed is readOnly
+	// skip: authorizations is readOnly
+	return toSerialize, nil
 }
 
 type NullableUserMetrics struct {

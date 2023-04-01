@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SMSDevice type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SMSDevice{}
+
 // SMSDevice Serializer for sms authenticator devices
 type SMSDevice struct {
 	// The human-readable name of this device.
@@ -116,17 +119,19 @@ func (o *SMSDevice) SetPhoneNumber(v string) {
 }
 
 func (o SMSDevice) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["phone_number"] = o.PhoneNumber
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SMSDevice) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	// skip: pk is readOnly
+	// skip: phone_number is readOnly
+	return toSerialize, nil
 }
 
 type NullableSMSDevice struct {

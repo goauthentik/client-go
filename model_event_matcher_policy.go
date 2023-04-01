@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EventMatcherPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EventMatcherPolicy{}
+
 // EventMatcherPolicy Event Matcher Policy Serializer
 type EventMatcherPolicy struct {
 	Pk   string `json:"pk"`
@@ -30,13 +33,11 @@ type EventMatcherPolicy struct {
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
 	// Return objects policy is bound to
-	BoundTo int32 `json:"bound_to"`
-	// Match created events with this action type. When left empty, all action types will be matched.  * `login` - Login * `login_failed` - Login Failed * `logout` - Logout * `user_write` - User Write * `suspicious_request` - Suspicious Request * `password_set` - Password Set * `secret_view` - Secret View * `secret_rotate` - Secret Rotate * `invitation_used` - Invite Used * `authorize_application` - Authorize Application * `source_linked` - Source Linked * `impersonation_started` - Impersonation Started * `impersonation_ended` - Impersonation Ended * `flow_execution` - Flow Execution * `policy_execution` - Policy Execution * `policy_exception` - Policy Exception * `property_mapping_exception` - Property Mapping Exception * `system_task_execution` - System Task Execution * `system_task_exception` - System Task Exception * `system_exception` - System Exception * `configuration_error` - Configuration Error * `model_created` - Model Created * `model_updated` - Model Updated * `model_deleted` - Model Deleted * `email_sent` - Email Sent * `update_available` - Update Available * `custom_` - Custom Prefix
-	Action NullableEventActions `json:"action,omitempty"`
+	BoundTo int32         `json:"bound_to"`
+	Action  *EventActions `json:"action,omitempty"`
 	// Matches Event's Client IP (strict matching, for network matching use an Expression Policy)
-	ClientIp *string `json:"client_ip,omitempty"`
-	// Match events created by selected application. When left empty, all applications are matched.  * `authentik.admin` - authentik Admin * `authentik.api` - authentik API * `authentik.crypto` - authentik Crypto * `authentik.events` - authentik Events * `authentik.flows` - authentik Flows * `authentik.lib` - authentik lib * `authentik.outposts` - authentik Outpost * `authentik.policies.dummy` - authentik Policies.Dummy * `authentik.policies.event_matcher` - authentik Policies.Event Matcher * `authentik.policies.expiry` - authentik Policies.Expiry * `authentik.policies.expression` - authentik Policies.Expression * `authentik.policies.password` - authentik Policies.Password * `authentik.policies.reputation` - authentik Policies.Reputation * `authentik.policies` - authentik Policies * `authentik.providers.ldap` - authentik Providers.LDAP * `authentik.providers.oauth2` - authentik Providers.OAuth2 * `authentik.providers.proxy` - authentik Providers.Proxy * `authentik.providers.radius` - authentik Providers.Radius * `authentik.providers.saml` - authentik Providers.SAML * `authentik.providers.scim` - authentik Providers.SCIM * `authentik.recovery` - authentik Recovery * `authentik.sources.ldap` - authentik Sources.LDAP * `authentik.sources.oauth` - authentik Sources.OAuth * `authentik.sources.plex` - authentik Sources.Plex * `authentik.sources.saml` - authentik Sources.SAML * `authentik.stages.authenticator_duo` - authentik Stages.Authenticator.Duo * `authentik.stages.authenticator_sms` - authentik Stages.Authenticator.SMS * `authentik.stages.authenticator_static` - authentik Stages.Authenticator.Static * `authentik.stages.authenticator_totp` - authentik Stages.Authenticator.TOTP * `authentik.stages.authenticator_validate` - authentik Stages.Authenticator.Validate * `authentik.stages.authenticator_webauthn` - authentik Stages.Authenticator.WebAuthn * `authentik.stages.captcha` - authentik Stages.Captcha * `authentik.stages.consent` - authentik Stages.Consent * `authentik.stages.deny` - authentik Stages.Deny * `authentik.stages.dummy` - authentik Stages.Dummy * `authentik.stages.email` - authentik Stages.Email * `authentik.stages.identification` - authentik Stages.Identification * `authentik.stages.invitation` - authentik Stages.User Invitation * `authentik.stages.password` - authentik Stages.Password * `authentik.stages.prompt` - authentik Stages.Prompt * `authentik.stages.user_delete` - authentik Stages.User Delete * `authentik.stages.user_login` - authentik Stages.User Login * `authentik.stages.user_logout` - authentik Stages.User Logout * `authentik.stages.user_write` - authentik Stages.User Write * `authentik.tenants` - authentik Tenants * `authentik.blueprints` - authentik Blueprints * `authentik.core` - authentik Core
-	App NullableAppEnum `json:"app,omitempty"`
+	ClientIp *string  `json:"client_ip,omitempty"`
+	App      *AppEnum `json:"app,omitempty"`
 }
 
 // NewEventMatcherPolicy instantiates a new EventMatcherPolicy object
@@ -113,7 +114,7 @@ func (o *EventMatcherPolicy) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *EventMatcherPolicy) GetExecutionLogging() bool {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		var ret bool
 		return ret
 	}
@@ -123,7 +124,7 @@ func (o *EventMatcherPolicy) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventMatcherPolicy) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -131,7 +132,7 @@ func (o *EventMatcherPolicy) GetExecutionLoggingOk() (*bool, bool) {
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *EventMatcherPolicy) HasExecutionLogging() bool {
-	if o != nil && o.ExecutionLogging != nil {
+	if o != nil && !IsNil(o.ExecutionLogging) {
 		return true
 	}
 
@@ -263,52 +264,41 @@ func (o *EventMatcherPolicy) SetBoundTo(v int32) {
 	o.BoundTo = v
 }
 
-// GetAction returns the Action field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAction returns the Action field value if set, zero value otherwise.
 func (o *EventMatcherPolicy) GetAction() EventActions {
-	if o == nil || o.Action.Get() == nil {
+	if o == nil || IsNil(o.Action) {
 		var ret EventActions
 		return ret
 	}
-	return *o.Action.Get()
+	return *o.Action
 }
 
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EventMatcherPolicy) GetActionOk() (*EventActions, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Action) {
 		return nil, false
 	}
-	return o.Action.Get(), o.Action.IsSet()
+	return o.Action, true
 }
 
 // HasAction returns a boolean if a field has been set.
 func (o *EventMatcherPolicy) HasAction() bool {
-	if o != nil && o.Action.IsSet() {
+	if o != nil && !IsNil(o.Action) {
 		return true
 	}
 
 	return false
 }
 
-// SetAction gets a reference to the given NullableEventActions and assigns it to the Action field.
+// SetAction gets a reference to the given EventActions and assigns it to the Action field.
 func (o *EventMatcherPolicy) SetAction(v EventActions) {
-	o.Action.Set(&v)
-}
-
-// SetActionNil sets the value for Action to be an explicit nil
-func (o *EventMatcherPolicy) SetActionNil() {
-	o.Action.Set(nil)
-}
-
-// UnsetAction ensures that no value is present for Action, not even an explicit nil
-func (o *EventMatcherPolicy) UnsetAction() {
-	o.Action.Unset()
+	o.Action = &v
 }
 
 // GetClientIp returns the ClientIp field value if set, zero value otherwise.
 func (o *EventMatcherPolicy) GetClientIp() string {
-	if o == nil || o.ClientIp == nil {
+	if o == nil || IsNil(o.ClientIp) {
 		var ret string
 		return ret
 	}
@@ -318,7 +308,7 @@ func (o *EventMatcherPolicy) GetClientIp() string {
 // GetClientIpOk returns a tuple with the ClientIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventMatcherPolicy) GetClientIpOk() (*string, bool) {
-	if o == nil || o.ClientIp == nil {
+	if o == nil || IsNil(o.ClientIp) {
 		return nil, false
 	}
 	return o.ClientIp, true
@@ -326,7 +316,7 @@ func (o *EventMatcherPolicy) GetClientIpOk() (*string, bool) {
 
 // HasClientIp returns a boolean if a field has been set.
 func (o *EventMatcherPolicy) HasClientIp() bool {
-	if o != nil && o.ClientIp != nil {
+	if o != nil && !IsNil(o.ClientIp) {
 		return true
 	}
 
@@ -338,85 +328,68 @@ func (o *EventMatcherPolicy) SetClientIp(v string) {
 	o.ClientIp = &v
 }
 
-// GetApp returns the App field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetApp returns the App field value if set, zero value otherwise.
 func (o *EventMatcherPolicy) GetApp() AppEnum {
-	if o == nil || o.App.Get() == nil {
+	if o == nil || IsNil(o.App) {
 		var ret AppEnum
 		return ret
 	}
-	return *o.App.Get()
+	return *o.App
 }
 
 // GetAppOk returns a tuple with the App field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EventMatcherPolicy) GetAppOk() (*AppEnum, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.App) {
 		return nil, false
 	}
-	return o.App.Get(), o.App.IsSet()
+	return o.App, true
 }
 
 // HasApp returns a boolean if a field has been set.
 func (o *EventMatcherPolicy) HasApp() bool {
-	if o != nil && o.App.IsSet() {
+	if o != nil && !IsNil(o.App) {
 		return true
 	}
 
 	return false
 }
 
-// SetApp gets a reference to the given NullableAppEnum and assigns it to the App field.
+// SetApp gets a reference to the given AppEnum and assigns it to the App field.
 func (o *EventMatcherPolicy) SetApp(v AppEnum) {
-	o.App.Set(&v)
-}
-
-// SetAppNil sets the value for App to be an explicit nil
-func (o *EventMatcherPolicy) SetAppNil() {
-	o.App.Set(nil)
-}
-
-// UnsetApp ensures that no value is present for App, not even an explicit nil
-func (o *EventMatcherPolicy) UnsetApp() {
-	o.App.Unset()
+	o.App = &v
 }
 
 func (o EventMatcherPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.ExecutionLogging != nil {
-		toSerialize["execution_logging"] = o.ExecutionLogging
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if true {
-		toSerialize["bound_to"] = o.BoundTo
-	}
-	if o.Action.IsSet() {
-		toSerialize["action"] = o.Action.Get()
-	}
-	if o.ClientIp != nil {
-		toSerialize["client_ip"] = o.ClientIp
-	}
-	if o.App.IsSet() {
-		toSerialize["app"] = o.App.Get()
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EventMatcherPolicy) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
+	toSerialize["name"] = o.Name
+	if !IsNil(o.ExecutionLogging) {
+		toSerialize["execution_logging"] = o.ExecutionLogging
+	}
+	// skip: component is readOnly
+	// skip: verbose_name is readOnly
+	// skip: verbose_name_plural is readOnly
+	// skip: meta_model_name is readOnly
+	// skip: bound_to is readOnly
+	if !IsNil(o.Action) {
+		toSerialize["action"] = o.Action
+	}
+	if !IsNil(o.ClientIp) {
+		toSerialize["client_ip"] = o.ClientIp
+	}
+	if !IsNil(o.App) {
+		toSerialize["app"] = o.App
+	}
+	return toSerialize, nil
 }
 
 type NullableEventMatcherPolicy struct {

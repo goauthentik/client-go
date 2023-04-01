@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
-**ClientType** | Pointer to [**NullableClientTypeEnum**](ClientTypeEnum.md) | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  * &#x60;confidential&#x60; - Confidential * &#x60;public&#x60; - Public | [optional] 
+**ClientType** | Pointer to [**ClientTypeEnum**](ClientTypeEnum.md) |  | [optional] 
 **ClientId** | Pointer to **string** |  | [optional] 
 **ClientSecret** | Pointer to **string** |  | [optional] 
 **AccessCodeValidity** | Pointer to **string** | Access codes not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 **IncludeClaimsInIdToken** | Pointer to **bool** | Include User claims from scopes in the id_token, for applications that don&#39;t access the userinfo endpoint. | [optional] 
 **SigningKey** | Pointer to **NullableString** | Key used to sign the tokens. Only required when JWT Algorithm is set to RS256. | [optional] 
 **RedirectUris** | Pointer to **string** | Enter each URI on a new line. | [optional] 
-**SubMode** | Pointer to [**NullableSubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine.  * &#x60;hashed_user_id&#x60; - Based on the Hashed User ID * &#x60;user_id&#x60; - Based on user ID * &#x60;user_username&#x60; - Based on the username * &#x60;user_email&#x60; - Based on the User&#39;s Email. This is recommended over the UPN method. * &#x60;user_upn&#x60; - Based on the User&#39;s UPN, only works if user has a &#39;upn&#39; attribute set. Use this method only if you have different UPN and Mail domains. | [optional] 
-**IssuerMode** | Pointer to [**NullableIssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled.  * &#x60;global&#x60; - Same identifier is used for all providers * &#x60;per_provider&#x60; - Each provider has a different issuer, based on the application slug. | [optional] 
+**SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) |  | [optional] 
+**IssuerMode** | Pointer to [**IssuerModeEnum**](IssuerModeEnum.md) |  | [optional] 
 **JwksSources** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -165,16 +165,6 @@ SetClientType sets ClientType field to given value.
 
 HasClientType returns a boolean if a field has been set.
 
-### SetClientTypeNil
-
-`func (o *OAuth2ProviderRequest) SetClientTypeNil(b bool)`
-
- SetClientTypeNil sets the value for ClientType to be an explicit nil
-
-### UnsetClientType
-`func (o *OAuth2ProviderRequest) UnsetClientType()`
-
-UnsetClientType ensures that no value is present for ClientType, not even an explicit nil
 ### GetClientId
 
 `func (o *OAuth2ProviderRequest) GetClientId() string`
@@ -410,16 +400,6 @@ SetSubMode sets SubMode field to given value.
 
 HasSubMode returns a boolean if a field has been set.
 
-### SetSubModeNil
-
-`func (o *OAuth2ProviderRequest) SetSubModeNil(b bool)`
-
- SetSubModeNil sets the value for SubMode to be an explicit nil
-
-### UnsetSubMode
-`func (o *OAuth2ProviderRequest) UnsetSubMode()`
-
-UnsetSubMode ensures that no value is present for SubMode, not even an explicit nil
 ### GetIssuerMode
 
 `func (o *OAuth2ProviderRequest) GetIssuerMode() IssuerModeEnum`
@@ -445,16 +425,6 @@ SetIssuerMode sets IssuerMode field to given value.
 
 HasIssuerMode returns a boolean if a field has been set.
 
-### SetIssuerModeNil
-
-`func (o *OAuth2ProviderRequest) SetIssuerModeNil(b bool)`
-
- SetIssuerModeNil sets the value for IssuerMode to be an explicit nil
-
-### UnsetIssuerMode
-`func (o *OAuth2ProviderRequest) UnsetIssuerMode()`
-
-UnsetIssuerMode ensures that no value is present for IssuerMode, not even an explicit nil
 ### GetJwksSources
 
 `func (o *OAuth2ProviderRequest) GetJwksSources() []string`

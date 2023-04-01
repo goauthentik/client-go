@@ -16,25 +16,28 @@ import (
 	"time"
 )
 
+// checks if the Invitation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Invitation{}
+
 // Invitation Invitation Serializer
 type Invitation struct {
 	Pk        string                 `json:"pk"`
 	Name      string                 `json:"name"`
 	Expires   *time.Time             `json:"expires,omitempty"`
 	FixedData map[string]interface{} `json:"fixed_data,omitempty"`
-	CreatedBy InvitationCreatedBy    `json:"created_by"`
+	CreatedBy GroupMember            `json:"created_by"`
 	// When enabled, the invitation will be deleted after usage.
 	SingleUse *bool `json:"single_use,omitempty"`
 	// When set, only the configured flow can use this invitation.
-	Flow    NullableString    `json:"flow,omitempty"`
-	FlowObj InvitationFlowObj `json:"flow_obj"`
+	Flow    NullableString `json:"flow,omitempty"`
+	FlowObj Flow           `json:"flow_obj"`
 }
 
 // NewInvitation instantiates a new Invitation object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvitation(pk string, name string, createdBy InvitationCreatedBy, flowObj InvitationFlowObj) *Invitation {
+func NewInvitation(pk string, name string, createdBy GroupMember, flowObj Flow) *Invitation {
 	this := Invitation{}
 	this.Pk = pk
 	this.Name = name
@@ -101,7 +104,7 @@ func (o *Invitation) SetName(v string) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *Invitation) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		var ret time.Time
 		return ret
 	}
@@ -111,7 +114,7 @@ func (o *Invitation) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Invitation) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
 	return o.Expires, true
@@ -119,7 +122,7 @@ func (o *Invitation) GetExpiresOk() (*time.Time, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *Invitation) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && !IsNil(o.Expires) {
 		return true
 	}
 
@@ -133,7 +136,7 @@ func (o *Invitation) SetExpires(v time.Time) {
 
 // GetFixedData returns the FixedData field value if set, zero value otherwise.
 func (o *Invitation) GetFixedData() map[string]interface{} {
-	if o == nil || o.FixedData == nil {
+	if o == nil || IsNil(o.FixedData) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -143,15 +146,15 @@ func (o *Invitation) GetFixedData() map[string]interface{} {
 // GetFixedDataOk returns a tuple with the FixedData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Invitation) GetFixedDataOk() (map[string]interface{}, bool) {
-	if o == nil || o.FixedData == nil {
-		return nil, false
+	if o == nil || IsNil(o.FixedData) {
+		return map[string]interface{}{}, false
 	}
 	return o.FixedData, true
 }
 
 // HasFixedData returns a boolean if a field has been set.
 func (o *Invitation) HasFixedData() bool {
-	if o != nil && o.FixedData != nil {
+	if o != nil && !IsNil(o.FixedData) {
 		return true
 	}
 
@@ -164,9 +167,9 @@ func (o *Invitation) SetFixedData(v map[string]interface{}) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-func (o *Invitation) GetCreatedBy() InvitationCreatedBy {
+func (o *Invitation) GetCreatedBy() GroupMember {
 	if o == nil {
-		var ret InvitationCreatedBy
+		var ret GroupMember
 		return ret
 	}
 
@@ -175,7 +178,7 @@ func (o *Invitation) GetCreatedBy() InvitationCreatedBy {
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-func (o *Invitation) GetCreatedByOk() (*InvitationCreatedBy, bool) {
+func (o *Invitation) GetCreatedByOk() (*GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -183,13 +186,13 @@ func (o *Invitation) GetCreatedByOk() (*InvitationCreatedBy, bool) {
 }
 
 // SetCreatedBy sets field value
-func (o *Invitation) SetCreatedBy(v InvitationCreatedBy) {
+func (o *Invitation) SetCreatedBy(v GroupMember) {
 	o.CreatedBy = v
 }
 
 // GetSingleUse returns the SingleUse field value if set, zero value otherwise.
 func (o *Invitation) GetSingleUse() bool {
-	if o == nil || o.SingleUse == nil {
+	if o == nil || IsNil(o.SingleUse) {
 		var ret bool
 		return ret
 	}
@@ -199,7 +202,7 @@ func (o *Invitation) GetSingleUse() bool {
 // GetSingleUseOk returns a tuple with the SingleUse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Invitation) GetSingleUseOk() (*bool, bool) {
-	if o == nil || o.SingleUse == nil {
+	if o == nil || IsNil(o.SingleUse) {
 		return nil, false
 	}
 	return o.SingleUse, true
@@ -207,7 +210,7 @@ func (o *Invitation) GetSingleUseOk() (*bool, bool) {
 
 // HasSingleUse returns a boolean if a field has been set.
 func (o *Invitation) HasSingleUse() bool {
-	if o != nil && o.SingleUse != nil {
+	if o != nil && !IsNil(o.SingleUse) {
 		return true
 	}
 
@@ -221,7 +224,7 @@ func (o *Invitation) SetSingleUse(v bool) {
 
 // GetFlow returns the Flow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Invitation) GetFlow() string {
-	if o == nil || o.Flow.Get() == nil {
+	if o == nil || IsNil(o.Flow.Get()) {
 		var ret string
 		return ret
 	}
@@ -263,9 +266,9 @@ func (o *Invitation) UnsetFlow() {
 }
 
 // GetFlowObj returns the FlowObj field value
-func (o *Invitation) GetFlowObj() InvitationFlowObj {
+func (o *Invitation) GetFlowObj() Flow {
 	if o == nil {
-		var ret InvitationFlowObj
+		var ret Flow
 		return ret
 	}
 
@@ -274,7 +277,7 @@ func (o *Invitation) GetFlowObj() InvitationFlowObj {
 
 // GetFlowObjOk returns a tuple with the FlowObj field value
 // and a boolean to check if the value has been set.
-func (o *Invitation) GetFlowObjOk() (*InvitationFlowObj, bool) {
+func (o *Invitation) GetFlowObjOk() (*Flow, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -282,37 +285,37 @@ func (o *Invitation) GetFlowObjOk() (*InvitationFlowObj, bool) {
 }
 
 // SetFlowObj sets field value
-func (o *Invitation) SetFlowObj(v InvitationFlowObj) {
+func (o *Invitation) SetFlowObj(v Flow) {
 	o.FlowObj = v
 }
 
 func (o Invitation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Invitation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Expires != nil {
+	// skip: pk is readOnly
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Expires) {
 		toSerialize["expires"] = o.Expires
 	}
-	if o.FixedData != nil {
+	if !IsNil(o.FixedData) {
 		toSerialize["fixed_data"] = o.FixedData
 	}
-	if true {
-		toSerialize["created_by"] = o.CreatedBy
-	}
-	if o.SingleUse != nil {
+	// skip: created_by is readOnly
+	if !IsNil(o.SingleUse) {
 		toSerialize["single_use"] = o.SingleUse
 	}
 	if o.Flow.IsSet() {
 		toSerialize["flow"] = o.Flow.Get()
 	}
-	if true {
-		toSerialize["flow_obj"] = o.FlowObj
-	}
-	return json.Marshal(toSerialize)
+	// skip: flow_obj is readOnly
+	return toSerialize, nil
 }
 
 type NullableInvitation struct {

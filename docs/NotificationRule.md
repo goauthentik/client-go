@@ -7,15 +7,15 @@ Name | Type | Description | Notes
 **Pk** | **string** |  | [readonly] 
 **Name** | **string** |  | 
 **Transports** | Pointer to **[]string** | Select which transports should be used to notify the user. If none are selected, the notification will only be shown in the authentik UI. | [optional] 
-**Severity** | Pointer to [**NullableSeverityEnum**](SeverityEnum.md) | Controls which severity level the created notifications will have.  * &#x60;notice&#x60; - Notice * &#x60;warning&#x60; - Warning * &#x60;alert&#x60; - Alert | [optional] 
+**Severity** | Pointer to [**SeverityEnum**](SeverityEnum.md) |  | [optional] 
 **Group** | Pointer to **NullableString** | Define which group of users this notification should be sent and shown to. If left empty, Notification won&#39;t ben sent. | [optional] 
-**GroupObj** | [**NotificationRuleGroupObj**](NotificationRuleGroupObj.md) |  | 
+**GroupObj** | [**Group**](Group.md) |  | [readonly] 
 
 ## Methods
 
 ### NewNotificationRule
 
-`func NewNotificationRule(pk string, name string, groupObj NotificationRuleGroupObj, ) *NotificationRule`
+`func NewNotificationRule(pk string, name string, groupObj Group, ) *NotificationRule`
 
 NewNotificationRule instantiates a new NotificationRule object
 This constructor will assign default values to properties that have it defined,
@@ -120,16 +120,6 @@ SetSeverity sets Severity field to given value.
 
 HasSeverity returns a boolean if a field has been set.
 
-### SetSeverityNil
-
-`func (o *NotificationRule) SetSeverityNil(b bool)`
-
- SetSeverityNil sets the value for Severity to be an explicit nil
-
-### UnsetSeverity
-`func (o *NotificationRule) UnsetSeverity()`
-
-UnsetSeverity ensures that no value is present for Severity, not even an explicit nil
 ### GetGroup
 
 `func (o *NotificationRule) GetGroup() string`
@@ -167,20 +157,20 @@ HasGroup returns a boolean if a field has been set.
 UnsetGroup ensures that no value is present for Group, not even an explicit nil
 ### GetGroupObj
 
-`func (o *NotificationRule) GetGroupObj() NotificationRuleGroupObj`
+`func (o *NotificationRule) GetGroupObj() Group`
 
 GetGroupObj returns the GroupObj field if non-nil, zero value otherwise.
 
 ### GetGroupObjOk
 
-`func (o *NotificationRule) GetGroupObjOk() (*NotificationRuleGroupObj, bool)`
+`func (o *NotificationRule) GetGroupObjOk() (*Group, bool)`
 
 GetGroupObjOk returns a tuple with the GroupObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupObj
 
-`func (o *NotificationRule) SetGroupObj(v NotificationRuleGroupObj)`
+`func (o *NotificationRule) SetGroupObj(v Group)`
 
 SetGroupObj sets GroupObj field to given value.
 

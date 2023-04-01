@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PaginatedAuthenticatorDuoStageList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginatedAuthenticatorDuoStageList{}
+
 // PaginatedAuthenticatorDuoStageList struct for PaginatedAuthenticatorDuoStageList
 type PaginatedAuthenticatorDuoStageList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
@@ -89,14 +92,18 @@ func (o *PaginatedAuthenticatorDuoStageList) SetResults(v []AuthenticatorDuoStag
 }
 
 func (o PaginatedAuthenticatorDuoStageList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if true {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaginatedAuthenticatorDuoStageList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pagination"] = o.Pagination
+	toSerialize["results"] = o.Results
+	return toSerialize, nil
 }
 
 type NullablePaginatedAuthenticatorDuoStageList struct {

@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the UserConsent type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserConsent{}
+
 // UserConsent UserConsent Serializer
 type UserConsent struct {
 	Pk          int32       `json:"pk"`
@@ -75,7 +78,7 @@ func (o *UserConsent) SetPk(v int32) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *UserConsent) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		var ret time.Time
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *UserConsent) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserConsent) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
 	return o.Expires, true
@@ -93,7 +96,7 @@ func (o *UserConsent) GetExpiresOk() (*time.Time, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *UserConsent) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && !IsNil(o.Expires) {
 		return true
 	}
 
@@ -155,7 +158,7 @@ func (o *UserConsent) SetApplication(v Application) {
 
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *UserConsent) GetPermissions() string {
-	if o == nil || o.Permissions == nil {
+	if o == nil || IsNil(o.Permissions) {
 		var ret string
 		return ret
 	}
@@ -165,7 +168,7 @@ func (o *UserConsent) GetPermissions() string {
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserConsent) GetPermissionsOk() (*string, bool) {
-	if o == nil || o.Permissions == nil {
+	if o == nil || IsNil(o.Permissions) {
 		return nil, false
 	}
 	return o.Permissions, true
@@ -173,7 +176,7 @@ func (o *UserConsent) GetPermissionsOk() (*string, bool) {
 
 // HasPermissions returns a boolean if a field has been set.
 func (o *UserConsent) HasPermissions() bool {
-	if o != nil && o.Permissions != nil {
+	if o != nil && !IsNil(o.Permissions) {
 		return true
 	}
 
@@ -186,23 +189,25 @@ func (o *UserConsent) SetPermissions(v string) {
 }
 
 func (o UserConsent) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if o.Expires != nil {
-		toSerialize["expires"] = o.Expires
-	}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["application"] = o.Application
-	}
-	if o.Permissions != nil {
-		toSerialize["permissions"] = o.Permissions
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserConsent) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
+	if !IsNil(o.Expires) {
+		toSerialize["expires"] = o.Expires
+	}
+	toSerialize["user"] = o.User
+	toSerialize["application"] = o.Application
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
+	}
+	return toSerialize, nil
 }
 
 type NullableUserConsent struct {

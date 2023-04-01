@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GenericError type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GenericError{}
+
 // GenericError Generic API Error
 type GenericError struct {
 	Detail string  `json:"detail"`
@@ -65,7 +68,7 @@ func (o *GenericError) SetDetail(v string) {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *GenericError) GetCode() string {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -75,7 +78,7 @@ func (o *GenericError) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GenericError) GetCodeOk() (*string, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -83,7 +86,7 @@ func (o *GenericError) GetCodeOk() (*string, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *GenericError) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -96,14 +99,20 @@ func (o *GenericError) SetCode(v string) {
 }
 
 func (o GenericError) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["detail"] = o.Detail
-	}
-	if o.Code != nil {
-		toSerialize["code"] = o.Code
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GenericError) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["detail"] = o.Detail
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	return toSerialize, nil
 }
 
 type NullableGenericError struct {

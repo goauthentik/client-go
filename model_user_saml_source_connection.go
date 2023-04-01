@@ -15,19 +15,22 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserSAMLSourceConnection type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserSAMLSourceConnection{}
+
 // UserSAMLSourceConnection SAML Source Serializer
 type UserSAMLSourceConnection struct {
-	Pk         int32                      `json:"pk"`
-	User       int32                      `json:"user"`
-	Source     PlexSourceConnectionSource `json:"source"`
-	Identifier string                     `json:"identifier"`
+	Pk         int32  `json:"pk"`
+	User       int32  `json:"user"`
+	Source     Source `json:"source"`
+	Identifier string `json:"identifier"`
 }
 
 // NewUserSAMLSourceConnection instantiates a new UserSAMLSourceConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserSAMLSourceConnection(pk int32, user int32, source PlexSourceConnectionSource, identifier string) *UserSAMLSourceConnection {
+func NewUserSAMLSourceConnection(pk int32, user int32, source Source, identifier string) *UserSAMLSourceConnection {
 	this := UserSAMLSourceConnection{}
 	this.Pk = pk
 	this.User = user
@@ -93,9 +96,9 @@ func (o *UserSAMLSourceConnection) SetUser(v int32) {
 }
 
 // GetSource returns the Source field value
-func (o *UserSAMLSourceConnection) GetSource() PlexSourceConnectionSource {
+func (o *UserSAMLSourceConnection) GetSource() Source {
 	if o == nil {
-		var ret PlexSourceConnectionSource
+		var ret Source
 		return ret
 	}
 
@@ -104,7 +107,7 @@ func (o *UserSAMLSourceConnection) GetSource() PlexSourceConnectionSource {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *UserSAMLSourceConnection) GetSourceOk() (*PlexSourceConnectionSource, bool) {
+func (o *UserSAMLSourceConnection) GetSourceOk() (*Source, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -112,7 +115,7 @@ func (o *UserSAMLSourceConnection) GetSourceOk() (*PlexSourceConnectionSource, b
 }
 
 // SetSource sets field value
-func (o *UserSAMLSourceConnection) SetSource(v PlexSourceConnectionSource) {
+func (o *UserSAMLSourceConnection) SetSource(v Source) {
 	o.Source = v
 }
 
@@ -141,20 +144,20 @@ func (o *UserSAMLSourceConnection) SetIdentifier(v string) {
 }
 
 func (o UserSAMLSourceConnection) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["source"] = o.Source
-	}
-	if true {
-		toSerialize["identifier"] = o.Identifier
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserSAMLSourceConnection) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
+	toSerialize["user"] = o.User
+	// skip: source is readOnly
+	toSerialize["identifier"] = o.Identifier
+	return toSerialize, nil
 }
 
 type NullableUserSAMLSourceConnection struct {

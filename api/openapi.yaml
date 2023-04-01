@@ -7423,11 +7423,12 @@ paths:
           format: uuid
           type: string
         style: form
-      - description: "Configure how the flow executor should handle an invalid response\
-          \ to a challenge. RETRY returns the error message and a similar challenge\
-          \ to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT\
-          \ restarts the flow while keeping the current context.\n\n* `retry` - Retry\n\
-          * `restart` - Restart\n* `restart_with_context` - Restart With Context"
+      - description: |-
+          Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.
+
+          * `retry` - Retry
+          * `restart` - Restart
+          * `restart_with_context` - Restart With Context
         explode: true
         in: query
         name: invalid_response_action
@@ -7488,9 +7489,12 @@ paths:
             type: string
           type: array
         style: form
-      - description: "* `all` - ALL, all policies must pass\n* `any` - ANY, any policy\
-          \ must pass\n\n* `all` - ALL, all policies must pass\n* `any` - ANY, any\
-          \ policy must pass"
+      - description: |-
+          * `all` - ALL, all policies must pass
+          * `any` - ANY, any policy must pass
+
+          * `all` - ALL, all policies must pass
+          * `any` - ANY, any policy must pass
         explode: true
         in: query
         name: policy_engine_mode
@@ -7924,12 +7928,16 @@ paths:
           - message_continue
           type: string
         style: form
-      - description: "Decides what this Flow is used for. For example, the Authentication\
-          \ flow is redirect to when an un-authenticated user visits authentik.\n\n\
-          * `authentication` - Authentication\n* `authorization` - Authorization\n\
-          * `invalidation` - Invalidation\n* `enrollment` - Enrollment\n* `unenrollment`\
-          \ - Unrenollment\n* `recovery` - Recovery\n* `stage_configuration` - Stage\
-          \ Configuration"
+      - description: |-
+          Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
+
+          * `authentication` - Authentication
+          * `authorization` - Authorization
+          * `invalidation` - Invalidation
+          * `enrollment` - Enrollment
+          * `unenrollment` - Unrenollment
+          * `recovery` - Recovery
+          * `stage_configuration` - Stage Configuration
         explode: true
         in: query
         name: designation
@@ -12019,21 +12027,36 @@ paths:
       description: Event Matcher Policy Viewset
       operationId: policies_event_matcher_list
       parameters:
-      - description: "Match created events with this action type. When left empty,\
-          \ all action types will be matched.\n\n* `login` - Login\n* `login_failed`\
-          \ - Login Failed\n* `logout` - Logout\n* `user_write` - User Write\n* `suspicious_request`\
-          \ - Suspicious Request\n* `password_set` - Password Set\n* `secret_view`\
-          \ - Secret View\n* `secret_rotate` - Secret Rotate\n* `invitation_used`\
-          \ - Invite Used\n* `authorize_application` - Authorize Application\n* `source_linked`\
-          \ - Source Linked\n* `impersonation_started` - Impersonation Started\n*\
-          \ `impersonation_ended` - Impersonation Ended\n* `flow_execution` - Flow\
-          \ Execution\n* `policy_execution` - Policy Execution\n* `policy_exception`\
-          \ - Policy Exception\n* `property_mapping_exception` - Property Mapping\
-          \ Exception\n* `system_task_execution` - System Task Execution\n* `system_task_exception`\
-          \ - System Task Exception\n* `system_exception` - System Exception\n* `configuration_error`\
-          \ - Configuration Error\n* `model_created` - Model Created\n* `model_updated`\
-          \ - Model Updated\n* `model_deleted` - Model Deleted\n* `email_sent` - Email\
-          \ Sent\n* `update_available` - Update Available\n* `custom_` - Custom Prefix"
+      - description: |-
+          Match created events with this action type. When left empty, all action types will be matched.
+
+          * `login` - Login
+          * `login_failed` - Login Failed
+          * `logout` - Logout
+          * `user_write` - User Write
+          * `suspicious_request` - Suspicious Request
+          * `password_set` - Password Set
+          * `secret_view` - Secret View
+          * `secret_rotate` - Secret Rotate
+          * `invitation_used` - Invite Used
+          * `authorize_application` - Authorize Application
+          * `source_linked` - Source Linked
+          * `impersonation_started` - Impersonation Started
+          * `impersonation_ended` - Impersonation Ended
+          * `flow_execution` - Flow Execution
+          * `policy_execution` - Policy Execution
+          * `policy_exception` - Policy Exception
+          * `property_mapping_exception` - Property Mapping Exception
+          * `system_task_execution` - System Task Execution
+          * `system_task_exception` - System Task Exception
+          * `system_exception` - System Exception
+          * `configuration_error` - Configuration Error
+          * `model_created` - Model Created
+          * `model_updated` - Model Updated
+          * `model_deleted` - Model Deleted
+          * `email_sent` - Email Sent
+          * `update_available` - Update Available
+          * `custom_` - Custom Prefix
         explode: true
         in: query
         name: action
@@ -16436,9 +16459,11 @@ paths:
         schema:
           type: boolean
         style: form
-      - description: "Configure how the issuer field of the ID Token should be filled.\n\
-          \n* `global` - Same identifier is used for all providers\n* `per_provider`\
-          \ - Each provider has a different issuer, based on the application slug."
+      - description: |-
+          Configure how the issuer field of the ID Token should be filled.
+
+          * `global` - Same identifier is used for all providers
+          * `per_provider` - Each provider has a different issuer, based on the application slug.
         explode: true
         in: query
         name: issuer_mode
@@ -16520,13 +16545,14 @@ paths:
           format: uuid
           type: string
         style: form
-      - description: "Configure what data should be used as unique User Identifier.\
-          \ For most cases, the default should be fine.\n\n* `hashed_user_id` - Based\
-          \ on the Hashed User ID\n* `user_id` - Based on user ID\n* `user_username`\
-          \ - Based on the username\n* `user_email` - Based on the User's Email. This\
-          \ is recommended over the UPN method.\n* `user_upn` - Based on the User's\
-          \ UPN, only works if user has a 'upn' attribute set. Use this method only\
-          \ if you have different UPN and Mail domains."
+      - description: |-
+          Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
+
+          * `hashed_user_id` - Based on the Hashed User ID
+          * `user_id` - Based on user ID
+          * `user_username` - Based on the username
+          * `user_email` - Based on the User's Email. This is recommended over the UPN method.
+          * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
         explode: true
         in: query
         name: sub_mode
@@ -18480,8 +18506,11 @@ paths:
       - root
   /schema/:
     get:
-      description: "OpenApi3 schema for this API. Format can be selected via content\
-        \ negotiation.\n\n- YAML: application/vnd.oai.openapi\n- JSON: application/vnd.oai.openapi+json"
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
       operationId: schema_retrieve
       parameters:
       - explode: true
@@ -19542,9 +19571,12 @@ paths:
         schema:
           type: integer
         style: form
-      - description: "* `all` - ALL, all policies must pass\n* `any` - ANY, any policy\
-          \ must pass\n\n* `all` - ALL, all policies must pass\n* `any` - ANY, any\
-          \ policy must pass"
+      - description: |-
+          * `all` - ALL, all policies must pass
+          * `any` - ANY, any policy must pass
+
+          * `all` - ALL, all policies must pass
+          * `any` - ANY, any policy must pass
         explode: true
         in: query
         name: policy_engine_mode
@@ -19591,15 +19623,14 @@ paths:
         schema:
           type: string
         style: form
-      - description: "How the source determines if an existing user should be authenticated\
-          \ or a new user enrolled.\n\n* `identifier` - Use the source-specific identifier\n\
-          * `email_link` - Link to a user with identical email address. Can have security\
-          \ implications when a source doesn't validate email addresses.\n* `email_deny`\
-          \ - Use the user's email address, but deny enrollment when the email address\
-          \ already exists.\n* `username_link` - Link to a user with identical username.\
-          \ Can have security implications when a username is used with another source.\n\
-          * `username_deny` - Use the user's username, but deny enrollment when the\
-          \ username already exists."
+      - description: |-
+          How the source determines if an existing user should be authenticated or a new user enrolled.
+
+          * `identifier` - Use the source-specific identifier
+          * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+          * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+          * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+          * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         explode: true
         in: query
         name: user_matching_mode
@@ -19856,8 +19887,9 @@ paths:
       - sources
   /sources/oauth/source_types/:
     get:
-      description: "Get all creatable source types. If ?name is set, only returns\
-        \ the type for <name>.\nIf <name> isn't found, returns the default type."
+      description: |-
+        Get all creatable source types. If ?name is set, only returns the type for <name>.
+        If <name> isn't found, returns the default type.
       operationId: sources_oauth_source_types_list
       parameters:
       - explode: true
@@ -19965,9 +19997,12 @@ paths:
         schema:
           type: integer
         style: form
-      - description: "* `all` - ALL, all policies must pass\n* `any` - ANY, any policy\
-          \ must pass\n\n* `all` - ALL, all policies must pass\n* `any` - ANY, any\
-          \ policy must pass"
+      - description: |-
+          * `all` - ALL, all policies must pass
+          * `any` - ANY, any policy must pass
+
+          * `all` - ALL, all policies must pass
+          * `any` - ANY, any policy must pass
         explode: true
         in: query
         name: policy_engine_mode
@@ -19993,15 +20028,14 @@ paths:
         schema:
           type: string
         style: form
-      - description: "How the source determines if an existing user should be authenticated\
-          \ or a new user enrolled.\n\n* `identifier` - Use the source-specific identifier\n\
-          * `email_link` - Link to a user with identical email address. Can have security\
-          \ implications when a source doesn't validate email addresses.\n* `email_deny`\
-          \ - Use the user's email address, but deny enrollment when the email address\
-          \ already exists.\n* `username_link` - Link to a user with identical username.\
-          \ Can have security implications when a username is used with another source.\n\
-          * `username_deny` - Use the user's username, but deny enrollment when the\
-          \ username already exists."
+      - description: |-
+          How the source determines if an existing user should be authenticated or a new user enrolled.
+
+          * `identifier` - Use the source-specific identifier
+          * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+          * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+          * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+          * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         explode: true
         in: query
         name: user_matching_mode
@@ -20258,8 +20292,9 @@ paths:
       - sources
   /sources/plex/redeem_token/:
     post:
-      description: "Redeem a plex token, check it's access to resources against what's\
-        \ allowed\nfor the source, and redirect to an authentication/enrollment flow."
+      description: |-
+        Redeem a plex token, check it's access to resources against what's allowed
+        for the source, and redirect to an authentication/enrollment flow.
       operationId: sources_plex_redeem_token_create
       parameters:
       - explode: true
@@ -20417,12 +20452,14 @@ paths:
         schema:
           type: string
         style: form
-      - description: "NameID Policy sent to the IdP. Can be unset, in which case no\
-          \ Policy is sent.\n\n* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`\
-          \ - Email\n* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` - Persistent\n\
-          * `urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName` - X509\n*\
-          \ `urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName`\
-          \ - Windows\n* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` - Transient"
+      - description: |-
+          NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.
+
+          * `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` - Email
+          * `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` - Persistent
+          * `urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName` - X509
+          * `urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName` - Windows
+          * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` - Transient
         explode: true
         in: query
         name: name_id_policy
@@ -20460,9 +20497,12 @@ paths:
         schema:
           type: integer
         style: form
-      - description: "* `all` - ALL, all policies must pass\n* `any` - ANY, any policy\
-          \ must pass\n\n* `all` - ALL, all policies must pass\n* `any` - ANY, any\
-          \ policy must pass"
+      - description: |-
+          * `all` - ALL, all policies must pass
+          * `any` - ANY, any policy must pass
+
+          * `all` - ALL, all policies must pass
+          * `any` - ANY, any policy must pass
         explode: true
         in: query
         name: policy_engine_mode
@@ -20550,15 +20590,14 @@ paths:
         schema:
           type: string
         style: form
-      - description: "How the source determines if an existing user should be authenticated\
-          \ or a new user enrolled.\n\n* `identifier` - Use the source-specific identifier\n\
-          * `email_link` - Link to a user with identical email address. Can have security\
-          \ implications when a source doesn't validate email addresses.\n* `email_deny`\
-          \ - Use the user's email address, but deny enrollment when the email address\
-          \ already exists.\n* `username_link` - Link to a user with identical username.\
-          \ Can have security implications when a username is used with another source.\n\
-          * `username_deny` - Use the user's username, but deny enrollment when the\
-          \ username already exists."
+      - description: |-
+          How the source determines if an existing user should be authenticated or a new user enrolled.
+
+          * `identifier` - Use the source-specific identifier
+          * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+          * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+          * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+          * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         explode: true
         in: query
         name: user_matching_mode
@@ -23303,9 +23342,12 @@ paths:
           format: uuid
           type: string
         style: form
-      - description: "* `6` - 6 digits, widely compatible\n* `8` - 8 digits, not compatible\
-          \ with apps like Google Authenticator\n\n* `6` - 6 digits, widely compatible\n\
-          * `8` - 8 digits, not compatible with apps like Google Authenticator"
+      - description: |-
+          * `6` - 6 digits, widely compatible
+          * `8` - 8 digits, not compatible with apps like Google Authenticator
+
+          * `6` - 6 digits, widely compatible
+          * `8` - 8 digits, not compatible with apps like Google Authenticator
         explode: true
         in: query
         name: digits
@@ -27253,36 +27295,44 @@ paths:
         schema:
           type: string
         style: form
-      - description: "* `text` - Text: Simple Text input\n* `text_area` - Text area:\
-          \ Multiline Text Input.\n* `text_read_only` - Text (read-only): Simple Text\
-          \ input, but cannot be edited.\n* `text_area_read_only` - Text area (read-only):\
-          \ Multiline Text input, but cannot be edited.\n* `username` - Username:\
-          \ Same as Text input, but checks for and prevents duplicate usernames.\n\
-          * `email` - Email: Text field with Email type.\n* `password` - Password:\
-          \ Masked input, multiple inputs of this type on the same prompt need to\
-          \ be identical.\n* `number` - Number\n* `checkbox` - Checkbox\n* `radio-button-group`\
-          \ - Fixed choice field rendered as a group of radio buttons.\n* `dropdown`\
-          \ - Fixed choice field rendered as a dropdown.\n* `date` - Date\n* `date-time`\
-          \ - Date Time\n* `file` - File: File upload for arbitrary files. File content\
-          \ will be available in flow context as data-URI\n* `separator` - Separator:\
-          \ Static Separator Line\n* `hidden` - Hidden: Hidden field, can be used\
-          \ to insert data into form.\n* `static` - Static: Static value, displayed\
-          \ as-is.\n* `ak-locale` - authentik: Selection of locales authentik supports\n\
-          \n* `text` - Text: Simple Text input\n* `text_area` - Text area: Multiline\
-          \ Text Input.\n* `text_read_only` - Text (read-only): Simple Text input,\
-          \ but cannot be edited.\n* `text_area_read_only` - Text area (read-only):\
-          \ Multiline Text input, but cannot be edited.\n* `username` - Username:\
-          \ Same as Text input, but checks for and prevents duplicate usernames.\n\
-          * `email` - Email: Text field with Email type.\n* `password` - Password:\
-          \ Masked input, multiple inputs of this type on the same prompt need to\
-          \ be identical.\n* `number` - Number\n* `checkbox` - Checkbox\n* `radio-button-group`\
-          \ - Fixed choice field rendered as a group of radio buttons.\n* `dropdown`\
-          \ - Fixed choice field rendered as a dropdown.\n* `date` - Date\n* `date-time`\
-          \ - Date Time\n* `file` - File: File upload for arbitrary files. File content\
-          \ will be available in flow context as data-URI\n* `separator` - Separator:\
-          \ Static Separator Line\n* `hidden` - Hidden: Hidden field, can be used\
-          \ to insert data into form.\n* `static` - Static: Static value, displayed\
-          \ as-is.\n* `ak-locale` - authentik: Selection of locales authentik supports"
+      - description: |-
+          * `text` - Text: Simple Text input
+          * `text_area` - Text area: Multiline Text Input.
+          * `text_read_only` - Text (read-only): Simple Text input, but cannot be edited.
+          * `text_area_read_only` - Text area (read-only): Multiline Text input, but cannot be edited.
+          * `username` - Username: Same as Text input, but checks for and prevents duplicate usernames.
+          * `email` - Email: Text field with Email type.
+          * `password` - Password: Masked input, multiple inputs of this type on the same prompt need to be identical.
+          * `number` - Number
+          * `checkbox` - Checkbox
+          * `radio-button-group` - Fixed choice field rendered as a group of radio buttons.
+          * `dropdown` - Fixed choice field rendered as a dropdown.
+          * `date` - Date
+          * `date-time` - Date Time
+          * `file` - File: File upload for arbitrary files. File content will be available in flow context as data-URI
+          * `separator` - Separator: Static Separator Line
+          * `hidden` - Hidden: Hidden field, can be used to insert data into form.
+          * `static` - Static: Static value, displayed as-is.
+          * `ak-locale` - authentik: Selection of locales authentik supports
+
+          * `text` - Text: Simple Text input
+          * `text_area` - Text area: Multiline Text Input.
+          * `text_read_only` - Text (read-only): Simple Text input, but cannot be edited.
+          * `text_area_read_only` - Text area (read-only): Multiline Text input, but cannot be edited.
+          * `username` - Username: Same as Text input, but checks for and prevents duplicate usernames.
+          * `email` - Email: Text field with Email type.
+          * `password` - Password: Masked input, multiple inputs of this type on the same prompt need to be identical.
+          * `number` - Number
+          * `checkbox` - Checkbox
+          * `radio-button-group` - Fixed choice field rendered as a group of radio buttons.
+          * `dropdown` - Fixed choice field rendered as a dropdown.
+          * `date` - Date
+          * `date-time` - Date Time
+          * `file` - File: File upload for arbitrary files. File content will be available in flow context as data-URI
+          * `separator` - Separator: Static Separator Line
+          * `hidden` - Hidden: Hidden field, can be used to insert data into form.
+          * `static` - Static: Static value, displayed as-is.
+          * `ak-locale` - authentik: Selection of locales authentik supports
         explode: true
         in: query
         name: type
@@ -29344,7 +29394,7 @@ components:
     Application:
       description: Application Serializer
       example:
-        provider_obj: null
+        provider_obj: ""
         meta_launch_url: https://openapi-generator.tech
         meta_icon: meta_icon
         meta_publisher: meta_publisher
@@ -29375,7 +29425,9 @@ components:
           nullable: true
           type: integer
         provider_obj:
-          $ref: '#/components/schemas/Application_provider_obj'
+          allOf:
+          - $ref: '#/components/schemas/Provider'
+          readOnly: true
         launch_url:
           description: Allow formatting of launch URL
           nullable: true
@@ -30805,7 +30857,7 @@ components:
     BlueprintFile:
       example:
         path: path
-        meta: null
+        meta: ""
         last_m: 2000-01-23T04:56:07.000+00:00
         hash: hash
       properties:
@@ -30817,7 +30869,9 @@ components:
         hash:
           type: string
         meta:
-          $ref: '#/components/schemas/BlueprintFile_meta'
+          allOf:
+          - $ref: '#/components/schemas/Metadata'
+          readOnly: true
       required:
       - hash
       - last_m
@@ -31639,6 +31693,7 @@ components:
         ui_theme:
           allOf:
           - $ref: '#/components/schemas/UiThemeEnum'
+          default: automatic
           readOnly: true
         flow_authentication:
           type: string
@@ -31877,8 +31932,9 @@ components:
       - http://www.w3.org/2001/04/xmlenc#sha512
       type: string
     DigitsEnum:
-      description: "* `6` - 6 digits, widely compatible\n* `8` - 8 digits, not compatible\
-        \ with apps like Google Authenticator"
+      description: |-
+        * `6` - 6 digits, widely compatible
+        * `8` - 8 digits, not compatible with apps like Google Authenticator
       enum:
       - 6
       - 8
@@ -32704,22 +32760,36 @@ components:
         action:
           allOf:
           - $ref: '#/components/schemas/EventActions'
-          description: "Match created events with this action type. When left empty,\
-            \ all action types will be matched.\n\n* `login` - Login\n* `login_failed`\
-            \ - Login Failed\n* `logout` - Logout\n* `user_write` - User Write\n*\
-            \ `suspicious_request` - Suspicious Request\n* `password_set` - Password\
-            \ Set\n* `secret_view` - Secret View\n* `secret_rotate` - Secret Rotate\n\
-            * `invitation_used` - Invite Used\n* `authorize_application` - Authorize\
-            \ Application\n* `source_linked` - Source Linked\n* `impersonation_started`\
-            \ - Impersonation Started\n* `impersonation_ended` - Impersonation Ended\n\
-            * `flow_execution` - Flow Execution\n* `policy_execution` - Policy Execution\n\
-            * `policy_exception` - Policy Exception\n* `property_mapping_exception`\
-            \ - Property Mapping Exception\n* `system_task_execution` - System Task\
-            \ Execution\n* `system_task_exception` - System Task Exception\n* `system_exception`\
-            \ - System Exception\n* `configuration_error` - Configuration Error\n\
-            * `model_created` - Model Created\n* `model_updated` - Model Updated\n\
-            * `model_deleted` - Model Deleted\n* `email_sent` - Email Sent\n* `update_available`\
-            \ - Update Available\n* `custom_` - Custom Prefix"
+          description: |-
+            Match created events with this action type. When left empty, all action types will be matched.
+
+            * `login` - Login
+            * `login_failed` - Login Failed
+            * `logout` - Logout
+            * `user_write` - User Write
+            * `suspicious_request` - Suspicious Request
+            * `password_set` - Password Set
+            * `secret_view` - Secret View
+            * `secret_rotate` - Secret Rotate
+            * `invitation_used` - Invite Used
+            * `authorize_application` - Authorize Application
+            * `source_linked` - Source Linked
+            * `impersonation_started` - Impersonation Started
+            * `impersonation_ended` - Impersonation Ended
+            * `flow_execution` - Flow Execution
+            * `policy_execution` - Policy Execution
+            * `policy_exception` - Policy Exception
+            * `property_mapping_exception` - Property Mapping Exception
+            * `system_task_execution` - System Task Execution
+            * `system_task_exception` - System Task Exception
+            * `system_exception` - System Exception
+            * `configuration_error` - Configuration Error
+            * `model_created` - Model Created
+            * `model_updated` - Model Updated
+            * `model_deleted` - Model Deleted
+            * `email_sent` - Email Sent
+            * `update_available` - Update Available
+            * `custom_` - Custom Prefix
         client_ip:
           description: "Matches Event's Client IP (strict matching, for network matching\
             \ use an Expression Policy)"
@@ -32727,43 +32797,56 @@ components:
         app:
           allOf:
           - $ref: '#/components/schemas/AppEnum'
-          description: "Match events created by selected application. When left empty,\
-            \ all applications are matched.\n\n* `authentik.admin` - authentik Admin\n\
-            * `authentik.api` - authentik API\n* `authentik.crypto` - authentik Crypto\n\
-            * `authentik.events` - authentik Events\n* `authentik.flows` - authentik\
-            \ Flows\n* `authentik.lib` - authentik lib\n* `authentik.outposts` - authentik\
-            \ Outpost\n* `authentik.policies.dummy` - authentik Policies.Dummy\n*\
-            \ `authentik.policies.event_matcher` - authentik Policies.Event Matcher\n\
-            * `authentik.policies.expiry` - authentik Policies.Expiry\n* `authentik.policies.expression`\
-            \ - authentik Policies.Expression\n* `authentik.policies.password` - authentik\
-            \ Policies.Password\n* `authentik.policies.reputation` - authentik Policies.Reputation\n\
-            * `authentik.policies` - authentik Policies\n* `authentik.providers.ldap`\
-            \ - authentik Providers.LDAP\n* `authentik.providers.oauth2` - authentik\
-            \ Providers.OAuth2\n* `authentik.providers.proxy` - authentik Providers.Proxy\n\
-            * `authentik.providers.radius` - authentik Providers.Radius\n* `authentik.providers.saml`\
-            \ - authentik Providers.SAML\n* `authentik.providers.scim` - authentik\
-            \ Providers.SCIM\n* `authentik.recovery` - authentik Recovery\n* `authentik.sources.ldap`\
-            \ - authentik Sources.LDAP\n* `authentik.sources.oauth` - authentik Sources.OAuth\n\
-            * `authentik.sources.plex` - authentik Sources.Plex\n* `authentik.sources.saml`\
-            \ - authentik Sources.SAML\n* `authentik.stages.authenticator_duo` - authentik\
-            \ Stages.Authenticator.Duo\n* `authentik.stages.authenticator_sms` - authentik\
-            \ Stages.Authenticator.SMS\n* `authentik.stages.authenticator_static`\
-            \ - authentik Stages.Authenticator.Static\n* `authentik.stages.authenticator_totp`\
-            \ - authentik Stages.Authenticator.TOTP\n* `authentik.stages.authenticator_validate`\
-            \ - authentik Stages.Authenticator.Validate\n* `authentik.stages.authenticator_webauthn`\
-            \ - authentik Stages.Authenticator.WebAuthn\n* `authentik.stages.captcha`\
-            \ - authentik Stages.Captcha\n* `authentik.stages.consent` - authentik\
-            \ Stages.Consent\n* `authentik.stages.deny` - authentik Stages.Deny\n\
-            * `authentik.stages.dummy` - authentik Stages.Dummy\n* `authentik.stages.email`\
-            \ - authentik Stages.Email\n* `authentik.stages.identification` - authentik\
-            \ Stages.Identification\n* `authentik.stages.invitation` - authentik Stages.User\
-            \ Invitation\n* `authentik.stages.password` - authentik Stages.Password\n\
-            * `authentik.stages.prompt` - authentik Stages.Prompt\n* `authentik.stages.user_delete`\
-            \ - authentik Stages.User Delete\n* `authentik.stages.user_login` - authentik\
-            \ Stages.User Login\n* `authentik.stages.user_logout` - authentik Stages.User\
-            \ Logout\n* `authentik.stages.user_write` - authentik Stages.User Write\n\
-            * `authentik.tenants` - authentik Tenants\n* `authentik.blueprints` -\
-            \ authentik Blueprints\n* `authentik.core` - authentik Core"
+          description: |-
+            Match events created by selected application. When left empty, all applications are matched.
+
+            * `authentik.admin` - authentik Admin
+            * `authentik.api` - authentik API
+            * `authentik.crypto` - authentik Crypto
+            * `authentik.events` - authentik Events
+            * `authentik.flows` - authentik Flows
+            * `authentik.lib` - authentik lib
+            * `authentik.outposts` - authentik Outpost
+            * `authentik.policies.dummy` - authentik Policies.Dummy
+            * `authentik.policies.event_matcher` - authentik Policies.Event Matcher
+            * `authentik.policies.expiry` - authentik Policies.Expiry
+            * `authentik.policies.expression` - authentik Policies.Expression
+            * `authentik.policies.password` - authentik Policies.Password
+            * `authentik.policies.reputation` - authentik Policies.Reputation
+            * `authentik.policies` - authentik Policies
+            * `authentik.providers.ldap` - authentik Providers.LDAP
+            * `authentik.providers.oauth2` - authentik Providers.OAuth2
+            * `authentik.providers.proxy` - authentik Providers.Proxy
+            * `authentik.providers.radius` - authentik Providers.Radius
+            * `authentik.providers.saml` - authentik Providers.SAML
+            * `authentik.providers.scim` - authentik Providers.SCIM
+            * `authentik.recovery` - authentik Recovery
+            * `authentik.sources.ldap` - authentik Sources.LDAP
+            * `authentik.sources.oauth` - authentik Sources.OAuth
+            * `authentik.sources.plex` - authentik Sources.Plex
+            * `authentik.sources.saml` - authentik Sources.SAML
+            * `authentik.stages.authenticator_duo` - authentik Stages.Authenticator.Duo
+            * `authentik.stages.authenticator_sms` - authentik Stages.Authenticator.SMS
+            * `authentik.stages.authenticator_static` - authentik Stages.Authenticator.Static
+            * `authentik.stages.authenticator_totp` - authentik Stages.Authenticator.TOTP
+            * `authentik.stages.authenticator_validate` - authentik Stages.Authenticator.Validate
+            * `authentik.stages.authenticator_webauthn` - authentik Stages.Authenticator.WebAuthn
+            * `authentik.stages.captcha` - authentik Stages.Captcha
+            * `authentik.stages.consent` - authentik Stages.Consent
+            * `authentik.stages.deny` - authentik Stages.Deny
+            * `authentik.stages.dummy` - authentik Stages.Dummy
+            * `authentik.stages.email` - authentik Stages.Email
+            * `authentik.stages.identification` - authentik Stages.Identification
+            * `authentik.stages.invitation` - authentik Stages.User Invitation
+            * `authentik.stages.password` - authentik Stages.Password
+            * `authentik.stages.prompt` - authentik Stages.Prompt
+            * `authentik.stages.user_delete` - authentik Stages.User Delete
+            * `authentik.stages.user_login` - authentik Stages.User Login
+            * `authentik.stages.user_logout` - authentik Stages.User Logout
+            * `authentik.stages.user_write` - authentik Stages.User Write
+            * `authentik.tenants` - authentik Tenants
+            * `authentik.blueprints` - authentik Blueprints
+            * `authentik.core` - authentik Core
       required:
       - bound_to
       - component
@@ -32792,22 +32875,36 @@ components:
         action:
           allOf:
           - $ref: '#/components/schemas/EventActions'
-          description: "Match created events with this action type. When left empty,\
-            \ all action types will be matched.\n\n* `login` - Login\n* `login_failed`\
-            \ - Login Failed\n* `logout` - Logout\n* `user_write` - User Write\n*\
-            \ `suspicious_request` - Suspicious Request\n* `password_set` - Password\
-            \ Set\n* `secret_view` - Secret View\n* `secret_rotate` - Secret Rotate\n\
-            * `invitation_used` - Invite Used\n* `authorize_application` - Authorize\
-            \ Application\n* `source_linked` - Source Linked\n* `impersonation_started`\
-            \ - Impersonation Started\n* `impersonation_ended` - Impersonation Ended\n\
-            * `flow_execution` - Flow Execution\n* `policy_execution` - Policy Execution\n\
-            * `policy_exception` - Policy Exception\n* `property_mapping_exception`\
-            \ - Property Mapping Exception\n* `system_task_execution` - System Task\
-            \ Execution\n* `system_task_exception` - System Task Exception\n* `system_exception`\
-            \ - System Exception\n* `configuration_error` - Configuration Error\n\
-            * `model_created` - Model Created\n* `model_updated` - Model Updated\n\
-            * `model_deleted` - Model Deleted\n* `email_sent` - Email Sent\n* `update_available`\
-            \ - Update Available\n* `custom_` - Custom Prefix"
+          description: |-
+            Match created events with this action type. When left empty, all action types will be matched.
+
+            * `login` - Login
+            * `login_failed` - Login Failed
+            * `logout` - Logout
+            * `user_write` - User Write
+            * `suspicious_request` - Suspicious Request
+            * `password_set` - Password Set
+            * `secret_view` - Secret View
+            * `secret_rotate` - Secret Rotate
+            * `invitation_used` - Invite Used
+            * `authorize_application` - Authorize Application
+            * `source_linked` - Source Linked
+            * `impersonation_started` - Impersonation Started
+            * `impersonation_ended` - Impersonation Ended
+            * `flow_execution` - Flow Execution
+            * `policy_execution` - Policy Execution
+            * `policy_exception` - Policy Exception
+            * `property_mapping_exception` - Property Mapping Exception
+            * `system_task_execution` - System Task Execution
+            * `system_task_exception` - System Task Exception
+            * `system_exception` - System Exception
+            * `configuration_error` - Configuration Error
+            * `model_created` - Model Created
+            * `model_updated` - Model Updated
+            * `model_deleted` - Model Deleted
+            * `email_sent` - Email Sent
+            * `update_available` - Update Available
+            * `custom_` - Custom Prefix
         client_ip:
           description: "Matches Event's Client IP (strict matching, for network matching\
             \ use an Expression Policy)"
@@ -32815,43 +32912,56 @@ components:
         app:
           allOf:
           - $ref: '#/components/schemas/AppEnum'
-          description: "Match events created by selected application. When left empty,\
-            \ all applications are matched.\n\n* `authentik.admin` - authentik Admin\n\
-            * `authentik.api` - authentik API\n* `authentik.crypto` - authentik Crypto\n\
-            * `authentik.events` - authentik Events\n* `authentik.flows` - authentik\
-            \ Flows\n* `authentik.lib` - authentik lib\n* `authentik.outposts` - authentik\
-            \ Outpost\n* `authentik.policies.dummy` - authentik Policies.Dummy\n*\
-            \ `authentik.policies.event_matcher` - authentik Policies.Event Matcher\n\
-            * `authentik.policies.expiry` - authentik Policies.Expiry\n* `authentik.policies.expression`\
-            \ - authentik Policies.Expression\n* `authentik.policies.password` - authentik\
-            \ Policies.Password\n* `authentik.policies.reputation` - authentik Policies.Reputation\n\
-            * `authentik.policies` - authentik Policies\n* `authentik.providers.ldap`\
-            \ - authentik Providers.LDAP\n* `authentik.providers.oauth2` - authentik\
-            \ Providers.OAuth2\n* `authentik.providers.proxy` - authentik Providers.Proxy\n\
-            * `authentik.providers.radius` - authentik Providers.Radius\n* `authentik.providers.saml`\
-            \ - authentik Providers.SAML\n* `authentik.providers.scim` - authentik\
-            \ Providers.SCIM\n* `authentik.recovery` - authentik Recovery\n* `authentik.sources.ldap`\
-            \ - authentik Sources.LDAP\n* `authentik.sources.oauth` - authentik Sources.OAuth\n\
-            * `authentik.sources.plex` - authentik Sources.Plex\n* `authentik.sources.saml`\
-            \ - authentik Sources.SAML\n* `authentik.stages.authenticator_duo` - authentik\
-            \ Stages.Authenticator.Duo\n* `authentik.stages.authenticator_sms` - authentik\
-            \ Stages.Authenticator.SMS\n* `authentik.stages.authenticator_static`\
-            \ - authentik Stages.Authenticator.Static\n* `authentik.stages.authenticator_totp`\
-            \ - authentik Stages.Authenticator.TOTP\n* `authentik.stages.authenticator_validate`\
-            \ - authentik Stages.Authenticator.Validate\n* `authentik.stages.authenticator_webauthn`\
-            \ - authentik Stages.Authenticator.WebAuthn\n* `authentik.stages.captcha`\
-            \ - authentik Stages.Captcha\n* `authentik.stages.consent` - authentik\
-            \ Stages.Consent\n* `authentik.stages.deny` - authentik Stages.Deny\n\
-            * `authentik.stages.dummy` - authentik Stages.Dummy\n* `authentik.stages.email`\
-            \ - authentik Stages.Email\n* `authentik.stages.identification` - authentik\
-            \ Stages.Identification\n* `authentik.stages.invitation` - authentik Stages.User\
-            \ Invitation\n* `authentik.stages.password` - authentik Stages.Password\n\
-            * `authentik.stages.prompt` - authentik Stages.Prompt\n* `authentik.stages.user_delete`\
-            \ - authentik Stages.User Delete\n* `authentik.stages.user_login` - authentik\
-            \ Stages.User Login\n* `authentik.stages.user_logout` - authentik Stages.User\
-            \ Logout\n* `authentik.stages.user_write` - authentik Stages.User Write\n\
-            * `authentik.tenants` - authentik Tenants\n* `authentik.blueprints` -\
-            \ authentik Blueprints\n* `authentik.core` - authentik Core"
+          description: |-
+            Match events created by selected application. When left empty, all applications are matched.
+
+            * `authentik.admin` - authentik Admin
+            * `authentik.api` - authentik API
+            * `authentik.crypto` - authentik Crypto
+            * `authentik.events` - authentik Events
+            * `authentik.flows` - authentik Flows
+            * `authentik.lib` - authentik lib
+            * `authentik.outposts` - authentik Outpost
+            * `authentik.policies.dummy` - authentik Policies.Dummy
+            * `authentik.policies.event_matcher` - authentik Policies.Event Matcher
+            * `authentik.policies.expiry` - authentik Policies.Expiry
+            * `authentik.policies.expression` - authentik Policies.Expression
+            * `authentik.policies.password` - authentik Policies.Password
+            * `authentik.policies.reputation` - authentik Policies.Reputation
+            * `authentik.policies` - authentik Policies
+            * `authentik.providers.ldap` - authentik Providers.LDAP
+            * `authentik.providers.oauth2` - authentik Providers.OAuth2
+            * `authentik.providers.proxy` - authentik Providers.Proxy
+            * `authentik.providers.radius` - authentik Providers.Radius
+            * `authentik.providers.saml` - authentik Providers.SAML
+            * `authentik.providers.scim` - authentik Providers.SCIM
+            * `authentik.recovery` - authentik Recovery
+            * `authentik.sources.ldap` - authentik Sources.LDAP
+            * `authentik.sources.oauth` - authentik Sources.OAuth
+            * `authentik.sources.plex` - authentik Sources.Plex
+            * `authentik.sources.saml` - authentik Sources.SAML
+            * `authentik.stages.authenticator_duo` - authentik Stages.Authenticator.Duo
+            * `authentik.stages.authenticator_sms` - authentik Stages.Authenticator.SMS
+            * `authentik.stages.authenticator_static` - authentik Stages.Authenticator.Static
+            * `authentik.stages.authenticator_totp` - authentik Stages.Authenticator.TOTP
+            * `authentik.stages.authenticator_validate` - authentik Stages.Authenticator.Validate
+            * `authentik.stages.authenticator_webauthn` - authentik Stages.Authenticator.WebAuthn
+            * `authentik.stages.captcha` - authentik Stages.Captcha
+            * `authentik.stages.consent` - authentik Stages.Consent
+            * `authentik.stages.deny` - authentik Stages.Deny
+            * `authentik.stages.dummy` - authentik Stages.Dummy
+            * `authentik.stages.email` - authentik Stages.Email
+            * `authentik.stages.identification` - authentik Stages.Identification
+            * `authentik.stages.invitation` - authentik Stages.User Invitation
+            * `authentik.stages.password` - authentik Stages.Password
+            * `authentik.stages.prompt` - authentik Stages.Prompt
+            * `authentik.stages.user_delete` - authentik Stages.User Delete
+            * `authentik.stages.user_login` - authentik Stages.User Login
+            * `authentik.stages.user_logout` - authentik Stages.User Logout
+            * `authentik.stages.user_write` - authentik Stages.User Write
+            * `authentik.tenants` - authentik Tenants
+            * `authentik.blueprints` - authentik Blueprints
+            * `authentik.core` - authentik Core
       required:
       - name
       type: object
@@ -33155,12 +33265,16 @@ components:
         designation:
           allOf:
           - $ref: '#/components/schemas/FlowDesignationEnum'
-          description: "Decides what this Flow is used for. For example, the Authentication\
-            \ flow is redirect to when an un-authenticated user visits authentik.\n\
-            \n* `authentication` - Authentication\n* `authorization` - Authorization\n\
-            * `invalidation` - Invalidation\n* `enrollment` - Enrollment\n* `unenrollment`\
-            \ - Unrenollment\n* `recovery` - Recovery\n* `stage_configuration` - Stage\
-            \ Configuration"
+          description: |-
+            Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
+
+            * `authentication` - Authentication
+            * `authorization` - Authorization
+            * `invalidation` - Invalidation
+            * `enrollment` - Enrollment
+            * `unenrollment` - Unrenollment
+            * `recovery` - Recovery
+            * `stage_configuration` - Stage Configuration
         background:
           description: |-
             Get the URL to the background image. If the name is /static or starts with http
@@ -33300,8 +33414,9 @@ components:
       - diagram
       type: object
     FlowErrorChallenge:
-      description: "Challenge class when an unhandled error occurs during a stage.\
-        \ Normal users\nare shown an error message, superusers are shown a full stacktrace."
+      description: |-
+        Challenge class when an unhandled error occurs during a stage. Normal users
+        are shown an error message, superusers are shown a full stacktrace.
       properties:
         type:
           default: native
@@ -33352,19 +33467,19 @@ components:
       example:
         current_plan:
           session_id: session_id
-          next_planned_stage: null
-          current_stage: null
+          next_planned_stage: ""
+          current_stage: ""
           plan_context:
             key: ""
         plans:
         - session_id: session_id
-          next_planned_stage: null
-          current_stage: null
+          next_planned_stage: ""
+          current_stage: ""
           plan_context:
             key: ""
         - session_id: session_id
-          next_planned_stage: null
-          current_stage: null
+          next_planned_stage: ""
+          current_stage: ""
           plan_context:
             key: ""
         is_completed: true
@@ -33385,15 +33500,19 @@ components:
       description: Serializer for an active FlowPlan
       example:
         session_id: session_id
-        next_planned_stage: null
-        current_stage: null
+        next_planned_stage: ""
+        current_stage: ""
         plan_context:
           key: ""
       properties:
         current_stage:
-          $ref: '#/components/schemas/FlowInspectorPlan_current_stage'
+          allOf:
+          - $ref: '#/components/schemas/FlowStageBinding'
+          readOnly: true
         next_planned_stage:
-          $ref: '#/components/schemas/FlowInspectorPlan_current_stage'
+          allOf:
+          - $ref: '#/components/schemas/FlowStageBinding'
+          readOnly: true
         plan_context:
           additionalProperties: {}
           description: "Get the plan's context, sanitized"
@@ -33438,12 +33557,16 @@ components:
         designation:
           allOf:
           - $ref: '#/components/schemas/FlowDesignationEnum'
-          description: "Decides what this Flow is used for. For example, the Authentication\
-            \ flow is redirect to when an un-authenticated user visits authentik.\n\
-            \n* `authentication` - Authentication\n* `authorization` - Authorization\n\
-            * `invalidation` - Invalidation\n* `enrollment` - Enrollment\n* `unenrollment`\
-            \ - Unrenollment\n* `recovery` - Recovery\n* `stage_configuration` - Stage\
-            \ Configuration"
+          description: |-
+            Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
+
+            * `authentication` - Authentication
+            * `authorization` - Authorization
+            * `invalidation` - Invalidation
+            * `enrollment` - Enrollment
+            * `unenrollment` - Unrenollment
+            * `recovery` - Recovery
+            * `stage_configuration` - Stage Configuration
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
         compatibility_mode:
@@ -33515,12 +33638,16 @@ components:
         designation:
           allOf:
           - $ref: '#/components/schemas/FlowDesignationEnum'
-          description: "Decides what this Flow is used for. For example, the Authentication\
-            \ flow is redirect to when an un-authenticated user visits authentik.\n\
-            \n* `authentication` - Authentication\n* `authorization` - Authorization\n\
-            * `invalidation` - Invalidation\n* `enrollment` - Enrollment\n* `unenrollment`\
-            \ - Unrenollment\n* `recovery` - Recovery\n* `stage_configuration` - Stage\
-            \ Configuration"
+          description: |-
+            Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
+
+            * `authentication` - Authentication
+            * `authorization` - Authorization
+            * `invalidation` - Invalidation
+            * `enrollment` - Enrollment
+            * `unenrollment` - Unrenollment
+            * `recovery` - Recovery
+            * `stage_configuration` - Stage Configuration
         background:
           description: |-
             Get the URL to the background image. If the name is /static or starts with http
@@ -33586,12 +33713,16 @@ components:
         designation:
           allOf:
           - $ref: '#/components/schemas/FlowDesignationEnum'
-          description: "Decides what this Flow is used for. For example, the Authentication\
-            \ flow is redirect to when an un-authenticated user visits authentik.\n\
-            \n* `authentication` - Authentication\n* `authorization` - Authorization\n\
-            * `invalidation` - Invalidation\n* `enrollment` - Enrollment\n* `unenrollment`\
-            \ - Unrenollment\n* `recovery` - Recovery\n* `stage_configuration` - Stage\
-            \ Configuration"
+          description: |-
+            Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
+
+            * `authentication` - Authentication
+            * `authorization` - Authorization
+            * `invalidation` - Invalidation
+            * `enrollment` - Enrollment
+            * `unenrollment` - Unrenollment
+            * `recovery` - Recovery
+            * `stage_configuration` - Stage Configuration
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
         compatibility_mode:
@@ -33624,7 +33755,7 @@ components:
         evaluate_on_plan: true
         re_evaluate_policies: true
         invalid_response_action: ""
-        stage_obj: null
+        stage_obj: ""
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         order: -1803530559
@@ -33645,7 +33776,9 @@ components:
           format: uuid
           type: string
         stage_obj:
-          $ref: '#/components/schemas/FlowStageBinding_stage_obj'
+          allOf:
+          - $ref: '#/components/schemas/Stage'
+          readOnly: true
         evaluate_on_plan:
           description: Evaluate policies during the Flow planning process.
           type: boolean
@@ -33661,12 +33794,12 @@ components:
         invalid_response_action:
           allOf:
           - $ref: '#/components/schemas/InvalidResponseActionEnum'
-          description: "Configure how the flow executor should handle an invalid response\
-            \ to a challenge. RETRY returns the error message and a similar challenge\
-            \ to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT\
-            \ restarts the flow while keeping the current context.\n\n* `retry` -\
-            \ Retry\n* `restart` - Restart\n* `restart_with_context` - Restart With\
-            \ Context"
+          description: |-
+            Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.
+
+            * `retry` - Retry
+            * `restart` - Restart
+            * `restart_with_context` - Restart With Context
       required:
       - order
       - pk
@@ -33707,12 +33840,12 @@ components:
         invalid_response_action:
           allOf:
           - $ref: '#/components/schemas/InvalidResponseActionEnum'
-          description: "Configure how the flow executor should handle an invalid response\
-            \ to a challenge. RETRY returns the error message and a similar challenge\
-            \ to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT\
-            \ restarts the flow while keeping the current context.\n\n* `retry` -\
-            \ Retry\n* `restart` - Restart\n* `restart_with_context` - Restart With\
-            \ Context"
+          description: |-
+            Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.
+
+            * `retry` - Retry
+            * `restart` - Restart
+            * `restart_with_context` - Restart With Context
       required:
       - order
       - stage
@@ -34252,9 +34385,9 @@ components:
         expires: 2000-01-23T04:56:07.000+00:00
         name: name
         single_use: true
-        flow_obj: null
+        flow_obj: ""
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        created_by: null
+        created_by: ""
         flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
@@ -34273,7 +34406,9 @@ components:
           additionalProperties: {}
           type: object
         created_by:
-          $ref: '#/components/schemas/Invitation_created_by'
+          allOf:
+          - $ref: '#/components/schemas/GroupMember'
+          readOnly: true
         single_use:
           description: "When enabled, the invitation will be deleted after usage."
           type: boolean
@@ -34283,7 +34418,9 @@ components:
           nullable: true
           type: string
         flow_obj:
-          $ref: '#/components/schemas/Invitation_flow_obj'
+          allOf:
+          - $ref: '#/components/schemas/Flow'
+          readOnly: true
       required:
       - created_by
       - flow_obj
@@ -34437,8 +34574,9 @@ components:
       - name
       type: object
     IssuerModeEnum:
-      description: "* `global` - Same identifier is used for all providers\n* `per_provider`\
-        \ - Each provider has a different issuer, based on the application slug."
+      description: |-
+        * `global` - Same identifier is used for all providers
+        * `per_provider` - Each provider has a different issuer, based on the application slug.
       enum:
       - global
       - per_provider
@@ -35011,15 +35149,14 @@ components:
         user_matching_mode:
           allOf:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: "How the source determines if an existing user should be authenticated\
-            \ or a new user enrolled.\n\n* `identifier` - Use the source-specific\
-            \ identifier\n* `email_link` - Link to a user with identical email address.\
-            \ Can have security implications when a source doesn't validate email\
-            \ addresses.\n* `email_deny` - Use the user's email address, but deny\
-            \ enrollment when the email address already exists.\n* `username_link`\
-            \ - Link to a user with identical username. Can have security implications\
-            \ when a username is used with another source.\n* `username_deny` - Use\
-            \ the user's username, but deny enrollment when the username already exists."
+          description: |-
+            How the source determines if an existing user should be authenticated or a new user enrolled.
+
+            * `identifier` - Use the source-specific identifier
+            * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+            * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+            * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+            * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         managed:
           description: "Objects which are managed by authentik. These objects are\
             \ created and updated automatically. This is flag only indicates that\
@@ -35172,15 +35309,14 @@ components:
         user_matching_mode:
           allOf:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: "How the source determines if an existing user should be authenticated\
-            \ or a new user enrolled.\n\n* `identifier` - Use the source-specific\
-            \ identifier\n* `email_link` - Link to a user with identical email address.\
-            \ Can have security implications when a source doesn't validate email\
-            \ addresses.\n* `email_deny` - Use the user's email address, but deny\
-            \ enrollment when the email address already exists.\n* `username_link`\
-            \ - Link to a user with identical username. Can have security implications\
-            \ when a username is used with another source.\n* `username_deny` - Use\
-            \ the user's username, but deny enrollment when the username already exists."
+          description: |-
+            How the source determines if an existing user should be authenticated or a new user enrolled.
+
+            * `identifier` - Use the source-specific identifier
+            * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+            * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+            * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+            * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         user_path_template:
           minLength: 1
           type: string
@@ -35458,7 +35594,7 @@ components:
         transports:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group_obj: null
+        group_obj: ""
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35494,7 +35630,9 @@ components:
           nullable: true
           type: string
         group_obj:
-          $ref: '#/components/schemas/NotificationRule_group_obj'
+          allOf:
+          - $ref: '#/components/schemas/Group'
+          readOnly: true
       required:
       - group_obj
       - name
@@ -35788,19 +35926,22 @@ components:
         sub_mode:
           allOf:
           - $ref: '#/components/schemas/SubModeEnum'
-          description: "Configure what data should be used as unique User Identifier.\
-            \ For most cases, the default should be fine.\n\n* `hashed_user_id` -\
-            \ Based on the Hashed User ID\n* `user_id` - Based on user ID\n* `user_username`\
-            \ - Based on the username\n* `user_email` - Based on the User's Email.\
-            \ This is recommended over the UPN method.\n* `user_upn` - Based on the\
-            \ User's UPN, only works if user has a 'upn' attribute set. Use this method\
-            \ only if you have different UPN and Mail domains."
+          description: |-
+            Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
+
+            * `hashed_user_id` - Based on the Hashed User ID
+            * `user_id` - Based on user ID
+            * `user_username` - Based on the username
+            * `user_email` - Based on the User's Email. This is recommended over the UPN method.
+            * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
         issuer_mode:
           allOf:
           - $ref: '#/components/schemas/IssuerModeEnum'
-          description: "Configure how the issuer field of the ID Token should be filled.\n\
-            \n* `global` - Same identifier is used for all providers\n* `per_provider`\
-            \ - Each provider has a different issuer, based on the application slug."
+          description: |-
+            Configure how the issuer field of the ID Token should be filled.
+
+            * `global` - Same identifier is used for all providers
+            * `per_provider` - Each provider has a different issuer, based on the application slug.
         jwks_sources:
           items:
             format: uuid
@@ -35908,19 +36049,22 @@ components:
         sub_mode:
           allOf:
           - $ref: '#/components/schemas/SubModeEnum'
-          description: "Configure what data should be used as unique User Identifier.\
-            \ For most cases, the default should be fine.\n\n* `hashed_user_id` -\
-            \ Based on the Hashed User ID\n* `user_id` - Based on user ID\n* `user_username`\
-            \ - Based on the username\n* `user_email` - Based on the User's Email.\
-            \ This is recommended over the UPN method.\n* `user_upn` - Based on the\
-            \ User's UPN, only works if user has a 'upn' attribute set. Use this method\
-            \ only if you have different UPN and Mail domains."
+          description: |-
+            Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
+
+            * `hashed_user_id` - Based on the Hashed User ID
+            * `user_id` - Based on user ID
+            * `user_username` - Based on the username
+            * `user_email` - Based on the User's Email. This is recommended over the UPN method.
+            * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
         issuer_mode:
           allOf:
           - $ref: '#/components/schemas/IssuerModeEnum'
-          description: "Configure how the issuer field of the ID Token should be filled.\n\
-            \n* `global` - Same identifier is used for all providers\n* `per_provider`\
-            \ - Each provider has a different issuer, based on the application slug."
+          description: |-
+            Configure how the issuer field of the ID Token should be filled.
+
+            * `global` - Same identifier is used for all providers
+            * `per_provider` - Each provider has a different issuer, based on the application slug.
         jwks_sources:
           items:
             format: uuid
@@ -36043,7 +36187,7 @@ components:
         icon: icon
         oidc_jwks:
           key: ""
-        type: null
+        type: ""
         additional_scopes: additional_scopes
         enabled: true
         callback_url: callback_url
@@ -36110,15 +36254,14 @@ components:
         user_matching_mode:
           allOf:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: "How the source determines if an existing user should be authenticated\
-            \ or a new user enrolled.\n\n* `identifier` - Use the source-specific\
-            \ identifier\n* `email_link` - Link to a user with identical email address.\
-            \ Can have security implications when a source doesn't validate email\
-            \ addresses.\n* `email_deny` - Use the user's email address, but deny\
-            \ enrollment when the email address already exists.\n* `username_link`\
-            \ - Link to a user with identical username. Can have security implications\
-            \ when a username is used with another source.\n* `username_deny` - Use\
-            \ the user's username, but deny enrollment when the username already exists."
+          description: |-
+            How the source determines if an existing user should be authenticated or a new user enrolled.
+
+            * `identifier` - Use the source-specific identifier
+            * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+            * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+            * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+            * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         managed:
           description: "Objects which are managed by authentik. These objects are\
             \ created and updated automatically. This is flag only indicates that\
@@ -36170,7 +36313,9 @@ components:
         additional_scopes:
           type: string
         type:
-          $ref: '#/components/schemas/OAuthSource_type'
+          allOf:
+          - $ref: '#/components/schemas/SourceType'
+          readOnly: true
         oidc_well_known_url:
           type: string
         oidc_jwks_url:
@@ -36244,15 +36389,14 @@ components:
         user_matching_mode:
           allOf:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: "How the source determines if an existing user should be authenticated\
-            \ or a new user enrolled.\n\n* `identifier` - Use the source-specific\
-            \ identifier\n* `email_link` - Link to a user with identical email address.\
-            \ Can have security implications when a source doesn't validate email\
-            \ addresses.\n* `email_deny` - Use the user's email address, but deny\
-            \ enrollment when the email address already exists.\n* `username_link`\
-            \ - Link to a user with identical username. Can have security implications\
-            \ when a username is used with another source.\n* `username_deny` - Use\
-            \ the user's username, but deny enrollment when the username already exists."
+          description: |-
+            How the source determines if an existing user should be authenticated or a new user enrolled.
+
+            * `identifier` - Use the source-specific identifier
+            * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+            * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+            * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+            * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         user_path_template:
           minLength: 1
           type: string
@@ -36355,7 +36499,7 @@ components:
     Outpost:
       description: Outpost Serializer
       example:
-        service_connection_obj: null
+        service_connection_obj: ""
         providers_obj:
         - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
@@ -36420,7 +36564,9 @@ components:
           nullable: true
           type: string
         service_connection_obj:
-          $ref: '#/components/schemas/Outpost_service_connection_obj'
+          allOf:
+          - $ref: '#/components/schemas/ServiceConnection'
+          readOnly: true
         token_identifier:
           description: Get Token identifier
           readOnly: true
@@ -36575,7 +36721,7 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - provider_obj: null
+        - provider_obj: ""
           meta_launch_url: https://openapi-generator.tech
           meta_icon: meta_icon
           meta_publisher: meta_publisher
@@ -36588,7 +36734,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
           group: group
-        - provider_obj: null
+        - provider_obj: ""
           meta_launch_url: https://openapi-generator.tech
           meta_icon: meta_icon
           meta_publisher: meta_publisher
@@ -38287,7 +38433,7 @@ components:
           evaluate_on_plan: true
           re_evaluate_policies: true
           invalid_response_action: ""
-          stage_obj: null
+          stage_obj: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           order: -1803530559
@@ -38297,7 +38443,7 @@ components:
           evaluate_on_plan: true
           re_evaluate_policies: true
           invalid_response_action: ""
-          stage_obj: null
+          stage_obj: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           order: -1803530559
@@ -38520,18 +38666,18 @@ components:
           expires: 2000-01-23T04:56:07.000+00:00
           name: name
           single_use: true
-          flow_obj: null
+          flow_obj: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          created_by: null
+          created_by: ""
           flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - fixed_data:
             key: ""
           expires: 2000-01-23T04:56:07.000+00:00
           name: name
           single_use: true
-          flow_obj: null
+          flow_obj: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          created_by: null
+          created_by: ""
           flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
@@ -38995,7 +39141,7 @@ components:
           transports:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          group_obj: null
+          group_obj: ""
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -39003,7 +39149,7 @@ components:
           transports:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          group_obj: null
+          group_obj: ""
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -39177,7 +39323,7 @@ components:
           icon: icon
           oidc_jwks:
             key: ""
-          type: null
+          type: ""
           additional_scopes: additional_scopes
           enabled: true
           callback_url: callback_url
@@ -39205,7 +39351,7 @@ components:
           icon: icon
           oidc_jwks:
             key: ""
-          type: null
+          type: ""
           additional_scopes: additional_scopes
           enabled: true
           callback_url: callback_url
@@ -39247,7 +39393,7 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - service_connection_obj: null
+        - service_connection_obj: ""
           providers_obj:
           - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
@@ -39286,7 +39432,7 @@ components:
           providers:
           - 0
           - 0
-        - service_connection_obj: null
+        - service_connection_obj: ""
           providers_obj:
           - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
@@ -39549,12 +39695,12 @@ components:
         results:
         - identifier: identifier
           pk: 0
-          source: null
+          source: ""
           plex_token: plex_token
           user: 6
         - identifier: identifier
           pk: 0
-          source: null
+          source: ""
           plex_token: plex_token
           user: 6
       properties:
@@ -39643,10 +39789,10 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - user_obj: null
+        - user_obj: ""
           negate: true
-          group_obj: null
-          policy_obj: null
+          group_obj: ""
+          policy_obj: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
           enabled: true
@@ -39655,10 +39801,10 @@ components:
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           order: 441289069
-        - user_obj: null
+        - user_obj: ""
           negate: true
-          group_obj: null
-          policy_obj: null
+          group_obj: ""
+          policy_obj: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
           enabled: true
@@ -40087,7 +40233,7 @@ components:
           client_id: client_id
           mode: ""
           internal_host: https://openapi-generator.tech
-          oidc_configuration: null
+          oidc_configuration: ""
           basic_auth_enabled: true
           basic_auth_user_attribute: basic_auth_user_attribute
           access_token_validity: 6.027456183070403
@@ -40110,7 +40256,7 @@ components:
           client_id: client_id
           mode: ""
           internal_host: https://openapi-generator.tech
-          oidc_configuration: null
+          oidc_configuration: ""
           basic_auth_enabled: true
           basic_auth_user_attribute: basic_auth_user_attribute
           access_token_validity: 6.027456183070403
@@ -41052,7 +41198,7 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
-          user_obj: null
+          user_obj: ""
           expires: 2000-01-23T04:56:07.000+00:00
           expiring: true
           managed: managed
@@ -41061,7 +41207,7 @@ components:
           intent: null
           user: 0
         - identifier: identifier
-          user_obj: null
+          user_obj: ""
           expires: 2000-01-23T04:56:07.000+00:00
           expiring: true
           managed: managed
@@ -41253,7 +41399,7 @@ components:
         results:
         - expires: 2000-01-23T04:56:07.000+00:00
           application:
-            provider_obj: null
+            provider_obj: ""
             meta_launch_url: https://openapi-generator.tech
             meta_icon: meta_icon
             meta_publisher: meta_publisher
@@ -41303,7 +41449,7 @@ components:
             username: username
         - expires: 2000-01-23T04:56:07.000+00:00
           application:
-            provider_obj: null
+            provider_obj: ""
             meta_launch_url: https://openapi-generator.tech
             meta_icon: meta_icon
             meta_publisher: meta_publisher
@@ -41719,11 +41865,11 @@ components:
         results:
         - identifier: identifier
           pk: 0
-          source: null
+          source: ""
           user: 6
         - identifier: identifier
           pk: 0
-          source: null
+          source: ""
           user: 6
       properties:
         pagination:
@@ -41749,11 +41895,11 @@ components:
         results:
         - identifier: identifier
           pk: 0
-          source: null
+          source: ""
           user: 6
         - identifier: identifier
           pk: 0
-          source: null
+          source: ""
           user: 6
       properties:
         pagination:
@@ -41779,11 +41925,11 @@ components:
         results:
         - created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: null
+          source: ""
           user: 6
         - created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: null
+          source: ""
           user: 6
       properties:
         pagination:
@@ -43130,22 +43276,36 @@ components:
         action:
           allOf:
           - $ref: '#/components/schemas/EventActions'
-          description: "Match created events with this action type. When left empty,\
-            \ all action types will be matched.\n\n* `login` - Login\n* `login_failed`\
-            \ - Login Failed\n* `logout` - Logout\n* `user_write` - User Write\n*\
-            \ `suspicious_request` - Suspicious Request\n* `password_set` - Password\
-            \ Set\n* `secret_view` - Secret View\n* `secret_rotate` - Secret Rotate\n\
-            * `invitation_used` - Invite Used\n* `authorize_application` - Authorize\
-            \ Application\n* `source_linked` - Source Linked\n* `impersonation_started`\
-            \ - Impersonation Started\n* `impersonation_ended` - Impersonation Ended\n\
-            * `flow_execution` - Flow Execution\n* `policy_execution` - Policy Execution\n\
-            * `policy_exception` - Policy Exception\n* `property_mapping_exception`\
-            \ - Property Mapping Exception\n* `system_task_execution` - System Task\
-            \ Execution\n* `system_task_exception` - System Task Exception\n* `system_exception`\
-            \ - System Exception\n* `configuration_error` - Configuration Error\n\
-            * `model_created` - Model Created\n* `model_updated` - Model Updated\n\
-            * `model_deleted` - Model Deleted\n* `email_sent` - Email Sent\n* `update_available`\
-            \ - Update Available\n* `custom_` - Custom Prefix"
+          description: |-
+            Match created events with this action type. When left empty, all action types will be matched.
+
+            * `login` - Login
+            * `login_failed` - Login Failed
+            * `logout` - Logout
+            * `user_write` - User Write
+            * `suspicious_request` - Suspicious Request
+            * `password_set` - Password Set
+            * `secret_view` - Secret View
+            * `secret_rotate` - Secret Rotate
+            * `invitation_used` - Invite Used
+            * `authorize_application` - Authorize Application
+            * `source_linked` - Source Linked
+            * `impersonation_started` - Impersonation Started
+            * `impersonation_ended` - Impersonation Ended
+            * `flow_execution` - Flow Execution
+            * `policy_execution` - Policy Execution
+            * `policy_exception` - Policy Exception
+            * `property_mapping_exception` - Property Mapping Exception
+            * `system_task_execution` - System Task Execution
+            * `system_task_exception` - System Task Exception
+            * `system_exception` - System Exception
+            * `configuration_error` - Configuration Error
+            * `model_created` - Model Created
+            * `model_updated` - Model Updated
+            * `model_deleted` - Model Deleted
+            * `email_sent` - Email Sent
+            * `update_available` - Update Available
+            * `custom_` - Custom Prefix
         client_ip:
           description: "Matches Event's Client IP (strict matching, for network matching\
             \ use an Expression Policy)"
@@ -43153,43 +43313,56 @@ components:
         app:
           allOf:
           - $ref: '#/components/schemas/AppEnum'
-          description: "Match events created by selected application. When left empty,\
-            \ all applications are matched.\n\n* `authentik.admin` - authentik Admin\n\
-            * `authentik.api` - authentik API\n* `authentik.crypto` - authentik Crypto\n\
-            * `authentik.events` - authentik Events\n* `authentik.flows` - authentik\
-            \ Flows\n* `authentik.lib` - authentik lib\n* `authentik.outposts` - authentik\
-            \ Outpost\n* `authentik.policies.dummy` - authentik Policies.Dummy\n*\
-            \ `authentik.policies.event_matcher` - authentik Policies.Event Matcher\n\
-            * `authentik.policies.expiry` - authentik Policies.Expiry\n* `authentik.policies.expression`\
-            \ - authentik Policies.Expression\n* `authentik.policies.password` - authentik\
-            \ Policies.Password\n* `authentik.policies.reputation` - authentik Policies.Reputation\n\
-            * `authentik.policies` - authentik Policies\n* `authentik.providers.ldap`\
-            \ - authentik Providers.LDAP\n* `authentik.providers.oauth2` - authentik\
-            \ Providers.OAuth2\n* `authentik.providers.proxy` - authentik Providers.Proxy\n\
-            * `authentik.providers.radius` - authentik Providers.Radius\n* `authentik.providers.saml`\
-            \ - authentik Providers.SAML\n* `authentik.providers.scim` - authentik\
-            \ Providers.SCIM\n* `authentik.recovery` - authentik Recovery\n* `authentik.sources.ldap`\
-            \ - authentik Sources.LDAP\n* `authentik.sources.oauth` - authentik Sources.OAuth\n\
-            * `authentik.sources.plex` - authentik Sources.Plex\n* `authentik.sources.saml`\
-            \ - authentik Sources.SAML\n* `authentik.stages.authenticator_duo` - authentik\
-            \ Stages.Authenticator.Duo\n* `authentik.stages.authenticator_sms` - authentik\
-            \ Stages.Authenticator.SMS\n* `authentik.stages.authenticator_static`\
-            \ - authentik Stages.Authenticator.Static\n* `authentik.stages.authenticator_totp`\
-            \ - authentik Stages.Authenticator.TOTP\n* `authentik.stages.authenticator_validate`\
-            \ - authentik Stages.Authenticator.Validate\n* `authentik.stages.authenticator_webauthn`\
-            \ - authentik Stages.Authenticator.WebAuthn\n* `authentik.stages.captcha`\
-            \ - authentik Stages.Captcha\n* `authentik.stages.consent` - authentik\
-            \ Stages.Consent\n* `authentik.stages.deny` - authentik Stages.Deny\n\
-            * `authentik.stages.dummy` - authentik Stages.Dummy\n* `authentik.stages.email`\
-            \ - authentik Stages.Email\n* `authentik.stages.identification` - authentik\
-            \ Stages.Identification\n* `authentik.stages.invitation` - authentik Stages.User\
-            \ Invitation\n* `authentik.stages.password` - authentik Stages.Password\n\
-            * `authentik.stages.prompt` - authentik Stages.Prompt\n* `authentik.stages.user_delete`\
-            \ - authentik Stages.User Delete\n* `authentik.stages.user_login` - authentik\
-            \ Stages.User Login\n* `authentik.stages.user_logout` - authentik Stages.User\
-            \ Logout\n* `authentik.stages.user_write` - authentik Stages.User Write\n\
-            * `authentik.tenants` - authentik Tenants\n* `authentik.blueprints` -\
-            \ authentik Blueprints\n* `authentik.core` - authentik Core"
+          description: |-
+            Match events created by selected application. When left empty, all applications are matched.
+
+            * `authentik.admin` - authentik Admin
+            * `authentik.api` - authentik API
+            * `authentik.crypto` - authentik Crypto
+            * `authentik.events` - authentik Events
+            * `authentik.flows` - authentik Flows
+            * `authentik.lib` - authentik lib
+            * `authentik.outposts` - authentik Outpost
+            * `authentik.policies.dummy` - authentik Policies.Dummy
+            * `authentik.policies.event_matcher` - authentik Policies.Event Matcher
+            * `authentik.policies.expiry` - authentik Policies.Expiry
+            * `authentik.policies.expression` - authentik Policies.Expression
+            * `authentik.policies.password` - authentik Policies.Password
+            * `authentik.policies.reputation` - authentik Policies.Reputation
+            * `authentik.policies` - authentik Policies
+            * `authentik.providers.ldap` - authentik Providers.LDAP
+            * `authentik.providers.oauth2` - authentik Providers.OAuth2
+            * `authentik.providers.proxy` - authentik Providers.Proxy
+            * `authentik.providers.radius` - authentik Providers.Radius
+            * `authentik.providers.saml` - authentik Providers.SAML
+            * `authentik.providers.scim` - authentik Providers.SCIM
+            * `authentik.recovery` - authentik Recovery
+            * `authentik.sources.ldap` - authentik Sources.LDAP
+            * `authentik.sources.oauth` - authentik Sources.OAuth
+            * `authentik.sources.plex` - authentik Sources.Plex
+            * `authentik.sources.saml` - authentik Sources.SAML
+            * `authentik.stages.authenticator_duo` - authentik Stages.Authenticator.Duo
+            * `authentik.stages.authenticator_sms` - authentik Stages.Authenticator.SMS
+            * `authentik.stages.authenticator_static` - authentik Stages.Authenticator.Static
+            * `authentik.stages.authenticator_totp` - authentik Stages.Authenticator.TOTP
+            * `authentik.stages.authenticator_validate` - authentik Stages.Authenticator.Validate
+            * `authentik.stages.authenticator_webauthn` - authentik Stages.Authenticator.WebAuthn
+            * `authentik.stages.captcha` - authentik Stages.Captcha
+            * `authentik.stages.consent` - authentik Stages.Consent
+            * `authentik.stages.deny` - authentik Stages.Deny
+            * `authentik.stages.dummy` - authentik Stages.Dummy
+            * `authentik.stages.email` - authentik Stages.Email
+            * `authentik.stages.identification` - authentik Stages.Identification
+            * `authentik.stages.invitation` - authentik Stages.User Invitation
+            * `authentik.stages.password` - authentik Stages.Password
+            * `authentik.stages.prompt` - authentik Stages.Prompt
+            * `authentik.stages.user_delete` - authentik Stages.User Delete
+            * `authentik.stages.user_login` - authentik Stages.User Login
+            * `authentik.stages.user_logout` - authentik Stages.User Logout
+            * `authentik.stages.user_write` - authentik Stages.User Write
+            * `authentik.tenants` - authentik Tenants
+            * `authentik.blueprints` - authentik Blueprints
+            * `authentik.core` - authentik Core
       type: object
     PatchedEventRequest:
       description: Event Serializer
@@ -43274,12 +43447,16 @@ components:
         designation:
           allOf:
           - $ref: '#/components/schemas/FlowDesignationEnum'
-          description: "Decides what this Flow is used for. For example, the Authentication\
-            \ flow is redirect to when an un-authenticated user visits authentik.\n\
-            \n* `authentication` - Authentication\n* `authorization` - Authorization\n\
-            * `invalidation` - Invalidation\n* `enrollment` - Enrollment\n* `unenrollment`\
-            \ - Unrenollment\n* `recovery` - Recovery\n* `stage_configuration` - Stage\
-            \ Configuration"
+          description: |-
+            Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
+
+            * `authentication` - Authentication
+            * `authorization` - Authorization
+            * `invalidation` - Invalidation
+            * `enrollment` - Enrollment
+            * `unenrollment` - Unrenollment
+            * `recovery` - Recovery
+            * `stage_configuration` - Stage Configuration
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
         compatibility_mode:
@@ -43340,12 +43517,12 @@ components:
         invalid_response_action:
           allOf:
           - $ref: '#/components/schemas/InvalidResponseActionEnum'
-          description: "Configure how the flow executor should handle an invalid response\
-            \ to a challenge. RETRY returns the error message and a similar challenge\
-            \ to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT\
-            \ restarts the flow while keeping the current context.\n\n* `retry` -\
-            \ Retry\n* `restart` - Restart\n* `restart_with_context` - Restart With\
-            \ Context"
+          description: |-
+            Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.
+
+            * `retry` - Retry
+            * `restart` - Restart
+            * `restart_with_context` - Restart With Context
       type: object
     PatchedGroupRequest:
       description: Group Serializer
@@ -43720,15 +43897,14 @@ components:
         user_matching_mode:
           allOf:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: "How the source determines if an existing user should be authenticated\
-            \ or a new user enrolled.\n\n* `identifier` - Use the source-specific\
-            \ identifier\n* `email_link` - Link to a user with identical email address.\
-            \ Can have security implications when a source doesn't validate email\
-            \ addresses.\n* `email_deny` - Use the user's email address, but deny\
-            \ enrollment when the email address already exists.\n* `username_link`\
-            \ - Link to a user with identical username. Can have security implications\
-            \ when a username is used with another source.\n* `username_deny` - Use\
-            \ the user's username, but deny enrollment when the username already exists."
+          description: |-
+            How the source determines if an existing user should be authenticated or a new user enrolled.
+
+            * `identifier` - Use the source-specific identifier
+            * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+            * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+            * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+            * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         user_path_template:
           minLength: 1
           type: string
@@ -43986,19 +44162,22 @@ components:
         sub_mode:
           allOf:
           - $ref: '#/components/schemas/SubModeEnum'
-          description: "Configure what data should be used as unique User Identifier.\
-            \ For most cases, the default should be fine.\n\n* `hashed_user_id` -\
-            \ Based on the Hashed User ID\n* `user_id` - Based on user ID\n* `user_username`\
-            \ - Based on the username\n* `user_email` - Based on the User's Email.\
-            \ This is recommended over the UPN method.\n* `user_upn` - Based on the\
-            \ User's UPN, only works if user has a 'upn' attribute set. Use this method\
-            \ only if you have different UPN and Mail domains."
+          description: |-
+            Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
+
+            * `hashed_user_id` - Based on the Hashed User ID
+            * `user_id` - Based on user ID
+            * `user_username` - Based on the username
+            * `user_email` - Based on the User's Email. This is recommended over the UPN method.
+            * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
         issuer_mode:
           allOf:
           - $ref: '#/components/schemas/IssuerModeEnum'
-          description: "Configure how the issuer field of the ID Token should be filled.\n\
-            \n* `global` - Same identifier is used for all providers\n* `per_provider`\
-            \ - Each provider has a different issuer, based on the application slug."
+          description: |-
+            Configure how the issuer field of the ID Token should be filled.
+
+            * `global` - Same identifier is used for all providers
+            * `per_provider` - Each provider has a different issuer, based on the application slug.
         jwks_sources:
           items:
             format: uuid
@@ -44059,15 +44238,14 @@ components:
         user_matching_mode:
           allOf:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: "How the source determines if an existing user should be authenticated\
-            \ or a new user enrolled.\n\n* `identifier` - Use the source-specific\
-            \ identifier\n* `email_link` - Link to a user with identical email address.\
-            \ Can have security implications when a source doesn't validate email\
-            \ addresses.\n* `email_deny` - Use the user's email address, but deny\
-            \ enrollment when the email address already exists.\n* `username_link`\
-            \ - Link to a user with identical username. Can have security implications\
-            \ when a username is used with another source.\n* `username_deny` - Use\
-            \ the user's username, but deny enrollment when the username already exists."
+          description: |-
+            How the source determines if an existing user should be authenticated or a new user enrolled.
+
+            * `identifier` - Use the source-specific identifier
+            * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+            * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+            * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+            * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         user_path_template:
           minLength: 1
           type: string
@@ -44363,15 +44541,14 @@ components:
         user_matching_mode:
           allOf:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: "How the source determines if an existing user should be authenticated\
-            \ or a new user enrolled.\n\n* `identifier` - Use the source-specific\
-            \ identifier\n* `email_link` - Link to a user with identical email address.\
-            \ Can have security implications when a source doesn't validate email\
-            \ addresses.\n* `email_deny` - Use the user's email address, but deny\
-            \ enrollment when the email address already exists.\n* `username_link`\
-            \ - Link to a user with identical username. Can have security implications\
-            \ when a username is used with another source.\n* `username_deny` - Use\
-            \ the user's username, but deny enrollment when the username already exists."
+          description: |-
+            How the source determines if an existing user should be authenticated or a new user enrolled.
+
+            * `identifier` - Use the source-specific identifier
+            * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+            * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+            * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+            * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         user_path_template:
           minLength: 1
           type: string
@@ -44924,15 +45101,14 @@ components:
         user_matching_mode:
           allOf:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: "How the source determines if an existing user should be authenticated\
-            \ or a new user enrolled.\n\n* `identifier` - Use the source-specific\
-            \ identifier\n* `email_link` - Link to a user with identical email address.\
-            \ Can have security implications when a source doesn't validate email\
-            \ addresses.\n* `email_deny` - Use the user's email address, but deny\
-            \ enrollment when the email address already exists.\n* `username_link`\
-            \ - Link to a user with identical username. Can have security implications\
-            \ when a username is used with another source.\n* `username_deny` - Use\
-            \ the user's username, but deny enrollment when the username already exists."
+          description: |-
+            How the source determines if an existing user should be authenticated or a new user enrolled.
+
+            * `identifier` - Use the source-specific identifier
+            * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+            * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+            * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+            * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         user_path_template:
           minLength: 1
           type: string
@@ -44962,13 +45138,14 @@ components:
         name_id_policy:
           allOf:
           - $ref: '#/components/schemas/NameIdPolicyEnum'
-          description: "NameID Policy sent to the IdP. Can be unset, in which case\
-            \ no Policy is sent.\n\n* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`\
-            \ - Email\n* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` -\
-            \ Persistent\n* `urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName`\
-            \ - X509\n* `urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName`\
-            \ - Windows\n* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` -\
-            \ Transient"
+          description: |-
+            NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.
+
+            * `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` - Email
+            * `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` - Persistent
+            * `urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName` - X509
+            * `urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName` - Windows
+            * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` - Transient
         binding_type:
           $ref: '#/components/schemas/BindingTypeEnum'
         signing_kp:
@@ -45591,15 +45768,14 @@ components:
         user_matching_mode:
           allOf:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: "How the source determines if an existing user should be authenticated\
-            \ or a new user enrolled.\n\n* `identifier` - Use the source-specific\
-            \ identifier\n* `email_link` - Link to a user with identical email address.\
-            \ Can have security implications when a source doesn't validate email\
-            \ addresses.\n* `email_deny` - Use the user's email address, but deny\
-            \ enrollment when the email address already exists.\n* `username_link`\
-            \ - Link to a user with identical username. Can have security implications\
-            \ when a username is used with another source.\n* `username_deny` - Use\
-            \ the user's username, but deny enrollment when the username already exists."
+          description: |-
+            How the source determines if an existing user should be authenticated or a new user enrolled.
+
+            * `identifier` - Use the source-specific identifier
+            * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+            * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+            * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+            * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         managed:
           description: "Objects which are managed by authentik. These objects are\
             \ created and updated automatically. This is flag only indicates that\
@@ -45651,7 +45827,7 @@ components:
       example:
         identifier: identifier
         pk: 0
-        source: null
+        source: ""
         plex_token: plex_token
         user: 6
       properties:
@@ -45663,7 +45839,9 @@ components:
           readOnly: true
           type: integer
         source:
-          $ref: '#/components/schemas/PlexSourceConnection_source'
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
         identifier:
           type: string
         plex_token:
@@ -45736,15 +45914,14 @@ components:
         user_matching_mode:
           allOf:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: "How the source determines if an existing user should be authenticated\
-            \ or a new user enrolled.\n\n* `identifier` - Use the source-specific\
-            \ identifier\n* `email_link` - Link to a user with identical email address.\
-            \ Can have security implications when a source doesn't validate email\
-            \ addresses.\n* `email_deny` - Use the user's email address, but deny\
-            \ enrollment when the email address already exists.\n* `username_link`\
-            \ - Link to a user with identical username. Can have security implications\
-            \ when a username is used with another source.\n* `username_deny` - Use\
-            \ the user's username, but deny enrollment when the username already exists."
+          description: |-
+            How the source determines if an existing user should be authenticated or a new user enrolled.
+
+            * `identifier` - Use the source-specific identifier
+            * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+            * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+            * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+            * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         user_path_template:
           minLength: 1
           type: string
@@ -45837,10 +46014,10 @@ components:
     PolicyBinding:
       description: PolicyBinding Serializer
       example:
-        user_obj: null
+        user_obj: ""
         negate: true
-        group_obj: null
-        policy_obj: null
+        group_obj: ""
+        policy_obj: ""
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
         enabled: true
@@ -45867,11 +46044,17 @@ components:
           nullable: true
           type: integer
         policy_obj:
-          $ref: '#/components/schemas/PolicyBinding_policy_obj'
+          allOf:
+          - $ref: '#/components/schemas/Policy'
+          readOnly: true
         group_obj:
-          $ref: '#/components/schemas/NotificationRule_group_obj'
+          allOf:
+          - $ref: '#/components/schemas/Group'
+          readOnly: true
         user_obj:
-          $ref: '#/components/schemas/PolicyBinding_user_obj'
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
         target:
           format: uuid
           type: string
@@ -45942,8 +46125,9 @@ components:
       - target
       type: object
     PolicyEngineMode:
-      description: "* `all` - ALL, all policies must pass\n* `any` - ANY, any policy\
-        \ must pass"
+      description: |-
+        * `all` - ALL, all policies must pass
+        * `any` - ANY, any policy must pass
       enum:
       - all
       - any
@@ -46182,8 +46366,9 @@ components:
       type: object
     PromptChallengeResponseRequest:
       additionalProperties: {}
-      description: "Validate response, fields are dynamically created based\non the\
-        \ stage"
+      description: |-
+        Validate response, fields are dynamically created based
+        on the stage
       properties:
         component:
           default: ak-stage-prompt
@@ -46413,21 +46598,25 @@ components:
       - name
       type: object
     PromptTypeEnum:
-      description: "* `text` - Text: Simple Text input\n* `text_area` - Text area:\
-        \ Multiline Text Input.\n* `text_read_only` - Text (read-only): Simple Text\
-        \ input, but cannot be edited.\n* `text_area_read_only` - Text area (read-only):\
-        \ Multiline Text input, but cannot be edited.\n* `username` - Username: Same\
-        \ as Text input, but checks for and prevents duplicate usernames.\n* `email`\
-        \ - Email: Text field with Email type.\n* `password` - Password: Masked input,\
-        \ multiple inputs of this type on the same prompt need to be identical.\n\
-        * `number` - Number\n* `checkbox` - Checkbox\n* `radio-button-group` - Fixed\
-        \ choice field rendered as a group of radio buttons.\n* `dropdown` - Fixed\
-        \ choice field rendered as a dropdown.\n* `date` - Date\n* `date-time` - Date\
-        \ Time\n* `file` - File: File upload for arbitrary files. File content will\
-        \ be available in flow context as data-URI\n* `separator` - Separator: Static\
-        \ Separator Line\n* `hidden` - Hidden: Hidden field, can be used to insert\
-        \ data into form.\n* `static` - Static: Static value, displayed as-is.\n*\
-        \ `ak-locale` - authentik: Selection of locales authentik supports"
+      description: |-
+        * `text` - Text: Simple Text input
+        * `text_area` - Text area: Multiline Text Input.
+        * `text_read_only` - Text (read-only): Simple Text input, but cannot be edited.
+        * `text_area_read_only` - Text area (read-only): Multiline Text input, but cannot be edited.
+        * `username` - Username: Same as Text input, but checks for and prevents duplicate usernames.
+        * `email` - Email: Text field with Email type.
+        * `password` - Password: Masked input, multiple inputs of this type on the same prompt need to be identical.
+        * `number` - Number
+        * `checkbox` - Checkbox
+        * `radio-button-group` - Fixed choice field rendered as a group of radio buttons.
+        * `dropdown` - Fixed choice field rendered as a dropdown.
+        * `date` - Date
+        * `date-time` - Date Time
+        * `file` - File: File upload for arbitrary files. File content will be available in flow context as data-URI
+        * `separator` - Separator: Static Separator Line
+        * `hidden` - Hidden: Hidden field, can be used to insert data into form.
+        * `static` - Static: Static value, displayed as-is.
+        * `ak-locale` - authentik: Selection of locales authentik supports
       enum:
       - text
       - text_area
@@ -46690,7 +46879,7 @@ components:
         client_id: client_id
         mode: ""
         internal_host: https://openapi-generator.tech
-        oidc_configuration: null
+        oidc_configuration: ""
         basic_auth_enabled: true
         basic_auth_user_attribute: basic_auth_user_attribute
         access_token_validity: 6.027456183070403
@@ -46726,7 +46915,9 @@ components:
           maxLength: 255
           type: string
         oidc_configuration:
-          $ref: '#/components/schemas/ProxyOutpostConfig_oidc_configuration'
+          allOf:
+          - $ref: '#/components/schemas/OpenIDConnectConfiguration'
+          readOnly: true
         cookie_secret:
           type: string
         certificate:
@@ -46774,8 +46965,9 @@ components:
             \ header and authenticate requests based on its value."
           type: boolean
         scopes_to_request:
-          description: "Get all the scope names the outpost should request,\nincluding\
-            \ custom-defined ones"
+          description: |-
+            Get all the scope names the outpost should request,
+            including custom-defined ones
           items:
             type: string
           readOnly: true
@@ -47914,15 +48106,14 @@ components:
         user_matching_mode:
           allOf:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: "How the source determines if an existing user should be authenticated\
-            \ or a new user enrolled.\n\n* `identifier` - Use the source-specific\
-            \ identifier\n* `email_link` - Link to a user with identical email address.\
-            \ Can have security implications when a source doesn't validate email\
-            \ addresses.\n* `email_deny` - Use the user's email address, but deny\
-            \ enrollment when the email address already exists.\n* `username_link`\
-            \ - Link to a user with identical username. Can have security implications\
-            \ when a username is used with another source.\n* `username_deny` - Use\
-            \ the user's username, but deny enrollment when the username already exists."
+          description: |-
+            How the source determines if an existing user should be authenticated or a new user enrolled.
+
+            * `identifier` - Use the source-specific identifier
+            * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+            * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+            * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+            * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         managed:
           description: "Objects which are managed by authentik. These objects are\
             \ created and updated automatically. This is flag only indicates that\
@@ -47967,13 +48158,14 @@ components:
         name_id_policy:
           allOf:
           - $ref: '#/components/schemas/NameIdPolicyEnum'
-          description: "NameID Policy sent to the IdP. Can be unset, in which case\
-            \ no Policy is sent.\n\n* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`\
-            \ - Email\n* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` -\
-            \ Persistent\n* `urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName`\
-            \ - X509\n* `urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName`\
-            \ - Windows\n* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` -\
-            \ Transient"
+          description: |-
+            NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.
+
+            * `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` - Email
+            * `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` - Persistent
+            * `urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName` - X509
+            * `urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName` - Windows
+            * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` - Transient
         binding_type:
           $ref: '#/components/schemas/BindingTypeEnum'
         signing_kp:
@@ -48056,15 +48248,14 @@ components:
         user_matching_mode:
           allOf:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: "How the source determines if an existing user should be authenticated\
-            \ or a new user enrolled.\n\n* `identifier` - Use the source-specific\
-            \ identifier\n* `email_link` - Link to a user with identical email address.\
-            \ Can have security implications when a source doesn't validate email\
-            \ addresses.\n* `email_deny` - Use the user's email address, but deny\
-            \ enrollment when the email address already exists.\n* `username_link`\
-            \ - Link to a user with identical username. Can have security implications\
-            \ when a username is used with another source.\n* `username_deny` - Use\
-            \ the user's username, but deny enrollment when the username already exists."
+          description: |-
+            How the source determines if an existing user should be authenticated or a new user enrolled.
+
+            * `identifier` - Use the source-specific identifier
+            * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+            * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+            * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+            * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         user_path_template:
           minLength: 1
           type: string
@@ -48094,13 +48285,14 @@ components:
         name_id_policy:
           allOf:
           - $ref: '#/components/schemas/NameIdPolicyEnum'
-          description: "NameID Policy sent to the IdP. Can be unset, in which case\
-            \ no Policy is sent.\n\n* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`\
-            \ - Email\n* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` -\
-            \ Persistent\n* `urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName`\
-            \ - X509\n* `urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName`\
-            \ - Windows\n* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` -\
-            \ Transient"
+          description: |-
+            NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.
+
+            * `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` - Email
+            * `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` - Persistent
+            * `urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName` - X509
+            * `urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName` - Windows
+            * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` - Transient
         binding_type:
           $ref: '#/components/schemas/BindingTypeEnum'
         signing_kp:
@@ -48577,9 +48769,9 @@ components:
       - version
       type: object
     SessionUser:
-      description: "Response for the /user/me endpoint, returns the currently active\
-        \ user (as `user` property)\nand, if this user is being impersonated, the\
-        \ original user in the `original` property."
+      description: |-
+        Response for the /user/me endpoint, returns the currently active user (as `user` property)
+        and, if this user is being impersonated, the original user in the `original` property.
       example:
         original:
           uid: uid
@@ -48732,15 +48924,14 @@ components:
         user_matching_mode:
           allOf:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: "How the source determines if an existing user should be authenticated\
-            \ or a new user enrolled.\n\n* `identifier` - Use the source-specific\
-            \ identifier\n* `email_link` - Link to a user with identical email address.\
-            \ Can have security implications when a source doesn't validate email\
-            \ addresses.\n* `email_deny` - Use the user's email address, but deny\
-            \ enrollment when the email address already exists.\n* `username_link`\
-            \ - Link to a user with identical username. Can have security implications\
-            \ when a username is used with another source.\n* `username_deny` - Use\
-            \ the user's username, but deny enrollment when the username already exists."
+          description: |-
+            How the source determines if an existing user should be authenticated or a new user enrolled.
+
+            * `identifier` - Use the source-specific identifier
+            * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+            * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+            * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+            * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         managed:
           description: "Objects which are managed by authentik. These objects are\
             \ created and updated automatically. This is flag only indicates that\
@@ -48801,15 +48992,14 @@ components:
         user_matching_mode:
           allOf:
           - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: "How the source determines if an existing user should be authenticated\
-            \ or a new user enrolled.\n\n* `identifier` - Use the source-specific\
-            \ identifier\n* `email_link` - Link to a user with identical email address.\
-            \ Can have security implications when a source doesn't validate email\
-            \ addresses.\n* `email_deny` - Use the user's email address, but deny\
-            \ enrollment when the email address already exists.\n* `username_link`\
-            \ - Link to a user with identical username. Can have security implications\
-            \ when a username is used with another source.\n* `username_deny` - Use\
-            \ the user's username, but deny enrollment when the username already exists."
+          description: |-
+            How the source determines if an existing user should be authenticated or a new user enrolled.
+
+            * `identifier` - Use the source-specific identifier
+            * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+            * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+            * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+            * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
         user_path_template:
           minLength: 1
           type: string
@@ -49074,11 +49264,12 @@ components:
       - token
       type: object
     SubModeEnum:
-      description: "* `hashed_user_id` - Based on the Hashed User ID\n* `user_id`\
-        \ - Based on user ID\n* `user_username` - Based on the username\n* `user_email`\
-        \ - Based on the User's Email. This is recommended over the UPN method.\n\
-        * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute\
-        \ set. Use this method only if you have different UPN and Mail domains."
+      description: |-
+        * `hashed_user_id` - Based on the Hashed User ID
+        * `user_id` - Based on user ID
+        * `user_username` - Based on the username
+        * `user_email` - Based on the User's Email. This is recommended over the UPN method.
+        * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
       enum:
       - hashed_user_id
       - user_id
@@ -49383,7 +49574,7 @@ components:
       description: Token Serializer
       example:
         identifier: identifier
-        user_obj: null
+        user_obj: ""
         expires: 2000-01-23T04:56:07.000+00:00
         expiring: true
         managed: managed
@@ -49415,7 +49606,9 @@ components:
         user:
           type: integer
         user_obj:
-          $ref: '#/components/schemas/PolicyBinding_user_obj'
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
         description:
           type: string
         expires:
@@ -49774,7 +49967,7 @@ components:
       example:
         expires: 2000-01-23T04:56:07.000+00:00
         application:
-          provider_obj: null
+          provider_obj: ""
           meta_launch_url: https://openapi-generator.tech
           meta_icon: meta_icon
           meta_publisher: meta_publisher
@@ -50301,14 +50494,12 @@ components:
       - name
       type: object
     UserMatchingModeEnum:
-      description: "* `identifier` - Use the source-specific identifier\n* `email_link`\
-        \ - Link to a user with identical email address. Can have security implications\
-        \ when a source doesn't validate email addresses.\n* `email_deny` - Use the\
-        \ user's email address, but deny enrollment when the email address already\
-        \ exists.\n* `username_link` - Link to a user with identical username. Can\
-        \ have security implications when a username is used with another source.\n\
-        * `username_deny` - Use the user's username, but deny enrollment when the\
-        \ username already exists."
+      description: |-
+        * `identifier` - Use the source-specific identifier
+        * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses.
+        * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists.
+        * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source.
+        * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
       enum:
       - identifier
       - email_link
@@ -50360,7 +50551,7 @@ components:
       example:
         identifier: identifier
         pk: 0
-        source: null
+        source: ""
         user: 6
       properties:
         pk:
@@ -50370,7 +50561,9 @@ components:
         user:
           type: integer
         source:
-          $ref: '#/components/schemas/PlexSourceConnection_source'
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
         identifier:
           maxLength: 255
           type: string
@@ -50482,7 +50675,7 @@ components:
       example:
         identifier: identifier
         pk: 0
-        source: null
+        source: ""
         user: 6
       properties:
         pk:
@@ -50492,7 +50685,9 @@ components:
         user:
           type: integer
         source:
-          $ref: '#/components/schemas/PlexSourceConnection_source'
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
         identifier:
           type: string
       required:
@@ -50680,7 +50875,7 @@ components:
       example:
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
-        source: null
+        source: ""
         user: 6
       properties:
         pk:
@@ -50691,7 +50886,9 @@ components:
           readOnly: true
           type: integer
         source:
-          $ref: '#/components/schemas/PlexSourceConnection_source'
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
         created:
           format: date-time
           readOnly: true
@@ -50931,10 +51128,6 @@ components:
       required:
       - count
       type: object
-    Application_provider_obj:
-      allOf:
-      - $ref: '#/components/schemas/Provider'
-      readOnly: true
     AuthenticatedSession_user_agent_device:
       description: User agent device
       example:
@@ -51066,38 +51259,6 @@ components:
       - lat
       - long
       type: object
-    BlueprintFile_meta:
-      allOf:
-      - $ref: '#/components/schemas/Metadata'
-      readOnly: true
-    FlowInspectorPlan_current_stage:
-      allOf:
-      - $ref: '#/components/schemas/FlowStageBinding'
-      readOnly: true
-    FlowStageBinding_stage_obj:
-      allOf:
-      - $ref: '#/components/schemas/Stage'
-      readOnly: true
-    Invitation_created_by:
-      allOf:
-      - $ref: '#/components/schemas/GroupMember'
-      readOnly: true
-    Invitation_flow_obj:
-      allOf:
-      - $ref: '#/components/schemas/Flow'
-      readOnly: true
-    NotificationRule_group_obj:
-      allOf:
-      - $ref: '#/components/schemas/Group'
-      readOnly: true
-    OAuthSource_type:
-      allOf:
-      - $ref: '#/components/schemas/SourceType'
-      readOnly: true
-    Outpost_service_connection_obj:
-      allOf:
-      - $ref: '#/components/schemas/ServiceConnection'
-      readOnly: true
     PaginatedApplicationList_pagination:
       example:
         next: 0.8008281904610115
@@ -51131,22 +51292,6 @@ components:
       - start_index
       - total_pages
       type: object
-    PlexSourceConnection_source:
-      allOf:
-      - $ref: '#/components/schemas/Source'
-      readOnly: true
-    PolicyBinding_policy_obj:
-      allOf:
-      - $ref: '#/components/schemas/Policy'
-      readOnly: true
-    PolicyBinding_user_obj:
-      allOf:
-      - $ref: '#/components/schemas/User'
-      readOnly: true
-    ProxyOutpostConfig_oidc_configuration:
-      allOf:
-      - $ref: '#/components/schemas/OpenIDConnectConfiguration'
-      readOnly: true
     System_runtime:
       description: Get versions
       example:

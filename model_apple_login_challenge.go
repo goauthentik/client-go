@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AppleLoginChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AppleLoginChallenge{}
+
 // AppleLoginChallenge Special challenge for apple-native authentication flow, which happens on the client.
 type AppleLoginChallenge struct {
 	Type           ChallengeChoices          `json:"type"`
@@ -79,7 +82,7 @@ func (o *AppleLoginChallenge) SetType(v ChallengeChoices) {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *AppleLoginChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *AppleLoginChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AppleLoginChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -97,7 +100,7 @@ func (o *AppleLoginChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *AppleLoginChallenge) HasFlowInfo() bool {
-	if o != nil && o.FlowInfo != nil {
+	if o != nil && !IsNil(o.FlowInfo) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *AppleLoginChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *AppleLoginChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *AppleLoginChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AppleLoginChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -129,7 +132,7 @@ func (o *AppleLoginChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *AppleLoginChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *AppleLoginChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *AppleLoginChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *AppleLoginChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AppleLoginChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -161,7 +164,7 @@ func (o *AppleLoginChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, 
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *AppleLoginChallenge) HasResponseErrors() bool {
-	if o != nil && o.ResponseErrors != nil {
+	if o != nil && !IsNil(o.ResponseErrors) {
 		return true
 	}
 
@@ -270,32 +273,30 @@ func (o *AppleLoginChallenge) SetState(v string) {
 }
 
 func (o AppleLoginChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if o.FlowInfo != nil {
-		toSerialize["flow_info"] = o.FlowInfo
-	}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.ResponseErrors != nil {
-		toSerialize["response_errors"] = o.ResponseErrors
-	}
-	if true {
-		toSerialize["client_id"] = o.ClientId
-	}
-	if true {
-		toSerialize["scope"] = o.Scope
-	}
-	if true {
-		toSerialize["redirect_uri"] = o.RedirectUri
-	}
-	if true {
-		toSerialize["state"] = o.State
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AppleLoginChallenge) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
+	if !IsNil(o.FlowInfo) {
+		toSerialize["flow_info"] = o.FlowInfo
+	}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.ResponseErrors) {
+		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	toSerialize["client_id"] = o.ClientId
+	toSerialize["scope"] = o.Scope
+	toSerialize["redirect_uri"] = o.RedirectUri
+	toSerialize["state"] = o.State
+	return toSerialize, nil
 }
 
 type NullableAppleLoginChallenge struct {

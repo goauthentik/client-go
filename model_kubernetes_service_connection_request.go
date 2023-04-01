@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the KubernetesServiceConnectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &KubernetesServiceConnectionRequest{}
+
 // KubernetesServiceConnectionRequest KubernetesServiceConnection Serializer
 type KubernetesServiceConnectionRequest struct {
 	Name string `json:"name"`
@@ -70,7 +73,7 @@ func (o *KubernetesServiceConnectionRequest) SetName(v string) {
 
 // GetLocal returns the Local field value if set, zero value otherwise.
 func (o *KubernetesServiceConnectionRequest) GetLocal() bool {
-	if o == nil || o.Local == nil {
+	if o == nil || IsNil(o.Local) {
 		var ret bool
 		return ret
 	}
@@ -80,7 +83,7 @@ func (o *KubernetesServiceConnectionRequest) GetLocal() bool {
 // GetLocalOk returns a tuple with the Local field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesServiceConnectionRequest) GetLocalOk() (*bool, bool) {
-	if o == nil || o.Local == nil {
+	if o == nil || IsNil(o.Local) {
 		return nil, false
 	}
 	return o.Local, true
@@ -88,7 +91,7 @@ func (o *KubernetesServiceConnectionRequest) GetLocalOk() (*bool, bool) {
 
 // HasLocal returns a boolean if a field has been set.
 func (o *KubernetesServiceConnectionRequest) HasLocal() bool {
-	if o != nil && o.Local != nil {
+	if o != nil && !IsNil(o.Local) {
 		return true
 	}
 
@@ -102,7 +105,7 @@ func (o *KubernetesServiceConnectionRequest) SetLocal(v bool) {
 
 // GetKubeconfig returns the Kubeconfig field value if set, zero value otherwise.
 func (o *KubernetesServiceConnectionRequest) GetKubeconfig() map[string]interface{} {
-	if o == nil || o.Kubeconfig == nil {
+	if o == nil || IsNil(o.Kubeconfig) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -112,15 +115,15 @@ func (o *KubernetesServiceConnectionRequest) GetKubeconfig() map[string]interfac
 // GetKubeconfigOk returns a tuple with the Kubeconfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesServiceConnectionRequest) GetKubeconfigOk() (map[string]interface{}, bool) {
-	if o == nil || o.Kubeconfig == nil {
-		return nil, false
+	if o == nil || IsNil(o.Kubeconfig) {
+		return map[string]interface{}{}, false
 	}
 	return o.Kubeconfig, true
 }
 
 // HasKubeconfig returns a boolean if a field has been set.
 func (o *KubernetesServiceConnectionRequest) HasKubeconfig() bool {
-	if o != nil && o.Kubeconfig != nil {
+	if o != nil && !IsNil(o.Kubeconfig) {
 		return true
 	}
 
@@ -134,7 +137,7 @@ func (o *KubernetesServiceConnectionRequest) SetKubeconfig(v map[string]interfac
 
 // GetVerifySsl returns the VerifySsl field value if set, zero value otherwise.
 func (o *KubernetesServiceConnectionRequest) GetVerifySsl() bool {
-	if o == nil || o.VerifySsl == nil {
+	if o == nil || IsNil(o.VerifySsl) {
 		var ret bool
 		return ret
 	}
@@ -144,7 +147,7 @@ func (o *KubernetesServiceConnectionRequest) GetVerifySsl() bool {
 // GetVerifySslOk returns a tuple with the VerifySsl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesServiceConnectionRequest) GetVerifySslOk() (*bool, bool) {
-	if o == nil || o.VerifySsl == nil {
+	if o == nil || IsNil(o.VerifySsl) {
 		return nil, false
 	}
 	return o.VerifySsl, true
@@ -152,7 +155,7 @@ func (o *KubernetesServiceConnectionRequest) GetVerifySslOk() (*bool, bool) {
 
 // HasVerifySsl returns a boolean if a field has been set.
 func (o *KubernetesServiceConnectionRequest) HasVerifySsl() bool {
-	if o != nil && o.VerifySsl != nil {
+	if o != nil && !IsNil(o.VerifySsl) {
 		return true
 	}
 
@@ -165,20 +168,26 @@ func (o *KubernetesServiceConnectionRequest) SetVerifySsl(v bool) {
 }
 
 func (o KubernetesServiceConnectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Local != nil {
-		toSerialize["local"] = o.Local
-	}
-	if o.Kubeconfig != nil {
-		toSerialize["kubeconfig"] = o.Kubeconfig
-	}
-	if o.VerifySsl != nil {
-		toSerialize["verify_ssl"] = o.VerifySsl
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o KubernetesServiceConnectionRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Local) {
+		toSerialize["local"] = o.Local
+	}
+	if !IsNil(o.Kubeconfig) {
+		toSerialize["kubeconfig"] = o.Kubeconfig
+	}
+	if !IsNil(o.VerifySsl) {
+		toSerialize["verify_ssl"] = o.VerifySsl
+	}
+	return toSerialize, nil
 }
 
 type NullableKubernetesServiceConnectionRequest struct {

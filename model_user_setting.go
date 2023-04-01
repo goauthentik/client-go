@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserSetting type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserSetting{}
+
 // UserSetting Serializer for User settings for stages and sources
 type UserSetting struct {
 	ObjectUid    string  `json:"object_uid"`
@@ -118,7 +121,7 @@ func (o *UserSetting) SetTitle(v string) {
 
 // GetConfigureUrl returns the ConfigureUrl field value if set, zero value otherwise.
 func (o *UserSetting) GetConfigureUrl() string {
-	if o == nil || o.ConfigureUrl == nil {
+	if o == nil || IsNil(o.ConfigureUrl) {
 		var ret string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *UserSetting) GetConfigureUrl() string {
 // GetConfigureUrlOk returns a tuple with the ConfigureUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserSetting) GetConfigureUrlOk() (*string, bool) {
-	if o == nil || o.ConfigureUrl == nil {
+	if o == nil || IsNil(o.ConfigureUrl) {
 		return nil, false
 	}
 	return o.ConfigureUrl, true
@@ -136,7 +139,7 @@ func (o *UserSetting) GetConfigureUrlOk() (*string, bool) {
 
 // HasConfigureUrl returns a boolean if a field has been set.
 func (o *UserSetting) HasConfigureUrl() bool {
-	if o != nil && o.ConfigureUrl != nil {
+	if o != nil && !IsNil(o.ConfigureUrl) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *UserSetting) SetConfigureUrl(v string) {
 
 // GetIconUrl returns the IconUrl field value if set, zero value otherwise.
 func (o *UserSetting) GetIconUrl() string {
-	if o == nil || o.IconUrl == nil {
+	if o == nil || IsNil(o.IconUrl) {
 		var ret string
 		return ret
 	}
@@ -160,7 +163,7 @@ func (o *UserSetting) GetIconUrl() string {
 // GetIconUrlOk returns a tuple with the IconUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserSetting) GetIconUrlOk() (*string, bool) {
-	if o == nil || o.IconUrl == nil {
+	if o == nil || IsNil(o.IconUrl) {
 		return nil, false
 	}
 	return o.IconUrl, true
@@ -168,7 +171,7 @@ func (o *UserSetting) GetIconUrlOk() (*string, bool) {
 
 // HasIconUrl returns a boolean if a field has been set.
 func (o *UserSetting) HasIconUrl() bool {
-	if o != nil && o.IconUrl != nil {
+	if o != nil && !IsNil(o.IconUrl) {
 		return true
 	}
 
@@ -181,23 +184,25 @@ func (o *UserSetting) SetIconUrl(v string) {
 }
 
 func (o UserSetting) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["object_uid"] = o.ObjectUid
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["title"] = o.Title
-	}
-	if o.ConfigureUrl != nil {
-		toSerialize["configure_url"] = o.ConfigureUrl
-	}
-	if o.IconUrl != nil {
-		toSerialize["icon_url"] = o.IconUrl
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserSetting) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["object_uid"] = o.ObjectUid
+	toSerialize["component"] = o.Component
+	toSerialize["title"] = o.Title
+	if !IsNil(o.ConfigureUrl) {
+		toSerialize["configure_url"] = o.ConfigureUrl
+	}
+	if !IsNil(o.IconUrl) {
+		toSerialize["icon_url"] = o.IconUrl
+	}
+	return toSerialize, nil
 }
 
 type NullableUserSetting struct {

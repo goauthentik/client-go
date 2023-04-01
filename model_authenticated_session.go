@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the AuthenticatedSession type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatedSession{}
+
 // AuthenticatedSession AuthenticatedSession Serializer
 type AuthenticatedSession struct {
 	Uuid *string `json:"uuid,omitempty"`
@@ -55,7 +58,7 @@ func NewAuthenticatedSessionWithDefaults() *AuthenticatedSession {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *AuthenticatedSession) GetUuid() string {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -65,7 +68,7 @@ func (o *AuthenticatedSession) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSession) GetUuidOk() (*string, bool) {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -73,7 +76,7 @@ func (o *AuthenticatedSession) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *AuthenticatedSession) HasUuid() bool {
-	if o != nil && o.Uuid != nil {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *AuthenticatedSession) SetLastIp(v string) {
 
 // GetLastUserAgent returns the LastUserAgent field value if set, zero value otherwise.
 func (o *AuthenticatedSession) GetLastUserAgent() string {
-	if o == nil || o.LastUserAgent == nil {
+	if o == nil || IsNil(o.LastUserAgent) {
 		var ret string
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *AuthenticatedSession) GetLastUserAgent() string {
 // GetLastUserAgentOk returns a tuple with the LastUserAgent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSession) GetLastUserAgentOk() (*string, bool) {
-	if o == nil || o.LastUserAgent == nil {
+	if o == nil || IsNil(o.LastUserAgent) {
 		return nil, false
 	}
 	return o.LastUserAgent, true
@@ -227,7 +230,7 @@ func (o *AuthenticatedSession) GetLastUserAgentOk() (*string, bool) {
 
 // HasLastUserAgent returns a boolean if a field has been set.
 func (o *AuthenticatedSession) HasLastUserAgent() bool {
-	if o != nil && o.LastUserAgent != nil {
+	if o != nil && !IsNil(o.LastUserAgent) {
 		return true
 	}
 
@@ -265,7 +268,7 @@ func (o *AuthenticatedSession) SetLastUsed(v time.Time) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *AuthenticatedSession) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		var ret time.Time
 		return ret
 	}
@@ -275,7 +278,7 @@ func (o *AuthenticatedSession) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSession) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
 	return o.Expires, true
@@ -283,7 +286,7 @@ func (o *AuthenticatedSession) GetExpiresOk() (*time.Time, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *AuthenticatedSession) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && !IsNil(o.Expires) {
 		return true
 	}
 
@@ -296,35 +299,31 @@ func (o *AuthenticatedSession) SetExpires(v time.Time) {
 }
 
 func (o AuthenticatedSession) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Uuid != nil {
-		toSerialize["uuid"] = o.Uuid
-	}
-	if true {
-		toSerialize["current"] = o.Current
-	}
-	if true {
-		toSerialize["user_agent"] = o.UserAgent
-	}
-	if true {
-		toSerialize["geo_ip"] = o.GeoIp.Get()
-	}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["last_ip"] = o.LastIp
-	}
-	if o.LastUserAgent != nil {
-		toSerialize["last_user_agent"] = o.LastUserAgent
-	}
-	if true {
-		toSerialize["last_used"] = o.LastUsed
-	}
-	if o.Expires != nil {
-		toSerialize["expires"] = o.Expires
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatedSession) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	// skip: current is readOnly
+	toSerialize["user_agent"] = o.UserAgent
+	toSerialize["geo_ip"] = o.GeoIp.Get()
+	toSerialize["user"] = o.User
+	toSerialize["last_ip"] = o.LastIp
+	if !IsNil(o.LastUserAgent) {
+		toSerialize["last_user_agent"] = o.LastUserAgent
+	}
+	// skip: last_used is readOnly
+	if !IsNil(o.Expires) {
+		toSerialize["expires"] = o.Expires
+	}
+	return toSerialize, nil
 }
 
 type NullableAuthenticatedSession struct {

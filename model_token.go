@@ -16,25 +16,28 @@ import (
 	"time"
 )
 
+// checks if the Token type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Token{}
+
 // Token Token Serializer
 type Token struct {
 	Pk string `json:"pk"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed     NullableString       `json:"managed,omitempty"`
-	Identifier  string               `json:"identifier"`
-	Intent      *IntentEnum          `json:"intent,omitempty"`
-	User        *int32               `json:"user,omitempty"`
-	UserObj     PolicyBindingUserObj `json:"user_obj"`
-	Description *string              `json:"description,omitempty"`
-	Expires     *time.Time           `json:"expires,omitempty"`
-	Expiring    *bool                `json:"expiring,omitempty"`
+	Managed     NullableString `json:"managed,omitempty"`
+	Identifier  string         `json:"identifier"`
+	Intent      *IntentEnum    `json:"intent,omitempty"`
+	User        *int32         `json:"user,omitempty"`
+	UserObj     User           `json:"user_obj"`
+	Description *string        `json:"description,omitempty"`
+	Expires     *time.Time     `json:"expires,omitempty"`
+	Expiring    *bool          `json:"expiring,omitempty"`
 }
 
 // NewToken instantiates a new Token object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewToken(pk string, identifier string, userObj PolicyBindingUserObj) *Token {
+func NewToken(pk string, identifier string, userObj User) *Token {
 	this := Token{}
 	this.Pk = pk
 	this.Identifier = identifier
@@ -76,7 +79,7 @@ func (o *Token) SetPk(v string) {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Token) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -143,7 +146,7 @@ func (o *Token) SetIdentifier(v string) {
 
 // GetIntent returns the Intent field value if set, zero value otherwise.
 func (o *Token) GetIntent() IntentEnum {
-	if o == nil || o.Intent == nil {
+	if o == nil || IsNil(o.Intent) {
 		var ret IntentEnum
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *Token) GetIntent() IntentEnum {
 // GetIntentOk returns a tuple with the Intent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Token) GetIntentOk() (*IntentEnum, bool) {
-	if o == nil || o.Intent == nil {
+	if o == nil || IsNil(o.Intent) {
 		return nil, false
 	}
 	return o.Intent, true
@@ -161,7 +164,7 @@ func (o *Token) GetIntentOk() (*IntentEnum, bool) {
 
 // HasIntent returns a boolean if a field has been set.
 func (o *Token) HasIntent() bool {
-	if o != nil && o.Intent != nil {
+	if o != nil && !IsNil(o.Intent) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *Token) SetIntent(v IntentEnum) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *Token) GetUser() int32 {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		var ret int32
 		return ret
 	}
@@ -185,7 +188,7 @@ func (o *Token) GetUser() int32 {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Token) GetUserOk() (*int32, bool) {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		return nil, false
 	}
 	return o.User, true
@@ -193,7 +196,7 @@ func (o *Token) GetUserOk() (*int32, bool) {
 
 // HasUser returns a boolean if a field has been set.
 func (o *Token) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -206,9 +209,9 @@ func (o *Token) SetUser(v int32) {
 }
 
 // GetUserObj returns the UserObj field value
-func (o *Token) GetUserObj() PolicyBindingUserObj {
+func (o *Token) GetUserObj() User {
 	if o == nil {
-		var ret PolicyBindingUserObj
+		var ret User
 		return ret
 	}
 
@@ -217,7 +220,7 @@ func (o *Token) GetUserObj() PolicyBindingUserObj {
 
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
-func (o *Token) GetUserObjOk() (*PolicyBindingUserObj, bool) {
+func (o *Token) GetUserObjOk() (*User, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -225,13 +228,13 @@ func (o *Token) GetUserObjOk() (*PolicyBindingUserObj, bool) {
 }
 
 // SetUserObj sets field value
-func (o *Token) SetUserObj(v PolicyBindingUserObj) {
+func (o *Token) SetUserObj(v User) {
 	o.UserObj = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Token) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -241,7 +244,7 @@ func (o *Token) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Token) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -249,7 +252,7 @@ func (o *Token) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Token) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -263,7 +266,7 @@ func (o *Token) SetDescription(v string) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *Token) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		var ret time.Time
 		return ret
 	}
@@ -273,7 +276,7 @@ func (o *Token) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Token) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
 	return o.Expires, true
@@ -281,7 +284,7 @@ func (o *Token) GetExpiresOk() (*time.Time, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *Token) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && !IsNil(o.Expires) {
 		return true
 	}
 
@@ -295,7 +298,7 @@ func (o *Token) SetExpires(v time.Time) {
 
 // GetExpiring returns the Expiring field value if set, zero value otherwise.
 func (o *Token) GetExpiring() bool {
-	if o == nil || o.Expiring == nil {
+	if o == nil || IsNil(o.Expiring) {
 		var ret bool
 		return ret
 	}
@@ -305,7 +308,7 @@ func (o *Token) GetExpiring() bool {
 // GetExpiringOk returns a tuple with the Expiring field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Token) GetExpiringOk() (*bool, bool) {
-	if o == nil || o.Expiring == nil {
+	if o == nil || IsNil(o.Expiring) {
 		return nil, false
 	}
 	return o.Expiring, true
@@ -313,7 +316,7 @@ func (o *Token) GetExpiringOk() (*bool, bool) {
 
 // HasExpiring returns a boolean if a field has been set.
 func (o *Token) HasExpiring() bool {
-	if o != nil && o.Expiring != nil {
+	if o != nil && !IsNil(o.Expiring) {
 		return true
 	}
 
@@ -326,35 +329,37 @@ func (o *Token) SetExpiring(v bool) {
 }
 
 func (o Token) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Token) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if true {
-		toSerialize["identifier"] = o.Identifier
-	}
-	if o.Intent != nil {
+	toSerialize["identifier"] = o.Identifier
+	if !IsNil(o.Intent) {
 		toSerialize["intent"] = o.Intent
 	}
-	if o.User != nil {
+	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}
-	if true {
-		toSerialize["user_obj"] = o.UserObj
-	}
-	if o.Description != nil {
+	// skip: user_obj is readOnly
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if o.Expires != nil {
+	if !IsNil(o.Expires) {
 		toSerialize["expires"] = o.Expires
 	}
-	if o.Expiring != nil {
+	if !IsNil(o.Expiring) {
 		toSerialize["expiring"] = o.Expiring
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableToken struct {

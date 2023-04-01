@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **BrandingLogo** | **string** |  | 
 **BrandingFavicon** | **string** |  | 
 **UiFooterLinks** | [**[]FooterLink**](FooterLink.md) |  | [readonly] [default to []]
-**UiTheme** | [**NullableUiThemeEnum**](UiThemeEnum.md) |  | [readonly] 
+**UiTheme** | [**UiThemeEnum**](UiThemeEnum.md) |  | [readonly] [default to UITHEMEENUM_AUTOMATIC]
 **FlowAuthentication** | Pointer to **string** |  | [optional] 
 **FlowInvalidation** | Pointer to **string** |  | [optional] 
 **FlowRecovery** | Pointer to **string** |  | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewCurrentTenant
 
-`func NewCurrentTenant(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, uiFooterLinks []FooterLink, uiTheme NullableUiThemeEnum, defaultLocale string, ) *CurrentTenant`
+`func NewCurrentTenant(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string, ) *CurrentTenant`
 
 NewCurrentTenant instantiates a new CurrentTenant object
 This constructor will assign default values to properties that have it defined,
@@ -157,16 +157,6 @@ and a boolean to check if the value has been set.
 SetUiTheme sets UiTheme field to given value.
 
 
-### SetUiThemeNil
-
-`func (o *CurrentTenant) SetUiThemeNil(b bool)`
-
- SetUiThemeNil sets the value for UiTheme to be an explicit nil
-
-### UnsetUiTheme
-`func (o *CurrentTenant) UnsetUiTheme()`
-
-UnsetUiTheme ensures that no value is present for UiTheme, not even an explicit nil
 ### GetFlowAuthentication
 
 `func (o *CurrentTenant) GetFlowAuthentication() string`

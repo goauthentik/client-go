@@ -15,28 +15,29 @@ import (
 	"encoding/json"
 )
 
+// checks if the FlowSetRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FlowSetRequest{}
+
 // FlowSetRequest Stripped down flow serializer
 type FlowSetRequest struct {
 	Name string `json:"name"`
 	// Visible in the URL.
 	Slug string `json:"slug"`
 	// Shown as the Title in Flow pages.
-	Title string `json:"title"`
-	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.  * `authentication` - Authentication * `authorization` - Authorization * `invalidation` - Invalidation * `enrollment` - Enrollment * `unenrollment` - Unrenollment * `recovery` - Recovery * `stage_configuration` - Stage Configuration
-	Designation      NullableFlowDesignationEnum `json:"designation"`
-	PolicyEngineMode *PolicyEngineMode           `json:"policy_engine_mode,omitempty"`
+	Title            string              `json:"title"`
+	Designation      FlowDesignationEnum `json:"designation"`
+	PolicyEngineMode *PolicyEngineMode   `json:"policy_engine_mode,omitempty"`
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
-	CompatibilityMode *bool       `json:"compatibility_mode,omitempty"`
-	Layout            *LayoutEnum `json:"layout,omitempty"`
-	// Configure what should happen when a flow denies access to a user.  * `message_continue` - Message Continue * `message` - Message * `continue` - Continue
-	DeniedAction NullableDeniedActionEnum `json:"denied_action,omitempty"`
+	CompatibilityMode *bool             `json:"compatibility_mode,omitempty"`
+	Layout            *LayoutEnum       `json:"layout,omitempty"`
+	DeniedAction      *DeniedActionEnum `json:"denied_action,omitempty"`
 }
 
 // NewFlowSetRequest instantiates a new FlowSetRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFlowSetRequest(name string, slug string, title string, designation NullableFlowDesignationEnum) *FlowSetRequest {
+func NewFlowSetRequest(name string, slug string, title string, designation FlowDesignationEnum) *FlowSetRequest {
 	this := FlowSetRequest{}
 	this.Name = name
 	this.Slug = slug
@@ -126,34 +127,32 @@ func (o *FlowSetRequest) SetTitle(v string) {
 }
 
 // GetDesignation returns the Designation field value
-// If the value is explicit nil, the zero value for FlowDesignationEnum will be returned
 func (o *FlowSetRequest) GetDesignation() FlowDesignationEnum {
-	if o == nil || o.Designation.Get() == nil {
+	if o == nil {
 		var ret FlowDesignationEnum
 		return ret
 	}
 
-	return *o.Designation.Get()
+	return o.Designation
 }
 
 // GetDesignationOk returns a tuple with the Designation field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FlowSetRequest) GetDesignationOk() (*FlowDesignationEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Designation.Get(), o.Designation.IsSet()
+	return &o.Designation, true
 }
 
 // SetDesignation sets field value
 func (o *FlowSetRequest) SetDesignation(v FlowDesignationEnum) {
-	o.Designation.Set(&v)
+	o.Designation = v
 }
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *FlowSetRequest) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -163,7 +162,7 @@ func (o *FlowSetRequest) GetPolicyEngineMode() PolicyEngineMode {
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowSetRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -171,7 +170,7 @@ func (o *FlowSetRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *FlowSetRequest) HasPolicyEngineMode() bool {
-	if o != nil && o.PolicyEngineMode != nil {
+	if o != nil && !IsNil(o.PolicyEngineMode) {
 		return true
 	}
 
@@ -185,7 +184,7 @@ func (o *FlowSetRequest) SetPolicyEngineMode(v PolicyEngineMode) {
 
 // GetCompatibilityMode returns the CompatibilityMode field value if set, zero value otherwise.
 func (o *FlowSetRequest) GetCompatibilityMode() bool {
-	if o == nil || o.CompatibilityMode == nil {
+	if o == nil || IsNil(o.CompatibilityMode) {
 		var ret bool
 		return ret
 	}
@@ -195,7 +194,7 @@ func (o *FlowSetRequest) GetCompatibilityMode() bool {
 // GetCompatibilityModeOk returns a tuple with the CompatibilityMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowSetRequest) GetCompatibilityModeOk() (*bool, bool) {
-	if o == nil || o.CompatibilityMode == nil {
+	if o == nil || IsNil(o.CompatibilityMode) {
 		return nil, false
 	}
 	return o.CompatibilityMode, true
@@ -203,7 +202,7 @@ func (o *FlowSetRequest) GetCompatibilityModeOk() (*bool, bool) {
 
 // HasCompatibilityMode returns a boolean if a field has been set.
 func (o *FlowSetRequest) HasCompatibilityMode() bool {
-	if o != nil && o.CompatibilityMode != nil {
+	if o != nil && !IsNil(o.CompatibilityMode) {
 		return true
 	}
 
@@ -217,7 +216,7 @@ func (o *FlowSetRequest) SetCompatibilityMode(v bool) {
 
 // GetLayout returns the Layout field value if set, zero value otherwise.
 func (o *FlowSetRequest) GetLayout() LayoutEnum {
-	if o == nil || o.Layout == nil {
+	if o == nil || IsNil(o.Layout) {
 		var ret LayoutEnum
 		return ret
 	}
@@ -227,7 +226,7 @@ func (o *FlowSetRequest) GetLayout() LayoutEnum {
 // GetLayoutOk returns a tuple with the Layout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowSetRequest) GetLayoutOk() (*LayoutEnum, bool) {
-	if o == nil || o.Layout == nil {
+	if o == nil || IsNil(o.Layout) {
 		return nil, false
 	}
 	return o.Layout, true
@@ -235,7 +234,7 @@ func (o *FlowSetRequest) GetLayoutOk() (*LayoutEnum, bool) {
 
 // HasLayout returns a boolean if a field has been set.
 func (o *FlowSetRequest) HasLayout() bool {
-	if o != nil && o.Layout != nil {
+	if o != nil && !IsNil(o.Layout) {
 		return true
 	}
 
@@ -247,76 +246,65 @@ func (o *FlowSetRequest) SetLayout(v LayoutEnum) {
 	o.Layout = &v
 }
 
-// GetDeniedAction returns the DeniedAction field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDeniedAction returns the DeniedAction field value if set, zero value otherwise.
 func (o *FlowSetRequest) GetDeniedAction() DeniedActionEnum {
-	if o == nil || o.DeniedAction.Get() == nil {
+	if o == nil || IsNil(o.DeniedAction) {
 		var ret DeniedActionEnum
 		return ret
 	}
-	return *o.DeniedAction.Get()
+	return *o.DeniedAction
 }
 
 // GetDeniedActionOk returns a tuple with the DeniedAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FlowSetRequest) GetDeniedActionOk() (*DeniedActionEnum, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DeniedAction) {
 		return nil, false
 	}
-	return o.DeniedAction.Get(), o.DeniedAction.IsSet()
+	return o.DeniedAction, true
 }
 
 // HasDeniedAction returns a boolean if a field has been set.
 func (o *FlowSetRequest) HasDeniedAction() bool {
-	if o != nil && o.DeniedAction.IsSet() {
+	if o != nil && !IsNil(o.DeniedAction) {
 		return true
 	}
 
 	return false
 }
 
-// SetDeniedAction gets a reference to the given NullableDeniedActionEnum and assigns it to the DeniedAction field.
+// SetDeniedAction gets a reference to the given DeniedActionEnum and assigns it to the DeniedAction field.
 func (o *FlowSetRequest) SetDeniedAction(v DeniedActionEnum) {
-	o.DeniedAction.Set(&v)
-}
-
-// SetDeniedActionNil sets the value for DeniedAction to be an explicit nil
-func (o *FlowSetRequest) SetDeniedActionNil() {
-	o.DeniedAction.Set(nil)
-}
-
-// UnsetDeniedAction ensures that no value is present for DeniedAction, not even an explicit nil
-func (o *FlowSetRequest) UnsetDeniedAction() {
-	o.DeniedAction.Unset()
+	o.DeniedAction = &v
 }
 
 func (o FlowSetRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["slug"] = o.Slug
-	}
-	if true {
-		toSerialize["title"] = o.Title
-	}
-	if true {
-		toSerialize["designation"] = o.Designation.Get()
-	}
-	if o.PolicyEngineMode != nil {
-		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
-	}
-	if o.CompatibilityMode != nil {
-		toSerialize["compatibility_mode"] = o.CompatibilityMode
-	}
-	if o.Layout != nil {
-		toSerialize["layout"] = o.Layout
-	}
-	if o.DeniedAction.IsSet() {
-		toSerialize["denied_action"] = o.DeniedAction.Get()
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o FlowSetRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["slug"] = o.Slug
+	toSerialize["title"] = o.Title
+	toSerialize["designation"] = o.Designation
+	if !IsNil(o.PolicyEngineMode) {
+		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
+	}
+	if !IsNil(o.CompatibilityMode) {
+		toSerialize["compatibility_mode"] = o.CompatibilityMode
+	}
+	if !IsNil(o.Layout) {
+		toSerialize["layout"] = o.Layout
+	}
+	if !IsNil(o.DeniedAction) {
+		toSerialize["denied_action"] = o.DeniedAction
+	}
+	return toSerialize, nil
 }
 
 type NullableFlowSetRequest struct {

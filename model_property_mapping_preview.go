@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PropertyMappingPreview type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PropertyMappingPreview{}
+
 // PropertyMappingPreview Preview how the current user is mapped via the property mappings selected in a provider
 type PropertyMappingPreview struct {
 	Preview map[string]interface{} `json:"preview"`
@@ -52,7 +55,7 @@ func (o *PropertyMappingPreview) GetPreview() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *PropertyMappingPreview) GetPreviewOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Preview, true
 }
@@ -63,11 +66,17 @@ func (o *PropertyMappingPreview) SetPreview(v map[string]interface{}) {
 }
 
 func (o PropertyMappingPreview) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["preview"] = o.Preview
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PropertyMappingPreview) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: preview is readOnly
+	return toSerialize, nil
 }
 
 type NullablePropertyMappingPreview struct {

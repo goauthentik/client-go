@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Path** | **string** |  | 
 **LastM** | **time.Time** |  | 
 **Hash** | **string** |  | 
-**Meta** | [**BlueprintFileMeta**](BlueprintFileMeta.md) |  | 
+**Meta** | [**Metadata**](Metadata.md) |  | [readonly] 
 
 ## Methods
 
 ### NewBlueprintFile
 
-`func NewBlueprintFile(path string, lastM time.Time, hash string, meta BlueprintFileMeta, ) *BlueprintFile`
+`func NewBlueprintFile(path string, lastM time.Time, hash string, meta Metadata, ) *BlueprintFile`
 
 NewBlueprintFile instantiates a new BlueprintFile object
 This constructor will assign default values to properties that have it defined,
@@ -90,20 +90,20 @@ SetHash sets Hash field to given value.
 
 ### GetMeta
 
-`func (o *BlueprintFile) GetMeta() BlueprintFileMeta`
+`func (o *BlueprintFile) GetMeta() Metadata`
 
 GetMeta returns the Meta field if non-nil, zero value otherwise.
 
 ### GetMetaOk
 
-`func (o *BlueprintFile) GetMetaOk() (*BlueprintFileMeta, bool)`
+`func (o *BlueprintFile) GetMetaOk() (*Metadata, bool)`
 
 GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMeta
 
-`func (o *BlueprintFile) SetMeta(v BlueprintFileMeta)`
+`func (o *BlueprintFile) SetMeta(v Metadata)`
 
 SetMeta sets Meta field to given value.
 

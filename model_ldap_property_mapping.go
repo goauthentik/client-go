@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LDAPPropertyMapping type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LDAPPropertyMapping{}
+
 // LDAPPropertyMapping LDAP PropertyMapping Serializer
 type LDAPPropertyMapping struct {
 	Pk string `json:"pk"`
@@ -84,7 +87,7 @@ func (o *LDAPPropertyMapping) SetPk(v string) {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LDAPPropertyMapping) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -294,35 +297,27 @@ func (o *LDAPPropertyMapping) SetObjectField(v string) {
 }
 
 func (o LDAPPropertyMapping) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o LDAPPropertyMapping) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["expression"] = o.Expression
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if true {
-		toSerialize["object_field"] = o.ObjectField
-	}
-	return json.Marshal(toSerialize)
+	toSerialize["name"] = o.Name
+	toSerialize["expression"] = o.Expression
+	// skip: component is readOnly
+	// skip: verbose_name is readOnly
+	// skip: verbose_name_plural is readOnly
+	// skip: meta_model_name is readOnly
+	toSerialize["object_field"] = o.ObjectField
+	return toSerialize, nil
 }
 
 type NullableLDAPPropertyMapping struct {

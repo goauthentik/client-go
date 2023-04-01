@@ -15,18 +15,20 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedOAuth2ProviderRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedOAuth2ProviderRequest{}
+
 // PatchedOAuth2ProviderRequest OAuth2Provider Serializer
 type PatchedOAuth2ProviderRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used for authentication when the associated application is accessed by an un-authenticated user.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string  `json:"authorization_flow,omitempty"`
-	PropertyMappings  []string `json:"property_mappings,omitempty"`
-	// Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  * `confidential` - Confidential * `public` - Public
-	ClientType   NullableClientTypeEnum `json:"client_type,omitempty"`
-	ClientId     *string                `json:"client_id,omitempty"`
-	ClientSecret *string                `json:"client_secret,omitempty"`
+	AuthorizationFlow *string         `json:"authorization_flow,omitempty"`
+	PropertyMappings  []string        `json:"property_mappings,omitempty"`
+	ClientType        *ClientTypeEnum `json:"client_type,omitempty"`
+	ClientId          *string         `json:"client_id,omitempty"`
+	ClientSecret      *string         `json:"client_secret,omitempty"`
 	// Access codes not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	AccessCodeValidity *string `json:"access_code_validity,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
@@ -38,12 +40,10 @@ type PatchedOAuth2ProviderRequest struct {
 	// Key used to sign the tokens. Only required when JWT Algorithm is set to RS256.
 	SigningKey NullableString `json:"signing_key,omitempty"`
 	// Enter each URI on a new line.
-	RedirectUris *string `json:"redirect_uris,omitempty"`
-	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.  * `hashed_user_id` - Based on the Hashed User ID * `user_id` - Based on user ID * `user_username` - Based on the username * `user_email` - Based on the User's Email. This is recommended over the UPN method. * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
-	SubMode NullableSubModeEnum `json:"sub_mode,omitempty"`
-	// Configure how the issuer field of the ID Token should be filled.  * `global` - Same identifier is used for all providers * `per_provider` - Each provider has a different issuer, based on the application slug.
-	IssuerMode  NullableIssuerModeEnum `json:"issuer_mode,omitempty"`
-	JwksSources []string               `json:"jwks_sources,omitempty"`
+	RedirectUris *string         `json:"redirect_uris,omitempty"`
+	SubMode      *SubModeEnum    `json:"sub_mode,omitempty"`
+	IssuerMode   *IssuerModeEnum `json:"issuer_mode,omitempty"`
+	JwksSources  []string        `json:"jwks_sources,omitempty"`
 }
 
 // NewPatchedOAuth2ProviderRequest instantiates a new PatchedOAuth2ProviderRequest object
@@ -65,7 +65,7 @@ func NewPatchedOAuth2ProviderRequestWithDefaults() *PatchedOAuth2ProviderRequest
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -75,7 +75,7 @@ func (o *PatchedOAuth2ProviderRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOAuth2ProviderRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -83,7 +83,7 @@ func (o *PatchedOAuth2ProviderRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -97,7 +97,7 @@ func (o *PatchedOAuth2ProviderRequest) SetName(v string) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedOAuth2ProviderRequest) GetAuthenticationFlow() string {
-	if o == nil || o.AuthenticationFlow.Get() == nil {
+	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -140,7 +140,7 @@ func (o *PatchedOAuth2ProviderRequest) UnsetAuthenticationFlow() {
 
 // GetAuthorizationFlow returns the AuthorizationFlow field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetAuthorizationFlow() string {
-	if o == nil || o.AuthorizationFlow == nil {
+	if o == nil || IsNil(o.AuthorizationFlow) {
 		var ret string
 		return ret
 	}
@@ -150,7 +150,7 @@ func (o *PatchedOAuth2ProviderRequest) GetAuthorizationFlow() string {
 // GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOAuth2ProviderRequest) GetAuthorizationFlowOk() (*string, bool) {
-	if o == nil || o.AuthorizationFlow == nil {
+	if o == nil || IsNil(o.AuthorizationFlow) {
 		return nil, false
 	}
 	return o.AuthorizationFlow, true
@@ -158,7 +158,7 @@ func (o *PatchedOAuth2ProviderRequest) GetAuthorizationFlowOk() (*string, bool) 
 
 // HasAuthorizationFlow returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasAuthorizationFlow() bool {
-	if o != nil && o.AuthorizationFlow != nil {
+	if o != nil && !IsNil(o.AuthorizationFlow) {
 		return true
 	}
 
@@ -172,7 +172,7 @@ func (o *PatchedOAuth2ProviderRequest) SetAuthorizationFlow(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetPropertyMappings() []string {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -182,7 +182,7 @@ func (o *PatchedOAuth2ProviderRequest) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOAuth2ProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -190,7 +190,7 @@ func (o *PatchedOAuth2ProviderRequest) GetPropertyMappingsOk() ([]string, bool) 
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasPropertyMappings() bool {
-	if o != nil && o.PropertyMappings != nil {
+	if o != nil && !IsNil(o.PropertyMappings) {
 		return true
 	}
 
@@ -202,52 +202,41 @@ func (o *PatchedOAuth2ProviderRequest) SetPropertyMappings(v []string) {
 	o.PropertyMappings = v
 }
 
-// GetClientType returns the ClientType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetClientType returns the ClientType field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetClientType() ClientTypeEnum {
-	if o == nil || o.ClientType.Get() == nil {
+	if o == nil || IsNil(o.ClientType) {
 		var ret ClientTypeEnum
 		return ret
 	}
-	return *o.ClientType.Get()
+	return *o.ClientType
 }
 
 // GetClientTypeOk returns a tuple with the ClientType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuth2ProviderRequest) GetClientTypeOk() (*ClientTypeEnum, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ClientType) {
 		return nil, false
 	}
-	return o.ClientType.Get(), o.ClientType.IsSet()
+	return o.ClientType, true
 }
 
 // HasClientType returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasClientType() bool {
-	if o != nil && o.ClientType.IsSet() {
+	if o != nil && !IsNil(o.ClientType) {
 		return true
 	}
 
 	return false
 }
 
-// SetClientType gets a reference to the given NullableClientTypeEnum and assigns it to the ClientType field.
+// SetClientType gets a reference to the given ClientTypeEnum and assigns it to the ClientType field.
 func (o *PatchedOAuth2ProviderRequest) SetClientType(v ClientTypeEnum) {
-	o.ClientType.Set(&v)
-}
-
-// SetClientTypeNil sets the value for ClientType to be an explicit nil
-func (o *PatchedOAuth2ProviderRequest) SetClientTypeNil() {
-	o.ClientType.Set(nil)
-}
-
-// UnsetClientType ensures that no value is present for ClientType, not even an explicit nil
-func (o *PatchedOAuth2ProviderRequest) UnsetClientType() {
-	o.ClientType.Unset()
+	o.ClientType = &v
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetClientId() string {
-	if o == nil || o.ClientId == nil {
+	if o == nil || IsNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -257,7 +246,7 @@ func (o *PatchedOAuth2ProviderRequest) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOAuth2ProviderRequest) GetClientIdOk() (*string, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -265,7 +254,7 @@ func (o *PatchedOAuth2ProviderRequest) GetClientIdOk() (*string, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
 
@@ -279,7 +268,7 @@ func (o *PatchedOAuth2ProviderRequest) SetClientId(v string) {
 
 // GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetClientSecret() string {
-	if o == nil || o.ClientSecret == nil {
+	if o == nil || IsNil(o.ClientSecret) {
 		var ret string
 		return ret
 	}
@@ -289,7 +278,7 @@ func (o *PatchedOAuth2ProviderRequest) GetClientSecret() string {
 // GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOAuth2ProviderRequest) GetClientSecretOk() (*string, bool) {
-	if o == nil || o.ClientSecret == nil {
+	if o == nil || IsNil(o.ClientSecret) {
 		return nil, false
 	}
 	return o.ClientSecret, true
@@ -297,7 +286,7 @@ func (o *PatchedOAuth2ProviderRequest) GetClientSecretOk() (*string, bool) {
 
 // HasClientSecret returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasClientSecret() bool {
-	if o != nil && o.ClientSecret != nil {
+	if o != nil && !IsNil(o.ClientSecret) {
 		return true
 	}
 
@@ -311,7 +300,7 @@ func (o *PatchedOAuth2ProviderRequest) SetClientSecret(v string) {
 
 // GetAccessCodeValidity returns the AccessCodeValidity field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetAccessCodeValidity() string {
-	if o == nil || o.AccessCodeValidity == nil {
+	if o == nil || IsNil(o.AccessCodeValidity) {
 		var ret string
 		return ret
 	}
@@ -321,7 +310,7 @@ func (o *PatchedOAuth2ProviderRequest) GetAccessCodeValidity() string {
 // GetAccessCodeValidityOk returns a tuple with the AccessCodeValidity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOAuth2ProviderRequest) GetAccessCodeValidityOk() (*string, bool) {
-	if o == nil || o.AccessCodeValidity == nil {
+	if o == nil || IsNil(o.AccessCodeValidity) {
 		return nil, false
 	}
 	return o.AccessCodeValidity, true
@@ -329,7 +318,7 @@ func (o *PatchedOAuth2ProviderRequest) GetAccessCodeValidityOk() (*string, bool)
 
 // HasAccessCodeValidity returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasAccessCodeValidity() bool {
-	if o != nil && o.AccessCodeValidity != nil {
+	if o != nil && !IsNil(o.AccessCodeValidity) {
 		return true
 	}
 
@@ -343,7 +332,7 @@ func (o *PatchedOAuth2ProviderRequest) SetAccessCodeValidity(v string) {
 
 // GetAccessTokenValidity returns the AccessTokenValidity field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetAccessTokenValidity() string {
-	if o == nil || o.AccessTokenValidity == nil {
+	if o == nil || IsNil(o.AccessTokenValidity) {
 		var ret string
 		return ret
 	}
@@ -353,7 +342,7 @@ func (o *PatchedOAuth2ProviderRequest) GetAccessTokenValidity() string {
 // GetAccessTokenValidityOk returns a tuple with the AccessTokenValidity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOAuth2ProviderRequest) GetAccessTokenValidityOk() (*string, bool) {
-	if o == nil || o.AccessTokenValidity == nil {
+	if o == nil || IsNil(o.AccessTokenValidity) {
 		return nil, false
 	}
 	return o.AccessTokenValidity, true
@@ -361,7 +350,7 @@ func (o *PatchedOAuth2ProviderRequest) GetAccessTokenValidityOk() (*string, bool
 
 // HasAccessTokenValidity returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasAccessTokenValidity() bool {
-	if o != nil && o.AccessTokenValidity != nil {
+	if o != nil && !IsNil(o.AccessTokenValidity) {
 		return true
 	}
 
@@ -375,7 +364,7 @@ func (o *PatchedOAuth2ProviderRequest) SetAccessTokenValidity(v string) {
 
 // GetRefreshTokenValidity returns the RefreshTokenValidity field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetRefreshTokenValidity() string {
-	if o == nil || o.RefreshTokenValidity == nil {
+	if o == nil || IsNil(o.RefreshTokenValidity) {
 		var ret string
 		return ret
 	}
@@ -385,7 +374,7 @@ func (o *PatchedOAuth2ProviderRequest) GetRefreshTokenValidity() string {
 // GetRefreshTokenValidityOk returns a tuple with the RefreshTokenValidity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOAuth2ProviderRequest) GetRefreshTokenValidityOk() (*string, bool) {
-	if o == nil || o.RefreshTokenValidity == nil {
+	if o == nil || IsNil(o.RefreshTokenValidity) {
 		return nil, false
 	}
 	return o.RefreshTokenValidity, true
@@ -393,7 +382,7 @@ func (o *PatchedOAuth2ProviderRequest) GetRefreshTokenValidityOk() (*string, boo
 
 // HasRefreshTokenValidity returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasRefreshTokenValidity() bool {
-	if o != nil && o.RefreshTokenValidity != nil {
+	if o != nil && !IsNil(o.RefreshTokenValidity) {
 		return true
 	}
 
@@ -407,7 +396,7 @@ func (o *PatchedOAuth2ProviderRequest) SetRefreshTokenValidity(v string) {
 
 // GetIncludeClaimsInIdToken returns the IncludeClaimsInIdToken field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetIncludeClaimsInIdToken() bool {
-	if o == nil || o.IncludeClaimsInIdToken == nil {
+	if o == nil || IsNil(o.IncludeClaimsInIdToken) {
 		var ret bool
 		return ret
 	}
@@ -417,7 +406,7 @@ func (o *PatchedOAuth2ProviderRequest) GetIncludeClaimsInIdToken() bool {
 // GetIncludeClaimsInIdTokenOk returns a tuple with the IncludeClaimsInIdToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOAuth2ProviderRequest) GetIncludeClaimsInIdTokenOk() (*bool, bool) {
-	if o == nil || o.IncludeClaimsInIdToken == nil {
+	if o == nil || IsNil(o.IncludeClaimsInIdToken) {
 		return nil, false
 	}
 	return o.IncludeClaimsInIdToken, true
@@ -425,7 +414,7 @@ func (o *PatchedOAuth2ProviderRequest) GetIncludeClaimsInIdTokenOk() (*bool, boo
 
 // HasIncludeClaimsInIdToken returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasIncludeClaimsInIdToken() bool {
-	if o != nil && o.IncludeClaimsInIdToken != nil {
+	if o != nil && !IsNil(o.IncludeClaimsInIdToken) {
 		return true
 	}
 
@@ -439,7 +428,7 @@ func (o *PatchedOAuth2ProviderRequest) SetIncludeClaimsInIdToken(v bool) {
 
 // GetSigningKey returns the SigningKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedOAuth2ProviderRequest) GetSigningKey() string {
-	if o == nil || o.SigningKey.Get() == nil {
+	if o == nil || IsNil(o.SigningKey.Get()) {
 		var ret string
 		return ret
 	}
@@ -482,7 +471,7 @@ func (o *PatchedOAuth2ProviderRequest) UnsetSigningKey() {
 
 // GetRedirectUris returns the RedirectUris field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetRedirectUris() string {
-	if o == nil || o.RedirectUris == nil {
+	if o == nil || IsNil(o.RedirectUris) {
 		var ret string
 		return ret
 	}
@@ -492,7 +481,7 @@ func (o *PatchedOAuth2ProviderRequest) GetRedirectUris() string {
 // GetRedirectUrisOk returns a tuple with the RedirectUris field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOAuth2ProviderRequest) GetRedirectUrisOk() (*string, bool) {
-	if o == nil || o.RedirectUris == nil {
+	if o == nil || IsNil(o.RedirectUris) {
 		return nil, false
 	}
 	return o.RedirectUris, true
@@ -500,7 +489,7 @@ func (o *PatchedOAuth2ProviderRequest) GetRedirectUrisOk() (*string, bool) {
 
 // HasRedirectUris returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasRedirectUris() bool {
-	if o != nil && o.RedirectUris != nil {
+	if o != nil && !IsNil(o.RedirectUris) {
 		return true
 	}
 
@@ -512,95 +501,73 @@ func (o *PatchedOAuth2ProviderRequest) SetRedirectUris(v string) {
 	o.RedirectUris = &v
 }
 
-// GetSubMode returns the SubMode field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSubMode returns the SubMode field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetSubMode() SubModeEnum {
-	if o == nil || o.SubMode.Get() == nil {
+	if o == nil || IsNil(o.SubMode) {
 		var ret SubModeEnum
 		return ret
 	}
-	return *o.SubMode.Get()
+	return *o.SubMode
 }
 
 // GetSubModeOk returns a tuple with the SubMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuth2ProviderRequest) GetSubModeOk() (*SubModeEnum, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SubMode) {
 		return nil, false
 	}
-	return o.SubMode.Get(), o.SubMode.IsSet()
+	return o.SubMode, true
 }
 
 // HasSubMode returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasSubMode() bool {
-	if o != nil && o.SubMode.IsSet() {
+	if o != nil && !IsNil(o.SubMode) {
 		return true
 	}
 
 	return false
 }
 
-// SetSubMode gets a reference to the given NullableSubModeEnum and assigns it to the SubMode field.
+// SetSubMode gets a reference to the given SubModeEnum and assigns it to the SubMode field.
 func (o *PatchedOAuth2ProviderRequest) SetSubMode(v SubModeEnum) {
-	o.SubMode.Set(&v)
+	o.SubMode = &v
 }
 
-// SetSubModeNil sets the value for SubMode to be an explicit nil
-func (o *PatchedOAuth2ProviderRequest) SetSubModeNil() {
-	o.SubMode.Set(nil)
-}
-
-// UnsetSubMode ensures that no value is present for SubMode, not even an explicit nil
-func (o *PatchedOAuth2ProviderRequest) UnsetSubMode() {
-	o.SubMode.Unset()
-}
-
-// GetIssuerMode returns the IssuerMode field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIssuerMode returns the IssuerMode field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetIssuerMode() IssuerModeEnum {
-	if o == nil || o.IssuerMode.Get() == nil {
+	if o == nil || IsNil(o.IssuerMode) {
 		var ret IssuerModeEnum
 		return ret
 	}
-	return *o.IssuerMode.Get()
+	return *o.IssuerMode
 }
 
 // GetIssuerModeOk returns a tuple with the IssuerMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedOAuth2ProviderRequest) GetIssuerModeOk() (*IssuerModeEnum, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IssuerMode) {
 		return nil, false
 	}
-	return o.IssuerMode.Get(), o.IssuerMode.IsSet()
+	return o.IssuerMode, true
 }
 
 // HasIssuerMode returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasIssuerMode() bool {
-	if o != nil && o.IssuerMode.IsSet() {
+	if o != nil && !IsNil(o.IssuerMode) {
 		return true
 	}
 
 	return false
 }
 
-// SetIssuerMode gets a reference to the given NullableIssuerModeEnum and assigns it to the IssuerMode field.
+// SetIssuerMode gets a reference to the given IssuerModeEnum and assigns it to the IssuerMode field.
 func (o *PatchedOAuth2ProviderRequest) SetIssuerMode(v IssuerModeEnum) {
-	o.IssuerMode.Set(&v)
-}
-
-// SetIssuerModeNil sets the value for IssuerMode to be an explicit nil
-func (o *PatchedOAuth2ProviderRequest) SetIssuerModeNil() {
-	o.IssuerMode.Set(nil)
-}
-
-// UnsetIssuerMode ensures that no value is present for IssuerMode, not even an explicit nil
-func (o *PatchedOAuth2ProviderRequest) UnsetIssuerMode() {
-	o.IssuerMode.Unset()
+	o.IssuerMode = &v
 }
 
 // GetJwksSources returns the JwksSources field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetJwksSources() []string {
-	if o == nil || o.JwksSources == nil {
+	if o == nil || IsNil(o.JwksSources) {
 		var ret []string
 		return ret
 	}
@@ -610,7 +577,7 @@ func (o *PatchedOAuth2ProviderRequest) GetJwksSources() []string {
 // GetJwksSourcesOk returns a tuple with the JwksSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOAuth2ProviderRequest) GetJwksSourcesOk() ([]string, bool) {
-	if o == nil || o.JwksSources == nil {
+	if o == nil || IsNil(o.JwksSources) {
 		return nil, false
 	}
 	return o.JwksSources, true
@@ -618,7 +585,7 @@ func (o *PatchedOAuth2ProviderRequest) GetJwksSourcesOk() ([]string, bool) {
 
 // HasJwksSources returns a boolean if a field has been set.
 func (o *PatchedOAuth2ProviderRequest) HasJwksSources() bool {
-	if o != nil && o.JwksSources != nil {
+	if o != nil && !IsNil(o.JwksSources) {
 		return true
 	}
 
@@ -631,56 +598,64 @@ func (o *PatchedOAuth2ProviderRequest) SetJwksSources(v []string) {
 }
 
 func (o PatchedOAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedOAuth2ProviderRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
 	}
-	if o.AuthorizationFlow != nil {
+	if !IsNil(o.AuthorizationFlow) {
 		toSerialize["authorization_flow"] = o.AuthorizationFlow
 	}
-	if o.PropertyMappings != nil {
+	if !IsNil(o.PropertyMappings) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if o.ClientType.IsSet() {
-		toSerialize["client_type"] = o.ClientType.Get()
+	if !IsNil(o.ClientType) {
+		toSerialize["client_type"] = o.ClientType
 	}
-	if o.ClientId != nil {
+	if !IsNil(o.ClientId) {
 		toSerialize["client_id"] = o.ClientId
 	}
-	if o.ClientSecret != nil {
+	if !IsNil(o.ClientSecret) {
 		toSerialize["client_secret"] = o.ClientSecret
 	}
-	if o.AccessCodeValidity != nil {
+	if !IsNil(o.AccessCodeValidity) {
 		toSerialize["access_code_validity"] = o.AccessCodeValidity
 	}
-	if o.AccessTokenValidity != nil {
+	if !IsNil(o.AccessTokenValidity) {
 		toSerialize["access_token_validity"] = o.AccessTokenValidity
 	}
-	if o.RefreshTokenValidity != nil {
+	if !IsNil(o.RefreshTokenValidity) {
 		toSerialize["refresh_token_validity"] = o.RefreshTokenValidity
 	}
-	if o.IncludeClaimsInIdToken != nil {
+	if !IsNil(o.IncludeClaimsInIdToken) {
 		toSerialize["include_claims_in_id_token"] = o.IncludeClaimsInIdToken
 	}
 	if o.SigningKey.IsSet() {
 		toSerialize["signing_key"] = o.SigningKey.Get()
 	}
-	if o.RedirectUris != nil {
+	if !IsNil(o.RedirectUris) {
 		toSerialize["redirect_uris"] = o.RedirectUris
 	}
-	if o.SubMode.IsSet() {
-		toSerialize["sub_mode"] = o.SubMode.Get()
+	if !IsNil(o.SubMode) {
+		toSerialize["sub_mode"] = o.SubMode
 	}
-	if o.IssuerMode.IsSet() {
-		toSerialize["issuer_mode"] = o.IssuerMode.Get()
+	if !IsNil(o.IssuerMode) {
+		toSerialize["issuer_mode"] = o.IssuerMode
 	}
-	if o.JwksSources != nil {
+	if !IsNil(o.JwksSources) {
 		toSerialize["jwks_sources"] = o.JwksSources
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedOAuth2ProviderRequest struct {

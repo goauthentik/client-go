@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the ExpiringBaseGrantModel type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExpiringBaseGrantModel{}
+
 // ExpiringBaseGrantModel Serializer for BaseGrantModel and ExpiringBaseGrant
 type ExpiringBaseGrantModel struct {
 	Pk       int32          `json:"pk"`
@@ -147,7 +150,7 @@ func (o *ExpiringBaseGrantModel) SetIsExpired(v bool) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *ExpiringBaseGrantModel) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		var ret time.Time
 		return ret
 	}
@@ -157,7 +160,7 @@ func (o *ExpiringBaseGrantModel) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExpiringBaseGrantModel) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
 	return o.Expires, true
@@ -165,7 +168,7 @@ func (o *ExpiringBaseGrantModel) GetExpiresOk() (*time.Time, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *ExpiringBaseGrantModel) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && !IsNil(o.Expires) {
 		return true
 	}
 
@@ -202,26 +205,24 @@ func (o *ExpiringBaseGrantModel) SetScope(v []string) {
 }
 
 func (o ExpiringBaseGrantModel) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["provider"] = o.Provider
-	}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["is_expired"] = o.IsExpired
-	}
-	if o.Expires != nil {
-		toSerialize["expires"] = o.Expires
-	}
-	if true {
-		toSerialize["scope"] = o.Scope
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ExpiringBaseGrantModel) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
+	toSerialize["provider"] = o.Provider
+	toSerialize["user"] = o.User
+	// skip: is_expired is readOnly
+	if !IsNil(o.Expires) {
+		toSerialize["expires"] = o.Expires
+	}
+	toSerialize["scope"] = o.Scope
+	return toSerialize, nil
 }
 
 type NullableExpiringBaseGrantModel struct {

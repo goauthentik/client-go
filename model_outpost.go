@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Outpost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Outpost{}
+
 // Outpost Outpost Serializer
 type Outpost struct {
 	Pk           string          `json:"pk"`
@@ -23,8 +26,8 @@ type Outpost struct {
 	Providers    []int32         `json:"providers"`
 	ProvidersObj []Provider      `json:"providers_obj"`
 	// Select Service-Connection authentik should use to manage this outpost. Leave empty if authentik should not handle the deployment.
-	ServiceConnection    NullableString              `json:"service_connection,omitempty"`
-	ServiceConnectionObj OutpostServiceConnectionObj `json:"service_connection_obj"`
+	ServiceConnection    NullableString    `json:"service_connection,omitempty"`
+	ServiceConnectionObj ServiceConnection `json:"service_connection_obj"`
 	// Get Token identifier
 	TokenIdentifier string                 `json:"token_identifier"`
 	Config          map[string]interface{} `json:"config"`
@@ -36,7 +39,7 @@ type Outpost struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32, providersObj []Provider, serviceConnectionObj OutpostServiceConnectionObj, tokenIdentifier string, config map[string]interface{}) *Outpost {
+func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32, providersObj []Provider, serviceConnectionObj ServiceConnection, tokenIdentifier string, config map[string]interface{}) *Outpost {
 	this := Outpost{}
 	this.Pk = pk
 	this.Name = name
@@ -179,7 +182,7 @@ func (o *Outpost) SetProvidersObj(v []Provider) {
 
 // GetServiceConnection returns the ServiceConnection field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Outpost) GetServiceConnection() string {
-	if o == nil || o.ServiceConnection.Get() == nil {
+	if o == nil || IsNil(o.ServiceConnection.Get()) {
 		var ret string
 		return ret
 	}
@@ -221,9 +224,9 @@ func (o *Outpost) UnsetServiceConnection() {
 }
 
 // GetServiceConnectionObj returns the ServiceConnectionObj field value
-func (o *Outpost) GetServiceConnectionObj() OutpostServiceConnectionObj {
+func (o *Outpost) GetServiceConnectionObj() ServiceConnection {
 	if o == nil {
-		var ret OutpostServiceConnectionObj
+		var ret ServiceConnection
 		return ret
 	}
 
@@ -232,7 +235,7 @@ func (o *Outpost) GetServiceConnectionObj() OutpostServiceConnectionObj {
 
 // GetServiceConnectionObjOk returns a tuple with the ServiceConnectionObj field value
 // and a boolean to check if the value has been set.
-func (o *Outpost) GetServiceConnectionObjOk() (*OutpostServiceConnectionObj, bool) {
+func (o *Outpost) GetServiceConnectionObjOk() (*ServiceConnection, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -240,7 +243,7 @@ func (o *Outpost) GetServiceConnectionObjOk() (*OutpostServiceConnectionObj, boo
 }
 
 // SetServiceConnectionObj sets field value
-func (o *Outpost) SetServiceConnectionObj(v OutpostServiceConnectionObj) {
+func (o *Outpost) SetServiceConnectionObj(v ServiceConnection) {
 	o.ServiceConnectionObj = v
 }
 
@@ -282,7 +285,7 @@ func (o *Outpost) GetConfig() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *Outpost) GetConfigOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Config, true
 }
@@ -294,7 +297,7 @@ func (o *Outpost) SetConfig(v map[string]interface{}) {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Outpost) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -336,38 +339,30 @@ func (o *Outpost) UnsetManaged() {
 }
 
 func (o Outpost) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Outpost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["providers"] = o.Providers
-	}
-	if true {
-		toSerialize["providers_obj"] = o.ProvidersObj
-	}
+	// skip: pk is readOnly
+	toSerialize["name"] = o.Name
+	toSerialize["type"] = o.Type
+	toSerialize["providers"] = o.Providers
+	// skip: providers_obj is readOnly
 	if o.ServiceConnection.IsSet() {
 		toSerialize["service_connection"] = o.ServiceConnection.Get()
 	}
-	if true {
-		toSerialize["service_connection_obj"] = o.ServiceConnectionObj
-	}
-	if true {
-		toSerialize["token_identifier"] = o.TokenIdentifier
-	}
-	if true {
-		toSerialize["config"] = o.Config
-	}
+	// skip: service_connection_obj is readOnly
+	// skip: token_identifier is readOnly
+	toSerialize["config"] = o.Config
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableOutpost struct {

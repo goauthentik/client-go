@@ -14,7 +14,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -64,7 +64,7 @@ func (a *Oauth2ApiService) Oauth2AccessTokensDestroyExecute(r ApiOauth2AccessTok
 	}
 
 	localVarPath := localBasePath + "/oauth2/access_tokens/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -111,9 +111,9 @@ func (a *Oauth2ApiService) Oauth2AccessTokensDestroyExecute(r ApiOauth2AccessTok
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -130,6 +130,7 @@ func (a *Oauth2ApiService) Oauth2AccessTokensDestroyExecute(r ApiOauth2AccessTok
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -140,6 +141,7 @@ func (a *Oauth2ApiService) Oauth2AccessTokensDestroyExecute(r ApiOauth2AccessTok
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -234,22 +236,22 @@ func (a *Oauth2ApiService) Oauth2AccessTokensListExecute(r ApiOauth2AccessTokens
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.provider != nil {
-		localVarQueryParams.Add("provider", parameterToString(*r.provider, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -292,9 +294,9 @@ func (a *Oauth2ApiService) Oauth2AccessTokensListExecute(r ApiOauth2AccessTokens
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -311,6 +313,7 @@ func (a *Oauth2ApiService) Oauth2AccessTokensListExecute(r ApiOauth2AccessTokens
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -321,6 +324,7 @@ func (a *Oauth2ApiService) Oauth2AccessTokensListExecute(r ApiOauth2AccessTokens
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -381,7 +385,7 @@ func (a *Oauth2ApiService) Oauth2AccessTokensRetrieveExecute(r ApiOauth2AccessTo
 	}
 
 	localVarPath := localBasePath + "/oauth2/access_tokens/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -428,9 +432,9 @@ func (a *Oauth2ApiService) Oauth2AccessTokensRetrieveExecute(r ApiOauth2AccessTo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -447,6 +451,7 @@ func (a *Oauth2ApiService) Oauth2AccessTokensRetrieveExecute(r ApiOauth2AccessTo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -457,6 +462,7 @@ func (a *Oauth2ApiService) Oauth2AccessTokensRetrieveExecute(r ApiOauth2AccessTo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -517,7 +523,7 @@ func (a *Oauth2ApiService) Oauth2AccessTokensUsedByListExecute(r ApiOauth2Access
 	}
 
 	localVarPath := localBasePath + "/oauth2/access_tokens/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -564,9 +570,9 @@ func (a *Oauth2ApiService) Oauth2AccessTokensUsedByListExecute(r ApiOauth2Access
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -583,6 +589,7 @@ func (a *Oauth2ApiService) Oauth2AccessTokensUsedByListExecute(r ApiOauth2Access
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -593,6 +600,7 @@ func (a *Oauth2ApiService) Oauth2AccessTokensUsedByListExecute(r ApiOauth2Access
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -651,7 +659,7 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesDestroyExecute(r ApiOauth2Aut
 	}
 
 	localVarPath := localBasePath + "/oauth2/authorization_codes/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -698,9 +706,9 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesDestroyExecute(r ApiOauth2Aut
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -717,6 +725,7 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesDestroyExecute(r ApiOauth2Aut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -727,6 +736,7 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesDestroyExecute(r ApiOauth2Aut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -821,22 +831,22 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesListExecute(r ApiOauth2Author
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.provider != nil {
-		localVarQueryParams.Add("provider", parameterToString(*r.provider, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -879,9 +889,9 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesListExecute(r ApiOauth2Author
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -898,6 +908,7 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesListExecute(r ApiOauth2Author
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -908,6 +919,7 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesListExecute(r ApiOauth2Author
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -968,7 +980,7 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesRetrieveExecute(r ApiOauth2Au
 	}
 
 	localVarPath := localBasePath + "/oauth2/authorization_codes/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1015,9 +1027,9 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesRetrieveExecute(r ApiOauth2Au
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1034,6 +1046,7 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesRetrieveExecute(r ApiOauth2Au
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1044,6 +1057,7 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesRetrieveExecute(r ApiOauth2Au
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1104,7 +1118,7 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesUsedByListExecute(r ApiOauth2
 	}
 
 	localVarPath := localBasePath + "/oauth2/authorization_codes/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1151,9 +1165,9 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesUsedByListExecute(r ApiOauth2
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1170,6 +1184,7 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesUsedByListExecute(r ApiOauth2
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1180,6 +1195,7 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesUsedByListExecute(r ApiOauth2
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1238,7 +1254,7 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensDestroyExecute(r ApiOauth2RefreshT
 	}
 
 	localVarPath := localBasePath + "/oauth2/refresh_tokens/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1285,9 +1301,9 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensDestroyExecute(r ApiOauth2RefreshT
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1304,6 +1320,7 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensDestroyExecute(r ApiOauth2RefreshT
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1314,6 +1331,7 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensDestroyExecute(r ApiOauth2RefreshT
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1408,22 +1426,22 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensListExecute(r ApiOauth2RefreshToke
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.provider != nil {
-		localVarQueryParams.Add("provider", parameterToString(*r.provider, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1466,9 +1484,9 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensListExecute(r ApiOauth2RefreshToke
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1485,6 +1503,7 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensListExecute(r ApiOauth2RefreshToke
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1495,6 +1514,7 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensListExecute(r ApiOauth2RefreshToke
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1555,7 +1575,7 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensRetrieveExecute(r ApiOauth2Refresh
 	}
 
 	localVarPath := localBasePath + "/oauth2/refresh_tokens/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1602,9 +1622,9 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensRetrieveExecute(r ApiOauth2Refresh
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1621,6 +1641,7 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensRetrieveExecute(r ApiOauth2Refresh
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1631,6 +1652,7 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensRetrieveExecute(r ApiOauth2Refresh
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1691,7 +1713,7 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensUsedByListExecute(r ApiOauth2Refre
 	}
 
 	localVarPath := localBasePath + "/oauth2/refresh_tokens/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1738,9 +1760,9 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensUsedByListExecute(r ApiOauth2Refre
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1757,6 +1779,7 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensUsedByListExecute(r ApiOauth2Refre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1767,6 +1790,7 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensUsedByListExecute(r ApiOauth2Refre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

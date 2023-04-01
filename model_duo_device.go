@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DuoDevice type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DuoDevice{}
+
 // DuoDevice Serializer for Duo authenticator devices
 type DuoDevice struct {
 	Pk int32 `json:"pk"`
@@ -90,14 +93,18 @@ func (o *DuoDevice) SetName(v string) {
 }
 
 func (o DuoDevice) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DuoDevice) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
+	toSerialize["name"] = o.Name
+	return toSerialize, nil
 }
 
 type NullableDuoDevice struct {

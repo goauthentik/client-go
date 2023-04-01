@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the StaticDevice type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StaticDevice{}
+
 // StaticDevice Serializer for static authenticator devices
 type StaticDevice struct {
 	// The human-readable name of this device.
@@ -116,17 +119,19 @@ func (o *StaticDevice) SetPk(v int32) {
 }
 
 func (o StaticDevice) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["token_set"] = o.TokenSet
-	}
-	if true {
-		toSerialize["pk"] = o.Pk
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o StaticDevice) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	// skip: token_set is readOnly
+	// skip: pk is readOnly
+	return toSerialize, nil
 }
 
 type NullableStaticDevice struct {

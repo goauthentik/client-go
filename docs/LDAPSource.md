@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
-**UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled.  * &#x60;identifier&#x60; - Use the source-specific identifier * &#x60;email_link&#x60; - Link to a user with identical email address. Can have security implications when a source doesn&#39;t validate email addresses. * &#x60;email_deny&#x60; - Use the user&#39;s email address, but deny enrollment when the email address already exists. * &#x60;username_link&#x60; - Link to a user with identical username. Can have security implications when a username is used with another source. * &#x60;username_deny&#x60; - Use the user&#39;s username, but deny enrollment when the username already exists. | [optional] 
+**UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) |  | [optional] 
 **Managed** | **NullableString** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 **Icon** | **NullableString** | Get the URL to the Icon. If the name is /static or starts with http it is returned as-is | [readonly] 
@@ -341,16 +341,6 @@ SetUserMatchingMode sets UserMatchingMode field to given value.
 
 HasUserMatchingMode returns a boolean if a field has been set.
 
-### SetUserMatchingModeNil
-
-`func (o *LDAPSource) SetUserMatchingModeNil(b bool)`
-
- SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
-
-### UnsetUserMatchingMode
-`func (o *LDAPSource) UnsetUserMatchingMode()`
-
-UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
 ### GetManaged
 
 `func (o *LDAPSource) GetManaged() string`

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DummyStage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DummyStage{}
+
 // DummyStage DummyStage Serializer
 type DummyStage struct {
 	Pk   string `json:"pk"`
@@ -200,7 +203,7 @@ func (o *DummyStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *DummyStage) GetFlowSet() []FlowSet {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
@@ -210,7 +213,7 @@ func (o *DummyStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DummyStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -218,7 +221,7 @@ func (o *DummyStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *DummyStage) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -232,7 +235,7 @@ func (o *DummyStage) SetFlowSet(v []FlowSet) {
 
 // GetThrowError returns the ThrowError field value if set, zero value otherwise.
 func (o *DummyStage) GetThrowError() bool {
-	if o == nil || o.ThrowError == nil {
+	if o == nil || IsNil(o.ThrowError) {
 		var ret bool
 		return ret
 	}
@@ -242,7 +245,7 @@ func (o *DummyStage) GetThrowError() bool {
 // GetThrowErrorOk returns a tuple with the ThrowError field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DummyStage) GetThrowErrorOk() (*bool, bool) {
-	if o == nil || o.ThrowError == nil {
+	if o == nil || IsNil(o.ThrowError) {
 		return nil, false
 	}
 	return o.ThrowError, true
@@ -250,7 +253,7 @@ func (o *DummyStage) GetThrowErrorOk() (*bool, bool) {
 
 // HasThrowError returns a boolean if a field has been set.
 func (o *DummyStage) HasThrowError() bool {
-	if o != nil && o.ThrowError != nil {
+	if o != nil && !IsNil(o.ThrowError) {
 		return true
 	}
 
@@ -263,32 +266,28 @@ func (o *DummyStage) SetThrowError(v bool) {
 }
 
 func (o DummyStage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
-	}
-	if o.ThrowError != nil {
-		toSerialize["throw_error"] = o.ThrowError
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DummyStage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
+	toSerialize["name"] = o.Name
+	// skip: component is readOnly
+	// skip: verbose_name is readOnly
+	// skip: verbose_name_plural is readOnly
+	// skip: meta_model_name is readOnly
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
+	if !IsNil(o.ThrowError) {
+		toSerialize["throw_error"] = o.ThrowError
+	}
+	return toSerialize, nil
 }
 
 type NullableDummyStage struct {

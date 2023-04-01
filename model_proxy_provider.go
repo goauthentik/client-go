@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProxyProvider type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProxyProvider{}
+
 // ProxyProvider ProxyProvider Serializer
 type ProxyProvider struct {
 	Pk   int32  `json:"pk"`
@@ -49,9 +52,8 @@ type ProxyProvider struct {
 	// User/Group Attribute used for the password part of the HTTP-Basic Header.
 	BasicAuthPasswordAttribute *string `json:"basic_auth_password_attribute,omitempty"`
 	// User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user's Email address is used.
-	BasicAuthUserAttribute *string `json:"basic_auth_user_attribute,omitempty"`
-	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.  * `proxy` - Proxy * `forward_single` - Forward Single * `forward_domain` - Forward Domain
-	Mode NullableProxyMode `json:"mode,omitempty"`
+	BasicAuthUserAttribute *string    `json:"basic_auth_user_attribute,omitempty"`
+	Mode                   *ProxyMode `json:"mode,omitempty"`
 	// When enabled, this provider will intercept the authorization header and authenticate requests based on its value.
 	InterceptHeaderAuth *bool    `json:"intercept_header_auth,omitempty"`
 	RedirectUris        string   `json:"redirect_uris"`
@@ -144,7 +146,7 @@ func (o *ProxyProvider) SetName(v string) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProxyProvider) GetAuthenticationFlow() string {
-	if o == nil || o.AuthenticationFlow.Get() == nil {
+	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -211,7 +213,7 @@ func (o *ProxyProvider) SetAuthorizationFlow(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *ProxyProvider) GetPropertyMappings() []string {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -221,7 +223,7 @@ func (o *ProxyProvider) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -229,7 +231,7 @@ func (o *ProxyProvider) GetPropertyMappingsOk() ([]string, bool) {
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *ProxyProvider) HasPropertyMappings() bool {
-	if o != nil && o.PropertyMappings != nil {
+	if o != nil && !IsNil(o.PropertyMappings) {
 		return true
 	}
 
@@ -411,7 +413,7 @@ func (o *ProxyProvider) SetClientId(v string) {
 
 // GetInternalHost returns the InternalHost field value if set, zero value otherwise.
 func (o *ProxyProvider) GetInternalHost() string {
-	if o == nil || o.InternalHost == nil {
+	if o == nil || IsNil(o.InternalHost) {
 		var ret string
 		return ret
 	}
@@ -421,7 +423,7 @@ func (o *ProxyProvider) GetInternalHost() string {
 // GetInternalHostOk returns a tuple with the InternalHost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetInternalHostOk() (*string, bool) {
-	if o == nil || o.InternalHost == nil {
+	if o == nil || IsNil(o.InternalHost) {
 		return nil, false
 	}
 	return o.InternalHost, true
@@ -429,7 +431,7 @@ func (o *ProxyProvider) GetInternalHostOk() (*string, bool) {
 
 // HasInternalHost returns a boolean if a field has been set.
 func (o *ProxyProvider) HasInternalHost() bool {
-	if o != nil && o.InternalHost != nil {
+	if o != nil && !IsNil(o.InternalHost) {
 		return true
 	}
 
@@ -467,7 +469,7 @@ func (o *ProxyProvider) SetExternalHost(v string) {
 
 // GetInternalHostSslValidation returns the InternalHostSslValidation field value if set, zero value otherwise.
 func (o *ProxyProvider) GetInternalHostSslValidation() bool {
-	if o == nil || o.InternalHostSslValidation == nil {
+	if o == nil || IsNil(o.InternalHostSslValidation) {
 		var ret bool
 		return ret
 	}
@@ -477,7 +479,7 @@ func (o *ProxyProvider) GetInternalHostSslValidation() bool {
 // GetInternalHostSslValidationOk returns a tuple with the InternalHostSslValidation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetInternalHostSslValidationOk() (*bool, bool) {
-	if o == nil || o.InternalHostSslValidation == nil {
+	if o == nil || IsNil(o.InternalHostSslValidation) {
 		return nil, false
 	}
 	return o.InternalHostSslValidation, true
@@ -485,7 +487,7 @@ func (o *ProxyProvider) GetInternalHostSslValidationOk() (*bool, bool) {
 
 // HasInternalHostSslValidation returns a boolean if a field has been set.
 func (o *ProxyProvider) HasInternalHostSslValidation() bool {
-	if o != nil && o.InternalHostSslValidation != nil {
+	if o != nil && !IsNil(o.InternalHostSslValidation) {
 		return true
 	}
 
@@ -499,7 +501,7 @@ func (o *ProxyProvider) SetInternalHostSslValidation(v bool) {
 
 // GetCertificate returns the Certificate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProxyProvider) GetCertificate() string {
-	if o == nil || o.Certificate.Get() == nil {
+	if o == nil || IsNil(o.Certificate.Get()) {
 		var ret string
 		return ret
 	}
@@ -542,7 +544,7 @@ func (o *ProxyProvider) UnsetCertificate() {
 
 // GetSkipPathRegex returns the SkipPathRegex field value if set, zero value otherwise.
 func (o *ProxyProvider) GetSkipPathRegex() string {
-	if o == nil || o.SkipPathRegex == nil {
+	if o == nil || IsNil(o.SkipPathRegex) {
 		var ret string
 		return ret
 	}
@@ -552,7 +554,7 @@ func (o *ProxyProvider) GetSkipPathRegex() string {
 // GetSkipPathRegexOk returns a tuple with the SkipPathRegex field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetSkipPathRegexOk() (*string, bool) {
-	if o == nil || o.SkipPathRegex == nil {
+	if o == nil || IsNil(o.SkipPathRegex) {
 		return nil, false
 	}
 	return o.SkipPathRegex, true
@@ -560,7 +562,7 @@ func (o *ProxyProvider) GetSkipPathRegexOk() (*string, bool) {
 
 // HasSkipPathRegex returns a boolean if a field has been set.
 func (o *ProxyProvider) HasSkipPathRegex() bool {
-	if o != nil && o.SkipPathRegex != nil {
+	if o != nil && !IsNil(o.SkipPathRegex) {
 		return true
 	}
 
@@ -574,7 +576,7 @@ func (o *ProxyProvider) SetSkipPathRegex(v string) {
 
 // GetBasicAuthEnabled returns the BasicAuthEnabled field value if set, zero value otherwise.
 func (o *ProxyProvider) GetBasicAuthEnabled() bool {
-	if o == nil || o.BasicAuthEnabled == nil {
+	if o == nil || IsNil(o.BasicAuthEnabled) {
 		var ret bool
 		return ret
 	}
@@ -584,7 +586,7 @@ func (o *ProxyProvider) GetBasicAuthEnabled() bool {
 // GetBasicAuthEnabledOk returns a tuple with the BasicAuthEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetBasicAuthEnabledOk() (*bool, bool) {
-	if o == nil || o.BasicAuthEnabled == nil {
+	if o == nil || IsNil(o.BasicAuthEnabled) {
 		return nil, false
 	}
 	return o.BasicAuthEnabled, true
@@ -592,7 +594,7 @@ func (o *ProxyProvider) GetBasicAuthEnabledOk() (*bool, bool) {
 
 // HasBasicAuthEnabled returns a boolean if a field has been set.
 func (o *ProxyProvider) HasBasicAuthEnabled() bool {
-	if o != nil && o.BasicAuthEnabled != nil {
+	if o != nil && !IsNil(o.BasicAuthEnabled) {
 		return true
 	}
 
@@ -606,7 +608,7 @@ func (o *ProxyProvider) SetBasicAuthEnabled(v bool) {
 
 // GetBasicAuthPasswordAttribute returns the BasicAuthPasswordAttribute field value if set, zero value otherwise.
 func (o *ProxyProvider) GetBasicAuthPasswordAttribute() string {
-	if o == nil || o.BasicAuthPasswordAttribute == nil {
+	if o == nil || IsNil(o.BasicAuthPasswordAttribute) {
 		var ret string
 		return ret
 	}
@@ -616,7 +618,7 @@ func (o *ProxyProvider) GetBasicAuthPasswordAttribute() string {
 // GetBasicAuthPasswordAttributeOk returns a tuple with the BasicAuthPasswordAttribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetBasicAuthPasswordAttributeOk() (*string, bool) {
-	if o == nil || o.BasicAuthPasswordAttribute == nil {
+	if o == nil || IsNil(o.BasicAuthPasswordAttribute) {
 		return nil, false
 	}
 	return o.BasicAuthPasswordAttribute, true
@@ -624,7 +626,7 @@ func (o *ProxyProvider) GetBasicAuthPasswordAttributeOk() (*string, bool) {
 
 // HasBasicAuthPasswordAttribute returns a boolean if a field has been set.
 func (o *ProxyProvider) HasBasicAuthPasswordAttribute() bool {
-	if o != nil && o.BasicAuthPasswordAttribute != nil {
+	if o != nil && !IsNil(o.BasicAuthPasswordAttribute) {
 		return true
 	}
 
@@ -638,7 +640,7 @@ func (o *ProxyProvider) SetBasicAuthPasswordAttribute(v string) {
 
 // GetBasicAuthUserAttribute returns the BasicAuthUserAttribute field value if set, zero value otherwise.
 func (o *ProxyProvider) GetBasicAuthUserAttribute() string {
-	if o == nil || o.BasicAuthUserAttribute == nil {
+	if o == nil || IsNil(o.BasicAuthUserAttribute) {
 		var ret string
 		return ret
 	}
@@ -648,7 +650,7 @@ func (o *ProxyProvider) GetBasicAuthUserAttribute() string {
 // GetBasicAuthUserAttributeOk returns a tuple with the BasicAuthUserAttribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetBasicAuthUserAttributeOk() (*string, bool) {
-	if o == nil || o.BasicAuthUserAttribute == nil {
+	if o == nil || IsNil(o.BasicAuthUserAttribute) {
 		return nil, false
 	}
 	return o.BasicAuthUserAttribute, true
@@ -656,7 +658,7 @@ func (o *ProxyProvider) GetBasicAuthUserAttributeOk() (*string, bool) {
 
 // HasBasicAuthUserAttribute returns a boolean if a field has been set.
 func (o *ProxyProvider) HasBasicAuthUserAttribute() bool {
-	if o != nil && o.BasicAuthUserAttribute != nil {
+	if o != nil && !IsNil(o.BasicAuthUserAttribute) {
 		return true
 	}
 
@@ -668,52 +670,41 @@ func (o *ProxyProvider) SetBasicAuthUserAttribute(v string) {
 	o.BasicAuthUserAttribute = &v
 }
 
-// GetMode returns the Mode field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMode returns the Mode field value if set, zero value otherwise.
 func (o *ProxyProvider) GetMode() ProxyMode {
-	if o == nil || o.Mode.Get() == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret ProxyMode
 		return ret
 	}
-	return *o.Mode.Get()
+	return *o.Mode
 }
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxyProvider) GetModeOk() (*ProxyMode, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
-	return o.Mode.Get(), o.Mode.IsSet()
+	return o.Mode, true
 }
 
 // HasMode returns a boolean if a field has been set.
 func (o *ProxyProvider) HasMode() bool {
-	if o != nil && o.Mode.IsSet() {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
 	return false
 }
 
-// SetMode gets a reference to the given NullableProxyMode and assigns it to the Mode field.
+// SetMode gets a reference to the given ProxyMode and assigns it to the Mode field.
 func (o *ProxyProvider) SetMode(v ProxyMode) {
-	o.Mode.Set(&v)
-}
-
-// SetModeNil sets the value for Mode to be an explicit nil
-func (o *ProxyProvider) SetModeNil() {
-	o.Mode.Set(nil)
-}
-
-// UnsetMode ensures that no value is present for Mode, not even an explicit nil
-func (o *ProxyProvider) UnsetMode() {
-	o.Mode.Unset()
+	o.Mode = &v
 }
 
 // GetInterceptHeaderAuth returns the InterceptHeaderAuth field value if set, zero value otherwise.
 func (o *ProxyProvider) GetInterceptHeaderAuth() bool {
-	if o == nil || o.InterceptHeaderAuth == nil {
+	if o == nil || IsNil(o.InterceptHeaderAuth) {
 		var ret bool
 		return ret
 	}
@@ -723,7 +714,7 @@ func (o *ProxyProvider) GetInterceptHeaderAuth() bool {
 // GetInterceptHeaderAuthOk returns a tuple with the InterceptHeaderAuth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetInterceptHeaderAuthOk() (*bool, bool) {
-	if o == nil || o.InterceptHeaderAuth == nil {
+	if o == nil || IsNil(o.InterceptHeaderAuth) {
 		return nil, false
 	}
 	return o.InterceptHeaderAuth, true
@@ -731,7 +722,7 @@ func (o *ProxyProvider) GetInterceptHeaderAuthOk() (*bool, bool) {
 
 // HasInterceptHeaderAuth returns a boolean if a field has been set.
 func (o *ProxyProvider) HasInterceptHeaderAuth() bool {
-	if o != nil && o.InterceptHeaderAuth != nil {
+	if o != nil && !IsNil(o.InterceptHeaderAuth) {
 		return true
 	}
 
@@ -769,7 +760,7 @@ func (o *ProxyProvider) SetRedirectUris(v string) {
 
 // GetCookieDomain returns the CookieDomain field value if set, zero value otherwise.
 func (o *ProxyProvider) GetCookieDomain() string {
-	if o == nil || o.CookieDomain == nil {
+	if o == nil || IsNil(o.CookieDomain) {
 		var ret string
 		return ret
 	}
@@ -779,7 +770,7 @@ func (o *ProxyProvider) GetCookieDomain() string {
 // GetCookieDomainOk returns a tuple with the CookieDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetCookieDomainOk() (*string, bool) {
-	if o == nil || o.CookieDomain == nil {
+	if o == nil || IsNil(o.CookieDomain) {
 		return nil, false
 	}
 	return o.CookieDomain, true
@@ -787,7 +778,7 @@ func (o *ProxyProvider) GetCookieDomainOk() (*string, bool) {
 
 // HasCookieDomain returns a boolean if a field has been set.
 func (o *ProxyProvider) HasCookieDomain() bool {
-	if o != nil && o.CookieDomain != nil {
+	if o != nil && !IsNil(o.CookieDomain) {
 		return true
 	}
 
@@ -801,7 +792,7 @@ func (o *ProxyProvider) SetCookieDomain(v string) {
 
 // GetJwksSources returns the JwksSources field value if set, zero value otherwise.
 func (o *ProxyProvider) GetJwksSources() []string {
-	if o == nil || o.JwksSources == nil {
+	if o == nil || IsNil(o.JwksSources) {
 		var ret []string
 		return ret
 	}
@@ -811,7 +802,7 @@ func (o *ProxyProvider) GetJwksSources() []string {
 // GetJwksSourcesOk returns a tuple with the JwksSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetJwksSourcesOk() ([]string, bool) {
-	if o == nil || o.JwksSources == nil {
+	if o == nil || IsNil(o.JwksSources) {
 		return nil, false
 	}
 	return o.JwksSources, true
@@ -819,7 +810,7 @@ func (o *ProxyProvider) GetJwksSourcesOk() ([]string, bool) {
 
 // HasJwksSources returns a boolean if a field has been set.
 func (o *ProxyProvider) HasJwksSources() bool {
-	if o != nil && o.JwksSources != nil {
+	if o != nil && !IsNil(o.JwksSources) {
 		return true
 	}
 
@@ -833,7 +824,7 @@ func (o *ProxyProvider) SetJwksSources(v []string) {
 
 // GetAccessTokenValidity returns the AccessTokenValidity field value if set, zero value otherwise.
 func (o *ProxyProvider) GetAccessTokenValidity() string {
-	if o == nil || o.AccessTokenValidity == nil {
+	if o == nil || IsNil(o.AccessTokenValidity) {
 		var ret string
 		return ret
 	}
@@ -843,7 +834,7 @@ func (o *ProxyProvider) GetAccessTokenValidity() string {
 // GetAccessTokenValidityOk returns a tuple with the AccessTokenValidity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetAccessTokenValidityOk() (*string, bool) {
-	if o == nil || o.AccessTokenValidity == nil {
+	if o == nil || IsNil(o.AccessTokenValidity) {
 		return nil, false
 	}
 	return o.AccessTokenValidity, true
@@ -851,7 +842,7 @@ func (o *ProxyProvider) GetAccessTokenValidityOk() (*string, bool) {
 
 // HasAccessTokenValidity returns a boolean if a field has been set.
 func (o *ProxyProvider) HasAccessTokenValidity() bool {
-	if o != nil && o.AccessTokenValidity != nil {
+	if o != nil && !IsNil(o.AccessTokenValidity) {
 		return true
 	}
 
@@ -865,7 +856,7 @@ func (o *ProxyProvider) SetAccessTokenValidity(v string) {
 
 // GetRefreshTokenValidity returns the RefreshTokenValidity field value if set, zero value otherwise.
 func (o *ProxyProvider) GetRefreshTokenValidity() string {
-	if o == nil || o.RefreshTokenValidity == nil {
+	if o == nil || IsNil(o.RefreshTokenValidity) {
 		var ret string
 		return ret
 	}
@@ -875,7 +866,7 @@ func (o *ProxyProvider) GetRefreshTokenValidity() string {
 // GetRefreshTokenValidityOk returns a tuple with the RefreshTokenValidity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxyProvider) GetRefreshTokenValidityOk() (*string, bool) {
-	if o == nil || o.RefreshTokenValidity == nil {
+	if o == nil || IsNil(o.RefreshTokenValidity) {
 		return nil, false
 	}
 	return o.RefreshTokenValidity, true
@@ -883,7 +874,7 @@ func (o *ProxyProvider) GetRefreshTokenValidityOk() (*string, bool) {
 
 // HasRefreshTokenValidity returns a boolean if a field has been set.
 func (o *ProxyProvider) HasRefreshTokenValidity() bool {
-	if o != nil && o.RefreshTokenValidity != nil {
+	if o != nil && !IsNil(o.RefreshTokenValidity) {
 		return true
 	}
 
@@ -920,92 +911,74 @@ func (o *ProxyProvider) SetOutpostSet(v []string) {
 }
 
 func (o ProxyProvider) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProxyProvider) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	// skip: pk is readOnly
+	toSerialize["name"] = o.Name
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
 	}
-	if true {
-		toSerialize["authorization_flow"] = o.AuthorizationFlow
-	}
-	if o.PropertyMappings != nil {
+	toSerialize["authorization_flow"] = o.AuthorizationFlow
+	if !IsNil(o.PropertyMappings) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug
-	}
-	if true {
-		toSerialize["assigned_application_name"] = o.AssignedApplicationName
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if true {
-		toSerialize["client_id"] = o.ClientId
-	}
-	if o.InternalHost != nil {
+	// skip: component is readOnly
+	// skip: assigned_application_slug is readOnly
+	// skip: assigned_application_name is readOnly
+	// skip: verbose_name is readOnly
+	// skip: verbose_name_plural is readOnly
+	// skip: meta_model_name is readOnly
+	// skip: client_id is readOnly
+	if !IsNil(o.InternalHost) {
 		toSerialize["internal_host"] = o.InternalHost
 	}
-	if true {
-		toSerialize["external_host"] = o.ExternalHost
-	}
-	if o.InternalHostSslValidation != nil {
+	toSerialize["external_host"] = o.ExternalHost
+	if !IsNil(o.InternalHostSslValidation) {
 		toSerialize["internal_host_ssl_validation"] = o.InternalHostSslValidation
 	}
 	if o.Certificate.IsSet() {
 		toSerialize["certificate"] = o.Certificate.Get()
 	}
-	if o.SkipPathRegex != nil {
+	if !IsNil(o.SkipPathRegex) {
 		toSerialize["skip_path_regex"] = o.SkipPathRegex
 	}
-	if o.BasicAuthEnabled != nil {
+	if !IsNil(o.BasicAuthEnabled) {
 		toSerialize["basic_auth_enabled"] = o.BasicAuthEnabled
 	}
-	if o.BasicAuthPasswordAttribute != nil {
+	if !IsNil(o.BasicAuthPasswordAttribute) {
 		toSerialize["basic_auth_password_attribute"] = o.BasicAuthPasswordAttribute
 	}
-	if o.BasicAuthUserAttribute != nil {
+	if !IsNil(o.BasicAuthUserAttribute) {
 		toSerialize["basic_auth_user_attribute"] = o.BasicAuthUserAttribute
 	}
-	if o.Mode.IsSet() {
-		toSerialize["mode"] = o.Mode.Get()
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
 	}
-	if o.InterceptHeaderAuth != nil {
+	if !IsNil(o.InterceptHeaderAuth) {
 		toSerialize["intercept_header_auth"] = o.InterceptHeaderAuth
 	}
-	if true {
-		toSerialize["redirect_uris"] = o.RedirectUris
-	}
-	if o.CookieDomain != nil {
+	// skip: redirect_uris is readOnly
+	if !IsNil(o.CookieDomain) {
 		toSerialize["cookie_domain"] = o.CookieDomain
 	}
-	if o.JwksSources != nil {
+	if !IsNil(o.JwksSources) {
 		toSerialize["jwks_sources"] = o.JwksSources
 	}
-	if o.AccessTokenValidity != nil {
+	if !IsNil(o.AccessTokenValidity) {
 		toSerialize["access_token_validity"] = o.AccessTokenValidity
 	}
-	if o.RefreshTokenValidity != nil {
+	if !IsNil(o.RefreshTokenValidity) {
 		toSerialize["refresh_token_validity"] = o.RefreshTokenValidity
 	}
-	if true {
-		toSerialize["outpost_set"] = o.OutpostSet
-	}
-	return json.Marshal(toSerialize)
+	// skip: outpost_set is readOnly
+	return toSerialize, nil
 }
 
 type NullableProxyProvider struct {

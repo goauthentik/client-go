@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedScopeMappingRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedScopeMappingRequest{}
+
 // PatchedScopeMappingRequest ScopeMapping Serializer
 type PatchedScopeMappingRequest struct {
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
@@ -46,7 +49,7 @@ func NewPatchedScopeMappingRequestWithDefaults() *PatchedScopeMappingRequest {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedScopeMappingRequest) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *PatchedScopeMappingRequest) UnsetManaged() {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedScopeMappingRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -99,7 +102,7 @@ func (o *PatchedScopeMappingRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedScopeMappingRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -107,7 +110,7 @@ func (o *PatchedScopeMappingRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedScopeMappingRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -121,7 +124,7 @@ func (o *PatchedScopeMappingRequest) SetName(v string) {
 
 // GetExpression returns the Expression field value if set, zero value otherwise.
 func (o *PatchedScopeMappingRequest) GetExpression() string {
-	if o == nil || o.Expression == nil {
+	if o == nil || IsNil(o.Expression) {
 		var ret string
 		return ret
 	}
@@ -131,7 +134,7 @@ func (o *PatchedScopeMappingRequest) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedScopeMappingRequest) GetExpressionOk() (*string, bool) {
-	if o == nil || o.Expression == nil {
+	if o == nil || IsNil(o.Expression) {
 		return nil, false
 	}
 	return o.Expression, true
@@ -139,7 +142,7 @@ func (o *PatchedScopeMappingRequest) GetExpressionOk() (*string, bool) {
 
 // HasExpression returns a boolean if a field has been set.
 func (o *PatchedScopeMappingRequest) HasExpression() bool {
-	if o != nil && o.Expression != nil {
+	if o != nil && !IsNil(o.Expression) {
 		return true
 	}
 
@@ -153,7 +156,7 @@ func (o *PatchedScopeMappingRequest) SetExpression(v string) {
 
 // GetScopeName returns the ScopeName field value if set, zero value otherwise.
 func (o *PatchedScopeMappingRequest) GetScopeName() string {
-	if o == nil || o.ScopeName == nil {
+	if o == nil || IsNil(o.ScopeName) {
 		var ret string
 		return ret
 	}
@@ -163,7 +166,7 @@ func (o *PatchedScopeMappingRequest) GetScopeName() string {
 // GetScopeNameOk returns a tuple with the ScopeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedScopeMappingRequest) GetScopeNameOk() (*string, bool) {
-	if o == nil || o.ScopeName == nil {
+	if o == nil || IsNil(o.ScopeName) {
 		return nil, false
 	}
 	return o.ScopeName, true
@@ -171,7 +174,7 @@ func (o *PatchedScopeMappingRequest) GetScopeNameOk() (*string, bool) {
 
 // HasScopeName returns a boolean if a field has been set.
 func (o *PatchedScopeMappingRequest) HasScopeName() bool {
-	if o != nil && o.ScopeName != nil {
+	if o != nil && !IsNil(o.ScopeName) {
 		return true
 	}
 
@@ -185,7 +188,7 @@ func (o *PatchedScopeMappingRequest) SetScopeName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *PatchedScopeMappingRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -195,7 +198,7 @@ func (o *PatchedScopeMappingRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedScopeMappingRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -203,7 +206,7 @@ func (o *PatchedScopeMappingRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *PatchedScopeMappingRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -216,23 +219,31 @@ func (o *PatchedScopeMappingRequest) SetDescription(v string) {
 }
 
 func (o PatchedScopeMappingRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedScopeMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Expression != nil {
+	if !IsNil(o.Expression) {
 		toSerialize["expression"] = o.Expression
 	}
-	if o.ScopeName != nil {
+	if !IsNil(o.ScopeName) {
 		toSerialize["scope_name"] = o.ScopeName
 	}
-	if o.Description != nil {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedScopeMappingRequest struct {

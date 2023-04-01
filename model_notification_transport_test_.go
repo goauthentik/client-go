@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NotificationTransportTest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationTransportTest{}
+
 // NotificationTransportTest Notification test serializer
 type NotificationTransportTest struct {
 	Messages []string `json:"messages"`
@@ -63,11 +66,17 @@ func (o *NotificationTransportTest) SetMessages(v []string) {
 }
 
 func (o NotificationTransportTest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["messages"] = o.Messages
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationTransportTest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["messages"] = o.Messages
+	return toSerialize, nil
 }
 
 type NullableNotificationTransportTest struct {

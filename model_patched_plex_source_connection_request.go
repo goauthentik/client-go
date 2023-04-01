@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedPlexSourceConnectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedPlexSourceConnectionRequest{}
+
 // PatchedPlexSourceConnectionRequest Plex Source connection Serializer
 type PatchedPlexSourceConnectionRequest struct {
 	Identifier *string `json:"identifier,omitempty"`
@@ -40,7 +43,7 @@ func NewPatchedPlexSourceConnectionRequestWithDefaults() *PatchedPlexSourceConne
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
 func (o *PatchedPlexSourceConnectionRequest) GetIdentifier() string {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *PatchedPlexSourceConnectionRequest) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPlexSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		return nil, false
 	}
 	return o.Identifier, true
@@ -58,7 +61,7 @@ func (o *PatchedPlexSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
 
 // HasIdentifier returns a boolean if a field has been set.
 func (o *PatchedPlexSourceConnectionRequest) HasIdentifier() bool {
-	if o != nil && o.Identifier != nil {
+	if o != nil && !IsNil(o.Identifier) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *PatchedPlexSourceConnectionRequest) SetIdentifier(v string) {
 
 // GetPlexToken returns the PlexToken field value if set, zero value otherwise.
 func (o *PatchedPlexSourceConnectionRequest) GetPlexToken() string {
-	if o == nil || o.PlexToken == nil {
+	if o == nil || IsNil(o.PlexToken) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *PatchedPlexSourceConnectionRequest) GetPlexToken() string {
 // GetPlexTokenOk returns a tuple with the PlexToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPlexSourceConnectionRequest) GetPlexTokenOk() (*string, bool) {
-	if o == nil || o.PlexToken == nil {
+	if o == nil || IsNil(o.PlexToken) {
 		return nil, false
 	}
 	return o.PlexToken, true
@@ -90,7 +93,7 @@ func (o *PatchedPlexSourceConnectionRequest) GetPlexTokenOk() (*string, bool) {
 
 // HasPlexToken returns a boolean if a field has been set.
 func (o *PatchedPlexSourceConnectionRequest) HasPlexToken() bool {
-	if o != nil && o.PlexToken != nil {
+	if o != nil && !IsNil(o.PlexToken) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *PatchedPlexSourceConnectionRequest) SetPlexToken(v string) {
 }
 
 func (o PatchedPlexSourceConnectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Identifier != nil {
-		toSerialize["identifier"] = o.Identifier
-	}
-	if o.PlexToken != nil {
-		toSerialize["plex_token"] = o.PlexToken
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedPlexSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Identifier) {
+		toSerialize["identifier"] = o.Identifier
+	}
+	if !IsNil(o.PlexToken) {
+		toSerialize["plex_token"] = o.PlexToken
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedPlexSourceConnectionRequest struct {

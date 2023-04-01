@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the PatchedUserRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedUserRequest{}
+
 // PatchedUserRequest User Serializer
 type PatchedUserRequest struct {
 	Username *string `json:"username,omitempty"`
@@ -49,7 +52,7 @@ func NewPatchedUserRequestWithDefaults() *PatchedUserRequest {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *PatchedUserRequest) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *PatchedUserRequest) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserRequest) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -67,7 +70,7 @@ func (o *PatchedUserRequest) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *PatchedUserRequest) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *PatchedUserRequest) SetUsername(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedUserRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *PatchedUserRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -99,7 +102,7 @@ func (o *PatchedUserRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedUserRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *PatchedUserRequest) SetName(v string) {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise.
 func (o *PatchedUserRequest) GetIsActive() bool {
-	if o == nil || o.IsActive == nil {
+	if o == nil || IsNil(o.IsActive) {
 		var ret bool
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *PatchedUserRequest) GetIsActive() bool {
 // GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserRequest) GetIsActiveOk() (*bool, bool) {
-	if o == nil || o.IsActive == nil {
+	if o == nil || IsNil(o.IsActive) {
 		return nil, false
 	}
 	return o.IsActive, true
@@ -131,7 +134,7 @@ func (o *PatchedUserRequest) GetIsActiveOk() (*bool, bool) {
 
 // HasIsActive returns a boolean if a field has been set.
 func (o *PatchedUserRequest) HasIsActive() bool {
-	if o != nil && o.IsActive != nil {
+	if o != nil && !IsNil(o.IsActive) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *PatchedUserRequest) SetIsActive(v bool) {
 
 // GetLastLogin returns the LastLogin field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedUserRequest) GetLastLogin() time.Time {
-	if o == nil || o.LastLogin.Get() == nil {
+	if o == nil || IsNil(o.LastLogin.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -188,7 +191,7 @@ func (o *PatchedUserRequest) UnsetLastLogin() {
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *PatchedUserRequest) GetGroups() []string {
-	if o == nil || o.Groups == nil {
+	if o == nil || IsNil(o.Groups) {
 		var ret []string
 		return ret
 	}
@@ -198,7 +201,7 @@ func (o *PatchedUserRequest) GetGroups() []string {
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserRequest) GetGroupsOk() ([]string, bool) {
-	if o == nil || o.Groups == nil {
+	if o == nil || IsNil(o.Groups) {
 		return nil, false
 	}
 	return o.Groups, true
@@ -206,7 +209,7 @@ func (o *PatchedUserRequest) GetGroupsOk() ([]string, bool) {
 
 // HasGroups returns a boolean if a field has been set.
 func (o *PatchedUserRequest) HasGroups() bool {
-	if o != nil && o.Groups != nil {
+	if o != nil && !IsNil(o.Groups) {
 		return true
 	}
 
@@ -220,7 +223,7 @@ func (o *PatchedUserRequest) SetGroups(v []string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *PatchedUserRequest) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -230,7 +233,7 @@ func (o *PatchedUserRequest) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserRequest) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -238,7 +241,7 @@ func (o *PatchedUserRequest) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *PatchedUserRequest) HasEmail() bool {
-	if o != nil && o.Email != nil {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -252,7 +255,7 @@ func (o *PatchedUserRequest) SetEmail(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *PatchedUserRequest) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -262,15 +265,15 @@ func (o *PatchedUserRequest) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *PatchedUserRequest) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -284,7 +287,7 @@ func (o *PatchedUserRequest) SetAttributes(v map[string]interface{}) {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *PatchedUserRequest) GetPath() string {
-	if o == nil || o.Path == nil {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
@@ -294,7 +297,7 @@ func (o *PatchedUserRequest) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserRequest) GetPathOk() (*string, bool) {
-	if o == nil || o.Path == nil {
+	if o == nil || IsNil(o.Path) {
 		return nil, false
 	}
 	return o.Path, true
@@ -302,7 +305,7 @@ func (o *PatchedUserRequest) GetPathOk() (*string, bool) {
 
 // HasPath returns a boolean if a field has been set.
 func (o *PatchedUserRequest) HasPath() bool {
-	if o != nil && o.Path != nil {
+	if o != nil && !IsNil(o.Path) {
 		return true
 	}
 
@@ -315,32 +318,40 @@ func (o *PatchedUserRequest) SetPath(v string) {
 }
 
 func (o PatchedUserRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedUserRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Username != nil {
+	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username
 	}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.IsActive != nil {
+	if !IsNil(o.IsActive) {
 		toSerialize["is_active"] = o.IsActive
 	}
 	if o.LastLogin.IsSet() {
 		toSerialize["last_login"] = o.LastLogin.Get()
 	}
-	if o.Groups != nil {
+	if !IsNil(o.Groups) {
 		toSerialize["groups"] = o.Groups
 	}
-	if o.Email != nil {
+	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if o.Attributes != nil {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if o.Path != nil {
+	if !IsNil(o.Path) {
 		toSerialize["path"] = o.Path
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedUserRequest struct {

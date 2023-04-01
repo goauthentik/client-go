@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the StaticDeviceRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StaticDeviceRequest{}
+
 // StaticDeviceRequest Serializer for static authenticator devices
 type StaticDeviceRequest struct {
 	// The human-readable name of this device.
@@ -64,11 +67,17 @@ func (o *StaticDeviceRequest) SetName(v string) {
 }
 
 func (o StaticDeviceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o StaticDeviceRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	return toSerialize, nil
 }
 
 type NullableStaticDeviceRequest struct {

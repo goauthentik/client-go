@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CertificateGenerationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificateGenerationRequest{}
+
 // CertificateGenerationRequest Certificate generation parameters
 type CertificateGenerationRequest struct {
 	CommonName     string  `json:"common_name"`
@@ -67,7 +70,7 @@ func (o *CertificateGenerationRequest) SetCommonName(v string) {
 
 // GetSubjectAltName returns the SubjectAltName field value if set, zero value otherwise.
 func (o *CertificateGenerationRequest) GetSubjectAltName() string {
-	if o == nil || o.SubjectAltName == nil {
+	if o == nil || IsNil(o.SubjectAltName) {
 		var ret string
 		return ret
 	}
@@ -77,7 +80,7 @@ func (o *CertificateGenerationRequest) GetSubjectAltName() string {
 // GetSubjectAltNameOk returns a tuple with the SubjectAltName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateGenerationRequest) GetSubjectAltNameOk() (*string, bool) {
-	if o == nil || o.SubjectAltName == nil {
+	if o == nil || IsNil(o.SubjectAltName) {
 		return nil, false
 	}
 	return o.SubjectAltName, true
@@ -85,7 +88,7 @@ func (o *CertificateGenerationRequest) GetSubjectAltNameOk() (*string, bool) {
 
 // HasSubjectAltName returns a boolean if a field has been set.
 func (o *CertificateGenerationRequest) HasSubjectAltName() bool {
-	if o != nil && o.SubjectAltName != nil {
+	if o != nil && !IsNil(o.SubjectAltName) {
 		return true
 	}
 
@@ -122,17 +125,21 @@ func (o *CertificateGenerationRequest) SetValidityDays(v int32) {
 }
 
 func (o CertificateGenerationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["common_name"] = o.CommonName
-	}
-	if o.SubjectAltName != nil {
-		toSerialize["subject_alt_name"] = o.SubjectAltName
-	}
-	if true {
-		toSerialize["validity_days"] = o.ValidityDays
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CertificateGenerationRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["common_name"] = o.CommonName
+	if !IsNil(o.SubjectAltName) {
+		toSerialize["subject_alt_name"] = o.SubjectAltName
+	}
+	toSerialize["validity_days"] = o.ValidityDays
+	return toSerialize, nil
 }
 
 type NullableCertificateGenerationRequest struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the StaticDeviceTokenRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StaticDeviceTokenRequest{}
+
 // StaticDeviceTokenRequest Serializer for static device's tokens
 type StaticDeviceTokenRequest struct {
 	Token string `json:"token"`
@@ -63,11 +66,17 @@ func (o *StaticDeviceTokenRequest) SetToken(v string) {
 }
 
 func (o StaticDeviceTokenRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["token"] = o.Token
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o StaticDeviceTokenRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["token"] = o.Token
+	return toSerialize, nil
 }
 
 type NullableStaticDeviceTokenRequest struct {

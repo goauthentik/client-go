@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TokenSetKeyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TokenSetKeyRequest{}
+
 // TokenSetKeyRequest struct for TokenSetKeyRequest
 type TokenSetKeyRequest struct {
 	Key string `json:"key"`
@@ -63,11 +66,17 @@ func (o *TokenSetKeyRequest) SetKey(v string) {
 }
 
 func (o TokenSetKeyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["key"] = o.Key
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TokenSetKeyRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
+	return toSerialize, nil
 }
 
 type NullableTokenSetKeyRequest struct {

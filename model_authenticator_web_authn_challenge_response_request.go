@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthenticatorWebAuthnChallengeResponseRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorWebAuthnChallengeResponseRequest{}
+
 // AuthenticatorWebAuthnChallengeResponseRequest WebAuthn Challenge response
 type AuthenticatorWebAuthnChallengeResponseRequest struct {
 	Component *string                `json:"component,omitempty"`
@@ -45,7 +48,7 @@ func NewAuthenticatorWebAuthnChallengeResponseRequestWithDefaults() *Authenticat
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *AuthenticatorWebAuthnChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *AuthenticatorWebAuthnChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorWebAuthnChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -63,7 +66,7 @@ func (o *AuthenticatorWebAuthnChallengeResponseRequest) GetComponentOk() (*strin
 
 // HasComponent returns a boolean if a field has been set.
 func (o *AuthenticatorWebAuthnChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -89,7 +92,7 @@ func (o *AuthenticatorWebAuthnChallengeResponseRequest) GetResponse() map[string
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorWebAuthnChallengeResponseRequest) GetResponseOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Response, true
 }
@@ -100,14 +103,20 @@ func (o *AuthenticatorWebAuthnChallengeResponseRequest) SetResponse(v map[string
 }
 
 func (o AuthenticatorWebAuthnChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["response"] = o.Response
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorWebAuthnChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	toSerialize["response"] = o.Response
+	return toSerialize, nil
 }
 
 type NullableAuthenticatorWebAuthnChallengeResponseRequest struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedCaptchaStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedCaptchaStageRequest{}
+
 // PatchedCaptchaStageRequest CaptchaStage Serializer
 type PatchedCaptchaStageRequest struct {
 	Name    *string          `json:"name,omitempty"`
@@ -46,7 +49,7 @@ func NewPatchedCaptchaStageRequestWithDefaults() *PatchedCaptchaStageRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedCaptchaStageRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *PatchedCaptchaStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedCaptchaStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -64,7 +67,7 @@ func (o *PatchedCaptchaStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedCaptchaStageRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *PatchedCaptchaStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PatchedCaptchaStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *PatchedCaptchaStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedCaptchaStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -96,7 +99,7 @@ func (o *PatchedCaptchaStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PatchedCaptchaStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *PatchedCaptchaStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetPublicKey returns the PublicKey field value if set, zero value otherwise.
 func (o *PatchedCaptchaStageRequest) GetPublicKey() string {
-	if o == nil || o.PublicKey == nil {
+	if o == nil || IsNil(o.PublicKey) {
 		var ret string
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *PatchedCaptchaStageRequest) GetPublicKey() string {
 // GetPublicKeyOk returns a tuple with the PublicKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedCaptchaStageRequest) GetPublicKeyOk() (*string, bool) {
-	if o == nil || o.PublicKey == nil {
+	if o == nil || IsNil(o.PublicKey) {
 		return nil, false
 	}
 	return o.PublicKey, true
@@ -128,7 +131,7 @@ func (o *PatchedCaptchaStageRequest) GetPublicKeyOk() (*string, bool) {
 
 // HasPublicKey returns a boolean if a field has been set.
 func (o *PatchedCaptchaStageRequest) HasPublicKey() bool {
-	if o != nil && o.PublicKey != nil {
+	if o != nil && !IsNil(o.PublicKey) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *PatchedCaptchaStageRequest) SetPublicKey(v string) {
 
 // GetPrivateKey returns the PrivateKey field value if set, zero value otherwise.
 func (o *PatchedCaptchaStageRequest) GetPrivateKey() string {
-	if o == nil || o.PrivateKey == nil {
+	if o == nil || IsNil(o.PrivateKey) {
 		var ret string
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *PatchedCaptchaStageRequest) GetPrivateKey() string {
 // GetPrivateKeyOk returns a tuple with the PrivateKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedCaptchaStageRequest) GetPrivateKeyOk() (*string, bool) {
-	if o == nil || o.PrivateKey == nil {
+	if o == nil || IsNil(o.PrivateKey) {
 		return nil, false
 	}
 	return o.PrivateKey, true
@@ -160,7 +163,7 @@ func (o *PatchedCaptchaStageRequest) GetPrivateKeyOk() (*string, bool) {
 
 // HasPrivateKey returns a boolean if a field has been set.
 func (o *PatchedCaptchaStageRequest) HasPrivateKey() bool {
-	if o != nil && o.PrivateKey != nil {
+	if o != nil && !IsNil(o.PrivateKey) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *PatchedCaptchaStageRequest) SetPrivateKey(v string) {
 
 // GetJsUrl returns the JsUrl field value if set, zero value otherwise.
 func (o *PatchedCaptchaStageRequest) GetJsUrl() string {
-	if o == nil || o.JsUrl == nil {
+	if o == nil || IsNil(o.JsUrl) {
 		var ret string
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *PatchedCaptchaStageRequest) GetJsUrl() string {
 // GetJsUrlOk returns a tuple with the JsUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedCaptchaStageRequest) GetJsUrlOk() (*string, bool) {
-	if o == nil || o.JsUrl == nil {
+	if o == nil || IsNil(o.JsUrl) {
 		return nil, false
 	}
 	return o.JsUrl, true
@@ -192,7 +195,7 @@ func (o *PatchedCaptchaStageRequest) GetJsUrlOk() (*string, bool) {
 
 // HasJsUrl returns a boolean if a field has been set.
 func (o *PatchedCaptchaStageRequest) HasJsUrl() bool {
-	if o != nil && o.JsUrl != nil {
+	if o != nil && !IsNil(o.JsUrl) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *PatchedCaptchaStageRequest) SetJsUrl(v string) {
 
 // GetApiUrl returns the ApiUrl field value if set, zero value otherwise.
 func (o *PatchedCaptchaStageRequest) GetApiUrl() string {
-	if o == nil || o.ApiUrl == nil {
+	if o == nil || IsNil(o.ApiUrl) {
 		var ret string
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *PatchedCaptchaStageRequest) GetApiUrl() string {
 // GetApiUrlOk returns a tuple with the ApiUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedCaptchaStageRequest) GetApiUrlOk() (*string, bool) {
-	if o == nil || o.ApiUrl == nil {
+	if o == nil || IsNil(o.ApiUrl) {
 		return nil, false
 	}
 	return o.ApiUrl, true
@@ -224,7 +227,7 @@ func (o *PatchedCaptchaStageRequest) GetApiUrlOk() (*string, bool) {
 
 // HasApiUrl returns a boolean if a field has been set.
 func (o *PatchedCaptchaStageRequest) HasApiUrl() bool {
-	if o != nil && o.ApiUrl != nil {
+	if o != nil && !IsNil(o.ApiUrl) {
 		return true
 	}
 
@@ -237,26 +240,34 @@ func (o *PatchedCaptchaStageRequest) SetApiUrl(v string) {
 }
 
 func (o PatchedCaptchaStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
-	}
-	if o.PublicKey != nil {
-		toSerialize["public_key"] = o.PublicKey
-	}
-	if o.PrivateKey != nil {
-		toSerialize["private_key"] = o.PrivateKey
-	}
-	if o.JsUrl != nil {
-		toSerialize["js_url"] = o.JsUrl
-	}
-	if o.ApiUrl != nil {
-		toSerialize["api_url"] = o.ApiUrl
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedCaptchaStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
+	if !IsNil(o.PublicKey) {
+		toSerialize["public_key"] = o.PublicKey
+	}
+	if !IsNil(o.PrivateKey) {
+		toSerialize["private_key"] = o.PrivateKey
+	}
+	if !IsNil(o.JsUrl) {
+		toSerialize["js_url"] = o.JsUrl
+	}
+	if !IsNil(o.ApiUrl) {
+		toSerialize["api_url"] = o.ApiUrl
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedCaptchaStageRequest struct {

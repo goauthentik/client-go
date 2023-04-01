@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the UserServiceAccountRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserServiceAccountRequest{}
+
 // UserServiceAccountRequest struct for UserServiceAccountRequest
 type UserServiceAccountRequest struct {
 	Name        string `json:"name"`
@@ -77,7 +80,7 @@ func (o *UserServiceAccountRequest) SetName(v string) {
 
 // GetCreateGroup returns the CreateGroup field value if set, zero value otherwise.
 func (o *UserServiceAccountRequest) GetCreateGroup() bool {
-	if o == nil || o.CreateGroup == nil {
+	if o == nil || IsNil(o.CreateGroup) {
 		var ret bool
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *UserServiceAccountRequest) GetCreateGroup() bool {
 // GetCreateGroupOk returns a tuple with the CreateGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserServiceAccountRequest) GetCreateGroupOk() (*bool, bool) {
-	if o == nil || o.CreateGroup == nil {
+	if o == nil || IsNil(o.CreateGroup) {
 		return nil, false
 	}
 	return o.CreateGroup, true
@@ -95,7 +98,7 @@ func (o *UserServiceAccountRequest) GetCreateGroupOk() (*bool, bool) {
 
 // HasCreateGroup returns a boolean if a field has been set.
 func (o *UserServiceAccountRequest) HasCreateGroup() bool {
-	if o != nil && o.CreateGroup != nil {
+	if o != nil && !IsNil(o.CreateGroup) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *UserServiceAccountRequest) SetCreateGroup(v bool) {
 
 // GetExpiring returns the Expiring field value if set, zero value otherwise.
 func (o *UserServiceAccountRequest) GetExpiring() bool {
-	if o == nil || o.Expiring == nil {
+	if o == nil || IsNil(o.Expiring) {
 		var ret bool
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *UserServiceAccountRequest) GetExpiring() bool {
 // GetExpiringOk returns a tuple with the Expiring field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserServiceAccountRequest) GetExpiringOk() (*bool, bool) {
-	if o == nil || o.Expiring == nil {
+	if o == nil || IsNil(o.Expiring) {
 		return nil, false
 	}
 	return o.Expiring, true
@@ -127,7 +130,7 @@ func (o *UserServiceAccountRequest) GetExpiringOk() (*bool, bool) {
 
 // HasExpiring returns a boolean if a field has been set.
 func (o *UserServiceAccountRequest) HasExpiring() bool {
-	if o != nil && o.Expiring != nil {
+	if o != nil && !IsNil(o.Expiring) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *UserServiceAccountRequest) SetExpiring(v bool) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *UserServiceAccountRequest) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		var ret time.Time
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *UserServiceAccountRequest) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserServiceAccountRequest) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
 	return o.Expires, true
@@ -159,7 +162,7 @@ func (o *UserServiceAccountRequest) GetExpiresOk() (*time.Time, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *UserServiceAccountRequest) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && !IsNil(o.Expires) {
 		return true
 	}
 
@@ -172,20 +175,26 @@ func (o *UserServiceAccountRequest) SetExpires(v time.Time) {
 }
 
 func (o UserServiceAccountRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.CreateGroup != nil {
-		toSerialize["create_group"] = o.CreateGroup
-	}
-	if o.Expiring != nil {
-		toSerialize["expiring"] = o.Expiring
-	}
-	if o.Expires != nil {
-		toSerialize["expires"] = o.Expires
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserServiceAccountRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.CreateGroup) {
+		toSerialize["create_group"] = o.CreateGroup
+	}
+	if !IsNil(o.Expiring) {
+		toSerialize["expiring"] = o.Expiring
+	}
+	if !IsNil(o.Expires) {
+		toSerialize["expires"] = o.Expires
+	}
+	return toSerialize, nil
 }
 
 type NullableUserServiceAccountRequest struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PaginatedApplicationListPagination type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginatedApplicationListPagination{}
+
 // PaginatedApplicationListPagination struct for PaginatedApplicationListPagination
 type PaginatedApplicationListPagination struct {
 	Next       float32 `json:"next"`
@@ -219,29 +222,23 @@ func (o *PaginatedApplicationListPagination) SetEndIndex(v float32) {
 }
 
 func (o PaginatedApplicationListPagination) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["next"] = o.Next
-	}
-	if true {
-		toSerialize["previous"] = o.Previous
-	}
-	if true {
-		toSerialize["count"] = o.Count
-	}
-	if true {
-		toSerialize["current"] = o.Current
-	}
-	if true {
-		toSerialize["total_pages"] = o.TotalPages
-	}
-	if true {
-		toSerialize["start_index"] = o.StartIndex
-	}
-	if true {
-		toSerialize["end_index"] = o.EndIndex
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaginatedApplicationListPagination) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["next"] = o.Next
+	toSerialize["previous"] = o.Previous
+	toSerialize["count"] = o.Count
+	toSerialize["current"] = o.Current
+	toSerialize["total_pages"] = o.TotalPages
+	toSerialize["start_index"] = o.StartIndex
+	toSerialize["end_index"] = o.EndIndex
+	return toSerialize, nil
 }
 
 type NullablePaginatedApplicationListPagination struct {

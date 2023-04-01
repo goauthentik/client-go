@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Coordinate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Coordinate{}
+
 // Coordinate Coordinates for diagrams
 type Coordinate struct {
 	XCord int32 `json:"x_cord"`
@@ -89,14 +92,18 @@ func (o *Coordinate) SetYCord(v int32) {
 }
 
 func (o Coordinate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["x_cord"] = o.XCord
-	}
-	if true {
-		toSerialize["y_cord"] = o.YCord
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Coordinate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: x_cord is readOnly
+	// skip: y_cord is readOnly
+	return toSerialize, nil
 }
 
 type NullableCoordinate struct {

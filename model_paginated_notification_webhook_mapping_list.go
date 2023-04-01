@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PaginatedNotificationWebhookMappingList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginatedNotificationWebhookMappingList{}
+
 // PaginatedNotificationWebhookMappingList struct for PaginatedNotificationWebhookMappingList
 type PaginatedNotificationWebhookMappingList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
@@ -89,14 +92,18 @@ func (o *PaginatedNotificationWebhookMappingList) SetResults(v []NotificationWeb
 }
 
 func (o PaginatedNotificationWebhookMappingList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if true {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaginatedNotificationWebhookMappingList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pagination"] = o.Pagination
+	toSerialize["results"] = o.Results
+	return toSerialize, nil
 }
 
 type NullablePaginatedNotificationWebhookMappingList struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthenticatorDuoStageManualDeviceImportRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorDuoStageManualDeviceImportRequest{}
+
 // AuthenticatorDuoStageManualDeviceImportRequest struct for AuthenticatorDuoStageManualDeviceImportRequest
 type AuthenticatorDuoStageManualDeviceImportRequest struct {
 	DuoUserId string `json:"duo_user_id"`
@@ -89,14 +92,18 @@ func (o *AuthenticatorDuoStageManualDeviceImportRequest) SetUsername(v string) {
 }
 
 func (o AuthenticatorDuoStageManualDeviceImportRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["duo_user_id"] = o.DuoUserId
-	}
-	if true {
-		toSerialize["username"] = o.Username
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorDuoStageManualDeviceImportRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["duo_user_id"] = o.DuoUserId
+	toSerialize["username"] = o.Username
+	return toSerialize, nil
 }
 
 type NullableAuthenticatorDuoStageManualDeviceImportRequest struct {

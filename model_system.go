@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the System type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &System{}
+
 // System Get system information.
 type System struct {
 	// Get Environment
@@ -253,32 +256,24 @@ func (o *System) SetEmbeddedOutpostHost(v string) {
 }
 
 func (o System) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["env"] = o.Env
-	}
-	if true {
-		toSerialize["http_headers"] = o.HttpHeaders
-	}
-	if true {
-		toSerialize["http_host"] = o.HttpHost
-	}
-	if true {
-		toSerialize["http_is_secure"] = o.HttpIsSecure
-	}
-	if true {
-		toSerialize["runtime"] = o.Runtime
-	}
-	if true {
-		toSerialize["tenant"] = o.Tenant
-	}
-	if true {
-		toSerialize["server_time"] = o.ServerTime
-	}
-	if true {
-		toSerialize["embedded_outpost_host"] = o.EmbeddedOutpostHost
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o System) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: env is readOnly
+	// skip: http_headers is readOnly
+	// skip: http_host is readOnly
+	// skip: http_is_secure is readOnly
+	toSerialize["runtime"] = o.Runtime
+	// skip: tenant is readOnly
+	// skip: server_time is readOnly
+	// skip: embedded_outpost_host is readOnly
+	return toSerialize, nil
 }
 
 type NullableSystem struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LDAPSource type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LDAPSource{}
+
 // LDAPSource LDAP Source Serializer
 type LDAPSource struct {
 	Pk string `json:"pk"`
@@ -34,10 +37,9 @@ type LDAPSource struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName    string            `json:"meta_model_name"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
-	// How the source determines if an existing user should be authenticated or a new user enrolled.  * `identifier` - Use the source-specific identifier * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses. * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists. * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source. * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
-	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
+	MetaModelName    string                `json:"meta_model_name"`
+	PolicyEngineMode *PolicyEngineMode     `json:"policy_engine_mode,omitempty"`
+	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed          NullableString `json:"managed"`
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
@@ -173,7 +175,7 @@ func (o *LDAPSource) SetSlug(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *LDAPSource) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -183,7 +185,7 @@ func (o *LDAPSource) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -191,7 +193,7 @@ func (o *LDAPSource) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *LDAPSource) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -205,7 +207,7 @@ func (o *LDAPSource) SetEnabled(v bool) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LDAPSource) GetAuthenticationFlow() string {
-	if o == nil || o.AuthenticationFlow.Get() == nil {
+	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -248,7 +250,7 @@ func (o *LDAPSource) UnsetAuthenticationFlow() {
 
 // GetEnrollmentFlow returns the EnrollmentFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LDAPSource) GetEnrollmentFlow() string {
-	if o == nil || o.EnrollmentFlow.Get() == nil {
+	if o == nil || IsNil(o.EnrollmentFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -387,7 +389,7 @@ func (o *LDAPSource) SetMetaModelName(v string) {
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *LDAPSource) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -397,7 +399,7 @@ func (o *LDAPSource) GetPolicyEngineMode() PolicyEngineMode {
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -405,7 +407,7 @@ func (o *LDAPSource) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *LDAPSource) HasPolicyEngineMode() bool {
-	if o != nil && o.PolicyEngineMode != nil {
+	if o != nil && !IsNil(o.PolicyEngineMode) {
 		return true
 	}
 
@@ -417,47 +419,36 @@ func (o *LDAPSource) SetPolicyEngineMode(v PolicyEngineMode) {
 	o.PolicyEngineMode = &v
 }
 
-// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
 func (o *LDAPSource) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || o.UserMatchingMode.Get() == nil {
+	if o == nil || IsNil(o.UserMatchingMode) {
 		var ret UserMatchingModeEnum
 		return ret
 	}
-	return *o.UserMatchingMode.Get()
+	return *o.UserMatchingMode
 }
 
 // GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LDAPSource) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UserMatchingMode) {
 		return nil, false
 	}
-	return o.UserMatchingMode.Get(), o.UserMatchingMode.IsSet()
+	return o.UserMatchingMode, true
 }
 
 // HasUserMatchingMode returns a boolean if a field has been set.
 func (o *LDAPSource) HasUserMatchingMode() bool {
-	if o != nil && o.UserMatchingMode.IsSet() {
+	if o != nil && !IsNil(o.UserMatchingMode) {
 		return true
 	}
 
 	return false
 }
 
-// SetUserMatchingMode gets a reference to the given NullableUserMatchingModeEnum and assigns it to the UserMatchingMode field.
+// SetUserMatchingMode gets a reference to the given UserMatchingModeEnum and assigns it to the UserMatchingMode field.
 func (o *LDAPSource) SetUserMatchingMode(v UserMatchingModeEnum) {
-	o.UserMatchingMode.Set(&v)
-}
-
-// SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
-func (o *LDAPSource) SetUserMatchingModeNil() {
-	o.UserMatchingMode.Set(nil)
-}
-
-// UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
-func (o *LDAPSource) UnsetUserMatchingMode() {
-	o.UserMatchingMode.Unset()
+	o.UserMatchingMode = &v
 }
 
 // GetManaged returns the Managed field value
@@ -488,7 +479,7 @@ func (o *LDAPSource) SetManaged(v string) {
 
 // GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
 func (o *LDAPSource) GetUserPathTemplate() string {
-	if o == nil || o.UserPathTemplate == nil {
+	if o == nil || IsNil(o.UserPathTemplate) {
 		var ret string
 		return ret
 	}
@@ -498,7 +489,7 @@ func (o *LDAPSource) GetUserPathTemplate() string {
 // GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetUserPathTemplateOk() (*string, bool) {
-	if o == nil || o.UserPathTemplate == nil {
+	if o == nil || IsNil(o.UserPathTemplate) {
 		return nil, false
 	}
 	return o.UserPathTemplate, true
@@ -506,7 +497,7 @@ func (o *LDAPSource) GetUserPathTemplateOk() (*string, bool) {
 
 // HasUserPathTemplate returns a boolean if a field has been set.
 func (o *LDAPSource) HasUserPathTemplate() bool {
-	if o != nil && o.UserPathTemplate != nil {
+	if o != nil && !IsNil(o.UserPathTemplate) {
 		return true
 	}
 
@@ -570,7 +561,7 @@ func (o *LDAPSource) SetServerUri(v string) {
 
 // GetPeerCertificate returns the PeerCertificate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LDAPSource) GetPeerCertificate() string {
-	if o == nil || o.PeerCertificate.Get() == nil {
+	if o == nil || IsNil(o.PeerCertificate.Get()) {
 		var ret string
 		return ret
 	}
@@ -613,7 +604,7 @@ func (o *LDAPSource) UnsetPeerCertificate() {
 
 // GetBindCn returns the BindCn field value if set, zero value otherwise.
 func (o *LDAPSource) GetBindCn() string {
-	if o == nil || o.BindCn == nil {
+	if o == nil || IsNil(o.BindCn) {
 		var ret string
 		return ret
 	}
@@ -623,7 +614,7 @@ func (o *LDAPSource) GetBindCn() string {
 // GetBindCnOk returns a tuple with the BindCn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetBindCnOk() (*string, bool) {
-	if o == nil || o.BindCn == nil {
+	if o == nil || IsNil(o.BindCn) {
 		return nil, false
 	}
 	return o.BindCn, true
@@ -631,7 +622,7 @@ func (o *LDAPSource) GetBindCnOk() (*string, bool) {
 
 // HasBindCn returns a boolean if a field has been set.
 func (o *LDAPSource) HasBindCn() bool {
-	if o != nil && o.BindCn != nil {
+	if o != nil && !IsNil(o.BindCn) {
 		return true
 	}
 
@@ -645,7 +636,7 @@ func (o *LDAPSource) SetBindCn(v string) {
 
 // GetStartTls returns the StartTls field value if set, zero value otherwise.
 func (o *LDAPSource) GetStartTls() bool {
-	if o == nil || o.StartTls == nil {
+	if o == nil || IsNil(o.StartTls) {
 		var ret bool
 		return ret
 	}
@@ -655,7 +646,7 @@ func (o *LDAPSource) GetStartTls() bool {
 // GetStartTlsOk returns a tuple with the StartTls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetStartTlsOk() (*bool, bool) {
-	if o == nil || o.StartTls == nil {
+	if o == nil || IsNil(o.StartTls) {
 		return nil, false
 	}
 	return o.StartTls, true
@@ -663,7 +654,7 @@ func (o *LDAPSource) GetStartTlsOk() (*bool, bool) {
 
 // HasStartTls returns a boolean if a field has been set.
 func (o *LDAPSource) HasStartTls() bool {
-	if o != nil && o.StartTls != nil {
+	if o != nil && !IsNil(o.StartTls) {
 		return true
 	}
 
@@ -701,7 +692,7 @@ func (o *LDAPSource) SetBaseDn(v string) {
 
 // GetAdditionalUserDn returns the AdditionalUserDn field value if set, zero value otherwise.
 func (o *LDAPSource) GetAdditionalUserDn() string {
-	if o == nil || o.AdditionalUserDn == nil {
+	if o == nil || IsNil(o.AdditionalUserDn) {
 		var ret string
 		return ret
 	}
@@ -711,7 +702,7 @@ func (o *LDAPSource) GetAdditionalUserDn() string {
 // GetAdditionalUserDnOk returns a tuple with the AdditionalUserDn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetAdditionalUserDnOk() (*string, bool) {
-	if o == nil || o.AdditionalUserDn == nil {
+	if o == nil || IsNil(o.AdditionalUserDn) {
 		return nil, false
 	}
 	return o.AdditionalUserDn, true
@@ -719,7 +710,7 @@ func (o *LDAPSource) GetAdditionalUserDnOk() (*string, bool) {
 
 // HasAdditionalUserDn returns a boolean if a field has been set.
 func (o *LDAPSource) HasAdditionalUserDn() bool {
-	if o != nil && o.AdditionalUserDn != nil {
+	if o != nil && !IsNil(o.AdditionalUserDn) {
 		return true
 	}
 
@@ -733,7 +724,7 @@ func (o *LDAPSource) SetAdditionalUserDn(v string) {
 
 // GetAdditionalGroupDn returns the AdditionalGroupDn field value if set, zero value otherwise.
 func (o *LDAPSource) GetAdditionalGroupDn() string {
-	if o == nil || o.AdditionalGroupDn == nil {
+	if o == nil || IsNil(o.AdditionalGroupDn) {
 		var ret string
 		return ret
 	}
@@ -743,7 +734,7 @@ func (o *LDAPSource) GetAdditionalGroupDn() string {
 // GetAdditionalGroupDnOk returns a tuple with the AdditionalGroupDn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetAdditionalGroupDnOk() (*string, bool) {
-	if o == nil || o.AdditionalGroupDn == nil {
+	if o == nil || IsNil(o.AdditionalGroupDn) {
 		return nil, false
 	}
 	return o.AdditionalGroupDn, true
@@ -751,7 +742,7 @@ func (o *LDAPSource) GetAdditionalGroupDnOk() (*string, bool) {
 
 // HasAdditionalGroupDn returns a boolean if a field has been set.
 func (o *LDAPSource) HasAdditionalGroupDn() bool {
-	if o != nil && o.AdditionalGroupDn != nil {
+	if o != nil && !IsNil(o.AdditionalGroupDn) {
 		return true
 	}
 
@@ -765,7 +756,7 @@ func (o *LDAPSource) SetAdditionalGroupDn(v string) {
 
 // GetUserObjectFilter returns the UserObjectFilter field value if set, zero value otherwise.
 func (o *LDAPSource) GetUserObjectFilter() string {
-	if o == nil || o.UserObjectFilter == nil {
+	if o == nil || IsNil(o.UserObjectFilter) {
 		var ret string
 		return ret
 	}
@@ -775,7 +766,7 @@ func (o *LDAPSource) GetUserObjectFilter() string {
 // GetUserObjectFilterOk returns a tuple with the UserObjectFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetUserObjectFilterOk() (*string, bool) {
-	if o == nil || o.UserObjectFilter == nil {
+	if o == nil || IsNil(o.UserObjectFilter) {
 		return nil, false
 	}
 	return o.UserObjectFilter, true
@@ -783,7 +774,7 @@ func (o *LDAPSource) GetUserObjectFilterOk() (*string, bool) {
 
 // HasUserObjectFilter returns a boolean if a field has been set.
 func (o *LDAPSource) HasUserObjectFilter() bool {
-	if o != nil && o.UserObjectFilter != nil {
+	if o != nil && !IsNil(o.UserObjectFilter) {
 		return true
 	}
 
@@ -797,7 +788,7 @@ func (o *LDAPSource) SetUserObjectFilter(v string) {
 
 // GetGroupObjectFilter returns the GroupObjectFilter field value if set, zero value otherwise.
 func (o *LDAPSource) GetGroupObjectFilter() string {
-	if o == nil || o.GroupObjectFilter == nil {
+	if o == nil || IsNil(o.GroupObjectFilter) {
 		var ret string
 		return ret
 	}
@@ -807,7 +798,7 @@ func (o *LDAPSource) GetGroupObjectFilter() string {
 // GetGroupObjectFilterOk returns a tuple with the GroupObjectFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetGroupObjectFilterOk() (*string, bool) {
-	if o == nil || o.GroupObjectFilter == nil {
+	if o == nil || IsNil(o.GroupObjectFilter) {
 		return nil, false
 	}
 	return o.GroupObjectFilter, true
@@ -815,7 +806,7 @@ func (o *LDAPSource) GetGroupObjectFilterOk() (*string, bool) {
 
 // HasGroupObjectFilter returns a boolean if a field has been set.
 func (o *LDAPSource) HasGroupObjectFilter() bool {
-	if o != nil && o.GroupObjectFilter != nil {
+	if o != nil && !IsNil(o.GroupObjectFilter) {
 		return true
 	}
 
@@ -829,7 +820,7 @@ func (o *LDAPSource) SetGroupObjectFilter(v string) {
 
 // GetGroupMembershipField returns the GroupMembershipField field value if set, zero value otherwise.
 func (o *LDAPSource) GetGroupMembershipField() string {
-	if o == nil || o.GroupMembershipField == nil {
+	if o == nil || IsNil(o.GroupMembershipField) {
 		var ret string
 		return ret
 	}
@@ -839,7 +830,7 @@ func (o *LDAPSource) GetGroupMembershipField() string {
 // GetGroupMembershipFieldOk returns a tuple with the GroupMembershipField field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetGroupMembershipFieldOk() (*string, bool) {
-	if o == nil || o.GroupMembershipField == nil {
+	if o == nil || IsNil(o.GroupMembershipField) {
 		return nil, false
 	}
 	return o.GroupMembershipField, true
@@ -847,7 +838,7 @@ func (o *LDAPSource) GetGroupMembershipFieldOk() (*string, bool) {
 
 // HasGroupMembershipField returns a boolean if a field has been set.
 func (o *LDAPSource) HasGroupMembershipField() bool {
-	if o != nil && o.GroupMembershipField != nil {
+	if o != nil && !IsNil(o.GroupMembershipField) {
 		return true
 	}
 
@@ -861,7 +852,7 @@ func (o *LDAPSource) SetGroupMembershipField(v string) {
 
 // GetObjectUniquenessField returns the ObjectUniquenessField field value if set, zero value otherwise.
 func (o *LDAPSource) GetObjectUniquenessField() string {
-	if o == nil || o.ObjectUniquenessField == nil {
+	if o == nil || IsNil(o.ObjectUniquenessField) {
 		var ret string
 		return ret
 	}
@@ -871,7 +862,7 @@ func (o *LDAPSource) GetObjectUniquenessField() string {
 // GetObjectUniquenessFieldOk returns a tuple with the ObjectUniquenessField field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetObjectUniquenessFieldOk() (*string, bool) {
-	if o == nil || o.ObjectUniquenessField == nil {
+	if o == nil || IsNil(o.ObjectUniquenessField) {
 		return nil, false
 	}
 	return o.ObjectUniquenessField, true
@@ -879,7 +870,7 @@ func (o *LDAPSource) GetObjectUniquenessFieldOk() (*string, bool) {
 
 // HasObjectUniquenessField returns a boolean if a field has been set.
 func (o *LDAPSource) HasObjectUniquenessField() bool {
-	if o != nil && o.ObjectUniquenessField != nil {
+	if o != nil && !IsNil(o.ObjectUniquenessField) {
 		return true
 	}
 
@@ -893,7 +884,7 @@ func (o *LDAPSource) SetObjectUniquenessField(v string) {
 
 // GetSyncUsers returns the SyncUsers field value if set, zero value otherwise.
 func (o *LDAPSource) GetSyncUsers() bool {
-	if o == nil || o.SyncUsers == nil {
+	if o == nil || IsNil(o.SyncUsers) {
 		var ret bool
 		return ret
 	}
@@ -903,7 +894,7 @@ func (o *LDAPSource) GetSyncUsers() bool {
 // GetSyncUsersOk returns a tuple with the SyncUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetSyncUsersOk() (*bool, bool) {
-	if o == nil || o.SyncUsers == nil {
+	if o == nil || IsNil(o.SyncUsers) {
 		return nil, false
 	}
 	return o.SyncUsers, true
@@ -911,7 +902,7 @@ func (o *LDAPSource) GetSyncUsersOk() (*bool, bool) {
 
 // HasSyncUsers returns a boolean if a field has been set.
 func (o *LDAPSource) HasSyncUsers() bool {
-	if o != nil && o.SyncUsers != nil {
+	if o != nil && !IsNil(o.SyncUsers) {
 		return true
 	}
 
@@ -925,7 +916,7 @@ func (o *LDAPSource) SetSyncUsers(v bool) {
 
 // GetSyncUsersPassword returns the SyncUsersPassword field value if set, zero value otherwise.
 func (o *LDAPSource) GetSyncUsersPassword() bool {
-	if o == nil || o.SyncUsersPassword == nil {
+	if o == nil || IsNil(o.SyncUsersPassword) {
 		var ret bool
 		return ret
 	}
@@ -935,7 +926,7 @@ func (o *LDAPSource) GetSyncUsersPassword() bool {
 // GetSyncUsersPasswordOk returns a tuple with the SyncUsersPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetSyncUsersPasswordOk() (*bool, bool) {
-	if o == nil || o.SyncUsersPassword == nil {
+	if o == nil || IsNil(o.SyncUsersPassword) {
 		return nil, false
 	}
 	return o.SyncUsersPassword, true
@@ -943,7 +934,7 @@ func (o *LDAPSource) GetSyncUsersPasswordOk() (*bool, bool) {
 
 // HasSyncUsersPassword returns a boolean if a field has been set.
 func (o *LDAPSource) HasSyncUsersPassword() bool {
-	if o != nil && o.SyncUsersPassword != nil {
+	if o != nil && !IsNil(o.SyncUsersPassword) {
 		return true
 	}
 
@@ -957,7 +948,7 @@ func (o *LDAPSource) SetSyncUsersPassword(v bool) {
 
 // GetSyncGroups returns the SyncGroups field value if set, zero value otherwise.
 func (o *LDAPSource) GetSyncGroups() bool {
-	if o == nil || o.SyncGroups == nil {
+	if o == nil || IsNil(o.SyncGroups) {
 		var ret bool
 		return ret
 	}
@@ -967,7 +958,7 @@ func (o *LDAPSource) GetSyncGroups() bool {
 // GetSyncGroupsOk returns a tuple with the SyncGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetSyncGroupsOk() (*bool, bool) {
-	if o == nil || o.SyncGroups == nil {
+	if o == nil || IsNil(o.SyncGroups) {
 		return nil, false
 	}
 	return o.SyncGroups, true
@@ -975,7 +966,7 @@ func (o *LDAPSource) GetSyncGroupsOk() (*bool, bool) {
 
 // HasSyncGroups returns a boolean if a field has been set.
 func (o *LDAPSource) HasSyncGroups() bool {
-	if o != nil && o.SyncGroups != nil {
+	if o != nil && !IsNil(o.SyncGroups) {
 		return true
 	}
 
@@ -989,7 +980,7 @@ func (o *LDAPSource) SetSyncGroups(v bool) {
 
 // GetSyncParentGroup returns the SyncParentGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LDAPSource) GetSyncParentGroup() string {
-	if o == nil || o.SyncParentGroup.Get() == nil {
+	if o == nil || IsNil(o.SyncParentGroup.Get()) {
 		var ret string
 		return ret
 	}
@@ -1032,7 +1023,7 @@ func (o *LDAPSource) UnsetSyncParentGroup() {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *LDAPSource) GetPropertyMappings() []string {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -1042,7 +1033,7 @@ func (o *LDAPSource) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -1050,7 +1041,7 @@ func (o *LDAPSource) GetPropertyMappingsOk() ([]string, bool) {
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *LDAPSource) HasPropertyMappings() bool {
-	if o != nil && o.PropertyMappings != nil {
+	if o != nil && !IsNil(o.PropertyMappings) {
 		return true
 	}
 
@@ -1064,7 +1055,7 @@ func (o *LDAPSource) SetPropertyMappings(v []string) {
 
 // GetPropertyMappingsGroup returns the PropertyMappingsGroup field value if set, zero value otherwise.
 func (o *LDAPSource) GetPropertyMappingsGroup() []string {
-	if o == nil || o.PropertyMappingsGroup == nil {
+	if o == nil || IsNil(o.PropertyMappingsGroup) {
 		var ret []string
 		return ret
 	}
@@ -1074,7 +1065,7 @@ func (o *LDAPSource) GetPropertyMappingsGroup() []string {
 // GetPropertyMappingsGroupOk returns a tuple with the PropertyMappingsGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPSource) GetPropertyMappingsGroupOk() ([]string, bool) {
-	if o == nil || o.PropertyMappingsGroup == nil {
+	if o == nil || IsNil(o.PropertyMappingsGroup) {
 		return nil, false
 	}
 	return o.PropertyMappingsGroup, true
@@ -1082,7 +1073,7 @@ func (o *LDAPSource) GetPropertyMappingsGroupOk() ([]string, bool) {
 
 // HasPropertyMappingsGroup returns a boolean if a field has been set.
 func (o *LDAPSource) HasPropertyMappingsGroup() bool {
-	if o != nil && o.PropertyMappingsGroup != nil {
+	if o != nil && !IsNil(o.PropertyMappingsGroup) {
 		return true
 	}
 
@@ -1095,17 +1086,19 @@ func (o *LDAPSource) SetPropertyMappingsGroup(v []string) {
 }
 
 func (o LDAPSource) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o LDAPSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["slug"] = o.Slug
-	}
-	if o.Enabled != nil {
+	// skip: pk is readOnly
+	toSerialize["name"] = o.Name
+	toSerialize["slug"] = o.Slug
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.AuthenticationFlow.IsSet() {
@@ -1114,85 +1107,69 @@ func (o LDAPSource) MarshalJSON() ([]byte, error) {
 	if o.EnrollmentFlow.IsSet() {
 		toSerialize["enrollment_flow"] = o.EnrollmentFlow.Get()
 	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if o.PolicyEngineMode != nil {
+	// skip: component is readOnly
+	// skip: verbose_name is readOnly
+	// skip: verbose_name_plural is readOnly
+	// skip: meta_model_name is readOnly
+	if !IsNil(o.PolicyEngineMode) {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if o.UserMatchingMode.IsSet() {
-		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
+	if !IsNil(o.UserMatchingMode) {
+		toSerialize["user_matching_mode"] = o.UserMatchingMode
 	}
-	if true {
-		toSerialize["managed"] = o.Managed.Get()
-	}
-	if o.UserPathTemplate != nil {
+	toSerialize["managed"] = o.Managed.Get()
+	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	if true {
-		toSerialize["icon"] = o.Icon.Get()
-	}
-	if true {
-		toSerialize["server_uri"] = o.ServerUri
-	}
+	toSerialize["icon"] = o.Icon.Get()
+	toSerialize["server_uri"] = o.ServerUri
 	if o.PeerCertificate.IsSet() {
 		toSerialize["peer_certificate"] = o.PeerCertificate.Get()
 	}
-	if o.BindCn != nil {
+	if !IsNil(o.BindCn) {
 		toSerialize["bind_cn"] = o.BindCn
 	}
-	if o.StartTls != nil {
+	if !IsNil(o.StartTls) {
 		toSerialize["start_tls"] = o.StartTls
 	}
-	if true {
-		toSerialize["base_dn"] = o.BaseDn
-	}
-	if o.AdditionalUserDn != nil {
+	toSerialize["base_dn"] = o.BaseDn
+	if !IsNil(o.AdditionalUserDn) {
 		toSerialize["additional_user_dn"] = o.AdditionalUserDn
 	}
-	if o.AdditionalGroupDn != nil {
+	if !IsNil(o.AdditionalGroupDn) {
 		toSerialize["additional_group_dn"] = o.AdditionalGroupDn
 	}
-	if o.UserObjectFilter != nil {
+	if !IsNil(o.UserObjectFilter) {
 		toSerialize["user_object_filter"] = o.UserObjectFilter
 	}
-	if o.GroupObjectFilter != nil {
+	if !IsNil(o.GroupObjectFilter) {
 		toSerialize["group_object_filter"] = o.GroupObjectFilter
 	}
-	if o.GroupMembershipField != nil {
+	if !IsNil(o.GroupMembershipField) {
 		toSerialize["group_membership_field"] = o.GroupMembershipField
 	}
-	if o.ObjectUniquenessField != nil {
+	if !IsNil(o.ObjectUniquenessField) {
 		toSerialize["object_uniqueness_field"] = o.ObjectUniquenessField
 	}
-	if o.SyncUsers != nil {
+	if !IsNil(o.SyncUsers) {
 		toSerialize["sync_users"] = o.SyncUsers
 	}
-	if o.SyncUsersPassword != nil {
+	if !IsNil(o.SyncUsersPassword) {
 		toSerialize["sync_users_password"] = o.SyncUsersPassword
 	}
-	if o.SyncGroups != nil {
+	if !IsNil(o.SyncGroups) {
 		toSerialize["sync_groups"] = o.SyncGroups
 	}
 	if o.SyncParentGroup.IsSet() {
 		toSerialize["sync_parent_group"] = o.SyncParentGroup.Get()
 	}
-	if o.PropertyMappings != nil {
+	if !IsNil(o.PropertyMappings) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if o.PropertyMappingsGroup != nil {
+	if !IsNil(o.PropertyMappingsGroup) {
 		toSerialize["property_mappings_group"] = o.PropertyMappingsGroup
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableLDAPSource struct {

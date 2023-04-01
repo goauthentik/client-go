@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Permission type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Permission{}
+
 // Permission Permission used for consent
 type Permission struct {
 	Name string `json:"name"`
@@ -89,14 +92,18 @@ func (o *Permission) SetId(v string) {
 }
 
 func (o Permission) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Permission) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullablePermission struct {

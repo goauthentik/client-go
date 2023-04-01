@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SystemRuntime type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SystemRuntime{}
+
 // SystemRuntime Get versions
 type SystemRuntime struct {
 	PythonVersion   string `json:"python_version"`
@@ -193,26 +196,22 @@ func (o *SystemRuntime) SetUname(v string) {
 }
 
 func (o SystemRuntime) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["python_version"] = o.PythonVersion
-	}
-	if true {
-		toSerialize["gunicorn_version"] = o.GunicornVersion
-	}
-	if true {
-		toSerialize["environment"] = o.Environment
-	}
-	if true {
-		toSerialize["architecture"] = o.Architecture
-	}
-	if true {
-		toSerialize["platform"] = o.Platform
-	}
-	if true {
-		toSerialize["uname"] = o.Uname
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SystemRuntime) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["python_version"] = o.PythonVersion
+	toSerialize["gunicorn_version"] = o.GunicornVersion
+	toSerialize["environment"] = o.Environment
+	toSerialize["architecture"] = o.Architecture
+	toSerialize["platform"] = o.Platform
+	toSerialize["uname"] = o.Uname
+	return toSerialize, nil
 }
 
 type NullableSystemRuntime struct {

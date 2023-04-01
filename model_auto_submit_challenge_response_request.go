@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AutoSubmitChallengeResponseRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AutoSubmitChallengeResponseRequest{}
+
 // AutoSubmitChallengeResponseRequest Pseudo class for autosubmit response
 type AutoSubmitChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
@@ -43,7 +46,7 @@ func NewAutoSubmitChallengeResponseRequestWithDefaults() *AutoSubmitChallengeRes
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *AutoSubmitChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *AutoSubmitChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AutoSubmitChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -61,7 +64,7 @@ func (o *AutoSubmitChallengeResponseRequest) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *AutoSubmitChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -74,11 +77,19 @@ func (o *AutoSubmitChallengeResponseRequest) SetComponent(v string) {
 }
 
 func (o AutoSubmitChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AutoSubmitChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	return toSerialize, nil
 }
 
 type NullableAutoSubmitChallengeResponseRequest struct {

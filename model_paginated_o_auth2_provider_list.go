@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PaginatedOAuth2ProviderList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginatedOAuth2ProviderList{}
+
 // PaginatedOAuth2ProviderList struct for PaginatedOAuth2ProviderList
 type PaginatedOAuth2ProviderList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
@@ -89,14 +92,18 @@ func (o *PaginatedOAuth2ProviderList) SetResults(v []OAuth2Provider) {
 }
 
 func (o PaginatedOAuth2ProviderList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if true {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaginatedOAuth2ProviderList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pagination"] = o.Pagination
+	toSerialize["results"] = o.Results
+	return toSerialize, nil
 }
 
 type NullablePaginatedOAuth2ProviderList struct {

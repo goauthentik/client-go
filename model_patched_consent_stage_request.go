@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedConsentStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedConsentStageRequest{}
+
 // PatchedConsentStageRequest ConsentStage Serializer
 type PatchedConsentStageRequest struct {
 	Name    *string               `json:"name,omitempty"`
@@ -43,7 +46,7 @@ func NewPatchedConsentStageRequestWithDefaults() *PatchedConsentStageRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedConsentStageRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *PatchedConsentStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedConsentStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -61,7 +64,7 @@ func (o *PatchedConsentStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedConsentStageRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *PatchedConsentStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PatchedConsentStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *PatchedConsentStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedConsentStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -93,7 +96,7 @@ func (o *PatchedConsentStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PatchedConsentStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *PatchedConsentStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *PatchedConsentStageRequest) GetMode() ConsentStageModeEnum {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret ConsentStageModeEnum
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *PatchedConsentStageRequest) GetMode() ConsentStageModeEnum {
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedConsentStageRequest) GetModeOk() (*ConsentStageModeEnum, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
 	return o.Mode, true
@@ -125,7 +128,7 @@ func (o *PatchedConsentStageRequest) GetModeOk() (*ConsentStageModeEnum, bool) {
 
 // HasMode returns a boolean if a field has been set.
 func (o *PatchedConsentStageRequest) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *PatchedConsentStageRequest) SetMode(v ConsentStageModeEnum) {
 
 // GetConsentExpireIn returns the ConsentExpireIn field value if set, zero value otherwise.
 func (o *PatchedConsentStageRequest) GetConsentExpireIn() string {
-	if o == nil || o.ConsentExpireIn == nil {
+	if o == nil || IsNil(o.ConsentExpireIn) {
 		var ret string
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *PatchedConsentStageRequest) GetConsentExpireIn() string {
 // GetConsentExpireInOk returns a tuple with the ConsentExpireIn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedConsentStageRequest) GetConsentExpireInOk() (*string, bool) {
-	if o == nil || o.ConsentExpireIn == nil {
+	if o == nil || IsNil(o.ConsentExpireIn) {
 		return nil, false
 	}
 	return o.ConsentExpireIn, true
@@ -157,7 +160,7 @@ func (o *PatchedConsentStageRequest) GetConsentExpireInOk() (*string, bool) {
 
 // HasConsentExpireIn returns a boolean if a field has been set.
 func (o *PatchedConsentStageRequest) HasConsentExpireIn() bool {
-	if o != nil && o.ConsentExpireIn != nil {
+	if o != nil && !IsNil(o.ConsentExpireIn) {
 		return true
 	}
 
@@ -170,20 +173,28 @@ func (o *PatchedConsentStageRequest) SetConsentExpireIn(v string) {
 }
 
 func (o PatchedConsentStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
-	}
-	if o.Mode != nil {
-		toSerialize["mode"] = o.Mode
-	}
-	if o.ConsentExpireIn != nil {
-		toSerialize["consent_expire_in"] = o.ConsentExpireIn
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedConsentStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
+	if !IsNil(o.ConsentExpireIn) {
+		toSerialize["consent_expire_in"] = o.ConsentExpireIn
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedConsentStageRequest struct {

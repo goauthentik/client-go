@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthenticatorDuoStage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorDuoStage{}
+
 // AuthenticatorDuoStage AuthenticatorDuoStage Serializer
 type AuthenticatorDuoStage struct {
 	Pk   string `json:"pk"`
@@ -206,7 +209,7 @@ func (o *AuthenticatorDuoStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *AuthenticatorDuoStage) GetFlowSet() []FlowSet {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *AuthenticatorDuoStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -224,7 +227,7 @@ func (o *AuthenticatorDuoStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *AuthenticatorDuoStage) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *AuthenticatorDuoStage) SetFlowSet(v []FlowSet) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorDuoStage) GetConfigureFlow() string {
-	if o == nil || o.ConfigureFlow.Get() == nil {
+	if o == nil || IsNil(o.ConfigureFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -329,7 +332,7 @@ func (o *AuthenticatorDuoStage) SetApiHostname(v string) {
 
 // GetAdminIntegrationKey returns the AdminIntegrationKey field value if set, zero value otherwise.
 func (o *AuthenticatorDuoStage) GetAdminIntegrationKey() string {
-	if o == nil || o.AdminIntegrationKey == nil {
+	if o == nil || IsNil(o.AdminIntegrationKey) {
 		var ret string
 		return ret
 	}
@@ -339,7 +342,7 @@ func (o *AuthenticatorDuoStage) GetAdminIntegrationKey() string {
 // GetAdminIntegrationKeyOk returns a tuple with the AdminIntegrationKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStage) GetAdminIntegrationKeyOk() (*string, bool) {
-	if o == nil || o.AdminIntegrationKey == nil {
+	if o == nil || IsNil(o.AdminIntegrationKey) {
 		return nil, false
 	}
 	return o.AdminIntegrationKey, true
@@ -347,7 +350,7 @@ func (o *AuthenticatorDuoStage) GetAdminIntegrationKeyOk() (*string, bool) {
 
 // HasAdminIntegrationKey returns a boolean if a field has been set.
 func (o *AuthenticatorDuoStage) HasAdminIntegrationKey() bool {
-	if o != nil && o.AdminIntegrationKey != nil {
+	if o != nil && !IsNil(o.AdminIntegrationKey) {
 		return true
 	}
 
@@ -360,41 +363,33 @@ func (o *AuthenticatorDuoStage) SetAdminIntegrationKey(v string) {
 }
 
 func (o AuthenticatorDuoStage) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorDuoStage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if o.FlowSet != nil {
+	// skip: pk is readOnly
+	toSerialize["name"] = o.Name
+	// skip: component is readOnly
+	// skip: verbose_name is readOnly
+	// skip: verbose_name_plural is readOnly
+	// skip: meta_model_name is readOnly
+	if !IsNil(o.FlowSet) {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if true {
-		toSerialize["client_id"] = o.ClientId
-	}
-	if true {
-		toSerialize["api_hostname"] = o.ApiHostname
-	}
-	if o.AdminIntegrationKey != nil {
+	toSerialize["client_id"] = o.ClientId
+	toSerialize["api_hostname"] = o.ApiHostname
+	if !IsNil(o.AdminIntegrationKey) {
 		toSerialize["admin_integration_key"] = o.AdminIntegrationKey
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableAuthenticatorDuoStage struct {

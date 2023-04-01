@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TokenView type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TokenView{}
+
 // TokenView Show token's current key
 type TokenView struct {
 	Key string `json:"key"`
@@ -63,11 +66,17 @@ func (o *TokenView) SetKey(v string) {
 }
 
 func (o TokenView) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["key"] = o.Key
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TokenView) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: key is readOnly
+	return toSerialize, nil
 }
 
 type NullableTokenView struct {

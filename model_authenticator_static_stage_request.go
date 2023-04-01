@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthenticatorStaticStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorStaticStageRequest{}
+
 // AuthenticatorStaticStageRequest AuthenticatorStaticStage Serializer
 type AuthenticatorStaticStageRequest struct {
 	Name    string           `json:"name"`
@@ -68,7 +71,7 @@ func (o *AuthenticatorStaticStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *AuthenticatorStaticStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -78,7 +81,7 @@ func (o *AuthenticatorStaticStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorStaticStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -86,7 +89,7 @@ func (o *AuthenticatorStaticStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *AuthenticatorStaticStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -100,7 +103,7 @@ func (o *AuthenticatorStaticStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorStaticStageRequest) GetConfigureFlow() string {
-	if o == nil || o.ConfigureFlow.Get() == nil {
+	if o == nil || IsNil(o.ConfigureFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -143,7 +146,7 @@ func (o *AuthenticatorStaticStageRequest) UnsetConfigureFlow() {
 
 // GetTokenCount returns the TokenCount field value if set, zero value otherwise.
 func (o *AuthenticatorStaticStageRequest) GetTokenCount() int32 {
-	if o == nil || o.TokenCount == nil {
+	if o == nil || IsNil(o.TokenCount) {
 		var ret int32
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *AuthenticatorStaticStageRequest) GetTokenCount() int32 {
 // GetTokenCountOk returns a tuple with the TokenCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorStaticStageRequest) GetTokenCountOk() (*int32, bool) {
-	if o == nil || o.TokenCount == nil {
+	if o == nil || IsNil(o.TokenCount) {
 		return nil, false
 	}
 	return o.TokenCount, true
@@ -161,7 +164,7 @@ func (o *AuthenticatorStaticStageRequest) GetTokenCountOk() (*int32, bool) {
 
 // HasTokenCount returns a boolean if a field has been set.
 func (o *AuthenticatorStaticStageRequest) HasTokenCount() bool {
-	if o != nil && o.TokenCount != nil {
+	if o != nil && !IsNil(o.TokenCount) {
 		return true
 	}
 
@@ -174,20 +177,26 @@ func (o *AuthenticatorStaticStageRequest) SetTokenCount(v int32) {
 }
 
 func (o AuthenticatorStaticStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.FlowSet != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorStaticStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if o.TokenCount != nil {
+	if !IsNil(o.TokenCount) {
 		toSerialize["token_count"] = o.TokenCount
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableAuthenticatorStaticStageRequest struct {

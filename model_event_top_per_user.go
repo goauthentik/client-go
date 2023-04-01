@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EventTopPerUser type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EventTopPerUser{}
+
 // EventTopPerUser Response object of Event's top_per_user
 type EventTopPerUser struct {
 	Application   map[string]interface{} `json:"application"`
@@ -56,7 +59,7 @@ func (o *EventTopPerUser) GetApplication() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *EventTopPerUser) GetApplicationOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Application, true
 }
@@ -115,17 +118,19 @@ func (o *EventTopPerUser) SetUniqueUsers(v int32) {
 }
 
 func (o EventTopPerUser) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["application"] = o.Application
-	}
-	if true {
-		toSerialize["counted_events"] = o.CountedEvents
-	}
-	if true {
-		toSerialize["unique_users"] = o.UniqueUsers
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EventTopPerUser) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["application"] = o.Application
+	toSerialize["counted_events"] = o.CountedEvents
+	toSerialize["unique_users"] = o.UniqueUsers
+	return toSerialize, nil
 }
 
 type NullableEventTopPerUser struct {

@@ -14,7 +14,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -109,9 +109,9 @@ func (a *PoliciesApiService) PoliciesAllCacheClearCreateExecute(r ApiPoliciesAll
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -128,6 +128,7 @@ func (a *PoliciesApiService) PoliciesAllCacheClearCreateExecute(r ApiPoliciesAll
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -222,9 +223,9 @@ func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieveExecute(r ApiPoliciesAl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -241,6 +242,7 @@ func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieveExecute(r ApiPoliciesAl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -251,6 +253,7 @@ func (a *PoliciesApiService) PoliciesAllCacheInfoRetrieveExecute(r ApiPoliciesAl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -309,7 +312,7 @@ func (a *PoliciesApiService) PoliciesAllDestroyExecute(r ApiPoliciesAllDestroyRe
 	}
 
 	localVarPath := localBasePath + "/policies/all/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -356,9 +359,9 @@ func (a *PoliciesApiService) PoliciesAllDestroyExecute(r ApiPoliciesAllDestroyRe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -375,6 +378,7 @@ func (a *PoliciesApiService) PoliciesAllDestroyExecute(r ApiPoliciesAllDestroyRe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -385,6 +389,7 @@ func (a *PoliciesApiService) PoliciesAllDestroyExecute(r ApiPoliciesAllDestroyRe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -479,22 +484,22 @@ func (a *PoliciesApiService) PoliciesAllListExecute(r ApiPoliciesAllListRequest)
 	localVarFormParams := url.Values{}
 
 	if r.bindingsIsnull != nil {
-		localVarQueryParams.Add("bindings__isnull", parameterToString(*r.bindingsIsnull, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bindings__isnull", r.bindingsIsnull, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.promptstageIsnull != nil {
-		localVarQueryParams.Add("promptstage__isnull", parameterToString(*r.promptstageIsnull, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "promptstage__isnull", r.promptstageIsnull, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -537,9 +542,9 @@ func (a *PoliciesApiService) PoliciesAllListExecute(r ApiPoliciesAllListRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -556,6 +561,7 @@ func (a *PoliciesApiService) PoliciesAllListExecute(r ApiPoliciesAllListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -566,6 +572,7 @@ func (a *PoliciesApiService) PoliciesAllListExecute(r ApiPoliciesAllListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -626,7 +633,7 @@ func (a *PoliciesApiService) PoliciesAllRetrieveExecute(r ApiPoliciesAllRetrieve
 	}
 
 	localVarPath := localBasePath + "/policies/all/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -673,9 +680,9 @@ func (a *PoliciesApiService) PoliciesAllRetrieveExecute(r ApiPoliciesAllRetrieve
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -692,6 +699,7 @@ func (a *PoliciesApiService) PoliciesAllRetrieveExecute(r ApiPoliciesAllRetrieve
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -702,6 +710,7 @@ func (a *PoliciesApiService) PoliciesAllRetrieveExecute(r ApiPoliciesAllRetrieve
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -768,7 +777,7 @@ func (a *PoliciesApiService) PoliciesAllTestCreateExecute(r ApiPoliciesAllTestCr
 	}
 
 	localVarPath := localBasePath + "/policies/all/{policy_uuid}/test/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -820,9 +829,9 @@ func (a *PoliciesApiService) PoliciesAllTestCreateExecute(r ApiPoliciesAllTestCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -839,6 +848,7 @@ func (a *PoliciesApiService) PoliciesAllTestCreateExecute(r ApiPoliciesAllTestCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -942,9 +952,9 @@ func (a *PoliciesApiService) PoliciesAllTypesListExecute(r ApiPoliciesAllTypesLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -961,6 +971,7 @@ func (a *PoliciesApiService) PoliciesAllTypesListExecute(r ApiPoliciesAllTypesLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -971,6 +982,7 @@ func (a *PoliciesApiService) PoliciesAllTypesListExecute(r ApiPoliciesAllTypesLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1031,7 +1043,7 @@ func (a *PoliciesApiService) PoliciesAllUsedByListExecute(r ApiPoliciesAllUsedBy
 	}
 
 	localVarPath := localBasePath + "/policies/all/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1078,9 +1090,9 @@ func (a *PoliciesApiService) PoliciesAllUsedByListExecute(r ApiPoliciesAllUsedBy
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1097,6 +1109,7 @@ func (a *PoliciesApiService) PoliciesAllUsedByListExecute(r ApiPoliciesAllUsedBy
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1107,6 +1120,7 @@ func (a *PoliciesApiService) PoliciesAllUsedByListExecute(r ApiPoliciesAllUsedBy
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1221,9 +1235,9 @@ func (a *PoliciesApiService) PoliciesBindingsCreateExecute(r ApiPoliciesBindings
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1240,6 +1254,7 @@ func (a *PoliciesApiService) PoliciesBindingsCreateExecute(r ApiPoliciesBindings
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1250,6 +1265,7 @@ func (a *PoliciesApiService) PoliciesBindingsCreateExecute(r ApiPoliciesBindings
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1308,7 +1324,7 @@ func (a *PoliciesApiService) PoliciesBindingsDestroyExecute(r ApiPoliciesBinding
 	}
 
 	localVarPath := localBasePath + "/policies/bindings/{policy_binding_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterValueToString(r.policyBindingUuid, "policyBindingUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1355,9 +1371,9 @@ func (a *PoliciesApiService) PoliciesBindingsDestroyExecute(r ApiPoliciesBinding
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1374,6 +1390,7 @@ func (a *PoliciesApiService) PoliciesBindingsDestroyExecute(r ApiPoliciesBinding
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1384,6 +1401,7 @@ func (a *PoliciesApiService) PoliciesBindingsDestroyExecute(r ApiPoliciesBinding
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1508,45 +1526,45 @@ func (a *PoliciesApiService) PoliciesBindingsListExecute(r ApiPoliciesBindingsLi
 	localVarFormParams := url.Values{}
 
 	if r.enabled != nil {
-		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "")
 	}
 	if r.order != nil {
-		localVarQueryParams.Add("order", parameterToString(*r.order, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.policy != nil {
-		localVarQueryParams.Add("policy", parameterToString(*r.policy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "policy", r.policy, "")
 	}
 	if r.policyIsnull != nil {
-		localVarQueryParams.Add("policy__isnull", parameterToString(*r.policyIsnull, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "policy__isnull", r.policyIsnull, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.target != nil {
-		localVarQueryParams.Add("target", parameterToString(*r.target, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "target", r.target, "")
 	}
 	if r.targetIn != nil {
 		t := *r.targetIn
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("target_in", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "target_in", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("target_in", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "target_in", t, "multi")
 		}
 	}
 	if r.timeout != nil {
-		localVarQueryParams.Add("timeout", parameterToString(*r.timeout, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "timeout", r.timeout, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1589,9 +1607,9 @@ func (a *PoliciesApiService) PoliciesBindingsListExecute(r ApiPoliciesBindingsLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1608,6 +1626,7 @@ func (a *PoliciesApiService) PoliciesBindingsListExecute(r ApiPoliciesBindingsLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1618,6 +1637,7 @@ func (a *PoliciesApiService) PoliciesBindingsListExecute(r ApiPoliciesBindingsLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1684,7 +1704,7 @@ func (a *PoliciesApiService) PoliciesBindingsPartialUpdateExecute(r ApiPoliciesB
 	}
 
 	localVarPath := localBasePath + "/policies/bindings/{policy_binding_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterValueToString(r.policyBindingUuid, "policyBindingUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1733,9 +1753,9 @@ func (a *PoliciesApiService) PoliciesBindingsPartialUpdateExecute(r ApiPoliciesB
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1752,6 +1772,7 @@ func (a *PoliciesApiService) PoliciesBindingsPartialUpdateExecute(r ApiPoliciesB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1762,6 +1783,7 @@ func (a *PoliciesApiService) PoliciesBindingsPartialUpdateExecute(r ApiPoliciesB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1822,7 +1844,7 @@ func (a *PoliciesApiService) PoliciesBindingsRetrieveExecute(r ApiPoliciesBindin
 	}
 
 	localVarPath := localBasePath + "/policies/bindings/{policy_binding_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterValueToString(r.policyBindingUuid, "policyBindingUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1869,9 +1891,9 @@ func (a *PoliciesApiService) PoliciesBindingsRetrieveExecute(r ApiPoliciesBindin
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1888,6 +1910,7 @@ func (a *PoliciesApiService) PoliciesBindingsRetrieveExecute(r ApiPoliciesBindin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1898,6 +1921,7 @@ func (a *PoliciesApiService) PoliciesBindingsRetrieveExecute(r ApiPoliciesBindin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1964,7 +1988,7 @@ func (a *PoliciesApiService) PoliciesBindingsUpdateExecute(r ApiPoliciesBindings
 	}
 
 	localVarPath := localBasePath + "/policies/bindings/{policy_binding_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterValueToString(r.policyBindingUuid, "policyBindingUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2016,9 +2040,9 @@ func (a *PoliciesApiService) PoliciesBindingsUpdateExecute(r ApiPoliciesBindings
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2035,6 +2059,7 @@ func (a *PoliciesApiService) PoliciesBindingsUpdateExecute(r ApiPoliciesBindings
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2045,6 +2070,7 @@ func (a *PoliciesApiService) PoliciesBindingsUpdateExecute(r ApiPoliciesBindings
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2105,7 +2131,7 @@ func (a *PoliciesApiService) PoliciesBindingsUsedByListExecute(r ApiPoliciesBind
 	}
 
 	localVarPath := localBasePath + "/policies/bindings/{policy_binding_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterValueToString(r.policyBindingUuid, "policyBindingUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2152,9 +2178,9 @@ func (a *PoliciesApiService) PoliciesBindingsUsedByListExecute(r ApiPoliciesBind
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2171,6 +2197,7 @@ func (a *PoliciesApiService) PoliciesBindingsUsedByListExecute(r ApiPoliciesBind
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2181,6 +2208,7 @@ func (a *PoliciesApiService) PoliciesBindingsUsedByListExecute(r ApiPoliciesBind
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2295,9 +2323,9 @@ func (a *PoliciesApiService) PoliciesDummyCreateExecute(r ApiPoliciesDummyCreate
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2314,6 +2342,7 @@ func (a *PoliciesApiService) PoliciesDummyCreateExecute(r ApiPoliciesDummyCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2324,6 +2353,7 @@ func (a *PoliciesApiService) PoliciesDummyCreateExecute(r ApiPoliciesDummyCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2382,7 +2412,7 @@ func (a *PoliciesApiService) PoliciesDummyDestroyExecute(r ApiPoliciesDummyDestr
 	}
 
 	localVarPath := localBasePath + "/policies/dummy/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2429,9 +2459,9 @@ func (a *PoliciesApiService) PoliciesDummyDestroyExecute(r ApiPoliciesDummyDestr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2448,6 +2478,7 @@ func (a *PoliciesApiService) PoliciesDummyDestroyExecute(r ApiPoliciesDummyDestr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -2458,6 +2489,7 @@ func (a *PoliciesApiService) PoliciesDummyDestroyExecute(r ApiPoliciesDummyDestr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -2588,40 +2620,40 @@ func (a *PoliciesApiService) PoliciesDummyListExecute(r ApiPoliciesDummyListRequ
 	localVarFormParams := url.Values{}
 
 	if r.created != nil {
-		localVarQueryParams.Add("created", parameterToString(*r.created, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created", r.created, "")
 	}
 	if r.executionLogging != nil {
-		localVarQueryParams.Add("execution_logging", parameterToString(*r.executionLogging, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "execution_logging", r.executionLogging, "")
 	}
 	if r.lastUpdated != nil {
-		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated", r.lastUpdated, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.policyUuid != nil {
-		localVarQueryParams.Add("policy_uuid", parameterToString(*r.policyUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_uuid", r.policyUuid, "")
 	}
 	if r.result != nil {
-		localVarQueryParams.Add("result", parameterToString(*r.result, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "result", r.result, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.waitMax != nil {
-		localVarQueryParams.Add("wait_max", parameterToString(*r.waitMax, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "wait_max", r.waitMax, "")
 	}
 	if r.waitMin != nil {
-		localVarQueryParams.Add("wait_min", parameterToString(*r.waitMin, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "wait_min", r.waitMin, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2664,9 +2696,9 @@ func (a *PoliciesApiService) PoliciesDummyListExecute(r ApiPoliciesDummyListRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2683,6 +2715,7 @@ func (a *PoliciesApiService) PoliciesDummyListExecute(r ApiPoliciesDummyListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2693,6 +2726,7 @@ func (a *PoliciesApiService) PoliciesDummyListExecute(r ApiPoliciesDummyListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2759,7 +2793,7 @@ func (a *PoliciesApiService) PoliciesDummyPartialUpdateExecute(r ApiPoliciesDumm
 	}
 
 	localVarPath := localBasePath + "/policies/dummy/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2808,9 +2842,9 @@ func (a *PoliciesApiService) PoliciesDummyPartialUpdateExecute(r ApiPoliciesDumm
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2827,6 +2861,7 @@ func (a *PoliciesApiService) PoliciesDummyPartialUpdateExecute(r ApiPoliciesDumm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2837,6 +2872,7 @@ func (a *PoliciesApiService) PoliciesDummyPartialUpdateExecute(r ApiPoliciesDumm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2897,7 +2933,7 @@ func (a *PoliciesApiService) PoliciesDummyRetrieveExecute(r ApiPoliciesDummyRetr
 	}
 
 	localVarPath := localBasePath + "/policies/dummy/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2944,9 +2980,9 @@ func (a *PoliciesApiService) PoliciesDummyRetrieveExecute(r ApiPoliciesDummyRetr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2963,6 +2999,7 @@ func (a *PoliciesApiService) PoliciesDummyRetrieveExecute(r ApiPoliciesDummyRetr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2973,6 +3010,7 @@ func (a *PoliciesApiService) PoliciesDummyRetrieveExecute(r ApiPoliciesDummyRetr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3039,7 +3077,7 @@ func (a *PoliciesApiService) PoliciesDummyUpdateExecute(r ApiPoliciesDummyUpdate
 	}
 
 	localVarPath := localBasePath + "/policies/dummy/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3091,9 +3129,9 @@ func (a *PoliciesApiService) PoliciesDummyUpdateExecute(r ApiPoliciesDummyUpdate
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3110,6 +3148,7 @@ func (a *PoliciesApiService) PoliciesDummyUpdateExecute(r ApiPoliciesDummyUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3120,6 +3159,7 @@ func (a *PoliciesApiService) PoliciesDummyUpdateExecute(r ApiPoliciesDummyUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3180,7 +3220,7 @@ func (a *PoliciesApiService) PoliciesDummyUsedByListExecute(r ApiPoliciesDummyUs
 	}
 
 	localVarPath := localBasePath + "/policies/dummy/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3227,9 +3267,9 @@ func (a *PoliciesApiService) PoliciesDummyUsedByListExecute(r ApiPoliciesDummyUs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3246,6 +3286,7 @@ func (a *PoliciesApiService) PoliciesDummyUsedByListExecute(r ApiPoliciesDummyUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3256,6 +3297,7 @@ func (a *PoliciesApiService) PoliciesDummyUsedByListExecute(r ApiPoliciesDummyUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3370,9 +3412,9 @@ func (a *PoliciesApiService) PoliciesEventMatcherCreateExecute(r ApiPoliciesEven
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3389,6 +3431,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherCreateExecute(r ApiPoliciesEven
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3399,6 +3442,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherCreateExecute(r ApiPoliciesEven
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3457,7 +3501,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherDestroyExecute(r ApiPoliciesEve
 	}
 
 	localVarPath := localBasePath + "/policies/event_matcher/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3504,9 +3548,9 @@ func (a *PoliciesApiService) PoliciesEventMatcherDestroyExecute(r ApiPoliciesEve
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3523,6 +3567,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherDestroyExecute(r ApiPoliciesEve
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -3533,6 +3578,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherDestroyExecute(r ApiPoliciesEve
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3664,40 +3710,40 @@ func (a *PoliciesApiService) PoliciesEventMatcherListExecute(r ApiPoliciesEventM
 	localVarFormParams := url.Values{}
 
 	if r.action != nil {
-		localVarQueryParams.Add("action", parameterToString(*r.action, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "action", r.action, "")
 	}
 	if r.app != nil {
-		localVarQueryParams.Add("app", parameterToString(*r.app, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "app", r.app, "")
 	}
 	if r.clientIp != nil {
-		localVarQueryParams.Add("client_ip", parameterToString(*r.clientIp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "client_ip", r.clientIp, "")
 	}
 	if r.created != nil {
-		localVarQueryParams.Add("created", parameterToString(*r.created, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created", r.created, "")
 	}
 	if r.executionLogging != nil {
-		localVarQueryParams.Add("execution_logging", parameterToString(*r.executionLogging, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "execution_logging", r.executionLogging, "")
 	}
 	if r.lastUpdated != nil {
-		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated", r.lastUpdated, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.policyUuid != nil {
-		localVarQueryParams.Add("policy_uuid", parameterToString(*r.policyUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_uuid", r.policyUuid, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3740,9 +3786,9 @@ func (a *PoliciesApiService) PoliciesEventMatcherListExecute(r ApiPoliciesEventM
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3759,6 +3805,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherListExecute(r ApiPoliciesEventM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3769,6 +3816,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherListExecute(r ApiPoliciesEventM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3835,7 +3883,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdateExecute(r ApiPolic
 	}
 
 	localVarPath := localBasePath + "/policies/event_matcher/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3884,9 +3932,9 @@ func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdateExecute(r ApiPolic
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3903,6 +3951,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdateExecute(r ApiPolic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3913,6 +3962,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherPartialUpdateExecute(r ApiPolic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3973,7 +4023,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherRetrieveExecute(r ApiPoliciesEv
 	}
 
 	localVarPath := localBasePath + "/policies/event_matcher/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4020,9 +4070,9 @@ func (a *PoliciesApiService) PoliciesEventMatcherRetrieveExecute(r ApiPoliciesEv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4039,6 +4089,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherRetrieveExecute(r ApiPoliciesEv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4049,6 +4100,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherRetrieveExecute(r ApiPoliciesEv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4115,7 +4167,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherUpdateExecute(r ApiPoliciesEven
 	}
 
 	localVarPath := localBasePath + "/policies/event_matcher/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4167,9 +4219,9 @@ func (a *PoliciesApiService) PoliciesEventMatcherUpdateExecute(r ApiPoliciesEven
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4186,6 +4238,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherUpdateExecute(r ApiPoliciesEven
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4196,6 +4249,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherUpdateExecute(r ApiPoliciesEven
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4256,7 +4310,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherUsedByListExecute(r ApiPolicies
 	}
 
 	localVarPath := localBasePath + "/policies/event_matcher/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4303,9 +4357,9 @@ func (a *PoliciesApiService) PoliciesEventMatcherUsedByListExecute(r ApiPolicies
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4322,6 +4376,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherUsedByListExecute(r ApiPolicies
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4332,6 +4387,7 @@ func (a *PoliciesApiService) PoliciesEventMatcherUsedByListExecute(r ApiPolicies
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4446,9 +4502,9 @@ func (a *PoliciesApiService) PoliciesExpressionCreateExecute(r ApiPoliciesExpres
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4465,6 +4521,7 @@ func (a *PoliciesApiService) PoliciesExpressionCreateExecute(r ApiPoliciesExpres
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4475,6 +4532,7 @@ func (a *PoliciesApiService) PoliciesExpressionCreateExecute(r ApiPoliciesExpres
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4533,7 +4591,7 @@ func (a *PoliciesApiService) PoliciesExpressionDestroyExecute(r ApiPoliciesExpre
 	}
 
 	localVarPath := localBasePath + "/policies/expression/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4580,9 +4638,9 @@ func (a *PoliciesApiService) PoliciesExpressionDestroyExecute(r ApiPoliciesExpre
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4599,6 +4657,7 @@ func (a *PoliciesApiService) PoliciesExpressionDestroyExecute(r ApiPoliciesExpre
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4609,6 +4668,7 @@ func (a *PoliciesApiService) PoliciesExpressionDestroyExecute(r ApiPoliciesExpre
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4727,34 +4787,34 @@ func (a *PoliciesApiService) PoliciesExpressionListExecute(r ApiPoliciesExpressi
 	localVarFormParams := url.Values{}
 
 	if r.created != nil {
-		localVarQueryParams.Add("created", parameterToString(*r.created, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created", r.created, "")
 	}
 	if r.executionLogging != nil {
-		localVarQueryParams.Add("execution_logging", parameterToString(*r.executionLogging, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "execution_logging", r.executionLogging, "")
 	}
 	if r.expression != nil {
-		localVarQueryParams.Add("expression", parameterToString(*r.expression, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "expression", r.expression, "")
 	}
 	if r.lastUpdated != nil {
-		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated", r.lastUpdated, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.policyUuid != nil {
-		localVarQueryParams.Add("policy_uuid", parameterToString(*r.policyUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_uuid", r.policyUuid, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4797,9 +4857,9 @@ func (a *PoliciesApiService) PoliciesExpressionListExecute(r ApiPoliciesExpressi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4816,6 +4876,7 @@ func (a *PoliciesApiService) PoliciesExpressionListExecute(r ApiPoliciesExpressi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4826,6 +4887,7 @@ func (a *PoliciesApiService) PoliciesExpressionListExecute(r ApiPoliciesExpressi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4892,7 +4954,7 @@ func (a *PoliciesApiService) PoliciesExpressionPartialUpdateExecute(r ApiPolicie
 	}
 
 	localVarPath := localBasePath + "/policies/expression/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4941,9 +5003,9 @@ func (a *PoliciesApiService) PoliciesExpressionPartialUpdateExecute(r ApiPolicie
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4960,6 +5022,7 @@ func (a *PoliciesApiService) PoliciesExpressionPartialUpdateExecute(r ApiPolicie
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4970,6 +5033,7 @@ func (a *PoliciesApiService) PoliciesExpressionPartialUpdateExecute(r ApiPolicie
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5030,7 +5094,7 @@ func (a *PoliciesApiService) PoliciesExpressionRetrieveExecute(r ApiPoliciesExpr
 	}
 
 	localVarPath := localBasePath + "/policies/expression/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5077,9 +5141,9 @@ func (a *PoliciesApiService) PoliciesExpressionRetrieveExecute(r ApiPoliciesExpr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5096,6 +5160,7 @@ func (a *PoliciesApiService) PoliciesExpressionRetrieveExecute(r ApiPoliciesExpr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5106,6 +5171,7 @@ func (a *PoliciesApiService) PoliciesExpressionRetrieveExecute(r ApiPoliciesExpr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5172,7 +5238,7 @@ func (a *PoliciesApiService) PoliciesExpressionUpdateExecute(r ApiPoliciesExpres
 	}
 
 	localVarPath := localBasePath + "/policies/expression/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5224,9 +5290,9 @@ func (a *PoliciesApiService) PoliciesExpressionUpdateExecute(r ApiPoliciesExpres
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5243,6 +5309,7 @@ func (a *PoliciesApiService) PoliciesExpressionUpdateExecute(r ApiPoliciesExpres
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5253,6 +5320,7 @@ func (a *PoliciesApiService) PoliciesExpressionUpdateExecute(r ApiPoliciesExpres
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5313,7 +5381,7 @@ func (a *PoliciesApiService) PoliciesExpressionUsedByListExecute(r ApiPoliciesEx
 	}
 
 	localVarPath := localBasePath + "/policies/expression/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5360,9 +5428,9 @@ func (a *PoliciesApiService) PoliciesExpressionUsedByListExecute(r ApiPoliciesEx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5379,6 +5447,7 @@ func (a *PoliciesApiService) PoliciesExpressionUsedByListExecute(r ApiPoliciesEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5389,6 +5458,7 @@ func (a *PoliciesApiService) PoliciesExpressionUsedByListExecute(r ApiPoliciesEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5503,9 +5573,9 @@ func (a *PoliciesApiService) PoliciesPasswordCreateExecute(r ApiPoliciesPassword
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5522,6 +5592,7 @@ func (a *PoliciesApiService) PoliciesPasswordCreateExecute(r ApiPoliciesPassword
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5532,6 +5603,7 @@ func (a *PoliciesApiService) PoliciesPasswordCreateExecute(r ApiPoliciesPassword
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5590,7 +5662,7 @@ func (a *PoliciesApiService) PoliciesPasswordDestroyExecute(r ApiPoliciesPasswor
 	}
 
 	localVarPath := localBasePath + "/policies/password/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5637,9 +5709,9 @@ func (a *PoliciesApiService) PoliciesPasswordDestroyExecute(r ApiPoliciesPasswor
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -5656,6 +5728,7 @@ func (a *PoliciesApiService) PoliciesPasswordDestroyExecute(r ApiPoliciesPasswor
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -5666,6 +5739,7 @@ func (a *PoliciesApiService) PoliciesPasswordDestroyExecute(r ApiPoliciesPasswor
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -5771,9 +5845,9 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryCreateExecute(r ApiPoliciesPa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5790,6 +5864,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryCreateExecute(r ApiPoliciesPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5800,6 +5875,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryCreateExecute(r ApiPoliciesPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5858,7 +5934,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryDestroyExecute(r ApiPoliciesP
 	}
 
 	localVarPath := localBasePath + "/policies/password_expiry/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5905,9 +5981,9 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryDestroyExecute(r ApiPoliciesP
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -5924,6 +6000,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryDestroyExecute(r ApiPoliciesP
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -5934,6 +6011,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryDestroyExecute(r ApiPoliciesP
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -6058,37 +6136,37 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryListExecute(r ApiPoliciesPass
 	localVarFormParams := url.Values{}
 
 	if r.created != nil {
-		localVarQueryParams.Add("created", parameterToString(*r.created, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created", r.created, "")
 	}
 	if r.days != nil {
-		localVarQueryParams.Add("days", parameterToString(*r.days, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "days", r.days, "")
 	}
 	if r.denyOnly != nil {
-		localVarQueryParams.Add("deny_only", parameterToString(*r.denyOnly, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "deny_only", r.denyOnly, "")
 	}
 	if r.executionLogging != nil {
-		localVarQueryParams.Add("execution_logging", parameterToString(*r.executionLogging, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "execution_logging", r.executionLogging, "")
 	}
 	if r.lastUpdated != nil {
-		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated", r.lastUpdated, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.policyUuid != nil {
-		localVarQueryParams.Add("policy_uuid", parameterToString(*r.policyUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_uuid", r.policyUuid, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6131,9 +6209,9 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryListExecute(r ApiPoliciesPass
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6150,6 +6228,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryListExecute(r ApiPoliciesPass
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6160,6 +6239,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryListExecute(r ApiPoliciesPass
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6226,7 +6306,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdateExecute(r ApiPol
 	}
 
 	localVarPath := localBasePath + "/policies/password_expiry/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6275,9 +6355,9 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdateExecute(r ApiPol
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6294,6 +6374,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdateExecute(r ApiPol
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6304,6 +6385,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryPartialUpdateExecute(r ApiPol
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6364,7 +6446,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieveExecute(r ApiPolicies
 	}
 
 	localVarPath := localBasePath + "/policies/password_expiry/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6411,9 +6493,9 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieveExecute(r ApiPolicies
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6430,6 +6512,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieveExecute(r ApiPolicies
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6440,6 +6523,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryRetrieveExecute(r ApiPolicies
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6506,7 +6590,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUpdateExecute(r ApiPoliciesPa
 	}
 
 	localVarPath := localBasePath + "/policies/password_expiry/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6558,9 +6642,9 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUpdateExecute(r ApiPoliciesPa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6577,6 +6661,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUpdateExecute(r ApiPoliciesPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6587,6 +6672,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUpdateExecute(r ApiPoliciesPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6647,7 +6733,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByListExecute(r ApiPolici
 	}
 
 	localVarPath := localBasePath + "/policies/password_expiry/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6694,9 +6780,9 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByListExecute(r ApiPolici
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6713,6 +6799,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByListExecute(r ApiPolici
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6723,6 +6810,7 @@ func (a *PoliciesApiService) PoliciesPasswordExpiryUsedByListExecute(r ApiPolici
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6922,70 +7010,70 @@ func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordLi
 	localVarFormParams := url.Values{}
 
 	if r.amountDigits != nil {
-		localVarQueryParams.Add("amount_digits", parameterToString(*r.amountDigits, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "amount_digits", r.amountDigits, "")
 	}
 	if r.amountLowercase != nil {
-		localVarQueryParams.Add("amount_lowercase", parameterToString(*r.amountLowercase, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "amount_lowercase", r.amountLowercase, "")
 	}
 	if r.amountSymbols != nil {
-		localVarQueryParams.Add("amount_symbols", parameterToString(*r.amountSymbols, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "amount_symbols", r.amountSymbols, "")
 	}
 	if r.amountUppercase != nil {
-		localVarQueryParams.Add("amount_uppercase", parameterToString(*r.amountUppercase, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "amount_uppercase", r.amountUppercase, "")
 	}
 	if r.checkHaveIBeenPwned != nil {
-		localVarQueryParams.Add("check_have_i_been_pwned", parameterToString(*r.checkHaveIBeenPwned, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "check_have_i_been_pwned", r.checkHaveIBeenPwned, "")
 	}
 	if r.checkStaticRules != nil {
-		localVarQueryParams.Add("check_static_rules", parameterToString(*r.checkStaticRules, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "check_static_rules", r.checkStaticRules, "")
 	}
 	if r.checkZxcvbn != nil {
-		localVarQueryParams.Add("check_zxcvbn", parameterToString(*r.checkZxcvbn, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "check_zxcvbn", r.checkZxcvbn, "")
 	}
 	if r.created != nil {
-		localVarQueryParams.Add("created", parameterToString(*r.created, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created", r.created, "")
 	}
 	if r.errorMessage != nil {
-		localVarQueryParams.Add("error_message", parameterToString(*r.errorMessage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "error_message", r.errorMessage, "")
 	}
 	if r.executionLogging != nil {
-		localVarQueryParams.Add("execution_logging", parameterToString(*r.executionLogging, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "execution_logging", r.executionLogging, "")
 	}
 	if r.hibpAllowedCount != nil {
-		localVarQueryParams.Add("hibp_allowed_count", parameterToString(*r.hibpAllowedCount, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "hibp_allowed_count", r.hibpAllowedCount, "")
 	}
 	if r.lastUpdated != nil {
-		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated", r.lastUpdated, "")
 	}
 	if r.lengthMin != nil {
-		localVarQueryParams.Add("length_min", parameterToString(*r.lengthMin, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "length_min", r.lengthMin, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.passwordField != nil {
-		localVarQueryParams.Add("password_field", parameterToString(*r.passwordField, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "password_field", r.passwordField, "")
 	}
 	if r.policyUuid != nil {
-		localVarQueryParams.Add("policy_uuid", parameterToString(*r.policyUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_uuid", r.policyUuid, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.symbolCharset != nil {
-		localVarQueryParams.Add("symbol_charset", parameterToString(*r.symbolCharset, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "symbol_charset", r.symbolCharset, "")
 	}
 	if r.zxcvbnScoreThreshold != nil {
-		localVarQueryParams.Add("zxcvbn_score_threshold", parameterToString(*r.zxcvbnScoreThreshold, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "zxcvbn_score_threshold", r.zxcvbnScoreThreshold, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7028,9 +7116,9 @@ func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7047,6 +7135,7 @@ func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7057,6 +7146,7 @@ func (a *PoliciesApiService) PoliciesPasswordListExecute(r ApiPoliciesPasswordLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7123,7 +7213,7 @@ func (a *PoliciesApiService) PoliciesPasswordPartialUpdateExecute(r ApiPoliciesP
 	}
 
 	localVarPath := localBasePath + "/policies/password/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7172,9 +7262,9 @@ func (a *PoliciesApiService) PoliciesPasswordPartialUpdateExecute(r ApiPoliciesP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7191,6 +7281,7 @@ func (a *PoliciesApiService) PoliciesPasswordPartialUpdateExecute(r ApiPoliciesP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7201,6 +7292,7 @@ func (a *PoliciesApiService) PoliciesPasswordPartialUpdateExecute(r ApiPoliciesP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7261,7 +7353,7 @@ func (a *PoliciesApiService) PoliciesPasswordRetrieveExecute(r ApiPoliciesPasswo
 	}
 
 	localVarPath := localBasePath + "/policies/password/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7308,9 +7400,9 @@ func (a *PoliciesApiService) PoliciesPasswordRetrieveExecute(r ApiPoliciesPasswo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7327,6 +7419,7 @@ func (a *PoliciesApiService) PoliciesPasswordRetrieveExecute(r ApiPoliciesPasswo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7337,6 +7430,7 @@ func (a *PoliciesApiService) PoliciesPasswordRetrieveExecute(r ApiPoliciesPasswo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7403,7 +7497,7 @@ func (a *PoliciesApiService) PoliciesPasswordUpdateExecute(r ApiPoliciesPassword
 	}
 
 	localVarPath := localBasePath + "/policies/password/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7455,9 +7549,9 @@ func (a *PoliciesApiService) PoliciesPasswordUpdateExecute(r ApiPoliciesPassword
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7474,6 +7568,7 @@ func (a *PoliciesApiService) PoliciesPasswordUpdateExecute(r ApiPoliciesPassword
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7484,6 +7579,7 @@ func (a *PoliciesApiService) PoliciesPasswordUpdateExecute(r ApiPoliciesPassword
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7544,7 +7640,7 @@ func (a *PoliciesApiService) PoliciesPasswordUsedByListExecute(r ApiPoliciesPass
 	}
 
 	localVarPath := localBasePath + "/policies/password/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7591,9 +7687,9 @@ func (a *PoliciesApiService) PoliciesPasswordUsedByListExecute(r ApiPoliciesPass
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7610,6 +7706,7 @@ func (a *PoliciesApiService) PoliciesPasswordUsedByListExecute(r ApiPoliciesPass
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7620,6 +7717,7 @@ func (a *PoliciesApiService) PoliciesPasswordUsedByListExecute(r ApiPoliciesPass
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7734,9 +7832,9 @@ func (a *PoliciesApiService) PoliciesReputationCreateExecute(r ApiPoliciesReputa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7753,6 +7851,7 @@ func (a *PoliciesApiService) PoliciesReputationCreateExecute(r ApiPoliciesReputa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7763,6 +7862,7 @@ func (a *PoliciesApiService) PoliciesReputationCreateExecute(r ApiPoliciesReputa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7821,7 +7921,7 @@ func (a *PoliciesApiService) PoliciesReputationDestroyExecute(r ApiPoliciesReput
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7868,9 +7968,9 @@ func (a *PoliciesApiService) PoliciesReputationDestroyExecute(r ApiPoliciesReput
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -7887,6 +7987,7 @@ func (a *PoliciesApiService) PoliciesReputationDestroyExecute(r ApiPoliciesReput
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -7897,6 +7998,7 @@ func (a *PoliciesApiService) PoliciesReputationDestroyExecute(r ApiPoliciesReput
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -8027,40 +8129,40 @@ func (a *PoliciesApiService) PoliciesReputationListExecute(r ApiPoliciesReputati
 	localVarFormParams := url.Values{}
 
 	if r.checkIp != nil {
-		localVarQueryParams.Add("check_ip", parameterToString(*r.checkIp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "check_ip", r.checkIp, "")
 	}
 	if r.checkUsername != nil {
-		localVarQueryParams.Add("check_username", parameterToString(*r.checkUsername, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "check_username", r.checkUsername, "")
 	}
 	if r.created != nil {
-		localVarQueryParams.Add("created", parameterToString(*r.created, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created", r.created, "")
 	}
 	if r.executionLogging != nil {
-		localVarQueryParams.Add("execution_logging", parameterToString(*r.executionLogging, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "execution_logging", r.executionLogging, "")
 	}
 	if r.lastUpdated != nil {
-		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated", r.lastUpdated, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.policyUuid != nil {
-		localVarQueryParams.Add("policy_uuid", parameterToString(*r.policyUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_uuid", r.policyUuid, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.threshold != nil {
-		localVarQueryParams.Add("threshold", parameterToString(*r.threshold, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "threshold", r.threshold, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8103,9 +8205,9 @@ func (a *PoliciesApiService) PoliciesReputationListExecute(r ApiPoliciesReputati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8122,6 +8224,7 @@ func (a *PoliciesApiService) PoliciesReputationListExecute(r ApiPoliciesReputati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8132,6 +8235,7 @@ func (a *PoliciesApiService) PoliciesReputationListExecute(r ApiPoliciesReputati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8198,7 +8302,7 @@ func (a *PoliciesApiService) PoliciesReputationPartialUpdateExecute(r ApiPolicie
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8247,9 +8351,9 @@ func (a *PoliciesApiService) PoliciesReputationPartialUpdateExecute(r ApiPolicie
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8266,6 +8370,7 @@ func (a *PoliciesApiService) PoliciesReputationPartialUpdateExecute(r ApiPolicie
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8276,6 +8381,7 @@ func (a *PoliciesApiService) PoliciesReputationPartialUpdateExecute(r ApiPolicie
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8336,7 +8442,7 @@ func (a *PoliciesApiService) PoliciesReputationRetrieveExecute(r ApiPoliciesRepu
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8383,9 +8489,9 @@ func (a *PoliciesApiService) PoliciesReputationRetrieveExecute(r ApiPoliciesRepu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8402,6 +8508,7 @@ func (a *PoliciesApiService) PoliciesReputationRetrieveExecute(r ApiPoliciesRepu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8412,6 +8519,7 @@ func (a *PoliciesApiService) PoliciesReputationRetrieveExecute(r ApiPoliciesRepu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8470,7 +8578,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresDestroyExecute(r ApiPolicie
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/scores/{reputation_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"reputation_uuid"+"}", url.PathEscape(parameterToString(r.reputationUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"reputation_uuid"+"}", url.PathEscape(parameterValueToString(r.reputationUuid, "reputationUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8517,9 +8625,9 @@ func (a *PoliciesApiService) PoliciesReputationScoresDestroyExecute(r ApiPolicie
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -8536,6 +8644,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresDestroyExecute(r ApiPolicie
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -8546,6 +8655,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresDestroyExecute(r ApiPolicie
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -8646,25 +8756,25 @@ func (a *PoliciesApiService) PoliciesReputationScoresListExecute(r ApiPoliciesRe
 	localVarFormParams := url.Values{}
 
 	if r.identifier != nil {
-		localVarQueryParams.Add("identifier", parameterToString(*r.identifier, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "identifier", r.identifier, "")
 	}
 	if r.ip != nil {
-		localVarQueryParams.Add("ip", parameterToString(*r.ip, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ip", r.ip, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.score != nil {
-		localVarQueryParams.Add("score", parameterToString(*r.score, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "score", r.score, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8707,9 +8817,9 @@ func (a *PoliciesApiService) PoliciesReputationScoresListExecute(r ApiPoliciesRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8726,6 +8836,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresListExecute(r ApiPoliciesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8736,6 +8847,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresListExecute(r ApiPoliciesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8796,7 +8908,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresRetrieveExecute(r ApiPolici
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/scores/{reputation_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"reputation_uuid"+"}", url.PathEscape(parameterToString(r.reputationUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"reputation_uuid"+"}", url.PathEscape(parameterValueToString(r.reputationUuid, "reputationUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8843,9 +8955,9 @@ func (a *PoliciesApiService) PoliciesReputationScoresRetrieveExecute(r ApiPolici
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8862,6 +8974,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresRetrieveExecute(r ApiPolici
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8872,6 +8985,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresRetrieveExecute(r ApiPolici
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8932,7 +9046,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresUsedByListExecute(r ApiPoli
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/scores/{reputation_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"reputation_uuid"+"}", url.PathEscape(parameterToString(r.reputationUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"reputation_uuid"+"}", url.PathEscape(parameterValueToString(r.reputationUuid, "reputationUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8979,9 +9093,9 @@ func (a *PoliciesApiService) PoliciesReputationScoresUsedByListExecute(r ApiPoli
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8998,6 +9112,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresUsedByListExecute(r ApiPoli
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9008,6 +9123,7 @@ func (a *PoliciesApiService) PoliciesReputationScoresUsedByListExecute(r ApiPoli
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9074,7 +9190,7 @@ func (a *PoliciesApiService) PoliciesReputationUpdateExecute(r ApiPoliciesReputa
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/{policy_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9126,9 +9242,9 @@ func (a *PoliciesApiService) PoliciesReputationUpdateExecute(r ApiPoliciesReputa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9145,6 +9261,7 @@ func (a *PoliciesApiService) PoliciesReputationUpdateExecute(r ApiPoliciesReputa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9155,6 +9272,7 @@ func (a *PoliciesApiService) PoliciesReputationUpdateExecute(r ApiPoliciesReputa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9215,7 +9333,7 @@ func (a *PoliciesApiService) PoliciesReputationUsedByListExecute(r ApiPoliciesRe
 	}
 
 	localVarPath := localBasePath + "/policies/reputation/{policy_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterValueToString(r.policyUuid, "policyUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9262,9 +9380,9 @@ func (a *PoliciesApiService) PoliciesReputationUsedByListExecute(r ApiPoliciesRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9281,6 +9399,7 @@ func (a *PoliciesApiService) PoliciesReputationUsedByListExecute(r ApiPoliciesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9291,6 +9410,7 @@ func (a *PoliciesApiService) PoliciesReputationUsedByListExecute(r ApiPoliciesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

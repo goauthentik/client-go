@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the PatchedInvitationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedInvitationRequest{}
+
 // PatchedInvitationRequest Invitation Serializer
 type PatchedInvitationRequest struct {
 	Name      *string                `json:"name,omitempty"`
@@ -46,7 +49,7 @@ func NewPatchedInvitationRequestWithDefaults() *PatchedInvitationRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedInvitationRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *PatchedInvitationRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedInvitationRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -64,7 +67,7 @@ func (o *PatchedInvitationRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedInvitationRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *PatchedInvitationRequest) SetName(v string) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *PatchedInvitationRequest) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		var ret time.Time
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *PatchedInvitationRequest) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedInvitationRequest) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
 	return o.Expires, true
@@ -96,7 +99,7 @@ func (o *PatchedInvitationRequest) GetExpiresOk() (*time.Time, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *PatchedInvitationRequest) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && !IsNil(o.Expires) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *PatchedInvitationRequest) SetExpires(v time.Time) {
 
 // GetFixedData returns the FixedData field value if set, zero value otherwise.
 func (o *PatchedInvitationRequest) GetFixedData() map[string]interface{} {
-	if o == nil || o.FixedData == nil {
+	if o == nil || IsNil(o.FixedData) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -120,15 +123,15 @@ func (o *PatchedInvitationRequest) GetFixedData() map[string]interface{} {
 // GetFixedDataOk returns a tuple with the FixedData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedInvitationRequest) GetFixedDataOk() (map[string]interface{}, bool) {
-	if o == nil || o.FixedData == nil {
-		return nil, false
+	if o == nil || IsNil(o.FixedData) {
+		return map[string]interface{}{}, false
 	}
 	return o.FixedData, true
 }
 
 // HasFixedData returns a boolean if a field has been set.
 func (o *PatchedInvitationRequest) HasFixedData() bool {
-	if o != nil && o.FixedData != nil {
+	if o != nil && !IsNil(o.FixedData) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *PatchedInvitationRequest) SetFixedData(v map[string]interface{}) {
 
 // GetSingleUse returns the SingleUse field value if set, zero value otherwise.
 func (o *PatchedInvitationRequest) GetSingleUse() bool {
-	if o == nil || o.SingleUse == nil {
+	if o == nil || IsNil(o.SingleUse) {
 		var ret bool
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *PatchedInvitationRequest) GetSingleUse() bool {
 // GetSingleUseOk returns a tuple with the SingleUse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedInvitationRequest) GetSingleUseOk() (*bool, bool) {
-	if o == nil || o.SingleUse == nil {
+	if o == nil || IsNil(o.SingleUse) {
 		return nil, false
 	}
 	return o.SingleUse, true
@@ -160,7 +163,7 @@ func (o *PatchedInvitationRequest) GetSingleUseOk() (*bool, bool) {
 
 // HasSingleUse returns a boolean if a field has been set.
 func (o *PatchedInvitationRequest) HasSingleUse() bool {
-	if o != nil && o.SingleUse != nil {
+	if o != nil && !IsNil(o.SingleUse) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *PatchedInvitationRequest) SetSingleUse(v bool) {
 
 // GetFlow returns the Flow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedInvitationRequest) GetFlow() string {
-	if o == nil || o.Flow.Get() == nil {
+	if o == nil || IsNil(o.Flow.Get()) {
 		var ret string
 		return ret
 	}
@@ -216,23 +219,31 @@ func (o *PatchedInvitationRequest) UnsetFlow() {
 }
 
 func (o PatchedInvitationRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedInvitationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Expires != nil {
+	if !IsNil(o.Expires) {
 		toSerialize["expires"] = o.Expires
 	}
-	if o.FixedData != nil {
+	if !IsNil(o.FixedData) {
 		toSerialize["fixed_data"] = o.FixedData
 	}
-	if o.SingleUse != nil {
+	if !IsNil(o.SingleUse) {
 		toSerialize["single_use"] = o.SingleUse
 	}
 	if o.Flow.IsSet() {
 		toSerialize["flow"] = o.Flow.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedInvitationRequest struct {

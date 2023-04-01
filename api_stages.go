@@ -14,7 +14,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -66,7 +66,7 @@ func (a *StagesApiService) StagesAllDestroyExecute(r ApiStagesAllDestroyRequest)
 	}
 
 	localVarPath := localBasePath + "/stages/all/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -113,9 +113,9 @@ func (a *StagesApiService) StagesAllDestroyExecute(r ApiStagesAllDestroyRequest)
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -132,6 +132,7 @@ func (a *StagesApiService) StagesAllDestroyExecute(r ApiStagesAllDestroyRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -142,6 +143,7 @@ func (a *StagesApiService) StagesAllDestroyExecute(r ApiStagesAllDestroyRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -230,19 +232,19 @@ func (a *StagesApiService) StagesAllListExecute(r ApiStagesAllListRequest) (*Pag
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -285,9 +287,9 @@ func (a *StagesApiService) StagesAllListExecute(r ApiStagesAllListRequest) (*Pag
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -304,6 +306,7 @@ func (a *StagesApiService) StagesAllListExecute(r ApiStagesAllListRequest) (*Pag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -314,6 +317,7 @@ func (a *StagesApiService) StagesAllListExecute(r ApiStagesAllListRequest) (*Pag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -374,7 +378,7 @@ func (a *StagesApiService) StagesAllRetrieveExecute(r ApiStagesAllRetrieveReques
 	}
 
 	localVarPath := localBasePath + "/stages/all/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -421,9 +425,9 @@ func (a *StagesApiService) StagesAllRetrieveExecute(r ApiStagesAllRetrieveReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -440,6 +444,7 @@ func (a *StagesApiService) StagesAllRetrieveExecute(r ApiStagesAllRetrieveReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -450,6 +455,7 @@ func (a *StagesApiService) StagesAllRetrieveExecute(r ApiStagesAllRetrieveReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -553,9 +559,9 @@ func (a *StagesApiService) StagesAllTypesListExecute(r ApiStagesAllTypesListRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -572,6 +578,7 @@ func (a *StagesApiService) StagesAllTypesListExecute(r ApiStagesAllTypesListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -582,6 +589,7 @@ func (a *StagesApiService) StagesAllTypesListExecute(r ApiStagesAllTypesListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -642,7 +650,7 @@ func (a *StagesApiService) StagesAllUsedByListExecute(r ApiStagesAllUsedByListRe
 	}
 
 	localVarPath := localBasePath + "/stages/all/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -689,9 +697,9 @@ func (a *StagesApiService) StagesAllUsedByListExecute(r ApiStagesAllUsedByListRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -708,6 +716,7 @@ func (a *StagesApiService) StagesAllUsedByListExecute(r ApiStagesAllUsedByListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -718,6 +727,7 @@ func (a *StagesApiService) StagesAllUsedByListExecute(r ApiStagesAllUsedByListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -821,9 +831,9 @@ func (a *StagesApiService) StagesAllUserSettingsListExecute(r ApiStagesAllUserSe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -840,6 +850,7 @@ func (a *StagesApiService) StagesAllUserSettingsListExecute(r ApiStagesAllUserSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -850,6 +861,7 @@ func (a *StagesApiService) StagesAllUserSettingsListExecute(r ApiStagesAllUserSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -964,9 +976,9 @@ func (a *StagesApiService) StagesAuthenticatorDuoCreateExecute(r ApiStagesAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -983,6 +995,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoCreateExecute(r ApiStagesAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -993,6 +1006,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoCreateExecute(r ApiStagesAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1051,7 +1065,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoDestroyExecute(r ApiStagesAuthe
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1098,9 +1112,9 @@ func (a *StagesApiService) StagesAuthenticatorDuoDestroyExecute(r ApiStagesAuthe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1117,6 +1131,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoDestroyExecute(r ApiStagesAuthe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1127,6 +1142,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoDestroyExecute(r ApiStagesAuthe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1178,7 +1194,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreateExecute(r
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/enrollment_status/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1225,9 +1241,9 @@ func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreateExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1244,6 +1260,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1254,6 +1271,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoEnrollmentStatusCreateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1318,7 +1336,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDeviceManualCreateExecute
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/import_device_manual/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1370,9 +1388,9 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDeviceManualCreateExecute
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1389,6 +1407,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDeviceManualCreateExecute
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1440,7 +1459,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesAutomaticCreateExe
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/import_devices_automatic/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1487,9 +1506,9 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesAutomaticCreateExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1506,6 +1525,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoImportDevicesAutomaticCreateExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1621,28 +1641,28 @@ func (a *StagesApiService) StagesAuthenticatorDuoListExecute(r ApiStagesAuthenti
 	localVarFormParams := url.Values{}
 
 	if r.apiHostname != nil {
-		localVarQueryParams.Add("api_hostname", parameterToString(*r.apiHostname, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "api_hostname", r.apiHostname, "")
 	}
 	if r.clientId != nil {
-		localVarQueryParams.Add("client_id", parameterToString(*r.clientId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "client_id", r.clientId, "")
 	}
 	if r.configureFlow != nil {
-		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "configure_flow", r.configureFlow, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1685,9 +1705,9 @@ func (a *StagesApiService) StagesAuthenticatorDuoListExecute(r ApiStagesAuthenti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1704,6 +1724,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoListExecute(r ApiStagesAuthenti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1714,6 +1735,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoListExecute(r ApiStagesAuthenti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1780,7 +1802,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdateExecute(r ApiStage
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1829,9 +1851,9 @@ func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdateExecute(r ApiStage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1848,6 +1870,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdateExecute(r ApiStage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1858,6 +1881,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoPartialUpdateExecute(r ApiStage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1918,7 +1942,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoRetrieveExecute(r ApiStagesAuth
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1965,9 +1989,9 @@ func (a *StagesApiService) StagesAuthenticatorDuoRetrieveExecute(r ApiStagesAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1984,6 +2008,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoRetrieveExecute(r ApiStagesAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1994,6 +2019,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoRetrieveExecute(r ApiStagesAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2060,7 +2086,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoUpdateExecute(r ApiStagesAuthen
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2112,9 +2138,9 @@ func (a *StagesApiService) StagesAuthenticatorDuoUpdateExecute(r ApiStagesAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2131,6 +2157,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoUpdateExecute(r ApiStagesAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2141,6 +2168,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoUpdateExecute(r ApiStagesAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2201,7 +2229,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoUsedByListExecute(r ApiStagesAu
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/duo/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2248,9 +2276,9 @@ func (a *StagesApiService) StagesAuthenticatorDuoUsedByListExecute(r ApiStagesAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2267,6 +2295,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoUsedByListExecute(r ApiStagesAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2277,6 +2306,7 @@ func (a *StagesApiService) StagesAuthenticatorDuoUsedByListExecute(r ApiStagesAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2391,9 +2421,9 @@ func (a *StagesApiService) StagesAuthenticatorSmsCreateExecute(r ApiStagesAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2410,6 +2440,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsCreateExecute(r ApiStagesAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2420,6 +2451,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsCreateExecute(r ApiStagesAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2478,7 +2510,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsDestroyExecute(r ApiStagesAuthe
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2525,9 +2557,9 @@ func (a *StagesApiService) StagesAuthenticatorSmsDestroyExecute(r ApiStagesAuthe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2544,6 +2576,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsDestroyExecute(r ApiStagesAuthe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -2554,6 +2587,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsDestroyExecute(r ApiStagesAuthe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -2704,49 +2738,49 @@ func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenti
 	localVarFormParams := url.Values{}
 
 	if r.accountSid != nil {
-		localVarQueryParams.Add("account_sid", parameterToString(*r.accountSid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "account_sid", r.accountSid, "")
 	}
 	if r.auth != nil {
-		localVarQueryParams.Add("auth", parameterToString(*r.auth, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "auth", r.auth, "")
 	}
 	if r.authPassword != nil {
-		localVarQueryParams.Add("auth_password", parameterToString(*r.authPassword, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "auth_password", r.authPassword, "")
 	}
 	if r.authType != nil {
-		localVarQueryParams.Add("auth_type", parameterToString(*r.authType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "auth_type", r.authType, "")
 	}
 	if r.configureFlow != nil {
-		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "configure_flow", r.configureFlow, "")
 	}
 	if r.fromNumber != nil {
-		localVarQueryParams.Add("from_number", parameterToString(*r.fromNumber, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from_number", r.fromNumber, "")
 	}
 	if r.mapping != nil {
-		localVarQueryParams.Add("mapping", parameterToString(*r.mapping, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "mapping", r.mapping, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.provider != nil {
-		localVarQueryParams.Add("provider", parameterToString(*r.provider, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.stageUuid != nil {
-		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stage_uuid", r.stageUuid, "")
 	}
 	if r.verifyOnly != nil {
-		localVarQueryParams.Add("verify_only", parameterToString(*r.verifyOnly, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "verify_only", r.verifyOnly, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2789,9 +2823,9 @@ func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2808,6 +2842,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2818,6 +2853,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2884,7 +2920,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdateExecute(r ApiStage
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2933,9 +2969,9 @@ func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdateExecute(r ApiStage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2952,6 +2988,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdateExecute(r ApiStage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2962,6 +2999,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsPartialUpdateExecute(r ApiStage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3022,7 +3060,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsRetrieveExecute(r ApiStagesAuth
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3069,9 +3107,9 @@ func (a *StagesApiService) StagesAuthenticatorSmsRetrieveExecute(r ApiStagesAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3088,6 +3126,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsRetrieveExecute(r ApiStagesAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3098,6 +3137,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsRetrieveExecute(r ApiStagesAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3164,7 +3204,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsUpdateExecute(r ApiStagesAuthen
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3216,9 +3256,9 @@ func (a *StagesApiService) StagesAuthenticatorSmsUpdateExecute(r ApiStagesAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3235,6 +3275,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsUpdateExecute(r ApiStagesAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3245,6 +3286,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsUpdateExecute(r ApiStagesAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3305,7 +3347,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsUsedByListExecute(r ApiStagesAu
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/sms/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3352,9 +3394,9 @@ func (a *StagesApiService) StagesAuthenticatorSmsUsedByListExecute(r ApiStagesAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3371,6 +3413,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsUsedByListExecute(r ApiStagesAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3381,6 +3424,7 @@ func (a *StagesApiService) StagesAuthenticatorSmsUsedByListExecute(r ApiStagesAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3495,9 +3539,9 @@ func (a *StagesApiService) StagesAuthenticatorStaticCreateExecute(r ApiStagesAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3514,6 +3558,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticCreateExecute(r ApiStagesAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3524,6 +3569,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticCreateExecute(r ApiStagesAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3582,7 +3628,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticDestroyExecute(r ApiStagesAu
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/static/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3629,9 +3675,9 @@ func (a *StagesApiService) StagesAuthenticatorStaticDestroyExecute(r ApiStagesAu
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3648,6 +3694,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticDestroyExecute(r ApiStagesAu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -3658,6 +3705,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticDestroyExecute(r ApiStagesAu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3764,28 +3812,28 @@ func (a *StagesApiService) StagesAuthenticatorStaticListExecute(r ApiStagesAuthe
 	localVarFormParams := url.Values{}
 
 	if r.configureFlow != nil {
-		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "configure_flow", r.configureFlow, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.stageUuid != nil {
-		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stage_uuid", r.stageUuid, "")
 	}
 	if r.tokenCount != nil {
-		localVarQueryParams.Add("token_count", parameterToString(*r.tokenCount, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "token_count", r.tokenCount, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3828,9 +3876,9 @@ func (a *StagesApiService) StagesAuthenticatorStaticListExecute(r ApiStagesAuthe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3847,6 +3895,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticListExecute(r ApiStagesAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3857,6 +3906,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticListExecute(r ApiStagesAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3923,7 +3973,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdateExecute(r ApiSt
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/static/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3972,9 +4022,9 @@ func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdateExecute(r ApiSt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3991,6 +4041,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdateExecute(r ApiSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4001,6 +4052,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdateExecute(r ApiSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4061,7 +4113,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticRetrieveExecute(r ApiStagesA
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/static/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4108,9 +4160,9 @@ func (a *StagesApiService) StagesAuthenticatorStaticRetrieveExecute(r ApiStagesA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4127,6 +4179,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticRetrieveExecute(r ApiStagesA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4137,6 +4190,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticRetrieveExecute(r ApiStagesA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4203,7 +4257,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticUpdateExecute(r ApiStagesAut
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/static/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4255,9 +4309,9 @@ func (a *StagesApiService) StagesAuthenticatorStaticUpdateExecute(r ApiStagesAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4274,6 +4328,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticUpdateExecute(r ApiStagesAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4284,6 +4339,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticUpdateExecute(r ApiStagesAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4344,7 +4400,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticUsedByListExecute(r ApiStage
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/static/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4391,9 +4447,9 @@ func (a *StagesApiService) StagesAuthenticatorStaticUsedByListExecute(r ApiStage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4410,6 +4466,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticUsedByListExecute(r ApiStage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4420,6 +4477,7 @@ func (a *StagesApiService) StagesAuthenticatorStaticUsedByListExecute(r ApiStage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4534,9 +4592,9 @@ func (a *StagesApiService) StagesAuthenticatorTotpCreateExecute(r ApiStagesAuthe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4553,6 +4611,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpCreateExecute(r ApiStagesAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4563,6 +4622,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpCreateExecute(r ApiStagesAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4621,7 +4681,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpDestroyExecute(r ApiStagesAuth
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/totp/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4668,9 +4728,9 @@ func (a *StagesApiService) StagesAuthenticatorTotpDestroyExecute(r ApiStagesAuth
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4687,6 +4747,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpDestroyExecute(r ApiStagesAuth
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4697,6 +4758,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpDestroyExecute(r ApiStagesAuth
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4804,28 +4866,28 @@ func (a *StagesApiService) StagesAuthenticatorTotpListExecute(r ApiStagesAuthent
 	localVarFormParams := url.Values{}
 
 	if r.configureFlow != nil {
-		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "configure_flow", r.configureFlow, "")
 	}
 	if r.digits != nil {
-		localVarQueryParams.Add("digits", parameterToString(*r.digits, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "digits", r.digits, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.stageUuid != nil {
-		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stage_uuid", r.stageUuid, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4868,9 +4930,9 @@ func (a *StagesApiService) StagesAuthenticatorTotpListExecute(r ApiStagesAuthent
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4887,6 +4949,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpListExecute(r ApiStagesAuthent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4897,6 +4960,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpListExecute(r ApiStagesAuthent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4963,7 +5027,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdateExecute(r ApiStag
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/totp/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5012,9 +5076,9 @@ func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdateExecute(r ApiStag
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5031,6 +5095,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdateExecute(r ApiStag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5041,6 +5106,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpPartialUpdateExecute(r ApiStag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5101,7 +5167,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpRetrieveExecute(r ApiStagesAut
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/totp/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5148,9 +5214,9 @@ func (a *StagesApiService) StagesAuthenticatorTotpRetrieveExecute(r ApiStagesAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5167,6 +5233,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpRetrieveExecute(r ApiStagesAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5177,6 +5244,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpRetrieveExecute(r ApiStagesAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5243,7 +5311,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpUpdateExecute(r ApiStagesAuthe
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/totp/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5295,9 +5363,9 @@ func (a *StagesApiService) StagesAuthenticatorTotpUpdateExecute(r ApiStagesAuthe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5314,6 +5382,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpUpdateExecute(r ApiStagesAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5324,6 +5393,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpUpdateExecute(r ApiStagesAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5384,7 +5454,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpUsedByListExecute(r ApiStagesA
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/totp/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5431,9 +5501,9 @@ func (a *StagesApiService) StagesAuthenticatorTotpUsedByListExecute(r ApiStagesA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5450,6 +5520,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpUsedByListExecute(r ApiStagesA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5460,6 +5531,7 @@ func (a *StagesApiService) StagesAuthenticatorTotpUsedByListExecute(r ApiStagesA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5574,9 +5646,9 @@ func (a *StagesApiService) StagesAuthenticatorValidateCreateExecute(r ApiStagesA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5593,6 +5665,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateCreateExecute(r ApiStagesA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5603,6 +5676,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateCreateExecute(r ApiStagesA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5661,7 +5735,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateDestroyExecute(r ApiStages
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/validate/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5708,9 +5782,9 @@ func (a *StagesApiService) StagesAuthenticatorValidateDestroyExecute(r ApiStages
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -5727,6 +5801,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateDestroyExecute(r ApiStages
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -5737,6 +5812,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateDestroyExecute(r ApiStages
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -5842,29 +5918,29 @@ func (a *StagesApiService) StagesAuthenticatorValidateListExecute(r ApiStagesAut
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("configuration_stages", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "configuration_stages", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("configuration_stages", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "configuration_stages", t, "multi")
 		}
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.notConfiguredAction != nil {
-		localVarQueryParams.Add("not_configured_action", parameterToString(*r.notConfiguredAction, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "not_configured_action", r.notConfiguredAction, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5907,9 +5983,9 @@ func (a *StagesApiService) StagesAuthenticatorValidateListExecute(r ApiStagesAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5926,6 +6002,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateListExecute(r ApiStagesAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5936,6 +6013,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateListExecute(r ApiStagesAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6002,7 +6080,7 @@ func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdateExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/validate/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6051,9 +6129,9 @@ func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6070,6 +6148,7 @@ func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6080,6 +6159,7 @@ func (a *StagesApiService) StagesAuthenticatorValidatePartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6140,7 +6220,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateRetrieveExecute(r ApiStage
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/validate/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6187,9 +6267,9 @@ func (a *StagesApiService) StagesAuthenticatorValidateRetrieveExecute(r ApiStage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6206,6 +6286,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateRetrieveExecute(r ApiStage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6216,6 +6297,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateRetrieveExecute(r ApiStage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6282,7 +6364,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateUpdateExecute(r ApiStagesA
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/validate/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6334,9 +6416,9 @@ func (a *StagesApiService) StagesAuthenticatorValidateUpdateExecute(r ApiStagesA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6353,6 +6435,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateUpdateExecute(r ApiStagesA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6363,6 +6446,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateUpdateExecute(r ApiStagesA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6423,7 +6507,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateUsedByListExecute(r ApiSta
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/validate/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6470,9 +6554,9 @@ func (a *StagesApiService) StagesAuthenticatorValidateUsedByListExecute(r ApiSta
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6489,6 +6573,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateUsedByListExecute(r ApiSta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6499,6 +6584,7 @@ func (a *StagesApiService) StagesAuthenticatorValidateUsedByListExecute(r ApiSta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6613,9 +6699,9 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6632,6 +6718,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6642,6 +6729,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6700,7 +6788,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnDestroyExecute(r ApiStages
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/webauthn/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6747,9 +6835,9 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnDestroyExecute(r ApiStages
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -6766,6 +6854,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnDestroyExecute(r ApiStages
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -6776,6 +6865,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnDestroyExecute(r ApiStages
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -6897,34 +6987,34 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 	localVarFormParams := url.Values{}
 
 	if r.authenticatorAttachment != nil {
-		localVarQueryParams.Add("authenticator_attachment", parameterToString(*r.authenticatorAttachment, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "authenticator_attachment", r.authenticatorAttachment, "")
 	}
 	if r.configureFlow != nil {
-		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "configure_flow", r.configureFlow, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.residentKeyRequirement != nil {
-		localVarQueryParams.Add("resident_key_requirement", parameterToString(*r.residentKeyRequirement, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "resident_key_requirement", r.residentKeyRequirement, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.stageUuid != nil {
-		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stage_uuid", r.stageUuid, "")
 	}
 	if r.userVerification != nil {
-		localVarQueryParams.Add("user_verification", parameterToString(*r.userVerification, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user_verification", r.userVerification, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6967,9 +7057,9 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6986,6 +7076,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6996,6 +7087,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7062,7 +7154,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/webauthn/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7111,9 +7203,9 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7130,6 +7222,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7140,6 +7233,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7200,7 +7294,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStage
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/webauthn/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7247,9 +7341,9 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7266,6 +7360,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7276,6 +7371,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7342,7 +7438,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesA
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/webauthn/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7394,9 +7490,9 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7413,6 +7509,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7423,6 +7520,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7483,7 +7581,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByListExecute(r ApiSta
 	}
 
 	localVarPath := localBasePath + "/stages/authenticator/webauthn/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7530,9 +7628,9 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByListExecute(r ApiSta
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7549,6 +7647,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByListExecute(r ApiSta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7559,6 +7658,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUsedByListExecute(r ApiSta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7673,9 +7773,9 @@ func (a *StagesApiService) StagesCaptchaCreateExecute(r ApiStagesCaptchaCreateRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7692,6 +7792,7 @@ func (a *StagesApiService) StagesCaptchaCreateExecute(r ApiStagesCaptchaCreateRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7702,6 +7803,7 @@ func (a *StagesApiService) StagesCaptchaCreateExecute(r ApiStagesCaptchaCreateRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7760,7 +7862,7 @@ func (a *StagesApiService) StagesCaptchaDestroyExecute(r ApiStagesCaptchaDestroy
 	}
 
 	localVarPath := localBasePath + "/stages/captcha/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7807,9 +7909,9 @@ func (a *StagesApiService) StagesCaptchaDestroyExecute(r ApiStagesCaptchaDestroy
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -7826,6 +7928,7 @@ func (a *StagesApiService) StagesCaptchaDestroyExecute(r ApiStagesCaptchaDestroy
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -7836,6 +7939,7 @@ func (a *StagesApiService) StagesCaptchaDestroyExecute(r ApiStagesCaptchaDestroy
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -7930,22 +8034,22 @@ func (a *StagesApiService) StagesCaptchaListExecute(r ApiStagesCaptchaListReques
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.publicKey != nil {
-		localVarQueryParams.Add("public_key", parameterToString(*r.publicKey, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "public_key", r.publicKey, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7988,9 +8092,9 @@ func (a *StagesApiService) StagesCaptchaListExecute(r ApiStagesCaptchaListReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8007,6 +8111,7 @@ func (a *StagesApiService) StagesCaptchaListExecute(r ApiStagesCaptchaListReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8017,6 +8122,7 @@ func (a *StagesApiService) StagesCaptchaListExecute(r ApiStagesCaptchaListReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8083,7 +8189,7 @@ func (a *StagesApiService) StagesCaptchaPartialUpdateExecute(r ApiStagesCaptchaP
 	}
 
 	localVarPath := localBasePath + "/stages/captcha/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8132,9 +8238,9 @@ func (a *StagesApiService) StagesCaptchaPartialUpdateExecute(r ApiStagesCaptchaP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8151,6 +8257,7 @@ func (a *StagesApiService) StagesCaptchaPartialUpdateExecute(r ApiStagesCaptchaP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8161,6 +8268,7 @@ func (a *StagesApiService) StagesCaptchaPartialUpdateExecute(r ApiStagesCaptchaP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8221,7 +8329,7 @@ func (a *StagesApiService) StagesCaptchaRetrieveExecute(r ApiStagesCaptchaRetrie
 	}
 
 	localVarPath := localBasePath + "/stages/captcha/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8268,9 +8376,9 @@ func (a *StagesApiService) StagesCaptchaRetrieveExecute(r ApiStagesCaptchaRetrie
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8287,6 +8395,7 @@ func (a *StagesApiService) StagesCaptchaRetrieveExecute(r ApiStagesCaptchaRetrie
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8297,6 +8406,7 @@ func (a *StagesApiService) StagesCaptchaRetrieveExecute(r ApiStagesCaptchaRetrie
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8363,7 +8473,7 @@ func (a *StagesApiService) StagesCaptchaUpdateExecute(r ApiStagesCaptchaUpdateRe
 	}
 
 	localVarPath := localBasePath + "/stages/captcha/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8415,9 +8525,9 @@ func (a *StagesApiService) StagesCaptchaUpdateExecute(r ApiStagesCaptchaUpdateRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8434,6 +8544,7 @@ func (a *StagesApiService) StagesCaptchaUpdateExecute(r ApiStagesCaptchaUpdateRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8444,6 +8555,7 @@ func (a *StagesApiService) StagesCaptchaUpdateExecute(r ApiStagesCaptchaUpdateRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8504,7 +8616,7 @@ func (a *StagesApiService) StagesCaptchaUsedByListExecute(r ApiStagesCaptchaUsed
 	}
 
 	localVarPath := localBasePath + "/stages/captcha/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8551,9 +8663,9 @@ func (a *StagesApiService) StagesCaptchaUsedByListExecute(r ApiStagesCaptchaUsed
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8570,6 +8682,7 @@ func (a *StagesApiService) StagesCaptchaUsedByListExecute(r ApiStagesCaptchaUsed
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8580,6 +8693,7 @@ func (a *StagesApiService) StagesCaptchaUsedByListExecute(r ApiStagesCaptchaUsed
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8694,9 +8808,9 @@ func (a *StagesApiService) StagesConsentCreateExecute(r ApiStagesConsentCreateRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8713,6 +8827,7 @@ func (a *StagesApiService) StagesConsentCreateExecute(r ApiStagesConsentCreateRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8723,6 +8838,7 @@ func (a *StagesApiService) StagesConsentCreateExecute(r ApiStagesConsentCreateRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8781,7 +8897,7 @@ func (a *StagesApiService) StagesConsentDestroyExecute(r ApiStagesConsentDestroy
 	}
 
 	localVarPath := localBasePath + "/stages/consent/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8828,9 +8944,9 @@ func (a *StagesApiService) StagesConsentDestroyExecute(r ApiStagesConsentDestroy
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -8847,6 +8963,7 @@ func (a *StagesApiService) StagesConsentDestroyExecute(r ApiStagesConsentDestroy
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -8857,6 +8974,7 @@ func (a *StagesApiService) StagesConsentDestroyExecute(r ApiStagesConsentDestroy
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -8964,28 +9082,28 @@ func (a *StagesApiService) StagesConsentListExecute(r ApiStagesConsentListReques
 	localVarFormParams := url.Values{}
 
 	if r.consentExpireIn != nil {
-		localVarQueryParams.Add("consent_expire_in", parameterToString(*r.consentExpireIn, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "consent_expire_in", r.consentExpireIn, "")
 	}
 	if r.mode != nil {
-		localVarQueryParams.Add("mode", parameterToString(*r.mode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "mode", r.mode, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.stageUuid != nil {
-		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stage_uuid", r.stageUuid, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -9028,9 +9146,9 @@ func (a *StagesApiService) StagesConsentListExecute(r ApiStagesConsentListReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9047,6 +9165,7 @@ func (a *StagesApiService) StagesConsentListExecute(r ApiStagesConsentListReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9057,6 +9176,7 @@ func (a *StagesApiService) StagesConsentListExecute(r ApiStagesConsentListReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9123,7 +9243,7 @@ func (a *StagesApiService) StagesConsentPartialUpdateExecute(r ApiStagesConsentP
 	}
 
 	localVarPath := localBasePath + "/stages/consent/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9172,9 +9292,9 @@ func (a *StagesApiService) StagesConsentPartialUpdateExecute(r ApiStagesConsentP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9191,6 +9311,7 @@ func (a *StagesApiService) StagesConsentPartialUpdateExecute(r ApiStagesConsentP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9201,6 +9322,7 @@ func (a *StagesApiService) StagesConsentPartialUpdateExecute(r ApiStagesConsentP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9261,7 +9383,7 @@ func (a *StagesApiService) StagesConsentRetrieveExecute(r ApiStagesConsentRetrie
 	}
 
 	localVarPath := localBasePath + "/stages/consent/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9308,9 +9430,9 @@ func (a *StagesApiService) StagesConsentRetrieveExecute(r ApiStagesConsentRetrie
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9327,6 +9449,7 @@ func (a *StagesApiService) StagesConsentRetrieveExecute(r ApiStagesConsentRetrie
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9337,6 +9460,7 @@ func (a *StagesApiService) StagesConsentRetrieveExecute(r ApiStagesConsentRetrie
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9403,7 +9527,7 @@ func (a *StagesApiService) StagesConsentUpdateExecute(r ApiStagesConsentUpdateRe
 	}
 
 	localVarPath := localBasePath + "/stages/consent/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9455,9 +9579,9 @@ func (a *StagesApiService) StagesConsentUpdateExecute(r ApiStagesConsentUpdateRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9474,6 +9598,7 @@ func (a *StagesApiService) StagesConsentUpdateExecute(r ApiStagesConsentUpdateRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9484,6 +9609,7 @@ func (a *StagesApiService) StagesConsentUpdateExecute(r ApiStagesConsentUpdateRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9544,7 +9670,7 @@ func (a *StagesApiService) StagesConsentUsedByListExecute(r ApiStagesConsentUsed
 	}
 
 	localVarPath := localBasePath + "/stages/consent/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9591,9 +9717,9 @@ func (a *StagesApiService) StagesConsentUsedByListExecute(r ApiStagesConsentUsed
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9610,6 +9736,7 @@ func (a *StagesApiService) StagesConsentUsedByListExecute(r ApiStagesConsentUsed
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9620,6 +9747,7 @@ func (a *StagesApiService) StagesConsentUsedByListExecute(r ApiStagesConsentUsed
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9734,9 +9862,9 @@ func (a *StagesApiService) StagesDenyCreateExecute(r ApiStagesDenyCreateRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9753,6 +9881,7 @@ func (a *StagesApiService) StagesDenyCreateExecute(r ApiStagesDenyCreateRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9763,6 +9892,7 @@ func (a *StagesApiService) StagesDenyCreateExecute(r ApiStagesDenyCreateRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9821,7 +9951,7 @@ func (a *StagesApiService) StagesDenyDestroyExecute(r ApiStagesDenyDestroyReques
 	}
 
 	localVarPath := localBasePath + "/stages/deny/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9868,9 +9998,9 @@ func (a *StagesApiService) StagesDenyDestroyExecute(r ApiStagesDenyDestroyReques
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -9887,6 +10017,7 @@ func (a *StagesApiService) StagesDenyDestroyExecute(r ApiStagesDenyDestroyReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -9897,6 +10028,7 @@ func (a *StagesApiService) StagesDenyDestroyExecute(r ApiStagesDenyDestroyReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -9991,22 +10123,22 @@ func (a *StagesApiService) StagesDenyListExecute(r ApiStagesDenyListRequest) (*P
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.stageUuid != nil {
-		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stage_uuid", r.stageUuid, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -10049,9 +10181,9 @@ func (a *StagesApiService) StagesDenyListExecute(r ApiStagesDenyListRequest) (*P
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10068,6 +10200,7 @@ func (a *StagesApiService) StagesDenyListExecute(r ApiStagesDenyListRequest) (*P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10078,6 +10211,7 @@ func (a *StagesApiService) StagesDenyListExecute(r ApiStagesDenyListRequest) (*P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10144,7 +10278,7 @@ func (a *StagesApiService) StagesDenyPartialUpdateExecute(r ApiStagesDenyPartial
 	}
 
 	localVarPath := localBasePath + "/stages/deny/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10193,9 +10327,9 @@ func (a *StagesApiService) StagesDenyPartialUpdateExecute(r ApiStagesDenyPartial
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10212,6 +10346,7 @@ func (a *StagesApiService) StagesDenyPartialUpdateExecute(r ApiStagesDenyPartial
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10222,6 +10357,7 @@ func (a *StagesApiService) StagesDenyPartialUpdateExecute(r ApiStagesDenyPartial
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10282,7 +10418,7 @@ func (a *StagesApiService) StagesDenyRetrieveExecute(r ApiStagesDenyRetrieveRequ
 	}
 
 	localVarPath := localBasePath + "/stages/deny/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10329,9 +10465,9 @@ func (a *StagesApiService) StagesDenyRetrieveExecute(r ApiStagesDenyRetrieveRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10348,6 +10484,7 @@ func (a *StagesApiService) StagesDenyRetrieveExecute(r ApiStagesDenyRetrieveRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10358,6 +10495,7 @@ func (a *StagesApiService) StagesDenyRetrieveExecute(r ApiStagesDenyRetrieveRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10424,7 +10562,7 @@ func (a *StagesApiService) StagesDenyUpdateExecute(r ApiStagesDenyUpdateRequest)
 	}
 
 	localVarPath := localBasePath + "/stages/deny/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10476,9 +10614,9 @@ func (a *StagesApiService) StagesDenyUpdateExecute(r ApiStagesDenyUpdateRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10495,6 +10633,7 @@ func (a *StagesApiService) StagesDenyUpdateExecute(r ApiStagesDenyUpdateRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10505,6 +10644,7 @@ func (a *StagesApiService) StagesDenyUpdateExecute(r ApiStagesDenyUpdateRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10565,7 +10705,7 @@ func (a *StagesApiService) StagesDenyUsedByListExecute(r ApiStagesDenyUsedByList
 	}
 
 	localVarPath := localBasePath + "/stages/deny/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10612,9 +10752,9 @@ func (a *StagesApiService) StagesDenyUsedByListExecute(r ApiStagesDenyUsedByList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10631,6 +10771,7 @@ func (a *StagesApiService) StagesDenyUsedByListExecute(r ApiStagesDenyUsedByList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10641,6 +10782,7 @@ func (a *StagesApiService) StagesDenyUsedByListExecute(r ApiStagesDenyUsedByList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10755,9 +10897,9 @@ func (a *StagesApiService) StagesDummyCreateExecute(r ApiStagesDummyCreateReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10774,6 +10916,7 @@ func (a *StagesApiService) StagesDummyCreateExecute(r ApiStagesDummyCreateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10784,6 +10927,7 @@ func (a *StagesApiService) StagesDummyCreateExecute(r ApiStagesDummyCreateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10842,7 +10986,7 @@ func (a *StagesApiService) StagesDummyDestroyExecute(r ApiStagesDummyDestroyRequ
 	}
 
 	localVarPath := localBasePath + "/stages/dummy/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10889,9 +11033,9 @@ func (a *StagesApiService) StagesDummyDestroyExecute(r ApiStagesDummyDestroyRequ
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -10908,6 +11052,7 @@ func (a *StagesApiService) StagesDummyDestroyExecute(r ApiStagesDummyDestroyRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -10918,6 +11063,7 @@ func (a *StagesApiService) StagesDummyDestroyExecute(r ApiStagesDummyDestroyRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -11018,25 +11164,25 @@ func (a *StagesApiService) StagesDummyListExecute(r ApiStagesDummyListRequest) (
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.stageUuid != nil {
-		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stage_uuid", r.stageUuid, "")
 	}
 	if r.throwError != nil {
-		localVarQueryParams.Add("throw_error", parameterToString(*r.throwError, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "throw_error", r.throwError, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -11079,9 +11225,9 @@ func (a *StagesApiService) StagesDummyListExecute(r ApiStagesDummyListRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -11098,6 +11244,7 @@ func (a *StagesApiService) StagesDummyListExecute(r ApiStagesDummyListRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -11108,6 +11255,7 @@ func (a *StagesApiService) StagesDummyListExecute(r ApiStagesDummyListRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -11174,7 +11322,7 @@ func (a *StagesApiService) StagesDummyPartialUpdateExecute(r ApiStagesDummyParti
 	}
 
 	localVarPath := localBasePath + "/stages/dummy/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11223,9 +11371,9 @@ func (a *StagesApiService) StagesDummyPartialUpdateExecute(r ApiStagesDummyParti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -11242,6 +11390,7 @@ func (a *StagesApiService) StagesDummyPartialUpdateExecute(r ApiStagesDummyParti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -11252,6 +11401,7 @@ func (a *StagesApiService) StagesDummyPartialUpdateExecute(r ApiStagesDummyParti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -11312,7 +11462,7 @@ func (a *StagesApiService) StagesDummyRetrieveExecute(r ApiStagesDummyRetrieveRe
 	}
 
 	localVarPath := localBasePath + "/stages/dummy/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11359,9 +11509,9 @@ func (a *StagesApiService) StagesDummyRetrieveExecute(r ApiStagesDummyRetrieveRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -11378,6 +11528,7 @@ func (a *StagesApiService) StagesDummyRetrieveExecute(r ApiStagesDummyRetrieveRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -11388,6 +11539,7 @@ func (a *StagesApiService) StagesDummyRetrieveExecute(r ApiStagesDummyRetrieveRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -11454,7 +11606,7 @@ func (a *StagesApiService) StagesDummyUpdateExecute(r ApiStagesDummyUpdateReques
 	}
 
 	localVarPath := localBasePath + "/stages/dummy/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11506,9 +11658,9 @@ func (a *StagesApiService) StagesDummyUpdateExecute(r ApiStagesDummyUpdateReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -11525,6 +11677,7 @@ func (a *StagesApiService) StagesDummyUpdateExecute(r ApiStagesDummyUpdateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -11535,6 +11688,7 @@ func (a *StagesApiService) StagesDummyUpdateExecute(r ApiStagesDummyUpdateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -11595,7 +11749,7 @@ func (a *StagesApiService) StagesDummyUsedByListExecute(r ApiStagesDummyUsedByLi
 	}
 
 	localVarPath := localBasePath + "/stages/dummy/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11642,9 +11796,9 @@ func (a *StagesApiService) StagesDummyUsedByListExecute(r ApiStagesDummyUsedByLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -11661,6 +11815,7 @@ func (a *StagesApiService) StagesDummyUsedByListExecute(r ApiStagesDummyUsedByLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -11671,6 +11826,7 @@ func (a *StagesApiService) StagesDummyUsedByListExecute(r ApiStagesDummyUsedByLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -11785,9 +11941,9 @@ func (a *StagesApiService) StagesEmailCreateExecute(r ApiStagesEmailCreateReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -11804,6 +11960,7 @@ func (a *StagesApiService) StagesEmailCreateExecute(r ApiStagesEmailCreateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -11814,6 +11971,7 @@ func (a *StagesApiService) StagesEmailCreateExecute(r ApiStagesEmailCreateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -11872,7 +12030,7 @@ func (a *StagesApiService) StagesEmailDestroyExecute(r ApiStagesEmailDestroyRequ
 	}
 
 	localVarPath := localBasePath + "/stages/email/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11919,9 +12077,9 @@ func (a *StagesApiService) StagesEmailDestroyExecute(r ApiStagesEmailDestroyRequ
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -11938,6 +12096,7 @@ func (a *StagesApiService) StagesEmailDestroyExecute(r ApiStagesEmailDestroyRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -11948,6 +12107,7 @@ func (a *StagesApiService) StagesEmailDestroyExecute(r ApiStagesEmailDestroyRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -12108,55 +12268,55 @@ func (a *StagesApiService) StagesEmailListExecute(r ApiStagesEmailListRequest) (
 	localVarFormParams := url.Values{}
 
 	if r.activateUserOnSuccess != nil {
-		localVarQueryParams.Add("activate_user_on_success", parameterToString(*r.activateUserOnSuccess, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "activate_user_on_success", r.activateUserOnSuccess, "")
 	}
 	if r.fromAddress != nil {
-		localVarQueryParams.Add("from_address", parameterToString(*r.fromAddress, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from_address", r.fromAddress, "")
 	}
 	if r.host != nil {
-		localVarQueryParams.Add("host", parameterToString(*r.host, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "host", r.host, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.port != nil {
-		localVarQueryParams.Add("port", parameterToString(*r.port, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "port", r.port, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.subject != nil {
-		localVarQueryParams.Add("subject", parameterToString(*r.subject, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "subject", r.subject, "")
 	}
 	if r.template != nil {
-		localVarQueryParams.Add("template", parameterToString(*r.template, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "template", r.template, "")
 	}
 	if r.timeout != nil {
-		localVarQueryParams.Add("timeout", parameterToString(*r.timeout, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "timeout", r.timeout, "")
 	}
 	if r.tokenExpiry != nil {
-		localVarQueryParams.Add("token_expiry", parameterToString(*r.tokenExpiry, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "token_expiry", r.tokenExpiry, "")
 	}
 	if r.useGlobalSettings != nil {
-		localVarQueryParams.Add("use_global_settings", parameterToString(*r.useGlobalSettings, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_global_settings", r.useGlobalSettings, "")
 	}
 	if r.useSsl != nil {
-		localVarQueryParams.Add("use_ssl", parameterToString(*r.useSsl, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_ssl", r.useSsl, "")
 	}
 	if r.useTls != nil {
-		localVarQueryParams.Add("use_tls", parameterToString(*r.useTls, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_tls", r.useTls, "")
 	}
 	if r.username != nil {
-		localVarQueryParams.Add("username", parameterToString(*r.username, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "username", r.username, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -12199,9 +12359,9 @@ func (a *StagesApiService) StagesEmailListExecute(r ApiStagesEmailListRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12218,6 +12378,7 @@ func (a *StagesApiService) StagesEmailListExecute(r ApiStagesEmailListRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12228,6 +12389,7 @@ func (a *StagesApiService) StagesEmailListExecute(r ApiStagesEmailListRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12294,7 +12456,7 @@ func (a *StagesApiService) StagesEmailPartialUpdateExecute(r ApiStagesEmailParti
 	}
 
 	localVarPath := localBasePath + "/stages/email/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12343,9 +12505,9 @@ func (a *StagesApiService) StagesEmailPartialUpdateExecute(r ApiStagesEmailParti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12362,6 +12524,7 @@ func (a *StagesApiService) StagesEmailPartialUpdateExecute(r ApiStagesEmailParti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12372,6 +12535,7 @@ func (a *StagesApiService) StagesEmailPartialUpdateExecute(r ApiStagesEmailParti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12432,7 +12596,7 @@ func (a *StagesApiService) StagesEmailRetrieveExecute(r ApiStagesEmailRetrieveRe
 	}
 
 	localVarPath := localBasePath + "/stages/email/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12479,9 +12643,9 @@ func (a *StagesApiService) StagesEmailRetrieveExecute(r ApiStagesEmailRetrieveRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12498,6 +12662,7 @@ func (a *StagesApiService) StagesEmailRetrieveExecute(r ApiStagesEmailRetrieveRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12508,6 +12673,7 @@ func (a *StagesApiService) StagesEmailRetrieveExecute(r ApiStagesEmailRetrieveRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12611,9 +12777,9 @@ func (a *StagesApiService) StagesEmailTemplatesListExecute(r ApiStagesEmailTempl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12630,6 +12796,7 @@ func (a *StagesApiService) StagesEmailTemplatesListExecute(r ApiStagesEmailTempl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12640,6 +12807,7 @@ func (a *StagesApiService) StagesEmailTemplatesListExecute(r ApiStagesEmailTempl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12706,7 +12874,7 @@ func (a *StagesApiService) StagesEmailUpdateExecute(r ApiStagesEmailUpdateReques
 	}
 
 	localVarPath := localBasePath + "/stages/email/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12758,9 +12926,9 @@ func (a *StagesApiService) StagesEmailUpdateExecute(r ApiStagesEmailUpdateReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12777,6 +12945,7 @@ func (a *StagesApiService) StagesEmailUpdateExecute(r ApiStagesEmailUpdateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12787,6 +12956,7 @@ func (a *StagesApiService) StagesEmailUpdateExecute(r ApiStagesEmailUpdateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12847,7 +13017,7 @@ func (a *StagesApiService) StagesEmailUsedByListExecute(r ApiStagesEmailUsedByLi
 	}
 
 	localVarPath := localBasePath + "/stages/email/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12894,9 +13064,9 @@ func (a *StagesApiService) StagesEmailUsedByListExecute(r ApiStagesEmailUsedByLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12913,6 +13083,7 @@ func (a *StagesApiService) StagesEmailUsedByListExecute(r ApiStagesEmailUsedByLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12923,6 +13094,7 @@ func (a *StagesApiService) StagesEmailUsedByListExecute(r ApiStagesEmailUsedByLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13037,9 +13209,9 @@ func (a *StagesApiService) StagesIdentificationCreateExecute(r ApiStagesIdentifi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13056,6 +13228,7 @@ func (a *StagesApiService) StagesIdentificationCreateExecute(r ApiStagesIdentifi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13066,6 +13239,7 @@ func (a *StagesApiService) StagesIdentificationCreateExecute(r ApiStagesIdentifi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13124,7 +13298,7 @@ func (a *StagesApiService) StagesIdentificationDestroyExecute(r ApiStagesIdentif
 	}
 
 	localVarPath := localBasePath + "/stages/identification/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13171,9 +13345,9 @@ func (a *StagesApiService) StagesIdentificationDestroyExecute(r ApiStagesIdentif
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -13190,6 +13364,7 @@ func (a *StagesApiService) StagesIdentificationDestroyExecute(r ApiStagesIdentif
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -13200,6 +13375,7 @@ func (a *StagesApiService) StagesIdentificationDestroyExecute(r ApiStagesIdentif
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -13330,40 +13506,40 @@ func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentifica
 	localVarFormParams := url.Values{}
 
 	if r.caseInsensitiveMatching != nil {
-		localVarQueryParams.Add("case_insensitive_matching", parameterToString(*r.caseInsensitiveMatching, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "case_insensitive_matching", r.caseInsensitiveMatching, "")
 	}
 	if r.enrollmentFlow != nil {
-		localVarQueryParams.Add("enrollment_flow", parameterToString(*r.enrollmentFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enrollment_flow", r.enrollmentFlow, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.passwordStage != nil {
-		localVarQueryParams.Add("password_stage", parameterToString(*r.passwordStage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "password_stage", r.passwordStage, "")
 	}
 	if r.passwordlessFlow != nil {
-		localVarQueryParams.Add("passwordless_flow", parameterToString(*r.passwordlessFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "passwordless_flow", r.passwordlessFlow, "")
 	}
 	if r.recoveryFlow != nil {
-		localVarQueryParams.Add("recovery_flow", parameterToString(*r.recoveryFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "recovery_flow", r.recoveryFlow, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.showMatchedUser != nil {
-		localVarQueryParams.Add("show_matched_user", parameterToString(*r.showMatchedUser, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "show_matched_user", r.showMatchedUser, "")
 	}
 	if r.showSourceLabels != nil {
-		localVarQueryParams.Add("show_source_labels", parameterToString(*r.showSourceLabels, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "show_source_labels", r.showSourceLabels, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -13406,9 +13582,9 @@ func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentifica
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13425,6 +13601,7 @@ func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentifica
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13435,6 +13612,7 @@ func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentifica
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13501,7 +13679,7 @@ func (a *StagesApiService) StagesIdentificationPartialUpdateExecute(r ApiStagesI
 	}
 
 	localVarPath := localBasePath + "/stages/identification/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13550,9 +13728,9 @@ func (a *StagesApiService) StagesIdentificationPartialUpdateExecute(r ApiStagesI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13569,6 +13747,7 @@ func (a *StagesApiService) StagesIdentificationPartialUpdateExecute(r ApiStagesI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13579,6 +13758,7 @@ func (a *StagesApiService) StagesIdentificationPartialUpdateExecute(r ApiStagesI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13639,7 +13819,7 @@ func (a *StagesApiService) StagesIdentificationRetrieveExecute(r ApiStagesIdenti
 	}
 
 	localVarPath := localBasePath + "/stages/identification/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13686,9 +13866,9 @@ func (a *StagesApiService) StagesIdentificationRetrieveExecute(r ApiStagesIdenti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13705,6 +13885,7 @@ func (a *StagesApiService) StagesIdentificationRetrieveExecute(r ApiStagesIdenti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13715,6 +13896,7 @@ func (a *StagesApiService) StagesIdentificationRetrieveExecute(r ApiStagesIdenti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13781,7 +13963,7 @@ func (a *StagesApiService) StagesIdentificationUpdateExecute(r ApiStagesIdentifi
 	}
 
 	localVarPath := localBasePath + "/stages/identification/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13833,9 +14015,9 @@ func (a *StagesApiService) StagesIdentificationUpdateExecute(r ApiStagesIdentifi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13852,6 +14034,7 @@ func (a *StagesApiService) StagesIdentificationUpdateExecute(r ApiStagesIdentifi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13862,6 +14045,7 @@ func (a *StagesApiService) StagesIdentificationUpdateExecute(r ApiStagesIdentifi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13922,7 +14106,7 @@ func (a *StagesApiService) StagesIdentificationUsedByListExecute(r ApiStagesIden
 	}
 
 	localVarPath := localBasePath + "/stages/identification/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13969,9 +14153,9 @@ func (a *StagesApiService) StagesIdentificationUsedByListExecute(r ApiStagesIden
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13988,6 +14172,7 @@ func (a *StagesApiService) StagesIdentificationUsedByListExecute(r ApiStagesIden
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13998,6 +14183,7 @@ func (a *StagesApiService) StagesIdentificationUsedByListExecute(r ApiStagesIden
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14112,9 +14298,9 @@ func (a *StagesApiService) StagesInvitationInvitationsCreateExecute(r ApiStagesI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14131,6 +14317,7 @@ func (a *StagesApiService) StagesInvitationInvitationsCreateExecute(r ApiStagesI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14141,6 +14328,7 @@ func (a *StagesApiService) StagesInvitationInvitationsCreateExecute(r ApiStagesI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14199,7 +14387,7 @@ func (a *StagesApiService) StagesInvitationInvitationsDestroyExecute(r ApiStages
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/invitations/{invite_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterToString(r.inviteUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterValueToString(r.inviteUuid, "inviteUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14246,9 +14434,9 @@ func (a *StagesApiService) StagesInvitationInvitationsDestroyExecute(r ApiStages
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -14265,6 +14453,7 @@ func (a *StagesApiService) StagesInvitationInvitationsDestroyExecute(r ApiStages
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -14275,6 +14464,7 @@ func (a *StagesApiService) StagesInvitationInvitationsDestroyExecute(r ApiStages
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -14381,28 +14571,28 @@ func (a *StagesApiService) StagesInvitationInvitationsListExecute(r ApiStagesInv
 	localVarFormParams := url.Values{}
 
 	if r.createdByUsername != nil {
-		localVarQueryParams.Add("created_by__username", parameterToString(*r.createdByUsername, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_by__username", r.createdByUsername, "")
 	}
 	if r.expires != nil {
-		localVarQueryParams.Add("expires", parameterToString(*r.expires, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "expires", r.expires, "")
 	}
 	if r.flowSlug != nil {
-		localVarQueryParams.Add("flow__slug", parameterToString(*r.flowSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "flow__slug", r.flowSlug, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -14445,9 +14635,9 @@ func (a *StagesApiService) StagesInvitationInvitationsListExecute(r ApiStagesInv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14464,6 +14654,7 @@ func (a *StagesApiService) StagesInvitationInvitationsListExecute(r ApiStagesInv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14474,6 +14665,7 @@ func (a *StagesApiService) StagesInvitationInvitationsListExecute(r ApiStagesInv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14540,7 +14732,7 @@ func (a *StagesApiService) StagesInvitationInvitationsPartialUpdateExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/invitations/{invite_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterToString(r.inviteUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterValueToString(r.inviteUuid, "inviteUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14589,9 +14781,9 @@ func (a *StagesApiService) StagesInvitationInvitationsPartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14608,6 +14800,7 @@ func (a *StagesApiService) StagesInvitationInvitationsPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14618,6 +14811,7 @@ func (a *StagesApiService) StagesInvitationInvitationsPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14678,7 +14872,7 @@ func (a *StagesApiService) StagesInvitationInvitationsRetrieveExecute(r ApiStage
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/invitations/{invite_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterToString(r.inviteUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterValueToString(r.inviteUuid, "inviteUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14725,9 +14919,9 @@ func (a *StagesApiService) StagesInvitationInvitationsRetrieveExecute(r ApiStage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14744,6 +14938,7 @@ func (a *StagesApiService) StagesInvitationInvitationsRetrieveExecute(r ApiStage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14754,6 +14949,7 @@ func (a *StagesApiService) StagesInvitationInvitationsRetrieveExecute(r ApiStage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14820,7 +15016,7 @@ func (a *StagesApiService) StagesInvitationInvitationsUpdateExecute(r ApiStagesI
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/invitations/{invite_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterToString(r.inviteUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterValueToString(r.inviteUuid, "inviteUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14872,9 +15068,9 @@ func (a *StagesApiService) StagesInvitationInvitationsUpdateExecute(r ApiStagesI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14891,6 +15087,7 @@ func (a *StagesApiService) StagesInvitationInvitationsUpdateExecute(r ApiStagesI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14901,6 +15098,7 @@ func (a *StagesApiService) StagesInvitationInvitationsUpdateExecute(r ApiStagesI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14961,7 +15159,7 @@ func (a *StagesApiService) StagesInvitationInvitationsUsedByListExecute(r ApiSta
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/invitations/{invite_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterToString(r.inviteUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invite_uuid"+"}", url.PathEscape(parameterValueToString(r.inviteUuid, "inviteUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15008,9 +15206,9 @@ func (a *StagesApiService) StagesInvitationInvitationsUsedByListExecute(r ApiSta
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15027,6 +15225,7 @@ func (a *StagesApiService) StagesInvitationInvitationsUsedByListExecute(r ApiSta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15037,6 +15236,7 @@ func (a *StagesApiService) StagesInvitationInvitationsUsedByListExecute(r ApiSta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -15151,9 +15351,9 @@ func (a *StagesApiService) StagesInvitationStagesCreateExecute(r ApiStagesInvita
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15170,6 +15370,7 @@ func (a *StagesApiService) StagesInvitationStagesCreateExecute(r ApiStagesInvita
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15180,6 +15381,7 @@ func (a *StagesApiService) StagesInvitationStagesCreateExecute(r ApiStagesInvita
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -15238,7 +15440,7 @@ func (a *StagesApiService) StagesInvitationStagesDestroyExecute(r ApiStagesInvit
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15285,9 +15487,9 @@ func (a *StagesApiService) StagesInvitationStagesDestroyExecute(r ApiStagesInvit
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -15304,6 +15506,7 @@ func (a *StagesApiService) StagesInvitationStagesDestroyExecute(r ApiStagesInvit
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -15314,6 +15517,7 @@ func (a *StagesApiService) StagesInvitationStagesDestroyExecute(r ApiStagesInvit
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -15420,28 +15624,28 @@ func (a *StagesApiService) StagesInvitationStagesListExecute(r ApiStagesInvitati
 	localVarFormParams := url.Values{}
 
 	if r.continueFlowWithoutInvitation != nil {
-		localVarQueryParams.Add("continue_flow_without_invitation", parameterToString(*r.continueFlowWithoutInvitation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continue_flow_without_invitation", r.continueFlowWithoutInvitation, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.noFlows != nil {
-		localVarQueryParams.Add("no_flows", parameterToString(*r.noFlows, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "no_flows", r.noFlows, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.stageUuid != nil {
-		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stage_uuid", r.stageUuid, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -15484,9 +15688,9 @@ func (a *StagesApiService) StagesInvitationStagesListExecute(r ApiStagesInvitati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15503,6 +15707,7 @@ func (a *StagesApiService) StagesInvitationStagesListExecute(r ApiStagesInvitati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15513,6 +15718,7 @@ func (a *StagesApiService) StagesInvitationStagesListExecute(r ApiStagesInvitati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -15579,7 +15785,7 @@ func (a *StagesApiService) StagesInvitationStagesPartialUpdateExecute(r ApiStage
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15628,9 +15834,9 @@ func (a *StagesApiService) StagesInvitationStagesPartialUpdateExecute(r ApiStage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15647,6 +15853,7 @@ func (a *StagesApiService) StagesInvitationStagesPartialUpdateExecute(r ApiStage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15657,6 +15864,7 @@ func (a *StagesApiService) StagesInvitationStagesPartialUpdateExecute(r ApiStage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -15717,7 +15925,7 @@ func (a *StagesApiService) StagesInvitationStagesRetrieveExecute(r ApiStagesInvi
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15764,9 +15972,9 @@ func (a *StagesApiService) StagesInvitationStagesRetrieveExecute(r ApiStagesInvi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15783,6 +15991,7 @@ func (a *StagesApiService) StagesInvitationStagesRetrieveExecute(r ApiStagesInvi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15793,6 +16002,7 @@ func (a *StagesApiService) StagesInvitationStagesRetrieveExecute(r ApiStagesInvi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -15859,7 +16069,7 @@ func (a *StagesApiService) StagesInvitationStagesUpdateExecute(r ApiStagesInvita
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15911,9 +16121,9 @@ func (a *StagesApiService) StagesInvitationStagesUpdateExecute(r ApiStagesInvita
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15930,6 +16140,7 @@ func (a *StagesApiService) StagesInvitationStagesUpdateExecute(r ApiStagesInvita
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15940,6 +16151,7 @@ func (a *StagesApiService) StagesInvitationStagesUpdateExecute(r ApiStagesInvita
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -16000,7 +16212,7 @@ func (a *StagesApiService) StagesInvitationStagesUsedByListExecute(r ApiStagesIn
 	}
 
 	localVarPath := localBasePath + "/stages/invitation/stages/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16047,9 +16259,9 @@ func (a *StagesApiService) StagesInvitationStagesUsedByListExecute(r ApiStagesIn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -16066,6 +16278,7 @@ func (a *StagesApiService) StagesInvitationStagesUsedByListExecute(r ApiStagesIn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -16076,6 +16289,7 @@ func (a *StagesApiService) StagesInvitationStagesUsedByListExecute(r ApiStagesIn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -16190,9 +16404,9 @@ func (a *StagesApiService) StagesPasswordCreateExecute(r ApiStagesPasswordCreate
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -16209,6 +16423,7 @@ func (a *StagesApiService) StagesPasswordCreateExecute(r ApiStagesPasswordCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -16219,6 +16434,7 @@ func (a *StagesApiService) StagesPasswordCreateExecute(r ApiStagesPasswordCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -16277,7 +16493,7 @@ func (a *StagesApiService) StagesPasswordDestroyExecute(r ApiStagesPasswordDestr
 	}
 
 	localVarPath := localBasePath + "/stages/password/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16324,9 +16540,9 @@ func (a *StagesApiService) StagesPasswordDestroyExecute(r ApiStagesPasswordDestr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -16343,6 +16559,7 @@ func (a *StagesApiService) StagesPasswordDestroyExecute(r ApiStagesPasswordDestr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -16353,6 +16570,7 @@ func (a *StagesApiService) StagesPasswordDestroyExecute(r ApiStagesPasswordDestr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -16453,25 +16671,25 @@ func (a *StagesApiService) StagesPasswordListExecute(r ApiStagesPasswordListRequ
 	localVarFormParams := url.Values{}
 
 	if r.configureFlow != nil {
-		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "configure_flow", r.configureFlow, "")
 	}
 	if r.failedAttemptsBeforeCancel != nil {
-		localVarQueryParams.Add("failed_attempts_before_cancel", parameterToString(*r.failedAttemptsBeforeCancel, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "failed_attempts_before_cancel", r.failedAttemptsBeforeCancel, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -16514,9 +16732,9 @@ func (a *StagesApiService) StagesPasswordListExecute(r ApiStagesPasswordListRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -16533,6 +16751,7 @@ func (a *StagesApiService) StagesPasswordListExecute(r ApiStagesPasswordListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -16543,6 +16762,7 @@ func (a *StagesApiService) StagesPasswordListExecute(r ApiStagesPasswordListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -16609,7 +16829,7 @@ func (a *StagesApiService) StagesPasswordPartialUpdateExecute(r ApiStagesPasswor
 	}
 
 	localVarPath := localBasePath + "/stages/password/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16658,9 +16878,9 @@ func (a *StagesApiService) StagesPasswordPartialUpdateExecute(r ApiStagesPasswor
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -16677,6 +16897,7 @@ func (a *StagesApiService) StagesPasswordPartialUpdateExecute(r ApiStagesPasswor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -16687,6 +16908,7 @@ func (a *StagesApiService) StagesPasswordPartialUpdateExecute(r ApiStagesPasswor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -16747,7 +16969,7 @@ func (a *StagesApiService) StagesPasswordRetrieveExecute(r ApiStagesPasswordRetr
 	}
 
 	localVarPath := localBasePath + "/stages/password/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16794,9 +17016,9 @@ func (a *StagesApiService) StagesPasswordRetrieveExecute(r ApiStagesPasswordRetr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -16813,6 +17035,7 @@ func (a *StagesApiService) StagesPasswordRetrieveExecute(r ApiStagesPasswordRetr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -16823,6 +17046,7 @@ func (a *StagesApiService) StagesPasswordRetrieveExecute(r ApiStagesPasswordRetr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -16889,7 +17113,7 @@ func (a *StagesApiService) StagesPasswordUpdateExecute(r ApiStagesPasswordUpdate
 	}
 
 	localVarPath := localBasePath + "/stages/password/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16941,9 +17165,9 @@ func (a *StagesApiService) StagesPasswordUpdateExecute(r ApiStagesPasswordUpdate
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -16960,6 +17184,7 @@ func (a *StagesApiService) StagesPasswordUpdateExecute(r ApiStagesPasswordUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -16970,6 +17195,7 @@ func (a *StagesApiService) StagesPasswordUpdateExecute(r ApiStagesPasswordUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -17030,7 +17256,7 @@ func (a *StagesApiService) StagesPasswordUsedByListExecute(r ApiStagesPasswordUs
 	}
 
 	localVarPath := localBasePath + "/stages/password/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17077,9 +17303,9 @@ func (a *StagesApiService) StagesPasswordUsedByListExecute(r ApiStagesPasswordUs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -17096,6 +17322,7 @@ func (a *StagesApiService) StagesPasswordUsedByListExecute(r ApiStagesPasswordUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -17106,6 +17333,7 @@ func (a *StagesApiService) StagesPasswordUsedByListExecute(r ApiStagesPasswordUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -17220,9 +17448,9 @@ func (a *StagesApiService) StagesPromptPromptsCreateExecute(r ApiStagesPromptPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -17239,6 +17467,7 @@ func (a *StagesApiService) StagesPromptPromptsCreateExecute(r ApiStagesPromptPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -17249,6 +17478,7 @@ func (a *StagesApiService) StagesPromptPromptsCreateExecute(r ApiStagesPromptPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -17307,7 +17537,7 @@ func (a *StagesApiService) StagesPromptPromptsDestroyExecute(r ApiStagesPromptPr
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/prompts/{prompt_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterToString(r.promptUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterValueToString(r.promptUuid, "promptUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17354,9 +17584,9 @@ func (a *StagesApiService) StagesPromptPromptsDestroyExecute(r ApiStagesPromptPr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -17373,6 +17603,7 @@ func (a *StagesApiService) StagesPromptPromptsDestroyExecute(r ApiStagesPromptPr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -17383,6 +17614,7 @@ func (a *StagesApiService) StagesPromptPromptsDestroyExecute(r ApiStagesPromptPr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -17496,31 +17728,31 @@ func (a *StagesApiService) StagesPromptPromptsListExecute(r ApiStagesPromptPromp
 	localVarFormParams := url.Values{}
 
 	if r.fieldKey != nil {
-		localVarQueryParams.Add("field_key", parameterToString(*r.fieldKey, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "field_key", r.fieldKey, "")
 	}
 	if r.label != nil {
-		localVarQueryParams.Add("label", parameterToString(*r.label, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "label", r.label, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.placeholder != nil {
-		localVarQueryParams.Add("placeholder", parameterToString(*r.placeholder, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "placeholder", r.placeholder, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.type_ != nil {
-		localVarQueryParams.Add("type", parameterToString(*r.type_, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -17563,9 +17795,9 @@ func (a *StagesApiService) StagesPromptPromptsListExecute(r ApiStagesPromptPromp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -17582,6 +17814,7 @@ func (a *StagesApiService) StagesPromptPromptsListExecute(r ApiStagesPromptPromp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -17592,6 +17825,7 @@ func (a *StagesApiService) StagesPromptPromptsListExecute(r ApiStagesPromptPromp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -17658,7 +17892,7 @@ func (a *StagesApiService) StagesPromptPromptsPartialUpdateExecute(r ApiStagesPr
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/prompts/{prompt_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterToString(r.promptUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterValueToString(r.promptUuid, "promptUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17707,9 +17941,9 @@ func (a *StagesApiService) StagesPromptPromptsPartialUpdateExecute(r ApiStagesPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -17726,6 +17960,7 @@ func (a *StagesApiService) StagesPromptPromptsPartialUpdateExecute(r ApiStagesPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -17736,6 +17971,7 @@ func (a *StagesApiService) StagesPromptPromptsPartialUpdateExecute(r ApiStagesPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -17850,9 +18086,9 @@ func (a *StagesApiService) StagesPromptPromptsPreviewCreateExecute(r ApiStagesPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -17869,6 +18105,7 @@ func (a *StagesApiService) StagesPromptPromptsPreviewCreateExecute(r ApiStagesPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -17879,6 +18116,7 @@ func (a *StagesApiService) StagesPromptPromptsPreviewCreateExecute(r ApiStagesPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -17939,7 +18177,7 @@ func (a *StagesApiService) StagesPromptPromptsRetrieveExecute(r ApiStagesPromptP
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/prompts/{prompt_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterToString(r.promptUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterValueToString(r.promptUuid, "promptUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17986,9 +18224,9 @@ func (a *StagesApiService) StagesPromptPromptsRetrieveExecute(r ApiStagesPromptP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -18005,6 +18243,7 @@ func (a *StagesApiService) StagesPromptPromptsRetrieveExecute(r ApiStagesPromptP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -18015,6 +18254,7 @@ func (a *StagesApiService) StagesPromptPromptsRetrieveExecute(r ApiStagesPromptP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -18081,7 +18321,7 @@ func (a *StagesApiService) StagesPromptPromptsUpdateExecute(r ApiStagesPromptPro
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/prompts/{prompt_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterToString(r.promptUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterValueToString(r.promptUuid, "promptUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18133,9 +18373,9 @@ func (a *StagesApiService) StagesPromptPromptsUpdateExecute(r ApiStagesPromptPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -18152,6 +18392,7 @@ func (a *StagesApiService) StagesPromptPromptsUpdateExecute(r ApiStagesPromptPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -18162,6 +18403,7 @@ func (a *StagesApiService) StagesPromptPromptsUpdateExecute(r ApiStagesPromptPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -18222,7 +18464,7 @@ func (a *StagesApiService) StagesPromptPromptsUsedByListExecute(r ApiStagesPromp
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/prompts/{prompt_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterToString(r.promptUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"prompt_uuid"+"}", url.PathEscape(parameterValueToString(r.promptUuid, "promptUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18269,9 +18511,9 @@ func (a *StagesApiService) StagesPromptPromptsUsedByListExecute(r ApiStagesPromp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -18288,6 +18530,7 @@ func (a *StagesApiService) StagesPromptPromptsUsedByListExecute(r ApiStagesPromp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -18298,6 +18541,7 @@ func (a *StagesApiService) StagesPromptPromptsUsedByListExecute(r ApiStagesPromp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -18412,9 +18656,9 @@ func (a *StagesApiService) StagesPromptStagesCreateExecute(r ApiStagesPromptStag
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -18431,6 +18675,7 @@ func (a *StagesApiService) StagesPromptStagesCreateExecute(r ApiStagesPromptStag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -18441,6 +18686,7 @@ func (a *StagesApiService) StagesPromptStagesCreateExecute(r ApiStagesPromptStag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -18499,7 +18745,7 @@ func (a *StagesApiService) StagesPromptStagesDestroyExecute(r ApiStagesPromptSta
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18546,9 +18792,9 @@ func (a *StagesApiService) StagesPromptStagesDestroyExecute(r ApiStagesPromptSta
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -18565,6 +18811,7 @@ func (a *StagesApiService) StagesPromptStagesDestroyExecute(r ApiStagesPromptSta
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -18575,6 +18822,7 @@ func (a *StagesApiService) StagesPromptStagesDestroyExecute(r ApiStagesPromptSta
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -18685,39 +18933,39 @@ func (a *StagesApiService) StagesPromptStagesListExecute(r ApiStagesPromptStages
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("fields", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "fields", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("fields", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "fields", t, "multi")
 		}
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.stageUuid != nil {
-		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stage_uuid", r.stageUuid, "")
 	}
 	if r.validationPolicies != nil {
 		t := *r.validationPolicies
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("validation_policies", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "validation_policies", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("validation_policies", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "validation_policies", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -18761,9 +19009,9 @@ func (a *StagesApiService) StagesPromptStagesListExecute(r ApiStagesPromptStages
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -18780,6 +19028,7 @@ func (a *StagesApiService) StagesPromptStagesListExecute(r ApiStagesPromptStages
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -18790,6 +19039,7 @@ func (a *StagesApiService) StagesPromptStagesListExecute(r ApiStagesPromptStages
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -18856,7 +19106,7 @@ func (a *StagesApiService) StagesPromptStagesPartialUpdateExecute(r ApiStagesPro
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18905,9 +19155,9 @@ func (a *StagesApiService) StagesPromptStagesPartialUpdateExecute(r ApiStagesPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -18924,6 +19174,7 @@ func (a *StagesApiService) StagesPromptStagesPartialUpdateExecute(r ApiStagesPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -18934,6 +19185,7 @@ func (a *StagesApiService) StagesPromptStagesPartialUpdateExecute(r ApiStagesPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -18994,7 +19246,7 @@ func (a *StagesApiService) StagesPromptStagesRetrieveExecute(r ApiStagesPromptSt
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19041,9 +19293,9 @@ func (a *StagesApiService) StagesPromptStagesRetrieveExecute(r ApiStagesPromptSt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -19060,6 +19312,7 @@ func (a *StagesApiService) StagesPromptStagesRetrieveExecute(r ApiStagesPromptSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -19070,6 +19323,7 @@ func (a *StagesApiService) StagesPromptStagesRetrieveExecute(r ApiStagesPromptSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -19136,7 +19390,7 @@ func (a *StagesApiService) StagesPromptStagesUpdateExecute(r ApiStagesPromptStag
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/stages/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19188,9 +19442,9 @@ func (a *StagesApiService) StagesPromptStagesUpdateExecute(r ApiStagesPromptStag
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -19207,6 +19461,7 @@ func (a *StagesApiService) StagesPromptStagesUpdateExecute(r ApiStagesPromptStag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -19217,6 +19472,7 @@ func (a *StagesApiService) StagesPromptStagesUpdateExecute(r ApiStagesPromptStag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -19277,7 +19533,7 @@ func (a *StagesApiService) StagesPromptStagesUsedByListExecute(r ApiStagesPrompt
 	}
 
 	localVarPath := localBasePath + "/stages/prompt/stages/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19324,9 +19580,9 @@ func (a *StagesApiService) StagesPromptStagesUsedByListExecute(r ApiStagesPrompt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -19343,6 +19599,7 @@ func (a *StagesApiService) StagesPromptStagesUsedByListExecute(r ApiStagesPrompt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -19353,6 +19610,7 @@ func (a *StagesApiService) StagesPromptStagesUsedByListExecute(r ApiStagesPrompt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -19467,9 +19725,9 @@ func (a *StagesApiService) StagesUserDeleteCreateExecute(r ApiStagesUserDeleteCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -19486,6 +19744,7 @@ func (a *StagesApiService) StagesUserDeleteCreateExecute(r ApiStagesUserDeleteCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -19496,6 +19755,7 @@ func (a *StagesApiService) StagesUserDeleteCreateExecute(r ApiStagesUserDeleteCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -19554,7 +19814,7 @@ func (a *StagesApiService) StagesUserDeleteDestroyExecute(r ApiStagesUserDeleteD
 	}
 
 	localVarPath := localBasePath + "/stages/user_delete/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19601,9 +19861,9 @@ func (a *StagesApiService) StagesUserDeleteDestroyExecute(r ApiStagesUserDeleteD
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -19620,6 +19880,7 @@ func (a *StagesApiService) StagesUserDeleteDestroyExecute(r ApiStagesUserDeleteD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -19630,6 +19891,7 @@ func (a *StagesApiService) StagesUserDeleteDestroyExecute(r ApiStagesUserDeleteD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -19724,22 +19986,22 @@ func (a *StagesApiService) StagesUserDeleteListExecute(r ApiStagesUserDeleteList
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.stageUuid != nil {
-		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stage_uuid", r.stageUuid, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -19782,9 +20044,9 @@ func (a *StagesApiService) StagesUserDeleteListExecute(r ApiStagesUserDeleteList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -19801,6 +20063,7 @@ func (a *StagesApiService) StagesUserDeleteListExecute(r ApiStagesUserDeleteList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -19811,6 +20074,7 @@ func (a *StagesApiService) StagesUserDeleteListExecute(r ApiStagesUserDeleteList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -19877,7 +20141,7 @@ func (a *StagesApiService) StagesUserDeletePartialUpdateExecute(r ApiStagesUserD
 	}
 
 	localVarPath := localBasePath + "/stages/user_delete/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19926,9 +20190,9 @@ func (a *StagesApiService) StagesUserDeletePartialUpdateExecute(r ApiStagesUserD
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -19945,6 +20209,7 @@ func (a *StagesApiService) StagesUserDeletePartialUpdateExecute(r ApiStagesUserD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -19955,6 +20220,7 @@ func (a *StagesApiService) StagesUserDeletePartialUpdateExecute(r ApiStagesUserD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -20015,7 +20281,7 @@ func (a *StagesApiService) StagesUserDeleteRetrieveExecute(r ApiStagesUserDelete
 	}
 
 	localVarPath := localBasePath + "/stages/user_delete/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -20062,9 +20328,9 @@ func (a *StagesApiService) StagesUserDeleteRetrieveExecute(r ApiStagesUserDelete
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -20081,6 +20347,7 @@ func (a *StagesApiService) StagesUserDeleteRetrieveExecute(r ApiStagesUserDelete
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -20091,6 +20358,7 @@ func (a *StagesApiService) StagesUserDeleteRetrieveExecute(r ApiStagesUserDelete
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -20157,7 +20425,7 @@ func (a *StagesApiService) StagesUserDeleteUpdateExecute(r ApiStagesUserDeleteUp
 	}
 
 	localVarPath := localBasePath + "/stages/user_delete/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -20209,9 +20477,9 @@ func (a *StagesApiService) StagesUserDeleteUpdateExecute(r ApiStagesUserDeleteUp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -20228,6 +20496,7 @@ func (a *StagesApiService) StagesUserDeleteUpdateExecute(r ApiStagesUserDeleteUp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -20238,6 +20507,7 @@ func (a *StagesApiService) StagesUserDeleteUpdateExecute(r ApiStagesUserDeleteUp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -20298,7 +20568,7 @@ func (a *StagesApiService) StagesUserDeleteUsedByListExecute(r ApiStagesUserDele
 	}
 
 	localVarPath := localBasePath + "/stages/user_delete/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -20345,9 +20615,9 @@ func (a *StagesApiService) StagesUserDeleteUsedByListExecute(r ApiStagesUserDele
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -20364,6 +20634,7 @@ func (a *StagesApiService) StagesUserDeleteUsedByListExecute(r ApiStagesUserDele
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -20374,6 +20645,7 @@ func (a *StagesApiService) StagesUserDeleteUsedByListExecute(r ApiStagesUserDele
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -20488,9 +20760,9 @@ func (a *StagesApiService) StagesUserLoginCreateExecute(r ApiStagesUserLoginCrea
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -20507,6 +20779,7 @@ func (a *StagesApiService) StagesUserLoginCreateExecute(r ApiStagesUserLoginCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -20517,6 +20790,7 @@ func (a *StagesApiService) StagesUserLoginCreateExecute(r ApiStagesUserLoginCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -20575,7 +20849,7 @@ func (a *StagesApiService) StagesUserLoginDestroyExecute(r ApiStagesUserLoginDes
 	}
 
 	localVarPath := localBasePath + "/stages/user_login/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -20622,9 +20896,9 @@ func (a *StagesApiService) StagesUserLoginDestroyExecute(r ApiStagesUserLoginDes
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -20641,6 +20915,7 @@ func (a *StagesApiService) StagesUserLoginDestroyExecute(r ApiStagesUserLoginDes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -20651,6 +20926,7 @@ func (a *StagesApiService) StagesUserLoginDestroyExecute(r ApiStagesUserLoginDes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -20763,31 +21039,31 @@ func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRe
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.rememberMeOffset != nil {
-		localVarQueryParams.Add("remember_me_offset", parameterToString(*r.rememberMeOffset, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "remember_me_offset", r.rememberMeOffset, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.sessionDuration != nil {
-		localVarQueryParams.Add("session_duration", parameterToString(*r.sessionDuration, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "session_duration", r.sessionDuration, "")
 	}
 	if r.stageUuid != nil {
-		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stage_uuid", r.stageUuid, "")
 	}
 	if r.terminateOtherSessions != nil {
-		localVarQueryParams.Add("terminate_other_sessions", parameterToString(*r.terminateOtherSessions, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "terminate_other_sessions", r.terminateOtherSessions, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -20830,9 +21106,9 @@ func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -20849,6 +21125,7 @@ func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -20859,6 +21136,7 @@ func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -20925,7 +21203,7 @@ func (a *StagesApiService) StagesUserLoginPartialUpdateExecute(r ApiStagesUserLo
 	}
 
 	localVarPath := localBasePath + "/stages/user_login/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -20974,9 +21252,9 @@ func (a *StagesApiService) StagesUserLoginPartialUpdateExecute(r ApiStagesUserLo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -20993,6 +21271,7 @@ func (a *StagesApiService) StagesUserLoginPartialUpdateExecute(r ApiStagesUserLo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -21003,6 +21282,7 @@ func (a *StagesApiService) StagesUserLoginPartialUpdateExecute(r ApiStagesUserLo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -21063,7 +21343,7 @@ func (a *StagesApiService) StagesUserLoginRetrieveExecute(r ApiStagesUserLoginRe
 	}
 
 	localVarPath := localBasePath + "/stages/user_login/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -21110,9 +21390,9 @@ func (a *StagesApiService) StagesUserLoginRetrieveExecute(r ApiStagesUserLoginRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -21129,6 +21409,7 @@ func (a *StagesApiService) StagesUserLoginRetrieveExecute(r ApiStagesUserLoginRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -21139,6 +21420,7 @@ func (a *StagesApiService) StagesUserLoginRetrieveExecute(r ApiStagesUserLoginRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -21205,7 +21487,7 @@ func (a *StagesApiService) StagesUserLoginUpdateExecute(r ApiStagesUserLoginUpda
 	}
 
 	localVarPath := localBasePath + "/stages/user_login/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -21257,9 +21539,9 @@ func (a *StagesApiService) StagesUserLoginUpdateExecute(r ApiStagesUserLoginUpda
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -21276,6 +21558,7 @@ func (a *StagesApiService) StagesUserLoginUpdateExecute(r ApiStagesUserLoginUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -21286,6 +21569,7 @@ func (a *StagesApiService) StagesUserLoginUpdateExecute(r ApiStagesUserLoginUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -21346,7 +21630,7 @@ func (a *StagesApiService) StagesUserLoginUsedByListExecute(r ApiStagesUserLogin
 	}
 
 	localVarPath := localBasePath + "/stages/user_login/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -21393,9 +21677,9 @@ func (a *StagesApiService) StagesUserLoginUsedByListExecute(r ApiStagesUserLogin
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -21412,6 +21696,7 @@ func (a *StagesApiService) StagesUserLoginUsedByListExecute(r ApiStagesUserLogin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -21422,6 +21707,7 @@ func (a *StagesApiService) StagesUserLoginUsedByListExecute(r ApiStagesUserLogin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -21536,9 +21822,9 @@ func (a *StagesApiService) StagesUserLogoutCreateExecute(r ApiStagesUserLogoutCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -21555,6 +21841,7 @@ func (a *StagesApiService) StagesUserLogoutCreateExecute(r ApiStagesUserLogoutCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -21565,6 +21852,7 @@ func (a *StagesApiService) StagesUserLogoutCreateExecute(r ApiStagesUserLogoutCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -21623,7 +21911,7 @@ func (a *StagesApiService) StagesUserLogoutDestroyExecute(r ApiStagesUserLogoutD
 	}
 
 	localVarPath := localBasePath + "/stages/user_logout/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -21670,9 +21958,9 @@ func (a *StagesApiService) StagesUserLogoutDestroyExecute(r ApiStagesUserLogoutD
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -21689,6 +21977,7 @@ func (a *StagesApiService) StagesUserLogoutDestroyExecute(r ApiStagesUserLogoutD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -21699,6 +21988,7 @@ func (a *StagesApiService) StagesUserLogoutDestroyExecute(r ApiStagesUserLogoutD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -21793,22 +22083,22 @@ func (a *StagesApiService) StagesUserLogoutListExecute(r ApiStagesUserLogoutList
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.stageUuid != nil {
-		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stage_uuid", r.stageUuid, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -21851,9 +22141,9 @@ func (a *StagesApiService) StagesUserLogoutListExecute(r ApiStagesUserLogoutList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -21870,6 +22160,7 @@ func (a *StagesApiService) StagesUserLogoutListExecute(r ApiStagesUserLogoutList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -21880,6 +22171,7 @@ func (a *StagesApiService) StagesUserLogoutListExecute(r ApiStagesUserLogoutList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -21946,7 +22238,7 @@ func (a *StagesApiService) StagesUserLogoutPartialUpdateExecute(r ApiStagesUserL
 	}
 
 	localVarPath := localBasePath + "/stages/user_logout/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -21995,9 +22287,9 @@ func (a *StagesApiService) StagesUserLogoutPartialUpdateExecute(r ApiStagesUserL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -22014,6 +22306,7 @@ func (a *StagesApiService) StagesUserLogoutPartialUpdateExecute(r ApiStagesUserL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -22024,6 +22317,7 @@ func (a *StagesApiService) StagesUserLogoutPartialUpdateExecute(r ApiStagesUserL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -22084,7 +22378,7 @@ func (a *StagesApiService) StagesUserLogoutRetrieveExecute(r ApiStagesUserLogout
 	}
 
 	localVarPath := localBasePath + "/stages/user_logout/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -22131,9 +22425,9 @@ func (a *StagesApiService) StagesUserLogoutRetrieveExecute(r ApiStagesUserLogout
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -22150,6 +22444,7 @@ func (a *StagesApiService) StagesUserLogoutRetrieveExecute(r ApiStagesUserLogout
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -22160,6 +22455,7 @@ func (a *StagesApiService) StagesUserLogoutRetrieveExecute(r ApiStagesUserLogout
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -22226,7 +22522,7 @@ func (a *StagesApiService) StagesUserLogoutUpdateExecute(r ApiStagesUserLogoutUp
 	}
 
 	localVarPath := localBasePath + "/stages/user_logout/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -22278,9 +22574,9 @@ func (a *StagesApiService) StagesUserLogoutUpdateExecute(r ApiStagesUserLogoutUp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -22297,6 +22593,7 @@ func (a *StagesApiService) StagesUserLogoutUpdateExecute(r ApiStagesUserLogoutUp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -22307,6 +22604,7 @@ func (a *StagesApiService) StagesUserLogoutUpdateExecute(r ApiStagesUserLogoutUp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -22367,7 +22665,7 @@ func (a *StagesApiService) StagesUserLogoutUsedByListExecute(r ApiStagesUserLogo
 	}
 
 	localVarPath := localBasePath + "/stages/user_logout/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -22414,9 +22712,9 @@ func (a *StagesApiService) StagesUserLogoutUsedByListExecute(r ApiStagesUserLogo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -22433,6 +22731,7 @@ func (a *StagesApiService) StagesUserLogoutUsedByListExecute(r ApiStagesUserLogo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -22443,6 +22742,7 @@ func (a *StagesApiService) StagesUserLogoutUsedByListExecute(r ApiStagesUserLogo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -22557,9 +22857,9 @@ func (a *StagesApiService) StagesUserWriteCreateExecute(r ApiStagesUserWriteCrea
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -22576,6 +22876,7 @@ func (a *StagesApiService) StagesUserWriteCreateExecute(r ApiStagesUserWriteCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -22586,6 +22887,7 @@ func (a *StagesApiService) StagesUserWriteCreateExecute(r ApiStagesUserWriteCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -22644,7 +22946,7 @@ func (a *StagesApiService) StagesUserWriteDestroyExecute(r ApiStagesUserWriteDes
 	}
 
 	localVarPath := localBasePath + "/stages/user_write/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -22691,9 +22993,9 @@ func (a *StagesApiService) StagesUserWriteDestroyExecute(r ApiStagesUserWriteDes
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -22710,6 +23012,7 @@ func (a *StagesApiService) StagesUserWriteDestroyExecute(r ApiStagesUserWriteDes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -22720,6 +23023,7 @@ func (a *StagesApiService) StagesUserWriteDestroyExecute(r ApiStagesUserWriteDes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -22839,34 +23143,34 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 	localVarFormParams := url.Values{}
 
 	if r.createUsersAsInactive != nil {
-		localVarQueryParams.Add("create_users_as_inactive", parameterToString(*r.createUsersAsInactive, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "create_users_as_inactive", r.createUsersAsInactive, "")
 	}
 	if r.createUsersGroup != nil {
-		localVarQueryParams.Add("create_users_group", parameterToString(*r.createUsersGroup, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "create_users_group", r.createUsersGroup, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	}
 	if r.stageUuid != nil {
-		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stage_uuid", r.stageUuid, "")
 	}
 	if r.userCreationMode != nil {
-		localVarQueryParams.Add("user_creation_mode", parameterToString(*r.userCreationMode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user_creation_mode", r.userCreationMode, "")
 	}
 	if r.userPathTemplate != nil {
-		localVarQueryParams.Add("user_path_template", parameterToString(*r.userPathTemplate, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user_path_template", r.userPathTemplate, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -22909,9 +23213,9 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -22928,6 +23232,7 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -22938,6 +23243,7 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -23004,7 +23310,7 @@ func (a *StagesApiService) StagesUserWritePartialUpdateExecute(r ApiStagesUserWr
 	}
 
 	localVarPath := localBasePath + "/stages/user_write/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -23053,9 +23359,9 @@ func (a *StagesApiService) StagesUserWritePartialUpdateExecute(r ApiStagesUserWr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -23072,6 +23378,7 @@ func (a *StagesApiService) StagesUserWritePartialUpdateExecute(r ApiStagesUserWr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -23082,6 +23389,7 @@ func (a *StagesApiService) StagesUserWritePartialUpdateExecute(r ApiStagesUserWr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -23142,7 +23450,7 @@ func (a *StagesApiService) StagesUserWriteRetrieveExecute(r ApiStagesUserWriteRe
 	}
 
 	localVarPath := localBasePath + "/stages/user_write/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -23189,9 +23497,9 @@ func (a *StagesApiService) StagesUserWriteRetrieveExecute(r ApiStagesUserWriteRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -23208,6 +23516,7 @@ func (a *StagesApiService) StagesUserWriteRetrieveExecute(r ApiStagesUserWriteRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -23218,6 +23527,7 @@ func (a *StagesApiService) StagesUserWriteRetrieveExecute(r ApiStagesUserWriteRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -23284,7 +23594,7 @@ func (a *StagesApiService) StagesUserWriteUpdateExecute(r ApiStagesUserWriteUpda
 	}
 
 	localVarPath := localBasePath + "/stages/user_write/{stage_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -23336,9 +23646,9 @@ func (a *StagesApiService) StagesUserWriteUpdateExecute(r ApiStagesUserWriteUpda
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -23355,6 +23665,7 @@ func (a *StagesApiService) StagesUserWriteUpdateExecute(r ApiStagesUserWriteUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -23365,6 +23676,7 @@ func (a *StagesApiService) StagesUserWriteUpdateExecute(r ApiStagesUserWriteUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -23425,7 +23737,7 @@ func (a *StagesApiService) StagesUserWriteUsedByListExecute(r ApiStagesUserWrite
 	}
 
 	localVarPath := localBasePath + "/stages/user_write/{stage_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterValueToString(r.stageUuid, "stageUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -23472,9 +23784,9 @@ func (a *StagesApiService) StagesUserWriteUsedByListExecute(r ApiStagesUserWrite
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -23491,6 +23803,7 @@ func (a *StagesApiService) StagesUserWriteUsedByListExecute(r ApiStagesUserWrite
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -23501,6 +23814,7 @@ func (a *StagesApiService) StagesUserWriteUsedByListExecute(r ApiStagesUserWrite
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

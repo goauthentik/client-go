@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PolicyTestResult type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PolicyTestResult{}
+
 // PolicyTestResult result of a policy test
 type PolicyTestResult struct {
 	Passing     bool                     `json:"passing"`
@@ -115,17 +118,19 @@ func (o *PolicyTestResult) SetLogMessages(v []map[string]interface{}) {
 }
 
 func (o PolicyTestResult) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["passing"] = o.Passing
-	}
-	if true {
-		toSerialize["messages"] = o.Messages
-	}
-	if true {
-		toSerialize["log_messages"] = o.LogMessages
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PolicyTestResult) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["passing"] = o.Passing
+	// skip: messages is readOnly
+	// skip: log_messages is readOnly
+	return toSerialize, nil
 }
 
 type NullablePolicyTestResult struct {

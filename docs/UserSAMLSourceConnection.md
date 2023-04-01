@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
 **User** | **int32** |  | 
-**Source** | [**PlexSourceConnectionSource**](PlexSourceConnectionSource.md) |  | 
+**Source** | [**Source**](Source.md) |  | [readonly] 
 **Identifier** | **string** |  | 
 
 ## Methods
 
 ### NewUserSAMLSourceConnection
 
-`func NewUserSAMLSourceConnection(pk int32, user int32, source PlexSourceConnectionSource, identifier string, ) *UserSAMLSourceConnection`
+`func NewUserSAMLSourceConnection(pk int32, user int32, source Source, identifier string, ) *UserSAMLSourceConnection`
 
 NewUserSAMLSourceConnection instantiates a new UserSAMLSourceConnection object
 This constructor will assign default values to properties that have it defined,
@@ -70,20 +70,20 @@ SetUser sets User field to given value.
 
 ### GetSource
 
-`func (o *UserSAMLSourceConnection) GetSource() PlexSourceConnectionSource`
+`func (o *UserSAMLSourceConnection) GetSource() Source`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *UserSAMLSourceConnection) GetSourceOk() (*PlexSourceConnectionSource, bool)`
+`func (o *UserSAMLSourceConnection) GetSourceOk() (*Source, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *UserSAMLSourceConnection) SetSource(v PlexSourceConnectionSource)`
+`func (o *UserSAMLSourceConnection) SetSource(v Source)`
 
 SetSource sets Source field to given value.
 

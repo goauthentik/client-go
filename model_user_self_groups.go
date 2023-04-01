@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserSelfGroups type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserSelfGroups{}
+
 // UserSelfGroups struct for UserSelfGroups
 type UserSelfGroups struct {
 	Name string `json:"name"`
@@ -89,14 +92,18 @@ func (o *UserSelfGroups) SetPk(v string) {
 }
 
 func (o UserSelfGroups) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["pk"] = o.Pk
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserSelfGroups) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: name is readOnly
+	// skip: pk is readOnly
+	return toSerialize, nil
 }
 
 type NullableUserSelfGroups struct {

@@ -15,16 +15,19 @@ import (
 	"encoding/json"
 )
 
+// checks if the PolicyBinding type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PolicyBinding{}
+
 // PolicyBinding PolicyBinding Serializer
 type PolicyBinding struct {
-	Pk        string                   `json:"pk"`
-	Policy    NullableString           `json:"policy,omitempty"`
-	Group     NullableString           `json:"group,omitempty"`
-	User      NullableInt32            `json:"user,omitempty"`
-	PolicyObj PolicyBindingPolicyObj   `json:"policy_obj"`
-	GroupObj  NotificationRuleGroupObj `json:"group_obj"`
-	UserObj   PolicyBindingUserObj     `json:"user_obj"`
-	Target    string                   `json:"target"`
+	Pk        string         `json:"pk"`
+	Policy    NullableString `json:"policy,omitempty"`
+	Group     NullableString `json:"group,omitempty"`
+	User      NullableInt32  `json:"user,omitempty"`
+	PolicyObj Policy         `json:"policy_obj"`
+	GroupObj  Group          `json:"group_obj"`
+	UserObj   User           `json:"user_obj"`
+	Target    string         `json:"target"`
 	// Negates the outcome of the policy. Messages are unaffected.
 	Negate  *bool `json:"negate,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
@@ -37,7 +40,7 @@ type PolicyBinding struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPolicyBinding(pk string, policyObj PolicyBindingPolicyObj, groupObj NotificationRuleGroupObj, userObj PolicyBindingUserObj, target string, order int32) *PolicyBinding {
+func NewPolicyBinding(pk string, policyObj Policy, groupObj Group, userObj User, target string, order int32) *PolicyBinding {
 	this := PolicyBinding{}
 	this.Pk = pk
 	this.PolicyObj = policyObj
@@ -82,7 +85,7 @@ func (o *PolicyBinding) SetPk(v string) {
 
 // GetPolicy returns the Policy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PolicyBinding) GetPolicy() string {
-	if o == nil || o.Policy.Get() == nil {
+	if o == nil || IsNil(o.Policy.Get()) {
 		var ret string
 		return ret
 	}
@@ -125,7 +128,7 @@ func (o *PolicyBinding) UnsetPolicy() {
 
 // GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PolicyBinding) GetGroup() string {
-	if o == nil || o.Group.Get() == nil {
+	if o == nil || IsNil(o.Group.Get()) {
 		var ret string
 		return ret
 	}
@@ -168,7 +171,7 @@ func (o *PolicyBinding) UnsetGroup() {
 
 // GetUser returns the User field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PolicyBinding) GetUser() int32 {
-	if o == nil || o.User.Get() == nil {
+	if o == nil || IsNil(o.User.Get()) {
 		var ret int32
 		return ret
 	}
@@ -210,9 +213,9 @@ func (o *PolicyBinding) UnsetUser() {
 }
 
 // GetPolicyObj returns the PolicyObj field value
-func (o *PolicyBinding) GetPolicyObj() PolicyBindingPolicyObj {
+func (o *PolicyBinding) GetPolicyObj() Policy {
 	if o == nil {
-		var ret PolicyBindingPolicyObj
+		var ret Policy
 		return ret
 	}
 
@@ -221,7 +224,7 @@ func (o *PolicyBinding) GetPolicyObj() PolicyBindingPolicyObj {
 
 // GetPolicyObjOk returns a tuple with the PolicyObj field value
 // and a boolean to check if the value has been set.
-func (o *PolicyBinding) GetPolicyObjOk() (*PolicyBindingPolicyObj, bool) {
+func (o *PolicyBinding) GetPolicyObjOk() (*Policy, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -229,14 +232,14 @@ func (o *PolicyBinding) GetPolicyObjOk() (*PolicyBindingPolicyObj, bool) {
 }
 
 // SetPolicyObj sets field value
-func (o *PolicyBinding) SetPolicyObj(v PolicyBindingPolicyObj) {
+func (o *PolicyBinding) SetPolicyObj(v Policy) {
 	o.PolicyObj = v
 }
 
 // GetGroupObj returns the GroupObj field value
-func (o *PolicyBinding) GetGroupObj() NotificationRuleGroupObj {
+func (o *PolicyBinding) GetGroupObj() Group {
 	if o == nil {
-		var ret NotificationRuleGroupObj
+		var ret Group
 		return ret
 	}
 
@@ -245,7 +248,7 @@ func (o *PolicyBinding) GetGroupObj() NotificationRuleGroupObj {
 
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *PolicyBinding) GetGroupObjOk() (*NotificationRuleGroupObj, bool) {
+func (o *PolicyBinding) GetGroupObjOk() (*Group, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -253,14 +256,14 @@ func (o *PolicyBinding) GetGroupObjOk() (*NotificationRuleGroupObj, bool) {
 }
 
 // SetGroupObj sets field value
-func (o *PolicyBinding) SetGroupObj(v NotificationRuleGroupObj) {
+func (o *PolicyBinding) SetGroupObj(v Group) {
 	o.GroupObj = v
 }
 
 // GetUserObj returns the UserObj field value
-func (o *PolicyBinding) GetUserObj() PolicyBindingUserObj {
+func (o *PolicyBinding) GetUserObj() User {
 	if o == nil {
-		var ret PolicyBindingUserObj
+		var ret User
 		return ret
 	}
 
@@ -269,7 +272,7 @@ func (o *PolicyBinding) GetUserObj() PolicyBindingUserObj {
 
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
-func (o *PolicyBinding) GetUserObjOk() (*PolicyBindingUserObj, bool) {
+func (o *PolicyBinding) GetUserObjOk() (*User, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -277,7 +280,7 @@ func (o *PolicyBinding) GetUserObjOk() (*PolicyBindingUserObj, bool) {
 }
 
 // SetUserObj sets field value
-func (o *PolicyBinding) SetUserObj(v PolicyBindingUserObj) {
+func (o *PolicyBinding) SetUserObj(v User) {
 	o.UserObj = v
 }
 
@@ -307,7 +310,7 @@ func (o *PolicyBinding) SetTarget(v string) {
 
 // GetNegate returns the Negate field value if set, zero value otherwise.
 func (o *PolicyBinding) GetNegate() bool {
-	if o == nil || o.Negate == nil {
+	if o == nil || IsNil(o.Negate) {
 		var ret bool
 		return ret
 	}
@@ -317,7 +320,7 @@ func (o *PolicyBinding) GetNegate() bool {
 // GetNegateOk returns a tuple with the Negate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PolicyBinding) GetNegateOk() (*bool, bool) {
-	if o == nil || o.Negate == nil {
+	if o == nil || IsNil(o.Negate) {
 		return nil, false
 	}
 	return o.Negate, true
@@ -325,7 +328,7 @@ func (o *PolicyBinding) GetNegateOk() (*bool, bool) {
 
 // HasNegate returns a boolean if a field has been set.
 func (o *PolicyBinding) HasNegate() bool {
-	if o != nil && o.Negate != nil {
+	if o != nil && !IsNil(o.Negate) {
 		return true
 	}
 
@@ -339,7 +342,7 @@ func (o *PolicyBinding) SetNegate(v bool) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *PolicyBinding) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -349,7 +352,7 @@ func (o *PolicyBinding) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PolicyBinding) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -357,7 +360,7 @@ func (o *PolicyBinding) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *PolicyBinding) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -395,7 +398,7 @@ func (o *PolicyBinding) SetOrder(v int32) {
 
 // GetTimeout returns the Timeout field value if set, zero value otherwise.
 func (o *PolicyBinding) GetTimeout() int32 {
-	if o == nil || o.Timeout == nil {
+	if o == nil || IsNil(o.Timeout) {
 		var ret int32
 		return ret
 	}
@@ -405,7 +408,7 @@ func (o *PolicyBinding) GetTimeout() int32 {
 // GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PolicyBinding) GetTimeoutOk() (*int32, bool) {
-	if o == nil || o.Timeout == nil {
+	if o == nil || IsNil(o.Timeout) {
 		return nil, false
 	}
 	return o.Timeout, true
@@ -413,7 +416,7 @@ func (o *PolicyBinding) GetTimeoutOk() (*int32, bool) {
 
 // HasTimeout returns a boolean if a field has been set.
 func (o *PolicyBinding) HasTimeout() bool {
-	if o != nil && o.Timeout != nil {
+	if o != nil && !IsNil(o.Timeout) {
 		return true
 	}
 
@@ -426,10 +429,16 @@ func (o *PolicyBinding) SetTimeout(v int32) {
 }
 
 func (o PolicyBinding) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PolicyBinding) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
 	if o.Policy.IsSet() {
 		toSerialize["policy"] = o.Policy.Get()
 	}
@@ -439,31 +448,21 @@ func (o PolicyBinding) MarshalJSON() ([]byte, error) {
 	if o.User.IsSet() {
 		toSerialize["user"] = o.User.Get()
 	}
-	if true {
-		toSerialize["policy_obj"] = o.PolicyObj
-	}
-	if true {
-		toSerialize["group_obj"] = o.GroupObj
-	}
-	if true {
-		toSerialize["user_obj"] = o.UserObj
-	}
-	if true {
-		toSerialize["target"] = o.Target
-	}
-	if o.Negate != nil {
+	// skip: policy_obj is readOnly
+	// skip: group_obj is readOnly
+	// skip: user_obj is readOnly
+	toSerialize["target"] = o.Target
+	if !IsNil(o.Negate) {
 		toSerialize["negate"] = o.Negate
 	}
-	if o.Enabled != nil {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if true {
-		toSerialize["order"] = o.Order
-	}
-	if o.Timeout != nil {
+	toSerialize["order"] = o.Order
+	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePolicyBinding struct {

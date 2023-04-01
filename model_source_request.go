@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SourceRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SourceRequest{}
+
 // SourceRequest Source Serializer
 type SourceRequest struct {
 	// Source's display Name.
@@ -25,11 +28,10 @@ type SourceRequest struct {
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
-	EnrollmentFlow   NullableString    `json:"enrollment_flow,omitempty"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
-	// How the source determines if an existing user should be authenticated or a new user enrolled.  * `identifier` - Use the source-specific identifier * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses. * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists. * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source. * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
-	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
-	UserPathTemplate *string                      `json:"user_path_template,omitempty"`
+	EnrollmentFlow   NullableString        `json:"enrollment_flow,omitempty"`
+	PolicyEngineMode *PolicyEngineMode     `json:"policy_engine_mode,omitempty"`
+	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
+	UserPathTemplate *string               `json:"user_path_template,omitempty"`
 }
 
 // NewSourceRequest instantiates a new SourceRequest object
@@ -101,7 +103,7 @@ func (o *SourceRequest) SetSlug(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *SourceRequest) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -111,7 +113,7 @@ func (o *SourceRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -119,7 +121,7 @@ func (o *SourceRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *SourceRequest) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -133,7 +135,7 @@ func (o *SourceRequest) SetEnabled(v bool) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SourceRequest) GetAuthenticationFlow() string {
-	if o == nil || o.AuthenticationFlow.Get() == nil {
+	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -176,7 +178,7 @@ func (o *SourceRequest) UnsetAuthenticationFlow() {
 
 // GetEnrollmentFlow returns the EnrollmentFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SourceRequest) GetEnrollmentFlow() string {
-	if o == nil || o.EnrollmentFlow.Get() == nil {
+	if o == nil || IsNil(o.EnrollmentFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -219,7 +221,7 @@ func (o *SourceRequest) UnsetEnrollmentFlow() {
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *SourceRequest) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -229,7 +231,7 @@ func (o *SourceRequest) GetPolicyEngineMode() PolicyEngineMode {
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -237,7 +239,7 @@ func (o *SourceRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *SourceRequest) HasPolicyEngineMode() bool {
-	if o != nil && o.PolicyEngineMode != nil {
+	if o != nil && !IsNil(o.PolicyEngineMode) {
 		return true
 	}
 
@@ -249,52 +251,41 @@ func (o *SourceRequest) SetPolicyEngineMode(v PolicyEngineMode) {
 	o.PolicyEngineMode = &v
 }
 
-// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
 func (o *SourceRequest) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || o.UserMatchingMode.Get() == nil {
+	if o == nil || IsNil(o.UserMatchingMode) {
 		var ret UserMatchingModeEnum
 		return ret
 	}
-	return *o.UserMatchingMode.Get()
+	return *o.UserMatchingMode
 }
 
 // GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SourceRequest) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UserMatchingMode) {
 		return nil, false
 	}
-	return o.UserMatchingMode.Get(), o.UserMatchingMode.IsSet()
+	return o.UserMatchingMode, true
 }
 
 // HasUserMatchingMode returns a boolean if a field has been set.
 func (o *SourceRequest) HasUserMatchingMode() bool {
-	if o != nil && o.UserMatchingMode.IsSet() {
+	if o != nil && !IsNil(o.UserMatchingMode) {
 		return true
 	}
 
 	return false
 }
 
-// SetUserMatchingMode gets a reference to the given NullableUserMatchingModeEnum and assigns it to the UserMatchingMode field.
+// SetUserMatchingMode gets a reference to the given UserMatchingModeEnum and assigns it to the UserMatchingMode field.
 func (o *SourceRequest) SetUserMatchingMode(v UserMatchingModeEnum) {
-	o.UserMatchingMode.Set(&v)
-}
-
-// SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
-func (o *SourceRequest) SetUserMatchingModeNil() {
-	o.UserMatchingMode.Set(nil)
-}
-
-// UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
-func (o *SourceRequest) UnsetUserMatchingMode() {
-	o.UserMatchingMode.Unset()
+	o.UserMatchingMode = &v
 }
 
 // GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
 func (o *SourceRequest) GetUserPathTemplate() string {
-	if o == nil || o.UserPathTemplate == nil {
+	if o == nil || IsNil(o.UserPathTemplate) {
 		var ret string
 		return ret
 	}
@@ -304,7 +295,7 @@ func (o *SourceRequest) GetUserPathTemplate() string {
 // GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceRequest) GetUserPathTemplateOk() (*string, bool) {
-	if o == nil || o.UserPathTemplate == nil {
+	if o == nil || IsNil(o.UserPathTemplate) {
 		return nil, false
 	}
 	return o.UserPathTemplate, true
@@ -312,7 +303,7 @@ func (o *SourceRequest) GetUserPathTemplateOk() (*string, bool) {
 
 // HasUserPathTemplate returns a boolean if a field has been set.
 func (o *SourceRequest) HasUserPathTemplate() bool {
-	if o != nil && o.UserPathTemplate != nil {
+	if o != nil && !IsNil(o.UserPathTemplate) {
 		return true
 	}
 
@@ -325,14 +316,18 @@ func (o *SourceRequest) SetUserPathTemplate(v string) {
 }
 
 func (o SourceRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SourceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["slug"] = o.Slug
-	}
-	if o.Enabled != nil {
+	toSerialize["name"] = o.Name
+	toSerialize["slug"] = o.Slug
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.AuthenticationFlow.IsSet() {
@@ -341,16 +336,16 @@ func (o SourceRequest) MarshalJSON() ([]byte, error) {
 	if o.EnrollmentFlow.IsSet() {
 		toSerialize["enrollment_flow"] = o.EnrollmentFlow.Get()
 	}
-	if o.PolicyEngineMode != nil {
+	if !IsNil(o.PolicyEngineMode) {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if o.UserMatchingMode.IsSet() {
-		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
+	if !IsNil(o.UserMatchingMode) {
+		toSerialize["user_matching_mode"] = o.UserMatchingMode
 	}
-	if o.UserPathTemplate != nil {
+	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableSourceRequest struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserAccountRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserAccountRequest{}
+
 // UserAccountRequest Account adding/removing operations
 type UserAccountRequest struct {
 	Pk int32 `json:"pk"`
@@ -63,11 +66,17 @@ func (o *UserAccountRequest) SetPk(v int32) {
 }
 
 func (o UserAccountRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserAccountRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	return toSerialize, nil
 }
 
 type NullableUserAccountRequest struct {

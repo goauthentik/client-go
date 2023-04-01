@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceConnectionState type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceConnectionState{}
+
 // ServiceConnectionState Serializer for Service connection state
 type ServiceConnectionState struct {
 	Healthy bool   `json:"healthy"`
@@ -89,14 +92,18 @@ func (o *ServiceConnectionState) SetVersion(v string) {
 }
 
 func (o ServiceConnectionState) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["healthy"] = o.Healthy
-	}
-	if true {
-		toSerialize["version"] = o.Version
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ServiceConnectionState) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: healthy is readOnly
+	// skip: version is readOnly
+	return toSerialize, nil
 }
 
 type NullableServiceConnectionState struct {

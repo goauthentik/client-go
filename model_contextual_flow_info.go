@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ContextualFlowInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ContextualFlowInfo{}
+
 // ContextualFlowInfo Contextual flow information for a challenge
 type ContextualFlowInfo struct {
 	Title      *string    `json:"title,omitempty"`
@@ -44,7 +47,7 @@ func NewContextualFlowInfoWithDefaults() *ContextualFlowInfo {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *ContextualFlowInfo) GetTitle() string {
-	if o == nil || o.Title == nil {
+	if o == nil || IsNil(o.Title) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *ContextualFlowInfo) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContextualFlowInfo) GetTitleOk() (*string, bool) {
-	if o == nil || o.Title == nil {
+	if o == nil || IsNil(o.Title) {
 		return nil, false
 	}
 	return o.Title, true
@@ -62,7 +65,7 @@ func (o *ContextualFlowInfo) GetTitleOk() (*string, bool) {
 
 // HasTitle returns a boolean if a field has been set.
 func (o *ContextualFlowInfo) HasTitle() bool {
-	if o != nil && o.Title != nil {
+	if o != nil && !IsNil(o.Title) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *ContextualFlowInfo) SetTitle(v string) {
 
 // GetBackground returns the Background field value if set, zero value otherwise.
 func (o *ContextualFlowInfo) GetBackground() string {
-	if o == nil || o.Background == nil {
+	if o == nil || IsNil(o.Background) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *ContextualFlowInfo) GetBackground() string {
 // GetBackgroundOk returns a tuple with the Background field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContextualFlowInfo) GetBackgroundOk() (*string, bool) {
-	if o == nil || o.Background == nil {
+	if o == nil || IsNil(o.Background) {
 		return nil, false
 	}
 	return o.Background, true
@@ -94,7 +97,7 @@ func (o *ContextualFlowInfo) GetBackgroundOk() (*string, bool) {
 
 // HasBackground returns a boolean if a field has been set.
 func (o *ContextualFlowInfo) HasBackground() bool {
-	if o != nil && o.Background != nil {
+	if o != nil && !IsNil(o.Background) {
 		return true
 	}
 
@@ -155,20 +158,24 @@ func (o *ContextualFlowInfo) SetLayout(v LayoutEnum) {
 }
 
 func (o ContextualFlowInfo) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Title != nil {
-		toSerialize["title"] = o.Title
-	}
-	if o.Background != nil {
-		toSerialize["background"] = o.Background
-	}
-	if true {
-		toSerialize["cancel_url"] = o.CancelUrl
-	}
-	if true {
-		toSerialize["layout"] = o.Layout
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ContextualFlowInfo) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
+	}
+	if !IsNil(o.Background) {
+		toSerialize["background"] = o.Background
+	}
+	toSerialize["cancel_url"] = o.CancelUrl
+	toSerialize["layout"] = o.Layout
+	return toSerialize, nil
 }
 
 type NullableContextualFlowInfo struct {

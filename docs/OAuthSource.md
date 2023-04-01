@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
-**UserMatchingMode** | Pointer to [**NullableUserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled.  * &#x60;identifier&#x60; - Use the source-specific identifier * &#x60;email_link&#x60; - Link to a user with identical email address. Can have security implications when a source doesn&#39;t validate email addresses. * &#x60;email_deny&#x60; - Use the user&#39;s email address, but deny enrollment when the email address already exists. * &#x60;username_link&#x60; - Link to a user with identical username. Can have security implications when a username is used with another source. * &#x60;username_deny&#x60; - Use the user&#39;s username, but deny enrollment when the username already exists. | [optional] 
+**UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) |  | [optional] 
 **Managed** | **NullableString** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 **Icon** | **NullableString** | Get the URL to the Icon. If the name is /static or starts with http it is returned as-is | [readonly] 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **ConsumerKey** | **string** |  | 
 **CallbackUrl** | **string** | Get OAuth Callback URL | [readonly] 
 **AdditionalScopes** | Pointer to **string** |  | [optional] 
-**Type** | [**OAuthSourceType**](OAuthSourceType.md) |  | 
+**Type** | [**SourceType**](SourceType.md) |  | [readonly] 
 **OidcWellKnownUrl** | Pointer to **string** |  | [optional] 
 **OidcJwksUrl** | Pointer to **string** |  | [optional] 
 **OidcJwks** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 
 ### NewOAuthSource
 
-`func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ OAuthSourceType, ) *OAuthSource`
+`func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ SourceType, ) *OAuthSource`
 
 NewOAuthSource instantiates a new OAuthSource object
 This constructor will assign default values to properties that have it defined,
@@ -336,16 +336,6 @@ SetUserMatchingMode sets UserMatchingMode field to given value.
 
 HasUserMatchingMode returns a boolean if a field has been set.
 
-### SetUserMatchingModeNil
-
-`func (o *OAuthSource) SetUserMatchingModeNil(b bool)`
-
- SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
-
-### UnsetUserMatchingMode
-`func (o *OAuthSource) UnsetUserMatchingMode()`
-
-UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
 ### GetManaged
 
 `func (o *OAuthSource) GetManaged() string`
@@ -658,20 +648,20 @@ HasAdditionalScopes returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *OAuthSource) GetType() OAuthSourceType`
+`func (o *OAuthSource) GetType() SourceType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *OAuthSource) GetTypeOk() (*OAuthSourceType, bool)`
+`func (o *OAuthSource) GetTypeOk() (*SourceType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *OAuthSource) SetType(v OAuthSourceType)`
+`func (o *OAuthSource) SetType(v SourceType)`
 
 SetType sets Type field to given value.
 

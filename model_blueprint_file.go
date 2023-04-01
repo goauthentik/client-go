@@ -16,19 +16,22 @@ import (
 	"time"
 )
 
+// checks if the BlueprintFile type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BlueprintFile{}
+
 // BlueprintFile struct for BlueprintFile
 type BlueprintFile struct {
-	Path  string            `json:"path"`
-	LastM time.Time         `json:"last_m"`
-	Hash  string            `json:"hash"`
-	Meta  BlueprintFileMeta `json:"meta"`
+	Path  string    `json:"path"`
+	LastM time.Time `json:"last_m"`
+	Hash  string    `json:"hash"`
+	Meta  Metadata  `json:"meta"`
 }
 
 // NewBlueprintFile instantiates a new BlueprintFile object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlueprintFile(path string, lastM time.Time, hash string, meta BlueprintFileMeta) *BlueprintFile {
+func NewBlueprintFile(path string, lastM time.Time, hash string, meta Metadata) *BlueprintFile {
 	this := BlueprintFile{}
 	this.Path = path
 	this.LastM = lastM
@@ -118,9 +121,9 @@ func (o *BlueprintFile) SetHash(v string) {
 }
 
 // GetMeta returns the Meta field value
-func (o *BlueprintFile) GetMeta() BlueprintFileMeta {
+func (o *BlueprintFile) GetMeta() Metadata {
 	if o == nil {
-		var ret BlueprintFileMeta
+		var ret Metadata
 		return ret
 	}
 
@@ -129,7 +132,7 @@ func (o *BlueprintFile) GetMeta() BlueprintFileMeta {
 
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
-func (o *BlueprintFile) GetMetaOk() (*BlueprintFileMeta, bool) {
+func (o *BlueprintFile) GetMetaOk() (*Metadata, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -137,25 +140,25 @@ func (o *BlueprintFile) GetMetaOk() (*BlueprintFileMeta, bool) {
 }
 
 // SetMeta sets field value
-func (o *BlueprintFile) SetMeta(v BlueprintFileMeta) {
+func (o *BlueprintFile) SetMeta(v Metadata) {
 	o.Meta = v
 }
 
 func (o BlueprintFile) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["path"] = o.Path
-	}
-	if true {
-		toSerialize["last_m"] = o.LastM
-	}
-	if true {
-		toSerialize["hash"] = o.Hash
-	}
-	if true {
-		toSerialize["meta"] = o.Meta
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BlueprintFile) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["path"] = o.Path
+	toSerialize["last_m"] = o.LastM
+	toSerialize["hash"] = o.Hash
+	// skip: meta is readOnly
+	return toSerialize, nil
 }
 
 type NullableBlueprintFile struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FilePathRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FilePathRequest{}
+
 // FilePathRequest Serializer to upload file
 type FilePathRequest struct {
 	Url string `json:"url"`
@@ -63,11 +66,17 @@ func (o *FilePathRequest) SetUrl(v string) {
 }
 
 func (o FilePathRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["url"] = o.Url
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o FilePathRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["url"] = o.Url
+	return toSerialize, nil
 }
 
 type NullableFilePathRequest struct {

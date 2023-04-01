@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OAuthDeviceCodeChallengeResponseRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OAuthDeviceCodeChallengeResponseRequest{}
+
 // OAuthDeviceCodeChallengeResponseRequest Response that includes the user-entered device code
 type OAuthDeviceCodeChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
@@ -45,7 +48,7 @@ func NewOAuthDeviceCodeChallengeResponseRequestWithDefaults() *OAuthDeviceCodeCh
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *OAuthDeviceCodeChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *OAuthDeviceCodeChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OAuthDeviceCodeChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -63,7 +66,7 @@ func (o *OAuthDeviceCodeChallengeResponseRequest) GetComponentOk() (*string, boo
 
 // HasComponent returns a boolean if a field has been set.
 func (o *OAuthDeviceCodeChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -100,14 +103,20 @@ func (o *OAuthDeviceCodeChallengeResponseRequest) SetCode(v int32) {
 }
 
 func (o OAuthDeviceCodeChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["code"] = o.Code
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OAuthDeviceCodeChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	toSerialize["code"] = o.Code
+	return toSerialize, nil
 }
 
 type NullableOAuthDeviceCodeChallengeResponseRequest struct {

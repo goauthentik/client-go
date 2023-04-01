@@ -14,7 +14,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
@@ -83,10 +83,10 @@ func (a *SchemaApiService) SchemaRetrieveExecute(r ApiSchemaRetrieveRequest) (ma
 	localVarFormParams := url.Values{}
 
 	if r.format != nil {
-		localVarQueryParams.Add("format", parameterToString(*r.format, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "format", r.format, "")
 	}
 	if r.lang != nil {
-		localVarQueryParams.Add("lang", parameterToString(*r.lang, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "lang", r.lang, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -129,9 +129,9 @@ func (a *SchemaApiService) SchemaRetrieveExecute(r ApiSchemaRetrieveRequest) (ma
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -148,6 +148,7 @@ func (a *SchemaApiService) SchemaRetrieveExecute(r ApiSchemaRetrieveRequest) (ma
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -158,6 +159,7 @@ func (a *SchemaApiService) SchemaRetrieveExecute(r ApiSchemaRetrieveRequest) (ma
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

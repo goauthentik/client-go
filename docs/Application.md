@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Application&#39;s display Name. | 
 **Slug** | **string** | Internal application name, used in URLs. | 
 **Provider** | Pointer to **NullableInt32** |  | [optional] 
-**ProviderObj** | [**ApplicationProviderObj**](ApplicationProviderObj.md) |  | 
+**ProviderObj** | [**Provider**](Provider.md) |  | [readonly] 
 **LaunchUrl** | **NullableString** | Allow formatting of launch URL | [readonly] 
 **OpenInNewTab** | Pointer to **bool** | Open launch URL in a new browser tab or window. | [optional] 
 **MetaLaunchUrl** | Pointer to **string** |  | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewApplication
 
-`func NewApplication(pk string, name string, slug string, providerObj ApplicationProviderObj, launchUrl NullableString, metaIcon NullableString, ) *Application`
+`func NewApplication(pk string, name string, slug string, providerObj Provider, launchUrl NullableString, metaIcon NullableString, ) *Application`
 
 NewApplication instantiates a new Application object
 This constructor will assign default values to properties that have it defined,
@@ -134,20 +134,20 @@ HasProvider returns a boolean if a field has been set.
 UnsetProvider ensures that no value is present for Provider, not even an explicit nil
 ### GetProviderObj
 
-`func (o *Application) GetProviderObj() ApplicationProviderObj`
+`func (o *Application) GetProviderObj() Provider`
 
 GetProviderObj returns the ProviderObj field if non-nil, zero value otherwise.
 
 ### GetProviderObjOk
 
-`func (o *Application) GetProviderObjOk() (*ApplicationProviderObj, bool)`
+`func (o *Application) GetProviderObjOk() (*Provider, bool)`
 
 GetProviderObjOk returns a tuple with the ProviderObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProviderObj
 
-`func (o *Application) SetProviderObj(v ApplicationProviderObj)`
+`func (o *Application) SetProviderObj(v Provider)`
 
 SetProviderObj sets ProviderObj field to given value.
 

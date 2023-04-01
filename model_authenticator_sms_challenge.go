@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthenticatorSMSChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorSMSChallenge{}
+
 // AuthenticatorSMSChallenge SMS Setup challenge
 type AuthenticatorSMSChallenge struct {
 	Type                ChallengeChoices          `json:"type"`
@@ -80,7 +83,7 @@ func (o *AuthenticatorSMSChallenge) SetType(v ChallengeChoices) {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *AuthenticatorSMSChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *AuthenticatorSMSChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorSMSChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -98,7 +101,7 @@ func (o *AuthenticatorSMSChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) 
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *AuthenticatorSMSChallenge) HasFlowInfo() bool {
-	if o != nil && o.FlowInfo != nil {
+	if o != nil && !IsNil(o.FlowInfo) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *AuthenticatorSMSChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *AuthenticatorSMSChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *AuthenticatorSMSChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorSMSChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -130,7 +133,7 @@ func (o *AuthenticatorSMSChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *AuthenticatorSMSChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *AuthenticatorSMSChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *AuthenticatorSMSChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *AuthenticatorSMSChallenge) GetResponseErrors() map[string][]ErrorDetail
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorSMSChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -162,7 +165,7 @@ func (o *AuthenticatorSMSChallenge) GetResponseErrorsOk() (*map[string][]ErrorDe
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *AuthenticatorSMSChallenge) HasResponseErrors() bool {
-	if o != nil && o.ResponseErrors != nil {
+	if o != nil && !IsNil(o.ResponseErrors) {
 		return true
 	}
 
@@ -224,7 +227,7 @@ func (o *AuthenticatorSMSChallenge) SetPendingUserAvatar(v string) {
 
 // GetPhoneNumberRequired returns the PhoneNumberRequired field value if set, zero value otherwise.
 func (o *AuthenticatorSMSChallenge) GetPhoneNumberRequired() bool {
-	if o == nil || o.PhoneNumberRequired == nil {
+	if o == nil || IsNil(o.PhoneNumberRequired) {
 		var ret bool
 		return ret
 	}
@@ -234,7 +237,7 @@ func (o *AuthenticatorSMSChallenge) GetPhoneNumberRequired() bool {
 // GetPhoneNumberRequiredOk returns a tuple with the PhoneNumberRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorSMSChallenge) GetPhoneNumberRequiredOk() (*bool, bool) {
-	if o == nil || o.PhoneNumberRequired == nil {
+	if o == nil || IsNil(o.PhoneNumberRequired) {
 		return nil, false
 	}
 	return o.PhoneNumberRequired, true
@@ -242,7 +245,7 @@ func (o *AuthenticatorSMSChallenge) GetPhoneNumberRequiredOk() (*bool, bool) {
 
 // HasPhoneNumberRequired returns a boolean if a field has been set.
 func (o *AuthenticatorSMSChallenge) HasPhoneNumberRequired() bool {
-	if o != nil && o.PhoneNumberRequired != nil {
+	if o != nil && !IsNil(o.PhoneNumberRequired) {
 		return true
 	}
 
@@ -255,29 +258,31 @@ func (o *AuthenticatorSMSChallenge) SetPhoneNumberRequired(v bool) {
 }
 
 func (o AuthenticatorSMSChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if o.FlowInfo != nil {
-		toSerialize["flow_info"] = o.FlowInfo
-	}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.ResponseErrors != nil {
-		toSerialize["response_errors"] = o.ResponseErrors
-	}
-	if true {
-		toSerialize["pending_user"] = o.PendingUser
-	}
-	if true {
-		toSerialize["pending_user_avatar"] = o.PendingUserAvatar
-	}
-	if o.PhoneNumberRequired != nil {
-		toSerialize["phone_number_required"] = o.PhoneNumberRequired
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorSMSChallenge) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
+	if !IsNil(o.FlowInfo) {
+		toSerialize["flow_info"] = o.FlowInfo
+	}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.ResponseErrors) {
+		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	toSerialize["pending_user"] = o.PendingUser
+	toSerialize["pending_user_avatar"] = o.PendingUserAvatar
+	if !IsNil(o.PhoneNumberRequired) {
+		toSerialize["phone_number_required"] = o.PhoneNumberRequired
+	}
+	return toSerialize, nil
 }
 
 type NullableAuthenticatorSMSChallenge struct {

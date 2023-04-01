@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Config type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Config{}
+
 // Config Serialize authentik Config into DRF Object
 type Config struct {
 	ErrorReporting         ErrorReportingConfig `json:"error_reporting"`
@@ -193,26 +196,22 @@ func (o *Config) SetCacheTimeoutReputation(v int32) {
 }
 
 func (o Config) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["error_reporting"] = o.ErrorReporting
-	}
-	if true {
-		toSerialize["capabilities"] = o.Capabilities
-	}
-	if true {
-		toSerialize["cache_timeout"] = o.CacheTimeout
-	}
-	if true {
-		toSerialize["cache_timeout_flows"] = o.CacheTimeoutFlows
-	}
-	if true {
-		toSerialize["cache_timeout_policies"] = o.CacheTimeoutPolicies
-	}
-	if true {
-		toSerialize["cache_timeout_reputation"] = o.CacheTimeoutReputation
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Config) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["error_reporting"] = o.ErrorReporting
+	toSerialize["capabilities"] = o.Capabilities
+	toSerialize["cache_timeout"] = o.CacheTimeout
+	toSerialize["cache_timeout_flows"] = o.CacheTimeoutFlows
+	toSerialize["cache_timeout_policies"] = o.CacheTimeoutPolicies
+	toSerialize["cache_timeout_reputation"] = o.CacheTimeoutReputation
+	return toSerialize, nil
 }
 
 type NullableConfig struct {

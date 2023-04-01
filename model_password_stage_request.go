@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PasswordStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PasswordStageRequest{}
+
 // PasswordStageRequest PasswordStage Serializer
 type PasswordStageRequest struct {
 	Name    string           `json:"name"`
@@ -72,7 +75,7 @@ func (o *PasswordStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PasswordStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *PasswordStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -90,7 +93,7 @@ func (o *PasswordStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PasswordStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -128,7 +131,7 @@ func (o *PasswordStageRequest) SetBackends(v []BackendsEnum) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PasswordStageRequest) GetConfigureFlow() string {
-	if o == nil || o.ConfigureFlow.Get() == nil {
+	if o == nil || IsNil(o.ConfigureFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -171,7 +174,7 @@ func (o *PasswordStageRequest) UnsetConfigureFlow() {
 
 // GetFailedAttemptsBeforeCancel returns the FailedAttemptsBeforeCancel field value if set, zero value otherwise.
 func (o *PasswordStageRequest) GetFailedAttemptsBeforeCancel() int32 {
-	if o == nil || o.FailedAttemptsBeforeCancel == nil {
+	if o == nil || IsNil(o.FailedAttemptsBeforeCancel) {
 		var ret int32
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *PasswordStageRequest) GetFailedAttemptsBeforeCancel() int32 {
 // GetFailedAttemptsBeforeCancelOk returns a tuple with the FailedAttemptsBeforeCancel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordStageRequest) GetFailedAttemptsBeforeCancelOk() (*int32, bool) {
-	if o == nil || o.FailedAttemptsBeforeCancel == nil {
+	if o == nil || IsNil(o.FailedAttemptsBeforeCancel) {
 		return nil, false
 	}
 	return o.FailedAttemptsBeforeCancel, true
@@ -189,7 +192,7 @@ func (o *PasswordStageRequest) GetFailedAttemptsBeforeCancelOk() (*int32, bool) 
 
 // HasFailedAttemptsBeforeCancel returns a boolean if a field has been set.
 func (o *PasswordStageRequest) HasFailedAttemptsBeforeCancel() bool {
-	if o != nil && o.FailedAttemptsBeforeCancel != nil {
+	if o != nil && !IsNil(o.FailedAttemptsBeforeCancel) {
 		return true
 	}
 
@@ -202,23 +205,27 @@ func (o *PasswordStageRequest) SetFailedAttemptsBeforeCancel(v int32) {
 }
 
 func (o PasswordStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.FlowSet != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o PasswordStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	if true {
-		toSerialize["backends"] = o.Backends
-	}
+	toSerialize["backends"] = o.Backends
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if o.FailedAttemptsBeforeCancel != nil {
+	if !IsNil(o.FailedAttemptsBeforeCancel) {
 		toSerialize["failed_attempts_before_cancel"] = o.FailedAttemptsBeforeCancel
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePasswordStageRequest struct {

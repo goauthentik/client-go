@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Identifier** | **string** |  | 
 **Intent** | Pointer to [**IntentEnum**](IntentEnum.md) |  | [optional] 
 **User** | Pointer to **int32** |  | [optional] 
-**UserObj** | [**PolicyBindingUserObj**](PolicyBindingUserObj.md) |  | 
+**UserObj** | [**User**](User.md) |  | [readonly] 
 **Description** | Pointer to **string** |  | [optional] 
 **Expires** | Pointer to **time.Time** |  | [optional] 
 **Expiring** | Pointer to **bool** |  | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewToken
 
-`func NewToken(pk string, identifier string, userObj PolicyBindingUserObj, ) *Token`
+`func NewToken(pk string, identifier string, userObj User, ) *Token`
 
 NewToken instantiates a new Token object
 This constructor will assign default values to properties that have it defined,
@@ -160,20 +160,20 @@ HasUser returns a boolean if a field has been set.
 
 ### GetUserObj
 
-`func (o *Token) GetUserObj() PolicyBindingUserObj`
+`func (o *Token) GetUserObj() User`
 
 GetUserObj returns the UserObj field if non-nil, zero value otherwise.
 
 ### GetUserObjOk
 
-`func (o *Token) GetUserObjOk() (*PolicyBindingUserObj, bool)`
+`func (o *Token) GetUserObjOk() (*User, bool)`
 
 GetUserObjOk returns a tuple with the UserObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserObj
 
-`func (o *Token) SetUserObj(v PolicyBindingUserObj)`
+`func (o *Token) SetUserObj(v User)`
 
 SetUserObj sets UserObj field to given value.
 

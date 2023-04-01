@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LDAPPropertyMappingRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LDAPPropertyMappingRequest{}
+
 // LDAPPropertyMappingRequest LDAP PropertyMapping Serializer
 type LDAPPropertyMappingRequest struct {
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
@@ -46,7 +49,7 @@ func NewLDAPPropertyMappingRequestWithDefaults() *LDAPPropertyMappingRequest {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LDAPPropertyMappingRequest) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -160,20 +163,22 @@ func (o *LDAPPropertyMappingRequest) SetObjectField(v string) {
 }
 
 func (o LDAPPropertyMappingRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o LDAPPropertyMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["expression"] = o.Expression
-	}
-	if true {
-		toSerialize["object_field"] = o.ObjectField
-	}
-	return json.Marshal(toSerialize)
+	toSerialize["name"] = o.Name
+	toSerialize["expression"] = o.Expression
+	toSerialize["object_field"] = o.ObjectField
+	return toSerialize, nil
 }
 
 type NullableLDAPPropertyMappingRequest struct {

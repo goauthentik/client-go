@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EmailStage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EmailStage{}
+
 // EmailStage EmailStage Serializer
 type EmailStage struct {
 	Pk   string `json:"pk"`
@@ -214,7 +217,7 @@ func (o *EmailStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *EmailStage) GetFlowSet() []FlowSet {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
@@ -224,7 +227,7 @@ func (o *EmailStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -232,7 +235,7 @@ func (o *EmailStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *EmailStage) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -246,7 +249,7 @@ func (o *EmailStage) SetFlowSet(v []FlowSet) {
 
 // GetUseGlobalSettings returns the UseGlobalSettings field value if set, zero value otherwise.
 func (o *EmailStage) GetUseGlobalSettings() bool {
-	if o == nil || o.UseGlobalSettings == nil {
+	if o == nil || IsNil(o.UseGlobalSettings) {
 		var ret bool
 		return ret
 	}
@@ -256,7 +259,7 @@ func (o *EmailStage) GetUseGlobalSettings() bool {
 // GetUseGlobalSettingsOk returns a tuple with the UseGlobalSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetUseGlobalSettingsOk() (*bool, bool) {
-	if o == nil || o.UseGlobalSettings == nil {
+	if o == nil || IsNil(o.UseGlobalSettings) {
 		return nil, false
 	}
 	return o.UseGlobalSettings, true
@@ -264,7 +267,7 @@ func (o *EmailStage) GetUseGlobalSettingsOk() (*bool, bool) {
 
 // HasUseGlobalSettings returns a boolean if a field has been set.
 func (o *EmailStage) HasUseGlobalSettings() bool {
-	if o != nil && o.UseGlobalSettings != nil {
+	if o != nil && !IsNil(o.UseGlobalSettings) {
 		return true
 	}
 
@@ -278,7 +281,7 @@ func (o *EmailStage) SetUseGlobalSettings(v bool) {
 
 // GetHost returns the Host field value if set, zero value otherwise.
 func (o *EmailStage) GetHost() string {
-	if o == nil || o.Host == nil {
+	if o == nil || IsNil(o.Host) {
 		var ret string
 		return ret
 	}
@@ -288,7 +291,7 @@ func (o *EmailStage) GetHost() string {
 // GetHostOk returns a tuple with the Host field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetHostOk() (*string, bool) {
-	if o == nil || o.Host == nil {
+	if o == nil || IsNil(o.Host) {
 		return nil, false
 	}
 	return o.Host, true
@@ -296,7 +299,7 @@ func (o *EmailStage) GetHostOk() (*string, bool) {
 
 // HasHost returns a boolean if a field has been set.
 func (o *EmailStage) HasHost() bool {
-	if o != nil && o.Host != nil {
+	if o != nil && !IsNil(o.Host) {
 		return true
 	}
 
@@ -310,7 +313,7 @@ func (o *EmailStage) SetHost(v string) {
 
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *EmailStage) GetPort() int32 {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		var ret int32
 		return ret
 	}
@@ -320,7 +323,7 @@ func (o *EmailStage) GetPort() int32 {
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetPortOk() (*int32, bool) {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
 	return o.Port, true
@@ -328,7 +331,7 @@ func (o *EmailStage) GetPortOk() (*int32, bool) {
 
 // HasPort returns a boolean if a field has been set.
 func (o *EmailStage) HasPort() bool {
-	if o != nil && o.Port != nil {
+	if o != nil && !IsNil(o.Port) {
 		return true
 	}
 
@@ -342,7 +345,7 @@ func (o *EmailStage) SetPort(v int32) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *EmailStage) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -352,7 +355,7 @@ func (o *EmailStage) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -360,7 +363,7 @@ func (o *EmailStage) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *EmailStage) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -374,7 +377,7 @@ func (o *EmailStage) SetUsername(v string) {
 
 // GetUseTls returns the UseTls field value if set, zero value otherwise.
 func (o *EmailStage) GetUseTls() bool {
-	if o == nil || o.UseTls == nil {
+	if o == nil || IsNil(o.UseTls) {
 		var ret bool
 		return ret
 	}
@@ -384,7 +387,7 @@ func (o *EmailStage) GetUseTls() bool {
 // GetUseTlsOk returns a tuple with the UseTls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetUseTlsOk() (*bool, bool) {
-	if o == nil || o.UseTls == nil {
+	if o == nil || IsNil(o.UseTls) {
 		return nil, false
 	}
 	return o.UseTls, true
@@ -392,7 +395,7 @@ func (o *EmailStage) GetUseTlsOk() (*bool, bool) {
 
 // HasUseTls returns a boolean if a field has been set.
 func (o *EmailStage) HasUseTls() bool {
-	if o != nil && o.UseTls != nil {
+	if o != nil && !IsNil(o.UseTls) {
 		return true
 	}
 
@@ -406,7 +409,7 @@ func (o *EmailStage) SetUseTls(v bool) {
 
 // GetUseSsl returns the UseSsl field value if set, zero value otherwise.
 func (o *EmailStage) GetUseSsl() bool {
-	if o == nil || o.UseSsl == nil {
+	if o == nil || IsNil(o.UseSsl) {
 		var ret bool
 		return ret
 	}
@@ -416,7 +419,7 @@ func (o *EmailStage) GetUseSsl() bool {
 // GetUseSslOk returns a tuple with the UseSsl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetUseSslOk() (*bool, bool) {
-	if o == nil || o.UseSsl == nil {
+	if o == nil || IsNil(o.UseSsl) {
 		return nil, false
 	}
 	return o.UseSsl, true
@@ -424,7 +427,7 @@ func (o *EmailStage) GetUseSslOk() (*bool, bool) {
 
 // HasUseSsl returns a boolean if a field has been set.
 func (o *EmailStage) HasUseSsl() bool {
-	if o != nil && o.UseSsl != nil {
+	if o != nil && !IsNil(o.UseSsl) {
 		return true
 	}
 
@@ -438,7 +441,7 @@ func (o *EmailStage) SetUseSsl(v bool) {
 
 // GetTimeout returns the Timeout field value if set, zero value otherwise.
 func (o *EmailStage) GetTimeout() int32 {
-	if o == nil || o.Timeout == nil {
+	if o == nil || IsNil(o.Timeout) {
 		var ret int32
 		return ret
 	}
@@ -448,7 +451,7 @@ func (o *EmailStage) GetTimeout() int32 {
 // GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetTimeoutOk() (*int32, bool) {
-	if o == nil || o.Timeout == nil {
+	if o == nil || IsNil(o.Timeout) {
 		return nil, false
 	}
 	return o.Timeout, true
@@ -456,7 +459,7 @@ func (o *EmailStage) GetTimeoutOk() (*int32, bool) {
 
 // HasTimeout returns a boolean if a field has been set.
 func (o *EmailStage) HasTimeout() bool {
-	if o != nil && o.Timeout != nil {
+	if o != nil && !IsNil(o.Timeout) {
 		return true
 	}
 
@@ -470,7 +473,7 @@ func (o *EmailStage) SetTimeout(v int32) {
 
 // GetFromAddress returns the FromAddress field value if set, zero value otherwise.
 func (o *EmailStage) GetFromAddress() string {
-	if o == nil || o.FromAddress == nil {
+	if o == nil || IsNil(o.FromAddress) {
 		var ret string
 		return ret
 	}
@@ -480,7 +483,7 @@ func (o *EmailStage) GetFromAddress() string {
 // GetFromAddressOk returns a tuple with the FromAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetFromAddressOk() (*string, bool) {
-	if o == nil || o.FromAddress == nil {
+	if o == nil || IsNil(o.FromAddress) {
 		return nil, false
 	}
 	return o.FromAddress, true
@@ -488,7 +491,7 @@ func (o *EmailStage) GetFromAddressOk() (*string, bool) {
 
 // HasFromAddress returns a boolean if a field has been set.
 func (o *EmailStage) HasFromAddress() bool {
-	if o != nil && o.FromAddress != nil {
+	if o != nil && !IsNil(o.FromAddress) {
 		return true
 	}
 
@@ -502,7 +505,7 @@ func (o *EmailStage) SetFromAddress(v string) {
 
 // GetTokenExpiry returns the TokenExpiry field value if set, zero value otherwise.
 func (o *EmailStage) GetTokenExpiry() int32 {
-	if o == nil || o.TokenExpiry == nil {
+	if o == nil || IsNil(o.TokenExpiry) {
 		var ret int32
 		return ret
 	}
@@ -512,7 +515,7 @@ func (o *EmailStage) GetTokenExpiry() int32 {
 // GetTokenExpiryOk returns a tuple with the TokenExpiry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetTokenExpiryOk() (*int32, bool) {
-	if o == nil || o.TokenExpiry == nil {
+	if o == nil || IsNil(o.TokenExpiry) {
 		return nil, false
 	}
 	return o.TokenExpiry, true
@@ -520,7 +523,7 @@ func (o *EmailStage) GetTokenExpiryOk() (*int32, bool) {
 
 // HasTokenExpiry returns a boolean if a field has been set.
 func (o *EmailStage) HasTokenExpiry() bool {
-	if o != nil && o.TokenExpiry != nil {
+	if o != nil && !IsNil(o.TokenExpiry) {
 		return true
 	}
 
@@ -534,7 +537,7 @@ func (o *EmailStage) SetTokenExpiry(v int32) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *EmailStage) GetSubject() string {
-	if o == nil || o.Subject == nil {
+	if o == nil || IsNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -544,7 +547,7 @@ func (o *EmailStage) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetSubjectOk() (*string, bool) {
-	if o == nil || o.Subject == nil {
+	if o == nil || IsNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -552,7 +555,7 @@ func (o *EmailStage) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *EmailStage) HasSubject() bool {
-	if o != nil && o.Subject != nil {
+	if o != nil && !IsNil(o.Subject) {
 		return true
 	}
 
@@ -566,7 +569,7 @@ func (o *EmailStage) SetSubject(v string) {
 
 // GetTemplate returns the Template field value if set, zero value otherwise.
 func (o *EmailStage) GetTemplate() string {
-	if o == nil || o.Template == nil {
+	if o == nil || IsNil(o.Template) {
 		var ret string
 		return ret
 	}
@@ -576,7 +579,7 @@ func (o *EmailStage) GetTemplate() string {
 // GetTemplateOk returns a tuple with the Template field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetTemplateOk() (*string, bool) {
-	if o == nil || o.Template == nil {
+	if o == nil || IsNil(o.Template) {
 		return nil, false
 	}
 	return o.Template, true
@@ -584,7 +587,7 @@ func (o *EmailStage) GetTemplateOk() (*string, bool) {
 
 // HasTemplate returns a boolean if a field has been set.
 func (o *EmailStage) HasTemplate() bool {
-	if o != nil && o.Template != nil {
+	if o != nil && !IsNil(o.Template) {
 		return true
 	}
 
@@ -598,7 +601,7 @@ func (o *EmailStage) SetTemplate(v string) {
 
 // GetActivateUserOnSuccess returns the ActivateUserOnSuccess field value if set, zero value otherwise.
 func (o *EmailStage) GetActivateUserOnSuccess() bool {
-	if o == nil || o.ActivateUserOnSuccess == nil {
+	if o == nil || IsNil(o.ActivateUserOnSuccess) {
 		var ret bool
 		return ret
 	}
@@ -608,7 +611,7 @@ func (o *EmailStage) GetActivateUserOnSuccess() bool {
 // GetActivateUserOnSuccessOk returns a tuple with the ActivateUserOnSuccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetActivateUserOnSuccessOk() (*bool, bool) {
-	if o == nil || o.ActivateUserOnSuccess == nil {
+	if o == nil || IsNil(o.ActivateUserOnSuccess) {
 		return nil, false
 	}
 	return o.ActivateUserOnSuccess, true
@@ -616,7 +619,7 @@ func (o *EmailStage) GetActivateUserOnSuccessOk() (*bool, bool) {
 
 // HasActivateUserOnSuccess returns a boolean if a field has been set.
 func (o *EmailStage) HasActivateUserOnSuccess() bool {
-	if o != nil && o.ActivateUserOnSuccess != nil {
+	if o != nil && !IsNil(o.ActivateUserOnSuccess) {
 		return true
 	}
 
@@ -629,65 +632,61 @@ func (o *EmailStage) SetActivateUserOnSuccess(v bool) {
 }
 
 func (o EmailStage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
-	}
-	if o.UseGlobalSettings != nil {
-		toSerialize["use_global_settings"] = o.UseGlobalSettings
-	}
-	if o.Host != nil {
-		toSerialize["host"] = o.Host
-	}
-	if o.Port != nil {
-		toSerialize["port"] = o.Port
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.UseTls != nil {
-		toSerialize["use_tls"] = o.UseTls
-	}
-	if o.UseSsl != nil {
-		toSerialize["use_ssl"] = o.UseSsl
-	}
-	if o.Timeout != nil {
-		toSerialize["timeout"] = o.Timeout
-	}
-	if o.FromAddress != nil {
-		toSerialize["from_address"] = o.FromAddress
-	}
-	if o.TokenExpiry != nil {
-		toSerialize["token_expiry"] = o.TokenExpiry
-	}
-	if o.Subject != nil {
-		toSerialize["subject"] = o.Subject
-	}
-	if o.Template != nil {
-		toSerialize["template"] = o.Template
-	}
-	if o.ActivateUserOnSuccess != nil {
-		toSerialize["activate_user_on_success"] = o.ActivateUserOnSuccess
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EmailStage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
+	toSerialize["name"] = o.Name
+	// skip: component is readOnly
+	// skip: verbose_name is readOnly
+	// skip: verbose_name_plural is readOnly
+	// skip: meta_model_name is readOnly
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
+	if !IsNil(o.UseGlobalSettings) {
+		toSerialize["use_global_settings"] = o.UseGlobalSettings
+	}
+	if !IsNil(o.Host) {
+		toSerialize["host"] = o.Host
+	}
+	if !IsNil(o.Port) {
+		toSerialize["port"] = o.Port
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.UseTls) {
+		toSerialize["use_tls"] = o.UseTls
+	}
+	if !IsNil(o.UseSsl) {
+		toSerialize["use_ssl"] = o.UseSsl
+	}
+	if !IsNil(o.Timeout) {
+		toSerialize["timeout"] = o.Timeout
+	}
+	if !IsNil(o.FromAddress) {
+		toSerialize["from_address"] = o.FromAddress
+	}
+	if !IsNil(o.TokenExpiry) {
+		toSerialize["token_expiry"] = o.TokenExpiry
+	}
+	if !IsNil(o.Subject) {
+		toSerialize["subject"] = o.Subject
+	}
+	if !IsNil(o.Template) {
+		toSerialize["template"] = o.Template
+	}
+	if !IsNil(o.ActivateUserOnSuccess) {
+		toSerialize["activate_user_on_success"] = o.ActivateUserOnSuccess
+	}
+	return toSerialize, nil
 }
 
 type NullableEmailStage struct {

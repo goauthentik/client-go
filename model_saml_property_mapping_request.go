@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SAMLPropertyMappingRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SAMLPropertyMappingRequest{}
+
 // SAMLPropertyMappingRequest SAMLPropertyMapping Serializer
 type SAMLPropertyMappingRequest struct {
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
@@ -47,7 +50,7 @@ func NewSAMLPropertyMappingRequestWithDefaults() *SAMLPropertyMappingRequest {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SAMLPropertyMappingRequest) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -162,7 +165,7 @@ func (o *SAMLPropertyMappingRequest) SetSamlName(v string) {
 
 // GetFriendlyName returns the FriendlyName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SAMLPropertyMappingRequest) GetFriendlyName() string {
-	if o == nil || o.FriendlyName.Get() == nil {
+	if o == nil || IsNil(o.FriendlyName.Get()) {
 		var ret string
 		return ret
 	}
@@ -204,23 +207,25 @@ func (o *SAMLPropertyMappingRequest) UnsetFriendlyName() {
 }
 
 func (o SAMLPropertyMappingRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SAMLPropertyMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["expression"] = o.Expression
-	}
-	if true {
-		toSerialize["saml_name"] = o.SamlName
-	}
+	toSerialize["name"] = o.Name
+	toSerialize["expression"] = o.Expression
+	toSerialize["saml_name"] = o.SamlName
 	if o.FriendlyName.IsSet() {
 		toSerialize["friendly_name"] = o.FriendlyName.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableSAMLPropertyMappingRequest struct {

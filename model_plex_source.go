@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PlexSource type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PlexSource{}
+
 // PlexSource Plex Source Serializer
 type PlexSource struct {
 	Pk string `json:"pk"`
@@ -34,10 +37,9 @@ type PlexSource struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName    string            `json:"meta_model_name"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
-	// How the source determines if an existing user should be authenticated or a new user enrolled.  * `identifier` - Use the source-specific identifier * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses. * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists. * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source. * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
-	UserMatchingMode NullableUserMatchingModeEnum `json:"user_matching_mode,omitempty"`
+	MetaModelName    string                `json:"meta_model_name"`
+	PolicyEngineMode *PolicyEngineMode     `json:"policy_engine_mode,omitempty"`
+	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed          NullableString `json:"managed"`
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
@@ -154,7 +156,7 @@ func (o *PlexSource) SetSlug(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *PlexSource) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -164,7 +166,7 @@ func (o *PlexSource) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PlexSource) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -172,7 +174,7 @@ func (o *PlexSource) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *PlexSource) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -186,7 +188,7 @@ func (o *PlexSource) SetEnabled(v bool) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PlexSource) GetAuthenticationFlow() string {
-	if o == nil || o.AuthenticationFlow.Get() == nil {
+	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -229,7 +231,7 @@ func (o *PlexSource) UnsetAuthenticationFlow() {
 
 // GetEnrollmentFlow returns the EnrollmentFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PlexSource) GetEnrollmentFlow() string {
-	if o == nil || o.EnrollmentFlow.Get() == nil {
+	if o == nil || IsNil(o.EnrollmentFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -368,7 +370,7 @@ func (o *PlexSource) SetMetaModelName(v string) {
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *PlexSource) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -378,7 +380,7 @@ func (o *PlexSource) GetPolicyEngineMode() PolicyEngineMode {
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PlexSource) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -386,7 +388,7 @@ func (o *PlexSource) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *PlexSource) HasPolicyEngineMode() bool {
-	if o != nil && o.PolicyEngineMode != nil {
+	if o != nil && !IsNil(o.PolicyEngineMode) {
 		return true
 	}
 
@@ -398,47 +400,36 @@ func (o *PlexSource) SetPolicyEngineMode(v PolicyEngineMode) {
 	o.PolicyEngineMode = &v
 }
 
-// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
 func (o *PlexSource) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || o.UserMatchingMode.Get() == nil {
+	if o == nil || IsNil(o.UserMatchingMode) {
 		var ret UserMatchingModeEnum
 		return ret
 	}
-	return *o.UserMatchingMode.Get()
+	return *o.UserMatchingMode
 }
 
 // GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PlexSource) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UserMatchingMode) {
 		return nil, false
 	}
-	return o.UserMatchingMode.Get(), o.UserMatchingMode.IsSet()
+	return o.UserMatchingMode, true
 }
 
 // HasUserMatchingMode returns a boolean if a field has been set.
 func (o *PlexSource) HasUserMatchingMode() bool {
-	if o != nil && o.UserMatchingMode.IsSet() {
+	if o != nil && !IsNil(o.UserMatchingMode) {
 		return true
 	}
 
 	return false
 }
 
-// SetUserMatchingMode gets a reference to the given NullableUserMatchingModeEnum and assigns it to the UserMatchingMode field.
+// SetUserMatchingMode gets a reference to the given UserMatchingModeEnum and assigns it to the UserMatchingMode field.
 func (o *PlexSource) SetUserMatchingMode(v UserMatchingModeEnum) {
-	o.UserMatchingMode.Set(&v)
-}
-
-// SetUserMatchingModeNil sets the value for UserMatchingMode to be an explicit nil
-func (o *PlexSource) SetUserMatchingModeNil() {
-	o.UserMatchingMode.Set(nil)
-}
-
-// UnsetUserMatchingMode ensures that no value is present for UserMatchingMode, not even an explicit nil
-func (o *PlexSource) UnsetUserMatchingMode() {
-	o.UserMatchingMode.Unset()
+	o.UserMatchingMode = &v
 }
 
 // GetManaged returns the Managed field value
@@ -469,7 +460,7 @@ func (o *PlexSource) SetManaged(v string) {
 
 // GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
 func (o *PlexSource) GetUserPathTemplate() string {
-	if o == nil || o.UserPathTemplate == nil {
+	if o == nil || IsNil(o.UserPathTemplate) {
 		var ret string
 		return ret
 	}
@@ -479,7 +470,7 @@ func (o *PlexSource) GetUserPathTemplate() string {
 // GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PlexSource) GetUserPathTemplateOk() (*string, bool) {
-	if o == nil || o.UserPathTemplate == nil {
+	if o == nil || IsNil(o.UserPathTemplate) {
 		return nil, false
 	}
 	return o.UserPathTemplate, true
@@ -487,7 +478,7 @@ func (o *PlexSource) GetUserPathTemplateOk() (*string, bool) {
 
 // HasUserPathTemplate returns a boolean if a field has been set.
 func (o *PlexSource) HasUserPathTemplate() bool {
-	if o != nil && o.UserPathTemplate != nil {
+	if o != nil && !IsNil(o.UserPathTemplate) {
 		return true
 	}
 
@@ -527,7 +518,7 @@ func (o *PlexSource) SetIcon(v string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *PlexSource) GetClientId() string {
-	if o == nil || o.ClientId == nil {
+	if o == nil || IsNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -537,7 +528,7 @@ func (o *PlexSource) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PlexSource) GetClientIdOk() (*string, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -545,7 +536,7 @@ func (o *PlexSource) GetClientIdOk() (*string, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *PlexSource) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
 
@@ -559,7 +550,7 @@ func (o *PlexSource) SetClientId(v string) {
 
 // GetAllowedServers returns the AllowedServers field value if set, zero value otherwise.
 func (o *PlexSource) GetAllowedServers() []string {
-	if o == nil || o.AllowedServers == nil {
+	if o == nil || IsNil(o.AllowedServers) {
 		var ret []string
 		return ret
 	}
@@ -569,7 +560,7 @@ func (o *PlexSource) GetAllowedServers() []string {
 // GetAllowedServersOk returns a tuple with the AllowedServers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PlexSource) GetAllowedServersOk() ([]string, bool) {
-	if o == nil || o.AllowedServers == nil {
+	if o == nil || IsNil(o.AllowedServers) {
 		return nil, false
 	}
 	return o.AllowedServers, true
@@ -577,7 +568,7 @@ func (o *PlexSource) GetAllowedServersOk() ([]string, bool) {
 
 // HasAllowedServers returns a boolean if a field has been set.
 func (o *PlexSource) HasAllowedServers() bool {
-	if o != nil && o.AllowedServers != nil {
+	if o != nil && !IsNil(o.AllowedServers) {
 		return true
 	}
 
@@ -591,7 +582,7 @@ func (o *PlexSource) SetAllowedServers(v []string) {
 
 // GetAllowFriends returns the AllowFriends field value if set, zero value otherwise.
 func (o *PlexSource) GetAllowFriends() bool {
-	if o == nil || o.AllowFriends == nil {
+	if o == nil || IsNil(o.AllowFriends) {
 		var ret bool
 		return ret
 	}
@@ -601,7 +592,7 @@ func (o *PlexSource) GetAllowFriends() bool {
 // GetAllowFriendsOk returns a tuple with the AllowFriends field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PlexSource) GetAllowFriendsOk() (*bool, bool) {
-	if o == nil || o.AllowFriends == nil {
+	if o == nil || IsNil(o.AllowFriends) {
 		return nil, false
 	}
 	return o.AllowFriends, true
@@ -609,7 +600,7 @@ func (o *PlexSource) GetAllowFriendsOk() (*bool, bool) {
 
 // HasAllowFriends returns a boolean if a field has been set.
 func (o *PlexSource) HasAllowFriends() bool {
-	if o != nil && o.AllowFriends != nil {
+	if o != nil && !IsNil(o.AllowFriends) {
 		return true
 	}
 
@@ -646,17 +637,19 @@ func (o *PlexSource) SetPlexToken(v string) {
 }
 
 func (o PlexSource) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PlexSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["slug"] = o.Slug
-	}
-	if o.Enabled != nil {
+	// skip: pk is readOnly
+	toSerialize["name"] = o.Name
+	toSerialize["slug"] = o.Slug
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.AuthenticationFlow.IsSet() {
@@ -665,46 +658,32 @@ func (o PlexSource) MarshalJSON() ([]byte, error) {
 	if o.EnrollmentFlow.IsSet() {
 		toSerialize["enrollment_flow"] = o.EnrollmentFlow.Get()
 	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if o.PolicyEngineMode != nil {
+	// skip: component is readOnly
+	// skip: verbose_name is readOnly
+	// skip: verbose_name_plural is readOnly
+	// skip: meta_model_name is readOnly
+	if !IsNil(o.PolicyEngineMode) {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if o.UserMatchingMode.IsSet() {
-		toSerialize["user_matching_mode"] = o.UserMatchingMode.Get()
+	if !IsNil(o.UserMatchingMode) {
+		toSerialize["user_matching_mode"] = o.UserMatchingMode
 	}
-	if true {
-		toSerialize["managed"] = o.Managed.Get()
-	}
-	if o.UserPathTemplate != nil {
+	toSerialize["managed"] = o.Managed.Get()
+	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	if true {
-		toSerialize["icon"] = o.Icon.Get()
-	}
-	if o.ClientId != nil {
+	toSerialize["icon"] = o.Icon.Get()
+	if !IsNil(o.ClientId) {
 		toSerialize["client_id"] = o.ClientId
 	}
-	if o.AllowedServers != nil {
+	if !IsNil(o.AllowedServers) {
 		toSerialize["allowed_servers"] = o.AllowedServers
 	}
-	if o.AllowFriends != nil {
+	if !IsNil(o.AllowFriends) {
 		toSerialize["allow_friends"] = o.AllowFriends
 	}
-	if true {
-		toSerialize["plex_token"] = o.PlexToken
-	}
-	return json.Marshal(toSerialize)
+	toSerialize["plex_token"] = o.PlexToken
+	return toSerialize, nil
 }
 
 type NullablePlexSource struct {

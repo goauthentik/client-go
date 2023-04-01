@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LoginSource type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LoginSource{}
+
 // LoginSource Serializer for Login buttons of sources
 type LoginSource struct {
 	Name      string              `json:"name"`
@@ -67,7 +70,7 @@ func (o *LoginSource) SetName(v string) {
 
 // GetIconUrl returns the IconUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LoginSource) GetIconUrl() string {
-	if o == nil || o.IconUrl.Get() == nil {
+	if o == nil || IsNil(o.IconUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -133,17 +136,21 @@ func (o *LoginSource) SetChallenge(v LoginChallengeTypes) {
 }
 
 func (o LoginSource) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o LoginSource) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if o.IconUrl.IsSet() {
 		toSerialize["icon_url"] = o.IconUrl.Get()
 	}
-	if true {
-		toSerialize["challenge"] = o.Challenge
-	}
-	return json.Marshal(toSerialize)
+	toSerialize["challenge"] = o.Challenge
+	return toSerialize, nil
 }
 
 type NullableLoginSource struct {

@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **Policy** | Pointer to **NullableString** |  | [optional] 
 **Group** | Pointer to **NullableString** |  | [optional] 
 **User** | Pointer to **NullableInt32** |  | [optional] 
-**PolicyObj** | [**PolicyBindingPolicyObj**](PolicyBindingPolicyObj.md) |  | 
-**GroupObj** | [**NotificationRuleGroupObj**](NotificationRuleGroupObj.md) |  | 
-**UserObj** | [**PolicyBindingUserObj**](PolicyBindingUserObj.md) |  | 
+**PolicyObj** | [**Policy**](Policy.md) |  | [readonly] 
+**GroupObj** | [**Group**](Group.md) |  | [readonly] 
+**UserObj** | [**User**](User.md) |  | [readonly] 
 **Target** | **string** |  | 
 **Negate** | Pointer to **bool** | Negates the outcome of the policy. Messages are unaffected. | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewPolicyBinding
 
-`func NewPolicyBinding(pk string, policyObj PolicyBindingPolicyObj, groupObj NotificationRuleGroupObj, userObj PolicyBindingUserObj, target string, order int32, ) *PolicyBinding`
+`func NewPolicyBinding(pk string, policyObj Policy, groupObj Group, userObj User, target string, order int32, ) *PolicyBinding`
 
 NewPolicyBinding instantiates a new PolicyBinding object
 This constructor will assign default values to properties that have it defined,
@@ -163,60 +163,60 @@ HasUser returns a boolean if a field has been set.
 UnsetUser ensures that no value is present for User, not even an explicit nil
 ### GetPolicyObj
 
-`func (o *PolicyBinding) GetPolicyObj() PolicyBindingPolicyObj`
+`func (o *PolicyBinding) GetPolicyObj() Policy`
 
 GetPolicyObj returns the PolicyObj field if non-nil, zero value otherwise.
 
 ### GetPolicyObjOk
 
-`func (o *PolicyBinding) GetPolicyObjOk() (*PolicyBindingPolicyObj, bool)`
+`func (o *PolicyBinding) GetPolicyObjOk() (*Policy, bool)`
 
 GetPolicyObjOk returns a tuple with the PolicyObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPolicyObj
 
-`func (o *PolicyBinding) SetPolicyObj(v PolicyBindingPolicyObj)`
+`func (o *PolicyBinding) SetPolicyObj(v Policy)`
 
 SetPolicyObj sets PolicyObj field to given value.
 
 
 ### GetGroupObj
 
-`func (o *PolicyBinding) GetGroupObj() NotificationRuleGroupObj`
+`func (o *PolicyBinding) GetGroupObj() Group`
 
 GetGroupObj returns the GroupObj field if non-nil, zero value otherwise.
 
 ### GetGroupObjOk
 
-`func (o *PolicyBinding) GetGroupObjOk() (*NotificationRuleGroupObj, bool)`
+`func (o *PolicyBinding) GetGroupObjOk() (*Group, bool)`
 
 GetGroupObjOk returns a tuple with the GroupObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupObj
 
-`func (o *PolicyBinding) SetGroupObj(v NotificationRuleGroupObj)`
+`func (o *PolicyBinding) SetGroupObj(v Group)`
 
 SetGroupObj sets GroupObj field to given value.
 
 
 ### GetUserObj
 
-`func (o *PolicyBinding) GetUserObj() PolicyBindingUserObj`
+`func (o *PolicyBinding) GetUserObj() User`
 
 GetUserObj returns the UserObj field if non-nil, zero value otherwise.
 
 ### GetUserObjOk
 
-`func (o *PolicyBinding) GetUserObjOk() (*PolicyBindingUserObj, bool)`
+`func (o *PolicyBinding) GetUserObjOk() (*User, bool)`
 
 GetUserObjOk returns a tuple with the UserObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserObj
 
-`func (o *PolicyBinding) SetUserObj(v PolicyBindingUserObj)`
+`func (o *PolicyBinding) SetUserObj(v User)`
 
 SetUserObj sets UserObj field to given value.
 

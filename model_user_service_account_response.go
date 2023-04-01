@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserServiceAccountResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserServiceAccountResponse{}
+
 // UserServiceAccountResponse struct for UserServiceAccountResponse
 type UserServiceAccountResponse struct {
 	Username string  `json:"username"`
@@ -143,7 +146,7 @@ func (o *UserServiceAccountResponse) SetUserPk(v int32) {
 
 // GetGroupPk returns the GroupPk field value if set, zero value otherwise.
 func (o *UserServiceAccountResponse) GetGroupPk() string {
-	if o == nil || o.GroupPk == nil {
+	if o == nil || IsNil(o.GroupPk) {
 		var ret string
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *UserServiceAccountResponse) GetGroupPk() string {
 // GetGroupPkOk returns a tuple with the GroupPk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserServiceAccountResponse) GetGroupPkOk() (*string, bool) {
-	if o == nil || o.GroupPk == nil {
+	if o == nil || IsNil(o.GroupPk) {
 		return nil, false
 	}
 	return o.GroupPk, true
@@ -161,7 +164,7 @@ func (o *UserServiceAccountResponse) GetGroupPkOk() (*string, bool) {
 
 // HasGroupPk returns a boolean if a field has been set.
 func (o *UserServiceAccountResponse) HasGroupPk() bool {
-	if o != nil && o.GroupPk != nil {
+	if o != nil && !IsNil(o.GroupPk) {
 		return true
 	}
 
@@ -174,23 +177,23 @@ func (o *UserServiceAccountResponse) SetGroupPk(v string) {
 }
 
 func (o UserServiceAccountResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["username"] = o.Username
-	}
-	if true {
-		toSerialize["token"] = o.Token
-	}
-	if true {
-		toSerialize["user_uid"] = o.UserUid
-	}
-	if true {
-		toSerialize["user_pk"] = o.UserPk
-	}
-	if o.GroupPk != nil {
-		toSerialize["group_pk"] = o.GroupPk
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserServiceAccountResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["username"] = o.Username
+	toSerialize["token"] = o.Token
+	toSerialize["user_uid"] = o.UserUid
+	toSerialize["user_pk"] = o.UserPk
+	if !IsNil(o.GroupPk) {
+		toSerialize["group_pk"] = o.GroupPk
+	}
+	return toSerialize, nil
 }
 
 type NullableUserServiceAccountResponse struct {

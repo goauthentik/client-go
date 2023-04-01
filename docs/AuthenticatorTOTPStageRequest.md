@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
-**Digits** | [**NullableDigitsEnum**](DigitsEnum.md) |  | 
+**Digits** | [**DigitsEnum**](DigitsEnum.md) |  | 
 
 ## Methods
 
 ### NewAuthenticatorTOTPStageRequest
 
-`func NewAuthenticatorTOTPStageRequest(name string, digits NullableDigitsEnum, ) *AuthenticatorTOTPStageRequest`
+`func NewAuthenticatorTOTPStageRequest(name string, digits DigitsEnum, ) *AuthenticatorTOTPStageRequest`
 
 NewAuthenticatorTOTPStageRequest instantiates a new AuthenticatorTOTPStageRequest object
 This constructor will assign default values to properties that have it defined,
@@ -128,16 +128,6 @@ and a boolean to check if the value has been set.
 SetDigits sets Digits field to given value.
 
 
-### SetDigitsNil
-
-`func (o *AuthenticatorTOTPStageRequest) SetDigitsNil(b bool)`
-
- SetDigitsNil sets the value for Digits to be an explicit nil
-
-### UnsetDigits
-`func (o *AuthenticatorTOTPStageRequest) UnsetDigits()`
-
-UnsetDigits ensures that no value is present for Digits, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

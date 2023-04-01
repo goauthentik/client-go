@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserOAuthSourceConnectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserOAuthSourceConnectionRequest{}
+
 // UserOAuthSourceConnectionRequest OAuth Source Serializer
 type UserOAuthSourceConnectionRequest struct {
 	User        int32          `json:"user"`
@@ -91,7 +94,7 @@ func (o *UserOAuthSourceConnectionRequest) SetIdentifier(v string) {
 
 // GetAccessToken returns the AccessToken field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserOAuthSourceConnectionRequest) GetAccessToken() string {
-	if o == nil || o.AccessToken.Get() == nil {
+	if o == nil || IsNil(o.AccessToken.Get()) {
 		var ret string
 		return ret
 	}
@@ -133,17 +136,21 @@ func (o *UserOAuthSourceConnectionRequest) UnsetAccessToken() {
 }
 
 func (o UserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o UserOAuthSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["identifier"] = o.Identifier
-	}
+	toSerialize["user"] = o.User
+	toSerialize["identifier"] = o.Identifier
 	if o.AccessToken.IsSet() {
 		toSerialize["access_token"] = o.AccessToken.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableUserOAuthSourceConnectionRequest struct {

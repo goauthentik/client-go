@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentificationStage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentificationStage{}
+
 // IdentificationStage IdentificationStage Serializer
 type IdentificationStage struct {
 	Pk   string `json:"pk"`
@@ -216,7 +219,7 @@ func (o *IdentificationStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *IdentificationStage) GetFlowSet() []FlowSet {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
@@ -226,7 +229,7 @@ func (o *IdentificationStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -234,7 +237,7 @@ func (o *IdentificationStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *IdentificationStage) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -248,7 +251,7 @@ func (o *IdentificationStage) SetFlowSet(v []FlowSet) {
 
 // GetUserFields returns the UserFields field value if set, zero value otherwise.
 func (o *IdentificationStage) GetUserFields() []UserFieldsEnum {
-	if o == nil || o.UserFields == nil {
+	if o == nil || IsNil(o.UserFields) {
 		var ret []UserFieldsEnum
 		return ret
 	}
@@ -258,7 +261,7 @@ func (o *IdentificationStage) GetUserFields() []UserFieldsEnum {
 // GetUserFieldsOk returns a tuple with the UserFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationStage) GetUserFieldsOk() ([]UserFieldsEnum, bool) {
-	if o == nil || o.UserFields == nil {
+	if o == nil || IsNil(o.UserFields) {
 		return nil, false
 	}
 	return o.UserFields, true
@@ -266,7 +269,7 @@ func (o *IdentificationStage) GetUserFieldsOk() ([]UserFieldsEnum, bool) {
 
 // HasUserFields returns a boolean if a field has been set.
 func (o *IdentificationStage) HasUserFields() bool {
-	if o != nil && o.UserFields != nil {
+	if o != nil && !IsNil(o.UserFields) {
 		return true
 	}
 
@@ -280,7 +283,7 @@ func (o *IdentificationStage) SetUserFields(v []UserFieldsEnum) {
 
 // GetPasswordStage returns the PasswordStage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentificationStage) GetPasswordStage() string {
-	if o == nil || o.PasswordStage.Get() == nil {
+	if o == nil || IsNil(o.PasswordStage.Get()) {
 		var ret string
 		return ret
 	}
@@ -323,7 +326,7 @@ func (o *IdentificationStage) UnsetPasswordStage() {
 
 // GetCaseInsensitiveMatching returns the CaseInsensitiveMatching field value if set, zero value otherwise.
 func (o *IdentificationStage) GetCaseInsensitiveMatching() bool {
-	if o == nil || o.CaseInsensitiveMatching == nil {
+	if o == nil || IsNil(o.CaseInsensitiveMatching) {
 		var ret bool
 		return ret
 	}
@@ -333,7 +336,7 @@ func (o *IdentificationStage) GetCaseInsensitiveMatching() bool {
 // GetCaseInsensitiveMatchingOk returns a tuple with the CaseInsensitiveMatching field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationStage) GetCaseInsensitiveMatchingOk() (*bool, bool) {
-	if o == nil || o.CaseInsensitiveMatching == nil {
+	if o == nil || IsNil(o.CaseInsensitiveMatching) {
 		return nil, false
 	}
 	return o.CaseInsensitiveMatching, true
@@ -341,7 +344,7 @@ func (o *IdentificationStage) GetCaseInsensitiveMatchingOk() (*bool, bool) {
 
 // HasCaseInsensitiveMatching returns a boolean if a field has been set.
 func (o *IdentificationStage) HasCaseInsensitiveMatching() bool {
-	if o != nil && o.CaseInsensitiveMatching != nil {
+	if o != nil && !IsNil(o.CaseInsensitiveMatching) {
 		return true
 	}
 
@@ -355,7 +358,7 @@ func (o *IdentificationStage) SetCaseInsensitiveMatching(v bool) {
 
 // GetShowMatchedUser returns the ShowMatchedUser field value if set, zero value otherwise.
 func (o *IdentificationStage) GetShowMatchedUser() bool {
-	if o == nil || o.ShowMatchedUser == nil {
+	if o == nil || IsNil(o.ShowMatchedUser) {
 		var ret bool
 		return ret
 	}
@@ -365,7 +368,7 @@ func (o *IdentificationStage) GetShowMatchedUser() bool {
 // GetShowMatchedUserOk returns a tuple with the ShowMatchedUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationStage) GetShowMatchedUserOk() (*bool, bool) {
-	if o == nil || o.ShowMatchedUser == nil {
+	if o == nil || IsNil(o.ShowMatchedUser) {
 		return nil, false
 	}
 	return o.ShowMatchedUser, true
@@ -373,7 +376,7 @@ func (o *IdentificationStage) GetShowMatchedUserOk() (*bool, bool) {
 
 // HasShowMatchedUser returns a boolean if a field has been set.
 func (o *IdentificationStage) HasShowMatchedUser() bool {
-	if o != nil && o.ShowMatchedUser != nil {
+	if o != nil && !IsNil(o.ShowMatchedUser) {
 		return true
 	}
 
@@ -387,7 +390,7 @@ func (o *IdentificationStage) SetShowMatchedUser(v bool) {
 
 // GetEnrollmentFlow returns the EnrollmentFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentificationStage) GetEnrollmentFlow() string {
-	if o == nil || o.EnrollmentFlow.Get() == nil {
+	if o == nil || IsNil(o.EnrollmentFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -430,7 +433,7 @@ func (o *IdentificationStage) UnsetEnrollmentFlow() {
 
 // GetRecoveryFlow returns the RecoveryFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentificationStage) GetRecoveryFlow() string {
-	if o == nil || o.RecoveryFlow.Get() == nil {
+	if o == nil || IsNil(o.RecoveryFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -473,7 +476,7 @@ func (o *IdentificationStage) UnsetRecoveryFlow() {
 
 // GetPasswordlessFlow returns the PasswordlessFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentificationStage) GetPasswordlessFlow() string {
-	if o == nil || o.PasswordlessFlow.Get() == nil {
+	if o == nil || IsNil(o.PasswordlessFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -516,7 +519,7 @@ func (o *IdentificationStage) UnsetPasswordlessFlow() {
 
 // GetSources returns the Sources field value if set, zero value otherwise.
 func (o *IdentificationStage) GetSources() []string {
-	if o == nil || o.Sources == nil {
+	if o == nil || IsNil(o.Sources) {
 		var ret []string
 		return ret
 	}
@@ -526,7 +529,7 @@ func (o *IdentificationStage) GetSources() []string {
 // GetSourcesOk returns a tuple with the Sources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationStage) GetSourcesOk() ([]string, bool) {
-	if o == nil || o.Sources == nil {
+	if o == nil || IsNil(o.Sources) {
 		return nil, false
 	}
 	return o.Sources, true
@@ -534,7 +537,7 @@ func (o *IdentificationStage) GetSourcesOk() ([]string, bool) {
 
 // HasSources returns a boolean if a field has been set.
 func (o *IdentificationStage) HasSources() bool {
-	if o != nil && o.Sources != nil {
+	if o != nil && !IsNil(o.Sources) {
 		return true
 	}
 
@@ -548,7 +551,7 @@ func (o *IdentificationStage) SetSources(v []string) {
 
 // GetShowSourceLabels returns the ShowSourceLabels field value if set, zero value otherwise.
 func (o *IdentificationStage) GetShowSourceLabels() bool {
-	if o == nil || o.ShowSourceLabels == nil {
+	if o == nil || IsNil(o.ShowSourceLabels) {
 		var ret bool
 		return ret
 	}
@@ -558,7 +561,7 @@ func (o *IdentificationStage) GetShowSourceLabels() bool {
 // GetShowSourceLabelsOk returns a tuple with the ShowSourceLabels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationStage) GetShowSourceLabelsOk() (*bool, bool) {
-	if o == nil || o.ShowSourceLabels == nil {
+	if o == nil || IsNil(o.ShowSourceLabels) {
 		return nil, false
 	}
 	return o.ShowSourceLabels, true
@@ -566,7 +569,7 @@ func (o *IdentificationStage) GetShowSourceLabelsOk() (*bool, bool) {
 
 // HasShowSourceLabels returns a boolean if a field has been set.
 func (o *IdentificationStage) HasShowSourceLabels() bool {
-	if o != nil && o.ShowSourceLabels != nil {
+	if o != nil && !IsNil(o.ShowSourceLabels) {
 		return true
 	}
 
@@ -579,38 +582,34 @@ func (o *IdentificationStage) SetShowSourceLabels(v bool) {
 }
 
 func (o IdentificationStage) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentificationStage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if o.FlowSet != nil {
+	// skip: pk is readOnly
+	toSerialize["name"] = o.Name
+	// skip: component is readOnly
+	// skip: verbose_name is readOnly
+	// skip: verbose_name_plural is readOnly
+	// skip: meta_model_name is readOnly
+	if !IsNil(o.FlowSet) {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	if o.UserFields != nil {
+	if !IsNil(o.UserFields) {
 		toSerialize["user_fields"] = o.UserFields
 	}
 	if o.PasswordStage.IsSet() {
 		toSerialize["password_stage"] = o.PasswordStage.Get()
 	}
-	if o.CaseInsensitiveMatching != nil {
+	if !IsNil(o.CaseInsensitiveMatching) {
 		toSerialize["case_insensitive_matching"] = o.CaseInsensitiveMatching
 	}
-	if o.ShowMatchedUser != nil {
+	if !IsNil(o.ShowMatchedUser) {
 		toSerialize["show_matched_user"] = o.ShowMatchedUser
 	}
 	if o.EnrollmentFlow.IsSet() {
@@ -622,13 +621,13 @@ func (o IdentificationStage) MarshalJSON() ([]byte, error) {
 	if o.PasswordlessFlow.IsSet() {
 		toSerialize["passwordless_flow"] = o.PasswordlessFlow.Get()
 	}
-	if o.Sources != nil {
+	if !IsNil(o.Sources) {
 		toSerialize["sources"] = o.Sources
 	}
-	if o.ShowSourceLabels != nil {
+	if !IsNil(o.ShowSourceLabels) {
 		toSerialize["show_source_labels"] = o.ShowSourceLabels
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableIdentificationStage struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceConnection type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceConnection{}
+
 // ServiceConnection ServiceConnection Serializer
 type ServiceConnection struct {
 	Pk   string `json:"pk"`
@@ -104,7 +107,7 @@ func (o *ServiceConnection) SetName(v string) {
 
 // GetLocal returns the Local field value if set, zero value otherwise.
 func (o *ServiceConnection) GetLocal() bool {
-	if o == nil || o.Local == nil {
+	if o == nil || IsNil(o.Local) {
 		var ret bool
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ServiceConnection) GetLocal() bool {
 // GetLocalOk returns a tuple with the Local field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceConnection) GetLocalOk() (*bool, bool) {
-	if o == nil || o.Local == nil {
+	if o == nil || IsNil(o.Local) {
 		return nil, false
 	}
 	return o.Local, true
@@ -122,7 +125,7 @@ func (o *ServiceConnection) GetLocalOk() (*bool, bool) {
 
 // HasLocal returns a boolean if a field has been set.
 func (o *ServiceConnection) HasLocal() bool {
-	if o != nil && o.Local != nil {
+	if o != nil && !IsNil(o.Local) {
 		return true
 	}
 
@@ -231,29 +234,25 @@ func (o *ServiceConnection) SetMetaModelName(v string) {
 }
 
 func (o ServiceConnection) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Local != nil {
-		toSerialize["local"] = o.Local
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ServiceConnection) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: pk is readOnly
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Local) {
+		toSerialize["local"] = o.Local
+	}
+	// skip: component is readOnly
+	// skip: verbose_name is readOnly
+	// skip: verbose_name_plural is readOnly
+	// skip: meta_model_name is readOnly
+	return toSerialize, nil
 }
 
 type NullableServiceConnection struct {

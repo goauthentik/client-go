@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentificationChallengeResponseRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentificationChallengeResponseRequest{}
+
 // IdentificationChallengeResponseRequest Identification challenge
 type IdentificationChallengeResponseRequest struct {
 	Component *string        `json:"component,omitempty"`
@@ -46,7 +49,7 @@ func NewIdentificationChallengeResponseRequestWithDefaults() *IdentificationChal
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *IdentificationChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *IdentificationChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -64,7 +67,7 @@ func (o *IdentificationChallengeResponseRequest) GetComponentOk() (*string, bool
 
 // HasComponent returns a boolean if a field has been set.
 func (o *IdentificationChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -102,7 +105,7 @@ func (o *IdentificationChallengeResponseRequest) SetUidField(v string) {
 
 // GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentificationChallengeResponseRequest) GetPassword() string {
-	if o == nil || o.Password.Get() == nil {
+	if o == nil || IsNil(o.Password.Get()) {
 		var ret string
 		return ret
 	}
@@ -144,17 +147,23 @@ func (o *IdentificationChallengeResponseRequest) UnsetPassword() {
 }
 
 func (o IdentificationChallengeResponseRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentificationChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
+	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
-	if true {
-		toSerialize["uid_field"] = o.UidField
-	}
+	toSerialize["uid_field"] = o.UidField
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableIdentificationChallengeResponseRequest struct {

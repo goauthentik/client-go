@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TenantRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TenantRequest{}
+
 // TenantRequest Tenant Serializer
 type TenantRequest struct {
 	// Domain that activates this tenant. Can be a superset, i.e. `a.b` for `aa.b` and `ba.b`
@@ -80,7 +83,7 @@ func (o *TenantRequest) SetDomain(v string) {
 
 // GetDefault returns the Default field value if set, zero value otherwise.
 func (o *TenantRequest) GetDefault() bool {
-	if o == nil || o.Default == nil {
+	if o == nil || IsNil(o.Default) {
 		var ret bool
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *TenantRequest) GetDefault() bool {
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TenantRequest) GetDefaultOk() (*bool, bool) {
-	if o == nil || o.Default == nil {
+	if o == nil || IsNil(o.Default) {
 		return nil, false
 	}
 	return o.Default, true
@@ -98,7 +101,7 @@ func (o *TenantRequest) GetDefaultOk() (*bool, bool) {
 
 // HasDefault returns a boolean if a field has been set.
 func (o *TenantRequest) HasDefault() bool {
-	if o != nil && o.Default != nil {
+	if o != nil && !IsNil(o.Default) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *TenantRequest) SetDefault(v bool) {
 
 // GetBrandingTitle returns the BrandingTitle field value if set, zero value otherwise.
 func (o *TenantRequest) GetBrandingTitle() string {
-	if o == nil || o.BrandingTitle == nil {
+	if o == nil || IsNil(o.BrandingTitle) {
 		var ret string
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *TenantRequest) GetBrandingTitle() string {
 // GetBrandingTitleOk returns a tuple with the BrandingTitle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TenantRequest) GetBrandingTitleOk() (*string, bool) {
-	if o == nil || o.BrandingTitle == nil {
+	if o == nil || IsNil(o.BrandingTitle) {
 		return nil, false
 	}
 	return o.BrandingTitle, true
@@ -130,7 +133,7 @@ func (o *TenantRequest) GetBrandingTitleOk() (*string, bool) {
 
 // HasBrandingTitle returns a boolean if a field has been set.
 func (o *TenantRequest) HasBrandingTitle() bool {
-	if o != nil && o.BrandingTitle != nil {
+	if o != nil && !IsNil(o.BrandingTitle) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *TenantRequest) SetBrandingTitle(v string) {
 
 // GetBrandingLogo returns the BrandingLogo field value if set, zero value otherwise.
 func (o *TenantRequest) GetBrandingLogo() string {
-	if o == nil || o.BrandingLogo == nil {
+	if o == nil || IsNil(o.BrandingLogo) {
 		var ret string
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *TenantRequest) GetBrandingLogo() string {
 // GetBrandingLogoOk returns a tuple with the BrandingLogo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TenantRequest) GetBrandingLogoOk() (*string, bool) {
-	if o == nil || o.BrandingLogo == nil {
+	if o == nil || IsNil(o.BrandingLogo) {
 		return nil, false
 	}
 	return o.BrandingLogo, true
@@ -162,7 +165,7 @@ func (o *TenantRequest) GetBrandingLogoOk() (*string, bool) {
 
 // HasBrandingLogo returns a boolean if a field has been set.
 func (o *TenantRequest) HasBrandingLogo() bool {
-	if o != nil && o.BrandingLogo != nil {
+	if o != nil && !IsNil(o.BrandingLogo) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *TenantRequest) SetBrandingLogo(v string) {
 
 // GetBrandingFavicon returns the BrandingFavicon field value if set, zero value otherwise.
 func (o *TenantRequest) GetBrandingFavicon() string {
-	if o == nil || o.BrandingFavicon == nil {
+	if o == nil || IsNil(o.BrandingFavicon) {
 		var ret string
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *TenantRequest) GetBrandingFavicon() string {
 // GetBrandingFaviconOk returns a tuple with the BrandingFavicon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TenantRequest) GetBrandingFaviconOk() (*string, bool) {
-	if o == nil || o.BrandingFavicon == nil {
+	if o == nil || IsNil(o.BrandingFavicon) {
 		return nil, false
 	}
 	return o.BrandingFavicon, true
@@ -194,7 +197,7 @@ func (o *TenantRequest) GetBrandingFaviconOk() (*string, bool) {
 
 // HasBrandingFavicon returns a boolean if a field has been set.
 func (o *TenantRequest) HasBrandingFavicon() bool {
-	if o != nil && o.BrandingFavicon != nil {
+	if o != nil && !IsNil(o.BrandingFavicon) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *TenantRequest) SetBrandingFavicon(v string) {
 
 // GetFlowAuthentication returns the FlowAuthentication field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TenantRequest) GetFlowAuthentication() string {
-	if o == nil || o.FlowAuthentication.Get() == nil {
+	if o == nil || IsNil(o.FlowAuthentication.Get()) {
 		var ret string
 		return ret
 	}
@@ -251,7 +254,7 @@ func (o *TenantRequest) UnsetFlowAuthentication() {
 
 // GetFlowInvalidation returns the FlowInvalidation field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TenantRequest) GetFlowInvalidation() string {
-	if o == nil || o.FlowInvalidation.Get() == nil {
+	if o == nil || IsNil(o.FlowInvalidation.Get()) {
 		var ret string
 		return ret
 	}
@@ -294,7 +297,7 @@ func (o *TenantRequest) UnsetFlowInvalidation() {
 
 // GetFlowRecovery returns the FlowRecovery field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TenantRequest) GetFlowRecovery() string {
-	if o == nil || o.FlowRecovery.Get() == nil {
+	if o == nil || IsNil(o.FlowRecovery.Get()) {
 		var ret string
 		return ret
 	}
@@ -337,7 +340,7 @@ func (o *TenantRequest) UnsetFlowRecovery() {
 
 // GetFlowUnenrollment returns the FlowUnenrollment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TenantRequest) GetFlowUnenrollment() string {
-	if o == nil || o.FlowUnenrollment.Get() == nil {
+	if o == nil || IsNil(o.FlowUnenrollment.Get()) {
 		var ret string
 		return ret
 	}
@@ -380,7 +383,7 @@ func (o *TenantRequest) UnsetFlowUnenrollment() {
 
 // GetFlowUserSettings returns the FlowUserSettings field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TenantRequest) GetFlowUserSettings() string {
-	if o == nil || o.FlowUserSettings.Get() == nil {
+	if o == nil || IsNil(o.FlowUserSettings.Get()) {
 		var ret string
 		return ret
 	}
@@ -423,7 +426,7 @@ func (o *TenantRequest) UnsetFlowUserSettings() {
 
 // GetFlowDeviceCode returns the FlowDeviceCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TenantRequest) GetFlowDeviceCode() string {
-	if o == nil || o.FlowDeviceCode.Get() == nil {
+	if o == nil || IsNil(o.FlowDeviceCode.Get()) {
 		var ret string
 		return ret
 	}
@@ -466,7 +469,7 @@ func (o *TenantRequest) UnsetFlowDeviceCode() {
 
 // GetEventRetention returns the EventRetention field value if set, zero value otherwise.
 func (o *TenantRequest) GetEventRetention() string {
-	if o == nil || o.EventRetention == nil {
+	if o == nil || IsNil(o.EventRetention) {
 		var ret string
 		return ret
 	}
@@ -476,7 +479,7 @@ func (o *TenantRequest) GetEventRetention() string {
 // GetEventRetentionOk returns a tuple with the EventRetention field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TenantRequest) GetEventRetentionOk() (*string, bool) {
-	if o == nil || o.EventRetention == nil {
+	if o == nil || IsNil(o.EventRetention) {
 		return nil, false
 	}
 	return o.EventRetention, true
@@ -484,7 +487,7 @@ func (o *TenantRequest) GetEventRetentionOk() (*string, bool) {
 
 // HasEventRetention returns a boolean if a field has been set.
 func (o *TenantRequest) HasEventRetention() bool {
-	if o != nil && o.EventRetention != nil {
+	if o != nil && !IsNil(o.EventRetention) {
 		return true
 	}
 
@@ -498,7 +501,7 @@ func (o *TenantRequest) SetEventRetention(v string) {
 
 // GetWebCertificate returns the WebCertificate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TenantRequest) GetWebCertificate() string {
-	if o == nil || o.WebCertificate.Get() == nil {
+	if o == nil || IsNil(o.WebCertificate.Get()) {
 		var ret string
 		return ret
 	}
@@ -541,7 +544,7 @@ func (o *TenantRequest) UnsetWebCertificate() {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *TenantRequest) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -551,15 +554,15 @@ func (o *TenantRequest) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TenantRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *TenantRequest) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -572,20 +575,26 @@ func (o *TenantRequest) SetAttributes(v map[string]interface{}) {
 }
 
 func (o TenantRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["domain"] = o.Domain
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.Default != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o TenantRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["domain"] = o.Domain
+	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default
 	}
-	if o.BrandingTitle != nil {
+	if !IsNil(o.BrandingTitle) {
 		toSerialize["branding_title"] = o.BrandingTitle
 	}
-	if o.BrandingLogo != nil {
+	if !IsNil(o.BrandingLogo) {
 		toSerialize["branding_logo"] = o.BrandingLogo
 	}
-	if o.BrandingFavicon != nil {
+	if !IsNil(o.BrandingFavicon) {
 		toSerialize["branding_favicon"] = o.BrandingFavicon
 	}
 	if o.FlowAuthentication.IsSet() {
@@ -606,16 +615,16 @@ func (o TenantRequest) MarshalJSON() ([]byte, error) {
 	if o.FlowDeviceCode.IsSet() {
 		toSerialize["flow_device_code"] = o.FlowDeviceCode.Get()
 	}
-	if o.EventRetention != nil {
+	if !IsNil(o.EventRetention) {
 		toSerialize["event_retention"] = o.EventRetention
 	}
 	if o.WebCertificate.IsSet() {
 		toSerialize["web_certificate"] = o.WebCertificate.Get()
 	}
-	if o.Attributes != nil {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableTenantRequest struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GroupRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GroupRequest{}
+
 // GroupRequest Group Serializer
 type GroupRequest struct {
 	Name string `json:"name"`
@@ -69,7 +72,7 @@ func (o *GroupRequest) SetName(v string) {
 
 // GetIsSuperuser returns the IsSuperuser field value if set, zero value otherwise.
 func (o *GroupRequest) GetIsSuperuser() bool {
-	if o == nil || o.IsSuperuser == nil {
+	if o == nil || IsNil(o.IsSuperuser) {
 		var ret bool
 		return ret
 	}
@@ -79,7 +82,7 @@ func (o *GroupRequest) GetIsSuperuser() bool {
 // GetIsSuperuserOk returns a tuple with the IsSuperuser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupRequest) GetIsSuperuserOk() (*bool, bool) {
-	if o == nil || o.IsSuperuser == nil {
+	if o == nil || IsNil(o.IsSuperuser) {
 		return nil, false
 	}
 	return o.IsSuperuser, true
@@ -87,7 +90,7 @@ func (o *GroupRequest) GetIsSuperuserOk() (*bool, bool) {
 
 // HasIsSuperuser returns a boolean if a field has been set.
 func (o *GroupRequest) HasIsSuperuser() bool {
-	if o != nil && o.IsSuperuser != nil {
+	if o != nil && !IsNil(o.IsSuperuser) {
 		return true
 	}
 
@@ -101,7 +104,7 @@ func (o *GroupRequest) SetIsSuperuser(v bool) {
 
 // GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GroupRequest) GetParent() string {
-	if o == nil || o.Parent.Get() == nil {
+	if o == nil || IsNil(o.Parent.Get()) {
 		var ret string
 		return ret
 	}
@@ -144,7 +147,7 @@ func (o *GroupRequest) UnsetParent() {
 
 // GetUsers returns the Users field value if set, zero value otherwise.
 func (o *GroupRequest) GetUsers() []int32 {
-	if o == nil || o.Users == nil {
+	if o == nil || IsNil(o.Users) {
 		var ret []int32
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *GroupRequest) GetUsers() []int32 {
 // GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupRequest) GetUsersOk() ([]int32, bool) {
-	if o == nil || o.Users == nil {
+	if o == nil || IsNil(o.Users) {
 		return nil, false
 	}
 	return o.Users, true
@@ -162,7 +165,7 @@ func (o *GroupRequest) GetUsersOk() ([]int32, bool) {
 
 // HasUsers returns a boolean if a field has been set.
 func (o *GroupRequest) HasUsers() bool {
-	if o != nil && o.Users != nil {
+	if o != nil && !IsNil(o.Users) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *GroupRequest) SetUsers(v []int32) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *GroupRequest) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -186,15 +189,15 @@ func (o *GroupRequest) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *GroupRequest) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -207,23 +210,29 @@ func (o *GroupRequest) SetAttributes(v map[string]interface{}) {
 }
 
 func (o GroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.IsSuperuser != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o GroupRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.IsSuperuser) {
 		toSerialize["is_superuser"] = o.IsSuperuser
 	}
 	if o.Parent.IsSet() {
 		toSerialize["parent"] = o.Parent.Get()
 	}
-	if o.Users != nil {
+	if !IsNil(o.Users) {
 		toSerialize["users"] = o.Users
 	}
-	if o.Attributes != nil {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableGroupRequest struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthenticatorSMSChallengeResponseRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorSMSChallengeResponseRequest{}
+
 // AuthenticatorSMSChallengeResponseRequest SMS Challenge response, device is set by get_response_instance
 type AuthenticatorSMSChallengeResponseRequest struct {
 	Component   *string `json:"component,omitempty"`
@@ -45,7 +48,7 @@ func NewAuthenticatorSMSChallengeResponseRequestWithDefaults() *AuthenticatorSMS
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *AuthenticatorSMSChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *AuthenticatorSMSChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorSMSChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -63,7 +66,7 @@ func (o *AuthenticatorSMSChallengeResponseRequest) GetComponentOk() (*string, bo
 
 // HasComponent returns a boolean if a field has been set.
 func (o *AuthenticatorSMSChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *AuthenticatorSMSChallengeResponseRequest) SetComponent(v string) {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *AuthenticatorSMSChallengeResponseRequest) GetCode() int32 {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret int32
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *AuthenticatorSMSChallengeResponseRequest) GetCode() int32 {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorSMSChallengeResponseRequest) GetCodeOk() (*int32, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -95,7 +98,7 @@ func (o *AuthenticatorSMSChallengeResponseRequest) GetCodeOk() (*int32, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *AuthenticatorSMSChallengeResponseRequest) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *AuthenticatorSMSChallengeResponseRequest) SetCode(v int32) {
 
 // GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
 func (o *AuthenticatorSMSChallengeResponseRequest) GetPhoneNumber() string {
-	if o == nil || o.PhoneNumber == nil {
+	if o == nil || IsNil(o.PhoneNumber) {
 		var ret string
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *AuthenticatorSMSChallengeResponseRequest) GetPhoneNumber() string {
 // GetPhoneNumberOk returns a tuple with the PhoneNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorSMSChallengeResponseRequest) GetPhoneNumberOk() (*string, bool) {
-	if o == nil || o.PhoneNumber == nil {
+	if o == nil || IsNil(o.PhoneNumber) {
 		return nil, false
 	}
 	return o.PhoneNumber, true
@@ -127,7 +130,7 @@ func (o *AuthenticatorSMSChallengeResponseRequest) GetPhoneNumberOk() (*string, 
 
 // HasPhoneNumber returns a boolean if a field has been set.
 func (o *AuthenticatorSMSChallengeResponseRequest) HasPhoneNumber() bool {
-	if o != nil && o.PhoneNumber != nil {
+	if o != nil && !IsNil(o.PhoneNumber) {
 		return true
 	}
 
@@ -140,17 +143,25 @@ func (o *AuthenticatorSMSChallengeResponseRequest) SetPhoneNumber(v string) {
 }
 
 func (o AuthenticatorSMSChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.Code != nil {
-		toSerialize["code"] = o.Code
-	}
-	if o.PhoneNumber != nil {
-		toSerialize["phone_number"] = o.PhoneNumber
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorSMSChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	if !IsNil(o.PhoneNumber) {
+		toSerialize["phone_number"] = o.PhoneNumber
+	}
+	return toSerialize, nil
 }
 
 type NullableAuthenticatorSMSChallengeResponseRequest struct {

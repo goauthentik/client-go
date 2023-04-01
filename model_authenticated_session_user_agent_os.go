@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthenticatedSessionUserAgentOs type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatedSessionUserAgentOs{}
+
 // AuthenticatedSessionUserAgentOs User agent os
 type AuthenticatedSessionUserAgentOs struct {
 	Family     string `json:"family"`
@@ -167,23 +170,21 @@ func (o *AuthenticatedSessionUserAgentOs) SetPatchMinor(v string) {
 }
 
 func (o AuthenticatedSessionUserAgentOs) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["family"] = o.Family
-	}
-	if true {
-		toSerialize["major"] = o.Major
-	}
-	if true {
-		toSerialize["minor"] = o.Minor
-	}
-	if true {
-		toSerialize["patch"] = o.Patch
-	}
-	if true {
-		toSerialize["patch_minor"] = o.PatchMinor
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatedSessionUserAgentOs) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["family"] = o.Family
+	toSerialize["major"] = o.Major
+	toSerialize["minor"] = o.Minor
+	toSerialize["patch"] = o.Patch
+	toSerialize["patch_minor"] = o.PatchMinor
+	return toSerialize, nil
 }
 
 type NullableAuthenticatedSessionUserAgentOs struct {

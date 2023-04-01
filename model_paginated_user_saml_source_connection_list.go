@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PaginatedUserSAMLSourceConnectionList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginatedUserSAMLSourceConnectionList{}
+
 // PaginatedUserSAMLSourceConnectionList struct for PaginatedUserSAMLSourceConnectionList
 type PaginatedUserSAMLSourceConnectionList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
@@ -89,14 +92,18 @@ func (o *PaginatedUserSAMLSourceConnectionList) SetResults(v []UserSAMLSourceCon
 }
 
 func (o PaginatedUserSAMLSourceConnectionList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if true {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaginatedUserSAMLSourceConnectionList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pagination"] = o.Pagination
+	toSerialize["results"] = o.Results
+	return toSerialize, nil
 }
 
 type NullablePaginatedUserSAMLSourceConnectionList struct {
