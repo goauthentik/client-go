@@ -27,6 +27,7 @@ build:
 		-g go \
 		-o /local \
 		-c /local/config.yaml
+	rm -rf ./test
 	go get
 	go fmt .
 	go mod tidy
