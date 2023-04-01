@@ -15,14 +15,14 @@ build:
 	docker run \
 		--rm -v ${PWD}:/local \
 		--user ${UID}:${GID} \
-		docker.io/openapitools/openapi-diff:2.1.0-beta.3 \
+		docker.io/openapitools/openapi-diff:2.1.0-beta.6 \
 		--markdown /local/diff.test \
 		/local/schema-old.yml /local/schema.yml
 	rm schema-old.yml
 	docker run \
 		--rm -v ${PWD}:/local \
 		--user ${UID}:${GID} \
-		docker.io/openapitools/openapi-generator-cli:v6.0.0 generate \
+		docker.io/openapitools/openapi-generator-cli:v6.5.0 generate \
 		-i /local/schema.yml \
 		-g go \
 		-o /local \
