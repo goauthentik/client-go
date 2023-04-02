@@ -85,14 +85,14 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PoliciesApi.PoliciesAllCacheClearCreate(context.Background()).Execute()
+    resp, r, err := apiClient.PoliciesApi.PoliciesAllCacheClearCreate(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesAllCacheClearCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -144,7 +144,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -205,7 +205,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -213,7 +213,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PoliciesApi.PoliciesAllDestroy(context.Background(), policyUuid).Execute()
+    resp, r, err := apiClient.PoliciesApi.PoliciesAllDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesAllDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -273,7 +273,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -349,7 +349,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -419,7 +419,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -491,7 +491,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -552,7 +552,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -622,7 +622,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -688,7 +688,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -696,7 +696,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PoliciesApi.PoliciesBindingsDestroy(context.Background(), policyBindingUuid).Execute()
+    resp, r, err := apiClient.PoliciesApi.PoliciesBindingsDestroy(context.Background(), policyBindingUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesBindingsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -756,7 +756,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -842,7 +842,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -914,7 +914,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -984,7 +984,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1056,7 +1056,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1126,7 +1126,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1192,7 +1192,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1200,7 +1200,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PoliciesApi.PoliciesDummyDestroy(context.Background(), policyUuid).Execute()
+    resp, r, err := apiClient.PoliciesApi.PoliciesDummyDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesDummyDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1261,7 +1261,7 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1349,7 +1349,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1421,7 +1421,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1491,7 +1491,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1563,7 +1563,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1633,7 +1633,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1699,7 +1699,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1707,7 +1707,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PoliciesApi.PoliciesEventMatcherDestroy(context.Background(), policyUuid).Execute()
+    resp, r, err := apiClient.PoliciesApi.PoliciesEventMatcherDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesEventMatcherDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1768,7 +1768,7 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1856,7 +1856,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1928,7 +1928,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1998,7 +1998,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2070,7 +2070,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2140,7 +2140,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2206,7 +2206,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2214,7 +2214,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PoliciesApi.PoliciesExpressionDestroy(context.Background(), policyUuid).Execute()
+    resp, r, err := apiClient.PoliciesApi.PoliciesExpressionDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesExpressionDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2275,7 +2275,7 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2359,7 +2359,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2431,7 +2431,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2501,7 +2501,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2573,7 +2573,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2643,7 +2643,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2709,7 +2709,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2717,7 +2717,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PoliciesApi.PoliciesPasswordDestroy(context.Background(), policyUuid).Execute()
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2777,7 +2777,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2843,7 +2843,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2851,7 +2851,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PoliciesApi.PoliciesPasswordExpiryDestroy(context.Background(), policyUuid).Execute()
+    resp, r, err := apiClient.PoliciesApi.PoliciesPasswordExpiryDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesPasswordExpiryDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2912,7 +2912,7 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2998,7 +2998,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3070,7 +3070,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3140,7 +3140,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3212,7 +3212,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3283,7 +3283,7 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3391,7 +3391,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3463,7 +3463,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3533,7 +3533,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3605,7 +3605,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3675,7 +3675,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3741,7 +3741,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3749,7 +3749,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PoliciesApi.PoliciesReputationDestroy(context.Background(), policyUuid).Execute()
+    resp, r, err := apiClient.PoliciesApi.PoliciesReputationDestroy(context.Background(), policyUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3810,7 +3810,7 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3898,7 +3898,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3970,7 +3970,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -4040,7 +4040,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -4048,7 +4048,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PoliciesApi.PoliciesReputationScoresDestroy(context.Background(), reputationUuid).Execute()
+    resp, r, err := apiClient.PoliciesApi.PoliciesReputationScoresDestroy(context.Background(), reputationUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationScoresDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4108,7 +4108,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -4186,7 +4186,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -4256,7 +4256,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -4326,7 +4326,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -4398,7 +4398,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {

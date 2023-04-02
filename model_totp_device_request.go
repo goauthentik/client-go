@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the TOTPDeviceRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TOTPDeviceRequest{}
-
 // TOTPDeviceRequest Serializer for totp authenticator devices
 type TOTPDeviceRequest struct {
 	// The human-readable name of this device.
@@ -67,17 +64,11 @@ func (o *TOTPDeviceRequest) SetName(v string) {
 }
 
 func (o TOTPDeviceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o TOTPDeviceRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	return toSerialize, nil
 }
 
 type NullableTOTPDeviceRequest struct {

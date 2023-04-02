@@ -16,9 +16,6 @@ import (
 	"time"
 )
 
-// checks if the TokenModel type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TokenModel{}
-
 // TokenModel Serializer for BaseGrantModel and RefreshToken
 type TokenModel struct {
 	Pk       int32          `json:"pk"`
@@ -154,7 +151,7 @@ func (o *TokenModel) SetIsExpired(v bool) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *TokenModel) GetExpires() time.Time {
-	if o == nil || IsNil(o.Expires) {
+	if o == nil || o.Expires == nil {
 		var ret time.Time
 		return ret
 	}
@@ -164,7 +161,7 @@ func (o *TokenModel) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenModel) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.Expires) {
+	if o == nil || o.Expires == nil {
 		return nil, false
 	}
 	return o.Expires, true
@@ -172,7 +169,7 @@ func (o *TokenModel) GetExpiresOk() (*time.Time, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *TokenModel) HasExpires() bool {
-	if o != nil && !IsNil(o.Expires) {
+	if o != nil && o.Expires != nil {
 		return true
 	}
 
@@ -234,7 +231,7 @@ func (o *TokenModel) SetIdToken(v string) {
 
 // GetRevoked returns the Revoked field value if set, zero value otherwise.
 func (o *TokenModel) GetRevoked() bool {
-	if o == nil || IsNil(o.Revoked) {
+	if o == nil || o.Revoked == nil {
 		var ret bool
 		return ret
 	}
@@ -244,7 +241,7 @@ func (o *TokenModel) GetRevoked() bool {
 // GetRevokedOk returns a tuple with the Revoked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenModel) GetRevokedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Revoked) {
+	if o == nil || o.Revoked == nil {
 		return nil, false
 	}
 	return o.Revoked, true
@@ -252,7 +249,7 @@ func (o *TokenModel) GetRevokedOk() (*bool, bool) {
 
 // HasRevoked returns a boolean if a field has been set.
 func (o *TokenModel) HasRevoked() bool {
-	if o != nil && !IsNil(o.Revoked) {
+	if o != nil && o.Revoked != nil {
 		return true
 	}
 
@@ -265,28 +262,32 @@ func (o *TokenModel) SetRevoked(v bool) {
 }
 
 func (o TokenModel) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o TokenModel) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["provider"] = o.Provider
-	toSerialize["user"] = o.User
-	// skip: is_expired is readOnly
-	if !IsNil(o.Expires) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["provider"] = o.Provider
+	}
+	if true {
+		toSerialize["user"] = o.User
+	}
+	if true {
+		toSerialize["is_expired"] = o.IsExpired
+	}
+	if o.Expires != nil {
 		toSerialize["expires"] = o.Expires
 	}
-	toSerialize["scope"] = o.Scope
-	// skip: id_token is readOnly
-	if !IsNil(o.Revoked) {
+	if true {
+		toSerialize["scope"] = o.Scope
+	}
+	if true {
+		toSerialize["id_token"] = o.IdToken
+	}
+	if o.Revoked != nil {
 		toSerialize["revoked"] = o.Revoked
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableTokenModel struct {

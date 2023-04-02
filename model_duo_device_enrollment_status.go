@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DuoDeviceEnrollmentStatus type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DuoDeviceEnrollmentStatus{}
-
 // DuoDeviceEnrollmentStatus struct for DuoDeviceEnrollmentStatus
 type DuoDeviceEnrollmentStatus struct {
 	DuoResponse DuoResponseEnum `json:"duo_response"`
@@ -66,17 +63,11 @@ func (o *DuoDeviceEnrollmentStatus) SetDuoResponse(v DuoResponseEnum) {
 }
 
 func (o DuoDeviceEnrollmentStatus) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["duo_response"] = o.DuoResponse
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o DuoDeviceEnrollmentStatus) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["duo_response"] = o.DuoResponse
-	return toSerialize, nil
 }
 
 type NullableDuoDeviceEnrollmentStatus struct {

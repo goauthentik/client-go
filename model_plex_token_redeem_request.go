@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PlexTokenRedeemRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PlexTokenRedeemRequest{}
-
 // PlexTokenRedeemRequest Serializer to redeem a plex token
 type PlexTokenRedeemRequest struct {
 	PlexToken string `json:"plex_token"`
@@ -66,17 +63,11 @@ func (o *PlexTokenRedeemRequest) SetPlexToken(v string) {
 }
 
 func (o PlexTokenRedeemRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["plex_token"] = o.PlexToken
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o PlexTokenRedeemRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["plex_token"] = o.PlexToken
-	return toSerialize, nil
 }
 
 type NullablePlexTokenRedeemRequest struct {

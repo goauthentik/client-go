@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Source type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Source{}
-
 // Source Source Serializer
 type Source struct {
 	Pk string `json:"pk"`
@@ -37,8 +34,9 @@ type Source struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName    string                `json:"meta_model_name"`
-	PolicyEngineMode *PolicyEngineMode     `json:"policy_engine_mode,omitempty"`
+	MetaModelName    string            `json:"meta_model_name"`
+	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	// How the source determines if an existing user should be authenticated or a new user enrolled.  * `identifier` - Use the source-specific identifier * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses. * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists. * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source. * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed          NullableString `json:"managed"`
@@ -147,7 +145,7 @@ func (o *Source) SetSlug(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *Source) GetEnabled() bool {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil || o.Enabled == nil {
 		var ret bool
 		return ret
 	}
@@ -157,7 +155,7 @@ func (o *Source) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil || o.Enabled == nil {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -165,7 +163,7 @@ func (o *Source) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *Source) HasEnabled() bool {
-	if o != nil && !IsNil(o.Enabled) {
+	if o != nil && o.Enabled != nil {
 		return true
 	}
 
@@ -179,7 +177,7 @@ func (o *Source) SetEnabled(v bool) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Source) GetAuthenticationFlow() string {
-	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
+	if o == nil || o.AuthenticationFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -222,7 +220,7 @@ func (o *Source) UnsetAuthenticationFlow() {
 
 // GetEnrollmentFlow returns the EnrollmentFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Source) GetEnrollmentFlow() string {
-	if o == nil || IsNil(o.EnrollmentFlow.Get()) {
+	if o == nil || o.EnrollmentFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -361,7 +359,7 @@ func (o *Source) SetMetaModelName(v string) {
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *Source) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || IsNil(o.PolicyEngineMode) {
+	if o == nil || o.PolicyEngineMode == nil {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -371,7 +369,7 @@ func (o *Source) GetPolicyEngineMode() PolicyEngineMode {
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || IsNil(o.PolicyEngineMode) {
+	if o == nil || o.PolicyEngineMode == nil {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -379,7 +377,7 @@ func (o *Source) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *Source) HasPolicyEngineMode() bool {
-	if o != nil && !IsNil(o.PolicyEngineMode) {
+	if o != nil && o.PolicyEngineMode != nil {
 		return true
 	}
 
@@ -393,7 +391,7 @@ func (o *Source) SetPolicyEngineMode(v PolicyEngineMode) {
 
 // GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
 func (o *Source) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || IsNil(o.UserMatchingMode) {
+	if o == nil || o.UserMatchingMode == nil {
 		var ret UserMatchingModeEnum
 		return ret
 	}
@@ -403,7 +401,7 @@ func (o *Source) GetUserMatchingMode() UserMatchingModeEnum {
 // GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil || IsNil(o.UserMatchingMode) {
+	if o == nil || o.UserMatchingMode == nil {
 		return nil, false
 	}
 	return o.UserMatchingMode, true
@@ -411,7 +409,7 @@ func (o *Source) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
 
 // HasUserMatchingMode returns a boolean if a field has been set.
 func (o *Source) HasUserMatchingMode() bool {
-	if o != nil && !IsNil(o.UserMatchingMode) {
+	if o != nil && o.UserMatchingMode != nil {
 		return true
 	}
 
@@ -451,7 +449,7 @@ func (o *Source) SetManaged(v string) {
 
 // GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
 func (o *Source) GetUserPathTemplate() string {
-	if o == nil || IsNil(o.UserPathTemplate) {
+	if o == nil || o.UserPathTemplate == nil {
 		var ret string
 		return ret
 	}
@@ -461,7 +459,7 @@ func (o *Source) GetUserPathTemplate() string {
 // GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetUserPathTemplateOk() (*string, bool) {
-	if o == nil || IsNil(o.UserPathTemplate) {
+	if o == nil || o.UserPathTemplate == nil {
 		return nil, false
 	}
 	return o.UserPathTemplate, true
@@ -469,7 +467,7 @@ func (o *Source) GetUserPathTemplateOk() (*string, bool) {
 
 // HasUserPathTemplate returns a boolean if a field has been set.
 func (o *Source) HasUserPathTemplate() bool {
-	if o != nil && !IsNil(o.UserPathTemplate) {
+	if o != nil && o.UserPathTemplate != nil {
 		return true
 	}
 
@@ -508,19 +506,17 @@ func (o *Source) SetIcon(v string) {
 }
 
 func (o Source) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o Source) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	toSerialize["slug"] = o.Slug
-	if !IsNil(o.Enabled) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["slug"] = o.Slug
+	}
+	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.AuthenticationFlow.IsSet() {
@@ -529,22 +525,34 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	if o.EnrollmentFlow.IsSet() {
 		toSerialize["enrollment_flow"] = o.EnrollmentFlow.Get()
 	}
-	// skip: component is readOnly
-	// skip: verbose_name is readOnly
-	// skip: verbose_name_plural is readOnly
-	// skip: meta_model_name is readOnly
-	if !IsNil(o.PolicyEngineMode) {
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if !IsNil(o.UserMatchingMode) {
+	if o.UserMatchingMode != nil {
 		toSerialize["user_matching_mode"] = o.UserMatchingMode
 	}
-	toSerialize["managed"] = o.Managed.Get()
-	if !IsNil(o.UserPathTemplate) {
+	if true {
+		toSerialize["managed"] = o.Managed.Get()
+	}
+	if o.UserPathTemplate != nil {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	toSerialize["icon"] = o.Icon.Get()
-	return toSerialize, nil
+	if true {
+		toSerialize["icon"] = o.Icon.Get()
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableSource struct {

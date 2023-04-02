@@ -51,7 +51,7 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 	var jsonDict map[string]interface{}
 	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
-		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+		return fmt.Errorf("Failed to unmarshal JSON into map for the discriminator lookup.")
 	}
 
 	// check if the discriminator value is 'AppleLoginChallenge'
@@ -62,7 +62,7 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AppleLoginChallenge, return on the first match
 		} else {
 			dst.AppleLoginChallenge = nil
-			return fmt.Errorf("failed to unmarshal LoginChallengeTypes as AppleLoginChallenge: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as AppleLoginChallenge: %s", err.Error())
 		}
 	}
 
@@ -74,7 +74,7 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.PlexAuthenticationChallenge, return on the first match
 		} else {
 			dst.PlexAuthenticationChallenge = nil
-			return fmt.Errorf("failed to unmarshal LoginChallengeTypes as PlexAuthenticationChallenge: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as PlexAuthenticationChallenge: %s", err.Error())
 		}
 	}
 
@@ -86,7 +86,7 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.RedirectChallenge, return on the first match
 		} else {
 			dst.RedirectChallenge = nil
-			return fmt.Errorf("failed to unmarshal LoginChallengeTypes as RedirectChallenge: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as RedirectChallenge: %s", err.Error())
 		}
 	}
 
@@ -98,7 +98,7 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AppleLoginChallenge, return on the first match
 		} else {
 			dst.AppleLoginChallenge = nil
-			return fmt.Errorf("failed to unmarshal LoginChallengeTypes as AppleLoginChallenge: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as AppleLoginChallenge: %s", err.Error())
 		}
 	}
 
@@ -110,7 +110,7 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.PlexAuthenticationChallenge, return on the first match
 		} else {
 			dst.PlexAuthenticationChallenge = nil
-			return fmt.Errorf("failed to unmarshal LoginChallengeTypes as PlexAuthenticationChallenge: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as PlexAuthenticationChallenge: %s", err.Error())
 		}
 	}
 
@@ -122,7 +122,7 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.RedirectChallenge, return on the first match
 		} else {
 			dst.RedirectChallenge = nil
-			return fmt.Errorf("failed to unmarshal LoginChallengeTypes as RedirectChallenge: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as RedirectChallenge: %s", err.Error())
 		}
 	}
 

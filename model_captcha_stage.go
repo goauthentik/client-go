@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CaptchaStage type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CaptchaStage{}
-
 // CaptchaStage CaptchaStage Serializer
 type CaptchaStage struct {
 	Pk   string `json:"pk"`
@@ -207,7 +204,7 @@ func (o *CaptchaStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *CaptchaStage) GetFlowSet() []FlowSet {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSet
 		return ret
 	}
@@ -217,7 +214,7 @@ func (o *CaptchaStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -225,7 +222,7 @@ func (o *CaptchaStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *CaptchaStage) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -263,7 +260,7 @@ func (o *CaptchaStage) SetPublicKey(v string) {
 
 // GetJsUrl returns the JsUrl field value if set, zero value otherwise.
 func (o *CaptchaStage) GetJsUrl() string {
-	if o == nil || IsNil(o.JsUrl) {
+	if o == nil || o.JsUrl == nil {
 		var ret string
 		return ret
 	}
@@ -273,7 +270,7 @@ func (o *CaptchaStage) GetJsUrl() string {
 // GetJsUrlOk returns a tuple with the JsUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaStage) GetJsUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.JsUrl) {
+	if o == nil || o.JsUrl == nil {
 		return nil, false
 	}
 	return o.JsUrl, true
@@ -281,7 +278,7 @@ func (o *CaptchaStage) GetJsUrlOk() (*string, bool) {
 
 // HasJsUrl returns a boolean if a field has been set.
 func (o *CaptchaStage) HasJsUrl() bool {
-	if o != nil && !IsNil(o.JsUrl) {
+	if o != nil && o.JsUrl != nil {
 		return true
 	}
 
@@ -295,7 +292,7 @@ func (o *CaptchaStage) SetJsUrl(v string) {
 
 // GetApiUrl returns the ApiUrl field value if set, zero value otherwise.
 func (o *CaptchaStage) GetApiUrl() string {
-	if o == nil || IsNil(o.ApiUrl) {
+	if o == nil || o.ApiUrl == nil {
 		var ret string
 		return ret
 	}
@@ -305,7 +302,7 @@ func (o *CaptchaStage) GetApiUrl() string {
 // GetApiUrlOk returns a tuple with the ApiUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaStage) GetApiUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.ApiUrl) {
+	if o == nil || o.ApiUrl == nil {
 		return nil, false
 	}
 	return o.ApiUrl, true
@@ -313,7 +310,7 @@ func (o *CaptchaStage) GetApiUrlOk() (*string, bool) {
 
 // HasApiUrl returns a boolean if a field has been set.
 func (o *CaptchaStage) HasApiUrl() bool {
-	if o != nil && !IsNil(o.ApiUrl) {
+	if o != nil && o.ApiUrl != nil {
 		return true
 	}
 
@@ -326,32 +323,38 @@ func (o *CaptchaStage) SetApiUrl(v string) {
 }
 
 func (o CaptchaStage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CaptchaStage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	// skip: component is readOnly
-	// skip: verbose_name is readOnly
-	// skip: verbose_name_plural is readOnly
-	// skip: meta_model_name is readOnly
-	if !IsNil(o.FlowSet) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	toSerialize["public_key"] = o.PublicKey
-	if !IsNil(o.JsUrl) {
+	if true {
+		toSerialize["public_key"] = o.PublicKey
+	}
+	if o.JsUrl != nil {
 		toSerialize["js_url"] = o.JsUrl
 	}
-	if !IsNil(o.ApiUrl) {
+	if o.ApiUrl != nil {
 		toSerialize["api_url"] = o.ApiUrl
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCaptchaStage struct {

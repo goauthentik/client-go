@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the TypeCreate type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TypeCreate{}
-
 // TypeCreate Types of an object that can be created
 type TypeCreate struct {
 	Name        string `json:"name"`
@@ -144,20 +141,20 @@ func (o *TypeCreate) SetModelName(v string) {
 }
 
 func (o TypeCreate) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["description"] = o.Description
+	}
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["model_name"] = o.ModelName
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o TypeCreate) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["description"] = o.Description
-	toSerialize["component"] = o.Component
-	toSerialize["model_name"] = o.ModelName
-	return toSerialize, nil
 }
 
 type NullableTypeCreate struct {

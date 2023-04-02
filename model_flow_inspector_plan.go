@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the FlowInspectorPlan type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FlowInspectorPlan{}
-
 // FlowInspectorPlan Serializer for an active FlowPlan
 type FlowInspectorPlan struct {
 	CurrentStage     FlowStageBinding `json:"current_stage"`
@@ -111,7 +108,7 @@ func (o *FlowInspectorPlan) GetPlanContext() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *FlowInspectorPlan) GetPlanContextOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.PlanContext, true
 }
@@ -146,20 +143,20 @@ func (o *FlowInspectorPlan) SetSessionId(v string) {
 }
 
 func (o FlowInspectorPlan) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["current_stage"] = o.CurrentStage
+	}
+	if true {
+		toSerialize["next_planned_stage"] = o.NextPlannedStage
+	}
+	if true {
+		toSerialize["plan_context"] = o.PlanContext
+	}
+	if true {
+		toSerialize["session_id"] = o.SessionId
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o FlowInspectorPlan) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: current_stage is readOnly
-	// skip: next_planned_stage is readOnly
-	// skip: plan_context is readOnly
-	// skip: session_id is readOnly
-	return toSerialize, nil
 }
 
 type NullableFlowInspectorPlan struct {

@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the UserSAMLSourceConnectionRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserSAMLSourceConnectionRequest{}
-
 // UserSAMLSourceConnectionRequest SAML Source Serializer
 type UserSAMLSourceConnectionRequest struct {
 	User       int32  `json:"user"`
@@ -92,18 +89,14 @@ func (o *UserSAMLSourceConnectionRequest) SetIdentifier(v string) {
 }
 
 func (o UserSAMLSourceConnectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["user"] = o.User
+	}
+	if true {
+		toSerialize["identifier"] = o.Identifier
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o UserSAMLSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["user"] = o.User
-	toSerialize["identifier"] = o.Identifier
-	return toSerialize, nil
 }
 
 type NullableUserSAMLSourceConnectionRequest struct {

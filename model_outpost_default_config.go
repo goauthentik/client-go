@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the OutpostDefaultConfig type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OutpostDefaultConfig{}
-
 // OutpostDefaultConfig Global default outpost config
 type OutpostDefaultConfig struct {
 	Config map[string]interface{} `json:"config"`
@@ -55,7 +52,7 @@ func (o *OutpostDefaultConfig) GetConfig() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *OutpostDefaultConfig) GetConfigOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Config, true
 }
@@ -66,17 +63,11 @@ func (o *OutpostDefaultConfig) SetConfig(v map[string]interface{}) {
 }
 
 func (o OutpostDefaultConfig) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["config"] = o.Config
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o OutpostDefaultConfig) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: config is readOnly
-	return toSerialize, nil
 }
 
 type NullableOutpostDefaultConfig struct {

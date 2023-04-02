@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ScopeMappingRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ScopeMappingRequest{}
-
 // ScopeMappingRequest ScopeMapping Serializer
 type ScopeMappingRequest struct {
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
@@ -52,7 +49,7 @@ func NewScopeMappingRequestWithDefaults() *ScopeMappingRequest {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ScopeMappingRequest) GetManaged() string {
-	if o == nil || IsNil(o.Managed.Get()) {
+	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -167,7 +164,7 @@ func (o *ScopeMappingRequest) SetScopeName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ScopeMappingRequest) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || o.Description == nil {
 		var ret string
 		return ret
 	}
@@ -177,7 +174,7 @@ func (o *ScopeMappingRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ScopeMappingRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || o.Description == nil {
 		return nil, false
 	}
 	return o.Description, true
@@ -185,7 +182,7 @@ func (o *ScopeMappingRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ScopeMappingRequest) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description != nil {
 		return true
 	}
 
@@ -198,25 +195,23 @@ func (o *ScopeMappingRequest) SetDescription(v string) {
 }
 
 func (o ScopeMappingRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ScopeMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	toSerialize["name"] = o.Name
-	toSerialize["expression"] = o.Expression
-	toSerialize["scope_name"] = o.ScopeName
-	if !IsNil(o.Description) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["expression"] = o.Expression
+	}
+	if true {
+		toSerialize["scope_name"] = o.ScopeName
+	}
+	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableScopeMappingRequest struct {

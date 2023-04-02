@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the OAuthSource type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OAuthSource{}
-
 // OAuthSource OAuth Source Serializer
 type OAuthSource struct {
 	Pk string `json:"pk"`
@@ -37,8 +34,9 @@ type OAuthSource struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName    string                `json:"meta_model_name"`
-	PolicyEngineMode *PolicyEngineMode     `json:"policy_engine_mode,omitempty"`
+	MetaModelName    string            `json:"meta_model_name"`
+	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	// How the source determines if an existing user should be authenticated or a new user enrolled.  * `identifier` - Use the source-specific identifier * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses. * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists. * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source. * `username_deny` - Use the user's username, but deny enrollment when the username already exists.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed          NullableString `json:"managed"`
@@ -168,7 +166,7 @@ func (o *OAuthSource) SetSlug(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *OAuthSource) GetEnabled() bool {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil || o.Enabled == nil {
 		var ret bool
 		return ret
 	}
@@ -178,7 +176,7 @@ func (o *OAuthSource) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil || o.Enabled == nil {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -186,7 +184,7 @@ func (o *OAuthSource) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *OAuthSource) HasEnabled() bool {
-	if o != nil && !IsNil(o.Enabled) {
+	if o != nil && o.Enabled != nil {
 		return true
 	}
 
@@ -200,7 +198,7 @@ func (o *OAuthSource) SetEnabled(v bool) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OAuthSource) GetAuthenticationFlow() string {
-	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
+	if o == nil || o.AuthenticationFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -243,7 +241,7 @@ func (o *OAuthSource) UnsetAuthenticationFlow() {
 
 // GetEnrollmentFlow returns the EnrollmentFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OAuthSource) GetEnrollmentFlow() string {
-	if o == nil || IsNil(o.EnrollmentFlow.Get()) {
+	if o == nil || o.EnrollmentFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -382,7 +380,7 @@ func (o *OAuthSource) SetMetaModelName(v string) {
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *OAuthSource) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || IsNil(o.PolicyEngineMode) {
+	if o == nil || o.PolicyEngineMode == nil {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -392,7 +390,7 @@ func (o *OAuthSource) GetPolicyEngineMode() PolicyEngineMode {
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || IsNil(o.PolicyEngineMode) {
+	if o == nil || o.PolicyEngineMode == nil {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -400,7 +398,7 @@ func (o *OAuthSource) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *OAuthSource) HasPolicyEngineMode() bool {
-	if o != nil && !IsNil(o.PolicyEngineMode) {
+	if o != nil && o.PolicyEngineMode != nil {
 		return true
 	}
 
@@ -414,7 +412,7 @@ func (o *OAuthSource) SetPolicyEngineMode(v PolicyEngineMode) {
 
 // GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
 func (o *OAuthSource) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || IsNil(o.UserMatchingMode) {
+	if o == nil || o.UserMatchingMode == nil {
 		var ret UserMatchingModeEnum
 		return ret
 	}
@@ -424,7 +422,7 @@ func (o *OAuthSource) GetUserMatchingMode() UserMatchingModeEnum {
 // GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil || IsNil(o.UserMatchingMode) {
+	if o == nil || o.UserMatchingMode == nil {
 		return nil, false
 	}
 	return o.UserMatchingMode, true
@@ -432,7 +430,7 @@ func (o *OAuthSource) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
 
 // HasUserMatchingMode returns a boolean if a field has been set.
 func (o *OAuthSource) HasUserMatchingMode() bool {
-	if o != nil && !IsNil(o.UserMatchingMode) {
+	if o != nil && o.UserMatchingMode != nil {
 		return true
 	}
 
@@ -472,7 +470,7 @@ func (o *OAuthSource) SetManaged(v string) {
 
 // GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
 func (o *OAuthSource) GetUserPathTemplate() string {
-	if o == nil || IsNil(o.UserPathTemplate) {
+	if o == nil || o.UserPathTemplate == nil {
 		var ret string
 		return ret
 	}
@@ -482,7 +480,7 @@ func (o *OAuthSource) GetUserPathTemplate() string {
 // GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetUserPathTemplateOk() (*string, bool) {
-	if o == nil || IsNil(o.UserPathTemplate) {
+	if o == nil || o.UserPathTemplate == nil {
 		return nil, false
 	}
 	return o.UserPathTemplate, true
@@ -490,7 +488,7 @@ func (o *OAuthSource) GetUserPathTemplateOk() (*string, bool) {
 
 // HasUserPathTemplate returns a boolean if a field has been set.
 func (o *OAuthSource) HasUserPathTemplate() bool {
-	if o != nil && !IsNil(o.UserPathTemplate) {
+	if o != nil && o.UserPathTemplate != nil {
 		return true
 	}
 
@@ -554,7 +552,7 @@ func (o *OAuthSource) SetProviderType(v ProviderTypeEnum) {
 
 // GetRequestTokenUrl returns the RequestTokenUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OAuthSource) GetRequestTokenUrl() string {
-	if o == nil || IsNil(o.RequestTokenUrl.Get()) {
+	if o == nil || o.RequestTokenUrl.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -597,7 +595,7 @@ func (o *OAuthSource) UnsetRequestTokenUrl() {
 
 // GetAuthorizationUrl returns the AuthorizationUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OAuthSource) GetAuthorizationUrl() string {
-	if o == nil || IsNil(o.AuthorizationUrl.Get()) {
+	if o == nil || o.AuthorizationUrl.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -640,7 +638,7 @@ func (o *OAuthSource) UnsetAuthorizationUrl() {
 
 // GetAccessTokenUrl returns the AccessTokenUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OAuthSource) GetAccessTokenUrl() string {
-	if o == nil || IsNil(o.AccessTokenUrl.Get()) {
+	if o == nil || o.AccessTokenUrl.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -683,7 +681,7 @@ func (o *OAuthSource) UnsetAccessTokenUrl() {
 
 // GetProfileUrl returns the ProfileUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OAuthSource) GetProfileUrl() string {
-	if o == nil || IsNil(o.ProfileUrl.Get()) {
+	if o == nil || o.ProfileUrl.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -774,7 +772,7 @@ func (o *OAuthSource) SetCallbackUrl(v string) {
 
 // GetAdditionalScopes returns the AdditionalScopes field value if set, zero value otherwise.
 func (o *OAuthSource) GetAdditionalScopes() string {
-	if o == nil || IsNil(o.AdditionalScopes) {
+	if o == nil || o.AdditionalScopes == nil {
 		var ret string
 		return ret
 	}
@@ -784,7 +782,7 @@ func (o *OAuthSource) GetAdditionalScopes() string {
 // GetAdditionalScopesOk returns a tuple with the AdditionalScopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetAdditionalScopesOk() (*string, bool) {
-	if o == nil || IsNil(o.AdditionalScopes) {
+	if o == nil || o.AdditionalScopes == nil {
 		return nil, false
 	}
 	return o.AdditionalScopes, true
@@ -792,7 +790,7 @@ func (o *OAuthSource) GetAdditionalScopesOk() (*string, bool) {
 
 // HasAdditionalScopes returns a boolean if a field has been set.
 func (o *OAuthSource) HasAdditionalScopes() bool {
-	if o != nil && !IsNil(o.AdditionalScopes) {
+	if o != nil && o.AdditionalScopes != nil {
 		return true
 	}
 
@@ -830,7 +828,7 @@ func (o *OAuthSource) SetType(v SourceType) {
 
 // GetOidcWellKnownUrl returns the OidcWellKnownUrl field value if set, zero value otherwise.
 func (o *OAuthSource) GetOidcWellKnownUrl() string {
-	if o == nil || IsNil(o.OidcWellKnownUrl) {
+	if o == nil || o.OidcWellKnownUrl == nil {
 		var ret string
 		return ret
 	}
@@ -840,7 +838,7 @@ func (o *OAuthSource) GetOidcWellKnownUrl() string {
 // GetOidcWellKnownUrlOk returns a tuple with the OidcWellKnownUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetOidcWellKnownUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.OidcWellKnownUrl) {
+	if o == nil || o.OidcWellKnownUrl == nil {
 		return nil, false
 	}
 	return o.OidcWellKnownUrl, true
@@ -848,7 +846,7 @@ func (o *OAuthSource) GetOidcWellKnownUrlOk() (*string, bool) {
 
 // HasOidcWellKnownUrl returns a boolean if a field has been set.
 func (o *OAuthSource) HasOidcWellKnownUrl() bool {
-	if o != nil && !IsNil(o.OidcWellKnownUrl) {
+	if o != nil && o.OidcWellKnownUrl != nil {
 		return true
 	}
 
@@ -862,7 +860,7 @@ func (o *OAuthSource) SetOidcWellKnownUrl(v string) {
 
 // GetOidcJwksUrl returns the OidcJwksUrl field value if set, zero value otherwise.
 func (o *OAuthSource) GetOidcJwksUrl() string {
-	if o == nil || IsNil(o.OidcJwksUrl) {
+	if o == nil || o.OidcJwksUrl == nil {
 		var ret string
 		return ret
 	}
@@ -872,7 +870,7 @@ func (o *OAuthSource) GetOidcJwksUrl() string {
 // GetOidcJwksUrlOk returns a tuple with the OidcJwksUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetOidcJwksUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.OidcJwksUrl) {
+	if o == nil || o.OidcJwksUrl == nil {
 		return nil, false
 	}
 	return o.OidcJwksUrl, true
@@ -880,7 +878,7 @@ func (o *OAuthSource) GetOidcJwksUrlOk() (*string, bool) {
 
 // HasOidcJwksUrl returns a boolean if a field has been set.
 func (o *OAuthSource) HasOidcJwksUrl() bool {
-	if o != nil && !IsNil(o.OidcJwksUrl) {
+	if o != nil && o.OidcJwksUrl != nil {
 		return true
 	}
 
@@ -894,7 +892,7 @@ func (o *OAuthSource) SetOidcJwksUrl(v string) {
 
 // GetOidcJwks returns the OidcJwks field value if set, zero value otherwise.
 func (o *OAuthSource) GetOidcJwks() map[string]interface{} {
-	if o == nil || IsNil(o.OidcJwks) {
+	if o == nil || o.OidcJwks == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -904,15 +902,15 @@ func (o *OAuthSource) GetOidcJwks() map[string]interface{} {
 // GetOidcJwksOk returns a tuple with the OidcJwks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OAuthSource) GetOidcJwksOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.OidcJwks) {
-		return map[string]interface{}{}, false
+	if o == nil || o.OidcJwks == nil {
+		return nil, false
 	}
 	return o.OidcJwks, true
 }
 
 // HasOidcJwks returns a boolean if a field has been set.
 func (o *OAuthSource) HasOidcJwks() bool {
-	if o != nil && !IsNil(o.OidcJwks) {
+	if o != nil && o.OidcJwks != nil {
 		return true
 	}
 
@@ -925,19 +923,17 @@ func (o *OAuthSource) SetOidcJwks(v map[string]interface{}) {
 }
 
 func (o OAuthSource) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o OAuthSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	toSerialize["slug"] = o.Slug
-	if !IsNil(o.Enabled) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["slug"] = o.Slug
+	}
+	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.AuthenticationFlow.IsSet() {
@@ -946,22 +942,36 @@ func (o OAuthSource) ToMap() (map[string]interface{}, error) {
 	if o.EnrollmentFlow.IsSet() {
 		toSerialize["enrollment_flow"] = o.EnrollmentFlow.Get()
 	}
-	// skip: component is readOnly
-	// skip: verbose_name is readOnly
-	// skip: verbose_name_plural is readOnly
-	// skip: meta_model_name is readOnly
-	if !IsNil(o.PolicyEngineMode) {
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if !IsNil(o.UserMatchingMode) {
+	if o.UserMatchingMode != nil {
 		toSerialize["user_matching_mode"] = o.UserMatchingMode
 	}
-	toSerialize["managed"] = o.Managed.Get()
-	if !IsNil(o.UserPathTemplate) {
+	if true {
+		toSerialize["managed"] = o.Managed.Get()
+	}
+	if o.UserPathTemplate != nil {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	toSerialize["icon"] = o.Icon.Get()
-	toSerialize["provider_type"] = o.ProviderType
+	if true {
+		toSerialize["icon"] = o.Icon.Get()
+	}
+	if true {
+		toSerialize["provider_type"] = o.ProviderType
+	}
 	if o.RequestTokenUrl.IsSet() {
 		toSerialize["request_token_url"] = o.RequestTokenUrl.Get()
 	}
@@ -974,22 +984,28 @@ func (o OAuthSource) ToMap() (map[string]interface{}, error) {
 	if o.ProfileUrl.IsSet() {
 		toSerialize["profile_url"] = o.ProfileUrl.Get()
 	}
-	toSerialize["consumer_key"] = o.ConsumerKey
-	// skip: callback_url is readOnly
-	if !IsNil(o.AdditionalScopes) {
+	if true {
+		toSerialize["consumer_key"] = o.ConsumerKey
+	}
+	if true {
+		toSerialize["callback_url"] = o.CallbackUrl
+	}
+	if o.AdditionalScopes != nil {
 		toSerialize["additional_scopes"] = o.AdditionalScopes
 	}
-	// skip: type is readOnly
-	if !IsNil(o.OidcWellKnownUrl) {
+	if true {
+		toSerialize["type"] = o.Type
+	}
+	if o.OidcWellKnownUrl != nil {
 		toSerialize["oidc_well_known_url"] = o.OidcWellKnownUrl
 	}
-	if !IsNil(o.OidcJwksUrl) {
+	if o.OidcJwksUrl != nil {
 		toSerialize["oidc_jwks_url"] = o.OidcJwksUrl
 	}
-	if !IsNil(o.OidcJwks) {
+	if o.OidcJwks != nil {
 		toSerialize["oidc_jwks"] = o.OidcJwks
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableOAuthSource struct {

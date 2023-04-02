@@ -77,7 +77,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -85,7 +85,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ProvidersApi.ProvidersAllDestroy(context.Background(), id).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersAllDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersAllDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,7 +145,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -219,7 +219,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -289,7 +289,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -350,7 +350,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -420,7 +420,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -486,7 +486,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -494,7 +494,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ProvidersApi.ProvidersLdapDestroy(context.Background(), id).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersLdapDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersLdapDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -554,7 +554,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -648,7 +648,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -720,7 +720,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -790,7 +790,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -862,7 +862,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -932,7 +932,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -998,7 +998,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1006,7 +1006,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ProvidersApi.ProvidersOauth2Destroy(context.Background(), id).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersOauth2Destroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersOauth2Destroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1066,7 +1066,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1166,7 +1166,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1238,7 +1238,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1308,7 +1308,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1378,7 +1378,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1448,7 +1448,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1520,7 +1520,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1590,7 +1590,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1656,7 +1656,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1664,7 +1664,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ProvidersApi.ProvidersProxyDestroy(context.Background(), id).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersProxyDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersProxyDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1724,7 +1724,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1828,7 +1828,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1900,7 +1900,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1970,7 +1970,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2042,7 +2042,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2112,7 +2112,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2178,7 +2178,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2186,7 +2186,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ProvidersApi.ProvidersRadiusDestroy(context.Background(), id).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersRadiusDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRadiusDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2246,7 +2246,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2326,7 +2326,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2398,7 +2398,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2468,7 +2468,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2540,7 +2540,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2610,7 +2610,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2676,7 +2676,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2684,7 +2684,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ProvidersApi.ProvidersSamlDestroy(context.Background(), id).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2744,7 +2744,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2754,7 +2754,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ProvidersApi.ProvidersSamlImportMetadataCreate(context.Background()).Name(name).AuthorizationFlow(authorizationFlow).File(file).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlImportMetadataCreate(context.Background()).Name(name).AuthorizationFlow(authorizationFlow).File(file).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlImportMetadataCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2812,7 +2812,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2916,7 +2916,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2990,7 +2990,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3062,7 +3062,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3132,7 +3132,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3202,7 +3202,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3274,7 +3274,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3344,7 +3344,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3410,7 +3410,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3418,7 +3418,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ProvidersApi.ProvidersScimDestroy(context.Background(), id).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimDestroy(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3478,7 +3478,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3558,7 +3558,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3630,7 +3630,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3700,7 +3700,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3770,7 +3770,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -3842,7 +3842,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {

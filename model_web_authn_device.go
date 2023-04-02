@@ -16,9 +16,6 @@ import (
 	"time"
 )
 
-// checks if the WebAuthnDevice type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &WebAuthnDevice{}
-
 // WebAuthnDevice Serializer for WebAuthn authenticator devices
 type WebAuthnDevice struct {
 	Pk        int32     `json:"pk"`
@@ -119,19 +116,17 @@ func (o *WebAuthnDevice) SetCreatedOn(v time.Time) {
 }
 
 func (o WebAuthnDevice) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["created_on"] = o.CreatedOn
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o WebAuthnDevice) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	// skip: created_on is readOnly
-	return toSerialize, nil
 }
 
 type NullableWebAuthnDevice struct {

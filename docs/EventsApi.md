@@ -55,7 +55,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -116,7 +116,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -182,7 +182,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -190,7 +190,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EventsApi.EventsEventsDestroy(context.Background(), eventUuid).Execute()
+    resp, r, err := apiClient.EventsApi.EventsEventsDestroy(context.Background(), eventUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -250,7 +250,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -338,7 +338,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -410,7 +410,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -478,7 +478,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -548,7 +548,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -616,7 +616,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -688,7 +688,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -696,7 +696,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EventsApi.EventsNotificationsDestroy(context.Background(), uuid).Execute()
+    resp, r, err := apiClient.EventsApi.EventsNotificationsDestroy(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -757,7 +757,7 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -841,14 +841,14 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EventsApi.EventsNotificationsMarkAllSeenCreate(context.Background()).Execute()
+    resp, r, err := apiClient.EventsApi.EventsNotificationsMarkAllSeenCreate(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsMarkAllSeenCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -900,7 +900,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -972,7 +972,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1042,7 +1042,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1114,7 +1114,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1184,7 +1184,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1250,7 +1250,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1258,7 +1258,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EventsApi.EventsRulesDestroy(context.Background(), pbmUuid).Execute()
+    resp, r, err := apiClient.EventsApi.EventsRulesDestroy(context.Background(), pbmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1318,7 +1318,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1396,7 +1396,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1468,7 +1468,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1538,7 +1538,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1610,7 +1610,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1680,7 +1680,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1746,7 +1746,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1754,7 +1754,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EventsApi.EventsTransportsDestroy(context.Background(), uuid).Execute()
+    resp, r, err := apiClient.EventsApi.EventsTransportsDestroy(context.Background(), uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1814,7 +1814,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1894,7 +1894,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1966,7 +1966,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2036,7 +2036,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2106,7 +2106,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2178,7 +2178,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {

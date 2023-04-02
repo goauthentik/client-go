@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Metadata type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Metadata{}
-
 // Metadata Serializer for blueprint metadata
 type Metadata struct {
 	Name   string                 `json:"name"`
@@ -81,7 +78,7 @@ func (o *Metadata) GetLabels() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *Metadata) GetLabelsOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Labels, true
 }
@@ -92,18 +89,14 @@ func (o *Metadata) SetLabels(v map[string]interface{}) {
 }
 
 func (o Metadata) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["labels"] = o.Labels
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o Metadata) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["labels"] = o.Labels
-	return toSerialize, nil
 }
 
 type NullableMetadata struct {

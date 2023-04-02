@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ScopeMapping type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ScopeMapping{}
-
 // ScopeMapping ScopeMapping Serializer
 type ScopeMapping struct {
 	Pk string `json:"pk"`
@@ -90,7 +87,7 @@ func (o *ScopeMapping) SetPk(v string) {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ScopeMapping) GetManaged() string {
-	if o == nil || IsNil(o.Managed.Get()) {
+	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -301,7 +298,7 @@ func (o *ScopeMapping) SetScopeName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ScopeMapping) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || o.Description == nil {
 		var ret string
 		return ret
 	}
@@ -311,7 +308,7 @@ func (o *ScopeMapping) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ScopeMapping) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || o.Description == nil {
 		return nil, false
 	}
 	return o.Description, true
@@ -319,7 +316,7 @@ func (o *ScopeMapping) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ScopeMapping) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description != nil {
 		return true
 	}
 
@@ -332,30 +329,38 @@ func (o *ScopeMapping) SetDescription(v string) {
 }
 
 func (o ScopeMapping) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ScopeMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	toSerialize["name"] = o.Name
-	toSerialize["expression"] = o.Expression
-	// skip: component is readOnly
-	// skip: verbose_name is readOnly
-	// skip: verbose_name_plural is readOnly
-	// skip: meta_model_name is readOnly
-	toSerialize["scope_name"] = o.ScopeName
-	if !IsNil(o.Description) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["expression"] = o.Expression
+	}
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if true {
+		toSerialize["scope_name"] = o.ScopeName
+	}
+	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableScopeMapping struct {

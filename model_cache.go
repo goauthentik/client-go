@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Cache type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Cache{}
-
 // Cache Generic cache stats for an object
 type Cache struct {
 	Count int32 `json:"count"`
@@ -66,17 +63,11 @@ func (o *Cache) SetCount(v int32) {
 }
 
 func (o Cache) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["count"] = o.Count
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o Cache) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: count is readOnly
-	return toSerialize, nil
 }
 
 type NullableCache struct {

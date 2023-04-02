@@ -14,7 +14,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
@@ -66,7 +66,7 @@ func (a *ManagedApiService) ManagedBlueprintsApplyCreateExecute(r ApiManagedBlue
 	}
 
 	localVarPath := localBasePath + "/managed/blueprints/{instance_uuid}/apply/"
-	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterValueToString(r.instanceUuid, "instanceUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterToString(r.instanceUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -113,9 +113,9 @@ func (a *ManagedApiService) ManagedBlueprintsApplyCreateExecute(r ApiManagedBlue
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -132,7 +132,6 @@ func (a *ManagedApiService) ManagedBlueprintsApplyCreateExecute(r ApiManagedBlue
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -143,7 +142,6 @@ func (a *ManagedApiService) ManagedBlueprintsApplyCreateExecute(r ApiManagedBlue
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -247,9 +245,9 @@ func (a *ManagedApiService) ManagedBlueprintsAvailableListExecute(r ApiManagedBl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -266,7 +264,6 @@ func (a *ManagedApiService) ManagedBlueprintsAvailableListExecute(r ApiManagedBl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -277,7 +274,6 @@ func (a *ManagedApiService) ManagedBlueprintsAvailableListExecute(r ApiManagedBl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -392,9 +388,9 @@ func (a *ManagedApiService) ManagedBlueprintsCreateExecute(r ApiManagedBlueprint
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -411,7 +407,6 @@ func (a *ManagedApiService) ManagedBlueprintsCreateExecute(r ApiManagedBlueprint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -422,7 +417,6 @@ func (a *ManagedApiService) ManagedBlueprintsCreateExecute(r ApiManagedBlueprint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -481,7 +475,7 @@ func (a *ManagedApiService) ManagedBlueprintsDestroyExecute(r ApiManagedBlueprin
 	}
 
 	localVarPath := localBasePath + "/managed/blueprints/{instance_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterValueToString(r.instanceUuid, "instanceUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterToString(r.instanceUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -528,9 +522,9 @@ func (a *ManagedApiService) ManagedBlueprintsDestroyExecute(r ApiManagedBlueprin
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -547,7 +541,6 @@ func (a *ManagedApiService) ManagedBlueprintsDestroyExecute(r ApiManagedBlueprin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -558,7 +551,6 @@ func (a *ManagedApiService) ManagedBlueprintsDestroyExecute(r ApiManagedBlueprin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -653,22 +645,22 @@ func (a *ManagedApiService) ManagedBlueprintsListExecute(r ApiManagedBlueprintsL
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.path != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "path", r.path, "")
+		localVarQueryParams.Add("path", parameterToString(*r.path, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -711,9 +703,9 @@ func (a *ManagedApiService) ManagedBlueprintsListExecute(r ApiManagedBlueprintsL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -730,7 +722,6 @@ func (a *ManagedApiService) ManagedBlueprintsListExecute(r ApiManagedBlueprintsL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -741,7 +732,6 @@ func (a *ManagedApiService) ManagedBlueprintsListExecute(r ApiManagedBlueprintsL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -808,7 +798,7 @@ func (a *ManagedApiService) ManagedBlueprintsPartialUpdateExecute(r ApiManagedBl
 	}
 
 	localVarPath := localBasePath + "/managed/blueprints/{instance_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterValueToString(r.instanceUuid, "instanceUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterToString(r.instanceUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -857,9 +847,9 @@ func (a *ManagedApiService) ManagedBlueprintsPartialUpdateExecute(r ApiManagedBl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -876,7 +866,6 @@ func (a *ManagedApiService) ManagedBlueprintsPartialUpdateExecute(r ApiManagedBl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -887,7 +876,6 @@ func (a *ManagedApiService) ManagedBlueprintsPartialUpdateExecute(r ApiManagedBl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -948,7 +936,7 @@ func (a *ManagedApiService) ManagedBlueprintsRetrieveExecute(r ApiManagedBluepri
 	}
 
 	localVarPath := localBasePath + "/managed/blueprints/{instance_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterValueToString(r.instanceUuid, "instanceUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterToString(r.instanceUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -995,9 +983,9 @@ func (a *ManagedApiService) ManagedBlueprintsRetrieveExecute(r ApiManagedBluepri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1014,7 +1002,6 @@ func (a *ManagedApiService) ManagedBlueprintsRetrieveExecute(r ApiManagedBluepri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1025,7 +1012,6 @@ func (a *ManagedApiService) ManagedBlueprintsRetrieveExecute(r ApiManagedBluepri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1092,7 +1078,7 @@ func (a *ManagedApiService) ManagedBlueprintsUpdateExecute(r ApiManagedBlueprint
 	}
 
 	localVarPath := localBasePath + "/managed/blueprints/{instance_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterValueToString(r.instanceUuid, "instanceUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterToString(r.instanceUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1144,9 +1130,9 @@ func (a *ManagedApiService) ManagedBlueprintsUpdateExecute(r ApiManagedBlueprint
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1163,7 +1149,6 @@ func (a *ManagedApiService) ManagedBlueprintsUpdateExecute(r ApiManagedBlueprint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1174,7 +1159,6 @@ func (a *ManagedApiService) ManagedBlueprintsUpdateExecute(r ApiManagedBlueprint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1235,7 +1219,7 @@ func (a *ManagedApiService) ManagedBlueprintsUsedByListExecute(r ApiManagedBluep
 	}
 
 	localVarPath := localBasePath + "/managed/blueprints/{instance_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterValueToString(r.instanceUuid, "instanceUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterToString(r.instanceUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1282,9 +1266,9 @@ func (a *ManagedApiService) ManagedBlueprintsUsedByListExecute(r ApiManagedBluep
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1301,7 +1285,6 @@ func (a *ManagedApiService) ManagedBlueprintsUsedByListExecute(r ApiManagedBluep
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1312,7 +1295,6 @@ func (a *ManagedApiService) ManagedBlueprintsUsedByListExecute(r ApiManagedBluep
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

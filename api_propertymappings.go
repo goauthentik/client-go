@@ -14,7 +14,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -65,7 +65,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllDestroyExecute(r ApiProp
 	}
 
 	localVarPath := localBasePath + "/propertymappings/all/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -112,9 +112,9 @@ func (a *PropertymappingsApiService) PropertymappingsAllDestroyExecute(r ApiProp
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -131,7 +131,6 @@ func (a *PropertymappingsApiService) PropertymappingsAllDestroyExecute(r ApiProp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -142,7 +141,6 @@ func (a *PropertymappingsApiService) PropertymappingsAllDestroyExecute(r ApiProp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -231,19 +229,19 @@ func (a *PropertymappingsApiService) PropertymappingsAllListExecute(r ApiPropert
 	localVarFormParams := url.Values{}
 
 	if r.managedIsnull != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "managed__isnull", r.managedIsnull, "")
+		localVarQueryParams.Add("managed__isnull", parameterToString(*r.managedIsnull, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -286,9 +284,9 @@ func (a *PropertymappingsApiService) PropertymappingsAllListExecute(r ApiPropert
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -305,7 +303,6 @@ func (a *PropertymappingsApiService) PropertymappingsAllListExecute(r ApiPropert
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -316,7 +313,6 @@ func (a *PropertymappingsApiService) PropertymappingsAllListExecute(r ApiPropert
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -377,7 +373,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllRetrieveExecute(r ApiPro
 	}
 
 	localVarPath := localBasePath + "/propertymappings/all/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -424,9 +420,9 @@ func (a *PropertymappingsApiService) PropertymappingsAllRetrieveExecute(r ApiPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -443,7 +439,6 @@ func (a *PropertymappingsApiService) PropertymappingsAllRetrieveExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -454,7 +449,6 @@ func (a *PropertymappingsApiService) PropertymappingsAllRetrieveExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -527,7 +521,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllTestCreateExecute(r ApiP
 	}
 
 	localVarPath := localBasePath + "/propertymappings/all/{pm_uuid}/test/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -537,7 +531,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllTestCreateExecute(r ApiP
 	}
 
 	if r.formatResult != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "format_result", r.formatResult, "")
+		localVarQueryParams.Add("format_result", parameterToString(*r.formatResult, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -582,9 +576,9 @@ func (a *PropertymappingsApiService) PropertymappingsAllTestCreateExecute(r ApiP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -601,7 +595,6 @@ func (a *PropertymappingsApiService) PropertymappingsAllTestCreateExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -705,9 +698,9 @@ func (a *PropertymappingsApiService) PropertymappingsAllTypesListExecute(r ApiPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -724,7 +717,6 @@ func (a *PropertymappingsApiService) PropertymappingsAllTypesListExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -735,7 +727,6 @@ func (a *PropertymappingsApiService) PropertymappingsAllTypesListExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -796,7 +787,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllUsedByListExecute(r ApiP
 	}
 
 	localVarPath := localBasePath + "/propertymappings/all/{pm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -843,9 +834,9 @@ func (a *PropertymappingsApiService) PropertymappingsAllUsedByListExecute(r ApiP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -862,7 +853,6 @@ func (a *PropertymappingsApiService) PropertymappingsAllUsedByListExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -873,7 +863,6 @@ func (a *PropertymappingsApiService) PropertymappingsAllUsedByListExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -988,9 +977,9 @@ func (a *PropertymappingsApiService) PropertymappingsLdapCreateExecute(r ApiProp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1007,7 +996,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapCreateExecute(r ApiProp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1018,7 +1006,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapCreateExecute(r ApiProp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1077,7 +1064,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapDestroyExecute(r ApiPro
 	}
 
 	localVarPath := localBasePath + "/propertymappings/ldap/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1124,9 +1111,9 @@ func (a *PropertymappingsApiService) PropertymappingsLdapDestroyExecute(r ApiPro
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1143,7 +1130,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapDestroyExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1154,7 +1140,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapDestroyExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1267,39 +1252,39 @@ func (a *PropertymappingsApiService) PropertymappingsLdapListExecute(r ApiProper
 	localVarFormParams := url.Values{}
 
 	if r.expression != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "expression", r.expression, "")
+		localVarQueryParams.Add("expression", parameterToString(*r.expression, ""))
 	}
 	if r.managed != nil {
 		t := *r.managed
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "managed", s.Index(i), "multi")
+				localVarQueryParams.Add("managed", parameterToString(s.Index(i), "multi"))
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "managed", t, "multi")
+			localVarQueryParams.Add("managed", parameterToString(t, "multi"))
 		}
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.objectField != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "object_field", r.objectField, "")
+		localVarQueryParams.Add("object_field", parameterToString(*r.objectField, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.pmUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pm_uuid", r.pmUuid, "")
+		localVarQueryParams.Add("pm_uuid", parameterToString(*r.pmUuid, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1342,9 +1327,9 @@ func (a *PropertymappingsApiService) PropertymappingsLdapListExecute(r ApiProper
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1361,7 +1346,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapListExecute(r ApiProper
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1372,7 +1356,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapListExecute(r ApiProper
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1439,7 +1422,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdateExecute(r 
 	}
 
 	localVarPath := localBasePath + "/propertymappings/ldap/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1488,9 +1471,9 @@ func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdateExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1507,7 +1490,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1518,7 +1500,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapPartialUpdateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1579,7 +1560,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapRetrieveExecute(r ApiPr
 	}
 
 	localVarPath := localBasePath + "/propertymappings/ldap/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1626,9 +1607,9 @@ func (a *PropertymappingsApiService) PropertymappingsLdapRetrieveExecute(r ApiPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1645,7 +1626,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapRetrieveExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1656,7 +1636,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapRetrieveExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1723,7 +1702,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUpdateExecute(r ApiProp
 	}
 
 	localVarPath := localBasePath + "/propertymappings/ldap/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1775,9 +1754,9 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUpdateExecute(r ApiProp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1794,7 +1773,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUpdateExecute(r ApiProp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1805,7 +1783,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUpdateExecute(r ApiProp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1866,7 +1843,7 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUsedByListExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/propertymappings/ldap/{pm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1913,9 +1890,9 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUsedByListExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1932,7 +1909,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUsedByListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1943,7 +1919,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapUsedByListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2058,9 +2033,9 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationCreateExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2077,7 +2052,6 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationCreateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2088,7 +2062,6 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationCreateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2147,7 +2120,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationDestroyExecute(
 	}
 
 	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2194,9 +2167,9 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationDestroyExecute(
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2213,7 +2186,6 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationDestroyExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -2224,7 +2196,6 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationDestroyExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -2313,19 +2284,19 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationListExecute(r A
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2368,9 +2339,9 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationListExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2387,7 +2358,6 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationListExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2398,7 +2368,6 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationListExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2465,7 +2434,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdateEx
 	}
 
 	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2514,9 +2483,9 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdateEx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2533,7 +2502,6 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdateEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2544,7 +2512,6 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationPartialUpdateEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2605,7 +2572,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieveExecute
 	}
 
 	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2652,9 +2619,9 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieveExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2671,7 +2638,6 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieveExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2682,7 +2648,6 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationRetrieveExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2749,7 +2714,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUpdateExecute(r
 	}
 
 	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2801,9 +2766,9 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUpdateExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2820,7 +2785,6 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUpdateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2831,7 +2795,6 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUpdateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2892,7 +2855,7 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecu
 	}
 
 	localVarPath := localBasePath + "/propertymappings/notification/{pm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2939,9 +2902,9 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2958,7 +2921,6 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2969,7 +2931,6 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3084,9 +3045,9 @@ func (a *PropertymappingsApiService) PropertymappingsSamlCreateExecute(r ApiProp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3103,7 +3064,6 @@ func (a *PropertymappingsApiService) PropertymappingsSamlCreateExecute(r ApiProp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3114,7 +3074,6 @@ func (a *PropertymappingsApiService) PropertymappingsSamlCreateExecute(r ApiProp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3173,7 +3132,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlDestroyExecute(r ApiPro
 	}
 
 	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3220,9 +3179,9 @@ func (a *PropertymappingsApiService) PropertymappingsSamlDestroyExecute(r ApiPro
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3239,7 +3198,6 @@ func (a *PropertymappingsApiService) PropertymappingsSamlDestroyExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -3250,7 +3208,6 @@ func (a *PropertymappingsApiService) PropertymappingsSamlDestroyExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3369,42 +3326,42 @@ func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiProper
 	localVarFormParams := url.Values{}
 
 	if r.expression != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "expression", r.expression, "")
+		localVarQueryParams.Add("expression", parameterToString(*r.expression, ""))
 	}
 	if r.friendlyName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "friendly_name", r.friendlyName, "")
+		localVarQueryParams.Add("friendly_name", parameterToString(*r.friendlyName, ""))
 	}
 	if r.managed != nil {
 		t := *r.managed
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "managed", s.Index(i), "multi")
+				localVarQueryParams.Add("managed", parameterToString(s.Index(i), "multi"))
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "managed", t, "multi")
+			localVarQueryParams.Add("managed", parameterToString(t, "multi"))
 		}
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.pmUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pm_uuid", r.pmUuid, "")
+		localVarQueryParams.Add("pm_uuid", parameterToString(*r.pmUuid, ""))
 	}
 	if r.samlName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "saml_name", r.samlName, "")
+		localVarQueryParams.Add("saml_name", parameterToString(*r.samlName, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3447,9 +3404,9 @@ func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiProper
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3466,7 +3423,6 @@ func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiProper
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3477,7 +3433,6 @@ func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiProper
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3544,7 +3499,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r 
 	}
 
 	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3593,9 +3548,9 @@ func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3612,7 +3567,6 @@ func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3623,7 +3577,6 @@ func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3684,7 +3637,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPr
 	}
 
 	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3731,9 +3684,9 @@ func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3750,7 +3703,6 @@ func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3761,7 +3713,6 @@ func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3828,7 +3779,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiProp
 	}
 
 	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3880,9 +3831,9 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiProp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3899,7 +3850,6 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiProp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3910,7 +3860,6 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiProp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3971,7 +3920,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4018,9 +3967,9 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4037,7 +3986,6 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4048,7 +3996,6 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4163,9 +4110,9 @@ func (a *PropertymappingsApiService) PropertymappingsScimCreateExecute(r ApiProp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4182,7 +4129,6 @@ func (a *PropertymappingsApiService) PropertymappingsScimCreateExecute(r ApiProp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4193,7 +4139,6 @@ func (a *PropertymappingsApiService) PropertymappingsScimCreateExecute(r ApiProp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4252,7 +4197,7 @@ func (a *PropertymappingsApiService) PropertymappingsScimDestroyExecute(r ApiPro
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scim/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4299,9 +4244,9 @@ func (a *PropertymappingsApiService) PropertymappingsScimDestroyExecute(r ApiPro
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4318,7 +4263,6 @@ func (a *PropertymappingsApiService) PropertymappingsScimDestroyExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4329,7 +4273,6 @@ func (a *PropertymappingsApiService) PropertymappingsScimDestroyExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4436,36 +4379,36 @@ func (a *PropertymappingsApiService) PropertymappingsScimListExecute(r ApiProper
 	localVarFormParams := url.Values{}
 
 	if r.expression != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "expression", r.expression, "")
+		localVarQueryParams.Add("expression", parameterToString(*r.expression, ""))
 	}
 	if r.managed != nil {
 		t := *r.managed
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "managed", s.Index(i), "multi")
+				localVarQueryParams.Add("managed", parameterToString(s.Index(i), "multi"))
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "managed", t, "multi")
+			localVarQueryParams.Add("managed", parameterToString(t, "multi"))
 		}
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.pmUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pm_uuid", r.pmUuid, "")
+		localVarQueryParams.Add("pm_uuid", parameterToString(*r.pmUuid, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4508,9 +4451,9 @@ func (a *PropertymappingsApiService) PropertymappingsScimListExecute(r ApiProper
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4527,7 +4470,6 @@ func (a *PropertymappingsApiService) PropertymappingsScimListExecute(r ApiProper
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4538,7 +4480,6 @@ func (a *PropertymappingsApiService) PropertymappingsScimListExecute(r ApiProper
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4605,7 +4546,7 @@ func (a *PropertymappingsApiService) PropertymappingsScimPartialUpdateExecute(r 
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scim/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4654,9 +4595,9 @@ func (a *PropertymappingsApiService) PropertymappingsScimPartialUpdateExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4673,7 +4614,6 @@ func (a *PropertymappingsApiService) PropertymappingsScimPartialUpdateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4684,7 +4624,6 @@ func (a *PropertymappingsApiService) PropertymappingsScimPartialUpdateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4745,7 +4684,7 @@ func (a *PropertymappingsApiService) PropertymappingsScimRetrieveExecute(r ApiPr
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scim/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4792,9 +4731,9 @@ func (a *PropertymappingsApiService) PropertymappingsScimRetrieveExecute(r ApiPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4811,7 +4750,6 @@ func (a *PropertymappingsApiService) PropertymappingsScimRetrieveExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4822,7 +4760,6 @@ func (a *PropertymappingsApiService) PropertymappingsScimRetrieveExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4889,7 +4826,7 @@ func (a *PropertymappingsApiService) PropertymappingsScimUpdateExecute(r ApiProp
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scim/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4941,9 +4878,9 @@ func (a *PropertymappingsApiService) PropertymappingsScimUpdateExecute(r ApiProp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4960,7 +4897,6 @@ func (a *PropertymappingsApiService) PropertymappingsScimUpdateExecute(r ApiProp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4971,7 +4907,6 @@ func (a *PropertymappingsApiService) PropertymappingsScimUpdateExecute(r ApiProp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5032,7 +4967,7 @@ func (a *PropertymappingsApiService) PropertymappingsScimUsedByListExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scim/{pm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5079,9 +5014,9 @@ func (a *PropertymappingsApiService) PropertymappingsScimUsedByListExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5098,7 +5033,6 @@ func (a *PropertymappingsApiService) PropertymappingsScimUsedByListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5109,7 +5043,6 @@ func (a *PropertymappingsApiService) PropertymappingsScimUsedByListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5224,9 +5157,9 @@ func (a *PropertymappingsApiService) PropertymappingsScopeCreateExecute(r ApiPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5243,7 +5176,6 @@ func (a *PropertymappingsApiService) PropertymappingsScopeCreateExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5254,7 +5186,6 @@ func (a *PropertymappingsApiService) PropertymappingsScopeCreateExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5313,7 +5244,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeDestroyExecute(r ApiPr
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5360,9 +5291,9 @@ func (a *PropertymappingsApiService) PropertymappingsScopeDestroyExecute(r ApiPr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -5379,7 +5310,6 @@ func (a *PropertymappingsApiService) PropertymappingsScopeDestroyExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -5390,7 +5320,6 @@ func (a *PropertymappingsApiService) PropertymappingsScopeDestroyExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -5495,29 +5424,29 @@ func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPrope
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "managed", s.Index(i), "multi")
+				localVarQueryParams.Add("managed", parameterToString(s.Index(i), "multi"))
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "managed", t, "multi")
+			localVarQueryParams.Add("managed", parameterToString(t, "multi"))
 		}
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.scopeName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "scope_name", r.scopeName, "")
+		localVarQueryParams.Add("scope_name", parameterToString(*r.scopeName, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5560,9 +5489,9 @@ func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPrope
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5579,7 +5508,6 @@ func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPrope
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5590,7 +5518,6 @@ func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPrope
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5657,7 +5584,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5706,9 +5633,9 @@ func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5725,7 +5652,6 @@ func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5736,7 +5662,6 @@ func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5797,7 +5722,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiP
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5844,9 +5769,9 @@ func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5863,7 +5788,6 @@ func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5874,7 +5798,6 @@ func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5941,7 +5864,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPro
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5993,9 +5916,9 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6012,7 +5935,6 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6023,7 +5945,6 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6084,7 +6005,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUsedByListExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterValueToString(r.pmUuid, "pmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6131,9 +6052,9 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUsedByListExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6150,7 +6071,6 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUsedByListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6161,7 +6081,6 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUsedByListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

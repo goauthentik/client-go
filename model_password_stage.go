@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PasswordStage type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PasswordStage{}
-
 // PasswordStage PasswordStage Serializer
 type PasswordStage struct {
 	Pk   string `json:"pk"`
@@ -209,7 +206,7 @@ func (o *PasswordStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PasswordStage) GetFlowSet() []FlowSet {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSet
 		return ret
 	}
@@ -219,7 +216,7 @@ func (o *PasswordStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -227,7 +224,7 @@ func (o *PasswordStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PasswordStage) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -265,7 +262,7 @@ func (o *PasswordStage) SetBackends(v []BackendsEnum) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PasswordStage) GetConfigureFlow() string {
-	if o == nil || IsNil(o.ConfigureFlow.Get()) {
+	if o == nil || o.ConfigureFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -308,7 +305,7 @@ func (o *PasswordStage) UnsetConfigureFlow() {
 
 // GetFailedAttemptsBeforeCancel returns the FailedAttemptsBeforeCancel field value if set, zero value otherwise.
 func (o *PasswordStage) GetFailedAttemptsBeforeCancel() int32 {
-	if o == nil || IsNil(o.FailedAttemptsBeforeCancel) {
+	if o == nil || o.FailedAttemptsBeforeCancel == nil {
 		var ret int32
 		return ret
 	}
@@ -318,7 +315,7 @@ func (o *PasswordStage) GetFailedAttemptsBeforeCancel() int32 {
 // GetFailedAttemptsBeforeCancelOk returns a tuple with the FailedAttemptsBeforeCancel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordStage) GetFailedAttemptsBeforeCancelOk() (*int32, bool) {
-	if o == nil || IsNil(o.FailedAttemptsBeforeCancel) {
+	if o == nil || o.FailedAttemptsBeforeCancel == nil {
 		return nil, false
 	}
 	return o.FailedAttemptsBeforeCancel, true
@@ -326,7 +323,7 @@ func (o *PasswordStage) GetFailedAttemptsBeforeCancelOk() (*int32, bool) {
 
 // HasFailedAttemptsBeforeCancel returns a boolean if a field has been set.
 func (o *PasswordStage) HasFailedAttemptsBeforeCancel() bool {
-	if o != nil && !IsNil(o.FailedAttemptsBeforeCancel) {
+	if o != nil && o.FailedAttemptsBeforeCancel != nil {
 		return true
 	}
 
@@ -339,32 +336,38 @@ func (o *PasswordStage) SetFailedAttemptsBeforeCancel(v int32) {
 }
 
 func (o PasswordStage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PasswordStage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	// skip: component is readOnly
-	// skip: verbose_name is readOnly
-	// skip: verbose_name_plural is readOnly
-	// skip: meta_model_name is readOnly
-	if !IsNil(o.FlowSet) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	toSerialize["backends"] = o.Backends
+	if true {
+		toSerialize["backends"] = o.Backends
+	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if !IsNil(o.FailedAttemptsBeforeCancel) {
+	if o.FailedAttemptsBeforeCancel != nil {
 		toSerialize["failed_attempts_before_cancel"] = o.FailedAttemptsBeforeCancel
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePasswordStage struct {

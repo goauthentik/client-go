@@ -16,9 +16,6 @@ import (
 	"time"
 )
 
-// checks if the CertificateKeyPair type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CertificateKeyPair{}
-
 // CertificateKeyPair CertificateKeyPair Serializer
 type CertificateKeyPair struct {
 	Pk   string `json:"pk"`
@@ -322,7 +319,7 @@ func (o *CertificateKeyPair) SetPrivateKeyDownloadUrl(v string) {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CertificateKeyPair) GetManaged() string {
-	if o == nil || IsNil(o.Managed.Get()) {
+	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -364,29 +361,41 @@ func (o *CertificateKeyPair) UnsetManaged() {
 }
 
 func (o CertificateKeyPair) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CertificateKeyPair) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	toSerialize["fingerprint_sha256"] = o.FingerprintSha256.Get()
-	toSerialize["fingerprint_sha1"] = o.FingerprintSha1.Get()
-	toSerialize["cert_expiry"] = o.CertExpiry.Get()
-	toSerialize["cert_subject"] = o.CertSubject.Get()
-	// skip: private_key_available is readOnly
-	toSerialize["private_key_type"] = o.PrivateKeyType.Get()
-	// skip: certificate_download_url is readOnly
-	// skip: private_key_download_url is readOnly
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["fingerprint_sha256"] = o.FingerprintSha256.Get()
+	}
+	if true {
+		toSerialize["fingerprint_sha1"] = o.FingerprintSha1.Get()
+	}
+	if true {
+		toSerialize["cert_expiry"] = o.CertExpiry.Get()
+	}
+	if true {
+		toSerialize["cert_subject"] = o.CertSubject.Get()
+	}
+	if true {
+		toSerialize["private_key_available"] = o.PrivateKeyAvailable
+	}
+	if true {
+		toSerialize["private_key_type"] = o.PrivateKeyType.Get()
+	}
+	if true {
+		toSerialize["certificate_download_url"] = o.CertificateDownloadUrl
+	}
+	if true {
+		toSerialize["private_key_download_url"] = o.PrivateKeyDownloadUrl
+	}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCertificateKeyPair struct {

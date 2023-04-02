@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Flow type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Flow{}
-
 // Flow Flow Serializer
 type Flow struct {
 	Pk                      string `json:"pk"`
@@ -26,7 +23,8 @@ type Flow struct {
 	// Visible in the URL.
 	Slug string `json:"slug"`
 	// Shown as the Title in Flow pages.
-	Title       string              `json:"title"`
+	Title string `json:"title"`
+	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.  * `authentication` - Authentication * `authorization` - Authorization * `invalidation` - Invalidation * `enrollment` - Enrollment * `unenrollment` - Unrenollment * `recovery` - Recovery * `stage_configuration` - Stage Configuration
 	Designation FlowDesignationEnum `json:"designation"`
 	// Get the URL to the background image. If the name is /static or starts with http it is returned as-is
 	Background string   `json:"background"`
@@ -38,9 +36,11 @@ type Flow struct {
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
 	CompatibilityMode *bool `json:"compatibility_mode,omitempty"`
 	// Get export URL for flow
-	ExportUrl      string              `json:"export_url"`
-	Layout         *LayoutEnum         `json:"layout,omitempty"`
-	DeniedAction   *DeniedActionEnum   `json:"denied_action,omitempty"`
+	ExportUrl string      `json:"export_url"`
+	Layout    *LayoutEnum `json:"layout,omitempty"`
+	// Configure what should happen when a flow denies access to a user.  * `message_continue` - Message Continue * `message` - Message * `continue` - Continue
+	DeniedAction *DeniedActionEnum `json:"denied_action,omitempty"`
+	// Required level of authentication and authorization to access a flow.  * `none` - None * `require_authenticated` - Require Authenticated * `require_unauthenticated` - Require Unauthenticated * `require_superuser` - Require Superuser
 	Authentication *AuthenticationEnum `json:"authentication,omitempty"`
 }
 
@@ -314,7 +314,7 @@ func (o *Flow) SetCacheCount(v int32) {
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *Flow) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || IsNil(o.PolicyEngineMode) {
+	if o == nil || o.PolicyEngineMode == nil {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -324,7 +324,7 @@ func (o *Flow) GetPolicyEngineMode() PolicyEngineMode {
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Flow) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || IsNil(o.PolicyEngineMode) {
+	if o == nil || o.PolicyEngineMode == nil {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -332,7 +332,7 @@ func (o *Flow) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *Flow) HasPolicyEngineMode() bool {
-	if o != nil && !IsNil(o.PolicyEngineMode) {
+	if o != nil && o.PolicyEngineMode != nil {
 		return true
 	}
 
@@ -346,7 +346,7 @@ func (o *Flow) SetPolicyEngineMode(v PolicyEngineMode) {
 
 // GetCompatibilityMode returns the CompatibilityMode field value if set, zero value otherwise.
 func (o *Flow) GetCompatibilityMode() bool {
-	if o == nil || IsNil(o.CompatibilityMode) {
+	if o == nil || o.CompatibilityMode == nil {
 		var ret bool
 		return ret
 	}
@@ -356,7 +356,7 @@ func (o *Flow) GetCompatibilityMode() bool {
 // GetCompatibilityModeOk returns a tuple with the CompatibilityMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Flow) GetCompatibilityModeOk() (*bool, bool) {
-	if o == nil || IsNil(o.CompatibilityMode) {
+	if o == nil || o.CompatibilityMode == nil {
 		return nil, false
 	}
 	return o.CompatibilityMode, true
@@ -364,7 +364,7 @@ func (o *Flow) GetCompatibilityModeOk() (*bool, bool) {
 
 // HasCompatibilityMode returns a boolean if a field has been set.
 func (o *Flow) HasCompatibilityMode() bool {
-	if o != nil && !IsNil(o.CompatibilityMode) {
+	if o != nil && o.CompatibilityMode != nil {
 		return true
 	}
 
@@ -402,7 +402,7 @@ func (o *Flow) SetExportUrl(v string) {
 
 // GetLayout returns the Layout field value if set, zero value otherwise.
 func (o *Flow) GetLayout() LayoutEnum {
-	if o == nil || IsNil(o.Layout) {
+	if o == nil || o.Layout == nil {
 		var ret LayoutEnum
 		return ret
 	}
@@ -412,7 +412,7 @@ func (o *Flow) GetLayout() LayoutEnum {
 // GetLayoutOk returns a tuple with the Layout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Flow) GetLayoutOk() (*LayoutEnum, bool) {
-	if o == nil || IsNil(o.Layout) {
+	if o == nil || o.Layout == nil {
 		return nil, false
 	}
 	return o.Layout, true
@@ -420,7 +420,7 @@ func (o *Flow) GetLayoutOk() (*LayoutEnum, bool) {
 
 // HasLayout returns a boolean if a field has been set.
 func (o *Flow) HasLayout() bool {
-	if o != nil && !IsNil(o.Layout) {
+	if o != nil && o.Layout != nil {
 		return true
 	}
 
@@ -434,7 +434,7 @@ func (o *Flow) SetLayout(v LayoutEnum) {
 
 // GetDeniedAction returns the DeniedAction field value if set, zero value otherwise.
 func (o *Flow) GetDeniedAction() DeniedActionEnum {
-	if o == nil || IsNil(o.DeniedAction) {
+	if o == nil || o.DeniedAction == nil {
 		var ret DeniedActionEnum
 		return ret
 	}
@@ -444,7 +444,7 @@ func (o *Flow) GetDeniedAction() DeniedActionEnum {
 // GetDeniedActionOk returns a tuple with the DeniedAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Flow) GetDeniedActionOk() (*DeniedActionEnum, bool) {
-	if o == nil || IsNil(o.DeniedAction) {
+	if o == nil || o.DeniedAction == nil {
 		return nil, false
 	}
 	return o.DeniedAction, true
@@ -452,7 +452,7 @@ func (o *Flow) GetDeniedActionOk() (*DeniedActionEnum, bool) {
 
 // HasDeniedAction returns a boolean if a field has been set.
 func (o *Flow) HasDeniedAction() bool {
-	if o != nil && !IsNil(o.DeniedAction) {
+	if o != nil && o.DeniedAction != nil {
 		return true
 	}
 
@@ -466,7 +466,7 @@ func (o *Flow) SetDeniedAction(v DeniedActionEnum) {
 
 // GetAuthentication returns the Authentication field value if set, zero value otherwise.
 func (o *Flow) GetAuthentication() AuthenticationEnum {
-	if o == nil || IsNil(o.Authentication) {
+	if o == nil || o.Authentication == nil {
 		var ret AuthenticationEnum
 		return ret
 	}
@@ -476,7 +476,7 @@ func (o *Flow) GetAuthentication() AuthenticationEnum {
 // GetAuthenticationOk returns a tuple with the Authentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Flow) GetAuthenticationOk() (*AuthenticationEnum, bool) {
-	if o == nil || IsNil(o.Authentication) {
+	if o == nil || o.Authentication == nil {
 		return nil, false
 	}
 	return o.Authentication, true
@@ -484,7 +484,7 @@ func (o *Flow) GetAuthenticationOk() (*AuthenticationEnum, bool) {
 
 // HasAuthentication returns a boolean if a field has been set.
 func (o *Flow) HasAuthentication() bool {
-	if o != nil && !IsNil(o.Authentication) {
+	if o != nil && o.Authentication != nil {
 		return true
 	}
 
@@ -497,42 +497,56 @@ func (o *Flow) SetAuthentication(v AuthenticationEnum) {
 }
 
 func (o Flow) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o Flow) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	// skip: policybindingmodel_ptr_id is readOnly
-	toSerialize["name"] = o.Name
-	toSerialize["slug"] = o.Slug
-	toSerialize["title"] = o.Title
-	toSerialize["designation"] = o.Designation
-	// skip: background is readOnly
-	// skip: stages is readOnly
-	// skip: policies is readOnly
-	// skip: cache_count is readOnly
-	if !IsNil(o.PolicyEngineMode) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["policybindingmodel_ptr_id"] = o.PolicybindingmodelPtrId
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["slug"] = o.Slug
+	}
+	if true {
+		toSerialize["title"] = o.Title
+	}
+	if true {
+		toSerialize["designation"] = o.Designation
+	}
+	if true {
+		toSerialize["background"] = o.Background
+	}
+	if true {
+		toSerialize["stages"] = o.Stages
+	}
+	if true {
+		toSerialize["policies"] = o.Policies
+	}
+	if true {
+		toSerialize["cache_count"] = o.CacheCount
+	}
+	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if !IsNil(o.CompatibilityMode) {
+	if o.CompatibilityMode != nil {
 		toSerialize["compatibility_mode"] = o.CompatibilityMode
 	}
-	// skip: export_url is readOnly
-	if !IsNil(o.Layout) {
+	if true {
+		toSerialize["export_url"] = o.ExportUrl
+	}
+	if o.Layout != nil {
 		toSerialize["layout"] = o.Layout
 	}
-	if !IsNil(o.DeniedAction) {
+	if o.DeniedAction != nil {
 		toSerialize["denied_action"] = o.DeniedAction
 	}
-	if !IsNil(o.Authentication) {
+	if o.Authentication != nil {
 		toSerialize["authentication"] = o.Authentication
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableFlow struct {

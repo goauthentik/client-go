@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the UserSelf type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserSelf{}
-
 // UserSelf User Serializer for information a user can retrieve about themselves
 type UserSelf struct {
 	Pk int32 `json:"pk"`
@@ -208,7 +205,7 @@ func (o *UserSelf) SetGroups(v []UserSelfGroups) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *UserSelf) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || o.Email == nil {
 		var ret string
 		return ret
 	}
@@ -218,7 +215,7 @@ func (o *UserSelf) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserSelf) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || o.Email == nil {
 		return nil, false
 	}
 	return o.Email, true
@@ -226,7 +223,7 @@ func (o *UserSelf) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *UserSelf) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
+	if o != nil && o.Email != nil {
 		return true
 	}
 
@@ -300,7 +297,7 @@ func (o *UserSelf) GetSettings() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *UserSelf) GetSettingsOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Settings, true
 }
@@ -311,28 +308,38 @@ func (o *UserSelf) SetSettings(v map[string]interface{}) {
 }
 
 func (o UserSelf) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o UserSelf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["username"] = o.Username
-	toSerialize["name"] = o.Name
-	// skip: is_active is readOnly
-	// skip: is_superuser is readOnly
-	// skip: groups is readOnly
-	if !IsNil(o.Email) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["username"] = o.Username
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["is_active"] = o.IsActive
+	}
+	if true {
+		toSerialize["is_superuser"] = o.IsSuperuser
+	}
+	if true {
+		toSerialize["groups"] = o.Groups
+	}
+	if o.Email != nil {
 		toSerialize["email"] = o.Email
 	}
-	// skip: avatar is readOnly
-	// skip: uid is readOnly
-	// skip: settings is readOnly
-	return toSerialize, nil
+	if true {
+		toSerialize["avatar"] = o.Avatar
+	}
+	if true {
+		toSerialize["uid"] = o.Uid
+	}
+	if true {
+		toSerialize["settings"] = o.Settings
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableUserSelf struct {

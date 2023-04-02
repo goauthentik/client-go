@@ -16,9 +16,6 @@ import (
 	"time"
 )
 
-// checks if the Reputation type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Reputation{}
-
 // Reputation Reputation Serializer
 type Reputation struct {
 	Pk         *string                `json:"pk,omitempty"`
@@ -51,7 +48,7 @@ func NewReputationWithDefaults() *Reputation {
 
 // GetPk returns the Pk field value if set, zero value otherwise.
 func (o *Reputation) GetPk() string {
-	if o == nil || IsNil(o.Pk) {
+	if o == nil || o.Pk == nil {
 		var ret string
 		return ret
 	}
@@ -61,7 +58,7 @@ func (o *Reputation) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reputation) GetPkOk() (*string, bool) {
-	if o == nil || IsNil(o.Pk) {
+	if o == nil || o.Pk == nil {
 		return nil, false
 	}
 	return o.Pk, true
@@ -69,7 +66,7 @@ func (o *Reputation) GetPkOk() (*string, bool) {
 
 // HasPk returns a boolean if a field has been set.
 func (o *Reputation) HasPk() bool {
-	if o != nil && !IsNil(o.Pk) {
+	if o != nil && o.Pk != nil {
 		return true
 	}
 
@@ -131,7 +128,7 @@ func (o *Reputation) SetIp(v string) {
 
 // GetIpGeoData returns the IpGeoData field value if set, zero value otherwise.
 func (o *Reputation) GetIpGeoData() map[string]interface{} {
-	if o == nil || IsNil(o.IpGeoData) {
+	if o == nil || o.IpGeoData == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -141,15 +138,15 @@ func (o *Reputation) GetIpGeoData() map[string]interface{} {
 // GetIpGeoDataOk returns a tuple with the IpGeoData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reputation) GetIpGeoDataOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.IpGeoData) {
-		return map[string]interface{}{}, false
+	if o == nil || o.IpGeoData == nil {
+		return nil, false
 	}
 	return o.IpGeoData, true
 }
 
 // HasIpGeoData returns a boolean if a field has been set.
 func (o *Reputation) HasIpGeoData() bool {
-	if o != nil && !IsNil(o.IpGeoData) {
+	if o != nil && o.IpGeoData != nil {
 		return true
 	}
 
@@ -163,7 +160,7 @@ func (o *Reputation) SetIpGeoData(v map[string]interface{}) {
 
 // GetScore returns the Score field value if set, zero value otherwise.
 func (o *Reputation) GetScore() int64 {
-	if o == nil || IsNil(o.Score) {
+	if o == nil || o.Score == nil {
 		var ret int64
 		return ret
 	}
@@ -173,7 +170,7 @@ func (o *Reputation) GetScore() int64 {
 // GetScoreOk returns a tuple with the Score field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reputation) GetScoreOk() (*int64, bool) {
-	if o == nil || IsNil(o.Score) {
+	if o == nil || o.Score == nil {
 		return nil, false
 	}
 	return o.Score, true
@@ -181,7 +178,7 @@ func (o *Reputation) GetScoreOk() (*int64, bool) {
 
 // HasScore returns a boolean if a field has been set.
 func (o *Reputation) HasScore() bool {
-	if o != nil && !IsNil(o.Score) {
+	if o != nil && o.Score != nil {
 		return true
 	}
 
@@ -218,28 +215,26 @@ func (o *Reputation) SetUpdated(v time.Time) {
 }
 
 func (o Reputation) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o Reputation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Pk) {
+	if o.Pk != nil {
 		toSerialize["pk"] = o.Pk
 	}
-	toSerialize["identifier"] = o.Identifier
-	toSerialize["ip"] = o.Ip
-	if !IsNil(o.IpGeoData) {
+	if true {
+		toSerialize["identifier"] = o.Identifier
+	}
+	if true {
+		toSerialize["ip"] = o.Ip
+	}
+	if o.IpGeoData != nil {
 		toSerialize["ip_geo_data"] = o.IpGeoData
 	}
-	if !IsNil(o.Score) {
+	if o.Score != nil {
 		toSerialize["score"] = o.Score
 	}
-	// skip: updated is readOnly
-	return toSerialize, nil
+	if true {
+		toSerialize["updated"] = o.Updated
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableReputation struct {

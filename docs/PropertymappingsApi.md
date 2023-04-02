@@ -65,7 +65,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -73,7 +73,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropertymappingsApi.PropertymappingsAllDestroy(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsAllDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -133,7 +133,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -207,7 +207,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -277,7 +277,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -351,7 +351,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -412,7 +412,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -482,7 +482,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -548,7 +548,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -556,7 +556,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropertymappingsApi.PropertymappingsLdapDestroy(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -616,7 +616,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -698,7 +698,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -770,7 +770,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -840,7 +840,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -912,7 +912,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -982,7 +982,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1048,7 +1048,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1056,7 +1056,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationDestroy(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1116,7 +1116,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1190,7 +1190,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1262,7 +1262,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1332,7 +1332,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1404,7 +1404,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1474,7 +1474,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1540,7 +1540,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1548,7 +1548,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropertymappingsApi.PropertymappingsSamlDestroy(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1608,7 +1608,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1692,7 +1692,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1764,7 +1764,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1834,7 +1834,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1906,7 +1906,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -1976,7 +1976,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2042,7 +2042,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2050,7 +2050,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropertymappingsApi.PropertymappingsScimDestroy(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScimDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScimDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2110,7 +2110,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2190,7 +2190,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2262,7 +2262,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2332,7 +2332,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2404,7 +2404,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2474,7 +2474,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2540,7 +2540,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2548,7 +2548,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropertymappingsApi.PropertymappingsScopeDestroy(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopeDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopeDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2608,7 +2608,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2686,7 +2686,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2758,7 +2758,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2828,7 +2828,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
@@ -2900,7 +2900,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {

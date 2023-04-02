@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the UsedBy type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UsedBy{}
-
 // UsedBy A list of all objects referencing the queried object
 type UsedBy struct {
 	App       string           `json:"app"`
@@ -170,21 +167,23 @@ func (o *UsedBy) SetAction(v UsedByActionEnum) {
 }
 
 func (o UsedBy) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["app"] = o.App
+	}
+	if true {
+		toSerialize["model_name"] = o.ModelName
+	}
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["action"] = o.Action
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o UsedBy) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["app"] = o.App
-	toSerialize["model_name"] = o.ModelName
-	toSerialize["pk"] = o.Pk
-	toSerialize["name"] = o.Name
-	toSerialize["action"] = o.Action
-	return toSerialize, nil
 }
 
 type NullableUsedBy struct {

@@ -16,9 +16,6 @@ import (
 	"time"
 )
 
-// checks if the BlueprintInstance type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BlueprintInstance{}
-
 // BlueprintInstance Info about a single blueprint instance file
 type BlueprintInstance struct {
 	Pk              string                      `json:"pk"`
@@ -112,7 +109,7 @@ func (o *BlueprintInstance) SetName(v string) {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *BlueprintInstance) GetPath() string {
-	if o == nil || IsNil(o.Path) {
+	if o == nil || o.Path == nil {
 		var ret string
 		return ret
 	}
@@ -122,7 +119,7 @@ func (o *BlueprintInstance) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BlueprintInstance) GetPathOk() (*string, bool) {
-	if o == nil || IsNil(o.Path) {
+	if o == nil || o.Path == nil {
 		return nil, false
 	}
 	return o.Path, true
@@ -130,7 +127,7 @@ func (o *BlueprintInstance) GetPathOk() (*string, bool) {
 
 // HasPath returns a boolean if a field has been set.
 func (o *BlueprintInstance) HasPath() bool {
-	if o != nil && !IsNil(o.Path) {
+	if o != nil && o.Path != nil {
 		return true
 	}
 
@@ -144,7 +141,7 @@ func (o *BlueprintInstance) SetPath(v string) {
 
 // GetContext returns the Context field value if set, zero value otherwise.
 func (o *BlueprintInstance) GetContext() map[string]interface{} {
-	if o == nil || IsNil(o.Context) {
+	if o == nil || o.Context == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -154,15 +151,15 @@ func (o *BlueprintInstance) GetContext() map[string]interface{} {
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BlueprintInstance) GetContextOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Context) {
-		return map[string]interface{}{}, false
+	if o == nil || o.Context == nil {
+		return nil, false
 	}
 	return o.Context, true
 }
 
 // HasContext returns a boolean if a field has been set.
 func (o *BlueprintInstance) HasContext() bool {
-	if o != nil && !IsNil(o.Context) {
+	if o != nil && o.Context != nil {
 		return true
 	}
 
@@ -248,7 +245,7 @@ func (o *BlueprintInstance) SetStatus(v BlueprintInstanceStatusEnum) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *BlueprintInstance) GetEnabled() bool {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil || o.Enabled == nil {
 		var ret bool
 		return ret
 	}
@@ -258,7 +255,7 @@ func (o *BlueprintInstance) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BlueprintInstance) GetEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil || o.Enabled == nil {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -266,7 +263,7 @@ func (o *BlueprintInstance) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *BlueprintInstance) HasEnabled() bool {
-	if o != nil && !IsNil(o.Enabled) {
+	if o != nil && o.Enabled != nil {
 		return true
 	}
 
@@ -316,7 +313,7 @@ func (o *BlueprintInstance) GetMetadata() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *BlueprintInstance) GetMetadataOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Metadata, true
 }
@@ -328,7 +325,7 @@ func (o *BlueprintInstance) SetMetadata(v map[string]interface{}) {
 
 // GetContent returns the Content field value if set, zero value otherwise.
 func (o *BlueprintInstance) GetContent() string {
-	if o == nil || IsNil(o.Content) {
+	if o == nil || o.Content == nil {
 		var ret string
 		return ret
 	}
@@ -338,7 +335,7 @@ func (o *BlueprintInstance) GetContent() string {
 // GetContentOk returns a tuple with the Content field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BlueprintInstance) GetContentOk() (*string, bool) {
-	if o == nil || IsNil(o.Content) {
+	if o == nil || o.Content == nil {
 		return nil, false
 	}
 	return o.Content, true
@@ -346,7 +343,7 @@ func (o *BlueprintInstance) GetContentOk() (*string, bool) {
 
 // HasContent returns a boolean if a field has been set.
 func (o *BlueprintInstance) HasContent() bool {
-	if o != nil && !IsNil(o.Content) {
+	if o != nil && o.Content != nil {
 		return true
 	}
 
@@ -359,35 +356,41 @@ func (o *BlueprintInstance) SetContent(v string) {
 }
 
 func (o BlueprintInstance) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o BlueprintInstance) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Path) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.Path != nil {
 		toSerialize["path"] = o.Path
 	}
-	if !IsNil(o.Context) {
+	if o.Context != nil {
 		toSerialize["context"] = o.Context
 	}
-	// skip: last_applied is readOnly
-	// skip: last_applied_hash is readOnly
-	// skip: status is readOnly
-	if !IsNil(o.Enabled) {
+	if true {
+		toSerialize["last_applied"] = o.LastApplied
+	}
+	if true {
+		toSerialize["last_applied_hash"] = o.LastAppliedHash
+	}
+	if true {
+		toSerialize["status"] = o.Status
+	}
+	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
 	}
-	// skip: managed_models is readOnly
-	// skip: metadata is readOnly
-	if !IsNil(o.Content) {
+	if true {
+		toSerialize["managed_models"] = o.ManagedModels
+	}
+	if true {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if o.Content != nil {
 		toSerialize["content"] = o.Content
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableBlueprintInstance struct {

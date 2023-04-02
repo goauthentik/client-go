@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DummyPolicy type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DummyPolicy{}
-
 // DummyPolicy Dummy Policy Serializer
 type DummyPolicy struct {
 	Pk   string `json:"pk"`
@@ -113,7 +110,7 @@ func (o *DummyPolicy) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *DummyPolicy) GetExecutionLogging() bool {
-	if o == nil || IsNil(o.ExecutionLogging) {
+	if o == nil || o.ExecutionLogging == nil {
 		var ret bool
 		return ret
 	}
@@ -123,7 +120,7 @@ func (o *DummyPolicy) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DummyPolicy) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExecutionLogging) {
+	if o == nil || o.ExecutionLogging == nil {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -131,7 +128,7 @@ func (o *DummyPolicy) GetExecutionLoggingOk() (*bool, bool) {
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *DummyPolicy) HasExecutionLogging() bool {
-	if o != nil && !IsNil(o.ExecutionLogging) {
+	if o != nil && o.ExecutionLogging != nil {
 		return true
 	}
 
@@ -265,7 +262,7 @@ func (o *DummyPolicy) SetBoundTo(v int32) {
 
 // GetResult returns the Result field value if set, zero value otherwise.
 func (o *DummyPolicy) GetResult() bool {
-	if o == nil || IsNil(o.Result) {
+	if o == nil || o.Result == nil {
 		var ret bool
 		return ret
 	}
@@ -275,7 +272,7 @@ func (o *DummyPolicy) GetResult() bool {
 // GetResultOk returns a tuple with the Result field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DummyPolicy) GetResultOk() (*bool, bool) {
-	if o == nil || IsNil(o.Result) {
+	if o == nil || o.Result == nil {
 		return nil, false
 	}
 	return o.Result, true
@@ -283,7 +280,7 @@ func (o *DummyPolicy) GetResultOk() (*bool, bool) {
 
 // HasResult returns a boolean if a field has been set.
 func (o *DummyPolicy) HasResult() bool {
-	if o != nil && !IsNil(o.Result) {
+	if o != nil && o.Result != nil {
 		return true
 	}
 
@@ -297,7 +294,7 @@ func (o *DummyPolicy) SetResult(v bool) {
 
 // GetWaitMin returns the WaitMin field value if set, zero value otherwise.
 func (o *DummyPolicy) GetWaitMin() int32 {
-	if o == nil || IsNil(o.WaitMin) {
+	if o == nil || o.WaitMin == nil {
 		var ret int32
 		return ret
 	}
@@ -307,7 +304,7 @@ func (o *DummyPolicy) GetWaitMin() int32 {
 // GetWaitMinOk returns a tuple with the WaitMin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DummyPolicy) GetWaitMinOk() (*int32, bool) {
-	if o == nil || IsNil(o.WaitMin) {
+	if o == nil || o.WaitMin == nil {
 		return nil, false
 	}
 	return o.WaitMin, true
@@ -315,7 +312,7 @@ func (o *DummyPolicy) GetWaitMinOk() (*int32, bool) {
 
 // HasWaitMin returns a boolean if a field has been set.
 func (o *DummyPolicy) HasWaitMin() bool {
-	if o != nil && !IsNil(o.WaitMin) {
+	if o != nil && o.WaitMin != nil {
 		return true
 	}
 
@@ -329,7 +326,7 @@ func (o *DummyPolicy) SetWaitMin(v int32) {
 
 // GetWaitMax returns the WaitMax field value if set, zero value otherwise.
 func (o *DummyPolicy) GetWaitMax() int32 {
-	if o == nil || IsNil(o.WaitMax) {
+	if o == nil || o.WaitMax == nil {
 		var ret int32
 		return ret
 	}
@@ -339,7 +336,7 @@ func (o *DummyPolicy) GetWaitMax() int32 {
 // GetWaitMaxOk returns a tuple with the WaitMax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DummyPolicy) GetWaitMaxOk() (*int32, bool) {
-	if o == nil || IsNil(o.WaitMax) {
+	if o == nil || o.WaitMax == nil {
 		return nil, false
 	}
 	return o.WaitMax, true
@@ -347,7 +344,7 @@ func (o *DummyPolicy) GetWaitMaxOk() (*int32, bool) {
 
 // HasWaitMax returns a boolean if a field has been set.
 func (o *DummyPolicy) HasWaitMax() bool {
-	if o != nil && !IsNil(o.WaitMax) {
+	if o != nil && o.WaitMax != nil {
 		return true
 	}
 
@@ -360,35 +357,41 @@ func (o *DummyPolicy) SetWaitMax(v int32) {
 }
 
 func (o DummyPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o DummyPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	if !IsNil(o.ExecutionLogging) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.ExecutionLogging != nil {
 		toSerialize["execution_logging"] = o.ExecutionLogging
 	}
-	// skip: component is readOnly
-	// skip: verbose_name is readOnly
-	// skip: verbose_name_plural is readOnly
-	// skip: meta_model_name is readOnly
-	// skip: bound_to is readOnly
-	if !IsNil(o.Result) {
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if true {
+		toSerialize["bound_to"] = o.BoundTo
+	}
+	if o.Result != nil {
 		toSerialize["result"] = o.Result
 	}
-	if !IsNil(o.WaitMin) {
+	if o.WaitMin != nil {
 		toSerialize["wait_min"] = o.WaitMin
 	}
-	if !IsNil(o.WaitMax) {
+	if o.WaitMax != nil {
 		toSerialize["wait_max"] = o.WaitMax
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableDummyPolicy struct {

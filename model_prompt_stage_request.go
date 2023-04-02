@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PromptStageRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PromptStageRequest{}
-
 // PromptStageRequest PromptStage Serializer
 type PromptStageRequest struct {
 	Name               string           `json:"name"`
@@ -71,7 +68,7 @@ func (o *PromptStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PromptStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -81,7 +78,7 @@ func (o *PromptStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PromptStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -89,7 +86,7 @@ func (o *PromptStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PromptStageRequest) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -127,7 +124,7 @@ func (o *PromptStageRequest) SetFields(v []string) {
 
 // GetValidationPolicies returns the ValidationPolicies field value if set, zero value otherwise.
 func (o *PromptStageRequest) GetValidationPolicies() []string {
-	if o == nil || IsNil(o.ValidationPolicies) {
+	if o == nil || o.ValidationPolicies == nil {
 		var ret []string
 		return ret
 	}
@@ -137,7 +134,7 @@ func (o *PromptStageRequest) GetValidationPolicies() []string {
 // GetValidationPoliciesOk returns a tuple with the ValidationPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PromptStageRequest) GetValidationPoliciesOk() ([]string, bool) {
-	if o == nil || IsNil(o.ValidationPolicies) {
+	if o == nil || o.ValidationPolicies == nil {
 		return nil, false
 	}
 	return o.ValidationPolicies, true
@@ -145,7 +142,7 @@ func (o *PromptStageRequest) GetValidationPoliciesOk() ([]string, bool) {
 
 // HasValidationPolicies returns a boolean if a field has been set.
 func (o *PromptStageRequest) HasValidationPolicies() bool {
-	if o != nil && !IsNil(o.ValidationPolicies) {
+	if o != nil && o.ValidationPolicies != nil {
 		return true
 	}
 
@@ -158,24 +155,20 @@ func (o *PromptStageRequest) SetValidationPolicies(v []string) {
 }
 
 func (o PromptStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PromptStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.FlowSet) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	toSerialize["fields"] = o.Fields
-	if !IsNil(o.ValidationPolicies) {
+	if true {
+		toSerialize["fields"] = o.Fields
+	}
+	if o.ValidationPolicies != nil {
 		toSerialize["validation_policies"] = o.ValidationPolicies
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePromptStageRequest struct {

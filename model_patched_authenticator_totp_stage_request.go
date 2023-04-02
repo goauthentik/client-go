@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedAuthenticatorTOTPStageRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedAuthenticatorTOTPStageRequest{}
-
 // PatchedAuthenticatorTOTPStageRequest AuthenticatorTOTPStage Serializer
 type PatchedAuthenticatorTOTPStageRequest struct {
 	Name    *string          `json:"name,omitempty"`
@@ -46,7 +43,7 @@ func NewPatchedAuthenticatorTOTPStageRequestWithDefaults() *PatchedAuthenticator
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorTOTPStageRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -56,7 +53,7 @@ func (o *PatchedAuthenticatorTOTPStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorTOTPStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -64,7 +61,7 @@ func (o *PatchedAuthenticatorTOTPStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorTOTPStageRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -78,7 +75,7 @@ func (o *PatchedAuthenticatorTOTPStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorTOTPStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -88,7 +85,7 @@ func (o *PatchedAuthenticatorTOTPStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorTOTPStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -96,7 +93,7 @@ func (o *PatchedAuthenticatorTOTPStageRequest) GetFlowSetOk() ([]FlowSetRequest,
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorTOTPStageRequest) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -110,7 +107,7 @@ func (o *PatchedAuthenticatorTOTPStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedAuthenticatorTOTPStageRequest) GetConfigureFlow() string {
-	if o == nil || IsNil(o.ConfigureFlow.Get()) {
+	if o == nil || o.ConfigureFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -153,7 +150,7 @@ func (o *PatchedAuthenticatorTOTPStageRequest) UnsetConfigureFlow() {
 
 // GetDigits returns the Digits field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorTOTPStageRequest) GetDigits() DigitsEnum {
-	if o == nil || IsNil(o.Digits) {
+	if o == nil || o.Digits == nil {
 		var ret DigitsEnum
 		return ret
 	}
@@ -163,7 +160,7 @@ func (o *PatchedAuthenticatorTOTPStageRequest) GetDigits() DigitsEnum {
 // GetDigitsOk returns a tuple with the Digits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorTOTPStageRequest) GetDigitsOk() (*DigitsEnum, bool) {
-	if o == nil || IsNil(o.Digits) {
+	if o == nil || o.Digits == nil {
 		return nil, false
 	}
 	return o.Digits, true
@@ -171,7 +168,7 @@ func (o *PatchedAuthenticatorTOTPStageRequest) GetDigitsOk() (*DigitsEnum, bool)
 
 // HasDigits returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorTOTPStageRequest) HasDigits() bool {
-	if o != nil && !IsNil(o.Digits) {
+	if o != nil && o.Digits != nil {
 		return true
 	}
 
@@ -184,28 +181,20 @@ func (o *PatchedAuthenticatorTOTPStageRequest) SetDigits(v DigitsEnum) {
 }
 
 func (o PatchedAuthenticatorTOTPStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedAuthenticatorTOTPStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.FlowSet) {
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if !IsNil(o.Digits) {
+	if o.Digits != nil {
 		toSerialize["digits"] = o.Digits
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedAuthenticatorTOTPStageRequest struct {

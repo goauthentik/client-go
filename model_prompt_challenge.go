@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PromptChallenge type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PromptChallenge{}
-
 // PromptChallenge Initial challenge being sent, define fields
 type PromptChallenge struct {
 	Type           ChallengeChoices          `json:"type"`
@@ -76,7 +73,7 @@ func (o *PromptChallenge) SetType(v ChallengeChoices) {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *PromptChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || IsNil(o.FlowInfo) {
+	if o == nil || o.FlowInfo == nil {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -86,7 +83,7 @@ func (o *PromptChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PromptChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || IsNil(o.FlowInfo) {
+	if o == nil || o.FlowInfo == nil {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -94,7 +91,7 @@ func (o *PromptChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *PromptChallenge) HasFlowInfo() bool {
-	if o != nil && !IsNil(o.FlowInfo) {
+	if o != nil && o.FlowInfo != nil {
 		return true
 	}
 
@@ -108,7 +105,7 @@ func (o *PromptChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *PromptChallenge) GetComponent() string {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
@@ -118,7 +115,7 @@ func (o *PromptChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PromptChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
 	return o.Component, true
@@ -126,7 +123,7 @@ func (o *PromptChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *PromptChallenge) HasComponent() bool {
-	if o != nil && !IsNil(o.Component) {
+	if o != nil && o.Component != nil {
 		return true
 	}
 
@@ -140,7 +137,7 @@ func (o *PromptChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *PromptChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || IsNil(o.ResponseErrors) {
+	if o == nil || o.ResponseErrors == nil {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -150,7 +147,7 @@ func (o *PromptChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PromptChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || IsNil(o.ResponseErrors) {
+	if o == nil || o.ResponseErrors == nil {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -158,7 +155,7 @@ func (o *PromptChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *PromptChallenge) HasResponseErrors() bool {
-	if o != nil && !IsNil(o.ResponseErrors) {
+	if o != nil && o.ResponseErrors != nil {
 		return true
 	}
 
@@ -195,27 +192,23 @@ func (o *PromptChallenge) SetFields(v []StagePrompt) {
 }
 
 func (o PromptChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PromptChallenge) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
-	if !IsNil(o.FlowInfo) {
+	if true {
+		toSerialize["type"] = o.Type
+	}
+	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}
-	if !IsNil(o.Component) {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
-	if !IsNil(o.ResponseErrors) {
+	if o.ResponseErrors != nil {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
-	toSerialize["fields"] = o.Fields
-	return toSerialize, nil
+	if true {
+		toSerialize["fields"] = o.Fields
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullablePromptChallenge struct {

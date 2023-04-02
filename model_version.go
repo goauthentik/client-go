@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Version type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Version{}
-
 // Version Get running and latest version.
 type Version struct {
 	// Get current version
@@ -148,20 +145,20 @@ func (o *Version) SetOutdated(v bool) {
 }
 
 func (o Version) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["version_current"] = o.VersionCurrent
+	}
+	if true {
+		toSerialize["version_latest"] = o.VersionLatest
+	}
+	if true {
+		toSerialize["build_hash"] = o.BuildHash
+	}
+	if true {
+		toSerialize["outdated"] = o.Outdated
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o Version) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: version_current is readOnly
-	// skip: version_latest is readOnly
-	// skip: build_hash is readOnly
-	// skip: outdated is readOnly
-	return toSerialize, nil
 }
 
 type NullableVersion struct {

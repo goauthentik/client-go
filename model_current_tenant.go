@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CurrentTenant type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CurrentTenant{}
-
 // CurrentTenant Partial tenant information for styling
 type CurrentTenant struct {
 	MatchedDomain      string       `json:"matched_domain"`
@@ -205,7 +202,7 @@ func (o *CurrentTenant) SetUiTheme(v UiThemeEnum) {
 
 // GetFlowAuthentication returns the FlowAuthentication field value if set, zero value otherwise.
 func (o *CurrentTenant) GetFlowAuthentication() string {
-	if o == nil || IsNil(o.FlowAuthentication) {
+	if o == nil || o.FlowAuthentication == nil {
 		var ret string
 		return ret
 	}
@@ -215,7 +212,7 @@ func (o *CurrentTenant) GetFlowAuthentication() string {
 // GetFlowAuthenticationOk returns a tuple with the FlowAuthentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrentTenant) GetFlowAuthenticationOk() (*string, bool) {
-	if o == nil || IsNil(o.FlowAuthentication) {
+	if o == nil || o.FlowAuthentication == nil {
 		return nil, false
 	}
 	return o.FlowAuthentication, true
@@ -223,7 +220,7 @@ func (o *CurrentTenant) GetFlowAuthenticationOk() (*string, bool) {
 
 // HasFlowAuthentication returns a boolean if a field has been set.
 func (o *CurrentTenant) HasFlowAuthentication() bool {
-	if o != nil && !IsNil(o.FlowAuthentication) {
+	if o != nil && o.FlowAuthentication != nil {
 		return true
 	}
 
@@ -237,7 +234,7 @@ func (o *CurrentTenant) SetFlowAuthentication(v string) {
 
 // GetFlowInvalidation returns the FlowInvalidation field value if set, zero value otherwise.
 func (o *CurrentTenant) GetFlowInvalidation() string {
-	if o == nil || IsNil(o.FlowInvalidation) {
+	if o == nil || o.FlowInvalidation == nil {
 		var ret string
 		return ret
 	}
@@ -247,7 +244,7 @@ func (o *CurrentTenant) GetFlowInvalidation() string {
 // GetFlowInvalidationOk returns a tuple with the FlowInvalidation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrentTenant) GetFlowInvalidationOk() (*string, bool) {
-	if o == nil || IsNil(o.FlowInvalidation) {
+	if o == nil || o.FlowInvalidation == nil {
 		return nil, false
 	}
 	return o.FlowInvalidation, true
@@ -255,7 +252,7 @@ func (o *CurrentTenant) GetFlowInvalidationOk() (*string, bool) {
 
 // HasFlowInvalidation returns a boolean if a field has been set.
 func (o *CurrentTenant) HasFlowInvalidation() bool {
-	if o != nil && !IsNil(o.FlowInvalidation) {
+	if o != nil && o.FlowInvalidation != nil {
 		return true
 	}
 
@@ -269,7 +266,7 @@ func (o *CurrentTenant) SetFlowInvalidation(v string) {
 
 // GetFlowRecovery returns the FlowRecovery field value if set, zero value otherwise.
 func (o *CurrentTenant) GetFlowRecovery() string {
-	if o == nil || IsNil(o.FlowRecovery) {
+	if o == nil || o.FlowRecovery == nil {
 		var ret string
 		return ret
 	}
@@ -279,7 +276,7 @@ func (o *CurrentTenant) GetFlowRecovery() string {
 // GetFlowRecoveryOk returns a tuple with the FlowRecovery field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrentTenant) GetFlowRecoveryOk() (*string, bool) {
-	if o == nil || IsNil(o.FlowRecovery) {
+	if o == nil || o.FlowRecovery == nil {
 		return nil, false
 	}
 	return o.FlowRecovery, true
@@ -287,7 +284,7 @@ func (o *CurrentTenant) GetFlowRecoveryOk() (*string, bool) {
 
 // HasFlowRecovery returns a boolean if a field has been set.
 func (o *CurrentTenant) HasFlowRecovery() bool {
-	if o != nil && !IsNil(o.FlowRecovery) {
+	if o != nil && o.FlowRecovery != nil {
 		return true
 	}
 
@@ -301,7 +298,7 @@ func (o *CurrentTenant) SetFlowRecovery(v string) {
 
 // GetFlowUnenrollment returns the FlowUnenrollment field value if set, zero value otherwise.
 func (o *CurrentTenant) GetFlowUnenrollment() string {
-	if o == nil || IsNil(o.FlowUnenrollment) {
+	if o == nil || o.FlowUnenrollment == nil {
 		var ret string
 		return ret
 	}
@@ -311,7 +308,7 @@ func (o *CurrentTenant) GetFlowUnenrollment() string {
 // GetFlowUnenrollmentOk returns a tuple with the FlowUnenrollment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrentTenant) GetFlowUnenrollmentOk() (*string, bool) {
-	if o == nil || IsNil(o.FlowUnenrollment) {
+	if o == nil || o.FlowUnenrollment == nil {
 		return nil, false
 	}
 	return o.FlowUnenrollment, true
@@ -319,7 +316,7 @@ func (o *CurrentTenant) GetFlowUnenrollmentOk() (*string, bool) {
 
 // HasFlowUnenrollment returns a boolean if a field has been set.
 func (o *CurrentTenant) HasFlowUnenrollment() bool {
-	if o != nil && !IsNil(o.FlowUnenrollment) {
+	if o != nil && o.FlowUnenrollment != nil {
 		return true
 	}
 
@@ -333,7 +330,7 @@ func (o *CurrentTenant) SetFlowUnenrollment(v string) {
 
 // GetFlowUserSettings returns the FlowUserSettings field value if set, zero value otherwise.
 func (o *CurrentTenant) GetFlowUserSettings() string {
-	if o == nil || IsNil(o.FlowUserSettings) {
+	if o == nil || o.FlowUserSettings == nil {
 		var ret string
 		return ret
 	}
@@ -343,7 +340,7 @@ func (o *CurrentTenant) GetFlowUserSettings() string {
 // GetFlowUserSettingsOk returns a tuple with the FlowUserSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrentTenant) GetFlowUserSettingsOk() (*string, bool) {
-	if o == nil || IsNil(o.FlowUserSettings) {
+	if o == nil || o.FlowUserSettings == nil {
 		return nil, false
 	}
 	return o.FlowUserSettings, true
@@ -351,7 +348,7 @@ func (o *CurrentTenant) GetFlowUserSettingsOk() (*string, bool) {
 
 // HasFlowUserSettings returns a boolean if a field has been set.
 func (o *CurrentTenant) HasFlowUserSettings() bool {
-	if o != nil && !IsNil(o.FlowUserSettings) {
+	if o != nil && o.FlowUserSettings != nil {
 		return true
 	}
 
@@ -365,7 +362,7 @@ func (o *CurrentTenant) SetFlowUserSettings(v string) {
 
 // GetFlowDeviceCode returns the FlowDeviceCode field value if set, zero value otherwise.
 func (o *CurrentTenant) GetFlowDeviceCode() string {
-	if o == nil || IsNil(o.FlowDeviceCode) {
+	if o == nil || o.FlowDeviceCode == nil {
 		var ret string
 		return ret
 	}
@@ -375,7 +372,7 @@ func (o *CurrentTenant) GetFlowDeviceCode() string {
 // GetFlowDeviceCodeOk returns a tuple with the FlowDeviceCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrentTenant) GetFlowDeviceCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.FlowDeviceCode) {
+	if o == nil || o.FlowDeviceCode == nil {
 		return nil, false
 	}
 	return o.FlowDeviceCode, true
@@ -383,7 +380,7 @@ func (o *CurrentTenant) GetFlowDeviceCodeOk() (*string, bool) {
 
 // HasFlowDeviceCode returns a boolean if a field has been set.
 func (o *CurrentTenant) HasFlowDeviceCode() bool {
-	if o != nil && !IsNil(o.FlowDeviceCode) {
+	if o != nil && o.FlowDeviceCode != nil {
 		return true
 	}
 
@@ -420,41 +417,47 @@ func (o *CurrentTenant) SetDefaultLocale(v string) {
 }
 
 func (o CurrentTenant) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CurrentTenant) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["matched_domain"] = o.MatchedDomain
-	toSerialize["branding_title"] = o.BrandingTitle
-	toSerialize["branding_logo"] = o.BrandingLogo
-	toSerialize["branding_favicon"] = o.BrandingFavicon
-	// skip: ui_footer_links is readOnly
-	// skip: ui_theme is readOnly
-	if !IsNil(o.FlowAuthentication) {
+	if true {
+		toSerialize["matched_domain"] = o.MatchedDomain
+	}
+	if true {
+		toSerialize["branding_title"] = o.BrandingTitle
+	}
+	if true {
+		toSerialize["branding_logo"] = o.BrandingLogo
+	}
+	if true {
+		toSerialize["branding_favicon"] = o.BrandingFavicon
+	}
+	if true {
+		toSerialize["ui_footer_links"] = o.UiFooterLinks
+	}
+	if true {
+		toSerialize["ui_theme"] = o.UiTheme
+	}
+	if o.FlowAuthentication != nil {
 		toSerialize["flow_authentication"] = o.FlowAuthentication
 	}
-	if !IsNil(o.FlowInvalidation) {
+	if o.FlowInvalidation != nil {
 		toSerialize["flow_invalidation"] = o.FlowInvalidation
 	}
-	if !IsNil(o.FlowRecovery) {
+	if o.FlowRecovery != nil {
 		toSerialize["flow_recovery"] = o.FlowRecovery
 	}
-	if !IsNil(o.FlowUnenrollment) {
+	if o.FlowUnenrollment != nil {
 		toSerialize["flow_unenrollment"] = o.FlowUnenrollment
 	}
-	if !IsNil(o.FlowUserSettings) {
+	if o.FlowUserSettings != nil {
 		toSerialize["flow_user_settings"] = o.FlowUserSettings
 	}
-	if !IsNil(o.FlowDeviceCode) {
+	if o.FlowDeviceCode != nil {
 		toSerialize["flow_device_code"] = o.FlowDeviceCode
 	}
-	// skip: default_locale is readOnly
-	return toSerialize, nil
+	if true {
+		toSerialize["default_locale"] = o.DefaultLocale
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableCurrentTenant struct {

@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Prompt type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Prompt{}
-
 // Prompt Prompt Serializer
 type Prompt struct {
 	Pk   string `json:"pk"`
@@ -179,7 +176,7 @@ func (o *Prompt) SetType(v PromptTypeEnum) {
 
 // GetRequired returns the Required field value if set, zero value otherwise.
 func (o *Prompt) GetRequired() bool {
-	if o == nil || IsNil(o.Required) {
+	if o == nil || o.Required == nil {
 		var ret bool
 		return ret
 	}
@@ -189,7 +186,7 @@ func (o *Prompt) GetRequired() bool {
 // GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Prompt) GetRequiredOk() (*bool, bool) {
-	if o == nil || IsNil(o.Required) {
+	if o == nil || o.Required == nil {
 		return nil, false
 	}
 	return o.Required, true
@@ -197,7 +194,7 @@ func (o *Prompt) GetRequiredOk() (*bool, bool) {
 
 // HasRequired returns a boolean if a field has been set.
 func (o *Prompt) HasRequired() bool {
-	if o != nil && !IsNil(o.Required) {
+	if o != nil && o.Required != nil {
 		return true
 	}
 
@@ -211,7 +208,7 @@ func (o *Prompt) SetRequired(v bool) {
 
 // GetPlaceholder returns the Placeholder field value if set, zero value otherwise.
 func (o *Prompt) GetPlaceholder() string {
-	if o == nil || IsNil(o.Placeholder) {
+	if o == nil || o.Placeholder == nil {
 		var ret string
 		return ret
 	}
@@ -221,7 +218,7 @@ func (o *Prompt) GetPlaceholder() string {
 // GetPlaceholderOk returns a tuple with the Placeholder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Prompt) GetPlaceholderOk() (*string, bool) {
-	if o == nil || IsNil(o.Placeholder) {
+	if o == nil || o.Placeholder == nil {
 		return nil, false
 	}
 	return o.Placeholder, true
@@ -229,7 +226,7 @@ func (o *Prompt) GetPlaceholderOk() (*string, bool) {
 
 // HasPlaceholder returns a boolean if a field has been set.
 func (o *Prompt) HasPlaceholder() bool {
-	if o != nil && !IsNil(o.Placeholder) {
+	if o != nil && o.Placeholder != nil {
 		return true
 	}
 
@@ -243,7 +240,7 @@ func (o *Prompt) SetPlaceholder(v string) {
 
 // GetOrder returns the Order field value if set, zero value otherwise.
 func (o *Prompt) GetOrder() int32 {
-	if o == nil || IsNil(o.Order) {
+	if o == nil || o.Order == nil {
 		var ret int32
 		return ret
 	}
@@ -253,7 +250,7 @@ func (o *Prompt) GetOrder() int32 {
 // GetOrderOk returns a tuple with the Order field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Prompt) GetOrderOk() (*int32, bool) {
-	if o == nil || IsNil(o.Order) {
+	if o == nil || o.Order == nil {
 		return nil, false
 	}
 	return o.Order, true
@@ -261,7 +258,7 @@ func (o *Prompt) GetOrderOk() (*int32, bool) {
 
 // HasOrder returns a boolean if a field has been set.
 func (o *Prompt) HasOrder() bool {
-	if o != nil && !IsNil(o.Order) {
+	if o != nil && o.Order != nil {
 		return true
 	}
 
@@ -275,7 +272,7 @@ func (o *Prompt) SetOrder(v int32) {
 
 // GetPromptstageSet returns the PromptstageSet field value if set, zero value otherwise.
 func (o *Prompt) GetPromptstageSet() []Stage {
-	if o == nil || IsNil(o.PromptstageSet) {
+	if o == nil || o.PromptstageSet == nil {
 		var ret []Stage
 		return ret
 	}
@@ -285,7 +282,7 @@ func (o *Prompt) GetPromptstageSet() []Stage {
 // GetPromptstageSetOk returns a tuple with the PromptstageSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Prompt) GetPromptstageSetOk() ([]Stage, bool) {
-	if o == nil || IsNil(o.PromptstageSet) {
+	if o == nil || o.PromptstageSet == nil {
 		return nil, false
 	}
 	return o.PromptstageSet, true
@@ -293,7 +290,7 @@ func (o *Prompt) GetPromptstageSetOk() ([]Stage, bool) {
 
 // HasPromptstageSet returns a boolean if a field has been set.
 func (o *Prompt) HasPromptstageSet() bool {
-	if o != nil && !IsNil(o.PromptstageSet) {
+	if o != nil && o.PromptstageSet != nil {
 		return true
 	}
 
@@ -307,7 +304,7 @@ func (o *Prompt) SetPromptstageSet(v []Stage) {
 
 // GetSubText returns the SubText field value if set, zero value otherwise.
 func (o *Prompt) GetSubText() string {
-	if o == nil || IsNil(o.SubText) {
+	if o == nil || o.SubText == nil {
 		var ret string
 		return ret
 	}
@@ -317,7 +314,7 @@ func (o *Prompt) GetSubText() string {
 // GetSubTextOk returns a tuple with the SubText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Prompt) GetSubTextOk() (*string, bool) {
-	if o == nil || IsNil(o.SubText) {
+	if o == nil || o.SubText == nil {
 		return nil, false
 	}
 	return o.SubText, true
@@ -325,7 +322,7 @@ func (o *Prompt) GetSubTextOk() (*string, bool) {
 
 // HasSubText returns a boolean if a field has been set.
 func (o *Prompt) HasSubText() bool {
-	if o != nil && !IsNil(o.SubText) {
+	if o != nil && o.SubText != nil {
 		return true
 	}
 
@@ -339,7 +336,7 @@ func (o *Prompt) SetSubText(v string) {
 
 // GetPlaceholderExpression returns the PlaceholderExpression field value if set, zero value otherwise.
 func (o *Prompt) GetPlaceholderExpression() bool {
-	if o == nil || IsNil(o.PlaceholderExpression) {
+	if o == nil || o.PlaceholderExpression == nil {
 		var ret bool
 		return ret
 	}
@@ -349,7 +346,7 @@ func (o *Prompt) GetPlaceholderExpression() bool {
 // GetPlaceholderExpressionOk returns a tuple with the PlaceholderExpression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Prompt) GetPlaceholderExpressionOk() (*bool, bool) {
-	if o == nil || IsNil(o.PlaceholderExpression) {
+	if o == nil || o.PlaceholderExpression == nil {
 		return nil, false
 	}
 	return o.PlaceholderExpression, true
@@ -357,7 +354,7 @@ func (o *Prompt) GetPlaceholderExpressionOk() (*bool, bool) {
 
 // HasPlaceholderExpression returns a boolean if a field has been set.
 func (o *Prompt) HasPlaceholderExpression() bool {
-	if o != nil && !IsNil(o.PlaceholderExpression) {
+	if o != nil && o.PlaceholderExpression != nil {
 		return true
 	}
 
@@ -370,39 +367,41 @@ func (o *Prompt) SetPlaceholderExpression(v bool) {
 }
 
 func (o Prompt) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o Prompt) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	toSerialize["field_key"] = o.FieldKey
-	toSerialize["label"] = o.Label
-	toSerialize["type"] = o.Type
-	if !IsNil(o.Required) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["field_key"] = o.FieldKey
+	}
+	if true {
+		toSerialize["label"] = o.Label
+	}
+	if true {
+		toSerialize["type"] = o.Type
+	}
+	if o.Required != nil {
 		toSerialize["required"] = o.Required
 	}
-	if !IsNil(o.Placeholder) {
+	if o.Placeholder != nil {
 		toSerialize["placeholder"] = o.Placeholder
 	}
-	if !IsNil(o.Order) {
+	if o.Order != nil {
 		toSerialize["order"] = o.Order
 	}
-	if !IsNil(o.PromptstageSet) {
+	if o.PromptstageSet != nil {
 		toSerialize["promptstage_set"] = o.PromptstageSet
 	}
-	if !IsNil(o.SubText) {
+	if o.SubText != nil {
 		toSerialize["sub_text"] = o.SubText
 	}
-	if !IsNil(o.PlaceholderExpression) {
+	if o.PlaceholderExpression != nil {
 		toSerialize["placeholder_expression"] = o.PlaceholderExpression
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePrompt struct {

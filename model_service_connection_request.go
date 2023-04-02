@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServiceConnectionRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServiceConnectionRequest{}
-
 // ServiceConnectionRequest ServiceConnection Serializer
 type ServiceConnectionRequest struct {
 	Name string `json:"name"`
@@ -69,7 +66,7 @@ func (o *ServiceConnectionRequest) SetName(v string) {
 
 // GetLocal returns the Local field value if set, zero value otherwise.
 func (o *ServiceConnectionRequest) GetLocal() bool {
-	if o == nil || IsNil(o.Local) {
+	if o == nil || o.Local == nil {
 		var ret bool
 		return ret
 	}
@@ -79,7 +76,7 @@ func (o *ServiceConnectionRequest) GetLocal() bool {
 // GetLocalOk returns a tuple with the Local field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceConnectionRequest) GetLocalOk() (*bool, bool) {
-	if o == nil || IsNil(o.Local) {
+	if o == nil || o.Local == nil {
 		return nil, false
 	}
 	return o.Local, true
@@ -87,7 +84,7 @@ func (o *ServiceConnectionRequest) GetLocalOk() (*bool, bool) {
 
 // HasLocal returns a boolean if a field has been set.
 func (o *ServiceConnectionRequest) HasLocal() bool {
-	if o != nil && !IsNil(o.Local) {
+	if o != nil && o.Local != nil {
 		return true
 	}
 
@@ -100,20 +97,14 @@ func (o *ServiceConnectionRequest) SetLocal(v bool) {
 }
 
 func (o ServiceConnectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ServiceConnectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Local) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.Local != nil {
 		toSerialize["local"] = o.Local
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableServiceConnectionRequest struct {

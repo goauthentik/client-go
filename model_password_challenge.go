@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PasswordChallenge type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PasswordChallenge{}
-
 // PasswordChallenge Password challenge UI fields
 type PasswordChallenge struct {
 	Type              ChallengeChoices          `json:"type"`
@@ -79,7 +76,7 @@ func (o *PasswordChallenge) SetType(v ChallengeChoices) {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *PasswordChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || IsNil(o.FlowInfo) {
+	if o == nil || o.FlowInfo == nil {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -89,7 +86,7 @@ func (o *PasswordChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || IsNil(o.FlowInfo) {
+	if o == nil || o.FlowInfo == nil {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -97,7 +94,7 @@ func (o *PasswordChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *PasswordChallenge) HasFlowInfo() bool {
-	if o != nil && !IsNil(o.FlowInfo) {
+	if o != nil && o.FlowInfo != nil {
 		return true
 	}
 
@@ -111,7 +108,7 @@ func (o *PasswordChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *PasswordChallenge) GetComponent() string {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
@@ -121,7 +118,7 @@ func (o *PasswordChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
 	return o.Component, true
@@ -129,7 +126,7 @@ func (o *PasswordChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *PasswordChallenge) HasComponent() bool {
-	if o != nil && !IsNil(o.Component) {
+	if o != nil && o.Component != nil {
 		return true
 	}
 
@@ -143,7 +140,7 @@ func (o *PasswordChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *PasswordChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || IsNil(o.ResponseErrors) {
+	if o == nil || o.ResponseErrors == nil {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -153,7 +150,7 @@ func (o *PasswordChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || IsNil(o.ResponseErrors) {
+	if o == nil || o.ResponseErrors == nil {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -161,7 +158,7 @@ func (o *PasswordChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bo
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *PasswordChallenge) HasResponseErrors() bool {
-	if o != nil && !IsNil(o.ResponseErrors) {
+	if o != nil && o.ResponseErrors != nil {
 		return true
 	}
 
@@ -223,7 +220,7 @@ func (o *PasswordChallenge) SetPendingUserAvatar(v string) {
 
 // GetRecoveryUrl returns the RecoveryUrl field value if set, zero value otherwise.
 func (o *PasswordChallenge) GetRecoveryUrl() string {
-	if o == nil || IsNil(o.RecoveryUrl) {
+	if o == nil || o.RecoveryUrl == nil {
 		var ret string
 		return ret
 	}
@@ -233,7 +230,7 @@ func (o *PasswordChallenge) GetRecoveryUrl() string {
 // GetRecoveryUrlOk returns a tuple with the RecoveryUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordChallenge) GetRecoveryUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.RecoveryUrl) {
+	if o == nil || o.RecoveryUrl == nil {
 		return nil, false
 	}
 	return o.RecoveryUrl, true
@@ -241,7 +238,7 @@ func (o *PasswordChallenge) GetRecoveryUrlOk() (*string, bool) {
 
 // HasRecoveryUrl returns a boolean if a field has been set.
 func (o *PasswordChallenge) HasRecoveryUrl() bool {
-	if o != nil && !IsNil(o.RecoveryUrl) {
+	if o != nil && o.RecoveryUrl != nil {
 		return true
 	}
 
@@ -254,31 +251,29 @@ func (o *PasswordChallenge) SetRecoveryUrl(v string) {
 }
 
 func (o PasswordChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PasswordChallenge) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
-	if !IsNil(o.FlowInfo) {
+	if true {
+		toSerialize["type"] = o.Type
+	}
+	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}
-	if !IsNil(o.Component) {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
-	if !IsNil(o.ResponseErrors) {
+	if o.ResponseErrors != nil {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
-	toSerialize["pending_user"] = o.PendingUser
-	toSerialize["pending_user_avatar"] = o.PendingUserAvatar
-	if !IsNil(o.RecoveryUrl) {
+	if true {
+		toSerialize["pending_user"] = o.PendingUser
+	}
+	if true {
+		toSerialize["pending_user_avatar"] = o.PendingUserAvatar
+	}
+	if o.RecoveryUrl != nil {
 		toSerialize["recovery_url"] = o.RecoveryUrl
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePasswordChallenge struct {

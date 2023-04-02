@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Device type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Device{}
-
 // Device Serializer for Duo authenticator devices
 type Device struct {
 	// Return object's verbose_name
@@ -226,23 +223,29 @@ func (o *Device) SetConfirmed(v bool) {
 }
 
 func (o Device) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["type"] = o.Type
+	}
+	if true {
+		toSerialize["confirmed"] = o.Confirmed
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o Device) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: verbose_name is readOnly
-	// skip: verbose_name_plural is readOnly
-	// skip: meta_model_name is readOnly
-	toSerialize["pk"] = o.Pk
-	toSerialize["name"] = o.Name
-	// skip: type is readOnly
-	toSerialize["confirmed"] = o.Confirmed
-	return toSerialize, nil
 }
 
 type NullableDevice struct {

@@ -14,7 +14,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
@@ -66,7 +66,7 @@ func (a *SourcesApiService) SourcesAllDestroyExecute(r ApiSourcesAllDestroyReque
 	}
 
 	localVarPath := localBasePath + "/sources/all/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -113,9 +113,9 @@ func (a *SourcesApiService) SourcesAllDestroyExecute(r ApiSourcesAllDestroyReque
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -132,7 +132,6 @@ func (a *SourcesApiService) SourcesAllDestroyExecute(r ApiSourcesAllDestroyReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -143,7 +142,6 @@ func (a *SourcesApiService) SourcesAllDestroyExecute(r ApiSourcesAllDestroyReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -244,25 +242,25 @@ func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*
 	localVarFormParams := url.Values{}
 
 	if r.managed != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "managed", r.managed, "")
+		localVarQueryParams.Add("managed", parameterToString(*r.managed, ""))
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.slug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "")
+		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -305,9 +303,9 @@ func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -324,7 +322,6 @@ func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -335,7 +332,6 @@ func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -396,7 +392,7 @@ func (a *SourcesApiService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveReq
 	}
 
 	localVarPath := localBasePath + "/sources/all/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -443,9 +439,9 @@ func (a *SourcesApiService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -462,7 +458,6 @@ func (a *SourcesApiService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -473,7 +468,6 @@ func (a *SourcesApiService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -495,12 +489,12 @@ type ApiSourcesAllSetIconCreateRequest struct {
 	ctx        context.Context
 	ApiService *SourcesApiService
 	slug       string
-	file       *os.File
+	file       **os.File
 	clear      *bool
 }
 
 func (r ApiSourcesAllSetIconCreateRequest) File(file *os.File) ApiSourcesAllSetIconCreateRequest {
-	r.file = file
+	r.file = &file
 	return r
 }
 
@@ -544,7 +538,7 @@ func (a *SourcesApiService) SourcesAllSetIconCreateExecute(r ApiSourcesAllSetIco
 	}
 
 	localVarPath := localBasePath + "/sources/all/{slug}/set_icon/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -573,18 +567,19 @@ func (a *SourcesApiService) SourcesAllSetIconCreateExecute(r ApiSourcesAllSetIco
 
 	fileLocalVarFormFileName = "file"
 
-	fileLocalVarFile := r.file
-
+	var fileLocalVarFile *os.File
+	if r.file != nil {
+		fileLocalVarFile = *r.file
+	}
 	if fileLocalVarFile != nil {
-		fbs, _ := io.ReadAll(fileLocalVarFile)
-
+		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
-		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
+	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	if r.clear != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "clear", r.clear, "")
+		localVarFormParams.Add("clear", parameterToString(*r.clear, ""))
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -610,9 +605,9 @@ func (a *SourcesApiService) SourcesAllSetIconCreateExecute(r ApiSourcesAllSetIco
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -629,7 +624,6 @@ func (a *SourcesApiService) SourcesAllSetIconCreateExecute(r ApiSourcesAllSetIco
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -685,7 +679,7 @@ func (a *SourcesApiService) SourcesAllSetIconUrlCreateExecute(r ApiSourcesAllSet
 	}
 
 	localVarPath := localBasePath + "/sources/all/{slug}/set_icon_url/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -737,9 +731,9 @@ func (a *SourcesApiService) SourcesAllSetIconUrlCreateExecute(r ApiSourcesAllSet
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -756,7 +750,6 @@ func (a *SourcesApiService) SourcesAllSetIconUrlCreateExecute(r ApiSourcesAllSet
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -851,9 +844,9 @@ func (a *SourcesApiService) SourcesAllTypesListExecute(r ApiSourcesAllTypesListR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -870,7 +863,6 @@ func (a *SourcesApiService) SourcesAllTypesListExecute(r ApiSourcesAllTypesListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -881,7 +873,6 @@ func (a *SourcesApiService) SourcesAllTypesListExecute(r ApiSourcesAllTypesListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -942,7 +933,7 @@ func (a *SourcesApiService) SourcesAllUsedByListExecute(r ApiSourcesAllUsedByLis
 	}
 
 	localVarPath := localBasePath + "/sources/all/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -989,9 +980,9 @@ func (a *SourcesApiService) SourcesAllUsedByListExecute(r ApiSourcesAllUsedByLis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1008,7 +999,6 @@ func (a *SourcesApiService) SourcesAllUsedByListExecute(r ApiSourcesAllUsedByLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1019,7 +1009,6 @@ func (a *SourcesApiService) SourcesAllUsedByListExecute(r ApiSourcesAllUsedByLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1123,9 +1112,9 @@ func (a *SourcesApiService) SourcesAllUserSettingsListExecute(r ApiSourcesAllUse
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1142,7 +1131,6 @@ func (a *SourcesApiService) SourcesAllUserSettingsListExecute(r ApiSourcesAllUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1153,7 +1141,6 @@ func (a *SourcesApiService) SourcesAllUserSettingsListExecute(r ApiSourcesAllUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1268,9 +1255,9 @@ func (a *SourcesApiService) SourcesLdapCreateExecute(r ApiSourcesLdapCreateReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1287,7 +1274,6 @@ func (a *SourcesApiService) SourcesLdapCreateExecute(r ApiSourcesLdapCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1298,7 +1284,6 @@ func (a *SourcesApiService) SourcesLdapCreateExecute(r ApiSourcesLdapCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1359,7 +1344,7 @@ func (a *SourcesApiService) SourcesLdapDebugRetrieveExecute(r ApiSourcesLdapDebu
 	}
 
 	localVarPath := localBasePath + "/sources/ldap/{slug}/debug/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1406,9 +1391,9 @@ func (a *SourcesApiService) SourcesLdapDebugRetrieveExecute(r ApiSourcesLdapDebu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1425,7 +1410,6 @@ func (a *SourcesApiService) SourcesLdapDebugRetrieveExecute(r ApiSourcesLdapDebu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1436,7 +1420,6 @@ func (a *SourcesApiService) SourcesLdapDebugRetrieveExecute(r ApiSourcesLdapDebu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1495,7 +1478,7 @@ func (a *SourcesApiService) SourcesLdapDestroyExecute(r ApiSourcesLdapDestroyReq
 	}
 
 	localVarPath := localBasePath + "/sources/ldap/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1542,9 +1525,9 @@ func (a *SourcesApiService) SourcesLdapDestroyExecute(r ApiSourcesLdapDestroyReq
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1561,7 +1544,6 @@ func (a *SourcesApiService) SourcesLdapDestroyExecute(r ApiSourcesLdapDestroyReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1572,7 +1554,6 @@ func (a *SourcesApiService) SourcesLdapDestroyExecute(r ApiSourcesLdapDestroyReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1775,53 +1756,53 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	localVarFormParams := url.Values{}
 
 	if r.additionalGroupDn != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "additional_group_dn", r.additionalGroupDn, "")
+		localVarQueryParams.Add("additional_group_dn", parameterToString(*r.additionalGroupDn, ""))
 	}
 	if r.additionalUserDn != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "additional_user_dn", r.additionalUserDn, "")
+		localVarQueryParams.Add("additional_user_dn", parameterToString(*r.additionalUserDn, ""))
 	}
 	if r.baseDn != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "base_dn", r.baseDn, "")
+		localVarQueryParams.Add("base_dn", parameterToString(*r.baseDn, ""))
 	}
 	if r.bindCn != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bind_cn", r.bindCn, "")
+		localVarQueryParams.Add("bind_cn", parameterToString(*r.bindCn, ""))
 	}
 	if r.enabled != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "")
+		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
 	}
 	if r.groupMembershipField != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "group_membership_field", r.groupMembershipField, "")
+		localVarQueryParams.Add("group_membership_field", parameterToString(*r.groupMembershipField, ""))
 	}
 	if r.groupObjectFilter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "group_object_filter", r.groupObjectFilter, "")
+		localVarQueryParams.Add("group_object_filter", parameterToString(*r.groupObjectFilter, ""))
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.objectUniquenessField != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "object_uniqueness_field", r.objectUniquenessField, "")
+		localVarQueryParams.Add("object_uniqueness_field", parameterToString(*r.objectUniquenessField, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.peerCertificate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "peer_certificate", r.peerCertificate, "")
+		localVarQueryParams.Add("peer_certificate", parameterToString(*r.peerCertificate, ""))
 	}
 	if r.propertyMappings != nil {
 		t := *r.propertyMappings
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "property_mappings", s.Index(i), "multi")
+				localVarQueryParams.Add("property_mappings", parameterToString(s.Index(i), "multi"))
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "property_mappings", t, "multi")
+			localVarQueryParams.Add("property_mappings", parameterToString(t, "multi"))
 		}
 	}
 	if r.propertyMappingsGroup != nil {
@@ -1829,38 +1810,38 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "property_mappings_group", s.Index(i), "multi")
+				localVarQueryParams.Add("property_mappings_group", parameterToString(s.Index(i), "multi"))
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "property_mappings_group", t, "multi")
+			localVarQueryParams.Add("property_mappings_group", parameterToString(t, "multi"))
 		}
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.serverUri != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "server_uri", r.serverUri, "")
+		localVarQueryParams.Add("server_uri", parameterToString(*r.serverUri, ""))
 	}
 	if r.slug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "")
+		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
 	}
 	if r.startTls != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "start_tls", r.startTls, "")
+		localVarQueryParams.Add("start_tls", parameterToString(*r.startTls, ""))
 	}
 	if r.syncGroups != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sync_groups", r.syncGroups, "")
+		localVarQueryParams.Add("sync_groups", parameterToString(*r.syncGroups, ""))
 	}
 	if r.syncParentGroup != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sync_parent_group", r.syncParentGroup, "")
+		localVarQueryParams.Add("sync_parent_group", parameterToString(*r.syncParentGroup, ""))
 	}
 	if r.syncUsers != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sync_users", r.syncUsers, "")
+		localVarQueryParams.Add("sync_users", parameterToString(*r.syncUsers, ""))
 	}
 	if r.syncUsersPassword != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sync_users_password", r.syncUsersPassword, "")
+		localVarQueryParams.Add("sync_users_password", parameterToString(*r.syncUsersPassword, ""))
 	}
 	if r.userObjectFilter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user_object_filter", r.userObjectFilter, "")
+		localVarQueryParams.Add("user_object_filter", parameterToString(*r.userObjectFilter, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1903,9 +1884,9 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1922,7 +1903,6 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1933,7 +1913,6 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2000,7 +1979,7 @@ func (a *SourcesApiService) SourcesLdapPartialUpdateExecute(r ApiSourcesLdapPart
 	}
 
 	localVarPath := localBasePath + "/sources/ldap/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2049,9 +2028,9 @@ func (a *SourcesApiService) SourcesLdapPartialUpdateExecute(r ApiSourcesLdapPart
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2068,7 +2047,6 @@ func (a *SourcesApiService) SourcesLdapPartialUpdateExecute(r ApiSourcesLdapPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2079,7 +2057,6 @@ func (a *SourcesApiService) SourcesLdapPartialUpdateExecute(r ApiSourcesLdapPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2140,7 +2117,7 @@ func (a *SourcesApiService) SourcesLdapRetrieveExecute(r ApiSourcesLdapRetrieveR
 	}
 
 	localVarPath := localBasePath + "/sources/ldap/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2187,9 +2164,9 @@ func (a *SourcesApiService) SourcesLdapRetrieveExecute(r ApiSourcesLdapRetrieveR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2206,7 +2183,6 @@ func (a *SourcesApiService) SourcesLdapRetrieveExecute(r ApiSourcesLdapRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2217,7 +2193,6 @@ func (a *SourcesApiService) SourcesLdapRetrieveExecute(r ApiSourcesLdapRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2278,7 +2253,7 @@ func (a *SourcesApiService) SourcesLdapSyncStatusListExecute(r ApiSourcesLdapSyn
 	}
 
 	localVarPath := localBasePath + "/sources/ldap/{slug}/sync_status/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2325,9 +2300,9 @@ func (a *SourcesApiService) SourcesLdapSyncStatusListExecute(r ApiSourcesLdapSyn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2344,7 +2319,6 @@ func (a *SourcesApiService) SourcesLdapSyncStatusListExecute(r ApiSourcesLdapSyn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2355,7 +2329,6 @@ func (a *SourcesApiService) SourcesLdapSyncStatusListExecute(r ApiSourcesLdapSyn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2422,7 +2395,7 @@ func (a *SourcesApiService) SourcesLdapUpdateExecute(r ApiSourcesLdapUpdateReque
 	}
 
 	localVarPath := localBasePath + "/sources/ldap/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2474,9 +2447,9 @@ func (a *SourcesApiService) SourcesLdapUpdateExecute(r ApiSourcesLdapUpdateReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2493,7 +2466,6 @@ func (a *SourcesApiService) SourcesLdapUpdateExecute(r ApiSourcesLdapUpdateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2504,7 +2476,6 @@ func (a *SourcesApiService) SourcesLdapUpdateExecute(r ApiSourcesLdapUpdateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2565,7 +2536,7 @@ func (a *SourcesApiService) SourcesLdapUsedByListExecute(r ApiSourcesLdapUsedByL
 	}
 
 	localVarPath := localBasePath + "/sources/ldap/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2612,9 +2583,9 @@ func (a *SourcesApiService) SourcesLdapUsedByListExecute(r ApiSourcesLdapUsedByL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2631,7 +2602,6 @@ func (a *SourcesApiService) SourcesLdapUsedByListExecute(r ApiSourcesLdapUsedByL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2642,7 +2612,6 @@ func (a *SourcesApiService) SourcesLdapUsedByListExecute(r ApiSourcesLdapUsedByL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2757,9 +2726,9 @@ func (a *SourcesApiService) SourcesOauthCreateExecute(r ApiSourcesOauthCreateReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2776,7 +2745,6 @@ func (a *SourcesApiService) SourcesOauthCreateExecute(r ApiSourcesOauthCreateReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2787,7 +2755,6 @@ func (a *SourcesApiService) SourcesOauthCreateExecute(r ApiSourcesOauthCreateReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2846,7 +2813,7 @@ func (a *SourcesApiService) SourcesOauthDestroyExecute(r ApiSourcesOauthDestroyR
 	}
 
 	localVarPath := localBasePath + "/sources/oauth/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2893,9 +2860,9 @@ func (a *SourcesApiService) SourcesOauthDestroyExecute(r ApiSourcesOauthDestroyR
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2912,7 +2879,6 @@ func (a *SourcesApiService) SourcesOauthDestroyExecute(r ApiSourcesOauthDestroyR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -2923,7 +2889,6 @@ func (a *SourcesApiService) SourcesOauthDestroyExecute(r ApiSourcesOauthDestroyR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3099,61 +3064,61 @@ func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest
 	localVarFormParams := url.Values{}
 
 	if r.accessTokenUrl != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "access_token_url", r.accessTokenUrl, "")
+		localVarQueryParams.Add("access_token_url", parameterToString(*r.accessTokenUrl, ""))
 	}
 	if r.additionalScopes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "additional_scopes", r.additionalScopes, "")
+		localVarQueryParams.Add("additional_scopes", parameterToString(*r.additionalScopes, ""))
 	}
 	if r.authenticationFlow != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "authentication_flow", r.authenticationFlow, "")
+		localVarQueryParams.Add("authentication_flow", parameterToString(*r.authenticationFlow, ""))
 	}
 	if r.authorizationUrl != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "authorization_url", r.authorizationUrl, "")
+		localVarQueryParams.Add("authorization_url", parameterToString(*r.authorizationUrl, ""))
 	}
 	if r.consumerKey != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "consumer_key", r.consumerKey, "")
+		localVarQueryParams.Add("consumer_key", parameterToString(*r.consumerKey, ""))
 	}
 	if r.enabled != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "")
+		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
 	}
 	if r.enrollmentFlow != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "enrollment_flow", r.enrollmentFlow, "")
+		localVarQueryParams.Add("enrollment_flow", parameterToString(*r.enrollmentFlow, ""))
 	}
 	if r.hasJwks != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "has_jwks", r.hasJwks, "")
+		localVarQueryParams.Add("has_jwks", parameterToString(*r.hasJwks, ""))
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.policyEngineMode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_engine_mode", r.policyEngineMode, "")
+		localVarQueryParams.Add("policy_engine_mode", parameterToString(*r.policyEngineMode, ""))
 	}
 	if r.profileUrl != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "profile_url", r.profileUrl, "")
+		localVarQueryParams.Add("profile_url", parameterToString(*r.profileUrl, ""))
 	}
 	if r.providerType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider_type", r.providerType, "")
+		localVarQueryParams.Add("provider_type", parameterToString(*r.providerType, ""))
 	}
 	if r.requestTokenUrl != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "request_token_url", r.requestTokenUrl, "")
+		localVarQueryParams.Add("request_token_url", parameterToString(*r.requestTokenUrl, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.slug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "")
+		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
 	}
 	if r.userMatchingMode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user_matching_mode", r.userMatchingMode, "")
+		localVarQueryParams.Add("user_matching_mode", parameterToString(*r.userMatchingMode, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3196,9 +3161,9 @@ func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3215,7 +3180,6 @@ func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3226,7 +3190,6 @@ func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3293,7 +3256,7 @@ func (a *SourcesApiService) SourcesOauthPartialUpdateExecute(r ApiSourcesOauthPa
 	}
 
 	localVarPath := localBasePath + "/sources/oauth/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3342,9 +3305,9 @@ func (a *SourcesApiService) SourcesOauthPartialUpdateExecute(r ApiSourcesOauthPa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3361,7 +3324,6 @@ func (a *SourcesApiService) SourcesOauthPartialUpdateExecute(r ApiSourcesOauthPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3372,7 +3334,6 @@ func (a *SourcesApiService) SourcesOauthPartialUpdateExecute(r ApiSourcesOauthPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3433,7 +3394,7 @@ func (a *SourcesApiService) SourcesOauthRetrieveExecute(r ApiSourcesOauthRetriev
 	}
 
 	localVarPath := localBasePath + "/sources/oauth/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3480,9 +3441,9 @@ func (a *SourcesApiService) SourcesOauthRetrieveExecute(r ApiSourcesOauthRetriev
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3499,7 +3460,6 @@ func (a *SourcesApiService) SourcesOauthRetrieveExecute(r ApiSourcesOauthRetriev
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3510,7 +3470,6 @@ func (a *SourcesApiService) SourcesOauthRetrieveExecute(r ApiSourcesOauthRetriev
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3581,7 +3540,7 @@ func (a *SourcesApiService) SourcesOauthSourceTypesListExecute(r ApiSourcesOauth
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3624,9 +3583,9 @@ func (a *SourcesApiService) SourcesOauthSourceTypesListExecute(r ApiSourcesOauth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3643,7 +3602,6 @@ func (a *SourcesApiService) SourcesOauthSourceTypesListExecute(r ApiSourcesOauth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3654,7 +3612,6 @@ func (a *SourcesApiService) SourcesOauthSourceTypesListExecute(r ApiSourcesOauth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3721,7 +3678,7 @@ func (a *SourcesApiService) SourcesOauthUpdateExecute(r ApiSourcesOauthUpdateReq
 	}
 
 	localVarPath := localBasePath + "/sources/oauth/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3773,9 +3730,9 @@ func (a *SourcesApiService) SourcesOauthUpdateExecute(r ApiSourcesOauthUpdateReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3792,7 +3749,6 @@ func (a *SourcesApiService) SourcesOauthUpdateExecute(r ApiSourcesOauthUpdateReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3803,7 +3759,6 @@ func (a *SourcesApiService) SourcesOauthUpdateExecute(r ApiSourcesOauthUpdateReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3864,7 +3819,7 @@ func (a *SourcesApiService) SourcesOauthUsedByListExecute(r ApiSourcesOauthUsedB
 	}
 
 	localVarPath := localBasePath + "/sources/oauth/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3911,9 +3866,9 @@ func (a *SourcesApiService) SourcesOauthUsedByListExecute(r ApiSourcesOauthUsedB
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3930,7 +3885,6 @@ func (a *SourcesApiService) SourcesOauthUsedByListExecute(r ApiSourcesOauthUsedB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3941,7 +3895,6 @@ func (a *SourcesApiService) SourcesOauthUsedByListExecute(r ApiSourcesOauthUsedB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4056,9 +4009,9 @@ func (a *SourcesApiService) SourcesPlexCreateExecute(r ApiSourcesPlexCreateReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4075,7 +4028,6 @@ func (a *SourcesApiService) SourcesPlexCreateExecute(r ApiSourcesPlexCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4086,7 +4038,6 @@ func (a *SourcesApiService) SourcesPlexCreateExecute(r ApiSourcesPlexCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4145,7 +4096,7 @@ func (a *SourcesApiService) SourcesPlexDestroyExecute(r ApiSourcesPlexDestroyReq
 	}
 
 	localVarPath := localBasePath + "/sources/plex/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4192,9 +4143,9 @@ func (a *SourcesApiService) SourcesPlexDestroyExecute(r ApiSourcesPlexDestroyReq
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4211,7 +4162,6 @@ func (a *SourcesApiService) SourcesPlexDestroyExecute(r ApiSourcesPlexDestroyReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4222,7 +4172,6 @@ func (a *SourcesApiService) SourcesPlexDestroyExecute(r ApiSourcesPlexDestroyReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4361,43 +4310,43 @@ func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) 
 	localVarFormParams := url.Values{}
 
 	if r.allowFriends != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "allow_friends", r.allowFriends, "")
+		localVarQueryParams.Add("allow_friends", parameterToString(*r.allowFriends, ""))
 	}
 	if r.authenticationFlow != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "authentication_flow", r.authenticationFlow, "")
+		localVarQueryParams.Add("authentication_flow", parameterToString(*r.authenticationFlow, ""))
 	}
 	if r.clientId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "client_id", r.clientId, "")
+		localVarQueryParams.Add("client_id", parameterToString(*r.clientId, ""))
 	}
 	if r.enabled != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "")
+		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
 	}
 	if r.enrollmentFlow != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "enrollment_flow", r.enrollmentFlow, "")
+		localVarQueryParams.Add("enrollment_flow", parameterToString(*r.enrollmentFlow, ""))
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.policyEngineMode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_engine_mode", r.policyEngineMode, "")
+		localVarQueryParams.Add("policy_engine_mode", parameterToString(*r.policyEngineMode, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.slug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "")
+		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
 	}
 	if r.userMatchingMode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user_matching_mode", r.userMatchingMode, "")
+		localVarQueryParams.Add("user_matching_mode", parameterToString(*r.userMatchingMode, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4440,9 +4389,9 @@ func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4459,7 +4408,6 @@ func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4470,7 +4418,6 @@ func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4537,7 +4484,7 @@ func (a *SourcesApiService) SourcesPlexPartialUpdateExecute(r ApiSourcesPlexPart
 	}
 
 	localVarPath := localBasePath + "/sources/plex/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4586,9 +4533,9 @@ func (a *SourcesApiService) SourcesPlexPartialUpdateExecute(r ApiSourcesPlexPart
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4605,7 +4552,6 @@ func (a *SourcesApiService) SourcesPlexPartialUpdateExecute(r ApiSourcesPlexPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4616,7 +4562,6 @@ func (a *SourcesApiService) SourcesPlexPartialUpdateExecute(r ApiSourcesPlexPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4693,7 +4638,7 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenAuthenticatedCreateExecute(r A
 	}
 
 	if r.slug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "")
+		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4738,9 +4683,9 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenAuthenticatedCreateExecute(r A
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4818,7 +4763,7 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenCreateExecute(r ApiSourcesPlex
 	}
 
 	if r.slug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "")
+		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4863,9 +4808,9 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenCreateExecute(r ApiSourcesPlex
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4933,7 +4878,7 @@ func (a *SourcesApiService) SourcesPlexRetrieveExecute(r ApiSourcesPlexRetrieveR
 	}
 
 	localVarPath := localBasePath + "/sources/plex/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4980,9 +4925,9 @@ func (a *SourcesApiService) SourcesPlexRetrieveExecute(r ApiSourcesPlexRetrieveR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4999,7 +4944,6 @@ func (a *SourcesApiService) SourcesPlexRetrieveExecute(r ApiSourcesPlexRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5010,7 +4954,6 @@ func (a *SourcesApiService) SourcesPlexRetrieveExecute(r ApiSourcesPlexRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5077,7 +5020,7 @@ func (a *SourcesApiService) SourcesPlexUpdateExecute(r ApiSourcesPlexUpdateReque
 	}
 
 	localVarPath := localBasePath + "/sources/plex/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5129,9 +5072,9 @@ func (a *SourcesApiService) SourcesPlexUpdateExecute(r ApiSourcesPlexUpdateReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5148,7 +5091,6 @@ func (a *SourcesApiService) SourcesPlexUpdateExecute(r ApiSourcesPlexUpdateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5159,7 +5101,6 @@ func (a *SourcesApiService) SourcesPlexUpdateExecute(r ApiSourcesPlexUpdateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5220,7 +5161,7 @@ func (a *SourcesApiService) SourcesPlexUsedByListExecute(r ApiSourcesPlexUsedByL
 	}
 
 	localVarPath := localBasePath + "/sources/plex/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5267,9 +5208,9 @@ func (a *SourcesApiService) SourcesPlexUsedByListExecute(r ApiSourcesPlexUsedByL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5286,7 +5227,6 @@ func (a *SourcesApiService) SourcesPlexUsedByListExecute(r ApiSourcesPlexUsedByL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5297,7 +5237,6 @@ func (a *SourcesApiService) SourcesPlexUsedByListExecute(r ApiSourcesPlexUsedByL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5412,9 +5351,9 @@ func (a *SourcesApiService) SourcesSamlCreateExecute(r ApiSourcesSamlCreateReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5431,7 +5370,6 @@ func (a *SourcesApiService) SourcesSamlCreateExecute(r ApiSourcesSamlCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5442,7 +5380,6 @@ func (a *SourcesApiService) SourcesSamlCreateExecute(r ApiSourcesSamlCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5501,7 +5438,7 @@ func (a *SourcesApiService) SourcesSamlDestroyExecute(r ApiSourcesSamlDestroyReq
 	}
 
 	localVarPath := localBasePath + "/sources/saml/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5548,9 +5485,9 @@ func (a *SourcesApiService) SourcesSamlDestroyExecute(r ApiSourcesSamlDestroyReq
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -5567,7 +5504,6 @@ func (a *SourcesApiService) SourcesSamlDestroyExecute(r ApiSourcesSamlDestroyReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -5578,7 +5514,6 @@ func (a *SourcesApiService) SourcesSamlDestroyExecute(r ApiSourcesSamlDestroyReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -5781,73 +5716,73 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 	localVarFormParams := url.Values{}
 
 	if r.allowIdpInitiated != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "allow_idp_initiated", r.allowIdpInitiated, "")
+		localVarQueryParams.Add("allow_idp_initiated", parameterToString(*r.allowIdpInitiated, ""))
 	}
 	if r.authenticationFlow != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "authentication_flow", r.authenticationFlow, "")
+		localVarQueryParams.Add("authentication_flow", parameterToString(*r.authenticationFlow, ""))
 	}
 	if r.bindingType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "binding_type", r.bindingType, "")
+		localVarQueryParams.Add("binding_type", parameterToString(*r.bindingType, ""))
 	}
 	if r.digestAlgorithm != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "digest_algorithm", r.digestAlgorithm, "")
+		localVarQueryParams.Add("digest_algorithm", parameterToString(*r.digestAlgorithm, ""))
 	}
 	if r.enabled != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "")
+		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
 	}
 	if r.enrollmentFlow != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "enrollment_flow", r.enrollmentFlow, "")
+		localVarQueryParams.Add("enrollment_flow", parameterToString(*r.enrollmentFlow, ""))
 	}
 	if r.issuer != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "issuer", r.issuer, "")
+		localVarQueryParams.Add("issuer", parameterToString(*r.issuer, ""))
 	}
 	if r.managed != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "managed", r.managed, "")
+		localVarQueryParams.Add("managed", parameterToString(*r.managed, ""))
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.nameIdPolicy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name_id_policy", r.nameIdPolicy, "")
+		localVarQueryParams.Add("name_id_policy", parameterToString(*r.nameIdPolicy, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.policyEngineMode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_engine_mode", r.policyEngineMode, "")
+		localVarQueryParams.Add("policy_engine_mode", parameterToString(*r.policyEngineMode, ""))
 	}
 	if r.preAuthenticationFlow != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pre_authentication_flow", r.preAuthenticationFlow, "")
+		localVarQueryParams.Add("pre_authentication_flow", parameterToString(*r.preAuthenticationFlow, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.signatureAlgorithm != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "signature_algorithm", r.signatureAlgorithm, "")
+		localVarQueryParams.Add("signature_algorithm", parameterToString(*r.signatureAlgorithm, ""))
 	}
 	if r.signingKp != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "signing_kp", r.signingKp, "")
+		localVarQueryParams.Add("signing_kp", parameterToString(*r.signingKp, ""))
 	}
 	if r.sloUrl != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "slo_url", r.sloUrl, "")
+		localVarQueryParams.Add("slo_url", parameterToString(*r.sloUrl, ""))
 	}
 	if r.slug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "")
+		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
 	}
 	if r.ssoUrl != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sso_url", r.ssoUrl, "")
+		localVarQueryParams.Add("sso_url", parameterToString(*r.ssoUrl, ""))
 	}
 	if r.temporaryUserDeleteAfter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "temporary_user_delete_after", r.temporaryUserDeleteAfter, "")
+		localVarQueryParams.Add("temporary_user_delete_after", parameterToString(*r.temporaryUserDeleteAfter, ""))
 	}
 	if r.userMatchingMode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user_matching_mode", r.userMatchingMode, "")
+		localVarQueryParams.Add("user_matching_mode", parameterToString(*r.userMatchingMode, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5890,9 +5825,9 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5909,7 +5844,6 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5920,7 +5854,6 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5981,7 +5914,7 @@ func (a *SourcesApiService) SourcesSamlMetadataRetrieveExecute(r ApiSourcesSamlM
 	}
 
 	localVarPath := localBasePath + "/sources/saml/{slug}/metadata/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6028,9 +5961,9 @@ func (a *SourcesApiService) SourcesSamlMetadataRetrieveExecute(r ApiSourcesSamlM
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6047,7 +5980,6 @@ func (a *SourcesApiService) SourcesSamlMetadataRetrieveExecute(r ApiSourcesSamlM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6058,7 +5990,6 @@ func (a *SourcesApiService) SourcesSamlMetadataRetrieveExecute(r ApiSourcesSamlM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6125,7 +6056,7 @@ func (a *SourcesApiService) SourcesSamlPartialUpdateExecute(r ApiSourcesSamlPart
 	}
 
 	localVarPath := localBasePath + "/sources/saml/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6174,9 +6105,9 @@ func (a *SourcesApiService) SourcesSamlPartialUpdateExecute(r ApiSourcesSamlPart
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6193,7 +6124,6 @@ func (a *SourcesApiService) SourcesSamlPartialUpdateExecute(r ApiSourcesSamlPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6204,7 +6134,6 @@ func (a *SourcesApiService) SourcesSamlPartialUpdateExecute(r ApiSourcesSamlPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6265,7 +6194,7 @@ func (a *SourcesApiService) SourcesSamlRetrieveExecute(r ApiSourcesSamlRetrieveR
 	}
 
 	localVarPath := localBasePath + "/sources/saml/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6312,9 +6241,9 @@ func (a *SourcesApiService) SourcesSamlRetrieveExecute(r ApiSourcesSamlRetrieveR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6331,7 +6260,6 @@ func (a *SourcesApiService) SourcesSamlRetrieveExecute(r ApiSourcesSamlRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6342,7 +6270,6 @@ func (a *SourcesApiService) SourcesSamlRetrieveExecute(r ApiSourcesSamlRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6409,7 +6336,7 @@ func (a *SourcesApiService) SourcesSamlUpdateExecute(r ApiSourcesSamlUpdateReque
 	}
 
 	localVarPath := localBasePath + "/sources/saml/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6461,9 +6388,9 @@ func (a *SourcesApiService) SourcesSamlUpdateExecute(r ApiSourcesSamlUpdateReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6480,7 +6407,6 @@ func (a *SourcesApiService) SourcesSamlUpdateExecute(r ApiSourcesSamlUpdateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6491,7 +6417,6 @@ func (a *SourcesApiService) SourcesSamlUpdateExecute(r ApiSourcesSamlUpdateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6552,7 +6477,7 @@ func (a *SourcesApiService) SourcesSamlUsedByListExecute(r ApiSourcesSamlUsedByL
 	}
 
 	localVarPath := localBasePath + "/sources/saml/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6599,9 +6524,9 @@ func (a *SourcesApiService) SourcesSamlUsedByListExecute(r ApiSourcesSamlUsedByL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6618,7 +6543,6 @@ func (a *SourcesApiService) SourcesSamlUsedByListExecute(r ApiSourcesSamlUsedByL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6629,7 +6553,6 @@ func (a *SourcesApiService) SourcesSamlUsedByListExecute(r ApiSourcesSamlUsedByL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6688,7 +6611,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllDestroyExecute(r ApiSources
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6735,9 +6658,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllDestroyExecute(r ApiSources
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -6754,7 +6677,6 @@ func (a *SourcesApiService) SourcesUserConnectionsAllDestroyExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -6765,7 +6687,6 @@ func (a *SourcesApiService) SourcesUserConnectionsAllDestroyExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -6854,19 +6775,19 @@ func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUse
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.user != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "")
+		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6909,9 +6830,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUse
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6928,7 +6849,6 @@ func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6939,7 +6859,6 @@ func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7000,7 +6919,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiS
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7047,9 +6966,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7066,7 +6985,6 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7077,7 +6995,6 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7138,7 +7055,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllRetrieveExecute(r ApiSource
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7185,9 +7102,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllRetrieveExecute(r ApiSource
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7204,7 +7121,6 @@ func (a *SourcesApiService) SourcesUserConnectionsAllRetrieveExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7215,7 +7131,6 @@ func (a *SourcesApiService) SourcesUserConnectionsAllRetrieveExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7276,7 +7191,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesU
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7323,9 +7238,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesU
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7342,7 +7257,6 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7353,7 +7267,6 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7414,7 +7327,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUsedByListExecute(r ApiSour
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/all/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7461,9 +7374,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUsedByListExecute(r ApiSour
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7480,7 +7393,6 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUsedByListExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7491,7 +7403,6 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUsedByListExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7606,9 +7517,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthCreateExecute(r ApiSource
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7625,7 +7536,6 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthCreateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7636,7 +7546,6 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthCreateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7695,7 +7604,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthDestroyExecute(r ApiSourc
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/oauth/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7742,9 +7651,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthDestroyExecute(r ApiSourc
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -7761,7 +7670,6 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthDestroyExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -7772,7 +7680,6 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthDestroyExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -7861,19 +7768,19 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthListExecute(r ApiSourcesU
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.sourceSlug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "")
+		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7916,9 +7823,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthListExecute(r ApiSourcesU
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7935,7 +7842,6 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthListExecute(r ApiSourcesU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7946,7 +7852,6 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthListExecute(r ApiSourcesU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8013,7 +7918,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdateExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/oauth/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8062,9 +7967,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdateExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8081,7 +7986,6 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8092,7 +7996,6 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8153,7 +8056,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieveExecute(r ApiSour
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/oauth/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8200,9 +8103,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieveExecute(r ApiSour
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8219,7 +8122,6 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieveExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8230,7 +8132,6 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieveExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8297,7 +8198,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUpdateExecute(r ApiSource
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/oauth/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8349,9 +8250,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUpdateExecute(r ApiSource
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8368,7 +8269,6 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUpdateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8379,7 +8279,6 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUpdateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8440,7 +8339,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByListExecute(r ApiSo
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/oauth/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8487,9 +8386,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByListExecute(r ApiSo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8506,7 +8405,6 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByListExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8517,7 +8415,6 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByListExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8632,9 +8529,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexCreateExecute(r ApiSources
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8651,7 +8548,6 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexCreateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8662,7 +8558,6 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexCreateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8721,7 +8616,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexDestroyExecute(r ApiSource
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/plex/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8768,9 +8663,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexDestroyExecute(r ApiSource
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -8787,7 +8682,6 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexDestroyExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -8798,7 +8692,6 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexDestroyExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -8887,19 +8780,19 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUs
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.sourceSlug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "")
+		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8942,9 +8835,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8961,7 +8854,6 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8972,7 +8864,6 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9039,7 +8930,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/plex/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9088,9 +8979,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9107,7 +8998,6 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9118,7 +9008,6 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9179,7 +9068,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourc
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/plex/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9226,9 +9115,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9245,7 +9134,6 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9256,7 +9144,6 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9323,7 +9210,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSources
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/plex/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9375,9 +9262,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSources
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9394,7 +9281,6 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9405,7 +9291,6 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9466,7 +9351,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByListExecute(r ApiSou
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/plex/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9513,9 +9398,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByListExecute(r ApiSou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9532,7 +9417,6 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByListExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9543,7 +9427,6 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByListExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9658,9 +9541,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlCreateExecute(r ApiSources
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9677,7 +9560,6 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlCreateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9688,7 +9570,6 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlCreateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9747,7 +9628,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlDestroyExecute(r ApiSource
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9794,9 +9675,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlDestroyExecute(r ApiSource
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -9813,7 +9694,6 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlDestroyExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -9824,7 +9704,6 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlDestroyExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -9913,19 +9792,19 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlListExecute(r ApiSourcesUs
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.sourceSlug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "")
+		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -9968,9 +9847,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlListExecute(r ApiSourcesUs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9987,7 +9866,6 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlListExecute(r ApiSourcesUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9998,7 +9876,6 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlListExecute(r ApiSourcesUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10065,7 +9942,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdateExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10114,9 +9991,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10133,7 +10010,6 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10144,7 +10020,6 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10205,7 +10080,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieveExecute(r ApiSourc
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10252,9 +10127,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieveExecute(r ApiSourc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10271,7 +10146,6 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieveExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10282,7 +10156,6 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieveExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10349,7 +10222,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUpdateExecute(r ApiSources
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10401,9 +10274,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUpdateExecute(r ApiSources
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10420,7 +10293,6 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUpdateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10431,7 +10303,6 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUpdateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10492,7 +10363,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByListExecute(r ApiSou
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/saml/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10539,9 +10410,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByListExecute(r ApiSou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10558,7 +10429,6 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByListExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10569,7 +10439,6 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByListExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

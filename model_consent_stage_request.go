@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ConsentStageRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ConsentStageRequest{}
-
 // ConsentStageRequest ConsentStage Serializer
 type ConsentStageRequest struct {
 	Name    string                `json:"name"`
@@ -71,7 +68,7 @@ func (o *ConsentStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *ConsentStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -81,7 +78,7 @@ func (o *ConsentStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConsentStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -89,7 +86,7 @@ func (o *ConsentStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *ConsentStageRequest) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -103,7 +100,7 @@ func (o *ConsentStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *ConsentStageRequest) GetMode() ConsentStageModeEnum {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil || o.Mode == nil {
 		var ret ConsentStageModeEnum
 		return ret
 	}
@@ -113,7 +110,7 @@ func (o *ConsentStageRequest) GetMode() ConsentStageModeEnum {
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConsentStageRequest) GetModeOk() (*ConsentStageModeEnum, bool) {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil || o.Mode == nil {
 		return nil, false
 	}
 	return o.Mode, true
@@ -121,7 +118,7 @@ func (o *ConsentStageRequest) GetModeOk() (*ConsentStageModeEnum, bool) {
 
 // HasMode returns a boolean if a field has been set.
 func (o *ConsentStageRequest) HasMode() bool {
-	if o != nil && !IsNil(o.Mode) {
+	if o != nil && o.Mode != nil {
 		return true
 	}
 
@@ -135,7 +132,7 @@ func (o *ConsentStageRequest) SetMode(v ConsentStageModeEnum) {
 
 // GetConsentExpireIn returns the ConsentExpireIn field value if set, zero value otherwise.
 func (o *ConsentStageRequest) GetConsentExpireIn() string {
-	if o == nil || IsNil(o.ConsentExpireIn) {
+	if o == nil || o.ConsentExpireIn == nil {
 		var ret string
 		return ret
 	}
@@ -145,7 +142,7 @@ func (o *ConsentStageRequest) GetConsentExpireIn() string {
 // GetConsentExpireInOk returns a tuple with the ConsentExpireIn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConsentStageRequest) GetConsentExpireInOk() (*string, bool) {
-	if o == nil || IsNil(o.ConsentExpireIn) {
+	if o == nil || o.ConsentExpireIn == nil {
 		return nil, false
 	}
 	return o.ConsentExpireIn, true
@@ -153,7 +150,7 @@ func (o *ConsentStageRequest) GetConsentExpireInOk() (*string, bool) {
 
 // HasConsentExpireIn returns a boolean if a field has been set.
 func (o *ConsentStageRequest) HasConsentExpireIn() bool {
-	if o != nil && !IsNil(o.ConsentExpireIn) {
+	if o != nil && o.ConsentExpireIn != nil {
 		return true
 	}
 
@@ -166,26 +163,20 @@ func (o *ConsentStageRequest) SetConsentExpireIn(v string) {
 }
 
 func (o ConsentStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ConsentStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.FlowSet) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	if !IsNil(o.Mode) {
+	if o.Mode != nil {
 		toSerialize["mode"] = o.Mode
 	}
-	if !IsNil(o.ConsentExpireIn) {
+	if o.ConsentExpireIn != nil {
 		toSerialize["consent_expire_in"] = o.ConsentExpireIn
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableConsentStageRequest struct {

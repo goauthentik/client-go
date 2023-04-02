@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the App type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &App{}
-
 // App Serialize Application info
 type App struct {
 	Name  string `json:"name"`
@@ -92,18 +89,14 @@ func (o *App) SetLabel(v string) {
 }
 
 func (o App) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["label"] = o.Label
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o App) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["label"] = o.Label
-	return toSerialize, nil
 }
 
 type NullableApp struct {

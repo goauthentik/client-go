@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DockerServiceConnection type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DockerServiceConnection{}
-
 // DockerServiceConnection DockerServiceConnection Serializer
 type DockerServiceConnection struct {
 	Pk   string `json:"pk"`
@@ -113,7 +110,7 @@ func (o *DockerServiceConnection) SetName(v string) {
 
 // GetLocal returns the Local field value if set, zero value otherwise.
 func (o *DockerServiceConnection) GetLocal() bool {
-	if o == nil || IsNil(o.Local) {
+	if o == nil || o.Local == nil {
 		var ret bool
 		return ret
 	}
@@ -123,7 +120,7 @@ func (o *DockerServiceConnection) GetLocal() bool {
 // GetLocalOk returns a tuple with the Local field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DockerServiceConnection) GetLocalOk() (*bool, bool) {
-	if o == nil || IsNil(o.Local) {
+	if o == nil || o.Local == nil {
 		return nil, false
 	}
 	return o.Local, true
@@ -131,7 +128,7 @@ func (o *DockerServiceConnection) GetLocalOk() (*bool, bool) {
 
 // HasLocal returns a boolean if a field has been set.
 func (o *DockerServiceConnection) HasLocal() bool {
-	if o != nil && !IsNil(o.Local) {
+	if o != nil && o.Local != nil {
 		return true
 	}
 
@@ -265,7 +262,7 @@ func (o *DockerServiceConnection) SetUrl(v string) {
 
 // GetTlsVerification returns the TlsVerification field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DockerServiceConnection) GetTlsVerification() string {
-	if o == nil || IsNil(o.TlsVerification.Get()) {
+	if o == nil || o.TlsVerification.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -308,7 +305,7 @@ func (o *DockerServiceConnection) UnsetTlsVerification() {
 
 // GetTlsAuthentication returns the TlsAuthentication field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DockerServiceConnection) GetTlsAuthentication() string {
-	if o == nil || IsNil(o.TlsAuthentication.Get()) {
+	if o == nil || o.TlsAuthentication.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -350,32 +347,38 @@ func (o *DockerServiceConnection) UnsetTlsAuthentication() {
 }
 
 func (o DockerServiceConnection) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o DockerServiceConnection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Local) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.Local != nil {
 		toSerialize["local"] = o.Local
 	}
-	// skip: component is readOnly
-	// skip: verbose_name is readOnly
-	// skip: verbose_name_plural is readOnly
-	// skip: meta_model_name is readOnly
-	toSerialize["url"] = o.Url
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if true {
+		toSerialize["url"] = o.Url
+	}
 	if o.TlsVerification.IsSet() {
 		toSerialize["tls_verification"] = o.TlsVerification.Get()
 	}
 	if o.TlsAuthentication.IsSet() {
 		toSerialize["tls_authentication"] = o.TlsAuthentication.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableDockerServiceConnection struct {

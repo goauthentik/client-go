@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the UserLoginChallengeResponseRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserLoginChallengeResponseRequest{}
-
 // UserLoginChallengeResponseRequest User login challenge
 type UserLoginChallengeResponseRequest struct {
 	Component  *string `json:"component,omitempty"`
@@ -48,7 +45,7 @@ func NewUserLoginChallengeResponseRequestWithDefaults() *UserLoginChallengeRespo
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *UserLoginChallengeResponseRequest) GetComponent() string {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
@@ -58,7 +55,7 @@ func (o *UserLoginChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
 	return o.Component, true
@@ -66,7 +63,7 @@ func (o *UserLoginChallengeResponseRequest) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *UserLoginChallengeResponseRequest) HasComponent() bool {
-	if o != nil && !IsNil(o.Component) {
+	if o != nil && o.Component != nil {
 		return true
 	}
 
@@ -103,20 +100,14 @@ func (o *UserLoginChallengeResponseRequest) SetRememberMe(v bool) {
 }
 
 func (o UserLoginChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o UserLoginChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Component) {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
-	toSerialize["remember_me"] = o.RememberMe
-	return toSerialize, nil
+	if true {
+		toSerialize["remember_me"] = o.RememberMe
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableUserLoginChallengeResponseRequest struct {

@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the FlowImportResult type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FlowImportResult{}
-
 // FlowImportResult Logs of an attempted flow import
 type FlowImportResult struct {
 	Logs    []map[string]interface{} `json:"logs"`
@@ -92,18 +89,14 @@ func (o *FlowImportResult) SetSuccess(v bool) {
 }
 
 func (o FlowImportResult) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["logs"] = o.Logs
+	}
+	if true {
+		toSerialize["success"] = o.Success
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o FlowImportResult) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: logs is readOnly
-	// skip: success is readOnly
-	return toSerialize, nil
 }
 
 type NullableFlowImportResult struct {

@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Provider type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Provider{}
-
 // Provider Provider Serializer
 type Provider struct {
 	Pk   int32  `json:"pk"`
@@ -117,7 +114,7 @@ func (o *Provider) SetName(v string) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Provider) GetAuthenticationFlow() string {
-	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
+	if o == nil || o.AuthenticationFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -184,7 +181,7 @@ func (o *Provider) SetAuthorizationFlow(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *Provider) GetPropertyMappings() []string {
-	if o == nil || IsNil(o.PropertyMappings) {
+	if o == nil || o.PropertyMappings == nil {
 		var ret []string
 		return ret
 	}
@@ -194,7 +191,7 @@ func (o *Provider) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Provider) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || IsNil(o.PropertyMappings) {
+	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -202,7 +199,7 @@ func (o *Provider) GetPropertyMappingsOk() ([]string, bool) {
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *Provider) HasPropertyMappings() bool {
-	if o != nil && !IsNil(o.PropertyMappings) {
+	if o != nil && o.PropertyMappings != nil {
 		return true
 	}
 
@@ -359,31 +356,41 @@ func (o *Provider) SetMetaModelName(v string) {
 }
 
 func (o Provider) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o Provider) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
 	}
-	toSerialize["authorization_flow"] = o.AuthorizationFlow
-	if !IsNil(o.PropertyMappings) {
+	if true {
+		toSerialize["authorization_flow"] = o.AuthorizationFlow
+	}
+	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	// skip: component is readOnly
-	// skip: assigned_application_slug is readOnly
-	// skip: assigned_application_name is readOnly
-	// skip: verbose_name is readOnly
-	// skip: verbose_name_plural is readOnly
-	// skip: meta_model_name is readOnly
-	return toSerialize, nil
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug
+	}
+	if true {
+		toSerialize["assigned_application_name"] = o.AssignedApplicationName
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableProvider struct {

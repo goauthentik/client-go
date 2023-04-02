@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CertificateKeyPairRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CertificateKeyPairRequest{}
-
 // CertificateKeyPairRequest CertificateKeyPair Serializer
 type CertificateKeyPairRequest struct {
 	Name string `json:"name"`
@@ -98,7 +95,7 @@ func (o *CertificateKeyPairRequest) SetCertificateData(v string) {
 
 // GetKeyData returns the KeyData field value if set, zero value otherwise.
 func (o *CertificateKeyPairRequest) GetKeyData() string {
-	if o == nil || IsNil(o.KeyData) {
+	if o == nil || o.KeyData == nil {
 		var ret string
 		return ret
 	}
@@ -108,7 +105,7 @@ func (o *CertificateKeyPairRequest) GetKeyData() string {
 // GetKeyDataOk returns a tuple with the KeyData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyPairRequest) GetKeyDataOk() (*string, bool) {
-	if o == nil || IsNil(o.KeyData) {
+	if o == nil || o.KeyData == nil {
 		return nil, false
 	}
 	return o.KeyData, true
@@ -116,7 +113,7 @@ func (o *CertificateKeyPairRequest) GetKeyDataOk() (*string, bool) {
 
 // HasKeyData returns a boolean if a field has been set.
 func (o *CertificateKeyPairRequest) HasKeyData() bool {
-	if o != nil && !IsNil(o.KeyData) {
+	if o != nil && o.KeyData != nil {
 		return true
 	}
 
@@ -130,7 +127,7 @@ func (o *CertificateKeyPairRequest) SetKeyData(v string) {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CertificateKeyPairRequest) GetManaged() string {
-	if o == nil || IsNil(o.Managed.Get()) {
+	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -172,24 +169,20 @@ func (o *CertificateKeyPairRequest) UnsetManaged() {
 }
 
 func (o CertificateKeyPairRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CertificateKeyPairRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["certificate_data"] = o.CertificateData
-	if !IsNil(o.KeyData) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["certificate_data"] = o.CertificateData
+	}
+	if o.KeyData != nil {
 		toSerialize["key_data"] = o.KeyData
 	}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCertificateKeyPairRequest struct {

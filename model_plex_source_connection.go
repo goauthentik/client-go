@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PlexSourceConnection type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PlexSourceConnection{}
-
 // PlexSourceConnection Plex Source connection Serializer
 type PlexSourceConnection struct {
 	Pk         int32  `json:"pk"`
@@ -170,21 +167,23 @@ func (o *PlexSourceConnection) SetPlexToken(v string) {
 }
 
 func (o PlexSourceConnection) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["user"] = o.User
+	}
+	if true {
+		toSerialize["source"] = o.Source
+	}
+	if true {
+		toSerialize["identifier"] = o.Identifier
+	}
+	if true {
+		toSerialize["plex_token"] = o.PlexToken
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o PlexSourceConnection) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	// skip: user is readOnly
-	// skip: source is readOnly
-	toSerialize["identifier"] = o.Identifier
-	toSerialize["plex_token"] = o.PlexToken
-	return toSerialize, nil
 }
 
 type NullablePlexSourceConnection struct {

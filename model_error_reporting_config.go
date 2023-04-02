@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ErrorReportingConfig type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ErrorReportingConfig{}
-
 // ErrorReportingConfig Config for error reporting
 type ErrorReportingConfig struct {
 	Enabled          bool    `json:"enabled"`
@@ -170,21 +167,23 @@ func (o *ErrorReportingConfig) SetTracesSampleRate(v float64) {
 }
 
 func (o ErrorReportingConfig) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if true {
+		toSerialize["sentry_dsn"] = o.SentryDsn
+	}
+	if true {
+		toSerialize["environment"] = o.Environment
+	}
+	if true {
+		toSerialize["send_pii"] = o.SendPii
+	}
+	if true {
+		toSerialize["traces_sample_rate"] = o.TracesSampleRate
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o ErrorReportingConfig) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: enabled is readOnly
-	// skip: sentry_dsn is readOnly
-	// skip: environment is readOnly
-	// skip: send_pii is readOnly
-	// skip: traces_sample_rate is readOnly
-	return toSerialize, nil
 }
 
 type NullableErrorReportingConfig struct {

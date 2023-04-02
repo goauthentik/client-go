@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AuthenticatorDuoStageDeviceImportResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthenticatorDuoStageDeviceImportResponse{}
-
 // AuthenticatorDuoStageDeviceImportResponse struct for AuthenticatorDuoStageDeviceImportResponse
 type AuthenticatorDuoStageDeviceImportResponse struct {
 	Count int32  `json:"count"`
@@ -92,18 +89,14 @@ func (o *AuthenticatorDuoStageDeviceImportResponse) SetError(v string) {
 }
 
 func (o AuthenticatorDuoStageDeviceImportResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["count"] = o.Count
+	}
+	if true {
+		toSerialize["error"] = o.Error
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o AuthenticatorDuoStageDeviceImportResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: count is readOnly
-	// skip: error is readOnly
-	return toSerialize, nil
 }
 
 type NullableAuthenticatorDuoStageDeviceImportResponse struct {

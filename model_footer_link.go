@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the FooterLink type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FooterLink{}
-
 // FooterLink Links returned in Config API
 type FooterLink struct {
 	Href string `json:"href"`
@@ -92,18 +89,14 @@ func (o *FooterLink) SetName(v string) {
 }
 
 func (o FooterLink) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["href"] = o.Href
+	}
+	if true {
+		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o FooterLink) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: href is readOnly
-	// skip: name is readOnly
-	return toSerialize, nil
 }
 
 type NullableFooterLink struct {

@@ -15,23 +15,23 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedFlowRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedFlowRequest{}
-
 // PatchedFlowRequest Flow Serializer
 type PatchedFlowRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Visible in the URL.
 	Slug *string `json:"slug,omitempty"`
 	// Shown as the Title in Flow pages.
-	Title            *string              `json:"title,omitempty"`
+	Title *string `json:"title,omitempty"`
+	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.  * `authentication` - Authentication * `authorization` - Authorization * `invalidation` - Invalidation * `enrollment` - Enrollment * `unenrollment` - Unrenollment * `recovery` - Recovery * `stage_configuration` - Stage Configuration
 	Designation      *FlowDesignationEnum `json:"designation,omitempty"`
 	PolicyEngineMode *PolicyEngineMode    `json:"policy_engine_mode,omitempty"`
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
-	CompatibilityMode *bool               `json:"compatibility_mode,omitempty"`
-	Layout            *LayoutEnum         `json:"layout,omitempty"`
-	DeniedAction      *DeniedActionEnum   `json:"denied_action,omitempty"`
-	Authentication    *AuthenticationEnum `json:"authentication,omitempty"`
+	CompatibilityMode *bool       `json:"compatibility_mode,omitempty"`
+	Layout            *LayoutEnum `json:"layout,omitempty"`
+	// Configure what should happen when a flow denies access to a user.  * `message_continue` - Message Continue * `message` - Message * `continue` - Continue
+	DeniedAction *DeniedActionEnum `json:"denied_action,omitempty"`
+	// Required level of authentication and authorization to access a flow.  * `none` - None * `require_authenticated` - Require Authenticated * `require_unauthenticated` - Require Unauthenticated * `require_superuser` - Require Superuser
+	Authentication *AuthenticationEnum `json:"authentication,omitempty"`
 }
 
 // NewPatchedFlowRequest instantiates a new PatchedFlowRequest object
@@ -53,7 +53,7 @@ func NewPatchedFlowRequestWithDefaults() *PatchedFlowRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedFlowRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *PatchedFlowRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -71,7 +71,7 @@ func (o *PatchedFlowRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedFlowRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *PatchedFlowRequest) SetName(v string) {
 
 // GetSlug returns the Slug field value if set, zero value otherwise.
 func (o *PatchedFlowRequest) GetSlug() string {
-	if o == nil || IsNil(o.Slug) {
+	if o == nil || o.Slug == nil {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *PatchedFlowRequest) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowRequest) GetSlugOk() (*string, bool) {
-	if o == nil || IsNil(o.Slug) {
+	if o == nil || o.Slug == nil {
 		return nil, false
 	}
 	return o.Slug, true
@@ -103,7 +103,7 @@ func (o *PatchedFlowRequest) GetSlugOk() (*string, bool) {
 
 // HasSlug returns a boolean if a field has been set.
 func (o *PatchedFlowRequest) HasSlug() bool {
-	if o != nil && !IsNil(o.Slug) {
+	if o != nil && o.Slug != nil {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *PatchedFlowRequest) SetSlug(v string) {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *PatchedFlowRequest) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
+	if o == nil || o.Title == nil {
 		var ret string
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *PatchedFlowRequest) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowRequest) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
+	if o == nil || o.Title == nil {
 		return nil, false
 	}
 	return o.Title, true
@@ -135,7 +135,7 @@ func (o *PatchedFlowRequest) GetTitleOk() (*string, bool) {
 
 // HasTitle returns a boolean if a field has been set.
 func (o *PatchedFlowRequest) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
+	if o != nil && o.Title != nil {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *PatchedFlowRequest) SetTitle(v string) {
 
 // GetDesignation returns the Designation field value if set, zero value otherwise.
 func (o *PatchedFlowRequest) GetDesignation() FlowDesignationEnum {
-	if o == nil || IsNil(o.Designation) {
+	if o == nil || o.Designation == nil {
 		var ret FlowDesignationEnum
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *PatchedFlowRequest) GetDesignation() FlowDesignationEnum {
 // GetDesignationOk returns a tuple with the Designation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowRequest) GetDesignationOk() (*FlowDesignationEnum, bool) {
-	if o == nil || IsNil(o.Designation) {
+	if o == nil || o.Designation == nil {
 		return nil, false
 	}
 	return o.Designation, true
@@ -167,7 +167,7 @@ func (o *PatchedFlowRequest) GetDesignationOk() (*FlowDesignationEnum, bool) {
 
 // HasDesignation returns a boolean if a field has been set.
 func (o *PatchedFlowRequest) HasDesignation() bool {
-	if o != nil && !IsNil(o.Designation) {
+	if o != nil && o.Designation != nil {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *PatchedFlowRequest) SetDesignation(v FlowDesignationEnum) {
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *PatchedFlowRequest) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || IsNil(o.PolicyEngineMode) {
+	if o == nil || o.PolicyEngineMode == nil {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *PatchedFlowRequest) GetPolicyEngineMode() PolicyEngineMode {
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || IsNil(o.PolicyEngineMode) {
+	if o == nil || o.PolicyEngineMode == nil {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -199,7 +199,7 @@ func (o *PatchedFlowRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *PatchedFlowRequest) HasPolicyEngineMode() bool {
-	if o != nil && !IsNil(o.PolicyEngineMode) {
+	if o != nil && o.PolicyEngineMode != nil {
 		return true
 	}
 
@@ -213,7 +213,7 @@ func (o *PatchedFlowRequest) SetPolicyEngineMode(v PolicyEngineMode) {
 
 // GetCompatibilityMode returns the CompatibilityMode field value if set, zero value otherwise.
 func (o *PatchedFlowRequest) GetCompatibilityMode() bool {
-	if o == nil || IsNil(o.CompatibilityMode) {
+	if o == nil || o.CompatibilityMode == nil {
 		var ret bool
 		return ret
 	}
@@ -223,7 +223,7 @@ func (o *PatchedFlowRequest) GetCompatibilityMode() bool {
 // GetCompatibilityModeOk returns a tuple with the CompatibilityMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowRequest) GetCompatibilityModeOk() (*bool, bool) {
-	if o == nil || IsNil(o.CompatibilityMode) {
+	if o == nil || o.CompatibilityMode == nil {
 		return nil, false
 	}
 	return o.CompatibilityMode, true
@@ -231,7 +231,7 @@ func (o *PatchedFlowRequest) GetCompatibilityModeOk() (*bool, bool) {
 
 // HasCompatibilityMode returns a boolean if a field has been set.
 func (o *PatchedFlowRequest) HasCompatibilityMode() bool {
-	if o != nil && !IsNil(o.CompatibilityMode) {
+	if o != nil && o.CompatibilityMode != nil {
 		return true
 	}
 
@@ -245,7 +245,7 @@ func (o *PatchedFlowRequest) SetCompatibilityMode(v bool) {
 
 // GetLayout returns the Layout field value if set, zero value otherwise.
 func (o *PatchedFlowRequest) GetLayout() LayoutEnum {
-	if o == nil || IsNil(o.Layout) {
+	if o == nil || o.Layout == nil {
 		var ret LayoutEnum
 		return ret
 	}
@@ -255,7 +255,7 @@ func (o *PatchedFlowRequest) GetLayout() LayoutEnum {
 // GetLayoutOk returns a tuple with the Layout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowRequest) GetLayoutOk() (*LayoutEnum, bool) {
-	if o == nil || IsNil(o.Layout) {
+	if o == nil || o.Layout == nil {
 		return nil, false
 	}
 	return o.Layout, true
@@ -263,7 +263,7 @@ func (o *PatchedFlowRequest) GetLayoutOk() (*LayoutEnum, bool) {
 
 // HasLayout returns a boolean if a field has been set.
 func (o *PatchedFlowRequest) HasLayout() bool {
-	if o != nil && !IsNil(o.Layout) {
+	if o != nil && o.Layout != nil {
 		return true
 	}
 
@@ -277,7 +277,7 @@ func (o *PatchedFlowRequest) SetLayout(v LayoutEnum) {
 
 // GetDeniedAction returns the DeniedAction field value if set, zero value otherwise.
 func (o *PatchedFlowRequest) GetDeniedAction() DeniedActionEnum {
-	if o == nil || IsNil(o.DeniedAction) {
+	if o == nil || o.DeniedAction == nil {
 		var ret DeniedActionEnum
 		return ret
 	}
@@ -287,7 +287,7 @@ func (o *PatchedFlowRequest) GetDeniedAction() DeniedActionEnum {
 // GetDeniedActionOk returns a tuple with the DeniedAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowRequest) GetDeniedActionOk() (*DeniedActionEnum, bool) {
-	if o == nil || IsNil(o.DeniedAction) {
+	if o == nil || o.DeniedAction == nil {
 		return nil, false
 	}
 	return o.DeniedAction, true
@@ -295,7 +295,7 @@ func (o *PatchedFlowRequest) GetDeniedActionOk() (*DeniedActionEnum, bool) {
 
 // HasDeniedAction returns a boolean if a field has been set.
 func (o *PatchedFlowRequest) HasDeniedAction() bool {
-	if o != nil && !IsNil(o.DeniedAction) {
+	if o != nil && o.DeniedAction != nil {
 		return true
 	}
 
@@ -309,7 +309,7 @@ func (o *PatchedFlowRequest) SetDeniedAction(v DeniedActionEnum) {
 
 // GetAuthentication returns the Authentication field value if set, zero value otherwise.
 func (o *PatchedFlowRequest) GetAuthentication() AuthenticationEnum {
-	if o == nil || IsNil(o.Authentication) {
+	if o == nil || o.Authentication == nil {
 		var ret AuthenticationEnum
 		return ret
 	}
@@ -319,7 +319,7 @@ func (o *PatchedFlowRequest) GetAuthentication() AuthenticationEnum {
 // GetAuthenticationOk returns a tuple with the Authentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowRequest) GetAuthenticationOk() (*AuthenticationEnum, bool) {
-	if o == nil || IsNil(o.Authentication) {
+	if o == nil || o.Authentication == nil {
 		return nil, false
 	}
 	return o.Authentication, true
@@ -327,7 +327,7 @@ func (o *PatchedFlowRequest) GetAuthenticationOk() (*AuthenticationEnum, bool) {
 
 // HasAuthentication returns a boolean if a field has been set.
 func (o *PatchedFlowRequest) HasAuthentication() bool {
-	if o != nil && !IsNil(o.Authentication) {
+	if o != nil && o.Authentication != nil {
 		return true
 	}
 
@@ -340,43 +340,35 @@ func (o *PatchedFlowRequest) SetAuthentication(v AuthenticationEnum) {
 }
 
 func (o PatchedFlowRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedFlowRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Slug) {
+	if o.Slug != nil {
 		toSerialize["slug"] = o.Slug
 	}
-	if !IsNil(o.Title) {
+	if o.Title != nil {
 		toSerialize["title"] = o.Title
 	}
-	if !IsNil(o.Designation) {
+	if o.Designation != nil {
 		toSerialize["designation"] = o.Designation
 	}
-	if !IsNil(o.PolicyEngineMode) {
+	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if !IsNil(o.CompatibilityMode) {
+	if o.CompatibilityMode != nil {
 		toSerialize["compatibility_mode"] = o.CompatibilityMode
 	}
-	if !IsNil(o.Layout) {
+	if o.Layout != nil {
 		toSerialize["layout"] = o.Layout
 	}
-	if !IsNil(o.DeniedAction) {
+	if o.DeniedAction != nil {
 		toSerialize["denied_action"] = o.DeniedAction
 	}
-	if !IsNil(o.Authentication) {
+	if o.Authentication != nil {
 		toSerialize["authentication"] = o.Authentication
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedFlowRequest struct {

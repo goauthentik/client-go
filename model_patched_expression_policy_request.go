@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedExpressionPolicyRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedExpressionPolicyRequest{}
-
 // PatchedExpressionPolicyRequest Group Membership Policy Serializer
 type PatchedExpressionPolicyRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -45,7 +42,7 @@ func NewPatchedExpressionPolicyRequestWithDefaults() *PatchedExpressionPolicyReq
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedExpressionPolicyRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -55,7 +52,7 @@ func (o *PatchedExpressionPolicyRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedExpressionPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -63,7 +60,7 @@ func (o *PatchedExpressionPolicyRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedExpressionPolicyRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -77,7 +74,7 @@ func (o *PatchedExpressionPolicyRequest) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *PatchedExpressionPolicyRequest) GetExecutionLogging() bool {
-	if o == nil || IsNil(o.ExecutionLogging) {
+	if o == nil || o.ExecutionLogging == nil {
 		var ret bool
 		return ret
 	}
@@ -87,7 +84,7 @@ func (o *PatchedExpressionPolicyRequest) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedExpressionPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExecutionLogging) {
+	if o == nil || o.ExecutionLogging == nil {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -95,7 +92,7 @@ func (o *PatchedExpressionPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *PatchedExpressionPolicyRequest) HasExecutionLogging() bool {
-	if o != nil && !IsNil(o.ExecutionLogging) {
+	if o != nil && o.ExecutionLogging != nil {
 		return true
 	}
 
@@ -109,7 +106,7 @@ func (o *PatchedExpressionPolicyRequest) SetExecutionLogging(v bool) {
 
 // GetExpression returns the Expression field value if set, zero value otherwise.
 func (o *PatchedExpressionPolicyRequest) GetExpression() string {
-	if o == nil || IsNil(o.Expression) {
+	if o == nil || o.Expression == nil {
 		var ret string
 		return ret
 	}
@@ -119,7 +116,7 @@ func (o *PatchedExpressionPolicyRequest) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedExpressionPolicyRequest) GetExpressionOk() (*string, bool) {
-	if o == nil || IsNil(o.Expression) {
+	if o == nil || o.Expression == nil {
 		return nil, false
 	}
 	return o.Expression, true
@@ -127,7 +124,7 @@ func (o *PatchedExpressionPolicyRequest) GetExpressionOk() (*string, bool) {
 
 // HasExpression returns a boolean if a field has been set.
 func (o *PatchedExpressionPolicyRequest) HasExpression() bool {
-	if o != nil && !IsNil(o.Expression) {
+	if o != nil && o.Expression != nil {
 		return true
 	}
 
@@ -140,25 +137,17 @@ func (o *PatchedExpressionPolicyRequest) SetExpression(v string) {
 }
 
 func (o PatchedExpressionPolicyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedExpressionPolicyRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.ExecutionLogging) {
+	if o.ExecutionLogging != nil {
 		toSerialize["execution_logging"] = o.ExecutionLogging
 	}
-	if !IsNil(o.Expression) {
+	if o.Expression != nil {
 		toSerialize["expression"] = o.Expression
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedExpressionPolicyRequest struct {

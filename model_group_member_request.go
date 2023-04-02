@@ -16,9 +16,6 @@ import (
 	"time"
 )
 
-// checks if the GroupMemberRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GroupMemberRequest{}
-
 // GroupMemberRequest Stripped down user serializer to show relevant users for groups
 type GroupMemberRequest struct {
 	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
@@ -101,7 +98,7 @@ func (o *GroupMemberRequest) SetName(v string) {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise.
 func (o *GroupMemberRequest) GetIsActive() bool {
-	if o == nil || IsNil(o.IsActive) {
+	if o == nil || o.IsActive == nil {
 		var ret bool
 		return ret
 	}
@@ -111,7 +108,7 @@ func (o *GroupMemberRequest) GetIsActive() bool {
 // GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupMemberRequest) GetIsActiveOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsActive) {
+	if o == nil || o.IsActive == nil {
 		return nil, false
 	}
 	return o.IsActive, true
@@ -119,7 +116,7 @@ func (o *GroupMemberRequest) GetIsActiveOk() (*bool, bool) {
 
 // HasIsActive returns a boolean if a field has been set.
 func (o *GroupMemberRequest) HasIsActive() bool {
-	if o != nil && !IsNil(o.IsActive) {
+	if o != nil && o.IsActive != nil {
 		return true
 	}
 
@@ -133,7 +130,7 @@ func (o *GroupMemberRequest) SetIsActive(v bool) {
 
 // GetLastLogin returns the LastLogin field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GroupMemberRequest) GetLastLogin() time.Time {
-	if o == nil || IsNil(o.LastLogin.Get()) {
+	if o == nil || o.LastLogin.Get() == nil {
 		var ret time.Time
 		return ret
 	}
@@ -176,7 +173,7 @@ func (o *GroupMemberRequest) UnsetLastLogin() {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *GroupMemberRequest) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || o.Email == nil {
 		var ret string
 		return ret
 	}
@@ -186,7 +183,7 @@ func (o *GroupMemberRequest) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupMemberRequest) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || o.Email == nil {
 		return nil, false
 	}
 	return o.Email, true
@@ -194,7 +191,7 @@ func (o *GroupMemberRequest) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *GroupMemberRequest) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
+	if o != nil && o.Email != nil {
 		return true
 	}
 
@@ -208,7 +205,7 @@ func (o *GroupMemberRequest) SetEmail(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *GroupMemberRequest) GetAttributes() map[string]interface{} {
-	if o == nil || IsNil(o.Attributes) {
+	if o == nil || o.Attributes == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -218,15 +215,15 @@ func (o *GroupMemberRequest) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupMemberRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Attributes) {
-		return map[string]interface{}{}, false
+	if o == nil || o.Attributes == nil {
+		return nil, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *GroupMemberRequest) HasAttributes() bool {
-	if o != nil && !IsNil(o.Attributes) {
+	if o != nil && o.Attributes != nil {
 		return true
 	}
 
@@ -239,30 +236,26 @@ func (o *GroupMemberRequest) SetAttributes(v map[string]interface{}) {
 }
 
 func (o GroupMemberRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o GroupMemberRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["username"] = o.Username
-	toSerialize["name"] = o.Name
-	if !IsNil(o.IsActive) {
+	if true {
+		toSerialize["username"] = o.Username
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.IsActive != nil {
 		toSerialize["is_active"] = o.IsActive
 	}
 	if o.LastLogin.IsSet() {
 		toSerialize["last_login"] = o.LastLogin.Get()
 	}
-	if !IsNil(o.Email) {
+	if o.Email != nil {
 		toSerialize["email"] = o.Email
 	}
-	if !IsNil(o.Attributes) {
+	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableGroupMemberRequest struct {

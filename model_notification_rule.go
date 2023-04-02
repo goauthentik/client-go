@@ -15,16 +15,14 @@ import (
 	"encoding/json"
 )
 
-// checks if the NotificationRule type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NotificationRule{}
-
 // NotificationRule NotificationRule Serializer
 type NotificationRule struct {
 	Pk   string `json:"pk"`
 	Name string `json:"name"`
 	// Select which transports should be used to notify the user. If none are selected, the notification will only be shown in the authentik UI.
-	Transports []string      `json:"transports,omitempty"`
-	Severity   *SeverityEnum `json:"severity,omitempty"`
+	Transports []string `json:"transports,omitempty"`
+	// Controls which severity level the created notifications will have.  * `notice` - Notice * `warning` - Warning * `alert` - Alert
+	Severity *SeverityEnum `json:"severity,omitempty"`
 	// Define which group of users this notification should be sent and shown to. If left empty, Notification won't ben sent.
 	Group    NullableString `json:"group,omitempty"`
 	GroupObj Group          `json:"group_obj"`
@@ -100,7 +98,7 @@ func (o *NotificationRule) SetName(v string) {
 
 // GetTransports returns the Transports field value if set, zero value otherwise.
 func (o *NotificationRule) GetTransports() []string {
-	if o == nil || IsNil(o.Transports) {
+	if o == nil || o.Transports == nil {
 		var ret []string
 		return ret
 	}
@@ -110,7 +108,7 @@ func (o *NotificationRule) GetTransports() []string {
 // GetTransportsOk returns a tuple with the Transports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationRule) GetTransportsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Transports) {
+	if o == nil || o.Transports == nil {
 		return nil, false
 	}
 	return o.Transports, true
@@ -118,7 +116,7 @@ func (o *NotificationRule) GetTransportsOk() ([]string, bool) {
 
 // HasTransports returns a boolean if a field has been set.
 func (o *NotificationRule) HasTransports() bool {
-	if o != nil && !IsNil(o.Transports) {
+	if o != nil && o.Transports != nil {
 		return true
 	}
 
@@ -132,7 +130,7 @@ func (o *NotificationRule) SetTransports(v []string) {
 
 // GetSeverity returns the Severity field value if set, zero value otherwise.
 func (o *NotificationRule) GetSeverity() SeverityEnum {
-	if o == nil || IsNil(o.Severity) {
+	if o == nil || o.Severity == nil {
 		var ret SeverityEnum
 		return ret
 	}
@@ -142,7 +140,7 @@ func (o *NotificationRule) GetSeverity() SeverityEnum {
 // GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationRule) GetSeverityOk() (*SeverityEnum, bool) {
-	if o == nil || IsNil(o.Severity) {
+	if o == nil || o.Severity == nil {
 		return nil, false
 	}
 	return o.Severity, true
@@ -150,7 +148,7 @@ func (o *NotificationRule) GetSeverityOk() (*SeverityEnum, bool) {
 
 // HasSeverity returns a boolean if a field has been set.
 func (o *NotificationRule) HasSeverity() bool {
-	if o != nil && !IsNil(o.Severity) {
+	if o != nil && o.Severity != nil {
 		return true
 	}
 
@@ -164,7 +162,7 @@ func (o *NotificationRule) SetSeverity(v SeverityEnum) {
 
 // GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NotificationRule) GetGroup() string {
-	if o == nil || IsNil(o.Group.Get()) {
+	if o == nil || o.Group.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -230,28 +228,26 @@ func (o *NotificationRule) SetGroupObj(v Group) {
 }
 
 func (o NotificationRule) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o NotificationRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Transports) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.Transports != nil {
 		toSerialize["transports"] = o.Transports
 	}
-	if !IsNil(o.Severity) {
+	if o.Severity != nil {
 		toSerialize["severity"] = o.Severity
 	}
 	if o.Group.IsSet() {
 		toSerialize["group"] = o.Group.Get()
 	}
-	// skip: group_obj is readOnly
-	return toSerialize, nil
+	if true {
+		toSerialize["group_obj"] = o.GroupObj
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableNotificationRule struct {

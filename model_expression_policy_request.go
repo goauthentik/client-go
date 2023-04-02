@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ExpressionPolicyRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ExpressionPolicyRequest{}
-
 // ExpressionPolicyRequest Group Membership Policy Serializer
 type ExpressionPolicyRequest struct {
 	Name string `json:"name"`
@@ -71,7 +68,7 @@ func (o *ExpressionPolicyRequest) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *ExpressionPolicyRequest) GetExecutionLogging() bool {
-	if o == nil || IsNil(o.ExecutionLogging) {
+	if o == nil || o.ExecutionLogging == nil {
 		var ret bool
 		return ret
 	}
@@ -81,7 +78,7 @@ func (o *ExpressionPolicyRequest) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExpressionPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExecutionLogging) {
+	if o == nil || o.ExecutionLogging == nil {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -89,7 +86,7 @@ func (o *ExpressionPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *ExpressionPolicyRequest) HasExecutionLogging() bool {
-	if o != nil && !IsNil(o.ExecutionLogging) {
+	if o != nil && o.ExecutionLogging != nil {
 		return true
 	}
 
@@ -126,21 +123,17 @@ func (o *ExpressionPolicyRequest) SetExpression(v string) {
 }
 
 func (o ExpressionPolicyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ExpressionPolicyRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.ExecutionLogging) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.ExecutionLogging != nil {
 		toSerialize["execution_logging"] = o.ExecutionLogging
 	}
-	toSerialize["expression"] = o.Expression
-	return toSerialize, nil
+	if true {
+		toSerialize["expression"] = o.Expression
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableExpressionPolicyRequest struct {

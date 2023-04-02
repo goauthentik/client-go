@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the FlowDiagram type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FlowDiagram{}
-
 // FlowDiagram response of the flow's diagram action
 type FlowDiagram struct {
 	Diagram string `json:"diagram"`
@@ -66,17 +63,11 @@ func (o *FlowDiagram) SetDiagram(v string) {
 }
 
 func (o FlowDiagram) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["diagram"] = o.Diagram
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o FlowDiagram) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: diagram is readOnly
-	return toSerialize, nil
 }
 
 type NullableFlowDiagram struct {

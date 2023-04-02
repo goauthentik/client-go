@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ErrorDetail type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ErrorDetail{}
-
 // ErrorDetail Serializer for rest_framework's error messages
 type ErrorDetail struct {
 	String string `json:"string"`
@@ -92,18 +89,14 @@ func (o *ErrorDetail) SetCode(v string) {
 }
 
 func (o ErrorDetail) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["string"] = o.String
+	}
+	if true {
+		toSerialize["code"] = o.Code
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o ErrorDetail) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["string"] = o.String
-	toSerialize["code"] = o.Code
-	return toSerialize, nil
 }
 
 type NullableErrorDetail struct {

@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AuthenticateWebAuthnStageRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthenticateWebAuthnStageRequest{}
-
 // AuthenticateWebAuthnStageRequest AuthenticateWebAuthnStage Serializer
 type AuthenticateWebAuthnStageRequest struct {
 	Name    string           `json:"name"`
@@ -73,7 +70,7 @@ func (o *AuthenticateWebAuthnStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *AuthenticateWebAuthnStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -83,7 +80,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticateWebAuthnStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -91,7 +88,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetFlowSetOk() ([]FlowSetRequest, boo
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *AuthenticateWebAuthnStageRequest) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -105,7 +102,7 @@ func (o *AuthenticateWebAuthnStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticateWebAuthnStageRequest) GetConfigureFlow() string {
-	if o == nil || IsNil(o.ConfigureFlow.Get()) {
+	if o == nil || o.ConfigureFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -148,7 +145,7 @@ func (o *AuthenticateWebAuthnStageRequest) UnsetConfigureFlow() {
 
 // GetUserVerification returns the UserVerification field value if set, zero value otherwise.
 func (o *AuthenticateWebAuthnStageRequest) GetUserVerification() UserVerificationEnum {
-	if o == nil || IsNil(o.UserVerification) {
+	if o == nil || o.UserVerification == nil {
 		var ret UserVerificationEnum
 		return ret
 	}
@@ -158,7 +155,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetUserVerification() UserVerificatio
 // GetUserVerificationOk returns a tuple with the UserVerification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticateWebAuthnStageRequest) GetUserVerificationOk() (*UserVerificationEnum, bool) {
-	if o == nil || IsNil(o.UserVerification) {
+	if o == nil || o.UserVerification == nil {
 		return nil, false
 	}
 	return o.UserVerification, true
@@ -166,7 +163,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetUserVerificationOk() (*UserVerific
 
 // HasUserVerification returns a boolean if a field has been set.
 func (o *AuthenticateWebAuthnStageRequest) HasUserVerification() bool {
-	if o != nil && !IsNil(o.UserVerification) {
+	if o != nil && o.UserVerification != nil {
 		return true
 	}
 
@@ -180,7 +177,7 @@ func (o *AuthenticateWebAuthnStageRequest) SetUserVerification(v UserVerificatio
 
 // GetAuthenticatorAttachment returns the AuthenticatorAttachment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticateWebAuthnStageRequest) GetAuthenticatorAttachment() AuthenticatorAttachmentEnum {
-	if o == nil || IsNil(o.AuthenticatorAttachment.Get()) {
+	if o == nil || o.AuthenticatorAttachment.Get() == nil {
 		var ret AuthenticatorAttachmentEnum
 		return ret
 	}
@@ -223,7 +220,7 @@ func (o *AuthenticateWebAuthnStageRequest) UnsetAuthenticatorAttachment() {
 
 // GetResidentKeyRequirement returns the ResidentKeyRequirement field value if set, zero value otherwise.
 func (o *AuthenticateWebAuthnStageRequest) GetResidentKeyRequirement() ResidentKeyRequirementEnum {
-	if o == nil || IsNil(o.ResidentKeyRequirement) {
+	if o == nil || o.ResidentKeyRequirement == nil {
 		var ret ResidentKeyRequirementEnum
 		return ret
 	}
@@ -233,7 +230,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetResidentKeyRequirement() ResidentK
 // GetResidentKeyRequirementOk returns a tuple with the ResidentKeyRequirement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticateWebAuthnStageRequest) GetResidentKeyRequirementOk() (*ResidentKeyRequirementEnum, bool) {
-	if o == nil || IsNil(o.ResidentKeyRequirement) {
+	if o == nil || o.ResidentKeyRequirement == nil {
 		return nil, false
 	}
 	return o.ResidentKeyRequirement, true
@@ -241,7 +238,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetResidentKeyRequirementOk() (*Resid
 
 // HasResidentKeyRequirement returns a boolean if a field has been set.
 func (o *AuthenticateWebAuthnStageRequest) HasResidentKeyRequirement() bool {
-	if o != nil && !IsNil(o.ResidentKeyRequirement) {
+	if o != nil && o.ResidentKeyRequirement != nil {
 		return true
 	}
 
@@ -254,32 +251,26 @@ func (o *AuthenticateWebAuthnStageRequest) SetResidentKeyRequirement(v ResidentK
 }
 
 func (o AuthenticateWebAuthnStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o AuthenticateWebAuthnStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.FlowSet) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if !IsNil(o.UserVerification) {
+	if o.UserVerification != nil {
 		toSerialize["user_verification"] = o.UserVerification
 	}
 	if o.AuthenticatorAttachment.IsSet() {
 		toSerialize["authenticator_attachment"] = o.AuthenticatorAttachment.Get()
 	}
-	if !IsNil(o.ResidentKeyRequirement) {
+	if o.ResidentKeyRequirement != nil {
 		toSerialize["resident_key_requirement"] = o.ResidentKeyRequirement
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableAuthenticateWebAuthnStageRequest struct {

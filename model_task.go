@@ -16,9 +16,6 @@ import (
 	"time"
 )
 
-// checks if the Task type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Task{}
-
 // Task Serialize TaskInfo and TaskResult
 type Task struct {
 	TaskName            string    `json:"task_name"`
@@ -198,22 +195,26 @@ func (o *Task) SetMessages(v []interface{}) {
 }
 
 func (o Task) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["task_name"] = o.TaskName
+	}
+	if true {
+		toSerialize["task_description"] = o.TaskDescription
+	}
+	if true {
+		toSerialize["task_finish_timestamp"] = o.TaskFinishTimestamp
+	}
+	if true {
+		toSerialize["task_duration"] = o.TaskDuration
+	}
+	if true {
+		toSerialize["status"] = o.Status
+	}
+	if true {
+		toSerialize["messages"] = o.Messages
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o Task) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["task_name"] = o.TaskName
-	toSerialize["task_description"] = o.TaskDescription
-	toSerialize["task_finish_timestamp"] = o.TaskFinishTimestamp
-	// skip: task_duration is readOnly
-	toSerialize["status"] = o.Status
-	toSerialize["messages"] = o.Messages
-	return toSerialize, nil
 }
 
 type NullableTask struct {

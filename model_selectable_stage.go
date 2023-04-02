@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the SelectableStage type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SelectableStage{}
-
 // SelectableStage Serializer for stages which can be selected by users
 type SelectableStage struct {
 	Pk            string `json:"pk"`
@@ -144,20 +141,20 @@ func (o *SelectableStage) SetMetaModelName(v string) {
 }
 
 func (o SelectableStage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o SelectableStage) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["name"] = o.Name
-	toSerialize["verbose_name"] = o.VerboseName
-	toSerialize["meta_model_name"] = o.MetaModelName
-	return toSerialize, nil
 }
 
 type NullableSelectableStage struct {

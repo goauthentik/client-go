@@ -16,9 +16,6 @@ import (
 	"time"
 )
 
-// checks if the EventRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EventRequest{}
-
 // EventRequest Event Serializer
 type EventRequest struct {
 	User     map[string]interface{} `json:"user,omitempty"`
@@ -51,7 +48,7 @@ func NewEventRequestWithDefaults() *EventRequest {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *EventRequest) GetUser() map[string]interface{} {
-	if o == nil || IsNil(o.User) {
+	if o == nil || o.User == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -61,15 +58,15 @@ func (o *EventRequest) GetUser() map[string]interface{} {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventRequest) GetUserOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.User) {
-		return map[string]interface{}{}, false
+	if o == nil || o.User == nil {
+		return nil, false
 	}
 	return o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
 func (o *EventRequest) HasUser() bool {
-	if o != nil && !IsNil(o.User) {
+	if o != nil && o.User != nil {
 		return true
 	}
 
@@ -131,7 +128,7 @@ func (o *EventRequest) SetApp(v string) {
 
 // GetContext returns the Context field value if set, zero value otherwise.
 func (o *EventRequest) GetContext() map[string]interface{} {
-	if o == nil || IsNil(o.Context) {
+	if o == nil || o.Context == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -141,15 +138,15 @@ func (o *EventRequest) GetContext() map[string]interface{} {
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventRequest) GetContextOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Context) {
-		return map[string]interface{}{}, false
+	if o == nil || o.Context == nil {
+		return nil, false
 	}
 	return o.Context, true
 }
 
 // HasContext returns a boolean if a field has been set.
 func (o *EventRequest) HasContext() bool {
-	if o != nil && !IsNil(o.Context) {
+	if o != nil && o.Context != nil {
 		return true
 	}
 
@@ -163,7 +160,7 @@ func (o *EventRequest) SetContext(v map[string]interface{}) {
 
 // GetClientIp returns the ClientIp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EventRequest) GetClientIp() string {
-	if o == nil || IsNil(o.ClientIp.Get()) {
+	if o == nil || o.ClientIp.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -206,7 +203,7 @@ func (o *EventRequest) UnsetClientIp() {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *EventRequest) GetExpires() time.Time {
-	if o == nil || IsNil(o.Expires) {
+	if o == nil || o.Expires == nil {
 		var ret time.Time
 		return ret
 	}
@@ -216,7 +213,7 @@ func (o *EventRequest) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventRequest) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.Expires) {
+	if o == nil || o.Expires == nil {
 		return nil, false
 	}
 	return o.Expires, true
@@ -224,7 +221,7 @@ func (o *EventRequest) GetExpiresOk() (*time.Time, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *EventRequest) HasExpires() bool {
-	if o != nil && !IsNil(o.Expires) {
+	if o != nil && o.Expires != nil {
 		return true
 	}
 
@@ -238,7 +235,7 @@ func (o *EventRequest) SetExpires(v time.Time) {
 
 // GetTenant returns the Tenant field value if set, zero value otherwise.
 func (o *EventRequest) GetTenant() map[string]interface{} {
-	if o == nil || IsNil(o.Tenant) {
+	if o == nil || o.Tenant == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -248,15 +245,15 @@ func (o *EventRequest) GetTenant() map[string]interface{} {
 // GetTenantOk returns a tuple with the Tenant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventRequest) GetTenantOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Tenant) {
-		return map[string]interface{}{}, false
+	if o == nil || o.Tenant == nil {
+		return nil, false
 	}
 	return o.Tenant, true
 }
 
 // HasTenant returns a boolean if a field has been set.
 func (o *EventRequest) HasTenant() bool {
-	if o != nil && !IsNil(o.Tenant) {
+	if o != nil && o.Tenant != nil {
 		return true
 	}
 
@@ -269,33 +266,29 @@ func (o *EventRequest) SetTenant(v map[string]interface{}) {
 }
 
 func (o EventRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o EventRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.User) {
+	if o.User != nil {
 		toSerialize["user"] = o.User
 	}
-	toSerialize["action"] = o.Action
-	toSerialize["app"] = o.App
-	if !IsNil(o.Context) {
+	if true {
+		toSerialize["action"] = o.Action
+	}
+	if true {
+		toSerialize["app"] = o.App
+	}
+	if o.Context != nil {
 		toSerialize["context"] = o.Context
 	}
 	if o.ClientIp.IsSet() {
 		toSerialize["client_ip"] = o.ClientIp.Get()
 	}
-	if !IsNil(o.Expires) {
+	if o.Expires != nil {
 		toSerialize["expires"] = o.Expires
 	}
-	if !IsNil(o.Tenant) {
+	if o.Tenant != nil {
 		toSerialize["tenant"] = o.Tenant
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableEventRequest struct {

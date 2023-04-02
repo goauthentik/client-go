@@ -16,9 +16,6 @@ import (
 	"time"
 )
 
-// checks if the Notification type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Notification{}
-
 // Notification Notification Serializer
 type Notification struct {
 	Pk       string       `json:"pk"`
@@ -148,7 +145,7 @@ func (o *Notification) SetCreated(v time.Time) {
 
 // GetEvent returns the Event field value if set, zero value otherwise.
 func (o *Notification) GetEvent() Event {
-	if o == nil || IsNil(o.Event) {
+	if o == nil || o.Event == nil {
 		var ret Event
 		return ret
 	}
@@ -158,7 +155,7 @@ func (o *Notification) GetEvent() Event {
 // GetEventOk returns a tuple with the Event field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Notification) GetEventOk() (*Event, bool) {
-	if o == nil || IsNil(o.Event) {
+	if o == nil || o.Event == nil {
 		return nil, false
 	}
 	return o.Event, true
@@ -166,7 +163,7 @@ func (o *Notification) GetEventOk() (*Event, bool) {
 
 // HasEvent returns a boolean if a field has been set.
 func (o *Notification) HasEvent() bool {
-	if o != nil && !IsNil(o.Event) {
+	if o != nil && o.Event != nil {
 		return true
 	}
 
@@ -180,7 +177,7 @@ func (o *Notification) SetEvent(v Event) {
 
 // GetSeen returns the Seen field value if set, zero value otherwise.
 func (o *Notification) GetSeen() bool {
-	if o == nil || IsNil(o.Seen) {
+	if o == nil || o.Seen == nil {
 		var ret bool
 		return ret
 	}
@@ -190,7 +187,7 @@ func (o *Notification) GetSeen() bool {
 // GetSeenOk returns a tuple with the Seen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Notification) GetSeenOk() (*bool, bool) {
-	if o == nil || IsNil(o.Seen) {
+	if o == nil || o.Seen == nil {
 		return nil, false
 	}
 	return o.Seen, true
@@ -198,7 +195,7 @@ func (o *Notification) GetSeenOk() (*bool, bool) {
 
 // HasSeen returns a boolean if a field has been set.
 func (o *Notification) HasSeen() bool {
-	if o != nil && !IsNil(o.Seen) {
+	if o != nil && o.Seen != nil {
 		return true
 	}
 
@@ -211,26 +208,26 @@ func (o *Notification) SetSeen(v bool) {
 }
 
 func (o Notification) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o Notification) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	// skip: severity is readOnly
-	// skip: body is readOnly
-	// skip: created is readOnly
-	if !IsNil(o.Event) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["severity"] = o.Severity
+	}
+	if true {
+		toSerialize["body"] = o.Body
+	}
+	if true {
+		toSerialize["created"] = o.Created
+	}
+	if o.Event != nil {
 		toSerialize["event"] = o.Event
 	}
-	if !IsNil(o.Seen) {
+	if o.Seen != nil {
 		toSerialize["seen"] = o.Seen
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableNotification struct {

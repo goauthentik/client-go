@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Outpost type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Outpost{}
-
 // Outpost Outpost Serializer
 type Outpost struct {
 	Pk           string          `json:"pk"`
@@ -182,7 +179,7 @@ func (o *Outpost) SetProvidersObj(v []Provider) {
 
 // GetServiceConnection returns the ServiceConnection field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Outpost) GetServiceConnection() string {
-	if o == nil || IsNil(o.ServiceConnection.Get()) {
+	if o == nil || o.ServiceConnection.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -285,7 +282,7 @@ func (o *Outpost) GetConfig() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *Outpost) GetConfigOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Config, true
 }
@@ -297,7 +294,7 @@ func (o *Outpost) SetConfig(v map[string]interface{}) {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Outpost) GetManaged() string {
-	if o == nil || IsNil(o.Managed.Get()) {
+	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -339,30 +336,38 @@ func (o *Outpost) UnsetManaged() {
 }
 
 func (o Outpost) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o Outpost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	toSerialize["type"] = o.Type
-	toSerialize["providers"] = o.Providers
-	// skip: providers_obj is readOnly
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["type"] = o.Type
+	}
+	if true {
+		toSerialize["providers"] = o.Providers
+	}
+	if true {
+		toSerialize["providers_obj"] = o.ProvidersObj
+	}
 	if o.ServiceConnection.IsSet() {
 		toSerialize["service_connection"] = o.ServiceConnection.Get()
 	}
-	// skip: service_connection_obj is readOnly
-	// skip: token_identifier is readOnly
-	toSerialize["config"] = o.Config
+	if true {
+		toSerialize["service_connection_obj"] = o.ServiceConnectionObj
+	}
+	if true {
+		toSerialize["token_identifier"] = o.TokenIdentifier
+	}
+	if true {
+		toSerialize["config"] = o.Config
+	}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableOutpost struct {

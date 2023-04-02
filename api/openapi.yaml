@@ -31693,7 +31693,6 @@ components:
         ui_theme:
           allOf:
           - $ref: '#/components/schemas/UiThemeEnum'
-          default: automatic
           readOnly: true
         flow_authentication:
           type: string

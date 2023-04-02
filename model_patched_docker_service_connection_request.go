@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedDockerServiceConnectionRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedDockerServiceConnectionRequest{}
-
 // PatchedDockerServiceConnectionRequest DockerServiceConnection Serializer
 type PatchedDockerServiceConnectionRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -50,7 +47,7 @@ func NewPatchedDockerServiceConnectionRequestWithDefaults() *PatchedDockerServic
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedDockerServiceConnectionRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -60,7 +57,7 @@ func (o *PatchedDockerServiceConnectionRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedDockerServiceConnectionRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -68,7 +65,7 @@ func (o *PatchedDockerServiceConnectionRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedDockerServiceConnectionRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -82,7 +79,7 @@ func (o *PatchedDockerServiceConnectionRequest) SetName(v string) {
 
 // GetLocal returns the Local field value if set, zero value otherwise.
 func (o *PatchedDockerServiceConnectionRequest) GetLocal() bool {
-	if o == nil || IsNil(o.Local) {
+	if o == nil || o.Local == nil {
 		var ret bool
 		return ret
 	}
@@ -92,7 +89,7 @@ func (o *PatchedDockerServiceConnectionRequest) GetLocal() bool {
 // GetLocalOk returns a tuple with the Local field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedDockerServiceConnectionRequest) GetLocalOk() (*bool, bool) {
-	if o == nil || IsNil(o.Local) {
+	if o == nil || o.Local == nil {
 		return nil, false
 	}
 	return o.Local, true
@@ -100,7 +97,7 @@ func (o *PatchedDockerServiceConnectionRequest) GetLocalOk() (*bool, bool) {
 
 // HasLocal returns a boolean if a field has been set.
 func (o *PatchedDockerServiceConnectionRequest) HasLocal() bool {
-	if o != nil && !IsNil(o.Local) {
+	if o != nil && o.Local != nil {
 		return true
 	}
 
@@ -114,7 +111,7 @@ func (o *PatchedDockerServiceConnectionRequest) SetLocal(v bool) {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *PatchedDockerServiceConnectionRequest) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
+	if o == nil || o.Url == nil {
 		var ret string
 		return ret
 	}
@@ -124,7 +121,7 @@ func (o *PatchedDockerServiceConnectionRequest) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedDockerServiceConnectionRequest) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
+	if o == nil || o.Url == nil {
 		return nil, false
 	}
 	return o.Url, true
@@ -132,7 +129,7 @@ func (o *PatchedDockerServiceConnectionRequest) GetUrlOk() (*string, bool) {
 
 // HasUrl returns a boolean if a field has been set.
 func (o *PatchedDockerServiceConnectionRequest) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
+	if o != nil && o.Url != nil {
 		return true
 	}
 
@@ -146,7 +143,7 @@ func (o *PatchedDockerServiceConnectionRequest) SetUrl(v string) {
 
 // GetTlsVerification returns the TlsVerification field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedDockerServiceConnectionRequest) GetTlsVerification() string {
-	if o == nil || IsNil(o.TlsVerification.Get()) {
+	if o == nil || o.TlsVerification.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -189,7 +186,7 @@ func (o *PatchedDockerServiceConnectionRequest) UnsetTlsVerification() {
 
 // GetTlsAuthentication returns the TlsAuthentication field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedDockerServiceConnectionRequest) GetTlsAuthentication() string {
-	if o == nil || IsNil(o.TlsAuthentication.Get()) {
+	if o == nil || o.TlsAuthentication.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -231,22 +228,14 @@ func (o *PatchedDockerServiceConnectionRequest) UnsetTlsAuthentication() {
 }
 
 func (o PatchedDockerServiceConnectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedDockerServiceConnectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Local) {
+	if o.Local != nil {
 		toSerialize["local"] = o.Local
 	}
-	if !IsNil(o.Url) {
+	if o.Url != nil {
 		toSerialize["url"] = o.Url
 	}
 	if o.TlsVerification.IsSet() {
@@ -255,7 +244,7 @@ func (o PatchedDockerServiceConnectionRequest) ToMap() (map[string]interface{}, 
 	if o.TlsAuthentication.IsSet() {
 		toSerialize["tls_authentication"] = o.TlsAuthentication.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedDockerServiceConnectionRequest struct {

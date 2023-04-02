@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CertificateData type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CertificateData{}
-
 // CertificateData Get CertificateKeyPair's data
 type CertificateData struct {
 	Data string `json:"data"`
@@ -66,17 +63,11 @@ func (o *CertificateData) SetData(v string) {
 }
 
 func (o CertificateData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["data"] = o.Data
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o CertificateData) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: data is readOnly
-	return toSerialize, nil
 }
 
 type NullableCertificateData struct {

@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the SourceType type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SourceType{}
-
 // SourceType Serializer for SourceType
 type SourceType struct {
 	Name             string         `json:"name"`
@@ -230,23 +227,29 @@ func (o *SourceType) SetProfileUrl(v string) {
 }
 
 func (o SourceType) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["slug"] = o.Slug
+	}
+	if true {
+		toSerialize["urls_customizable"] = o.UrlsCustomizable
+	}
+	if true {
+		toSerialize["request_token_url"] = o.RequestTokenUrl.Get()
+	}
+	if true {
+		toSerialize["authorization_url"] = o.AuthorizationUrl.Get()
+	}
+	if true {
+		toSerialize["access_token_url"] = o.AccessTokenUrl.Get()
+	}
+	if true {
+		toSerialize["profile_url"] = o.ProfileUrl.Get()
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o SourceType) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["slug"] = o.Slug
-	toSerialize["urls_customizable"] = o.UrlsCustomizable
-	toSerialize["request_token_url"] = o.RequestTokenUrl.Get()
-	toSerialize["authorization_url"] = o.AuthorizationUrl.Get()
-	toSerialize["access_token_url"] = o.AccessTokenUrl.Get()
-	toSerialize["profile_url"] = o.ProfileUrl.Get()
-	return toSerialize, nil
 }
 
 type NullableSourceType struct {

@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AuthenticatorSMSStage type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthenticatorSMSStage{}
-
 // AuthenticatorSMSStage AuthenticatorSMSStage Serializer
 type AuthenticatorSMSStage struct {
 	Pk   string `json:"pk"`
@@ -218,7 +215,7 @@ func (o *AuthenticatorSMSStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *AuthenticatorSMSStage) GetFlowSet() []FlowSet {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSet
 		return ret
 	}
@@ -228,7 +225,7 @@ func (o *AuthenticatorSMSStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorSMSStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -236,7 +233,7 @@ func (o *AuthenticatorSMSStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *AuthenticatorSMSStage) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -250,7 +247,7 @@ func (o *AuthenticatorSMSStage) SetFlowSet(v []FlowSet) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorSMSStage) GetConfigureFlow() string {
-	if o == nil || IsNil(o.ConfigureFlow.Get()) {
+	if o == nil || o.ConfigureFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -389,7 +386,7 @@ func (o *AuthenticatorSMSStage) SetAuth(v string) {
 
 // GetAuthPassword returns the AuthPassword field value if set, zero value otherwise.
 func (o *AuthenticatorSMSStage) GetAuthPassword() string {
-	if o == nil || IsNil(o.AuthPassword) {
+	if o == nil || o.AuthPassword == nil {
 		var ret string
 		return ret
 	}
@@ -399,7 +396,7 @@ func (o *AuthenticatorSMSStage) GetAuthPassword() string {
 // GetAuthPasswordOk returns a tuple with the AuthPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorSMSStage) GetAuthPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.AuthPassword) {
+	if o == nil || o.AuthPassword == nil {
 		return nil, false
 	}
 	return o.AuthPassword, true
@@ -407,7 +404,7 @@ func (o *AuthenticatorSMSStage) GetAuthPasswordOk() (*string, bool) {
 
 // HasAuthPassword returns a boolean if a field has been set.
 func (o *AuthenticatorSMSStage) HasAuthPassword() bool {
-	if o != nil && !IsNil(o.AuthPassword) {
+	if o != nil && o.AuthPassword != nil {
 		return true
 	}
 
@@ -421,7 +418,7 @@ func (o *AuthenticatorSMSStage) SetAuthPassword(v string) {
 
 // GetAuthType returns the AuthType field value if set, zero value otherwise.
 func (o *AuthenticatorSMSStage) GetAuthType() AuthTypeEnum {
-	if o == nil || IsNil(o.AuthType) {
+	if o == nil || o.AuthType == nil {
 		var ret AuthTypeEnum
 		return ret
 	}
@@ -431,7 +428,7 @@ func (o *AuthenticatorSMSStage) GetAuthType() AuthTypeEnum {
 // GetAuthTypeOk returns a tuple with the AuthType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorSMSStage) GetAuthTypeOk() (*AuthTypeEnum, bool) {
-	if o == nil || IsNil(o.AuthType) {
+	if o == nil || o.AuthType == nil {
 		return nil, false
 	}
 	return o.AuthType, true
@@ -439,7 +436,7 @@ func (o *AuthenticatorSMSStage) GetAuthTypeOk() (*AuthTypeEnum, bool) {
 
 // HasAuthType returns a boolean if a field has been set.
 func (o *AuthenticatorSMSStage) HasAuthType() bool {
-	if o != nil && !IsNil(o.AuthType) {
+	if o != nil && o.AuthType != nil {
 		return true
 	}
 
@@ -453,7 +450,7 @@ func (o *AuthenticatorSMSStage) SetAuthType(v AuthTypeEnum) {
 
 // GetVerifyOnly returns the VerifyOnly field value if set, zero value otherwise.
 func (o *AuthenticatorSMSStage) GetVerifyOnly() bool {
-	if o == nil || IsNil(o.VerifyOnly) {
+	if o == nil || o.VerifyOnly == nil {
 		var ret bool
 		return ret
 	}
@@ -463,7 +460,7 @@ func (o *AuthenticatorSMSStage) GetVerifyOnly() bool {
 // GetVerifyOnlyOk returns a tuple with the VerifyOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorSMSStage) GetVerifyOnlyOk() (*bool, bool) {
-	if o == nil || IsNil(o.VerifyOnly) {
+	if o == nil || o.VerifyOnly == nil {
 		return nil, false
 	}
 	return o.VerifyOnly, true
@@ -471,7 +468,7 @@ func (o *AuthenticatorSMSStage) GetVerifyOnlyOk() (*bool, bool) {
 
 // HasVerifyOnly returns a boolean if a field has been set.
 func (o *AuthenticatorSMSStage) HasVerifyOnly() bool {
-	if o != nil && !IsNil(o.VerifyOnly) {
+	if o != nil && o.VerifyOnly != nil {
 		return true
 	}
 
@@ -485,7 +482,7 @@ func (o *AuthenticatorSMSStage) SetVerifyOnly(v bool) {
 
 // GetMapping returns the Mapping field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorSMSStage) GetMapping() string {
-	if o == nil || IsNil(o.Mapping.Get()) {
+	if o == nil || o.Mapping.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -527,44 +524,56 @@ func (o *AuthenticatorSMSStage) UnsetMapping() {
 }
 
 func (o AuthenticatorSMSStage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o AuthenticatorSMSStage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	// skip: component is readOnly
-	// skip: verbose_name is readOnly
-	// skip: verbose_name_plural is readOnly
-	// skip: meta_model_name is readOnly
-	if !IsNil(o.FlowSet) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	toSerialize["provider"] = o.Provider
-	toSerialize["from_number"] = o.FromNumber
-	toSerialize["account_sid"] = o.AccountSid
-	toSerialize["auth"] = o.Auth
-	if !IsNil(o.AuthPassword) {
+	if true {
+		toSerialize["provider"] = o.Provider
+	}
+	if true {
+		toSerialize["from_number"] = o.FromNumber
+	}
+	if true {
+		toSerialize["account_sid"] = o.AccountSid
+	}
+	if true {
+		toSerialize["auth"] = o.Auth
+	}
+	if o.AuthPassword != nil {
 		toSerialize["auth_password"] = o.AuthPassword
 	}
-	if !IsNil(o.AuthType) {
+	if o.AuthType != nil {
 		toSerialize["auth_type"] = o.AuthType
 	}
-	if !IsNil(o.VerifyOnly) {
+	if o.VerifyOnly != nil {
 		toSerialize["verify_only"] = o.VerifyOnly
 	}
 	if o.Mapping.IsSet() {
 		toSerialize["mapping"] = o.Mapping.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableAuthenticatorSMSStage struct {

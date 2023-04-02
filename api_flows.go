@@ -14,7 +14,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
@@ -122,9 +122,9 @@ func (a *FlowsApiService) FlowsBindingsCreateExecute(r ApiFlowsBindingsCreateReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -141,7 +141,6 @@ func (a *FlowsApiService) FlowsBindingsCreateExecute(r ApiFlowsBindingsCreateReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -152,7 +151,6 @@ func (a *FlowsApiService) FlowsBindingsCreateExecute(r ApiFlowsBindingsCreateReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -211,7 +209,7 @@ func (a *FlowsApiService) FlowsBindingsDestroyExecute(r ApiFlowsBindingsDestroyR
 	}
 
 	localVarPath := localBasePath + "/flows/bindings/{fsb_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterValueToString(r.fsbUuid, "fsbUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterToString(r.fsbUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -258,9 +256,9 @@ func (a *FlowsApiService) FlowsBindingsDestroyExecute(r ApiFlowsBindingsDestroyR
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -277,7 +275,6 @@ func (a *FlowsApiService) FlowsBindingsDestroyExecute(r ApiFlowsBindingsDestroyR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -288,7 +285,6 @@ func (a *FlowsApiService) FlowsBindingsDestroyExecute(r ApiFlowsBindingsDestroyR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -433,54 +429,54 @@ func (a *FlowsApiService) FlowsBindingsListExecute(r ApiFlowsBindingsListRequest
 	localVarFormParams := url.Values{}
 
 	if r.evaluateOnPlan != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "evaluate_on_plan", r.evaluateOnPlan, "")
+		localVarQueryParams.Add("evaluate_on_plan", parameterToString(*r.evaluateOnPlan, ""))
 	}
 	if r.fsbUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "fsb_uuid", r.fsbUuid, "")
+		localVarQueryParams.Add("fsb_uuid", parameterToString(*r.fsbUuid, ""))
 	}
 	if r.invalidResponseAction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "invalid_response_action", r.invalidResponseAction, "")
+		localVarQueryParams.Add("invalid_response_action", parameterToString(*r.invalidResponseAction, ""))
 	}
 	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "")
+		localVarQueryParams.Add("order", parameterToString(*r.order, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.pbmUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pbm_uuid", r.pbmUuid, "")
+		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
 	}
 	if r.policies != nil {
 		t := *r.policies
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "policies", s.Index(i), "multi")
+				localVarQueryParams.Add("policies", parameterToString(s.Index(i), "multi"))
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "policies", t, "multi")
+			localVarQueryParams.Add("policies", parameterToString(t, "multi"))
 		}
 	}
 	if r.policyEngineMode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_engine_mode", r.policyEngineMode, "")
+		localVarQueryParams.Add("policy_engine_mode", parameterToString(*r.policyEngineMode, ""))
 	}
 	if r.reEvaluatePolicies != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "re_evaluate_policies", r.reEvaluatePolicies, "")
+		localVarQueryParams.Add("re_evaluate_policies", parameterToString(*r.reEvaluatePolicies, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.stage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "stage", r.stage, "")
+		localVarQueryParams.Add("stage", parameterToString(*r.stage, ""))
 	}
 	if r.target != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "target", r.target, "")
+		localVarQueryParams.Add("target", parameterToString(*r.target, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -523,9 +519,9 @@ func (a *FlowsApiService) FlowsBindingsListExecute(r ApiFlowsBindingsListRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -542,7 +538,6 @@ func (a *FlowsApiService) FlowsBindingsListExecute(r ApiFlowsBindingsListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -553,7 +548,6 @@ func (a *FlowsApiService) FlowsBindingsListExecute(r ApiFlowsBindingsListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -620,7 +614,7 @@ func (a *FlowsApiService) FlowsBindingsPartialUpdateExecute(r ApiFlowsBindingsPa
 	}
 
 	localVarPath := localBasePath + "/flows/bindings/{fsb_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterValueToString(r.fsbUuid, "fsbUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterToString(r.fsbUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -669,9 +663,9 @@ func (a *FlowsApiService) FlowsBindingsPartialUpdateExecute(r ApiFlowsBindingsPa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -688,7 +682,6 @@ func (a *FlowsApiService) FlowsBindingsPartialUpdateExecute(r ApiFlowsBindingsPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -699,7 +692,6 @@ func (a *FlowsApiService) FlowsBindingsPartialUpdateExecute(r ApiFlowsBindingsPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -760,7 +752,7 @@ func (a *FlowsApiService) FlowsBindingsRetrieveExecute(r ApiFlowsBindingsRetriev
 	}
 
 	localVarPath := localBasePath + "/flows/bindings/{fsb_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterValueToString(r.fsbUuid, "fsbUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterToString(r.fsbUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -807,9 +799,9 @@ func (a *FlowsApiService) FlowsBindingsRetrieveExecute(r ApiFlowsBindingsRetriev
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -826,7 +818,6 @@ func (a *FlowsApiService) FlowsBindingsRetrieveExecute(r ApiFlowsBindingsRetriev
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -837,7 +828,6 @@ func (a *FlowsApiService) FlowsBindingsRetrieveExecute(r ApiFlowsBindingsRetriev
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -904,7 +894,7 @@ func (a *FlowsApiService) FlowsBindingsUpdateExecute(r ApiFlowsBindingsUpdateReq
 	}
 
 	localVarPath := localBasePath + "/flows/bindings/{fsb_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterValueToString(r.fsbUuid, "fsbUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterToString(r.fsbUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -956,9 +946,9 @@ func (a *FlowsApiService) FlowsBindingsUpdateExecute(r ApiFlowsBindingsUpdateReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -975,7 +965,6 @@ func (a *FlowsApiService) FlowsBindingsUpdateExecute(r ApiFlowsBindingsUpdateReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -986,7 +975,6 @@ func (a *FlowsApiService) FlowsBindingsUpdateExecute(r ApiFlowsBindingsUpdateReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1047,7 +1035,7 @@ func (a *FlowsApiService) FlowsBindingsUsedByListExecute(r ApiFlowsBindingsUsedB
 	}
 
 	localVarPath := localBasePath + "/flows/bindings/{fsb_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterValueToString(r.fsbUuid, "fsbUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fsb_uuid"+"}", url.PathEscape(parameterToString(r.fsbUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1094,9 +1082,9 @@ func (a *FlowsApiService) FlowsBindingsUsedByListExecute(r ApiFlowsBindingsUsedB
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1113,7 +1101,6 @@ func (a *FlowsApiService) FlowsBindingsUsedByListExecute(r ApiFlowsBindingsUsedB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1124,7 +1111,6 @@ func (a *FlowsApiService) FlowsBindingsUsedByListExecute(r ApiFlowsBindingsUsedB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1192,7 +1178,7 @@ func (a *FlowsApiService) FlowsExecutorGetExecute(r ApiFlowsExecutorGetRequest) 
 	}
 
 	localVarPath := localBasePath + "/flows/executor/{flow_slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"flow_slug"+"}", url.PathEscape(parameterValueToString(r.flowSlug, "flowSlug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"flow_slug"+"}", url.PathEscape(parameterToString(r.flowSlug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1201,7 +1187,7 @@ func (a *FlowsApiService) FlowsExecutorGetExecute(r ApiFlowsExecutorGetRequest) 
 		return localVarReturnValue, nil, reportError("query is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "")
+	localVarQueryParams.Add("query", parameterToString(*r.query, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1243,9 +1229,9 @@ func (a *FlowsApiService) FlowsExecutorGetExecute(r ApiFlowsExecutorGetRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1262,7 +1248,6 @@ func (a *FlowsApiService) FlowsExecutorGetExecute(r ApiFlowsExecutorGetRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1273,7 +1258,6 @@ func (a *FlowsApiService) FlowsExecutorGetExecute(r ApiFlowsExecutorGetRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1347,7 +1331,7 @@ func (a *FlowsApiService) FlowsExecutorSolveExecute(r ApiFlowsExecutorSolveReque
 	}
 
 	localVarPath := localBasePath + "/flows/executor/{flow_slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"flow_slug"+"}", url.PathEscape(parameterValueToString(r.flowSlug, "flowSlug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"flow_slug"+"}", url.PathEscape(parameterToString(r.flowSlug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1356,7 +1340,7 @@ func (a *FlowsApiService) FlowsExecutorSolveExecute(r ApiFlowsExecutorSolveReque
 		return localVarReturnValue, nil, reportError("query is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "")
+	localVarQueryParams.Add("query", parameterToString(*r.query, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -1400,9 +1384,9 @@ func (a *FlowsApiService) FlowsExecutorSolveExecute(r ApiFlowsExecutorSolveReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1419,7 +1403,6 @@ func (a *FlowsApiService) FlowsExecutorSolveExecute(r ApiFlowsExecutorSolveReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1430,7 +1413,6 @@ func (a *FlowsApiService) FlowsExecutorSolveExecute(r ApiFlowsExecutorSolveReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1491,7 +1473,7 @@ func (a *FlowsApiService) FlowsInspectorGetExecute(r ApiFlowsInspectorGetRequest
 	}
 
 	localVarPath := localBasePath + "/flows/inspector/{flow_slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"flow_slug"+"}", url.PathEscape(parameterValueToString(r.flowSlug, "flowSlug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"flow_slug"+"}", url.PathEscape(parameterToString(r.flowSlug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1538,9 +1520,9 @@ func (a *FlowsApiService) FlowsInspectorGetExecute(r ApiFlowsInspectorGetRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1557,7 +1539,6 @@ func (a *FlowsApiService) FlowsInspectorGetExecute(r ApiFlowsInspectorGetRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1659,9 +1640,9 @@ func (a *FlowsApiService) FlowsInstancesCacheClearCreateExecute(r ApiFlowsInstan
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1678,7 +1659,6 @@ func (a *FlowsApiService) FlowsInstancesCacheClearCreateExecute(r ApiFlowsInstan
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1773,9 +1753,9 @@ func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieveExecute(r ApiFlowsInsta
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1792,7 +1772,6 @@ func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieveExecute(r ApiFlowsInsta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1803,7 +1782,6 @@ func (a *FlowsApiService) FlowsInstancesCacheInfoRetrieveExecute(r ApiFlowsInsta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1918,9 +1896,9 @@ func (a *FlowsApiService) FlowsInstancesCreateExecute(r ApiFlowsInstancesCreateR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1937,7 +1915,6 @@ func (a *FlowsApiService) FlowsInstancesCreateExecute(r ApiFlowsInstancesCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1948,7 +1925,6 @@ func (a *FlowsApiService) FlowsInstancesCreateExecute(r ApiFlowsInstancesCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2007,7 +1983,7 @@ func (a *FlowsApiService) FlowsInstancesDestroyExecute(r ApiFlowsInstancesDestro
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2054,9 +2030,9 @@ func (a *FlowsApiService) FlowsInstancesDestroyExecute(r ApiFlowsInstancesDestro
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2073,7 +2049,6 @@ func (a *FlowsApiService) FlowsInstancesDestroyExecute(r ApiFlowsInstancesDestro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -2084,7 +2059,6 @@ func (a *FlowsApiService) FlowsInstancesDestroyExecute(r ApiFlowsInstancesDestro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -2136,7 +2110,7 @@ func (a *FlowsApiService) FlowsInstancesDiagramRetrieveExecute(r ApiFlowsInstanc
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/diagram/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2183,9 +2157,9 @@ func (a *FlowsApiService) FlowsInstancesDiagramRetrieveExecute(r ApiFlowsInstanc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2202,7 +2176,6 @@ func (a *FlowsApiService) FlowsInstancesDiagramRetrieveExecute(r ApiFlowsInstanc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2213,7 +2186,6 @@ func (a *FlowsApiService) FlowsInstancesDiagramRetrieveExecute(r ApiFlowsInstanc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2274,7 +2246,7 @@ func (a *FlowsApiService) FlowsInstancesExecuteRetrieveExecute(r ApiFlowsInstanc
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/execute/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2321,9 +2293,9 @@ func (a *FlowsApiService) FlowsInstancesExecuteRetrieveExecute(r ApiFlowsInstanc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2340,7 +2312,6 @@ func (a *FlowsApiService) FlowsInstancesExecuteRetrieveExecute(r ApiFlowsInstanc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2364,7 +2335,7 @@ type ApiFlowsInstancesExportRetrieveRequest struct {
 	slug       string
 }
 
-func (r ApiFlowsInstancesExportRetrieveRequest) Execute() (*os.File, *http.Response, error) {
+func (r ApiFlowsInstancesExportRetrieveRequest) Execute() (**os.File, *http.Response, error) {
 	return r.ApiService.FlowsInstancesExportRetrieveExecute(r)
 }
 
@@ -2387,12 +2358,12 @@ func (a *FlowsApiService) FlowsInstancesExportRetrieve(ctx context.Context, slug
 
 // Execute executes the request
 //  @return *os.File
-func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstancesExportRetrieveRequest) (*os.File, *http.Response, error) {
+func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstancesExportRetrieveRequest) (**os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *os.File
+		localVarReturnValue **os.File
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsApiService.FlowsInstancesExportRetrieve")
@@ -2401,7 +2372,7 @@ func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstance
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/export/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2448,9 +2419,9 @@ func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstance
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2467,7 +2438,6 @@ func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstance
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2478,7 +2448,6 @@ func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstance
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2499,12 +2468,12 @@ func (a *FlowsApiService) FlowsInstancesExportRetrieveExecute(r ApiFlowsInstance
 type ApiFlowsInstancesImportCreateRequest struct {
 	ctx        context.Context
 	ApiService *FlowsApiService
-	file       *os.File
+	file       **os.File
 	clear      *bool
 }
 
 func (r ApiFlowsInstancesImportCreateRequest) File(file *os.File) ApiFlowsInstancesImportCreateRequest {
-	r.file = file
+	r.file = &file
 	return r
 }
 
@@ -2576,18 +2545,19 @@ func (a *FlowsApiService) FlowsInstancesImportCreateExecute(r ApiFlowsInstancesI
 
 	fileLocalVarFormFileName = "file"
 
-	fileLocalVarFile := r.file
-
+	var fileLocalVarFile *os.File
+	if r.file != nil {
+		fileLocalVarFile = *r.file
+	}
 	if fileLocalVarFile != nil {
-		fbs, _ := io.ReadAll(fileLocalVarFile)
-
+		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
-		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
+	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	if r.clear != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "clear", r.clear, "")
+		localVarFormParams.Add("clear", parameterToString(*r.clear, ""))
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -2613,9 +2583,9 @@ func (a *FlowsApiService) FlowsInstancesImportCreateExecute(r ApiFlowsInstancesI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2632,7 +2602,6 @@ func (a *FlowsApiService) FlowsInstancesImportCreateExecute(r ApiFlowsInstancesI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2643,7 +2612,6 @@ func (a *FlowsApiService) FlowsInstancesImportCreateExecute(r ApiFlowsInstancesI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2767,31 +2735,31 @@ func (a *FlowsApiService) FlowsInstancesListExecute(r ApiFlowsInstancesListReque
 	localVarFormParams := url.Values{}
 
 	if r.deniedAction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "denied_action", r.deniedAction, "")
+		localVarQueryParams.Add("denied_action", parameterToString(*r.deniedAction, ""))
 	}
 	if r.designation != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "designation", r.designation, "")
+		localVarQueryParams.Add("designation", parameterToString(*r.designation, ""))
 	}
 	if r.flowUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "flow_uuid", r.flowUuid, "")
+		localVarQueryParams.Add("flow_uuid", parameterToString(*r.flowUuid, ""))
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.slug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "")
+		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2834,9 +2802,9 @@ func (a *FlowsApiService) FlowsInstancesListExecute(r ApiFlowsInstancesListReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2853,7 +2821,6 @@ func (a *FlowsApiService) FlowsInstancesListExecute(r ApiFlowsInstancesListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2864,7 +2831,6 @@ func (a *FlowsApiService) FlowsInstancesListExecute(r ApiFlowsInstancesListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2931,7 +2897,7 @@ func (a *FlowsApiService) FlowsInstancesPartialUpdateExecute(r ApiFlowsInstances
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2980,9 +2946,9 @@ func (a *FlowsApiService) FlowsInstancesPartialUpdateExecute(r ApiFlowsInstances
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2999,7 +2965,6 @@ func (a *FlowsApiService) FlowsInstancesPartialUpdateExecute(r ApiFlowsInstances
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3010,7 +2975,6 @@ func (a *FlowsApiService) FlowsInstancesPartialUpdateExecute(r ApiFlowsInstances
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3071,7 +3035,7 @@ func (a *FlowsApiService) FlowsInstancesRetrieveExecute(r ApiFlowsInstancesRetri
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3118,9 +3082,9 @@ func (a *FlowsApiService) FlowsInstancesRetrieveExecute(r ApiFlowsInstancesRetri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3137,7 +3101,6 @@ func (a *FlowsApiService) FlowsInstancesRetrieveExecute(r ApiFlowsInstancesRetri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3148,7 +3111,6 @@ func (a *FlowsApiService) FlowsInstancesRetrieveExecute(r ApiFlowsInstancesRetri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3170,12 +3132,12 @@ type ApiFlowsInstancesSetBackgroundCreateRequest struct {
 	ctx        context.Context
 	ApiService *FlowsApiService
 	slug       string
-	file       *os.File
+	file       **os.File
 	clear      *bool
 }
 
 func (r ApiFlowsInstancesSetBackgroundCreateRequest) File(file *os.File) ApiFlowsInstancesSetBackgroundCreateRequest {
-	r.file = file
+	r.file = &file
 	return r
 }
 
@@ -3219,7 +3181,7 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundCreateExecute(r ApiFlowsIns
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/set_background/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3248,18 +3210,19 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundCreateExecute(r ApiFlowsIns
 
 	fileLocalVarFormFileName = "file"
 
-	fileLocalVarFile := r.file
-
+	var fileLocalVarFile *os.File
+	if r.file != nil {
+		fileLocalVarFile = *r.file
+	}
 	if fileLocalVarFile != nil {
-		fbs, _ := io.ReadAll(fileLocalVarFile)
-
+		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
-		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
+	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	if r.clear != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "clear", r.clear, "")
+		localVarFormParams.Add("clear", parameterToString(*r.clear, ""))
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -3285,9 +3248,9 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundCreateExecute(r ApiFlowsIns
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3304,7 +3267,6 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundCreateExecute(r ApiFlowsIns
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3360,7 +3322,7 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundUrlCreateExecute(r ApiFlows
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/set_background_url/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3412,9 +3374,9 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundUrlCreateExecute(r ApiFlows
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3431,7 +3393,6 @@ func (a *FlowsApiService) FlowsInstancesSetBackgroundUrlCreateExecute(r ApiFlows
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3489,7 +3450,7 @@ func (a *FlowsApiService) FlowsInstancesUpdateExecute(r ApiFlowsInstancesUpdateR
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3541,9 +3502,9 @@ func (a *FlowsApiService) FlowsInstancesUpdateExecute(r ApiFlowsInstancesUpdateR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3560,7 +3521,6 @@ func (a *FlowsApiService) FlowsInstancesUpdateExecute(r ApiFlowsInstancesUpdateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3571,7 +3531,6 @@ func (a *FlowsApiService) FlowsInstancesUpdateExecute(r ApiFlowsInstancesUpdateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3632,7 +3591,7 @@ func (a *FlowsApiService) FlowsInstancesUsedByListExecute(r ApiFlowsInstancesUse
 	}
 
 	localVarPath := localBasePath + "/flows/instances/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3679,9 +3638,9 @@ func (a *FlowsApiService) FlowsInstancesUsedByListExecute(r ApiFlowsInstancesUse
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3698,7 +3657,6 @@ func (a *FlowsApiService) FlowsInstancesUsedByListExecute(r ApiFlowsInstancesUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3709,7 +3667,6 @@ func (a *FlowsApiService) FlowsInstancesUsedByListExecute(r ApiFlowsInstancesUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

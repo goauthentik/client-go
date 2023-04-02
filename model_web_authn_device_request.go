@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the WebAuthnDeviceRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &WebAuthnDeviceRequest{}
-
 // WebAuthnDeviceRequest Serializer for WebAuthn authenticator devices
 type WebAuthnDeviceRequest struct {
 	Name string `json:"name"`
@@ -66,17 +63,11 @@ func (o *WebAuthnDeviceRequest) SetName(v string) {
 }
 
 func (o WebAuthnDeviceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o WebAuthnDeviceRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	return toSerialize, nil
 }
 
 type NullableWebAuthnDeviceRequest struct {

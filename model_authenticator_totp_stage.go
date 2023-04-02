@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AuthenticatorTOTPStage type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthenticatorTOTPStage{}
-
 // AuthenticatorTOTPStage AuthenticatorTOTPStage Serializer
 type AuthenticatorTOTPStage struct {
 	Pk   string `json:"pk"`
@@ -206,7 +203,7 @@ func (o *AuthenticatorTOTPStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *AuthenticatorTOTPStage) GetFlowSet() []FlowSet {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSet
 		return ret
 	}
@@ -216,7 +213,7 @@ func (o *AuthenticatorTOTPStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorTOTPStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -224,7 +221,7 @@ func (o *AuthenticatorTOTPStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *AuthenticatorTOTPStage) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -238,7 +235,7 @@ func (o *AuthenticatorTOTPStage) SetFlowSet(v []FlowSet) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorTOTPStage) GetConfigureFlow() string {
-	if o == nil || IsNil(o.ConfigureFlow.Get()) {
+	if o == nil || o.ConfigureFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -304,29 +301,35 @@ func (o *AuthenticatorTOTPStage) SetDigits(v DigitsEnum) {
 }
 
 func (o AuthenticatorTOTPStage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o AuthenticatorTOTPStage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	// skip: component is readOnly
-	// skip: verbose_name is readOnly
-	// skip: verbose_name_plural is readOnly
-	// skip: meta_model_name is readOnly
-	if !IsNil(o.FlowSet) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	toSerialize["digits"] = o.Digits
-	return toSerialize, nil
+	if true {
+		toSerialize["digits"] = o.Digits
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableAuthenticatorTOTPStage struct {

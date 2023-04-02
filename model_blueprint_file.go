@@ -16,9 +16,6 @@ import (
 	"time"
 )
 
-// checks if the BlueprintFile type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BlueprintFile{}
-
 // BlueprintFile struct for BlueprintFile
 type BlueprintFile struct {
 	Path  string    `json:"path"`
@@ -145,20 +142,20 @@ func (o *BlueprintFile) SetMeta(v Metadata) {
 }
 
 func (o BlueprintFile) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["path"] = o.Path
+	}
+	if true {
+		toSerialize["last_m"] = o.LastM
+	}
+	if true {
+		toSerialize["hash"] = o.Hash
+	}
+	if true {
+		toSerialize["meta"] = o.Meta
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o BlueprintFile) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["path"] = o.Path
-	toSerialize["last_m"] = o.LastM
-	toSerialize["hash"] = o.Hash
-	// skip: meta is readOnly
-	return toSerialize, nil
 }
 
 type NullableBlueprintFile struct {

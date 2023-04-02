@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the UserOAuthSourceConnection type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserOAuthSourceConnection{}
-
 // UserOAuthSourceConnection OAuth Source Serializer
 type UserOAuthSourceConnection struct {
 	Pk         int32  `json:"pk"`
@@ -144,20 +141,20 @@ func (o *UserOAuthSourceConnection) SetIdentifier(v string) {
 }
 
 func (o UserOAuthSourceConnection) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["user"] = o.User
+	}
+	if true {
+		toSerialize["source"] = o.Source
+	}
+	if true {
+		toSerialize["identifier"] = o.Identifier
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o UserOAuthSourceConnection) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["user"] = o.User
-	// skip: source is readOnly
-	toSerialize["identifier"] = o.Identifier
-	return toSerialize, nil
 }
 
 type NullableUserOAuthSourceConnection struct {

@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the InvitationStageRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &InvitationStageRequest{}
-
 // InvitationStageRequest InvitationStage Serializer
 type InvitationStageRequest struct {
 	Name    string           `json:"name"`
@@ -70,7 +67,7 @@ func (o *InvitationStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *InvitationStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -80,7 +77,7 @@ func (o *InvitationStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InvitationStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -88,7 +85,7 @@ func (o *InvitationStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *InvitationStageRequest) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -102,7 +99,7 @@ func (o *InvitationStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetContinueFlowWithoutInvitation returns the ContinueFlowWithoutInvitation field value if set, zero value otherwise.
 func (o *InvitationStageRequest) GetContinueFlowWithoutInvitation() bool {
-	if o == nil || IsNil(o.ContinueFlowWithoutInvitation) {
+	if o == nil || o.ContinueFlowWithoutInvitation == nil {
 		var ret bool
 		return ret
 	}
@@ -112,7 +109,7 @@ func (o *InvitationStageRequest) GetContinueFlowWithoutInvitation() bool {
 // GetContinueFlowWithoutInvitationOk returns a tuple with the ContinueFlowWithoutInvitation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InvitationStageRequest) GetContinueFlowWithoutInvitationOk() (*bool, bool) {
-	if o == nil || IsNil(o.ContinueFlowWithoutInvitation) {
+	if o == nil || o.ContinueFlowWithoutInvitation == nil {
 		return nil, false
 	}
 	return o.ContinueFlowWithoutInvitation, true
@@ -120,7 +117,7 @@ func (o *InvitationStageRequest) GetContinueFlowWithoutInvitationOk() (*bool, bo
 
 // HasContinueFlowWithoutInvitation returns a boolean if a field has been set.
 func (o *InvitationStageRequest) HasContinueFlowWithoutInvitation() bool {
-	if o != nil && !IsNil(o.ContinueFlowWithoutInvitation) {
+	if o != nil && o.ContinueFlowWithoutInvitation != nil {
 		return true
 	}
 
@@ -133,23 +130,17 @@ func (o *InvitationStageRequest) SetContinueFlowWithoutInvitation(v bool) {
 }
 
 func (o InvitationStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o InvitationStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.FlowSet) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	if !IsNil(o.ContinueFlowWithoutInvitation) {
+	if o.ContinueFlowWithoutInvitation != nil {
 		toSerialize["continue_flow_without_invitation"] = o.ContinueFlowWithoutInvitation
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableInvitationStageRequest struct {

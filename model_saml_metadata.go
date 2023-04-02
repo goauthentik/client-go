@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the SAMLMetadata type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SAMLMetadata{}
-
 // SAMLMetadata SAML Provider Metadata serializer
 type SAMLMetadata struct {
 	Metadata    string `json:"metadata"`
@@ -92,18 +89,14 @@ func (o *SAMLMetadata) SetDownloadUrl(v string) {
 }
 
 func (o SAMLMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if true {
+		toSerialize["download_url"] = o.DownloadUrl
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o SAMLMetadata) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: metadata is readOnly
-	// skip: download_url is readOnly
-	return toSerialize, nil
 }
 
 type NullableSAMLMetadata struct {

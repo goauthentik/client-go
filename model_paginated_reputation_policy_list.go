@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedReputationPolicyList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedReputationPolicyList{}
-
 // PaginatedReputationPolicyList struct for PaginatedReputationPolicyList
 type PaginatedReputationPolicyList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
@@ -92,18 +89,14 @@ func (o *PaginatedReputationPolicyList) SetResults(v []ReputationPolicy) {
 }
 
 func (o PaginatedReputationPolicyList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["pagination"] = o.Pagination
+	}
+	if true {
+		toSerialize["results"] = o.Results
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o PaginatedReputationPolicyList) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["pagination"] = o.Pagination
-	toSerialize["results"] = o.Results
-	return toSerialize, nil
 }
 
 type NullablePaginatedReputationPolicyList struct {

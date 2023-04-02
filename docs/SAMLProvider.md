@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **SignatureAlgorithm** | Pointer to [**SignatureAlgorithmEnum**](SignatureAlgorithmEnum.md) |  | [optional] 
 **SigningKp** | Pointer to **NullableString** | Keypair used to sign outgoing Responses going to the Service Provider. | [optional] 
 **VerificationKp** | Pointer to **NullableString** | When selected, incoming assertion&#39;s Signatures will be validated against this certificate. To allow unsigned Requests, leave on default. | [optional] 
-**SpBinding** | Pointer to [**SpBindingEnum**](SpBindingEnum.md) |  | [optional] 
+**SpBinding** | Pointer to [**SpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider.  * &#x60;redirect&#x60; - Redirect * &#x60;post&#x60; - Post | [optional] 
 **UrlDownloadMetadata** | **string** | Get metadata download URL | [readonly] 
 **UrlSsoPost** | **string** | Get SSO Post URL | [readonly] 
 **UrlSsoRedirect** | **string** | Get SSO Redirect URL | [readonly] 

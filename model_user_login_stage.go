@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the UserLoginStage type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserLoginStage{}
-
 // UserLoginStage UserLoginStage Serializer
 type UserLoginStage struct {
 	Pk   string `json:"pk"`
@@ -208,7 +205,7 @@ func (o *UserLoginStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *UserLoginStage) GetFlowSet() []FlowSet {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSet
 		return ret
 	}
@@ -218,7 +215,7 @@ func (o *UserLoginStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -226,7 +223,7 @@ func (o *UserLoginStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *UserLoginStage) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -240,7 +237,7 @@ func (o *UserLoginStage) SetFlowSet(v []FlowSet) {
 
 // GetSessionDuration returns the SessionDuration field value if set, zero value otherwise.
 func (o *UserLoginStage) GetSessionDuration() string {
-	if o == nil || IsNil(o.SessionDuration) {
+	if o == nil || o.SessionDuration == nil {
 		var ret string
 		return ret
 	}
@@ -250,7 +247,7 @@ func (o *UserLoginStage) GetSessionDuration() string {
 // GetSessionDurationOk returns a tuple with the SessionDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginStage) GetSessionDurationOk() (*string, bool) {
-	if o == nil || IsNil(o.SessionDuration) {
+	if o == nil || o.SessionDuration == nil {
 		return nil, false
 	}
 	return o.SessionDuration, true
@@ -258,7 +255,7 @@ func (o *UserLoginStage) GetSessionDurationOk() (*string, bool) {
 
 // HasSessionDuration returns a boolean if a field has been set.
 func (o *UserLoginStage) HasSessionDuration() bool {
-	if o != nil && !IsNil(o.SessionDuration) {
+	if o != nil && o.SessionDuration != nil {
 		return true
 	}
 
@@ -272,7 +269,7 @@ func (o *UserLoginStage) SetSessionDuration(v string) {
 
 // GetTerminateOtherSessions returns the TerminateOtherSessions field value if set, zero value otherwise.
 func (o *UserLoginStage) GetTerminateOtherSessions() bool {
-	if o == nil || IsNil(o.TerminateOtherSessions) {
+	if o == nil || o.TerminateOtherSessions == nil {
 		var ret bool
 		return ret
 	}
@@ -282,7 +279,7 @@ func (o *UserLoginStage) GetTerminateOtherSessions() bool {
 // GetTerminateOtherSessionsOk returns a tuple with the TerminateOtherSessions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginStage) GetTerminateOtherSessionsOk() (*bool, bool) {
-	if o == nil || IsNil(o.TerminateOtherSessions) {
+	if o == nil || o.TerminateOtherSessions == nil {
 		return nil, false
 	}
 	return o.TerminateOtherSessions, true
@@ -290,7 +287,7 @@ func (o *UserLoginStage) GetTerminateOtherSessionsOk() (*bool, bool) {
 
 // HasTerminateOtherSessions returns a boolean if a field has been set.
 func (o *UserLoginStage) HasTerminateOtherSessions() bool {
-	if o != nil && !IsNil(o.TerminateOtherSessions) {
+	if o != nil && o.TerminateOtherSessions != nil {
 		return true
 	}
 
@@ -304,7 +301,7 @@ func (o *UserLoginStage) SetTerminateOtherSessions(v bool) {
 
 // GetRememberMeOffset returns the RememberMeOffset field value if set, zero value otherwise.
 func (o *UserLoginStage) GetRememberMeOffset() string {
-	if o == nil || IsNil(o.RememberMeOffset) {
+	if o == nil || o.RememberMeOffset == nil {
 		var ret string
 		return ret
 	}
@@ -314,7 +311,7 @@ func (o *UserLoginStage) GetRememberMeOffset() string {
 // GetRememberMeOffsetOk returns a tuple with the RememberMeOffset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginStage) GetRememberMeOffsetOk() (*string, bool) {
-	if o == nil || IsNil(o.RememberMeOffset) {
+	if o == nil || o.RememberMeOffset == nil {
 		return nil, false
 	}
 	return o.RememberMeOffset, true
@@ -322,7 +319,7 @@ func (o *UserLoginStage) GetRememberMeOffsetOk() (*string, bool) {
 
 // HasRememberMeOffset returns a boolean if a field has been set.
 func (o *UserLoginStage) HasRememberMeOffset() bool {
-	if o != nil && !IsNil(o.RememberMeOffset) {
+	if o != nil && o.RememberMeOffset != nil {
 		return true
 	}
 
@@ -335,34 +332,38 @@ func (o *UserLoginStage) SetRememberMeOffset(v string) {
 }
 
 func (o UserLoginStage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o UserLoginStage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: pk is readOnly
-	toSerialize["name"] = o.Name
-	// skip: component is readOnly
-	// skip: verbose_name is readOnly
-	// skip: verbose_name_plural is readOnly
-	// skip: meta_model_name is readOnly
-	if !IsNil(o.FlowSet) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	if !IsNil(o.SessionDuration) {
+	if o.SessionDuration != nil {
 		toSerialize["session_duration"] = o.SessionDuration
 	}
-	if !IsNil(o.TerminateOtherSessions) {
+	if o.TerminateOtherSessions != nil {
 		toSerialize["terminate_other_sessions"] = o.TerminateOtherSessions
 	}
-	if !IsNil(o.RememberMeOffset) {
+	if o.RememberMeOffset != nil {
 		toSerialize["remember_me_offset"] = o.RememberMeOffset
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableUserLoginStage struct {

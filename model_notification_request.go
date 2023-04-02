@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the NotificationRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NotificationRequest{}
-
 // NotificationRequest Notification Serializer
 type NotificationRequest struct {
 	Event *EventRequest `json:"event,omitempty"`
@@ -43,7 +40,7 @@ func NewNotificationRequestWithDefaults() *NotificationRequest {
 
 // GetEvent returns the Event field value if set, zero value otherwise.
 func (o *NotificationRequest) GetEvent() EventRequest {
-	if o == nil || IsNil(o.Event) {
+	if o == nil || o.Event == nil {
 		var ret EventRequest
 		return ret
 	}
@@ -53,7 +50,7 @@ func (o *NotificationRequest) GetEvent() EventRequest {
 // GetEventOk returns a tuple with the Event field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationRequest) GetEventOk() (*EventRequest, bool) {
-	if o == nil || IsNil(o.Event) {
+	if o == nil || o.Event == nil {
 		return nil, false
 	}
 	return o.Event, true
@@ -61,7 +58,7 @@ func (o *NotificationRequest) GetEventOk() (*EventRequest, bool) {
 
 // HasEvent returns a boolean if a field has been set.
 func (o *NotificationRequest) HasEvent() bool {
-	if o != nil && !IsNil(o.Event) {
+	if o != nil && o.Event != nil {
 		return true
 	}
 
@@ -75,7 +72,7 @@ func (o *NotificationRequest) SetEvent(v EventRequest) {
 
 // GetSeen returns the Seen field value if set, zero value otherwise.
 func (o *NotificationRequest) GetSeen() bool {
-	if o == nil || IsNil(o.Seen) {
+	if o == nil || o.Seen == nil {
 		var ret bool
 		return ret
 	}
@@ -85,7 +82,7 @@ func (o *NotificationRequest) GetSeen() bool {
 // GetSeenOk returns a tuple with the Seen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationRequest) GetSeenOk() (*bool, bool) {
-	if o == nil || IsNil(o.Seen) {
+	if o == nil || o.Seen == nil {
 		return nil, false
 	}
 	return o.Seen, true
@@ -93,7 +90,7 @@ func (o *NotificationRequest) GetSeenOk() (*bool, bool) {
 
 // HasSeen returns a boolean if a field has been set.
 func (o *NotificationRequest) HasSeen() bool {
-	if o != nil && !IsNil(o.Seen) {
+	if o != nil && o.Seen != nil {
 		return true
 	}
 
@@ -106,22 +103,14 @@ func (o *NotificationRequest) SetSeen(v bool) {
 }
 
 func (o NotificationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o NotificationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Event) {
+	if o.Event != nil {
 		toSerialize["event"] = o.Event
 	}
-	if !IsNil(o.Seen) {
+	if o.Seen != nil {
 		toSerialize["seen"] = o.Seen
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableNotificationRequest struct {

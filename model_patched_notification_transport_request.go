@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedNotificationTransportRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedNotificationTransportRequest{}
-
 // PatchedNotificationTransportRequest NotificationTransport Serializer
 type PatchedNotificationTransportRequest struct {
 	Name           *string                        `json:"name,omitempty"`
@@ -47,7 +44,7 @@ func NewPatchedNotificationTransportRequestWithDefaults() *PatchedNotificationTr
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedNotificationTransportRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -57,7 +54,7 @@ func (o *PatchedNotificationTransportRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationTransportRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -65,7 +62,7 @@ func (o *PatchedNotificationTransportRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedNotificationTransportRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -79,7 +76,7 @@ func (o *PatchedNotificationTransportRequest) SetName(v string) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *PatchedNotificationTransportRequest) GetMode() NotificationTransportModeEnum {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil || o.Mode == nil {
 		var ret NotificationTransportModeEnum
 		return ret
 	}
@@ -89,7 +86,7 @@ func (o *PatchedNotificationTransportRequest) GetMode() NotificationTransportMod
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationTransportRequest) GetModeOk() (*NotificationTransportModeEnum, bool) {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil || o.Mode == nil {
 		return nil, false
 	}
 	return o.Mode, true
@@ -97,7 +94,7 @@ func (o *PatchedNotificationTransportRequest) GetModeOk() (*NotificationTranspor
 
 // HasMode returns a boolean if a field has been set.
 func (o *PatchedNotificationTransportRequest) HasMode() bool {
-	if o != nil && !IsNil(o.Mode) {
+	if o != nil && o.Mode != nil {
 		return true
 	}
 
@@ -111,7 +108,7 @@ func (o *PatchedNotificationTransportRequest) SetMode(v NotificationTransportMod
 
 // GetWebhookUrl returns the WebhookUrl field value if set, zero value otherwise.
 func (o *PatchedNotificationTransportRequest) GetWebhookUrl() string {
-	if o == nil || IsNil(o.WebhookUrl) {
+	if o == nil || o.WebhookUrl == nil {
 		var ret string
 		return ret
 	}
@@ -121,7 +118,7 @@ func (o *PatchedNotificationTransportRequest) GetWebhookUrl() string {
 // GetWebhookUrlOk returns a tuple with the WebhookUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationTransportRequest) GetWebhookUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.WebhookUrl) {
+	if o == nil || o.WebhookUrl == nil {
 		return nil, false
 	}
 	return o.WebhookUrl, true
@@ -129,7 +126,7 @@ func (o *PatchedNotificationTransportRequest) GetWebhookUrlOk() (*string, bool) 
 
 // HasWebhookUrl returns a boolean if a field has been set.
 func (o *PatchedNotificationTransportRequest) HasWebhookUrl() bool {
-	if o != nil && !IsNil(o.WebhookUrl) {
+	if o != nil && o.WebhookUrl != nil {
 		return true
 	}
 
@@ -143,7 +140,7 @@ func (o *PatchedNotificationTransportRequest) SetWebhookUrl(v string) {
 
 // GetWebhookMapping returns the WebhookMapping field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedNotificationTransportRequest) GetWebhookMapping() string {
-	if o == nil || IsNil(o.WebhookMapping.Get()) {
+	if o == nil || o.WebhookMapping.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -186,7 +183,7 @@ func (o *PatchedNotificationTransportRequest) UnsetWebhookMapping() {
 
 // GetSendOnce returns the SendOnce field value if set, zero value otherwise.
 func (o *PatchedNotificationTransportRequest) GetSendOnce() bool {
-	if o == nil || IsNil(o.SendOnce) {
+	if o == nil || o.SendOnce == nil {
 		var ret bool
 		return ret
 	}
@@ -196,7 +193,7 @@ func (o *PatchedNotificationTransportRequest) GetSendOnce() bool {
 // GetSendOnceOk returns a tuple with the SendOnce field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationTransportRequest) GetSendOnceOk() (*bool, bool) {
-	if o == nil || IsNil(o.SendOnce) {
+	if o == nil || o.SendOnce == nil {
 		return nil, false
 	}
 	return o.SendOnce, true
@@ -204,7 +201,7 @@ func (o *PatchedNotificationTransportRequest) GetSendOnceOk() (*bool, bool) {
 
 // HasSendOnce returns a boolean if a field has been set.
 func (o *PatchedNotificationTransportRequest) HasSendOnce() bool {
-	if o != nil && !IsNil(o.SendOnce) {
+	if o != nil && o.SendOnce != nil {
 		return true
 	}
 
@@ -217,31 +214,23 @@ func (o *PatchedNotificationTransportRequest) SetSendOnce(v bool) {
 }
 
 func (o PatchedNotificationTransportRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedNotificationTransportRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Mode) {
+	if o.Mode != nil {
 		toSerialize["mode"] = o.Mode
 	}
-	if !IsNil(o.WebhookUrl) {
+	if o.WebhookUrl != nil {
 		toSerialize["webhook_url"] = o.WebhookUrl
 	}
 	if o.WebhookMapping.IsSet() {
 		toSerialize["webhook_mapping"] = o.WebhookMapping.Get()
 	}
-	if !IsNil(o.SendOnce) {
+	if o.SendOnce != nil {
 		toSerialize["send_once"] = o.SendOnce
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedNotificationTransportRequest struct {

@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the NotificationWebhookMappingRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NotificationWebhookMappingRequest{}
-
 // NotificationWebhookMappingRequest NotificationWebhookMapping Serializer
 type NotificationWebhookMappingRequest struct {
 	Name       string `json:"name"`
@@ -92,18 +89,14 @@ func (o *NotificationWebhookMappingRequest) SetExpression(v string) {
 }
 
 func (o NotificationWebhookMappingRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["expression"] = o.Expression
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o NotificationWebhookMappingRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["expression"] = o.Expression
-	return toSerialize, nil
 }
 
 type NullableNotificationWebhookMappingRequest struct {

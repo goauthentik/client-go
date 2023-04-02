@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the OAuth2ProviderSetupURLs type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OAuth2ProviderSetupURLs{}
-
 // OAuth2ProviderSetupURLs OAuth2 Provider Metadata serializer
 type OAuth2ProviderSetupURLs struct {
 	Issuer       string `json:"issuer"`
@@ -222,23 +219,29 @@ func (o *OAuth2ProviderSetupURLs) SetJwks(v string) {
 }
 
 func (o OAuth2ProviderSetupURLs) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["issuer"] = o.Issuer
+	}
+	if true {
+		toSerialize["authorize"] = o.Authorize
+	}
+	if true {
+		toSerialize["token"] = o.Token
+	}
+	if true {
+		toSerialize["user_info"] = o.UserInfo
+	}
+	if true {
+		toSerialize["provider_info"] = o.ProviderInfo
+	}
+	if true {
+		toSerialize["logout"] = o.Logout
+	}
+	if true {
+		toSerialize["jwks"] = o.Jwks
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o OAuth2ProviderSetupURLs) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: issuer is readOnly
-	// skip: authorize is readOnly
-	// skip: token is readOnly
-	// skip: user_info is readOnly
-	// skip: provider_info is readOnly
-	// skip: logout is readOnly
-	// skip: jwks is readOnly
-	return toSerialize, nil
 }
 
 type NullableOAuth2ProviderSetupURLs struct {

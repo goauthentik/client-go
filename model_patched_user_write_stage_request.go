@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedUserWriteStageRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedUserWriteStageRequest{}
-
 // PatchedUserWriteStageRequest UserWriteStage Serializer
 type PatchedUserWriteStageRequest struct {
 	Name             *string               `json:"name,omitempty"`
@@ -49,7 +46,7 @@ func NewPatchedUserWriteStageRequestWithDefaults() *PatchedUserWriteStageRequest
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedUserWriteStageRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -59,7 +56,7 @@ func (o *PatchedUserWriteStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserWriteStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -67,7 +64,7 @@ func (o *PatchedUserWriteStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedUserWriteStageRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -81,7 +78,7 @@ func (o *PatchedUserWriteStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PatchedUserWriteStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -91,7 +88,7 @@ func (o *PatchedUserWriteStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserWriteStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -99,7 +96,7 @@ func (o *PatchedUserWriteStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PatchedUserWriteStageRequest) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -113,7 +110,7 @@ func (o *PatchedUserWriteStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetUserCreationMode returns the UserCreationMode field value if set, zero value otherwise.
 func (o *PatchedUserWriteStageRequest) GetUserCreationMode() UserCreationModeEnum {
-	if o == nil || IsNil(o.UserCreationMode) {
+	if o == nil || o.UserCreationMode == nil {
 		var ret UserCreationModeEnum
 		return ret
 	}
@@ -123,7 +120,7 @@ func (o *PatchedUserWriteStageRequest) GetUserCreationMode() UserCreationModeEnu
 // GetUserCreationModeOk returns a tuple with the UserCreationMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserWriteStageRequest) GetUserCreationModeOk() (*UserCreationModeEnum, bool) {
-	if o == nil || IsNil(o.UserCreationMode) {
+	if o == nil || o.UserCreationMode == nil {
 		return nil, false
 	}
 	return o.UserCreationMode, true
@@ -131,7 +128,7 @@ func (o *PatchedUserWriteStageRequest) GetUserCreationModeOk() (*UserCreationMod
 
 // HasUserCreationMode returns a boolean if a field has been set.
 func (o *PatchedUserWriteStageRequest) HasUserCreationMode() bool {
-	if o != nil && !IsNil(o.UserCreationMode) {
+	if o != nil && o.UserCreationMode != nil {
 		return true
 	}
 
@@ -145,7 +142,7 @@ func (o *PatchedUserWriteStageRequest) SetUserCreationMode(v UserCreationModeEnu
 
 // GetCreateUsersAsInactive returns the CreateUsersAsInactive field value if set, zero value otherwise.
 func (o *PatchedUserWriteStageRequest) GetCreateUsersAsInactive() bool {
-	if o == nil || IsNil(o.CreateUsersAsInactive) {
+	if o == nil || o.CreateUsersAsInactive == nil {
 		var ret bool
 		return ret
 	}
@@ -155,7 +152,7 @@ func (o *PatchedUserWriteStageRequest) GetCreateUsersAsInactive() bool {
 // GetCreateUsersAsInactiveOk returns a tuple with the CreateUsersAsInactive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserWriteStageRequest) GetCreateUsersAsInactiveOk() (*bool, bool) {
-	if o == nil || IsNil(o.CreateUsersAsInactive) {
+	if o == nil || o.CreateUsersAsInactive == nil {
 		return nil, false
 	}
 	return o.CreateUsersAsInactive, true
@@ -163,7 +160,7 @@ func (o *PatchedUserWriteStageRequest) GetCreateUsersAsInactiveOk() (*bool, bool
 
 // HasCreateUsersAsInactive returns a boolean if a field has been set.
 func (o *PatchedUserWriteStageRequest) HasCreateUsersAsInactive() bool {
-	if o != nil && !IsNil(o.CreateUsersAsInactive) {
+	if o != nil && o.CreateUsersAsInactive != nil {
 		return true
 	}
 
@@ -177,7 +174,7 @@ func (o *PatchedUserWriteStageRequest) SetCreateUsersAsInactive(v bool) {
 
 // GetCreateUsersGroup returns the CreateUsersGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedUserWriteStageRequest) GetCreateUsersGroup() string {
-	if o == nil || IsNil(o.CreateUsersGroup.Get()) {
+	if o == nil || o.CreateUsersGroup.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -220,7 +217,7 @@ func (o *PatchedUserWriteStageRequest) UnsetCreateUsersGroup() {
 
 // GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
 func (o *PatchedUserWriteStageRequest) GetUserPathTemplate() string {
-	if o == nil || IsNil(o.UserPathTemplate) {
+	if o == nil || o.UserPathTemplate == nil {
 		var ret string
 		return ret
 	}
@@ -230,7 +227,7 @@ func (o *PatchedUserWriteStageRequest) GetUserPathTemplate() string {
 // GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserWriteStageRequest) GetUserPathTemplateOk() (*string, bool) {
-	if o == nil || IsNil(o.UserPathTemplate) {
+	if o == nil || o.UserPathTemplate == nil {
 		return nil, false
 	}
 	return o.UserPathTemplate, true
@@ -238,7 +235,7 @@ func (o *PatchedUserWriteStageRequest) GetUserPathTemplateOk() (*string, bool) {
 
 // HasUserPathTemplate returns a boolean if a field has been set.
 func (o *PatchedUserWriteStageRequest) HasUserPathTemplate() bool {
-	if o != nil && !IsNil(o.UserPathTemplate) {
+	if o != nil && o.UserPathTemplate != nil {
 		return true
 	}
 
@@ -251,34 +248,26 @@ func (o *PatchedUserWriteStageRequest) SetUserPathTemplate(v string) {
 }
 
 func (o PatchedUserWriteStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedUserWriteStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.FlowSet) {
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	if !IsNil(o.UserCreationMode) {
+	if o.UserCreationMode != nil {
 		toSerialize["user_creation_mode"] = o.UserCreationMode
 	}
-	if !IsNil(o.CreateUsersAsInactive) {
+	if o.CreateUsersAsInactive != nil {
 		toSerialize["create_users_as_inactive"] = o.CreateUsersAsInactive
 	}
 	if o.CreateUsersGroup.IsSet() {
 		toSerialize["create_users_group"] = o.CreateUsersGroup.Get()
 	}
-	if !IsNil(o.UserPathTemplate) {
+	if o.UserPathTemplate != nil {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedUserWriteStageRequest struct {

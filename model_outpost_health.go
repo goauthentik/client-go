@@ -16,9 +16,6 @@ import (
 	"time"
 )
 
-// checks if the OutpostHealth type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OutpostHealth{}
-
 // OutpostHealth Outpost health status
 type OutpostHealth struct {
 	Uid             string    `json:"uid"`
@@ -249,24 +246,32 @@ func (o *OutpostHealth) SetHostname(v string) {
 }
 
 func (o OutpostHealth) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["uid"] = o.Uid
+	}
+	if true {
+		toSerialize["last_seen"] = o.LastSeen
+	}
+	if true {
+		toSerialize["version"] = o.Version
+	}
+	if true {
+		toSerialize["version_should"] = o.VersionShould
+	}
+	if true {
+		toSerialize["version_outdated"] = o.VersionOutdated
+	}
+	if true {
+		toSerialize["build_hash"] = o.BuildHash
+	}
+	if true {
+		toSerialize["build_hash_should"] = o.BuildHashShould
+	}
+	if true {
+		toSerialize["hostname"] = o.Hostname
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o OutpostHealth) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: uid is readOnly
-	// skip: last_seen is readOnly
-	// skip: version is readOnly
-	// skip: version_should is readOnly
-	// skip: version_outdated is readOnly
-	// skip: build_hash is readOnly
-	// skip: build_hash_should is readOnly
-	// skip: hostname is readOnly
-	return toSerialize, nil
 }
 
 type NullableOutpostHealth struct {

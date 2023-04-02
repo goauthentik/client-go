@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedRadiusOutpostConfigList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedRadiusOutpostConfigList{}
-
 // PaginatedRadiusOutpostConfigList struct for PaginatedRadiusOutpostConfigList
 type PaginatedRadiusOutpostConfigList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
@@ -92,18 +89,14 @@ func (o *PaginatedRadiusOutpostConfigList) SetResults(v []RadiusOutpostConfig) {
 }
 
 func (o PaginatedRadiusOutpostConfigList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["pagination"] = o.Pagination
+	}
+	if true {
+		toSerialize["results"] = o.Results
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o PaginatedRadiusOutpostConfigList) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["pagination"] = o.Pagination
-	toSerialize["results"] = o.Results
-	return toSerialize, nil
 }
 
 type NullablePaginatedRadiusOutpostConfigList struct {

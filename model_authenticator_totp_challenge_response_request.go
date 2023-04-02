@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AuthenticatorTOTPChallengeResponseRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthenticatorTOTPChallengeResponseRequest{}
-
 // AuthenticatorTOTPChallengeResponseRequest TOTP Challenge response, device is set by get_response_instance
 type AuthenticatorTOTPChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
@@ -48,7 +45,7 @@ func NewAuthenticatorTOTPChallengeResponseRequestWithDefaults() *AuthenticatorTO
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *AuthenticatorTOTPChallengeResponseRequest) GetComponent() string {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
@@ -58,7 +55,7 @@ func (o *AuthenticatorTOTPChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorTOTPChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
 	return o.Component, true
@@ -66,7 +63,7 @@ func (o *AuthenticatorTOTPChallengeResponseRequest) GetComponentOk() (*string, b
 
 // HasComponent returns a boolean if a field has been set.
 func (o *AuthenticatorTOTPChallengeResponseRequest) HasComponent() bool {
-	if o != nil && !IsNil(o.Component) {
+	if o != nil && o.Component != nil {
 		return true
 	}
 
@@ -103,20 +100,14 @@ func (o *AuthenticatorTOTPChallengeResponseRequest) SetCode(v int32) {
 }
 
 func (o AuthenticatorTOTPChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o AuthenticatorTOTPChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Component) {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
-	toSerialize["code"] = o.Code
-	return toSerialize, nil
+	if true {
+		toSerialize["code"] = o.Code
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableAuthenticatorTOTPChallengeResponseRequest struct {

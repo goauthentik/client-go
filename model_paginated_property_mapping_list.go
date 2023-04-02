@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedPropertyMappingList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedPropertyMappingList{}
-
 // PaginatedPropertyMappingList struct for PaginatedPropertyMappingList
 type PaginatedPropertyMappingList struct {
 	Pagination PaginatedApplicationListPagination `json:"pagination"`
@@ -92,18 +89,14 @@ func (o *PaginatedPropertyMappingList) SetResults(v []PropertyMapping) {
 }
 
 func (o PaginatedPropertyMappingList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["pagination"] = o.Pagination
+	}
+	if true {
+		toSerialize["results"] = o.Results
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o PaginatedPropertyMappingList) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["pagination"] = o.Pagination
-	toSerialize["results"] = o.Results
-	return toSerialize, nil
 }
 
 type NullablePaginatedPropertyMappingList struct {

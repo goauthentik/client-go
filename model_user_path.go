@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the UserPath type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserPath{}
-
 // UserPath struct for UserPath
 type UserPath struct {
 	Paths []string `json:"paths"`
@@ -66,17 +63,11 @@ func (o *UserPath) SetPaths(v []string) {
 }
 
 func (o UserPath) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["paths"] = o.Paths
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o UserPath) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: paths is readOnly
-	return toSerialize, nil
 }
 
 type NullableUserPath struct {

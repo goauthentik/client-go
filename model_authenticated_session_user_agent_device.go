@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AuthenticatedSessionUserAgentDevice type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthenticatedSessionUserAgentDevice{}
-
 // AuthenticatedSessionUserAgentDevice User agent device
 type AuthenticatedSessionUserAgentDevice struct {
 	Brand  string `json:"brand"`
@@ -118,19 +115,17 @@ func (o *AuthenticatedSessionUserAgentDevice) SetModel(v string) {
 }
 
 func (o AuthenticatedSessionUserAgentDevice) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["brand"] = o.Brand
+	}
+	if true {
+		toSerialize["family"] = o.Family
+	}
+	if true {
+		toSerialize["model"] = o.Model
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o AuthenticatedSessionUserAgentDevice) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["brand"] = o.Brand
-	toSerialize["family"] = o.Family
-	toSerialize["model"] = o.Model
-	return toSerialize, nil
 }
 
 type NullableAuthenticatedSessionUserAgentDevice struct {

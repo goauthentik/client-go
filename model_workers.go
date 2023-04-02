@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Workers type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Workers{}
-
 // Workers struct for Workers
 type Workers struct {
 	Count int32 `json:"count"`
@@ -66,17 +63,11 @@ func (o *Workers) SetCount(v int32) {
 }
 
 func (o Workers) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["count"] = o.Count
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o Workers) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["count"] = o.Count
-	return toSerialize, nil
 }
 
 type NullableWorkers struct {
