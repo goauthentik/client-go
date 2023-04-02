@@ -22687,6 +22687,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: friendly_name
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: from_number
         required: false
         schema:
@@ -23031,6 +23038,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: friendly_name
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: name
         required: false
         schema:
@@ -23357,6 +23371,13 @@ paths:
           - 6
           - 8
           type: integer
+        style: form
+      - explode: true
+        in: query
+        name: friendly_name
+        required: false
+        schema:
+          type: string
         style: form
       - explode: true
         in: query
@@ -23998,6 +24019,13 @@ paths:
         required: false
         schema:
           format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: friendly_name
+        required: false
+        schema:
           type: string
         style: form
       - explode: true
@@ -29521,6 +29549,7 @@ components:
         component: component
         verbose_name: verbose_name
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
         name: name
@@ -29586,6 +29615,9 @@ components:
           format: uuid
           nullable: true
           type: string
+        friendly_name:
+          nullable: true
+          type: string
         user_verification:
           $ref: '#/components/schemas/UserVerificationEnum'
         authenticator_attachment:
@@ -29607,6 +29639,7 @@ components:
       example:
         resident_key_requirement: null
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         name: name
         user_verification: null
         flow_set:
@@ -29639,6 +29672,10 @@ components:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
           format: uuid
+          nullable: true
+          type: string
+        friendly_name:
+          minLength: 1
           nullable: true
           type: string
         user_verification:
@@ -29786,6 +29823,7 @@ components:
         component: component
         verbose_name: verbose_name
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
         name: name
@@ -29852,6 +29890,9 @@ components:
           format: uuid
           nullable: true
           type: string
+        friendly_name:
+          nullable: true
+          type: string
         client_id:
           type: string
         api_hostname:
@@ -29902,6 +29943,7 @@ components:
       description: AuthenticatorDuoStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         name: name
         client_secret: client_secret
         api_hostname: api_hostname
@@ -29937,6 +29979,10 @@ components:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
           format: uuid
+          nullable: true
+          type: string
+        friendly_name:
+          minLength: 1
           nullable: true
           type: string
         client_id:
@@ -30005,6 +30051,7 @@ components:
       description: AuthenticatorSMSStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         auth_type: null
         mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verbose_name_plural: verbose_name_plural
@@ -30078,6 +30125,9 @@ components:
           format: uuid
           nullable: true
           type: string
+        friendly_name:
+          nullable: true
+          type: string
         provider:
           $ref: '#/components/schemas/ProviderEnum'
         from_number:
@@ -30116,6 +30166,7 @@ components:
       description: AuthenticatorSMSStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         auth_type: null
         mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         provider: null
@@ -30154,6 +30205,10 @@ components:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
           format: uuid
+          nullable: true
+          type: string
+        friendly_name:
+          minLength: 1
           nullable: true
           type: string
         provider:
@@ -30232,6 +30287,7 @@ components:
         component: component
         verbose_name: verbose_name
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         token_count: -1803530559
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
@@ -30296,6 +30352,9 @@ components:
           format: uuid
           nullable: true
           type: string
+        friendly_name:
+          nullable: true
+          type: string
         token_count:
           maximum: 2147483647
           minimum: -2147483648
@@ -30312,6 +30371,7 @@ components:
       description: AuthenticatorStaticStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         token_count: -1803530559
         name: name
         flow_set:
@@ -30343,6 +30403,10 @@ components:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
           format: uuid
+          nullable: true
+          type: string
+        friendly_name:
+          minLength: 1
           nullable: true
           type: string
         token_count:
@@ -30398,6 +30462,7 @@ components:
         component: component
         verbose_name: verbose_name
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
         name: name
@@ -30462,6 +30527,9 @@ components:
           format: uuid
           nullable: true
           type: string
+        friendly_name:
+          nullable: true
+          type: string
         digits:
           allOf:
           - $ref: '#/components/schemas/DigitsEnum'
@@ -30480,6 +30548,7 @@ components:
       description: AuthenticatorTOTPStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         name: name
         digits: ""
         flow_set:
@@ -30511,6 +30580,10 @@ components:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
           format: uuid
+          nullable: true
+          type: string
+        friendly_name:
+          minLength: 1
           nullable: true
           type: string
         digits:
@@ -36772,6 +36845,7 @@ components:
           component: component
           verbose_name: verbose_name
           configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          friendly_name: friendly_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           name: name
@@ -36807,6 +36881,7 @@ components:
           component: component
           verbose_name: verbose_name
           configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          friendly_name: friendly_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           name: name
@@ -36945,6 +37020,7 @@ components:
         - component: component
           verbose_name: verbose_name
           configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          friendly_name: friendly_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           name: name
@@ -36980,6 +37056,7 @@ components:
         - component: component
           verbose_name: verbose_name
           configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          friendly_name: friendly_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           name: name
@@ -37035,6 +37112,7 @@ components:
           total_pages: 5.637376656633329
         results:
         - configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          friendly_name: friendly_name
           auth_type: null
           mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
@@ -37075,6 +37153,7 @@ components:
           account_sid: account_sid
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          friendly_name: friendly_name
           auth_type: null
           mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
@@ -37139,6 +37218,7 @@ components:
         - component: component
           verbose_name: verbose_name
           configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          friendly_name: friendly_name
           token_count: -1803530559
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
@@ -37172,6 +37252,7 @@ components:
         - component: component
           verbose_name: verbose_name
           configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          friendly_name: friendly_name
           token_count: -1803530559
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
@@ -37227,6 +37308,7 @@ components:
         - component: component
           verbose_name: verbose_name
           configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          friendly_name: friendly_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           name: name
@@ -37260,6 +37342,7 @@ components:
         - component: component
           verbose_name: verbose_name
           configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          friendly_name: friendly_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           name: name
@@ -42567,6 +42650,7 @@ components:
       example:
         resident_key_requirement: null
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         name: name
         user_verification: null
         flow_set:
@@ -42601,6 +42685,10 @@ components:
           format: uuid
           nullable: true
           type: string
+        friendly_name:
+          minLength: 1
+          nullable: true
+          type: string
         user_verification:
           $ref: '#/components/schemas/UserVerificationEnum'
         authenticator_attachment:
@@ -42614,6 +42702,7 @@ components:
       description: AuthenticatorDuoStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         name: name
         client_secret: client_secret
         api_hostname: api_hostname
@@ -42651,6 +42740,10 @@ components:
           format: uuid
           nullable: true
           type: string
+        friendly_name:
+          minLength: 1
+          nullable: true
+          type: string
         client_id:
           minLength: 1
           type: string
@@ -42671,6 +42764,7 @@ components:
       description: AuthenticatorSMSStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         auth_type: null
         mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         provider: null
@@ -42711,6 +42805,10 @@ components:
           format: uuid
           nullable: true
           type: string
+        friendly_name:
+          minLength: 1
+          nullable: true
+          type: string
         provider:
           $ref: '#/components/schemas/ProviderEnum'
         from_number:
@@ -42741,6 +42839,7 @@ components:
       description: AuthenticatorStaticStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         token_count: -1803530559
         name: name
         flow_set:
@@ -42774,6 +42873,10 @@ components:
           format: uuid
           nullable: true
           type: string
+        friendly_name:
+          minLength: 1
+          nullable: true
+          type: string
         token_count:
           maximum: 2147483647
           minimum: -2147483648
@@ -42783,6 +42886,7 @@ components:
       description: AuthenticatorTOTPStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
         name: name
         digits: ""
         flow_set:
@@ -42814,6 +42918,10 @@ components:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
           format: uuid
+          nullable: true
+          type: string
+        friendly_name:
+          minLength: 1
           nullable: true
           type: string
         digits:

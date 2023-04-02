@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
+**FriendlyName** | Pointer to **NullableString** |  | [optional] 
 **UserVerification** | Pointer to [**UserVerificationEnum**](UserVerificationEnum.md) |  | [optional] 
 **AuthenticatorAttachment** | Pointer to [**NullableAuthenticatorAttachmentEnum**](AuthenticatorAttachmentEnum.md) |  | [optional] 
 **ResidentKeyRequirement** | Pointer to [**ResidentKeyRequirementEnum**](ResidentKeyRequirementEnum.md) |  | [optional] 
@@ -115,6 +116,41 @@ HasConfigureFlow returns a boolean if a field has been set.
 `func (o *PatchedAuthenticateWebAuthnStageRequest) UnsetConfigureFlow()`
 
 UnsetConfigureFlow ensures that no value is present for ConfigureFlow, not even an explicit nil
+### GetFriendlyName
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) GetFriendlyName() string`
+
+GetFriendlyName returns the FriendlyName field if non-nil, zero value otherwise.
+
+### GetFriendlyNameOk
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) GetFriendlyNameOk() (*string, bool)`
+
+GetFriendlyNameOk returns a tuple with the FriendlyName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFriendlyName
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) SetFriendlyName(v string)`
+
+SetFriendlyName sets FriendlyName field to given value.
+
+### HasFriendlyName
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) HasFriendlyName() bool`
+
+HasFriendlyName returns a boolean if a field has been set.
+
+### SetFriendlyNameNil
+
+`func (o *PatchedAuthenticateWebAuthnStageRequest) SetFriendlyNameNil(b bool)`
+
+ SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
+
+### UnsetFriendlyName
+`func (o *PatchedAuthenticateWebAuthnStageRequest) UnsetFriendlyName()`
+
+UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
 ### GetUserVerification
 
 `func (o *PatchedAuthenticateWebAuthnStageRequest) GetUserVerification() UserVerificationEnum`

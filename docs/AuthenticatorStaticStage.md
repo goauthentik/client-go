@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
+**FriendlyName** | Pointer to **NullableString** |  | [optional] 
 **TokenCount** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -213,6 +214,41 @@ HasConfigureFlow returns a boolean if a field has been set.
 `func (o *AuthenticatorStaticStage) UnsetConfigureFlow()`
 
 UnsetConfigureFlow ensures that no value is present for ConfigureFlow, not even an explicit nil
+### GetFriendlyName
+
+`func (o *AuthenticatorStaticStage) GetFriendlyName() string`
+
+GetFriendlyName returns the FriendlyName field if non-nil, zero value otherwise.
+
+### GetFriendlyNameOk
+
+`func (o *AuthenticatorStaticStage) GetFriendlyNameOk() (*string, bool)`
+
+GetFriendlyNameOk returns a tuple with the FriendlyName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFriendlyName
+
+`func (o *AuthenticatorStaticStage) SetFriendlyName(v string)`
+
+SetFriendlyName sets FriendlyName field to given value.
+
+### HasFriendlyName
+
+`func (o *AuthenticatorStaticStage) HasFriendlyName() bool`
+
+HasFriendlyName returns a boolean if a field has been set.
+
+### SetFriendlyNameNil
+
+`func (o *AuthenticatorStaticStage) SetFriendlyNameNil(b bool)`
+
+ SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
+
+### UnsetFriendlyName
+`func (o *AuthenticatorStaticStage) UnsetFriendlyName()`
+
+UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
 ### GetTokenCount
 
 `func (o *AuthenticatorStaticStage) GetTokenCount() int32`

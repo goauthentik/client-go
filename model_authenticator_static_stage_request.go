@@ -21,6 +21,7 @@ type AuthenticatorStaticStageRequest struct {
 	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
+	FriendlyName  NullableString `json:"friendly_name,omitempty"`
 	TokenCount    *int32         `json:"token_count,omitempty"`
 }
 
@@ -141,6 +142,49 @@ func (o *AuthenticatorStaticStageRequest) UnsetConfigureFlow() {
 	o.ConfigureFlow.Unset()
 }
 
+// GetFriendlyName returns the FriendlyName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AuthenticatorStaticStageRequest) GetFriendlyName() string {
+	if o == nil || o.FriendlyName.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.FriendlyName.Get()
+}
+
+// GetFriendlyNameOk returns a tuple with the FriendlyName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AuthenticatorStaticStageRequest) GetFriendlyNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FriendlyName.Get(), o.FriendlyName.IsSet()
+}
+
+// HasFriendlyName returns a boolean if a field has been set.
+func (o *AuthenticatorStaticStageRequest) HasFriendlyName() bool {
+	if o != nil && o.FriendlyName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFriendlyName gets a reference to the given NullableString and assigns it to the FriendlyName field.
+func (o *AuthenticatorStaticStageRequest) SetFriendlyName(v string) {
+	o.FriendlyName.Set(&v)
+}
+
+// SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
+func (o *AuthenticatorStaticStageRequest) SetFriendlyNameNil() {
+	o.FriendlyName.Set(nil)
+}
+
+// UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
+func (o *AuthenticatorStaticStageRequest) UnsetFriendlyName() {
+	o.FriendlyName.Unset()
+}
+
 // GetTokenCount returns the TokenCount field value if set, zero value otherwise.
 func (o *AuthenticatorStaticStageRequest) GetTokenCount() int32 {
 	if o == nil || o.TokenCount == nil {
@@ -183,6 +227,9 @@ func (o AuthenticatorStaticStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
+	}
+	if o.FriendlyName.IsSet() {
+		toSerialize["friendly_name"] = o.FriendlyName.Get()
 	}
 	if o.TokenCount != nil {
 		toSerialize["token_count"] = o.TokenCount

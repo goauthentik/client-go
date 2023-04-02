@@ -21,6 +21,7 @@ type PatchedAuthenticatorDuoStageRequest struct {
 	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow       NullableString `json:"configure_flow,omitempty"`
+	FriendlyName        NullableString `json:"friendly_name,omitempty"`
 	ClientId            *string        `json:"client_id,omitempty"`
 	ClientSecret        *string        `json:"client_secret,omitempty"`
 	ApiHostname         *string        `json:"api_hostname,omitempty"`
@@ -150,6 +151,49 @@ func (o *PatchedAuthenticatorDuoStageRequest) SetConfigureFlowNil() {
 // UnsetConfigureFlow ensures that no value is present for ConfigureFlow, not even an explicit nil
 func (o *PatchedAuthenticatorDuoStageRequest) UnsetConfigureFlow() {
 	o.ConfigureFlow.Unset()
+}
+
+// GetFriendlyName returns the FriendlyName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedAuthenticatorDuoStageRequest) GetFriendlyName() string {
+	if o == nil || o.FriendlyName.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.FriendlyName.Get()
+}
+
+// GetFriendlyNameOk returns a tuple with the FriendlyName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedAuthenticatorDuoStageRequest) GetFriendlyNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FriendlyName.Get(), o.FriendlyName.IsSet()
+}
+
+// HasFriendlyName returns a boolean if a field has been set.
+func (o *PatchedAuthenticatorDuoStageRequest) HasFriendlyName() bool {
+	if o != nil && o.FriendlyName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFriendlyName gets a reference to the given NullableString and assigns it to the FriendlyName field.
+func (o *PatchedAuthenticatorDuoStageRequest) SetFriendlyName(v string) {
+	o.FriendlyName.Set(&v)
+}
+
+// SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
+func (o *PatchedAuthenticatorDuoStageRequest) SetFriendlyNameNil() {
+	o.FriendlyName.Set(nil)
+}
+
+// UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
+func (o *PatchedAuthenticatorDuoStageRequest) UnsetFriendlyName() {
+	o.FriendlyName.Unset()
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
@@ -322,6 +366,9 @@ func (o PatchedAuthenticatorDuoStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
+	}
+	if o.FriendlyName.IsSet() {
+		toSerialize["friendly_name"] = o.FriendlyName.Get()
 	}
 	if o.ClientId != nil {
 		toSerialize["client_id"] = o.ClientId

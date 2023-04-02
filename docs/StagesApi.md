@@ -1413,7 +1413,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorSmsList
 
-> PaginatedAuthenticatorSMSStageList StagesAuthenticatorSmsList(ctx).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FromNumber(fromNumber).Mapping(mapping).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).VerifyOnly(verifyOnly).Execute()
+> PaginatedAuthenticatorSMSStageList StagesAuthenticatorSmsList(ctx).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FriendlyName(friendlyName).FromNumber(fromNumber).Mapping(mapping).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).VerifyOnly(verifyOnly).Execute()
 
 
 
@@ -1437,6 +1437,7 @@ func main() {
     authPassword := "authPassword_example" // string |  (optional)
     authType := "authType_example" // string | * `basic` - Basic * `bearer` - Bearer  * `basic` - Basic * `bearer` - Bearer (optional)
     configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    friendlyName := "friendlyName_example" // string |  (optional)
     fromNumber := "fromNumber_example" // string |  (optional)
     mapping := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     name := "name_example" // string |  (optional)
@@ -1450,7 +1451,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorSmsList(context.Background()).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FromNumber(fromNumber).Mapping(mapping).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).VerifyOnly(verifyOnly).Execute()
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorSmsList(context.Background()).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FriendlyName(friendlyName).FromNumber(fromNumber).Mapping(mapping).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).VerifyOnly(verifyOnly).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1476,6 +1477,7 @@ Name | Type | Description  | Notes
  **authPassword** | **string** |  | 
  **authType** | **string** | * &#x60;basic&#x60; - Basic * &#x60;bearer&#x60; - Bearer  * &#x60;basic&#x60; - Basic * &#x60;bearer&#x60; - Bearer | 
  **configureFlow** | **string** |  | 
+ **friendlyName** | **string** |  | 
  **fromNumber** | **string** |  | 
  **mapping** | **string** |  | 
  **name** | **string** |  | 
@@ -1925,7 +1927,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorStaticList
 
-> PaginatedAuthenticatorStaticStageList StagesAuthenticatorStaticList(ctx).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).TokenCount(tokenCount).Execute()
+> PaginatedAuthenticatorStaticStageList StagesAuthenticatorStaticList(ctx).ConfigureFlow(configureFlow).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).TokenCount(tokenCount).Execute()
 
 
 
@@ -1945,6 +1947,7 @@ import (
 
 func main() {
     configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    friendlyName := "friendlyName_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -1955,7 +1958,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorStaticList(context.Background()).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).TokenCount(tokenCount).Execute()
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorStaticList(context.Background()).ConfigureFlow(configureFlow).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).TokenCount(tokenCount).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorStaticList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1977,6 +1980,7 @@ Other parameters are passed through a pointer to a apiStagesAuthenticatorStaticL
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **configureFlow** | **string** |  | 
+ **friendlyName** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -2423,7 +2427,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorTotpList
 
-> PaginatedAuthenticatorTOTPStageList StagesAuthenticatorTotpList(ctx).ConfigureFlow(configureFlow).Digits(digits).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+> PaginatedAuthenticatorTOTPStageList StagesAuthenticatorTotpList(ctx).ConfigureFlow(configureFlow).Digits(digits).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
 
 
 
@@ -2444,6 +2448,7 @@ import (
 func main() {
     configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     digits := int32(56) // int32 | * `6` - 6 digits, widely compatible * `8` - 8 digits, not compatible with apps like Google Authenticator  * `6` - 6 digits, widely compatible * `8` - 8 digits, not compatible with apps like Google Authenticator (optional)
+    friendlyName := "friendlyName_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -2453,7 +2458,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorTotpList(context.Background()).ConfigureFlow(configureFlow).Digits(digits).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorTotpList(context.Background()).ConfigureFlow(configureFlow).Digits(digits).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorTotpList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2476,6 +2481,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **configureFlow** | **string** |  | 
  **digits** | **int32** | * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator  * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator | 
+ **friendlyName** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -3417,7 +3423,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorWebauthnList
 
-> PaginatedAuthenticateWebAuthnStageList StagesAuthenticatorWebauthnList(ctx).AuthenticatorAttachment(authenticatorAttachment).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResidentKeyRequirement(residentKeyRequirement).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
+> PaginatedAuthenticateWebAuthnStageList StagesAuthenticatorWebauthnList(ctx).AuthenticatorAttachment(authenticatorAttachment).ConfigureFlow(configureFlow).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResidentKeyRequirement(residentKeyRequirement).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
 
 
 
@@ -3438,6 +3444,7 @@ import (
 func main() {
     authenticatorAttachment := "authenticatorAttachment_example" // string | * `platform` - Platform * `cross-platform` - Cross Platform  * `platform` - Platform * `cross-platform` - Cross Platform (optional)
     configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    friendlyName := "friendlyName_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -3449,7 +3456,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnList(context.Background()).AuthenticatorAttachment(authenticatorAttachment).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResidentKeyRequirement(residentKeyRequirement).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnList(context.Background()).AuthenticatorAttachment(authenticatorAttachment).ConfigureFlow(configureFlow).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResidentKeyRequirement(residentKeyRequirement).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3472,6 +3479,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authenticatorAttachment** | **string** | * &#x60;platform&#x60; - Platform * &#x60;cross-platform&#x60; - Cross Platform  * &#x60;platform&#x60; - Platform * &#x60;cross-platform&#x60; - Cross Platform | 
  **configureFlow** | **string** |  | 
+ **friendlyName** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 

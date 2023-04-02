@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
+**FriendlyName** | Pointer to **NullableString** |  | [optional] 
 **Digits** | [**DigitsEnum**](DigitsEnum.md) |  | 
 
 ## Methods
@@ -108,6 +109,41 @@ HasConfigureFlow returns a boolean if a field has been set.
 `func (o *AuthenticatorTOTPStageRequest) UnsetConfigureFlow()`
 
 UnsetConfigureFlow ensures that no value is present for ConfigureFlow, not even an explicit nil
+### GetFriendlyName
+
+`func (o *AuthenticatorTOTPStageRequest) GetFriendlyName() string`
+
+GetFriendlyName returns the FriendlyName field if non-nil, zero value otherwise.
+
+### GetFriendlyNameOk
+
+`func (o *AuthenticatorTOTPStageRequest) GetFriendlyNameOk() (*string, bool)`
+
+GetFriendlyNameOk returns a tuple with the FriendlyName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFriendlyName
+
+`func (o *AuthenticatorTOTPStageRequest) SetFriendlyName(v string)`
+
+SetFriendlyName sets FriendlyName field to given value.
+
+### HasFriendlyName
+
+`func (o *AuthenticatorTOTPStageRequest) HasFriendlyName() bool`
+
+HasFriendlyName returns a boolean if a field has been set.
+
+### SetFriendlyNameNil
+
+`func (o *AuthenticatorTOTPStageRequest) SetFriendlyNameNil(b bool)`
+
+ SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
+
+### UnsetFriendlyName
+`func (o *AuthenticatorTOTPStageRequest) UnsetFriendlyName()`
+
+UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
 ### GetDigits
 
 `func (o *AuthenticatorTOTPStageRequest) GetDigits() DigitsEnum`

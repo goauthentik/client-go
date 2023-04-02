@@ -2570,6 +2570,7 @@ type ApiStagesAuthenticatorSmsListRequest struct {
 	authPassword  *string
 	authType      *string
 	configureFlow *string
+	friendlyName  *string
 	fromNumber    *string
 	mapping       *string
 	name          *string
@@ -2605,6 +2606,11 @@ func (r ApiStagesAuthenticatorSmsListRequest) AuthType(authType string) ApiStage
 
 func (r ApiStagesAuthenticatorSmsListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorSmsListRequest {
 	r.configureFlow = &configureFlow
+	return r
+}
+
+func (r ApiStagesAuthenticatorSmsListRequest) FriendlyName(friendlyName string) ApiStagesAuthenticatorSmsListRequest {
+	r.friendlyName = &friendlyName
 	return r
 }
 
@@ -2717,6 +2723,9 @@ func (a *StagesApiService) StagesAuthenticatorSmsListExecute(r ApiStagesAuthenti
 	}
 	if r.configureFlow != nil {
 		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
+	}
+	if r.friendlyName != nil {
+		localVarQueryParams.Add("friendly_name", parameterToString(*r.friendlyName, ""))
 	}
 	if r.fromNumber != nil {
 		localVarQueryParams.Add("from_number", parameterToString(*r.fromNumber, ""))
@@ -3670,6 +3679,7 @@ type ApiStagesAuthenticatorStaticListRequest struct {
 	ctx           context.Context
 	ApiService    *StagesApiService
 	configureFlow *string
+	friendlyName  *string
 	name          *string
 	ordering      *string
 	page          *int32
@@ -3681,6 +3691,11 @@ type ApiStagesAuthenticatorStaticListRequest struct {
 
 func (r ApiStagesAuthenticatorStaticListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorStaticListRequest {
 	r.configureFlow = &configureFlow
+	return r
+}
+
+func (r ApiStagesAuthenticatorStaticListRequest) FriendlyName(friendlyName string) ApiStagesAuthenticatorStaticListRequest {
+	r.friendlyName = &friendlyName
 	return r
 }
 
@@ -3765,6 +3780,9 @@ func (a *StagesApiService) StagesAuthenticatorStaticListExecute(r ApiStagesAuthe
 
 	if r.configureFlow != nil {
 		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
+	}
+	if r.friendlyName != nil {
+		localVarQueryParams.Add("friendly_name", parameterToString(*r.friendlyName, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -4710,6 +4728,7 @@ type ApiStagesAuthenticatorTotpListRequest struct {
 	ApiService    *StagesApiService
 	configureFlow *string
 	digits        *int32
+	friendlyName  *string
 	name          *string
 	ordering      *string
 	page          *int32
@@ -4726,6 +4745,11 @@ func (r ApiStagesAuthenticatorTotpListRequest) ConfigureFlow(configureFlow strin
 // * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator  * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator
 func (r ApiStagesAuthenticatorTotpListRequest) Digits(digits int32) ApiStagesAuthenticatorTotpListRequest {
 	r.digits = &digits
+	return r
+}
+
+func (r ApiStagesAuthenticatorTotpListRequest) FriendlyName(friendlyName string) ApiStagesAuthenticatorTotpListRequest {
+	r.friendlyName = &friendlyName
 	return r
 }
 
@@ -4808,6 +4832,9 @@ func (a *StagesApiService) StagesAuthenticatorTotpListExecute(r ApiStagesAuthent
 	}
 	if r.digits != nil {
 		localVarQueryParams.Add("digits", parameterToString(*r.digits, ""))
+	}
+	if r.friendlyName != nil {
+		localVarQueryParams.Add("friendly_name", parameterToString(*r.friendlyName, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -6789,6 +6816,7 @@ type ApiStagesAuthenticatorWebauthnListRequest struct {
 	ApiService              *StagesApiService
 	authenticatorAttachment *string
 	configureFlow           *string
+	friendlyName            *string
 	name                    *string
 	ordering                *string
 	page                    *int32
@@ -6807,6 +6835,11 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) AuthenticatorAttachment(authe
 
 func (r ApiStagesAuthenticatorWebauthnListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.configureFlow = &configureFlow
+	return r
+}
+
+func (r ApiStagesAuthenticatorWebauthnListRequest) FriendlyName(friendlyName string) ApiStagesAuthenticatorWebauthnListRequest {
+	r.friendlyName = &friendlyName
 	return r
 }
 
@@ -6901,6 +6934,9 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 	}
 	if r.configureFlow != nil {
 		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
+	}
+	if r.friendlyName != nil {
+		localVarQueryParams.Add("friendly_name", parameterToString(*r.friendlyName, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
