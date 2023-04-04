@@ -38,9 +38,9 @@ Oauth2AccessTokensDestroy Method for Oauth2AccessTokensDestroy
 
 AccessToken Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this OAuth2 Access Token.
-	@return ApiOauth2AccessTokensDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this OAuth2 Access Token.
+ @return ApiOauth2AccessTokensDestroyRequest
 */
 func (a *Oauth2ApiService) Oauth2AccessTokensDestroy(ctx context.Context, id int32) ApiOauth2AccessTokensDestroyRequest {
 	return ApiOauth2AccessTokensDestroyRequest{
@@ -202,8 +202,8 @@ Oauth2AccessTokensList Method for Oauth2AccessTokensList
 
 AccessToken Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOauth2AccessTokensListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOauth2AccessTokensListRequest
 */
 func (a *Oauth2ApiService) Oauth2AccessTokensList(ctx context.Context) ApiOauth2AccessTokensListRequest {
 	return ApiOauth2AccessTokensListRequest{
@@ -213,8 +213,7 @@ func (a *Oauth2ApiService) Oauth2AccessTokensList(ctx context.Context) ApiOauth2
 }
 
 // Execute executes the request
-//
-//	@return PaginatedTokenModelList
+//  @return PaginatedTokenModelList
 func (a *Oauth2ApiService) Oauth2AccessTokensListExecute(r ApiOauth2AccessTokensListRequest) (*PaginatedTokenModelList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -354,9 +353,9 @@ Oauth2AccessTokensRetrieve Method for Oauth2AccessTokensRetrieve
 
 AccessToken Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this OAuth2 Access Token.
-	@return ApiOauth2AccessTokensRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this OAuth2 Access Token.
+ @return ApiOauth2AccessTokensRetrieveRequest
 */
 func (a *Oauth2ApiService) Oauth2AccessTokensRetrieve(ctx context.Context, id int32) ApiOauth2AccessTokensRetrieveRequest {
 	return ApiOauth2AccessTokensRetrieveRequest{
@@ -367,8 +366,7 @@ func (a *Oauth2ApiService) Oauth2AccessTokensRetrieve(ctx context.Context, id in
 }
 
 // Execute executes the request
-//
-//	@return TokenModel
+//  @return TokenModel
 func (a *Oauth2ApiService) Oauth2AccessTokensRetrieveExecute(r ApiOauth2AccessTokensRetrieveRequest) (*TokenModel, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -491,9 +489,9 @@ Oauth2AccessTokensUsedByList Method for Oauth2AccessTokensUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this OAuth2 Access Token.
-	@return ApiOauth2AccessTokensUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this OAuth2 Access Token.
+ @return ApiOauth2AccessTokensUsedByListRequest
 */
 func (a *Oauth2ApiService) Oauth2AccessTokensUsedByList(ctx context.Context, id int32) ApiOauth2AccessTokensUsedByListRequest {
 	return ApiOauth2AccessTokensUsedByListRequest{
@@ -504,8 +502,7 @@ func (a *Oauth2ApiService) Oauth2AccessTokensUsedByList(ctx context.Context, id 
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *Oauth2ApiService) Oauth2AccessTokensUsedByListExecute(r ApiOauth2AccessTokensUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -628,9 +625,9 @@ Oauth2AuthorizationCodesDestroy Method for Oauth2AuthorizationCodesDestroy
 
 AuthorizationCode Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this Authorization Code.
-	@return ApiOauth2AuthorizationCodesDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this Authorization Code.
+ @return ApiOauth2AuthorizationCodesDestroyRequest
 */
 func (a *Oauth2ApiService) Oauth2AuthorizationCodesDestroy(ctx context.Context, id int32) ApiOauth2AuthorizationCodesDestroyRequest {
 	return ApiOauth2AuthorizationCodesDestroyRequest{
@@ -792,8 +789,8 @@ Oauth2AuthorizationCodesList Method for Oauth2AuthorizationCodesList
 
 AuthorizationCode Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOauth2AuthorizationCodesListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOauth2AuthorizationCodesListRequest
 */
 func (a *Oauth2ApiService) Oauth2AuthorizationCodesList(ctx context.Context) ApiOauth2AuthorizationCodesListRequest {
 	return ApiOauth2AuthorizationCodesListRequest{
@@ -803,8 +800,7 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesList(ctx context.Context) Api
 }
 
 // Execute executes the request
-//
-//	@return PaginatedExpiringBaseGrantModelList
+//  @return PaginatedExpiringBaseGrantModelList
 func (a *Oauth2ApiService) Oauth2AuthorizationCodesListExecute(r ApiOauth2AuthorizationCodesListRequest) (*PaginatedExpiringBaseGrantModelList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -944,9 +940,9 @@ Oauth2AuthorizationCodesRetrieve Method for Oauth2AuthorizationCodesRetrieve
 
 AuthorizationCode Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this Authorization Code.
-	@return ApiOauth2AuthorizationCodesRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this Authorization Code.
+ @return ApiOauth2AuthorizationCodesRetrieveRequest
 */
 func (a *Oauth2ApiService) Oauth2AuthorizationCodesRetrieve(ctx context.Context, id int32) ApiOauth2AuthorizationCodesRetrieveRequest {
 	return ApiOauth2AuthorizationCodesRetrieveRequest{
@@ -957,8 +953,7 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesRetrieve(ctx context.Context,
 }
 
 // Execute executes the request
-//
-//	@return ExpiringBaseGrantModel
+//  @return ExpiringBaseGrantModel
 func (a *Oauth2ApiService) Oauth2AuthorizationCodesRetrieveExecute(r ApiOauth2AuthorizationCodesRetrieveRequest) (*ExpiringBaseGrantModel, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1081,9 +1076,9 @@ Oauth2AuthorizationCodesUsedByList Method for Oauth2AuthorizationCodesUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this Authorization Code.
-	@return ApiOauth2AuthorizationCodesUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this Authorization Code.
+ @return ApiOauth2AuthorizationCodesUsedByListRequest
 */
 func (a *Oauth2ApiService) Oauth2AuthorizationCodesUsedByList(ctx context.Context, id int32) ApiOauth2AuthorizationCodesUsedByListRequest {
 	return ApiOauth2AuthorizationCodesUsedByListRequest{
@@ -1094,8 +1089,7 @@ func (a *Oauth2ApiService) Oauth2AuthorizationCodesUsedByList(ctx context.Contex
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *Oauth2ApiService) Oauth2AuthorizationCodesUsedByListExecute(r ApiOauth2AuthorizationCodesUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1218,9 +1212,9 @@ Oauth2RefreshTokensDestroy Method for Oauth2RefreshTokensDestroy
 
 RefreshToken Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this OAuth2 Refresh Token.
-	@return ApiOauth2RefreshTokensDestroyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this OAuth2 Refresh Token.
+ @return ApiOauth2RefreshTokensDestroyRequest
 */
 func (a *Oauth2ApiService) Oauth2RefreshTokensDestroy(ctx context.Context, id int32) ApiOauth2RefreshTokensDestroyRequest {
 	return ApiOauth2RefreshTokensDestroyRequest{
@@ -1382,8 +1376,8 @@ Oauth2RefreshTokensList Method for Oauth2RefreshTokensList
 
 RefreshToken Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOauth2RefreshTokensListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOauth2RefreshTokensListRequest
 */
 func (a *Oauth2ApiService) Oauth2RefreshTokensList(ctx context.Context) ApiOauth2RefreshTokensListRequest {
 	return ApiOauth2RefreshTokensListRequest{
@@ -1393,8 +1387,7 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensList(ctx context.Context) ApiOauth
 }
 
 // Execute executes the request
-//
-//	@return PaginatedTokenModelList
+//  @return PaginatedTokenModelList
 func (a *Oauth2ApiService) Oauth2RefreshTokensListExecute(r ApiOauth2RefreshTokensListRequest) (*PaginatedTokenModelList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1534,9 +1527,9 @@ Oauth2RefreshTokensRetrieve Method for Oauth2RefreshTokensRetrieve
 
 RefreshToken Viewset
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this OAuth2 Refresh Token.
-	@return ApiOauth2RefreshTokensRetrieveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this OAuth2 Refresh Token.
+ @return ApiOauth2RefreshTokensRetrieveRequest
 */
 func (a *Oauth2ApiService) Oauth2RefreshTokensRetrieve(ctx context.Context, id int32) ApiOauth2RefreshTokensRetrieveRequest {
 	return ApiOauth2RefreshTokensRetrieveRequest{
@@ -1547,8 +1540,7 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensRetrieve(ctx context.Context, id i
 }
 
 // Execute executes the request
-//
-//	@return TokenModel
+//  @return TokenModel
 func (a *Oauth2ApiService) Oauth2RefreshTokensRetrieveExecute(r ApiOauth2RefreshTokensRetrieveRequest) (*TokenModel, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1671,9 +1663,9 @@ Oauth2RefreshTokensUsedByList Method for Oauth2RefreshTokensUsedByList
 
 Get a list of all objects that use this object
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this OAuth2 Refresh Token.
-	@return ApiOauth2RefreshTokensUsedByListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id A unique integer value identifying this OAuth2 Refresh Token.
+ @return ApiOauth2RefreshTokensUsedByListRequest
 */
 func (a *Oauth2ApiService) Oauth2RefreshTokensUsedByList(ctx context.Context, id int32) ApiOauth2RefreshTokensUsedByListRequest {
 	return ApiOauth2RefreshTokensUsedByListRequest{
@@ -1684,8 +1676,7 @@ func (a *Oauth2ApiService) Oauth2RefreshTokensUsedByList(ctx context.Context, id
 }
 
 // Execute executes the request
-//
-//	@return []UsedBy
+//  @return []UsedBy
 func (a *Oauth2ApiService) Oauth2RefreshTokensUsedByListExecute(r ApiOauth2RefreshTokensUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
