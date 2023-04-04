@@ -40,9 +40,9 @@ SourcesAllDestroy Method for SourcesAllDestroy
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesAllDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesAllDestroyRequest
 */
 func (a *SourcesApiService) SourcesAllDestroy(ctx context.Context, slug string) ApiSourcesAllDestroyRequest {
 	return ApiSourcesAllDestroyRequest{
@@ -210,8 +210,8 @@ SourcesAllList Method for SourcesAllList
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesAllListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesAllListRequest
 */
 func (a *SourcesApiService) SourcesAllList(ctx context.Context) ApiSourcesAllListRequest {
 	return ApiSourcesAllListRequest{
@@ -221,7 +221,8 @@ func (a *SourcesApiService) SourcesAllList(ctx context.Context) ApiSourcesAllLis
 }
 
 // Execute executes the request
-//  @return PaginatedSourceList
+//
+//	@return PaginatedSourceList
 func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*PaginatedSourceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -364,9 +365,9 @@ SourcesAllRetrieve Method for SourcesAllRetrieve
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesAllRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesAllRetrieveRequest
 */
 func (a *SourcesApiService) SourcesAllRetrieve(ctx context.Context, slug string) ApiSourcesAllRetrieveRequest {
 	return ApiSourcesAllRetrieveRequest{
@@ -377,7 +378,8 @@ func (a *SourcesApiService) SourcesAllRetrieve(ctx context.Context, slug string)
 }
 
 // Execute executes the request
-//  @return Source
+//
+//	@return Source
 func (a *SourcesApiService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveRequest) (*Source, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -512,9 +514,9 @@ SourcesAllSetIconCreate Method for SourcesAllSetIconCreate
 
 Set source icon
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesAllSetIconCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesAllSetIconCreateRequest
 */
 func (a *SourcesApiService) SourcesAllSetIconCreate(ctx context.Context, slug string) ApiSourcesAllSetIconCreateRequest {
 	return ApiSourcesAllSetIconCreateRequest{
@@ -653,9 +655,9 @@ SourcesAllSetIconUrlCreate Method for SourcesAllSetIconUrlCreate
 
 Set source icon (as URL)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesAllSetIconUrlCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesAllSetIconUrlCreateRequest
 */
 func (a *SourcesApiService) SourcesAllSetIconUrlCreate(ctx context.Context, slug string) ApiSourcesAllSetIconUrlCreateRequest {
 	return ApiSourcesAllSetIconUrlCreateRequest{
@@ -772,8 +774,8 @@ SourcesAllTypesList Method for SourcesAllTypesList
 
 Get all creatable source types
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesAllTypesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesAllTypesListRequest
 */
 func (a *SourcesApiService) SourcesAllTypesList(ctx context.Context) ApiSourcesAllTypesListRequest {
 	return ApiSourcesAllTypesListRequest{
@@ -783,7 +785,8 @@ func (a *SourcesApiService) SourcesAllTypesList(ctx context.Context) ApiSourcesA
 }
 
 // Execute executes the request
-//  @return []TypeCreate
+//
+//	@return []TypeCreate
 func (a *SourcesApiService) SourcesAllTypesListExecute(r ApiSourcesAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -905,9 +908,9 @@ SourcesAllUsedByList Method for SourcesAllUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesAllUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesAllUsedByListRequest
 */
 func (a *SourcesApiService) SourcesAllUsedByList(ctx context.Context, slug string) ApiSourcesAllUsedByListRequest {
 	return ApiSourcesAllUsedByListRequest{
@@ -918,7 +921,8 @@ func (a *SourcesApiService) SourcesAllUsedByList(ctx context.Context, slug strin
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *SourcesApiService) SourcesAllUsedByListExecute(r ApiSourcesAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1040,8 +1044,8 @@ SourcesAllUserSettingsList Method for SourcesAllUserSettingsList
 
 Get all sources the user can configure
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesAllUserSettingsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesAllUserSettingsListRequest
 */
 func (a *SourcesApiService) SourcesAllUserSettingsList(ctx context.Context) ApiSourcesAllUserSettingsListRequest {
 	return ApiSourcesAllUserSettingsListRequest{
@@ -1051,7 +1055,8 @@ func (a *SourcesApiService) SourcesAllUserSettingsList(ctx context.Context) ApiS
 }
 
 // Execute executes the request
-//  @return []UserSetting
+//
+//	@return []UserSetting
 func (a *SourcesApiService) SourcesAllUserSettingsListExecute(r ApiSourcesAllUserSettingsListRequest) ([]UserSetting, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1178,8 +1183,8 @@ SourcesLdapCreate Method for SourcesLdapCreate
 
 LDAP Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesLdapCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesLdapCreateRequest
 */
 func (a *SourcesApiService) SourcesLdapCreate(ctx context.Context) ApiSourcesLdapCreateRequest {
 	return ApiSourcesLdapCreateRequest{
@@ -1189,7 +1194,8 @@ func (a *SourcesApiService) SourcesLdapCreate(ctx context.Context) ApiSourcesLda
 }
 
 // Execute executes the request
-//  @return LDAPSource
+//
+//	@return LDAPSource
 func (a *SourcesApiService) SourcesLdapCreateExecute(r ApiSourcesLdapCreateRequest) (*LDAPSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1316,9 +1322,9 @@ SourcesLdapDebugRetrieve Method for SourcesLdapDebugRetrieve
 
 Get raw LDAP data to debug
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesLdapDebugRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesLdapDebugRetrieveRequest
 */
 func (a *SourcesApiService) SourcesLdapDebugRetrieve(ctx context.Context, slug string) ApiSourcesLdapDebugRetrieveRequest {
 	return ApiSourcesLdapDebugRetrieveRequest{
@@ -1329,7 +1335,8 @@ func (a *SourcesApiService) SourcesLdapDebugRetrieve(ctx context.Context, slug s
 }
 
 // Execute executes the request
-//  @return LDAPDebug
+//
+//	@return LDAPDebug
 func (a *SourcesApiService) SourcesLdapDebugRetrieveExecute(r ApiSourcesLdapDebugRetrieveRequest) (*LDAPDebug, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1452,9 +1459,9 @@ SourcesLdapDestroy Method for SourcesLdapDestroy
 
 LDAP Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesLdapDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesLdapDestroyRequest
 */
 func (a *SourcesApiService) SourcesLdapDestroy(ctx context.Context, slug string) ApiSourcesLdapDestroyRequest {
 	return ApiSourcesLdapDestroyRequest{
@@ -1724,8 +1731,8 @@ SourcesLdapList Method for SourcesLdapList
 
 LDAP Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesLdapListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesLdapListRequest
 */
 func (a *SourcesApiService) SourcesLdapList(ctx context.Context) ApiSourcesLdapListRequest {
 	return ApiSourcesLdapListRequest{
@@ -1735,7 +1742,8 @@ func (a *SourcesApiService) SourcesLdapList(ctx context.Context) ApiSourcesLdapL
 }
 
 // Execute executes the request
-//  @return PaginatedLDAPSourceList
+//
+//	@return PaginatedLDAPSourceList
 func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) (*PaginatedLDAPSourceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1951,9 +1959,9 @@ SourcesLdapPartialUpdate Method for SourcesLdapPartialUpdate
 
 LDAP Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesLdapPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesLdapPartialUpdateRequest
 */
 func (a *SourcesApiService) SourcesLdapPartialUpdate(ctx context.Context, slug string) ApiSourcesLdapPartialUpdateRequest {
 	return ApiSourcesLdapPartialUpdateRequest{
@@ -1964,7 +1972,8 @@ func (a *SourcesApiService) SourcesLdapPartialUpdate(ctx context.Context, slug s
 }
 
 // Execute executes the request
-//  @return LDAPSource
+//
+//	@return LDAPSource
 func (a *SourcesApiService) SourcesLdapPartialUpdateExecute(r ApiSourcesLdapPartialUpdateRequest) (*LDAPSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2089,9 +2098,9 @@ SourcesLdapRetrieve Method for SourcesLdapRetrieve
 
 LDAP Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesLdapRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesLdapRetrieveRequest
 */
 func (a *SourcesApiService) SourcesLdapRetrieve(ctx context.Context, slug string) ApiSourcesLdapRetrieveRequest {
 	return ApiSourcesLdapRetrieveRequest{
@@ -2102,7 +2111,8 @@ func (a *SourcesApiService) SourcesLdapRetrieve(ctx context.Context, slug string
 }
 
 // Execute executes the request
-//  @return LDAPSource
+//
+//	@return LDAPSource
 func (a *SourcesApiService) SourcesLdapRetrieveExecute(r ApiSourcesLdapRetrieveRequest) (*LDAPSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2225,9 +2235,9 @@ SourcesLdapSyncStatusList Method for SourcesLdapSyncStatusList
 
 Get source's sync status
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesLdapSyncStatusListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesLdapSyncStatusListRequest
 */
 func (a *SourcesApiService) SourcesLdapSyncStatusList(ctx context.Context, slug string) ApiSourcesLdapSyncStatusListRequest {
 	return ApiSourcesLdapSyncStatusListRequest{
@@ -2238,7 +2248,8 @@ func (a *SourcesApiService) SourcesLdapSyncStatusList(ctx context.Context, slug 
 }
 
 // Execute executes the request
-//  @return []Task
+//
+//	@return []Task
 func (a *SourcesApiService) SourcesLdapSyncStatusListExecute(r ApiSourcesLdapSyncStatusListRequest) ([]Task, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2367,9 +2378,9 @@ SourcesLdapUpdate Method for SourcesLdapUpdate
 
 LDAP Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesLdapUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesLdapUpdateRequest
 */
 func (a *SourcesApiService) SourcesLdapUpdate(ctx context.Context, slug string) ApiSourcesLdapUpdateRequest {
 	return ApiSourcesLdapUpdateRequest{
@@ -2380,7 +2391,8 @@ func (a *SourcesApiService) SourcesLdapUpdate(ctx context.Context, slug string) 
 }
 
 // Execute executes the request
-//  @return LDAPSource
+//
+//	@return LDAPSource
 func (a *SourcesApiService) SourcesLdapUpdateExecute(r ApiSourcesLdapUpdateRequest) (*LDAPSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -2508,9 +2520,9 @@ SourcesLdapUsedByList Method for SourcesLdapUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesLdapUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesLdapUsedByListRequest
 */
 func (a *SourcesApiService) SourcesLdapUsedByList(ctx context.Context, slug string) ApiSourcesLdapUsedByListRequest {
 	return ApiSourcesLdapUsedByListRequest{
@@ -2521,7 +2533,8 @@ func (a *SourcesApiService) SourcesLdapUsedByList(ctx context.Context, slug stri
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *SourcesApiService) SourcesLdapUsedByListExecute(r ApiSourcesLdapUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2649,8 +2662,8 @@ SourcesOauthCreate Method for SourcesOauthCreate
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesOauthCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesOauthCreateRequest
 */
 func (a *SourcesApiService) SourcesOauthCreate(ctx context.Context) ApiSourcesOauthCreateRequest {
 	return ApiSourcesOauthCreateRequest{
@@ -2660,7 +2673,8 @@ func (a *SourcesApiService) SourcesOauthCreate(ctx context.Context) ApiSourcesOa
 }
 
 // Execute executes the request
-//  @return OAuthSource
+//
+//	@return OAuthSource
 func (a *SourcesApiService) SourcesOauthCreateExecute(r ApiSourcesOauthCreateRequest) (*OAuthSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2787,9 +2801,9 @@ SourcesOauthDestroy Method for SourcesOauthDestroy
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesOauthDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesOauthDestroyRequest
 */
 func (a *SourcesApiService) SourcesOauthDestroy(ctx context.Context, slug string) ApiSourcesOauthDestroyRequest {
 	return ApiSourcesOauthDestroyRequest{
@@ -3032,8 +3046,8 @@ SourcesOauthList Method for SourcesOauthList
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesOauthListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesOauthListRequest
 */
 func (a *SourcesApiService) SourcesOauthList(ctx context.Context) ApiSourcesOauthListRequest {
 	return ApiSourcesOauthListRequest{
@@ -3043,7 +3057,8 @@ func (a *SourcesApiService) SourcesOauthList(ctx context.Context) ApiSourcesOaut
 }
 
 // Execute executes the request
-//  @return PaginatedOAuthSourceList
+//
+//	@return PaginatedOAuthSourceList
 func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest) (*PaginatedOAuthSourceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3228,9 +3243,9 @@ SourcesOauthPartialUpdate Method for SourcesOauthPartialUpdate
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesOauthPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesOauthPartialUpdateRequest
 */
 func (a *SourcesApiService) SourcesOauthPartialUpdate(ctx context.Context, slug string) ApiSourcesOauthPartialUpdateRequest {
 	return ApiSourcesOauthPartialUpdateRequest{
@@ -3241,7 +3256,8 @@ func (a *SourcesApiService) SourcesOauthPartialUpdate(ctx context.Context, slug 
 }
 
 // Execute executes the request
-//  @return OAuthSource
+//
+//	@return OAuthSource
 func (a *SourcesApiService) SourcesOauthPartialUpdateExecute(r ApiSourcesOauthPartialUpdateRequest) (*OAuthSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -3366,9 +3382,9 @@ SourcesOauthRetrieve Method for SourcesOauthRetrieve
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesOauthRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesOauthRetrieveRequest
 */
 func (a *SourcesApiService) SourcesOauthRetrieve(ctx context.Context, slug string) ApiSourcesOauthRetrieveRequest {
 	return ApiSourcesOauthRetrieveRequest{
@@ -3379,7 +3395,8 @@ func (a *SourcesApiService) SourcesOauthRetrieve(ctx context.Context, slug strin
 }
 
 // Execute executes the request
-//  @return OAuthSource
+//
+//	@return OAuthSource
 func (a *SourcesApiService) SourcesOauthRetrieveExecute(r ApiSourcesOauthRetrieveRequest) (*OAuthSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3508,8 +3525,8 @@ SourcesOauthSourceTypesList Method for SourcesOauthSourceTypesList
 Get all creatable source types. If ?name is set, only returns the type for <name>.
 If <name> isn't found, returns the default type.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesOauthSourceTypesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesOauthSourceTypesListRequest
 */
 func (a *SourcesApiService) SourcesOauthSourceTypesList(ctx context.Context) ApiSourcesOauthSourceTypesListRequest {
 	return ApiSourcesOauthSourceTypesListRequest{
@@ -3519,7 +3536,8 @@ func (a *SourcesApiService) SourcesOauthSourceTypesList(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return []SourceType
+//
+//	@return []SourceType
 func (a *SourcesApiService) SourcesOauthSourceTypesListExecute(r ApiSourcesOauthSourceTypesListRequest) ([]SourceType, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3650,9 +3668,9 @@ SourcesOauthUpdate Method for SourcesOauthUpdate
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesOauthUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesOauthUpdateRequest
 */
 func (a *SourcesApiService) SourcesOauthUpdate(ctx context.Context, slug string) ApiSourcesOauthUpdateRequest {
 	return ApiSourcesOauthUpdateRequest{
@@ -3663,7 +3681,8 @@ func (a *SourcesApiService) SourcesOauthUpdate(ctx context.Context, slug string)
 }
 
 // Execute executes the request
-//  @return OAuthSource
+//
+//	@return OAuthSource
 func (a *SourcesApiService) SourcesOauthUpdateExecute(r ApiSourcesOauthUpdateRequest) (*OAuthSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -3791,9 +3810,9 @@ SourcesOauthUsedByList Method for SourcesOauthUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesOauthUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesOauthUsedByListRequest
 */
 func (a *SourcesApiService) SourcesOauthUsedByList(ctx context.Context, slug string) ApiSourcesOauthUsedByListRequest {
 	return ApiSourcesOauthUsedByListRequest{
@@ -3804,7 +3823,8 @@ func (a *SourcesApiService) SourcesOauthUsedByList(ctx context.Context, slug str
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *SourcesApiService) SourcesOauthUsedByListExecute(r ApiSourcesOauthUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3932,8 +3952,8 @@ SourcesPlexCreate Method for SourcesPlexCreate
 
 Plex source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesPlexCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesPlexCreateRequest
 */
 func (a *SourcesApiService) SourcesPlexCreate(ctx context.Context) ApiSourcesPlexCreateRequest {
 	return ApiSourcesPlexCreateRequest{
@@ -3943,7 +3963,8 @@ func (a *SourcesApiService) SourcesPlexCreate(ctx context.Context) ApiSourcesPle
 }
 
 // Execute executes the request
-//  @return PlexSource
+//
+//	@return PlexSource
 func (a *SourcesApiService) SourcesPlexCreateExecute(r ApiSourcesPlexCreateRequest) (*PlexSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -4070,9 +4091,9 @@ SourcesPlexDestroy Method for SourcesPlexDestroy
 
 Plex source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesPlexDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesPlexDestroyRequest
 */
 func (a *SourcesApiService) SourcesPlexDestroy(ctx context.Context, slug string) ApiSourcesPlexDestroyRequest {
 	return ApiSourcesPlexDestroyRequest{
@@ -4278,8 +4299,8 @@ SourcesPlexList Method for SourcesPlexList
 
 Plex source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesPlexListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesPlexListRequest
 */
 func (a *SourcesApiService) SourcesPlexList(ctx context.Context) ApiSourcesPlexListRequest {
 	return ApiSourcesPlexListRequest{
@@ -4289,7 +4310,8 @@ func (a *SourcesApiService) SourcesPlexList(ctx context.Context) ApiSourcesPlexL
 }
 
 // Execute executes the request
-//  @return PaginatedPlexSourceList
+//
+//	@return PaginatedPlexSourceList
 func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) (*PaginatedPlexSourceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4456,9 +4478,9 @@ SourcesPlexPartialUpdate Method for SourcesPlexPartialUpdate
 
 Plex source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesPlexPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesPlexPartialUpdateRequest
 */
 func (a *SourcesApiService) SourcesPlexPartialUpdate(ctx context.Context, slug string) ApiSourcesPlexPartialUpdateRequest {
 	return ApiSourcesPlexPartialUpdateRequest{
@@ -4469,7 +4491,8 @@ func (a *SourcesApiService) SourcesPlexPartialUpdate(ctx context.Context, slug s
 }
 
 // Execute executes the request
-//  @return PlexSource
+//
+//	@return PlexSource
 func (a *SourcesApiService) SourcesPlexPartialUpdateExecute(r ApiSourcesPlexPartialUpdateRequest) (*PlexSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -4605,8 +4628,8 @@ SourcesPlexRedeemTokenAuthenticatedCreate Method for SourcesPlexRedeemTokenAuthe
 
 Redeem a plex token for an authenticated user, creating a connection
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesPlexRedeemTokenAuthenticatedCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesPlexRedeemTokenAuthenticatedCreateRequest
 */
 func (a *SourcesApiService) SourcesPlexRedeemTokenAuthenticatedCreate(ctx context.Context) ApiSourcesPlexRedeemTokenAuthenticatedCreateRequest {
 	return ApiSourcesPlexRedeemTokenAuthenticatedCreateRequest{
@@ -4728,8 +4751,8 @@ SourcesPlexRedeemTokenCreate Method for SourcesPlexRedeemTokenCreate
 Redeem a plex token, check it's access to resources against what's allowed
 for the source, and redirect to an authentication/enrollment flow.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesPlexRedeemTokenCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesPlexRedeemTokenCreateRequest
 */
 func (a *SourcesApiService) SourcesPlexRedeemTokenCreate(ctx context.Context) ApiSourcesPlexRedeemTokenCreateRequest {
 	return ApiSourcesPlexRedeemTokenCreateRequest{
@@ -4739,7 +4762,8 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenCreate(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return RedirectChallenge
+//
+//	@return RedirectChallenge
 func (a *SourcesApiService) SourcesPlexRedeemTokenCreateExecute(r ApiSourcesPlexRedeemTokenCreateRequest) (*RedirectChallenge, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -4850,9 +4874,9 @@ SourcesPlexRetrieve Method for SourcesPlexRetrieve
 
 Plex source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesPlexRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesPlexRetrieveRequest
 */
 func (a *SourcesApiService) SourcesPlexRetrieve(ctx context.Context, slug string) ApiSourcesPlexRetrieveRequest {
 	return ApiSourcesPlexRetrieveRequest{
@@ -4863,7 +4887,8 @@ func (a *SourcesApiService) SourcesPlexRetrieve(ctx context.Context, slug string
 }
 
 // Execute executes the request
-//  @return PlexSource
+//
+//	@return PlexSource
 func (a *SourcesApiService) SourcesPlexRetrieveExecute(r ApiSourcesPlexRetrieveRequest) (*PlexSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4992,9 +5017,9 @@ SourcesPlexUpdate Method for SourcesPlexUpdate
 
 Plex source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesPlexUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesPlexUpdateRequest
 */
 func (a *SourcesApiService) SourcesPlexUpdate(ctx context.Context, slug string) ApiSourcesPlexUpdateRequest {
 	return ApiSourcesPlexUpdateRequest{
@@ -5005,7 +5030,8 @@ func (a *SourcesApiService) SourcesPlexUpdate(ctx context.Context, slug string) 
 }
 
 // Execute executes the request
-//  @return PlexSource
+//
+//	@return PlexSource
 func (a *SourcesApiService) SourcesPlexUpdateExecute(r ApiSourcesPlexUpdateRequest) (*PlexSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -5133,9 +5159,9 @@ SourcesPlexUsedByList Method for SourcesPlexUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesPlexUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesPlexUsedByListRequest
 */
 func (a *SourcesApiService) SourcesPlexUsedByList(ctx context.Context, slug string) ApiSourcesPlexUsedByListRequest {
 	return ApiSourcesPlexUsedByListRequest{
@@ -5146,7 +5172,8 @@ func (a *SourcesApiService) SourcesPlexUsedByList(ctx context.Context, slug stri
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *SourcesApiService) SourcesPlexUsedByListExecute(r ApiSourcesPlexUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5274,8 +5301,8 @@ SourcesSamlCreate Method for SourcesSamlCreate
 
 SAMLSource Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesSamlCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesSamlCreateRequest
 */
 func (a *SourcesApiService) SourcesSamlCreate(ctx context.Context) ApiSourcesSamlCreateRequest {
 	return ApiSourcesSamlCreateRequest{
@@ -5285,7 +5312,8 @@ func (a *SourcesApiService) SourcesSamlCreate(ctx context.Context) ApiSourcesSam
 }
 
 // Execute executes the request
-//  @return SAMLSource
+//
+//	@return SAMLSource
 func (a *SourcesApiService) SourcesSamlCreateExecute(r ApiSourcesSamlCreateRequest) (*SAMLSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -5412,9 +5440,9 @@ SourcesSamlDestroy Method for SourcesSamlDestroy
 
 SAMLSource Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesSamlDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesSamlDestroyRequest
 */
 func (a *SourcesApiService) SourcesSamlDestroy(ctx context.Context, slug string) ApiSourcesSamlDestroyRequest {
 	return ApiSourcesSamlDestroyRequest{
@@ -5684,8 +5712,8 @@ SourcesSamlList Method for SourcesSamlList
 
 SAMLSource Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesSamlListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesSamlListRequest
 */
 func (a *SourcesApiService) SourcesSamlList(ctx context.Context) ApiSourcesSamlListRequest {
 	return ApiSourcesSamlListRequest{
@@ -5695,7 +5723,8 @@ func (a *SourcesApiService) SourcesSamlList(ctx context.Context) ApiSourcesSamlL
 }
 
 // Execute executes the request
-//  @return PaginatedSAMLSourceList
+//
+//	@return PaginatedSAMLSourceList
 func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) (*PaginatedSAMLSourceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5886,9 +5915,9 @@ SourcesSamlMetadataRetrieve Method for SourcesSamlMetadataRetrieve
 
 Return metadata as XML string
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesSamlMetadataRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesSamlMetadataRetrieveRequest
 */
 func (a *SourcesApiService) SourcesSamlMetadataRetrieve(ctx context.Context, slug string) ApiSourcesSamlMetadataRetrieveRequest {
 	return ApiSourcesSamlMetadataRetrieveRequest{
@@ -5899,7 +5928,8 @@ func (a *SourcesApiService) SourcesSamlMetadataRetrieve(ctx context.Context, slu
 }
 
 // Execute executes the request
-//  @return SAMLMetadata
+//
+//	@return SAMLMetadata
 func (a *SourcesApiService) SourcesSamlMetadataRetrieveExecute(r ApiSourcesSamlMetadataRetrieveRequest) (*SAMLMetadata, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6028,9 +6058,9 @@ SourcesSamlPartialUpdate Method for SourcesSamlPartialUpdate
 
 SAMLSource Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesSamlPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesSamlPartialUpdateRequest
 */
 func (a *SourcesApiService) SourcesSamlPartialUpdate(ctx context.Context, slug string) ApiSourcesSamlPartialUpdateRequest {
 	return ApiSourcesSamlPartialUpdateRequest{
@@ -6041,7 +6071,8 @@ func (a *SourcesApiService) SourcesSamlPartialUpdate(ctx context.Context, slug s
 }
 
 // Execute executes the request
-//  @return SAMLSource
+//
+//	@return SAMLSource
 func (a *SourcesApiService) SourcesSamlPartialUpdateExecute(r ApiSourcesSamlPartialUpdateRequest) (*SAMLSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -6166,9 +6197,9 @@ SourcesSamlRetrieve Method for SourcesSamlRetrieve
 
 SAMLSource Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesSamlRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesSamlRetrieveRequest
 */
 func (a *SourcesApiService) SourcesSamlRetrieve(ctx context.Context, slug string) ApiSourcesSamlRetrieveRequest {
 	return ApiSourcesSamlRetrieveRequest{
@@ -6179,7 +6210,8 @@ func (a *SourcesApiService) SourcesSamlRetrieve(ctx context.Context, slug string
 }
 
 // Execute executes the request
-//  @return SAMLSource
+//
+//	@return SAMLSource
 func (a *SourcesApiService) SourcesSamlRetrieveExecute(r ApiSourcesSamlRetrieveRequest) (*SAMLSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6308,9 +6340,9 @@ SourcesSamlUpdate Method for SourcesSamlUpdate
 
 SAMLSource Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesSamlUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesSamlUpdateRequest
 */
 func (a *SourcesApiService) SourcesSamlUpdate(ctx context.Context, slug string) ApiSourcesSamlUpdateRequest {
 	return ApiSourcesSamlUpdateRequest{
@@ -6321,7 +6353,8 @@ func (a *SourcesApiService) SourcesSamlUpdate(ctx context.Context, slug string) 
 }
 
 // Execute executes the request
-//  @return SAMLSource
+//
+//	@return SAMLSource
 func (a *SourcesApiService) SourcesSamlUpdateExecute(r ApiSourcesSamlUpdateRequest) (*SAMLSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -6449,9 +6482,9 @@ SourcesSamlUsedByList Method for SourcesSamlUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param slug
- @return ApiSourcesSamlUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesSamlUsedByListRequest
 */
 func (a *SourcesApiService) SourcesSamlUsedByList(ctx context.Context, slug string) ApiSourcesSamlUsedByListRequest {
 	return ApiSourcesSamlUsedByListRequest{
@@ -6462,7 +6495,8 @@ func (a *SourcesApiService) SourcesSamlUsedByList(ctx context.Context, slug stri
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *SourcesApiService) SourcesSamlUsedByListExecute(r ApiSourcesSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6585,9 +6619,9 @@ SourcesUserConnectionsAllDestroy Method for SourcesUserConnectionsAllDestroy
 
 User-source connection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this user source connection.
- @return ApiSourcesUserConnectionsAllDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this user source connection.
+	@return ApiSourcesUserConnectionsAllDestroyRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsAllDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsAllDestroyRequest {
 	return ApiSourcesUserConnectionsAllDestroyRequest{
@@ -6743,8 +6777,8 @@ SourcesUserConnectionsAllList Method for SourcesUserConnectionsAllList
 
 User-source connection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesUserConnectionsAllListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesUserConnectionsAllListRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsAllList(ctx context.Context) ApiSourcesUserConnectionsAllListRequest {
 	return ApiSourcesUserConnectionsAllListRequest{
@@ -6754,7 +6788,8 @@ func (a *SourcesApiService) SourcesUserConnectionsAllList(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return PaginatedUserSourceConnectionList
+//
+//	@return PaginatedUserSourceConnectionList
 func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUserConnectionsAllListRequest) (*PaginatedUserSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6891,9 +6926,9 @@ SourcesUserConnectionsAllPartialUpdate Method for SourcesUserConnectionsAllParti
 
 User-source connection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this user source connection.
- @return ApiSourcesUserConnectionsAllPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this user source connection.
+	@return ApiSourcesUserConnectionsAllPartialUpdateRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsAllPartialUpdateRequest {
 	return ApiSourcesUserConnectionsAllPartialUpdateRequest{
@@ -6904,7 +6939,8 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdate(ctx context.C
 }
 
 // Execute executes the request
-//  @return UserSourceConnection
+//
+//	@return UserSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiSourcesUserConnectionsAllPartialUpdateRequest) (*UserSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -7027,9 +7063,9 @@ SourcesUserConnectionsAllRetrieve Method for SourcesUserConnectionsAllRetrieve
 
 User-source connection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this user source connection.
- @return ApiSourcesUserConnectionsAllRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this user source connection.
+	@return ApiSourcesUserConnectionsAllRetrieveRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsAllRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsAllRetrieveRequest {
 	return ApiSourcesUserConnectionsAllRetrieveRequest{
@@ -7040,7 +7076,8 @@ func (a *SourcesApiService) SourcesUserConnectionsAllRetrieve(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return UserSourceConnection
+//
+//	@return UserSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsAllRetrieveExecute(r ApiSourcesUserConnectionsAllRetrieveRequest) (*UserSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7163,9 +7200,9 @@ SourcesUserConnectionsAllUpdate Method for SourcesUserConnectionsAllUpdate
 
 User-source connection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this user source connection.
- @return ApiSourcesUserConnectionsAllUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this user source connection.
+	@return ApiSourcesUserConnectionsAllUpdateRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsAllUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsAllUpdateRequest {
 	return ApiSourcesUserConnectionsAllUpdateRequest{
@@ -7176,7 +7213,8 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdate(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return UserSourceConnection
+//
+//	@return UserSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesUserConnectionsAllUpdateRequest) (*UserSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -7299,9 +7337,9 @@ SourcesUserConnectionsAllUsedByList Method for SourcesUserConnectionsAllUsedByLi
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this user source connection.
- @return ApiSourcesUserConnectionsAllUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this user source connection.
+	@return ApiSourcesUserConnectionsAllUsedByListRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsAllUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsAllUsedByListRequest {
 	return ApiSourcesUserConnectionsAllUsedByListRequest{
@@ -7312,7 +7350,8 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUsedByList(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *SourcesApiService) SourcesUserConnectionsAllUsedByListExecute(r ApiSourcesUserConnectionsAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7440,8 +7479,8 @@ SourcesUserConnectionsOauthCreate Method for SourcesUserConnectionsOauthCreate
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesUserConnectionsOauthCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesUserConnectionsOauthCreateRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsOauthCreate(ctx context.Context) ApiSourcesUserConnectionsOauthCreateRequest {
 	return ApiSourcesUserConnectionsOauthCreateRequest{
@@ -7451,7 +7490,8 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthCreate(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return UserOAuthSourceConnection
+//
+//	@return UserOAuthSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsOauthCreateExecute(r ApiSourcesUserConnectionsOauthCreateRequest) (*UserOAuthSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -7578,9 +7618,9 @@ SourcesUserConnectionsOauthDestroy Method for SourcesUserConnectionsOauthDestroy
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User OAuth Source Connection.
- @return ApiSourcesUserConnectionsOauthDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User OAuth Source Connection.
+	@return ApiSourcesUserConnectionsOauthDestroyRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsOauthDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthDestroyRequest {
 	return ApiSourcesUserConnectionsOauthDestroyRequest{
@@ -7736,8 +7776,8 @@ SourcesUserConnectionsOauthList Method for SourcesUserConnectionsOauthList
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesUserConnectionsOauthListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesUserConnectionsOauthListRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsOauthList(ctx context.Context) ApiSourcesUserConnectionsOauthListRequest {
 	return ApiSourcesUserConnectionsOauthListRequest{
@@ -7747,7 +7787,8 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthList(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return PaginatedUserOAuthSourceConnectionList
+//
+//	@return PaginatedUserOAuthSourceConnectionList
 func (a *SourcesApiService) SourcesUserConnectionsOauthListExecute(r ApiSourcesUserConnectionsOauthListRequest) (*PaginatedUserOAuthSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7890,9 +7931,9 @@ SourcesUserConnectionsOauthPartialUpdate Method for SourcesUserConnectionsOauthP
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User OAuth Source Connection.
- @return ApiSourcesUserConnectionsOauthPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User OAuth Source Connection.
+	@return ApiSourcesUserConnectionsOauthPartialUpdateRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthPartialUpdateRequest {
 	return ApiSourcesUserConnectionsOauthPartialUpdateRequest{
@@ -7903,7 +7944,8 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdate(ctx context
 }
 
 // Execute executes the request
-//  @return UserOAuthSourceConnection
+//
+//	@return UserOAuthSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdateExecute(r ApiSourcesUserConnectionsOauthPartialUpdateRequest) (*UserOAuthSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -8028,9 +8070,9 @@ SourcesUserConnectionsOauthRetrieve Method for SourcesUserConnectionsOauthRetrie
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User OAuth Source Connection.
- @return ApiSourcesUserConnectionsOauthRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User OAuth Source Connection.
+	@return ApiSourcesUserConnectionsOauthRetrieveRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthRetrieveRequest {
 	return ApiSourcesUserConnectionsOauthRetrieveRequest{
@@ -8041,7 +8083,8 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieve(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return UserOAuthSourceConnection
+//
+//	@return UserOAuthSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieveExecute(r ApiSourcesUserConnectionsOauthRetrieveRequest) (*UserOAuthSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8170,9 +8213,9 @@ SourcesUserConnectionsOauthUpdate Method for SourcesUserConnectionsOauthUpdate
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User OAuth Source Connection.
- @return ApiSourcesUserConnectionsOauthUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User OAuth Source Connection.
+	@return ApiSourcesUserConnectionsOauthUpdateRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsOauthUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthUpdateRequest {
 	return ApiSourcesUserConnectionsOauthUpdateRequest{
@@ -8183,7 +8226,8 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUpdate(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return UserOAuthSourceConnection
+//
+//	@return UserOAuthSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsOauthUpdateExecute(r ApiSourcesUserConnectionsOauthUpdateRequest) (*UserOAuthSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -8311,9 +8355,9 @@ SourcesUserConnectionsOauthUsedByList Method for SourcesUserConnectionsOauthUsed
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User OAuth Source Connection.
- @return ApiSourcesUserConnectionsOauthUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User OAuth Source Connection.
+	@return ApiSourcesUserConnectionsOauthUsedByListRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthUsedByListRequest {
 	return ApiSourcesUserConnectionsOauthUsedByListRequest{
@@ -8324,7 +8368,8 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByList(ctx context.Co
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByListExecute(r ApiSourcesUserConnectionsOauthUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8452,8 +8497,8 @@ SourcesUserConnectionsPlexCreate Method for SourcesUserConnectionsPlexCreate
 
 Plex Source connection Serializer
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesUserConnectionsPlexCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesUserConnectionsPlexCreateRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsPlexCreate(ctx context.Context) ApiSourcesUserConnectionsPlexCreateRequest {
 	return ApiSourcesUserConnectionsPlexCreateRequest{
@@ -8463,7 +8508,8 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexCreate(ctx context.Context
 }
 
 // Execute executes the request
-//  @return PlexSourceConnection
+//
+//	@return PlexSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsPlexCreateExecute(r ApiSourcesUserConnectionsPlexCreateRequest) (*PlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -8590,9 +8636,9 @@ SourcesUserConnectionsPlexDestroy Method for SourcesUserConnectionsPlexDestroy
 
 Plex Source connection Serializer
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User Plex Source Connection.
- @return ApiSourcesUserConnectionsPlexDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User Plex Source Connection.
+	@return ApiSourcesUserConnectionsPlexDestroyRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsPlexDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexDestroyRequest {
 	return ApiSourcesUserConnectionsPlexDestroyRequest{
@@ -8748,8 +8794,8 @@ SourcesUserConnectionsPlexList Method for SourcesUserConnectionsPlexList
 
 Plex Source connection Serializer
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesUserConnectionsPlexListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesUserConnectionsPlexListRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsPlexList(ctx context.Context) ApiSourcesUserConnectionsPlexListRequest {
 	return ApiSourcesUserConnectionsPlexListRequest{
@@ -8759,7 +8805,8 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexList(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return PaginatedPlexSourceConnectionList
+//
+//	@return PaginatedPlexSourceConnectionList
 func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUserConnectionsPlexListRequest) (*PaginatedPlexSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -8902,9 +8949,9 @@ SourcesUserConnectionsPlexPartialUpdate Method for SourcesUserConnectionsPlexPar
 
 Plex Source connection Serializer
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User Plex Source Connection.
- @return ApiSourcesUserConnectionsPlexPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User Plex Source Connection.
+	@return ApiSourcesUserConnectionsPlexPartialUpdateRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexPartialUpdateRequest {
 	return ApiSourcesUserConnectionsPlexPartialUpdateRequest{
@@ -8915,7 +8962,8 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdate(ctx context.
 }
 
 // Execute executes the request
-//  @return PlexSourceConnection
+//
+//	@return PlexSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r ApiSourcesUserConnectionsPlexPartialUpdateRequest) (*PlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -9040,9 +9088,9 @@ SourcesUserConnectionsPlexRetrieve Method for SourcesUserConnectionsPlexRetrieve
 
 Plex Source connection Serializer
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User Plex Source Connection.
- @return ApiSourcesUserConnectionsPlexRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User Plex Source Connection.
+	@return ApiSourcesUserConnectionsPlexRetrieveRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexRetrieveRequest {
 	return ApiSourcesUserConnectionsPlexRetrieveRequest{
@@ -9053,7 +9101,8 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieve(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return PlexSourceConnection
+//
+//	@return PlexSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourcesUserConnectionsPlexRetrieveRequest) (*PlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -9182,9 +9231,9 @@ SourcesUserConnectionsPlexUpdate Method for SourcesUserConnectionsPlexUpdate
 
 Plex Source connection Serializer
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User Plex Source Connection.
- @return ApiSourcesUserConnectionsPlexUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User Plex Source Connection.
+	@return ApiSourcesUserConnectionsPlexUpdateRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsPlexUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexUpdateRequest {
 	return ApiSourcesUserConnectionsPlexUpdateRequest{
@@ -9195,7 +9244,8 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdate(ctx context.Context
 }
 
 // Execute executes the request
-//  @return PlexSourceConnection
+//
+//	@return PlexSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSourcesUserConnectionsPlexUpdateRequest) (*PlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -9323,9 +9373,9 @@ SourcesUserConnectionsPlexUsedByList Method for SourcesUserConnectionsPlexUsedBy
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User Plex Source Connection.
- @return ApiSourcesUserConnectionsPlexUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User Plex Source Connection.
+	@return ApiSourcesUserConnectionsPlexUsedByListRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexUsedByListRequest {
 	return ApiSourcesUserConnectionsPlexUsedByListRequest{
@@ -9336,7 +9386,8 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByList(ctx context.Con
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByListExecute(r ApiSourcesUserConnectionsPlexUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -9464,8 +9515,8 @@ SourcesUserConnectionsSamlCreate Method for SourcesUserConnectionsSamlCreate
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesUserConnectionsSamlCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesUserConnectionsSamlCreateRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsSamlCreate(ctx context.Context) ApiSourcesUserConnectionsSamlCreateRequest {
 	return ApiSourcesUserConnectionsSamlCreateRequest{
@@ -9475,7 +9526,8 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlCreate(ctx context.Context
 }
 
 // Execute executes the request
-//  @return UserSAMLSourceConnection
+//
+//	@return UserSAMLSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsSamlCreateExecute(r ApiSourcesUserConnectionsSamlCreateRequest) (*UserSAMLSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -9602,9 +9654,9 @@ SourcesUserConnectionsSamlDestroy Method for SourcesUserConnectionsSamlDestroy
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User SAML Source Connection.
- @return ApiSourcesUserConnectionsSamlDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User SAML Source Connection.
+	@return ApiSourcesUserConnectionsSamlDestroyRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsSamlDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlDestroyRequest {
 	return ApiSourcesUserConnectionsSamlDestroyRequest{
@@ -9760,8 +9812,8 @@ SourcesUserConnectionsSamlList Method for SourcesUserConnectionsSamlList
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSourcesUserConnectionsSamlListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesUserConnectionsSamlListRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsSamlList(ctx context.Context) ApiSourcesUserConnectionsSamlListRequest {
 	return ApiSourcesUserConnectionsSamlListRequest{
@@ -9771,7 +9823,8 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlList(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return PaginatedUserSAMLSourceConnectionList
+//
+//	@return PaginatedUserSAMLSourceConnectionList
 func (a *SourcesApiService) SourcesUserConnectionsSamlListExecute(r ApiSourcesUserConnectionsSamlListRequest) (*PaginatedUserSAMLSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -9914,9 +9967,9 @@ SourcesUserConnectionsSamlPartialUpdate Method for SourcesUserConnectionsSamlPar
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User SAML Source Connection.
- @return ApiSourcesUserConnectionsSamlPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User SAML Source Connection.
+	@return ApiSourcesUserConnectionsSamlPartialUpdateRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlPartialUpdateRequest {
 	return ApiSourcesUserConnectionsSamlPartialUpdateRequest{
@@ -9927,7 +9980,8 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdate(ctx context.
 }
 
 // Execute executes the request
-//  @return UserSAMLSourceConnection
+//
+//	@return UserSAMLSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdateExecute(r ApiSourcesUserConnectionsSamlPartialUpdateRequest) (*UserSAMLSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -10052,9 +10106,9 @@ SourcesUserConnectionsSamlRetrieve Method for SourcesUserConnectionsSamlRetrieve
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User SAML Source Connection.
- @return ApiSourcesUserConnectionsSamlRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User SAML Source Connection.
+	@return ApiSourcesUserConnectionsSamlRetrieveRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlRetrieveRequest {
 	return ApiSourcesUserConnectionsSamlRetrieveRequest{
@@ -10065,7 +10119,8 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieve(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return UserSAMLSourceConnection
+//
+//	@return UserSAMLSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieveExecute(r ApiSourcesUserConnectionsSamlRetrieveRequest) (*UserSAMLSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -10194,9 +10249,9 @@ SourcesUserConnectionsSamlUpdate Method for SourcesUserConnectionsSamlUpdate
 
 Source Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User SAML Source Connection.
- @return ApiSourcesUserConnectionsSamlUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User SAML Source Connection.
+	@return ApiSourcesUserConnectionsSamlUpdateRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsSamlUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlUpdateRequest {
 	return ApiSourcesUserConnectionsSamlUpdateRequest{
@@ -10207,7 +10262,8 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUpdate(ctx context.Context
 }
 
 // Execute executes the request
-//  @return UserSAMLSourceConnection
+//
+//	@return UserSAMLSourceConnection
 func (a *SourcesApiService) SourcesUserConnectionsSamlUpdateExecute(r ApiSourcesUserConnectionsSamlUpdateRequest) (*UserSAMLSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -10335,9 +10391,9 @@ SourcesUserConnectionsSamlUsedByList Method for SourcesUserConnectionsSamlUsedBy
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this User SAML Source Connection.
- @return ApiSourcesUserConnectionsSamlUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User SAML Source Connection.
+	@return ApiSourcesUserConnectionsSamlUsedByListRequest
 */
 func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlUsedByListRequest {
 	return ApiSourcesUserConnectionsSamlUsedByListRequest{
@@ -10348,7 +10404,8 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByList(ctx context.Con
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByListExecute(r ApiSourcesUserConnectionsSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

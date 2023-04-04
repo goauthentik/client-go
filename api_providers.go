@@ -40,9 +40,9 @@ ProvidersAllDestroy Method for ProvidersAllDestroy
 
 Provider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this provider.
- @return ApiProvidersAllDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this provider.
+	@return ApiProvidersAllDestroyRequest
 */
 func (a *ProvidersApiService) ProvidersAllDestroy(ctx context.Context, id int32) ApiProvidersAllDestroyRequest {
 	return ApiProvidersAllDestroyRequest{
@@ -198,8 +198,8 @@ ProvidersAllList Method for ProvidersAllList
 
 Provider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersAllListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersAllListRequest
 */
 func (a *ProvidersApiService) ProvidersAllList(ctx context.Context) ApiProvidersAllListRequest {
 	return ApiProvidersAllListRequest{
@@ -209,7 +209,8 @@ func (a *ProvidersApiService) ProvidersAllList(ctx context.Context) ApiProviders
 }
 
 // Execute executes the request
-//  @return PaginatedProviderList
+//
+//	@return PaginatedProviderList
 func (a *ProvidersApiService) ProvidersAllListExecute(r ApiProvidersAllListRequest) (*PaginatedProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -346,9 +347,9 @@ ProvidersAllRetrieve Method for ProvidersAllRetrieve
 
 Provider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this provider.
- @return ApiProvidersAllRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this provider.
+	@return ApiProvidersAllRetrieveRequest
 */
 func (a *ProvidersApiService) ProvidersAllRetrieve(ctx context.Context, id int32) ApiProvidersAllRetrieveRequest {
 	return ApiProvidersAllRetrieveRequest{
@@ -359,7 +360,8 @@ func (a *ProvidersApiService) ProvidersAllRetrieve(ctx context.Context, id int32
 }
 
 // Execute executes the request
-//  @return Provider
+//
+//	@return Provider
 func (a *ProvidersApiService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetrieveRequest) (*Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -481,8 +483,8 @@ ProvidersAllTypesList Method for ProvidersAllTypesList
 
 Get all creatable provider types
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersAllTypesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersAllTypesListRequest
 */
 func (a *ProvidersApiService) ProvidersAllTypesList(ctx context.Context) ApiProvidersAllTypesListRequest {
 	return ApiProvidersAllTypesListRequest{
@@ -492,7 +494,8 @@ func (a *ProvidersApiService) ProvidersAllTypesList(ctx context.Context) ApiProv
 }
 
 // Execute executes the request
-//  @return []TypeCreate
+//
+//	@return []TypeCreate
 func (a *ProvidersApiService) ProvidersAllTypesListExecute(r ApiProvidersAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -614,9 +617,9 @@ ProvidersAllUsedByList Method for ProvidersAllUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this provider.
- @return ApiProvidersAllUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this provider.
+	@return ApiProvidersAllUsedByListRequest
 */
 func (a *ProvidersApiService) ProvidersAllUsedByList(ctx context.Context, id int32) ApiProvidersAllUsedByListRequest {
 	return ApiProvidersAllUsedByListRequest{
@@ -627,7 +630,8 @@ func (a *ProvidersApiService) ProvidersAllUsedByList(ctx context.Context, id int
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *ProvidersApiService) ProvidersAllUsedByListExecute(r ApiProvidersAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -755,8 +759,8 @@ ProvidersLdapCreate Method for ProvidersLdapCreate
 
 LDAPProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersLdapCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersLdapCreateRequest
 */
 func (a *ProvidersApiService) ProvidersLdapCreate(ctx context.Context) ApiProvidersLdapCreateRequest {
 	return ApiProvidersLdapCreateRequest{
@@ -766,7 +770,8 @@ func (a *ProvidersApiService) ProvidersLdapCreate(ctx context.Context) ApiProvid
 }
 
 // Execute executes the request
-//  @return LDAPProvider
+//
+//	@return LDAPProvider
 func (a *ProvidersApiService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreateRequest) (*LDAPProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -893,9 +898,9 @@ ProvidersLdapDestroy Method for ProvidersLdapDestroy
 
 LDAPProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this LDAP Provider.
- @return ApiProvidersLdapDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this LDAP Provider.
+	@return ApiProvidersLdapDestroyRequest
 */
 func (a *ProvidersApiService) ProvidersLdapDestroy(ctx context.Context, id int32) ApiProvidersLdapDestroyRequest {
 	return ApiProvidersLdapDestroyRequest{
@@ -1111,8 +1116,8 @@ ProvidersLdapList Method for ProvidersLdapList
 
 LDAPProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersLdapListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersLdapListRequest
 */
 func (a *ProvidersApiService) ProvidersLdapList(ctx context.Context) ApiProvidersLdapListRequest {
 	return ApiProvidersLdapListRequest{
@@ -1122,7 +1127,8 @@ func (a *ProvidersApiService) ProvidersLdapList(ctx context.Context) ApiProvider
 }
 
 // Execute executes the request
-//  @return PaginatedLDAPProviderList
+//
+//	@return PaginatedLDAPProviderList
 func (a *ProvidersApiService) ProvidersLdapListExecute(r ApiProvidersLdapListRequest) (*PaginatedLDAPProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1295,9 +1301,9 @@ ProvidersLdapPartialUpdate Method for ProvidersLdapPartialUpdate
 
 LDAPProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this LDAP Provider.
- @return ApiProvidersLdapPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this LDAP Provider.
+	@return ApiProvidersLdapPartialUpdateRequest
 */
 func (a *ProvidersApiService) ProvidersLdapPartialUpdate(ctx context.Context, id int32) ApiProvidersLdapPartialUpdateRequest {
 	return ApiProvidersLdapPartialUpdateRequest{
@@ -1308,7 +1314,8 @@ func (a *ProvidersApiService) ProvidersLdapPartialUpdate(ctx context.Context, id
 }
 
 // Execute executes the request
-//  @return LDAPProvider
+//
+//	@return LDAPProvider
 func (a *ProvidersApiService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLdapPartialUpdateRequest) (*LDAPProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -1433,9 +1440,9 @@ ProvidersLdapRetrieve Method for ProvidersLdapRetrieve
 
 LDAPProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this LDAP Provider.
- @return ApiProvidersLdapRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this LDAP Provider.
+	@return ApiProvidersLdapRetrieveRequest
 */
 func (a *ProvidersApiService) ProvidersLdapRetrieve(ctx context.Context, id int32) ApiProvidersLdapRetrieveRequest {
 	return ApiProvidersLdapRetrieveRequest{
@@ -1446,7 +1453,8 @@ func (a *ProvidersApiService) ProvidersLdapRetrieve(ctx context.Context, id int3
 }
 
 // Execute executes the request
-//  @return LDAPProvider
+//
+//	@return LDAPProvider
 func (a *ProvidersApiService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRetrieveRequest) (*LDAPProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1575,9 +1583,9 @@ ProvidersLdapUpdate Method for ProvidersLdapUpdate
 
 LDAPProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this LDAP Provider.
- @return ApiProvidersLdapUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this LDAP Provider.
+	@return ApiProvidersLdapUpdateRequest
 */
 func (a *ProvidersApiService) ProvidersLdapUpdate(ctx context.Context, id int32) ApiProvidersLdapUpdateRequest {
 	return ApiProvidersLdapUpdateRequest{
@@ -1588,7 +1596,8 @@ func (a *ProvidersApiService) ProvidersLdapUpdate(ctx context.Context, id int32)
 }
 
 // Execute executes the request
-//  @return LDAPProvider
+//
+//	@return LDAPProvider
 func (a *ProvidersApiService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdateRequest) (*LDAPProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -1716,9 +1725,9 @@ ProvidersLdapUsedByList Method for ProvidersLdapUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this LDAP Provider.
- @return ApiProvidersLdapUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this LDAP Provider.
+	@return ApiProvidersLdapUsedByListRequest
 */
 func (a *ProvidersApiService) ProvidersLdapUsedByList(ctx context.Context, id int32) ApiProvidersLdapUsedByListRequest {
 	return ApiProvidersLdapUsedByListRequest{
@@ -1729,7 +1738,8 @@ func (a *ProvidersApiService) ProvidersLdapUsedByList(ctx context.Context, id in
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *ProvidersApiService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1857,8 +1867,8 @@ ProvidersOauth2Create Method for ProvidersOauth2Create
 
 OAuth2Provider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersOauth2CreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersOauth2CreateRequest
 */
 func (a *ProvidersApiService) ProvidersOauth2Create(ctx context.Context) ApiProvidersOauth2CreateRequest {
 	return ApiProvidersOauth2CreateRequest{
@@ -1868,7 +1878,8 @@ func (a *ProvidersApiService) ProvidersOauth2Create(ctx context.Context) ApiProv
 }
 
 // Execute executes the request
-//  @return OAuth2Provider
+//
+//	@return OAuth2Provider
 func (a *ProvidersApiService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2CreateRequest) (*OAuth2Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1995,9 +2006,9 @@ ProvidersOauth2Destroy Method for ProvidersOauth2Destroy
 
 OAuth2Provider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this OAuth2/OpenID Provider.
- @return ApiProvidersOauth2DestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this OAuth2/OpenID Provider.
+	@return ApiProvidersOauth2DestroyRequest
 */
 func (a *ProvidersApiService) ProvidersOauth2Destroy(ctx context.Context, id int32) ApiProvidersOauth2DestroyRequest {
 	return ApiProvidersOauth2DestroyRequest{
@@ -2234,8 +2245,8 @@ ProvidersOauth2List Method for ProvidersOauth2List
 
 OAuth2Provider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersOauth2ListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersOauth2ListRequest
 */
 func (a *ProvidersApiService) ProvidersOauth2List(ctx context.Context) ApiProvidersOauth2ListRequest {
 	return ApiProvidersOauth2ListRequest{
@@ -2245,7 +2256,8 @@ func (a *ProvidersApiService) ProvidersOauth2List(ctx context.Context) ApiProvid
 }
 
 // Execute executes the request
-//  @return PaginatedOAuth2ProviderList
+//
+//	@return PaginatedOAuth2ProviderList
 func (a *ProvidersApiService) ProvidersOauth2ListExecute(r ApiProvidersOauth2ListRequest) (*PaginatedOAuth2ProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2435,9 +2447,9 @@ ProvidersOauth2PartialUpdate Method for ProvidersOauth2PartialUpdate
 
 OAuth2Provider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this OAuth2/OpenID Provider.
- @return ApiProvidersOauth2PartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this OAuth2/OpenID Provider.
+	@return ApiProvidersOauth2PartialUpdateRequest
 */
 func (a *ProvidersApiService) ProvidersOauth2PartialUpdate(ctx context.Context, id int32) ApiProvidersOauth2PartialUpdateRequest {
 	return ApiProvidersOauth2PartialUpdateRequest{
@@ -2448,7 +2460,8 @@ func (a *ProvidersApiService) ProvidersOauth2PartialUpdate(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return OAuth2Provider
+//
+//	@return OAuth2Provider
 func (a *ProvidersApiService) ProvidersOauth2PartialUpdateExecute(r ApiProvidersOauth2PartialUpdateRequest) (*OAuth2Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2573,9 +2586,9 @@ ProvidersOauth2PreviewUserRetrieve Method for ProvidersOauth2PreviewUserRetrieve
 
 Preview user data for provider
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this OAuth2/OpenID Provider.
- @return ApiProvidersOauth2PreviewUserRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this OAuth2/OpenID Provider.
+	@return ApiProvidersOauth2PreviewUserRetrieveRequest
 */
 func (a *ProvidersApiService) ProvidersOauth2PreviewUserRetrieve(ctx context.Context, id int32) ApiProvidersOauth2PreviewUserRetrieveRequest {
 	return ApiProvidersOauth2PreviewUserRetrieveRequest{
@@ -2586,7 +2599,8 @@ func (a *ProvidersApiService) ProvidersOauth2PreviewUserRetrieve(ctx context.Con
 }
 
 // Execute executes the request
-//  @return PropertyMappingPreview
+//
+//	@return PropertyMappingPreview
 func (a *ProvidersApiService) ProvidersOauth2PreviewUserRetrieveExecute(r ApiProvidersOauth2PreviewUserRetrieveRequest) (*PropertyMappingPreview, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2699,9 +2713,9 @@ ProvidersOauth2Retrieve Method for ProvidersOauth2Retrieve
 
 OAuth2Provider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this OAuth2/OpenID Provider.
- @return ApiProvidersOauth2RetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this OAuth2/OpenID Provider.
+	@return ApiProvidersOauth2RetrieveRequest
 */
 func (a *ProvidersApiService) ProvidersOauth2Retrieve(ctx context.Context, id int32) ApiProvidersOauth2RetrieveRequest {
 	return ApiProvidersOauth2RetrieveRequest{
@@ -2712,7 +2726,8 @@ func (a *ProvidersApiService) ProvidersOauth2Retrieve(ctx context.Context, id in
 }
 
 // Execute executes the request
-//  @return OAuth2Provider
+//
+//	@return OAuth2Provider
 func (a *ProvidersApiService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth2RetrieveRequest) (*OAuth2Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2835,9 +2850,9 @@ ProvidersOauth2SetupUrlsRetrieve Method for ProvidersOauth2SetupUrlsRetrieve
 
 Get Providers setup URLs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this OAuth2/OpenID Provider.
- @return ApiProvidersOauth2SetupUrlsRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this OAuth2/OpenID Provider.
+	@return ApiProvidersOauth2SetupUrlsRetrieveRequest
 */
 func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieve(ctx context.Context, id int32) ApiProvidersOauth2SetupUrlsRetrieveRequest {
 	return ApiProvidersOauth2SetupUrlsRetrieveRequest{
@@ -2848,7 +2863,8 @@ func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieve(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return OAuth2ProviderSetupURLs
+//
+//	@return OAuth2ProviderSetupURLs
 func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvidersOauth2SetupUrlsRetrieveRequest) (*OAuth2ProviderSetupURLs, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2977,9 +2993,9 @@ ProvidersOauth2Update Method for ProvidersOauth2Update
 
 OAuth2Provider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this OAuth2/OpenID Provider.
- @return ApiProvidersOauth2UpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this OAuth2/OpenID Provider.
+	@return ApiProvidersOauth2UpdateRequest
 */
 func (a *ProvidersApiService) ProvidersOauth2Update(ctx context.Context, id int32) ApiProvidersOauth2UpdateRequest {
 	return ApiProvidersOauth2UpdateRequest{
@@ -2990,7 +3006,8 @@ func (a *ProvidersApiService) ProvidersOauth2Update(ctx context.Context, id int3
 }
 
 // Execute executes the request
-//  @return OAuth2Provider
+//
+//	@return OAuth2Provider
 func (a *ProvidersApiService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2UpdateRequest) (*OAuth2Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -3118,9 +3135,9 @@ ProvidersOauth2UsedByList Method for ProvidersOauth2UsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this OAuth2/OpenID Provider.
- @return ApiProvidersOauth2UsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this OAuth2/OpenID Provider.
+	@return ApiProvidersOauth2UsedByListRequest
 */
 func (a *ProvidersApiService) ProvidersOauth2UsedByList(ctx context.Context, id int32) ApiProvidersOauth2UsedByListRequest {
 	return ApiProvidersOauth2UsedByListRequest{
@@ -3131,7 +3148,8 @@ func (a *ProvidersApiService) ProvidersOauth2UsedByList(ctx context.Context, id 
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *ProvidersApiService) ProvidersOauth2UsedByListExecute(r ApiProvidersOauth2UsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3259,8 +3277,8 @@ ProvidersProxyCreate Method for ProvidersProxyCreate
 
 ProxyProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersProxyCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersProxyCreateRequest
 */
 func (a *ProvidersApiService) ProvidersProxyCreate(ctx context.Context) ApiProvidersProxyCreateRequest {
 	return ApiProvidersProxyCreateRequest{
@@ -3270,7 +3288,8 @@ func (a *ProvidersApiService) ProvidersProxyCreate(ctx context.Context) ApiProvi
 }
 
 // Execute executes the request
-//  @return ProxyProvider
+//
+//	@return ProxyProvider
 func (a *ProvidersApiService) ProvidersProxyCreateExecute(r ApiProvidersProxyCreateRequest) (*ProxyProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -3397,9 +3416,9 @@ ProvidersProxyDestroy Method for ProvidersProxyDestroy
 
 ProxyProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Proxy Provider.
- @return ApiProvidersProxyDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Proxy Provider.
+	@return ApiProvidersProxyDestroyRequest
 */
 func (a *ProvidersApiService) ProvidersProxyDestroy(ctx context.Context, id int32) ApiProvidersProxyDestroyRequest {
 	return ApiProvidersProxyDestroyRequest{
@@ -3645,8 +3664,8 @@ ProvidersProxyList Method for ProvidersProxyList
 
 ProxyProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersProxyListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersProxyListRequest
 */
 func (a *ProvidersApiService) ProvidersProxyList(ctx context.Context) ApiProvidersProxyListRequest {
 	return ApiProvidersProxyListRequest{
@@ -3656,7 +3675,8 @@ func (a *ProvidersApiService) ProvidersProxyList(ctx context.Context) ApiProvide
 }
 
 // Execute executes the request
-//  @return PaginatedProxyProviderList
+//
+//	@return PaginatedProxyProviderList
 func (a *ProvidersApiService) ProvidersProxyListExecute(r ApiProvidersProxyListRequest) (*PaginatedProxyProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3852,9 +3872,9 @@ ProvidersProxyPartialUpdate Method for ProvidersProxyPartialUpdate
 
 ProxyProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Proxy Provider.
- @return ApiProvidersProxyPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Proxy Provider.
+	@return ApiProvidersProxyPartialUpdateRequest
 */
 func (a *ProvidersApiService) ProvidersProxyPartialUpdate(ctx context.Context, id int32) ApiProvidersProxyPartialUpdateRequest {
 	return ApiProvidersProxyPartialUpdateRequest{
@@ -3865,7 +3885,8 @@ func (a *ProvidersApiService) ProvidersProxyPartialUpdate(ctx context.Context, i
 }
 
 // Execute executes the request
-//  @return ProxyProvider
+//
+//	@return ProxyProvider
 func (a *ProvidersApiService) ProvidersProxyPartialUpdateExecute(r ApiProvidersProxyPartialUpdateRequest) (*ProxyProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -3990,9 +4011,9 @@ ProvidersProxyRetrieve Method for ProvidersProxyRetrieve
 
 ProxyProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Proxy Provider.
- @return ApiProvidersProxyRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Proxy Provider.
+	@return ApiProvidersProxyRetrieveRequest
 */
 func (a *ProvidersApiService) ProvidersProxyRetrieve(ctx context.Context, id int32) ApiProvidersProxyRetrieveRequest {
 	return ApiProvidersProxyRetrieveRequest{
@@ -4003,7 +4024,8 @@ func (a *ProvidersApiService) ProvidersProxyRetrieve(ctx context.Context, id int
 }
 
 // Execute executes the request
-//  @return ProxyProvider
+//
+//	@return ProxyProvider
 func (a *ProvidersApiService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyRetrieveRequest) (*ProxyProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4132,9 +4154,9 @@ ProvidersProxyUpdate Method for ProvidersProxyUpdate
 
 ProxyProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Proxy Provider.
- @return ApiProvidersProxyUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Proxy Provider.
+	@return ApiProvidersProxyUpdateRequest
 */
 func (a *ProvidersApiService) ProvidersProxyUpdate(ctx context.Context, id int32) ApiProvidersProxyUpdateRequest {
 	return ApiProvidersProxyUpdateRequest{
@@ -4145,7 +4167,8 @@ func (a *ProvidersApiService) ProvidersProxyUpdate(ctx context.Context, id int32
 }
 
 // Execute executes the request
-//  @return ProxyProvider
+//
+//	@return ProxyProvider
 func (a *ProvidersApiService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpdateRequest) (*ProxyProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -4273,9 +4296,9 @@ ProvidersProxyUsedByList Method for ProvidersProxyUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Proxy Provider.
- @return ApiProvidersProxyUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Proxy Provider.
+	@return ApiProvidersProxyUsedByListRequest
 */
 func (a *ProvidersApiService) ProvidersProxyUsedByList(ctx context.Context, id int32) ApiProvidersProxyUsedByListRequest {
 	return ApiProvidersProxyUsedByListRequest{
@@ -4286,7 +4309,8 @@ func (a *ProvidersApiService) ProvidersProxyUsedByList(ctx context.Context, id i
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *ProvidersApiService) ProvidersProxyUsedByListExecute(r ApiProvidersProxyUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4414,8 +4438,8 @@ ProvidersRadiusCreate Method for ProvidersRadiusCreate
 
 RadiusProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersRadiusCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersRadiusCreateRequest
 */
 func (a *ProvidersApiService) ProvidersRadiusCreate(ctx context.Context) ApiProvidersRadiusCreateRequest {
 	return ApiProvidersRadiusCreateRequest{
@@ -4425,7 +4449,8 @@ func (a *ProvidersApiService) ProvidersRadiusCreate(ctx context.Context) ApiProv
 }
 
 // Execute executes the request
-//  @return RadiusProvider
+//
+//	@return RadiusProvider
 func (a *ProvidersApiService) ProvidersRadiusCreateExecute(r ApiProvidersRadiusCreateRequest) (*RadiusProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -4552,9 +4577,9 @@ ProvidersRadiusDestroy Method for ProvidersRadiusDestroy
 
 RadiusProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Radius Provider.
- @return ApiProvidersRadiusDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Radius Provider.
+	@return ApiProvidersRadiusDestroyRequest
 */
 func (a *ProvidersApiService) ProvidersRadiusDestroy(ctx context.Context, id int32) ApiProvidersRadiusDestroyRequest {
 	return ApiProvidersRadiusDestroyRequest{
@@ -4728,8 +4753,8 @@ ProvidersRadiusList Method for ProvidersRadiusList
 
 RadiusProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersRadiusListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersRadiusListRequest
 */
 func (a *ProvidersApiService) ProvidersRadiusList(ctx context.Context) ApiProvidersRadiusListRequest {
 	return ApiProvidersRadiusListRequest{
@@ -4739,7 +4764,8 @@ func (a *ProvidersApiService) ProvidersRadiusList(ctx context.Context) ApiProvid
 }
 
 // Execute executes the request
-//  @return PaginatedRadiusProviderList
+//
+//	@return PaginatedRadiusProviderList
 func (a *ProvidersApiService) ProvidersRadiusListExecute(r ApiProvidersRadiusListRequest) (*PaginatedRadiusProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4891,9 +4917,9 @@ ProvidersRadiusPartialUpdate Method for ProvidersRadiusPartialUpdate
 
 RadiusProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Radius Provider.
- @return ApiProvidersRadiusPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Radius Provider.
+	@return ApiProvidersRadiusPartialUpdateRequest
 */
 func (a *ProvidersApiService) ProvidersRadiusPartialUpdate(ctx context.Context, id int32) ApiProvidersRadiusPartialUpdateRequest {
 	return ApiProvidersRadiusPartialUpdateRequest{
@@ -4904,7 +4930,8 @@ func (a *ProvidersApiService) ProvidersRadiusPartialUpdate(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return RadiusProvider
+//
+//	@return RadiusProvider
 func (a *ProvidersApiService) ProvidersRadiusPartialUpdateExecute(r ApiProvidersRadiusPartialUpdateRequest) (*RadiusProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -5029,9 +5056,9 @@ ProvidersRadiusRetrieve Method for ProvidersRadiusRetrieve
 
 RadiusProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Radius Provider.
- @return ApiProvidersRadiusRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Radius Provider.
+	@return ApiProvidersRadiusRetrieveRequest
 */
 func (a *ProvidersApiService) ProvidersRadiusRetrieve(ctx context.Context, id int32) ApiProvidersRadiusRetrieveRequest {
 	return ApiProvidersRadiusRetrieveRequest{
@@ -5042,7 +5069,8 @@ func (a *ProvidersApiService) ProvidersRadiusRetrieve(ctx context.Context, id in
 }
 
 // Execute executes the request
-//  @return RadiusProvider
+//
+//	@return RadiusProvider
 func (a *ProvidersApiService) ProvidersRadiusRetrieveExecute(r ApiProvidersRadiusRetrieveRequest) (*RadiusProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5171,9 +5199,9 @@ ProvidersRadiusUpdate Method for ProvidersRadiusUpdate
 
 RadiusProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Radius Provider.
- @return ApiProvidersRadiusUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Radius Provider.
+	@return ApiProvidersRadiusUpdateRequest
 */
 func (a *ProvidersApiService) ProvidersRadiusUpdate(ctx context.Context, id int32) ApiProvidersRadiusUpdateRequest {
 	return ApiProvidersRadiusUpdateRequest{
@@ -5184,7 +5212,8 @@ func (a *ProvidersApiService) ProvidersRadiusUpdate(ctx context.Context, id int3
 }
 
 // Execute executes the request
-//  @return RadiusProvider
+//
+//	@return RadiusProvider
 func (a *ProvidersApiService) ProvidersRadiusUpdateExecute(r ApiProvidersRadiusUpdateRequest) (*RadiusProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -5312,9 +5341,9 @@ ProvidersRadiusUsedByList Method for ProvidersRadiusUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Radius Provider.
- @return ApiProvidersRadiusUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Radius Provider.
+	@return ApiProvidersRadiusUsedByListRequest
 */
 func (a *ProvidersApiService) ProvidersRadiusUsedByList(ctx context.Context, id int32) ApiProvidersRadiusUsedByListRequest {
 	return ApiProvidersRadiusUsedByListRequest{
@@ -5325,7 +5354,8 @@ func (a *ProvidersApiService) ProvidersRadiusUsedByList(ctx context.Context, id 
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *ProvidersApiService) ProvidersRadiusUsedByListExecute(r ApiProvidersRadiusUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5453,8 +5483,8 @@ ProvidersSamlCreate Method for ProvidersSamlCreate
 
 SAMLProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersSamlCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersSamlCreateRequest
 */
 func (a *ProvidersApiService) ProvidersSamlCreate(ctx context.Context) ApiProvidersSamlCreateRequest {
 	return ApiProvidersSamlCreateRequest{
@@ -5464,7 +5494,8 @@ func (a *ProvidersApiService) ProvidersSamlCreate(ctx context.Context) ApiProvid
 }
 
 // Execute executes the request
-//  @return SAMLProvider
+//
+//	@return SAMLProvider
 func (a *ProvidersApiService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreateRequest) (*SAMLProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -5591,9 +5622,9 @@ ProvidersSamlDestroy Method for ProvidersSamlDestroy
 
 SAMLProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SAML Provider.
- @return ApiProvidersSamlDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SAML Provider.
+	@return ApiProvidersSamlDestroyRequest
 */
 func (a *ProvidersApiService) ProvidersSamlDestroy(ctx context.Context, id int32) ApiProvidersSamlDestroyRequest {
 	return ApiProvidersSamlDestroyRequest{
@@ -5734,8 +5765,8 @@ ProvidersSamlImportMetadataCreate Method for ProvidersSamlImportMetadataCreate
 
 Create provider from SAML Metadata
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersSamlImportMetadataCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersSamlImportMetadataCreateRequest
 */
 func (a *ProvidersApiService) ProvidersSamlImportMetadataCreate(ctx context.Context) ApiProvidersSamlImportMetadataCreateRequest {
 	return ApiProvidersSamlImportMetadataCreateRequest{
@@ -6003,8 +6034,8 @@ ProvidersSamlList Method for ProvidersSamlList
 
 SAMLProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersSamlListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersSamlListRequest
 */
 func (a *ProvidersApiService) ProvidersSamlList(ctx context.Context) ApiProvidersSamlListRequest {
 	return ApiProvidersSamlListRequest{
@@ -6014,7 +6045,8 @@ func (a *ProvidersApiService) ProvidersSamlList(ctx context.Context) ApiProvider
 }
 
 // Execute executes the request
-//  @return PaginatedSAMLProviderList
+//
+//	@return PaginatedSAMLProviderList
 func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListRequest) (*PaginatedSAMLProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6217,9 +6249,9 @@ ProvidersSamlMetadataRetrieve Method for ProvidersSamlMetadataRetrieve
 
 Return metadata as XML string
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SAML Provider.
- @return ApiProvidersSamlMetadataRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SAML Provider.
+	@return ApiProvidersSamlMetadataRetrieveRequest
 */
 func (a *ProvidersApiService) ProvidersSamlMetadataRetrieve(ctx context.Context, id int32) ApiProvidersSamlMetadataRetrieveRequest {
 	return ApiProvidersSamlMetadataRetrieveRequest{
@@ -6230,7 +6262,8 @@ func (a *ProvidersApiService) ProvidersSamlMetadataRetrieve(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return SAMLMetadata
+//
+//	@return SAMLMetadata
 func (a *ProvidersApiService) ProvidersSamlMetadataRetrieveExecute(r ApiProvidersSamlMetadataRetrieveRequest) (*SAMLMetadata, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6365,9 +6398,9 @@ ProvidersSamlPartialUpdate Method for ProvidersSamlPartialUpdate
 
 SAMLProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SAML Provider.
- @return ApiProvidersSamlPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SAML Provider.
+	@return ApiProvidersSamlPartialUpdateRequest
 */
 func (a *ProvidersApiService) ProvidersSamlPartialUpdate(ctx context.Context, id int32) ApiProvidersSamlPartialUpdateRequest {
 	return ApiProvidersSamlPartialUpdateRequest{
@@ -6378,7 +6411,8 @@ func (a *ProvidersApiService) ProvidersSamlPartialUpdate(ctx context.Context, id
 }
 
 // Execute executes the request
-//  @return SAMLProvider
+//
+//	@return SAMLProvider
 func (a *ProvidersApiService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSamlPartialUpdateRequest) (*SAMLProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -6503,9 +6537,9 @@ ProvidersSamlPreviewUserRetrieve Method for ProvidersSamlPreviewUserRetrieve
 
 Preview user data for provider
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SAML Provider.
- @return ApiProvidersSamlPreviewUserRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SAML Provider.
+	@return ApiProvidersSamlPreviewUserRetrieveRequest
 */
 func (a *ProvidersApiService) ProvidersSamlPreviewUserRetrieve(ctx context.Context, id int32) ApiProvidersSamlPreviewUserRetrieveRequest {
 	return ApiProvidersSamlPreviewUserRetrieveRequest{
@@ -6516,7 +6550,8 @@ func (a *ProvidersApiService) ProvidersSamlPreviewUserRetrieve(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return PropertyMappingPreview
+//
+//	@return PropertyMappingPreview
 func (a *ProvidersApiService) ProvidersSamlPreviewUserRetrieveExecute(r ApiProvidersSamlPreviewUserRetrieveRequest) (*PropertyMappingPreview, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6629,9 +6664,9 @@ ProvidersSamlRetrieve Method for ProvidersSamlRetrieve
 
 SAMLProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SAML Provider.
- @return ApiProvidersSamlRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SAML Provider.
+	@return ApiProvidersSamlRetrieveRequest
 */
 func (a *ProvidersApiService) ProvidersSamlRetrieve(ctx context.Context, id int32) ApiProvidersSamlRetrieveRequest {
 	return ApiProvidersSamlRetrieveRequest{
@@ -6642,7 +6677,8 @@ func (a *ProvidersApiService) ProvidersSamlRetrieve(ctx context.Context, id int3
 }
 
 // Execute executes the request
-//  @return SAMLProvider
+//
+//	@return SAMLProvider
 func (a *ProvidersApiService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRetrieveRequest) (*SAMLProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -6771,9 +6807,9 @@ ProvidersSamlUpdate Method for ProvidersSamlUpdate
 
 SAMLProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SAML Provider.
- @return ApiProvidersSamlUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SAML Provider.
+	@return ApiProvidersSamlUpdateRequest
 */
 func (a *ProvidersApiService) ProvidersSamlUpdate(ctx context.Context, id int32) ApiProvidersSamlUpdateRequest {
 	return ApiProvidersSamlUpdateRequest{
@@ -6784,7 +6820,8 @@ func (a *ProvidersApiService) ProvidersSamlUpdate(ctx context.Context, id int32)
 }
 
 // Execute executes the request
-//  @return SAMLProvider
+//
+//	@return SAMLProvider
 func (a *ProvidersApiService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdateRequest) (*SAMLProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -6912,9 +6949,9 @@ ProvidersSamlUsedByList Method for ProvidersSamlUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SAML Provider.
- @return ApiProvidersSamlUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SAML Provider.
+	@return ApiProvidersSamlUsedByListRequest
 */
 func (a *ProvidersApiService) ProvidersSamlUsedByList(ctx context.Context, id int32) ApiProvidersSamlUsedByListRequest {
 	return ApiProvidersSamlUsedByListRequest{
@@ -6925,7 +6962,8 @@ func (a *ProvidersApiService) ProvidersSamlUsedByList(ctx context.Context, id in
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *ProvidersApiService) ProvidersSamlUsedByListExecute(r ApiProvidersSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7053,8 +7091,8 @@ ProvidersScimCreate Method for ProvidersScimCreate
 
 SCIMProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersScimCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersScimCreateRequest
 */
 func (a *ProvidersApiService) ProvidersScimCreate(ctx context.Context) ApiProvidersScimCreateRequest {
 	return ApiProvidersScimCreateRequest{
@@ -7064,7 +7102,8 @@ func (a *ProvidersApiService) ProvidersScimCreate(ctx context.Context) ApiProvid
 }
 
 // Execute executes the request
-//  @return SCIMProvider
+//
+//	@return SCIMProvider
 func (a *ProvidersApiService) ProvidersScimCreateExecute(r ApiProvidersScimCreateRequest) (*SCIMProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -7191,9 +7230,9 @@ ProvidersScimDestroy Method for ProvidersScimDestroy
 
 SCIMProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SCIM Provider.
- @return ApiProvidersScimDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SCIM Provider.
+	@return ApiProvidersScimDestroyRequest
 */
 func (a *ProvidersApiService) ProvidersScimDestroy(ctx context.Context, id int32) ApiProvidersScimDestroyRequest {
 	return ApiProvidersScimDestroyRequest{
@@ -7367,8 +7406,8 @@ ProvidersScimList Method for ProvidersScimList
 
 SCIMProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersScimListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersScimListRequest
 */
 func (a *ProvidersApiService) ProvidersScimList(ctx context.Context) ApiProvidersScimListRequest {
 	return ApiProvidersScimListRequest{
@@ -7378,7 +7417,8 @@ func (a *ProvidersApiService) ProvidersScimList(ctx context.Context) ApiProvider
 }
 
 // Execute executes the request
-//  @return PaginatedSCIMProviderList
+//
+//	@return PaginatedSCIMProviderList
 func (a *ProvidersApiService) ProvidersScimListExecute(r ApiProvidersScimListRequest) (*PaginatedSCIMProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7530,9 +7570,9 @@ ProvidersScimPartialUpdate Method for ProvidersScimPartialUpdate
 
 SCIMProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SCIM Provider.
- @return ApiProvidersScimPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SCIM Provider.
+	@return ApiProvidersScimPartialUpdateRequest
 */
 func (a *ProvidersApiService) ProvidersScimPartialUpdate(ctx context.Context, id int32) ApiProvidersScimPartialUpdateRequest {
 	return ApiProvidersScimPartialUpdateRequest{
@@ -7543,7 +7583,8 @@ func (a *ProvidersApiService) ProvidersScimPartialUpdate(ctx context.Context, id
 }
 
 // Execute executes the request
-//  @return SCIMProvider
+//
+//	@return SCIMProvider
 func (a *ProvidersApiService) ProvidersScimPartialUpdateExecute(r ApiProvidersScimPartialUpdateRequest) (*SCIMProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -7668,9 +7709,9 @@ ProvidersScimRetrieve Method for ProvidersScimRetrieve
 
 SCIMProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SCIM Provider.
- @return ApiProvidersScimRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SCIM Provider.
+	@return ApiProvidersScimRetrieveRequest
 */
 func (a *ProvidersApiService) ProvidersScimRetrieve(ctx context.Context, id int32) ApiProvidersScimRetrieveRequest {
 	return ApiProvidersScimRetrieveRequest{
@@ -7681,7 +7722,8 @@ func (a *ProvidersApiService) ProvidersScimRetrieve(ctx context.Context, id int3
 }
 
 // Execute executes the request
-//  @return SCIMProvider
+//
+//	@return SCIMProvider
 func (a *ProvidersApiService) ProvidersScimRetrieveExecute(r ApiProvidersScimRetrieveRequest) (*SCIMProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7804,9 +7846,9 @@ ProvidersScimSyncStatusRetrieve Method for ProvidersScimSyncStatusRetrieve
 
 Get provider's sync status
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SCIM Provider.
- @return ApiProvidersScimSyncStatusRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SCIM Provider.
+	@return ApiProvidersScimSyncStatusRetrieveRequest
 */
 func (a *ProvidersApiService) ProvidersScimSyncStatusRetrieve(ctx context.Context, id int32) ApiProvidersScimSyncStatusRetrieveRequest {
 	return ApiProvidersScimSyncStatusRetrieveRequest{
@@ -7817,7 +7859,8 @@ func (a *ProvidersApiService) ProvidersScimSyncStatusRetrieve(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Task
+//
+//	@return Task
 func (a *ProvidersApiService) ProvidersScimSyncStatusRetrieveExecute(r ApiProvidersScimSyncStatusRetrieveRequest) (*Task, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -7946,9 +7989,9 @@ ProvidersScimUpdate Method for ProvidersScimUpdate
 
 SCIMProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SCIM Provider.
- @return ApiProvidersScimUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SCIM Provider.
+	@return ApiProvidersScimUpdateRequest
 */
 func (a *ProvidersApiService) ProvidersScimUpdate(ctx context.Context, id int32) ApiProvidersScimUpdateRequest {
 	return ApiProvidersScimUpdateRequest{
@@ -7959,7 +8002,8 @@ func (a *ProvidersApiService) ProvidersScimUpdate(ctx context.Context, id int32)
 }
 
 // Execute executes the request
-//  @return SCIMProvider
+//
+//	@return SCIMProvider
 func (a *ProvidersApiService) ProvidersScimUpdateExecute(r ApiProvidersScimUpdateRequest) (*SCIMProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -8087,9 +8131,9 @@ ProvidersScimUsedByList Method for ProvidersScimUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this SCIM Provider.
- @return ApiProvidersScimUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this SCIM Provider.
+	@return ApiProvidersScimUsedByListRequest
 */
 func (a *ProvidersApiService) ProvidersScimUsedByList(ctx context.Context, id int32) ApiProvidersScimUsedByListRequest {
 	return ApiProvidersScimUsedByListRequest{
@@ -8100,7 +8144,8 @@ func (a *ProvidersApiService) ProvidersScimUsedByList(ctx context.Context, id in
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *ProvidersApiService) ProvidersScimUsedByListExecute(r ApiProvidersScimUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
