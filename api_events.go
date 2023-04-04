@@ -38,8 +38,8 @@ EventsEventsActionsList Method for EventsEventsActionsList
 
 Get all actions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsEventsActionsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEventsEventsActionsListRequest
 */
 func (a *EventsApiService) EventsEventsActionsList(ctx context.Context) ApiEventsEventsActionsListRequest {
 	return ApiEventsEventsActionsListRequest{
@@ -49,7 +49,8 @@ func (a *EventsApiService) EventsEventsActionsList(ctx context.Context) ApiEvent
 }
 
 // Execute executes the request
-//  @return []TypeCreate
+//
+//	@return []TypeCreate
 func (a *EventsApiService) EventsEventsActionsListExecute(r ApiEventsEventsActionsListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -176,8 +177,8 @@ EventsEventsCreate Method for EventsEventsCreate
 
 Event Read-Only Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsEventsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEventsEventsCreateRequest
 */
 func (a *EventsApiService) EventsEventsCreate(ctx context.Context) ApiEventsEventsCreateRequest {
 	return ApiEventsEventsCreateRequest{
@@ -187,7 +188,8 @@ func (a *EventsApiService) EventsEventsCreate(ctx context.Context) ApiEventsEven
 }
 
 // Execute executes the request
-//  @return Event
+//
+//	@return Event
 func (a *EventsApiService) EventsEventsCreateExecute(r ApiEventsEventsCreateRequest) (*Event, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -314,9 +316,9 @@ EventsEventsDestroy Method for EventsEventsDestroy
 
 Event Read-Only Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param eventUuid A UUID string identifying this Event.
- @return ApiEventsEventsDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param eventUuid A UUID string identifying this Event.
+	@return ApiEventsEventsDestroyRequest
 */
 func (a *EventsApiService) EventsEventsDestroy(ctx context.Context, eventUuid string) ApiEventsEventsDestroyRequest {
 	return ApiEventsEventsDestroyRequest{
@@ -520,8 +522,8 @@ EventsEventsList Method for EventsEventsList
 
 Event Read-Only Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsEventsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEventsEventsListRequest
 */
 func (a *EventsApiService) EventsEventsList(ctx context.Context) ApiEventsEventsListRequest {
 	return ApiEventsEventsListRequest{
@@ -531,7 +533,8 @@ func (a *EventsApiService) EventsEventsList(ctx context.Context) ApiEventsEvents
 }
 
 // Execute executes the request
-//  @return PaginatedEventList
+//
+//	@return PaginatedEventList
 func (a *EventsApiService) EventsEventsListExecute(r ApiEventsEventsListRequest) (*PaginatedEventList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -695,9 +698,9 @@ EventsEventsPartialUpdate Method for EventsEventsPartialUpdate
 
 Event Read-Only Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param eventUuid A UUID string identifying this Event.
- @return ApiEventsEventsPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param eventUuid A UUID string identifying this Event.
+	@return ApiEventsEventsPartialUpdateRequest
 */
 func (a *EventsApiService) EventsEventsPartialUpdate(ctx context.Context, eventUuid string) ApiEventsEventsPartialUpdateRequest {
 	return ApiEventsEventsPartialUpdateRequest{
@@ -708,7 +711,8 @@ func (a *EventsApiService) EventsEventsPartialUpdate(ctx context.Context, eventU
 }
 
 // Execute executes the request
-//  @return Event
+//
+//	@return Event
 func (a *EventsApiService) EventsEventsPartialUpdateExecute(r ApiEventsEventsPartialUpdateRequest) (*Event, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -844,8 +848,8 @@ EventsEventsPerMonthList Method for EventsEventsPerMonthList
 
 Get the count of events per month
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsEventsPerMonthListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEventsEventsPerMonthListRequest
 */
 func (a *EventsApiService) EventsEventsPerMonthList(ctx context.Context) ApiEventsEventsPerMonthListRequest {
 	return ApiEventsEventsPerMonthListRequest{
@@ -855,7 +859,8 @@ func (a *EventsApiService) EventsEventsPerMonthList(ctx context.Context) ApiEven
 }
 
 // Execute executes the request
-//  @return []Coordinate
+//
+//	@return []Coordinate
 func (a *EventsApiService) EventsEventsPerMonthListExecute(r ApiEventsEventsPerMonthListRequest) ([]Coordinate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -983,9 +988,9 @@ EventsEventsRetrieve Method for EventsEventsRetrieve
 
 Event Read-Only Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param eventUuid A UUID string identifying this Event.
- @return ApiEventsEventsRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param eventUuid A UUID string identifying this Event.
+	@return ApiEventsEventsRetrieveRequest
 */
 func (a *EventsApiService) EventsEventsRetrieve(ctx context.Context, eventUuid string) ApiEventsEventsRetrieveRequest {
 	return ApiEventsEventsRetrieveRequest{
@@ -996,7 +1001,8 @@ func (a *EventsApiService) EventsEventsRetrieve(ctx context.Context, eventUuid s
 }
 
 // Execute executes the request
-//  @return Event
+//
+//	@return Event
 func (a *EventsApiService) EventsEventsRetrieveExecute(r ApiEventsEventsRetrieveRequest) (*Event, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1130,8 +1136,8 @@ EventsEventsTopPerUserList Method for EventsEventsTopPerUserList
 
 Get the top_n events grouped by user count
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsEventsTopPerUserListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEventsEventsTopPerUserListRequest
 */
 func (a *EventsApiService) EventsEventsTopPerUserList(ctx context.Context) ApiEventsEventsTopPerUserListRequest {
 	return ApiEventsEventsTopPerUserListRequest{
@@ -1141,7 +1147,8 @@ func (a *EventsApiService) EventsEventsTopPerUserList(ctx context.Context) ApiEv
 }
 
 // Execute executes the request
-//  @return []EventTopPerUser
+//
+//	@return []EventTopPerUser
 func (a *EventsApiService) EventsEventsTopPerUserListExecute(r ApiEventsEventsTopPerUserListRequest) ([]EventTopPerUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1275,9 +1282,9 @@ EventsEventsUpdate Method for EventsEventsUpdate
 
 Event Read-Only Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param eventUuid A UUID string identifying this Event.
- @return ApiEventsEventsUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param eventUuid A UUID string identifying this Event.
+	@return ApiEventsEventsUpdateRequest
 */
 func (a *EventsApiService) EventsEventsUpdate(ctx context.Context, eventUuid string) ApiEventsEventsUpdateRequest {
 	return ApiEventsEventsUpdateRequest{
@@ -1288,7 +1295,8 @@ func (a *EventsApiService) EventsEventsUpdate(ctx context.Context, eventUuid str
 }
 
 // Execute executes the request
-//  @return Event
+//
+//	@return Event
 func (a *EventsApiService) EventsEventsUpdateExecute(r ApiEventsEventsUpdateRequest) (*Event, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -1416,9 +1424,9 @@ EventsNotificationsDestroy Method for EventsNotificationsDestroy
 
 Notification Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Notification.
- @return ApiEventsNotificationsDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Notification.
+	@return ApiEventsNotificationsDestroyRequest
 */
 func (a *EventsApiService) EventsNotificationsDestroy(ctx context.Context, uuid string) ApiEventsNotificationsDestroyRequest {
 	return ApiEventsNotificationsDestroyRequest{
@@ -1605,8 +1613,8 @@ EventsNotificationsList Method for EventsNotificationsList
 
 Notification Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsNotificationsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEventsNotificationsListRequest
 */
 func (a *EventsApiService) EventsNotificationsList(ctx context.Context) ApiEventsNotificationsListRequest {
 	return ApiEventsNotificationsListRequest{
@@ -1616,7 +1624,8 @@ func (a *EventsApiService) EventsNotificationsList(ctx context.Context) ApiEvent
 }
 
 // Execute executes the request
-//  @return PaginatedNotificationList
+//
+//	@return PaginatedNotificationList
 func (a *EventsApiService) EventsNotificationsListExecute(r ApiEventsNotificationsListRequest) (*PaginatedNotificationList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1767,8 +1776,8 @@ EventsNotificationsMarkAllSeenCreate Method for EventsNotificationsMarkAllSeenCr
 
 Mark all the user's notifications as seen
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsNotificationsMarkAllSeenCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEventsNotificationsMarkAllSeenCreateRequest
 */
 func (a *EventsApiService) EventsNotificationsMarkAllSeenCreate(ctx context.Context) ApiEventsNotificationsMarkAllSeenCreateRequest {
 	return ApiEventsNotificationsMarkAllSeenCreateRequest{
@@ -1895,9 +1904,9 @@ EventsNotificationsPartialUpdate Method for EventsNotificationsPartialUpdate
 
 Notification Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Notification.
- @return ApiEventsNotificationsPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Notification.
+	@return ApiEventsNotificationsPartialUpdateRequest
 */
 func (a *EventsApiService) EventsNotificationsPartialUpdate(ctx context.Context, uuid string) ApiEventsNotificationsPartialUpdateRequest {
 	return ApiEventsNotificationsPartialUpdateRequest{
@@ -1908,7 +1917,8 @@ func (a *EventsApiService) EventsNotificationsPartialUpdate(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return Notification
+//
+//	@return Notification
 func (a *EventsApiService) EventsNotificationsPartialUpdateExecute(r ApiEventsNotificationsPartialUpdateRequest) (*Notification, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2033,9 +2043,9 @@ EventsNotificationsRetrieve Method for EventsNotificationsRetrieve
 
 Notification Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Notification.
- @return ApiEventsNotificationsRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Notification.
+	@return ApiEventsNotificationsRetrieveRequest
 */
 func (a *EventsApiService) EventsNotificationsRetrieve(ctx context.Context, uuid string) ApiEventsNotificationsRetrieveRequest {
 	return ApiEventsNotificationsRetrieveRequest{
@@ -2046,7 +2056,8 @@ func (a *EventsApiService) EventsNotificationsRetrieve(ctx context.Context, uuid
 }
 
 // Execute executes the request
-//  @return Notification
+//
+//	@return Notification
 func (a *EventsApiService) EventsNotificationsRetrieveExecute(r ApiEventsNotificationsRetrieveRequest) (*Notification, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2175,9 +2186,9 @@ EventsNotificationsUpdate Method for EventsNotificationsUpdate
 
 Notification Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Notification.
- @return ApiEventsNotificationsUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Notification.
+	@return ApiEventsNotificationsUpdateRequest
 */
 func (a *EventsApiService) EventsNotificationsUpdate(ctx context.Context, uuid string) ApiEventsNotificationsUpdateRequest {
 	return ApiEventsNotificationsUpdateRequest{
@@ -2188,7 +2199,8 @@ func (a *EventsApiService) EventsNotificationsUpdate(ctx context.Context, uuid s
 }
 
 // Execute executes the request
-//  @return Notification
+//
+//	@return Notification
 func (a *EventsApiService) EventsNotificationsUpdateExecute(r ApiEventsNotificationsUpdateRequest) (*Notification, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -2313,9 +2325,9 @@ EventsNotificationsUsedByList Method for EventsNotificationsUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Notification.
- @return ApiEventsNotificationsUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Notification.
+	@return ApiEventsNotificationsUsedByListRequest
 */
 func (a *EventsApiService) EventsNotificationsUsedByList(ctx context.Context, uuid string) ApiEventsNotificationsUsedByListRequest {
 	return ApiEventsNotificationsUsedByListRequest{
@@ -2326,7 +2338,8 @@ func (a *EventsApiService) EventsNotificationsUsedByList(ctx context.Context, uu
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *EventsApiService) EventsNotificationsUsedByListExecute(r ApiEventsNotificationsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2454,8 +2467,8 @@ EventsRulesCreate Method for EventsRulesCreate
 
 NotificationRule Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsRulesCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEventsRulesCreateRequest
 */
 func (a *EventsApiService) EventsRulesCreate(ctx context.Context) ApiEventsRulesCreateRequest {
 	return ApiEventsRulesCreateRequest{
@@ -2465,7 +2478,8 @@ func (a *EventsApiService) EventsRulesCreate(ctx context.Context) ApiEventsRules
 }
 
 // Execute executes the request
-//  @return NotificationRule
+//
+//	@return NotificationRule
 func (a *EventsApiService) EventsRulesCreateExecute(r ApiEventsRulesCreateRequest) (*NotificationRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2592,9 +2606,9 @@ EventsRulesDestroy Method for EventsRulesDestroy
 
 NotificationRule Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param pbmUuid A UUID string identifying this Notification Rule.
- @return ApiEventsRulesDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Notification Rule.
+	@return ApiEventsRulesDestroyRequest
 */
 func (a *EventsApiService) EventsRulesDestroy(ctx context.Context, pbmUuid string) ApiEventsRulesDestroyRequest {
 	return ApiEventsRulesDestroyRequest{
@@ -2763,8 +2777,8 @@ EventsRulesList Method for EventsRulesList
 
 NotificationRule Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsRulesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEventsRulesListRequest
 */
 func (a *EventsApiService) EventsRulesList(ctx context.Context) ApiEventsRulesListRequest {
 	return ApiEventsRulesListRequest{
@@ -2774,7 +2788,8 @@ func (a *EventsApiService) EventsRulesList(ctx context.Context) ApiEventsRulesLi
 }
 
 // Execute executes the request
-//  @return PaginatedNotificationRuleList
+//
+//	@return PaginatedNotificationRuleList
 func (a *EventsApiService) EventsRulesListExecute(r ApiEventsRulesListRequest) (*PaginatedNotificationRuleList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2923,9 +2938,9 @@ EventsRulesPartialUpdate Method for EventsRulesPartialUpdate
 
 NotificationRule Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param pbmUuid A UUID string identifying this Notification Rule.
- @return ApiEventsRulesPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Notification Rule.
+	@return ApiEventsRulesPartialUpdateRequest
 */
 func (a *EventsApiService) EventsRulesPartialUpdate(ctx context.Context, pbmUuid string) ApiEventsRulesPartialUpdateRequest {
 	return ApiEventsRulesPartialUpdateRequest{
@@ -2936,7 +2951,8 @@ func (a *EventsApiService) EventsRulesPartialUpdate(ctx context.Context, pbmUuid
 }
 
 // Execute executes the request
-//  @return NotificationRule
+//
+//	@return NotificationRule
 func (a *EventsApiService) EventsRulesPartialUpdateExecute(r ApiEventsRulesPartialUpdateRequest) (*NotificationRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -3061,9 +3077,9 @@ EventsRulesRetrieve Method for EventsRulesRetrieve
 
 NotificationRule Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param pbmUuid A UUID string identifying this Notification Rule.
- @return ApiEventsRulesRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Notification Rule.
+	@return ApiEventsRulesRetrieveRequest
 */
 func (a *EventsApiService) EventsRulesRetrieve(ctx context.Context, pbmUuid string) ApiEventsRulesRetrieveRequest {
 	return ApiEventsRulesRetrieveRequest{
@@ -3074,7 +3090,8 @@ func (a *EventsApiService) EventsRulesRetrieve(ctx context.Context, pbmUuid stri
 }
 
 // Execute executes the request
-//  @return NotificationRule
+//
+//	@return NotificationRule
 func (a *EventsApiService) EventsRulesRetrieveExecute(r ApiEventsRulesRetrieveRequest) (*NotificationRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3203,9 +3220,9 @@ EventsRulesUpdate Method for EventsRulesUpdate
 
 NotificationRule Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param pbmUuid A UUID string identifying this Notification Rule.
- @return ApiEventsRulesUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Notification Rule.
+	@return ApiEventsRulesUpdateRequest
 */
 func (a *EventsApiService) EventsRulesUpdate(ctx context.Context, pbmUuid string) ApiEventsRulesUpdateRequest {
 	return ApiEventsRulesUpdateRequest{
@@ -3216,7 +3233,8 @@ func (a *EventsApiService) EventsRulesUpdate(ctx context.Context, pbmUuid string
 }
 
 // Execute executes the request
-//  @return NotificationRule
+//
+//	@return NotificationRule
 func (a *EventsApiService) EventsRulesUpdateExecute(r ApiEventsRulesUpdateRequest) (*NotificationRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -3344,9 +3362,9 @@ EventsRulesUsedByList Method for EventsRulesUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param pbmUuid A UUID string identifying this Notification Rule.
- @return ApiEventsRulesUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Notification Rule.
+	@return ApiEventsRulesUsedByListRequest
 */
 func (a *EventsApiService) EventsRulesUsedByList(ctx context.Context, pbmUuid string) ApiEventsRulesUsedByListRequest {
 	return ApiEventsRulesUsedByListRequest{
@@ -3357,7 +3375,8 @@ func (a *EventsApiService) EventsRulesUsedByList(ctx context.Context, pbmUuid st
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *EventsApiService) EventsRulesUsedByListExecute(r ApiEventsRulesUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3485,8 +3504,8 @@ EventsTransportsCreate Method for EventsTransportsCreate
 
 NotificationTransport Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsTransportsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEventsTransportsCreateRequest
 */
 func (a *EventsApiService) EventsTransportsCreate(ctx context.Context) ApiEventsTransportsCreateRequest {
 	return ApiEventsTransportsCreateRequest{
@@ -3496,7 +3515,8 @@ func (a *EventsApiService) EventsTransportsCreate(ctx context.Context) ApiEvents
 }
 
 // Execute executes the request
-//  @return NotificationTransport
+//
+//	@return NotificationTransport
 func (a *EventsApiService) EventsTransportsCreateExecute(r ApiEventsTransportsCreateRequest) (*NotificationTransport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -3623,9 +3643,9 @@ EventsTransportsDestroy Method for EventsTransportsDestroy
 
 NotificationTransport Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Notification Transport.
- @return ApiEventsTransportsDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Notification Transport.
+	@return ApiEventsTransportsDestroyRequest
 */
 func (a *EventsApiService) EventsTransportsDestroy(ctx context.Context, uuid string) ApiEventsTransportsDestroyRequest {
 	return ApiEventsTransportsDestroyRequest{
@@ -3800,8 +3820,8 @@ EventsTransportsList Method for EventsTransportsList
 
 NotificationTransport Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsTransportsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEventsTransportsListRequest
 */
 func (a *EventsApiService) EventsTransportsList(ctx context.Context) ApiEventsTransportsListRequest {
 	return ApiEventsTransportsListRequest{
@@ -3811,7 +3831,8 @@ func (a *EventsApiService) EventsTransportsList(ctx context.Context) ApiEventsTr
 }
 
 // Execute executes the request
-//  @return PaginatedNotificationTransportList
+//
+//	@return PaginatedNotificationTransportList
 func (a *EventsApiService) EventsTransportsListExecute(r ApiEventsTransportsListRequest) (*PaginatedNotificationTransportList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3963,9 +3984,9 @@ EventsTransportsPartialUpdate Method for EventsTransportsPartialUpdate
 
 NotificationTransport Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Notification Transport.
- @return ApiEventsTransportsPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Notification Transport.
+	@return ApiEventsTransportsPartialUpdateRequest
 */
 func (a *EventsApiService) EventsTransportsPartialUpdate(ctx context.Context, uuid string) ApiEventsTransportsPartialUpdateRequest {
 	return ApiEventsTransportsPartialUpdateRequest{
@@ -3976,7 +3997,8 @@ func (a *EventsApiService) EventsTransportsPartialUpdate(ctx context.Context, uu
 }
 
 // Execute executes the request
-//  @return NotificationTransport
+//
+//	@return NotificationTransport
 func (a *EventsApiService) EventsTransportsPartialUpdateExecute(r ApiEventsTransportsPartialUpdateRequest) (*NotificationTransport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -4101,9 +4123,9 @@ EventsTransportsRetrieve Method for EventsTransportsRetrieve
 
 NotificationTransport Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Notification Transport.
- @return ApiEventsTransportsRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Notification Transport.
+	@return ApiEventsTransportsRetrieveRequest
 */
 func (a *EventsApiService) EventsTransportsRetrieve(ctx context.Context, uuid string) ApiEventsTransportsRetrieveRequest {
 	return ApiEventsTransportsRetrieveRequest{
@@ -4114,7 +4136,8 @@ func (a *EventsApiService) EventsTransportsRetrieve(ctx context.Context, uuid st
 }
 
 // Execute executes the request
-//  @return NotificationTransport
+//
+//	@return NotificationTransport
 func (a *EventsApiService) EventsTransportsRetrieveExecute(r ApiEventsTransportsRetrieveRequest) (*NotificationTransport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4238,9 +4261,9 @@ EventsTransportsTestCreate Method for EventsTransportsTestCreate
 Send example notification using selected transport. Requires
 Modify permissions.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Notification Transport.
- @return ApiEventsTransportsTestCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Notification Transport.
+	@return ApiEventsTransportsTestCreateRequest
 */
 func (a *EventsApiService) EventsTransportsTestCreate(ctx context.Context, uuid string) ApiEventsTransportsTestCreateRequest {
 	return ApiEventsTransportsTestCreateRequest{
@@ -4251,7 +4274,8 @@ func (a *EventsApiService) EventsTransportsTestCreate(ctx context.Context, uuid 
 }
 
 // Execute executes the request
-//  @return NotificationTransportTest
+//
+//	@return NotificationTransportTest
 func (a *EventsApiService) EventsTransportsTestCreateExecute(r ApiEventsTransportsTestCreateRequest) (*NotificationTransportTest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -4380,9 +4404,9 @@ EventsTransportsUpdate Method for EventsTransportsUpdate
 
 NotificationTransport Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Notification Transport.
- @return ApiEventsTransportsUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Notification Transport.
+	@return ApiEventsTransportsUpdateRequest
 */
 func (a *EventsApiService) EventsTransportsUpdate(ctx context.Context, uuid string) ApiEventsTransportsUpdateRequest {
 	return ApiEventsTransportsUpdateRequest{
@@ -4393,7 +4417,8 @@ func (a *EventsApiService) EventsTransportsUpdate(ctx context.Context, uuid stri
 }
 
 // Execute executes the request
-//  @return NotificationTransport
+//
+//	@return NotificationTransport
 func (a *EventsApiService) EventsTransportsUpdateExecute(r ApiEventsTransportsUpdateRequest) (*NotificationTransport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -4521,9 +4546,9 @@ EventsTransportsUsedByList Method for EventsTransportsUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Notification Transport.
- @return ApiEventsTransportsUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Notification Transport.
+	@return ApiEventsTransportsUsedByListRequest
 */
 func (a *EventsApiService) EventsTransportsUsedByList(ctx context.Context, uuid string) ApiEventsTransportsUsedByListRequest {
 	return ApiEventsTransportsUsedByListRequest{
@@ -4534,7 +4559,8 @@ func (a *EventsApiService) EventsTransportsUsedByList(ctx context.Context, uuid 
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *EventsApiService) EventsTransportsUsedByListExecute(r ApiEventsTransportsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

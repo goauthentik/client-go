@@ -44,8 +44,8 @@ OutpostsInstancesCreate Method for OutpostsInstancesCreate
 
 Outpost Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOutpostsInstancesCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOutpostsInstancesCreateRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesCreate(ctx context.Context) ApiOutpostsInstancesCreateRequest {
 	return ApiOutpostsInstancesCreateRequest{
@@ -55,7 +55,8 @@ func (a *OutpostsApiService) OutpostsInstancesCreate(ctx context.Context) ApiOut
 }
 
 // Execute executes the request
-//  @return Outpost
+//
+//	@return Outpost
 func (a *OutpostsApiService) OutpostsInstancesCreateExecute(r ApiOutpostsInstancesCreateRequest) (*Outpost, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -181,8 +182,8 @@ OutpostsInstancesDefaultSettingsRetrieve Method for OutpostsInstancesDefaultSett
 
 Global default outpost config
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOutpostsInstancesDefaultSettingsRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOutpostsInstancesDefaultSettingsRetrieveRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieve(ctx context.Context) ApiOutpostsInstancesDefaultSettingsRetrieveRequest {
 	return ApiOutpostsInstancesDefaultSettingsRetrieveRequest{
@@ -192,7 +193,8 @@ func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieve(ctx contex
 }
 
 // Execute executes the request
-//  @return OutpostDefaultConfig
+//
+//	@return OutpostDefaultConfig
 func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieveExecute(r ApiOutpostsInstancesDefaultSettingsRetrieveRequest) (*OutpostDefaultConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -314,9 +316,9 @@ OutpostsInstancesDestroy Method for OutpostsInstancesDestroy
 
 Outpost Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this outpost.
- @return ApiOutpostsInstancesDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this outpost.
+	@return ApiOutpostsInstancesDestroyRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesDestroy(ctx context.Context, uuid string) ApiOutpostsInstancesDestroyRequest {
 	return ApiOutpostsInstancesDestroyRequest{
@@ -501,9 +503,9 @@ OutpostsInstancesHealthList Method for OutpostsInstancesHealthList
 
 Get outposts current health
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this outpost.
- @return ApiOutpostsInstancesHealthListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this outpost.
+	@return ApiOutpostsInstancesHealthListRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesHealthList(ctx context.Context, uuid string) ApiOutpostsInstancesHealthListRequest {
 	return ApiOutpostsInstancesHealthListRequest{
@@ -514,7 +516,8 @@ func (a *OutpostsApiService) OutpostsInstancesHealthList(ctx context.Context, uu
 }
 
 // Execute executes the request
-//  @return []OutpostHealth
+//
+//	@return []OutpostHealth
 func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsInstancesHealthListRequest) ([]OutpostHealth, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -750,8 +753,8 @@ OutpostsInstancesList Method for OutpostsInstancesList
 
 Outpost Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOutpostsInstancesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOutpostsInstancesListRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesList(ctx context.Context) ApiOutpostsInstancesListRequest {
 	return ApiOutpostsInstancesListRequest{
@@ -761,7 +764,8 @@ func (a *OutpostsApiService) OutpostsInstancesList(ctx context.Context) ApiOutpo
 }
 
 // Execute executes the request
-//  @return PaginatedOutpostList
+//
+//	@return PaginatedOutpostList
 func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstancesListRequest) (*PaginatedOutpostList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -933,9 +937,9 @@ OutpostsInstancesPartialUpdate Method for OutpostsInstancesPartialUpdate
 
 Outpost Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this outpost.
- @return ApiOutpostsInstancesPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this outpost.
+	@return ApiOutpostsInstancesPartialUpdateRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesPartialUpdate(ctx context.Context, uuid string) ApiOutpostsInstancesPartialUpdateRequest {
 	return ApiOutpostsInstancesPartialUpdateRequest{
@@ -946,7 +950,8 @@ func (a *OutpostsApiService) OutpostsInstancesPartialUpdate(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return Outpost
+//
+//	@return Outpost
 func (a *OutpostsApiService) OutpostsInstancesPartialUpdateExecute(r ApiOutpostsInstancesPartialUpdateRequest) (*Outpost, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -1071,9 +1076,9 @@ OutpostsInstancesRetrieve Method for OutpostsInstancesRetrieve
 
 Outpost Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this outpost.
- @return ApiOutpostsInstancesRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this outpost.
+	@return ApiOutpostsInstancesRetrieveRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesRetrieve(ctx context.Context, uuid string) ApiOutpostsInstancesRetrieveRequest {
 	return ApiOutpostsInstancesRetrieveRequest{
@@ -1084,7 +1089,8 @@ func (a *OutpostsApiService) OutpostsInstancesRetrieve(ctx context.Context, uuid
 }
 
 // Execute executes the request
-//  @return Outpost
+//
+//	@return Outpost
 func (a *OutpostsApiService) OutpostsInstancesRetrieveExecute(r ApiOutpostsInstancesRetrieveRequest) (*Outpost, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1213,9 +1219,9 @@ OutpostsInstancesUpdate Method for OutpostsInstancesUpdate
 
 Outpost Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this outpost.
- @return ApiOutpostsInstancesUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this outpost.
+	@return ApiOutpostsInstancesUpdateRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesUpdate(ctx context.Context, uuid string) ApiOutpostsInstancesUpdateRequest {
 	return ApiOutpostsInstancesUpdateRequest{
@@ -1226,7 +1232,8 @@ func (a *OutpostsApiService) OutpostsInstancesUpdate(ctx context.Context, uuid s
 }
 
 // Execute executes the request
-//  @return Outpost
+//
+//	@return Outpost
 func (a *OutpostsApiService) OutpostsInstancesUpdateExecute(r ApiOutpostsInstancesUpdateRequest) (*Outpost, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -1354,9 +1361,9 @@ OutpostsInstancesUsedByList Method for OutpostsInstancesUsedByList
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this outpost.
- @return ApiOutpostsInstancesUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this outpost.
+	@return ApiOutpostsInstancesUsedByListRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesUsedByList(ctx context.Context, uuid string) ApiOutpostsInstancesUsedByListRequest {
 	return ApiOutpostsInstancesUsedByListRequest{
@@ -1367,7 +1374,8 @@ func (a *OutpostsApiService) OutpostsInstancesUsedByList(ctx context.Context, uu
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *OutpostsApiService) OutpostsInstancesUsedByListExecute(r ApiOutpostsInstancesUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1523,8 +1531,8 @@ OutpostsLdapList Method for OutpostsLdapList
 
 LDAPProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOutpostsLdapListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOutpostsLdapListRequest
 */
 func (a *OutpostsApiService) OutpostsLdapList(ctx context.Context) ApiOutpostsLdapListRequest {
 	return ApiOutpostsLdapListRequest{
@@ -1534,7 +1542,8 @@ func (a *OutpostsApiService) OutpostsLdapList(ctx context.Context) ApiOutpostsLd
 }
 
 // Execute executes the request
-//  @return PaginatedLDAPOutpostConfigList
+//
+//	@return PaginatedLDAPOutpostConfigList
 func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListRequest) (*PaginatedLDAPOutpostConfigList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1671,9 +1680,9 @@ OutpostsLdapRetrieve Method for OutpostsLdapRetrieve
 
 LDAPProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this LDAP Provider.
- @return ApiOutpostsLdapRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this LDAP Provider.
+	@return ApiOutpostsLdapRetrieveRequest
 */
 func (a *OutpostsApiService) OutpostsLdapRetrieve(ctx context.Context, id int32) ApiOutpostsLdapRetrieveRequest {
 	return ApiOutpostsLdapRetrieveRequest{
@@ -1684,7 +1693,8 @@ func (a *OutpostsApiService) OutpostsLdapRetrieve(ctx context.Context, id int32)
 }
 
 // Execute executes the request
-//  @return LDAPOutpostConfig
+//
+//	@return LDAPOutpostConfig
 func (a *OutpostsApiService) OutpostsLdapRetrieveExecute(r ApiOutpostsLdapRetrieveRequest) (*LDAPOutpostConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1840,8 +1850,8 @@ OutpostsProxyList Method for OutpostsProxyList
 
 ProxyProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOutpostsProxyListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOutpostsProxyListRequest
 */
 func (a *OutpostsApiService) OutpostsProxyList(ctx context.Context) ApiOutpostsProxyListRequest {
 	return ApiOutpostsProxyListRequest{
@@ -1851,7 +1861,8 @@ func (a *OutpostsApiService) OutpostsProxyList(ctx context.Context) ApiOutpostsP
 }
 
 // Execute executes the request
-//  @return PaginatedProxyOutpostConfigList
+//
+//	@return PaginatedProxyOutpostConfigList
 func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequest) (*PaginatedProxyOutpostConfigList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1988,9 +1999,9 @@ OutpostsProxyRetrieve Method for OutpostsProxyRetrieve
 
 ProxyProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Proxy Provider.
- @return ApiOutpostsProxyRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Proxy Provider.
+	@return ApiOutpostsProxyRetrieveRequest
 */
 func (a *OutpostsApiService) OutpostsProxyRetrieve(ctx context.Context, id int32) ApiOutpostsProxyRetrieveRequest {
 	return ApiOutpostsProxyRetrieveRequest{
@@ -2001,7 +2012,8 @@ func (a *OutpostsApiService) OutpostsProxyRetrieve(ctx context.Context, id int32
 }
 
 // Execute executes the request
-//  @return ProxyOutpostConfig
+//
+//	@return ProxyOutpostConfig
 func (a *OutpostsApiService) OutpostsProxyRetrieveExecute(r ApiOutpostsProxyRetrieveRequest) (*ProxyOutpostConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2157,8 +2169,8 @@ OutpostsRadiusList Method for OutpostsRadiusList
 
 RadiusProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOutpostsRadiusListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOutpostsRadiusListRequest
 */
 func (a *OutpostsApiService) OutpostsRadiusList(ctx context.Context) ApiOutpostsRadiusListRequest {
 	return ApiOutpostsRadiusListRequest{
@@ -2168,7 +2180,8 @@ func (a *OutpostsApiService) OutpostsRadiusList(ctx context.Context) ApiOutposts
 }
 
 // Execute executes the request
-//  @return PaginatedRadiusOutpostConfigList
+//
+//	@return PaginatedRadiusOutpostConfigList
 func (a *OutpostsApiService) OutpostsRadiusListExecute(r ApiOutpostsRadiusListRequest) (*PaginatedRadiusOutpostConfigList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2305,9 +2318,9 @@ OutpostsRadiusRetrieve Method for OutpostsRadiusRetrieve
 
 RadiusProvider Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id A unique integer value identifying this Radius Provider.
- @return ApiOutpostsRadiusRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Radius Provider.
+	@return ApiOutpostsRadiusRetrieveRequest
 */
 func (a *OutpostsApiService) OutpostsRadiusRetrieve(ctx context.Context, id int32) ApiOutpostsRadiusRetrieveRequest {
 	return ApiOutpostsRadiusRetrieveRequest{
@@ -2318,7 +2331,8 @@ func (a *OutpostsApiService) OutpostsRadiusRetrieve(ctx context.Context, id int3
 }
 
 // Execute executes the request
-//  @return RadiusOutpostConfig
+//
+//	@return RadiusOutpostConfig
 func (a *OutpostsApiService) OutpostsRadiusRetrieveExecute(r ApiOutpostsRadiusRetrieveRequest) (*RadiusOutpostConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2441,9 +2455,9 @@ OutpostsServiceConnectionsAllDestroy Method for OutpostsServiceConnectionsAllDes
 
 ServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Outpost Service-Connection.
- @return ApiOutpostsServiceConnectionsAllDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Outpost Service-Connection.
+	@return ApiOutpostsServiceConnectionsAllDestroyRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllDestroy(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsAllDestroyRequest {
 	return ApiOutpostsServiceConnectionsAllDestroyRequest{
@@ -2599,8 +2613,8 @@ OutpostsServiceConnectionsAllList Method for OutpostsServiceConnectionsAllList
 
 ServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOutpostsServiceConnectionsAllListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOutpostsServiceConnectionsAllListRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllList(ctx context.Context) ApiOutpostsServiceConnectionsAllListRequest {
 	return ApiOutpostsServiceConnectionsAllListRequest{
@@ -2610,7 +2624,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllList(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return PaginatedServiceConnectionList
+//
+//	@return PaginatedServiceConnectionList
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllListExecute(r ApiOutpostsServiceConnectionsAllListRequest) (*PaginatedServiceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2747,9 +2762,9 @@ OutpostsServiceConnectionsAllRetrieve Method for OutpostsServiceConnectionsAllRe
 
 ServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Outpost Service-Connection.
- @return ApiOutpostsServiceConnectionsAllRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Outpost Service-Connection.
+	@return ApiOutpostsServiceConnectionsAllRetrieveRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieve(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsAllRetrieveRequest {
 	return ApiOutpostsServiceConnectionsAllRetrieveRequest{
@@ -2760,7 +2775,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieve(ctx context.C
 }
 
 // Execute executes the request
-//  @return ServiceConnection
+//
+//	@return ServiceConnection
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieveExecute(r ApiOutpostsServiceConnectionsAllRetrieveRequest) (*ServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2883,9 +2899,9 @@ OutpostsServiceConnectionsAllStateRetrieve Method for OutpostsServiceConnections
 
 Get the service connection's state
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Outpost Service-Connection.
- @return ApiOutpostsServiceConnectionsAllStateRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Outpost Service-Connection.
+	@return ApiOutpostsServiceConnectionsAllStateRetrieveRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieve(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsAllStateRetrieveRequest {
 	return ApiOutpostsServiceConnectionsAllStateRetrieveRequest{
@@ -2896,7 +2912,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieve(ctx cont
 }
 
 // Execute executes the request
-//  @return ServiceConnectionState
+//
+//	@return ServiceConnectionState
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieveExecute(r ApiOutpostsServiceConnectionsAllStateRetrieveRequest) (*ServiceConnectionState, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3018,8 +3035,8 @@ OutpostsServiceConnectionsAllTypesList Method for OutpostsServiceConnectionsAllT
 
 Get all creatable service connection types
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOutpostsServiceConnectionsAllTypesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOutpostsServiceConnectionsAllTypesListRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesList(ctx context.Context) ApiOutpostsServiceConnectionsAllTypesListRequest {
 	return ApiOutpostsServiceConnectionsAllTypesListRequest{
@@ -3029,7 +3046,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesList(ctx context.
 }
 
 // Execute executes the request
-//  @return []TypeCreate
+//
+//	@return []TypeCreate
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesListExecute(r ApiOutpostsServiceConnectionsAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3151,9 +3169,9 @@ OutpostsServiceConnectionsAllUsedByList Method for OutpostsServiceConnectionsAll
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Outpost Service-Connection.
- @return ApiOutpostsServiceConnectionsAllUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Outpost Service-Connection.
+	@return ApiOutpostsServiceConnectionsAllUsedByListRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByList(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsAllUsedByListRequest {
 	return ApiOutpostsServiceConnectionsAllUsedByListRequest{
@@ -3164,7 +3182,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByList(ctx context
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByListExecute(r ApiOutpostsServiceConnectionsAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3292,8 +3311,8 @@ OutpostsServiceConnectionsDockerCreate Method for OutpostsServiceConnectionsDock
 
 DockerServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOutpostsServiceConnectionsDockerCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOutpostsServiceConnectionsDockerCreateRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreate(ctx context.Context) ApiOutpostsServiceConnectionsDockerCreateRequest {
 	return ApiOutpostsServiceConnectionsDockerCreateRequest{
@@ -3303,7 +3322,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreate(ctx context.
 }
 
 // Execute executes the request
-//  @return DockerServiceConnection
+//
+//	@return DockerServiceConnection
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreateExecute(r ApiOutpostsServiceConnectionsDockerCreateRequest) (*DockerServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -3430,9 +3450,9 @@ OutpostsServiceConnectionsDockerDestroy Method for OutpostsServiceConnectionsDoc
 
 DockerServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Docker Service-Connection.
- @return ApiOutpostsServiceConnectionsDockerDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Docker Service-Connection.
+	@return ApiOutpostsServiceConnectionsDockerDestroyRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerDestroy(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerDestroyRequest {
 	return ApiOutpostsServiceConnectionsDockerDestroyRequest{
@@ -3612,8 +3632,8 @@ OutpostsServiceConnectionsDockerList Method for OutpostsServiceConnectionsDocker
 
 DockerServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOutpostsServiceConnectionsDockerListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOutpostsServiceConnectionsDockerListRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerList(ctx context.Context) ApiOutpostsServiceConnectionsDockerListRequest {
 	return ApiOutpostsServiceConnectionsDockerListRequest{
@@ -3623,7 +3643,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerList(ctx context.Co
 }
 
 // Execute executes the request
-//  @return PaginatedDockerServiceConnectionList
+//
+//	@return PaginatedDockerServiceConnectionList
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerListExecute(r ApiOutpostsServiceConnectionsDockerListRequest) (*PaginatedDockerServiceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -3778,9 +3799,9 @@ OutpostsServiceConnectionsDockerPartialUpdate Method for OutpostsServiceConnecti
 
 DockerServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Docker Service-Connection.
- @return ApiOutpostsServiceConnectionsDockerPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Docker Service-Connection.
+	@return ApiOutpostsServiceConnectionsDockerPartialUpdateRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdate(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerPartialUpdateRequest {
 	return ApiOutpostsServiceConnectionsDockerPartialUpdateRequest{
@@ -3791,7 +3812,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdate(ctx c
 }
 
 // Execute executes the request
-//  @return DockerServiceConnection
+//
+//	@return DockerServiceConnection
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdateExecute(r ApiOutpostsServiceConnectionsDockerPartialUpdateRequest) (*DockerServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -3916,9 +3938,9 @@ OutpostsServiceConnectionsDockerRetrieve Method for OutpostsServiceConnectionsDo
 
 DockerServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Docker Service-Connection.
- @return ApiOutpostsServiceConnectionsDockerRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Docker Service-Connection.
+	@return ApiOutpostsServiceConnectionsDockerRetrieveRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieve(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerRetrieveRequest {
 	return ApiOutpostsServiceConnectionsDockerRetrieveRequest{
@@ -3929,7 +3951,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieve(ctx contex
 }
 
 // Execute executes the request
-//  @return DockerServiceConnection
+//
+//	@return DockerServiceConnection
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieveExecute(r ApiOutpostsServiceConnectionsDockerRetrieveRequest) (*DockerServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4058,9 +4081,9 @@ OutpostsServiceConnectionsDockerUpdate Method for OutpostsServiceConnectionsDock
 
 DockerServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Docker Service-Connection.
- @return ApiOutpostsServiceConnectionsDockerUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Docker Service-Connection.
+	@return ApiOutpostsServiceConnectionsDockerUpdateRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdate(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerUpdateRequest {
 	return ApiOutpostsServiceConnectionsDockerUpdateRequest{
@@ -4071,7 +4094,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdate(ctx context.
 }
 
 // Execute executes the request
-//  @return DockerServiceConnection
+//
+//	@return DockerServiceConnection
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdateExecute(r ApiOutpostsServiceConnectionsDockerUpdateRequest) (*DockerServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -4199,9 +4223,9 @@ OutpostsServiceConnectionsDockerUsedByList Method for OutpostsServiceConnections
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Docker Service-Connection.
- @return ApiOutpostsServiceConnectionsDockerUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Docker Service-Connection.
+	@return ApiOutpostsServiceConnectionsDockerUsedByListRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByList(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerUsedByListRequest {
 	return ApiOutpostsServiceConnectionsDockerUsedByListRequest{
@@ -4212,7 +4236,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByList(ctx cont
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByListExecute(r ApiOutpostsServiceConnectionsDockerUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4340,8 +4365,8 @@ OutpostsServiceConnectionsKubernetesCreate Method for OutpostsServiceConnections
 
 KubernetesServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOutpostsServiceConnectionsKubernetesCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOutpostsServiceConnectionsKubernetesCreateRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreate(ctx context.Context) ApiOutpostsServiceConnectionsKubernetesCreateRequest {
 	return ApiOutpostsServiceConnectionsKubernetesCreateRequest{
@@ -4351,7 +4376,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreate(ctx cont
 }
 
 // Execute executes the request
-//  @return KubernetesServiceConnection
+//
+//	@return KubernetesServiceConnection
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreateExecute(r ApiOutpostsServiceConnectionsKubernetesCreateRequest) (*KubernetesServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -4478,9 +4504,9 @@ OutpostsServiceConnectionsKubernetesDestroy Method for OutpostsServiceConnection
 
 KubernetesServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Kubernetes Service-Connection.
- @return ApiOutpostsServiceConnectionsKubernetesDestroyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Kubernetes Service-Connection.
+	@return ApiOutpostsServiceConnectionsKubernetesDestroyRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesDestroy(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesDestroyRequest {
 	return ApiOutpostsServiceConnectionsKubernetesDestroyRequest{
@@ -4642,8 +4668,8 @@ OutpostsServiceConnectionsKubernetesList Method for OutpostsServiceConnectionsKu
 
 KubernetesServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOutpostsServiceConnectionsKubernetesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOutpostsServiceConnectionsKubernetesListRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesList(ctx context.Context) ApiOutpostsServiceConnectionsKubernetesListRequest {
 	return ApiOutpostsServiceConnectionsKubernetesListRequest{
@@ -4653,7 +4679,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesList(ctx contex
 }
 
 // Execute executes the request
-//  @return PaginatedKubernetesServiceConnectionList
+//
+//	@return PaginatedKubernetesServiceConnectionList
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesListExecute(r ApiOutpostsServiceConnectionsKubernetesListRequest) (*PaginatedKubernetesServiceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -4799,9 +4826,9 @@ OutpostsServiceConnectionsKubernetesPartialUpdate Method for OutpostsServiceConn
 
 KubernetesServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Kubernetes Service-Connection.
- @return ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Kubernetes Service-Connection.
+	@return ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdate(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest {
 	return ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest{
@@ -4812,7 +4839,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdate(c
 }
 
 // Execute executes the request
-//  @return KubernetesServiceConnection
+//
+//	@return KubernetesServiceConnection
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdateExecute(r ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest) (*KubernetesServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -4937,9 +4965,9 @@ OutpostsServiceConnectionsKubernetesRetrieve Method for OutpostsServiceConnectio
 
 KubernetesServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Kubernetes Service-Connection.
- @return ApiOutpostsServiceConnectionsKubernetesRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Kubernetes Service-Connection.
+	@return ApiOutpostsServiceConnectionsKubernetesRetrieveRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieve(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesRetrieveRequest {
 	return ApiOutpostsServiceConnectionsKubernetesRetrieveRequest{
@@ -4950,7 +4978,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieve(ctx co
 }
 
 // Execute executes the request
-//  @return KubernetesServiceConnection
+//
+//	@return KubernetesServiceConnection
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieveExecute(r ApiOutpostsServiceConnectionsKubernetesRetrieveRequest) (*KubernetesServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -5079,9 +5108,9 @@ OutpostsServiceConnectionsKubernetesUpdate Method for OutpostsServiceConnections
 
 KubernetesServiceConnection Viewset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Kubernetes Service-Connection.
- @return ApiOutpostsServiceConnectionsKubernetesUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Kubernetes Service-Connection.
+	@return ApiOutpostsServiceConnectionsKubernetesUpdateRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdate(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesUpdateRequest {
 	return ApiOutpostsServiceConnectionsKubernetesUpdateRequest{
@@ -5092,7 +5121,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdate(ctx cont
 }
 
 // Execute executes the request
-//  @return KubernetesServiceConnection
+//
+//	@return KubernetesServiceConnection
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdateExecute(r ApiOutpostsServiceConnectionsKubernetesUpdateRequest) (*KubernetesServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -5220,9 +5250,9 @@ OutpostsServiceConnectionsKubernetesUsedByList Method for OutpostsServiceConnect
 
 Get a list of all objects that use this object
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid A UUID string identifying this Kubernetes Service-Connection.
- @return ApiOutpostsServiceConnectionsKubernetesUsedByListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Kubernetes Service-Connection.
+	@return ApiOutpostsServiceConnectionsKubernetesUsedByListRequest
 */
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByList(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesUsedByListRequest {
 	return ApiOutpostsServiceConnectionsKubernetesUsedByListRequest{
@@ -5233,7 +5263,8 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByList(ctx 
 }
 
 // Execute executes the request
-//  @return []UsedBy
+//
+//	@return []UsedBy
 func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByListExecute(r ApiOutpostsServiceConnectionsKubernetesUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
