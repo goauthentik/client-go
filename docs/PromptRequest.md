@@ -9,11 +9,13 @@ Name | Type | Description | Notes
 **Label** | **string** |  | 
 **Type** | [**PromptTypeEnum**](PromptTypeEnum.md) |  | 
 **Required** | Pointer to **bool** |  | [optional] 
-**Placeholder** | Pointer to **string** | When creating a Radio Button Group or Dropdown, enable interpreting as expression and return a list to return multiple choices. | [optional] 
+**Placeholder** | Pointer to **string** | Optionally provide a short hint that describes the expected input value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple choices. | [optional] 
+**InitialValue** | Pointer to **string** | Optionally pre-fill the input with an initial value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple default choices. | [optional] 
 **Order** | Pointer to **int32** |  | [optional] 
 **PromptstageSet** | Pointer to [**[]StageRequest**](StageRequest.md) |  | [optional] 
 **SubText** | Pointer to **string** |  | [optional] 
 **PlaceholderExpression** | Pointer to **bool** |  | [optional] 
+**InitialValueExpression** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -164,6 +166,31 @@ SetPlaceholder sets Placeholder field to given value.
 
 HasPlaceholder returns a boolean if a field has been set.
 
+### GetInitialValue
+
+`func (o *PromptRequest) GetInitialValue() string`
+
+GetInitialValue returns the InitialValue field if non-nil, zero value otherwise.
+
+### GetInitialValueOk
+
+`func (o *PromptRequest) GetInitialValueOk() (*string, bool)`
+
+GetInitialValueOk returns a tuple with the InitialValue field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInitialValue
+
+`func (o *PromptRequest) SetInitialValue(v string)`
+
+SetInitialValue sets InitialValue field to given value.
+
+### HasInitialValue
+
+`func (o *PromptRequest) HasInitialValue() bool`
+
+HasInitialValue returns a boolean if a field has been set.
+
 ### GetOrder
 
 `func (o *PromptRequest) GetOrder() int32`
@@ -263,6 +290,31 @@ SetPlaceholderExpression sets PlaceholderExpression field to given value.
 `func (o *PromptRequest) HasPlaceholderExpression() bool`
 
 HasPlaceholderExpression returns a boolean if a field has been set.
+
+### GetInitialValueExpression
+
+`func (o *PromptRequest) GetInitialValueExpression() bool`
+
+GetInitialValueExpression returns the InitialValueExpression field if non-nil, zero value otherwise.
+
+### GetInitialValueExpressionOk
+
+`func (o *PromptRequest) GetInitialValueExpressionOk() (*bool, bool)`
+
+GetInitialValueExpressionOk returns a tuple with the InitialValueExpression field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInitialValueExpression
+
+`func (o *PromptRequest) SetInitialValueExpression(v bool)`
+
+SetInitialValueExpression sets InitialValueExpression field to given value.
+
+### HasInitialValueExpression
+
+`func (o *PromptRequest) HasInitialValueExpression() bool`
+
+HasInitialValueExpression returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2023.4.0
+  version: 2023.4.1
 servers:
 - url: /api/v3/
 paths:
@@ -39956,6 +39956,12 @@ components:
           total_pages: 5.637376656633329
         results:
         - sub_text: sub_text
+          initial_value: initial_value
+          initial_value_expression: true
+          label: label
+          type: null
+          placeholder_expression: true
+          required: true
           promptstage_set:
           - component: component
             verbose_name: verbose_name
@@ -40022,13 +40028,15 @@ components:
           field_key: field_key
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          label: label
           placeholder: placeholder
-          type: null
-          placeholder_expression: true
-          required: true
           order: -1803530559
         - sub_text: sub_text
+          initial_value: initial_value
+          initial_value_expression: true
+          label: label
+          type: null
+          placeholder_expression: true
+          required: true
           promptstage_set:
           - component: component
             verbose_name: verbose_name
@@ -40095,11 +40103,7 @@ components:
           field_key: field_key
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          label: label
           placeholder: placeholder
-          type: null
-          placeholder_expression: true
-          required: true
           order: -1803530559
       properties:
         pagination:
@@ -44760,6 +44764,8 @@ components:
             designation: ""
             title: title
             slug: slug
+        initial_value: initial_value
+        initial_value_expression: true
         field_key: field_key
         name: name
         label: label
@@ -44784,8 +44790,14 @@ components:
         required:
           type: boolean
         placeholder:
-          description: "When creating a Radio Button Group or Dropdown, enable interpreting\
+          description: "Optionally provide a short hint that describes the expected\
+            \ input value. When creating a fixed choice field, enable interpreting\
             \ as expression and return a list to return multiple choices."
+          type: string
+        initial_value:
+          description: "Optionally pre-fill the input with an initial value. When\
+            \ creating a fixed choice field, enable interpreting as expression and\
+            \ return a list to return multiple default choices."
           type: string
         order:
           maximum: 2147483647
@@ -44798,6 +44810,8 @@ components:
         sub_text:
           type: string
         placeholder_expression:
+          type: boolean
+        initial_value_expression:
           type: boolean
       type: object
     PatchedPromptStageRequest:
@@ -46300,6 +46314,12 @@ components:
       description: Prompt Serializer
       example:
         sub_text: sub_text
+        initial_value: initial_value
+        initial_value_expression: true
+        label: label
+        type: null
+        placeholder_expression: true
+        required: true
         promptstage_set:
         - component: component
           verbose_name: verbose_name
@@ -46366,11 +46386,7 @@ components:
         field_key: field_key
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        label: label
         placeholder: placeholder
-        type: null
-        placeholder_expression: true
-        required: true
         order: -1803530559
       properties:
         pk:
@@ -46390,8 +46406,14 @@ components:
         required:
           type: boolean
         placeholder:
-          description: "When creating a Radio Button Group or Dropdown, enable interpreting\
+          description: "Optionally provide a short hint that describes the expected\
+            \ input value. When creating a fixed choice field, enable interpreting\
             \ as expression and return a list to return multiple choices."
+          type: string
+        initial_value:
+          description: "Optionally pre-fill the input with an initial value. When\
+            \ creating a fixed choice field, enable interpreting as expression and\
+            \ return a list to return multiple default choices."
           type: string
         order:
           maximum: 2147483647
@@ -46404,6 +46426,8 @@ components:
         sub_text:
           type: string
         placeholder_expression:
+          type: boolean
+        initial_value_expression:
           type: boolean
       required:
       - field_key
@@ -46430,6 +46454,7 @@ components:
           cancel_url: cancel_url
         fields:
         - sub_text: sub_text
+          initial_value: initial_value
           field_key: field_key
           label: label
           placeholder: placeholder
@@ -46440,6 +46465,7 @@ components:
           required: true
           order: 0
         - sub_text: sub_text
+          initial_value: initial_value
           field_key: field_key
           label: label
           placeholder: placeholder
@@ -46523,6 +46549,8 @@ components:
             designation: ""
             title: title
             slug: slug
+        initial_value: initial_value
+        initial_value_expression: true
         field_key: field_key
         name: name
         label: label
@@ -46547,8 +46575,14 @@ components:
         required:
           type: boolean
         placeholder:
-          description: "When creating a Radio Button Group or Dropdown, enable interpreting\
+          description: "Optionally provide a short hint that describes the expected\
+            \ input value. When creating a fixed choice field, enable interpreting\
             \ as expression and return a list to return multiple choices."
+          type: string
+        initial_value:
+          description: "Optionally pre-fill the input with an initial value. When\
+            \ creating a fixed choice field, enable interpreting as expression and\
+            \ return a list to return multiple default choices."
           type: string
         order:
           maximum: 2147483647
@@ -46561,6 +46595,8 @@ components:
         sub_text:
           type: string
         placeholder_expression:
+          type: boolean
+        initial_value_expression:
           type: boolean
       required:
       - field_key
@@ -49238,6 +49274,7 @@ components:
       description: Serializer for a single Prompt field
       example:
         sub_text: sub_text
+        initial_value: initial_value
         field_key: field_key
         label: label
         placeholder: placeholder
@@ -49258,6 +49295,8 @@ components:
           type: boolean
         placeholder:
           type: string
+        initial_value:
+          type: string
         order:
           type: integer
         sub_text:
@@ -49270,6 +49309,7 @@ components:
       required:
       - choices
       - field_key
+      - initial_value
       - label
       - order
       - placeholder

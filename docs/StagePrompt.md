@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Type** | [**PromptTypeEnum**](PromptTypeEnum.md) |  | 
 **Required** | **bool** |  | 
 **Placeholder** | **string** |  | 
+**InitialValue** | **string** |  | 
 **Order** | **int32** |  | 
 **SubText** | **string** |  | 
 **Choices** | **[]string** |  | 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewStagePrompt
 
-`func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, order int32, subText string, choices []string, ) *StagePrompt`
+`func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, initialValue string, order int32, subText string, choices []string, ) *StagePrompt`
 
 NewStagePrompt instantiates a new StagePrompt object
 This constructor will assign default values to properties that have it defined,
@@ -130,6 +131,26 @@ and a boolean to check if the value has been set.
 `func (o *StagePrompt) SetPlaceholder(v string)`
 
 SetPlaceholder sets Placeholder field to given value.
+
+
+### GetInitialValue
+
+`func (o *StagePrompt) GetInitialValue() string`
+
+GetInitialValue returns the InitialValue field if non-nil, zero value otherwise.
+
+### GetInitialValueOk
+
+`func (o *StagePrompt) GetInitialValueOk() (*string, bool)`
+
+GetInitialValueOk returns a tuple with the InitialValue field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInitialValue
+
+`func (o *StagePrompt) SetInitialValue(v string)`
+
+SetInitialValue sets InitialValue field to given value.
 
 
 ### GetOrder

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2023.4.0
+API version: 2023.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -24,12 +24,15 @@ type Prompt struct {
 	Label    string         `json:"label"`
 	Type     PromptTypeEnum `json:"type"`
 	Required *bool          `json:"required,omitempty"`
-	// When creating a Radio Button Group or Dropdown, enable interpreting as expression and return a list to return multiple choices.
-	Placeholder           *string `json:"placeholder,omitempty"`
-	Order                 *int32  `json:"order,omitempty"`
-	PromptstageSet        []Stage `json:"promptstage_set,omitempty"`
-	SubText               *string `json:"sub_text,omitempty"`
-	PlaceholderExpression *bool   `json:"placeholder_expression,omitempty"`
+	// Optionally provide a short hint that describes the expected input value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple choices.
+	Placeholder *string `json:"placeholder,omitempty"`
+	// Optionally pre-fill the input with an initial value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple default choices.
+	InitialValue           *string `json:"initial_value,omitempty"`
+	Order                  *int32  `json:"order,omitempty"`
+	PromptstageSet         []Stage `json:"promptstage_set,omitempty"`
+	SubText                *string `json:"sub_text,omitempty"`
+	PlaceholderExpression  *bool   `json:"placeholder_expression,omitempty"`
+	InitialValueExpression *bool   `json:"initial_value_expression,omitempty"`
 }
 
 // NewPrompt instantiates a new Prompt object
@@ -238,6 +241,38 @@ func (o *Prompt) SetPlaceholder(v string) {
 	o.Placeholder = &v
 }
 
+// GetInitialValue returns the InitialValue field value if set, zero value otherwise.
+func (o *Prompt) GetInitialValue() string {
+	if o == nil || o.InitialValue == nil {
+		var ret string
+		return ret
+	}
+	return *o.InitialValue
+}
+
+// GetInitialValueOk returns a tuple with the InitialValue field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Prompt) GetInitialValueOk() (*string, bool) {
+	if o == nil || o.InitialValue == nil {
+		return nil, false
+	}
+	return o.InitialValue, true
+}
+
+// HasInitialValue returns a boolean if a field has been set.
+func (o *Prompt) HasInitialValue() bool {
+	if o != nil && o.InitialValue != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInitialValue gets a reference to the given string and assigns it to the InitialValue field.
+func (o *Prompt) SetInitialValue(v string) {
+	o.InitialValue = &v
+}
+
 // GetOrder returns the Order field value if set, zero value otherwise.
 func (o *Prompt) GetOrder() int32 {
 	if o == nil || o.Order == nil {
@@ -366,6 +401,38 @@ func (o *Prompt) SetPlaceholderExpression(v bool) {
 	o.PlaceholderExpression = &v
 }
 
+// GetInitialValueExpression returns the InitialValueExpression field value if set, zero value otherwise.
+func (o *Prompt) GetInitialValueExpression() bool {
+	if o == nil || o.InitialValueExpression == nil {
+		var ret bool
+		return ret
+	}
+	return *o.InitialValueExpression
+}
+
+// GetInitialValueExpressionOk returns a tuple with the InitialValueExpression field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Prompt) GetInitialValueExpressionOk() (*bool, bool) {
+	if o == nil || o.InitialValueExpression == nil {
+		return nil, false
+	}
+	return o.InitialValueExpression, true
+}
+
+// HasInitialValueExpression returns a boolean if a field has been set.
+func (o *Prompt) HasInitialValueExpression() bool {
+	if o != nil && o.InitialValueExpression != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInitialValueExpression gets a reference to the given bool and assigns it to the InitialValueExpression field.
+func (o *Prompt) SetInitialValueExpression(v bool) {
+	o.InitialValueExpression = &v
+}
+
 func (o Prompt) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -389,6 +456,9 @@ func (o Prompt) MarshalJSON() ([]byte, error) {
 	if o.Placeholder != nil {
 		toSerialize["placeholder"] = o.Placeholder
 	}
+	if o.InitialValue != nil {
+		toSerialize["initial_value"] = o.InitialValue
+	}
 	if o.Order != nil {
 		toSerialize["order"] = o.Order
 	}
@@ -400,6 +470,9 @@ func (o Prompt) MarshalJSON() ([]byte, error) {
 	}
 	if o.PlaceholderExpression != nil {
 		toSerialize["placeholder_expression"] = o.PlaceholderExpression
+	}
+	if o.InitialValueExpression != nil {
+		toSerialize["initial_value_expression"] = o.InitialValueExpression
 	}
 	return json.Marshal(toSerialize)
 }

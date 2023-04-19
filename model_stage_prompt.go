@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2023.4.0
+API version: 2023.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -17,27 +17,29 @@ import (
 
 // StagePrompt Serializer for a single Prompt field
 type StagePrompt struct {
-	FieldKey    string         `json:"field_key"`
-	Label       string         `json:"label"`
-	Type        PromptTypeEnum `json:"type"`
-	Required    bool           `json:"required"`
-	Placeholder string         `json:"placeholder"`
-	Order       int32          `json:"order"`
-	SubText     string         `json:"sub_text"`
-	Choices     []string       `json:"choices"`
+	FieldKey     string         `json:"field_key"`
+	Label        string         `json:"label"`
+	Type         PromptTypeEnum `json:"type"`
+	Required     bool           `json:"required"`
+	Placeholder  string         `json:"placeholder"`
+	InitialValue string         `json:"initial_value"`
+	Order        int32          `json:"order"`
+	SubText      string         `json:"sub_text"`
+	Choices      []string       `json:"choices"`
 }
 
 // NewStagePrompt instantiates a new StagePrompt object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, order int32, subText string, choices []string) *StagePrompt {
+func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, initialValue string, order int32, subText string, choices []string) *StagePrompt {
 	this := StagePrompt{}
 	this.FieldKey = fieldKey
 	this.Label = label
 	this.Type = type_
 	this.Required = required
 	this.Placeholder = placeholder
+	this.InitialValue = initialValue
 	this.Order = order
 	this.SubText = subText
 	this.Choices = choices
@@ -172,6 +174,30 @@ func (o *StagePrompt) SetPlaceholder(v string) {
 	o.Placeholder = v
 }
 
+// GetInitialValue returns the InitialValue field value
+func (o *StagePrompt) GetInitialValue() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.InitialValue
+}
+
+// GetInitialValueOk returns a tuple with the InitialValue field value
+// and a boolean to check if the value has been set.
+func (o *StagePrompt) GetInitialValueOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.InitialValue, true
+}
+
+// SetInitialValue sets field value
+func (o *StagePrompt) SetInitialValue(v string) {
+	o.InitialValue = v
+}
+
 // GetOrder returns the Order field value
 func (o *StagePrompt) GetOrder() int32 {
 	if o == nil {
@@ -262,6 +288,9 @@ func (o StagePrompt) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["placeholder"] = o.Placeholder
+	}
+	if true {
+		toSerialize["initial_value"] = o.InitialValue
 	}
 	if true {
 		toSerialize["order"] = o.Order
