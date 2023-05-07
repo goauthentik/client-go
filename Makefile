@@ -28,8 +28,8 @@ build:
 		-o /local \
 		-c /local/config.yaml
 	rm -rf ./test
+	rm -f .travis.yml git_push.sh
 	go get
 	go fmt .
-	go mod tidy
 	go get -u ./...
-	rm -f .travis.yml git_push.sh
+	go mod tidy
