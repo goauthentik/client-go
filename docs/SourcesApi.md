@@ -1463,7 +1463,7 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    policyEngineMode := "policyEngineMode_example" // string | * `all` - ALL, all policies must pass * `any` - ANY, any policy must pass  * `all` - ALL, all policies must pass * `any` - ANY, any policy must pass (optional)
+    policyEngineMode := "policyEngineMode_example" // string | * `all` - all, all policies must pass * `any` - any, any policy must pass  * `all` - all, all policies must pass * `any` - any, any policy must pass (optional)
     profileUrl := "profileUrl_example" // string |  (optional)
     providerType := "providerType_example" // string |  (optional)
     requestTokenUrl := "requestTokenUrl_example" // string |  (optional)
@@ -1506,7 +1506,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **policyEngineMode** | **string** | * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass  * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass | 
+ **policyEngineMode** | **string** | * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass  * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass | 
  **profileUrl** | **string** |  | 
  **providerType** | **string** |  | 
  **requestTokenUrl** | **string** |  | 
@@ -2046,7 +2046,7 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    policyEngineMode := "policyEngineMode_example" // string | * `all` - ALL, all policies must pass * `any` - ANY, any policy must pass  * `all` - ALL, all policies must pass * `any` - ANY, any policy must pass (optional)
+    policyEngineMode := "policyEngineMode_example" // string | * `all` - all, all policies must pass * `any` - any, any policy must pass  * `all` - all, all policies must pass * `any` - any, any policy must pass (optional)
     search := "search_example" // string | A search term. (optional)
     slug := "slug_example" // string |  (optional)
     userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled.  * `identifier` - Use the source-specific identifier * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses. * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists. * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source. * `username_deny` - Use the user's username, but deny enrollment when the username already exists. (optional)
@@ -2083,7 +2083,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **policyEngineMode** | **string** | * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass  * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass | 
+ **policyEngineMode** | **string** | * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass  * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass | 
  **search** | **string** | A search term. | 
  **slug** | **string** |  | 
  **userMatchingMode** | **string** | How the source determines if an existing user should be authenticated or a new user enrolled.  * &#x60;identifier&#x60; - Use the source-specific identifier * &#x60;email_link&#x60; - Link to a user with identical email address. Can have security implications when a source doesn&#39;t validate email addresses. * &#x60;email_deny&#x60; - Use the user&#39;s email address, but deny enrollment when the email address already exists. * &#x60;username_link&#x60; - Link to a user with identical username. Can have security implications when a username is used with another source. * &#x60;username_deny&#x60; - Use the user&#39;s username, but deny enrollment when the username already exists. | 
@@ -2692,7 +2692,7 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    policyEngineMode := "policyEngineMode_example" // string | * `all` - ALL, all policies must pass * `any` - ANY, any policy must pass  * `all` - ALL, all policies must pass * `any` - ANY, any policy must pass (optional)
+    policyEngineMode := "policyEngineMode_example" // string | * `all` - all, all policies must pass * `any` - any, any policy must pass  * `all` - all, all policies must pass * `any` - any, any policy must pass (optional)
     preAuthenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     signatureAlgorithm := "signatureAlgorithm_example" // string | * `http://www.w3.org/2000/09/xmldsig#rsa-sha1` - RSA-SHA1 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha256` - RSA-SHA256 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha384` - RSA-SHA384 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha512` - RSA-SHA512 * `http://www.w3.org/2000/09/xmldsig#dsa-sha1` - DSA-SHA1  * `http://www.w3.org/2000/09/xmldsig#rsa-sha1` - RSA-SHA1 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha256` - RSA-SHA256 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha384` - RSA-SHA384 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha512` - RSA-SHA512 * `http://www.w3.org/2000/09/xmldsig#dsa-sha1` - DSA-SHA1 (optional)
@@ -2739,7 +2739,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **policyEngineMode** | **string** | * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass  * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass | 
+ **policyEngineMode** | **string** | * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass  * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass | 
  **preAuthenticationFlow** | **string** |  | 
  **search** | **string** | A search term. | 
  **signatureAlgorithm** | **string** | * &#x60;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x60; - RSA-SHA1 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x60; - RSA-SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha384&#x60; - RSA-SHA384 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha512&#x60; - RSA-SHA512 * &#x60;http://www.w3.org/2000/09/xmldsig#dsa-sha1&#x60; - DSA-SHA1  * &#x60;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x60; - RSA-SHA1 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x60; - RSA-SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha384&#x60; - RSA-SHA384 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha512&#x60; - RSA-SHA512 * &#x60;http://www.w3.org/2000/09/xmldsig#dsa-sha1&#x60; - DSA-SHA1 | 

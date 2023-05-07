@@ -196,7 +196,7 @@ func main() {
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     policies := []string{"Inner_example"} // []string |  (optional)
-    policyEngineMode := "policyEngineMode_example" // string | * `all` - ALL, all policies must pass * `any` - ANY, any policy must pass  * `all` - ALL, all policies must pass * `any` - ANY, any policy must pass (optional)
+    policyEngineMode := "policyEngineMode_example" // string | * `all` - all, all policies must pass * `any` - any, any policy must pass  * `all` - all, all policies must pass * `any` - any, any policy must pass (optional)
     reEvaluatePolicies := true // bool |  (optional)
     search := "search_example" // string | A search term. (optional)
     stage := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | Number of results to return per page. | 
  **pbmUuid** | **string** |  | 
  **policies** | **[]string** |  | 
- **policyEngineMode** | **string** | * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass  * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass | 
+ **policyEngineMode** | **string** | * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass  * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass | 
  **reEvaluatePolicies** | **bool** |  | 
  **search** | **string** | A search term. | 
  **stage** | **string** |  | 

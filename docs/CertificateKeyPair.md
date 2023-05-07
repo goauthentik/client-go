@@ -14,13 +14,13 @@ Name | Type | Description | Notes
 **PrivateKeyType** | **NullableString** | Get the private key&#39;s type, if set | [readonly] 
 **CertificateDownloadUrl** | **string** | Get URL to download certificate | [readonly] 
 **PrivateKeyDownloadUrl** | **string** | Get URL to download private key | [readonly] 
-**Managed** | Pointer to **NullableString** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [optional] 
+**Managed** | **NullableString** | Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 
 ## Methods
 
 ### NewCertificateKeyPair
 
-`func NewCertificateKeyPair(pk string, name string, fingerprintSha256 NullableString, fingerprintSha1 NullableString, certExpiry NullableTime, certSubject NullableString, privateKeyAvailable bool, privateKeyType NullableString, certificateDownloadUrl string, privateKeyDownloadUrl string, ) *CertificateKeyPair`
+`func NewCertificateKeyPair(pk string, name string, fingerprintSha256 NullableString, fingerprintSha1 NullableString, certExpiry NullableTime, certSubject NullableString, privateKeyAvailable bool, privateKeyType NullableString, certificateDownloadUrl string, privateKeyDownloadUrl string, managed NullableString, ) *CertificateKeyPair`
 
 NewCertificateKeyPair instantiates a new CertificateKeyPair object
 This constructor will assign default values to properties that have it defined,
@@ -304,11 +304,6 @@ and a boolean to check if the value has been set.
 
 SetManaged sets Managed field to given value.
 
-### HasManaged
-
-`func (o *CertificateKeyPair) HasManaged() bool`
-
-HasManaged returns a boolean if a field has been set.
 
 ### SetManagedNil
 

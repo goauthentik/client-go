@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// PolicyEngineMode * `all` - ALL, all policies must pass * `any` - ANY, any policy must pass
+// PolicyEngineMode * `all` - all, all policies must pass * `any` - any, any policy must pass
 type PolicyEngineMode string
 
 // List of PolicyEngineMode

@@ -22,8 +22,6 @@ type CertificateKeyPairRequest struct {
 	CertificateData string `json:"certificate_data"`
 	// Optional Private Key. If this is set, you can use this keypair for encryption.
 	KeyData *string `json:"key_data,omitempty"`
-	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed NullableString `json:"managed,omitempty"`
 }
 
 // NewCertificateKeyPairRequest instantiates a new CertificateKeyPairRequest object
@@ -125,49 +123,6 @@ func (o *CertificateKeyPairRequest) SetKeyData(v string) {
 	o.KeyData = &v
 }
 
-// GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificateKeyPairRequest) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
-		var ret string
-		return ret
-	}
-	return *o.Managed.Get()
-}
-
-// GetManagedOk returns a tuple with the Managed field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateKeyPairRequest) GetManagedOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Managed.Get(), o.Managed.IsSet()
-}
-
-// HasManaged returns a boolean if a field has been set.
-func (o *CertificateKeyPairRequest) HasManaged() bool {
-	if o != nil && o.Managed.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetManaged gets a reference to the given NullableString and assigns it to the Managed field.
-func (o *CertificateKeyPairRequest) SetManaged(v string) {
-	o.Managed.Set(&v)
-}
-
-// SetManagedNil sets the value for Managed to be an explicit nil
-func (o *CertificateKeyPairRequest) SetManagedNil() {
-	o.Managed.Set(nil)
-}
-
-// UnsetManaged ensures that no value is present for Managed, not even an explicit nil
-func (o *CertificateKeyPairRequest) UnsetManaged() {
-	o.Managed.Unset()
-}
-
 func (o CertificateKeyPairRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -178,9 +133,6 @@ func (o CertificateKeyPairRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.KeyData != nil {
 		toSerialize["key_data"] = o.KeyData
-	}
-	if o.Managed.IsSet() {
-		toSerialize["managed"] = o.Managed.Get()
 	}
 	return json.Marshal(toSerialize)
 }

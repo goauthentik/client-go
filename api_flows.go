@@ -362,7 +362,7 @@ func (r ApiFlowsBindingsListRequest) Policies(policies []string) ApiFlowsBinding
 	return r
 }
 
-// * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass  * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass
+// * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass  * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass
 func (r ApiFlowsBindingsListRequest) PolicyEngineMode(policyEngineMode string) ApiFlowsBindingsListRequest {
 	r.policyEngineMode = &policyEngineMode
 	return r

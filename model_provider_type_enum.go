@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ProviderTypeEnum * `apple` - Apple * `azuread` - Azure AD * `discord` - Discord * `facebook` - Facebook * `github` - GitHub * `google` - Google * `openidconnect` - OpenID Connect * `okta` - Okta * `reddit` - reddit * `twitter` - Twitter * `mailcow` - Mailcow * `twitch` - Twitch
+// ProviderTypeEnum * `apple` - Apple * `azuread` - Azure AD * `discord` - Discord * `facebook` - Facebook * `github` - GitHub * `google` - Google * `mailcow` - Mailcow * `openidconnect` - OpenID Connect * `okta` - Okta * `patreon` - Patreon * `reddit` - reddit * `twitch` - Twitch * `twitter` - Twitter
 type ProviderTypeEnum string
 
 // List of ProviderTypeEnum
@@ -27,12 +27,13 @@ const (
 	PROVIDERTYPEENUM_FACEBOOK      ProviderTypeEnum = "facebook"
 	PROVIDERTYPEENUM_GITHUB        ProviderTypeEnum = "github"
 	PROVIDERTYPEENUM_GOOGLE        ProviderTypeEnum = "google"
+	PROVIDERTYPEENUM_MAILCOW       ProviderTypeEnum = "mailcow"
 	PROVIDERTYPEENUM_OPENIDCONNECT ProviderTypeEnum = "openidconnect"
 	PROVIDERTYPEENUM_OKTA          ProviderTypeEnum = "okta"
+	PROVIDERTYPEENUM_PATREON       ProviderTypeEnum = "patreon"
 	PROVIDERTYPEENUM_REDDIT        ProviderTypeEnum = "reddit"
-	PROVIDERTYPEENUM_TWITTER       ProviderTypeEnum = "twitter"
-	PROVIDERTYPEENUM_MAILCOW       ProviderTypeEnum = "mailcow"
 	PROVIDERTYPEENUM_TWITCH        ProviderTypeEnum = "twitch"
+	PROVIDERTYPEENUM_TWITTER       ProviderTypeEnum = "twitter"
 )
 
 // All allowed values of ProviderTypeEnum enum
@@ -43,12 +44,13 @@ var AllowedProviderTypeEnumEnumValues = []ProviderTypeEnum{
 	"facebook",
 	"github",
 	"google",
+	"mailcow",
 	"openidconnect",
 	"okta",
+	"patreon",
 	"reddit",
-	"twitter",
-	"mailcow",
 	"twitch",
+	"twitter",
 }
 
 func (v *ProviderTypeEnum) UnmarshalJSON(src []byte) error {

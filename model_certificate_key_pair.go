@@ -37,14 +37,14 @@ type CertificateKeyPair struct {
 	// Get URL to download private key
 	PrivateKeyDownloadUrl string `json:"private_key_download_url"`
 	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed NullableString `json:"managed,omitempty"`
+	Managed NullableString `json:"managed"`
 }
 
 // NewCertificateKeyPair instantiates a new CertificateKeyPair object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificateKeyPair(pk string, name string, fingerprintSha256 NullableString, fingerprintSha1 NullableString, certExpiry NullableTime, certSubject NullableString, privateKeyAvailable bool, privateKeyType NullableString, certificateDownloadUrl string, privateKeyDownloadUrl string) *CertificateKeyPair {
+func NewCertificateKeyPair(pk string, name string, fingerprintSha256 NullableString, fingerprintSha1 NullableString, certExpiry NullableTime, certSubject NullableString, privateKeyAvailable bool, privateKeyType NullableString, certificateDownloadUrl string, privateKeyDownloadUrl string, managed NullableString) *CertificateKeyPair {
 	this := CertificateKeyPair{}
 	this.Pk = pk
 	this.Name = name
@@ -56,6 +56,7 @@ func NewCertificateKeyPair(pk string, name string, fingerprintSha256 NullableStr
 	this.PrivateKeyType = privateKeyType
 	this.CertificateDownloadUrl = certificateDownloadUrl
 	this.PrivateKeyDownloadUrl = privateKeyDownloadUrl
+	this.Managed = managed
 	return &this
 }
 
@@ -317,16 +318,18 @@ func (o *CertificateKeyPair) SetPrivateKeyDownloadUrl(v string) {
 	o.PrivateKeyDownloadUrl = v
 }
 
-// GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetManaged returns the Managed field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CertificateKeyPair) GetManaged() string {
 	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Managed.Get()
 }
 
-// GetManagedOk returns a tuple with the Managed field value if set, nil otherwise
+// GetManagedOk returns a tuple with the Managed field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CertificateKeyPair) GetManagedOk() (*string, bool) {
@@ -336,28 +339,9 @@ func (o *CertificateKeyPair) GetManagedOk() (*string, bool) {
 	return o.Managed.Get(), o.Managed.IsSet()
 }
 
-// HasManaged returns a boolean if a field has been set.
-func (o *CertificateKeyPair) HasManaged() bool {
-	if o != nil && o.Managed.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetManaged gets a reference to the given NullableString and assigns it to the Managed field.
+// SetManaged sets field value
 func (o *CertificateKeyPair) SetManaged(v string) {
 	o.Managed.Set(&v)
-}
-
-// SetManagedNil sets the value for Managed to be an explicit nil
-func (o *CertificateKeyPair) SetManagedNil() {
-	o.Managed.Set(nil)
-}
-
-// UnsetManaged ensures that no value is present for Managed, not even an explicit nil
-func (o *CertificateKeyPair) UnsetManaged() {
-	o.Managed.Unset()
 }
 
 func (o CertificateKeyPair) MarshalJSON() ([]byte, error) {
@@ -392,7 +376,7 @@ func (o CertificateKeyPair) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["private_key_download_url"] = o.PrivateKeyDownloadUrl
 	}
-	if o.Managed.IsSet() {
+	if true {
 		toSerialize["managed"] = o.Managed.Get()
 	}
 	return json.Marshal(toSerialize)

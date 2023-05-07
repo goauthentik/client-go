@@ -2999,7 +2999,7 @@ func (r ApiSourcesOauthListRequest) PageSize(pageSize int32) ApiSourcesOauthList
 	return r
 }
 
-// * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass  * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass
+// * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass  * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass
 func (r ApiSourcesOauthListRequest) PolicyEngineMode(policyEngineMode string) ApiSourcesOauthListRequest {
 	r.policyEngineMode = &policyEngineMode
 	return r
@@ -4267,7 +4267,7 @@ func (r ApiSourcesPlexListRequest) PageSize(pageSize int32) ApiSourcesPlexListRe
 	return r
 }
 
-// * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass  * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass
+// * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass  * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass
 func (r ApiSourcesPlexListRequest) PolicyEngineMode(policyEngineMode string) ApiSourcesPlexListRequest {
 	r.policyEngineMode = &policyEngineMode
 	return r
@@ -5649,7 +5649,7 @@ func (r ApiSourcesSamlListRequest) PageSize(pageSize int32) ApiSourcesSamlListRe
 	return r
 }
 
-// * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass  * &#x60;all&#x60; - ALL, all policies must pass * &#x60;any&#x60; - ANY, any policy must pass
+// * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass  * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass
 func (r ApiSourcesSamlListRequest) PolicyEngineMode(policyEngineMode string) ApiSourcesSamlListRequest {
 	r.policyEngineMode = &policyEngineMode
 	return r

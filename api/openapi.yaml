@@ -7490,11 +7490,11 @@ paths:
           type: array
         style: form
       - description: |-
-          * `all` - ALL, all policies must pass
-          * `any` - ANY, any policy must pass
+          * `all` - all, all policies must pass
+          * `any` - any, any policy must pass
 
-          * `all` - ALL, all policies must pass
-          * `any` - ANY, any policy must pass
+          * `all` - all, all policies must pass
+          * `any` - any, any policy must pass
         explode: true
         in: query
         name: policy_engine_mode
@@ -19572,11 +19572,11 @@ paths:
           type: integer
         style: form
       - description: |-
-          * `all` - ALL, all policies must pass
-          * `any` - ANY, any policy must pass
+          * `all` - all, all policies must pass
+          * `any` - any, any policy must pass
 
-          * `all` - ALL, all policies must pass
-          * `any` - ANY, any policy must pass
+          * `all` - all, all policies must pass
+          * `any` - any, any policy must pass
         explode: true
         in: query
         name: policy_engine_mode
@@ -19998,11 +19998,11 @@ paths:
           type: integer
         style: form
       - description: |-
-          * `all` - ALL, all policies must pass
-          * `any` - ANY, any policy must pass
+          * `all` - all, all policies must pass
+          * `any` - any, any policy must pass
 
-          * `all` - ALL, all policies must pass
-          * `any` - ANY, any policy must pass
+          * `all` - all, all policies must pass
+          * `any` - any, any policy must pass
         explode: true
         in: query
         name: policy_engine_mode
@@ -20498,11 +20498,11 @@ paths:
           type: integer
         style: form
       - description: |-
-          * `all` - ALL, all policies must pass
-          * `any` - ANY, any policy must pass
+          * `all` - all, all policies must pass
+          * `any` - any, any policy must pass
 
-          * `all` - ALL, all policies must pass
-          * `any` - ANY, any policy must pass
+          * `all` - all, all policies must pass
+          * `any` - any, any policy must pass
         explode: true
         in: query
         name: policy_engine_mode
@@ -31357,6 +31357,7 @@ components:
             \ objects via the API, but expect changes to be overwritten in a later\
             \ update."
           nullable: true
+          readOnly: true
           title: Managed by authentik
           type: string
       required:
@@ -31365,6 +31366,7 @@ components:
       - certificate_download_url
       - fingerprint_sha1
       - fingerprint_sha256
+      - managed
       - name
       - pk
       - private_key_available
@@ -31375,7 +31377,6 @@ components:
       description: CertificateKeyPair Serializer
       example:
         certificate_data: certificate_data
-        managed: managed
         name: name
         key_data: key_data
       properties:
@@ -31392,16 +31393,6 @@ components:
             \ for encryption."
           type: string
           writeOnly: true
-        managed:
-          description: "Objects which are managed by authentik. These objects are\
-            \ created and updated automatically. This is flag only indicates that\
-            \ an object can be overwritten by migrations. You can still modify the\
-            \ objects via the API, but expect changes to be overwritten in a later\
-            \ update."
-          minLength: 1
-          nullable: true
-          title: Managed by authentik
-          type: string
       required:
       - certificate_data
       - name
@@ -43085,7 +43076,6 @@ components:
       description: CertificateKeyPair Serializer
       example:
         certificate_data: certificate_data
-        managed: managed
         name: name
         key_data: key_data
       properties:
@@ -43102,16 +43092,6 @@ components:
             \ for encryption."
           type: string
           writeOnly: true
-        managed:
-          description: "Objects which are managed by authentik. These objects are\
-            \ created and updated automatically. This is flag only indicates that\
-            \ an object can be overwritten by migrations. You can still modify the\
-            \ objects via the API, but expect changes to be overwritten in a later\
-            \ update."
-          minLength: 1
-          nullable: true
-          title: Managed by authentik
-          type: string
       type: object
     PatchedConsentStageRequest:
       description: ConsentStage Serializer
@@ -46254,8 +46234,8 @@ components:
       type: object
     PolicyEngineMode:
       description: |-
-        * `all` - ALL, all policies must pass
-        * `any` - ANY, any policy must pass
+        * `all` - all, all policies must pass
+        * `any` - any, any policy must pass
       enum:
       - all
       - any
@@ -46986,12 +46966,13 @@ components:
         * `facebook` - Facebook
         * `github` - GitHub
         * `google` - Google
+        * `mailcow` - Mailcow
         * `openidconnect` - OpenID Connect
         * `okta` - Okta
+        * `patreon` - Patreon
         * `reddit` - reddit
-        * `twitter` - Twitter
-        * `mailcow` - Mailcow
         * `twitch` - Twitch
+        * `twitter` - Twitter
       enum:
       - apple
       - azuread
@@ -46999,12 +46980,13 @@ components:
       - facebook
       - github
       - google
+      - mailcow
       - openidconnect
       - okta
+      - patreon
       - reddit
-      - twitter
-      - mailcow
       - twitch
+      - twitter
       type: string
     ProxyMode:
       description: |-
