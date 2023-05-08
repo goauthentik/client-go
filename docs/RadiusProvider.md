@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
 **AssignedApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
 **AssignedApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
+**AssignedBackchannelApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
+**AssignedBackchannelApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
@@ -22,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewRadiusProvider
 
-`func NewRadiusProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, ) *RadiusProvider`
+`func NewRadiusProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, ) *RadiusProvider`
 
 NewRadiusProvider instantiates a new RadiusProvider object
 This constructor will assign default values to properties that have it defined,
@@ -215,6 +217,46 @@ and a boolean to check if the value has been set.
 `func (o *RadiusProvider) SetAssignedApplicationName(v string)`
 
 SetAssignedApplicationName sets AssignedApplicationName field to given value.
+
+
+### GetAssignedBackchannelApplicationSlug
+
+`func (o *RadiusProvider) GetAssignedBackchannelApplicationSlug() string`
+
+GetAssignedBackchannelApplicationSlug returns the AssignedBackchannelApplicationSlug field if non-nil, zero value otherwise.
+
+### GetAssignedBackchannelApplicationSlugOk
+
+`func (o *RadiusProvider) GetAssignedBackchannelApplicationSlugOk() (*string, bool)`
+
+GetAssignedBackchannelApplicationSlugOk returns a tuple with the AssignedBackchannelApplicationSlug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssignedBackchannelApplicationSlug
+
+`func (o *RadiusProvider) SetAssignedBackchannelApplicationSlug(v string)`
+
+SetAssignedBackchannelApplicationSlug sets AssignedBackchannelApplicationSlug field to given value.
+
+
+### GetAssignedBackchannelApplicationName
+
+`func (o *RadiusProvider) GetAssignedBackchannelApplicationName() string`
+
+GetAssignedBackchannelApplicationName returns the AssignedBackchannelApplicationName field if non-nil, zero value otherwise.
+
+### GetAssignedBackchannelApplicationNameOk
+
+`func (o *RadiusProvider) GetAssignedBackchannelApplicationNameOk() (*string, bool)`
+
+GetAssignedBackchannelApplicationNameOk returns a tuple with the AssignedBackchannelApplicationName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssignedBackchannelApplicationName
+
+`func (o *RadiusProvider) SetAssignedBackchannelApplicationName(v string)`
+
+SetAssignedBackchannelApplicationName sets AssignedBackchannelApplicationName field to given value.
 
 
 ### GetVerboseName

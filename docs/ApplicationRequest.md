@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Application&#39;s display Name. | 
 **Slug** | **string** | Internal application name, used in URLs. | 
 **Provider** | Pointer to **NullableInt32** |  | [optional] 
+**BackchannelProviders** | Pointer to **[]int32** |  | [optional] 
 **OpenInNewTab** | Pointer to **bool** | Open launch URL in a new browser tab or window. | [optional] 
 **MetaLaunchUrl** | Pointer to **string** |  | [optional] 
 **MetaDescription** | Pointer to **string** |  | [optional] 
@@ -108,6 +109,31 @@ HasProvider returns a boolean if a field has been set.
 `func (o *ApplicationRequest) UnsetProvider()`
 
 UnsetProvider ensures that no value is present for Provider, not even an explicit nil
+### GetBackchannelProviders
+
+`func (o *ApplicationRequest) GetBackchannelProviders() []int32`
+
+GetBackchannelProviders returns the BackchannelProviders field if non-nil, zero value otherwise.
+
+### GetBackchannelProvidersOk
+
+`func (o *ApplicationRequest) GetBackchannelProvidersOk() (*[]int32, bool)`
+
+GetBackchannelProvidersOk returns a tuple with the BackchannelProviders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackchannelProviders
+
+`func (o *ApplicationRequest) SetBackchannelProviders(v []int32)`
+
+SetBackchannelProviders sets BackchannelProviders field to given value.
+
+### HasBackchannelProviders
+
+`func (o *ApplicationRequest) HasBackchannelProviders() bool`
+
+HasBackchannelProviders returns a boolean if a field has been set.
+
 ### GetOpenInNewTab
 
 `func (o *ApplicationRequest) GetOpenInNewTab() bool`

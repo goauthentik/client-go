@@ -21,9 +21,11 @@ type Application struct {
 	// Application's display Name.
 	Name string `json:"name"`
 	// Internal application name, used in URLs.
-	Slug        string        `json:"slug"`
-	Provider    NullableInt32 `json:"provider,omitempty"`
-	ProviderObj Provider      `json:"provider_obj"`
+	Slug                    string        `json:"slug"`
+	Provider                NullableInt32 `json:"provider,omitempty"`
+	ProviderObj             Provider      `json:"provider_obj"`
+	BackchannelProviders    []int32       `json:"backchannel_providers,omitempty"`
+	BackchannelProvidersObj []Provider    `json:"backchannel_providers_obj"`
 	// Allow formatting of launch URL
 	LaunchUrl NullableString `json:"launch_url"`
 	// Open launch URL in a new browser tab or window.
@@ -41,12 +43,13 @@ type Application struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplication(pk string, name string, slug string, providerObj Provider, launchUrl NullableString, metaIcon NullableString) *Application {
+func NewApplication(pk string, name string, slug string, providerObj Provider, backchannelProvidersObj []Provider, launchUrl NullableString, metaIcon NullableString) *Application {
 	this := Application{}
 	this.Pk = pk
 	this.Name = name
 	this.Slug = slug
 	this.ProviderObj = providerObj
+	this.BackchannelProvidersObj = backchannelProvidersObj
 	this.LaunchUrl = launchUrl
 	this.MetaIcon = metaIcon
 	return &this
@@ -197,6 +200,62 @@ func (o *Application) GetProviderObjOk() (*Provider, bool) {
 // SetProviderObj sets field value
 func (o *Application) SetProviderObj(v Provider) {
 	o.ProviderObj = v
+}
+
+// GetBackchannelProviders returns the BackchannelProviders field value if set, zero value otherwise.
+func (o *Application) GetBackchannelProviders() []int32 {
+	if o == nil || o.BackchannelProviders == nil {
+		var ret []int32
+		return ret
+	}
+	return o.BackchannelProviders
+}
+
+// GetBackchannelProvidersOk returns a tuple with the BackchannelProviders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Application) GetBackchannelProvidersOk() ([]int32, bool) {
+	if o == nil || o.BackchannelProviders == nil {
+		return nil, false
+	}
+	return o.BackchannelProviders, true
+}
+
+// HasBackchannelProviders returns a boolean if a field has been set.
+func (o *Application) HasBackchannelProviders() bool {
+	if o != nil && o.BackchannelProviders != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBackchannelProviders gets a reference to the given []int32 and assigns it to the BackchannelProviders field.
+func (o *Application) SetBackchannelProviders(v []int32) {
+	o.BackchannelProviders = v
+}
+
+// GetBackchannelProvidersObj returns the BackchannelProvidersObj field value
+func (o *Application) GetBackchannelProvidersObj() []Provider {
+	if o == nil {
+		var ret []Provider
+		return ret
+	}
+
+	return o.BackchannelProvidersObj
+}
+
+// GetBackchannelProvidersObjOk returns a tuple with the BackchannelProvidersObj field value
+// and a boolean to check if the value has been set.
+func (o *Application) GetBackchannelProvidersObjOk() ([]Provider, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BackchannelProvidersObj, true
+}
+
+// SetBackchannelProvidersObj sets field value
+func (o *Application) SetBackchannelProvidersObj(v []Provider) {
+	o.BackchannelProvidersObj = v
 }
 
 // GetLaunchUrl returns the LaunchUrl field value
@@ -459,6 +518,12 @@ func (o Application) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["provider_obj"] = o.ProviderObj
+	}
+	if o.BackchannelProviders != nil {
+		toSerialize["backchannel_providers"] = o.BackchannelProviders
+	}
+	if true {
+		toSerialize["backchannel_providers_obj"] = o.BackchannelProvidersObj
 	}
 	if true {
 		toSerialize["launch_url"] = o.LaunchUrl.Get()

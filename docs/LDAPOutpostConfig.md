@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **BaseDn** | Pointer to **string** | DN under which objects are accessible. | [optional] 
 **BindFlowSlug** | **string** |  | 
-**ApplicationSlug** | **string** |  | 
+**ApplicationSlug** | **string** | Prioritise backchannel slug over direct application slug | [readonly] 
 **SearchGroup** | Pointer to **NullableString** | Users in this group can do search queries. If not set, every user can execute search queries. | [optional] 
 **Certificate** | Pointer to **NullableString** |  | [optional] 
 **TlsServerName** | Pointer to **string** |  | [optional] 

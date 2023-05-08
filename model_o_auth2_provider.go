@@ -30,6 +30,10 @@ type OAuth2Provider struct {
 	AssignedApplicationSlug string `json:"assigned_application_slug"`
 	// Application's display Name.
 	AssignedApplicationName string `json:"assigned_application_name"`
+	// Internal application name, used in URLs.
+	AssignedBackchannelApplicationSlug string `json:"assigned_backchannel_application_slug"`
+	// Application's display Name.
+	AssignedBackchannelApplicationName string `json:"assigned_backchannel_application_name"`
 	// Return object's verbose_name
 	VerboseName string `json:"verbose_name"`
 	// Return object's plural verbose_name
@@ -63,7 +67,7 @@ type OAuth2Provider struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuth2Provider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string) *OAuth2Provider {
+func NewOAuth2Provider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string) *OAuth2Provider {
 	this := OAuth2Provider{}
 	this.Pk = pk
 	this.Name = name
@@ -71,6 +75,8 @@ func NewOAuth2Provider(pk int32, name string, authorizationFlow string, componen
 	this.Component = component
 	this.AssignedApplicationSlug = assignedApplicationSlug
 	this.AssignedApplicationName = assignedApplicationName
+	this.AssignedBackchannelApplicationSlug = assignedBackchannelApplicationSlug
+	this.AssignedBackchannelApplicationName = assignedBackchannelApplicationName
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
@@ -302,6 +308,54 @@ func (o *OAuth2Provider) GetAssignedApplicationNameOk() (*string, bool) {
 // SetAssignedApplicationName sets field value
 func (o *OAuth2Provider) SetAssignedApplicationName(v string) {
 	o.AssignedApplicationName = v
+}
+
+// GetAssignedBackchannelApplicationSlug returns the AssignedBackchannelApplicationSlug field value
+func (o *OAuth2Provider) GetAssignedBackchannelApplicationSlug() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AssignedBackchannelApplicationSlug
+}
+
+// GetAssignedBackchannelApplicationSlugOk returns a tuple with the AssignedBackchannelApplicationSlug field value
+// and a boolean to check if the value has been set.
+func (o *OAuth2Provider) GetAssignedBackchannelApplicationSlugOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AssignedBackchannelApplicationSlug, true
+}
+
+// SetAssignedBackchannelApplicationSlug sets field value
+func (o *OAuth2Provider) SetAssignedBackchannelApplicationSlug(v string) {
+	o.AssignedBackchannelApplicationSlug = v
+}
+
+// GetAssignedBackchannelApplicationName returns the AssignedBackchannelApplicationName field value
+func (o *OAuth2Provider) GetAssignedBackchannelApplicationName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AssignedBackchannelApplicationName
+}
+
+// GetAssignedBackchannelApplicationNameOk returns a tuple with the AssignedBackchannelApplicationName field value
+// and a boolean to check if the value has been set.
+func (o *OAuth2Provider) GetAssignedBackchannelApplicationNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AssignedBackchannelApplicationName, true
+}
+
+// SetAssignedBackchannelApplicationName sets field value
+func (o *OAuth2Provider) SetAssignedBackchannelApplicationName(v string) {
+	o.AssignedBackchannelApplicationName = v
 }
 
 // GetVerboseName returns the VerboseName field value
@@ -796,6 +850,12 @@ func (o OAuth2Provider) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["assigned_application_name"] = o.AssignedApplicationName
+	}
+	if true {
+		toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug
+	}
+	if true {
+		toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName
 	}
 	if true {
 		toSerialize["verbose_name"] = o.VerboseName

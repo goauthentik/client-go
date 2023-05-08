@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
 **AssignedApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
 **AssignedApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
+**AssignedBackchannelApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
+**AssignedBackchannelApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
@@ -29,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewLDAPProvider
 
-`func NewLDAPProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, outpostSet []string, ) *LDAPProvider`
+`func NewLDAPProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, outpostSet []string, ) *LDAPProvider`
 
 NewLDAPProvider instantiates a new LDAPProvider object
 This constructor will assign default values to properties that have it defined,
@@ -222,6 +224,46 @@ and a boolean to check if the value has been set.
 `func (o *LDAPProvider) SetAssignedApplicationName(v string)`
 
 SetAssignedApplicationName sets AssignedApplicationName field to given value.
+
+
+### GetAssignedBackchannelApplicationSlug
+
+`func (o *LDAPProvider) GetAssignedBackchannelApplicationSlug() string`
+
+GetAssignedBackchannelApplicationSlug returns the AssignedBackchannelApplicationSlug field if non-nil, zero value otherwise.
+
+### GetAssignedBackchannelApplicationSlugOk
+
+`func (o *LDAPProvider) GetAssignedBackchannelApplicationSlugOk() (*string, bool)`
+
+GetAssignedBackchannelApplicationSlugOk returns a tuple with the AssignedBackchannelApplicationSlug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssignedBackchannelApplicationSlug
+
+`func (o *LDAPProvider) SetAssignedBackchannelApplicationSlug(v string)`
+
+SetAssignedBackchannelApplicationSlug sets AssignedBackchannelApplicationSlug field to given value.
+
+
+### GetAssignedBackchannelApplicationName
+
+`func (o *LDAPProvider) GetAssignedBackchannelApplicationName() string`
+
+GetAssignedBackchannelApplicationName returns the AssignedBackchannelApplicationName field if non-nil, zero value otherwise.
+
+### GetAssignedBackchannelApplicationNameOk
+
+`func (o *LDAPProvider) GetAssignedBackchannelApplicationNameOk() (*string, bool)`
+
+GetAssignedBackchannelApplicationNameOk returns a tuple with the AssignedBackchannelApplicationName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssignedBackchannelApplicationName
+
+`func (o *LDAPProvider) SetAssignedBackchannelApplicationName(v string)`
+
+SetAssignedBackchannelApplicationName sets AssignedBackchannelApplicationName field to given value.
 
 
 ### GetVerboseName

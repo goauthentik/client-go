@@ -154,6 +154,7 @@ type ApiProvidersAllListRequest struct {
 	ctx               context.Context
 	ApiService        *ProvidersApiService
 	applicationIsnull *bool
+	backchannelOnly   *bool
 	ordering          *string
 	page              *int32
 	pageSize          *int32
@@ -162,6 +163,11 @@ type ApiProvidersAllListRequest struct {
 
 func (r ApiProvidersAllListRequest) ApplicationIsnull(applicationIsnull bool) ApiProvidersAllListRequest {
 	r.applicationIsnull = &applicationIsnull
+	return r
+}
+
+func (r ApiProvidersAllListRequest) BackchannelOnly(backchannelOnly bool) ApiProvidersAllListRequest {
+	r.backchannelOnly = &backchannelOnly
 	return r
 }
 
@@ -232,6 +238,9 @@ func (a *ProvidersApiService) ProvidersAllListExecute(r ApiProvidersAllListReque
 
 	if r.applicationIsnull != nil {
 		localVarQueryParams.Add("application__isnull", parameterToString(*r.applicationIsnull, ""))
+	}
+	if r.backchannelOnly != nil {
+		localVarQueryParams.Add("backchannel_only", parameterToString(*r.backchannelOnly, ""))
 	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
@@ -5902,7 +5911,9 @@ type ApiProvidersSamlListRequest struct {
 	audience                   *string
 	authenticationFlow         *string
 	authorizationFlow          *string
+	backchannelApplication     *string
 	digestAlgorithm            *string
+	isBackchannel              *bool
 	issuer                     *string
 	name                       *string
 	nameIdMapping              *string
@@ -5948,9 +5959,19 @@ func (r ApiProvidersSamlListRequest) AuthorizationFlow(authorizationFlow string)
 	return r
 }
 
+func (r ApiProvidersSamlListRequest) BackchannelApplication(backchannelApplication string) ApiProvidersSamlListRequest {
+	r.backchannelApplication = &backchannelApplication
+	return r
+}
+
 // * &#x60;http://www.w3.org/2000/09/xmldsig#sha1&#x60; - SHA1 * &#x60;http://www.w3.org/2001/04/xmlenc#sha256&#x60; - SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#sha384&#x60; - SHA384 * &#x60;http://www.w3.org/2001/04/xmlenc#sha512&#x60; - SHA512  * &#x60;http://www.w3.org/2000/09/xmldsig#sha1&#x60; - SHA1 * &#x60;http://www.w3.org/2001/04/xmlenc#sha256&#x60; - SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#sha384&#x60; - SHA384 * &#x60;http://www.w3.org/2001/04/xmlenc#sha512&#x60; - SHA512
 func (r ApiProvidersSamlListRequest) DigestAlgorithm(digestAlgorithm string) ApiProvidersSamlListRequest {
 	r.digestAlgorithm = &digestAlgorithm
+	return r
+}
+
+func (r ApiProvidersSamlListRequest) IsBackchannel(isBackchannel bool) ApiProvidersSamlListRequest {
+	r.isBackchannel = &isBackchannel
 	return r
 }
 
@@ -6084,8 +6105,14 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	if r.authorizationFlow != nil {
 		localVarQueryParams.Add("authorization_flow", parameterToString(*r.authorizationFlow, ""))
 	}
+	if r.backchannelApplication != nil {
+		localVarQueryParams.Add("backchannel_application", parameterToString(*r.backchannelApplication, ""))
+	}
 	if r.digestAlgorithm != nil {
 		localVarQueryParams.Add("digest_algorithm", parameterToString(*r.digestAlgorithm, ""))
+	}
+	if r.isBackchannel != nil {
+		localVarQueryParams.Add("is_backchannel", parameterToString(*r.isBackchannel, ""))
 	}
 	if r.issuer != nil {
 		localVarQueryParams.Add("issuer", parameterToString(*r.issuer, ""))

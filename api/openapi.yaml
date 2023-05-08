@@ -15849,6 +15849,13 @@ paths:
         schema:
           type: boolean
         style: form
+      - explode: true
+        in: query
+        name: backchannel_only
+        required: false
+        schema:
+          type: boolean
+        style: form
       - description: Which field to use when ordering the results.
         explode: true
         in: query
@@ -17626,6 +17633,14 @@ paths:
           format: uuid
           type: string
         style: form
+      - explode: true
+        in: query
+        name: backchannel_application
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       - description: |-
           * `http://www.w3.org/2000/09/xmldsig#sha1` - SHA1
           * `http://www.w3.org/2001/04/xmlenc#sha256` - SHA256
@@ -17647,6 +17662,13 @@ paths:
           - http://www.w3.org/2001/04/xmlenc#sha256
           - http://www.w3.org/2001/04/xmlenc#sha512
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: is_backchannel
+        required: false
+        schema:
+          type: boolean
         style: form
       - explode: true
         in: query
@@ -29425,6 +29447,9 @@ components:
       description: Application Serializer
       example:
         provider_obj: ""
+        backchannel_providers:
+        - 6
+        - 6
         meta_launch_url: https://openapi-generator.tech
         meta_icon: meta_icon
         meta_publisher: meta_publisher
@@ -29434,6 +29459,37 @@ components:
         provider: 0
         open_in_new_tab: true
         name: name
+        backchannel_providers_obj:
+        - verbose_name_plural: verbose_name_plural
+          assigned_application_slug: assigned_application_slug
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          component: component
+          verbose_name: verbose_name
+          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
+          assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
+          name: name
+          pk: 1
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - verbose_name_plural: verbose_name_plural
+          assigned_application_slug: assigned_application_slug
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          component: component
+          verbose_name: verbose_name
+          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
+          assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
+          name: name
+          pk: 1
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         slug: slug
         group: group
@@ -29458,6 +29514,15 @@ components:
           allOf:
           - $ref: '#/components/schemas/Provider'
           readOnly: true
+        backchannel_providers:
+          items:
+            type: integer
+          type: array
+        backchannel_providers_obj:
+          items:
+            $ref: '#/components/schemas/Provider'
+          readOnly: true
+          type: array
         launch_url:
           description: Allow formatting of launch URL
           nullable: true
@@ -29485,6 +29550,7 @@ components:
         group:
           type: string
       required:
+      - backchannel_providers_obj
       - launch_url
       - meta_icon
       - name
@@ -29497,6 +29563,9 @@ components:
       example:
         policy_engine_mode: null
         meta_description: meta_description
+        backchannel_providers:
+        - 6
+        - 6
         provider: 0
         open_in_new_tab: true
         name: name
@@ -29518,6 +29587,10 @@ components:
         provider:
           nullable: true
           type: integer
+        backchannel_providers:
+          items:
+            type: integer
+          type: array
         open_in_new_tab:
           description: Open launch URL in a new browser tab or window.
           type: boolean
@@ -33103,29 +33176,31 @@ components:
           signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_type: ""
-          redirect_uris: redirect_uris
           sub_mode: ""
           client_id: client_id
           refresh_token_validity: refresh_token_validity
+          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          access_code_validity: access_code_validity
+          assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
+          issuer_mode: ""
+          client_secret: client_secret
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          redirect_uris: redirect_uris
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
-          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          access_code_validity: access_code_validity
           meta_model_name: meta_model_name
           include_claims_in_id_token: true
-          assigned_application_name: assigned_application_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           access_token_validity: access_token_validity
-          issuer_mode: ""
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 6
-          client_secret: client_secret
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scope:
         - scope
         - scope
@@ -34804,6 +34879,8 @@ components:
         bind_flow_slug:
           type: string
         application_slug:
+          description: Prioritise backchannel slug over direct application slug
+          readOnly: true
           type: string
         search_group:
           description: "Users in this group can do search queries. If not set, every\
@@ -34953,7 +35030,9 @@ components:
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         meta_model_name: meta_model_name
         base_dn: base_dn
+        assigned_backchannel_application_slug: assigned_backchannel_application_slug
         assigned_application_name: assigned_application_name
+        assigned_backchannel_application_name: assigned_backchannel_application_name
         name: name
         pk: 0
         property_mappings:
@@ -34991,6 +35070,14 @@ components:
           readOnly: true
           type: string
         assigned_application_name:
+          description: Application's display Name.
+          readOnly: true
+          type: string
+        assigned_backchannel_application_slug:
+          description: "Internal application name, used in URLs."
+          readOnly: true
+          type: string
+        assigned_backchannel_application_name:
           description: Application's display Name.
           readOnly: true
           type: string
@@ -35048,6 +35135,8 @@ components:
       required:
       - assigned_application_name
       - assigned_application_slug
+      - assigned_backchannel_application_name
+      - assigned_backchannel_application_slug
       - authorization_flow
       - component
       - meta_model_name
@@ -35884,29 +35973,31 @@ components:
         signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_slug: assigned_application_slug
         client_type: ""
-        redirect_uris: redirect_uris
         sub_mode: ""
         client_id: client_id
         refresh_token_validity: refresh_token_validity
+        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        access_code_validity: access_code_validity
+        assigned_application_name: assigned_application_name
+        assigned_backchannel_application_name: assigned_backchannel_application_name
+        issuer_mode: ""
+        client_secret: client_secret
+        property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        redirect_uris: redirect_uris
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         component: component
         verbose_name: verbose_name
-        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        access_code_validity: access_code_validity
         meta_model_name: meta_model_name
         include_claims_in_id_token: true
-        assigned_application_name: assigned_application_name
+        assigned_backchannel_application_slug: assigned_backchannel_application_slug
         access_token_validity: access_token_validity
-        issuer_mode: ""
         jwks_sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         pk: 6
-        client_secret: client_secret
-        property_mappings:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
           readOnly: true
@@ -35938,6 +36029,14 @@ components:
           readOnly: true
           type: string
         assigned_application_name:
+          description: Application's display Name.
+          readOnly: true
+          type: string
+        assigned_backchannel_application_slug:
+          description: "Internal application name, used in URLs."
+          readOnly: true
+          type: string
+        assigned_backchannel_application_name:
           description: Application's display Name.
           readOnly: true
           type: string
@@ -36022,6 +36121,8 @@ components:
       required:
       - assigned_application_name
       - assigned_application_slug
+      - assigned_backchannel_application_name
+      - assigned_backchannel_application_slug
       - authorization_flow
       - component
       - meta_model_name
@@ -36570,29 +36671,33 @@ components:
       example:
         service_connection_obj: ""
         providers_obj:
-        - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - verbose_name_plural: verbose_name_plural
+          assigned_application_slug: assigned_application_slug
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
-          pk: 6
-          assigned_application_slug: assigned_application_slug
+          pk: 1
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - verbose_name_plural: verbose_name_plural
+          assigned_application_slug: assigned_application_slug
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
-          pk: 6
-          assigned_application_slug: assigned_application_slug
+          pk: 1
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36791,6 +36896,9 @@ components:
           total_pages: 5.637376656633329
         results:
         - provider_obj: ""
+          backchannel_providers:
+          - 6
+          - 6
           meta_launch_url: https://openapi-generator.tech
           meta_icon: meta_icon
           meta_publisher: meta_publisher
@@ -36800,10 +36908,44 @@ components:
           provider: 0
           open_in_new_tab: true
           name: name
+          backchannel_providers_obj:
+          - verbose_name_plural: verbose_name_plural
+            assigned_application_slug: assigned_application_slug
+            authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            component: component
+            verbose_name: verbose_name
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            meta_model_name: meta_model_name
+            assigned_backchannel_application_slug: assigned_backchannel_application_slug
+            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
+            name: name
+            pk: 1
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - verbose_name_plural: verbose_name_plural
+            assigned_application_slug: assigned_application_slug
+            authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            component: component
+            verbose_name: verbose_name
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            meta_model_name: meta_model_name
+            assigned_backchannel_application_slug: assigned_backchannel_application_slug
+            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
+            name: name
+            pk: 1
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
           group: group
         - provider_obj: ""
+          backchannel_providers:
+          - 6
+          - 6
           meta_launch_url: https://openapi-generator.tech
           meta_icon: meta_icon
           meta_publisher: meta_publisher
@@ -36813,6 +36955,37 @@ components:
           provider: 0
           open_in_new_tab: true
           name: name
+          backchannel_providers_obj:
+          - verbose_name_plural: verbose_name_plural
+            assigned_application_slug: assigned_application_slug
+            authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            component: component
+            verbose_name: verbose_name
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            meta_model_name: meta_model_name
+            assigned_backchannel_application_slug: assigned_backchannel_application_slug
+            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
+            name: name
+            pk: 1
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - verbose_name_plural: verbose_name_plural
+            assigned_application_slug: assigned_application_slug
+            authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            component: component
+            verbose_name: verbose_name
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            meta_model_name: meta_model_name
+            assigned_backchannel_application_slug: assigned_backchannel_application_slug
+            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
+            name: name
+            pk: 1
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
           group: group
@@ -38255,29 +38428,31 @@ components:
             signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             client_type: ""
-            redirect_uris: redirect_uris
             sub_mode: ""
             client_id: client_id
             refresh_token_validity: refresh_token_validity
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            access_code_validity: access_code_validity
+            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
+            issuer_mode: ""
+            client_secret: client_secret
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            redirect_uris: redirect_uris
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
-            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            access_code_validity: access_code_validity
             meta_model_name: meta_model_name
             include_claims_in_id_token: true
-            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_slug: assigned_backchannel_application_slug
             access_token_validity: access_token_validity
-            issuer_mode: ""
             jwks_sources:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
             pk: 6
-            client_secret: client_secret
-            property_mappings:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scope:
           - scope
           - scope
@@ -38322,29 +38497,31 @@ components:
             signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             client_type: ""
-            redirect_uris: redirect_uris
             sub_mode: ""
             client_id: client_id
             refresh_token_validity: refresh_token_validity
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            access_code_validity: access_code_validity
+            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
+            issuer_mode: ""
+            client_secret: client_secret
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            redirect_uris: redirect_uris
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
-            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            access_code_validity: access_code_validity
             meta_model_name: meta_model_name
             include_claims_in_id_token: true
-            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_slug: assigned_backchannel_application_slug
             access_token_validity: access_token_validity
-            issuer_mode: ""
             jwks_sources:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
             pk: 6
-            client_secret: client_secret
-            property_mappings:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scope:
           - scope
           - scope
@@ -39011,7 +39188,9 @@ components:
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           meta_model_name: meta_model_name
           base_dn: base_dn
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
           pk: 0
           property_mappings:
@@ -39035,7 +39214,9 @@ components:
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           meta_model_name: meta_model_name
           base_dn: base_dn
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
           pk: 0
           property_mappings:
@@ -39322,56 +39503,60 @@ components:
           signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_type: ""
-          redirect_uris: redirect_uris
           sub_mode: ""
           client_id: client_id
           refresh_token_validity: refresh_token_validity
+          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          access_code_validity: access_code_validity
+          assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
+          issuer_mode: ""
+          client_secret: client_secret
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          redirect_uris: redirect_uris
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
-          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          access_code_validity: access_code_validity
           meta_model_name: meta_model_name
           include_claims_in_id_token: true
-          assigned_application_name: assigned_application_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           access_token_validity: access_token_validity
-          issuer_mode: ""
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 6
-          client_secret: client_secret
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - verbose_name_plural: verbose_name_plural
           signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_type: ""
-          redirect_uris: redirect_uris
           sub_mode: ""
           client_id: client_id
           refresh_token_validity: refresh_token_validity
+          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          access_code_validity: access_code_validity
+          assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
+          issuer_mode: ""
+          client_secret: client_secret
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          redirect_uris: redirect_uris
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
-          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          access_code_validity: access_code_validity
           meta_model_name: meta_model_name
           include_claims_in_id_token: true
-          assigned_application_name: assigned_application_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           access_token_validity: access_token_validity
-          issuer_mode: ""
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 6
-          client_secret: client_secret
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
           $ref: '#/components/schemas/PaginatedApplicationList_pagination'
@@ -39474,29 +39659,33 @@ components:
         results:
         - service_connection_obj: ""
           providers_obj:
-          - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - verbose_name_plural: verbose_name_plural
+            assigned_application_slug: assigned_application_slug
+            authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            verbose_name_plural: verbose_name_plural
             meta_model_name: meta_model_name
+            assigned_backchannel_application_slug: assigned_backchannel_application_slug
             assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
             name: name
-            pk: 6
-            assigned_application_slug: assigned_application_slug
+            pk: 1
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - verbose_name_plural: verbose_name_plural
+            assigned_application_slug: assigned_application_slug
+            authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            verbose_name_plural: verbose_name_plural
             meta_model_name: meta_model_name
+            assigned_backchannel_application_slug: assigned_backchannel_application_slug
             assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
             name: name
-            pk: 6
-            assigned_application_slug: assigned_application_slug
+            pk: 1
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -39513,29 +39702,33 @@ components:
           - 0
         - service_connection_obj: ""
           providers_obj:
-          - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - verbose_name_plural: verbose_name_plural
+            assigned_application_slug: assigned_application_slug
+            authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            verbose_name_plural: verbose_name_plural
             meta_model_name: meta_model_name
+            assigned_backchannel_application_slug: assigned_backchannel_application_slug
             assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
             name: name
-            pk: 6
-            assigned_application_slug: assigned_application_slug
+            pk: 1
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - verbose_name_plural: verbose_name_plural
+            assigned_application_slug: assigned_application_slug
+            authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            verbose_name_plural: verbose_name_plural
             meta_model_name: meta_model_name
+            assigned_backchannel_application_slug: assigned_backchannel_application_slug
             assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
             name: name
-            pk: 6
-            assigned_application_slug: assigned_application_slug
+            pk: 1
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -40258,29 +40451,33 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - verbose_name_plural: verbose_name_plural
+          assigned_application_slug: assigned_application_slug
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
-          pk: 6
-          assigned_application_slug: assigned_application_slug
+          pk: 1
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - verbose_name_plural: verbose_name_plural
+          assigned_application_slug: assigned_application_slug
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
-          pk: 6
-          assigned_application_slug: assigned_application_slug
+          pk: 1
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -40382,6 +40579,7 @@ components:
           mode: ""
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           intercept_header_auth: true
           internal_host_ssl_validation: true
           property_mappings:
@@ -40402,6 +40600,7 @@ components:
           basic_auth_enabled: true
           basic_auth_user_attribute: basic_auth_user_attribute
           meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           access_token_validity: access_token_validity
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -40416,6 +40615,7 @@ components:
           mode: ""
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           intercept_header_auth: true
           internal_host_ssl_validation: true
           property_mappings:
@@ -40436,6 +40636,7 @@ components:
           basic_auth_enabled: true
           basic_auth_user_attribute: basic_auth_user_attribute
           meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           access_token_validity: access_token_validity
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -40507,7 +40708,9 @@ components:
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
           pk: 0
           property_mappings:
@@ -40522,7 +40725,9 @@ components:
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
           pk: 0
           property_mappings:
@@ -40682,6 +40887,7 @@ components:
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           url_slo_post: url_slo_post
           assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           signature_algorithm: null
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -40697,6 +40903,7 @@ components:
           verbose_name: verbose_name
           digest_algorithm: null
           meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           url_sso_post: url_sso_post
           name: name
           assertion_valid_not_on_or_after: assertion_valid_not_on_or_after
@@ -40713,6 +40920,7 @@ components:
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           url_slo_post: url_slo_post
           assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           signature_algorithm: null
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -40728,6 +40936,7 @@ components:
           verbose_name: verbose_name
           digest_algorithm: null
           meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           url_sso_post: url_sso_post
           name: name
           assertion_valid_not_on_or_after: assertion_valid_not_on_or_after
@@ -41327,29 +41536,31 @@ components:
             signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             client_type: ""
-            redirect_uris: redirect_uris
             sub_mode: ""
             client_id: client_id
             refresh_token_validity: refresh_token_validity
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            access_code_validity: access_code_validity
+            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
+            issuer_mode: ""
+            client_secret: client_secret
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            redirect_uris: redirect_uris
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
-            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            access_code_validity: access_code_validity
             meta_model_name: meta_model_name
             include_claims_in_id_token: true
-            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_slug: assigned_backchannel_application_slug
             access_token_validity: access_token_validity
-            issuer_mode: ""
             jwks_sources:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
             pk: 6
-            client_secret: client_secret
-            property_mappings:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scope:
           - scope
           - scope
@@ -41396,29 +41607,31 @@ components:
             signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             client_type: ""
-            redirect_uris: redirect_uris
             sub_mode: ""
             client_id: client_id
             refresh_token_validity: refresh_token_validity
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            access_code_validity: access_code_validity
+            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
+            issuer_mode: ""
+            client_secret: client_secret
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            redirect_uris: redirect_uris
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
-            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            access_code_validity: access_code_validity
             meta_model_name: meta_model_name
             include_claims_in_id_token: true
-            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_slug: assigned_backchannel_application_slug
             access_token_validity: access_token_validity
-            issuer_mode: ""
             jwks_sources:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
             pk: 6
-            client_secret: client_secret
-            property_mappings:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scope:
           - scope
           - scope
@@ -41483,6 +41696,9 @@ components:
         - expires: 2000-01-23T04:56:07.000+00:00
           application:
             provider_obj: ""
+            backchannel_providers:
+            - 6
+            - 6
             meta_launch_url: https://openapi-generator.tech
             meta_icon: meta_icon
             meta_publisher: meta_publisher
@@ -41492,6 +41708,37 @@ components:
             provider: 0
             open_in_new_tab: true
             name: name
+            backchannel_providers_obj:
+            - verbose_name_plural: verbose_name_plural
+              assigned_application_slug: assigned_application_slug
+              authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              component: component
+              verbose_name: verbose_name
+              authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              meta_model_name: meta_model_name
+              assigned_backchannel_application_slug: assigned_backchannel_application_slug
+              assigned_application_name: assigned_application_name
+              assigned_backchannel_application_name: assigned_backchannel_application_name
+              name: name
+              pk: 1
+              property_mappings:
+              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - verbose_name_plural: verbose_name_plural
+              assigned_application_slug: assigned_application_slug
+              authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              component: component
+              verbose_name: verbose_name
+              authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              meta_model_name: meta_model_name
+              assigned_backchannel_application_slug: assigned_backchannel_application_slug
+              assigned_application_name: assigned_application_name
+              assigned_backchannel_application_name: assigned_backchannel_application_name
+              name: name
+              pk: 1
+              property_mappings:
+              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             slug: slug
             group: group
@@ -41533,6 +41780,9 @@ components:
         - expires: 2000-01-23T04:56:07.000+00:00
           application:
             provider_obj: ""
+            backchannel_providers:
+            - 6
+            - 6
             meta_launch_url: https://openapi-generator.tech
             meta_icon: meta_icon
             meta_publisher: meta_publisher
@@ -41542,6 +41792,37 @@ components:
             provider: 0
             open_in_new_tab: true
             name: name
+            backchannel_providers_obj:
+            - verbose_name_plural: verbose_name_plural
+              assigned_application_slug: assigned_application_slug
+              authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              component: component
+              verbose_name: verbose_name
+              authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              meta_model_name: meta_model_name
+              assigned_backchannel_application_slug: assigned_backchannel_application_slug
+              assigned_application_name: assigned_application_name
+              assigned_backchannel_application_name: assigned_backchannel_application_name
+              name: name
+              pk: 1
+              property_mappings:
+              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - verbose_name_plural: verbose_name_plural
+              assigned_application_slug: assigned_application_slug
+              authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              component: component
+              verbose_name: verbose_name
+              authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              meta_model_name: meta_model_name
+              assigned_backchannel_application_slug: assigned_backchannel_application_slug
+              assigned_application_name: assigned_application_name
+              assigned_backchannel_application_name: assigned_backchannel_application_name
+              name: name
+              pk: 1
+              property_mappings:
+              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             slug: slug
             group: group
@@ -42610,6 +42891,9 @@ components:
       example:
         policy_engine_mode: null
         meta_description: meta_description
+        backchannel_providers:
+        - 6
+        - 6
         provider: 0
         open_in_new_tab: true
         name: name
@@ -42631,6 +42915,10 @@ components:
         provider:
           nullable: true
           type: integer
+        backchannel_providers:
+          items:
+            type: integer
+          type: array
         open_in_new_tab:
           description: Open launch URL in a new browser tab or window.
           type: boolean
@@ -46855,16 +47143,18 @@ components:
     Provider:
       description: Provider Serializer
       example:
+        verbose_name_plural: verbose_name_plural
+        assigned_application_slug: assigned_application_slug
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         component: component
         verbose_name: verbose_name
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
+        assigned_backchannel_application_slug: assigned_backchannel_application_slug
         assigned_application_name: assigned_application_name
+        assigned_backchannel_application_name: assigned_backchannel_application_name
         name: name
-        pk: 6
-        assigned_application_slug: assigned_application_slug
+        pk: 1
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46902,6 +47192,14 @@ components:
           description: Application's display Name.
           readOnly: true
           type: string
+        assigned_backchannel_application_slug:
+          description: "Internal application name, used in URLs."
+          readOnly: true
+          type: string
+        assigned_backchannel_application_name:
+          description: Application's display Name.
+          readOnly: true
+          type: string
         verbose_name:
           description: Return object's verbose_name
           readOnly: true
@@ -46917,6 +47215,8 @@ components:
       required:
       - assigned_application_name
       - assigned_application_slug
+      - assigned_backchannel_application_name
+      - assigned_backchannel_application_slug
       - authorization_flow
       - component
       - meta_model_name
@@ -47133,6 +47433,7 @@ components:
         mode: ""
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_name: assigned_application_name
+        assigned_backchannel_application_name: assigned_backchannel_application_name
         intercept_header_auth: true
         internal_host_ssl_validation: true
         property_mappings:
@@ -47153,6 +47454,7 @@ components:
         basic_auth_enabled: true
         basic_auth_user_attribute: basic_auth_user_attribute
         meta_model_name: meta_model_name
+        assigned_backchannel_application_slug: assigned_backchannel_application_slug
         access_token_validity: access_token_validity
         jwks_sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -47190,6 +47492,14 @@ components:
           readOnly: true
           type: string
         assigned_application_name:
+          description: Application's display Name.
+          readOnly: true
+          type: string
+        assigned_backchannel_application_slug:
+          description: "Internal application name, used in URLs."
+          readOnly: true
+          type: string
+        assigned_backchannel_application_name:
           description: Application's display Name.
           readOnly: true
           type: string
@@ -47282,6 +47592,8 @@ components:
       required:
       - assigned_application_name
       - assigned_application_slug
+      - assigned_backchannel_application_name
+      - assigned_backchannel_application_slug
       - authorization_flow
       - client_id
       - component
@@ -47455,7 +47767,9 @@ components:
         verbose_name: verbose_name
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         meta_model_name: meta_model_name
+        assigned_backchannel_application_slug: assigned_backchannel_application_slug
         assigned_application_name: assigned_application_name
+        assigned_backchannel_application_name: assigned_backchannel_application_name
         name: name
         pk: 0
         property_mappings:
@@ -47495,6 +47809,14 @@ components:
           description: Application's display Name.
           readOnly: true
           type: string
+        assigned_backchannel_application_slug:
+          description: "Internal application name, used in URLs."
+          readOnly: true
+          type: string
+        assigned_backchannel_application_name:
+          description: Application's display Name.
+          readOnly: true
+          type: string
         verbose_name:
           description: Return object's verbose_name
           readOnly: true
@@ -47518,6 +47840,8 @@ components:
       required:
       - assigned_application_name
       - assigned_application_slug
+      - assigned_backchannel_application_name
+      - assigned_backchannel_application_slug
       - authorization_flow
       - component
       - meta_model_name
@@ -47871,6 +48195,7 @@ components:
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         url_slo_post: url_slo_post
         assigned_application_name: assigned_application_name
+        assigned_backchannel_application_name: assigned_backchannel_application_name
         signature_algorithm: null
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -47886,6 +48211,7 @@ components:
         verbose_name: verbose_name
         digest_algorithm: null
         meta_model_name: meta_model_name
+        assigned_backchannel_application_slug: assigned_backchannel_application_slug
         url_sso_post: url_sso_post
         name: name
         assertion_valid_not_on_or_after: assertion_valid_not_on_or_after
@@ -47923,6 +48249,14 @@ components:
           readOnly: true
           type: string
         assigned_application_name:
+          description: Application's display Name.
+          readOnly: true
+          type: string
+        assigned_backchannel_application_slug:
+          description: "Internal application name, used in URLs."
+          readOnly: true
+          type: string
+        assigned_backchannel_application_name:
           description: Application's display Name.
           readOnly: true
           type: string
@@ -48023,6 +48357,8 @@ components:
       - acs_url
       - assigned_application_name
       - assigned_application_slug
+      - assigned_backchannel_application_name
+      - assigned_backchannel_application_slug
       - authorization_flow
       - component
       - meta_model_name
@@ -49767,29 +50103,31 @@ components:
           signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_type: ""
-          redirect_uris: redirect_uris
           sub_mode: ""
           client_id: client_id
           refresh_token_validity: refresh_token_validity
+          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          access_code_validity: access_code_validity
+          assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
+          issuer_mode: ""
+          client_secret: client_secret
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          redirect_uris: redirect_uris
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
-          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          access_code_validity: access_code_validity
           meta_model_name: meta_model_name
           include_claims_in_id_token: true
-          assigned_application_name: assigned_application_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           access_token_validity: access_token_validity
-          issuer_mode: ""
           jwks_sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 6
-          client_secret: client_secret
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scope:
         - scope
         - scope
@@ -50104,6 +50442,9 @@ components:
         expires: 2000-01-23T04:56:07.000+00:00
         application:
           provider_obj: ""
+          backchannel_providers:
+          - 6
+          - 6
           meta_launch_url: https://openapi-generator.tech
           meta_icon: meta_icon
           meta_publisher: meta_publisher
@@ -50113,6 +50454,37 @@ components:
           provider: 0
           open_in_new_tab: true
           name: name
+          backchannel_providers_obj:
+          - verbose_name_plural: verbose_name_plural
+            assigned_application_slug: assigned_application_slug
+            authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            component: component
+            verbose_name: verbose_name
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            meta_model_name: meta_model_name
+            assigned_backchannel_application_slug: assigned_backchannel_application_slug
+            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
+            name: name
+            pk: 1
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - verbose_name_plural: verbose_name_plural
+            assigned_application_slug: assigned_application_slug
+            authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            component: component
+            verbose_name: verbose_name
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            meta_model_name: meta_model_name
+            assigned_backchannel_application_slug: assigned_backchannel_application_slug
+            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
+            name: name
+            pk: 1
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
           group: group

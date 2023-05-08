@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersAllList
 
-> PaginatedProviderList ProvidersAllList(ctx).ApplicationIsnull(applicationIsnull).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedProviderList ProvidersAllList(ctx).ApplicationIsnull(applicationIsnull).BackchannelOnly(backchannelOnly).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -150,6 +150,7 @@ import (
 
 func main() {
     applicationIsnull := true // bool |  (optional)
+    backchannelOnly := true // bool |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -157,7 +158,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersAllList(context.Background()).ApplicationIsnull(applicationIsnull).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersAllList(context.Background()).ApplicationIsnull(applicationIsnull).BackchannelOnly(backchannelOnly).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersAllList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -179,6 +180,7 @@ Other parameters are passed through a pointer to a apiProvidersAllListRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationIsnull** | **bool** |  | 
+ **backchannelOnly** | **bool** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
@@ -2797,7 +2799,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersSamlList
 
-> PaginatedSAMLProviderList ProvidersSamlList(ctx).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthorizationFlow(authorizationFlow).DigestAlgorithm(digestAlgorithm).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
+> PaginatedSAMLProviderList ProvidersSamlList(ctx).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DigestAlgorithm(digestAlgorithm).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
 
 
 
@@ -2822,7 +2824,9 @@ func main() {
     audience := "audience_example" // string |  (optional)
     authenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    backchannelApplication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     digestAlgorithm := "digestAlgorithm_example" // string | * `http://www.w3.org/2000/09/xmldsig#sha1` - SHA1 * `http://www.w3.org/2001/04/xmlenc#sha256` - SHA256 * `http://www.w3.org/2001/04/xmldsig-more#sha384` - SHA384 * `http://www.w3.org/2001/04/xmlenc#sha512` - SHA512  * `http://www.w3.org/2000/09/xmldsig#sha1` - SHA1 * `http://www.w3.org/2001/04/xmlenc#sha256` - SHA256 * `http://www.w3.org/2001/04/xmldsig-more#sha384` - SHA384 * `http://www.w3.org/2001/04/xmlenc#sha512` - SHA512 (optional)
+    isBackchannel := true // bool |  (optional)
     issuer := "issuer_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     nameIdMapping := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
@@ -2839,7 +2843,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersSamlList(context.Background()).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthorizationFlow(authorizationFlow).DigestAlgorithm(digestAlgorithm).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlList(context.Background()).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DigestAlgorithm(digestAlgorithm).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2866,7 +2870,9 @@ Name | Type | Description  | Notes
  **audience** | **string** |  | 
  **authenticationFlow** | **string** |  | 
  **authorizationFlow** | **string** |  | 
+ **backchannelApplication** | **string** |  | 
  **digestAlgorithm** | **string** | * &#x60;http://www.w3.org/2000/09/xmldsig#sha1&#x60; - SHA1 * &#x60;http://www.w3.org/2001/04/xmlenc#sha256&#x60; - SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#sha384&#x60; - SHA384 * &#x60;http://www.w3.org/2001/04/xmlenc#sha512&#x60; - SHA512  * &#x60;http://www.w3.org/2000/09/xmldsig#sha1&#x60; - SHA1 * &#x60;http://www.w3.org/2001/04/xmlenc#sha256&#x60; - SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#sha384&#x60; - SHA384 * &#x60;http://www.w3.org/2001/04/xmlenc#sha512&#x60; - SHA512 | 
+ **isBackchannel** | **bool** |  | 
  **issuer** | **string** |  | 
  **name** | **string** |  | 
  **nameIdMapping** | **string** |  | 

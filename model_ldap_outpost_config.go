@@ -20,9 +20,10 @@ type LDAPOutpostConfig struct {
 	Pk   int32  `json:"pk"`
 	Name string `json:"name"`
 	// DN under which objects are accessible.
-	BaseDn          *string `json:"base_dn,omitempty"`
-	BindFlowSlug    string  `json:"bind_flow_slug"`
-	ApplicationSlug string  `json:"application_slug"`
+	BaseDn       *string `json:"base_dn,omitempty"`
+	BindFlowSlug string  `json:"bind_flow_slug"`
+	// Prioritise backchannel slug over direct application slug
+	ApplicationSlug string `json:"application_slug"`
 	// Users in this group can do search queries. If not set, every user can execute search queries.
 	SearchGroup   NullableString `json:"search_group,omitempty"`
 	Certificate   NullableString `json:"certificate,omitempty"`

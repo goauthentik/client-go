@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **Slug** | **string** | Internal application name, used in URLs. | 
 **Provider** | Pointer to **NullableInt32** |  | [optional] 
 **ProviderObj** | [**Provider**](Provider.md) |  | [readonly] 
+**BackchannelProviders** | Pointer to **[]int32** |  | [optional] 
+**BackchannelProvidersObj** | [**[]Provider**](Provider.md) |  | [readonly] 
 **LaunchUrl** | **NullableString** | Allow formatting of launch URL | [readonly] 
 **OpenInNewTab** | Pointer to **bool** | Open launch URL in a new browser tab or window. | [optional] 
 **MetaLaunchUrl** | Pointer to **string** |  | [optional] 
@@ -22,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewApplication
 
-`func NewApplication(pk string, name string, slug string, providerObj Provider, launchUrl NullableString, metaIcon NullableString, ) *Application`
+`func NewApplication(pk string, name string, slug string, providerObj Provider, backchannelProvidersObj []Provider, launchUrl NullableString, metaIcon NullableString, ) *Application`
 
 NewApplication instantiates a new Application object
 This constructor will assign default values to properties that have it defined,
@@ -150,6 +152,51 @@ and a boolean to check if the value has been set.
 `func (o *Application) SetProviderObj(v Provider)`
 
 SetProviderObj sets ProviderObj field to given value.
+
+
+### GetBackchannelProviders
+
+`func (o *Application) GetBackchannelProviders() []int32`
+
+GetBackchannelProviders returns the BackchannelProviders field if non-nil, zero value otherwise.
+
+### GetBackchannelProvidersOk
+
+`func (o *Application) GetBackchannelProvidersOk() (*[]int32, bool)`
+
+GetBackchannelProvidersOk returns a tuple with the BackchannelProviders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackchannelProviders
+
+`func (o *Application) SetBackchannelProviders(v []int32)`
+
+SetBackchannelProviders sets BackchannelProviders field to given value.
+
+### HasBackchannelProviders
+
+`func (o *Application) HasBackchannelProviders() bool`
+
+HasBackchannelProviders returns a boolean if a field has been set.
+
+### GetBackchannelProvidersObj
+
+`func (o *Application) GetBackchannelProvidersObj() []Provider`
+
+GetBackchannelProvidersObj returns the BackchannelProvidersObj field if non-nil, zero value otherwise.
+
+### GetBackchannelProvidersObjOk
+
+`func (o *Application) GetBackchannelProvidersObjOk() (*[]Provider, bool)`
+
+GetBackchannelProvidersObjOk returns a tuple with the BackchannelProvidersObj field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackchannelProvidersObj
+
+`func (o *Application) SetBackchannelProvidersObj(v []Provider)`
+
+SetBackchannelProvidersObj sets BackchannelProvidersObj field to given value.
 
 
 ### GetLaunchUrl

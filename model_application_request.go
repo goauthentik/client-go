@@ -20,8 +20,9 @@ type ApplicationRequest struct {
 	// Application's display Name.
 	Name string `json:"name"`
 	// Internal application name, used in URLs.
-	Slug     string        `json:"slug"`
-	Provider NullableInt32 `json:"provider,omitempty"`
+	Slug                 string        `json:"slug"`
+	Provider             NullableInt32 `json:"provider,omitempty"`
+	BackchannelProviders []int32       `json:"backchannel_providers,omitempty"`
 	// Open launch URL in a new browser tab or window.
 	OpenInNewTab     *bool             `json:"open_in_new_tab,omitempty"`
 	MetaLaunchUrl    *string           `json:"meta_launch_url,omitempty"`
@@ -139,6 +140,38 @@ func (o *ApplicationRequest) SetProviderNil() {
 // UnsetProvider ensures that no value is present for Provider, not even an explicit nil
 func (o *ApplicationRequest) UnsetProvider() {
 	o.Provider.Unset()
+}
+
+// GetBackchannelProviders returns the BackchannelProviders field value if set, zero value otherwise.
+func (o *ApplicationRequest) GetBackchannelProviders() []int32 {
+	if o == nil || o.BackchannelProviders == nil {
+		var ret []int32
+		return ret
+	}
+	return o.BackchannelProviders
+}
+
+// GetBackchannelProvidersOk returns a tuple with the BackchannelProviders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRequest) GetBackchannelProvidersOk() ([]int32, bool) {
+	if o == nil || o.BackchannelProviders == nil {
+		return nil, false
+	}
+	return o.BackchannelProviders, true
+}
+
+// HasBackchannelProviders returns a boolean if a field has been set.
+func (o *ApplicationRequest) HasBackchannelProviders() bool {
+	if o != nil && o.BackchannelProviders != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBackchannelProviders gets a reference to the given []int32 and assigns it to the BackchannelProviders field.
+func (o *ApplicationRequest) SetBackchannelProviders(v []int32) {
+	o.BackchannelProviders = v
 }
 
 // GetOpenInNewTab returns the OpenInNewTab field value if set, zero value otherwise.
@@ -343,6 +376,9 @@ func (o ApplicationRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Provider.IsSet() {
 		toSerialize["provider"] = o.Provider.Get()
+	}
+	if o.BackchannelProviders != nil {
+		toSerialize["backchannel_providers"] = o.BackchannelProviders
 	}
 	if o.OpenInNewTab != nil {
 		toSerialize["open_in_new_tab"] = o.OpenInNewTab
