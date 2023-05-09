@@ -36,7 +36,7 @@ type CertificateKeyPair struct {
 	CertificateDownloadUrl string `json:"certificate_download_url"`
 	// Get URL to download private key
 	PrivateKeyDownloadUrl string `json:"private_key_download_url"`
-	// Objects which are managed by authentik. These objects are created and updated automatically. This is flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
+	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed NullableString `json:"managed"`
 }
 
