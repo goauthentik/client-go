@@ -16557,6 +16557,7 @@ paths:
 
           * `hashed_user_id` - Based on the Hashed User ID
           * `user_id` - Based on user ID
+          * `user_uuid` - Based on user UUID
           * `user_username` - Based on the username
           * `user_email` - Based on the User's Email. This is recommended over the UPN method.
           * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
@@ -16571,6 +16572,7 @@ paths:
           - user_id
           - user_upn
           - user_username
+          - user_uuid
           type: string
         style: form
       responses:
@@ -36095,6 +36097,7 @@ components:
 
             * `hashed_user_id` - Based on the Hashed User ID
             * `user_id` - Based on user ID
+            * `user_uuid` - Based on user UUID
             * `user_username` - Based on the username
             * `user_email` - Based on the User's Email. This is recommended over the UPN method.
             * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
@@ -36220,6 +36223,7 @@ components:
 
             * `hashed_user_id` - Based on the Hashed User ID
             * `user_id` - Based on user ID
+            * `user_uuid` - Based on user UUID
             * `user_username` - Based on the username
             * `user_email` - Based on the User's Email. This is recommended over the UPN method.
             * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
@@ -44545,6 +44549,7 @@ components:
 
             * `hashed_user_id` - Based on the Hashed User ID
             * `user_id` - Based on user ID
+            * `user_uuid` - Based on user UUID
             * `user_username` - Based on the username
             * `user_email` - Based on the User's Email. This is recommended over the UPN method.
             * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
@@ -49716,12 +49721,14 @@ components:
       description: |-
         * `hashed_user_id` - Based on the Hashed User ID
         * `user_id` - Based on user ID
+        * `user_uuid` - Based on user UUID
         * `user_username` - Based on the username
         * `user_email` - Based on the User's Email. This is recommended over the UPN method.
         * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
       enum:
       - hashed_user_id
       - user_id
+      - user_uuid
       - user_username
       - user_email
       - user_upn

@@ -16,13 +16,14 @@ import (
 	"fmt"
 )
 
-// SubModeEnum * `hashed_user_id` - Based on the Hashed User ID * `user_id` - Based on user ID * `user_username` - Based on the username * `user_email` - Based on the User's Email. This is recommended over the UPN method. * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
+// SubModeEnum * `hashed_user_id` - Based on the Hashed User ID * `user_id` - Based on user ID * `user_uuid` - Based on user UUID * `user_username` - Based on the username * `user_email` - Based on the User's Email. This is recommended over the UPN method. * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
 type SubModeEnum string
 
 // List of SubModeEnum
 const (
 	SUBMODEENUM_HASHED_USER_ID SubModeEnum = "hashed_user_id"
 	SUBMODEENUM_USER_ID        SubModeEnum = "user_id"
+	SUBMODEENUM_USER_UUID      SubModeEnum = "user_uuid"
 	SUBMODEENUM_USER_USERNAME  SubModeEnum = "user_username"
 	SUBMODEENUM_USER_EMAIL     SubModeEnum = "user_email"
 	SUBMODEENUM_USER_UPN       SubModeEnum = "user_upn"
@@ -32,6 +33,7 @@ const (
 var AllowedSubModeEnumEnumValues = []SubModeEnum{
 	"hashed_user_id",
 	"user_id",
+	"user_uuid",
 	"user_username",
 	"user_email",
 	"user_upn",
