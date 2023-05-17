@@ -38956,6 +38956,11 @@ components:
         shared_secret:
           type: string
           description: Shared secret between clients and server to hash packets.
+        outpost_set:
+          type: array
+          items:
+            type: string
+          readOnly: true
       required:
       - assigned_application_name
       - assigned_application_slug
@@ -38965,6 +38970,7 @@ components:
       - component
       - meta_model_name
       - name
+      - outpost_set
       - pk
       - verbose_name
       - verbose_name_plural
@@ -39824,11 +39830,11 @@ components:
           type: string
           description: Get object component so that we know how to edit the object
           readOnly: true
-        assigned_application_slug:
+        assigned_backchannel_application_slug:
           type: string
           description: Internal application name, used in URLs.
           readOnly: true
-        assigned_application_name:
+        assigned_backchannel_application_name:
           type: string
           description: Application's display Name.
           readOnly: true
@@ -39857,8 +39863,8 @@ components:
           format: uuid
           nullable: true
       required:
-      - assigned_application_name
-      - assigned_application_slug
+      - assigned_backchannel_application_name
+      - assigned_backchannel_application_slug
       - component
       - meta_model_name
       - name

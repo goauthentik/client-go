@@ -25,9 +25,9 @@ type SCIMProvider struct {
 	// Get object component so that we know how to edit the object
 	Component string `json:"component"`
 	// Internal application name, used in URLs.
-	AssignedApplicationSlug string `json:"assigned_application_slug"`
+	AssignedBackchannelApplicationSlug string `json:"assigned_backchannel_application_slug"`
 	// Application's display Name.
-	AssignedApplicationName string `json:"assigned_application_name"`
+	AssignedBackchannelApplicationName string `json:"assigned_backchannel_application_name"`
 	// Return object's verbose_name
 	VerboseName string `json:"verbose_name"`
 	// Return object's plural verbose_name
@@ -46,13 +46,13 @@ type SCIMProvider struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMProvider(pk int32, name string, component string, assignedApplicationSlug string, assignedApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, url string, token string) *SCIMProvider {
+func NewSCIMProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, url string, token string) *SCIMProvider {
 	this := SCIMProvider{}
 	this.Pk = pk
 	this.Name = name
 	this.Component = component
-	this.AssignedApplicationSlug = assignedApplicationSlug
-	this.AssignedApplicationName = assignedApplicationName
+	this.AssignedBackchannelApplicationSlug = assignedBackchannelApplicationSlug
+	this.AssignedBackchannelApplicationName = assignedBackchannelApplicationName
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
@@ -205,52 +205,52 @@ func (o *SCIMProvider) SetComponent(v string) {
 	o.Component = v
 }
 
-// GetAssignedApplicationSlug returns the AssignedApplicationSlug field value
-func (o *SCIMProvider) GetAssignedApplicationSlug() string {
+// GetAssignedBackchannelApplicationSlug returns the AssignedBackchannelApplicationSlug field value
+func (o *SCIMProvider) GetAssignedBackchannelApplicationSlug() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AssignedApplicationSlug
+	return o.AssignedBackchannelApplicationSlug
 }
 
-// GetAssignedApplicationSlugOk returns a tuple with the AssignedApplicationSlug field value
+// GetAssignedBackchannelApplicationSlugOk returns a tuple with the AssignedBackchannelApplicationSlug field value
 // and a boolean to check if the value has been set.
-func (o *SCIMProvider) GetAssignedApplicationSlugOk() (*string, bool) {
+func (o *SCIMProvider) GetAssignedBackchannelApplicationSlugOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AssignedApplicationSlug, true
+	return &o.AssignedBackchannelApplicationSlug, true
 }
 
-// SetAssignedApplicationSlug sets field value
-func (o *SCIMProvider) SetAssignedApplicationSlug(v string) {
-	o.AssignedApplicationSlug = v
+// SetAssignedBackchannelApplicationSlug sets field value
+func (o *SCIMProvider) SetAssignedBackchannelApplicationSlug(v string) {
+	o.AssignedBackchannelApplicationSlug = v
 }
 
-// GetAssignedApplicationName returns the AssignedApplicationName field value
-func (o *SCIMProvider) GetAssignedApplicationName() string {
+// GetAssignedBackchannelApplicationName returns the AssignedBackchannelApplicationName field value
+func (o *SCIMProvider) GetAssignedBackchannelApplicationName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AssignedApplicationName
+	return o.AssignedBackchannelApplicationName
 }
 
-// GetAssignedApplicationNameOk returns a tuple with the AssignedApplicationName field value
+// GetAssignedBackchannelApplicationNameOk returns a tuple with the AssignedBackchannelApplicationName field value
 // and a boolean to check if the value has been set.
-func (o *SCIMProvider) GetAssignedApplicationNameOk() (*string, bool) {
+func (o *SCIMProvider) GetAssignedBackchannelApplicationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AssignedApplicationName, true
+	return &o.AssignedBackchannelApplicationName, true
 }
 
-// SetAssignedApplicationName sets field value
-func (o *SCIMProvider) SetAssignedApplicationName(v string) {
-	o.AssignedApplicationName = v
+// SetAssignedBackchannelApplicationName sets field value
+func (o *SCIMProvider) SetAssignedBackchannelApplicationName(v string) {
+	o.AssignedBackchannelApplicationName = v
 }
 
 // GetVerboseName returns the VerboseName field value
@@ -466,10 +466,10 @@ func (o SCIMProvider) MarshalJSON() ([]byte, error) {
 		toSerialize["component"] = o.Component
 	}
 	if true {
-		toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug
+		toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug
 	}
 	if true {
-		toSerialize["assigned_application_name"] = o.AssignedApplicationName
+		toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName
 	}
 	if true {
 		toSerialize["verbose_name"] = o.VerboseName

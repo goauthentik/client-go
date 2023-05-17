@@ -19,12 +19,13 @@ Name | Type | Description | Notes
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **ClientNetworks** | Pointer to **string** | List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped. | [optional] 
 **SharedSecret** | Pointer to **string** | Shared secret between clients and server to hash packets. | [optional] 
+**OutpostSet** | **[]string** |  | [readonly] 
 
 ## Methods
 
 ### NewRadiusProvider
 
-`func NewRadiusProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, ) *RadiusProvider`
+`func NewRadiusProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, outpostSet []string, ) *RadiusProvider`
 
 NewRadiusProvider instantiates a new RadiusProvider object
 This constructor will assign default values to properties that have it defined,
@@ -368,6 +369,26 @@ SetSharedSecret sets SharedSecret field to given value.
 `func (o *RadiusProvider) HasSharedSecret() bool`
 
 HasSharedSecret returns a boolean if a field has been set.
+
+### GetOutpostSet
+
+`func (o *RadiusProvider) GetOutpostSet() []string`
+
+GetOutpostSet returns the OutpostSet field if non-nil, zero value otherwise.
+
+### GetOutpostSetOk
+
+`func (o *RadiusProvider) GetOutpostSetOk() (*[]string, bool)`
+
+GetOutpostSetOk returns a tuple with the OutpostSet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutpostSet
+
+`func (o *RadiusProvider) SetOutpostSet(v []string)`
+
+SetOutpostSet sets OutpostSet field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

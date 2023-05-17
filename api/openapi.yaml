@@ -40701,6 +40701,9 @@ components:
           shared_secret: shared_secret
           assigned_application_slug: assigned_application_slug
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          outpost_set:
+          - outpost_set
+          - outpost_set
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -40718,6 +40721,9 @@ components:
           shared_secret: shared_secret
           assigned_application_slug: assigned_application_slug
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          outpost_set:
+          - outpost_set
+          - outpost_set
           component: component
           verbose_name: verbose_name
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -41078,15 +41084,15 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
-          assigned_application_slug: assigned_application_slug
           url: url
           token: token
           exclude_users_service_account: true
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
           pk: 0
           property_mappings:
@@ -41096,15 +41102,15 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
-          assigned_application_slug: assigned_application_slug
           url: url
           token: token
           exclude_users_service_account: true
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
           filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
           pk: 0
           property_mappings:
@@ -47753,6 +47759,9 @@ components:
         shared_secret: shared_secret
         assigned_application_slug: assigned_application_slug
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        outpost_set:
+        - outpost_set
+        - outpost_set
         component: component
         verbose_name: verbose_name
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -47827,6 +47836,11 @@ components:
         shared_secret:
           description: Shared secret between clients and server to hash packets.
           type: string
+        outpost_set:
+          items:
+            type: string
+          readOnly: true
+          type: array
       required:
       - assigned_application_name
       - assigned_application_slug
@@ -47836,6 +47850,7 @@ components:
       - component
       - meta_model_name
       - name
+      - outpost_set
       - pk
       - verbose_name
       - verbose_name_plural
@@ -48861,15 +48876,15 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verbose_name_plural: verbose_name_plural
-        assigned_application_slug: assigned_application_slug
         url: url
         token: token
         exclude_users_service_account: true
         component: component
         verbose_name: verbose_name
         meta_model_name: meta_model_name
+        assigned_backchannel_application_slug: assigned_backchannel_application_slug
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        assigned_application_name: assigned_application_name
+        assigned_backchannel_application_name: assigned_backchannel_application_name
         name: name
         pk: 0
         property_mappings:
@@ -48897,11 +48912,11 @@ components:
           description: Get object component so that we know how to edit the object
           readOnly: true
           type: string
-        assigned_application_slug:
+        assigned_backchannel_application_slug:
           description: "Internal application name, used in URLs."
           readOnly: true
           type: string
-        assigned_application_name:
+        assigned_backchannel_application_name:
           description: Application's display Name.
           readOnly: true
           type: string
@@ -48930,8 +48945,8 @@ components:
           nullable: true
           type: string
       required:
-      - assigned_application_name
-      - assigned_application_slug
+      - assigned_backchannel_application_name
+      - assigned_backchannel_application_slug
       - component
       - meta_model_name
       - name

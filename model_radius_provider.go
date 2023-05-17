@@ -43,14 +43,15 @@ type RadiusProvider struct {
 	// List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped.
 	ClientNetworks *string `json:"client_networks,omitempty"`
 	// Shared secret between clients and server to hash packets.
-	SharedSecret *string `json:"shared_secret,omitempty"`
+	SharedSecret *string  `json:"shared_secret,omitempty"`
+	OutpostSet   []string `json:"outpost_set"`
 }
 
 // NewRadiusProvider instantiates a new RadiusProvider object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRadiusProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string) *RadiusProvider {
+func NewRadiusProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, outpostSet []string) *RadiusProvider {
 	this := RadiusProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -63,6 +64,7 @@ func NewRadiusProvider(pk int32, name string, authorizationFlow string, componen
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
+	this.OutpostSet = outpostSet
 	return &this
 }
 
@@ -477,6 +479,30 @@ func (o *RadiusProvider) SetSharedSecret(v string) {
 	o.SharedSecret = &v
 }
 
+// GetOutpostSet returns the OutpostSet field value
+func (o *RadiusProvider) GetOutpostSet() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.OutpostSet
+}
+
+// GetOutpostSetOk returns a tuple with the OutpostSet field value
+// and a boolean to check if the value has been set.
+func (o *RadiusProvider) GetOutpostSetOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OutpostSet, true
+}
+
+// SetOutpostSet sets field value
+func (o *RadiusProvider) SetOutpostSet(v []string) {
+	o.OutpostSet = v
+}
+
 func (o RadiusProvider) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -523,6 +549,9 @@ func (o RadiusProvider) MarshalJSON() ([]byte, error) {
 	}
 	if o.SharedSecret != nil {
 		toSerialize["shared_secret"] = o.SharedSecret
+	}
+	if true {
+		toSerialize["outpost_set"] = o.OutpostSet
 	}
 	return json.Marshal(toSerialize)
 }
