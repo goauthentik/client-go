@@ -56,7 +56,9 @@ type SAMLSource struct {
 	// NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.  * `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` - Email * `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` - Persistent * `urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName` - X509 * `urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName` - Windows * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` - Transient
 	NameIdPolicy *NameIdPolicyEnum `json:"name_id_policy,omitempty"`
 	BindingType  *BindingTypeEnum  `json:"binding_type,omitempty"`
-	// Keypair which is used to sign outgoing requests. Leave empty to disable signing.
+	// When selected, incoming assertion's Signatures will be validated against this certificate. To allow unsigned Requests, leave on default.
+	VerificationKp NullableString `json:"verification_kp,omitempty"`
+	// Keypair used to sign outgoing Responses going to the Identity Provider.
 	SigningKp          NullableString          `json:"signing_kp,omitempty"`
 	DigestAlgorithm    *DigestAlgorithmEnum    `json:"digest_algorithm,omitempty"`
 	SignatureAlgorithm *SignatureAlgorithmEnum `json:"signature_algorithm,omitempty"`
@@ -745,6 +747,49 @@ func (o *SAMLSource) SetBindingType(v BindingTypeEnum) {
 	o.BindingType = &v
 }
 
+// GetVerificationKp returns the VerificationKp field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SAMLSource) GetVerificationKp() string {
+	if o == nil || o.VerificationKp.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.VerificationKp.Get()
+}
+
+// GetVerificationKpOk returns a tuple with the VerificationKp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SAMLSource) GetVerificationKpOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.VerificationKp.Get(), o.VerificationKp.IsSet()
+}
+
+// HasVerificationKp returns a boolean if a field has been set.
+func (o *SAMLSource) HasVerificationKp() bool {
+	if o != nil && o.VerificationKp.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVerificationKp gets a reference to the given NullableString and assigns it to the VerificationKp field.
+func (o *SAMLSource) SetVerificationKp(v string) {
+	o.VerificationKp.Set(&v)
+}
+
+// SetVerificationKpNil sets the value for VerificationKp to be an explicit nil
+func (o *SAMLSource) SetVerificationKpNil() {
+	o.VerificationKp.Set(nil)
+}
+
+// UnsetVerificationKp ensures that no value is present for VerificationKp, not even an explicit nil
+func (o *SAMLSource) UnsetVerificationKp() {
+	o.VerificationKp.Unset()
+}
+
 // GetSigningKp returns the SigningKp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SAMLSource) GetSigningKp() string {
 	if o == nil || o.SigningKp.Get() == nil {
@@ -951,6 +996,9 @@ func (o SAMLSource) MarshalJSON() ([]byte, error) {
 	}
 	if o.BindingType != nil {
 		toSerialize["binding_type"] = o.BindingType
+	}
+	if o.VerificationKp.IsSet() {
+		toSerialize["verification_kp"] = o.VerificationKp.Get()
 	}
 	if o.SigningKp.IsSet() {
 		toSerialize["signing_kp"] = o.SigningKp.Get()

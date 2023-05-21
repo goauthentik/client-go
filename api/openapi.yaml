@@ -20635,6 +20635,14 @@ paths:
           - username_link
           type: string
         style: form
+      - explode: true
+        in: query
+        name: verification_kp
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -40992,6 +41000,7 @@ components:
           meta_model_name: meta_model_name
           pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           temporary_user_delete_after: temporary_user_delete_after
         - allow_idp_initiated: true
@@ -41018,6 +41027,7 @@ components:
           meta_model_name: meta_model_name
           pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           temporary_user_delete_after: temporary_user_delete_after
       properties:
@@ -45466,6 +45476,7 @@ components:
         pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name_id_policy: ""
         name: name
+        verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         signature_algorithm: null
         slug: slug
         signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -45545,9 +45556,16 @@ components:
             * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` - Transient
         binding_type:
           $ref: '#/components/schemas/BindingTypeEnum'
+        verification_kp:
+          description: "When selected, incoming assertion's Signatures will be validated\
+            \ against this certificate. To allow unsigned Requests, leave on default."
+          format: uuid
+          nullable: true
+          title: Verification Certificate
+          type: string
         signing_kp:
-          description: Keypair which is used to sign outgoing requests. Leave empty
-            to disable signing.
+          description: Keypair used to sign outgoing Responses going to the Identity
+            Provider.
           format: uuid
           nullable: true
           title: Signing Keypair
@@ -48528,6 +48546,7 @@ components:
         meta_model_name: meta_model_name
         pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         temporary_user_delete_after: temporary_user_delete_after
       properties:
@@ -48638,9 +48657,16 @@ components:
             * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` - Transient
         binding_type:
           $ref: '#/components/schemas/BindingTypeEnum'
+        verification_kp:
+          description: "When selected, incoming assertion's Signatures will be validated\
+            \ against this certificate. To allow unsigned Requests, leave on default."
+          format: uuid
+          nullable: true
+          title: Verification Certificate
+          type: string
         signing_kp:
-          description: Keypair which is used to sign outgoing requests. Leave empty
-            to disable signing.
+          description: Keypair used to sign outgoing Responses going to the Identity
+            Provider.
           format: uuid
           nullable: true
           title: Signing Keypair
@@ -48686,6 +48712,7 @@ components:
         pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name_id_policy: ""
         name: name
+        verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         signature_algorithm: null
         slug: slug
         signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -48765,9 +48792,16 @@ components:
             * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` - Transient
         binding_type:
           $ref: '#/components/schemas/BindingTypeEnum'
+        verification_kp:
+          description: "When selected, incoming assertion's Signatures will be validated\
+            \ against this certificate. To allow unsigned Requests, leave on default."
+          format: uuid
+          nullable: true
+          title: Verification Certificate
+          type: string
         signing_kp:
-          description: Keypair which is used to sign outgoing requests. Leave empty
-            to disable signing.
+          description: Keypair used to sign outgoing Responses going to the Identity
+            Provider.
           format: uuid
           nullable: true
           title: Signing Keypair
