@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **IsActive** | Pointer to **bool** | Designates whether this user should be treated as active. Unselect this instead of deleting accounts. | [optional] 
 **LastLogin** | Pointer to **NullableTime** |  | [optional] 
 **IsSuperuser** | **bool** |  | [readonly] 
-**Groups** | **[]string** |  | 
+**Groups** | Pointer to **[]string** |  | [optional] 
 **GroupsObj** | [**[]UserGroup**](UserGroup.md) |  | [readonly] 
 **Email** | Pointer to **string** |  | [optional] 
 **Avatar** | **string** |  | [readonly] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewUser
 
-`func NewUser(pk int32, username string, name string, isSuperuser bool, groups []string, groupsObj []UserGroup, avatar string, uid string, ) *User`
+`func NewUser(pk int32, username string, name string, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, ) *User`
 
 NewUser instantiates a new User object
 This constructor will assign default values to properties that have it defined,
@@ -196,6 +196,11 @@ and a boolean to check if the value has been set.
 
 SetGroups sets Groups field to given value.
 
+### HasGroups
+
+`func (o *User) HasGroups() bool`
+
+HasGroups returns a boolean if a field has been set.
 
 ### GetGroupsObj
 

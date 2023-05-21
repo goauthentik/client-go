@@ -50449,7 +50449,6 @@ components:
           type: string
       required:
       - avatar
-      - groups
       - groups_obj
       - is_superuser
       - name
@@ -51205,7 +51204,6 @@ components:
           minLength: 1
           type: string
       required:
-      - groups
       - name
       - username
       type: object

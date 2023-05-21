@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** | User&#39;s display name. | 
 **IsActive** | Pointer to **bool** | Designates whether this user should be treated as active. Unselect this instead of deleting accounts. | [optional] 
 **LastLogin** | Pointer to **NullableTime** |  | [optional] 
-**Groups** | **[]string** |  | 
+**Groups** | Pointer to **[]string** |  | [optional] 
 **Email** | Pointer to **string** |  | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewUserRequest
 
-`func NewUserRequest(username string, name string, groups []string, ) *UserRequest`
+`func NewUserRequest(username string, name string, ) *UserRequest`
 
 NewUserRequest instantiates a new UserRequest object
 This constructor will assign default values to properties that have it defined,
@@ -151,6 +151,11 @@ and a boolean to check if the value has been set.
 
 SetGroups sets Groups field to given value.
 
+### HasGroups
+
+`func (o *UserRequest) HasGroups() bool`
+
+HasGroups returns a boolean if a field has been set.
 
 ### GetEmail
 

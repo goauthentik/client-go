@@ -26,7 +26,7 @@ type User struct {
 	IsActive    *bool                  `json:"is_active,omitempty"`
 	LastLogin   NullableTime           `json:"last_login,omitempty"`
 	IsSuperuser bool                   `json:"is_superuser"`
-	Groups      []string               `json:"groups"`
+	Groups      []string               `json:"groups,omitempty"`
 	GroupsObj   []UserGroup            `json:"groups_obj"`
 	Email       *string                `json:"email,omitempty"`
 	Avatar      string                 `json:"avatar"`
@@ -39,13 +39,12 @@ type User struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUser(pk int32, username string, name string, isSuperuser bool, groups []string, groupsObj []UserGroup, avatar string, uid string) *User {
+func NewUser(pk int32, username string, name string, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string) *User {
 	this := User{}
 	this.Pk = pk
 	this.Username = username
 	this.Name = name
 	this.IsSuperuser = isSuperuser
-	this.Groups = groups
 	this.GroupsObj = groupsObj
 	this.Avatar = avatar
 	this.Uid = uid
@@ -231,26 +230,34 @@ func (o *User) SetIsSuperuser(v bool) {
 	o.IsSuperuser = v
 }
 
-// GetGroups returns the Groups field value
+// GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *User) GetGroups() []string {
-	if o == nil {
+	if o == nil || o.Groups == nil {
 		var ret []string
 		return ret
 	}
-
 	return o.Groups
 }
 
-// GetGroupsOk returns a tuple with the Groups field value
+// GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *User) GetGroupsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || o.Groups == nil {
 		return nil, false
 	}
 	return o.Groups, true
 }
 
-// SetGroups sets field value
+// HasGroups returns a boolean if a field has been set.
+func (o *User) HasGroups() bool {
+	if o != nil && o.Groups != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroups gets a reference to the given []string and assigns it to the Groups field.
 func (o *User) SetGroups(v []string) {
 	o.Groups = v
 }
@@ -443,7 +450,7 @@ func (o User) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["is_superuser"] = o.IsSuperuser
 	}
-	if true {
+	if o.Groups != nil {
 		toSerialize["groups"] = o.Groups
 	}
 	if true {

@@ -24,7 +24,7 @@ type UserRequest struct {
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
 	IsActive   *bool                  `json:"is_active,omitempty"`
 	LastLogin  NullableTime           `json:"last_login,omitempty"`
-	Groups     []string               `json:"groups"`
+	Groups     []string               `json:"groups,omitempty"`
 	Email      *string                `json:"email,omitempty"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	Path       *string                `json:"path,omitempty"`
@@ -34,11 +34,10 @@ type UserRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserRequest(username string, name string, groups []string) *UserRequest {
+func NewUserRequest(username string, name string) *UserRequest {
 	this := UserRequest{}
 	this.Username = username
 	this.Name = name
-	this.Groups = groups
 	return &this
 }
 
@@ -173,26 +172,34 @@ func (o *UserRequest) UnsetLastLogin() {
 	o.LastLogin.Unset()
 }
 
-// GetGroups returns the Groups field value
+// GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *UserRequest) GetGroups() []string {
-	if o == nil {
+	if o == nil || o.Groups == nil {
 		var ret []string
 		return ret
 	}
-
 	return o.Groups
 }
 
-// GetGroupsOk returns a tuple with the Groups field value
+// GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserRequest) GetGroupsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || o.Groups == nil {
 		return nil, false
 	}
 	return o.Groups, true
 }
 
-// SetGroups sets field value
+// HasGroups returns a boolean if a field has been set.
+func (o *UserRequest) HasGroups() bool {
+	if o != nil && o.Groups != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroups gets a reference to the given []string and assigns it to the Groups field.
 func (o *UserRequest) SetGroups(v []string) {
 	o.Groups = v
 }
@@ -307,7 +314,7 @@ func (o UserRequest) MarshalJSON() ([]byte, error) {
 	if o.LastLogin.IsSet() {
 		toSerialize["last_login"] = o.LastLogin.Get()
 	}
-	if true {
+	if o.Groups != nil {
 		toSerialize["groups"] = o.Groups
 	}
 	if o.Email != nil {

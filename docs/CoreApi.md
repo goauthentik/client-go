@@ -3309,7 +3309,7 @@ import (
 )
 
 func main() {
-    userRequest := *openapiclient.NewUserRequest("Username_example", "Name_example", []string{"Groups_example"}) // UserRequest | 
+    userRequest := *openapiclient.NewUserRequest("Username_example", "Name_example") // UserRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -4153,7 +4153,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this User.
-    userRequest := *openapiclient.NewUserRequest("Username_example", "Name_example", []string{"Groups_example"}) // UserRequest | 
+    userRequest := *openapiclient.NewUserRequest("Username_example", "Name_example") // UserRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
