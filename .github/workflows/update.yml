@@ -20,10 +20,15 @@ jobs:
       - uses: actions/setup-go@v4
       - name: Check for updates
         run: make
+      - id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.GH_APP_ID }}
+          private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
       - name: Push
         id: push
         env:
-          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
         run: |
           git config --global user.email "github-bot@goauthentik.io"
           git config --global user.name "authentik-bot"
