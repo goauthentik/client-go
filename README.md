@@ -39,6 +39,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AdminApi* | [**AdminAppsList**](docs/AdminApi.md#adminappslist) | **Get** /admin/apps/ | 
 *AdminApi* | [**AdminMetricsRetrieve**](docs/AdminApi.md#adminmetricsretrieve) | **Get** /admin/metrics/ | 
+*AdminApi* | [**AdminModelsList**](docs/AdminApi.md#adminmodelslist) | **Get** /admin/models/ | 
 *AdminApi* | [**AdminSystemCreate**](docs/AdminApi.md#adminsystemcreate) | **Post** /admin/system/ | 
 *AdminApi* | [**AdminSystemRetrieve**](docs/AdminApi.md#adminsystemretrieve) | **Get** /admin/system/ | 
 *AdminApi* | [**AdminSystemTasksList**](docs/AdminApi.md#adminsystemtaskslist) | **Get** /admin/system_tasks/ | 
@@ -833,6 +834,7 @@ Class | Method | HTTP request | Description
  - [LoginMetrics](docs/LoginMetrics.md)
  - [LoginSource](docs/LoginSource.md)
  - [Metadata](docs/Metadata.md)
+ - [ModelEnum](docs/ModelEnum.md)
  - [NameIdPolicyEnum](docs/NameIdPolicyEnum.md)
  - [NotConfiguredActionEnum](docs/NotConfiguredActionEnum.md)
  - [Notification](docs/Notification.md)

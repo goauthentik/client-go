@@ -1752,7 +1752,7 @@ Name | Type | Description  | Notes
 
 ## PoliciesEventMatcherList
 
-> PaginatedEventMatcherPolicyList PoliciesEventMatcherList(ctx).Action(action).App(app).ClientIp(clientIp).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Search(search).Execute()
+> PaginatedEventMatcherPolicyList PoliciesEventMatcherList(ctx).Action(action).App(app).ClientIp(clientIp).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Model(model).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Search(search).Execute()
 
 
 
@@ -1778,6 +1778,7 @@ func main() {
     created := time.Now() // time.Time |  (optional)
     executionLogging := true // bool |  (optional)
     lastUpdated := time.Now() // time.Time |  (optional)
+    model := "model_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -1787,7 +1788,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PoliciesApi.PoliciesEventMatcherList(context.Background()).Action(action).App(app).ClientIp(clientIp).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Search(search).Execute()
+    resp, r, err := apiClient.PoliciesApi.PoliciesEventMatcherList(context.Background()).Action(action).App(app).ClientIp(clientIp).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Model(model).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyUuid(policyUuid).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesEventMatcherList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1814,6 +1815,7 @@ Name | Type | Description  | Notes
  **created** | **time.Time** |  | 
  **executionLogging** | **bool** |  | 
  **lastUpdated** | **time.Time** |  | 
+ **model** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 

@@ -3569,6 +3569,7 @@ type ApiPoliciesEventMatcherListRequest struct {
 	created          *time.Time
 	executionLogging *bool
 	lastUpdated      *time.Time
+	model            *string
 	name             *string
 	ordering         *string
 	page             *int32
@@ -3605,6 +3606,11 @@ func (r ApiPoliciesEventMatcherListRequest) ExecutionLogging(executionLogging bo
 
 func (r ApiPoliciesEventMatcherListRequest) LastUpdated(lastUpdated time.Time) ApiPoliciesEventMatcherListRequest {
 	r.lastUpdated = &lastUpdated
+	return r
+}
+
+func (r ApiPoliciesEventMatcherListRequest) Model(model string) ApiPoliciesEventMatcherListRequest {
+	r.model = &model
 	return r
 }
 
@@ -3700,6 +3706,9 @@ func (a *PoliciesApiService) PoliciesEventMatcherListExecute(r ApiPoliciesEventM
 	}
 	if r.lastUpdated != nil {
 		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
+	}
+	if r.model != nil {
+		localVarQueryParams.Add("model", parameterToString(*r.model, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))

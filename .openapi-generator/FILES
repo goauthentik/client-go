@@ -183,6 +183,7 @@ docs/LoginMetrics.md
 docs/LoginSource.md
 docs/ManagedApi.md
 docs/Metadata.md
+docs/ModelEnum.md
 docs/NameIdPolicyEnum.md
 docs/NotConfiguredActionEnum.md
 docs/Notification.md
@@ -667,6 +668,7 @@ model_login_challenge_types.go
 model_login_metrics.go
 model_login_source.go
 model_metadata.go
+model_model_enum.go
 model_name_id_policy_enum.go
 model_not_configured_action_enum.go
 model_notification.go
