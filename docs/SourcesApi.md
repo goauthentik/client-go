@@ -832,7 +832,7 @@ Name | Type | Description  | Notes
 
 ## SourcesLdapList
 
-> PaginatedLDAPSourceList SourcesLdapList(ctx).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PeerCertificate(peerCertificate).PropertyMappings(propertyMappings).PropertyMappingsGroup(propertyMappingsGroup).Search(search).ServerUri(serverUri).Slug(slug).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).Execute()
+> PaginatedLDAPSourceList SourcesLdapList(ctx).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PeerCertificate(peerCertificate).PropertyMappings(propertyMappings).PropertyMappingsGroup(propertyMappingsGroup).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).Execute()
 
 
 
@@ -855,6 +855,7 @@ func main() {
     additionalUserDn := "additionalUserDn_example" // string |  (optional)
     baseDn := "baseDn_example" // string |  (optional)
     bindCn := "bindCn_example" // string |  (optional)
+    clientCertificate := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     enabled := true // bool |  (optional)
     groupMembershipField := "groupMembershipField_example" // string |  (optional)
     groupObjectFilter := "groupObjectFilter_example" // string |  (optional)
@@ -869,6 +870,7 @@ func main() {
     search := "search_example" // string | A search term. (optional)
     serverUri := "serverUri_example" // string |  (optional)
     slug := "slug_example" // string |  (optional)
+    sni := true // bool |  (optional)
     startTls := true // bool |  (optional)
     syncGroups := true // bool |  (optional)
     syncParentGroup := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
@@ -878,7 +880,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesLdapList(context.Background()).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PeerCertificate(peerCertificate).PropertyMappings(propertyMappings).PropertyMappingsGroup(propertyMappingsGroup).Search(search).ServerUri(serverUri).Slug(slug).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesLdapList(context.Background()).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PeerCertificate(peerCertificate).PropertyMappings(propertyMappings).PropertyMappingsGroup(propertyMappingsGroup).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -903,6 +905,7 @@ Name | Type | Description  | Notes
  **additionalUserDn** | **string** |  | 
  **baseDn** | **string** |  | 
  **bindCn** | **string** |  | 
+ **clientCertificate** | **string** |  | 
  **enabled** | **bool** |  | 
  **groupMembershipField** | **string** |  | 
  **groupObjectFilter** | **string** |  | 
@@ -917,6 +920,7 @@ Name | Type | Description  | Notes
  **search** | **string** | A search term. | 
  **serverUri** | **string** |  | 
  **slug** | **string** |  | 
+ **sni** | **bool** |  | 
  **startTls** | **bool** |  | 
  **syncGroups** | **bool** |  | 
  **syncParentGroup** | **string** |  | 

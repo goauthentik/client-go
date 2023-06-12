@@ -14,9 +14,11 @@ Name | Type | Description | Notes
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 **ServerUri** | **string** |  | 
 **PeerCertificate** | Pointer to **NullableString** | Optionally verify the LDAP Server&#39;s Certificate against the CA Chain in this keypair. | [optional] 
+**ClientCertificate** | Pointer to **NullableString** | Client certificate to authenticate against the LDAP Server&#39;s Certificate. | [optional] 
 **BindCn** | Pointer to **string** |  | [optional] 
 **BindPassword** | Pointer to **string** |  | [optional] 
 **StartTls** | Pointer to **bool** |  | [optional] 
+**Sni** | Pointer to **bool** |  | [optional] 
 **BaseDn** | **string** |  | 
 **AdditionalUserDn** | Pointer to **string** | Prepended to Base DN for User-queries. | [optional] 
 **AdditionalGroupDn** | Pointer to **string** | Prepended to Base DN for Group-queries. | [optional] 
@@ -315,6 +317,41 @@ HasPeerCertificate returns a boolean if a field has been set.
 `func (o *LDAPSourceRequest) UnsetPeerCertificate()`
 
 UnsetPeerCertificate ensures that no value is present for PeerCertificate, not even an explicit nil
+### GetClientCertificate
+
+`func (o *LDAPSourceRequest) GetClientCertificate() string`
+
+GetClientCertificate returns the ClientCertificate field if non-nil, zero value otherwise.
+
+### GetClientCertificateOk
+
+`func (o *LDAPSourceRequest) GetClientCertificateOk() (*string, bool)`
+
+GetClientCertificateOk returns a tuple with the ClientCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientCertificate
+
+`func (o *LDAPSourceRequest) SetClientCertificate(v string)`
+
+SetClientCertificate sets ClientCertificate field to given value.
+
+### HasClientCertificate
+
+`func (o *LDAPSourceRequest) HasClientCertificate() bool`
+
+HasClientCertificate returns a boolean if a field has been set.
+
+### SetClientCertificateNil
+
+`func (o *LDAPSourceRequest) SetClientCertificateNil(b bool)`
+
+ SetClientCertificateNil sets the value for ClientCertificate to be an explicit nil
+
+### UnsetClientCertificate
+`func (o *LDAPSourceRequest) UnsetClientCertificate()`
+
+UnsetClientCertificate ensures that no value is present for ClientCertificate, not even an explicit nil
 ### GetBindCn
 
 `func (o *LDAPSourceRequest) GetBindCn() string`
@@ -389,6 +426,31 @@ SetStartTls sets StartTls field to given value.
 `func (o *LDAPSourceRequest) HasStartTls() bool`
 
 HasStartTls returns a boolean if a field has been set.
+
+### GetSni
+
+`func (o *LDAPSourceRequest) GetSni() bool`
+
+GetSni returns the Sni field if non-nil, zero value otherwise.
+
+### GetSniOk
+
+`func (o *LDAPSourceRequest) GetSniOk() (*bool, bool)`
+
+GetSniOk returns a tuple with the Sni field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSni
+
+`func (o *LDAPSourceRequest) SetSni(v bool)`
+
+SetSni sets Sni field to given value.
+
+### HasSni
+
+`func (o *LDAPSourceRequest) HasSni() bool`
+
+HasSni returns a boolean if a field has been set.
 
 ### GetBaseDn
 

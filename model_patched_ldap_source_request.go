@@ -33,10 +33,13 @@ type PatchedLDAPSourceRequest struct {
 	ServerUri        *string               `json:"server_uri,omitempty"`
 	// Optionally verify the LDAP Server's Certificate against the CA Chain in this keypair.
 	PeerCertificate NullableString `json:"peer_certificate,omitempty"`
-	BindCn          *string        `json:"bind_cn,omitempty"`
-	BindPassword    *string        `json:"bind_password,omitempty"`
-	StartTls        *bool          `json:"start_tls,omitempty"`
-	BaseDn          *string        `json:"base_dn,omitempty"`
+	// Client certificate to authenticate against the LDAP Server's Certificate.
+	ClientCertificate NullableString `json:"client_certificate,omitempty"`
+	BindCn            *string        `json:"bind_cn,omitempty"`
+	BindPassword      *string        `json:"bind_password,omitempty"`
+	StartTls          *bool          `json:"start_tls,omitempty"`
+	Sni               *bool          `json:"sni,omitempty"`
+	BaseDn            *string        `json:"base_dn,omitempty"`
 	// Prepended to Base DN for User-queries.
 	AdditionalUserDn *string `json:"additional_user_dn,omitempty"`
 	// Prepended to Base DN for Group-queries.
@@ -429,6 +432,49 @@ func (o *PatchedLDAPSourceRequest) UnsetPeerCertificate() {
 	o.PeerCertificate.Unset()
 }
 
+// GetClientCertificate returns the ClientCertificate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedLDAPSourceRequest) GetClientCertificate() string {
+	if o == nil || o.ClientCertificate.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClientCertificate.Get()
+}
+
+// GetClientCertificateOk returns a tuple with the ClientCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedLDAPSourceRequest) GetClientCertificateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ClientCertificate.Get(), o.ClientCertificate.IsSet()
+}
+
+// HasClientCertificate returns a boolean if a field has been set.
+func (o *PatchedLDAPSourceRequest) HasClientCertificate() bool {
+	if o != nil && o.ClientCertificate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetClientCertificate gets a reference to the given NullableString and assigns it to the ClientCertificate field.
+func (o *PatchedLDAPSourceRequest) SetClientCertificate(v string) {
+	o.ClientCertificate.Set(&v)
+}
+
+// SetClientCertificateNil sets the value for ClientCertificate to be an explicit nil
+func (o *PatchedLDAPSourceRequest) SetClientCertificateNil() {
+	o.ClientCertificate.Set(nil)
+}
+
+// UnsetClientCertificate ensures that no value is present for ClientCertificate, not even an explicit nil
+func (o *PatchedLDAPSourceRequest) UnsetClientCertificate() {
+	o.ClientCertificate.Unset()
+}
+
 // GetBindCn returns the BindCn field value if set, zero value otherwise.
 func (o *PatchedLDAPSourceRequest) GetBindCn() string {
 	if o == nil || o.BindCn == nil {
@@ -523,6 +569,38 @@ func (o *PatchedLDAPSourceRequest) HasStartTls() bool {
 // SetStartTls gets a reference to the given bool and assigns it to the StartTls field.
 func (o *PatchedLDAPSourceRequest) SetStartTls(v bool) {
 	o.StartTls = &v
+}
+
+// GetSni returns the Sni field value if set, zero value otherwise.
+func (o *PatchedLDAPSourceRequest) GetSni() bool {
+	if o == nil || o.Sni == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Sni
+}
+
+// GetSniOk returns a tuple with the Sni field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedLDAPSourceRequest) GetSniOk() (*bool, bool) {
+	if o == nil || o.Sni == nil {
+		return nil, false
+	}
+	return o.Sni, true
+}
+
+// HasSni returns a boolean if a field has been set.
+func (o *PatchedLDAPSourceRequest) HasSni() bool {
+	if o != nil && o.Sni != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSni gets a reference to the given bool and assigns it to the Sni field.
+func (o *PatchedLDAPSourceRequest) SetSni(v bool) {
+	o.Sni = &v
 }
 
 // GetBaseDn returns the BaseDn field value if set, zero value otherwise.
@@ -984,6 +1062,9 @@ func (o PatchedLDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	if o.PeerCertificate.IsSet() {
 		toSerialize["peer_certificate"] = o.PeerCertificate.Get()
 	}
+	if o.ClientCertificate.IsSet() {
+		toSerialize["client_certificate"] = o.ClientCertificate.Get()
+	}
 	if o.BindCn != nil {
 		toSerialize["bind_cn"] = o.BindCn
 	}
@@ -992,6 +1073,9 @@ func (o PatchedLDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.StartTls != nil {
 		toSerialize["start_tls"] = o.StartTls
+	}
+	if o.Sni != nil {
+		toSerialize["sni"] = o.Sni
 	}
 	if o.BaseDn != nil {
 		toSerialize["base_dn"] = o.BaseDn

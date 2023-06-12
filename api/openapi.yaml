@@ -19035,6 +19035,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: client_certificate
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: enabled
         required: false
         schema:
@@ -19141,6 +19149,13 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: sni
+        required: false
+        schema:
+          type: boolean
         style: form
       - explode: true
         in: query
@@ -35242,6 +35257,7 @@ components:
         sync_users: true
         icon: icon
         enabled: true
+        client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         base_dn: base_dn
         managed: managed
         additional_group_dn: additional_group_dn
@@ -35256,6 +35272,7 @@ components:
         user_path_template: user_path_template
         sync_groups: true
         group_object_filter: group_object_filter
+        sni: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35349,10 +35366,19 @@ components:
           format: uuid
           nullable: true
           type: string
+        client_certificate:
+          description: Client certificate to authenticate against the LDAP Server's
+            Certificate.
+          format: uuid
+          nullable: true
+          type: string
         bind_cn:
           type: string
         start_tls:
           title: Enable Start TLS
+          type: boolean
+        sni:
+          title: Use Server URI for SNI verification
           type: boolean
         base_dn:
           type: string
@@ -35424,6 +35450,7 @@ components:
         additional_user_dn: additional_user_dn
         sync_users: true
         enabled: true
+        client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         base_dn: base_dn
         additional_group_dn: additional_group_dn
         sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35437,6 +35464,7 @@ components:
         user_path_template: user_path_template
         sync_groups: true
         group_object_filter: group_object_filter
+        sni: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35494,6 +35522,12 @@ components:
           format: uuid
           nullable: true
           type: string
+        client_certificate:
+          description: Client certificate to authenticate against the LDAP Server's
+            Certificate.
+          format: uuid
+          nullable: true
+          type: string
         bind_cn:
           type: string
         bind_password:
@@ -35501,6 +35535,9 @@ components:
           writeOnly: true
         start_tls:
           title: Enable Start TLS
+          type: boolean
+        sni:
+          title: Use Server URI for SNI verification
           type: boolean
         base_dn:
           minLength: 1
@@ -39261,6 +39298,7 @@ components:
           sync_users: true
           icon: icon
           enabled: true
+          client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           base_dn: base_dn
           managed: managed
           additional_group_dn: additional_group_dn
@@ -39275,6 +39313,7 @@ components:
           user_path_template: user_path_template
           sync_groups: true
           group_object_filter: group_object_filter
+          sni: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -39297,6 +39336,7 @@ components:
           sync_users: true
           icon: icon
           enabled: true
+          client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           base_dn: base_dn
           managed: managed
           additional_group_dn: additional_group_dn
@@ -39311,6 +39351,7 @@ components:
           user_path_template: user_path_template
           sync_groups: true
           group_object_filter: group_object_filter
+          sni: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -44246,6 +44287,7 @@ components:
         additional_user_dn: additional_user_dn
         sync_users: true
         enabled: true
+        client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         base_dn: base_dn
         additional_group_dn: additional_group_dn
         sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -44259,6 +44301,7 @@ components:
         user_path_template: user_path_template
         sync_groups: true
         group_object_filter: group_object_filter
+        sni: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -44316,6 +44359,12 @@ components:
           format: uuid
           nullable: true
           type: string
+        client_certificate:
+          description: Client certificate to authenticate against the LDAP Server's
+            Certificate.
+          format: uuid
+          nullable: true
+          type: string
         bind_cn:
           type: string
         bind_password:
@@ -44323,6 +44372,9 @@ components:
           writeOnly: true
         start_tls:
           title: Enable Start TLS
+          type: boolean
+        sni:
+          title: Use Server URI for SNI verification
           type: boolean
         base_dn:
           minLength: 1

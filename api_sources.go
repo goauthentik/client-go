@@ -1576,6 +1576,7 @@ type ApiSourcesLdapListRequest struct {
 	additionalUserDn      *string
 	baseDn                *string
 	bindCn                *string
+	clientCertificate     *string
 	enabled               *bool
 	groupMembershipField  *string
 	groupObjectFilter     *string
@@ -1590,6 +1591,7 @@ type ApiSourcesLdapListRequest struct {
 	search                *string
 	serverUri             *string
 	slug                  *string
+	sni                   *bool
 	startTls              *bool
 	syncGroups            *bool
 	syncParentGroup       *string
@@ -1615,6 +1617,11 @@ func (r ApiSourcesLdapListRequest) BaseDn(baseDn string) ApiSourcesLdapListReque
 
 func (r ApiSourcesLdapListRequest) BindCn(bindCn string) ApiSourcesLdapListRequest {
 	r.bindCn = &bindCn
+	return r
+}
+
+func (r ApiSourcesLdapListRequest) ClientCertificate(clientCertificate string) ApiSourcesLdapListRequest {
+	r.clientCertificate = &clientCertificate
 	return r
 }
 
@@ -1689,6 +1696,11 @@ func (r ApiSourcesLdapListRequest) ServerUri(serverUri string) ApiSourcesLdapLis
 
 func (r ApiSourcesLdapListRequest) Slug(slug string) ApiSourcesLdapListRequest {
 	r.slug = &slug
+	return r
+}
+
+func (r ApiSourcesLdapListRequest) Sni(sni bool) ApiSourcesLdapListRequest {
+	r.sni = &sni
 	return r
 }
 
@@ -1775,6 +1787,9 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	if r.bindCn != nil {
 		localVarQueryParams.Add("bind_cn", parameterToString(*r.bindCn, ""))
 	}
+	if r.clientCertificate != nil {
+		localVarQueryParams.Add("client_certificate", parameterToString(*r.clientCertificate, ""))
+	}
 	if r.enabled != nil {
 		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
 	}
@@ -1832,6 +1847,9 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	}
 	if r.slug != nil {
 		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
+	}
+	if r.sni != nil {
+		localVarQueryParams.Add("sni", parameterToString(*r.sni, ""))
 	}
 	if r.startTls != nil {
 		localVarQueryParams.Add("start_tls", parameterToString(*r.startTls, ""))
