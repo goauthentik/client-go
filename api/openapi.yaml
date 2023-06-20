@@ -35068,16 +35068,17 @@ components:
     LDAPOutpostConfig:
       description: LDAPProvider Serializer
       example:
-        application_slug: application_slug
-        bind_flow_slug: bind_flow_slug
         uid_start_number: 441289069
         search_mode: null
-        base_dn: base_dn
         search_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tls_server_name: tls_server_name
         bind_mode: null
+        mfa_support: true
+        application_slug: application_slug
+        bind_flow_slug: bind_flow_slug
+        base_dn: base_dn
+        name: name
         pk: 0
         gid_start_number: -1517921766
       properties:
@@ -35109,7 +35110,7 @@ components:
         tls_server_name:
           type: string
         uid_start_number:
-          description: "The start for uidNumbers, this number is added to the user.Pk\
+          description: "The start for uidNumbers, this number is added to the user.pk\
             \ to make sure that the numbers aren't too low for POSIX users. Default\
             \ is 2000 to ensure that we don't collide with local users uidNumber"
           maximum: 2147483647
@@ -35117,7 +35118,7 @@ components:
           type: integer
         gid_start_number:
           description: "The start for gidNumbers, this number is added to a number\
-            \ generated from the group.Pk to make sure that the numbers aren't too\
+            \ generated from the group.pk to make sure that the numbers aren't too\
             \ low for POSIX groups. Default is 4000 to ensure that we don't collide\
             \ with local groups or users primary groups gidNumber"
           maximum: 2147483647
@@ -35127,6 +35128,13 @@ components:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
         bind_mode:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
+        mfa_support:
+          description: "When enabled, code-based multi-factor authentication can be\
+            \ used by appending a semicolon and the TOTP code to the password. This\
+            \ should only be enabled if all users that will bind to this provider\
+            \ have a TOTP device configured, as otherwise a password may incorrectly\
+            \ be rejected if it contains a semicolon."
+          type: boolean
       required:
       - application_slug
       - bind_flow_slug
@@ -35233,6 +35241,7 @@ components:
         tls_server_name: tls_server_name
         bind_mode: null
         assigned_application_slug: assigned_application_slug
+        mfa_support: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         outpost_set:
         - outpost_set
@@ -35321,7 +35330,7 @@ components:
         tls_server_name:
           type: string
         uid_start_number:
-          description: "The start for uidNumbers, this number is added to the user.Pk\
+          description: "The start for uidNumbers, this number is added to the user.pk\
             \ to make sure that the numbers aren't too low for POSIX users. Default\
             \ is 2000 to ensure that we don't collide with local users uidNumber"
           maximum: 2147483647
@@ -35329,7 +35338,7 @@ components:
           type: integer
         gid_start_number:
           description: "The start for gidNumbers, this number is added to a number\
-            \ generated from the group.Pk to make sure that the numbers aren't too\
+            \ generated from the group.pk to make sure that the numbers aren't too\
             \ low for POSIX groups. Default is 4000 to ensure that we don't collide\
             \ with local groups or users primary groups gidNumber"
           maximum: 2147483647
@@ -35344,6 +35353,13 @@ components:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
         bind_mode:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
+        mfa_support:
+          description: "When enabled, code-based multi-factor authentication can be\
+            \ used by appending a semicolon and the TOTP code to the password. This\
+            \ should only be enabled if all users that will bind to this provider\
+            \ have a TOTP device configured, as otherwise a password may incorrectly\
+            \ be rejected if it contains a semicolon."
+          type: boolean
       required:
       - assigned_application_name
       - assigned_application_slug
@@ -35361,16 +35377,17 @@ components:
     LDAPProviderRequest:
       description: LDAPProvider Serializer
       example:
-        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         uid_start_number: -1803530559
         search_mode: null
-        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        base_dn: base_dn
         search_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tls_server_name: tls_server_name
         bind_mode: null
+        mfa_support: true
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        base_dn: base_dn
+        name: name
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35411,7 +35428,7 @@ components:
         tls_server_name:
           type: string
         uid_start_number:
-          description: "The start for uidNumbers, this number is added to the user.Pk\
+          description: "The start for uidNumbers, this number is added to the user.pk\
             \ to make sure that the numbers aren't too low for POSIX users. Default\
             \ is 2000 to ensure that we don't collide with local users uidNumber"
           maximum: 2147483647
@@ -35419,7 +35436,7 @@ components:
           type: integer
         gid_start_number:
           description: "The start for gidNumbers, this number is added to a number\
-            \ generated from the group.Pk to make sure that the numbers aren't too\
+            \ generated from the group.pk to make sure that the numbers aren't too\
             \ low for POSIX groups. Default is 4000 to ensure that we don't collide\
             \ with local groups or users primary groups gidNumber"
           maximum: 2147483647
@@ -35429,6 +35446,13 @@ components:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
         bind_mode:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
+        mfa_support:
+          description: "When enabled, code-based multi-factor authentication can be\
+            \ used by appending a semicolon and the TOTP code to the password. This\
+            \ should only be enabled if all users that will bind to this provider\
+            \ have a TOTP device configured, as otherwise a password may incorrectly\
+            \ be rejected if it contains a semicolon."
+          type: boolean
       required:
       - authorization_flow
       - name
@@ -39463,28 +39487,30 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - application_slug: application_slug
-          bind_flow_slug: bind_flow_slug
-          uid_start_number: 441289069
+        - uid_start_number: 441289069
           search_mode: null
-          base_dn: base_dn
           search_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tls_server_name: tls_server_name
           bind_mode: null
+          mfa_support: true
+          application_slug: application_slug
+          bind_flow_slug: bind_flow_slug
+          base_dn: base_dn
+          name: name
           pk: 0
           gid_start_number: -1517921766
-        - application_slug: application_slug
-          bind_flow_slug: bind_flow_slug
-          uid_start_number: 441289069
+        - uid_start_number: 441289069
           search_mode: null
-          base_dn: base_dn
           search_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tls_server_name: tls_server_name
           bind_mode: null
+          mfa_support: true
+          application_slug: application_slug
+          bind_flow_slug: bind_flow_slug
+          base_dn: base_dn
+          name: name
           pk: 0
           gid_start_number: -1517921766
       properties:
@@ -39557,6 +39583,7 @@ components:
           tls_server_name: tls_server_name
           bind_mode: null
           assigned_application_slug: assigned_application_slug
+          mfa_support: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           outpost_set:
           - outpost_set
@@ -39583,6 +39610,7 @@ components:
           tls_server_name: tls_server_name
           bind_mode: null
           assigned_application_slug: assigned_application_slug
+          mfa_support: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           outpost_set:
           - outpost_set
@@ -44619,16 +44647,17 @@ components:
     PatchedLDAPProviderRequest:
       description: LDAPProvider Serializer
       example:
-        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         uid_start_number: -1803530559
         search_mode: null
-        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        base_dn: base_dn
         search_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tls_server_name: tls_server_name
         bind_mode: null
+        mfa_support: true
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        base_dn: base_dn
+        name: name
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -44669,7 +44698,7 @@ components:
         tls_server_name:
           type: string
         uid_start_number:
-          description: "The start for uidNumbers, this number is added to the user.Pk\
+          description: "The start for uidNumbers, this number is added to the user.pk\
             \ to make sure that the numbers aren't too low for POSIX users. Default\
             \ is 2000 to ensure that we don't collide with local users uidNumber"
           maximum: 2147483647
@@ -44677,7 +44706,7 @@ components:
           type: integer
         gid_start_number:
           description: "The start for gidNumbers, this number is added to a number\
-            \ generated from the group.Pk to make sure that the numbers aren't too\
+            \ generated from the group.pk to make sure that the numbers aren't too\
             \ low for POSIX groups. Default is 4000 to ensure that we don't collide\
             \ with local groups or users primary groups gidNumber"
           maximum: 2147483647
@@ -44687,6 +44716,13 @@ components:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
         bind_mode:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
+        mfa_support:
+          description: "When enabled, code-based multi-factor authentication can be\
+            \ used by appending a semicolon and the TOTP code to the password. This\
+            \ should only be enabled if all users that will bind to this provider\
+            \ have a TOTP device configured, as otherwise a password may incorrectly\
+            \ be rejected if it contains a semicolon."
+          type: boolean
       type: object
     PatchedLDAPSourceRequest:
       description: LDAP Source Serializer

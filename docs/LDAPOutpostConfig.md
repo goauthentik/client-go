@@ -12,10 +12,11 @@ Name | Type | Description | Notes
 **SearchGroup** | Pointer to **NullableString** | Users in this group can do search queries. If not set, every user can execute search queries. | [optional] 
 **Certificate** | Pointer to **NullableString** |  | [optional] 
 **TlsServerName** | Pointer to **string** |  | [optional] 
-**UidStartNumber** | Pointer to **int32** | The start for uidNumbers, this number is added to the user.Pk to make sure that the numbers aren&#39;t too low for POSIX users. Default is 2000 to ensure that we don&#39;t collide with local users uidNumber | [optional] 
-**GidStartNumber** | Pointer to **int32** | The start for gidNumbers, this number is added to a number generated from the group.Pk to make sure that the numbers aren&#39;t too low for POSIX groups. Default is 4000 to ensure that we don&#39;t collide with local groups or users primary groups gidNumber | [optional] 
+**UidStartNumber** | Pointer to **int32** | The start for uidNumbers, this number is added to the user.pk to make sure that the numbers aren&#39;t too low for POSIX users. Default is 2000 to ensure that we don&#39;t collide with local users uidNumber | [optional] 
+**GidStartNumber** | Pointer to **int32** | The start for gidNumbers, this number is added to a number generated from the group.pk to make sure that the numbers aren&#39;t too low for POSIX groups. Default is 4000 to ensure that we don&#39;t collide with local groups or users primary groups gidNumber | [optional] 
 **SearchMode** | Pointer to [**LDAPAPIAccessMode**](LDAPAPIAccessMode.md) |  | [optional] 
 **BindMode** | Pointer to [**LDAPAPIAccessMode**](LDAPAPIAccessMode.md) |  | [optional] 
+**MfaSupport** | Pointer to **bool** | When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon. | [optional] 
 
 ## Methods
 
@@ -335,6 +336,31 @@ SetBindMode sets BindMode field to given value.
 `func (o *LDAPOutpostConfig) HasBindMode() bool`
 
 HasBindMode returns a boolean if a field has been set.
+
+### GetMfaSupport
+
+`func (o *LDAPOutpostConfig) GetMfaSupport() bool`
+
+GetMfaSupport returns the MfaSupport field if non-nil, zero value otherwise.
+
+### GetMfaSupportOk
+
+`func (o *LDAPOutpostConfig) GetMfaSupportOk() (*bool, bool)`
+
+GetMfaSupportOk returns a tuple with the MfaSupport field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMfaSupport
+
+`func (o *LDAPOutpostConfig) SetMfaSupport(v bool)`
+
+SetMfaSupport sets MfaSupport field to given value.
+
+### HasMfaSupport
+
+`func (o *LDAPOutpostConfig) HasMfaSupport() bool`
+
+HasMfaSupport returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

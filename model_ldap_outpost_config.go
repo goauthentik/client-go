@@ -28,12 +28,14 @@ type LDAPOutpostConfig struct {
 	SearchGroup   NullableString `json:"search_group,omitempty"`
 	Certificate   NullableString `json:"certificate,omitempty"`
 	TlsServerName *string        `json:"tls_server_name,omitempty"`
-	// The start for uidNumbers, this number is added to the user.Pk to make sure that the numbers aren't too low for POSIX users. Default is 2000 to ensure that we don't collide with local users uidNumber
+	// The start for uidNumbers, this number is added to the user.pk to make sure that the numbers aren't too low for POSIX users. Default is 2000 to ensure that we don't collide with local users uidNumber
 	UidStartNumber *int32 `json:"uid_start_number,omitempty"`
-	// The start for gidNumbers, this number is added to a number generated from the group.Pk to make sure that the numbers aren't too low for POSIX groups. Default is 4000 to ensure that we don't collide with local groups or users primary groups gidNumber
+	// The start for gidNumbers, this number is added to a number generated from the group.pk to make sure that the numbers aren't too low for POSIX groups. Default is 4000 to ensure that we don't collide with local groups or users primary groups gidNumber
 	GidStartNumber *int32             `json:"gid_start_number,omitempty"`
 	SearchMode     *LDAPAPIAccessMode `json:"search_mode,omitempty"`
 	BindMode       *LDAPAPIAccessMode `json:"bind_mode,omitempty"`
+	// When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon.
+	MfaSupport *bool `json:"mfa_support,omitempty"`
 }
 
 // NewLDAPOutpostConfig instantiates a new LDAPOutpostConfig object
@@ -431,6 +433,38 @@ func (o *LDAPOutpostConfig) SetBindMode(v LDAPAPIAccessMode) {
 	o.BindMode = &v
 }
 
+// GetMfaSupport returns the MfaSupport field value if set, zero value otherwise.
+func (o *LDAPOutpostConfig) GetMfaSupport() bool {
+	if o == nil || o.MfaSupport == nil {
+		var ret bool
+		return ret
+	}
+	return *o.MfaSupport
+}
+
+// GetMfaSupportOk returns a tuple with the MfaSupport field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LDAPOutpostConfig) GetMfaSupportOk() (*bool, bool) {
+	if o == nil || o.MfaSupport == nil {
+		return nil, false
+	}
+	return o.MfaSupport, true
+}
+
+// HasMfaSupport returns a boolean if a field has been set.
+func (o *LDAPOutpostConfig) HasMfaSupport() bool {
+	if o != nil && o.MfaSupport != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMfaSupport gets a reference to the given bool and assigns it to the MfaSupport field.
+func (o *LDAPOutpostConfig) SetMfaSupport(v bool) {
+	o.MfaSupport = &v
+}
+
 func (o LDAPOutpostConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -468,6 +502,9 @@ func (o LDAPOutpostConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.BindMode != nil {
 		toSerialize["bind_mode"] = o.BindMode
+	}
+	if o.MfaSupport != nil {
+		toSerialize["mfa_support"] = o.MfaSupport
 	}
 	return json.Marshal(toSerialize)
 }
