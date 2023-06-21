@@ -12119,6 +12119,7 @@ paths:
           - system_task_execution
           - update_available
           - user_write
+          nullable: true
           type: string
         style: form
       - explode: true
@@ -32991,9 +32992,11 @@ components:
             * `email_sent` - Email Sent
             * `update_available` - Update Available
             * `custom_` - Custom Prefix
+          nullable: true
         client_ip:
           description: "Matches Event's Client IP (strict matching, for network matching\
             \ use an Expression Policy)"
+          nullable: true
           type: string
         app:
           allOf:
@@ -33049,6 +33052,7 @@ components:
             * `authentik.blueprints` - authentik Blueprints
             * `authentik.core` - authentik Core
             * `authentik.enterprise` - authentik Enterprise
+          nullable: true
         model:
           allOf:
           - $ref: '#/components/schemas/ModelEnum'
@@ -33125,6 +33129,7 @@ components:
             * `authentik_core.user` - User
             * `authentik_core.application` - Application
             * `authentik_core.token` - Token
+          nullable: true
       required:
       - bound_to
       - component
@@ -33184,9 +33189,12 @@ components:
             * `email_sent` - Email Sent
             * `update_available` - Update Available
             * `custom_` - Custom Prefix
+          nullable: true
         client_ip:
           description: "Matches Event's Client IP (strict matching, for network matching\
             \ use an Expression Policy)"
+          minLength: 1
+          nullable: true
           type: string
         app:
           allOf:
@@ -33242,6 +33250,7 @@ components:
             * `authentik.blueprints` - authentik Blueprints
             * `authentik.core` - authentik Core
             * `authentik.enterprise` - authentik Enterprise
+          nullable: true
         model:
           allOf:
           - $ref: '#/components/schemas/ModelEnum'
@@ -33318,6 +33327,7 @@ components:
             * `authentik_core.user` - User
             * `authentik_core.application` - Application
             * `authentik_core.token` - Token
+          nullable: true
       required:
       - name
       type: object
@@ -44110,9 +44120,12 @@ components:
             * `email_sent` - Email Sent
             * `update_available` - Update Available
             * `custom_` - Custom Prefix
+          nullable: true
         client_ip:
           description: "Matches Event's Client IP (strict matching, for network matching\
             \ use an Expression Policy)"
+          minLength: 1
+          nullable: true
           type: string
         app:
           allOf:
@@ -44168,6 +44181,7 @@ components:
             * `authentik.blueprints` - authentik Blueprints
             * `authentik.core` - authentik Core
             * `authentik.enterprise` - authentik Enterprise
+          nullable: true
         model:
           allOf:
           - $ref: '#/components/schemas/ModelEnum'
@@ -44244,6 +44258,7 @@ components:
             * `authentik_core.user` - User
             * `authentik_core.application` - Application
             * `authentik_core.token` - Token
+          nullable: true
       type: object
     PatchedEventRequest:
       description: Event Serializer
