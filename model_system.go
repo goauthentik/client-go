@@ -18,8 +18,6 @@ import (
 
 // System Get system information.
 type System struct {
-	// Get Environment
-	Env map[string]string `json:"env"`
 	// Get HTTP Request headers
 	HttpHeaders map[string]string `json:"http_headers"`
 	// Get HTTP host
@@ -39,9 +37,8 @@ type System struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSystem(env map[string]string, httpHeaders map[string]string, httpHost string, httpIsSecure bool, runtime SystemRuntime, tenant string, serverTime time.Time, embeddedOutpostHost string) *System {
+func NewSystem(httpHeaders map[string]string, httpHost string, httpIsSecure bool, runtime SystemRuntime, tenant string, serverTime time.Time, embeddedOutpostHost string) *System {
 	this := System{}
-	this.Env = env
 	this.HttpHeaders = httpHeaders
 	this.HttpHost = httpHost
 	this.HttpIsSecure = httpIsSecure
@@ -58,30 +55,6 @@ func NewSystem(env map[string]string, httpHeaders map[string]string, httpHost st
 func NewSystemWithDefaults() *System {
 	this := System{}
 	return &this
-}
-
-// GetEnv returns the Env field value
-func (o *System) GetEnv() map[string]string {
-	if o == nil {
-		var ret map[string]string
-		return ret
-	}
-
-	return o.Env
-}
-
-// GetEnvOk returns a tuple with the Env field value
-// and a boolean to check if the value has been set.
-func (o *System) GetEnvOk() (*map[string]string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Env, true
-}
-
-// SetEnv sets field value
-func (o *System) SetEnv(v map[string]string) {
-	o.Env = v
 }
 
 // GetHttpHeaders returns the HttpHeaders field value
@@ -254,9 +227,6 @@ func (o *System) SetEmbeddedOutpostHost(v string) {
 
 func (o System) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["env"] = o.Env
-	}
 	if true {
 		toSerialize["http_headers"] = o.HttpHeaders
 	}

@@ -51,6 +51,8 @@ Method | HTTP request | Description
 [**CoreUserConsentUsedByList**](CoreApi.md#CoreUserConsentUsedByList) | **Get** /core/user_consent/{id}/used_by/ | 
 [**CoreUsersCreate**](CoreApi.md#CoreUsersCreate) | **Post** /core/users/ | 
 [**CoreUsersDestroy**](CoreApi.md#CoreUsersDestroy) | **Delete** /core/users/{id}/ | 
+[**CoreUsersImpersonateCreate**](CoreApi.md#CoreUsersImpersonateCreate) | **Post** /core/users/{id}/impersonate/ | 
+[**CoreUsersImpersonateEndRetrieve**](CoreApi.md#CoreUsersImpersonateEndRetrieve) | **Get** /core/users/impersonate_end/ | 
 [**CoreUsersList**](CoreApi.md#CoreUsersList) | **Get** /core/users/ | 
 [**CoreUsersMeRetrieve**](CoreApi.md#CoreUsersMeRetrieve) | **Get** /core/users/me/ | 
 [**CoreUsersMetricsRetrieve**](CoreApi.md#CoreUsersMetricsRetrieve) | **Get** /core/users/{id}/metrics/ | 
@@ -3402,6 +3404,133 @@ Other parameters are passed through a pointer to a apiCoreUsersDestroyRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreUsersImpersonateCreate
+
+> CoreUsersImpersonateCreate(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersImpersonateCreate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersImpersonateCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreUsersImpersonateCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreUsersImpersonateEndRetrieve
+
+> CoreUsersImpersonateEndRetrieve(ctx).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersImpersonateEndRetrieve(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersImpersonateEndRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreUsersImpersonateEndRetrieveRequest struct via the builder pattern
 
 
 ### Return type

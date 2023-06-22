@@ -156,6 +156,8 @@ Class | Method | HTTP request | Description
 *CoreApi* | [**CoreUserConsentUsedByList**](docs/CoreApi.md#coreuserconsentusedbylist) | **Get** /core/user_consent/{id}/used_by/ | 
 *CoreApi* | [**CoreUsersCreate**](docs/CoreApi.md#coreuserscreate) | **Post** /core/users/ | 
 *CoreApi* | [**CoreUsersDestroy**](docs/CoreApi.md#coreusersdestroy) | **Delete** /core/users/{id}/ | 
+*CoreApi* | [**CoreUsersImpersonateCreate**](docs/CoreApi.md#coreusersimpersonatecreate) | **Post** /core/users/{id}/impersonate/ | 
+*CoreApi* | [**CoreUsersImpersonateEndRetrieve**](docs/CoreApi.md#coreusersimpersonateendretrieve) | **Get** /core/users/impersonate_end/ | 
 *CoreApi* | [**CoreUsersList**](docs/CoreApi.md#coreuserslist) | **Get** /core/users/ | 
 *CoreApi* | [**CoreUsersMeRetrieve**](docs/CoreApi.md#coreusersmeretrieve) | **Get** /core/users/me/ | 
 *CoreApi* | [**CoreUsersMetricsRetrieve**](docs/CoreApi.md#coreusersmetricsretrieve) | **Get** /core/users/{id}/metrics/ | 

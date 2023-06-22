@@ -5281,6 +5281,40 @@ paths:
       - authentik: []
       tags:
       - core
+  /core/users/{id}/impersonate/:
+    post:
+      description: Impersonate a user
+      operationId: core_users_impersonate_create
+      parameters:
+      - description: A unique integer value identifying this User.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: Successfully started impersonation
+        "401":
+          description: Access denied
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
   /core/users/{id}/metrics/:
     get:
       description: User metrics per 1h
@@ -5456,6 +5490,29 @@ paths:
                   $ref: '#/components/schemas/UsedBy'
                 type: array
           description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+  /core/users/impersonate_end/:
+    get:
+      description: End Impersonation a user
+      operationId: core_users_impersonate_end_retrieve
+      responses:
+        "204":
+          description: Successfully started impersonation
         "400":
           content:
             application/json:
@@ -50311,19 +50368,11 @@ components:
           python_version: python_version
           platform: platform
           architecture: architecture
-        env:
-          key: env
         embedded_outpost_host: embedded_outpost_host
         http_host: http_host
         http_is_secure: true
         tenant: tenant
       properties:
-        env:
-          additionalProperties:
-            type: string
-          description: Get Environment
-          readOnly: true
-          type: object
         http_headers:
           additionalProperties:
             type: string
@@ -50355,7 +50404,6 @@ components:
           type: string
       required:
       - embedded_outpost_host
-      - env
       - http_headers
       - http_host
       - http_is_secure

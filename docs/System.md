@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Env** | **map[string]string** | Get Environment | [readonly] 
 **HttpHeaders** | **map[string]string** | Get HTTP Request headers | [readonly] 
 **HttpHost** | **string** | Get HTTP host | [readonly] 
 **HttpIsSecure** | **bool** | Get HTTP Secure flag | [readonly] 
@@ -17,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewSystem
 
-`func NewSystem(env map[string]string, httpHeaders map[string]string, httpHost string, httpIsSecure bool, runtime SystemRuntime, tenant string, serverTime time.Time, embeddedOutpostHost string, ) *System`
+`func NewSystem(httpHeaders map[string]string, httpHost string, httpIsSecure bool, runtime SystemRuntime, tenant string, serverTime time.Time, embeddedOutpostHost string, ) *System`
 
 NewSystem instantiates a new System object
 This constructor will assign default values to properties that have it defined,
@@ -31,26 +30,6 @@ will change when the set of required properties is changed
 NewSystemWithDefaults instantiates a new System object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetEnv
-
-`func (o *System) GetEnv() map[string]string`
-
-GetEnv returns the Env field if non-nil, zero value otherwise.
-
-### GetEnvOk
-
-`func (o *System) GetEnvOk() (*map[string]string, bool)`
-
-GetEnvOk returns a tuple with the Env field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnv
-
-`func (o *System) SetEnv(v map[string]string)`
-
-SetEnv sets Env field to given value.
-
 
 ### GetHttpHeaders
 
