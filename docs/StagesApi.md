@@ -1435,7 +1435,7 @@ func main() {
     accountSid := "accountSid_example" // string |  (optional)
     auth := "auth_example" // string |  (optional)
     authPassword := "authPassword_example" // string |  (optional)
-    authType := "authType_example" // string | * `basic` - Basic * `bearer` - Bearer  * `basic` - Basic * `bearer` - Bearer (optional)
+    authType := "authType_example" // string | * `basic` - Basic * `bearer` - Bearer (optional)
     configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     friendlyName := "friendlyName_example" // string |  (optional)
     fromNumber := "fromNumber_example" // string |  (optional)
@@ -1444,7 +1444,7 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    provider := "provider_example" // string | * `twilio` - Twilio * `generic` - Generic  * `twilio` - Twilio * `generic` - Generic (optional)
+    provider := "provider_example" // string | * `twilio` - Twilio * `generic` - Generic (optional)
     search := "search_example" // string | A search term. (optional)
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     verifyOnly := true // bool |  (optional)
@@ -1475,7 +1475,7 @@ Name | Type | Description  | Notes
  **accountSid** | **string** |  | 
  **auth** | **string** |  | 
  **authPassword** | **string** |  | 
- **authType** | **string** | * &#x60;basic&#x60; - Basic * &#x60;bearer&#x60; - Bearer  * &#x60;basic&#x60; - Basic * &#x60;bearer&#x60; - Bearer | 
+ **authType** | **string** | * &#x60;basic&#x60; - Basic * &#x60;bearer&#x60; - Bearer | 
  **configureFlow** | **string** |  | 
  **friendlyName** | **string** |  | 
  **fromNumber** | **string** |  | 
@@ -1484,7 +1484,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **provider** | **string** | * &#x60;twilio&#x60; - Twilio * &#x60;generic&#x60; - Generic  * &#x60;twilio&#x60; - Twilio * &#x60;generic&#x60; - Generic | 
+ **provider** | **string** | * &#x60;twilio&#x60; - Twilio * &#x60;generic&#x60; - Generic | 
  **search** | **string** | A search term. | 
  **stageUuid** | **string** |  | 
  **verifyOnly** | **bool** |  | 
@@ -2447,7 +2447,7 @@ import (
 
 func main() {
     configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    digits := int32(56) // int32 | * `6` - 6 digits, widely compatible * `8` - 8 digits, not compatible with apps like Google Authenticator  * `6` - 6 digits, widely compatible * `8` - 8 digits, not compatible with apps like Google Authenticator (optional)
+    digits := int32(56) // int32 | * `6` - 6 digits, widely compatible * `8` - 8 digits, not compatible with apps like Google Authenticator (optional)
     friendlyName := "friendlyName_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
@@ -2480,7 +2480,7 @@ Other parameters are passed through a pointer to a apiStagesAuthenticatorTotpLis
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **configureFlow** | **string** |  | 
- **digits** | **int32** | * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator  * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator | 
+ **digits** | **int32** | * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator | 
  **friendlyName** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
@@ -2948,7 +2948,7 @@ import (
 func main() {
     configurationStages := []string{"Inner_example"} // []string |  (optional)
     name := "name_example" // string |  (optional)
-    notConfiguredAction := "notConfiguredAction_example" // string | * `skip` - Skip * `deny` - Deny * `configure` - Configure  * `skip` - Skip * `deny` - Deny * `configure` - Configure (optional)
+    notConfiguredAction := "notConfiguredAction_example" // string | * `skip` - Skip * `deny` - Deny * `configure` - Configure (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -2979,7 +2979,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **configurationStages** | **[]string** |  | 
  **name** | **string** |  | 
- **notConfiguredAction** | **string** | * &#x60;skip&#x60; - Skip * &#x60;deny&#x60; - Deny * &#x60;configure&#x60; - Configure  * &#x60;skip&#x60; - Skip * &#x60;deny&#x60; - Deny * &#x60;configure&#x60; - Configure | 
+ **notConfiguredAction** | **string** | * &#x60;skip&#x60; - Skip * &#x60;deny&#x60; - Deny * &#x60;configure&#x60; - Configure | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
@@ -3442,17 +3442,17 @@ import (
 )
 
 func main() {
-    authenticatorAttachment := "authenticatorAttachment_example" // string | * `platform` - Platform * `cross-platform` - Cross Platform  * `platform` - Platform * `cross-platform` - Cross Platform (optional)
+    authenticatorAttachment := "authenticatorAttachment_example" // string | * `platform` - Platform * `cross-platform` - Cross Platform (optional)
     configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     friendlyName := "friendlyName_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    residentKeyRequirement := "residentKeyRequirement_example" // string | * `discouraged` - Discouraged * `preferred` - Preferred * `required` - Required  * `discouraged` - Discouraged * `preferred` - Preferred * `required` - Required (optional)
+    residentKeyRequirement := "residentKeyRequirement_example" // string | * `discouraged` - Discouraged * `preferred` - Preferred * `required` - Required (optional)
     search := "search_example" // string | A search term. (optional)
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    userVerification := "userVerification_example" // string | * `required` - Required * `preferred` - Preferred * `discouraged` - Discouraged  * `required` - Required * `preferred` - Preferred * `discouraged` - Discouraged (optional)
+    userVerification := "userVerification_example" // string | * `required` - Required * `preferred` - Preferred * `discouraged` - Discouraged (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3477,17 +3477,17 @@ Other parameters are passed through a pointer to a apiStagesAuthenticatorWebauth
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authenticatorAttachment** | **string** | * &#x60;platform&#x60; - Platform * &#x60;cross-platform&#x60; - Cross Platform  * &#x60;platform&#x60; - Platform * &#x60;cross-platform&#x60; - Cross Platform | 
+ **authenticatorAttachment** | **string** | * &#x60;platform&#x60; - Platform * &#x60;cross-platform&#x60; - Cross Platform | 
  **configureFlow** | **string** |  | 
  **friendlyName** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **residentKeyRequirement** | **string** | * &#x60;discouraged&#x60; - Discouraged * &#x60;preferred&#x60; - Preferred * &#x60;required&#x60; - Required  * &#x60;discouraged&#x60; - Discouraged * &#x60;preferred&#x60; - Preferred * &#x60;required&#x60; - Required | 
+ **residentKeyRequirement** | **string** | * &#x60;discouraged&#x60; - Discouraged * &#x60;preferred&#x60; - Preferred * &#x60;required&#x60; - Required | 
  **search** | **string** | A search term. | 
  **stageUuid** | **string** |  | 
- **userVerification** | **string** | * &#x60;required&#x60; - Required * &#x60;preferred&#x60; - Preferred * &#x60;discouraged&#x60; - Discouraged  * &#x60;required&#x60; - Required * &#x60;preferred&#x60; - Preferred * &#x60;discouraged&#x60; - Discouraged | 
+ **userVerification** | **string** | * &#x60;required&#x60; - Required * &#x60;preferred&#x60; - Preferred * &#x60;discouraged&#x60; - Discouraged | 
 
 ### Return type
 
@@ -4441,7 +4441,7 @@ import (
 
 func main() {
     consentExpireIn := "consentExpireIn_example" // string |  (optional)
-    mode := "mode_example" // string | * `always_require` - Always Require * `permanent` - Permanent * `expiring` - Expiring  * `always_require` - Always Require * `permanent` - Permanent * `expiring` - Expiring (optional)
+    mode := "mode_example" // string | * `always_require` - Always Require * `permanent` - Permanent * `expiring` - Expiring (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -4473,7 +4473,7 @@ Other parameters are passed through a pointer to a apiStagesConsentListRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consentExpireIn** | **string** |  | 
- **mode** | **string** | * &#x60;always_require&#x60; - Always Require * &#x60;permanent&#x60; - Permanent * &#x60;expiring&#x60; - Expiring  * &#x60;always_require&#x60; - Always Require * &#x60;permanent&#x60; - Permanent * &#x60;expiring&#x60; - Expiring | 
+ **mode** | **string** | * &#x60;always_require&#x60; - Always Require * &#x60;permanent&#x60; - Permanent * &#x60;expiring&#x60; - Expiring | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -8512,7 +8512,7 @@ func main() {
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     placeholder := "placeholder_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
-    type_ := "type__example" // string | * `text` - Text: Simple Text input * `text_area` - Text area: Multiline Text Input. * `text_read_only` - Text (read-only): Simple Text input, but cannot be edited. * `text_area_read_only` - Text area (read-only): Multiline Text input, but cannot be edited. * `username` - Username: Same as Text input, but checks for and prevents duplicate usernames. * `email` - Email: Text field with Email type. * `password` - Password: Masked input, multiple inputs of this type on the same prompt need to be identical. * `number` - Number * `checkbox` - Checkbox * `radio-button-group` - Fixed choice field rendered as a group of radio buttons. * `dropdown` - Fixed choice field rendered as a dropdown. * `date` - Date * `date-time` - Date Time * `file` - File: File upload for arbitrary files. File content will be available in flow context as data-URI * `separator` - Separator: Static Separator Line * `hidden` - Hidden: Hidden field, can be used to insert data into form. * `static` - Static: Static value, displayed as-is. * `ak-locale` - authentik: Selection of locales authentik supports  * `text` - Text: Simple Text input * `text_area` - Text area: Multiline Text Input. * `text_read_only` - Text (read-only): Simple Text input, but cannot be edited. * `text_area_read_only` - Text area (read-only): Multiline Text input, but cannot be edited. * `username` - Username: Same as Text input, but checks for and prevents duplicate usernames. * `email` - Email: Text field with Email type. * `password` - Password: Masked input, multiple inputs of this type on the same prompt need to be identical. * `number` - Number * `checkbox` - Checkbox * `radio-button-group` - Fixed choice field rendered as a group of radio buttons. * `dropdown` - Fixed choice field rendered as a dropdown. * `date` - Date * `date-time` - Date Time * `file` - File: File upload for arbitrary files. File content will be available in flow context as data-URI * `separator` - Separator: Static Separator Line * `hidden` - Hidden: Hidden field, can be used to insert data into form. * `static` - Static: Static value, displayed as-is. * `ak-locale` - authentik: Selection of locales authentik supports (optional)
+    type_ := "type__example" // string | * `text` - Text: Simple Text input * `text_area` - Text area: Multiline Text Input. * `text_read_only` - Text (read-only): Simple Text input, but cannot be edited. * `text_area_read_only` - Text area (read-only): Multiline Text input, but cannot be edited. * `username` - Username: Same as Text input, but checks for and prevents duplicate usernames. * `email` - Email: Text field with Email type. * `password` - Password: Masked input, multiple inputs of this type on the same prompt need to be identical. * `number` - Number * `checkbox` - Checkbox * `radio-button-group` - Fixed choice field rendered as a group of radio buttons. * `dropdown` - Fixed choice field rendered as a dropdown. * `date` - Date * `date-time` - Date Time * `file` - File: File upload for arbitrary files. File content will be available in flow context as data-URI * `separator` - Separator: Static Separator Line * `hidden` - Hidden: Hidden field, can be used to insert data into form. * `static` - Static: Static value, displayed as-is. * `ak-locale` - authentik: Selection of locales authentik supports (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -8545,7 +8545,7 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | Number of results to return per page. | 
  **placeholder** | **string** |  | 
  **search** | **string** | A search term. | 
- **type_** | **string** | * &#x60;text&#x60; - Text: Simple Text input * &#x60;text_area&#x60; - Text area: Multiline Text Input. * &#x60;text_read_only&#x60; - Text (read-only): Simple Text input, but cannot be edited. * &#x60;text_area_read_only&#x60; - Text area (read-only): Multiline Text input, but cannot be edited. * &#x60;username&#x60; - Username: Same as Text input, but checks for and prevents duplicate usernames. * &#x60;email&#x60; - Email: Text field with Email type. * &#x60;password&#x60; - Password: Masked input, multiple inputs of this type on the same prompt need to be identical. * &#x60;number&#x60; - Number * &#x60;checkbox&#x60; - Checkbox * &#x60;radio-button-group&#x60; - Fixed choice field rendered as a group of radio buttons. * &#x60;dropdown&#x60; - Fixed choice field rendered as a dropdown. * &#x60;date&#x60; - Date * &#x60;date-time&#x60; - Date Time * &#x60;file&#x60; - File: File upload for arbitrary files. File content will be available in flow context as data-URI * &#x60;separator&#x60; - Separator: Static Separator Line * &#x60;hidden&#x60; - Hidden: Hidden field, can be used to insert data into form. * &#x60;static&#x60; - Static: Static value, displayed as-is. * &#x60;ak-locale&#x60; - authentik: Selection of locales authentik supports  * &#x60;text&#x60; - Text: Simple Text input * &#x60;text_area&#x60; - Text area: Multiline Text Input. * &#x60;text_read_only&#x60; - Text (read-only): Simple Text input, but cannot be edited. * &#x60;text_area_read_only&#x60; - Text area (read-only): Multiline Text input, but cannot be edited. * &#x60;username&#x60; - Username: Same as Text input, but checks for and prevents duplicate usernames. * &#x60;email&#x60; - Email: Text field with Email type. * &#x60;password&#x60; - Password: Masked input, multiple inputs of this type on the same prompt need to be identical. * &#x60;number&#x60; - Number * &#x60;checkbox&#x60; - Checkbox * &#x60;radio-button-group&#x60; - Fixed choice field rendered as a group of radio buttons. * &#x60;dropdown&#x60; - Fixed choice field rendered as a dropdown. * &#x60;date&#x60; - Date * &#x60;date-time&#x60; - Date Time * &#x60;file&#x60; - File: File upload for arbitrary files. File content will be available in flow context as data-URI * &#x60;separator&#x60; - Separator: Static Separator Line * &#x60;hidden&#x60; - Hidden: Hidden field, can be used to insert data into form. * &#x60;static&#x60; - Static: Static value, displayed as-is. * &#x60;ak-locale&#x60; - authentik: Selection of locales authentik supports | 
+ **type_** | **string** | * &#x60;text&#x60; - Text: Simple Text input * &#x60;text_area&#x60; - Text area: Multiline Text Input. * &#x60;text_read_only&#x60; - Text (read-only): Simple Text input, but cannot be edited. * &#x60;text_area_read_only&#x60; - Text area (read-only): Multiline Text input, but cannot be edited. * &#x60;username&#x60; - Username: Same as Text input, but checks for and prevents duplicate usernames. * &#x60;email&#x60; - Email: Text field with Email type. * &#x60;password&#x60; - Password: Masked input, multiple inputs of this type on the same prompt need to be identical. * &#x60;number&#x60; - Number * &#x60;checkbox&#x60; - Checkbox * &#x60;radio-button-group&#x60; - Fixed choice field rendered as a group of radio buttons. * &#x60;dropdown&#x60; - Fixed choice field rendered as a dropdown. * &#x60;date&#x60; - Date * &#x60;date-time&#x60; - Date Time * &#x60;file&#x60; - File: File upload for arbitrary files. File content will be available in flow context as data-URI * &#x60;separator&#x60; - Separator: Static Separator Line * &#x60;hidden&#x60; - Hidden: Hidden field, can be used to insert data into form. * &#x60;static&#x60; - Static: Static value, displayed as-is. * &#x60;ak-locale&#x60; - authentik: Selection of locales authentik supports | 
 
 ### Return type
 
@@ -11064,7 +11064,7 @@ func main() {
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    userCreationMode := "userCreationMode_example" // string | * `never_create` - Never Create * `create_when_required` - Create When Required * `always_create` - Always Create  * `never_create` - Never Create * `create_when_required` - Create When Required * `always_create` - Always Create (optional)
+    userCreationMode := "userCreationMode_example" // string | * `never_create` - Never Create * `create_when_required` - Create When Required * `always_create` - Always Create (optional)
     userPathTemplate := "userPathTemplate_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -11098,7 +11098,7 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
  **stageUuid** | **string** |  | 
- **userCreationMode** | **string** | * &#x60;never_create&#x60; - Never Create * &#x60;create_when_required&#x60; - Create When Required * &#x60;always_create&#x60; - Always Create  * &#x60;never_create&#x60; - Never Create * &#x60;create_when_required&#x60; - Create When Required * &#x60;always_create&#x60; - Always Create | 
+ **userCreationMode** | **string** | * &#x60;never_create&#x60; - Never Create * &#x60;create_when_required&#x60; - Create When Required * &#x60;always_create&#x60; - Always Create | 
  **userPathTemplate** | **string** |  | 
 
 ### Return type

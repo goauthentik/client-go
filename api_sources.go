@@ -3017,7 +3017,7 @@ func (r ApiSourcesOauthListRequest) PageSize(pageSize int32) ApiSourcesOauthList
 	return r
 }
 
-// * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass  * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass
+// * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass
 func (r ApiSourcesOauthListRequest) PolicyEngineMode(policyEngineMode string) ApiSourcesOauthListRequest {
 	r.policyEngineMode = &policyEngineMode
 	return r
@@ -4285,7 +4285,7 @@ func (r ApiSourcesPlexListRequest) PageSize(pageSize int32) ApiSourcesPlexListRe
 	return r
 }
 
-// * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass  * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass
+// * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass
 func (r ApiSourcesPlexListRequest) PolicyEngineMode(policyEngineMode string) ApiSourcesPlexListRequest {
 	r.policyEngineMode = &policyEngineMode
 	return r
@@ -5607,13 +5607,13 @@ func (r ApiSourcesSamlListRequest) AuthenticationFlow(authenticationFlow string)
 	return r
 }
 
-// * &#x60;REDIRECT&#x60; - Redirect Binding * &#x60;POST&#x60; - POST Binding * &#x60;POST_AUTO&#x60; - POST Binding with auto-confirmation  * &#x60;REDIRECT&#x60; - Redirect Binding * &#x60;POST&#x60; - POST Binding * &#x60;POST_AUTO&#x60; - POST Binding with auto-confirmation
+// * &#x60;REDIRECT&#x60; - Redirect Binding * &#x60;POST&#x60; - POST Binding * &#x60;POST_AUTO&#x60; - POST Binding with auto-confirmation
 func (r ApiSourcesSamlListRequest) BindingType(bindingType string) ApiSourcesSamlListRequest {
 	r.bindingType = &bindingType
 	return r
 }
 
-// * &#x60;http://www.w3.org/2000/09/xmldsig#sha1&#x60; - SHA1 * &#x60;http://www.w3.org/2001/04/xmlenc#sha256&#x60; - SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#sha384&#x60; - SHA384 * &#x60;http://www.w3.org/2001/04/xmlenc#sha512&#x60; - SHA512  * &#x60;http://www.w3.org/2000/09/xmldsig#sha1&#x60; - SHA1 * &#x60;http://www.w3.org/2001/04/xmlenc#sha256&#x60; - SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#sha384&#x60; - SHA384 * &#x60;http://www.w3.org/2001/04/xmlenc#sha512&#x60; - SHA512
+// * &#x60;http://www.w3.org/2000/09/xmldsig#sha1&#x60; - SHA1 * &#x60;http://www.w3.org/2001/04/xmlenc#sha256&#x60; - SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#sha384&#x60; - SHA384 * &#x60;http://www.w3.org/2001/04/xmlenc#sha512&#x60; - SHA512
 func (r ApiSourcesSamlListRequest) DigestAlgorithm(digestAlgorithm string) ApiSourcesSamlListRequest {
 	r.digestAlgorithm = &digestAlgorithm
 	return r
@@ -5668,7 +5668,7 @@ func (r ApiSourcesSamlListRequest) PageSize(pageSize int32) ApiSourcesSamlListRe
 	return r
 }
 
-// * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass  * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass
+// * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass
 func (r ApiSourcesSamlListRequest) PolicyEngineMode(policyEngineMode string) ApiSourcesSamlListRequest {
 	r.policyEngineMode = &policyEngineMode
 	return r
@@ -5685,7 +5685,7 @@ func (r ApiSourcesSamlListRequest) Search(search string) ApiSourcesSamlListReque
 	return r
 }
 
-// * &#x60;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x60; - RSA-SHA1 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x60; - RSA-SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha384&#x60; - RSA-SHA384 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha512&#x60; - RSA-SHA512 * &#x60;http://www.w3.org/2000/09/xmldsig#dsa-sha1&#x60; - DSA-SHA1  * &#x60;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x60; - RSA-SHA1 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x60; - RSA-SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha384&#x60; - RSA-SHA384 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha512&#x60; - RSA-SHA512 * &#x60;http://www.w3.org/2000/09/xmldsig#dsa-sha1&#x60; - DSA-SHA1
+// * &#x60;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x60; - RSA-SHA1 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x60; - RSA-SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha384&#x60; - RSA-SHA384 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha512&#x60; - RSA-SHA512 * &#x60;http://www.w3.org/2000/09/xmldsig#dsa-sha1&#x60; - DSA-SHA1
 func (r ApiSourcesSamlListRequest) SignatureAlgorithm(signatureAlgorithm string) ApiSourcesSamlListRequest {
 	r.signatureAlgorithm = &signatureAlgorithm
 	return r

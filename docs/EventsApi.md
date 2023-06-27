@@ -769,7 +769,7 @@ func main() {
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
     seen := true // bool |  (optional)
-    severity := "severity_example" // string | * `notice` - Notice * `warning` - Warning * `alert` - Alert  * `notice` - Notice * `warning` - Warning * `alert` - Alert (optional)
+    severity := "severity_example" // string | * `notice` - Notice * `warning` - Warning * `alert` - Alert (optional)
     user := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -803,7 +803,7 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
  **seen** | **bool** |  | 
- **severity** | **string** | * &#x60;notice&#x60; - Notice * &#x60;warning&#x60; - Warning * &#x60;alert&#x60; - Alert  * &#x60;notice&#x60; - Notice * &#x60;warning&#x60; - Warning * &#x60;alert&#x60; - Alert | 
+ **severity** | **string** | * &#x60;notice&#x60; - Notice * &#x60;warning&#x60; - Warning * &#x60;alert&#x60; - Alert | 
  **user** | **int32** |  | 
 
 ### Return type
@@ -1818,7 +1818,7 @@ import (
 )
 
 func main() {
-    mode := "mode_example" // string | * `local` - authentik inbuilt notifications * `webhook` - Generic Webhook * `webhook_slack` - Slack Webhook (Slack/Discord) * `email` - Email  * `local` - authentik inbuilt notifications * `webhook` - Generic Webhook * `webhook_slack` - Slack Webhook (Slack/Discord) * `email` - Email (optional)
+    mode := "mode_example" // string | * `local` - authentik inbuilt notifications * `webhook` - Generic Webhook * `webhook_slack` - Slack Webhook (Slack/Discord) * `email` - Email (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -1850,7 +1850,7 @@ Other parameters are passed through a pointer to a apiEventsTransportsListReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mode** | **string** | * &#x60;local&#x60; - authentik inbuilt notifications * &#x60;webhook&#x60; - Generic Webhook * &#x60;webhook_slack&#x60; - Slack Webhook (Slack/Discord) * &#x60;email&#x60; - Email  * &#x60;local&#x60; - authentik inbuilt notifications * &#x60;webhook&#x60; - Generic Webhook * &#x60;webhook_slack&#x60; - Slack Webhook (Slack/Discord) * &#x60;email&#x60; - Email | 
+ **mode** | **string** | * &#x60;local&#x60; - authentik inbuilt notifications * &#x60;webhook&#x60; - Generic Webhook * &#x60;webhook_slack&#x60; - Slack Webhook (Slack/Discord) * &#x60;email&#x60; - Email | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 

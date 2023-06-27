@@ -2612,7 +2612,7 @@ func (r ApiStagesAuthenticatorSmsListRequest) AuthPassword(authPassword string) 
 	return r
 }
 
-// * &#x60;basic&#x60; - Basic * &#x60;bearer&#x60; - Bearer  * &#x60;basic&#x60; - Basic * &#x60;bearer&#x60; - Bearer
+// * &#x60;basic&#x60; - Basic * &#x60;bearer&#x60; - Bearer
 func (r ApiStagesAuthenticatorSmsListRequest) AuthType(authType string) ApiStagesAuthenticatorSmsListRequest {
 	r.authType = &authType
 	return r
@@ -2661,7 +2661,7 @@ func (r ApiStagesAuthenticatorSmsListRequest) PageSize(pageSize int32) ApiStages
 	return r
 }
 
-// * &#x60;twilio&#x60; - Twilio * &#x60;generic&#x60; - Generic  * &#x60;twilio&#x60; - Twilio * &#x60;generic&#x60; - Generic
+// * &#x60;twilio&#x60; - Twilio * &#x60;generic&#x60; - Generic
 func (r ApiStagesAuthenticatorSmsListRequest) Provider(provider string) ApiStagesAuthenticatorSmsListRequest {
 	r.provider = &provider
 	return r
@@ -4768,7 +4768,7 @@ func (r ApiStagesAuthenticatorTotpListRequest) ConfigureFlow(configureFlow strin
 	return r
 }
 
-// * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator  * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator
+// * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator
 func (r ApiStagesAuthenticatorTotpListRequest) Digits(digits int32) ApiStagesAuthenticatorTotpListRequest {
 	r.digits = &digits
 	return r
@@ -5826,7 +5826,7 @@ func (r ApiStagesAuthenticatorValidateListRequest) Name(name string) ApiStagesAu
 	return r
 }
 
-// * &#x60;skip&#x60; - Skip * &#x60;deny&#x60; - Deny * &#x60;configure&#x60; - Configure  * &#x60;skip&#x60; - Skip * &#x60;deny&#x60; - Deny * &#x60;configure&#x60; - Configure
+// * &#x60;skip&#x60; - Skip * &#x60;deny&#x60; - Deny * &#x60;configure&#x60; - Configure
 func (r ApiStagesAuthenticatorValidateListRequest) NotConfiguredAction(notConfiguredAction string) ApiStagesAuthenticatorValidateListRequest {
 	r.notConfiguredAction = &notConfiguredAction
 	return r
@@ -6865,7 +6865,7 @@ type ApiStagesAuthenticatorWebauthnListRequest struct {
 	userVerification        *string
 }
 
-// * &#x60;platform&#x60; - Platform * &#x60;cross-platform&#x60; - Cross Platform  * &#x60;platform&#x60; - Platform * &#x60;cross-platform&#x60; - Cross Platform
+// * &#x60;platform&#x60; - Platform * &#x60;cross-platform&#x60; - Cross Platform
 func (r ApiStagesAuthenticatorWebauthnListRequest) AuthenticatorAttachment(authenticatorAttachment string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.authenticatorAttachment = &authenticatorAttachment
 	return r
@@ -6904,7 +6904,7 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) PageSize(pageSize int32) ApiS
 	return r
 }
 
-// * &#x60;discouraged&#x60; - Discouraged * &#x60;preferred&#x60; - Preferred * &#x60;required&#x60; - Required  * &#x60;discouraged&#x60; - Discouraged * &#x60;preferred&#x60; - Preferred * &#x60;required&#x60; - Required
+// * &#x60;discouraged&#x60; - Discouraged * &#x60;preferred&#x60; - Preferred * &#x60;required&#x60; - Required
 func (r ApiStagesAuthenticatorWebauthnListRequest) ResidentKeyRequirement(residentKeyRequirement string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.residentKeyRequirement = &residentKeyRequirement
 	return r
@@ -6921,7 +6921,7 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) StageUuid(stageUuid string) A
 	return r
 }
 
-// * &#x60;required&#x60; - Required * &#x60;preferred&#x60; - Preferred * &#x60;discouraged&#x60; - Discouraged  * &#x60;required&#x60; - Required * &#x60;preferred&#x60; - Preferred * &#x60;discouraged&#x60; - Discouraged
+// * &#x60;required&#x60; - Required * &#x60;preferred&#x60; - Preferred * &#x60;discouraged&#x60; - Discouraged
 func (r ApiStagesAuthenticatorWebauthnListRequest) UserVerification(userVerification string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.userVerification = &userVerification
 	return r
@@ -8969,7 +8969,7 @@ func (r ApiStagesConsentListRequest) ConsentExpireIn(consentExpireIn string) Api
 	return r
 }
 
-// * &#x60;always_require&#x60; - Always Require * &#x60;permanent&#x60; - Permanent * &#x60;expiring&#x60; - Expiring  * &#x60;always_require&#x60; - Always Require * &#x60;permanent&#x60; - Permanent * &#x60;expiring&#x60; - Expiring
+// * &#x60;always_require&#x60; - Always Require * &#x60;permanent&#x60; - Permanent * &#x60;expiring&#x60; - Expiring
 func (r ApiStagesConsentListRequest) Mode(mode string) ApiStagesConsentListRequest {
 	r.mode = &mode
 	return r
@@ -17584,7 +17584,7 @@ func (r ApiStagesPromptPromptsListRequest) Search(search string) ApiStagesPrompt
 	return r
 }
 
-// * &#x60;text&#x60; - Text: Simple Text input * &#x60;text_area&#x60; - Text area: Multiline Text Input. * &#x60;text_read_only&#x60; - Text (read-only): Simple Text input, but cannot be edited. * &#x60;text_area_read_only&#x60; - Text area (read-only): Multiline Text input, but cannot be edited. * &#x60;username&#x60; - Username: Same as Text input, but checks for and prevents duplicate usernames. * &#x60;email&#x60; - Email: Text field with Email type. * &#x60;password&#x60; - Password: Masked input, multiple inputs of this type on the same prompt need to be identical. * &#x60;number&#x60; - Number * &#x60;checkbox&#x60; - Checkbox * &#x60;radio-button-group&#x60; - Fixed choice field rendered as a group of radio buttons. * &#x60;dropdown&#x60; - Fixed choice field rendered as a dropdown. * &#x60;date&#x60; - Date * &#x60;date-time&#x60; - Date Time * &#x60;file&#x60; - File: File upload for arbitrary files. File content will be available in flow context as data-URI * &#x60;separator&#x60; - Separator: Static Separator Line * &#x60;hidden&#x60; - Hidden: Hidden field, can be used to insert data into form. * &#x60;static&#x60; - Static: Static value, displayed as-is. * &#x60;ak-locale&#x60; - authentik: Selection of locales authentik supports  * &#x60;text&#x60; - Text: Simple Text input * &#x60;text_area&#x60; - Text area: Multiline Text Input. * &#x60;text_read_only&#x60; - Text (read-only): Simple Text input, but cannot be edited. * &#x60;text_area_read_only&#x60; - Text area (read-only): Multiline Text input, but cannot be edited. * &#x60;username&#x60; - Username: Same as Text input, but checks for and prevents duplicate usernames. * &#x60;email&#x60; - Email: Text field with Email type. * &#x60;password&#x60; - Password: Masked input, multiple inputs of this type on the same prompt need to be identical. * &#x60;number&#x60; - Number * &#x60;checkbox&#x60; - Checkbox * &#x60;radio-button-group&#x60; - Fixed choice field rendered as a group of radio buttons. * &#x60;dropdown&#x60; - Fixed choice field rendered as a dropdown. * &#x60;date&#x60; - Date * &#x60;date-time&#x60; - Date Time * &#x60;file&#x60; - File: File upload for arbitrary files. File content will be available in flow context as data-URI * &#x60;separator&#x60; - Separator: Static Separator Line * &#x60;hidden&#x60; - Hidden: Hidden field, can be used to insert data into form. * &#x60;static&#x60; - Static: Static value, displayed as-is. * &#x60;ak-locale&#x60; - authentik: Selection of locales authentik supports
+// * &#x60;text&#x60; - Text: Simple Text input * &#x60;text_area&#x60; - Text area: Multiline Text Input. * &#x60;text_read_only&#x60; - Text (read-only): Simple Text input, but cannot be edited. * &#x60;text_area_read_only&#x60; - Text area (read-only): Multiline Text input, but cannot be edited. * &#x60;username&#x60; - Username: Same as Text input, but checks for and prevents duplicate usernames. * &#x60;email&#x60; - Email: Text field with Email type. * &#x60;password&#x60; - Password: Masked input, multiple inputs of this type on the same prompt need to be identical. * &#x60;number&#x60; - Number * &#x60;checkbox&#x60; - Checkbox * &#x60;radio-button-group&#x60; - Fixed choice field rendered as a group of radio buttons. * &#x60;dropdown&#x60; - Fixed choice field rendered as a dropdown. * &#x60;date&#x60; - Date * &#x60;date-time&#x60; - Date Time * &#x60;file&#x60; - File: File upload for arbitrary files. File content will be available in flow context as data-URI * &#x60;separator&#x60; - Separator: Static Separator Line * &#x60;hidden&#x60; - Hidden: Hidden field, can be used to insert data into form. * &#x60;static&#x60; - Static: Static value, displayed as-is. * &#x60;ak-locale&#x60; - authentik: Selection of locales authentik supports
 func (r ApiStagesPromptPromptsListRequest) Type_(type_ string) ApiStagesPromptPromptsListRequest {
 	r.type_ = &type_
 	return r
@@ -22953,7 +22953,7 @@ func (r ApiStagesUserWriteListRequest) StageUuid(stageUuid string) ApiStagesUser
 	return r
 }
 
-// * &#x60;never_create&#x60; - Never Create * &#x60;create_when_required&#x60; - Create When Required * &#x60;always_create&#x60; - Always Create  * &#x60;never_create&#x60; - Never Create * &#x60;create_when_required&#x60; - Create When Required * &#x60;always_create&#x60; - Always Create
+// * &#x60;never_create&#x60; - Never Create * &#x60;create_when_required&#x60; - Create When Required * &#x60;always_create&#x60; - Always Create
 func (r ApiStagesUserWriteListRequest) UserCreationMode(userCreationMode string) ApiStagesUserWriteListRequest {
 	r.userCreationMode = &userCreationMode
 	return r
