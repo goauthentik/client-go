@@ -3553,7 +3553,7 @@ Other parameters are passed through a pointer to a apiCoreUsersImpersonateEndRet
 
 ## CoreUsersList
 
-> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Username(username).Uuid(uuid).Execute()
+> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
 
 
 
@@ -3585,12 +3585,13 @@ func main() {
     path := "path_example" // string |  (optional)
     pathStartswith := "pathStartswith_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
+    type_ := "type__example" // string | * `default` - Default * `external` - External * `service_account` - Service Account * `internal_service_account` - Internal Service Account (optional)
     username := "username_example" // string |  (optional)
-    uuid := "uuid_example" // string |  (optional)
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreUsersList(context.Background()).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Username(username).Uuid(uuid).Execute()
+    resp, r, err := apiClient.CoreApi.CoreUsersList(context.Background()).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3624,6 +3625,7 @@ Name | Type | Description  | Notes
  **path** | **string** |  | 
  **pathStartswith** | **string** |  | 
  **search** | **string** | A search term. | 
+ **type_** | **string** | * &#x60;default&#x60; - Default * &#x60;external&#x60; - External * &#x60;service_account&#x60; - Service Account * &#x60;internal_service_account&#x60; - Internal Service Account | 
  **username** | **string** |  | 
  **uuid** | **string** |  | 
 

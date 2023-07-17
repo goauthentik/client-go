@@ -58,6 +58,8 @@ type APIClient struct {
 
 	CryptoApi *CryptoApiService
 
+	EnterpriseApi *EnterpriseApiService
+
 	EventsApi *EventsApiService
 
 	FlowsApi *FlowsApiService
@@ -103,6 +105,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AuthenticatorsApi = (*AuthenticatorsApiService)(&c.common)
 	c.CoreApi = (*CoreApiService)(&c.common)
 	c.CryptoApi = (*CryptoApiService)(&c.common)
+	c.EnterpriseApi = (*EnterpriseApiService)(&c.common)
 	c.EventsApi = (*EventsApiService)(&c.common)
 	c.FlowsApi = (*FlowsApiService)(&c.common)
 	c.ManagedApi = (*ManagedApiService)(&c.common)

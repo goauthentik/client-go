@@ -180,6 +180,16 @@ Class | Method | HTTP request | Description
 *CryptoApi* | [**CryptoCertificatekeypairsUsedByList**](docs/CryptoApi.md#cryptocertificatekeypairsusedbylist) | **Get** /crypto/certificatekeypairs/{kp_uuid}/used_by/ | 
 *CryptoApi* | [**CryptoCertificatekeypairsViewCertificateRetrieve**](docs/CryptoApi.md#cryptocertificatekeypairsviewcertificateretrieve) | **Get** /crypto/certificatekeypairs/{kp_uuid}/view_certificate/ | 
 *CryptoApi* | [**CryptoCertificatekeypairsViewPrivateKeyRetrieve**](docs/CryptoApi.md#cryptocertificatekeypairsviewprivatekeyretrieve) | **Get** /crypto/certificatekeypairs/{kp_uuid}/view_private_key/ | 
+*EnterpriseApi* | [**EnterpriseLicenseCreate**](docs/EnterpriseApi.md#enterpriselicensecreate) | **Post** /enterprise/license/ | 
+*EnterpriseApi* | [**EnterpriseLicenseDestroy**](docs/EnterpriseApi.md#enterpriselicensedestroy) | **Delete** /enterprise/license/{license_uuid}/ | 
+*EnterpriseApi* | [**EnterpriseLicenseForecastRetrieve**](docs/EnterpriseApi.md#enterpriselicenseforecastretrieve) | **Get** /enterprise/license/forecast/ | 
+*EnterpriseApi* | [**EnterpriseLicenseGetInstallIdRetrieve**](docs/EnterpriseApi.md#enterpriselicensegetinstallidretrieve) | **Get** /enterprise/license/get_install_id/ | 
+*EnterpriseApi* | [**EnterpriseLicenseList**](docs/EnterpriseApi.md#enterpriselicenselist) | **Get** /enterprise/license/ | 
+*EnterpriseApi* | [**EnterpriseLicensePartialUpdate**](docs/EnterpriseApi.md#enterpriselicensepartialupdate) | **Patch** /enterprise/license/{license_uuid}/ | 
+*EnterpriseApi* | [**EnterpriseLicenseRetrieve**](docs/EnterpriseApi.md#enterpriselicenseretrieve) | **Get** /enterprise/license/{license_uuid}/ | 
+*EnterpriseApi* | [**EnterpriseLicenseSummaryRetrieve**](docs/EnterpriseApi.md#enterpriselicensesummaryretrieve) | **Get** /enterprise/license/summary/ | 
+*EnterpriseApi* | [**EnterpriseLicenseUpdate**](docs/EnterpriseApi.md#enterpriselicenseupdate) | **Put** /enterprise/license/{license_uuid}/ | 
+*EnterpriseApi* | [**EnterpriseLicenseUsedByList**](docs/EnterpriseApi.md#enterpriselicenseusedbylist) | **Get** /enterprise/license/{license_uuid}/used_by/ | 
 *EventsApi* | [**EventsEventsActionsList**](docs/EventsApi.md#eventseventsactionslist) | **Get** /events/events/actions/ | 
 *EventsApi* | [**EventsEventsCreate**](docs/EventsApi.md#eventseventscreate) | **Post** /events/events/ | 
 *EventsApi* | [**EventsEventsDestroy**](docs/EventsApi.md#eventseventsdestroy) | **Delete** /events/events/{event_uuid}/ | 
@@ -812,6 +822,7 @@ Class | Method | HTTP request | Description
  - [IdentificationChallengeResponseRequest](docs/IdentificationChallengeResponseRequest.md)
  - [IdentificationStage](docs/IdentificationStage.md)
  - [IdentificationStageRequest](docs/IdentificationStageRequest.md)
+ - [InstallID](docs/InstallID.md)
  - [IntentEnum](docs/IntentEnum.md)
  - [InvalidResponseActionEnum](docs/InvalidResponseActionEnum.md)
  - [Invitation](docs/Invitation.md)
@@ -831,6 +842,10 @@ Class | Method | HTTP request | Description
  - [LDAPSource](docs/LDAPSource.md)
  - [LDAPSourceRequest](docs/LDAPSourceRequest.md)
  - [LayoutEnum](docs/LayoutEnum.md)
+ - [License](docs/License.md)
+ - [LicenseForecast](docs/LicenseForecast.md)
+ - [LicenseRequest](docs/LicenseRequest.md)
+ - [LicenseSummary](docs/LicenseSummary.md)
  - [Link](docs/Link.md)
  - [LoginChallengeTypes](docs/LoginChallengeTypes.md)
  - [LoginMetrics](docs/LoginMetrics.md)
@@ -898,6 +913,7 @@ Class | Method | HTTP request | Description
  - [PaginatedLDAPPropertyMappingList](docs/PaginatedLDAPPropertyMappingList.md)
  - [PaginatedLDAPProviderList](docs/PaginatedLDAPProviderList.md)
  - [PaginatedLDAPSourceList](docs/PaginatedLDAPSourceList.md)
+ - [PaginatedLicenseList](docs/PaginatedLicenseList.md)
  - [PaginatedNotificationList](docs/PaginatedNotificationList.md)
  - [PaginatedNotificationRuleList](docs/PaginatedNotificationRuleList.md)
  - [PaginatedNotificationTransportList](docs/PaginatedNotificationTransportList.md)
@@ -985,6 +1001,7 @@ Class | Method | HTTP request | Description
  - [PatchedLDAPPropertyMappingRequest](docs/PatchedLDAPPropertyMappingRequest.md)
  - [PatchedLDAPProviderRequest](docs/PatchedLDAPProviderRequest.md)
  - [PatchedLDAPSourceRequest](docs/PatchedLDAPSourceRequest.md)
+ - [PatchedLicenseRequest](docs/PatchedLicenseRequest.md)
  - [PatchedNotificationRequest](docs/PatchedNotificationRequest.md)
  - [PatchedNotificationRuleRequest](docs/PatchedNotificationRuleRequest.md)
  - [PatchedNotificationTransportRequest](docs/PatchedNotificationTransportRequest.md)
@@ -1145,6 +1162,7 @@ Class | Method | HTTP request | Description
  - [UserServiceAccountResponse](docs/UserServiceAccountResponse.md)
  - [UserSetting](docs/UserSetting.md)
  - [UserSourceConnection](docs/UserSourceConnection.md)
+ - [UserTypeEnum](docs/UserTypeEnum.md)
  - [UserVerificationEnum](docs/UserVerificationEnum.md)
  - [UserWriteStage](docs/UserWriteStage.md)
  - [UserWriteStageRequest](docs/UserWriteStageRequest.md)

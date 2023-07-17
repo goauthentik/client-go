@@ -28,6 +28,7 @@ type UserRequest struct {
 	Email      *string                `json:"email,omitempty"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	Path       *string                `json:"path,omitempty"`
+	Type       *UserTypeEnum          `json:"type,omitempty"`
 }
 
 // NewUserRequest instantiates a new UserRequest object
@@ -300,6 +301,38 @@ func (o *UserRequest) SetPath(v string) {
 	o.Path = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *UserRequest) GetType() UserTypeEnum {
+	if o == nil || o.Type == nil {
+		var ret UserTypeEnum
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserRequest) GetTypeOk() (*UserTypeEnum, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *UserRequest) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given UserTypeEnum and assigns it to the Type field.
+func (o *UserRequest) SetType(v UserTypeEnum) {
+	o.Type = &v
+}
+
 func (o UserRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -325,6 +358,9 @@ func (o UserRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Path != nil {
 		toSerialize["path"] = o.Path
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

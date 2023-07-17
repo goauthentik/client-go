@@ -5059,6 +5059,23 @@ paths:
         schema:
           type: string
         style: form
+      - description: |-
+          * `default` - Default
+          * `external` - External
+          * `service_account` - Service Account
+          * `internal_service_account` - Internal Service Account
+        explode: true
+        in: query
+        name: type
+        required: false
+        schema:
+          enum:
+          - default
+          - external
+          - internal_service_account
+          - service_account
+          type: string
+        style: form
       - explode: true
         in: query
         name: username
@@ -5071,6 +5088,7 @@ paths:
         name: uuid
         required: false
         schema:
+          format: uuid
           type: string
         style: form
       responses:
@@ -6051,6 +6069,377 @@ paths:
       - authentik: []
       tags:
       - crypto
+  /enterprise/license/:
+    get:
+      description: License Viewset
+      operationId: enterprise_license_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedLicenseList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - enterprise
+    post:
+      description: License Viewset
+      operationId: enterprise_license_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LicenseRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/License'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - enterprise
+  /enterprise/license/{license_uuid}/:
+    delete:
+      description: License Viewset
+      operationId: enterprise_license_destroy
+      parameters:
+      - description: A UUID string identifying this license.
+        explode: false
+        in: path
+        name: license_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - enterprise
+    get:
+      description: License Viewset
+      operationId: enterprise_license_retrieve
+      parameters:
+      - description: A UUID string identifying this license.
+        explode: false
+        in: path
+        name: license_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/License'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - enterprise
+    patch:
+      description: License Viewset
+      operationId: enterprise_license_partial_update
+      parameters:
+      - description: A UUID string identifying this license.
+        explode: false
+        in: path
+        name: license_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLicenseRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/License'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - enterprise
+    put:
+      description: License Viewset
+      operationId: enterprise_license_update
+      parameters:
+      - description: A UUID string identifying this license.
+        explode: false
+        in: path
+        name: license_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LicenseRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/License'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - enterprise
+  /enterprise/license/{license_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: enterprise_license_used_by_list
+      parameters:
+      - description: A UUID string identifying this license.
+        explode: false
+        in: path
+        name: license_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - enterprise
+  /enterprise/license/forecast/:
+    get:
+      description: Forecast how many users will be required in a year
+      operationId: enterprise_license_forecast_retrieve
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LicenseForecast'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - enterprise
+  /enterprise/license/get_install_id/:
+    get:
+      description: Get install_id
+      operationId: enterprise_license_get_install_id_retrieve
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallID'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - enterprise
+  /enterprise/license/summary/:
+    get:
+      description: Get the total license status
+      operationId: enterprise_license_summary_retrieve
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LicenseSummary'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - enterprise
   /events/events/:
     get:
       description: Event Read-Only Viewset
@@ -33391,6 +33780,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           avatar: avatar
+          type: null
           groups_obj:
           - parent_name: parent_name
             parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -34677,6 +35067,15 @@ components:
       required:
       - name
       type: object
+    InstallID:
+      example:
+        install_id: install_id
+      properties:
+        install_id:
+          type: string
+      required:
+      - install_id
+      type: object
     IntentEnum:
       description: |-
         * `verification` - Intent Verification
@@ -35787,6 +36186,107 @@ components:
       - sidebar_left
       - sidebar_right
       type: string
+    License:
+      description: License Serializer
+      example:
+        external_users: 6
+        license_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        expiry: 2000-01-23T04:56:07.000+00:00
+        key: key
+        users: 0
+      properties:
+        license_uuid:
+          format: uuid
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        key:
+          type: string
+        expiry:
+          format: date-time
+          readOnly: true
+          type: string
+        users:
+          readOnly: true
+          type: integer
+        external_users:
+          readOnly: true
+          type: integer
+      required:
+      - expiry
+      - external_users
+      - key
+      - license_uuid
+      - name
+      - users
+      type: object
+    LicenseForecast:
+      description: Serializer for license forecast
+      example:
+        external_users: 6
+        users: 0
+      properties:
+        users:
+          type: integer
+        external_users:
+          type: integer
+      required:
+      - external_users
+      - users
+      type: object
+    LicenseRequest:
+      description: License Serializer
+      example:
+        key: key
+      properties:
+        key:
+          minLength: 1
+          type: string
+      required:
+      - key
+      type: object
+    LicenseSummary:
+      description: Serializer for license status
+      example:
+        valid: true
+        external_users: 6
+        read_only: true
+        show_admin_warning: true
+        has_license: true
+        latest_valid: 2000-01-23T04:56:07.000+00:00
+        show_user_warning: true
+        users: 0
+      properties:
+        users:
+          type: integer
+        external_users:
+          type: integer
+        valid:
+          type: boolean
+        show_admin_warning:
+          type: boolean
+        show_user_warning:
+          type: boolean
+        read_only:
+          type: boolean
+        latest_valid:
+          format: date-time
+          type: string
+        has_license:
+          type: boolean
+      required:
+      - external_users
+      - has_license
+      - latest_valid
+      - read_only
+      - show_admin_warning
+      - show_user_warning
+      - users
+      - valid
+      type: object
     Link:
       description: Returns a single link
       example:
@@ -38831,6 +39331,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             avatar: avatar
+            type: null
             groups_obj:
             - parent_name: parent_name
               parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -38900,6 +39401,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             avatar: avatar
+            type: null
             groups_obj:
             - parent_name: parent_name
               parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -39697,6 +40199,40 @@ components:
         results:
           items:
             $ref: '#/components/schemas/LDAPSource'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedLicenseList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - external_users: 6
+          license_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          expiry: 2000-01-23T04:56:07.000+00:00
+          key: key
+          users: 0
+        - external_users: 6
+          license_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          expiry: 2000-01-23T04:56:07.000+00:00
+          key: key
+          users: 0
+      properties:
+        pagination:
+          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/License'
           type: array
       required:
       - pagination
@@ -41957,6 +42493,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             avatar: avatar
+            type: null
             groups_obj:
             - parent_name: parent_name
               parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -42028,6 +42565,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             avatar: avatar
+            type: null
             groups_obj:
             - parent_name: parent_name
               parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -42134,6 +42672,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             avatar: avatar
+            type: null
             groups_obj:
             - parent_name: parent_name
               parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -42218,6 +42757,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             avatar: avatar
+            type: null
             groups_obj:
             - parent_name: parent_name
               parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -42356,6 +42896,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           avatar: avatar
+          type: null
           groups_obj:
           - parent_name: parent_name
             parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -42388,6 +42929,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           avatar: avatar
+          type: null
           groups_obj:
           - parent_name: parent_name
             parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -44845,6 +45387,15 @@ components:
             type: string
           type: array
       type: object
+    PatchedLicenseRequest:
+      description: License Serializer
+      example:
+        key: key
+      properties:
+        key:
+          minLength: 1
+          type: string
+      type: object
     PatchedNotificationRequest:
       description: Notification Serializer
       example:
@@ -46431,6 +46982,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         attributes:
           key: ""
+        type: null
         email: email
         username: username
       properties:
@@ -46466,6 +47018,8 @@ components:
         path:
           minLength: 1
           type: string
+        type:
+          $ref: '#/components/schemas/UserTypeEnum'
       type: object
     PatchedUserSAMLSourceConnectionRequest:
       description: SAML Source Serializer
@@ -49757,6 +50311,7 @@ components:
             pk: pk
           pk: 0
           avatar: avatar
+          type: null
           email: email
           username: username
         user:
@@ -49773,6 +50328,7 @@ components:
             pk: pk
           pk: 0
           avatar: avatar
+          type: null
           email: email
           username: username
       properties:
@@ -50635,6 +51191,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           avatar: avatar
+          type: null
           groups_obj:
           - parent_name: parent_name
             parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -50834,6 +51391,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         avatar: avatar
+        type: null
         groups_obj:
         - parent_name: parent_name
           parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -50908,6 +51466,8 @@ components:
           type: string
         path:
           type: string
+        type:
+          $ref: '#/components/schemas/UserTypeEnum'
       required:
       - avatar
       - groups_obj
@@ -50989,6 +51549,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           avatar: avatar
+          type: null
           groups_obj:
           - parent_name: parent_name
             parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -51629,6 +52190,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         attributes:
           key: ""
+        type: null
         email: email
         username: username
       properties:
@@ -51664,6 +52226,8 @@ components:
         path:
           minLength: 1
           type: string
+        type:
+          $ref: '#/components/schemas/UserTypeEnum'
       required:
       - name
       - username
@@ -51725,6 +52289,7 @@ components:
           pk: pk
         pk: 0
         avatar: avatar
+        type: null
         email: email
         username: username
       properties:
@@ -51771,6 +52336,8 @@ components:
           description: Get user settings with tenant and group settings applied
           readOnly: true
           type: object
+        type:
+          $ref: '#/components/schemas/UserTypeEnum'
       required:
       - avatar
       - groups
@@ -51897,6 +52464,18 @@ components:
       - source
       - user
       type: object
+    UserTypeEnum:
+      description: |-
+        * `default` - Default
+        * `external` - External
+        * `service_account` - Service Account
+        * `internal_service_account` - Internal Service Account
+      enum:
+      - default
+      - external
+      - service_account
+      - internal_service_account
+      type: string
     UserVerificationEnum:
       description: |-
         * `required` - Required

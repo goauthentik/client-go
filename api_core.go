@@ -7337,6 +7337,7 @@ type ApiCoreUsersListRequest struct {
 	path           *string
 	pathStartswith *string
 	search         *string
+	type_          *string
 	username       *string
 	uuid           *string
 }
@@ -7408,6 +7409,12 @@ func (r ApiCoreUsersListRequest) PathStartswith(pathStartswith string) ApiCoreUs
 // A search term.
 func (r ApiCoreUsersListRequest) Search(search string) ApiCoreUsersListRequest {
 	r.search = &search
+	return r
+}
+
+// * &#x60;default&#x60; - Default * &#x60;external&#x60; - External * &#x60;service_account&#x60; - Service Account * &#x60;internal_service_account&#x60; - Internal Service Account
+func (r ApiCoreUsersListRequest) Type_(type_ string) ApiCoreUsersListRequest {
+	r.type_ = &type_
 	return r
 }
 
@@ -7516,6 +7523,9 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.type_ != nil {
+		localVarQueryParams.Add("type", parameterToString(*r.type_, ""))
 	}
 	if r.username != nil {
 		localVarQueryParams.Add("username", parameterToString(*r.username, ""))

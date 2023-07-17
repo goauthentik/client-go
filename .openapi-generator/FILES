@@ -6,6 +6,7 @@ api_admin.go
 api_authenticators.go
 api_core.go
 api_crypto.go
+api_enterprise.go
 api_events.go
 api_flows.go
 api_managed.go
@@ -121,6 +122,7 @@ docs/EmailChallenge.md
 docs/EmailChallengeResponseRequest.md
 docs/EmailStage.md
 docs/EmailStageRequest.md
+docs/EnterpriseApi.md
 docs/ErrorDetail.md
 docs/ErrorReportingConfig.md
 docs/Event.md
@@ -158,6 +160,7 @@ docs/IdentificationChallenge.md
 docs/IdentificationChallengeResponseRequest.md
 docs/IdentificationStage.md
 docs/IdentificationStageRequest.md
+docs/InstallID.md
 docs/IntentEnum.md
 docs/InvalidResponseActionEnum.md
 docs/Invitation.md
@@ -177,6 +180,10 @@ docs/LDAPProviderRequest.md
 docs/LDAPSource.md
 docs/LDAPSourceRequest.md
 docs/LayoutEnum.md
+docs/License.md
+docs/LicenseForecast.md
+docs/LicenseRequest.md
+docs/LicenseSummary.md
 docs/Link.md
 docs/LoginChallengeTypes.md
 docs/LoginMetrics.md
@@ -247,6 +254,7 @@ docs/PaginatedLDAPOutpostConfigList.md
 docs/PaginatedLDAPPropertyMappingList.md
 docs/PaginatedLDAPProviderList.md
 docs/PaginatedLDAPSourceList.md
+docs/PaginatedLicenseList.md
 docs/PaginatedNotificationList.md
 docs/PaginatedNotificationRuleList.md
 docs/PaginatedNotificationTransportList.md
@@ -334,6 +342,7 @@ docs/PatchedKubernetesServiceConnectionRequest.md
 docs/PatchedLDAPPropertyMappingRequest.md
 docs/PatchedLDAPProviderRequest.md
 docs/PatchedLDAPSourceRequest.md
+docs/PatchedLicenseRequest.md
 docs/PatchedNotificationRequest.md
 docs/PatchedNotificationRuleRequest.md
 docs/PatchedNotificationTransportRequest.md
@@ -501,6 +510,7 @@ docs/UserServiceAccountRequest.md
 docs/UserServiceAccountResponse.md
 docs/UserSetting.md
 docs/UserSourceConnection.md
+docs/UserTypeEnum.md
 docs/UserVerificationEnum.md
 docs/UserWriteStage.md
 docs/UserWriteStageRequest.md
@@ -644,6 +654,7 @@ model_identification_challenge.go
 model_identification_challenge_response_request.go
 model_identification_stage.go
 model_identification_stage_request.go
+model_install_id.go
 model_intent_enum.go
 model_invalid_response_action_enum.go
 model_invitation.go
@@ -663,6 +674,10 @@ model_ldap_provider_request.go
 model_ldap_source.go
 model_ldap_source_request.go
 model_ldapapi_access_mode.go
+model_license.go
+model_license_forecast.go
+model_license_request.go
+model_license_summary.go
 model_link.go
 model_login_challenge_types.go
 model_login_metrics.go
@@ -730,6 +745,7 @@ model_paginated_ldap_outpost_config_list.go
 model_paginated_ldap_property_mapping_list.go
 model_paginated_ldap_provider_list.go
 model_paginated_ldap_source_list.go
+model_paginated_license_list.go
 model_paginated_notification_list.go
 model_paginated_notification_rule_list.go
 model_paginated_notification_transport_list.go
@@ -817,6 +833,7 @@ model_patched_kubernetes_service_connection_request.go
 model_patched_ldap_property_mapping_request.go
 model_patched_ldap_provider_request.go
 model_patched_ldap_source_request.go
+model_patched_license_request.go
 model_patched_notification_request.go
 model_patched_notification_rule_request.go
 model_patched_notification_transport_request.go
@@ -977,6 +994,7 @@ model_user_service_account_request.go
 model_user_service_account_response.go
 model_user_setting.go
 model_user_source_connection.go
+model_user_type_enum.go
 model_user_verification_enum.go
 model_user_write_stage.go
 model_user_write_stage_request.go
