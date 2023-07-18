@@ -6,12 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Users** | **int32** |  | 
 **ExternalUsers** | **int32** |  | 
+**ForecastedUsers** | **int32** |  | 
+**ForecastedExternalUsers** | **int32** |  | 
 
 ## Methods
 
 ### NewLicenseForecast
 
-`func NewLicenseForecast(users int32, externalUsers int32, ) *LicenseForecast`
+`func NewLicenseForecast(users int32, externalUsers int32, forecastedUsers int32, forecastedExternalUsers int32, ) *LicenseForecast`
 
 NewLicenseForecast instantiates a new LicenseForecast object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +66,46 @@ and a boolean to check if the value has been set.
 `func (o *LicenseForecast) SetExternalUsers(v int32)`
 
 SetExternalUsers sets ExternalUsers field to given value.
+
+
+### GetForecastedUsers
+
+`func (o *LicenseForecast) GetForecastedUsers() int32`
+
+GetForecastedUsers returns the ForecastedUsers field if non-nil, zero value otherwise.
+
+### GetForecastedUsersOk
+
+`func (o *LicenseForecast) GetForecastedUsersOk() (*int32, bool)`
+
+GetForecastedUsersOk returns a tuple with the ForecastedUsers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForecastedUsers
+
+`func (o *LicenseForecast) SetForecastedUsers(v int32)`
+
+SetForecastedUsers sets ForecastedUsers field to given value.
+
+
+### GetForecastedExternalUsers
+
+`func (o *LicenseForecast) GetForecastedExternalUsers() int32`
+
+GetForecastedExternalUsers returns the ForecastedExternalUsers field if non-nil, zero value otherwise.
+
+### GetForecastedExternalUsersOk
+
+`func (o *LicenseForecast) GetForecastedExternalUsersOk() (*int32, bool)`
+
+GetForecastedExternalUsersOk returns a tuple with the ForecastedExternalUsers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForecastedExternalUsers
+
+`func (o *LicenseForecast) SetForecastedExternalUsers(v int32)`
+
+SetForecastedExternalUsers sets ForecastedExternalUsers field to given value.
 
 
 

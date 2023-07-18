@@ -17,18 +17,22 @@ import (
 
 // LicenseForecast Serializer for license forecast
 type LicenseForecast struct {
-	Users         int32 `json:"users"`
-	ExternalUsers int32 `json:"external_users"`
+	Users                   int32 `json:"users"`
+	ExternalUsers           int32 `json:"external_users"`
+	ForecastedUsers         int32 `json:"forecasted_users"`
+	ForecastedExternalUsers int32 `json:"forecasted_external_users"`
 }
 
 // NewLicenseForecast instantiates a new LicenseForecast object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLicenseForecast(users int32, externalUsers int32) *LicenseForecast {
+func NewLicenseForecast(users int32, externalUsers int32, forecastedUsers int32, forecastedExternalUsers int32) *LicenseForecast {
 	this := LicenseForecast{}
 	this.Users = users
 	this.ExternalUsers = externalUsers
+	this.ForecastedUsers = forecastedUsers
+	this.ForecastedExternalUsers = forecastedExternalUsers
 	return &this
 }
 
@@ -88,6 +92,54 @@ func (o *LicenseForecast) SetExternalUsers(v int32) {
 	o.ExternalUsers = v
 }
 
+// GetForecastedUsers returns the ForecastedUsers field value
+func (o *LicenseForecast) GetForecastedUsers() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.ForecastedUsers
+}
+
+// GetForecastedUsersOk returns a tuple with the ForecastedUsers field value
+// and a boolean to check if the value has been set.
+func (o *LicenseForecast) GetForecastedUsersOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ForecastedUsers, true
+}
+
+// SetForecastedUsers sets field value
+func (o *LicenseForecast) SetForecastedUsers(v int32) {
+	o.ForecastedUsers = v
+}
+
+// GetForecastedExternalUsers returns the ForecastedExternalUsers field value
+func (o *LicenseForecast) GetForecastedExternalUsers() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.ForecastedExternalUsers
+}
+
+// GetForecastedExternalUsersOk returns a tuple with the ForecastedExternalUsers field value
+// and a boolean to check if the value has been set.
+func (o *LicenseForecast) GetForecastedExternalUsersOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ForecastedExternalUsers, true
+}
+
+// SetForecastedExternalUsers sets field value
+func (o *LicenseForecast) SetForecastedExternalUsers(v int32) {
+	o.ForecastedExternalUsers = v
+}
+
 func (o LicenseForecast) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +147,12 @@ func (o LicenseForecast) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["external_users"] = o.ExternalUsers
+	}
+	if true {
+		toSerialize["forecasted_users"] = o.ForecastedUsers
+	}
+	if true {
+		toSerialize["forecasted_external_users"] = o.ForecastedExternalUsers
 	}
 	return json.Marshal(toSerialize)
 }
