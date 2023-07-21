@@ -7412,7 +7412,7 @@ func (r ApiCoreUsersListRequest) Search(search string) ApiCoreUsersListRequest {
 	return r
 }
 
-// * &#x60;default&#x60; - Default * &#x60;external&#x60; - External * &#x60;service_account&#x60; - Service Account * &#x60;internal_service_account&#x60; - Internal Service Account
+// * &#x60;internal&#x60; - Internal * &#x60;external&#x60; - External * &#x60;service_account&#x60; - Service Account * &#x60;internal_service_account&#x60; - Internal Service Account
 func (r ApiCoreUsersListRequest) Type_(type_ string) ApiCoreUsersListRequest {
 	r.type_ = &type_
 	return r

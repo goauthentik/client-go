@@ -3,7 +3,7 @@
 ## Enum
 
 
-* `DEFAULT` (value: `"default"`)
+* `INTERNAL` (value: `"internal"`)
 
 * `EXTERNAL` (value: `"external"`)
 

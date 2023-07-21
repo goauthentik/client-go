@@ -16,12 +16,12 @@ import (
 	"fmt"
 )
 
-// UserTypeEnum * `default` - Default * `external` - External * `service_account` - Service Account * `internal_service_account` - Internal Service Account
+// UserTypeEnum * `internal` - Internal * `external` - External * `service_account` - Service Account * `internal_service_account` - Internal Service Account
 type UserTypeEnum string
 
 // List of UserTypeEnum
 const (
-	USERTYPEENUM_DEFAULT                  UserTypeEnum = "default"
+	USERTYPEENUM_INTERNAL                 UserTypeEnum = "internal"
 	USERTYPEENUM_EXTERNAL                 UserTypeEnum = "external"
 	USERTYPEENUM_SERVICE_ACCOUNT          UserTypeEnum = "service_account"
 	USERTYPEENUM_INTERNAL_SERVICE_ACCOUNT UserTypeEnum = "internal_service_account"
@@ -29,7 +29,7 @@ const (
 
 // All allowed values of UserTypeEnum enum
 var AllowedUserTypeEnumEnumValues = []UserTypeEnum{
-	"default",
+	"internal",
 	"external",
 	"service_account",
 	"internal_service_account",
