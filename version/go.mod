@@ -1,4 +1,4 @@
-module version
+module goauthentik.io/api/v3/version
 
 go 1.17
 
