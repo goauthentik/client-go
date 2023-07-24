@@ -450,13 +450,11 @@ func (r ApiCryptoCertificatekeypairsListRequest) IncludeDetails(includeDetails b
 	return r
 }
 
-// managed
 func (r ApiCryptoCertificatekeypairsListRequest) Managed(managed string) ApiCryptoCertificatekeypairsListRequest {
 	r.managed = &managed
 	return r
 }
 
-// name
 func (r ApiCryptoCertificatekeypairsListRequest) Name(name string) ApiCryptoCertificatekeypairsListRequest {
 	r.name = &name
 	return r

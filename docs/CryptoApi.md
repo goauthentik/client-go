@@ -240,8 +240,8 @@ import (
 func main() {
     hasKey := true // bool | Only return certificate-key pairs with keys (optional)
     includeDetails := true // bool |  (optional) (default to true)
-    managed := "managed_example" // string | managed (optional)
-    name := "name_example" // string | name (optional)
+    managed := "managed_example" // string |  (optional)
+    name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -272,8 +272,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **hasKey** | **bool** | Only return certificate-key pairs with keys | 
  **includeDetails** | **bool** |  | [default to true]
- **managed** | **string** | managed | 
- **name** | **string** | name | 
+ **managed** | **string** |  | 
+ **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 

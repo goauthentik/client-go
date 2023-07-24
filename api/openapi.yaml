@@ -3948,100 +3948,94 @@ paths:
       description: Tenant Viewset
       operationId: core_tenants_list
       parameters:
-      - description: branding_favicon
-        explode: true
+      - explode: true
         in: query
         name: branding_favicon
         required: false
         schema:
           type: string
         style: form
-      - description: branding_logo
-        explode: true
+      - explode: true
         in: query
         name: branding_logo
         required: false
         schema:
           type: string
         style: form
-      - description: branding_title
-        explode: true
+      - explode: true
         in: query
         name: branding_title
         required: false
         schema:
           type: string
         style: form
-      - description: default
-        explode: true
+      - explode: true
         in: query
         name: default
         required: false
         schema:
-          type: string
+          type: boolean
         style: form
-      - description: domain
-        explode: true
+      - explode: true
         in: query
         name: domain
         required: false
         schema:
           type: string
         style: form
-      - description: event_retention
-        explode: true
+      - explode: true
         in: query
         name: event_retention
         required: false
         schema:
           type: string
         style: form
-      - description: flow_authentication
-        explode: true
+      - explode: true
         in: query
         name: flow_authentication
         required: false
         schema:
+          format: uuid
           type: string
         style: form
-      - description: flow_device_code
-        explode: true
+      - explode: true
         in: query
         name: flow_device_code
         required: false
         schema:
+          format: uuid
           type: string
         style: form
-      - description: flow_invalidation
-        explode: true
+      - explode: true
         in: query
         name: flow_invalidation
         required: false
         schema:
+          format: uuid
           type: string
         style: form
-      - description: flow_recovery
-        explode: true
+      - explode: true
         in: query
         name: flow_recovery
         required: false
         schema:
+          format: uuid
           type: string
         style: form
-      - description: flow_unenrollment
-        explode: true
+      - explode: true
         in: query
         name: flow_unenrollment
         required: false
         schema:
+          format: uuid
           type: string
         style: form
-      - description: flow_user_settings
-        explode: true
+      - explode: true
         in: query
         name: flow_user_settings
         required: false
         schema:
+          format: uuid
           type: string
         style: form
       - description: Which field to use when ordering the results.
@@ -4076,20 +4070,20 @@ paths:
         schema:
           type: string
         style: form
-      - description: tenant_uuid
-        explode: true
+      - explode: true
         in: query
         name: tenant_uuid
         required: false
         schema:
+          format: uuid
           type: string
         style: form
-      - description: web_certificate
-        explode: true
+      - explode: true
         in: query
         name: web_certificate
         required: false
         schema:
+          format: uuid
           type: string
         style: form
       responses:
@@ -5658,16 +5652,14 @@ paths:
           default: true
           type: boolean
         style: form
-      - description: managed
-        explode: true
+      - explode: true
         in: query
         name: managed
         required: false
         schema:
           type: string
         style: form
-      - description: name
-        explode: true
+      - explode: true
         in: query
         name: name
         required: false
