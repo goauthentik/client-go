@@ -13,8 +13,6 @@
 
 * `FLOWS` (value: `"authentik.flows"`)
 
-* `LIB` (value: `"authentik.lib"`)
-
 * `OUTPOSTS` (value: `"authentik.outposts"`)
 
 * `POLICIES_DUMMY` (value: `"authentik.policies.dummy"`)
