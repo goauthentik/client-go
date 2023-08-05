@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]PlexSource**](PlexSource.md) |  | 
 
 ## Methods
 
 ### NewPaginatedPlexSourceList
 
-`func NewPaginatedPlexSourceList(pagination PaginatedApplicationListPagination, results []PlexSource, ) *PaginatedPlexSourceList`
+`func NewPaginatedPlexSourceList(pagination Pagination, results []PlexSource, ) *PaginatedPlexSourceList`
 
 NewPaginatedPlexSourceList instantiates a new PaginatedPlexSourceList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedPlexSourceList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedPlexSourceList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedPlexSourceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedPlexSourceList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedPlexSourceList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedPlexSourceList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]SAMLPropertyMapping**](SAMLPropertyMapping.md) |  | 
 
 ## Methods
 
 ### NewPaginatedSAMLPropertyMappingList
 
-`func NewPaginatedSAMLPropertyMappingList(pagination PaginatedApplicationListPagination, results []SAMLPropertyMapping, ) *PaginatedSAMLPropertyMappingList`
+`func NewPaginatedSAMLPropertyMappingList(pagination Pagination, results []SAMLPropertyMapping, ) *PaginatedSAMLPropertyMappingList`
 
 NewPaginatedSAMLPropertyMappingList instantiates a new PaginatedSAMLPropertyMappingList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedSAMLPropertyMappingList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedSAMLPropertyMappingList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedSAMLPropertyMappingList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedSAMLPropertyMappingList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedSAMLPropertyMappingList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedSAMLPropertyMappingList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

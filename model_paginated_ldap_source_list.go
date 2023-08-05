@@ -17,15 +17,15 @@ import (
 
 // PaginatedLDAPSourceList struct for PaginatedLDAPSourceList
 type PaginatedLDAPSourceList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []LDAPSource                       `json:"results"`
+	Pagination Pagination   `json:"pagination"`
+	Results    []LDAPSource `json:"results"`
 }
 
 // NewPaginatedLDAPSourceList instantiates a new PaginatedLDAPSourceList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedLDAPSourceList(pagination PaginatedApplicationListPagination, results []LDAPSource) *PaginatedLDAPSourceList {
+func NewPaginatedLDAPSourceList(pagination Pagination, results []LDAPSource) *PaginatedLDAPSourceList {
 	this := PaginatedLDAPSourceList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedLDAPSourceListWithDefaults() *PaginatedLDAPSourceList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedLDAPSourceList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedLDAPSourceList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedLDAPSourceList) GetPagination() PaginatedApplicationListPagina
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedLDAPSourceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedLDAPSourceList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedLDAPSourceList) GetPaginationOk() (*PaginatedApplicationListPa
 }
 
 // SetPagination sets field value
-func (o *PaginatedLDAPSourceList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedLDAPSourceList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

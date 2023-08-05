@@ -17,15 +17,15 @@ import (
 
 // PaginatedAuthenticatorDuoStageList struct for PaginatedAuthenticatorDuoStageList
 type PaginatedAuthenticatorDuoStageList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []AuthenticatorDuoStage            `json:"results"`
+	Pagination Pagination              `json:"pagination"`
+	Results    []AuthenticatorDuoStage `json:"results"`
 }
 
 // NewPaginatedAuthenticatorDuoStageList instantiates a new PaginatedAuthenticatorDuoStageList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedAuthenticatorDuoStageList(pagination PaginatedApplicationListPagination, results []AuthenticatorDuoStage) *PaginatedAuthenticatorDuoStageList {
+func NewPaginatedAuthenticatorDuoStageList(pagination Pagination, results []AuthenticatorDuoStage) *PaginatedAuthenticatorDuoStageList {
 	this := PaginatedAuthenticatorDuoStageList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedAuthenticatorDuoStageListWithDefaults() *PaginatedAuthenticator
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedAuthenticatorDuoStageList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedAuthenticatorDuoStageList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedAuthenticatorDuoStageList) GetPagination() PaginatedApplicatio
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedAuthenticatorDuoStageList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedAuthenticatorDuoStageList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedAuthenticatorDuoStageList) GetPaginationOk() (*PaginatedApplic
 }
 
 // SetPagination sets field value
-func (o *PaginatedAuthenticatorDuoStageList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedAuthenticatorDuoStageList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

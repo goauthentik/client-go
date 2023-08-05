@@ -17,15 +17,15 @@ import (
 
 // PaginatedStaticDeviceList struct for PaginatedStaticDeviceList
 type PaginatedStaticDeviceList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []StaticDevice                     `json:"results"`
+	Pagination Pagination     `json:"pagination"`
+	Results    []StaticDevice `json:"results"`
 }
 
 // NewPaginatedStaticDeviceList instantiates a new PaginatedStaticDeviceList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedStaticDeviceList(pagination PaginatedApplicationListPagination, results []StaticDevice) *PaginatedStaticDeviceList {
+func NewPaginatedStaticDeviceList(pagination Pagination, results []StaticDevice) *PaginatedStaticDeviceList {
 	this := PaginatedStaticDeviceList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedStaticDeviceListWithDefaults() *PaginatedStaticDeviceList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedStaticDeviceList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedStaticDeviceList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedStaticDeviceList) GetPagination() PaginatedApplicationListPagi
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedStaticDeviceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedStaticDeviceList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedStaticDeviceList) GetPaginationOk() (*PaginatedApplicationList
 }
 
 // SetPagination sets field value
-func (o *PaginatedStaticDeviceList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedStaticDeviceList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

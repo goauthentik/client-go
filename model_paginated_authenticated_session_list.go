@@ -17,15 +17,15 @@ import (
 
 // PaginatedAuthenticatedSessionList struct for PaginatedAuthenticatedSessionList
 type PaginatedAuthenticatedSessionList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []AuthenticatedSession             `json:"results"`
+	Pagination Pagination             `json:"pagination"`
+	Results    []AuthenticatedSession `json:"results"`
 }
 
 // NewPaginatedAuthenticatedSessionList instantiates a new PaginatedAuthenticatedSessionList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedAuthenticatedSessionList(pagination PaginatedApplicationListPagination, results []AuthenticatedSession) *PaginatedAuthenticatedSessionList {
+func NewPaginatedAuthenticatedSessionList(pagination Pagination, results []AuthenticatedSession) *PaginatedAuthenticatedSessionList {
 	this := PaginatedAuthenticatedSessionList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedAuthenticatedSessionListWithDefaults() *PaginatedAuthenticatedS
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedAuthenticatedSessionList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedAuthenticatedSessionList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedAuthenticatedSessionList) GetPagination() PaginatedApplication
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedAuthenticatedSessionList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedAuthenticatedSessionList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedAuthenticatedSessionList) GetPaginationOk() (*PaginatedApplica
 }
 
 // SetPagination sets field value
-func (o *PaginatedAuthenticatedSessionList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedAuthenticatedSessionList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

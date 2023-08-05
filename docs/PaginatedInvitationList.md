@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]Invitation**](Invitation.md) |  | 
 
 ## Methods
 
 ### NewPaginatedInvitationList
 
-`func NewPaginatedInvitationList(pagination PaginatedApplicationListPagination, results []Invitation, ) *PaginatedInvitationList`
+`func NewPaginatedInvitationList(pagination Pagination, results []Invitation, ) *PaginatedInvitationList`
 
 NewPaginatedInvitationList instantiates a new PaginatedInvitationList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedInvitationList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedInvitationList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedInvitationList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedInvitationList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedInvitationList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedInvitationList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

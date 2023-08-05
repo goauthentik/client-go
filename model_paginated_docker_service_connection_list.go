@@ -17,15 +17,15 @@ import (
 
 // PaginatedDockerServiceConnectionList struct for PaginatedDockerServiceConnectionList
 type PaginatedDockerServiceConnectionList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []DockerServiceConnection          `json:"results"`
+	Pagination Pagination                `json:"pagination"`
+	Results    []DockerServiceConnection `json:"results"`
 }
 
 // NewPaginatedDockerServiceConnectionList instantiates a new PaginatedDockerServiceConnectionList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedDockerServiceConnectionList(pagination PaginatedApplicationListPagination, results []DockerServiceConnection) *PaginatedDockerServiceConnectionList {
+func NewPaginatedDockerServiceConnectionList(pagination Pagination, results []DockerServiceConnection) *PaginatedDockerServiceConnectionList {
 	this := PaginatedDockerServiceConnectionList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedDockerServiceConnectionListWithDefaults() *PaginatedDockerServi
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedDockerServiceConnectionList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedDockerServiceConnectionList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedDockerServiceConnectionList) GetPagination() PaginatedApplicat
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedDockerServiceConnectionList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedDockerServiceConnectionList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedDockerServiceConnectionList) GetPaginationOk() (*PaginatedAppl
 }
 
 // SetPagination sets field value
-func (o *PaginatedDockerServiceConnectionList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedDockerServiceConnectionList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

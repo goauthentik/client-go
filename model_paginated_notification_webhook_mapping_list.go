@@ -17,15 +17,15 @@ import (
 
 // PaginatedNotificationWebhookMappingList struct for PaginatedNotificationWebhookMappingList
 type PaginatedNotificationWebhookMappingList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []NotificationWebhookMapping       `json:"results"`
+	Pagination Pagination                   `json:"pagination"`
+	Results    []NotificationWebhookMapping `json:"results"`
 }
 
 // NewPaginatedNotificationWebhookMappingList instantiates a new PaginatedNotificationWebhookMappingList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedNotificationWebhookMappingList(pagination PaginatedApplicationListPagination, results []NotificationWebhookMapping) *PaginatedNotificationWebhookMappingList {
+func NewPaginatedNotificationWebhookMappingList(pagination Pagination, results []NotificationWebhookMapping) *PaginatedNotificationWebhookMappingList {
 	this := PaginatedNotificationWebhookMappingList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedNotificationWebhookMappingListWithDefaults() *PaginatedNotifica
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedNotificationWebhookMappingList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedNotificationWebhookMappingList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedNotificationWebhookMappingList) GetPagination() PaginatedAppli
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedNotificationWebhookMappingList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedNotificationWebhookMappingList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedNotificationWebhookMappingList) GetPaginationOk() (*PaginatedA
 }
 
 // SetPagination sets field value
-func (o *PaginatedNotificationWebhookMappingList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedNotificationWebhookMappingList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

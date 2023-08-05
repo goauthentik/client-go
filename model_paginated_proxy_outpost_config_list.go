@@ -17,15 +17,15 @@ import (
 
 // PaginatedProxyOutpostConfigList struct for PaginatedProxyOutpostConfigList
 type PaginatedProxyOutpostConfigList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []ProxyOutpostConfig               `json:"results"`
+	Pagination Pagination           `json:"pagination"`
+	Results    []ProxyOutpostConfig `json:"results"`
 }
 
 // NewPaginatedProxyOutpostConfigList instantiates a new PaginatedProxyOutpostConfigList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedProxyOutpostConfigList(pagination PaginatedApplicationListPagination, results []ProxyOutpostConfig) *PaginatedProxyOutpostConfigList {
+func NewPaginatedProxyOutpostConfigList(pagination Pagination, results []ProxyOutpostConfig) *PaginatedProxyOutpostConfigList {
 	this := PaginatedProxyOutpostConfigList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedProxyOutpostConfigListWithDefaults() *PaginatedProxyOutpostConf
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedProxyOutpostConfigList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedProxyOutpostConfigList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedProxyOutpostConfigList) GetPagination() PaginatedApplicationLi
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedProxyOutpostConfigList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedProxyOutpostConfigList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedProxyOutpostConfigList) GetPaginationOk() (*PaginatedApplicati
 }
 
 // SetPagination sets field value
-func (o *PaginatedProxyOutpostConfigList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedProxyOutpostConfigList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

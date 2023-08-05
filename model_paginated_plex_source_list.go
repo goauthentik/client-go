@@ -17,15 +17,15 @@ import (
 
 // PaginatedPlexSourceList struct for PaginatedPlexSourceList
 type PaginatedPlexSourceList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []PlexSource                       `json:"results"`
+	Pagination Pagination   `json:"pagination"`
+	Results    []PlexSource `json:"results"`
 }
 
 // NewPaginatedPlexSourceList instantiates a new PaginatedPlexSourceList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedPlexSourceList(pagination PaginatedApplicationListPagination, results []PlexSource) *PaginatedPlexSourceList {
+func NewPaginatedPlexSourceList(pagination Pagination, results []PlexSource) *PaginatedPlexSourceList {
 	this := PaginatedPlexSourceList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedPlexSourceListWithDefaults() *PaginatedPlexSourceList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedPlexSourceList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedPlexSourceList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedPlexSourceList) GetPagination() PaginatedApplicationListPagina
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedPlexSourceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedPlexSourceList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedPlexSourceList) GetPaginationOk() (*PaginatedApplicationListPa
 }
 
 // SetPagination sets field value
-func (o *PaginatedPlexSourceList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedPlexSourceList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

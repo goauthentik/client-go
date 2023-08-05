@@ -17,15 +17,15 @@ import (
 
 // PaginatedOAuthSourceList struct for PaginatedOAuthSourceList
 type PaginatedOAuthSourceList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []OAuthSource                      `json:"results"`
+	Pagination Pagination    `json:"pagination"`
+	Results    []OAuthSource `json:"results"`
 }
 
 // NewPaginatedOAuthSourceList instantiates a new PaginatedOAuthSourceList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedOAuthSourceList(pagination PaginatedApplicationListPagination, results []OAuthSource) *PaginatedOAuthSourceList {
+func NewPaginatedOAuthSourceList(pagination Pagination, results []OAuthSource) *PaginatedOAuthSourceList {
 	this := PaginatedOAuthSourceList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedOAuthSourceListWithDefaults() *PaginatedOAuthSourceList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedOAuthSourceList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedOAuthSourceList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedOAuthSourceList) GetPagination() PaginatedApplicationListPagin
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedOAuthSourceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedOAuthSourceList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedOAuthSourceList) GetPaginationOk() (*PaginatedApplicationListP
 }
 
 // SetPagination sets field value
-func (o *PaginatedOAuthSourceList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedOAuthSourceList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

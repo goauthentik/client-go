@@ -17,15 +17,15 @@ import (
 
 // PaginatedScopeMappingList struct for PaginatedScopeMappingList
 type PaginatedScopeMappingList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []ScopeMapping                     `json:"results"`
+	Pagination Pagination     `json:"pagination"`
+	Results    []ScopeMapping `json:"results"`
 }
 
 // NewPaginatedScopeMappingList instantiates a new PaginatedScopeMappingList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedScopeMappingList(pagination PaginatedApplicationListPagination, results []ScopeMapping) *PaginatedScopeMappingList {
+func NewPaginatedScopeMappingList(pagination Pagination, results []ScopeMapping) *PaginatedScopeMappingList {
 	this := PaginatedScopeMappingList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedScopeMappingListWithDefaults() *PaginatedScopeMappingList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedScopeMappingList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedScopeMappingList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedScopeMappingList) GetPagination() PaginatedApplicationListPagi
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedScopeMappingList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedScopeMappingList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedScopeMappingList) GetPaginationOk() (*PaginatedApplicationList
 }
 
 // SetPagination sets field value
-func (o *PaginatedScopeMappingList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedScopeMappingList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

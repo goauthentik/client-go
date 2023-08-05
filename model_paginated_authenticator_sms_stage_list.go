@@ -17,15 +17,15 @@ import (
 
 // PaginatedAuthenticatorSMSStageList struct for PaginatedAuthenticatorSMSStageList
 type PaginatedAuthenticatorSMSStageList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []AuthenticatorSMSStage            `json:"results"`
+	Pagination Pagination              `json:"pagination"`
+	Results    []AuthenticatorSMSStage `json:"results"`
 }
 
 // NewPaginatedAuthenticatorSMSStageList instantiates a new PaginatedAuthenticatorSMSStageList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedAuthenticatorSMSStageList(pagination PaginatedApplicationListPagination, results []AuthenticatorSMSStage) *PaginatedAuthenticatorSMSStageList {
+func NewPaginatedAuthenticatorSMSStageList(pagination Pagination, results []AuthenticatorSMSStage) *PaginatedAuthenticatorSMSStageList {
 	this := PaginatedAuthenticatorSMSStageList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedAuthenticatorSMSStageListWithDefaults() *PaginatedAuthenticator
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedAuthenticatorSMSStageList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedAuthenticatorSMSStageList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedAuthenticatorSMSStageList) GetPagination() PaginatedApplicatio
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedAuthenticatorSMSStageList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedAuthenticatorSMSStageList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedAuthenticatorSMSStageList) GetPaginationOk() (*PaginatedApplic
 }
 
 // SetPagination sets field value
-func (o *PaginatedAuthenticatorSMSStageList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedAuthenticatorSMSStageList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

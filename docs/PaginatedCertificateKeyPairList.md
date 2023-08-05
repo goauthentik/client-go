@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]CertificateKeyPair**](CertificateKeyPair.md) |  | 
 
 ## Methods
 
 ### NewPaginatedCertificateKeyPairList
 
-`func NewPaginatedCertificateKeyPairList(pagination PaginatedApplicationListPagination, results []CertificateKeyPair, ) *PaginatedCertificateKeyPairList`
+`func NewPaginatedCertificateKeyPairList(pagination Pagination, results []CertificateKeyPair, ) *PaginatedCertificateKeyPairList`
 
 NewPaginatedCertificateKeyPairList instantiates a new PaginatedCertificateKeyPairList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedCertificateKeyPairList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedCertificateKeyPairList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedCertificateKeyPairList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedCertificateKeyPairList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedCertificateKeyPairList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedCertificateKeyPairList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

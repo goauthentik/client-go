@@ -17,15 +17,15 @@ import (
 
 // PaginatedInvitationList struct for PaginatedInvitationList
 type PaginatedInvitationList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []Invitation                       `json:"results"`
+	Pagination Pagination   `json:"pagination"`
+	Results    []Invitation `json:"results"`
 }
 
 // NewPaginatedInvitationList instantiates a new PaginatedInvitationList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedInvitationList(pagination PaginatedApplicationListPagination, results []Invitation) *PaginatedInvitationList {
+func NewPaginatedInvitationList(pagination Pagination, results []Invitation) *PaginatedInvitationList {
 	this := PaginatedInvitationList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedInvitationListWithDefaults() *PaginatedInvitationList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedInvitationList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedInvitationList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedInvitationList) GetPagination() PaginatedApplicationListPagina
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedInvitationList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedInvitationList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedInvitationList) GetPaginationOk() (*PaginatedApplicationListPa
 }
 
 // SetPagination sets field value
-func (o *PaginatedInvitationList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedInvitationList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

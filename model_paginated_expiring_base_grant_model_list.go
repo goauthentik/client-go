@@ -17,15 +17,15 @@ import (
 
 // PaginatedExpiringBaseGrantModelList struct for PaginatedExpiringBaseGrantModelList
 type PaginatedExpiringBaseGrantModelList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []ExpiringBaseGrantModel           `json:"results"`
+	Pagination Pagination               `json:"pagination"`
+	Results    []ExpiringBaseGrantModel `json:"results"`
 }
 
 // NewPaginatedExpiringBaseGrantModelList instantiates a new PaginatedExpiringBaseGrantModelList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedExpiringBaseGrantModelList(pagination PaginatedApplicationListPagination, results []ExpiringBaseGrantModel) *PaginatedExpiringBaseGrantModelList {
+func NewPaginatedExpiringBaseGrantModelList(pagination Pagination, results []ExpiringBaseGrantModel) *PaginatedExpiringBaseGrantModelList {
 	this := PaginatedExpiringBaseGrantModelList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedExpiringBaseGrantModelListWithDefaults() *PaginatedExpiringBase
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedExpiringBaseGrantModelList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedExpiringBaseGrantModelList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedExpiringBaseGrantModelList) GetPagination() PaginatedApplicati
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedExpiringBaseGrantModelList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedExpiringBaseGrantModelList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedExpiringBaseGrantModelList) GetPaginationOk() (*PaginatedAppli
 }
 
 // SetPagination sets field value
-func (o *PaginatedExpiringBaseGrantModelList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedExpiringBaseGrantModelList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

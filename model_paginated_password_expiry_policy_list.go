@@ -17,15 +17,15 @@ import (
 
 // PaginatedPasswordExpiryPolicyList struct for PaginatedPasswordExpiryPolicyList
 type PaginatedPasswordExpiryPolicyList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []PasswordExpiryPolicy             `json:"results"`
+	Pagination Pagination             `json:"pagination"`
+	Results    []PasswordExpiryPolicy `json:"results"`
 }
 
 // NewPaginatedPasswordExpiryPolicyList instantiates a new PaginatedPasswordExpiryPolicyList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedPasswordExpiryPolicyList(pagination PaginatedApplicationListPagination, results []PasswordExpiryPolicy) *PaginatedPasswordExpiryPolicyList {
+func NewPaginatedPasswordExpiryPolicyList(pagination Pagination, results []PasswordExpiryPolicy) *PaginatedPasswordExpiryPolicyList {
 	this := PaginatedPasswordExpiryPolicyList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedPasswordExpiryPolicyListWithDefaults() *PaginatedPasswordExpiry
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedPasswordExpiryPolicyList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedPasswordExpiryPolicyList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedPasswordExpiryPolicyList) GetPagination() PaginatedApplication
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedPasswordExpiryPolicyList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedPasswordExpiryPolicyList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedPasswordExpiryPolicyList) GetPaginationOk() (*PaginatedApplica
 }
 
 // SetPagination sets field value
-func (o *PaginatedPasswordExpiryPolicyList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedPasswordExpiryPolicyList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

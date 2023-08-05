@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]SCIMMapping**](SCIMMapping.md) |  | 
 
 ## Methods
 
 ### NewPaginatedSCIMMappingList
 
-`func NewPaginatedSCIMMappingList(pagination PaginatedApplicationListPagination, results []SCIMMapping, ) *PaginatedSCIMMappingList`
+`func NewPaginatedSCIMMappingList(pagination Pagination, results []SCIMMapping, ) *PaginatedSCIMMappingList`
 
 NewPaginatedSCIMMappingList instantiates a new PaginatedSCIMMappingList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedSCIMMappingList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedSCIMMappingList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedSCIMMappingList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedSCIMMappingList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedSCIMMappingList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedSCIMMappingList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

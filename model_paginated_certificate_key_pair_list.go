@@ -17,15 +17,15 @@ import (
 
 // PaginatedCertificateKeyPairList struct for PaginatedCertificateKeyPairList
 type PaginatedCertificateKeyPairList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []CertificateKeyPair               `json:"results"`
+	Pagination Pagination           `json:"pagination"`
+	Results    []CertificateKeyPair `json:"results"`
 }
 
 // NewPaginatedCertificateKeyPairList instantiates a new PaginatedCertificateKeyPairList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedCertificateKeyPairList(pagination PaginatedApplicationListPagination, results []CertificateKeyPair) *PaginatedCertificateKeyPairList {
+func NewPaginatedCertificateKeyPairList(pagination Pagination, results []CertificateKeyPair) *PaginatedCertificateKeyPairList {
 	this := PaginatedCertificateKeyPairList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedCertificateKeyPairListWithDefaults() *PaginatedCertificateKeyPa
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedCertificateKeyPairList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedCertificateKeyPairList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedCertificateKeyPairList) GetPagination() PaginatedApplicationLi
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedCertificateKeyPairList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedCertificateKeyPairList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedCertificateKeyPairList) GetPaginationOk() (*PaginatedApplicati
 }
 
 // SetPagination sets field value
-func (o *PaginatedCertificateKeyPairList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedCertificateKeyPairList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

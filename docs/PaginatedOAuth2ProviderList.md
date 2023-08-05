@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]OAuth2Provider**](OAuth2Provider.md) |  | 
 
 ## Methods
 
 ### NewPaginatedOAuth2ProviderList
 
-`func NewPaginatedOAuth2ProviderList(pagination PaginatedApplicationListPagination, results []OAuth2Provider, ) *PaginatedOAuth2ProviderList`
+`func NewPaginatedOAuth2ProviderList(pagination Pagination, results []OAuth2Provider, ) *PaginatedOAuth2ProviderList`
 
 NewPaginatedOAuth2ProviderList instantiates a new PaginatedOAuth2ProviderList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedOAuth2ProviderList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedOAuth2ProviderList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedOAuth2ProviderList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedOAuth2ProviderList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedOAuth2ProviderList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedOAuth2ProviderList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

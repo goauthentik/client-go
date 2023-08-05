@@ -17,15 +17,15 @@ import (
 
 // PaginatedSAMLProviderList struct for PaginatedSAMLProviderList
 type PaginatedSAMLProviderList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []SAMLProvider                     `json:"results"`
+	Pagination Pagination     `json:"pagination"`
+	Results    []SAMLProvider `json:"results"`
 }
 
 // NewPaginatedSAMLProviderList instantiates a new PaginatedSAMLProviderList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedSAMLProviderList(pagination PaginatedApplicationListPagination, results []SAMLProvider) *PaginatedSAMLProviderList {
+func NewPaginatedSAMLProviderList(pagination Pagination, results []SAMLProvider) *PaginatedSAMLProviderList {
 	this := PaginatedSAMLProviderList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedSAMLProviderListWithDefaults() *PaginatedSAMLProviderList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedSAMLProviderList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedSAMLProviderList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedSAMLProviderList) GetPagination() PaginatedApplicationListPagi
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedSAMLProviderList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedSAMLProviderList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedSAMLProviderList) GetPaginationOk() (*PaginatedApplicationList
 }
 
 // SetPagination sets field value
-func (o *PaginatedSAMLProviderList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedSAMLProviderList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

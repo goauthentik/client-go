@@ -17,15 +17,15 @@ import (
 
 // PaginatedEventList struct for PaginatedEventList
 type PaginatedEventList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []Event                            `json:"results"`
+	Pagination Pagination `json:"pagination"`
+	Results    []Event    `json:"results"`
 }
 
 // NewPaginatedEventList instantiates a new PaginatedEventList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedEventList(pagination PaginatedApplicationListPagination, results []Event) *PaginatedEventList {
+func NewPaginatedEventList(pagination Pagination, results []Event) *PaginatedEventList {
 	this := PaginatedEventList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedEventListWithDefaults() *PaginatedEventList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedEventList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedEventList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedEventList) GetPagination() PaginatedApplicationListPagination 
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedEventList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedEventList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedEventList) GetPaginationOk() (*PaginatedApplicationListPaginat
 }
 
 // SetPagination sets field value
-func (o *PaginatedEventList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedEventList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

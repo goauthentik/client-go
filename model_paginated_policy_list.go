@@ -17,15 +17,15 @@ import (
 
 // PaginatedPolicyList struct for PaginatedPolicyList
 type PaginatedPolicyList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []Policy                           `json:"results"`
+	Pagination Pagination `json:"pagination"`
+	Results    []Policy   `json:"results"`
 }
 
 // NewPaginatedPolicyList instantiates a new PaginatedPolicyList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedPolicyList(pagination PaginatedApplicationListPagination, results []Policy) *PaginatedPolicyList {
+func NewPaginatedPolicyList(pagination Pagination, results []Policy) *PaginatedPolicyList {
 	this := PaginatedPolicyList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedPolicyListWithDefaults() *PaginatedPolicyList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedPolicyList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedPolicyList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedPolicyList) GetPagination() PaginatedApplicationListPagination
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedPolicyList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedPolicyList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedPolicyList) GetPaginationOk() (*PaginatedApplicationListPagina
 }
 
 // SetPagination sets field value
-func (o *PaginatedPolicyList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedPolicyList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

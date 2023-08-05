@@ -17,15 +17,15 @@ import (
 
 // PaginatedUserList struct for PaginatedUserList
 type PaginatedUserList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []User                             `json:"results"`
+	Pagination Pagination `json:"pagination"`
+	Results    []User     `json:"results"`
 }
 
 // NewPaginatedUserList instantiates a new PaginatedUserList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedUserList(pagination PaginatedApplicationListPagination, results []User) *PaginatedUserList {
+func NewPaginatedUserList(pagination Pagination, results []User) *PaginatedUserList {
 	this := PaginatedUserList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedUserListWithDefaults() *PaginatedUserList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedUserList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedUserList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedUserList) GetPagination() PaginatedApplicationListPagination {
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedUserList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedUserList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedUserList) GetPaginationOk() (*PaginatedApplicationListPaginati
 }
 
 // SetPagination sets field value
-func (o *PaginatedUserList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedUserList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

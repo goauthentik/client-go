@@ -17,15 +17,15 @@ import (
 
 // PaginatedUserConsentList struct for PaginatedUserConsentList
 type PaginatedUserConsentList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []UserConsent                      `json:"results"`
+	Pagination Pagination    `json:"pagination"`
+	Results    []UserConsent `json:"results"`
 }
 
 // NewPaginatedUserConsentList instantiates a new PaginatedUserConsentList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedUserConsentList(pagination PaginatedApplicationListPagination, results []UserConsent) *PaginatedUserConsentList {
+func NewPaginatedUserConsentList(pagination Pagination, results []UserConsent) *PaginatedUserConsentList {
 	this := PaginatedUserConsentList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedUserConsentListWithDefaults() *PaginatedUserConsentList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedUserConsentList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedUserConsentList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedUserConsentList) GetPagination() PaginatedApplicationListPagin
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedUserConsentList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedUserConsentList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedUserConsentList) GetPaginationOk() (*PaginatedApplicationListP
 }
 
 // SetPagination sets field value
-func (o *PaginatedUserConsentList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedUserConsentList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

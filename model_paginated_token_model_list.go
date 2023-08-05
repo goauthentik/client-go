@@ -17,15 +17,15 @@ import (
 
 // PaginatedTokenModelList struct for PaginatedTokenModelList
 type PaginatedTokenModelList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []TokenModel                       `json:"results"`
+	Pagination Pagination   `json:"pagination"`
+	Results    []TokenModel `json:"results"`
 }
 
 // NewPaginatedTokenModelList instantiates a new PaginatedTokenModelList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedTokenModelList(pagination PaginatedApplicationListPagination, results []TokenModel) *PaginatedTokenModelList {
+func NewPaginatedTokenModelList(pagination Pagination, results []TokenModel) *PaginatedTokenModelList {
 	this := PaginatedTokenModelList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedTokenModelListWithDefaults() *PaginatedTokenModelList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedTokenModelList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedTokenModelList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedTokenModelList) GetPagination() PaginatedApplicationListPagina
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedTokenModelList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedTokenModelList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedTokenModelList) GetPaginationOk() (*PaginatedApplicationListPa
 }
 
 // SetPagination sets field value
-func (o *PaginatedTokenModelList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedTokenModelList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

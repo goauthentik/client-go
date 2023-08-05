@@ -17,15 +17,15 @@ import (
 
 // PaginatedGroupList struct for PaginatedGroupList
 type PaginatedGroupList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []Group                            `json:"results"`
+	Pagination Pagination `json:"pagination"`
+	Results    []Group    `json:"results"`
 }
 
 // NewPaginatedGroupList instantiates a new PaginatedGroupList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedGroupList(pagination PaginatedApplicationListPagination, results []Group) *PaginatedGroupList {
+func NewPaginatedGroupList(pagination Pagination, results []Group) *PaginatedGroupList {
 	this := PaginatedGroupList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedGroupListWithDefaults() *PaginatedGroupList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedGroupList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedGroupList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedGroupList) GetPagination() PaginatedApplicationListPagination 
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedGroupList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedGroupList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedGroupList) GetPaginationOk() (*PaginatedApplicationListPaginat
 }
 
 // SetPagination sets field value
-func (o *PaginatedGroupList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedGroupList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

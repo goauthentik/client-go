@@ -17,15 +17,15 @@ import (
 
 // PaginatedPolicyBindingList struct for PaginatedPolicyBindingList
 type PaginatedPolicyBindingList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []PolicyBinding                    `json:"results"`
+	Pagination Pagination      `json:"pagination"`
+	Results    []PolicyBinding `json:"results"`
 }
 
 // NewPaginatedPolicyBindingList instantiates a new PaginatedPolicyBindingList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedPolicyBindingList(pagination PaginatedApplicationListPagination, results []PolicyBinding) *PaginatedPolicyBindingList {
+func NewPaginatedPolicyBindingList(pagination Pagination, results []PolicyBinding) *PaginatedPolicyBindingList {
 	this := PaginatedPolicyBindingList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedPolicyBindingListWithDefaults() *PaginatedPolicyBindingList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedPolicyBindingList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedPolicyBindingList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedPolicyBindingList) GetPagination() PaginatedApplicationListPag
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedPolicyBindingList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedPolicyBindingList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedPolicyBindingList) GetPaginationOk() (*PaginatedApplicationLis
 }
 
 // SetPagination sets field value
-func (o *PaginatedPolicyBindingList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedPolicyBindingList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

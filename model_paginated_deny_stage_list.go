@@ -17,15 +17,15 @@ import (
 
 // PaginatedDenyStageList struct for PaginatedDenyStageList
 type PaginatedDenyStageList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []DenyStage                        `json:"results"`
+	Pagination Pagination  `json:"pagination"`
+	Results    []DenyStage `json:"results"`
 }
 
 // NewPaginatedDenyStageList instantiates a new PaginatedDenyStageList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedDenyStageList(pagination PaginatedApplicationListPagination, results []DenyStage) *PaginatedDenyStageList {
+func NewPaginatedDenyStageList(pagination Pagination, results []DenyStage) *PaginatedDenyStageList {
 	this := PaginatedDenyStageList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedDenyStageListWithDefaults() *PaginatedDenyStageList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedDenyStageList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedDenyStageList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedDenyStageList) GetPagination() PaginatedApplicationListPaginat
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedDenyStageList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedDenyStageList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedDenyStageList) GetPaginationOk() (*PaginatedApplicationListPag
 }
 
 // SetPagination sets field value
-func (o *PaginatedDenyStageList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedDenyStageList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

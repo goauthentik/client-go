@@ -17,15 +17,15 @@ import (
 
 // PaginatedWebAuthnDeviceList struct for PaginatedWebAuthnDeviceList
 type PaginatedWebAuthnDeviceList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []WebAuthnDevice                   `json:"results"`
+	Pagination Pagination       `json:"pagination"`
+	Results    []WebAuthnDevice `json:"results"`
 }
 
 // NewPaginatedWebAuthnDeviceList instantiates a new PaginatedWebAuthnDeviceList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedWebAuthnDeviceList(pagination PaginatedApplicationListPagination, results []WebAuthnDevice) *PaginatedWebAuthnDeviceList {
+func NewPaginatedWebAuthnDeviceList(pagination Pagination, results []WebAuthnDevice) *PaginatedWebAuthnDeviceList {
 	this := PaginatedWebAuthnDeviceList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedWebAuthnDeviceListWithDefaults() *PaginatedWebAuthnDeviceList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedWebAuthnDeviceList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedWebAuthnDeviceList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedWebAuthnDeviceList) GetPagination() PaginatedApplicationListPa
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedWebAuthnDeviceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedWebAuthnDeviceList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedWebAuthnDeviceList) GetPaginationOk() (*PaginatedApplicationLi
 }
 
 // SetPagination sets field value
-func (o *PaginatedWebAuthnDeviceList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedWebAuthnDeviceList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

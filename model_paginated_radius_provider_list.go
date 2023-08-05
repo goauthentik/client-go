@@ -17,15 +17,15 @@ import (
 
 // PaginatedRadiusProviderList struct for PaginatedRadiusProviderList
 type PaginatedRadiusProviderList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []RadiusProvider                   `json:"results"`
+	Pagination Pagination       `json:"pagination"`
+	Results    []RadiusProvider `json:"results"`
 }
 
 // NewPaginatedRadiusProviderList instantiates a new PaginatedRadiusProviderList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedRadiusProviderList(pagination PaginatedApplicationListPagination, results []RadiusProvider) *PaginatedRadiusProviderList {
+func NewPaginatedRadiusProviderList(pagination Pagination, results []RadiusProvider) *PaginatedRadiusProviderList {
 	this := PaginatedRadiusProviderList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedRadiusProviderListWithDefaults() *PaginatedRadiusProviderList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedRadiusProviderList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedRadiusProviderList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedRadiusProviderList) GetPagination() PaginatedApplicationListPa
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedRadiusProviderList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedRadiusProviderList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedRadiusProviderList) GetPaginationOk() (*PaginatedApplicationLi
 }
 
 // SetPagination sets field value
-func (o *PaginatedRadiusProviderList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedRadiusProviderList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

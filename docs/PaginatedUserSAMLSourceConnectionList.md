@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]UserSAMLSourceConnection**](UserSAMLSourceConnection.md) |  | 
 
 ## Methods
 
 ### NewPaginatedUserSAMLSourceConnectionList
 
-`func NewPaginatedUserSAMLSourceConnectionList(pagination PaginatedApplicationListPagination, results []UserSAMLSourceConnection, ) *PaginatedUserSAMLSourceConnectionList`
+`func NewPaginatedUserSAMLSourceConnectionList(pagination Pagination, results []UserSAMLSourceConnection, ) *PaginatedUserSAMLSourceConnectionList`
 
 NewPaginatedUserSAMLSourceConnectionList instantiates a new PaginatedUserSAMLSourceConnectionList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedUserSAMLSourceConnectionList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedUserSAMLSourceConnectionList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedUserSAMLSourceConnectionList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedUserSAMLSourceConnectionList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedUserSAMLSourceConnectionList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedUserSAMLSourceConnectionList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

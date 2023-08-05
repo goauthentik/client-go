@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]TOTPDevice**](TOTPDevice.md) |  | 
 
 ## Methods
 
 ### NewPaginatedTOTPDeviceList
 
-`func NewPaginatedTOTPDeviceList(pagination PaginatedApplicationListPagination, results []TOTPDevice, ) *PaginatedTOTPDeviceList`
+`func NewPaginatedTOTPDeviceList(pagination Pagination, results []TOTPDevice, ) *PaginatedTOTPDeviceList`
 
 NewPaginatedTOTPDeviceList instantiates a new PaginatedTOTPDeviceList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedTOTPDeviceList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedTOTPDeviceList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedTOTPDeviceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedTOTPDeviceList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedTOTPDeviceList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedTOTPDeviceList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

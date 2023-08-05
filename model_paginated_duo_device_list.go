@@ -17,15 +17,15 @@ import (
 
 // PaginatedDuoDeviceList struct for PaginatedDuoDeviceList
 type PaginatedDuoDeviceList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []DuoDevice                        `json:"results"`
+	Pagination Pagination  `json:"pagination"`
+	Results    []DuoDevice `json:"results"`
 }
 
 // NewPaginatedDuoDeviceList instantiates a new PaginatedDuoDeviceList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedDuoDeviceList(pagination PaginatedApplicationListPagination, results []DuoDevice) *PaginatedDuoDeviceList {
+func NewPaginatedDuoDeviceList(pagination Pagination, results []DuoDevice) *PaginatedDuoDeviceList {
 	this := PaginatedDuoDeviceList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedDuoDeviceListWithDefaults() *PaginatedDuoDeviceList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedDuoDeviceList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedDuoDeviceList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedDuoDeviceList) GetPagination() PaginatedApplicationListPaginat
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedDuoDeviceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedDuoDeviceList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedDuoDeviceList) GetPaginationOk() (*PaginatedApplicationListPag
 }
 
 // SetPagination sets field value
-func (o *PaginatedDuoDeviceList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedDuoDeviceList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

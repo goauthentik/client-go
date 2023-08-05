@@ -17,15 +17,15 @@ import (
 
 // PaginatedFlowStageBindingList struct for PaginatedFlowStageBindingList
 type PaginatedFlowStageBindingList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []FlowStageBinding                 `json:"results"`
+	Pagination Pagination         `json:"pagination"`
+	Results    []FlowStageBinding `json:"results"`
 }
 
 // NewPaginatedFlowStageBindingList instantiates a new PaginatedFlowStageBindingList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedFlowStageBindingList(pagination PaginatedApplicationListPagination, results []FlowStageBinding) *PaginatedFlowStageBindingList {
+func NewPaginatedFlowStageBindingList(pagination Pagination, results []FlowStageBinding) *PaginatedFlowStageBindingList {
 	this := PaginatedFlowStageBindingList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedFlowStageBindingListWithDefaults() *PaginatedFlowStageBindingLi
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedFlowStageBindingList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedFlowStageBindingList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedFlowStageBindingList) GetPagination() PaginatedApplicationList
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedFlowStageBindingList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedFlowStageBindingList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedFlowStageBindingList) GetPaginationOk() (*PaginatedApplication
 }
 
 // SetPagination sets field value
-func (o *PaginatedFlowStageBindingList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedFlowStageBindingList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

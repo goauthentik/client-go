@@ -221,7 +221,6 @@ docs/OutpostRequest.md
 docs/OutpostTypeEnum.md
 docs/OutpostsApi.md
 docs/PaginatedApplicationList.md
-docs/PaginatedApplicationListPagination.md
 docs/PaginatedAuthenticateWebAuthnStageList.md
 docs/PaginatedAuthenticatedSessionList.md
 docs/PaginatedAuthenticatorDuoStageList.md
@@ -304,6 +303,7 @@ docs/PaginatedUserSAMLSourceConnectionList.md
 docs/PaginatedUserSourceConnectionList.md
 docs/PaginatedUserWriteStageList.md
 docs/PaginatedWebAuthnDeviceList.md
+docs/Pagination.md
 docs/PasswordChallenge.md
 docs/PasswordChallengeResponseRequest.md
 docs/PasswordExpiryPolicy.md
@@ -712,7 +712,6 @@ model_outpost_health.go
 model_outpost_request.go
 model_outpost_type_enum.go
 model_paginated_application_list.go
-model_paginated_application_list_pagination.go
 model_paginated_authenticate_web_authn_stage_list.go
 model_paginated_authenticated_session_list.go
 model_paginated_authenticator_duo_stage_list.go
@@ -795,6 +794,7 @@ model_paginated_user_saml_source_connection_list.go
 model_paginated_user_source_connection_list.go
 model_paginated_user_write_stage_list.go
 model_paginated_web_authn_device_list.go
+model_pagination.go
 model_password_challenge.go
 model_password_challenge_response_request.go
 model_password_expiry_policy.go

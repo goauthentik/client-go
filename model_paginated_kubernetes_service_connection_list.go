@@ -17,15 +17,15 @@ import (
 
 // PaginatedKubernetesServiceConnectionList struct for PaginatedKubernetesServiceConnectionList
 type PaginatedKubernetesServiceConnectionList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []KubernetesServiceConnection      `json:"results"`
+	Pagination Pagination                    `json:"pagination"`
+	Results    []KubernetesServiceConnection `json:"results"`
 }
 
 // NewPaginatedKubernetesServiceConnectionList instantiates a new PaginatedKubernetesServiceConnectionList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedKubernetesServiceConnectionList(pagination PaginatedApplicationListPagination, results []KubernetesServiceConnection) *PaginatedKubernetesServiceConnectionList {
+func NewPaginatedKubernetesServiceConnectionList(pagination Pagination, results []KubernetesServiceConnection) *PaginatedKubernetesServiceConnectionList {
 	this := PaginatedKubernetesServiceConnectionList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedKubernetesServiceConnectionListWithDefaults() *PaginatedKuberne
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedKubernetesServiceConnectionList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedKubernetesServiceConnectionList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedKubernetesServiceConnectionList) GetPagination() PaginatedAppl
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedKubernetesServiceConnectionList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedKubernetesServiceConnectionList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedKubernetesServiceConnectionList) GetPaginationOk() (*Paginated
 }
 
 // SetPagination sets field value
-func (o *PaginatedKubernetesServiceConnectionList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedKubernetesServiceConnectionList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

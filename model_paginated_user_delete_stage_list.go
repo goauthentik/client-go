@@ -17,15 +17,15 @@ import (
 
 // PaginatedUserDeleteStageList struct for PaginatedUserDeleteStageList
 type PaginatedUserDeleteStageList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []UserDeleteStage                  `json:"results"`
+	Pagination Pagination        `json:"pagination"`
+	Results    []UserDeleteStage `json:"results"`
 }
 
 // NewPaginatedUserDeleteStageList instantiates a new PaginatedUserDeleteStageList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedUserDeleteStageList(pagination PaginatedApplicationListPagination, results []UserDeleteStage) *PaginatedUserDeleteStageList {
+func NewPaginatedUserDeleteStageList(pagination Pagination, results []UserDeleteStage) *PaginatedUserDeleteStageList {
 	this := PaginatedUserDeleteStageList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedUserDeleteStageListWithDefaults() *PaginatedUserDeleteStageList
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedUserDeleteStageList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedUserDeleteStageList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedUserDeleteStageList) GetPagination() PaginatedApplicationListP
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedUserDeleteStageList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedUserDeleteStageList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedUserDeleteStageList) GetPaginationOk() (*PaginatedApplicationL
 }
 
 // SetPagination sets field value
-func (o *PaginatedUserDeleteStageList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedUserDeleteStageList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

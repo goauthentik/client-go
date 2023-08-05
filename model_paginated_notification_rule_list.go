@@ -17,15 +17,15 @@ import (
 
 // PaginatedNotificationRuleList struct for PaginatedNotificationRuleList
 type PaginatedNotificationRuleList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []NotificationRule                 `json:"results"`
+	Pagination Pagination         `json:"pagination"`
+	Results    []NotificationRule `json:"results"`
 }
 
 // NewPaginatedNotificationRuleList instantiates a new PaginatedNotificationRuleList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedNotificationRuleList(pagination PaginatedApplicationListPagination, results []NotificationRule) *PaginatedNotificationRuleList {
+func NewPaginatedNotificationRuleList(pagination Pagination, results []NotificationRule) *PaginatedNotificationRuleList {
 	this := PaginatedNotificationRuleList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedNotificationRuleListWithDefaults() *PaginatedNotificationRuleLi
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedNotificationRuleList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedNotificationRuleList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedNotificationRuleList) GetPagination() PaginatedApplicationList
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedNotificationRuleList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedNotificationRuleList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedNotificationRuleList) GetPaginationOk() (*PaginatedApplication
 }
 
 // SetPagination sets field value
-func (o *PaginatedNotificationRuleList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedNotificationRuleList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

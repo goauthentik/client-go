@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]ExpiringBaseGrantModel**](ExpiringBaseGrantModel.md) |  | 
 
 ## Methods
 
 ### NewPaginatedExpiringBaseGrantModelList
 
-`func NewPaginatedExpiringBaseGrantModelList(pagination PaginatedApplicationListPagination, results []ExpiringBaseGrantModel, ) *PaginatedExpiringBaseGrantModelList`
+`func NewPaginatedExpiringBaseGrantModelList(pagination Pagination, results []ExpiringBaseGrantModel, ) *PaginatedExpiringBaseGrantModelList`
 
 NewPaginatedExpiringBaseGrantModelList instantiates a new PaginatedExpiringBaseGrantModelList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedExpiringBaseGrantModelList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedExpiringBaseGrantModelList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedExpiringBaseGrantModelList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedExpiringBaseGrantModelList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedExpiringBaseGrantModelList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedExpiringBaseGrantModelList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

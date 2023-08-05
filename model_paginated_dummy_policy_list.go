@@ -17,15 +17,15 @@ import (
 
 // PaginatedDummyPolicyList struct for PaginatedDummyPolicyList
 type PaginatedDummyPolicyList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []DummyPolicy                      `json:"results"`
+	Pagination Pagination    `json:"pagination"`
+	Results    []DummyPolicy `json:"results"`
 }
 
 // NewPaginatedDummyPolicyList instantiates a new PaginatedDummyPolicyList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedDummyPolicyList(pagination PaginatedApplicationListPagination, results []DummyPolicy) *PaginatedDummyPolicyList {
+func NewPaginatedDummyPolicyList(pagination Pagination, results []DummyPolicy) *PaginatedDummyPolicyList {
 	this := PaginatedDummyPolicyList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedDummyPolicyListWithDefaults() *PaginatedDummyPolicyList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedDummyPolicyList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedDummyPolicyList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedDummyPolicyList) GetPagination() PaginatedApplicationListPagin
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedDummyPolicyList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedDummyPolicyList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedDummyPolicyList) GetPaginationOk() (*PaginatedApplicationListP
 }
 
 // SetPagination sets field value
-func (o *PaginatedDummyPolicyList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedDummyPolicyList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

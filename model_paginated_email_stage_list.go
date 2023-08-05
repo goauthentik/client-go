@@ -17,15 +17,15 @@ import (
 
 // PaginatedEmailStageList struct for PaginatedEmailStageList
 type PaginatedEmailStageList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []EmailStage                       `json:"results"`
+	Pagination Pagination   `json:"pagination"`
+	Results    []EmailStage `json:"results"`
 }
 
 // NewPaginatedEmailStageList instantiates a new PaginatedEmailStageList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedEmailStageList(pagination PaginatedApplicationListPagination, results []EmailStage) *PaginatedEmailStageList {
+func NewPaginatedEmailStageList(pagination Pagination, results []EmailStage) *PaginatedEmailStageList {
 	this := PaginatedEmailStageList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedEmailStageListWithDefaults() *PaginatedEmailStageList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedEmailStageList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedEmailStageList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedEmailStageList) GetPagination() PaginatedApplicationListPagina
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedEmailStageList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedEmailStageList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedEmailStageList) GetPaginationOk() (*PaginatedApplicationListPa
 }
 
 // SetPagination sets field value
-func (o *PaginatedEmailStageList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedEmailStageList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

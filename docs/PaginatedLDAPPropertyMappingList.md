@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]LDAPPropertyMapping**](LDAPPropertyMapping.md) |  | 
 
 ## Methods
 
 ### NewPaginatedLDAPPropertyMappingList
 
-`func NewPaginatedLDAPPropertyMappingList(pagination PaginatedApplicationListPagination, results []LDAPPropertyMapping, ) *PaginatedLDAPPropertyMappingList`
+`func NewPaginatedLDAPPropertyMappingList(pagination Pagination, results []LDAPPropertyMapping, ) *PaginatedLDAPPropertyMappingList`
 
 NewPaginatedLDAPPropertyMappingList instantiates a new PaginatedLDAPPropertyMappingList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedLDAPPropertyMappingList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedLDAPPropertyMappingList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedLDAPPropertyMappingList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedLDAPPropertyMappingList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedLDAPPropertyMappingList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedLDAPPropertyMappingList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

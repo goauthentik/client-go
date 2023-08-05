@@ -19011,6 +19011,7 @@ paths:
           - br
           - bs
           - ca
+          - ckb
           - cs
           - cy
           - da
@@ -37851,7 +37852,7 @@ components:
           group: group
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Application'
@@ -37945,7 +37946,7 @@ components:
           authenticator_attachment: ""
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/AuthenticateWebAuthnStage'
@@ -38027,7 +38028,7 @@ components:
               family: family
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/AuthenticatedSession'
@@ -38121,7 +38122,7 @@ components:
           client_id: client_id
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/AuthenticatorDuoStage'
@@ -38225,7 +38226,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/AuthenticatorSMSStage'
@@ -38315,7 +38316,7 @@ components:
             slug: slug
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/AuthenticatorStaticStage'
@@ -38405,7 +38406,7 @@ components:
             slug: slug
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/AuthenticatorTOTPStage'
@@ -38507,7 +38508,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/AuthenticatorValidateStage'
@@ -38559,7 +38560,7 @@ components:
           status: ""
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/BlueprintInstance'
@@ -38649,7 +38650,7 @@ components:
             slug: slug
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/CaptchaStage'
@@ -38693,7 +38694,7 @@ components:
           cert_subject: cert_subject
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/CertificateKeyPair'
@@ -38781,7 +38782,7 @@ components:
             slug: slug
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/ConsentStage'
@@ -38865,7 +38866,7 @@ components:
             slug: slug
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/DenyStage'
@@ -38907,7 +38908,7 @@ components:
           tls_verification: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/DockerServiceConnection'
@@ -38951,7 +38952,7 @@ components:
           wait_max: -1517921766
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/DummyPolicy'
@@ -39037,7 +39038,7 @@ components:
             slug: slug
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/DummyStage'
@@ -39063,7 +39064,7 @@ components:
           pk: 9
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/DuoDevice'
@@ -39171,7 +39172,7 @@ components:
           username: username
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/EmailStage'
@@ -39217,7 +39218,7 @@ components:
             key: ""
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Event'
@@ -39263,7 +39264,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/EventMatcherPolicy'
@@ -39425,7 +39426,7 @@ components:
             username: username
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/ExpiringBaseGrantModel'
@@ -39465,7 +39466,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/ExpressionPolicy'
@@ -39527,7 +39528,7 @@ components:
           authentication: ""
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Flow'
@@ -39569,7 +39570,7 @@ components:
           order: -1803530559
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/FlowStageBinding'
@@ -39651,7 +39652,7 @@ components:
           - 6
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Group'
@@ -39761,7 +39762,7 @@ components:
           case_insensitive_matching: true
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/IdentificationStage'
@@ -39801,7 +39802,7 @@ components:
           flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Invitation'
@@ -39887,7 +39888,7 @@ components:
             slug: slug
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/InvitationStage'
@@ -39929,7 +39930,7 @@ components:
             key: ""
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/KubernetesServiceConnection'
@@ -39977,7 +39978,7 @@ components:
           gid_start_number: -1517921766
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/LDAPOutpostConfig'
@@ -40017,7 +40018,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/LDAPPropertyMapping'
@@ -40093,7 +40094,7 @@ components:
           gid_start_number: -1517921766
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/LDAPProvider'
@@ -40191,7 +40192,7 @@ components:
           peer_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/LDAPSource'
@@ -40225,7 +40226,7 @@ components:
           users: 0
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/License'
@@ -40283,7 +40284,7 @@ components:
           seen: true
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Notification'
@@ -40321,7 +40322,7 @@ components:
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/NotificationRule'
@@ -40357,7 +40358,7 @@ components:
           send_once: true
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/NotificationTransport'
@@ -40385,7 +40386,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/NotificationWebhookMapping'
@@ -40465,7 +40466,7 @@ components:
           pk: 6
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/OAuth2Provider'
@@ -40543,7 +40544,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/OAuthSource'
@@ -40651,7 +40652,7 @@ components:
           - 0
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Outpost'
@@ -40693,7 +40694,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/PasswordExpiryPolicy'
@@ -40757,7 +40758,7 @@ components:
           hibp_allowed_count: 1516424369
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/PasswordPolicy'
@@ -40851,7 +40852,7 @@ components:
           - null
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/PasswordStage'
@@ -40883,7 +40884,7 @@ components:
           user: 6
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/PlexSourceConnection'
@@ -40947,7 +40948,7 @@ components:
           slug: slug
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/PlexSource'
@@ -40993,7 +40994,7 @@ components:
           order: 441289069
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/PolicyBinding'
@@ -41031,7 +41032,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Policy'
@@ -41203,7 +41204,7 @@ components:
           order: -1803530559
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Prompt'
@@ -41299,7 +41300,7 @@ components:
             slug: slug
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/PromptStage'
@@ -41337,7 +41338,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/PropertyMapping'
@@ -41389,7 +41390,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Provider'
@@ -41457,7 +41458,7 @@ components:
           internal_host_ssl_validation: true
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/ProxyOutpostConfig'
@@ -41551,7 +41552,7 @@ components:
           pk: 0
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/ProxyProvider'
@@ -41585,7 +41586,7 @@ components:
           pk: 0
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/RadiusOutpostConfig'
@@ -41647,7 +41648,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/RadiusProvider'
@@ -41683,7 +41684,7 @@ components:
           updated: 2000-01-23T04:56:07.000+00:00
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Reputation'
@@ -41727,7 +41728,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/ReputationPolicy'
@@ -41769,7 +41770,7 @@ components:
           saml_name: saml_name
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/SAMLPropertyMapping'
@@ -41857,7 +41858,7 @@ components:
           name_id_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/SAMLProvider'
@@ -41933,7 +41934,7 @@ components:
           temporary_user_delete_after: temporary_user_delete_after
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/SAMLSource'
@@ -41971,7 +41972,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/SCIMMapping'
@@ -42029,7 +42030,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/SCIMProvider'
@@ -42057,7 +42058,7 @@ components:
           pk: 0
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/SMSDevice'
@@ -42099,7 +42100,7 @@ components:
           scope_name: scope_name
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/ScopeMapping'
@@ -42135,7 +42136,7 @@ components:
           local: true
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/ServiceConnection'
@@ -42187,7 +42188,7 @@ components:
           slug: slug
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Source'
@@ -42271,7 +42272,7 @@ components:
             slug: slug
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Stage'
@@ -42303,7 +42304,7 @@ components:
           pk: 0
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/StaticDevice'
@@ -42329,7 +42330,7 @@ components:
           pk: 0
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/TOTPDevice'
@@ -42383,7 +42384,7 @@ components:
           web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Tenant'
@@ -42423,7 +42424,7 @@ components:
           user: 0
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/Token'
@@ -42589,7 +42590,7 @@ components:
             username: username
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/TokenModel'
@@ -42781,7 +42782,7 @@ components:
             username: username
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/UserConsent'
@@ -42865,7 +42866,7 @@ components:
             slug: slug
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/UserDeleteStage'
@@ -42953,7 +42954,7 @@ components:
           username: username
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/User'
@@ -43043,7 +43044,7 @@ components:
           session_duration: session_duration
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/UserLoginStage'
@@ -43127,7 +43128,7 @@ components:
             slug: slug
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/UserLogoutStage'
@@ -43157,7 +43158,7 @@ components:
           user: 6
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/UserOAuthSourceConnection'
@@ -43187,7 +43188,7 @@ components:
           user: 6
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/UserSAMLSourceConnection'
@@ -43217,7 +43218,7 @@ components:
           user: 6
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/UserSourceConnection'
@@ -43309,7 +43310,7 @@ components:
           create_users_as_inactive: true
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/UserWriteStage'
@@ -43337,7 +43338,7 @@ components:
           pk: 0
       properties:
         pagination:
-          $ref: '#/components/schemas/PaginatedApplicationList_pagination'
+          $ref: '#/components/schemas/Pagination'
         results:
           items:
             $ref: '#/components/schemas/WebAuthnDevice'
@@ -43345,6 +43346,39 @@ components:
       required:
       - pagination
       - results
+      type: object
+    Pagination:
+      example:
+        next: 0.8008281904610115
+        current: 5.962133916683182
+        previous: 6.027456183070403
+        start_index: 2.3021358869347655
+        count: 1.4658129805029452
+        end_index: 7.061401241503109
+        total_pages: 5.637376656633329
+      properties:
+        next:
+          type: number
+        previous:
+          type: number
+        count:
+          type: number
+        current:
+          type: number
+        total_pages:
+          type: number
+        start_index:
+          type: number
+        end_index:
+          type: number
+      required:
+      - count
+      - current
+      - end_index
+      - next
+      - previous
+      - start_index
+      - total_pages
       type: object
     PasswordChallenge:
       description: Password challenge UI fields
@@ -52830,39 +52864,6 @@ components:
       - country
       - lat
       - long
-      type: object
-    PaginatedApplicationList_pagination:
-      example:
-        next: 0.8008281904610115
-        current: 5.962133916683182
-        previous: 6.027456183070403
-        start_index: 2.3021358869347655
-        count: 1.4658129805029452
-        end_index: 7.061401241503109
-        total_pages: 5.637376656633329
-      properties:
-        next:
-          type: number
-        previous:
-          type: number
-        count:
-          type: number
-        current:
-          type: number
-        total_pages:
-          type: number
-        start_index:
-          type: number
-        end_index:
-          type: number
-      required:
-      - count
-      - current
-      - end_index
-      - next
-      - previous
-      - start_index
-      - total_pages
       type: object
     System_runtime:
       description: Get versions

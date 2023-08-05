@@ -17,15 +17,15 @@ import (
 
 // PaginatedProviderList struct for PaginatedProviderList
 type PaginatedProviderList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []Provider                         `json:"results"`
+	Pagination Pagination `json:"pagination"`
+	Results    []Provider `json:"results"`
 }
 
 // NewPaginatedProviderList instantiates a new PaginatedProviderList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedProviderList(pagination PaginatedApplicationListPagination, results []Provider) *PaginatedProviderList {
+func NewPaginatedProviderList(pagination Pagination, results []Provider) *PaginatedProviderList {
 	this := PaginatedProviderList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedProviderListWithDefaults() *PaginatedProviderList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedProviderList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedProviderList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedProviderList) GetPagination() PaginatedApplicationListPaginati
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedProviderList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedProviderList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedProviderList) GetPaginationOk() (*PaginatedApplicationListPagi
 }
 
 // SetPagination sets field value
-func (o *PaginatedProviderList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedProviderList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

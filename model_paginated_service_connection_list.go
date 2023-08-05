@@ -17,15 +17,15 @@ import (
 
 // PaginatedServiceConnectionList struct for PaginatedServiceConnectionList
 type PaginatedServiceConnectionList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []ServiceConnection                `json:"results"`
+	Pagination Pagination          `json:"pagination"`
+	Results    []ServiceConnection `json:"results"`
 }
 
 // NewPaginatedServiceConnectionList instantiates a new PaginatedServiceConnectionList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedServiceConnectionList(pagination PaginatedApplicationListPagination, results []ServiceConnection) *PaginatedServiceConnectionList {
+func NewPaginatedServiceConnectionList(pagination Pagination, results []ServiceConnection) *PaginatedServiceConnectionList {
 	this := PaginatedServiceConnectionList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedServiceConnectionListWithDefaults() *PaginatedServiceConnection
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedServiceConnectionList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedServiceConnectionList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedServiceConnectionList) GetPagination() PaginatedApplicationLis
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedServiceConnectionList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedServiceConnectionList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedServiceConnectionList) GetPaginationOk() (*PaginatedApplicatio
 }
 
 // SetPagination sets field value
-func (o *PaginatedServiceConnectionList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedServiceConnectionList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

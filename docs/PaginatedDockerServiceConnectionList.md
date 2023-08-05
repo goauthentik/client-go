@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]DockerServiceConnection**](DockerServiceConnection.md) |  | 
 
 ## Methods
 
 ### NewPaginatedDockerServiceConnectionList
 
-`func NewPaginatedDockerServiceConnectionList(pagination PaginatedApplicationListPagination, results []DockerServiceConnection, ) *PaginatedDockerServiceConnectionList`
+`func NewPaginatedDockerServiceConnectionList(pagination Pagination, results []DockerServiceConnection, ) *PaginatedDockerServiceConnectionList`
 
 NewPaginatedDockerServiceConnectionList instantiates a new PaginatedDockerServiceConnectionList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedDockerServiceConnectionList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedDockerServiceConnectionList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedDockerServiceConnectionList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedDockerServiceConnectionList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedDockerServiceConnectionList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedDockerServiceConnectionList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

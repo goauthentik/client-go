@@ -17,15 +17,15 @@ import (
 
 // PaginatedReputationList struct for PaginatedReputationList
 type PaginatedReputationList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []Reputation                       `json:"results"`
+	Pagination Pagination   `json:"pagination"`
+	Results    []Reputation `json:"results"`
 }
 
 // NewPaginatedReputationList instantiates a new PaginatedReputationList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedReputationList(pagination PaginatedApplicationListPagination, results []Reputation) *PaginatedReputationList {
+func NewPaginatedReputationList(pagination Pagination, results []Reputation) *PaginatedReputationList {
 	this := PaginatedReputationList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedReputationListWithDefaults() *PaginatedReputationList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedReputationList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedReputationList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedReputationList) GetPagination() PaginatedApplicationListPagina
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedReputationList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedReputationList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedReputationList) GetPaginationOk() (*PaginatedApplicationListPa
 }
 
 // SetPagination sets field value
-func (o *PaginatedReputationList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedReputationList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

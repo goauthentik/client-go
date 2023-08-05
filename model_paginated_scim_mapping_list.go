@@ -17,15 +17,15 @@ import (
 
 // PaginatedSCIMMappingList struct for PaginatedSCIMMappingList
 type PaginatedSCIMMappingList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []SCIMMapping                      `json:"results"`
+	Pagination Pagination    `json:"pagination"`
+	Results    []SCIMMapping `json:"results"`
 }
 
 // NewPaginatedSCIMMappingList instantiates a new PaginatedSCIMMappingList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedSCIMMappingList(pagination PaginatedApplicationListPagination, results []SCIMMapping) *PaginatedSCIMMappingList {
+func NewPaginatedSCIMMappingList(pagination Pagination, results []SCIMMapping) *PaginatedSCIMMappingList {
 	this := PaginatedSCIMMappingList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedSCIMMappingListWithDefaults() *PaginatedSCIMMappingList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedSCIMMappingList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedSCIMMappingList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedSCIMMappingList) GetPagination() PaginatedApplicationListPagin
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedSCIMMappingList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedSCIMMappingList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedSCIMMappingList) GetPaginationOk() (*PaginatedApplicationListP
 }
 
 // SetPagination sets field value
-func (o *PaginatedSCIMMappingList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedSCIMMappingList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

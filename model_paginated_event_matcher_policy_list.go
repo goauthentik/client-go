@@ -17,15 +17,15 @@ import (
 
 // PaginatedEventMatcherPolicyList struct for PaginatedEventMatcherPolicyList
 type PaginatedEventMatcherPolicyList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []EventMatcherPolicy               `json:"results"`
+	Pagination Pagination           `json:"pagination"`
+	Results    []EventMatcherPolicy `json:"results"`
 }
 
 // NewPaginatedEventMatcherPolicyList instantiates a new PaginatedEventMatcherPolicyList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedEventMatcherPolicyList(pagination PaginatedApplicationListPagination, results []EventMatcherPolicy) *PaginatedEventMatcherPolicyList {
+func NewPaginatedEventMatcherPolicyList(pagination Pagination, results []EventMatcherPolicy) *PaginatedEventMatcherPolicyList {
 	this := PaginatedEventMatcherPolicyList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedEventMatcherPolicyListWithDefaults() *PaginatedEventMatcherPoli
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedEventMatcherPolicyList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedEventMatcherPolicyList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedEventMatcherPolicyList) GetPagination() PaginatedApplicationLi
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedEventMatcherPolicyList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedEventMatcherPolicyList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedEventMatcherPolicyList) GetPaginationOk() (*PaginatedApplicati
 }
 
 // SetPagination sets field value
-func (o *PaginatedEventMatcherPolicyList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedEventMatcherPolicyList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

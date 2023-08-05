@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]IdentificationStage**](IdentificationStage.md) |  | 
 
 ## Methods
 
 ### NewPaginatedIdentificationStageList
 
-`func NewPaginatedIdentificationStageList(pagination PaginatedApplicationListPagination, results []IdentificationStage, ) *PaginatedIdentificationStageList`
+`func NewPaginatedIdentificationStageList(pagination Pagination, results []IdentificationStage, ) *PaginatedIdentificationStageList`
 
 NewPaginatedIdentificationStageList instantiates a new PaginatedIdentificationStageList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedIdentificationStageList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedIdentificationStageList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedIdentificationStageList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedIdentificationStageList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedIdentificationStageList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedIdentificationStageList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

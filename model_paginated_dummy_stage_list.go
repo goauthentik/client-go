@@ -17,15 +17,15 @@ import (
 
 // PaginatedDummyStageList struct for PaginatedDummyStageList
 type PaginatedDummyStageList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []DummyStage                       `json:"results"`
+	Pagination Pagination   `json:"pagination"`
+	Results    []DummyStage `json:"results"`
 }
 
 // NewPaginatedDummyStageList instantiates a new PaginatedDummyStageList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedDummyStageList(pagination PaginatedApplicationListPagination, results []DummyStage) *PaginatedDummyStageList {
+func NewPaginatedDummyStageList(pagination Pagination, results []DummyStage) *PaginatedDummyStageList {
 	this := PaginatedDummyStageList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedDummyStageListWithDefaults() *PaginatedDummyStageList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedDummyStageList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedDummyStageList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedDummyStageList) GetPagination() PaginatedApplicationListPagina
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedDummyStageList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedDummyStageList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedDummyStageList) GetPaginationOk() (*PaginatedApplicationListPa
 }
 
 // SetPagination sets field value
-func (o *PaginatedDummyStageList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedDummyStageList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

@@ -17,15 +17,15 @@ import (
 
 // PaginatedOAuth2ProviderList struct for PaginatedOAuth2ProviderList
 type PaginatedOAuth2ProviderList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []OAuth2Provider                   `json:"results"`
+	Pagination Pagination       `json:"pagination"`
+	Results    []OAuth2Provider `json:"results"`
 }
 
 // NewPaginatedOAuth2ProviderList instantiates a new PaginatedOAuth2ProviderList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedOAuth2ProviderList(pagination PaginatedApplicationListPagination, results []OAuth2Provider) *PaginatedOAuth2ProviderList {
+func NewPaginatedOAuth2ProviderList(pagination Pagination, results []OAuth2Provider) *PaginatedOAuth2ProviderList {
 	this := PaginatedOAuth2ProviderList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedOAuth2ProviderListWithDefaults() *PaginatedOAuth2ProviderList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedOAuth2ProviderList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedOAuth2ProviderList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedOAuth2ProviderList) GetPagination() PaginatedApplicationListPa
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedOAuth2ProviderList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedOAuth2ProviderList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedOAuth2ProviderList) GetPaginationOk() (*PaginatedApplicationLi
 }
 
 // SetPagination sets field value
-func (o *PaginatedOAuth2ProviderList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedOAuth2ProviderList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

@@ -17,15 +17,15 @@ import (
 
 // PaginatedExpressionPolicyList struct for PaginatedExpressionPolicyList
 type PaginatedExpressionPolicyList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []ExpressionPolicy                 `json:"results"`
+	Pagination Pagination         `json:"pagination"`
+	Results    []ExpressionPolicy `json:"results"`
 }
 
 // NewPaginatedExpressionPolicyList instantiates a new PaginatedExpressionPolicyList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedExpressionPolicyList(pagination PaginatedApplicationListPagination, results []ExpressionPolicy) *PaginatedExpressionPolicyList {
+func NewPaginatedExpressionPolicyList(pagination Pagination, results []ExpressionPolicy) *PaginatedExpressionPolicyList {
 	this := PaginatedExpressionPolicyList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedExpressionPolicyListWithDefaults() *PaginatedExpressionPolicyLi
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedExpressionPolicyList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedExpressionPolicyList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedExpressionPolicyList) GetPagination() PaginatedApplicationList
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedExpressionPolicyList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedExpressionPolicyList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedExpressionPolicyList) GetPaginationOk() (*PaginatedApplication
 }
 
 // SetPagination sets field value
-func (o *PaginatedExpressionPolicyList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedExpressionPolicyList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

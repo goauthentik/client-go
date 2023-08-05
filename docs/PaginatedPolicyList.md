@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]Policy**](Policy.md) |  | 
 
 ## Methods
 
 ### NewPaginatedPolicyList
 
-`func NewPaginatedPolicyList(pagination PaginatedApplicationListPagination, results []Policy, ) *PaginatedPolicyList`
+`func NewPaginatedPolicyList(pagination Pagination, results []Policy, ) *PaginatedPolicyList`
 
 NewPaginatedPolicyList instantiates a new PaginatedPolicyList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedPolicyList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedPolicyList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedPolicyList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedPolicyList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedPolicyList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedPolicyList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

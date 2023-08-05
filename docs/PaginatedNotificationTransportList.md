@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]NotificationTransport**](NotificationTransport.md) |  | 
 
 ## Methods
 
 ### NewPaginatedNotificationTransportList
 
-`func NewPaginatedNotificationTransportList(pagination PaginatedApplicationListPagination, results []NotificationTransport, ) *PaginatedNotificationTransportList`
+`func NewPaginatedNotificationTransportList(pagination Pagination, results []NotificationTransport, ) *PaginatedNotificationTransportList`
 
 NewPaginatedNotificationTransportList instantiates a new PaginatedNotificationTransportList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedNotificationTransportList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedNotificationTransportList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedNotificationTransportList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedNotificationTransportList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedNotificationTransportList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedNotificationTransportList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

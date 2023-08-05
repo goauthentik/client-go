@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]SMSDevice**](SMSDevice.md) |  | 
 
 ## Methods
 
 ### NewPaginatedSMSDeviceList
 
-`func NewPaginatedSMSDeviceList(pagination PaginatedApplicationListPagination, results []SMSDevice, ) *PaginatedSMSDeviceList`
+`func NewPaginatedSMSDeviceList(pagination Pagination, results []SMSDevice, ) *PaginatedSMSDeviceList`
 
 NewPaginatedSMSDeviceList instantiates a new PaginatedSMSDeviceList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedSMSDeviceList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedSMSDeviceList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedSMSDeviceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedSMSDeviceList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedSMSDeviceList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedSMSDeviceList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

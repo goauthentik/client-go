@@ -17,15 +17,15 @@ import (
 
 // PaginatedUserOAuthSourceConnectionList struct for PaginatedUserOAuthSourceConnectionList
 type PaginatedUserOAuthSourceConnectionList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []UserOAuthSourceConnection        `json:"results"`
+	Pagination Pagination                  `json:"pagination"`
+	Results    []UserOAuthSourceConnection `json:"results"`
 }
 
 // NewPaginatedUserOAuthSourceConnectionList instantiates a new PaginatedUserOAuthSourceConnectionList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedUserOAuthSourceConnectionList(pagination PaginatedApplicationListPagination, results []UserOAuthSourceConnection) *PaginatedUserOAuthSourceConnectionList {
+func NewPaginatedUserOAuthSourceConnectionList(pagination Pagination, results []UserOAuthSourceConnection) *PaginatedUserOAuthSourceConnectionList {
 	this := PaginatedUserOAuthSourceConnectionList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedUserOAuthSourceConnectionListWithDefaults() *PaginatedUserOAuth
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedUserOAuthSourceConnectionList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedUserOAuthSourceConnectionList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedUserOAuthSourceConnectionList) GetPagination() PaginatedApplic
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedUserOAuthSourceConnectionList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedUserOAuthSourceConnectionList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedUserOAuthSourceConnectionList) GetPaginationOk() (*PaginatedAp
 }
 
 // SetPagination sets field value
-func (o *PaginatedUserOAuthSourceConnectionList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedUserOAuthSourceConnectionList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

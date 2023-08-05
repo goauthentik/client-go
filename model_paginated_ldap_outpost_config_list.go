@@ -17,15 +17,15 @@ import (
 
 // PaginatedLDAPOutpostConfigList struct for PaginatedLDAPOutpostConfigList
 type PaginatedLDAPOutpostConfigList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []LDAPOutpostConfig                `json:"results"`
+	Pagination Pagination          `json:"pagination"`
+	Results    []LDAPOutpostConfig `json:"results"`
 }
 
 // NewPaginatedLDAPOutpostConfigList instantiates a new PaginatedLDAPOutpostConfigList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedLDAPOutpostConfigList(pagination PaginatedApplicationListPagination, results []LDAPOutpostConfig) *PaginatedLDAPOutpostConfigList {
+func NewPaginatedLDAPOutpostConfigList(pagination Pagination, results []LDAPOutpostConfig) *PaginatedLDAPOutpostConfigList {
 	this := PaginatedLDAPOutpostConfigList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedLDAPOutpostConfigListWithDefaults() *PaginatedLDAPOutpostConfig
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedLDAPOutpostConfigList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedLDAPOutpostConfigList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedLDAPOutpostConfigList) GetPagination() PaginatedApplicationLis
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedLDAPOutpostConfigList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedLDAPOutpostConfigList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedLDAPOutpostConfigList) GetPaginationOk() (*PaginatedApplicatio
 }
 
 // SetPagination sets field value
-func (o *PaginatedLDAPOutpostConfigList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedLDAPOutpostConfigList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

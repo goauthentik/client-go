@@ -17,15 +17,15 @@ import (
 
 // PaginatedLDAPPropertyMappingList struct for PaginatedLDAPPropertyMappingList
 type PaginatedLDAPPropertyMappingList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []LDAPPropertyMapping              `json:"results"`
+	Pagination Pagination            `json:"pagination"`
+	Results    []LDAPPropertyMapping `json:"results"`
 }
 
 // NewPaginatedLDAPPropertyMappingList instantiates a new PaginatedLDAPPropertyMappingList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedLDAPPropertyMappingList(pagination PaginatedApplicationListPagination, results []LDAPPropertyMapping) *PaginatedLDAPPropertyMappingList {
+func NewPaginatedLDAPPropertyMappingList(pagination Pagination, results []LDAPPropertyMapping) *PaginatedLDAPPropertyMappingList {
 	this := PaginatedLDAPPropertyMappingList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedLDAPPropertyMappingListWithDefaults() *PaginatedLDAPPropertyMap
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedLDAPPropertyMappingList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedLDAPPropertyMappingList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedLDAPPropertyMappingList) GetPagination() PaginatedApplicationL
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedLDAPPropertyMappingList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedLDAPPropertyMappingList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedLDAPPropertyMappingList) GetPaginationOk() (*PaginatedApplicat
 }
 
 // SetPagination sets field value
-func (o *PaginatedLDAPPropertyMappingList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedLDAPPropertyMappingList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

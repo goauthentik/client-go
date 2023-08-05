@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]PasswordExpiryPolicy**](PasswordExpiryPolicy.md) |  | 
 
 ## Methods
 
 ### NewPaginatedPasswordExpiryPolicyList
 
-`func NewPaginatedPasswordExpiryPolicyList(pagination PaginatedApplicationListPagination, results []PasswordExpiryPolicy, ) *PaginatedPasswordExpiryPolicyList`
+`func NewPaginatedPasswordExpiryPolicyList(pagination Pagination, results []PasswordExpiryPolicy, ) *PaginatedPasswordExpiryPolicyList`
 
 NewPaginatedPasswordExpiryPolicyList instantiates a new PaginatedPasswordExpiryPolicyList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedPasswordExpiryPolicyList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedPasswordExpiryPolicyList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedPasswordExpiryPolicyList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedPasswordExpiryPolicyList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedPasswordExpiryPolicyList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedPasswordExpiryPolicyList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

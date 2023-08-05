@@ -17,15 +17,15 @@ import (
 
 // PaginatedPromptStageList struct for PaginatedPromptStageList
 type PaginatedPromptStageList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []PromptStage                      `json:"results"`
+	Pagination Pagination    `json:"pagination"`
+	Results    []PromptStage `json:"results"`
 }
 
 // NewPaginatedPromptStageList instantiates a new PaginatedPromptStageList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedPromptStageList(pagination PaginatedApplicationListPagination, results []PromptStage) *PaginatedPromptStageList {
+func NewPaginatedPromptStageList(pagination Pagination, results []PromptStage) *PaginatedPromptStageList {
 	this := PaginatedPromptStageList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedPromptStageListWithDefaults() *PaginatedPromptStageList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedPromptStageList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedPromptStageList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedPromptStageList) GetPagination() PaginatedApplicationListPagin
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedPromptStageList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedPromptStageList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedPromptStageList) GetPaginationOk() (*PaginatedApplicationListP
 }
 
 // SetPagination sets field value
-func (o *PaginatedPromptStageList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedPromptStageList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

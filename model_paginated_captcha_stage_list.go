@@ -17,15 +17,15 @@ import (
 
 // PaginatedCaptchaStageList struct for PaginatedCaptchaStageList
 type PaginatedCaptchaStageList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []CaptchaStage                     `json:"results"`
+	Pagination Pagination     `json:"pagination"`
+	Results    []CaptchaStage `json:"results"`
 }
 
 // NewPaginatedCaptchaStageList instantiates a new PaginatedCaptchaStageList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedCaptchaStageList(pagination PaginatedApplicationListPagination, results []CaptchaStage) *PaginatedCaptchaStageList {
+func NewPaginatedCaptchaStageList(pagination Pagination, results []CaptchaStage) *PaginatedCaptchaStageList {
 	this := PaginatedCaptchaStageList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedCaptchaStageListWithDefaults() *PaginatedCaptchaStageList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedCaptchaStageList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedCaptchaStageList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedCaptchaStageList) GetPagination() PaginatedApplicationListPagi
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedCaptchaStageList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedCaptchaStageList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedCaptchaStageList) GetPaginationOk() (*PaginatedApplicationList
 }
 
 // SetPagination sets field value
-func (o *PaginatedCaptchaStageList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedCaptchaStageList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

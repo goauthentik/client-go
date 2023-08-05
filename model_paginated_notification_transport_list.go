@@ -17,15 +17,15 @@ import (
 
 // PaginatedNotificationTransportList struct for PaginatedNotificationTransportList
 type PaginatedNotificationTransportList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []NotificationTransport            `json:"results"`
+	Pagination Pagination              `json:"pagination"`
+	Results    []NotificationTransport `json:"results"`
 }
 
 // NewPaginatedNotificationTransportList instantiates a new PaginatedNotificationTransportList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedNotificationTransportList(pagination PaginatedApplicationListPagination, results []NotificationTransport) *PaginatedNotificationTransportList {
+func NewPaginatedNotificationTransportList(pagination Pagination, results []NotificationTransport) *PaginatedNotificationTransportList {
 	this := PaginatedNotificationTransportList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedNotificationTransportListWithDefaults() *PaginatedNotificationT
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedNotificationTransportList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedNotificationTransportList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedNotificationTransportList) GetPagination() PaginatedApplicatio
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedNotificationTransportList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedNotificationTransportList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedNotificationTransportList) GetPaginationOk() (*PaginatedApplic
 }
 
 // SetPagination sets field value
-func (o *PaginatedNotificationTransportList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedNotificationTransportList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

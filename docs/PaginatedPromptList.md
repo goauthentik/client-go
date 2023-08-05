@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]Prompt**](Prompt.md) |  | 
 
 ## Methods
 
 ### NewPaginatedPromptList
 
-`func NewPaginatedPromptList(pagination PaginatedApplicationListPagination, results []Prompt, ) *PaginatedPromptList`
+`func NewPaginatedPromptList(pagination Pagination, results []Prompt, ) *PaginatedPromptList`
 
 NewPaginatedPromptList instantiates a new PaginatedPromptList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedPromptList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedPromptList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedPromptList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedPromptList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedPromptList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedPromptList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

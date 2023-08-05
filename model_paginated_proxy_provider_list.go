@@ -17,15 +17,15 @@ import (
 
 // PaginatedProxyProviderList struct for PaginatedProxyProviderList
 type PaginatedProxyProviderList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []ProxyProvider                    `json:"results"`
+	Pagination Pagination      `json:"pagination"`
+	Results    []ProxyProvider `json:"results"`
 }
 
 // NewPaginatedProxyProviderList instantiates a new PaginatedProxyProviderList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedProxyProviderList(pagination PaginatedApplicationListPagination, results []ProxyProvider) *PaginatedProxyProviderList {
+func NewPaginatedProxyProviderList(pagination Pagination, results []ProxyProvider) *PaginatedProxyProviderList {
 	this := PaginatedProxyProviderList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedProxyProviderListWithDefaults() *PaginatedProxyProviderList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedProxyProviderList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedProxyProviderList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedProxyProviderList) GetPagination() PaginatedApplicationListPag
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedProxyProviderList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedProxyProviderList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedProxyProviderList) GetPaginationOk() (*PaginatedApplicationLis
 }
 
 // SetPagination sets field value
-func (o *PaginatedProxyProviderList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedProxyProviderList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

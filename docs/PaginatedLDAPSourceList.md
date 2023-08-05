@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]LDAPSource**](LDAPSource.md) |  | 
 
 ## Methods
 
 ### NewPaginatedLDAPSourceList
 
-`func NewPaginatedLDAPSourceList(pagination PaginatedApplicationListPagination, results []LDAPSource, ) *PaginatedLDAPSourceList`
+`func NewPaginatedLDAPSourceList(pagination Pagination, results []LDAPSource, ) *PaginatedLDAPSourceList`
 
 NewPaginatedLDAPSourceList instantiates a new PaginatedLDAPSourceList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedLDAPSourceList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedLDAPSourceList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedLDAPSourceList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedLDAPSourceList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedLDAPSourceList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedLDAPSourceList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

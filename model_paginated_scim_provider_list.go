@@ -17,15 +17,15 @@ import (
 
 // PaginatedSCIMProviderList struct for PaginatedSCIMProviderList
 type PaginatedSCIMProviderList struct {
-	Pagination PaginatedApplicationListPagination `json:"pagination"`
-	Results    []SCIMProvider                     `json:"results"`
+	Pagination Pagination     `json:"pagination"`
+	Results    []SCIMProvider `json:"results"`
 }
 
 // NewPaginatedSCIMProviderList instantiates a new PaginatedSCIMProviderList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedSCIMProviderList(pagination PaginatedApplicationListPagination, results []SCIMProvider) *PaginatedSCIMProviderList {
+func NewPaginatedSCIMProviderList(pagination Pagination, results []SCIMProvider) *PaginatedSCIMProviderList {
 	this := PaginatedSCIMProviderList{}
 	this.Pagination = pagination
 	this.Results = results
@@ -41,9 +41,9 @@ func NewPaginatedSCIMProviderListWithDefaults() *PaginatedSCIMProviderList {
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedSCIMProviderList) GetPagination() PaginatedApplicationListPagination {
+func (o *PaginatedSCIMProviderList) GetPagination() Pagination {
 	if o == nil {
-		var ret PaginatedApplicationListPagination
+		var ret Pagination
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *PaginatedSCIMProviderList) GetPagination() PaginatedApplicationListPagi
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedSCIMProviderList) GetPaginationOk() (*PaginatedApplicationListPagination, bool) {
+func (o *PaginatedSCIMProviderList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *PaginatedSCIMProviderList) GetPaginationOk() (*PaginatedApplicationList
 }
 
 // SetPagination sets field value
-func (o *PaginatedSCIMProviderList) SetPagination(v PaginatedApplicationListPagination) {
+func (o *PaginatedSCIMProviderList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 

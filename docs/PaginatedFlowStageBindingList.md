@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]FlowStageBinding**](FlowStageBinding.md) |  | 
 
 ## Methods
 
 ### NewPaginatedFlowStageBindingList
 
-`func NewPaginatedFlowStageBindingList(pagination PaginatedApplicationListPagination, results []FlowStageBinding, ) *PaginatedFlowStageBindingList`
+`func NewPaginatedFlowStageBindingList(pagination Pagination, results []FlowStageBinding, ) *PaginatedFlowStageBindingList`
 
 NewPaginatedFlowStageBindingList instantiates a new PaginatedFlowStageBindingList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedFlowStageBindingList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedFlowStageBindingList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedFlowStageBindingList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedFlowStageBindingList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedFlowStageBindingList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedFlowStageBindingList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 

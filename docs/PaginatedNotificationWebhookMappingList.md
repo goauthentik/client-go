@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | [**PaginatedApplicationListPagination**](PaginatedApplicationListPagination.md) |  | 
+**Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]NotificationWebhookMapping**](NotificationWebhookMapping.md) |  | 
 
 ## Methods
 
 ### NewPaginatedNotificationWebhookMappingList
 
-`func NewPaginatedNotificationWebhookMappingList(pagination PaginatedApplicationListPagination, results []NotificationWebhookMapping, ) *PaginatedNotificationWebhookMappingList`
+`func NewPaginatedNotificationWebhookMappingList(pagination Pagination, results []NotificationWebhookMapping, ) *PaginatedNotificationWebhookMappingList`
 
 NewPaginatedNotificationWebhookMappingList instantiates a new PaginatedNotificationWebhookMappingList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedNotificationWebhookMappingList) GetPagination() PaginatedApplicationListPagination`
+`func (o *PaginatedNotificationWebhookMappingList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedNotificationWebhookMappingList) GetPaginationOk() (*PaginatedApplicationListPagination, bool)`
+`func (o *PaginatedNotificationWebhookMappingList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedNotificationWebhookMappingList) SetPagination(v PaginatedApplicationListPagination)`
+`func (o *PaginatedNotificationWebhookMappingList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 
