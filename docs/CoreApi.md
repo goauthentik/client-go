@@ -3585,7 +3585,7 @@ func main() {
     path := "path_example" // string |  (optional)
     pathStartswith := "pathStartswith_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
-    type_ := "type__example" // string | * `internal` - Internal * `external` - External * `service_account` - Service Account * `internal_service_account` - Internal Service Account (optional)
+    type_ := []string{"Type_example"} // []string | * `internal` - Internal * `external` - External * `service_account` - Service Account * `internal_service_account` - Internal Service Account (optional)
     username := "username_example" // string |  (optional)
     uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
@@ -3625,7 +3625,7 @@ Name | Type | Description  | Notes
  **path** | **string** |  | 
  **pathStartswith** | **string** |  | 
  **search** | **string** | A search term. | 
- **type_** | **string** | * &#x60;internal&#x60; - Internal * &#x60;external&#x60; - External * &#x60;service_account&#x60; - Service Account * &#x60;internal_service_account&#x60; - Internal Service Account | 
+ **type_** | **[]string** | * &#x60;internal&#x60; - Internal * &#x60;external&#x60; - External * &#x60;service_account&#x60; - Service Account * &#x60;internal_service_account&#x60; - Internal Service Account | 
  **username** | **string** |  | 
  **uuid** | **string** |  | 
 

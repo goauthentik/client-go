@@ -5063,12 +5063,14 @@ paths:
         name: type
         required: false
         schema:
-          enum:
-          - external
-          - internal
-          - internal_service_account
-          - service_account
-          type: string
+          items:
+            enum:
+            - external
+            - internal
+            - internal_service_account
+            - service_account
+            type: string
+          type: array
         style: form
       - explode: true
         in: query

@@ -7323,7 +7323,7 @@ type ApiCoreUsersListRequest struct {
 	path           *string
 	pathStartswith *string
 	search         *string
-	type_          *string
+	type_          *[]string
 	username       *string
 	uuid           *string
 }
@@ -7399,7 +7399,7 @@ func (r ApiCoreUsersListRequest) Search(search string) ApiCoreUsersListRequest {
 }
 
 // * &#x60;internal&#x60; - Internal * &#x60;external&#x60; - External * &#x60;service_account&#x60; - Service Account * &#x60;internal_service_account&#x60; - Internal Service Account
-func (r ApiCoreUsersListRequest) Type_(type_ string) ApiCoreUsersListRequest {
+func (r ApiCoreUsersListRequest) Type_(type_ []string) ApiCoreUsersListRequest {
 	r.type_ = &type_
 	return r
 }
@@ -7511,7 +7511,15 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.type_ != nil {
-		localVarQueryParams.Add("type", parameterToString(*r.type_, ""))
+		t := *r.type_
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("type", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("type", parameterToString(t, "multi"))
+		}
 	}
 	if r.username != nil {
 		localVarQueryParams.Add("username", parameterToString(*r.username, ""))
