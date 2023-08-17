@@ -1927,7 +1927,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorStaticList
 
-> PaginatedAuthenticatorStaticStageList StagesAuthenticatorStaticList(ctx).ConfigureFlow(configureFlow).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).TokenCount(tokenCount).Execute()
+> PaginatedAuthenticatorStaticStageList StagesAuthenticatorStaticList(ctx).ConfigureFlow(configureFlow).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).TokenCount(tokenCount).TokenLength(tokenLength).Execute()
 
 
 
@@ -1955,10 +1955,11 @@ func main() {
     search := "search_example" // string | A search term. (optional)
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     tokenCount := int32(56) // int32 |  (optional)
+    tokenLength := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorStaticList(context.Background()).ConfigureFlow(configureFlow).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).TokenCount(tokenCount).Execute()
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorStaticList(context.Background()).ConfigureFlow(configureFlow).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).TokenCount(tokenCount).TokenLength(tokenLength).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorStaticList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1988,6 +1989,7 @@ Name | Type | Description  | Notes
  **search** | **string** | A search term. | 
  **stageUuid** | **string** |  | 
  **tokenCount** | **int32** |  | 
+ **tokenLength** | **int32** |  | 
 
 ### Return type
 

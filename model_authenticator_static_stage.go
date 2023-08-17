@@ -32,6 +32,7 @@ type AuthenticatorStaticStage struct {
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
 	FriendlyName  NullableString `json:"friendly_name,omitempty"`
 	TokenCount    *int32         `json:"token_count,omitempty"`
+	TokenLength   *int32         `json:"token_length,omitempty"`
 }
 
 // NewAuthenticatorStaticStage instantiates a new AuthenticatorStaticStage object
@@ -351,6 +352,38 @@ func (o *AuthenticatorStaticStage) SetTokenCount(v int32) {
 	o.TokenCount = &v
 }
 
+// GetTokenLength returns the TokenLength field value if set, zero value otherwise.
+func (o *AuthenticatorStaticStage) GetTokenLength() int32 {
+	if o == nil || o.TokenLength == nil {
+		var ret int32
+		return ret
+	}
+	return *o.TokenLength
+}
+
+// GetTokenLengthOk returns a tuple with the TokenLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorStaticStage) GetTokenLengthOk() (*int32, bool) {
+	if o == nil || o.TokenLength == nil {
+		return nil, false
+	}
+	return o.TokenLength, true
+}
+
+// HasTokenLength returns a boolean if a field has been set.
+func (o *AuthenticatorStaticStage) HasTokenLength() bool {
+	if o != nil && o.TokenLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenLength gets a reference to the given int32 and assigns it to the TokenLength field.
+func (o *AuthenticatorStaticStage) SetTokenLength(v int32) {
+	o.TokenLength = &v
+}
+
 func (o AuthenticatorStaticStage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -382,6 +415,9 @@ func (o AuthenticatorStaticStage) MarshalJSON() ([]byte, error) {
 	}
 	if o.TokenCount != nil {
 		toSerialize["token_count"] = o.TokenCount
+	}
+	if o.TokenLength != nil {
+		toSerialize["token_length"] = o.TokenLength
 	}
 	return json.Marshal(toSerialize)
 }

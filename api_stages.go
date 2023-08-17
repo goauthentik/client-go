@@ -3707,6 +3707,7 @@ type ApiStagesAuthenticatorStaticListRequest struct {
 	search        *string
 	stageUuid     *string
 	tokenCount    *int32
+	tokenLength   *int32
 }
 
 func (r ApiStagesAuthenticatorStaticListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorStaticListRequest {
@@ -3755,6 +3756,11 @@ func (r ApiStagesAuthenticatorStaticListRequest) StageUuid(stageUuid string) Api
 
 func (r ApiStagesAuthenticatorStaticListRequest) TokenCount(tokenCount int32) ApiStagesAuthenticatorStaticListRequest {
 	r.tokenCount = &tokenCount
+	return r
+}
+
+func (r ApiStagesAuthenticatorStaticListRequest) TokenLength(tokenLength int32) ApiStagesAuthenticatorStaticListRequest {
+	r.tokenLength = &tokenLength
 	return r
 }
 
@@ -3825,6 +3831,9 @@ func (a *StagesApiService) StagesAuthenticatorStaticListExecute(r ApiStagesAuthe
 	}
 	if r.tokenCount != nil {
 		localVarQueryParams.Add("token_count", parameterToString(*r.tokenCount, ""))
+	}
+	if r.tokenLength != nil {
+		localVarQueryParams.Add("token_length", parameterToString(*r.tokenLength, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

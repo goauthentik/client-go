@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
 **FriendlyName** | Pointer to **NullableString** |  | [optional] 
 **TokenCount** | Pointer to **int32** |  | [optional] 
+**TokenLength** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -273,6 +274,31 @@ SetTokenCount sets TokenCount field to given value.
 `func (o *AuthenticatorStaticStage) HasTokenCount() bool`
 
 HasTokenCount returns a boolean if a field has been set.
+
+### GetTokenLength
+
+`func (o *AuthenticatorStaticStage) GetTokenLength() int32`
+
+GetTokenLength returns the TokenLength field if non-nil, zero value otherwise.
+
+### GetTokenLengthOk
+
+`func (o *AuthenticatorStaticStage) GetTokenLengthOk() (*int32, bool)`
+
+GetTokenLengthOk returns a tuple with the TokenLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenLength
+
+`func (o *AuthenticatorStaticStage) SetTokenLength(v int32)`
+
+SetTokenLength sets TokenLength field to given value.
+
+### HasTokenLength
+
+`func (o *AuthenticatorStaticStage) HasTokenLength() bool`
+
+HasTokenLength returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
