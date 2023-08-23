@@ -36200,9 +36200,9 @@ components:
         external_users: 6
         license_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        internal_users: 0
         expiry: 2000-01-23T04:56:07.000+00:00
         key: key
-        users: 0
       properties:
         license_uuid:
           format: uuid
@@ -36217,7 +36217,7 @@ components:
           format: date-time
           readOnly: true
           type: string
-        users:
+        internal_users:
           readOnly: true
           type: integer
         external_users:
@@ -36226,32 +36226,32 @@ components:
       required:
       - expiry
       - external_users
+      - internal_users
       - key
       - license_uuid
       - name
-      - users
       type: object
     LicenseForecast:
       description: Serializer for license forecast
       example:
         external_users: 6
-        forecasted_users: 1
+        forecasted_internal_users: 1
+        internal_users: 0
         forecasted_external_users: 5
-        users: 0
       properties:
-        users:
+        internal_users:
           type: integer
         external_users:
           type: integer
-        forecasted_users:
+        forecasted_internal_users:
           type: integer
         forecasted_external_users:
           type: integer
       required:
       - external_users
       - forecasted_external_users
-      - forecasted_users
-      - users
+      - forecasted_internal_users
+      - internal_users
       type: object
     LicenseRequest:
       description: License Serializer
@@ -36273,10 +36273,10 @@ components:
         show_admin_warning: true
         has_license: true
         latest_valid: 2000-01-23T04:56:07.000+00:00
+        internal_users: 0
         show_user_warning: true
-        users: 0
       properties:
-        users:
+        internal_users:
           type: integer
         external_users:
           type: integer
@@ -36296,11 +36296,11 @@ components:
       required:
       - external_users
       - has_license
+      - internal_users
       - latest_valid
       - read_only
       - show_admin_warning
       - show_user_warning
-      - users
       - valid
       type: object
     Link:
@@ -40236,15 +40236,15 @@ components:
         - external_users: 6
           license_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          internal_users: 0
           expiry: 2000-01-23T04:56:07.000+00:00
           key: key
-          users: 0
         - external_users: 6
           license_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          internal_users: 0
           expiry: 2000-01-23T04:56:07.000+00:00
           key: key
-          users: 0
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'

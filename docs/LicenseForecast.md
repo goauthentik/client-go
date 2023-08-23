@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Users** | **int32** |  | 
+**InternalUsers** | **int32** |  | 
 **ExternalUsers** | **int32** |  | 
-**ForecastedUsers** | **int32** |  | 
+**ForecastedInternalUsers** | **int32** |  | 
 **ForecastedExternalUsers** | **int32** |  | 
 
 ## Methods
 
 ### NewLicenseForecast
 
-`func NewLicenseForecast(users int32, externalUsers int32, forecastedUsers int32, forecastedExternalUsers int32, ) *LicenseForecast`
+`func NewLicenseForecast(internalUsers int32, externalUsers int32, forecastedInternalUsers int32, forecastedExternalUsers int32, ) *LicenseForecast`
 
 NewLicenseForecast instantiates a new LicenseForecast object
 This constructor will assign default values to properties that have it defined,
@@ -28,24 +28,24 @@ NewLicenseForecastWithDefaults instantiates a new LicenseForecast object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetUsers
+### GetInternalUsers
 
-`func (o *LicenseForecast) GetUsers() int32`
+`func (o *LicenseForecast) GetInternalUsers() int32`
 
-GetUsers returns the Users field if non-nil, zero value otherwise.
+GetInternalUsers returns the InternalUsers field if non-nil, zero value otherwise.
 
-### GetUsersOk
+### GetInternalUsersOk
 
-`func (o *LicenseForecast) GetUsersOk() (*int32, bool)`
+`func (o *LicenseForecast) GetInternalUsersOk() (*int32, bool)`
 
-GetUsersOk returns a tuple with the Users field if it's non-nil, zero value otherwise
+GetInternalUsersOk returns a tuple with the InternalUsers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUsers
+### SetInternalUsers
 
-`func (o *LicenseForecast) SetUsers(v int32)`
+`func (o *LicenseForecast) SetInternalUsers(v int32)`
 
-SetUsers sets Users field to given value.
+SetInternalUsers sets InternalUsers field to given value.
 
 
 ### GetExternalUsers
@@ -68,24 +68,24 @@ and a boolean to check if the value has been set.
 SetExternalUsers sets ExternalUsers field to given value.
 
 
-### GetForecastedUsers
+### GetForecastedInternalUsers
 
-`func (o *LicenseForecast) GetForecastedUsers() int32`
+`func (o *LicenseForecast) GetForecastedInternalUsers() int32`
 
-GetForecastedUsers returns the ForecastedUsers field if non-nil, zero value otherwise.
+GetForecastedInternalUsers returns the ForecastedInternalUsers field if non-nil, zero value otherwise.
 
-### GetForecastedUsersOk
+### GetForecastedInternalUsersOk
 
-`func (o *LicenseForecast) GetForecastedUsersOk() (*int32, bool)`
+`func (o *LicenseForecast) GetForecastedInternalUsersOk() (*int32, bool)`
 
-GetForecastedUsersOk returns a tuple with the ForecastedUsers field if it's non-nil, zero value otherwise
+GetForecastedInternalUsersOk returns a tuple with the ForecastedInternalUsers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetForecastedUsers
+### SetForecastedInternalUsers
 
-`func (o *LicenseForecast) SetForecastedUsers(v int32)`
+`func (o *LicenseForecast) SetForecastedInternalUsers(v int32)`
 
-SetForecastedUsers sets ForecastedUsers field to given value.
+SetForecastedInternalUsers sets ForecastedInternalUsers field to given value.
 
 
 ### GetForecastedExternalUsers

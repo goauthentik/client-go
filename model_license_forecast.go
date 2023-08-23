@@ -17,9 +17,9 @@ import (
 
 // LicenseForecast Serializer for license forecast
 type LicenseForecast struct {
-	Users                   int32 `json:"users"`
+	InternalUsers           int32 `json:"internal_users"`
 	ExternalUsers           int32 `json:"external_users"`
-	ForecastedUsers         int32 `json:"forecasted_users"`
+	ForecastedInternalUsers int32 `json:"forecasted_internal_users"`
 	ForecastedExternalUsers int32 `json:"forecasted_external_users"`
 }
 
@@ -27,11 +27,11 @@ type LicenseForecast struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLicenseForecast(users int32, externalUsers int32, forecastedUsers int32, forecastedExternalUsers int32) *LicenseForecast {
+func NewLicenseForecast(internalUsers int32, externalUsers int32, forecastedInternalUsers int32, forecastedExternalUsers int32) *LicenseForecast {
 	this := LicenseForecast{}
-	this.Users = users
+	this.InternalUsers = internalUsers
 	this.ExternalUsers = externalUsers
-	this.ForecastedUsers = forecastedUsers
+	this.ForecastedInternalUsers = forecastedInternalUsers
 	this.ForecastedExternalUsers = forecastedExternalUsers
 	return &this
 }
@@ -44,28 +44,28 @@ func NewLicenseForecastWithDefaults() *LicenseForecast {
 	return &this
 }
 
-// GetUsers returns the Users field value
-func (o *LicenseForecast) GetUsers() int32 {
+// GetInternalUsers returns the InternalUsers field value
+func (o *LicenseForecast) GetInternalUsers() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.Users
+	return o.InternalUsers
 }
 
-// GetUsersOk returns a tuple with the Users field value
+// GetInternalUsersOk returns a tuple with the InternalUsers field value
 // and a boolean to check if the value has been set.
-func (o *LicenseForecast) GetUsersOk() (*int32, bool) {
+func (o *LicenseForecast) GetInternalUsersOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Users, true
+	return &o.InternalUsers, true
 }
 
-// SetUsers sets field value
-func (o *LicenseForecast) SetUsers(v int32) {
-	o.Users = v
+// SetInternalUsers sets field value
+func (o *LicenseForecast) SetInternalUsers(v int32) {
+	o.InternalUsers = v
 }
 
 // GetExternalUsers returns the ExternalUsers field value
@@ -92,28 +92,28 @@ func (o *LicenseForecast) SetExternalUsers(v int32) {
 	o.ExternalUsers = v
 }
 
-// GetForecastedUsers returns the ForecastedUsers field value
-func (o *LicenseForecast) GetForecastedUsers() int32 {
+// GetForecastedInternalUsers returns the ForecastedInternalUsers field value
+func (o *LicenseForecast) GetForecastedInternalUsers() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.ForecastedUsers
+	return o.ForecastedInternalUsers
 }
 
-// GetForecastedUsersOk returns a tuple with the ForecastedUsers field value
+// GetForecastedInternalUsersOk returns a tuple with the ForecastedInternalUsers field value
 // and a boolean to check if the value has been set.
-func (o *LicenseForecast) GetForecastedUsersOk() (*int32, bool) {
+func (o *LicenseForecast) GetForecastedInternalUsersOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ForecastedUsers, true
+	return &o.ForecastedInternalUsers, true
 }
 
-// SetForecastedUsers sets field value
-func (o *LicenseForecast) SetForecastedUsers(v int32) {
-	o.ForecastedUsers = v
+// SetForecastedInternalUsers sets field value
+func (o *LicenseForecast) SetForecastedInternalUsers(v int32) {
+	o.ForecastedInternalUsers = v
 }
 
 // GetForecastedExternalUsers returns the ForecastedExternalUsers field value
@@ -143,13 +143,13 @@ func (o *LicenseForecast) SetForecastedExternalUsers(v int32) {
 func (o LicenseForecast) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["users"] = o.Users
+		toSerialize["internal_users"] = o.InternalUsers
 	}
 	if true {
 		toSerialize["external_users"] = o.ExternalUsers
 	}
 	if true {
-		toSerialize["forecasted_users"] = o.ForecastedUsers
+		toSerialize["forecasted_internal_users"] = o.ForecastedInternalUsers
 	}
 	if true {
 		toSerialize["forecasted_external_users"] = o.ForecastedExternalUsers

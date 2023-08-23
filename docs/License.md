@@ -8,14 +8,14 @@ Name | Type | Description | Notes
 **Name** | **string** |  | [readonly] 
 **Key** | **string** |  | 
 **Expiry** | **time.Time** |  | [readonly] 
-**Users** | **int32** |  | [readonly] 
+**InternalUsers** | **int32** |  | [readonly] 
 **ExternalUsers** | **int32** |  | [readonly] 
 
 ## Methods
 
 ### NewLicense
 
-`func NewLicense(licenseUuid string, name string, key string, expiry time.Time, users int32, externalUsers int32, ) *License`
+`func NewLicense(licenseUuid string, name string, key string, expiry time.Time, internalUsers int32, externalUsers int32, ) *License`
 
 NewLicense instantiates a new License object
 This constructor will assign default values to properties that have it defined,
@@ -110,24 +110,24 @@ and a boolean to check if the value has been set.
 SetExpiry sets Expiry field to given value.
 
 
-### GetUsers
+### GetInternalUsers
 
-`func (o *License) GetUsers() int32`
+`func (o *License) GetInternalUsers() int32`
 
-GetUsers returns the Users field if non-nil, zero value otherwise.
+GetInternalUsers returns the InternalUsers field if non-nil, zero value otherwise.
 
-### GetUsersOk
+### GetInternalUsersOk
 
-`func (o *License) GetUsersOk() (*int32, bool)`
+`func (o *License) GetInternalUsersOk() (*int32, bool)`
 
-GetUsersOk returns a tuple with the Users field if it's non-nil, zero value otherwise
+GetInternalUsersOk returns a tuple with the InternalUsers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUsers
+### SetInternalUsers
 
-`func (o *License) SetUsers(v int32)`
+`func (o *License) SetInternalUsers(v int32)`
 
-SetUsers sets Users field to given value.
+SetInternalUsers sets InternalUsers field to given value.
 
 
 ### GetExternalUsers

@@ -22,7 +22,7 @@ type License struct {
 	Name          string    `json:"name"`
 	Key           string    `json:"key"`
 	Expiry        time.Time `json:"expiry"`
-	Users         int32     `json:"users"`
+	InternalUsers int32     `json:"internal_users"`
 	ExternalUsers int32     `json:"external_users"`
 }
 
@@ -30,13 +30,13 @@ type License struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLicense(licenseUuid string, name string, key string, expiry time.Time, users int32, externalUsers int32) *License {
+func NewLicense(licenseUuid string, name string, key string, expiry time.Time, internalUsers int32, externalUsers int32) *License {
 	this := License{}
 	this.LicenseUuid = licenseUuid
 	this.Name = name
 	this.Key = key
 	this.Expiry = expiry
-	this.Users = users
+	this.InternalUsers = internalUsers
 	this.ExternalUsers = externalUsers
 	return &this
 }
@@ -145,28 +145,28 @@ func (o *License) SetExpiry(v time.Time) {
 	o.Expiry = v
 }
 
-// GetUsers returns the Users field value
-func (o *License) GetUsers() int32 {
+// GetInternalUsers returns the InternalUsers field value
+func (o *License) GetInternalUsers() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.Users
+	return o.InternalUsers
 }
 
-// GetUsersOk returns a tuple with the Users field value
+// GetInternalUsersOk returns a tuple with the InternalUsers field value
 // and a boolean to check if the value has been set.
-func (o *License) GetUsersOk() (*int32, bool) {
+func (o *License) GetInternalUsersOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Users, true
+	return &o.InternalUsers, true
 }
 
-// SetUsers sets field value
-func (o *License) SetUsers(v int32) {
-	o.Users = v
+// SetInternalUsers sets field value
+func (o *License) SetInternalUsers(v int32) {
+	o.InternalUsers = v
 }
 
 // GetExternalUsers returns the ExternalUsers field value
@@ -208,7 +208,7 @@ func (o License) MarshalJSON() ([]byte, error) {
 		toSerialize["expiry"] = o.Expiry
 	}
 	if true {
-		toSerialize["users"] = o.Users
+		toSerialize["internal_users"] = o.InternalUsers
 	}
 	if true {
 		toSerialize["external_users"] = o.ExternalUsers

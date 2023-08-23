@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Users** | **int32** |  | 
+**InternalUsers** | **int32** |  | 
 **ExternalUsers** | **int32** |  | 
 **Valid** | **bool** |  | 
 **ShowAdminWarning** | **bool** |  | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewLicenseSummary
 
-`func NewLicenseSummary(users int32, externalUsers int32, valid bool, showAdminWarning bool, showUserWarning bool, readOnly bool, latestValid time.Time, hasLicense bool, ) *LicenseSummary`
+`func NewLicenseSummary(internalUsers int32, externalUsers int32, valid bool, showAdminWarning bool, showUserWarning bool, readOnly bool, latestValid time.Time, hasLicense bool, ) *LicenseSummary`
 
 NewLicenseSummary instantiates a new LicenseSummary object
 This constructor will assign default values to properties that have it defined,
@@ -32,24 +32,24 @@ NewLicenseSummaryWithDefaults instantiates a new LicenseSummary object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetUsers
+### GetInternalUsers
 
-`func (o *LicenseSummary) GetUsers() int32`
+`func (o *LicenseSummary) GetInternalUsers() int32`
 
-GetUsers returns the Users field if non-nil, zero value otherwise.
+GetInternalUsers returns the InternalUsers field if non-nil, zero value otherwise.
 
-### GetUsersOk
+### GetInternalUsersOk
 
-`func (o *LicenseSummary) GetUsersOk() (*int32, bool)`
+`func (o *LicenseSummary) GetInternalUsersOk() (*int32, bool)`
 
-GetUsersOk returns a tuple with the Users field if it's non-nil, zero value otherwise
+GetInternalUsersOk returns a tuple with the InternalUsers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUsers
+### SetInternalUsers
 
-`func (o *LicenseSummary) SetUsers(v int32)`
+`func (o *LicenseSummary) SetInternalUsers(v int32)`
 
-SetUsers sets Users field to given value.
+SetInternalUsers sets InternalUsers field to given value.
 
 
 ### GetExternalUsers
