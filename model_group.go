@@ -23,7 +23,7 @@ type Group struct {
 	// Users added to this group will be superusers.
 	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
 	Parent      NullableString         `json:"parent,omitempty"`
-	ParentName  string                 `json:"parent_name"`
+	ParentName  NullableString         `json:"parent_name"`
 	Users       []int32                `json:"users,omitempty"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 	UsersObj    []GroupMember          `json:"users_obj"`
@@ -33,7 +33,7 @@ type Group struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroup(pk string, numPk int32, name string, parentName string, usersObj []GroupMember) *Group {
+func NewGroup(pk string, numPk int32, name string, parentName NullableString, usersObj []GroupMember) *Group {
 	this := Group{}
 	this.Pk = pk
 	this.NumPk = numPk
@@ -199,27 +199,29 @@ func (o *Group) UnsetParent() {
 }
 
 // GetParentName returns the ParentName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *Group) GetParentName() string {
-	if o == nil {
+	if o == nil || o.ParentName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ParentName
+	return *o.ParentName.Get()
 }
 
 // GetParentNameOk returns a tuple with the ParentName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Group) GetParentNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ParentName, true
+	return o.ParentName.Get(), o.ParentName.IsSet()
 }
 
 // SetParentName sets field value
 func (o *Group) SetParentName(v string) {
-	o.ParentName = v
+	o.ParentName.Set(&v)
 }
 
 // GetUsers returns the Users field value if set, zero value otherwise.
@@ -328,7 +330,7 @@ func (o Group) MarshalJSON() ([]byte, error) {
 		toSerialize["parent"] = o.Parent.Get()
 	}
 	if true {
-		toSerialize["parent_name"] = o.ParentName
+		toSerialize["parent_name"] = o.ParentName.Get()
 	}
 	if o.Users != nil {
 		toSerialize["users"] = o.Users

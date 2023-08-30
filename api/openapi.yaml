@@ -34650,6 +34650,7 @@ components:
           nullable: true
           type: string
         parent_name:
+          nullable: true
           readOnly: true
           type: string
         users:
