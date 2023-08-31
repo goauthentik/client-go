@@ -8500,7 +8500,7 @@ PoliciesReputationScoresDestroy Method for PoliciesReputationScoresDestroy
 Reputation Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reputationUuid A UUID string identifying this reputation.
+	@param reputationUuid A UUID string identifying this Reputation Score.
 	@return ApiPoliciesReputationScoresDestroyRequest
 */
 func (a *PoliciesApiService) PoliciesReputationScoresDestroy(ctx context.Context, reputationUuid string) ApiPoliciesReputationScoresDestroyRequest {
@@ -8825,7 +8825,7 @@ PoliciesReputationScoresRetrieve Method for PoliciesReputationScoresRetrieve
 Reputation Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reputationUuid A UUID string identifying this reputation.
+	@param reputationUuid A UUID string identifying this Reputation Score.
 	@return ApiPoliciesReputationScoresRetrieveRequest
 */
 func (a *PoliciesApiService) PoliciesReputationScoresRetrieve(ctx context.Context, reputationUuid string) ApiPoliciesReputationScoresRetrieveRequest {
@@ -8962,7 +8962,7 @@ PoliciesReputationScoresUsedByList Method for PoliciesReputationScoresUsedByList
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reputationUuid A UUID string identifying this reputation.
+	@param reputationUuid A UUID string identifying this Reputation Score.
 	@return ApiPoliciesReputationScoresUsedByListRequest
 */
 func (a *PoliciesApiService) PoliciesReputationScoresUsedByList(ctx context.Context, reputationUuid string) ApiPoliciesReputationScoresUsedByListRequest {

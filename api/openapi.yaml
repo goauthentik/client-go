@@ -14385,7 +14385,7 @@ paths:
       description: Reputation Viewset
       operationId: policies_reputation_scores_destroy
       parameters:
-      - description: A UUID string identifying this reputation.
+      - description: A UUID string identifying this Reputation Score.
         explode: false
         in: path
         name: reputation_uuid
@@ -14417,7 +14417,7 @@ paths:
       description: Reputation Viewset
       operationId: policies_reputation_scores_retrieve
       parameters:
-      - description: A UUID string identifying this reputation.
+      - description: A UUID string identifying this Reputation Score.
         explode: false
         in: path
         name: reputation_uuid
@@ -14454,7 +14454,7 @@ paths:
       description: Get a list of all objects that use this object
       operationId: policies_reputation_scores_used_by_list
       parameters:
-      - description: A UUID string identifying this reputation.
+      - description: A UUID string identifying this Reputation Score.
         explode: false
         in: path
         name: reputation_uuid
@@ -33428,7 +33428,7 @@ components:
             * `authentik_policies_expression.expressionpolicy` - Expression Policy
             * `authentik_policies_password.passwordpolicy` - Password Policy
             * `authentik_policies_reputation.reputationpolicy` - Reputation Policy
-            * `authentik_policies_reputation.reputation` - reputation
+            * `authentik_policies_reputation.reputation` - Reputation Score
             * `authentik_policies.policybinding` - Policy Binding
             * `authentik_providers_ldap.ldapprovider` - LDAP Provider
             * `authentik_providers_oauth2.scopemapping` - Scope Mapping
@@ -33625,7 +33625,7 @@ components:
             * `authentik_policies_expression.expressionpolicy` - Expression Policy
             * `authentik_policies_password.passwordpolicy` - Password Policy
             * `authentik_policies_reputation.reputationpolicy` - Reputation Policy
-            * `authentik_policies_reputation.reputation` - reputation
+            * `authentik_policies_reputation.reputation` - Reputation Score
             * `authentik_policies.policybinding` - Policy Binding
             * `authentik_providers_ldap.ldapprovider` - LDAP Provider
             * `authentik_providers_oauth2.scopemapping` - Scope Mapping
@@ -36409,7 +36409,7 @@ components:
         * `authentik_policies_expression.expressionpolicy` - Expression Policy
         * `authentik_policies_password.passwordpolicy` - Password Policy
         * `authentik_policies_reputation.reputationpolicy` - Reputation Policy
-        * `authentik_policies_reputation.reputation` - reputation
+        * `authentik_policies_reputation.reputation` - Reputation Score
         * `authentik_policies.policybinding` - Policy Binding
         * `authentik_providers_ldap.ldapprovider` - LDAP Provider
         * `authentik_providers_oauth2.scopemapping` - Scope Mapping
@@ -44757,7 +44757,7 @@ components:
             * `authentik_policies_expression.expressionpolicy` - Expression Policy
             * `authentik_policies_password.passwordpolicy` - Password Policy
             * `authentik_policies_reputation.reputationpolicy` - Reputation Policy
-            * `authentik_policies_reputation.reputation` - reputation
+            * `authentik_policies_reputation.reputation` - Reputation Score
             * `authentik_policies.policybinding` - Policy Binding
             * `authentik_providers_ldap.ldapprovider` - LDAP Provider
             * `authentik_providers_oauth2.scopemapping` - Scope Mapping

@@ -4046,7 +4046,7 @@ import (
 )
 
 func main() {
-    reputationUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this reputation.
+    reputationUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Reputation Score.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -4064,7 +4064,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reputationUuid** | **string** | A UUID string identifying this reputation. | 
+**reputationUuid** | **string** | A UUID string identifying this Reputation Score. | 
 
 ### Other Parameters
 
@@ -4192,7 +4192,7 @@ import (
 )
 
 func main() {
-    reputationUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this reputation.
+    reputationUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Reputation Score.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -4212,7 +4212,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reputationUuid** | **string** | A UUID string identifying this reputation. | 
+**reputationUuid** | **string** | A UUID string identifying this Reputation Score. | 
 
 ### Other Parameters
 
@@ -4262,7 +4262,7 @@ import (
 )
 
 func main() {
-    reputationUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this reputation.
+    reputationUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Reputation Score.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -4282,7 +4282,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reputationUuid** | **string** | A UUID string identifying this reputation. | 
+**reputationUuid** | **string** | A UUID string identifying this Reputation Score. | 
 
 ### Other Parameters
 
