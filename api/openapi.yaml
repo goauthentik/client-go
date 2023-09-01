@@ -49481,8 +49481,7 @@ components:
           minLength: 1
           type: string
         authorization_flow:
-          description: Visible in the URL.
-          minLength: 1
+          format: uuid
           type: string
         file:
           format: binary

@@ -2751,7 +2751,7 @@ import (
 
 func main() {
     name := "name_example" // string | 
-    authorizationFlow := "authorizationFlow_example" // string | Visible in the URL.
+    authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     file := os.NewFile(1234, "some_file") // *os.File | 
 
     configuration := openapiclient.NewConfiguration()
@@ -2776,7 +2776,7 @@ Other parameters are passed through a pointer to a apiProvidersSamlImportMetadat
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string** |  | 
- **authorizationFlow** | **string** | Visible in the URL. | 
+ **authorizationFlow** | **string** |  | 
  **file** | ***os.File** |  | 
 
 ### Return type

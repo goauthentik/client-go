@@ -5754,7 +5754,6 @@ func (r ApiProvidersSamlImportMetadataCreateRequest) Name(name string) ApiProvid
 	return r
 }
 
-// Visible in the URL.
 func (r ApiProvidersSamlImportMetadataCreateRequest) AuthorizationFlow(authorizationFlow string) ApiProvidersSamlImportMetadataCreateRequest {
 	r.authorizationFlow = &authorizationFlow
 	return r
@@ -5810,9 +5809,6 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 	}
 	if r.authorizationFlow == nil {
 		return nil, reportError("authorizationFlow is required and must be specified")
-	}
-	if strlen(*r.authorizationFlow) < 1 {
-		return nil, reportError("authorizationFlow must have at least 1 elements")
 	}
 	if r.file == nil {
 		return nil, reportError("file is required and must be specified")
