@@ -2087,7 +2087,7 @@ AuthenticatorsAdminStaticDestroy Method for AuthenticatorsAdminStaticDestroy
 Viewset for static authenticator devices (for admins)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this static device.
+	@param id A unique integer value identifying this Static device.
 	@return ApiAuthenticatorsAdminStaticDestroyRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticDestroyRequest {
@@ -2400,7 +2400,7 @@ AuthenticatorsAdminStaticPartialUpdate Method for AuthenticatorsAdminStaticParti
 Viewset for static authenticator devices (for admins)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this static device.
+	@param id A unique integer value identifying this Static device.
 	@return ApiAuthenticatorsAdminStaticPartialUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticPartialUpdateRequest {
@@ -2539,7 +2539,7 @@ AuthenticatorsAdminStaticRetrieve Method for AuthenticatorsAdminStaticRetrieve
 Viewset for static authenticator devices (for admins)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this static device.
+	@param id A unique integer value identifying this Static device.
 	@return ApiAuthenticatorsAdminStaticRetrieveRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticRetrieveRequest {
@@ -2682,7 +2682,7 @@ AuthenticatorsAdminStaticUpdate Method for AuthenticatorsAdminStaticUpdate
 Viewset for static authenticator devices (for admins)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this static device.
+	@param id A unique integer value identifying this Static device.
 	@return ApiAuthenticatorsAdminStaticUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticUpdateRequest {
@@ -6467,7 +6467,7 @@ AuthenticatorsStaticDestroy Method for AuthenticatorsStaticDestroy
 Viewset for static authenticator devices
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this static device.
+	@param id A unique integer value identifying this Static device.
 	@return ApiAuthenticatorsStaticDestroyRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroy(ctx context.Context, id int32) ApiAuthenticatorsStaticDestroyRequest {
@@ -6780,7 +6780,7 @@ AuthenticatorsStaticPartialUpdate Method for AuthenticatorsStaticPartialUpdate
 Viewset for static authenticator devices
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this static device.
+	@param id A unique integer value identifying this Static device.
 	@return ApiAuthenticatorsStaticPartialUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsStaticPartialUpdateRequest {
@@ -6919,7 +6919,7 @@ AuthenticatorsStaticRetrieve Method for AuthenticatorsStaticRetrieve
 Viewset for static authenticator devices
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this static device.
+	@param id A unique integer value identifying this Static device.
 	@return ApiAuthenticatorsStaticRetrieveRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieve(ctx context.Context, id int32) ApiAuthenticatorsStaticRetrieveRequest {
@@ -7062,7 +7062,7 @@ AuthenticatorsStaticUpdate Method for AuthenticatorsStaticUpdate
 Viewset for static authenticator devices
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this static device.
+	@param id A unique integer value identifying this Static device.
 	@return ApiAuthenticatorsStaticUpdateRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdate(ctx context.Context, id int32) ApiAuthenticatorsStaticUpdateRequest {
@@ -7204,7 +7204,7 @@ AuthenticatorsStaticUsedByList Method for AuthenticatorsStaticUsedByList
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this static device.
+	@param id A unique integer value identifying this Static device.
 	@return ApiAuthenticatorsStaticUsedByListRequest
 */
 func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByList(ctx context.Context, id int32) ApiAuthenticatorsStaticUsedByListRequest {

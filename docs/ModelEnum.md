@@ -91,7 +91,11 @@
 
 * `STAGES_AUTHENTICATOR_STATIC_AUTHENTICATORSTATICSTAGE` (value: `"authentik_stages_authenticator_static.authenticatorstaticstage"`)
 
+* `STAGES_AUTHENTICATOR_STATIC_STATICDEVICE` (value: `"authentik_stages_authenticator_static.staticdevice"`)
+
 * `STAGES_AUTHENTICATOR_TOTP_AUTHENTICATORTOTPSTAGE` (value: `"authentik_stages_authenticator_totp.authenticatortotpstage"`)
+
+* `STAGES_AUTHENTICATOR_TOTP_TOTPDEVICE` (value: `"authentik_stages_authenticator_totp.totpdevice"`)
 
 * `STAGES_AUTHENTICATOR_VALIDATE_AUTHENTICATORVALIDATESTAGE` (value: `"authentik_stages_authenticator_validate.authenticatorvalidatestage"`)
 

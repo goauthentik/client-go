@@ -1066,7 +1066,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1084,7 +1084,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this static device. | 
+**id** | **int32** | A unique integer value identifying this Static device. | 
 
 ### Other Parameters
 
@@ -1208,7 +1208,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static device.
     patchedStaticDeviceRequest := *openapiclient.NewPatchedStaticDeviceRequest() // PatchedStaticDeviceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -1229,7 +1229,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this static device. | 
+**id** | **int32** | A unique integer value identifying this Static device. | 
 
 ### Other Parameters
 
@@ -1280,7 +1280,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1300,7 +1300,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this static device. | 
+**id** | **int32** | A unique integer value identifying this Static device. | 
 
 ### Other Parameters
 
@@ -1350,7 +1350,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static device.
     staticDeviceRequest := *openapiclient.NewStaticDeviceRequest("Name_example") // StaticDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -1371,7 +1371,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this static device. | 
+**id** | **int32** | A unique integer value identifying this Static device. | 
 
 ### Other Parameters
 
@@ -3179,7 +3179,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3197,7 +3197,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this static device. | 
+**id** | **int32** | A unique integer value identifying this Static device. | 
 
 ### Other Parameters
 
@@ -3321,7 +3321,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static device.
     patchedStaticDeviceRequest := *openapiclient.NewPatchedStaticDeviceRequest() // PatchedStaticDeviceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -3342,7 +3342,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this static device. | 
+**id** | **int32** | A unique integer value identifying this Static device. | 
 
 ### Other Parameters
 
@@ -3393,7 +3393,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3413,7 +3413,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this static device. | 
+**id** | **int32** | A unique integer value identifying this Static device. | 
 
 ### Other Parameters
 
@@ -3463,7 +3463,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static device.
     staticDeviceRequest := *openapiclient.NewStaticDeviceRequest("Name_example") // StaticDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -3484,7 +3484,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this static device. | 
+**id** | **int32** | A unique integer value identifying this Static device. | 
 
 ### Other Parameters
 
@@ -3535,7 +3535,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3555,7 +3555,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this static device. | 
+**id** | **int32** | A unique integer value identifying this Static device. | 
 
 ### Other Parameters
 

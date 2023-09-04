@@ -939,7 +939,7 @@ paths:
       description: Viewset for static authenticator devices (for admins)
       operationId: authenticators_admin_static_destroy
       parameters:
-      - description: A unique integer value identifying this static device.
+      - description: A unique integer value identifying this Static device.
         explode: false
         in: path
         name: id
@@ -970,7 +970,7 @@ paths:
       description: Viewset for static authenticator devices (for admins)
       operationId: authenticators_admin_static_retrieve
       parameters:
-      - description: A unique integer value identifying this static device.
+      - description: A unique integer value identifying this Static device.
         explode: false
         in: path
         name: id
@@ -1005,7 +1005,7 @@ paths:
       description: Viewset for static authenticator devices (for admins)
       operationId: authenticators_admin_static_partial_update
       parameters:
-      - description: A unique integer value identifying this static device.
+      - description: A unique integer value identifying this Static device.
         explode: false
         in: path
         name: id
@@ -1045,7 +1045,7 @@ paths:
       description: Viewset for static authenticator devices (for admins)
       operationId: authenticators_admin_static_update
       parameters:
-      - description: A unique integer value identifying this static device.
+      - description: A unique integer value identifying this Static device.
         explode: false
         in: path
         name: id
@@ -2183,7 +2183,7 @@ paths:
       description: Viewset for static authenticator devices
       operationId: authenticators_static_destroy
       parameters:
-      - description: A unique integer value identifying this static device.
+      - description: A unique integer value identifying this Static device.
         explode: false
         in: path
         name: id
@@ -2214,7 +2214,7 @@ paths:
       description: Viewset for static authenticator devices
       operationId: authenticators_static_retrieve
       parameters:
-      - description: A unique integer value identifying this static device.
+      - description: A unique integer value identifying this Static device.
         explode: false
         in: path
         name: id
@@ -2249,7 +2249,7 @@ paths:
       description: Viewset for static authenticator devices
       operationId: authenticators_static_partial_update
       parameters:
-      - description: A unique integer value identifying this static device.
+      - description: A unique integer value identifying this Static device.
         explode: false
         in: path
         name: id
@@ -2289,7 +2289,7 @@ paths:
       description: Viewset for static authenticator devices
       operationId: authenticators_static_update
       parameters:
-      - description: A unique integer value identifying this static device.
+      - description: A unique integer value identifying this Static device.
         explode: false
         in: path
         name: id
@@ -2331,7 +2331,7 @@ paths:
       description: Get a list of all objects that use this object
       operationId: authenticators_static_used_by_list
       parameters:
-      - description: A unique integer value identifying this static device.
+      - description: A unique integer value identifying this Static device.
         explode: false
         in: path
         name: id
@@ -29736,6 +29736,7 @@ components:
         * `authentik.sources.oauth` - authentik Sources.OAuth
         * `authentik.sources.plex` - authentik Sources.Plex
         * `authentik.sources.saml` - authentik Sources.SAML
+        * `authentik.stages.authenticator` - authentik Stages.Authenticator
         * `authentik.stages.authenticator_duo` - authentik Stages.Authenticator.Duo
         * `authentik.stages.authenticator_sms` - authentik Stages.Authenticator.SMS
         * `authentik.stages.authenticator_static` - authentik Stages.Authenticator.Static
@@ -29784,6 +29785,7 @@ components:
       - authentik.sources.oauth
       - authentik.sources.plex
       - authentik.sources.saml
+      - authentik.stages.authenticator
       - authentik.stages.authenticator_duo
       - authentik.stages.authenticator_sms
       - authentik.stages.authenticator_static
@@ -33381,6 +33383,7 @@ components:
             * `authentik.sources.oauth` - authentik Sources.OAuth
             * `authentik.sources.plex` - authentik Sources.Plex
             * `authentik.sources.saml` - authentik Sources.SAML
+            * `authentik.stages.authenticator` - authentik Stages.Authenticator
             * `authentik.stages.authenticator_duo` - authentik Stages.Authenticator.Duo
             * `authentik.stages.authenticator_sms` - authentik Stages.Authenticator.SMS
             * `authentik.stages.authenticator_static` - authentik Stages.Authenticator.Static
@@ -33455,7 +33458,9 @@ components:
             * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
             * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
             * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
+            * `authentik_stages_authenticator_static.staticdevice` - Static device
             * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
+            * `authentik_stages_authenticator_totp.totpdevice` - TOTP device
             * `authentik_stages_authenticator_validate.authenticatorvalidatestage` - Authenticator Validation Stage
             * `authentik_stages_authenticator_webauthn.authenticatewebauthnstage` - WebAuthn Authenticator Setup Stage
             * `authentik_stages_authenticator_webauthn.webauthndevice` - WebAuthn Device
@@ -33578,6 +33583,7 @@ components:
             * `authentik.sources.oauth` - authentik Sources.OAuth
             * `authentik.sources.plex` - authentik Sources.Plex
             * `authentik.sources.saml` - authentik Sources.SAML
+            * `authentik.stages.authenticator` - authentik Stages.Authenticator
             * `authentik.stages.authenticator_duo` - authentik Stages.Authenticator.Duo
             * `authentik.stages.authenticator_sms` - authentik Stages.Authenticator.SMS
             * `authentik.stages.authenticator_static` - authentik Stages.Authenticator.Static
@@ -33652,7 +33658,9 @@ components:
             * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
             * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
             * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
+            * `authentik_stages_authenticator_static.staticdevice` - Static device
             * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
+            * `authentik_stages_authenticator_totp.totpdevice` - TOTP device
             * `authentik_stages_authenticator_validate.authenticatorvalidatestage` - Authenticator Validation Stage
             * `authentik_stages_authenticator_webauthn.authenticatewebauthnstage` - WebAuthn Authenticator Setup Stage
             * `authentik_stages_authenticator_webauthn.webauthndevice` - WebAuthn Device
@@ -36436,7 +36444,9 @@ components:
         * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
         * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
         * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
+        * `authentik_stages_authenticator_static.staticdevice` - Static device
         * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
+        * `authentik_stages_authenticator_totp.totpdevice` - TOTP device
         * `authentik_stages_authenticator_validate.authenticatorvalidatestage` - Authenticator Validation Stage
         * `authentik_stages_authenticator_webauthn.authenticatewebauthnstage` - WebAuthn Authenticator Setup Stage
         * `authentik_stages_authenticator_webauthn.webauthndevice` - WebAuthn Device
@@ -36507,7 +36517,9 @@ components:
       - authentik_stages_authenticator_sms.authenticatorsmsstage
       - authentik_stages_authenticator_sms.smsdevice
       - authentik_stages_authenticator_static.authenticatorstaticstage
+      - authentik_stages_authenticator_static.staticdevice
       - authentik_stages_authenticator_totp.authenticatortotpstage
+      - authentik_stages_authenticator_totp.totpdevice
       - authentik_stages_authenticator_validate.authenticatorvalidatestage
       - authentik_stages_authenticator_webauthn.authenticatewebauthnstage
       - authentik_stages_authenticator_webauthn.webauthndevice
@@ -44710,6 +44722,7 @@ components:
             * `authentik.sources.oauth` - authentik Sources.OAuth
             * `authentik.sources.plex` - authentik Sources.Plex
             * `authentik.sources.saml` - authentik Sources.SAML
+            * `authentik.stages.authenticator` - authentik Stages.Authenticator
             * `authentik.stages.authenticator_duo` - authentik Stages.Authenticator.Duo
             * `authentik.stages.authenticator_sms` - authentik Stages.Authenticator.SMS
             * `authentik.stages.authenticator_static` - authentik Stages.Authenticator.Static
@@ -44784,7 +44797,9 @@ components:
             * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
             * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
             * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
+            * `authentik_stages_authenticator_static.staticdevice` - Static device
             * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
+            * `authentik_stages_authenticator_totp.totpdevice` - TOTP device
             * `authentik_stages_authenticator_validate.authenticatorvalidatestage` - Authenticator Validation Stage
             * `authentik_stages_authenticator_webauthn.authenticatewebauthnstage` - WebAuthn Authenticator Setup Stage
             * `authentik_stages_authenticator_webauthn.webauthndevice` - WebAuthn Device
