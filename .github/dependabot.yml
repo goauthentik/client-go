@@ -6,9 +6,3 @@ updates:
       interval: "daily"
     assignees:
     - BeryJu
-  - package-ecosystem: "gomod"
-    directory: "/"
-    schedule:
-      interval: "daily"
-    assignees:
-    - BeryJu

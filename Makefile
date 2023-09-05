@@ -31,5 +31,3 @@ build:
 	rm -f .travis.yml git_push.sh
 	go get
 	go fmt .
-	go get -u ./...
-	go mod tidy
