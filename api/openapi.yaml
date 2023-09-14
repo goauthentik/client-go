@@ -41003,28 +41003,30 @@ components:
           total_pages: 5.637376656633329
         results:
         - user_obj: ""
+          failure_result: true
+          policy_obj: ""
+          enabled: true
+          timeout: 314780940
+          target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           negate: true
           group_obj: ""
-          policy_obj: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
-          enabled: true
-          timeout: -1517921766
           policy: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           order: 441289069
         - user_obj: ""
+          failure_result: true
+          policy_obj: ""
+          enabled: true
+          timeout: 314780940
+          target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           negate: true
           group_obj: ""
-          policy_obj: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
-          enabled: true
-          timeout: -1517921766
           policy: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           order: 441289069
       properties:
         pagination:
@@ -46065,9 +46067,10 @@ components:
       description: PolicyBinding Serializer
       example:
         negate: true
+        failure_result: true
         user: 0
         enabled: true
-        timeout: -1517921766
+        timeout: 314780940
         policy: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46099,8 +46102,11 @@ components:
         timeout:
           description: Timeout after which Policy execution is terminated.
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
+        failure_result:
+          description: Result if the Policy execution fails.
+          type: boolean
       type: object
     PatchedPromptRequest:
       description: Prompt Serializer
@@ -47521,16 +47527,17 @@ components:
       description: PolicyBinding Serializer
       example:
         user_obj: ""
+        failure_result: true
+        policy_obj: ""
+        enabled: true
+        timeout: 314780940
+        target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         negate: true
         group_obj: ""
-        policy_obj: ""
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
-        enabled: true
-        timeout: -1517921766
         policy: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         order: 441289069
       properties:
         pk:
@@ -47576,8 +47583,11 @@ components:
         timeout:
           description: Timeout after which Policy execution is terminated.
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
+        failure_result:
+          description: Result if the Policy execution fails.
+          type: boolean
       required:
       - group_obj
       - order
@@ -47590,9 +47600,10 @@ components:
       description: PolicyBinding Serializer
       example:
         negate: true
+        failure_result: true
         user: 0
         enabled: true
-        timeout: -1517921766
+        timeout: 314780940
         policy: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -47624,8 +47635,11 @@ components:
         timeout:
           description: Timeout after which Policy execution is terminated.
           maximum: 2147483647
-          minimum: -2147483648
+          minimum: 0
           type: integer
+        failure_result:
+          description: Result if the Policy execution fails.
+          type: boolean
       required:
       - order
       - target

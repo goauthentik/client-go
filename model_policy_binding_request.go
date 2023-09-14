@@ -27,6 +27,8 @@ type PolicyBindingRequest struct {
 	Order   int32 `json:"order"`
 	// Timeout after which Policy execution is terminated.
 	Timeout *int32 `json:"timeout,omitempty"`
+	// Result if the Policy execution fails.
+	FailureResult *bool `json:"failure_result,omitempty"`
 }
 
 // NewPolicyBindingRequest instantiates a new PolicyBindingRequest object
@@ -321,6 +323,38 @@ func (o *PolicyBindingRequest) SetTimeout(v int32) {
 	o.Timeout = &v
 }
 
+// GetFailureResult returns the FailureResult field value if set, zero value otherwise.
+func (o *PolicyBindingRequest) GetFailureResult() bool {
+	if o == nil || o.FailureResult == nil {
+		var ret bool
+		return ret
+	}
+	return *o.FailureResult
+}
+
+// GetFailureResultOk returns a tuple with the FailureResult field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PolicyBindingRequest) GetFailureResultOk() (*bool, bool) {
+	if o == nil || o.FailureResult == nil {
+		return nil, false
+	}
+	return o.FailureResult, true
+}
+
+// HasFailureResult returns a boolean if a field has been set.
+func (o *PolicyBindingRequest) HasFailureResult() bool {
+	if o != nil && o.FailureResult != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFailureResult gets a reference to the given bool and assigns it to the FailureResult field.
+func (o *PolicyBindingRequest) SetFailureResult(v bool) {
+	o.FailureResult = &v
+}
+
 func (o PolicyBindingRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Policy.IsSet() {
@@ -346,6 +380,9 @@ func (o PolicyBindingRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Timeout != nil {
 		toSerialize["timeout"] = o.Timeout
+	}
+	if o.FailureResult != nil {
+		toSerialize["failure_result"] = o.FailureResult
 	}
 	return json.Marshal(toSerialize)
 }

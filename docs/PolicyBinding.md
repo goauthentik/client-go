@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** |  | [optional] 
 **Order** | **int32** |  | 
 **Timeout** | Pointer to **int32** | Timeout after which Policy execution is terminated. | [optional] 
+**FailureResult** | Pointer to **bool** | Result if the Policy execution fails. | [optional] 
 
 ## Methods
 
@@ -335,6 +336,31 @@ SetTimeout sets Timeout field to given value.
 `func (o *PolicyBinding) HasTimeout() bool`
 
 HasTimeout returns a boolean if a field has been set.
+
+### GetFailureResult
+
+`func (o *PolicyBinding) GetFailureResult() bool`
+
+GetFailureResult returns the FailureResult field if non-nil, zero value otherwise.
+
+### GetFailureResultOk
+
+`func (o *PolicyBinding) GetFailureResultOk() (*bool, bool)`
+
+GetFailureResultOk returns a tuple with the FailureResult field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailureResult
+
+`func (o *PolicyBinding) SetFailureResult(v bool)`
+
+SetFailureResult sets FailureResult field to given value.
+
+### HasFailureResult
+
+`func (o *PolicyBinding) HasFailureResult() bool`
+
+HasFailureResult returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
