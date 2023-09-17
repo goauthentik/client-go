@@ -4767,6 +4767,39 @@ paths:
       - authentik: []
       tags:
       - core
+  /core/transactional/applications/:
+    put:
+      description: "Convert data into a blueprint, validate it and apply it"
+      operationId: core_transactional_applications_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionApplicationRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionApplicationResponse'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
   /core/user_consent/:
     get:
       description: UserConsent Viewset
@@ -48356,6 +48389,22 @@ components:
       - twilio
       - generic
       type: string
+    ProviderModelEnum:
+      description: |-
+        * `authentik_providers_ldap.ldapprovider` - authentik_providers_ldap.ldapprovider
+        * `authentik_providers_oauth2.oauth2provider` - authentik_providers_oauth2.oauth2provider
+        * `authentik_providers_proxy.proxyprovider` - authentik_providers_proxy.proxyprovider
+        * `authentik_providers_radius.radiusprovider` - authentik_providers_radius.radiusprovider
+        * `authentik_providers_saml.samlprovider` - authentik_providers_saml.samlprovider
+        * `authentik_providers_scim.scimprovider` - authentik_providers_scim.scimprovider
+      enum:
+      - authentik_providers_ldap.ldapprovider
+      - authentik_providers_oauth2.oauth2provider
+      - authentik_providers_proxy.proxyprovider
+      - authentik_providers_radius.radiusprovider
+      - authentik_providers_saml.samlprovider
+      - authentik_providers_scim.scimprovider
+      type: string
     ProviderRequest:
       description: Provider Serializer
       properties:
@@ -51395,6 +51444,54 @@ components:
       required:
       - key
       type: object
+    TransactionApplicationRequest:
+      description: Serializer for creating a provider and an application in one transaction
+      example:
+        app:
+          policy_engine_mode: null
+          meta_description: meta_description
+          backchannel_providers:
+          - 6
+          - 6
+          provider: 0
+          open_in_new_tab: true
+          name: name
+          meta_launch_url: https://openapi-generator.tech
+          slug: slug
+          meta_publisher: meta_publisher
+          group: group
+        provider_model: null
+        provider: null
+      properties:
+        app:
+          $ref: '#/components/schemas/ApplicationRequest'
+        provider_model:
+          $ref: '#/components/schemas/ProviderModelEnum'
+        provider:
+          $ref: '#/components/schemas/modelRequest'
+      required:
+      - app
+      - provider
+      - provider_model
+      type: object
+    TransactionApplicationResponse:
+      description: Transactional creation response
+      example:
+        applied: true
+        logs:
+        - logs
+        - logs
+      properties:
+        applied:
+          type: boolean
+        logs:
+          items:
+            type: string
+          type: array
+      required:
+      - applied
+      - logs
+      type: object
     TypeCreate:
       description: Types of an object that can be created
       example:
@@ -52789,6 +52886,23 @@ components:
       required:
       - count
       type: object
+    modelRequest:
+      discriminator:
+        mapping:
+          authentik_providers_ldap.ldapprovider: '#/components/schemas/LDAPProviderRequest'
+          authentik_providers_oauth2.oauth2provider: '#/components/schemas/OAuth2ProviderRequest'
+          authentik_providers_proxy.proxyprovider: '#/components/schemas/ProxyProviderRequest'
+          authentik_providers_radius.radiusprovider: '#/components/schemas/RadiusProviderRequest'
+          authentik_providers_saml.samlprovider: '#/components/schemas/SAMLProviderRequest'
+          authentik_providers_scim.scimprovider: '#/components/schemas/SCIMProviderRequest'
+        propertyName: provider_model
+      oneOf:
+      - $ref: '#/components/schemas/LDAPProviderRequest'
+      - $ref: '#/components/schemas/OAuth2ProviderRequest'
+      - $ref: '#/components/schemas/ProxyProviderRequest'
+      - $ref: '#/components/schemas/RadiusProviderRequest'
+      - $ref: '#/components/schemas/SAMLProviderRequest'
+      - $ref: '#/components/schemas/SCIMProviderRequest'
     AuthenticatedSession_user_agent_device:
       description: User agent device
       example:

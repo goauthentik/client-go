@@ -191,6 +191,7 @@ docs/LoginSource.md
 docs/ManagedApi.md
 docs/Metadata.md
 docs/ModelEnum.md
+docs/ModelRequest.md
 docs/NameIdPolicyEnum.md
 docs/NotConfiguredActionEnum.md
 docs/Notification.md
@@ -409,6 +410,7 @@ docs/PropertyMappingTestResult.md
 docs/PropertymappingsApi.md
 docs/Provider.md
 docs/ProviderEnum.md
+docs/ProviderModelEnum.md
 docs/ProviderRequest.md
 docs/ProviderTypeEnum.md
 docs/ProvidersApi.md
@@ -476,6 +478,8 @@ docs/TokenModel.md
 docs/TokenRequest.md
 docs/TokenSetKeyRequest.md
 docs/TokenView.md
+docs/TransactionApplicationRequest.md
+docs/TransactionApplicationResponse.md
 docs/TypeCreate.md
 docs/UiThemeEnum.md
 docs/UsedBy.md
@@ -684,6 +688,7 @@ model_login_metrics.go
 model_login_source.go
 model_metadata.go
 model_model_enum.go
+model_model_request.go
 model_name_id_policy_enum.go
 model_not_configured_action_enum.go
 model_notification.go
@@ -898,6 +903,7 @@ model_property_mapping_preview.go
 model_property_mapping_test_result.go
 model_provider.go
 model_provider_enum.go
+model_provider_model_enum.go
 model_provider_request.go
 model_provider_type_enum.go
 model_proxy_mode.go
@@ -960,6 +966,8 @@ model_token_set_key_request.go
 model_token_view.go
 model_totp_device.go
 model_totp_device_request.go
+model_transaction_application_request.go
+model_transaction_application_response.go
 model_type_create.go
 model_ui_theme_enum.go
 model_used_by.go

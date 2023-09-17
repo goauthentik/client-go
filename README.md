@@ -150,6 +150,7 @@ Class | Method | HTTP request | Description
 *CoreApi* | [**CoreTokensUpdate**](docs/CoreApi.md#coretokensupdate) | **Put** /core/tokens/{identifier}/ | 
 *CoreApi* | [**CoreTokensUsedByList**](docs/CoreApi.md#coretokensusedbylist) | **Get** /core/tokens/{identifier}/used_by/ | 
 *CoreApi* | [**CoreTokensViewKeyRetrieve**](docs/CoreApi.md#coretokensviewkeyretrieve) | **Get** /core/tokens/{identifier}/view_key/ | 
+*CoreApi* | [**CoreTransactionalApplicationsUpdate**](docs/CoreApi.md#coretransactionalapplicationsupdate) | **Put** /core/transactional/applications/ | 
 *CoreApi* | [**CoreUserConsentDestroy**](docs/CoreApi.md#coreuserconsentdestroy) | **Delete** /core/user_consent/{id}/ | 
 *CoreApi* | [**CoreUserConsentList**](docs/CoreApi.md#coreuserconsentlist) | **Get** /core/user_consent/ | 
 *CoreApi* | [**CoreUserConsentRetrieve**](docs/CoreApi.md#coreuserconsentretrieve) | **Get** /core/user_consent/{id}/ | 
@@ -852,6 +853,7 @@ Class | Method | HTTP request | Description
  - [LoginSource](docs/LoginSource.md)
  - [Metadata](docs/Metadata.md)
  - [ModelEnum](docs/ModelEnum.md)
+ - [ModelRequest](docs/ModelRequest.md)
  - [NameIdPolicyEnum](docs/NameIdPolicyEnum.md)
  - [NotConfiguredActionEnum](docs/NotConfiguredActionEnum.md)
  - [Notification](docs/Notification.md)
@@ -1066,6 +1068,7 @@ Class | Method | HTTP request | Description
  - [PropertyMappingTestResult](docs/PropertyMappingTestResult.md)
  - [Provider](docs/Provider.md)
  - [ProviderEnum](docs/ProviderEnum.md)
+ - [ProviderModelEnum](docs/ProviderModelEnum.md)
  - [ProviderRequest](docs/ProviderRequest.md)
  - [ProviderTypeEnum](docs/ProviderTypeEnum.md)
  - [ProxyMode](docs/ProxyMode.md)
@@ -1128,6 +1131,8 @@ Class | Method | HTTP request | Description
  - [TokenRequest](docs/TokenRequest.md)
  - [TokenSetKeyRequest](docs/TokenSetKeyRequest.md)
  - [TokenView](docs/TokenView.md)
+ - [TransactionApplicationRequest](docs/TransactionApplicationRequest.md)
+ - [TransactionApplicationResponse](docs/TransactionApplicationResponse.md)
  - [TypeCreate](docs/TypeCreate.md)
  - [UiThemeEnum](docs/UiThemeEnum.md)
  - [UsedBy](docs/UsedBy.md)

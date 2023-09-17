@@ -45,6 +45,7 @@ Method | HTTP request | Description
 [**CoreTokensUpdate**](CoreApi.md#CoreTokensUpdate) | **Put** /core/tokens/{identifier}/ | 
 [**CoreTokensUsedByList**](CoreApi.md#CoreTokensUsedByList) | **Get** /core/tokens/{identifier}/used_by/ | 
 [**CoreTokensViewKeyRetrieve**](CoreApi.md#CoreTokensViewKeyRetrieve) | **Get** /core/tokens/{identifier}/view_key/ | 
+[**CoreTransactionalApplicationsUpdate**](CoreApi.md#CoreTransactionalApplicationsUpdate) | **Put** /core/transactional/applications/ | 
 [**CoreUserConsentDestroy**](CoreApi.md#CoreUserConsentDestroy) | **Delete** /core/user_consent/{id}/ | 
 [**CoreUserConsentList**](CoreApi.md#CoreUserConsentList) | **Get** /core/user_consent/ | 
 [**CoreUserConsentRetrieve**](CoreApi.md#CoreUserConsentRetrieve) | **Get** /core/user_consent/{id}/ | 
@@ -2999,6 +3000,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreTransactionalApplicationsUpdate
+
+> TransactionApplicationResponse CoreTransactionalApplicationsUpdate(ctx).TransactionApplicationRequest(transactionApplicationRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    transactionApplicationRequest := *openapiclient.NewTransactionApplicationRequest(*openapiclient.NewApplicationRequest("Name_example", "Slug_example"), openapiclient.ProviderModelEnum("authentik_providers_ldap.ldapprovider"), openapiclient.modelRequest{LDAPProviderRequest: openapiclient.NewLDAPProviderRequest("Name_example", "AuthorizationFlow_example")}) // TransactionApplicationRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreTransactionalApplicationsUpdate(context.Background()).TransactionApplicationRequest(transactionApplicationRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTransactionalApplicationsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreTransactionalApplicationsUpdate`: TransactionApplicationResponse
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreTransactionalApplicationsUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreTransactionalApplicationsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **transactionApplicationRequest** | [**TransactionApplicationRequest**](TransactionApplicationRequest.md) |  | 
+
+### Return type
+
+[**TransactionApplicationResponse**](TransactionApplicationResponse.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
