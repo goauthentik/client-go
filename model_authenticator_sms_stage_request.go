@@ -28,7 +28,7 @@ type AuthenticatorSMSStageRequest struct {
 	Auth          string         `json:"auth"`
 	AuthPassword  *string        `json:"auth_password,omitempty"`
 	AuthType      *AuthTypeEnum  `json:"auth_type,omitempty"`
-	// When enabled, the Phone number is only used during enrollment to verify the users authenticity. Only a hash of the phone number is saved to ensure it is not re-used in the future.
+	// When enabled, the Phone number is only used during enrollment to verify the users authenticity. Only a hash of the phone number is saved to ensure it is not reused in the future.
 	VerifyOnly *bool `json:"verify_only,omitempty"`
 	// Optionally modify the payload being sent to custom providers.
 	Mapping NullableString `json:"mapping,omitempty"`

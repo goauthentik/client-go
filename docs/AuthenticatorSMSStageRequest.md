@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Auth** | **string** |  | 
 **AuthPassword** | Pointer to **string** |  | [optional] 
 **AuthType** | Pointer to [**AuthTypeEnum**](AuthTypeEnum.md) |  | [optional] 
-**VerifyOnly** | Pointer to **bool** | When enabled, the Phone number is only used during enrollment to verify the users authenticity. Only a hash of the phone number is saved to ensure it is not re-used in the future. | [optional] 
+**VerifyOnly** | Pointer to **bool** | When enabled, the Phone number is only used during enrollment to verify the users authenticity. Only a hash of the phone number is saved to ensure it is not reused in the future. | [optional] 
 **Mapping** | Pointer to **NullableString** | Optionally modify the payload being sent to custom providers. | [optional] 
 
 ## Methods
