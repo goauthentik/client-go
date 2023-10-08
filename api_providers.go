@@ -5908,6 +5908,7 @@ type ApiProvidersSamlListRequest struct {
 	authenticationFlow         *string
 	authorizationFlow          *string
 	backchannelApplication     *string
+	defaultRelayState          *string
 	digestAlgorithm            *string
 	isBackchannel              *bool
 	issuer                     *string
@@ -5957,6 +5958,11 @@ func (r ApiProvidersSamlListRequest) AuthorizationFlow(authorizationFlow string)
 
 func (r ApiProvidersSamlListRequest) BackchannelApplication(backchannelApplication string) ApiProvidersSamlListRequest {
 	r.backchannelApplication = &backchannelApplication
+	return r
+}
+
+func (r ApiProvidersSamlListRequest) DefaultRelayState(defaultRelayState string) ApiProvidersSamlListRequest {
+	r.defaultRelayState = &defaultRelayState
 	return r
 }
 
@@ -6103,6 +6109,9 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	}
 	if r.backchannelApplication != nil {
 		localVarQueryParams.Add("backchannel_application", parameterToString(*r.backchannelApplication, ""))
+	}
+	if r.defaultRelayState != nil {
+		localVarQueryParams.Add("default_relay_state", parameterToString(*r.defaultRelayState, ""))
 	}
 	if r.digestAlgorithm != nil {
 		localVarQueryParams.Add("digest_algorithm", parameterToString(*r.digestAlgorithm, ""))

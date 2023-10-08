@@ -44,6 +44,8 @@ type SAMLProviderRequest struct {
 	VerificationKp NullableString `json:"verification_kp,omitempty"`
 	// This determines how authentik sends the response back to the Service Provider.  * `redirect` - Redirect * `post` - Post
 	SpBinding *SpBindingEnum `json:"sp_binding,omitempty"`
+	// Default relay_state value for IDP-initiated logins
+	DefaultRelayState *string `json:"default_relay_state,omitempty"`
 }
 
 // NewSAMLProviderRequest instantiates a new SAMLProviderRequest object
@@ -598,6 +600,38 @@ func (o *SAMLProviderRequest) SetSpBinding(v SpBindingEnum) {
 	o.SpBinding = &v
 }
 
+// GetDefaultRelayState returns the DefaultRelayState field value if set, zero value otherwise.
+func (o *SAMLProviderRequest) GetDefaultRelayState() string {
+	if o == nil || o.DefaultRelayState == nil {
+		var ret string
+		return ret
+	}
+	return *o.DefaultRelayState
+}
+
+// GetDefaultRelayStateOk returns a tuple with the DefaultRelayState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SAMLProviderRequest) GetDefaultRelayStateOk() (*string, bool) {
+	if o == nil || o.DefaultRelayState == nil {
+		return nil, false
+	}
+	return o.DefaultRelayState, true
+}
+
+// HasDefaultRelayState returns a boolean if a field has been set.
+func (o *SAMLProviderRequest) HasDefaultRelayState() bool {
+	if o != nil && o.DefaultRelayState != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultRelayState gets a reference to the given string and assigns it to the DefaultRelayState field.
+func (o *SAMLProviderRequest) SetDefaultRelayState(v string) {
+	o.DefaultRelayState = &v
+}
+
 func (o SAMLProviderRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -647,6 +681,9 @@ func (o SAMLProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.SpBinding != nil {
 		toSerialize["sp_binding"] = o.SpBinding
+	}
+	if o.DefaultRelayState != nil {
+		toSerialize["default_relay_state"] = o.DefaultRelayState
 	}
 	return json.Marshal(toSerialize)
 }

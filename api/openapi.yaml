@@ -18136,6 +18136,13 @@ paths:
           format: uuid
           type: string
         style: form
+      - explode: true
+        in: query
+        name: default_relay_state
+        required: false
+        schema:
+          type: string
+        style: form
       - description: |-
           * `http://www.w3.org/2000/09/xmldsig#sha1` - SHA1
           * `http://www.w3.org/2001/04/xmlenc#sha256` - SHA256
@@ -41863,6 +41870,7 @@ components:
           verbose_name_plural: verbose_name_plural
           url_slo_redirect: url_slo_redirect
           session_valid_not_on_or_after: session_valid_not_on_or_after
+          default_relay_state: default_relay_state
           assigned_application_slug: assigned_application_slug
           issuer: issuer
           url_sso_redirect: url_sso_redirect
@@ -41896,6 +41904,7 @@ components:
           verbose_name_plural: verbose_name_plural
           url_slo_redirect: url_slo_redirect
           session_valid_not_on_or_after: session_valid_not_on_or_after
+          default_relay_state: default_relay_state
           assigned_application_slug: assigned_application_slug
           issuer: issuer
           url_sso_redirect: url_sso_redirect
@@ -46492,6 +46501,7 @@ components:
         audience: audience
         session_valid_not_on_or_after: session_valid_not_on_or_after
         sp_binding: ""
+        default_relay_state: default_relay_state
         acs_url: https://openapi-generator.tech
         issuer: issuer
         assertion_valid_not_before: assertion_valid_not_before
@@ -46588,6 +46598,9 @@ components:
             * `redirect` - Redirect
             * `post` - Post
           title: Service Provider Binding
+        default_relay_state:
+          description: Default relay_state value for IDP-initiated logins
+          type: string
       type: object
     PatchedSAMLSourceRequest:
       description: SAMLSource Serializer
@@ -49368,6 +49381,7 @@ components:
         verbose_name_plural: verbose_name_plural
         url_slo_redirect: url_slo_redirect
         session_valid_not_on_or_after: session_valid_not_on_or_after
+        default_relay_state: default_relay_state
         assigned_application_slug: assigned_application_slug
         issuer: issuer
         url_sso_redirect: url_sso_redirect
@@ -49508,6 +49522,9 @@ components:
             * `redirect` - Redirect
             * `post` - Post
           title: Service Provider Binding
+        default_relay_state:
+          description: Default relay_state value for IDP-initiated logins
+          type: string
         url_download_metadata:
           description: Get metadata download URL
           readOnly: true
@@ -49575,6 +49592,7 @@ components:
         audience: audience
         session_valid_not_on_or_after: session_valid_not_on_or_after
         sp_binding: ""
+        default_relay_state: default_relay_state
         acs_url: https://openapi-generator.tech
         issuer: issuer
         assertion_valid_not_before: assertion_valid_not_before
@@ -49671,6 +49689,9 @@ components:
             * `redirect` - Redirect
             * `post` - Post
           title: Service Provider Binding
+        default_relay_state:
+          description: Default relay_state value for IDP-initiated logins
+          type: string
       required:
       - acs_url
       - authorization_flow

@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **SigningKp** | Pointer to **NullableString** | Keypair used to sign outgoing Responses going to the Service Provider. | [optional] 
 **VerificationKp** | Pointer to **NullableString** | When selected, incoming assertion&#39;s Signatures will be validated against this certificate. To allow unsigned Requests, leave on default. | [optional] 
 **SpBinding** | Pointer to [**SpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider.  * &#x60;redirect&#x60; - Redirect * &#x60;post&#x60; - Post | [optional] 
+**DefaultRelayState** | Pointer to **string** | Default relay_state value for IDP-initiated logins | [optional] 
 **UrlDownloadMetadata** | **string** | Get metadata download URL | [readonly] 
 **UrlSsoPost** | **string** | Get SSO Post URL | [readonly] 
 **UrlSsoRedirect** | **string** | Get SSO Redirect URL | [readonly] 
@@ -659,6 +660,31 @@ SetSpBinding sets SpBinding field to given value.
 `func (o *SAMLProvider) HasSpBinding() bool`
 
 HasSpBinding returns a boolean if a field has been set.
+
+### GetDefaultRelayState
+
+`func (o *SAMLProvider) GetDefaultRelayState() string`
+
+GetDefaultRelayState returns the DefaultRelayState field if non-nil, zero value otherwise.
+
+### GetDefaultRelayStateOk
+
+`func (o *SAMLProvider) GetDefaultRelayStateOk() (*string, bool)`
+
+GetDefaultRelayStateOk returns a tuple with the DefaultRelayState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultRelayState
+
+`func (o *SAMLProvider) SetDefaultRelayState(v string)`
+
+SetDefaultRelayState sets DefaultRelayState field to given value.
+
+### HasDefaultRelayState
+
+`func (o *SAMLProvider) HasDefaultRelayState() bool`
+
+HasDefaultRelayState returns a boolean if a field has been set.
 
 ### GetUrlDownloadMetadata
 

@@ -61,6 +61,8 @@ type SAMLProvider struct {
 	VerificationKp NullableString `json:"verification_kp,omitempty"`
 	// This determines how authentik sends the response back to the Service Provider.  * `redirect` - Redirect * `post` - Post
 	SpBinding *SpBindingEnum `json:"sp_binding,omitempty"`
+	// Default relay_state value for IDP-initiated logins
+	DefaultRelayState *string `json:"default_relay_state,omitempty"`
 	// Get metadata download URL
 	UrlDownloadMetadata string `json:"url_download_metadata"`
 	// Get SSO Post URL
@@ -858,6 +860,38 @@ func (o *SAMLProvider) SetSpBinding(v SpBindingEnum) {
 	o.SpBinding = &v
 }
 
+// GetDefaultRelayState returns the DefaultRelayState field value if set, zero value otherwise.
+func (o *SAMLProvider) GetDefaultRelayState() string {
+	if o == nil || o.DefaultRelayState == nil {
+		var ret string
+		return ret
+	}
+	return *o.DefaultRelayState
+}
+
+// GetDefaultRelayStateOk returns a tuple with the DefaultRelayState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SAMLProvider) GetDefaultRelayStateOk() (*string, bool) {
+	if o == nil || o.DefaultRelayState == nil {
+		return nil, false
+	}
+	return o.DefaultRelayState, true
+}
+
+// HasDefaultRelayState returns a boolean if a field has been set.
+func (o *SAMLProvider) HasDefaultRelayState() bool {
+	if o != nil && o.DefaultRelayState != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultRelayState gets a reference to the given string and assigns it to the DefaultRelayState field.
+func (o *SAMLProvider) SetDefaultRelayState(v string) {
+	o.DefaultRelayState = &v
+}
+
 // GetUrlDownloadMetadata returns the UrlDownloadMetadata field value
 func (o *SAMLProvider) GetUrlDownloadMetadata() string {
 	if o == nil {
@@ -1078,6 +1112,9 @@ func (o SAMLProvider) MarshalJSON() ([]byte, error) {
 	}
 	if o.SpBinding != nil {
 		toSerialize["sp_binding"] = o.SpBinding
+	}
+	if o.DefaultRelayState != nil {
+		toSerialize["default_relay_state"] = o.DefaultRelayState
 	}
 	if true {
 		toSerialize["url_download_metadata"] = o.UrlDownloadMetadata
