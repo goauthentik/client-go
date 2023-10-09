@@ -34,13 +34,14 @@ type User struct {
 	Uid         string                 `json:"uid"`
 	Path        *string                `json:"path,omitempty"`
 	Type        *UserTypeEnum          `json:"type,omitempty"`
+	Uuid        string                 `json:"uuid"`
 }
 
 // NewUser instantiates a new User object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUser(pk int32, username string, name string, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string) *User {
+func NewUser(pk int32, username string, name string, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string) *User {
 	this := User{}
 	this.Pk = pk
 	this.Username = username
@@ -49,6 +50,7 @@ func NewUser(pk int32, username string, name string, isSuperuser bool, groupsObj
 	this.GroupsObj = groupsObj
 	this.Avatar = avatar
 	this.Uid = uid
+	this.Uuid = uuid
 	return &this
 }
 
@@ -463,6 +465,30 @@ func (o *User) SetType(v UserTypeEnum) {
 	o.Type = &v
 }
 
+// GetUuid returns the Uuid field value
+func (o *User) GetUuid() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value
+// and a boolean to check if the value has been set.
+func (o *User) GetUuidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Uuid, true
+}
+
+// SetUuid sets field value
+func (o *User) SetUuid(v string) {
+	o.Uuid = v
+}
+
 func (o User) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -506,6 +532,9 @@ func (o User) MarshalJSON() ([]byte, error) {
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
+	}
+	if true {
+		toSerialize["uuid"] = o.Uuid
 	}
 	return json.Marshal(toSerialize)
 }

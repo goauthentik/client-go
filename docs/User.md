@@ -18,12 +18,13 @@ Name | Type | Description | Notes
 **Uid** | **string** |  | [readonly] 
 **Path** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to [**UserTypeEnum**](UserTypeEnum.md) |  | [optional] 
+**Uuid** | **string** |  | [readonly] 
 
 ## Methods
 
 ### NewUser
 
-`func NewUser(pk int32, username string, name string, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, ) *User`
+`func NewUser(pk int32, username string, name string, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string, ) *User`
 
 NewUser instantiates a new User object
 This constructor will assign default values to properties that have it defined,
@@ -362,6 +363,26 @@ SetType sets Type field to given value.
 `func (o *User) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *User) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *User) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *User) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

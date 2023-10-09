@@ -33854,6 +33854,7 @@ components:
               key: ""
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             num_pk: 1
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           uid: uid
           path: path
           name: name
@@ -39420,6 +39421,7 @@ components:
                 key: ""
               pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               num_pk: 1
+            uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             uid: uid
             path: path
             name: name
@@ -39490,6 +39492,7 @@ components:
                 key: ""
               pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               num_pk: 1
+            uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             uid: uid
             path: path
             name: name
@@ -42586,6 +42589,7 @@ components:
                 key: ""
               pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               num_pk: 1
+            uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             uid: uid
             path: path
             name: name
@@ -42658,6 +42662,7 @@ components:
                 key: ""
               pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               num_pk: 1
+            uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             uid: uid
             path: path
             name: name
@@ -42765,6 +42770,7 @@ components:
                 key: ""
               pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               num_pk: 1
+            uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             uid: uid
             path: path
             name: name
@@ -42850,6 +42856,7 @@ components:
                 key: ""
               pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               num_pk: 1
+            uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             uid: uid
             path: path
             name: name
@@ -42989,6 +42996,7 @@ components:
               key: ""
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             num_pk: 1
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           uid: uid
           path: path
           name: name
@@ -43022,6 +43030,7 @@ components:
               key: ""
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             num_pk: 1
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           uid: uid
           path: path
           name: name
@@ -51363,6 +51372,7 @@ components:
               key: ""
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             num_pk: 1
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           uid: uid
           path: path
           name: name
@@ -51611,6 +51621,7 @@ components:
             key: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           num_pk: 1
+        uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         uid: uid
         path: path
         name: name
@@ -51670,6 +51681,10 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/UserTypeEnum'
+        uuid:
+          format: uuid
+          readOnly: true
+          type: string
       required:
       - avatar
       - groups_obj
@@ -51678,6 +51693,7 @@ components:
       - pk
       - uid
       - username
+      - uuid
       type: object
     UserAccountRequest:
       description: Account adding/removing operations
@@ -51769,6 +51785,7 @@ components:
               key: ""
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             num_pk: 1
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           uid: uid
           path: path
           name: name
